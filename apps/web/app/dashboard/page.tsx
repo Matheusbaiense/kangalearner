@@ -31,9 +31,9 @@ function pct(correct: number, total: number) {
 
 export default async function DashboardPage() {
   /* ── Auth check ── */
-  let supabase: ReturnType<typeof createSupabaseServerClient>;
+  let supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>;
   try {
-    supabase = createSupabaseServerClient();
+    supabase = await createSupabaseServerClient();
   } catch {
     redirect("/login?next=/dashboard");
   }
