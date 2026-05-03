@@ -23,6 +23,12 @@
   background:rgba(255,255,255,.03);
 }
 .btn-secondary:hover{background:rgba(255,255,255,.08)}
+.btn-gold{
+  background:linear-gradient(135deg,#FBBF24,var(--gold));
+  color:#1b2b3a;
+  box-shadow:0 16px 30px rgba(217,119,6,.22);
+}
+.btn-gold:hover{filter:brightness(1.03)}
 .btn-sm{min-height:38px;padding:0 14px;border-radius:10px;font-size:.82rem}
 
 /* ══════════════════════════════════════════
@@ -193,6 +199,26 @@
 .state-icon img{display:block}
 .state-code{font-weight:950;font-size:1rem;line-height:1}
 .state-name{font-size:.68rem;color:var(--muted2);line-height:1.15;margin-top:4px}
+
+.state-card.coming-soon{
+  opacity:.55;
+  cursor:not-allowed;
+  transform:none !important;
+  box-shadow:none !important;
+}
+.state-card.coming-soon:hover{transform:none}
+.state-badge{
+  margin-top:8px;
+  font-size:.62rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:950;
+  color:var(--orange);
+  background:rgba(245,158,11,.12);
+  border:1px solid rgba(245,158,11,.25);
+  padding:4px 8px;
+  border-radius:999px;
+}
 
 .trust-strip{
   border-top:1px solid var(--border);

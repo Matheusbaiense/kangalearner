@@ -34,7 +34,7 @@
     <nav class="main-nav" aria-label="Main navigation">
       <a class="active" href="#top">Home</a>
       <a href="#questoes">Practice</a>
-      <a href="#questoes" onclick="setTimeout(()=>DW.setMode('sim'),50)">Mock Test</a>
+      <a href="#questoes" data-action="mode-sim">Mock Test</a>
       <a href="#topics">Road Rules</a>
       <a href="#resources">Resources</a>
     </nav>
@@ -45,40 +45,40 @@
         <select id="state-select" aria-label="Select state">
           <option value="AU">State: Australia</option>
           <option value="WA">WA</option>
-          <option value="NSW">NSW</option>
-          <option value="VIC">VIC</option>
-          <option value="QLD">QLD</option>
-          <option value="SA">SA</option>
-          <option value="TAS">TAS</option>
-          <option value="ACT">ACT</option>
-          <option value="NT">NT</option>
+          <option value="NSW" disabled>NSW</option>
+          <option value="VIC" disabled>VIC</option>
+          <option value="QLD" disabled>QLD</option>
+          <option value="SA" disabled>SA</option>
+          <option value="TAS" disabled>TAS</option>
+          <option value="ACT" disabled>ACT</option>
+          <option value="NT" disabled>NT</option>
         </select>
       </div>
 
       <div class="ld-wrap" id="ld">
-        <button class="ld-trigger" id="ld-trigger" onclick="ldToggle()" aria-label="Language selector" type="button">
+        <button class="ld-trigger" id="ld-trigger" aria-label="Language selector" type="button">
           <span class="ld-flag" id="ld-flag">🇧🇷</span>
           <span class="ld-name" id="ld-name">Português</span>
           <span class="ld-arrow">▼</span>
         </button>
         <div class="ld-panel" id="ld-panel" role="listbox" aria-label="Language options">
-          <button class="ld-option active" data-lang="pt" onclick="setLang('pt',this)" type="button" role="option" aria-selected="true">
+          <button class="ld-option active" data-lang="pt" type="button" role="option" aria-selected="true">
             <span class="ld-oflag">🇧🇷</span><span class="ld-oname">Português</span>
             <span class="ld-osub">Somente PT</span><span class="ld-check">✓</span>
           </button>
-          <button class="ld-option" data-lang="en" onclick="setLang('en',this)" type="button" role="option" aria-selected="false">
+          <button class="ld-option" data-lang="en" type="button" role="option" aria-selected="false">
             <span class="ld-oflag">🇦🇺</span><span class="ld-oname">English</span>
             <span class="ld-osub">English only</span><span class="ld-check">✓</span>
           </button>
-          <button class="ld-option" data-lang="es" onclick="setLang('es',this)" type="button" role="option" aria-selected="false">
+          <button class="ld-option" data-lang="es" type="button" role="option" aria-selected="false">
             <span class="ld-oflag">🇪🇸</span><span class="ld-oname">Español</span>
             <span class="ld-osub">Solo ES</span><span class="ld-check">✓</span>
           </button>
-          <button class="ld-option" data-lang="pten" onclick="setLang('pten',this)" type="button" role="option" aria-selected="false">
+          <button class="ld-option" data-lang="pten" type="button" role="option" aria-selected="false">
             <span class="ld-oflag">🇧🇷 🇦🇺</span><span class="ld-oname">PT + EN</span>
             <span class="ld-osub">Bilíngue</span><span class="ld-check">✓</span>
           </button>
-          <button class="ld-option" data-lang="esen" onclick="setLang('esen',this)" type="button" role="option" aria-selected="false">
+          <button class="ld-option" data-lang="esen" type="button" role="option" aria-selected="false">
             <span class="ld-oflag">🇪🇸 🇦🇺</span><span class="ld-oname">ES + EN</span>
             <span class="ld-osub">Bilíngüe</span><span class="ld-check">✓</span>
           </button>
@@ -118,7 +118,7 @@
             <span class="l-es">Empezar práctica</span>
             <span>→</span>
           </a>
-          <a class="btn btn-secondary" href="#questoes" onclick="setTimeout(()=>DW.setMode('sim'),50)">
+          <a class="btn btn-secondary" href="#questoes" data-action="mode-sim">
             <span>▣</span>
             <span class="l-pt">Fazer simulado</span>
             <span class="l-en">Take a Mock Test</span>
@@ -224,13 +224,13 @@
         <span class="l-es">Selecciona tu estado y estudia las reglas correctas.</span>
       </div>
       <button class="state-card active" data-state="WA" aria-pressed="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">WA</div><div class="state-name">Western Australia</div></button>
-      <button class="state-card" data-state="NSW" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">NSW</div><div class="state-name">New South Wales</div></button>
-      <button class="state-card" data-state="VIC" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">VIC</div><div class="state-name">Victoria</div></button>
-      <button class="state-card" data-state="QLD" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">QLD</div><div class="state-name">Queensland</div></button>
-      <button class="state-card" data-state="SA" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">SA</div><div class="state-name">South Australia</div></button>
-      <button class="state-card" data-state="TAS" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">TAS</div><div class="state-name">Tasmania</div></button>
-      <button class="state-card" data-state="ACT" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">ACT</div><div class="state-name">Australian Capital Territory</div></button>
-      <button class="state-card" data-state="NT" aria-pressed="false"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">NT</div><div class="state-name">Northern Territory</div></button>
+      <button class="state-card coming-soon" data-state="NSW" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">NSW</div><div class="state-name">New South Wales</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
+      <button class="state-card coming-soon" data-state="VIC" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">VIC</div><div class="state-name">Victoria</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
+      <button class="state-card coming-soon" data-state="QLD" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">QLD</div><div class="state-name">Queensland</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
+      <button class="state-card coming-soon" data-state="SA" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">SA</div><div class="state-name">South Australia</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
+      <button class="state-card coming-soon" data-state="TAS" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">TAS</div><div class="state-name">Tasmania</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
+      <button class="state-card coming-soon" data-state="ACT" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">ACT</div><div class="state-name">Australian Capital Territory</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
+      <button class="state-card coming-soon" data-state="NT" aria-pressed="false" aria-disabled="true"><div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"></div><div class="state-code">NT</div><div class="state-name">Northern Territory</div><div class="state-badge"><span class="l-pt">Em breve</span><span class="l-en">Soon</span><span class="l-es">Pronto</span></div></button>
     </div>
   </div>
 </section>
@@ -257,31 +257,35 @@
 
 <section class="topics-section" id="topics">
   <div class="container">
-    <div class="topics-title">Learn key road rule topics</div>
+    <div class="topics-title">
+      <span class="l-pt">Aprenda os principais tópicos</span>
+      <span class="l-en">Learn key road rule topics</span>
+      <span class="l-es">Aprende los temas principales</span>
+    </div>
     <div class="topic-grid">
-      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Speed Limits'),50)">
+      <a class="topic-card" href="#questoes" data-cat="Speed Limits">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/></svg>
-        <div><h4>Speed Limits</h4><p>Understand speed rules and limits</p></div>
+        <div><h4><span class="l-pt">Velocidade</span><span class="l-en">Speed Limits</span><span class="l-es">Velocidad</span></h4><p><span class="l-pt">Entenda limites e regras de velocidade</span><span class="l-en">Understand speed rules and limits</span><span class="l-es">Entiende límites y reglas de velocidad</span></p></div>
       </a>
-      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Signs'),50)">
+      <a class="topic-card" href="#questoes" data-cat="Road Signs">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 6l20 36H4L24 6Z"/><path d="M24 18v10"/><path d="M24 35h.01"/></svg>
-        <div><h4>Signs</h4><p>Recognise road signs and markings</p></div>
+        <div><h4><span class="l-pt">Sinais</span><span class="l-en">Signs</span><span class="l-es">Señales</span></h4><p><span class="l-pt">Reconheça sinais e marcações</span><span class="l-en">Recognise road signs and markings</span><span class="l-es">Reconoce señales y marcas viales</span></p></div>
       </a>
-      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Parking'),50)">
+      <a class="topic-card" href="#questoes" data-cat="Parking Rules">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/></svg>
-        <div><h4>Parking</h4><p>Parking rules and restrictions</p></div>
+        <div><h4><span class="l-pt">Estacionamento</span><span class="l-en">Parking</span><span class="l-es">Aparcamiento</span></h4><p><span class="l-pt">Regras e restrições de estacionamento</span><span class="l-en">Parking rules and restrictions</span><span class="l-es">Reglas y restricciones de aparcamiento</span></p></div>
       </a>
-      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Alcohol'),50)">
+      <a class="topic-card" href="#questoes" data-cat="Alcohol & BAC">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/></svg>
-        <div><h4>Alcohol</h4><p>Drink driving laws and penalties</p></div>
+        <div><h4><span class="l-pt">Álcool/BAC</span><span class="l-en">Alcohol</span><span class="l-es">Alcohol/TAC</span></h4><p><span class="l-pt">Leis e penalidades de álcool ao volante</span><span class="l-en">Drink driving laws and penalties</span><span class="l-es">Leyes y sanciones por alcohol al volante</span></p></div>
       </a>
-      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Lane Rules'),50)">
+      <a class="topic-card" href="#questoes" data-cat="Road Markings">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M14 42l4-36"/><path d="M34 42L30 6"/><path d="M24 10v7M24 24v7M24 38v4"/></svg>
-        <div><h4>Lane Rules</h4><p>Lane use and merging rules</p></div>
+        <div><h4><span class="l-pt">Faixas</span><span class="l-en">Lane Rules</span><span class="l-es">Marcas viales</span></h4><p><span class="l-pt">Uso de faixas, linhas e preferências</span><span class="l-en">Lane use and merging rules</span><span class="l-es">Uso de carriles, líneas y señales viales</span></p></div>
       </a>
-      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Safety'),50)">
+      <a class="topic-card" href="#questoes" data-cat="Road Safety">
         <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 4l16 6v12c0 10-6 17-16 22C14 39 8 32 8 22V10l16-6Z"/><path d="M17 24l5 5 10-12"/></svg>
-        <div><h4>Safety</h4><p>Safe driving tips for life</p></div>
+        <div><h4><span class="l-pt">Segurança</span><span class="l-en">Safety</span><span class="l-es">Seguridad</span></h4><p><span class="l-pt">Dicas para dirigir com segurança</span><span class="l-en">Safe driving tips for life</span><span class="l-es">Consejos para conducir con seguridad</span></p></div>
       </a>
     </div>
   </div>

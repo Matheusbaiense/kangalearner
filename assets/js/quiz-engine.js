@@ -13,6 +13,7 @@ const DW = {
   simQueue: [],
   simIdx: 0,
   simMode: false,
+  simAnswered: {},
 
   // ── I18N ──
   t(key){ return I18N[key]?.[this.lang] || I18N[key]?.en || key },
@@ -88,12 +89,15 @@ const DW = {
     const safeL = ['pt','en','es'].includes(l) ? l : 'en';
     
     const allLabel = {pt:'Todas',en:'All',es:'Todas'}[safeL] || 'All';
-    let html = `<button class="fcat ${this.cat==='all'?'active':''}" data-cat="all" onclick="DW.setCat('all')">${allLabel}</button>`;
+    let html = `<button class="fcat ${this.cat==='all'?'active':''}" data-cat="all" type="button">${allLabel}</button>`;
     CATEGORIES.forEach(c => {
       const label = c.label[safeL] || c.label.en;
-      html += `<button class="fcat ${this.cat===c.key?'active':''}" data-cat="${c.key}" onclick="DW.setCat('${c.key}')">${c.icon} ${label}</button>`;
+      html += `<button class="fcat ${this.cat===c.key?'active':''}" data-cat="${c.key}" type="button">${c.icon} ${label}</button>`;
     });
     bar.innerHTML = html;
+    bar.querySelectorAll('.fcat').forEach(btn => {
+      btn.addEventListener('click', () => this.setCat(btn.dataset.cat || 'all'));
+    });
   },
 
   setCat(cat){
@@ -196,7 +200,7 @@ const DW = {
     let optsHtml = '';
     q.opts.forEach((o,i) => {
       const otxt = o.t[safeL] || o.t.en || '';
-      optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" onclick="DW.pick(this,'${q.id}')">
+      optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="button" tabindex="0">
         <span class="oletter">${o.l}</span>
         <span class="otext">${otxt}</span>
       </div>`;
@@ -212,7 +216,7 @@ const DW = {
   ${signHtml}
   <div class="opts">${optsHtml}</div>
   <div class="answer" id="ans-${q.id}">
-    <div class="alabel">✅ ${lang.includes('pt')?'Resposta':'Answer'}</div>
+    <div class="alabel">✅ ${safeL==='pt'?'Resposta':safeL==='es'?'Respuesta':'Answer'}</div>
     <div class="atext">${exp}</div>
     ${tipHtml}
   </div>
@@ -225,6 +229,9 @@ const DW = {
     const q = QUESTIONS.find(x => x.id === qid);
     if(!q) return;
     const isCorrect = el.dataset.correct === 'true';
+    if(this.simMode){
+      this.simAnswered = { ...this.simAnswered, [qid]: { correct: isCorrect, chosen: el.dataset.letter } };
+    }
     const card = document.getElementById(qid);
     const opts = card.querySelectorAll('.opt');
     opts.forEach(o => {
@@ -291,9 +298,9 @@ const DW = {
   // ── SIM MODE ──
   startSim(){
     this.simMode = true;
+    this.simAnswered = {};
     this.simQueue = [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 30);
     this.simIdx = 0;
-    this.simAnswered = {};
     document.getElementById('study-wrapper').style.display = 'none';
     document.getElementById('sim-wrapper').style.display = 'block';
     this.renderSimCard();
@@ -325,7 +332,7 @@ const DW = {
   showSimResult(){
     const total = this.simQueue.length;
     let score = 0;
-    this.simQueue.forEach(q => { if(this.answered[q.id]?.correct) score++; });
+    this.simQueue.forEach(q => { if(this.simAnswered[q.id]?.correct) score++; });
     const pct = Math.round(score/total*100);
     const pass = pct >= 80;
     const safeL = this.lang.includes('pt') ? 'pt' : this.lang.includes('es') ? 'es' : 'en';
@@ -341,7 +348,7 @@ const DW = {
         <div class="sim-result-score">${score}/${total}</div>
         <div class="sim-result-pct" style="color:${pass?'var(--green)':'var(--red)'}">${pct}%</div>
         <div class="sim-result-msg">${pass ? msgs.pass[safeL] : msgs.fail[safeL]}</div>
-        <button class="btn btn-gold" onclick="DW.setMode('all')" style="margin-top:20px">${msgs.back[safeL]}</button>
+        <button class="btn btn-gold" type="button" data-action="mode-all" style="margin-top:20px">${msgs.back[safeL]}</button>
       </div>`;
   },
 
@@ -397,6 +404,25 @@ const DW = {
     // Wire reset button
     const resetBtn = document.getElementById('reset-btn');
     if(resetBtn) resetBtn.addEventListener('click', () => DW.clearProgress());
+
+    // Option selection (delegation) + keyboard
+    document.addEventListener('click', (e) => {
+      const opt = e.target.closest?.('.opt');
+      if(opt){
+        const card = opt.closest?.('.qcard');
+        if(card) DW.pick(opt, card.id);
+      }
+      const actionEl = e.target.closest?.('[data-action="mode-all"]');
+      if(actionEl) DW.setMode('all');
+    });
+    document.addEventListener('keydown', (e) => {
+      const opt = e.target?.closest?.('.opt');
+      if(!opt) return;
+      if(e.key !== 'Enter' && e.key !== ' ') return;
+      e.preventDefault();
+      const card = opt.closest?.('.qcard');
+      if(card) DW.pick(opt, card.id);
+    });
 
     // Remove old onclick from mode buttons (safety)
   }

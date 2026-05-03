@@ -3,22 +3,44 @@
   function initStateSelector(){
     const cards = document.querySelectorAll('.state-card');
     const select = document.getElementById('state-select');
-    const saved = localStorage.getItem('kl-state') || 'WA';
+    const savedRaw = localStorage.getItem('kl-state') || 'WA';
+    const saved = savedRaw === 'WA' ? 'WA' : 'WA';
     function setState(code){
+      if(code !== 'WA' && code !== 'AU') return;
       localStorage.setItem('kl-state', code);
       cards.forEach(c => c.classList.toggle('active', c.dataset.state === code));
       cards.forEach(c => c.setAttribute('aria-pressed', c.dataset.state === code ? 'true' : 'false'));
       if(select) select.value = code === 'AU' ? 'AU' : code;
       if(window.DW && typeof window.DW.setState === 'function') window.DW.setState(code === 'AU' ? 'WA' : code);
     }
-    cards.forEach(card => card.addEventListener('click', () => setState(card.dataset.state)));
-    if(select) select.addEventListener('change', () => setState(select.value === 'AU' ? 'WA' : select.value));
+    cards.forEach(card => card.addEventListener('click', () => {
+      if(card.classList.contains('coming-soon')) return;
+      setState(card.dataset.state);
+    }));
+    if(select) select.addEventListener('change', () => setState(select.value === 'AU' ? 'AU' : 'WA'));
     setState(saved);
   }
 
   window.addEventListener('DOMContentLoaded', () => {
     if(window.DW && typeof window.DW.init === 'function') window.DW.init();
     initStateSelector();
+
+    // Mock test actions
+    document.querySelectorAll('[data-action="mode-sim"]').forEach(el => {
+      el.addEventListener('click', () => setTimeout(() => window.DW?.setMode?.('sim'), 30));
+    });
+
+    // Topic quick filter
+    document.querySelectorAll('.topic-card[data-cat]').forEach(card => {
+      card.addEventListener('click', () => setTimeout(() => window.DW?.setCat?.(card.dataset.cat), 30));
+    });
+
+    // Language dropdown: remove inline dependencies
+    const ldTrigger = document.getElementById('ld-trigger');
+    if(ldTrigger) ldTrigger.addEventListener('click', () => window.DW?.ldToggle?.());
+    document.querySelectorAll('.ld-option[data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => window.DW?.setLang?.(btn.dataset.lang, btn));
+    });
   });
 
   const bar = document.getElementById('reading-progress');
@@ -31,17 +53,19 @@
     }, {passive: true});
   }
 
-  const ldTrigger = document.getElementById('ld-trigger');
   const ldPanel = document.getElementById('ld-panel');
-  if(ldTrigger && ldPanel){
-    ldTrigger.setAttribute('aria-haspopup','listbox');
-    ldTrigger.setAttribute('aria-expanded','false');
-    const origToggle = window.ldToggle;
-    window.ldToggle = function(){
-      origToggle && origToggle();
-      const isOpen = ldPanel.classList.contains('open');
-      ldTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    };
+  const ldTrigger2 = document.getElementById('ld-trigger');
+  if(ldTrigger2 && ldPanel){
+    ldTrigger2.setAttribute('aria-haspopup','listbox');
+    ldTrigger2.setAttribute('aria-expanded','false');
+    const origToggle = window.DW?.ldToggle?.bind(window.DW);
+    if(origToggle){
+      window.DW.ldToggle = function(){
+        origToggle();
+        const isOpen = ldPanel.classList.contains('open');
+        ldTrigger2.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      };
+    }
   }
 
   const subscribeForm = document.getElementById('subscribe-form');
@@ -51,10 +75,10 @@
     subscribeForm.addEventListener('submit', (e) => {
       e.preventDefault();
       if(!subscribeEmail.validity.valid){
-        subscribeFeedback.textContent = 'Please enter a valid email.';
+        subscribeFeedback.textContent = window.DW?.t?.('subscribe_err') || 'Please enter a valid email.';
         return;
       }
-      subscribeFeedback.textContent = 'Thanks! You are subscribed.';
+      subscribeFeedback.textContent = window.DW?.t?.('subscribe_ok') || 'Thanks! You are subscribed.';
       subscribeForm.reset();
     });
   }
