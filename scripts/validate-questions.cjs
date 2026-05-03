@@ -10,7 +10,25 @@ const file = path.join(__dirname, "..", "assets", "js", "data", "questions.js");
 const code = fs.readFileSync(file, "utf8");
 const sandbox = { window: {}, console };
 vm.createContext(sandbox);
-vm.runInContext(code, sandbox);
+try {
+  vm.runInContext(code, sandbox, {
+    timeout: 3000,
+    breakOnSigint: true,
+  });
+} catch (err) {
+  if (err && err.code === "ERR_SCRIPT_EXECUTION_TIMEOUT") {
+    console.error("ERRO: questions.js excedeu 3s — possível loop ou código suspeito");
+  } else {
+    console.error("ERRO ao executar questions.js:", err && err.message ? err.message : err);
+  }
+  process.exit(1);
+}
+
+const expectedKeys = new Set(["QUESTIONS", "CATEGORIES", "__KANGA_DATA__"]);
+const unexpectedKeys = Object.keys(sandbox.window).filter((k) => !expectedKeys.has(k));
+if (unexpectedKeys.length > 0) {
+  console.warn(`AVISO: propriedades inesperadas em window: ${unexpectedKeys.join(", ")}`);
+}
 
 const QUESTIONS = sandbox.window.QUESTIONS;
 const CATEGORIES = sandbox.window.CATEGORIES;

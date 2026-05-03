@@ -38,7 +38,7 @@ const KL_LEARN = {
       lane: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M14 42l5-36"/><path d="M34 42L29 6"/><path d="M24 8v7M24 22v7M24 36v6"/></svg>`,
       parking: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/></svg>`,
       alcohol: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/></svg>`,
-      emergency: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 5l18 34H6L24 5Z"/><path d="M24 17v10"/><path d="M24 34h.01"/></svg>`,
+      emergency: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 5l18 34H6L24 5Z"/><path d="M24 17v10"/><path d="M24 34h.01"/></svg>`
     };
 
     return icons[type] || icons.sign;
@@ -52,23 +52,33 @@ const KL_LEARN = {
   label(key) {
     const lang = this.lang();
     const labels = {
-      summary: { pt: "O essencial em 30 segundos", en: "The essentials in 30 seconds", es: "Lo esencial en 30 segundos" },
+      summary: {
+        pt: "O essencial em 30 segundos",
+        en: "The essentials in 30 seconds",
+        es: "Lo esencial en 30 segundos"
+      },
       keyRules: { pt: "Regras principais", en: "Key rules", es: "Reglas principales" },
       mistakes: { pt: "Erros comuns", en: "Common mistakes", es: "Errores comunes" },
       example: { pt: "Exemplo prático", en: "Practical example", es: "Ejemplo práctico" },
       quickCheck: { pt: "Teste rápido", en: "Quick check", es: "Revisión rápida" },
       practice: { pt: "Praticar este tema", en: "Practice this topic", es: "Practicar este tema" },
-      source: { pt: "Fonte", en: "Source", es: "Fuente" },
+      source: { pt: "Fonte", en: "Source", es: "Fuente" }
     };
 
     return labels[key]?.[lang] || labels[key]?.en || key;
   },
 
+  /** CTA específico: "Practice Speed Limits" / "Praticar Limites de velocidade" */
+  practiceTopicLabel(topic) {
+    const lang = this.lang();
+    const verb = { pt: "Praticar", en: "Practice", es: "Practicar" }[lang] || "Practice";
+    const title = this.t(topic, "title");
+    return `${verb} ${title}`;
+  },
+
   renderBody(topic) {
     const list = (items, tag) =>
-      (items || [])
-        .map((item) => `<${tag}>${this.blang(item)}</${tag}>`)
-        .join("");
+      (items || []).map((item) => `<${tag}>${this.blang(item)}</${tag}>`).join("");
 
     const keyRules = list(topic.keyRules || [], "li");
     const mistakes = list(topic.mistakes || [], "li");
@@ -104,8 +114,8 @@ const KL_LEARN = {
         </div>
 
         <div class="learn-footer">
-          <button class="btn btn-primary btn-sm" type="button" data-action="learn-practice" data-category="${topic.category}">
-            ${this.label("practice")}
+          <button class="btn btn-primary btn-sm learn-practice-topic-btn" type="button" data-action="learn-practice" data-category="${topic.category}">
+            ${this.practiceTopicLabel(topic)}
           </button>
           <small><span class="learn-source">${this.label("source")}:</span> ${this.blang(topic.source || {})}</small>
         </div>
@@ -117,11 +127,10 @@ const KL_LEARN = {
     const root = document.getElementById("learn-root");
     if (!root || !Array.isArray(window.LEARN_TOPICS)) return;
 
-    root.innerHTML = window.LEARN_TOPICS
-      .map((topic) => {
-        const isOpen = this.openSlug === topic.slug;
-        const body = isOpen ? this.renderBody(topic) : "";
-        return `
+    root.innerHTML = window.LEARN_TOPICS.map((topic) => {
+      const isOpen = this.openSlug === topic.slug;
+      const body = isOpen ? this.renderBody(topic) : "";
+      return `
           <article class="learn-card ${isOpen ? "open" : ""}" id="learn-${topic.slug}">
             <button class="learn-card-head" type="button" aria-expanded="${isOpen}" aria-controls="learn-body-${topic.slug}" data-action="learn-toggle" data-slug="${topic.slug}">
               <span class="learn-icon" aria-hidden="true">${this.icon(topic.icon)}</span>
@@ -134,8 +143,7 @@ const KL_LEARN = {
             <div class="learn-body" id="learn-body-${topic.slug}">${body}</div>
           </article>
         `;
-      })
-      .join("");
+    }).join("");
   },
 
   toggle(slug) {
@@ -186,12 +194,7 @@ const KL_LEARN = {
   init() {
     this.render();
     this.bindEvents();
-  },
+  }
 };
 
 window.KL_LEARN = KL_LEARN;
-
-window.addEventListener("DOMContentLoaded", () => {
-  KL_LEARN.init();
-});
-

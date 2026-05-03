@@ -3,6 +3,23 @@
 Este backlog é um “mapa de execução” do projeto.  
 Ele é atualizado continuamente durante a migração (web → auth → sync → dashboard → mobile → produção).
 
+**Quadro de tarefas (refactor Claude / priorização):** ver [`TASKS.md`](TASKS.md).
+
+---
+
+## Histórico — site estático (`index.html` + `assets/`)
+
+Registro para contexto humano e para outras sessões de IA (complementa o git).
+
+| Data | Entrega |
+|------|---------|
+| **2026-05 (anterior)** | Mock test empilhado com feedback e explicações; painel final; revisão de erros e chips de tópicos fracos; practice com “load more”; painéis laterais sticky no desktop; barra de progresso compacta no mobile; empty state com CTA para WA; modos de idioma display vs tradução (PT+EN / ES+EN); `localStorage` por estado. |
+| **2026-05-04** | **Pipeline aprovado (T8, T10, T7 parcial, T2, T3, T4):** `validate-questions.cjs` com timeout VM + aviso de keys em `window`; `build.mjs` com pré-validação do `index.html` antes de `dist/`; `prebuild` → validação de questões; fontes Google com preload/noscript; `--font-sans` / `--font-display` em `tokens.css`; OG **PNG** (`og-image.png` + `scripts/gen-og-png.ps1`), meta `robots`, sem canonical/hreflang; scripts com **`defer`** + `storage.js` primeiro; `questions.js` com `__KANGA_DATA__` + aliases; **`KangaStorage`** (`kl-answered-by-state-v2`, `kl-state-v2`, migração `kl-*` legado); `learn-engine` init orquestrado após `DW.init` em `app.js`; Prettier (`htmlWhitespaceSensitivity`, override HTML), `format:check`, workflow **`format-check.yml`**. |
+| **2026-05-04** | **`TASKS.md`:** quadro Kanban + priorização das 10 tarefas de refactor (i18n JSON, defer, storage, Prettier, build hash, Turbo, etc.); indica o que é necessário agora vs depois; riscos (pten/esen, `kl-*` vs `kanga_*`, Pages sem build). |
+| **2026-05-04** | **Revisão UX/UI Practice (vanilla):** container da área Practice `max-width: 1440px`; grid `.app-shell` `260px | centro até 860px | 260px`, gap 24px; painel esquerdo sem scroll forçado no desktop (`#filter-bar` overflow visível); scrollbars finos nos asides quando necessário; filtros `.fmode`/`.fcat` mais compactos; banner contextual acima das questões (“You are practising…”); botão **Load 10 more questions** com estilo próprio (`.btn-load-more-quiz`); cards `.qcard` com hierarquia (badge categoria, tipografia, sombra leve), estados `.qcard--answered-correct/incorrect`; bloco de resposta no Practice com título **Explanation / Explicação / Explicación**; footer: removidos links placeholder (Careers, Blog, Cookies); disclaimer visível + bloco **Official sources** (link WADOT); Learn: removido CTA genérico “Go to practice” no topo; CTA por tópico no card expandido (“Practice …” / “Praticar …”); state cards *coming soon* mais secundários + clique volta a mudar estado (empty pool + CTA); badges EN “Coming soon”, ES “Próximamente”; microcopy empty state enxuto; `--header-height` em tokens para sticky. |
+
+---
+
 ## Agora (curto prazo)
 
 - [x] **Portar Simulado (React/Next)**: fila de 30 perguntas, progresso, resultado e persistência local + UI de resultado.

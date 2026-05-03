@@ -1,92 +1,48 @@
 # KangaLearner
 
-Australian **learner driver theory** practice: road-rule topics, bilingual study UI, WA question bank, mock tests, and a short **Learn Road Rules** hub (not a full handbook).
+**Uso interno da equipe.** Este repositório pode estar público por um período; a intenção é restringir acesso e migrar a experiência para **aplicativo** (equipe / produto fechado). Este README descreve o **código e o conteúdo**, não um manual de uso para usuário final.
 
-## Tech stack (static site)
+---
 
-- Plain **HTML / CSS / JavaScript** (no framework required to run the landing + quiz)
-- Design tokens in `assets/css/tokens.css`
-- Quiz + learn logic in `assets/js/quiz-engine.js` and `assets/js/learn-engine.js`
-- Data: `assets/js/data/questions.js`, `assets/js/data/learn-topics.js`
+## O que há neste repo
 
-The repo may also contain a **pnpm monorepo** (`apps/*`, `packages/*`) for future web/mobile work; the static experience is the source of truth at the repo root.
+Protótipo e base de **prática para learner test** (Austrália): regras por estado, banco de questões (foco WA), módulo Learn, prática com filtros, simulado com feedback acumulado, UI multilíngue e progresso em `localStorage`. A experiência principal na raiz é **HTML/CSS/JS estático**; podem coexistir pacotes em `apps/*` e `packages/*` para evolução web/mobile.
 
-## Run locally
+---
 
-Open the site:
+## Stack (raiz — site estático)
 
-```bash
-# From repo root — any static server works, e.g.:
-npx --yes serve .
-# or
-python -m http.server 8080
-```
+| Área | Arquivos principais |
+|------|---------------------|
+| Página | `index.html` |
+| Estilo | `assets/css/tokens.css`, `base.css`, `components.css`, `quiz.css` |
+| Lógica | `assets/js/app.js`, `quiz-engine.js`, `learn-engine.js` |
+| Dados | `assets/js/data/questions.js`, `learn-topics.js` |
+| Validação | `scripts/validate-questions.cjs` (`pnpm run validate:questions`) |
+| Publicação | `.github/workflows/pages.yml` (artefato: `index.html` + `assets/`) |
 
-Then open `http://localhost:3000` (or the port shown) and navigate to `index.html` if needed.
+Fonte de verdade das questões para o estático: **`assets/js/data/questions.js`**. Sincronização opcional com core: `pnpm run gen:core-questions`.
 
-## GitHub Pages
+---
 
-On push to `main`, [.github/workflows/pages.yml](.github/workflows/pages.yml) publishes `index.html` and `assets/` (not the monorepo `next build`).
+## Módulos (referência rápida)
 
-### Ativar antes do primeiro deploy (obrigatório)
+- **Learn** — tópicos em `learn-topics.js`; render em `learn-engine.js`
+- **Practice** — filtros, “carregar mais”, painel de progresso
+- **Mock test** — fila de questões, respostas persistidas na sessão da UI, painel final e revisão
+- **Estados / idioma** — seletores no shell; conteúdo bilíngue auxiliar só no bloco pedagógico onde aplicável
 
-Se o job **deploy** falhar com **404** / *“Failed to create deployment … Ensure GitHub Pages has been enabled”*, o site ainda não está ligado no GitHub:
+---
 
-1. Abre **https://github.com/Matheusbaiense/kangalearner/settings/pages** (ajusta dono/repo se for fork).
-2. Em **Build and deployment** → **Source**, escolhe **GitHub Actions** (não “Deploy from a branch”).
-3. Guarda. Volta a **Actions** → workflow **Deploy Pages** → **Re-run failed jobs** (ou faz um push vazio em `main`).
+## Conteúdo e qualidade
 
-Depois disso, em **Settings → Pages** aparece o URL público (típico: `https://matheusbaiense.github.io/kangalearner/`). Usa esse URL nas meta tags OG/canonical em produção.
+Edição de questões: contrato em `questions.js` (`id`, `cat`, `q` / `exp` multilíngue, `opts` com uma opção correta, `states`). Rodar validação antes de merge relevante.
 
-**Nota:** Repositórios **privados** podem precisar de plano que inclua GitHub Pages; em repo **público** costuma ser gratuito.
+Conteúdo educacional **não substitui** material oficial dos órgãos de trânsito; uso interno para construção do produto.
 
-## Folder structure (static)
+---
 
-| Path | Purpose |
-|------|---------|
-| `index.html` | Main page: hero, states, learn hub, quiz shell, footer |
-| `assets/css/` | `tokens.css`, `base.css`, `components.css`, `quiz.css` |
-| `assets/js/` | App bootstrap, quiz engine, learn engine |
-| `assets/js/data/` | `questions.js`, `learn-topics.js` |
-| `assets/img/brand/` | Logo mark/full, `favicon.svg`, `apple-touch-icon.svg` |
-| `assets/img/social/` | `og-image.svg` (use absolute URL in production for OG) |
-| `assets/icons/` | UI and sign SVGs |
+## Evolução prevista
 
-## Add or edit questions
-
-1. Open `assets/js/data/questions.js`.
-2. Each question needs: `id`, `cat` (must match a `CATEGORIES` key), `q` {en,pt,es}, `opts` with exactly one `ok: true`, `exp` {en,pt,es}, and `states` (e.g. `["WA"]`).
-3. Run validation:
-
-```bash
-pnpm run validate:questions
-# or
-node scripts/validate-questions.cjs
-```
-
-4. After changes, refresh the shared package used by Next/mobile: `pnpm run gen:core-questions` (writes `packages/core/src/data/questions.ts` from the JS file).
-
-## Add learn topics
-
-1. Edit `assets/js/data/learn-topics.js` — follow the existing objects (`slug`, `category` matching a quiz category, `title`/`summary`/lists, `source`).
-2. The learn UI renders from `assets/js/learn-engine.js` and styles in `assets/css/components.css` (`.learn-*`).
-
-## States (expansion)
-
-- **AU** in the header selector shows all questions currently in the bank (every published question).
-- **WA** filters to questions whose `states` array includes `WA`.
-- Other states show an **empty / coming soon** message until you add questions with e.g. `states: ["NSW"]`.
-
-Sync `DW.state` with `localStorage` key `kl-state` via the header dropdown and state cards. Quiz progress is stored per state in `kl-answered-by-state` (WA and AU share one bucket; legacy `kl-answered` is migrated on first load).
-
-## Disclaimer
-
-Content is **educational study support** based on general road-safety concepts and WA-oriented materials (e.g. Drive Safe Handbook as a conceptual reference). It does **not** replace official legislation or your state transport authority. Always confirm rules, signs, and test requirements with the relevant authority.
-
-## Roadmap
-
-- WA question bank complete (current focus)
-- NSW, VIC, QLD, SA, TAS, ACT, NT question sets
-- Account / cross-device progress sync
-- PWA or mobile app packaging
-- Production hosting with absolute Open Graph image URL
+- Repositório **privado** e distribuição via **app** (fora do escopo deste README).
+- Detalhes de build, ambientes e release ficam com o processo interno da equipe quando o produto fechar.

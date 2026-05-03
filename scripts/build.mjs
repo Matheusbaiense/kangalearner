@@ -5,6 +5,24 @@ import { join } from "node:path";
 const root = process.cwd();
 const dist = join(root, "dist");
 
+// PRÉ-BUILD — validar estrutura do index.html antes de tocar em dist/
+const srcHtml = readFileSync(join(root, "index.html"), "utf8");
+const requiredRefs = [
+  "assets/js/storage.js",
+  "assets/js/locales.js",
+  "assets/js/data/questions.js",
+  "assets/js/data/learn-topics.js",
+  "assets/js/app.js",
+];
+for (const ref of requiredRefs) {
+  if (!srcHtml.includes(ref)) {
+    throw new Error(
+      `PRÉ-BUILD FALHOU: "${ref}" não encontrado no index.html — abortando antes de limpar dist/`
+    );
+  }
+}
+console.log("✓ Pré-build: estrutura do HTML validada");
+
 if (existsSync(dist)) rmSync(dist, { recursive: true, force: true });
 mkdirSync(dist, { recursive: true });
 mkdirSync(join(dist, "assets", "css"), { recursive: true });
@@ -22,7 +40,9 @@ execSync(
 
 execSync(
   [
-    "npx terser assets/js/app.js -c -m -o dist/assets/js/app.js",
+    "npx terser assets/js/storage.js -c -m -o dist/assets/js/storage.js",
+    "&& npx terser assets/js/locales.js -c -m -o dist/assets/js/locales.js",
+    "&& npx terser assets/js/app.js -c -m -o dist/assets/js/app.js",
     "&& npx terser assets/js/quiz-engine.js -c -m -o dist/assets/js/quiz-engine.js",
     "&& npx terser assets/js/learn-engine.js -c -m -o dist/assets/js/learn-engine.js",
     "&& npx terser assets/js/data/questions.js -c -m -o dist/assets/js/data/questions.js",
@@ -36,10 +56,5 @@ const minifiedHtml = execSync(
   { encoding: "utf8" }
 );
 writeFileSync(join(dist, "index.html"), minifiedHtml, "utf8");
-
-const srcHtml = readFileSync(join(root, "index.html"), "utf8");
-if (!srcHtml.includes("assets/js/data/questions.js") || !srcHtml.includes("learn-topics.js")) {
-  throw new Error("Unexpected HTML structure while building.");
-}
 
 console.log("Build completed: dist/");
