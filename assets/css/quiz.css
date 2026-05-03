@@ -1,4 +1,4 @@
-﻿/* ══════════════════════════════════════════
+/* ══════════════════════════════════════════
    PRACTICE APP / QUIZ
 ══════════════════════════════════════════ */
 .practice-section{
@@ -116,7 +116,9 @@
 .footer-col a,.footer-col p{display:block;color:rgba(255,255,255,.66);font-size:.78rem;margin:7px 0}
 .subscribe{display:flex;gap:8px;margin-top:14px}
 .subscribe input{height:38px;border:0;border-radius:8px;padding:0 12px;min-width:0;flex:1}
-.subscribe button{height:38px;border:0;border-radius:8px;background:var(--green2);color:white;font-weight:850;padding:0 12px}
+.subscribe input:invalid{outline:1px solid rgba(239,68,68,.45)}
+.subscribe button{height:38px;border:0;border-radius:8px;background:linear-gradient(135deg,var(--green2),var(--green));color:white;font-weight:850;padding:0 14px;cursor:pointer}
+#subscribe-feedback{font-size:.74rem;color:rgba(255,255,255,.7);margin-top:8px;min-height:1em}
 .footer-bottom{display:flex;justify-content:space-between;color:rgba(255,255,255,.45);font-size:.75rem;padding-top:18px}
 
 /* ══════════════════════════════════════════

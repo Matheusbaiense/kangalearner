@@ -1,0 +1,20 @@
+{
+  "name": "kangalearner",
+  "version": "1.0.0",
+  "private": true,
+  "packageManager": "pnpm@9.12.0",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "lint": "turbo run lint",
+    "format": "prettier -w .",
+    "legacy:build": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "clean-css-cli": "^5.6.3",
+    "html-minifier-terser": "^7.2.0",
+    "terser": "^5.39.0",
+    "prettier": "^3.3.3",
+    "turbo": "^2.1.3"
+  }
+}

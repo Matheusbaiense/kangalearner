@@ -1,4 +1,4 @@
-﻿/* ══════════════════════════════════════════
+/* ══════════════════════════════════════════
    BUTTONS
 ══════════════════════════════════════════ */
 .btn{
@@ -168,6 +168,7 @@
   width:50px;height:50px;border-radius:50%;background:var(--green3);color:var(--green);
   display:flex;align-items:center;justify-content:center;flex:0 0 50px;
 }
+.feature-icon img,.trust-icon img{display:block}
 .feature-card h3{font-size:1rem;font-weight:900;margin-bottom:4px}
 .feature-card p{font-size:.84rem;color:var(--muted2);line-height:1.35}
 
@@ -189,6 +190,7 @@
 }
 .state-card:hover,.state-card.active{border-color:rgba(46,125,91,.45);box-shadow:0 12px 28px rgba(7,26,44,.09);transform:translateY(-1px)}
 .state-icon{height:30px;margin-bottom:8px;color:var(--ink)}
+.state-icon img{display:block}
 .state-code{font-weight:950;font-size:1rem;line-height:1}
 .state-name{font-size:.68rem;color:var(--muted2);line-height:1.15;margin-top:4px}
 

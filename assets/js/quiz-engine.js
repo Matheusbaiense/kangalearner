@@ -1,11 +1,12 @@
-﻿// ═══════════════════════════════════════════════
+// ═══════════════════════════════════════════════
 //  DriveWise WA — App Logic
 // ═══════════════════════════════════════════════
 
 const DW = {
-  lang: 'pt',
+  lang: 'en',
   mode: 'all',      // all | wrong | unanswered | sim
   cat: 'all',
+  state: 'WA',
   correct: 0,
   total: 0,
   answered: {},     // id -> {correct, chosen}
@@ -27,6 +28,8 @@ const DW = {
     try{
       const l = localStorage.getItem('kl-lang');
       if(l) this.lang = l;
+      const s = localStorage.getItem('kl-state');
+      if(s) this.state = s;
       const a = localStorage.getItem('kl-answered');
       if(a) this.answered = JSON.parse(a);
     }catch(e){}
@@ -50,6 +53,7 @@ const DW = {
     document.getElementById('ld-name').textContent = NAMES[lang] || lang;
     document.querySelectorAll('.ld-option').forEach(o => o.classList.remove('active'));
     if(el) el.classList.add('active');
+    document.querySelectorAll('.ld-option').forEach(o => o.setAttribute('aria-selected', o.classList.contains('active') ? 'true' : 'false'));
     document.getElementById('ld-panel').classList.remove('open');
     document.getElementById('ld-trigger').classList.remove('open');
     this.save();
@@ -73,6 +77,11 @@ const DW = {
   },
 
   // ── FILTERS ──
+  setState(state){
+    this.state = state;
+    this.renderQuiz();
+  },
+
   renderFilters(){
     const bar = document.getElementById('filter-bar');
     const l = this.lang.replace('pten','en').replace('esen','en').slice(0,2);
@@ -111,6 +120,7 @@ const DW = {
   // ── QUIZ RENDER ──
   getFilteredQ(){
     let qs = QUESTIONS;
+    qs = qs.filter(q => !q.states || q.states.includes(this.state));
     if(this.cat !== 'all') qs = qs.filter(q => q.cat === this.cat);
     if(this.mode === 'wrong') qs = qs.filter(q => this.answered[q.id] && !this.answered[q.id].correct);
     if(this.mode === 'unanswered') qs = qs.filter(q => !this.answered[q.id]);
@@ -232,6 +242,7 @@ const DW = {
       this.save();
       this.updateScore();
       if(isCorrect) this.spawnConfetti(el);
+      this.syncAttempt(q, isCorrect, el.dataset.letter);
     }
 
     // Sim mode: advance
@@ -251,7 +262,10 @@ const DW = {
       el.style.color = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--gold)' : total > 0 ? 'var(--red)' : '#fff';
     }
     const pbar = document.getElementById('score-pbar');
-    if(pbar) pbar.style.width = pct + '%';
+    if(pbar){
+      pbar.style.width = pct + '%';
+      pbar.setAttribute('aria-valuenow', String(pct));
+    }
     const pct_el = document.getElementById('score-pct');
     if(pct_el) pct_el.textContent = total > 0 ? pct + '%' : '';
   },
@@ -315,6 +329,7 @@ const DW = {
     const pct = Math.round(score/total*100);
     const pass = pct >= 80;
     const safeL = this.lang.includes('pt') ? 'pt' : this.lang.includes('es') ? 'es' : 'en';
+    this.syncMockSession({ state: this.state || 'WA', score, total });
     const msgs = {
       pass: {pt:'Parabéns! Você passou!', en:'Congratulations! You passed!', es:'¡Felicidades! ¡Aprobaste!'},
       fail: {pt:'Continue estudando. Você precisa de 80%.', en:'Keep studying. You need 80%.', es:'Sigue estudiando. Necesitas 80%.'},
@@ -337,6 +352,7 @@ const DW = {
     const langEl = document.querySelector(`.ld-option[data-lang="${this.lang}"]`);
     if(langEl) { langEl.classList.add('active'); }
     document.body.className = 'mode-' + this.lang;
+    document.documentElement.lang = this.lang.startsWith('pt') ? 'pt-BR' : this.lang.startsWith('es') ? 'es' : 'en';
     document.getElementById('ld-flag').textContent = FLAGS[this.lang] || '🇧🇷';
     document.getElementById('ld-name').textContent = NAMES[this.lang] || 'Português';
 
@@ -384,6 +400,35 @@ const DW = {
 
     // Remove old onclick from mode buttons (safety)
   }
+};
+
+DW.syncAttempt = function(q, isCorrect, chosen){
+  try{
+    fetch('/api/attempts', {
+      method: 'POST',
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify({
+        question_id: q.id,
+        state: (this.state || 'WA'),
+        category: q.cat,
+        is_correct: Boolean(isCorrect),
+        chosen: chosen || null,
+        source: 'web'
+      }),
+      keepalive: true
+    }).catch(()=>{});
+  }catch(e){}
+};
+
+DW.syncMockSession = function(session){
+  try{
+    fetch('/api/mock-sessions', {
+      method: 'POST',
+      headers: {'content-type':'application/json'},
+      body: JSON.stringify({ ...session, source: 'web' }),
+      keepalive: true
+    }).catch(()=>{});
+  }catch(e){}
 };
 
 const FLAGS={pt:'🇧🇷',en:'🇦🇺',es:'🇪🇸',pten:'🇧🇷\u2009🇦🇺',esen:'🇪🇸\u2009🇦🇺'};

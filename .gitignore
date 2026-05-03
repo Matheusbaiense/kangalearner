@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.*
+ChatGPT Image*.png
+.next/
+apps/web/.next/
+.expo/
+apps/mobile/.expo/

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72">
+  <rect x="0" y="4" width="64" height="64" rx="14" fill="#0B1D2D"/>
+  <path d="M22 56 C18 49 14 40 16 30 C18 22 24 17 28 14 C30 13 32 13 33 15 C34 17 32 20 30 22 C28 24 27 26 28 30 C29 34 33 36 35 39 C37 42 37 46 35 50 C34 52 32 54 30 56 Z" fill="white"/>
+  <path d="M12 34 C12 24 18 16 26 14" stroke="#52B788" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M34 48 C38 48 46 50 50 46" stroke="#52B788" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M47 42 L50 46 L45 48" stroke="#52B788" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="82" y="43" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="34" fill="#F8FAFC">KangaLearner</text>
+</svg>
