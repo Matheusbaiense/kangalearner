@@ -1,23 +1,25 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseBrowserClient } from "../../src/lib/supabase/client";
+import { AuthCard } from "../../src/components/auth/AuthCard";
 
-export default function SignupPage() {
+function SignupForm() {
   const searchParams = useSearchParams();
   const next = searchParams.get("next") ?? "/account";
-  const [error, setError] = useState<string | null>(null);
-  const [busy, setBusy] = useState(false);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState(false);
+  const [busy, setBusy] = useState(false);
 
   const supabase = useMemo(() => {
     try {
       return createSupabaseBrowserClient();
-    } catch (e) {
-      setError(e instanceof Error ? e.message : "Supabase client error");
+    } catch {
       return null;
     }
   }, []);
@@ -30,73 +32,106 @@ export default function SignupPage() {
     const { error } = await supabase.auth.signUp({
       email: email.trim(),
       password,
-      options: { emailRedirectTo: `${window.location.origin}/account` }
+      options: {
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(next)}`
+      }
     });
     if (error) {
       setError(error.message);
+      setBusy(false);
     } else {
-      window.location.assign(next);
+      setSuccess(true);
+      setBusy(false);
     }
-    setBusy(false);
+  }
+
+  if (success) {
+    return (
+      <AuthCard title="Check your email">
+        <div className="auth-success">
+          We sent a confirmation link to <strong>{email}</strong>. Open it to
+          activate your account and start saving your progress.
+        </div>
+        <div className="auth-card-footer" style={{ marginTop: 20 }}>
+          <Link href={`/login?next=${encodeURIComponent(next)}`} className="auth-link">
+            ← Back to login
+          </Link>
+        </div>
+      </AuthCard>
+    );
   }
 
   return (
-    <main style={{ padding: 32, fontFamily: "Inter, sans-serif", maxWidth: 640, margin: "0 auto" }}>
-      <h1 style={{ fontSize: 28, fontWeight: 800 }}>Create account</h1>
-      <p style={{ color: "#475569" }}>Create an account using email & password.</p>
-
-      <form onSubmit={signUp} style={{ marginTop: 18, display: "grid", gap: 10 }}>
-        <label style={{ display: "grid", gap: 6, fontWeight: 700 }}>
-          Email
+    <AuthCard
+      title="Create account"
+      subtitle="Free account to save your scores and track progress."
+    >
+      <form className="auth-form" onSubmit={signUp}>
+        <div className="auth-field">
+          <label className="auth-label" htmlFor="email">
+            Email
+          </label>
           <input
+            id="email"
+            className="auth-input"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            type="email"
             autoComplete="email"
+            placeholder="you@example.com"
             required
-            style={{ padding: "10px 12px", borderRadius: 10, border: "1px solid #e2e8f0" }}
           />
-        </label>
-        <label style={{ display: "grid", gap: 6, fontWeight: 700 }}>
-          Password
+        </div>
+
+        <div className="auth-field">
+          <label className="auth-label" htmlFor="password">
+            Password
+            <span
+              style={{ fontWeight: 600, color: "var(--muted)", marginLeft: 6 }}
+            >
+              (min. 8 characters)
+            </span>
+          </label>
           <input
+            id="password"
+            className="auth-input"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            type="password"
             autoComplete="new-password"
-            required
+            placeholder="••••••••"
             minLength={8}
-            style={{ padding: "10px 12px", borderRadius: 10, border: "1px solid #e2e8f0" }}
+            required
           />
-        </label>
+        </div>
 
         <button
           type="submit"
+          className="btn-auth-primary"
           disabled={busy || !supabase}
-          style={{
-            marginTop: 6,
-            padding: "12px 16px",
-            borderRadius: 10,
-            border: "1px solid #e2e8f0",
-            background: busy ? "#f1f5f9" : "white",
-            fontWeight: 800,
-            cursor: busy ? "not-allowed" : "pointer"
-          }}
         >
-          {busy ? "Creating…" : "Create account"}
+          {busy ? "Creating account…" : "Create account"}
         </button>
 
-        <div style={{ marginTop: 6, fontSize: 13 }}>
-          <Link href={`/login?next=${encodeURIComponent(next)}`} style={{ fontWeight: 800 }}>
-            ← Back to login
+        <div className="auth-card-footer">
+          <Link
+            href={`/login?next=${encodeURIComponent(next)}`}
+            className="auth-link-muted"
+          >
+            ← Already have an account?
           </Link>
         </div>
       </form>
 
-      {error ? (
-        <p style={{ marginTop: 16, color: "#b91c1c", fontWeight: 600, whiteSpace: "pre-wrap" }}>{error}</p>
-      ) : null}
-    </main>
+      {error && <div className="auth-error">{error}</div>}
+    </AuthCard>
   );
 }
 
+export default function SignupPage() {
+  return (
+    <Suspense>
+      <SignupForm />
+    </Suspense>
+  );
+}

@@ -7,3 +7,4 @@ ChatGPT Image*.png
 apps/web/.next/
 .expo/
 apps/mobile/.expo/
+.cursor/
