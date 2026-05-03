@@ -26,7 +26,19 @@ Then open `http://localhost:3000` (or the port shown) and navigate to `index.htm
 
 ## GitHub Pages
 
-On push to `main`, [.github/workflows/pages.yml](.github/workflows/pages.yml) publishes `index.html` and `assets/` (not the monorepo build). The first time you use it, open the repository **Settings → Pages**, set **Build and deployment** source to **GitHub Actions**, then trigger the workflow or push to `main`. Use the resulting `https://<user>.github.io/<repo>/` base URL for Open Graph and canonical links in production.
+On push to `main`, [.github/workflows/pages.yml](.github/workflows/pages.yml) publishes `index.html` and `assets/` (not the monorepo `next build`).
+
+### Ativar antes do primeiro deploy (obrigatório)
+
+Se o job **deploy** falhar com **404** / *“Failed to create deployment … Ensure GitHub Pages has been enabled”*, o site ainda não está ligado no GitHub:
+
+1. Abre **https://github.com/Matheusbaiense/kangalearner/settings/pages** (ajusta dono/repo se for fork).
+2. Em **Build and deployment** → **Source**, escolhe **GitHub Actions** (não “Deploy from a branch”).
+3. Guarda. Volta a **Actions** → workflow **Deploy Pages** → **Re-run failed jobs** (ou faz um push vazio em `main`).
+
+Depois disso, em **Settings → Pages** aparece o URL público (típico: `https://matheusbaiense.github.io/kangalearner/`). Usa esse URL nas meta tags OG/canonical em produção.
+
+**Nota:** Repositórios **privados** podem precisar de plano que inclua GitHub Pages; em repo **público** costuma ser gratuito.
 
 ## Folder structure (static)
 
