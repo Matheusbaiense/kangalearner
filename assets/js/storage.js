@@ -57,8 +57,12 @@
   }
 
   function migrateFromLegacy() {
-    migrateAnsweredByState();
-    migrateState();
+    try {
+      migrateAnsweredByState();
+      migrateState();
+    } catch (e) {
+      console.warn("KangaStorage: migrateFromLegacy failed", e);
+    }
   }
 
   function getAnsweredByStateRaw() {
@@ -90,7 +94,11 @@
   }
 
   function getLang() {
-    return localStorage.getItem(KEYS.lang);
+    try {
+      return localStorage.getItem(KEYS.lang);
+    } catch (e) {
+      return null;
+    }
   }
 
   function setLang(lang) {

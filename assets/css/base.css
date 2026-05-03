@@ -7,7 +7,7 @@
 }
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: var(--header-height, 96px);
+  scroll-padding-top: var(--header-height, 72px);
 }
 body {
   font-family: var(--font-sans);
@@ -100,6 +100,13 @@ body.mode-es .l-pt {
   height: 100%;
   display: block;
 }
+.brand-mark {
+  width: 40px;
+  height: 40px;
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
 .logo-word {
   display: flex;
   flex-direction: column;
@@ -126,92 +133,132 @@ body.mode-es .l-pt {
    HEADER
 ══════════════════════════════════════════ */
 .site-header {
-  position: absolute;
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  z-index: 50;
-  height: 84px;
-  display: flex;
-  align-items: center;
+  z-index: 1000;
+  background: rgba(4, 18, 32, 0.86);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text);
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+.site-header.is-scrolled-down {
+  background: rgba(4, 18, 32, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
 }
 .nav-shell {
-  width: 100%;
-  max-width: var(--container);
+  max-width: 1320px;
   margin: 0 auto;
   padding: 0 28px;
-  display: flex;
+  min-height: 72px;
+  display: grid;
+  grid-template-columns: minmax(210px, auto) 1fr auto;
   align-items: center;
-  gap: 26px;
+  gap: 32px;
 }
 .brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
   min-width: max-content;
+  color: inherit;
+}
+.brand-wordmark {
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  color: rgba(255, 255, 255, 0.96);
+  white-space: nowrap;
 }
 .main-nav {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 30px;
-  margin-left: auto;
+  min-width: 0;
 }
 .main-nav a {
-  font-weight: 700;
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.88);
-  height: 84px;
-  display: flex;
-  align-items: center;
   position: relative;
+  color: rgba(255, 255, 255, 0.78);
+  text-decoration: none;
+  font-weight: 750;
+  font-size: 0.95rem;
+  padding: 8px 0;
+  transition: color 0.16s ease;
+  white-space: nowrap;
+}
+.main-nav a:hover,
+.main-nav a.active {
+  color: #ffffff;
 }
 .main-nav a.active::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-  margin: auto;
+  left: 50%;
+  bottom: -12px;
   width: 28px;
   height: 3px;
-  border-radius: 10px;
-  background: var(--green2);
+  border-radius: 999px;
+  background: #52b788;
+  transform: translateX(-50%);
+  box-shadow: 0 0 18px rgba(82, 183, 136, 0.45);
 }
 .header-controls {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 12px;
-  margin-left: 10px;
+  min-width: max-content;
 }
 
 /* state and language controls */
 .state-control,
 .ld-trigger {
-  height: 42px;
+  height: 44px;
+  min-width: auto;
   display: flex;
   align-items: center;
-  gap: 9px;
+  gap: 8px;
   padding: 0 14px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--text);
-  border-radius: 10px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.075);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: rgba(255, 255, 255, 0.94);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   font-weight: 700;
-  font-size: 0.86rem;
-  backdrop-filter: blur(12px);
+  font-size: 0.82rem;
   cursor: pointer;
+  transition:
+    background 0.16s ease,
+    border-color 0.16s ease;
+}
+.state-control:hover,
+.ld-trigger:hover {
+  background: rgba(255, 255, 255, 0.105);
+  border-color: rgba(255, 255, 255, 0.24);
 }
 .ld-trigger {
   outline: none;
 }
+.state-control {
+  flex-shrink: 0;
+}
 .state-control select {
   background: transparent;
   border: 0;
-  color: inherit;
-  font: inherit;
+  color: rgba(255, 255, 255, 0.94);
+  font-weight: 800;
+  font-size: 0.82rem;
   outline: 0;
   cursor: pointer;
+  max-width: 160px;
 }
 .state-control option {
   color: var(--ink);
@@ -219,18 +266,23 @@ body.mode-es .l-pt {
 .ld-wrap {
   position: static;
   user-select: none;
+  flex-shrink: 0;
 }
 .ld-flag {
-  font-size: 1rem;
+  font-size: 0.95rem;
   line-height: 1;
+  flex-shrink: 0;
 }
 .ld-name {
   white-space: nowrap;
+  font-weight: 750;
+  font-size: 0.82rem;
 }
 .ld-arrow {
-  font-size: 0.65rem;
+  font-size: 0.6rem;
   color: var(--green2);
   transition: transform 0.2s;
+  flex-shrink: 0;
 }
 .ld-trigger.open .ld-arrow {
   transform: rotate(180deg);
@@ -247,7 +299,7 @@ body.mode-es .l-pt {
   pointer-events: none;
   box-shadow: var(--shadow-card);
   z-index: 9999;
-  min-width: 230px;
+  min-width: 200px;
   transition:
     max-height 0.2s ease,
     opacity 0.15s ease;
@@ -301,4 +353,53 @@ body.mode-es .l-pt {
 }
 .ld-option.active .ld-check {
   opacity: 1;
+}
+
+@media (max-width: 1180px) {
+  .nav-shell {
+    grid-template-columns: auto 1fr auto;
+    gap: 22px;
+  }
+  .main-nav {
+    gap: 22px;
+  }
+  .main-nav a {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 1040px) {
+  .main-nav {
+    display: none;
+  }
+  .nav-shell {
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 640px) {
+  .nav-shell {
+    min-height: 66px;
+    padding: 0 16px;
+    gap: 12px;
+  }
+  .brand-wordmark {
+    display: none;
+  }
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+  }
+  .state-control {
+    display: none;
+  }
+  .ld-trigger {
+    height: 40px;
+    padding-inline: 10px;
+    font-size: 0.78rem;
+  }
+  .ld-name {
+    font-size: 0.78rem;
+  }
 }

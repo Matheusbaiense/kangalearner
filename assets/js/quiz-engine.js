@@ -54,6 +54,11 @@ const DW = {
     if (t && p) t.setAttribute("aria-expanded", p.classList.contains("open") ? "true" : "false");
   },
 
+  syncLdTriggerLabel() {
+    const el = document.getElementById("ld-name");
+    if (el) el.textContent = ldTriggerLabel(this.lang);
+  },
+
   t(key) {
     const d = this.getDisplayLang();
     return I18N[key]?.[d] || I18N[key]?.[this.lang] || I18N[key]?.en || key;
@@ -155,7 +160,7 @@ const DW = {
     document.body.className = "mode-" + d;
     document.documentElement.lang = d === "pt" ? "pt-BR" : d === "es" ? "es" : "en";
     document.getElementById("ld-flag").textContent = FLAGS[lang] || "🌐";
-    document.getElementById("ld-name").textContent = NAMES[lang] || lang;
+    document.getElementById("ld-name").textContent = ldTriggerLabel(lang);
     document.querySelectorAll(".ld-option").forEach((o) => o.classList.remove("active"));
     if (el) el.classList.add("active");
     document
@@ -184,7 +189,7 @@ const DW = {
     if (!isOpen) {
       p.style.top = rect.bottom + 6 + "px";
       p.style.left = Math.min(rect.left, window.innerWidth - 250) + "px";
-      p.style.width = Math.max(rect.width, 240) + "px";
+      p.style.width = Math.max(rect.width, 200) + "px";
     }
     p.classList.toggle("open", !isOpen);
     t.classList.toggle("open", !isOpen);
@@ -724,7 +729,17 @@ const DW = {
     document.body.className = "mode-" + d;
     document.documentElement.lang = d === "pt" ? "pt-BR" : d === "es" ? "es" : "en";
     document.getElementById("ld-flag").textContent = FLAGS[this.lang] || "🇧🇷";
-    document.getElementById("ld-name").textContent = NAMES[this.lang] || "Português";
+    document.getElementById("ld-name").textContent = ldTriggerLabel(this.lang);
+
+    let ldResizeT;
+    window.addEventListener(
+      "resize",
+      () => {
+        clearTimeout(ldResizeT);
+        ldResizeT = setTimeout(() => this.syncLdTriggerLabel(), 120);
+      },
+      { passive: true }
+    );
 
     const ldTrigInit = document.getElementById("ld-trigger");
     if (ldTrigInit) {
@@ -745,7 +760,7 @@ const DW = {
     window.addEventListener(
       "scroll",
       () => {
-        const y = window.scrollY + 120;
+        const y = window.scrollY + 88;
         sections.forEach((s) => {
           if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) {
             navLinks.forEach((a) => {
@@ -908,7 +923,20 @@ DW.syncMockSession = function (session) {
 };
 
 const FLAGS = { pt: "🇧🇷", en: "🇦🇺", es: "🇪🇸", pten: "🇧🇷\u2009🇦🇺", esen: "🇪🇸\u2009🇦🇺" };
-const NAMES = { pt: "Português", en: "English", es: "Español", pten: "PT + EN", esen: "ES + EN" };
+const LD_TRIGGER_LONG = {
+  pt: "BR Português",
+  en: "AU English",
+  es: "ES Español",
+  pten: "PT + EN",
+  esen: "ES + EN"
+};
+const LD_TRIGGER_SHORT = { pt: "PT", en: "EN", es: "ES", pten: "PT+EN", esen: "ES+EN" };
+
+function ldTriggerLabel(lang) {
+  const short = window.matchMedia("(max-width: 640px)").matches;
+  const m = short ? LD_TRIGGER_SHORT : LD_TRIGGER_LONG;
+  return m[lang] || lang;
+}
 
 const I18N = {
   empty_state_title: {

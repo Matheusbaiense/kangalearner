@@ -59,7 +59,7 @@
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Crect width='900' height='520' fill='%23061525'/%3E%3Cpath d='M0 475 C160 400 270 357 380 520 L0 520Z' fill='%23102237'/%3E%3Cpath d='M0 520 C140 410 260 350 380 280' stroke='%23F5C542' stroke-width='3' fill='none' opacity='.85'/%3E%3Cpath d='M0 500 C130 405 260 355 390 295' stroke='%23FFFFFF' stroke-width='2' fill='none' opacity='.3'/%3E%3Cpath d='M28 0 C22 100 54 191 18 290' stroke='%23203651' stroke-width='6' fill='none' opacity='.35'/%3E%3C/svg%3E");
   background-size: cover;
   color: var(--text);
-  padding-top: 84px;
+  padding-top: 0;
   display: flex;
   align-items: center;
 }

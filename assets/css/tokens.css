@@ -1,4 +1,4 @@
-/* ══════════════════════════════════════════
+﻿/* ══════════════════════════════════════════
    KANGALEARNER V9 — DESIGN SYSTEM
 ══════════════════════════════════════════ */
 :root {
@@ -33,5 +33,5 @@
   --radius-lg: 22px;
   --radius-xl: 32px;
   --container: 1160px;
-  --header-height: 96px;
+  --header-height: 72px;
 }

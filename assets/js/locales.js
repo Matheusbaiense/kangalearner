@@ -450,4 +450,82 @@
       }
     }
   };
+
+  function localePick(localeRoot, key) {
+    if (!localeRoot || !key) return null;
+    return key.split(".").reduce(function (obj, k) {
+      return obj && obj[k] !== undefined ? obj[k] : null;
+    }, localeRoot);
+  }
+
+  function packLang(lang) {
+    if (lang === "pten") return "pt";
+    if (lang === "esen") return "es";
+    return lang;
+  }
+
+  function langSpan(host, code) {
+    var direct = host.querySelector(":scope > .l-" + code);
+    if (direct) return direct;
+    return host.querySelector(".l-" + code);
+  }
+
+  function hydrateKangaStaticI18n(lang) {
+    var L = window.__KANGA_LOCALES__;
+    if (!L || !L.pt || !L.en || !L.es) return;
+
+    document.querySelectorAll("[data-i18n]").forEach(function (host) {
+      var key = host.getAttribute("data-i18n");
+      var vPt = localePick(L.pt, key);
+      var vEn = localePick(L.en, key);
+      var vEs = localePick(L.es, key);
+      var sPt = langSpan(host, "pt");
+      var sEn = langSpan(host, "en");
+      var sEs = langSpan(host, "es");
+      if (sPt) sPt.textContent = typeof vPt === "string" ? vPt : "";
+      if (sEn) sEn.textContent = typeof vEn === "string" ? vEn : "";
+      if (sEs) sEs.textContent = typeof vEs === "string" ? vEs : "";
+    });
+
+    var pk = L[packLang(lang)] || L.en;
+
+    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
+      var pkey = el.getAttribute("data-i18n-placeholder");
+      var val = localePick(pk, pkey);
+      if (typeof val === "string") el.setAttribute("placeholder", val);
+    });
+
+    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
+      var akey = el.getAttribute("data-i18n-aria");
+      var aval = localePick(pk, akey);
+      if (typeof aval === "string") el.setAttribute("aria-label", aval);
+    });
+
+    document.querySelectorAll(".ld-option[data-lang]").forEach(function (btn) {
+      var code = btn.getAttribute("data-lang");
+      var LO = pk.ldOptions && pk.ldOptions[code];
+      if (!LO) return;
+      var nm = btn.querySelector(".ld-oname");
+      var sb = btn.querySelector(".ld-osub");
+      if (nm) nm.textContent = LO.name || "";
+      if (sb) sb.textContent = LO.sub || "";
+    });
+  }
+
+  window.hydrateKangaStaticI18n = hydrateKangaStaticI18n;
+
+  document.addEventListener("DOMContentLoaded", function () {
+    var initialLang = "en";
+    try {
+      if (window.KangaStorage && typeof window.KangaStorage.getLang === "function") {
+        initialLang = window.KangaStorage.getLang() || initialLang;
+      } else {
+        initialLang = localStorage.getItem("kl-lang") || initialLang;
+      }
+    } catch (e) {
+      initialLang = "en";
+    }
+    if (!initialLang) initialLang = "en";
+    hydrateKangaStaticI18n(initialLang);
+  });
 })();

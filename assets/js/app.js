@@ -1,58 +1,9 @@
 // App bootstrap and non-quiz interactions
 (function () {
-  function localePick(localeRoot, key) {
-    if (!localeRoot || !key) return null;
-    return key.split(".").reduce(function (obj, k) {
-      return obj && obj[k] !== undefined ? obj[k] : null;
-    }, localeRoot);
-  }
-
-  function packLang(lang) {
-    if (lang === "pten") return "pt";
-    if (lang === "esen") return "es";
-    return lang;
-  }
-
   function hydrateStaticI18n(lang) {
-    var L = window.__KANGA_LOCALES__;
-    if (!L || !L.pt || !L.en || !L.es) return;
-
-    document.querySelectorAll("[data-i18n]").forEach(function (host) {
-      var key = host.getAttribute("data-i18n");
-      var vPt = localePick(L.pt, key);
-      var vEn = localePick(L.en, key);
-      var vEs = localePick(L.es, key);
-      var sPt = host.querySelector(".l-pt");
-      var sEn = host.querySelector(".l-en");
-      var sEs = host.querySelector(".l-es");
-      if (sPt) sPt.textContent = typeof vPt === "string" ? vPt : "";
-      if (sEn) sEn.textContent = typeof vEn === "string" ? vEn : "";
-      if (sEs) sEs.textContent = typeof vEs === "string" ? vEs : "";
-    });
-
-    var pk = L[packLang(lang)] || L.en;
-
-    document.querySelectorAll("[data-i18n-placeholder]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-placeholder");
-      var val = localePick(pk, key);
-      if (typeof val === "string") el.setAttribute("placeholder", val);
-    });
-
-    document.querySelectorAll("[data-i18n-aria]").forEach(function (el) {
-      var key = el.getAttribute("data-i18n-aria");
-      var val = localePick(pk, key);
-      if (typeof val === "string") el.setAttribute("aria-label", val);
-    });
-
-    document.querySelectorAll(".ld-option[data-lang]").forEach(function (btn) {
-      var code = btn.getAttribute("data-lang");
-      var LO = pk.ldOptions && pk.ldOptions[code];
-      if (!LO) return;
-      var nm = btn.querySelector(".ld-oname");
-      var sb = btn.querySelector(".ld-osub");
-      if (nm) nm.textContent = LO.name || "";
-      if (sb) sb.textContent = LO.sub || "";
-    });
+    if (typeof window.hydrateKangaStaticI18n === "function") {
+      window.hydrateKangaStaticI18n(lang);
+    }
   }
 
   function patchDWLangHydrate() {
@@ -70,7 +21,12 @@
     const KS = window.KangaStorage;
     const cards = document.querySelectorAll(".state-card");
     const select = document.getElementById("state-select");
-    const saved = (KS && KS.getState()) || localStorage.getItem("kl-state") || "WA";
+    let saved = "WA";
+    try {
+      saved = (KS && KS.getState()) || localStorage.getItem("kl-state") || "WA";
+    } catch (e) {
+      saved = "WA";
+    }
 
     function applyUI(code) {
       cards.forEach((c) => {
@@ -117,6 +73,37 @@
     );
   }
 
+  /** Subtle header background when scrolling down; restore when scrolling up. */
+  function initHeaderScrollBehavior() {
+    const header = document.querySelector(".site-header");
+    if (!header) return;
+    let lastY = window.scrollY;
+    let ticking = false;
+    function onScrollFrame() {
+      const y = window.scrollY;
+      const goingDown = y > lastY;
+      if (y < 12) {
+        header.classList.remove("is-scrolled-down");
+      } else if (goingDown && y > 32) {
+        header.classList.add("is-scrolled-down");
+      } else if (!goingDown) {
+        header.classList.remove("is-scrolled-down");
+      }
+      lastY = y;
+      ticking = false;
+    }
+    window.addEventListener(
+      "scroll",
+      () => {
+        if (!ticking) {
+          window.requestAnimationFrame(onScrollFrame);
+          ticking = true;
+        }
+      },
+      { passive: true }
+    );
+  }
+
   function initSubscribe() {
     const subscribeForm = document.getElementById("subscribe-form");
     const subscribeEmail = document.getElementById("subscribe-email");
@@ -137,20 +124,24 @@
   }
 
   document.addEventListener("DOMContentLoaded", () => {
-    window.KangaStorage?.migrateFromLegacy?.();
+    try {
+      window.KangaStorage?.migrateFromLegacy?.();
+    } catch (e) {
+      console.warn("KangaLearner: migrateFromLegacy failed", e);
+    }
 
     patchDWLangHydrate();
 
-    const initialLang =
-      (window.KangaStorage && window.KangaStorage.getLang && window.KangaStorage.getLang()) ||
-      (function () {
-        try {
-          return localStorage.getItem("kl-lang");
-        } catch (e) {
-          return null;
-        }
-      })() ||
-      "en";
+    let initialLang = "en";
+    try {
+      initialLang =
+        (window.KangaStorage && window.KangaStorage.getLang && window.KangaStorage.getLang()) ||
+        localStorage.getItem("kl-lang") ||
+        "en";
+    } catch (e) {
+      initialLang = "en";
+    }
+    if (!initialLang) initialLang = "en";
 
     hydrateStaticI18n(initialLang);
 
@@ -189,6 +180,7 @@
     });
 
     initReadingProgress();
+    initHeaderScrollBehavior();
     initSubscribe();
   });
 })();
