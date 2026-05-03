@@ -9,7 +9,8 @@ const DW = {
   state: 'WA',
   correct: 0,
   total: 0,
-  answered: {},     // id -> {correct, chosen}
+  answered: {},     // id -> {correct, chosen} (view of answeredByState for current storage key)
+  answeredByState: {},
   simQueue: [],
   simIdx: 0,
   simMode: false,
@@ -18,11 +19,38 @@ const DW = {
   // ── I18N ──
   t(key){ return I18N[key]?.[this.lang] || I18N[key]?.en || key },
 
+  /** WA and AU share the same question bank — share progress bucket. */
+  storageStateKey(){
+    return this.state === 'AU' ? 'WA' : this.state;
+  },
+
+  /** Category / filter bar labels: bilingual modes use English UI labels. */
+  filterLabelLang(lang){
+    if(lang === 'pten' || lang === 'esen') return 'en';
+    const l = String(lang).slice(0, 2);
+    return ['pt','en','es'].includes(l) ? l : 'en';
+  },
+
+  /** Question text, options, explanations: bilingual modes use primary language. */
+  questionLang(lang){
+    if(lang === 'pten') return 'pt';
+    if(lang === 'esen') return 'es';
+    if(String(lang).startsWith('pt')) return 'pt';
+    if(String(lang).startsWith('es')) return 'es';
+    return 'en';
+  },
+
+  hydrateAnsweredForCurrentState(){
+    const key = this.storageStateKey();
+    if(!this.answeredByState[key]) this.answeredByState[key] = {};
+    this.answered = this.answeredByState[key];
+  },
+
   // ── STORAGE ──
   save(){
     try{
       localStorage.setItem('kl-lang', this.lang);
-      localStorage.setItem('kl-answered', JSON.stringify(this.answered));
+      localStorage.setItem('kl-answered-by-state', JSON.stringify(this.answeredByState));
     }catch(e){}
   },
   load(){
@@ -31,9 +59,22 @@ const DW = {
       if(l) this.lang = l;
       const s = localStorage.getItem('kl-state');
       if(s) this.state = s;
-      const a = localStorage.getItem('kl-answered');
-      if(a) this.answered = JSON.parse(a);
-    }catch(e){}
+      let byState = {};
+      const v2 = localStorage.getItem('kl-answered-by-state');
+      const v1 = localStorage.getItem('kl-answered');
+      if(v2){
+        byState = JSON.parse(v2);
+      } else if(v1){
+        const old = JSON.parse(v1);
+        byState = { WA: old };
+        localStorage.setItem('kl-answered-by-state', JSON.stringify(byState));
+      }
+      this.answeredByState = byState && typeof byState === 'object' ? byState : {};
+      this.hydrateAnsweredForCurrentState();
+    }catch(e){
+      this.answeredByState = {};
+      this.hydrateAnsweredForCurrentState();
+    }
   },
 
   getQuestionsForState(){
@@ -41,13 +82,14 @@ const DW = {
     return QUESTIONS.filter(q => Array.isArray(q.states) && q.states.includes(this.state));
   },
   clearProgress(){
-    this.answered = {};
+    const key = this.storageStateKey();
+    this.answeredByState[key] = {};
+    this.answered = this.answeredByState[key];
     this.correct = 0;
     this.total = 0;
-    localStorage.removeItem('kl-answered');
+    this.save();
     this.renderQuiz();
     this.updateScore();
-    // confetti on reset
   },
 
   // ── LANG ──
@@ -89,17 +131,18 @@ const DW = {
   setState(state){
     this.state = state;
     try{ localStorage.setItem('kl-state', state); }catch(e){}
+    this.hydrateAnsweredForCurrentState();
     if(this.simMode){
       this.startSim();
     } else {
       this.renderQuiz();
     }
+    this.updateScore();
   },
 
   renderFilters(){
     const bar = document.getElementById('filter-bar');
-    const l = this.lang.replace('pten','en').replace('esen','en').slice(0,2);
-    const safeL = ['pt','en','es'].includes(l) ? l : 'en';
+    const safeL = this.filterLabelLang(this.lang);
     
     const allLabel = {pt:'Todas',en:'All',es:'Todas'}[safeL] || 'All';
     let html = `<button class="fcat ${this.cat==='all'?'active':''}" data-cat="all" type="button">${allLabel}</button>`;
@@ -153,7 +196,7 @@ const DW = {
   renderQuiz(){
     const container = document.getElementById('quiz-cards');
     const lang = this.lang;
-    const safeL = lang.includes('pt') ? 'pt' : lang.includes('es') ? 'es' : 'en';
+    const qLang = this.questionLang(lang);
     const pool = this.getQuestionsForState();
 
     if(pool.length === 0){
@@ -189,9 +232,9 @@ const DW = {
     Object.entries(groups).forEach(([cat, catQs]) => {
       const catData = CATEGORIES.find(c => c.key === cat);
       const icon = catData?.icon || '📚';
-      const label = catData?.label?.[safeL] || cat;
+      const label = catData?.label?.[qLang] || cat;
       html += `<div class="sec-head"><span class="sec-icon">${icon}</span><span>${label}</span></div>`;
-      catQs.forEach(q => { html += this.renderCard(q, lang, safeL); });
+      catQs.forEach(q => { html += this.renderCard(q, lang, qLang); });
     });
 
     container.innerHTML = html;
@@ -216,13 +259,13 @@ const DW = {
     this.updateScore();
   },
 
-  renderCard(q, lang, safeL){
+  renderCard(q, lang, qLang){
     const letters = ['A','B','C','D'];
-    const qtext = q.q[safeL] || q.q.en || '';
+    const qtext = q.q[qLang] || q.q.en || '';
     
     let signHtml = '';
     if(q.sign){
-      const cap = q.cap ? (q.cap[safeL] || q.cap.en || '') : '';
+      const cap = q.cap ? (q.cap[qLang] || q.cap.en || '') : '';
       const signMarkup = q.sign.trim().startsWith('<svg')
         ? q.sign
         : `<img src="${q.sign}" alt="${cap || 'Road sign'}" width="170" height="170" loading="lazy">`;
@@ -231,24 +274,24 @@ const DW = {
 
     let optsHtml = '';
     q.opts.forEach((o,i) => {
-      const otxt = o.t[safeL] || o.t.en || '';
+      const otxt = o.t[qLang] || o.t.en || '';
       optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="button" tabindex="0">
         <span class="oletter">${o.l}</span>
         <span class="otext">${otxt}</span>
       </div>`;
     });
 
-    const exp = q.exp[safeL] || q.exp.en || '';
-    const tip = q.tip ? (q.tip[safeL] || q.tip.en || '') : '';
+    const exp = q.exp[qLang] || q.exp.en || '';
+    const tip = q.tip ? (q.tip[qLang] || q.tip.en || '') : '';
     const tipHtml = tip ? `<div class="atip">💡 ${tip}</div>` : '';
 
     return `<div class="qcard" id="${q.id}">
-  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${CATEGORIES.find(c=>c.key===q.cat)?.icon||''} ${CATEGORIES.find(c=>c.key===q.cat)?.label?.[safeL]||q.cat}</span></div>
+  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${CATEGORIES.find(c=>c.key===q.cat)?.icon||''} ${CATEGORIES.find(c=>c.key===q.cat)?.label?.[qLang]||q.cat}</span></div>
   <div class="qtext">${qtext}</div>
   ${signHtml}
   <div class="opts">${optsHtml}</div>
   <div class="answer" id="ans-${q.id}">
-    <div class="alabel">✅ ${safeL==='pt'?'Resposta':safeL==='es'?'Respuesta':'Answer'}</div>
+    <div class="alabel">✅ ${qLang==='pt'?'Resposta':qLang==='es'?'Respuesta':'Answer'}</div>
     <div class="atext">${exp}</div>
     ${tipHtml}
   </div>
@@ -350,7 +393,7 @@ const DW = {
   renderSimCard(){
     const q = this.simQueue[this.simIdx];
     const lang = this.lang;
-    const safeL = lang.includes('pt') ? 'pt' : lang.includes('es') ? 'es' : 'en';
+    const qLang = this.questionLang(lang);
     const total = this.simQueue.length;
     const pct = Math.round((this.simIdx / total) * 100);
 
@@ -358,7 +401,7 @@ const DW = {
     document.getElementById('sim-progress-bar').style.width = pct + '%';
 
     const container = document.getElementById('sim-card-container');
-    container.innerHTML = this.renderCard(q, lang, safeL);
+    container.innerHTML = this.renderCard(q, lang, qLang);
   },
 
   simNext(){
@@ -376,7 +419,7 @@ const DW = {
     this.simQueue.forEach(q => { if(this.simAnswered[q.id]?.correct) score++; });
     const pct = Math.round(score/total*100);
     const pass = pct >= 80;
-    const safeL = this.lang.includes('pt') ? 'pt' : this.lang.includes('es') ? 'es' : 'en';
+    const qLang = this.questionLang(this.lang);
     this.syncMockSession({ state: this.state || 'WA', score, total });
     const msgs = {
       pass: {pt:'Parabéns! Você passou!', en:'Congratulations! You passed!', es:'¡Felicidades! ¡Aprobaste!'},
@@ -388,8 +431,8 @@ const DW = {
         <div class="sim-result-icon">${pass ? '🎉' : '📚'}</div>
         <div class="sim-result-score">${score}/${total}</div>
         <div class="sim-result-pct" style="color:${pass?'var(--green)':'var(--red)'}">${pct}%</div>
-        <div class="sim-result-msg">${pass ? msgs.pass[safeL] : msgs.fail[safeL]}</div>
-        <button class="btn btn-gold" type="button" data-action="mode-all" style="margin-top:20px">${msgs.back[safeL]}</button>
+        <div class="sim-result-msg">${pass ? msgs.pass[qLang] : msgs.fail[qLang]}</div>
+        <button class="btn btn-gold" type="button" data-action="mode-all" style="margin-top:20px">${msgs.back[qLang]}</button>
       </div>`;
   },
 

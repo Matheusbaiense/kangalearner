@@ -24,6 +24,10 @@ python -m http.server 8080
 
 Then open `http://localhost:3000` (or the port shown) and navigate to `index.html` if needed.
 
+## GitHub Pages
+
+On push to `main`, [.github/workflows/pages.yml](.github/workflows/pages.yml) publishes `index.html` and `assets/` (not the monorepo build). The first time you use it, open the repository **Settings → Pages**, set **Build and deployment** source to **GitHub Actions**, then trigger the workflow or push to `main`. Use the resulting `https://<user>.github.io/<repo>/` base URL for Open Graph and canonical links in production.
+
 ## Folder structure (static)
 
 | Path | Purpose |
@@ -59,7 +63,7 @@ node scripts/validate-questions.cjs
 - **WA** filters to questions whose `states` array includes `WA`.
 - Other states show an **empty / coming soon** message until you add questions with e.g. `states: ["NSW"]`.
 
-Sync `DW.state` with `localStorage` key `kl-state` via the header dropdown and state cards.
+Sync `DW.state` with `localStorage` key `kl-state` via the header dropdown and state cards. Quiz progress is stored per state in `kl-answered-by-state` (WA and AU share one bucket; legacy `kl-answered` is migrated on first load).
 
 ## Disclaimer
 
