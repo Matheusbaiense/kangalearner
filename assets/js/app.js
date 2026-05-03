@@ -141,11 +141,28 @@
 
     patchDWLangHydrate();
 
-    if (window.DW && typeof window.DW.init === "function") {
-      window.DW.init();
+    const initialLang =
+      (window.KangaStorage && window.KangaStorage.getLang && window.KangaStorage.getLang()) ||
+      (function () {
+        try {
+          return localStorage.getItem("kl-lang");
+        } catch (e) {
+          return null;
+        }
+      })() ||
+      "en";
+
+    hydrateStaticI18n(initialLang);
+
+    try {
+      if (window.DW && typeof window.DW.init === "function") {
+        window.DW.init();
+      }
+    } catch (e) {
+      console.error("KangaLearner: DW.init failed", e);
     }
 
-    hydrateStaticI18n(window.DW?.lang || "en");
+    hydrateStaticI18n(window.DW?.lang || initialLang);
 
     if (window.KL_LEARN && typeof window.KL_LEARN.init === "function") {
       window.KL_LEARN.init();
