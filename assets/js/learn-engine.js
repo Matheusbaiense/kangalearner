@@ -2,10 +2,31 @@ const KL_LEARN = {
   openSlug: null,
 
   lang() {
+    if (window.DW && typeof window.DW.getDisplayLang === "function") {
+      return window.DW.getDisplayLang();
+    }
     const current = window.DW?.lang || "en";
     if (String(current).includes("pt")) return "pt";
     if (String(current).includes("es")) return "es";
     return "en";
+  },
+
+  translationLang() {
+    return window.DW && typeof window.DW.getTranslationLang === "function"
+      ? window.DW.getTranslationLang()
+      : null;
+  },
+
+  blang(obj) {
+    if (!obj || typeof obj !== "object") return "";
+    const d = this.lang();
+    const t = this.translationLang();
+    const main = obj[d] || obj.en || "";
+    const tr = t ? obj[t] || "" : "";
+    if (t && tr && tr !== main) {
+      return `${main}<span class="translation-line" lang="en">${tr}</span>`;
+    }
+    return main;
   },
 
   icon(type) {
@@ -44,10 +65,9 @@ const KL_LEARN = {
   },
 
   renderBody(topic) {
-    const lang = this.lang();
     const list = (items, tag) =>
-      items
-        .map((item) => `<${tag}>${item[lang] || item.en}</${tag}>`)
+      (items || [])
+        .map((item) => `<${tag}>${this.blang(item)}</${tag}>`)
         .join("");
 
     const keyRules = list(topic.keyRules || [], "li");
@@ -58,7 +78,7 @@ const KL_LEARN = {
       <div class="learn-guide">
         <div class="learn-block learn-highlight">
           <div class="learn-label">${this.label("summary")}</div>
-          <p>${topic.summary?.[lang] || topic.summary?.en || ""}</p>
+          <p>${this.blang(topic.summary || {})}</p>
         </div>
 
         <div class="learn-grid-2">
@@ -75,7 +95,7 @@ const KL_LEARN = {
 
         <div class="learn-block">
           <div class="learn-label">${this.label("example")}</div>
-          <p>${topic.example?.[lang] || topic.example?.en || ""}</p>
+          <p>${this.blang(topic.example || {})}</p>
         </div>
 
         <div class="learn-block">
@@ -87,7 +107,7 @@ const KL_LEARN = {
           <button class="btn btn-primary btn-sm" type="button" data-action="learn-practice" data-category="${topic.category}">
             ${this.label("practice")}
           </button>
-          <small><span class="learn-source">${this.label("source")}:</span> ${topic.source?.[lang] || topic.source?.en || ""}</small>
+          <small><span class="learn-source">${this.label("source")}:</span> ${this.blang(topic.source || {})}</small>
         </div>
       </div>
     `;

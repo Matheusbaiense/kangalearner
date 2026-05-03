@@ -275,3 +275,245 @@
   background: white; border-radius: 50%;
 }
 
+/* ─── Practice layout: sticky side panels (desktop) ─── */
+@media (min-width: 1024px) {
+  .app-shell {
+    align-items: start;
+  }
+  .app-aside-left,
+  .app-aside-right {
+    position: sticky;
+    top: 96px;
+    align-self: start;
+    max-height: calc(100vh - 120px);
+    overflow: auto;
+  }
+}
+
+/* Mobile compact progress */
+.quiz-mobile-progress {
+  display: none;
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--muted2);
+  padding: 10px 14px;
+  margin-bottom: 12px;
+  border-radius: 12px;
+  background: white;
+  border: 1px solid var(--border);
+}
+@media (max-width: 1023px) {
+  .quiz-mobile-progress {
+    display: block;
+  }
+}
+
+.progress-detail {
+  display: grid;
+  gap: 10px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.progress-detail > div {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 0.82rem;
+}
+.progress-detail dt {
+  color: var(--muted2);
+  font-weight: 750;
+}
+.progress-detail dd {
+  font-weight: 950;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.empty-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-top: 18px;
+}
+.load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 22px 0 8px;
+}
+
+/* ─── Mock test stacked cards ─── */
+#sim-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.sim-card-wrap {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  background: white;
+  scroll-margin-top: 100px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.sim-card-wrap.answered {
+  border-color: rgba(46, 125, 91, 0.25);
+}
+.sim-card-wrap.correct {
+  background: linear-gradient(180deg, #fff, rgba(46, 125, 91, 0.04));
+}
+.sim-card-wrap.incorrect {
+  background: linear-gradient(180deg, #fff, rgba(239, 68, 68, 0.04));
+}
+.sim-card-wrap .qcard.sim-qcard-inner {
+  margin-bottom: 0;
+  box-shadow: none;
+  border: 0;
+  padding: 0;
+}
+.sim-status-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.72rem;
+  font-weight: 950;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+.sim-status-correct {
+  background: var(--green3);
+  color: var(--green);
+  border: 1px solid rgba(46, 125, 91, 0.35);
+}
+.sim-status-wrong {
+  background: #fef2f2;
+  color: #b91c1c;
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+.answer-review {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--paper2);
+  border: 1px solid var(--border);
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+.answer-review.correct {
+  border-color: rgba(46, 125, 91, 0.35);
+}
+.answer-review.incorrect {
+  border-color: rgba(239, 68, 68, 0.35);
+}
+.explanation-box {
+  margin-top: 12px;
+  padding: 14px;
+  border-radius: 14px;
+  background: #f8fafc;
+  border: 1px solid var(--border);
+  color: var(--muted2);
+  line-height: 1.5;
+}
+.explanation-box .alabel {
+  color: var(--green);
+  margin-bottom: 8px;
+}
+
+.sim-final-panel {
+  scroll-margin-top: 100px;
+  border: 1px solid rgba(46, 125, 91, 0.28);
+  border-radius: 18px;
+  background: linear-gradient(180deg, #fff, var(--green3));
+  padding: 28px 20px;
+  text-align: center;
+  max-width: 720px;
+  margin: 8px auto 0;
+}
+.sim-final-inner {
+  max-width: 440px;
+  margin: 0 auto;
+}
+.sim-final-title {
+  font-family: "Sora", sans-serif;
+  font-size: 1.15rem;
+  font-weight: 950;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.sim-final-panel .sim-result-score {
+  font-family: "Sora", sans-serif;
+  font-size: 2rem;
+  font-weight: 950;
+}
+.sim-final-panel .sim-result-pct {
+  font-size: 1.05rem;
+  font-weight: 900;
+  color: var(--green);
+  margin-bottom: 8px;
+}
+.sim-final-panel .sim-result-msg {
+  color: var(--muted2);
+  font-size: 0.92rem;
+  margin-bottom: 18px;
+}
+.sim-final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 18px;
+}
+.sim-weak-block {
+  text-align: left;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.sim-weak-label {
+  font-size: 0.72rem;
+  font-weight: 950;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted2);
+  margin-bottom: 10px;
+}
+.weak-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.weak-chip {
+  border: 1px solid rgba(46, 125, 91, 0.35);
+  background: white;
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-size: 0.78rem;
+  font-weight: 850;
+  cursor: pointer;
+  color: var(--green);
+  transition: background 0.15s, transform 0.12s;
+}
+.weak-chip:hover {
+  background: var(--green3);
+  transform: translateY(-1px);
+}
+.weak-none {
+  font-size: 0.84rem;
+  color: var(--muted2);
+}
+
+/* Images / diagrams inside cards */
+.sign-box img,
+.sign-box svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+

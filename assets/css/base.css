@@ -8,15 +8,24 @@ body{
   font-size:15px;
   -webkit-font-smoothing:antialiased;
   text-rendering:optimizeLegibility;
+  overflow-x:hidden;
 }
 a{color:inherit;text-decoration:none}
 button{font:inherit}
 strong{font-weight:750;color:inherit}
+/* Single UI language per view; pten/esen use mode-pt / mode-es on <body> */
 body.mode-en .l-pt, body.mode-en .l-es,
 body.mode-pt .l-en, body.mode-pt .l-es,
-body.mode-es .l-en, body.mode-es .l-pt,
-body.mode-pten .l-es,
-body.mode-esen .l-pt{display:none}
+body.mode-es .l-en, body.mode-es .l-pt{display:none}
+
+.translation-line{
+  display:block;margin-top:5px;font-size:.78rem;line-height:1.35;
+  color:var(--muted2);font-weight:500;
+}
+.qtext .translation-line,
+.explanation-box .translation-line,
+.learn-block .translation-line{margin-top:8px;font-size:.86rem}
+.otext .translation-line{margin-top:3px;font-size:.76rem}
 
 .container{max-width:var(--container);margin:0 auto;padding:0 28px}
 .section-pad{padding:54px 0}

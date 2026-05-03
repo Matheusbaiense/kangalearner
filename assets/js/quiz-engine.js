@@ -1,43 +1,57 @@
 // ═══════════════════════════════════════════════
-//  DriveWise WA — App Logic
+//  KangaLearner — Quiz & mock test
 // ═══════════════════════════════════════════════
 
 const DW = {
   lang: 'en',
-  mode: 'all',      // all | wrong | unanswered | sim
+  mode: 'all',
   cat: 'all',
   state: 'WA',
   correct: 0,
   total: 0,
-  answered: {},     // id -> {correct, chosen} (view of answeredByState for current storage key)
+  answered: {},
   answeredByState: {},
   simQueue: [],
-  simIdx: 0,
   simMode: false,
   simAnswered: {},
+  simRenderedCount: 1,
+  simCompleted: false,
+  simReviewMode: 'all',
+  visibleQuestionCount: 10,
 
-  // ── I18N ──
-  t(key){ return I18N[key]?.[this.lang] || I18N[key]?.en || key },
+  t(key){
+    const d = this.getDisplayLang();
+    return I18N[key]?.[d] || I18N[key]?.[this.lang] || I18N[key]?.en || key;
+  },
 
-  /** WA and AU share the same question bank — share progress bucket. */
   storageStateKey(){
     return this.state === 'AU' ? 'WA' : this.state;
   },
 
-  /** Category / filter bar labels: bilingual modes use English UI labels. */
   filterLabelLang(lang){
     if(lang === 'pten' || lang === 'esen') return 'en';
     const l = String(lang).slice(0, 2);
     return ['pt','en','es'].includes(l) ? l : 'en';
   },
 
-  /** Question text, options, explanations: bilingual modes use primary language. */
-  questionLang(lang){
-    if(lang === 'pten') return 'pt';
-    if(lang === 'esen') return 'es';
-    if(String(lang).startsWith('pt')) return 'pt';
-    if(String(lang).startsWith('es')) return 'es';
+  /** UI + nav: single language (no duplicate l-pt + l-en in header). */
+  getDisplayLang(){
+    if(this.lang === 'pten') return 'pt';
+    if(this.lang === 'esen') return 'es';
+    if(String(this.lang).startsWith('pt')) return 'pt';
+    if(String(this.lang).startsWith('es')) return 'es';
     return 'en';
+  },
+
+  /** Study aid: English line under PT/ES in questions & explanations. */
+  getTranslationLang(){
+    if(this.lang === 'pten' || this.lang === 'esen') return 'en';
+    return null;
+  },
+
+  /** Legacy alias for question copy primary language (= display). */
+  questionLang(){
+    return this.getDisplayLang();
   },
 
   hydrateAnsweredForCurrentState(){
@@ -46,7 +60,6 @@ const DW = {
     this.answered = this.answeredByState[key];
   },
 
-  // ── STORAGE ──
   save(){
     try{
       localStorage.setItem('kl-lang', this.lang);
@@ -92,11 +105,11 @@ const DW = {
     this.updateScore();
   },
 
-  // ── LANG ──
   setLang(lang, el){
     this.lang = lang;
-    document.body.className = 'mode-' + lang;
-    document.documentElement.lang = lang.startsWith('pt') ? 'pt-BR' : lang.startsWith('es') ? 'es' : 'en';
+    const d = this.getDisplayLang();
+    document.body.className = 'mode-' + d;
+    document.documentElement.lang = d === 'pt' ? 'pt-BR' : d === 'es' ? 'es' : 'en';
     document.getElementById('ld-flag').textContent = FLAGS[lang] || '🌐';
     document.getElementById('ld-name').textContent = NAMES[lang] || lang;
     document.querySelectorAll('.ld-option').forEach(o => o.classList.remove('active'));
@@ -104,15 +117,16 @@ const DW = {
     document.querySelectorAll('.ld-option').forEach(o => o.setAttribute('aria-selected', o.classList.contains('active') ? 'true' : 'false'));
     document.getElementById('ld-panel').classList.remove('open');
     document.getElementById('ld-trigger').classList.remove('open');
+    this.visibleQuestionCount = 10;
     this.save();
     this.renderFilters();
     this.renderQuiz();
+    if(this.simMode) this.renderSimStack();
     if (window.KL_LEARN && typeof window.KL_LEARN.refreshLanguage === "function") {
       window.KL_LEARN.refreshLanguage();
     }
   },
 
-  // ── DROPDOWN ──
   ldToggle(){
     const t = document.getElementById('ld-trigger');
     const p = document.getElementById('ld-panel');
@@ -127,11 +141,11 @@ const DW = {
     t.classList.toggle('open', !isOpen);
   },
 
-  // ── FILTERS ──
   setState(state){
     this.state = state;
     try{ localStorage.setItem('kl-state', state); }catch(e){}
     this.hydrateAnsweredForCurrentState();
+    this.visibleQuestionCount = 10;
     if(this.simMode){
       this.startSim();
     } else {
@@ -143,7 +157,6 @@ const DW = {
   renderFilters(){
     const bar = document.getElementById('filter-bar');
     const safeL = this.filterLabelLang(this.lang);
-    
     const allLabel = {pt:'Todas',en:'All',es:'Todas'}[safeL] || 'All';
     let html = `<button class="fcat ${this.cat==='all'?'active':''}" data-cat="all" type="button">${allLabel}</button>`;
     CATEGORIES.forEach(c => {
@@ -159,6 +172,7 @@ const DW = {
 
   setCat(cat){
     this.cat = cat;
+    this.visibleQuestionCount = 10;
     document.querySelectorAll('.fcat').forEach(b => {
       const on = b.dataset.cat === cat;
       b.classList.toggle('active', on);
@@ -175,6 +189,7 @@ const DW = {
       b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     if(mode === 'sim'){
+      this.visibleQuestionCount = 10;
       this.startSim();
     } else {
       this.simMode = false;
@@ -184,7 +199,6 @@ const DW = {
     }
   },
 
-  // ── QUIZ RENDER ──
   getFilteredQ(){
     let qs = this.getQuestionsForState();
     if(this.cat !== 'all') qs = qs.filter(q => q.cat === this.cat);
@@ -193,10 +207,19 @@ const DW = {
     return qs;
   },
 
+  /** Bilingual helper: primary + optional EN line. */
+  formatBilingualBlock(mainText, transText){
+    const tLang = this.getTranslationLang();
+    if(!tLang || !transText || transText === mainText){
+      return mainText;
+    }
+    return `${mainText}<span class="translation-line" lang="en">${transText}</span>`;
+  },
+
   renderQuiz(){
     const container = document.getElementById('quiz-cards');
-    const lang = this.lang;
-    const qLang = this.questionLang(lang);
+    const dLang = this.getDisplayLang();
+    const tLang = this.getTranslationLang();
     const pool = this.getQuestionsForState();
 
     if(pool.length === 0){
@@ -204,6 +227,10 @@ const DW = {
         <div class="empty-icon" aria-hidden="true">📍</div>
         <div class="empty-title">${this.t('empty_state_title')}</div>
         <div class="empty-sub">${this.t('empty_state_sub')}</div>
+        <div class="empty-actions">
+          <button type="button" class="btn btn-primary btn-sm" data-action="empty-wa">${this.t('empty_btn_wa')}</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-action="empty-learn">${this.t('empty_btn_learn')}</button>
+        </div>
       </div>`;
       this.updateScore();
       return;
@@ -221,9 +248,11 @@ const DW = {
       return;
     }
 
-    // Group by category
+    const cap = Math.min(this.visibleQuestionCount, qs.length);
+    const qsVisible = qs.slice(0, cap);
+
     const groups = {};
-    qs.forEach(q => {
+    qsVisible.forEach(q => {
       if(!groups[q.cat]) groups[q.cat] = [];
       groups[q.cat].push(q);
     });
@@ -232,14 +261,17 @@ const DW = {
     Object.entries(groups).forEach(([cat, catQs]) => {
       const catData = CATEGORIES.find(c => c.key === cat);
       const icon = catData?.icon || '📚';
-      const label = catData?.label?.[qLang] || cat;
+      const label = catData?.label?.[dLang] || cat;
       html += `<div class="sec-head"><span class="sec-icon">${icon}</span><span>${label}</span></div>`;
-      catQs.forEach(q => { html += this.renderCard(q, lang, qLang); });
+      catQs.forEach(q => { html += this.renderCard(q, dLang, tLang, { omitAnswer: false }); });
     });
+
+    if(qs.length > cap){
+      html += `<div class="load-more-wrap"><button type="button" class="btn btn-secondary btn-sm load-more-btn" data-action="load-more-quiz">${this.t('load_more')}</button></div>`;
+    }
 
     container.innerHTML = html;
 
-    // Restore answered state visually
     Object.entries(this.answered).forEach(([qid, state]) => {
       const card = document.getElementById(qid);
       if(!card) return;
@@ -259,84 +291,127 @@ const DW = {
     this.updateScore();
   },
 
-  renderCard(q, lang, qLang){
-    const letters = ['A','B','C','D'];
-    const qtext = q.q[qLang] || q.q.en || '';
-    
+  renderCard(q, dLang, tLang, opts){
+    opts = opts || {};
+    const omitAnswer = opts.omitAnswer;
+    const qMain = q.q[dLang] || q.q.en || '';
+    const qTrans = tLang ? (q.q[tLang] || '') : '';
+    const qtextHtml = this.formatBilingualBlock(qMain, qTrans);
+
     let signHtml = '';
     if(q.sign){
-      const cap = q.cap ? (q.cap[qLang] || q.cap.en || '') : '';
+      const cap = q.cap ? (q.cap[dLang] || q.cap.en || '') : '';
+      const capTrans = tLang && q.cap ? (q.cap[tLang] || '') : '';
+      const capHtml = this.formatBilingualBlock(cap, capTrans);
       const signMarkup = q.sign.trim().startsWith('<svg')
         ? q.sign
         : `<img src="${q.sign}" alt="${cap || 'Road sign'}" width="170" height="170" loading="lazy">`;
-      signHtml = `<div class="sign-box">${signMarkup}${cap ? `<div class="img-cap">${cap}</div>` : ''}</div>`;
+      signHtml = `<div class="sign-box">${signMarkup}${cap ? `<div class="img-cap">${capHtml}</div>` : ''}</div>`;
     }
 
     let optsHtml = '';
-    q.opts.forEach((o,i) => {
-      const otxt = o.t[qLang] || o.t.en || '';
+    q.opts.forEach((o) => {
+      const oMain = o.t[dLang] || o.t.en || '';
+      const oTrans = tLang ? (o.t[tLang] || '') : '';
+      const oHtml = this.formatBilingualBlock(oMain, oTrans);
       optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="button" tabindex="0">
         <span class="oletter">${o.l}</span>
-        <span class="otext">${otxt}</span>
+        <span class="otext">${oHtml}</span>
       </div>`;
     });
 
-    const exp = q.exp[qLang] || q.exp.en || '';
-    const tip = q.tip ? (q.tip[qLang] || q.tip.en || '') : '';
-    const tipHtml = tip ? `<div class="atip">💡 ${tip}</div>` : '';
+    const expMain = q.exp[dLang] || q.exp.en || '';
+    const expTrans = tLang ? (q.exp[tLang] || '') : '';
+    const expHtml = this.formatBilingualBlock(expMain, expTrans);
+    const tip = q.tip ? (q.tip[dLang] || q.tip.en || '') : '';
+    const tipTrans = tLang && q.tip ? (q.tip[tLang] || '') : '';
+    const tipHtml = tip ? `<div class="atip">💡 ${this.formatBilingualBlock(tip, tipTrans || '')}</div>` : '';
+
+    const alab = dLang === 'pt' ? 'Resposta' : dLang === 'es' ? 'Respuesta' : 'Answer';
+
+    const answerBlock = omitAnswer ? '' : `<div class="answer" id="ans-${q.id}">
+    <div class="alabel">✅ ${alab}</div>
+    <div class="atext explanation-box">${expHtml}</div>
+    ${tipHtml}
+  </div>`;
 
     return `<div class="qcard" id="${q.id}">
-  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${CATEGORIES.find(c=>c.key===q.cat)?.icon||''} ${CATEGORIES.find(c=>c.key===q.cat)?.label?.[qLang]||q.cat}</span></div>
-  <div class="qtext">${qtext}</div>
+  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${CATEGORIES.find(c=>c.key===q.cat)?.icon||''} ${CATEGORIES.find(c=>c.key===q.cat)?.label?.[dLang]||q.cat}</span></div>
+  <div class="qtext">${qtextHtml}</div>
   ${signHtml}
   <div class="opts">${optsHtml}</div>
-  <div class="answer" id="ans-${q.id}">
-    <div class="alabel">✅ ${qLang==='pt'?'Resposta':qLang==='es'?'Respuesta':'Answer'}</div>
-    <div class="atext">${exp}</div>
-    ${tipHtml}
-  </div>
+  ${answerBlock}
 </div>`;
   },
 
-  // ── ANSWER PICK ──
   pick(el, qid){
     if(el.getAttribute('data-done')) return;
     const q = QUESTIONS.find(x => x.id === qid);
     if(!q) return;
+
+    if(this.simMode){
+      const wrap = el.closest('.sim-card-wrap');
+      if(!wrap) return;
+      const active = this.simQueue[this.simRenderedCount - 1];
+      if(!active || active.id !== qid || this.simAnswered[qid]) return;
+    }
+
     const isCorrect = el.dataset.correct === 'true';
     if(this.simMode){
       this.simAnswered = { ...this.simAnswered, [qid]: { correct: isCorrect, chosen: el.dataset.letter } };
     }
-    const card = document.getElementById(qid);
-    const opts = card.querySelectorAll('.opt');
-    opts.forEach(o => {
-      o.setAttribute('data-done','1');
-      o.style.cursor = 'default';
-      if(o.dataset.correct === 'true') o.classList.add(isCorrect ? 'correct' : 'missed');
-      else if(o === el && !isCorrect) o.classList.add('wrong');
-    });
-    document.getElementById('ans-' + qid)?.classList.add('show');
-    
+
+    if(!this.simMode){
+      const card = document.getElementById(qid);
+      const opts = card.querySelectorAll('.opt');
+      opts.forEach(o => {
+        o.setAttribute('data-done','1');
+        o.style.cursor = 'default';
+        if(o.dataset.correct === 'true') o.classList.add(isCorrect ? 'correct' : 'missed');
+        else if(o === el && !isCorrect) o.classList.add('wrong');
+      });
+      document.getElementById('ans-' + qid)?.classList.add('show');
+    }
+
     if(!this.answered[qid]){
       this.total++;
       if(isCorrect) this.correct++;
       this.answered[qid] = { correct: isCorrect, chosen: el.dataset.letter };
       this.save();
       this.updateScore();
-      if(isCorrect) this.spawnConfetti(el);
+      if(isCorrect && !this.simMode) this.spawnConfetti(el);
       this.syncAttempt(q, isCorrect, el.dataset.letter);
     }
 
-    // Sim mode: advance
     if(this.simMode){
-      setTimeout(() => this.simNext(), 900);
+      setTimeout(() => this.advanceSimAfterAnswer(), 280);
     }
   },
 
-  // ── SCORE ──
+  advanceSimAfterAnswer(){
+    const total = this.simQueue.length;
+    if(this.simRenderedCount < total){
+      this.simRenderedCount++;
+      this._simScrollTarget = `sim-q-${this.simQueue[this.simRenderedCount - 1].id}`;
+    } else {
+      this.simCompleted = true;
+      let score = 0;
+      this.simQueue.forEach(q => { if(this.simAnswered[q.id]?.correct) score++; });
+      this.syncMockSession({ state: this.state || 'WA', score, total });
+      this._simScrollTarget = 'sim-final-panel';
+    }
+    this.renderSimStack();
+  },
+
   updateScore(){
     const total = Object.keys(this.answered).length;
     const correct = Object.values(this.answered).filter(a => a.correct).length;
+    const wrong = Object.values(this.answered).filter(a => !a.correct).length;
+    const pool = this.getQuestionsForState();
+    const poolIds = new Set(pool.map(q => q.id));
+    let unanswered = 0;
+    pool.forEach(q => { if(!this.answered[q.id]) unanswered++; });
+
     const pct = total > 0 ? Math.round(correct/total*100) : 0;
     const el = document.getElementById('score-val');
     if(el){
@@ -349,10 +424,22 @@ const DW = {
       pbar.setAttribute('aria-valuenow', String(pct));
     }
     const pct_el = document.getElementById('score-pct');
-    if(pct_el) pct_el.textContent = total > 0 ? pct + '%' : '';
+    if(pct_el) pct_el.textContent = total > 0 ? `${this.t('prog_accuracy')}: ${pct}%` : '';
+
+    const accEl = document.getElementById('prog-accuracy');
+    if(accEl) accEl.textContent = total > 0 ? `${pct}%` : '—';
+
+    const cEl = document.getElementById('prog-correct');
+    const iEl = document.getElementById('prog-incorrect');
+    const uEl = document.getElementById('prog-unanswered');
+    if(cEl) cEl.textContent = String(correct);
+    if(iEl) iEl.textContent = String(wrong);
+    if(uEl) uEl.textContent = String(unanswered);
+
+    const mob = document.getElementById('quiz-mobile-progress');
+    if(mob) mob.textContent = `${this.t('prog_score')}: ${correct}/${total} · ${this.t('prog_accuracy')}: ${total ? pct + '%' : '—'}`;
   },
 
-  // ── CONFETTI ──
   spawnConfetti(el){
     const rect = el.getBoundingClientRect();
     const cx = rect.left + rect.width/2;
@@ -370,7 +457,6 @@ const DW = {
     }
   },
 
-  // ── SIM MODE ──
   startSim(){
     const pool = this.getQuestionsForState();
     if(pool.length === 0){
@@ -383,79 +469,167 @@ const DW = {
     const n = Math.min(30, pool.length);
     this.simMode = true;
     this.simAnswered = {};
+    this.simRenderedCount = 1;
+    this.simCompleted = false;
+    this.simReviewMode = 'all';
     this.simQueue = [...pool].sort(() => Math.random() - 0.5).slice(0, n);
-    this.simIdx = 0;
     document.getElementById('study-wrapper').style.display = 'none';
     document.getElementById('sim-wrapper').style.display = 'block';
-    this.renderSimCard();
+    this._simScrollTarget = null;
+    this.renderSimStack();
   },
 
-  renderSimCard(){
-    const q = this.simQueue[this.simIdx];
-    const lang = this.lang;
-    const qLang = this.questionLang(lang);
-    const total = this.simQueue.length;
-    const pct = Math.round((this.simIdx / total) * 100);
-
-    document.getElementById('sim-progress-text').textContent = `${this.simIdx + 1} / ${total}`;
-    document.getElementById('sim-progress-bar').style.width = pct + '%';
-
+  renderSimStack(){
     const container = document.getElementById('sim-card-container');
-    container.innerHTML = this.renderCard(q, lang, qLang);
-  },
+    const total = this.simQueue.length;
+    const dLang = this.getDisplayLang();
+    const tLang = this.getTranslationLang();
 
-  simNext(){
-    this.simIdx++;
-    if(this.simIdx >= this.simQueue.length){
-      this.showSimResult();
-    } else {
-      this.renderSimCard();
+    const revealed = this.simQueue.slice(0, this.simRenderedCount);
+    let html = '';
+
+    for(const q of revealed){
+      const ans = this.simAnswered[q.id];
+      if(this.simReviewMode === 'mistakes' && (!ans || ans.correct)) continue;
+
+      const answered = !!ans;
+      const isCorrect = ans?.correct;
+      const wrapCls = `sim-card-wrap${answered ? ` sim-card answered ${isCorrect ? 'correct' : 'incorrect'}` : ''}`;
+
+      let inner = this.renderCard(q, dLang, tLang, { omitAnswer: true });
+      inner = inner.replace('<div class="qcard"', `<div class="qcard sim-qcard-inner"`);
+
+      let extra = '';
+      if(answered){
+        const correctOpt = q.opts.find(o => o.ok);
+        const chosenOpt = q.opts.find(o => o.l === ans.chosen);
+        const yourTxt = chosenOpt ? (chosenOpt.t[dLang] || chosenOpt.t.en) : ans.chosen;
+        const okTxt = correctOpt ? (correctOpt.t[dLang] || correctOpt.t.en) : '';
+        const badge = isCorrect
+          ? `<div class="sim-status-badge sim-status-correct">${this.t('sim_badge_ok')}</div>`
+          : `<div class="sim-status-badge sim-status-wrong">${this.t('sim_badge_bad')}</div>`;
+        let review = '';
+        if(!isCorrect){
+          review = `<div class="answer-review incorrect">
+            <div><strong>${this.t('sim_your_answer')}</strong> ${yourTxt}</div>
+            <div><strong>${this.t('sim_correct_answer')}</strong> ${okTxt}</div>
+          </div>`;
+        } else {
+          review = `<div class="answer-review correct"><strong>${this.t('sim_badge_ok')}</strong></div>`;
+        }
+        const expMain = q.exp[dLang] || q.exp.en || '';
+        const expTrans = tLang ? (q.exp[tLang] || '') : '';
+        const expHtml = this.formatBilingualBlock(expMain, expTrans);
+        const tip = q.tip ? (q.tip[dLang] || q.tip.en || '') : '';
+        const tipTrans = tLang && q.tip ? (q.tip[tLang] || '') : '';
+        const tipBlock = tip ? `<div class="atip">💡 ${this.formatBilingualBlock(tip, tipTrans)}</div>` : '';
+        extra = badge + review + `<div class="explanation-box"><div class="alabel">${this.t('sim_explanation')}</div>${expHtml}${tipBlock}</div>`;
+      }
+
+      html += `<div class="${wrapCls}" id="sim-q-${q.id}" data-qid="${q.id}">${inner}${extra}</div>`;
+    }
+
+    if(this.simCompleted){
+      html += this.renderSimFinalPanel();
+    }
+
+    container.innerHTML = html;
+
+    for(const q of revealed){
+      const ans = this.simAnswered[q.id];
+      if(!ans) continue;
+      const wrap = container.querySelector(`#sim-q-${q.id}`);
+      const card = wrap?.querySelector('.qcard');
+      if(!card) continue;
+      const isCorrect = ans.correct;
+      card.querySelectorAll('.opt').forEach(o => {
+        o.setAttribute('data-done','1');
+        o.style.cursor = 'default';
+        if(o.dataset.correct === 'true') o.classList.add(isCorrect ? 'correct' : 'missed');
+        else if(o.dataset.letter === ans.chosen && !isCorrect) o.classList.add('wrong');
+      });
+    }
+
+    document.getElementById('sim-progress-text').textContent = `${this.simRenderedCount} / ${total}`;
+    const barPct = this.simCompleted ? 100 : Math.round((this.simRenderedCount / total) * 100);
+    document.getElementById('sim-progress-bar').style.width = barPct + '%';
+
+    if(this._simScrollTarget){
+      const id = this._simScrollTarget;
+      const el = document.getElementById(id);
+      this._simScrollTarget = null;
+      if(el){
+        requestAnimationFrame(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
     }
   },
 
-  showSimResult(){
+  renderSimFinalPanel(){
     const total = this.simQueue.length;
     let score = 0;
     this.simQueue.forEach(q => { if(this.simAnswered[q.id]?.correct) score++; });
-    const pct = Math.round(score/total*100);
-    const pass = pct >= 80;
-    const qLang = this.questionLang(this.lang);
-    this.syncMockSession({ state: this.state || 'WA', score, total });
-    const msgs = {
-      pass: {pt:'Parabéns! Você passou!', en:'Congratulations! You passed!', es:'¡Felicidades! ¡Aprobaste!'},
-      fail: {pt:'Continue estudando. Você precisa de 80%.', en:'Keep studying. You need 80%.', es:'Sigue estudiando. Necesitas 80%.'},
-      back: {pt:'Voltar ao estudo', en:'Back to study', es:'Volver al estudio'}
-    };
-    document.getElementById('sim-card-container').innerHTML = `
-      <div class="sim-result">
-        <div class="sim-result-icon">${pass ? '🎉' : '📚'}</div>
-        <div class="sim-result-score">${score}/${total}</div>
-        <div class="sim-result-pct" style="color:${pass?'var(--green)':'var(--red)'}">${pct}%</div>
-        <div class="sim-result-msg">${pass ? msgs.pass[qLang] : msgs.fail[qLang]}</div>
-        <button class="btn btn-gold" type="button" data-action="mode-all" style="margin-top:20px">${msgs.back[qLang]}</button>
-      </div>`;
+    const pct = total > 0 ? Math.round(score/total*100) : 0;
+    let msgKey = 'sim_result_low';
+    if(score >= 26) msgKey = 'sim_result_high';
+    else if(score >= 21) msgKey = 'sim_result_mid';
+
+    const dLang = this.getDisplayLang();
+    const wrongByCat = {};
+    this.simQueue.forEach(q => {
+      const a = this.simAnswered[q.id];
+      if(a && !a.correct){
+        wrongByCat[q.cat] = (wrongByCat[q.cat] || 0) + 1;
+      }
+    });
+    const weakSorted = Object.entries(wrongByCat).sort((a,b) => b[1] - a[1]).slice(0, 5);
+    let chips = '';
+    weakSorted.forEach(([cat]) => {
+      const catMeta = CATEGORIES.find(c => c.key === cat);
+      const chipLabel = catMeta
+        ? `${catMeta.icon || ''} ${catMeta.label?.[dLang] || catMeta.label?.en || cat}`.trim()
+        : cat;
+      chips += `<button type="button" class="weak-chip" data-action="sim-weak-topic" data-cat="${cat}">${chipLabel}</button>`;
+    });
+    if(!chips) chips = `<span class="weak-none">${this.t('sim_no_weak')}</span>`;
+
+    return `<div id="sim-final-panel" class="sim-final-panel">
+      <div class="sim-final-inner">
+        <h3 class="sim-final-title">${this.t('sim_final_title')}</h3>
+        <div class="sim-result-score">${score} / ${total}</div>
+        <div class="sim-result-pct">${pct}%</div>
+        <p class="sim-result-msg">${this.t(msgKey)}</p>
+        <div class="sim-final-actions">
+          <button type="button" class="btn btn-secondary btn-sm" data-action="sim-review-mistakes">${this.t('sim_btn_mistakes')}</button>
+          <button type="button" class="btn btn-secondary btn-sm" data-action="sim-review-all">${this.t('sim_btn_all')}</button>
+          <button type="button" class="btn btn-gold btn-sm" data-action="sim-restart">${this.t('sim_btn_restart')}</button>
+        </div>
+        <div class="sim-weak-block">
+          <div class="sim-weak-label">${this.t('sim_weak_label')}</div>
+          <div class="weak-chips">${chips}</div>
+        </div>
+      </div>
+    </div>`;
   },
 
-  // ── INIT ──
   init(){
     this.load();
-    // restore lang UI
     const langEl = document.querySelector(`.ld-option[data-lang="${this.lang}"]`);
     if(langEl) { langEl.classList.add('active'); }
-    document.body.className = 'mode-' + this.lang;
-    document.documentElement.lang = this.lang.startsWith('pt') ? 'pt-BR' : this.lang.startsWith('es') ? 'es' : 'en';
+    const d = this.getDisplayLang();
+    document.body.className = 'mode-' + d;
+    document.documentElement.lang = d === 'pt' ? 'pt-BR' : d === 'es' ? 'es' : 'en';
     document.getElementById('ld-flag').textContent = FLAGS[this.lang] || '🇧🇷';
     document.getElementById('ld-name').textContent = NAMES[this.lang] || 'Português';
 
-    // close dropdown on outside click
     document.addEventListener('click', e => {
       if(!document.getElementById('ld')?.contains(e.target)){
-        document.getElementById('ld-panel').classList.remove('open');
-        document.getElementById('ld-trigger').classList.remove('open');
+        document.getElementById('ld-panel')?.classList.remove('open');
+        document.getElementById('ld-trigger')?.classList.remove('open');
       }
     });
 
-    // nav active on scroll
     const navLinks = document.querySelectorAll('nav a');
     const sections = document.querySelectorAll('section[id]');
     window.addEventListener('scroll', () => {
@@ -467,7 +641,6 @@ const DW = {
       });
     }, {passive:true});
 
-    // Restore score counts from storage
     const total = Object.keys(this.answered).length;
     const correct = Object.values(this.answered).filter(a => a.correct).length;
     this.total = total; this.correct = correct;
@@ -476,7 +649,6 @@ const DW = {
     this.renderQuiz();
     this.updateScore();
 
-    // Wire mode buttons
     document.querySelectorAll('.fmode').forEach(btn => {
       btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
       btn.addEventListener('click', () => {
@@ -486,12 +658,64 @@ const DW = {
       });
     });
 
-    // Wire reset button
     const resetBtn = document.getElementById('reset-btn');
     if(resetBtn) resetBtn.addEventListener('click', () => DW.clearProgress());
 
-    // Option selection (delegation) + keyboard
     document.addEventListener('click', (e) => {
+      const loadMore = e.target.closest?.('[data-action="load-more-quiz"]');
+      if(loadMore){
+        this.visibleQuestionCount += 10;
+        this.renderQuiz();
+        return;
+      }
+      const emptyWa = e.target.closest?.('[data-action="empty-wa"]');
+      if(emptyWa){
+        this.applyEmptyStateWA();
+        return;
+      }
+      const emptyLearn = e.target.closest?.('[data-action="empty-learn"]');
+      if(emptyLearn){
+        document.getElementById('learn')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      const simM = e.target.closest?.('[data-action="sim-review-mistakes"]');
+      if(simM){
+        this.simReviewMode = 'mistakes';
+        const firstWrong = this.simQueue.find(q => this.simAnswered[q.id] && !this.simAnswered[q.id].correct);
+        this._simScrollTarget = firstWrong ? `sim-q-${firstWrong.id}` : 'sim-final-panel';
+        this.renderSimStack();
+        return;
+      }
+      const simAll = e.target.closest?.('[data-action="sim-review-all"]');
+      if(simAll){
+        this.simReviewMode = 'all';
+        this._simScrollTarget = null;
+        this.renderSimStack();
+        return;
+      }
+      const simRes = e.target.closest?.('[data-action="sim-restart"]');
+      if(simRes){
+        this.startSim();
+        document.getElementById('questoes')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      const weak = e.target.closest?.('[data-action="sim-weak-topic"]');
+      if(weak){
+        const cat = weak.getAttribute('data-cat');
+        this.simMode = false;
+        document.getElementById('sim-wrapper').style.display = 'none';
+        document.getElementById('study-wrapper').style.display = 'block';
+        document.querySelectorAll('.fmode').forEach(b => {
+          const on = b.dataset.mode === 'all';
+          b.classList.toggle('active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        this.mode = 'all';
+        this.setCat(cat || 'all');
+        document.getElementById('questoes')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+
       const opt = e.target.closest?.('.opt');
       if(opt){
         const card = opt.closest?.('.qcard');
@@ -500,6 +724,7 @@ const DW = {
       const actionEl = e.target.closest?.('[data-action="mode-all"]');
       if(actionEl) DW.setMode('all');
     });
+
     document.addEventListener('keydown', (e) => {
       const opt = e.target?.closest?.('.opt');
       if(!opt) return;
@@ -508,8 +733,25 @@ const DW = {
       const card = opt.closest?.('.qcard');
       if(card) DW.pick(opt, card.id);
     });
+  },
 
-    // Remove old onclick from mode buttons (safety)
+  applyEmptyStateWA(){
+    this.state = 'WA';
+    try{
+      localStorage.setItem('kl-state', 'WA');
+    }catch(e){}
+    this.hydrateAnsweredForCurrentState();
+    document.querySelectorAll('.state-card').forEach(c => {
+      const on = c.dataset.state === 'WA';
+      c.classList.toggle('active', on);
+      c.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
+    const sel = document.getElementById('state-select');
+    if(sel) sel.value = 'WA';
+    this.visibleQuestionCount = 10;
+    if(this.simMode) this.startSim();
+    else this.renderQuiz();
+    this.updateScore();
   }
 };
 
@@ -543,22 +785,39 @@ DW.syncMockSession = function(session){
 };
 
 const FLAGS={pt:'🇧🇷',en:'🇦🇺',es:'🇪🇸',pten:'🇧🇷\u2009🇦🇺',esen:'🇪🇸\u2009🇦🇺'};
-const NAMES={pt:'Português',en:'English',es:'Español',pten:'Bilíngue PT+EN',esen:'Bilíngüe ES+EN'};
+const NAMES={pt:'Português',en:'English',es:'Español',pten:'PT + EN',esen:'ES + EN'};
 
 const I18N = {
-  empty_state_title: {pt:'Em breve para este estado',en:'Questions for this state are coming soon',es:'Preguntas para este estado: próximamente'},
-  empty_state_sub:   {pt:'Por enquanto você pode continuar praticando WA.',en:'You can keep practising WA questions for now.',es:'Por ahora puedes seguir practicando WA.'},
+  empty_state_title: {pt:'As perguntas deste estado estarão disponíveis em breve.',en:'Questions for this state are coming soon.',es:'Las preguntas de este estado estarán disponibles pronto.'},
+  empty_state_sub:   {pt:'Por enquanto, você pode continuar praticando com as perguntas de WA.',en:'You can continue practising WA questions for now.',es:'Por ahora, puedes practicar con preguntas de WA.'},
+  empty_btn_wa:      {pt:'Praticar WA',en:'Practise WA questions',es:'Practicar WA'},
+  empty_btn_learn:   {pt:'Voltar para Aprender',en:'Back to Learn',es:'Volver a Aprender'},
   empty_title: {pt:'Sem questões nesta categoria!',en:'No questions in this category!',es:'¡Sin preguntas en esta categoría!'},
   empty_sub:   {pt:'Tente mudar o filtro ou o modo.',en:'Try changing the filter or mode.',es:'Prueba cambiando el filtro o el modo.'},
+  load_more:   {pt:'Carregar mais perguntas',en:'Load more questions',es:'Cargar más preguntas'},
   subscribe_ok: {pt:'Obrigado! Inscrição registrada.',en:'Thanks! You are subscribed.',es:'¡Gracias! Te has suscrito.'},
   subscribe_err: {pt:'Digite um e-mail válido.',en:'Please enter a valid email.',es:'Introduce un correo válido.'},
-  mode_all:    {pt:'Todas',en:'All',es:'Todas'},
-  mode_wrong:  {pt:'Erradas',en:'Wrong',es:'Erradas'},
-  mode_unans:  {pt:'Não respondidas',en:'Unanswered',es:'Sin responder'},
-  mode_sim:    {pt:'Simulado (30 perguntas)',en:'Simulate (30 questions)',es:'Simulacro (30 preguntas)'},
+  prog_score: {pt:'Pontuação',en:'Score',es:'Puntuación'},
+  prog_accuracy: {pt:'Precisão',en:'Accuracy',es:'Precisión'},
+  prog_correct: {pt:'Certas',en:'Correct',es:'Correctas'},
+  prog_incorrect: {pt:'Erradas',en:'Incorrect',es:'Incorrectas'},
+  prog_unanswered: {pt:'Não respondidas',en:'Unanswered',es:'Sin responder'},
+  sim_badge_ok: {pt:'Correta',en:'Correct',es:'Correcta'},
+  sim_badge_bad: {pt:'Errada',en:'Incorrect',es:'Incorrecta'},
+  sim_your_answer: {pt:'Sua resposta:',en:'Your answer:',es:'Tu respuesta:'},
+  sim_correct_answer: {pt:'Resposta correta:',en:'Correct answer:',es:'Respuesta correcta:'},
+  sim_explanation: {pt:'Explicação',en:'Explanation',es:'Explicación'},
+  sim_final_title: {pt:'Resultado do simulado',en:'Mock test results',es:'Resultado del simulacro'},
+  sim_result_high: {pt:'Excelente trabalho!',en:'Excellent work!',es:'¡Excelente trabajo!'},
+  sim_result_mid: {pt:'Bom progresso — continue assim.',en:'Good progress — keep going.',es:'Buen progreso — sigue así.'},
+  sim_result_low: {pt:'Continue praticando — você vai melhorar.',en:'Keep practising — you will improve.',es:'Sigue practicando — mejorarás.'},
+  sim_btn_mistakes: {pt:'Rever erros',en:'Review mistakes',es:'Revisar errores'},
+  sim_btn_all: {pt:'Ver todas',en:'Show all',es:'Ver todas'},
+  sim_btn_restart: {pt:'Reiniciar simulado',en:'Restart mock test',es:'Reiniciar simulacro'},
+  sim_weak_label: {pt:'Praticar tópicos fracos',en:'Practice weak topics',es:'Practicar temas débiles'},
+  sim_no_weak: {pt:'Nenhum tópico fraco neste simulado.',en:'No weak topics in this run.',es:'Sin temas débiles en esta sesión.'},
 };
 
 function ldToggle(){ DW.ldToggle(); }
 function setLang(lang, el){ DW.setLang(lang, el); }
 window.DW = DW;
-

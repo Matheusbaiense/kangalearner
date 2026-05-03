@@ -326,7 +326,7 @@
         </p>
       </div>
 
-      <a class="btn btn-secondary btn-sm" href="#questoes">
+      <a class="btn btn-secondary btn-sm learn-cta-practice" href="#questoes">
         <span class="l-pt">Ir para prática</span>
         <span class="l-en">Go to practice</span>
         <span class="l-es">Ir a la práctica</span>
@@ -354,8 +354,10 @@
       </div>
     </div>
 
+    <div class="quiz-mobile-progress" id="quiz-mobile-progress" aria-live="polite"></div>
+
     <div class="app-shell">
-      <aside class="panel panel-pad">
+      <aside class="panel panel-pad app-aside-left">
         <div class="panel-title"><span class="l-pt">Modo de estudo</span><span class="l-en">Study mode</span><span class="l-es">Modo de estudio</span></div>
         <div class="mode-bar">
           <button class="fmode active" type="button" data-mode="all" aria-pressed="true">
@@ -399,7 +401,7 @@
             <div class="sim-meta">
               <span class="sim-label">
                 <span class="l-pt">Simulado</span>
-                <span class="l-en">Simulation</span>
+                <span class="l-en">Mock test</span>
                 <span class="l-es">Simulacro</span>
               </span>
               <span id="sim-progress-text" aria-live="polite">1 / 30</span>
@@ -410,7 +412,7 @@
         </div>
       </section>
 
-      <aside class="panel panel-pad">
+      <aside class="panel panel-pad app-aside-right">
         <div class="panel-title"><span class="l-en">Your Progress</span><span class="l-pt">Seu progresso</span><span class="l-es">Tu progreso</span></div>
         <div class="score-bar">
           <div class="score-row">
@@ -418,6 +420,12 @@
             <span id="score-val" aria-live="polite">0 / 0</span>
             <span id="score-pct" aria-live="polite"></span>
             <div class="pbar-track"><div id="score-pbar" role="progressbar" aria-label="Score progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
+            <dl class="progress-detail" aria-label="Practice breakdown">
+              <div><dt><span class="l-pt">Precisão</span><span class="l-en">Accuracy</span><span class="l-es">Precisión</span></dt><dd id="prog-accuracy" aria-live="polite">—</dd></div>
+              <div><dt><span class="l-pt">Certas</span><span class="l-en">Correct</span><span class="l-es">Correctas</span></dt><dd id="prog-correct" aria-live="polite">0</dd></div>
+              <div><dt><span class="l-pt">Erradas</span><span class="l-en">Incorrect</span><span class="l-es">Incorrectas</span></dt><dd id="prog-incorrect" aria-live="polite">0</dd></div>
+              <div><dt><span class="l-pt">Não respondidas</span><span class="l-en">Unanswered</span><span class="l-es">Sin responder</span></dt><dd id="prog-unanswered" aria-live="polite">0</dd></div>
+            </dl>
             <button class="score-reset" id="reset-btn">
               <span class="l-pt">Reiniciar tudo</span>
               <span class="l-en">Reset all</span>

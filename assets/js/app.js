@@ -24,7 +24,10 @@
     }
 
     cards.forEach(card => {
-      card.addEventListener('click', () => setState(card.dataset.state));
+      card.addEventListener('click', () => {
+        if(card.classList.contains('coming-soon')) return;
+        setState(card.dataset.state);
+      });
     });
 
     if(select){

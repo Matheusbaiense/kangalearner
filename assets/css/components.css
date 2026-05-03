@@ -201,12 +201,19 @@
 .state-name{font-size:.68rem;color:var(--muted2);line-height:1.15;margin-top:4px}
 
 .state-card.coming-soon{
-  opacity:.55;
+  opacity:.48;
   cursor:not-allowed;
   transform:none !important;
   box-shadow:none !important;
+  filter:grayscale(.35);
+  border-style:dashed;
+  background:var(--paper2);
 }
-.state-card.coming-soon:hover{transform:none}
+.state-card.coming-soon:hover{
+  transform:none;
+  border-color:var(--border);
+  box-shadow:none !important;
+}
 .state-badge{
   margin-top:8px;
   font-size:.62rem;
@@ -394,6 +401,21 @@
   max-width:520px;
 }
 .learn-source{font-weight:850;color:var(--muted2)}
+
+.learn-cta-practice{
+  border:2px solid rgba(46,125,91,.45) !important;
+  background:linear-gradient(135deg,var(--green3),#ffffff) !important;
+  color:var(--green) !important;
+  font-weight:900;
+  box-shadow:0 8px 22px rgba(46,125,91,.12);
+}
+.learn-cta-practice:hover{
+  background:linear-gradient(135deg,rgba(46,125,91,.18),var(--green3)) !important;
+  color:#1a4d36 !important;
+}
+.learn-card.open .learn-footer .btn-primary{
+  box-shadow:0 10px 26px rgba(46,125,91,.22);
+}
 
 @media (max-width: 900px){
   .learn-head{align-items:flex-start;flex-direction:column}
