@@ -1,3 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="52" viewBox="0 0 240 52">
+  <g transform="translate(0, -6)">
+    <g transform="translate(0, 6)">
+      <rect x="0" y="0" width="52" height="52" rx="14" fill="#071A2C"/>
+      <g transform="translate(8, 8)">
+        <svg x="0" y="0" width="36" height="36" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 C34 48 32 50 30 52 Z" fill="#0B1D2D"/>
+          <path d="M27 20 L30 46" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+          <path d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z" fill="#0B1D2D"/>
+          <path d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z" fill="#0B1D2D"/>
+          <path d="M12 30 C12 20 18 12 26 10" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M34 44 C38 44 46 46 50 42" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          <path d="M47 38 L50 42 L45 44" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        </svg>
+      </g>
+    </g>
+  </g>
+  <text x="64" y="34" font-family="Sora, system-ui, -apple-system, Segoe UI, sans-serif" font-size="26" font-weight="800" fill="#0B1D2D" letter-spacing="-0.8">
+    KangaLearner
+  </text>
+</svg>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 72">
   <rect x="0" y="4" width="64" height="64" rx="14" fill="#0B1D2D"/>
   <path d="M22 56 C18 49 14 40 16 30 C18 22 24 17 28 14 C30 13 32 13 33 15 C34 17 32 20 30 22 C28 24 27 26 28 30 C29 34 33 36 35 39 C37 42 37 46 35 50 C34 52 32 54 30 56 Z" fill="white"/>
