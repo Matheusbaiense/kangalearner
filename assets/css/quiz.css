@@ -473,13 +473,19 @@
   text-decoration: underline;
 }
 .footer-brand {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 10px;
+  text-decoration: none;
+  color: inherit;
 }
-.footer-brand .logo-name {
-  font-size: 1.25rem;
+.footer-brand .brand-mark {
+  width: 36px;
+  height: 36px;
+}
+.footer-brand .brand-wordmark {
+  font-size: 1.05rem;
 }
 .footer-note {
   color: rgba(255, 255, 255, 0.68);
@@ -545,9 +551,6 @@
     max-width: none;
     justify-self: stretch;
   }
-  .main-nav {
-    display: none;
-  }
   .hero-inner {
     grid-template-columns: 1fr;
     gap: 34px;
@@ -590,28 +593,8 @@
   }
 }
 @media (max-width: 720px) {
-  .site-header {
-    height: 72px;
-  }
-  .nav-shell {
-    padding: 0 18px;
-  }
-  .logo-name {
-    font-size: 1.08rem;
-  }
-  .logo-mark {
-    width: 32px;
-    height: 32px;
-    flex-basis: 32px;
-  }
-  .state-control {
-    display: none;
-  }
-  .ld-name {
-    display: none;
-  }
   .hero {
-    padding-top: 72px;
+    padding-top: 0;
   }
   .hero-inner {
     padding: 38px 18px;
@@ -801,9 +784,9 @@
   .app-aside-left,
   .app-aside-right {
     position: sticky;
-    top: var(--header-height, 96px);
+    top: var(--header-height, 72px);
     align-self: start;
-    max-height: min(calc(100vh - var(--header-height, 96px) - 24px), 900px);
+    max-height: min(calc(100vh - var(--header-height, 72px) - 24px), 900px);
     overflow: auto;
     scrollbar-width: thin;
     scrollbar-color: rgba(83, 103, 120, 0.35) transparent;
