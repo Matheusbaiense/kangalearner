@@ -1,0 +1,1952 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KangaLearner — Australia Learner Test Practice</title>
+<meta name="description" content="Study Australian road rules by state. Practice learner test questions, take mock tests and track your progress.">
+<meta property="og:title" content="KangaLearner — Australia Learner Test Practice">
+<meta property="og:description" content="Study Australian road rules by state, practice unlimited questions and track your progress.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#071A2C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230B1D2D'/><path d='M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 Z' fill='white'/><path d='M12 30 C12 20 18 12 26 10' stroke='%2352B788' stroke-width='4' fill='none'/><path d='M34 44 C38 44 45 46 49 42' stroke='%2352B788' stroke-width='4' fill='none'/><path d='M46 38 L49 42 L44 44' stroke='%2352B788' stroke-width='4' fill='none'/></svg>"><rect width='64' height='64' rx='16' fill='%23071A2C'/><path d='M16 46C23 29 32 20 48 14C43 22 37 30 34 46Z' fill='white'/><path d='M22 44C29 28 38 19 51 13' stroke='%2352B788' stroke-width='5' fill='none' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   KANGALEARNER V9 — DESIGN SYSTEM
+══════════════════════════════════════════ */
+:root{
+  --navy-950:#061321;
+  --navy-925:#071A2C;
+  --navy-900:#0B1D2D;
+  --navy-850:#0E273D;
+  --navy-800:#102A42;
+  --ink:#0D1B2A;
+  --text:#F8FAFC;
+  --text2:#CBD5E1;
+  --muted:#7A8A9A;
+  --muted2:#536778;
+  --paper:#FFFFFF;
+  --paper2:#F6F8FA;
+  --paper3:#EEF3F6;
+  --border:#DDE5EA;
+  --border-dark:rgba(255,255,255,.12);
+  --green:#2E7D5B;
+  --green2:#52B788;
+  --green3:#EAF5EF;
+  --red:#EF4444;
+  --orange:#F59E0B;
+  --blue:#38BDF8;
+  --shadow-soft:0 16px 40px rgba(7,26,44,.12);
+  --shadow-card:0 22px 70px rgba(7,26,44,.16);
+  --radius-sm:10px;
+  --radius-md:16px;
+  --radius-lg:22px;
+  --radius-xl:32px;
+  --container:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:82px}
+body{
+  font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.55;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+}
+a{color:inherit;text-decoration:none}
+button{font:inherit}
+strong{font-weight:750;color:inherit}
+body.mode-en .l-pt, body.mode-en .l-es,
+body.mode-pt .l-en, body.mode-pt .l-es,
+body.mode-es .l-en, body.mode-es .l-pt,
+body.mode-pten .l-es,
+body.mode-esen .l-pt{display:none}
+
+.container{max-width:var(--container);margin:0 auto;padding:0 28px}
+.section-pad{padding:54px 0}
+.section-title{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(1.45rem,2.5vw,2.35rem);
+  line-height:1.12;
+  letter-spacing:-.04em;
+  margin-bottom:12px;
+}
+.section-sub{color:var(--muted2);font-size:.95rem;max-width:660px}
+
+/* ══════════════════════════════════════════
+   LOGO
+══════════════════════════════════════════ */
+.logo-mark{
+  width:36px;height:36px;flex:0 0 36px;display:block;
+}
+.logo-mark svg{width:100%;height:100%;display:block}
+.logo-word{
+  display:flex;flex-direction:column;line-height:1;
+}
+.logo-name{
+  font-family:'Sora',sans-serif;
+  font-weight:800;
+  font-size:1.38rem;
+  letter-spacing:-.055em;
+  color:var(--text);
+}
+.logo-sub{
+  display:none;
+  color:rgba(255,255,255,.52);
+  text-transform:uppercase;
+  letter-spacing:.12em;
+  font-weight:700;
+  font-size:.56rem;
+  margin-top:5px;
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.site-header{
+  position:absolute;top:0;left:0;right:0;z-index:50;
+  height:84px;
+  display:flex;align-items:center;
+  color:var(--text);
+}
+.nav-shell{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:0 28px;
+  display:flex;align-items:center;gap:26px;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;min-width:max-content;
+}
+.main-nav{
+  display:flex;align-items:center;gap:30px;
+  margin-left:auto;
+}
+.main-nav a{
+  font-weight:700;
+  font-size:.88rem;
+  color:rgba(255,255,255,.88);
+  height:84px;
+  display:flex;align-items:center;
+  position:relative;
+}
+.main-nav a.active::after{
+  content:"";position:absolute;left:0;right:0;bottom:18px;margin:auto;
+  width:28px;height:3px;border-radius:10px;background:var(--green2);
+}
+.header-controls{display:flex;align-items:center;gap:12px;margin-left:10px}
+
+/* state and language controls */
+.state-control,.ld-trigger{
+  height:42px;
+  display:flex;align-items:center;gap:9px;
+  padding:0 14px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.05);
+  color:var(--text);
+  border-radius:10px;
+  font-weight:700;
+  font-size:.86rem;
+  backdrop-filter:blur(12px);
+  cursor:pointer;
+}
+.state-control select{
+  background:transparent;border:0;color:inherit;font:inherit;outline:0;cursor:pointer;
+}
+.state-control option{color:var(--ink)}
+.ld-wrap{position:static;user-select:none}
+.ld-flag{font-size:1rem;line-height:1}
+.ld-name{white-space:nowrap}
+.ld-arrow{font-size:.65rem;color:var(--green2);transition:transform .2s}
+.ld-trigger.open .ld-arrow{transform:rotate(180deg)}
+.ld-panel{
+  position:fixed;
+  background:var(--paper);
+  color:var(--ink);
+  border:1px solid var(--border);
+  border-radius:14px;
+  overflow:hidden;
+  max-height:0;
+  opacity:0;
+  pointer-events:none;
+  box-shadow:var(--shadow-card);
+  z-index:9999;
+  min-width:230px;
+  transition:max-height .2s ease,opacity .15s ease;
+}
+.ld-panel.open{max-height:320px;opacity:1;pointer-events:auto}
+.ld-option{
+  display:flex;align-items:center;gap:10px;
+  padding:11px 14px;cursor:pointer;
+  border-bottom:1px solid var(--border);
+}
+.ld-option:last-child{border-bottom:0}
+.ld-option:hover{background:var(--paper2)}
+.ld-option.active{background:var(--green3)}
+.ld-oflag{font-size:1rem;width:28px;text-align:center}
+.ld-oname{font-weight:750;color:var(--ink);font-size:.86rem}
+.ld-osub{font-size:.7rem;color:var(--muted);margin-left:auto}
+.ld-check{opacity:0;color:var(--green);font-weight:900}
+.ld-option.active .ld-check{opacity:1}
+
+/* ══════════════════════════════════════════
+   BUTTONS
+══════════════════════════════════════════ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  min-height:52px;
+  padding:0 23px;
+  border-radius:12px;
+  border:1px solid transparent;
+  font-weight:800;
+  cursor:pointer;
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{
+  background:linear-gradient(135deg,var(--green2),var(--green));
+  color:white;
+  box-shadow:0 16px 30px rgba(46,125,91,.24);
+}
+.btn-secondary{
+  color:var(--text);
+  border-color:rgba(255,255,255,.25);
+  background:rgba(255,255,255,.03);
+}
+.btn-secondary:hover{background:rgba(255,255,255,.08)}
+.btn-sm{min-height:38px;padding:0 14px;border-radius:10px;font-size:.82rem}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.hero{
+  min-height:540px;
+  background:
+    radial-gradient(circle at 76% 8%, rgba(82,183,136,.16), transparent 31%),
+    linear-gradient(90deg, rgba(6,19,33,.98), rgba(7,26,44,.94) 53%, rgba(7,26,44,.97)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Crect width='900' height='520' fill='%23061525'/%3E%3Cpath d='M0 475 C160 400 270 357 380 520 L0 520Z' fill='%23102237'/%3E%3Cpath d='M0 520 C140 410 260 350 380 280' stroke='%23F5C542' stroke-width='3' fill='none' opacity='.85'/%3E%3Cpath d='M0 500 C130 405 260 355 390 295' stroke='%23FFFFFF' stroke-width='2' fill='none' opacity='.3'/%3E%3Cpath d='M28 0 C22 100 54 191 18 290' stroke='%23203651' stroke-width='6' fill='none' opacity='.35'/%3E%3C/svg%3E");
+  background-size:cover;
+  color:var(--text);
+  padding-top:84px;
+  display:flex;align-items:center;
+}
+.hero-inner{
+  width:100%;
+  max-width:var(--container);
+  margin:0 auto;
+  padding:48px 28px 52px;
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(380px,500px);
+  gap:60px;
+  align-items:center;
+}
+.eyebrow{
+  display:flex;align-items:center;gap:12px;
+  text-transform:uppercase;
+  letter-spacing:.06em;
+  color:var(--green2);
+  font-weight:900;
+  font-size:.86rem;
+  margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:22px;height:3px;border-radius:10px;background:var(--green2)}
+.hero h1{
+  font-family:'Sora',sans-serif;
+  font-size:clamp(2.7rem,5vw,4.45rem);
+  line-height:1.08;
+  letter-spacing:-.065em;
+  max-width:620px;
+  margin-bottom:22px;
+}
+.hero-desc{
+  color:rgba(248,250,252,.78);
+  font-size:1.13rem;
+  max-width:570px;
+  margin-bottom:28px;
+}
+.hero-actions{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:28px}
+.hero-proof{
+  display:flex;align-items:center;gap:10px;
+  color:rgba(248,250,252,.72);
+  font-size:.86rem;
+  padding-top:18px;
+  border-top:1px solid rgba(255,255,255,.11);
+  max-width:560px;
+}
+.proof-icon{
+  width:28px;height:28px;border-radius:50%;background:rgba(82,183,136,.16);
+  display:flex;align-items:center;justify-content:center;color:var(--green2);font-weight:900;
+}
+
+/* quiz preview card */
+.hero-preview{
+  background:rgba(255,255,255,.94);
+  border:1px solid rgba(255,255,255,.88);
+  border-radius:24px;
+  padding:18px;
+  box-shadow:0 28px 80px rgba(0,0,0,.28);
+  color:var(--ink);
+}
+.preview-head{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:14px
+}
+.preview-title{display:flex;align-items:center;gap:10px;font-weight:900}
+.preview-pill{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 10px;border-radius:10px;background:var(--green);
+  color:white;font-weight:900;font-size:.78rem
+}
+.preview-grid{display:grid;grid-template-columns:1fr 140px;gap:14px}
+.practice-card,.progress-card,.score-card{
+  background:white;border:1px solid var(--border);border-radius:13px;padding:14px;
+  box-shadow:0 8px 24px rgba(7,26,44,.06);
+}
+.preview-small{font-size:.76rem;color:var(--muted2);font-weight:800}
+.preview-progress{display:flex;align-items:center;gap:10px;margin:8px 0 16px}
+.preview-track{height:7px;background:var(--paper3);border-radius:99px;overflow:hidden;flex:1}
+.preview-fill{height:100%;width:56%;background:var(--green);border-radius:99px}
+.preview-question{font-size:1rem;line-height:1.35;font-weight:850;margin-bottom:14px}
+.preview-options{display:grid;gap:8px}
+.preview-option{
+  display:flex;align-items:center;gap:10px;border:1px solid var(--border);border-radius:9px;padding:10px;
+  font-size:.84rem;color:var(--muted2);font-weight:700;background:white;
+}
+.preview-option.correct{border-color:rgba(46,125,91,.55);background:var(--green3);color:var(--green)}
+.letter{
+  width:23px;height:23px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:900;border:1px solid var(--border);color:var(--muted2)
+}
+.preview-option.correct .letter{background:var(--green);color:white;border-color:var(--green)}
+.progress-card{margin-bottom:14px}
+.ring{
+  width:86px;height:86px;border-radius:50%;
+  background:conic-gradient(var(--green) 0 72%, #E5E7EB 72% 100%);
+  margin:8px auto 12px;
+  display:flex;align-items:center;justify-content:center;
+}
+.ring::after{
+  content:"72%\A Correct";white-space:pre;text-align:center;
+  width:62px;height:62px;border-radius:50%;background:white;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:900;color:var(--ink);line-height:1.2;
+}
+.legend{display:grid;gap:6px;font-size:.72rem;color:var(--muted2);font-weight:700}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px}
+.dot.green{background:var(--green)}.dot.red{background:var(--red)}.dot.gray{background:#D1D5DB}
+.score-card{text-align:center}
+.score-card .score-big{font-family:'Sora',sans-serif;font-size:1.65rem;font-weight:900;color:var(--ink)}
+.score-card small{color:var(--muted2);font-weight:700}
+
+/* ══════════════════════════════════════════
+   FEATURE CARDS / STATE SELECTOR
+══════════════════════════════════════════ */
+.feature-row{
+  margin-top:-38px;
+  position:relative;z-index:5;
+}
+.feature-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;
+}
+.feature-card{
+  background:var(--paper);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px 18px;
+  display:flex;align-items:center;gap:16px;
+  box-shadow:var(--shadow-soft);
+}
+.feature-icon,.trust-icon{
+  width:50px;height:50px;border-radius:50%;background:var(--green3);color:var(--green);
+  display:flex;align-items:center;justify-content:center;flex:0 0 50px;
+}
+.feature-card h3{font-size:1rem;font-weight:900;margin-bottom:4px}
+.feature-card p{font-size:.84rem;color:var(--muted2);line-height:1.35}
+
+.state-section{padding:24px 0 10px}
+.state-row{
+  display:grid;
+  grid-template-columns:130px repeat(8,1fr);
+  gap:12px;
+  align-items:stretch;
+}
+.state-copy{
+  display:flex;align-items:center;
+  font-size:1rem;font-weight:900;line-height:1.35;
+}
+.state-card{
+  min-height:90px;border:1px solid var(--border);background:white;border-radius:12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;
+  cursor:pointer;transition:.15s ease;padding:12px 8px;
+}
+.state-card:hover,.state-card.active{border-color:rgba(46,125,91,.45);box-shadow:0 12px 28px rgba(7,26,44,.09);transform:translateY(-1px)}
+.state-icon{height:30px;margin-bottom:8px;color:var(--ink)}
+.state-code{font-weight:950;font-size:1rem;line-height:1}
+.state-name{font-size:.68rem;color:var(--muted2);line-height:1.15;margin-top:4px}
+
+.trust-strip{
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+  background:linear-gradient(90deg,#F6FBF8,#FFFFFF);
+  margin-top:26px;
+}
+.trust-grid{
+  display:grid;grid-template-columns:190px repeat(3,1fr);gap:0;align-items:center
+}
+.trust-title{font-family:'Sora',sans-serif;font-weight:900;font-size:1.1rem}
+.trust-item{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 22px;
+  border-left:1px solid var(--border);
+}
+.trust-item h4{font-size:.94rem;font-weight:900;margin-bottom:2px}
+.trust-item p{font-size:.82rem;color:var(--muted2);line-height:1.32}
+
+.topics-section{padding:16px 0 22px}
+.topics-title{font-weight:900;margin-bottom:10px}
+.topic-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden
+}
+.topic-card{
+  background:white;min-height:90px;padding:14px 13px;
+  border-right:1px solid var(--border);
+  display:flex;align-items:center;gap:12px;
+  cursor:pointer;transition:.15s;
+}
+.topic-card:last-child{border-right:0}
+.topic-card:hover{background:var(--paper2)}
+.topic-card svg{width:34px;height:34px;flex:0 0 34px;color:var(--ink)}
+.topic-card h4{font-size:.83rem;font-weight:900}
+.topic-card p{font-size:.71rem;color:var(--muted2);line-height:1.25}
+
+/* ══════════════════════════════════════════
+   PRACTICE APP / QUIZ
+══════════════════════════════════════════ */
+.practice-section{
+  background:#F8FAFC;
+  border-top:1px solid var(--border);
+  padding:46px 0 62px;
+}
+.practice-head{
+  display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:22px
+}
+.practice-head .section-sub{max-width:560px}
+.app-shell{
+  display:grid;grid-template-columns:240px minmax(0,1fr) 230px;
+  gap:16px;align-items:start;
+}
+.panel{
+  background:white;border:1px solid var(--border);border-radius:18px;box-shadow:0 10px 30px rgba(7,26,44,.06)
+}
+.panel-pad{padding:16px}
+.panel-title{font-weight:950;margin-bottom:12px;font-size:.92rem}
+.mode-bar,.filter-wrap{display:grid;gap:8px}
+.mode-bar{margin-bottom:18px}
+.fmode,.fcat{
+  width:100%;
+  text-align:left;
+  display:flex;align-items:center;justify-content:space-between;
+  background:white;border:1px solid var(--border);color:var(--muted2);
+  border-radius:10px;padding:10px 12px;
+  font-size:.82rem;font-weight:800;cursor:pointer;transition:.12s;
+}
+.fmode:hover,.fcat:hover{background:var(--paper2);color:var(--ink)}
+.fmode.active,.fcat.active{background:var(--green3);border-color:rgba(46,125,91,.35);color:var(--green)}
+.filter-label{
+  font-size:.7rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase;color:var(--muted2);margin:4px 0 8px;
+}
+#filter-bar{display:grid;gap:8px;max-height:420px;overflow:auto;padding-right:4px}
+.score-bar{
+  padding:0;
+  background:transparent;
+  border:0;
+  margin:0;
+}
+.score-row{display:grid;gap:8px;margin-bottom:12px}
+.slabel{font-size:.72rem;color:var(--muted2);font-weight:950;text-transform:uppercase;letter-spacing:.08em}
+#score-val{font-family:'Sora',sans-serif;font-size:2rem;font-weight:950;color:var(--ink)}
+#score-pct{font-size:.86rem;color:var(--muted2);font-weight:800}
+.score-reset{
+  margin-top:8px;
+  height:38px;border:1px solid var(--border);border-radius:10px;background:var(--paper2);font-weight:850;color:var(--ink);cursor:pointer;
+}
+.pbar-track{height:7px;border-radius:99px;background:var(--paper3);overflow:hidden;margin-top:10px}
+#score-pbar{height:100%;width:0;background:var(--green);border-radius:99px;transition:width .35s ease}
+.quiz-panel{padding:18px}
+.sec-head{
+  display:flex;align-items:center;gap:10px;
+  font-size:.78rem;font-weight:950;letter-spacing:.08em;text-transform:uppercase;color:var(--green);
+  margin:12px 0 12px;
+}
+.sec-head::after{content:"";height:1px;background:var(--border);flex:1}
+.sec-icon{font-size:1rem}
+.qcard{
+  background:white;border:1px solid var(--border);border-radius:16px;padding:18px;margin-bottom:12px;transition:.15s
+}
+.qcard:hover{box-shadow:0 12px 30px rgba(7,26,44,.06);border-color:#C9D6DE}
+.qmeta{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.qnum{font-weight:950;color:var(--green);font-size:.72rem}
+.qcat-badge{margin-left:auto;background:var(--paper2);border:1px solid var(--border);border-radius:99px;padding:4px 9px;font-size:.72rem;color:var(--muted2);font-weight:850}
+.qtext{font-size:1rem;font-weight:850;line-height:1.42;margin-bottom:14px}
+.sign-box{display:inline-block;background:var(--paper2);border:1px solid var(--border);border-radius:12px;padding:10px;margin-bottom:12px}
+.img-cap{font-size:.72rem;color:var(--muted2);text-align:center;margin-top:4px}
+.opts{display:grid;gap:8px}
+.opt{
+  display:flex;align-items:flex-start;gap:10px;
+  border:1px solid var(--border);border-radius:11px;padding:11px 12px;background:white;cursor:pointer;transition:.12s;
+}
+.opt:hover:not([data-done]){background:var(--paper2)}
+.oletter{
+  width:25px;height:25px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);font-size:.72rem;font-weight:950;color:var(--muted2);flex:0 0 25px
+}
+.otext{font-weight:700;color:var(--muted2);font-size:.9rem;line-height:1.4}
+.opt.correct{background:var(--green3);border-color:rgba(46,125,91,.55)}
+.opt.correct .oletter{background:var(--green);border-color:var(--green);color:white}
+.opt.wrong{background:#FEF2F2;border-color:rgba(239,68,68,.45)}
+.opt.wrong .oletter{background:var(--red);border-color:var(--red);color:white}
+.opt.missed{background:var(--green3);border-color:rgba(46,125,91,.3)}
+.opt.missed .oletter{background:var(--green);color:white;border-color:var(--green)}
+.answer{display:none;margin-top:12px;background:var(--green3);border:1px solid rgba(46,125,91,.25);border-radius:12px;padding:12px}
+.answer.show{display:block}
+.alabel{font-size:.72rem;font-weight:950;text-transform:uppercase;letter-spacing:.08em;color:var(--green);margin-bottom:4px}
+.atext{font-size:.86rem;color:#245A42}.atip{margin-top:8px;font-size:.82rem;color:var(--green);font-style:italic}
+.empty-state{text-align:center;padding:54px 20px}.empty-icon{font-size:2rem}.empty-title{font-family:'Sora';font-weight:900;margin-top:8px}.empty-sub{color:var(--muted2)}
+#sim-wrapper{display:none}
+.sim-header{background:white;border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:14px}
+.sim-meta{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.sim-label{font-weight:950;color:var(--muted2);text-transform:uppercase;font-size:.72rem;letter-spacing:.08em}
+#sim-progress-text{margin-left:auto;font-family:'Sora';font-weight:950}
+.sim-track{height:7px;border-radius:99px;background:var(--paper3);overflow:hidden}
+#sim-progress-bar{height:100%;width:0;background:var(--green);border-radius:99px;transition:width .25s}
+.sim-result{text-align:center;padding:50px 22px}.sim-result-icon{font-size:2.4rem}.sim-result-score{font-family:'Sora';font-size:2.4rem;font-weight:950}.sim-result-pct{font-family:'Sora';font-size:1.2rem;font-weight:900}.sim-result-msg{color:var(--muted2)}
+.confetti-dot{position:fixed;pointer-events:none;z-index:9999;border-radius:50%;animation:confetti-fly .8s ease-out forwards}
+@keyframes confetti-fly{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--dx),var(--dy)) scale(0);opacity:0}}
+
+/* ══════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════ */
+.site-footer{
+  background:var(--navy-925);color:var(--text);padding:36px 0 26px
+}
+.footer-grid{display:grid;grid-template-columns:1.6fr .65fr .65fr .65fr 1.3fr;gap:36px;border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:24px}
+.footer-brand{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.footer-brand .logo-name{font-size:1.25rem}
+.footer-note{color:rgba(255,255,255,.68);font-size:.86rem;max-width:300px}
+.footer-col h4{font-size:.82rem;margin-bottom:10px}
+.footer-col a,.footer-col p{display:block;color:rgba(255,255,255,.66);font-size:.78rem;margin:7px 0}
+.subscribe{display:flex;gap:8px;margin-top:14px}
+.subscribe input{height:38px;border:0;border-radius:8px;padding:0 12px;min-width:0;flex:1}
+.subscribe button{height:38px;border:0;border-radius:8px;background:var(--green2);color:white;font-weight:850;padding:0 12px}
+.footer-bottom{display:flex;justify-content:space-between;color:rgba(255,255,255,.45);font-size:.75rem;padding-top:18px}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media(max-width:1040px){
+  .main-nav{display:none}
+  .hero-inner{grid-template-columns:1fr;gap:34px}
+  .hero-preview{max-width:620px}
+  .feature-grid{grid-template-columns:repeat(2,1fr)}
+  .state-row{grid-template-columns:repeat(4,1fr)}
+  .state-copy{grid-column:1/-1}
+  .trust-grid{grid-template-columns:1fr}
+  .trust-title{padding:18px 0}
+  .trust-item{border-left:0;border-top:1px solid var(--border)}
+  .topic-grid{grid-template-columns:repeat(3,1fr)}
+  .app-shell{grid-template-columns:1fr}
+  #filter-bar,.mode-bar{grid-template-columns:repeat(2,1fr);max-height:none}
+  .footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .site-header{height:72px}
+  .nav-shell{padding:0 18px}
+  .logo-name{font-size:1.08rem}
+  .logo-mark{width:32px;height:32px;flex-basis:32px}
+  .state-control{display:none}
+  .ld-name{display:none}
+  .hero{padding-top:72px}
+  .hero-inner{padding:38px 18px}
+  .hero h1{font-size:2.5rem}
+  .preview-grid{grid-template-columns:1fr}
+  .feature-row{margin-top:0;padding-top:16px}
+  .feature-grid{grid-template-columns:1fr}
+  .state-row{grid-template-columns:repeat(2,1fr)}
+  .topic-grid{grid-template-columns:1fr}
+  .topic-card{border-right:0;border-bottom:1px solid var(--border)}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-bottom{display:grid;gap:8px}
+  #filter-bar,.mode-bar{grid-template-columns:1fr}
+}
+
+
+/* ─── QUIZ CARD IMPROVEMENTS ─── */
+.qcard {
+  position: relative;
+  overflow: hidden;
+}
+.qcard::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(46,125,91,.04) 0%, transparent 40%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .3s;
+}
+.qcard:hover::before { opacity: 1; }
+
+/* Answer slide-down animation */
+.answer { animation: none; }
+.answer.show {
+  display: block;
+  animation: slideDown .28s cubic-bezier(0.16,1,0.3,1);
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Option selection micro-interactions */
+.opt { position: relative; overflow: hidden; }
+.opt:active:not([data-done]) { transform: scale(.98); }
+.opt.correct {
+  animation: optCorrect .35s ease-out forwards;
+}
+.opt.wrong {
+  animation: optWrong .4s ease-out forwards;
+}
+@keyframes optCorrect {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+@keyframes optWrong {
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-5px); }
+  40%     { transform: translateX(5px); }
+  60%     { transform: translateX(-3px); }
+  80%     { transform: translateX(3px); }
+}
+
+/* Score bar improvements */
+#score-pbar {
+  transition: width .5s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+/* Reading progress bar */
+.reading-progress {
+  position: fixed; top: 0; left: 0;
+  height: 2px; background: var(--green2);
+  width: 0%; z-index: 600;
+  transition: width .1s linear;
+}
+
+/* Focus visible for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--green2);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Confetti dots */
+.confetti-dot {
+  position: fixed; pointer-events: none; z-index: 9999;
+  animation: confettiFly .85s ease-out forwards;
+}
+@keyframes confettiFly {
+  0%   { transform: translate(0,0) scale(1); opacity: 1; }
+  100% { transform: translate(var(--dx),var(--dy)) scale(0); opacity: 0; }
+}
+
+/* Progress ring in hero mockup */
+.ring {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: conic-gradient(var(--green2) 0% 72%, #e5e7eb 72% 100%);
+  display: flex; align-items: center; justify-content: center;
+  margin: 10px auto;
+  position: relative;
+}
+.ring::before {
+  content: '72%';
+  position: absolute;
+  font-family: 'Sora', sans-serif;
+  font-size: .95rem; font-weight: 800;
+  color: var(--ink);
+}
+.ring::after {
+  content: 'Correct';
+  position: absolute;
+  top: calc(50% + 14px);
+  font-size: .6rem; color: var(--muted2); font-weight: 600;
+}
+.ring-inner {
+  width: 58px; height: 58px;
+  background: white; border-radius: 50%;
+}
+</style>
+</head>
+<body class="mode-pt">
+<div class="reading-progress" id="reading-progress"></div>
+
+<header class="site-header" id="top">
+  <div class="nav-shell">
+    <a class="brand" href="#top" aria-label="KangaLearner home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Kangaroo body (navy silhouette) -->
+  <path d="M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 C34 48 32 50 30 52 Z" fill="#0B1D2D"/>
+  <!-- Road stripe inside kangaroo -->
+  <path d="M27 20 L30 46" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+  <!-- Head -->
+  <path d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z" fill="#0B1D2D"/>
+  <!-- Ear -->
+  <path d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z" fill="#0B1D2D"/>
+  <!-- Arc (speed/forward motion) -->
+  <path d="M12 30 C12 20 18 12 26 10" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Arrow (progress/confidence) -->
+  <path d="M34 44 C38 44 46 46 50 42" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M47 38 L50 42 L45 44" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+      </span>
+      <span class="logo-word">
+        <span class="logo-name">KangaLearner</span>
+        <span class="logo-sub">Learner Driver Platform</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#top">Home</a>
+      <a href="#questoes">Practice</a>
+      <a href="#questoes" onclick="setTimeout(()=>DW.setMode('sim'),50)">Mock Test</a>
+      <a href="#topics">Road Rules</a>
+      <a href="#resources">Resources</a>
+    </nav>
+
+    <div class="header-controls">
+      <div class="state-control" title="State selector">
+        <span>⌖</span>
+        <select id="state-select" aria-label="Select state">
+          <option value="AU">State: Australia</option>
+          <option value="WA">WA</option>
+          <option value="NSW">NSW</option>
+          <option value="VIC">VIC</option>
+          <option value="QLD">QLD</option>
+          <option value="SA">SA</option>
+          <option value="TAS">TAS</option>
+          <option value="ACT">ACT</option>
+          <option value="NT">NT</option>
+        </select>
+      </div>
+
+      <div class="ld-wrap" id="ld">
+        <div class="ld-trigger" id="ld-trigger" onclick="ldToggle()">
+          <span class="ld-flag" id="ld-flag">🇧🇷</span>
+          <span class="ld-name" id="ld-name">Português</span>
+          <span class="ld-arrow">▼</span>
+        </div>
+        <div class="ld-panel" id="ld-panel">
+          <div class="ld-option active" data-lang="pt" onclick="setLang('pt',this)">
+            <span class="ld-oflag">🇧🇷</span><span class="ld-oname">Português</span>
+            <span class="ld-osub">Somente PT</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="en" onclick="setLang('en',this)">
+            <span class="ld-oflag">🇦🇺</span><span class="ld-oname">English</span>
+            <span class="ld-osub">English only</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="es" onclick="setLang('es',this)">
+            <span class="ld-oflag">🇪🇸</span><span class="ld-oname">Español</span>
+            <span class="ld-osub">Solo ES</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="pten" onclick="setLang('pten',this)">
+            <span class="ld-oflag">🇧🇷 🇦🇺</span><span class="ld-oname">PT + EN</span>
+            <span class="ld-osub">Bilíngue</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="esen" onclick="setLang('esen',this)">
+            <span class="ld-oflag">🇪🇸 🇦🇺</span><span class="ld-oname">ES + EN</span>
+            <span class="ld-osub">Bilíngüe</span><span class="ld-check">✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="l-pt">Plataforma australiana para learner drivers</span>
+          <span class="l-en">Australia’s trusted learner driver platform</span>
+          <span class="l-es">Plataforma australiana para conductores principiantes</span>
+        </div>
+
+        <h1>
+          <span class="l-pt">Passe na prova teórica com confiança.</span>
+          <span class="l-en">Pass your learner test with confidence.</span>
+          <span class="l-es">Aprueba tu examen teórico con confianza.</span>
+        </h1>
+
+        <p class="hero-desc">
+          <span class="l-pt">Estude as regras de trânsito da Austrália por estado, pratique perguntas ilimitadas e acompanhe seu progresso em cada etapa.</span>
+          <span class="l-en">Study Australian road rules by state, practice unlimited questions and track your progress every step of the way.</span>
+          <span class="l-es">Estudia las reglas de tránsito australianas por estado, practica preguntas ilimitadas y sigue tu progreso paso a paso.</span>
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#questoes">
+            <span>▱</span>
+            <span class="l-pt">Começar prática</span>
+            <span class="l-en">Start Practice</span>
+            <span class="l-es">Empezar práctica</span>
+            <span>→</span>
+          </a>
+          <a class="btn btn-secondary" href="#questoes" onclick="setTimeout(()=>DW.setMode('sim'),50)">
+            <span>▣</span>
+            <span class="l-pt">Fazer simulado</span>
+            <span class="l-en">Take a Mock Test</span>
+            <span class="l-es">Hacer simulacro</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="hero-proof">
+          <span class="proof-icon">✓</span>
+          <span>
+            <span class="l-pt">Regras oficiais. Conteúdo atualizado. Feito para learner drivers em toda a Austrália.</span>
+            <span class="l-en">Official road rules. Up to date. Trusted by learner drivers Australia-wide.</span>
+            <span class="l-es">Reglas oficiales. Contenido actualizado. Para learner drivers en toda Australia.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-preview" aria-label="Practice preview">
+        <div class="preview-head">
+          <div class="preview-title">⌁ Practice</div>
+          <div class="preview-pill">⌖ WA</div>
+        </div>
+        <div class="preview-grid">
+          <div class="practice-card">
+            <div class="preview-small">Question 12 of 30</div>
+            <div class="preview-progress">
+              <div class="preview-track"><div class="preview-fill"></div></div>
+              <strong>40%</strong>
+            </div>
+            <div class="preview-question">
+              When turning right at an intersection, you must give way to vehicles travelling straight ahead.
+            </div>
+            <div class="preview-options">
+              <div class="preview-option correct"><span class="letter">A</span> True <span style="margin-left:auto">✓</span></div>
+              <div class="preview-option"><span class="letter">B</span> False</div>
+              <div class="preview-option"><span class="letter">C</span> Only when a sign says so</div>
+              <div class="preview-option"><span class="letter">D</span> Only at roundabouts</div>
+            </div>
+          </div>
+          <div>
+            <div class="progress-card">
+              <div class="preview-small">Your Progress</div>
+              <div class="ring"></div>
+              <div class="legend">
+                <span><span class="dot green"></span>Correct <strong style="float:right">21</strong></span>
+                <span><span class="dot red"></span>Incorrect <strong style="float:right">8</strong></span>
+                <span><span class="dot gray"></span>Unanswered <strong style="float:right">1</strong></span>
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="preview-small">Score</div>
+              <div class="score-big">85%</div>
+              <small>Awesome work!</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="feature-row">
+  <div class="container">
+    <div class="feature-grid">
+      <article class="feature-card">
+        <div class="feature-icon">⌂</div>
+        <div>
+          <h3>Study by State</h3>
+          <p>Learn the road rules for your state or territory.</p>
+        </div>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">?</div>
+        <div>
+          <h3>Practice Questions</h3>
+          <p>Up-to-date multiple choice questions.</p>
+        </div>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div>
+          <h3>Mock Tests</h3>
+          <p>Simulate the real test and build confidence.</p>
+        </div>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">↗</div>
+        <div>
+          <h3>Track Progress</h3>
+          <p>Focus on your weak areas and improve faster.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="state-section" id="states">
+  <div class="container">
+    <div class="state-row">
+      <div class="state-copy">
+        <span class="l-pt">Selecione seu estado e estude as regras certas.</span>
+        <span class="l-en">Select your state and study the rules that apply to you.</span>
+        <span class="l-es">Selecciona tu estado y estudia las reglas correctas.</span>
+      </div>
+      <button class="state-card active" data-state="WA"><div class="state-icon">⌁</div><div class="state-code">WA</div><div class="state-name">Western Australia</div></button>
+      <button class="state-card" data-state="NSW"><div class="state-icon">⌁</div><div class="state-code">NSW</div><div class="state-name">New South Wales</div></button>
+      <button class="state-card" data-state="VIC"><div class="state-icon">⌁</div><div class="state-code">VIC</div><div class="state-name">Victoria</div></button>
+      <button class="state-card" data-state="QLD"><div class="state-icon">⌁</div><div class="state-code">QLD</div><div class="state-name">Queensland</div></button>
+      <button class="state-card" data-state="SA"><div class="state-icon">⌁</div><div class="state-code">SA</div><div class="state-name">South Australia</div></button>
+      <button class="state-card" data-state="TAS"><div class="state-icon">⌁</div><div class="state-code">TAS</div><div class="state-name">Tasmania</div></button>
+      <button class="state-card" data-state="ACT"><div class="state-icon">⌁</div><div class="state-code">ACT</div><div class="state-name">Australian Capital Territory</div></button>
+      <button class="state-card" data-state="NT"><div class="state-icon">⌁</div><div class="state-code">NT</div><div class="state-name">Northern Territory</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-title">Why KangaLearner</div>
+      <article class="trust-item">
+        <div class="trust-icon">◎</div>
+        <div><h4>Multilingual Support</h4><p>Study in English, Portuguese and Spanish now; more languages later.</p></div>
+      </article>
+      <article class="trust-item">
+        <div class="trust-icon">☁</div>
+        <div><h4>Save Progress</h4><p>Your progress is saved automatically in your browser.</p></div>
+      </article>
+      <article class="trust-item">
+        <div class="trust-icon">◇</div>
+        <div><h4>Official Rule Based</h4><p>Content is structured around official road rules and test topics.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="topics-section" id="topics">
+  <div class="container">
+    <div class="topics-title">Learn key road rule topics</div>
+    <div class="topic-grid">
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Speed Limits'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/></svg>
+        <div><h4>Speed Limits</h4><p>Understand speed rules and limits</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Signs'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 6l20 36H4L24 6Z"/><path d="M24 18v10"/><path d="M24 35h.01"/></svg>
+        <div><h4>Signs</h4><p>Recognise road signs and markings</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Parking'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/></svg>
+        <div><h4>Parking</h4><p>Parking rules and restrictions</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Alcohol'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/></svg>
+        <div><h4>Alcohol</h4><p>Drink driving laws and penalties</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Lane Rules'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M14 42l4-36"/><path d="M34 42L30 6"/><path d="M24 10v7M24 24v7M24 38v4"/></svg>
+        <div><h4>Lane Rules</h4><p>Lane use and merging rules</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Safety'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 4l16 6v12c0 10-6 17-16 22C14 39 8 32 8 22V10l16-6Z"/><path d="M17 24l5 5 10-12"/></svg>
+        <div><h4>Safety</h4><p>Safe driving tips for life</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="practice-section" id="questoes">
+  <div class="container">
+    <div class="practice-head">
+      <div>
+        <h2 class="section-title">
+          <span class="l-pt">Pratique como se fosse a prova real.</span>
+          <span class="l-en">Practice like the real test.</span>
+          <span class="l-es">Practica como si fuera el examen real.</span>
+        </h2>
+        <p class="section-sub">
+          <span class="l-pt">Comece pelas questões de WA. A estrutura já está pronta para receber NSW, VIC, QLD, SA, TAS, ACT e NT.</span>
+          <span class="l-en">Start with WA questions. The structure is ready to expand to NSW, VIC, QLD, SA, TAS, ACT and NT.</span>
+          <span class="l-es">Empieza con preguntas de WA. La estructura está lista para expandirse a todos los estados.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="app-shell">
+      <aside class="panel panel-pad">
+        <div class="panel-title">Study Mode</div>
+        <div class="mode-bar">
+          <button class="fmode active" data-mode="all">
+            <span class="l-pt">Todas</span>
+            <span class="l-en">All questions</span>
+            <span class="l-es">Todas</span>
+          </button>
+          <button class="fmode" data-mode="wrong">
+            <span class="l-pt">Erradas</span>
+            <span class="l-en">Wrong answers</span>
+            <span class="l-es">Erradas</span>
+          </button>
+          <button class="fmode" data-mode="unanswered">
+            <span class="l-pt">Não respondidas</span>
+            <span class="l-en">Unanswered</span>
+            <span class="l-es">Sin responder</span>
+          </button>
+          <button class="fmode" data-mode="sim">
+            <span class="l-pt">Simulado</span>
+            <span class="l-en">Mock test</span>
+            <span class="l-es">Simulacro</span>
+          </button>
+        </div>
+
+        <div class="filter-wrap">
+          <div class="filter-label">
+            <span class="l-pt">Filtrar por tema</span>
+            <span class="l-en">Filter by topic</span>
+            <span class="l-es">Filtrar por tema</span>
+          </div>
+          <div id="filter-bar"></div>
+        </div>
+      </aside>
+
+      <section class="panel quiz-panel">
+        <div id="study-wrapper">
+          <div id="quiz-cards"></div>
+        </div>
+        <div id="sim-wrapper">
+          <div class="sim-header">
+            <div class="sim-meta">
+              <span class="sim-label">
+                <span class="l-pt">Simulado</span>
+                <span class="l-en">Simulation</span>
+                <span class="l-es">Simulacro</span>
+              </span>
+              <span id="sim-progress-text">1 / 30</span>
+            </div>
+            <div class="sim-track"><div id="sim-progress-bar"></div></div>
+          </div>
+          <div id="sim-card-container"></div>
+        </div>
+      </section>
+
+      <aside class="panel panel-pad">
+        <div class="panel-title">Your Progress</div>
+        <div class="score-bar">
+          <div class="score-row">
+            <span class="slabel">Score</span>
+            <span id="score-val">0 / 0</span>
+            <span id="score-pct"></span>
+            <div class="pbar-track"><div id="score-pbar"></div></div>
+            <button class="score-reset" id="reset-btn">
+              <span class="l-pt">Reiniciar tudo</span>
+              <span class="l-en">Reset all</span>
+              <span class="l-es">Reiniciar todo</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" id="resources">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Kangaroo body (navy silhouette) -->
+  <path d="M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 C34 48 32 50 30 52 Z" fill="#0B1D2D"/>
+  <!-- Road stripe inside kangaroo -->
+  <path d="M27 20 L30 46" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+  <!-- Head -->
+  <path d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z" fill="#0B1D2D"/>
+  <!-- Ear -->
+  <path d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z" fill="#0B1D2D"/>
+  <!-- Arc (speed/forward motion) -->
+  <path d="M12 30 C12 20 18 12 26 10" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Arrow (progress/confidence) -->
+  <path d="M34 44 C38 44 46 46 50 42" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M47 38 L50 42 L45 44" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+          </span>
+          <span class="logo-name">KangaLearner</span>
+        </div>
+        <p class="footer-note">Empowering learner drivers Australia-wide to pass with confidence.</p>
+      </div>
+      <div class="footer-col"><h4>Product</h4><a href="#questoes">Practice</a><a href="#questoes">Mock Test</a><a href="#topics">Road Rules</a><a href="#states">States</a></div>
+      <div class="footer-col"><h4>Company</h4><a>About Us</a><a>Contact Us</a><a>Careers</a><a>Blog</a></div>
+      <div class="footer-col"><h4>Legal</h4><a>Terms of Use</a><a>Privacy Policy</a><a>Cookie Policy</a></div>
+      <div class="footer-col"><h4>Stay on the right track</h4><p>Get tips, updates and study reminders.</p><div class="subscribe"><input placeholder="Enter your email"><button>Subscribe</button></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KangaLearner. All rights reserved.</span>
+      <span>This guide is for study support only. Always confirm current requirements with the relevant state transport authority.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+const QUESTIONS = [
+  {id:"VEL-01",cat:"Speed Limits",
+   q:{en:"What is the speed limit in built-up areas where there are no speed limit signs?",pt:"Qual é o limite de velocidade em áreas urbanas onde não há placas de sinalização?",es:"¿Cuál es el límite de velocidad en zonas urbanas donde no hay señales?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"60 km/h",pt:"60 km/h",es:"60 km/h"},ok:false},{l:"B",t:{en:"50 km/h",pt:"50 km/h",es:"50 km/h"},ok:true},{l:"C",t:{en:"80 km/h",pt:"80 km/h",es:"80 km/h"},ok:false}],
+   exp:{en:"<strong>50 km/h</strong> is the default in WA built-up areas — NOT 60! This is the most commonly missed question.",pt:"<strong>50 km/h</strong> é o padrão em WA — NÃO 60! Esta é a questão mais errada.",es:"<strong>50 km/h</strong> es el límite por defecto en WA — ¡NO 60! Esta es la pregunta más fallada."},
+   tip:null},
+  {id:"VEL-02",cat:"Speed Limits",
+   q:{en:"What is the reduced speed limit around schools during certain times of the day?",pt:"Qual é o limite de velocidade reduzido ao redor de escolas?",es:"¿Cuál es el límite de velocidad reducido en zonas escolares?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"50 km/h",pt:"50 km/h",es:"50 km/h"},ok:false},{l:"B",t:{en:"40 km/h",pt:"40 km/h",es:"40 km/h"},ok:true},{l:"C",t:{en:"60 km/h",pt:"60 km/h",es:"60 km/h"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"VEL-03",cat:"Speed Limits",
+   q:{en:"What is the speed limit where roads are under construction or repair?",pt:"Qual é o limite de velocidade em obras na estrada?",es:"¿Cuál es el límite de velocidad en obras de carretera?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"20 km/h",pt:"20 km/h",es:"20 km/h"},ok:false},{l:"B",t:{en:"The speed limit shown on the road works sign",pt:"O limite mostrado na placa de obras",es:"El límite indicado en la señal de obras"},ok:true},{l:"C",t:{en:"40 km/h",pt:"40 km/h",es:"40 km/h"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"VEL-04",cat:"Speed Limits",
+   q:{en:"What is the maximum speed learner drivers (L-plates) are allowed to travel?",pt:"Qual é a velocidade máxima para motoristas com L-plate (aprendizes)?",es:"¿Cuál es la velocidad máxima para conductores aprendices (L-plate)?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"90 km/h",pt:"90 km/h",es:"90 km/h"},ok:false},{l:"B",t:{en:"110 km/h",pt:"110 km/h",es:"110 km/h"},ok:false},{l:"C",t:{en:"100 km/h",pt:"100 km/h",es:"100 km/h"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"VEL-05",cat:"Speed Limits",
+   q:{en:"What is the maximum speed when towing a caravan or trailer?",pt:"Qual é a velocidade máxima ao rebocar uma caravana ou trailer?",es:"¿Cuál es la velocidad máxima al remolcar una caravana o tráiler?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"90 km/h",pt:"90 km/h",es:"90 km/h"},ok:false},{l:"B",t:{en:"100 km/h",pt:"100 km/h",es:"100 km/h"},ok:true},{l:"C",t:{en:"110 km/h",pt:"110 km/h",es:"110 km/h"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"VEL-06",cat:"Speed Limits",
+   q:{en:"Are you allowed to exceed the speed limit when overtaking another vehicle?",pt:"Pode ultrapassar o limite de velocidade ao ultrapassar outro veículo?",es:"¿Puede superar el límite de velocidad al adelantar otro vehículo?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"No",pt:"Não — nunca",es:"No — jamás"},ok:true},{l:"B",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:false},{l:"C",t:{en:"Yes, if the driver in front signals you",pt:"Sim, se o motorista da frente sinalizar",es:"Sí, si el conductor delante le hace señas"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"VEL-07",cat:"Speed Limits",
+   q:{en:"Which statement about speed is correct?",pt:"Qual afirmação sobre velocidade é correta?",es:"¿Cuál afirmación sobre velocidad es correcta?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"It is always safe to travel at the speed limit",pt:"É sempre seguro andar no limite de velocidade",es:"Siempre es seguro circular al límite de velocidad"},ok:false},{l:"B",t:{en:"Your speed should be as close to the limit as possible",pt:"Sua velocidade deve ser o mais próxima possível do limite",es:"Su velocidad debe estar lo más cerca posible del límite"},ok:false},{l:"C",t:{en:"Travelling at the speed limit is sometimes too fast for conditions",pt:"Andar no limite às vezes é rápido demais para as condições",es:"Circular al límite a veces es demasiado rápido para las condiciones"},ok:true}],
+   exp:{en:"The speed limit is the <strong>maximum</strong>, not a target. It may be too fast for rain, traffic, or road works.",pt:"O limite é o <strong>máximo</strong>, não um alvo. Pode ser rápido demais em chuva, obras, ou tráfego.",es:"El límite es el <strong>máximo</strong>, no un objetivo. Puede ser demasiado rápido en lluvia, obras o tráfico."},
+   tip:null},
+  {id:"PREF-01",cat:"Give Way Rules",
+   q:{en:"What is the basic rule at uncontrolled four-way intersections?",pt:"Qual é a regra básica em interseções de 4 vias sem sinalização?",es:"¿Cuál es la regla básica en intersecciones de 4 vías sin señalización?"},
+   sign:"<svg viewBox=\"0 0 180 180\" xmlns=\"http://www.w3.org/2000/svg\" width=\"170\" height=\"170\"> <rect width=\"180\" height=\"180\" fill=\"#4a7a30\"/> <rect x=\"0\" y=\"70\" width=\"180\" height=\"40\" fill=\"#888\"/> <rect x=\"70\" y=\"0\" width=\"40\" height=\"180\" fill=\"#888\"/> <line x1=\"0\" y1=\"90\" x2=\"68\" y2=\"90\" stroke=\"white\" stroke-width=\"1.5\" stroke-dasharray=\"8,6\"/> <line x1=\"112\" y1=\"90\" x2=\"180\" y2=\"90\" stroke=\"white\" stroke-width=\"1.5\" stroke-dasharray=\"8,6\"/> <line x1=\"90\" y1=\"0\" x2=\"90\" y2=\"68\" stroke=\"white\" stroke-width=\"1.5\" stroke-dasharray=\"8,6\"/> <line x1=\"90\" y1=\"112\" x2=\"90\" y2=\"180\" stroke=\"white\" stroke-width=\"1.5\" stroke-dasharray=\"8,6\"/> <g transform=\"translate(80,145)\">  <rect x=\"-12\" y=\"-16\" width=\"24\" height=\"32\" rx=\"3\" fill=\"#CC3333\" stroke=\"white\" stroke-width=\"1.5\"/>  <text x=\"0\" y=\"6\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"white\">X</text> </g> <line x1=\"80\" y1=\"128\" x2=\"80\" y2=\"113\" stroke=\"#FFD700\" stroke-width=\"3\"/> <polygon points=\"76,113 84,113 80,103\" fill=\"#FFD700\"/> <g transform=\"translate(148,80) rotate(90)\">  <rect x=\"-12\" y=\"-16\" width=\"24\" height=\"32\" rx=\"3\" fill=\"#3355CC\" stroke=\"white\" stroke-width=\"1.5\"/>  <text x=\"0\" y=\"6\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"white\">Y</text> </g> <line x1=\"134\" y1=\"80\" x2=\"113\" y2=\"80\" stroke=\"#88AAFF\" stroke-width=\"2.5\"/> <polygon points=\"113,75 113,85 102,80\" fill=\"#88AAFF\"/> <text x=\"90\" y=\"175\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"8\" fill=\"white\" opacity=\"0.8\">Give way to RIGHT → Y has right of way</text></svg>",cap:{en:"Uncontrolled 4-way: X gives way to Y",pt:"Interseção sem sinalização: X dá preferência a Y",es:"Intersección sin señalización: X cede el paso a Y"},
+   opts:[{l:"A",t:{en:"Give way to vehicles on your left",pt:"Dar preferência a quem vem da esquerda",es:"Ceder el paso a los de la izquierda"},ok:false},{l:"B",t:{en:"Give way to vehicles on your right",pt:"Dar preferência a quem vem da direita",es:"Ceder el paso a los de la derecha"},ok:true},{l:"C",t:{en:"Give way to all vehicles",pt:"Dar preferência a todos",es:"Ceder el paso a todos"},ok:false}],
+   exp:{en:"The <strong>right-hand rule</strong>: give way to vehicles approaching from your right.",pt:"Regra da direita: dê preferência a quem vem da sua <strong>direita</strong>.",es:"Regla de la derecha: ceda el paso a los que vienen por su <strong>derecha</strong>."},
+   tip:null},
+  {id:"PREF-02",cat:"Give Way Rules",
+   q:{en:"What must you do at a STOP sign?",pt:"O que fazer ao encontrar um sinal de STOP?",es:"¿Qué debe hacer ante una señal de STOP?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Stop 2 metres before the sign",pt:"Parar 2 metros antes do sinal",es:"Detenerse 2 metros antes"},ok:false},{l:"B",t:{en:"Stop and give way to ALL traffic on the crossroad",pt:"Parar e dar preferência a TODOS na via transversal",es:"Detenerse y ceder el paso a TODO el tráfico en la vía cruzada"},ok:true},{l:"C",t:{en:"Slow down if traffic is approaching",pt:"Reduzir se houver tráfego",es:"Reducir la velocidad si hay tráfico"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PREF-03",cat:"Give Way Rules",
+   q:{en:"Where must you stop at a STOP sign with no line on the road?",pt:"Onde parar se o sinal STOP não tem linha no chão?",es:"¿Dónde detenerse ante un STOP sin línea en el suelo?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Next to the STOP sign",pt:"Ao lado do sinal STOP",es:"Junto a la señal de STOP"},ok:false},{l:"B",t:{en:"As close to the crossroad as possible without entering it",pt:"O mais próximo possível da interseção sem entrar nela",es:"Lo más cerca posible de la intersección sin entrar en ella"},ok:true},{l:"C",t:{en:"Before the STOP sign",pt:"Antes do sinal STOP",es:"Antes de la señal de STOP"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PREF-04",cat:"Give Way Rules",
+   q:{en:"Turning at an intersection (no lights) with pedestrians crossing — what do you do?",pt:"Virando em interseção sem semáforo com pedestres atravessando?",es:"Girando en una intersección sin semáforos con peatones cruzando?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Give way only if turning right",pt:"Dar preferência apenas virando à direita",es:"Ceder solo al girar a la derecha"},ok:false},{l:"B",t:{en:"Give way only if turning left",pt:"Dar preferência apenas virando à esquerda",es:"Ceder solo al girar a la izquierda"},ok:false},{l:"C",t:{en:"Give way to pedestrians at ALL times",pt:"Dar preferência a pedestres SEMPRE",es:"Ceder el paso a peatones SIEMPRE"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PREF-05",cat:"Give Way Rules",
+   q:{en:"Is it an offence not to give way to an emergency vehicle?",pt:"É infração não dar passagem a veículo de emergência?",es:"¿Es una infracción no ceder el paso a un vehículo de emergencia?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Yes, only if using siren or flashing lights",pt:"Sim, apenas com sirene ou luzes",es:"Sí, solo si usa sirena o luces"},ok:false},{l:"B",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:true},{l:"C",t:{en:"No",pt:"Não",es:"No"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PREF-06",cat:"Give Way Rules",
+   q:{en:"At a children's crossing — what do you do when the attendant extends the flag?",pt:"Cruzamento de crianças — o que fazer quando o atendente estende a bandeira?",es:"En un cruce de niños — ¿qué hace cuando el agente extiende la bandera?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Stop and wait until the attendant withdraws the sign",pt:"Parar e esperar até o atendente retirar o sinal",es:"Detenerse y esperar hasta que el agente retire la señal"},ok:true},{l:"B",t:{en:"Slow down",pt:"Reduzir a velocidade",es:"Reducir la velocidad"},ok:false},{l:"C",t:{en:"Drive on carefully if no children are on your side",pt:"Avançar se não houver crianças do seu lado",es:"Seguir con cuidado si no hay niños de su lado"},ok:false}],
+   exp:{en:"Stop completely. Do not proceed <strong>until the attendant withdraws the sign</strong>.",pt:"Pare completamente. Só avance quando o atendente <strong>retirar o sinal</strong>.",es:"Deténgase. No avance <strong>hasta que el agente retire la señal</strong>."},
+   tip:null},
+  {id:"BAC-01",cat:"Alcohol & BAC",
+   q:{en:"What is the legal BAC for novice drivers (L-plate and P-plate)?",pt:"Qual é o BAC legal para motoristas novatos (L e P plate)?",es:"¿Cuál es el BAC legal para conductores novatos (L y P plate)?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"0.00%",pt:"0.00%",es:"0.00%"},ok:true},{l:"B",t:{en:"0.02%",pt:"0.02%",es:"0.02%"},ok:false},{l:"C",t:{en:"0.05%",pt:"0.05%",es:"0.05%"},ok:false}],
+   exp:{en:"Novice drivers: <strong>0.00%</strong> — absolute zero tolerance. Any alcohol = offence.",pt:"Motoristas novatos: <strong>0.00%</strong> — tolerância zero absoluta.",es:"Conductores novatos: <strong>0.00%</strong> — tolerancia cero absoluta."},
+   tip:null},
+  {id:"BAC-02",cat:"Alcohol & BAC",
+   q:{en:"What is the legal BAC for drivers with a full licence?",pt:"Qual é o BAC legal para habilitação plena?",es:"¿Cuál es el BAC legal para conductores con licencia completa?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Less than 0.02%",pt:"Menos de 0.02%",es:"Menos de 0.02%"},ok:false},{l:"B",t:{en:"Less than 0.05%",pt:"Menos de 0.05%",es:"Menos de 0.05%"},ok:true},{l:"C",t:{en:"Less than 0.08%",pt:"Menos de 0.08%",es:"Menos de 0.08%"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"BAC-03",cat:"Alcohol & BAC",
+   q:{en:"What is the minimum penalty for a novice driver with a BAC over 0.00%?",pt:"Penalidade mínima para motorista novato com BAC acima de 0.00%?",es:"¿Cuál es la penalización mínima para conductor novato con BAC sobre 0.00%?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"A fine",pt:"Uma multa",es:"Una multa"},ok:false},{l:"B",t:{en:"A fine and demerit points",pt:"Multa e pontos de penalidade",es:"Multa y puntos de penalización"},ok:false},{l:"C",t:{en:"A fine AND loss of licence",pt:"Multa E perda da carteira",es:"Multa Y pérdida del carnet"},ok:true}],
+   exp:{en:"Minimum penalty: a fine <strong>AND loss of licence</strong> — both, not just one.",pt:"Penalidade mínima: multa <strong>E perda da carteira</strong> — as duas juntas.",es:"Penalización mínima: multa <strong>Y pérdida del carnet</strong> — ambas, no solo una."},
+   tip:null},
+  {id:"BAC-04",cat:"Alcohol & BAC",
+   q:{en:"Is it an offence to refuse a breath test for alcohol?",pt:"É infração recusar o bafômetro?",es:"¿Es una infracción negarse al control de alcoholemia?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"No, if you have a doctor's certificate",pt:"Não, se tiver atestado médico",es:"No, si tiene certificado médico"},ok:false},{l:"B",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:true},{l:"C",t:{en:"No",pt:"Não",es:"No"},ok:false}],
+   exp:{en:"<strong>Yes</strong> — always an offence. No exceptions, not even with a doctor's certificate.",pt:"<strong>Sim</strong> — sempre uma infração. Sem exceções, nem com atestado médico.",es:"<strong>Sí</strong> — siempre es una infracción. Sin excepciones, ni con certificado médico."},
+   tip:null},
+  {id:"BAC-05",cat:"Alcohol & BAC",
+   q:{en:"How do even small amounts of alcohol affect your driving?",pt:"Como pequenas quantidades de álcool afetam a direção?",es:"¿Cómo afectan incluso pequeñas cantidades de alcohol a la conducción?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"By making you think you are driving better than you are",pt:"Fazendo você achar que dirige melhor do que realmente dirige",es:"Haciéndole creer que conduce mejor de lo que realmente conduce"},ok:true},{l:"B",t:{en:"By helping your driving ability",pt:"Melhorando sua capacidade de dirigir",es:"Mejorando su capacidad de conducción"},ok:false},{l:"C",t:{en:"By helping your speed judgement",pt:"Melhorando seu julgamento de velocidade",es:"Mejorando su juicio de velocidad"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-01",cat:"Parking Rules",
+   q:{en:"Minimum distance to park from a fire hydrant?",pt:"Distância mínima para estacionar de um hidrante?",es:"¿Distancia mínima para estacionar cerca de una boca de incendio?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"3 metres",pt:"3 metros",es:"3 metros"},ok:false},{l:"B",t:{en:"1 metre",pt:"1 metro",es:"1 metro"},ok:true},{l:"C",t:{en:"5 metres",pt:"5 metros",es:"5 metros"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-02",cat:"Parking Rules",
+   q:{en:"Minimum distance to park from a public letter box?",pt:"Distância mínima de uma caixa de correio pública?",es:"¿Distancia mínima de un buzón público?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"3 metres",pt:"3 metros",es:"3 metros"},ok:true},{l:"B",t:{en:"5 metres",pt:"5 metros",es:"5 metros"},ok:false},{l:"C",t:{en:"1 metre",pt:"1 metro",es:"1 metro"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-03",cat:"Parking Rules",
+   q:{en:"Minimum distance to park from an intersection WITHOUT traffic lights?",pt:"Distância mínima de interseção SEM semáforo?",es:"¿Distancia mínima de una intersección SIN semáforos?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"3 metres",pt:"3 metros",es:"3 metros"},ok:false},{l:"B",t:{en:"10 metres",pt:"10 metros",es:"10 metros"},ok:true},{l:"C",t:{en:"20 metres",pt:"20 metros",es:"20 metros"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-04",cat:"Parking Rules",
+   q:{en:"Minimum distance to park from an intersection WITH traffic lights?",pt:"Distância mínima de interseção COM semáforo?",es:"¿Distancia mínima de una intersección CON semáforos?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"6 metres",pt:"6 metros",es:"6 metros"},ok:false},{l:"B",t:{en:"10 metres",pt:"10 metros",es:"10 metros"},ok:false},{l:"C",t:{en:"20 metres",pt:"20 metros",es:"20 metros"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-05",cat:"Parking Rules",
+   q:{en:"Minimum distance to park BEFORE a bus stop or pedestrian crossing?",pt:"Distância mínima ANTES de ponto de ônibus ou faixa de pedestre?",es:"¿Distancia mínima ANTES de una parada de autobús o paso de peatones?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"20 metres",pt:"20 metros",es:"20 metros"},ok:true},{l:"B",t:{en:"6 metres",pt:"6 metros",es:"6 metros"},ok:false},{l:"C",t:{en:"10 metres",pt:"10 metros",es:"10 metros"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-06",cat:"Parking Rules",
+   q:{en:"Minimum distance to park AFTER a bus stop or pedestrian crossing?",pt:"Distância mínima DEPOIS de ponto de ônibus ou faixa de pedestre?",es:"¿Distancia mínima DESPUÉS de una parada de autobús o paso de peatones?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"3 metres",pt:"3 metros",es:"3 metros"},ok:false},{l:"B",t:{en:"6 metres",pt:"6 metros",es:"6 metros"},ok:false},{l:"C",t:{en:"10 metres",pt:"10 metros",es:"10 metros"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-07",cat:"Parking Rules",
+   q:{en:"Minimum distance to park from a railway crossing?",pt:"Distância mínima de um cruzamento ferroviário?",es:"¿Distancia mínima de un paso a nivel?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"6 metres",pt:"6 metros",es:"6 metros"},ok:false},{l:"B",t:{en:"20 metres",pt:"20 metros",es:"20 metros"},ok:true},{l:"C",t:{en:"3 metres",pt:"3 metros",es:"3 metros"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"PARK-08",cat:"Parking Rules",
+   q:{en:"Are you allowed to park on a footpath?",pt:"Pode estacionar na calçada (footpath)?",es:"¿Puede estacionar en la acera (footpath)?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"No",pt:"Não",es:"No"},ok:true},{l:"B",t:{en:"Yes, if it is a passenger vehicle",pt:"Sim, se for veículo de passageiros",es:"Sí, si es un vehículo de pasajeros"},ok:false},{l:"C",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-01",cat:"Traffic Lights",
+   q:{en:"Traffic lights: green light with a GREEN ARROW — what does it mean?",pt:"Semáforo verde com SETA VERDE — o que significa?",es:"Semáforo verde con FLECHA VERDE — ¿qué significa?"},
+   sign:"<svg viewBox=\"0 0 95 155\" xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"130\"> <rect x=\"3\" y=\"3\" width=\"89\" height=\"149\" rx=\"10\" fill=\"#1a1a1a\"/> <circle cx=\"32\" cy=\"40\" r=\"21\" fill=\"#333\"/> <circle cx=\"32\" cy=\"82\" r=\"21\" fill=\"#333\"/> <circle cx=\"32\" cy=\"124\" r=\"21\" fill=\"#00CC44\"/> <rect x=\"60\" y=\"102\" width=\"32\" height=\"44\" rx=\"5\" fill=\"#111\"/> <line x1=\"65\" y1=\"124\" x2=\"82\" y2=\"124\" stroke=\"#00CC44\" stroke-width=\"5\" stroke-linecap=\"round\"/> <polygon points=\"82,117 92,124 82,131\" fill=\"#00CC44\"/></svg>",cap:{en:"Green + green arrow",pt:"Verde + seta verde",es:"Verde + flecha verde"},
+   opts:[{l:"A",t:{en:"Turn in the direction of the arrow only",pt:"Virar apenas na direção da seta",es:"Girar solo en la dirección de la flecha"},ok:false},{l:"B",t:{en:"Turn in direction of arrow OR drive straight ahead",pt:"Virar na direção da seta OU seguir em frente",es:"Girar en dirección de la flecha O seguir recto"},ok:true},{l:"C",t:{en:"Drive straight ahead only",pt:"Apenas seguir em frente",es:"Solo seguir recto"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-02",cat:"Traffic Lights",
+   q:{en:"Traffic lights: RED light with a GREEN ARROW — what does it mean?",pt:"Semáforo VERMELHO com SETA VERDE — o que significa?",es:"Semáforo ROJO con FLECHA VERDE — ¿qué significa?"},
+   sign:"<svg viewBox=\"0 0 95 155\" xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"130\"> <rect x=\"3\" y=\"3\" width=\"89\" height=\"149\" rx=\"10\" fill=\"#1a1a1a\"/> <circle cx=\"32\" cy=\"40\" r=\"21\" fill=\"#CC0000\"/> <circle cx=\"32\" cy=\"82\" r=\"21\" fill=\"#333\"/> <circle cx=\"32\" cy=\"124\" r=\"21\" fill=\"#333\"/> <rect x=\"60\" y=\"18\" width=\"32\" height=\"44\" rx=\"5\" fill=\"#111\"/> <line x1=\"65\" y1=\"40\" x2=\"82\" y2=\"40\" stroke=\"#00CC44\" stroke-width=\"5\" stroke-linecap=\"round\"/> <polygon points=\"82,33 92,40 82,47\" fill=\"#00CC44\"/></svg>",cap:{en:"Red + green arrow",pt:"Vermelho + seta verde",es:"Rojo + flecha verde"},
+   opts:[{l:"A",t:{en:"Stop until all lights show green",pt:"Parar até todos ficarem verdes",es:"Detenerse hasta que todos estén verdes"},ok:false},{l:"B",t:{en:"Proceed in direction of the arrow ONLY",pt:"Ir apenas na direção da seta",es:"Avanzar solo en la dirección de la flecha"},ok:true},{l:"C",t:{en:"Proceed in any direction",pt:"Ir em qualquer direção",es:"Avanzar en cualquier dirección"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-03",cat:"Traffic Lights",
+   q:{en:"Traffic lights: green light with a RED ARROW — what does it mean?",pt:"Semáforo verde com SETA VERMELHA — o que significa?",es:"Semáforo verde con FLECHA ROJA — ¿qué significa?"},
+   sign:"<svg viewBox=\"0 0 95 155\" xmlns=\"http://www.w3.org/2000/svg\" width=\"80\" height=\"130\"> <rect x=\"3\" y=\"3\" width=\"89\" height=\"149\" rx=\"10\" fill=\"#1a1a1a\"/> <circle cx=\"32\" cy=\"40\" r=\"21\" fill=\"#333\"/> <circle cx=\"32\" cy=\"82\" r=\"21\" fill=\"#333\"/> <circle cx=\"32\" cy=\"124\" r=\"21\" fill=\"#00CC44\"/> <rect x=\"60\" y=\"102\" width=\"32\" height=\"44\" rx=\"5\" fill=\"#111\"/> <line x1=\"65\" y1=\"124\" x2=\"82\" y2=\"124\" stroke=\"#CC0000\" stroke-width=\"5\" stroke-linecap=\"round\"/> <polygon points=\"82,117 92,124 82,131\" fill=\"#CC0000\"/></svg>",cap:{en:"Green + red arrow",pt:"Verde + seta vermelha",es:"Verde + flecha roja"},
+   opts:[{l:"A",t:{en:"Go in any direction OTHER than the red arrow",pt:"Ir em qualquer direção EXCETO a seta vermelha",es:"Avanzar en cualquier dirección EXCEPTO la de la flecha roja"},ok:true},{l:"B",t:{en:"Turn in direction of arrow if safe",pt:"Ir na direção da seta se for seguro",es:"Girar en dirección de la flecha si es seguro"},ok:false},{l:"C",t:{en:"Stop — lights not working",pt:"Parar — semáforo com defeito",es:"Detenerse — semáforo averiado"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-04",cat:"Traffic Lights",
+   q:{en:"Are you allowed to make a U-turn at traffic lights?",pt:"Pode fazer retorno em semáforo?",es:"¿Puede hacer un cambio de sentido en un semáforo?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:false},{l:"B",t:{en:"No, unless there is a U TURN PERMITTED sign",pt:"Não, a menos que haja placa U TURN PERMITTED",es:"No, a menos que haya señal U TURN PERMITTED"},ok:true},{l:"C",t:{en:"Yes, if the lights are not working",pt:"Sim, se o semáforo não funcionar",es:"Sí, si el semáforo no funciona"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-05",cat:"Traffic Lights",
+   q:{en:"Turning RIGHT at traffic lights on GREEN — what should you do?",pt:"Virando à DIREITA com semáforo VERDE — o que fazer?",es:"Girando a la DERECHA con semáforo en VERDE — ¿qué debe hacer?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Turn only if you can do so without interfering with other traffic",pt:"Virar apenas se não atrapalhar o tráfego",es:"Girar solo si puede hacerlo sin interferir con el tráfico"},ok:true},{l:"B",t:{en:"Wait until red, then turn quickly",pt:"Esperar o vermelho e virar rapidamente",es:"Esperar el rojo y girar rápido"},ok:false},{l:"C",t:{en:"Wait until yellow, then turn",pt:"Esperar o amarelo e virar",es:"Esperar el amarillo y girar"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-06",cat:"Traffic Lights",
+   q:{en:"Turning at traffic lights with pedestrians crossing — what must you do?",pt:"Virando no semáforo com pedestres atravessando?",es:"Girando en semáforo con peatones cruzando — ¿qué debe hacer?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Give way to pedestrians crossing the road",pt:"Dar preferência a pedestres",es:"Ceder el paso a los peatones"},ok:true},{l:"B",t:{en:"Go if turning with a green arrow",pt:"Avançar se tiver seta verde",es:"Avanzar si gira con flecha verde"},ok:false},{l:"C",t:{en:"Ease carefully through the pedestrians",pt:"Avançar com cuidado",es:"Pasar con cuidado entre los peatones"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEM-07",cat:"Traffic Lights",
+   q:{en:"Does a police officer directing traffic over-rule traffic signs and lights?",pt:"Um policial dirigindo o tráfego substitui sinais e semáforos?",es:"¿Un agente de policía dirigiendo el tráfico prevalece sobre señales y semáforos?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"No",pt:"Não",es:"No"},ok:false},{l:"B",t:{en:"Yes, only in daylight",pt:"Sim, apenas de dia",es:"Sí, solo de día"},ok:false},{l:"C",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-01",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign?",pt:"O que significa este sinal?",es:"¿Cuál es el significado de esta señal?"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <rect width=\"110\" height=\"110\" fill=\"#fff\" rx=\"4\"/> <circle cx=\"55\" cy=\"55\" r=\"50\" fill=\"#fff\" stroke=\"#C00\" stroke-width=\"5\" stroke-dasharray=\"9,5\"/> <text x=\"55\" y=\"71\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"40\" font-weight=\"900\" fill=\"#111\">60</text></svg>",cap:{en:"Advisory speed sign",pt:"Sinal de velocidade recomendada",es:"Señal de velocidad recomendada"},
+   opts:[{l:"A",t:{en:"Do not exceed 60 km/h unless the road is clear",pt:"Não exceder 60 km/h a menos que a estrada esteja livre",es:"No superar los 60 km/h a menos que la carretera esté despejada"},ok:false},{l:"B",t:{en:"The recommended speed is 60 km/h",pt:"A velocidade recomendada é 60 km/h",es:"La velocidad recomendada es 60 km/h"},ok:true},{l:"C",t:{en:"Do not exceed 60 km/h at any time",pt:"Não exceder 60 km/h em nenhum momento",es:"No superar los 60 km/h en ningún momento"},ok:false}],
+   exp:{en:"The red <strong>dashed</strong> circle = advisory (recommended) speed — not a mandatory speed limit.",pt:"Borda <strong>tracejada</strong> vermelha = velocidade recomendada — não é limite obrigatório.",es:"Borde <strong>discontinuo</strong> rojo = velocidad recomendada — no es un límite obligatorio."},
+   tip:null},
+  {id:"SIGN-02",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign?",pt:"O que significa este sinal?",es:"¿Cuál es el significado de esta señal?"},
+   sign:"<svg viewBox=\"0 0 130 115\" xmlns=\"http://www.w3.org/2000/svg\" width=\"120\" height=\"106\"> <polygon points=\"65,4 126,112 4,112\" fill=\"white\" stroke=\"#CC0000\" stroke-width=\"8\" stroke-linejoin=\"round\"/> <polygon points=\"65,24 110,102 20,102\" fill=\"white\"/> <text x=\"65\" y=\"68\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"17\" font-weight=\"900\" fill=\"#CC0000\">GIVE</text> <text x=\"65\" y=\"88\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"17\" font-weight=\"900\" fill=\"#CC0000\">WAY</text></svg>",cap:{en:"GIVE WAY sign",pt:"Sinal GIVE WAY",es:"Señal CEDA EL PASO"},
+   opts:[{l:"A",t:{en:"Give way to traffic on the right only",pt:"Dar preferência apenas ao tráfego da direita",es:"Ceder solo a los de la derecha"},ok:false},{l:"B",t:{en:"Stop and give way to all traffic",pt:"Parar e dar preferência a todos",es:"Detenerse y ceder el paso a todos"},ok:false},{l:"C",t:{en:"Slow down and give way to all traffic on the intersecting road",pt:"Reduzir e dar preferência a todos na via que cruza",es:"Reducir y ceder el paso a todo el tráfico en la vía que cruza"},ok:true}],
+   exp:{en:"GIVE WAY = slow down and yield. <strong>Not the same as STOP</strong> — you don't have to stop if clear.",pt:"GIVE WAY = reduza e dê preferência. <strong>Diferente do STOP</strong> — não precisa parar se estiver livre.",es:"CEDA EL PASO = reduce y cede. <strong>No es igual a STOP</strong> — no necesita detenerse si está despejado."},
+   tip:null},
+  {id:"SIGN-03",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign?",pt:"O que significa este sinal?",es:"¿Cuál es el significado de esta señal?"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <circle cx=\"55\" cy=\"55\" r=\"52\" fill=\"#C00\"/> <rect x=\"16\" y=\"42\" width=\"78\" height=\"26\" rx=\"4\" fill=\"white\"/> <text x=\"55\" y=\"105\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"11\" font-weight=\"900\" fill=\"#111\">NO ENTRY</text></svg>",cap:{en:"NO ENTRY sign",pt:"Sinal NO ENTRY",es:"Señal NO ENTRY"},
+   opts:[{l:"A",t:{en:"No entry for heavy vehicles",pt:"Sem entrada para veículos pesados",es:"No pasar para vehículos pesados"},ok:false},{l:"B",t:{en:"No entry at any time",pt:"Sem entrada em nenhum momento",es:"Prohibido el paso en todo momento"},ok:true},{l:"C",t:{en:"No entry during daylight hours",pt:"Sem entrada durante o dia",es:"Prohibido el paso durante el día"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-04",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign? (yellow diamond with + cross)",pt:"O que significa este sinal? (losango amarelo com cruz +)",es:"¿Cuál es el significado de esta señal? (rombo amarillo con cruz +)"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <rect width=\"110\" height=\"110\" fill=\"none\"/> <polygon points=\"55,4 106,55 55,106 4,55\" fill=\"#FFD700\" stroke=\"#333\" stroke-width=\"2.5\"/> <rect x=\"45\" y=\"24\" width=\"20\" height=\"62\" rx=\"3\" fill=\"#444\"/> <rect x=\"24\" y=\"45\" width=\"62\" height=\"20\" rx=\"3\" fill=\"#444\"/></svg>",cap:{en:"Crossroad warning",pt:"Aviso de cruzamento",es:"Señal de cruce"},
+   opts:[{l:"A",t:{en:"No entry",pt:"Sem entrada",es:"Prohibido el paso"},ok:false},{l:"B",t:{en:"Caution, crossroad ahead",pt:"Cuidado, cruzamento à frente",es:"Atención, cruce adelante"},ok:true},{l:"C",t:{en:"Caution, ambulance depot",pt:"Cuidado, depósito de ambulância",es:"Atención, depósito de ambulancias"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-05",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign? (yellow circle with walking figure)",pt:"O que significa este sinal? (círculo amarelo com figura caminhando)",es:"¿Cuál es el significado de esta señal? (círculo amarillo con figura caminando)"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <circle cx=\"55\" cy=\"55\" r=\"52\" fill=\"#FFD700\" stroke=\"#333\" stroke-width=\"2.5\"/> <circle cx=\"55\" cy=\"26\" r=\"9\" fill=\"#1a1a1a\"/> <line x1=\"55\" y1=\"35\" x2=\"55\" y2=\"64\" stroke=\"#1a1a1a\" stroke-width=\"7\" stroke-linecap=\"round\"/> <line x1=\"55\" y1=\"47\" x2=\"37\" y2=\"40\" stroke=\"#1a1a1a\" stroke-width=\"5\" stroke-linecap=\"round\"/> <line x1=\"55\" y1=\"47\" x2=\"71\" y2=\"41\" stroke=\"#1a1a1a\" stroke-width=\"5\" stroke-linecap=\"round\"/> <line x1=\"55\" y1=\"64\" x2=\"42\" y2=\"86\" stroke=\"#1a1a1a\" stroke-width=\"6\" stroke-linecap=\"round\"/> <line x1=\"55\" y1=\"64\" x2=\"67\" y2=\"87\" stroke=\"#1a1a1a\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",cap:{en:"Pedestrian crossing warning",pt:"Aviso de faixa de pedestre",es:"Señal de paso de peatones"},
+   opts:[{l:"A",t:{en:"Caution, school ahead",pt:"Cuidado, escola à frente",es:"Atención, escuela adelante"},ok:false},{l:"B",t:{en:"Caution, pedestrian crossing ahead",pt:"Cuidado, faixa de pedestre à frente",es:"Atención, paso de peatones adelante"},ok:true},{l:"C",t:{en:"Caution, traffic lights ahead",pt:"Cuidado, semáforo à frente",es:"Atención, semáforo adelante"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-06",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign? (yellow circle with children figures)",pt:"O que significa este sinal? (círculo amarelo com crianças)",es:"¿Cuál es el significado de esta señal? (círculo amarillo con niños)"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <circle cx=\"55\" cy=\"55\" r=\"52\" fill=\"#FFD700\" stroke=\"#333\" stroke-width=\"2.5\"/> <circle cx=\"40\" cy=\"28\" r=\"8\" fill=\"#1a1a1a\"/> <line x1=\"40\" y1=\"36\" x2=\"40\" y2=\"60\" stroke=\"#1a1a1a\" stroke-width=\"6\" stroke-linecap=\"round\"/> <line x1=\"40\" y1=\"46\" x2=\"27\" y2=\"40\" stroke=\"#1a1a1a\" stroke-width=\"4\" stroke-linecap=\"round\"/> <line x1=\"40\" y1=\"46\" x2=\"53\" y2=\"42\" stroke=\"#1a1a1a\" stroke-width=\"4\" stroke-linecap=\"round\"/> <line x1=\"40\" y1=\"60\" x2=\"31\" y2=\"80\" stroke=\"#1a1a1a\" stroke-width=\"5\" stroke-linecap=\"round\"/> <line x1=\"40\" y1=\"60\" x2=\"49\" y2=\"81\" stroke=\"#1a1a1a\" stroke-width=\"5\" stroke-linecap=\"round\"/> <circle cx=\"70\" cy=\"24\" r=\"9\" fill=\"#1a1a1a\"/> <line x1=\"70\" y1=\"33\" x2=\"70\" y2=\"59\" stroke=\"#1a1a1a\" stroke-width=\"7\" stroke-linecap=\"round\"/> <line x1=\"70\" y1=\"44\" x2=\"57\" y2=\"39\" stroke=\"#1a1a1a\" stroke-width=\"5\" stroke-linecap=\"round\"/> <line x1=\"70\" y1=\"44\" x2=\"83\" y2=\"41\" stroke=\"#1a1a1a\" stroke-width=\"5\" stroke-linecap=\"round\"/> <line x1=\"70\" y1=\"59\" x2=\"60\" y2=\"83\" stroke=\"#1a1a1a\" stroke-width=\"6\" stroke-linecap=\"round\"/> <line x1=\"70\" y1=\"59\" x2=\"80\" y2=\"84\" stroke=\"#1a1a1a\" stroke-width=\"6\" stroke-linecap=\"round\"/></svg>",cap:{en:"Children's crossing warning",pt:"Aviso de cruzamento de crianças",es:"Señal de cruce de niños"},
+   opts:[{l:"A",t:{en:"Caution, an attended children's crossing is ahead",pt:"Cuidado, cruzamento de crianças supervisionado à frente",es:"Atención, cruce de niños supervisado adelante"},ok:true},{l:"B",t:{en:"Caution, watch out for children",pt:"Cuidado com crianças",es:"Atención, niños"},ok:false},{l:"C",t:{en:"Stop immediately if you see children",pt:"Pare imediatamente se ver crianças",es:"Deténgase inmediatamente si ve niños"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-07",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign?",pt:"O que significa este sinal de estacionamento?",es:"¿Cuál es el significado de esta señal de estacionamiento?"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <rect width=\"110\" height=\"110\" rx=\"8\" fill=\"#1A56C4\"/> <circle cx=\"55\" cy=\"24\" r=\"10\" fill=\"white\"/> <line x1=\"55\" y1=\"34\" x2=\"55\" y2=\"62\" stroke=\"white\" stroke-width=\"8\" stroke-linecap=\"round\"/> <line x1=\"55\" y1=\"48\" x2=\"75\" y2=\"48\" stroke=\"white\" stroke-width=\"7\" stroke-linecap=\"round\"/> <path d=\"M55 62 L50 85\" stroke=\"white\" stroke-width=\"7\" stroke-linecap=\"round\"/> <path d=\"M55 62 L72 78\" stroke=\"white\" stroke-width=\"7\" stroke-linecap=\"round\"/> <circle cx=\"50\" cy=\"95\" r=\"11\" fill=\"none\" stroke=\"white\" stroke-width=\"5\"/> <circle cx=\"74\" cy=\"95\" r=\"11\" fill=\"none\" stroke=\"white\" stroke-width=\"5\"/></svg>",cap:{en:"ACROD disability parking",pt:"Estacionamento para deficientes ACROD",es:"Aparcamiento ACROD para discapacitados"},
+   opts:[{l:"A",t:{en:"Reserved for people in wheelchairs only",pt:"Reservado apenas para cadeirantes",es:"Reservado solo para personas en silla de ruedas"},ok:false},{l:"B",t:{en:"Reserved for emergency vehicles",pt:"Reservado para veículos de emergência",es:"Reservado para vehículos de emergencia"},ok:false},{l:"C",t:{en:"Reserved for holders of a current ACROD parking permit",pt:"Reservado para portadores de ACROD parking permit",es:"Reservado para titulares del permiso ACROD"},ok:true}],
+   exp:{en:"Reserved for <strong>ACROD parking permit holders</strong> — broader than just wheelchair users.",pt:"Reservado para portadores do <strong>ACROD parking permit</strong> — mais amplo que só cadeirantes.",es:"Reservado para titulares del <strong>permiso ACROD</strong> — más amplio que solo sillas de ruedas."},
+   tip:null},
+  {id:"SIGN-08",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign?",pt:"O que significa este sinal?",es:"¿Cuál es el significado de esta señal?"},
+   sign:"<svg viewBox=\"0 0 150 72\" xmlns=\"http://www.w3.org/2000/svg\" width=\"140\" height=\"67\"> <rect width=\"150\" height=\"72\" rx=\"5\" fill=\"#222\"/> <text x=\"75\" y=\"32\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"18\" font-weight=\"900\" fill=\"white\">ONE WAY</text> <line x1=\"28\" y1=\"54\" x2=\"112\" y2=\"54\" stroke=\"white\" stroke-width=\"7\" stroke-linecap=\"round\"/> <polygon points=\"112,44 130,54 112,64\" fill=\"white\"/></svg>",cap:{en:"ONE WAY sign",pt:"Sinal ONE WAY",es:"Señal SENTIDO ÚNICO"},
+   opts:[{l:"A",t:{en:"You can only drive in the direction of the arrow",pt:"Pode dirigir apenas na direção da seta",es:"Solo puede conducir en la dirección de la flecha"},ok:true},{l:"B",t:{en:"You cannot go past the arrow",pt:"Não pode passar pela seta",es:"No puede pasar la flecha"},ok:false},{l:"C",t:{en:"You can go either way but in one lane",pt:"Pode ir nos dois sentidos em uma faixa",es:"Puede ir en ambas direcciones en un carril"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-09",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign?",pt:"O que significa este sinal?",es:"¿Cuál es el significado de esta señal?"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <rect width=\"110\" height=\"110\" rx=\"5\" fill=\"#2255AA\"/> <text x=\"55\" y=\"40\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"16\" font-weight=\"900\" fill=\"white\">KEEP</text> <text x=\"55\" y=\"62\" text-anchor=\"middle\" font-family=\"Arial Black,sans-serif\" font-size=\"16\" font-weight=\"900\" fill=\"white\">LEFT</text> <path d=\"M68 76 L40 98\" stroke=\"white\" stroke-width=\"7\" stroke-linecap=\"round\"/> <polygon points=\"30,92 44,100 38,88\" fill=\"white\"/></svg>",cap:{en:"KEEP LEFT sign",pt:"Sinal KEEP LEFT",es:"Señal MANTÉNGASE A LA IZQUIERDA"},
+   opts:[{l:"A",t:{en:"Turn left at the next street",pt:"Vire à esquerda na próxima rua",es:"Gire a la izquierda en la próxima calle"},ok:false},{l:"B",t:{en:"Pass on the left of traffic",pt:"Passe pelo lado esquerdo do tráfego",es:"Pase por la izquierda del tráfico"},ok:false},{l:"C",t:{en:"Keep to the LEFT of the sign",pt:"Mantenha-se à ESQUERDA do sinal",es:"Manténgase a la IZQUIERDA de la señal"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-10",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign? (yellow diamond with T shape)",pt:"O que significa este sinal? (losango amarelo com formato T)",es:"¿Cuál es el significado de esta señal? (rombo amarillo con forma de T)"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <polygon points=\"55,4 106,55 55,106 4,55\" fill=\"#FFD700\" stroke=\"#333\" stroke-width=\"2.5\"/> <rect x=\"27\" y=\"42\" width=\"56\" height=\"16\" rx=\"3\" fill=\"#333\"/> <rect x=\"48\" y=\"42\" width=\"16\" height=\"34\" rx=\"3\" fill=\"#333\"/></svg>",cap:{en:"T-junction warning",pt:"Aviso de cruzamento em T",es:"Señal de intersección en T"},
+   opts:[{l:"A",t:{en:"Caution, approaching a one-way street",pt:"Cuidado, rua de mão única à frente",es:"Atención, calle de sentido único adelante"},ok:false},{l:"B",t:{en:"Caution, approaching a T junction",pt:"Cuidado, cruzamento em T à frente",es:"Atención, intersección en T adelante"},ok:true},{l:"C",t:{en:"Caution, no through road",pt:"Cuidado, sem saída",es:"Atención, calle sin salida"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SIGN-11",cat:"Road Signs",
+   q:{en:"What is the meaning of this sign? (yellow diamond with curved S-arrow)",pt:"O que significa este sinal? (losango amarelo com seta curva em S)",es:"¿Cuál es el significado de esta señal? (rombo amarillo con flecha curva en S)"},
+   sign:"<svg viewBox=\"0 0 110 110\" xmlns=\"http://www.w3.org/2000/svg\" width=\"100\" height=\"100\"> <polygon points=\"55,4 106,55 55,106 4,55\" fill=\"#FFD700\" stroke=\"#333\" stroke-width=\"2.5\"/> <path d=\"M55 85 C72 72, 72 62, 55 55 C38 48, 38 38, 55 24\"    fill=\"none\" stroke=\"#333\" stroke-width=\"8\" stroke-linecap=\"round\"/> <polygon points=\"55,16 47,32 63,32\" fill=\"#333\"/></svg>",cap:{en:"Winding road warning",pt:"Aviso de curvas",es:"Señal de curvas"},
+   opts:[{l:"A",t:{en:"There is a steep hill ahead",pt:"Há uma subida acentuada à frente",es:"Hay una cuesta pronunciada adelante"},ok:false},{l:"B",t:{en:"Slow down for a dip in the road",pt:"Reduza para uma depressão na estrada",es:"Reduzca la velocidad por un bache en la carretera"},ok:false},{l:"C",t:{en:"Caution — the road curves right, then left",pt:"Cuidado — a estrada curva à direita e depois à esquerda",es:"Atención — la carretera curva a la derecha y luego a la izquierda"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-01",cat:"Road Safety",
+   q:{en:"Are people over 65 required to wear a seat belt?",pt:"Pessoas acima de 65 anos precisam usar cinto de segurança?",es:"¿Las personas mayores de 65 años deben llevar cinturón de seguridad?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"No, if they are passengers",pt:"Não, se forem passageiros",es:"No, si son pasajeros"},ok:false},{l:"B",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:true},{l:"C",t:{en:"No, if they are driving",pt:"Não, se estiverem dirigindo",es:"No, si están conduciendo"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-02",cat:"Road Safety",
+   q:{en:"At what age must a person wear a seat belt or child restraint?",pt:"A partir de qual idade é obrigatório usar cinto de segurança?",es:"¿A partir de qué edad es obligatorio llevar cinturón o sistema de retención?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"All ages",pt:"Todas as idades",es:"Todas las edades"},ok:true},{l:"B",t:{en:"Age 1 year and over",pt:"1 ano ou mais",es:"1 año en adelante"},ok:false},{l:"C",t:{en:"Age 8 years and over",pt:"8 anos ou mais",es:"8 años en adelante"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-03",cat:"Road Safety",
+   q:{en:"Who is fined if a passenger under 16 is not wearing a seat belt?",pt:"Quem é multado se passageiro menor de 16 não usar cinto?",es:"¿Quién recibe la multa si un pasajero menor de 16 no lleva cinturón?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"The vehicle owner",pt:"O proprietário do veículo",es:"El propietario del vehículo"},ok:false},{l:"B",t:{en:"The passenger",pt:"O passageiro",es:"El pasajero"},ok:false},{l:"C",t:{en:"The driver",pt:"O motorista",es:"El conductor"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-04",cat:"Road Safety",
+   q:{en:"Are passengers allowed in the back of a utility or open load space?",pt:"Passageiros podem viajar na carroceria de ute ou carga aberta?",es:"¿Pueden los pasajeros viajar en la parte trasera de una camioneta o carga abierta?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Yes, if not exceeding 60 km/h",pt:"Sim, se não exceder 60 km/h",es:"Sí, si no se superan los 60 km/h"},ok:false},{l:"B",t:{en:"Yes, if seated",pt:"Sim, se sentados",es:"Sí, si están sentados"},ok:false},{l:"C",t:{en:"No",pt:"Não",es:"No"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-05",cat:"Road Safety",
+   q:{en:"Are you allowed to use a hand-held mobile phone while driving?",pt:"Pode usar celular na mão enquanto dirige?",es:"¿Puede usar el teléfono en mano mientras conduce?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"No",pt:"Não",es:"No"},ok:true},{l:"B",t:{en:"Yes, if you don't lose concentration",pt:"Sim, se não perder concentração",es:"Sí, si no pierde la concentración"},ok:false},{l:"C",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-06",cat:"Road Safety",
+   q:{en:"When should you switch your headlights on?",pt:"Quando deve acender os faróis?",es:"¿Cuándo debe encender los faros?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"20 minutes after sunset",pt:"20 minutos após o pôr do sol",es:"20 minutos después del ocaso"},ok:false},{l:"B",t:{en:"15 minutes after sunset",pt:"15 minutos após o pôr do sol",es:"15 minutos después del ocaso"},ok:false},{l:"C",t:{en:"At sunset",pt:"Ao pôr do sol (entardecer)",es:"Al atardecer"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-07",cat:"Road Safety",
+   q:{en:"When should you dip (lower) your headlights?",pt:"Quando deve usar farol baixo?",es:"¿Cuándo debe bajar las luces largas?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Within 50 metres of a vehicle",pt:"A 50 metros de outro veículo",es:"A 50 metros de otro vehículo"},ok:false},{l:"B",t:{en:"Within 200 metres of a vehicle",pt:"A 200 metros de outro veículo",es:"A 200 metros de otro vehículo"},ok:true},{l:"C",t:{en:"Only when dazzled",pt:"Apenas quando encandear",es:"Solo cuando le deslumbren"},ok:false}],
+   exp:{en:"Dip headlights when within <strong>200 metres</strong> of another vehicle.",pt:"Usar farol baixo a <strong>200 metros</strong> de outro veículo.",es:"Bajar las luces a <strong>200 metros</strong> de otro vehículo."},
+   tip:null},
+  {id:"SEG-08",cat:"Road Safety",
+   q:{en:"Should you use high beam or low beam when driving in fog or smoke?",pt:"Usar farol alto ou baixo em neblina ou fumaça?",es:"¿Debe usar luces largas o cortas con niebla o humo?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"High beam",pt:"Farol alto (longa distância)",es:"Luces largas"},ok:false},{l:"B",t:{en:"Makes no difference",pt:"Não faz diferença",es:"No importa"},ok:false},{l:"C",t:{en:"Low beam",pt:"Farol baixo",es:"Luces cortas"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"SEG-09",cat:"Road Safety",
+   q:{en:"At a railway crossing — can you cross if the train has passed but lights are still flashing?",pt:"Pode cruzar a ferrovia se o trem passou mas as luzes ainda piscam?",es:"¿Puede cruzar las vías si el tren ya pasó pero las luces siguen parpadeando?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Yes",pt:"Sim",es:"Sí"},ok:false},{l:"B",t:{en:"No",pt:"Não",es:"No"},ok:true},{l:"C",t:{en:"Yes, unless there are boom gates",pt:"Sim, a menos que haja cancelas",es:"Sí, a menos que haya barreras"},ok:false}],
+   exp:{en:"<strong>No</strong> — stay stopped while lights are flashing, even if the train has passed.",pt:"<strong>Não</strong> — fique parado enquanto as luzes piscarem, mesmo que o trem já tenha passado.",es:"<strong>No</strong> — permanezca detenido mientras parpadeen las luces, aunque el tren ya haya pasado."},
+   tip:null},
+  {id:"SEG-10",cat:"Road Safety",
+   q:{en:"What is the first thing to do when assisting at a crash scene?",pt:"Primeira coisa ao ajudar em uma cena de acidente?",es:"¿Qué es lo primero que debe hacer al asistir en un accidente?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Remove occupants from the vehicle",pt:"Remover ocupantes do veículo",es:"Sacar a los ocupantes del vehículo"},ok:false},{l:"B",t:{en:"Check whether anyone is unconscious",pt:"Verificar se há inconscientes",es:"Comprobar si hay inconscientes"},ok:false},{l:"C",t:{en:"Check for danger",pt:"Verificar se há perigo",es:"Comprobar si hay peligro"},ok:true}],
+   exp:{en:"First: <strong>check for danger</strong>. Then check for injuries.",pt:"Primeiro: <strong>verificar se há perigo</strong>. Depois verificar feridos.",es:"Primero: <strong>comprobar si hay peligro</strong>. Luego verificar heridos."},
+   tip:null},
+  {id:"SEG-11",cat:"Road Safety",
+   q:{en:"Which of the following is GREATER — braking, stopping, or reaction distance?",pt:"Qual é MAIOR — distância de frenagem, parada ou reação?",es:"¿Cuál es MAYOR — distancia de frenado, parada o reacción?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Braking distance",pt:"Distância de frenagem",es:"Distancia de frenado"},ok:false},{l:"B",t:{en:"Stopping distance",pt:"Distância de parada",es:"Distancia de parada"},ok:true},{l:"C",t:{en:"Reaction distance",pt:"Distância de reação",es:"Distancia de reacción"},ok:false}],
+   exp:{en:"<strong>Stopping distance</strong> = reaction distance + braking distance. It is the greatest of the three.",pt:"<strong>Distância de parada</strong> = distância de reação + distância de frenagem. É a maior.",es:"<strong>Distancia de parada</strong> = distancia de reacción + distancia de frenado. Es la mayor."},
+   tip:null},
+  {id:"MOV-01",cat:"Blind Spot & Overtaking",
+   q:{en:"Which motorcycle is in the car driver's blind spot?",pt:"Qual moto está no ponto cego do motorista do carro?",es:"¿Qué moto está en el ángulo muerto del conductor?"},
+   sign:"<svg viewBox=\"0 0 200 145\" xmlns=\"http://www.w3.org/2000/svg\" width=\"188\" height=\"136\"> <rect width=\"200\" height=\"145\" rx=\"8\" fill=\"#111f2e\"/> <rect x=\"8\" y=\"8\" width=\"60\" height=\"129\" rx=\"4\" fill=\"#666\"/> <rect x=\"76\" y=\"8\" width=\"60\" height=\"129\" rx=\"4\" fill=\"#666\"/> <rect x=\"144\" y=\"8\" width=\"60\" height=\"129\" rx=\"4\" fill=\"#666\"/> <line x1=\"72\" y1=\"8\" x2=\"72\" y2=\"137\" stroke=\"white\" stroke-width=\"1.5\" stroke-dasharray=\"8,5\"/> <line x1=\"140\" y1=\"8\" x2=\"140\" y2=\"137\" stroke=\"white\" stroke-width=\"1.5\" stroke-dasharray=\"8,5\"/> <!-- Main car --> <rect x=\"28\" y=\"90\" width=\"20\" height=\"36\" rx=\"3\" fill=\"#999\" stroke=\"white\" stroke-width=\"1.5\"/> <text x=\"38\" y=\"113\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"7\" fill=\"white\">CAR</text> <!-- Blind spot zone --> <ellipse cx=\"38\" cy=\"68\" rx=\"28\" ry=\"18\" fill=\"rgba(255,80,80,0.25)\" stroke=\"#FF5555\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/> <!-- Moto X (blind spot) --> <circle cx=\"38\" cy=\"60\" r=\"12\" fill=\"#FF4444\" stroke=\"white\" stroke-width=\"1.5\"/> <text x=\"38\" y=\"65\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"white\">X</text> <!-- Moto Y (visible in mirror, same lane behind) --> <circle cx=\"38\" cy=\"30\" r=\"12\" fill=\"#44BB44\" stroke=\"white\" stroke-width=\"1.5\"/> <text x=\"38\" y=\"35\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"white\">Y</text> <!-- Moto Z (adjacent lane) --> <circle cx=\"108\" cy=\"50\" r=\"12\" fill=\"#4488FF\" stroke=\"white\" stroke-width=\"1.5\"/> <text x=\"108\" y=\"55\" text-anchor=\"middle\" font-family=\"Arial,sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"white\">Z</text> <!-- Legend --> <rect x=\"145\" y=\"30\" width=\"50\" height=\"75\" rx=\"4\" fill=\"rgba(0,0,0,0.55)\"/> <circle cx=\"155\" cy=\"44\" r=\"6\" fill=\"#FF4444\"/><text x=\"164\" y=\"48\" font-family=\"Arial,sans-serif\" font-size=\"8\" fill=\"white\">X = blind spot</text> <circle cx=\"155\" cy=\"62\" r=\"6\" fill=\"#44BB44\"/><text x=\"164\" y=\"66\" font-family=\"Arial,sans-serif\" font-size=\"8\" fill=\"white\">Y = visible</text> <circle cx=\"155\" cy=\"80\" r=\"6\" fill=\"#4488FF\"/><text x=\"164\" y=\"84\" font-family=\"Arial,sans-serif\" font-size=\"8\" fill=\"white\">Z = adjacent</text></svg>",cap:{en:"Blind spot diagram",pt:"Diagrama do ponto cego",es:"Diagrama del punto ciego"},
+   opts:[{l:"A",t:{en:"Motorcycle X — beside/behind, not visible in mirrors",pt:"Moto X — ao lado/atrás, não visível nos espelhos",es:"Moto X — al lado/detrás, no visible en los espejos"},ok:true},{l:"B",t:{en:"Motorcycle Y — far behind, visible in mirror",pt:"Moto Y — longe atrás, visível no espelho",es:"Moto Y — lejos detrás, visible en el espejo"},ok:false},{l:"C",t:{en:"Motorcycle Z — in adjacent lane",pt:"Moto Z — na faixa adjacente",es:"Moto Z — en el carril adyacente"},ok:false}],
+   exp:{en:"The blind spot is <strong>beside and behind</strong> the car — not visible in mirrors. X is in the blind spot.",pt:"O ponto cego é <strong>ao lado e atrás</strong> do carro — não visível nos espelhos. X está no ponto cego.",es:"El ángulo muerto está <strong>al lado y detrás</strong> del coche — no visible en los espejos. X está en el ángulo muerto."},
+   tip:null},
+  {id:"LIN-01",cat:"Road Markings",
+   q:{en:"What does a BROKEN white line down the centre of a road mean?",pt:"O que significa linha branca TRACEJADA no centro da via?",es:"¿Qué significa una línea blanca DISCONTINUA en el centro de la vía?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"You must not cross it",pt:"Não pode cruzar",es:"No debe cruzarla"},ok:false},{l:"B",t:{en:"You may only cross it to turn right",pt:"Pode cruzar apenas para virar à direita",es:"Solo puede cruzarla para girar a la derecha"},ok:false},{l:"C",t:{en:"You may cross it when overtaking or turning right, if safe to do so",pt:"Pode cruzar ao ultrapassar ou virar à direita, se for seguro",es:"Puede cruzarla al adelantar o girar a la derecha, si es seguro"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"LIN-02",cat:"Road Markings",
+   q:{en:"Is a vehicle allowed to cross over a double UNBROKEN white line?",pt:"Pode cruzar linha branca dupla CONTÍNUA?",es:"¿Puede cruzar una doble línea blanca CONTINUA?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Yes, to overtake",pt:"Sim, para ultrapassar",es:"Sí, para adelantar"},ok:false},{l:"B",t:{en:"No",pt:"Não",es:"No"},ok:false},{l:"C",t:{en:"Yes, only for a right-hand turn or U-turn if safe and legal",pt:"Sim, apenas para virar à direita ou fazer retorno se seguro e legal",es:"Sí, solo para girar a la derecha o cambiar de sentido si es seguro y legal"},ok:true}],
+   exp:{en:"Double unbroken: <strong>cannot cross to overtake</strong>. May cross only for a right turn or U-turn if safe and legal.",pt:"Linha dupla contínua: <strong>não pode cruzar para ultrapassar</strong>. Pode cruzar apenas para virar à direita ou retorno.",es:"Doble continua: <strong>no puede cruzar para adelantar</strong>. Solo para girar a la derecha o cambiar de sentido."},
+   tip:null},
+  {id:"LIN-03",cat:"Road Markings",
+   q:{en:"What does a continuous white line dividing lanes mean?",pt:"O que significa linha branca contínua dividindo faixas?",es:"¿Qué significa una línea blanca continua entre carriles?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"You may change lanes if turning right",pt:"Pode mudar de faixa virando à direita",es:"Puede cambiar de carril si gira a la derecha"},ok:false},{l:"B",t:{en:"You are NOT allowed to change lanes",pt:"NÃO pode mudar de faixa",es:"NO puede cambiar de carril"},ok:true},{l:"C",t:{en:"You may change lanes if turning left",pt:"Pode mudar de faixa virando à esquerda",es:"Puede cambiar de carril si gira a la izquierda"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"EMRG-01",cat:"Emergencies",
+   q:{en:"What should you do if your accelerator is stuck?",pt:"O que fazer se o acelerador travar?",es:"¿Qué hacer si el acelerador se queda bloqueado?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Apply the clutch or select neutral and apply the brake",pt:"Acionar embreagem ou neutro + freio",es:"Embrague o neutro + freno"},ok:true},{l:"B",t:{en:"Switch off the ignition",pt:"Desligar o motor",es:"Apagar el motor"},ok:false},{l:"C",t:{en:"Change to a lower gear",pt:"Mudar para marcha menor",es:"Cambiar a una marcha menor"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"EMRG-02",cat:"Emergencies",
+   q:{en:"What should you do if your brakes fail while driving?",pt:"O que fazer se os freios falharem?",es:"¿Qué hacer si fallan los frenos?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Change to lower gear and gently apply the handbrake",pt:"Marcha menor + freio de mão suave",es:"Marcha menor + freno de mano suavemente"},ok:true},{l:"B",t:{en:"Switch off the ignition",pt:"Desligar o motor",es:"Apagar el motor"},ok:false},{l:"C",t:{en:"Accelerate and sound the horn",pt:"Acelerar e buzinar",es:"Acelerar y tocar el claxon"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"EMRG-03",cat:"Emergencies",
+   q:{en:"What should you do if a head-on collision seems likely?",pt:"O que fazer se uma colisão frontal parecer inevitável?",es:"¿Qué hacer si parece inevitable una colisión frontal?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Apply the emergency brake",pt:"Aplicar o freio de emergência",es:"Aplicar el freno de emergencia"},ok:false},{l:"B",t:{en:"Brake firmly and drive towards open ground",pt:"Frear com força e ir para terreno aberto",es:"Frenar con fuerza y dirigirse a terreno abierto"},ok:true},{l:"C",t:{en:"Switch off the ignition",pt:"Desligar o motor",es:"Apagar el motor"},ok:false}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+  {id:"EMRG-04",cat:"Emergencies",
+   q:{en:"What should you do if your vehicle catches fire?",pt:"O que fazer se o veículo pegar fogo?",es:"¿Qué hacer si el vehículo se incendia?"},
+   sign:"",cap:null,
+   opts:[{l:"A",t:{en:"Accelerate to blow out the flames",pt:"Acelerar para apagar as chamas",es:"Acelerar para apagar las llamas"},ok:false},{l:"B",t:{en:"Sound the horn to warn other drivers",pt:"Buzinar para avisar outros motoristas",es:"Tocar el claxon para avisar a otros conductores"},ok:false},{l:"C",t:{en:"Stop and turn off the ignition",pt:"Parar e desligar o motor",es:"Detenerse y apagar el motor"},ok:true}],
+   exp:{en:"",pt:"",es:""},
+   tip:null},
+];
+
+const CATEGORIES = [{"key": "Speed Limits", "icon": "⚡", "label": {"en": "Speed Limits", "pt": "Velocidade", "es": "Velocidad"}}, {"key": "Give Way Rules", "icon": "🛑", "label": {"en": "Give Way Rules", "pt": "Preferência", "es": "Prioridad"}}, {"key": "Alcohol & BAC", "icon": "🍺", "label": {"en": "Alcohol & BAC", "pt": "Álcool/BAC", "es": "Alcohol/TAC"}}, {"key": "Parking Rules", "icon": "🅿️", "label": {"en": "Parking Rules", "pt": "Estacionamento", "es": "Aparcamiento"}}, {"key": "Traffic Lights", "icon": "🚦", "label": {"en": "Traffic Lights", "pt": "Semáforos", "es": "Semáforos"}}, {"key": "Road Signs", "icon": "🪧", "label": {"en": "Road Signs", "pt": "Sinais", "es": "Señales"}}, {"key": "Road Safety", "icon": "🛡️", "label": {"en": "Road Safety", "pt": "Segurança", "es": "Seguridad"}}, {"key": "Blind Spot & Overtaking", "icon": "👁️", "label": {"en": "Blind Spot & Overtaking", "pt": "Ponto Cego", "es": "Ángulo Muerto"}}, {"key": "Road Markings", "icon": "〰️", "label": {"en": "Road Markings", "pt": "Faixas", "es": "Marcas"}}, {"key": "Emergencies", "icon": "🔧", "label": {"en": "Emergencies", "pt": "Emergências", "es": "Emergencias"}}];
+
+// ═══════════════════════════════════════════════
+//  DriveWise WA — App Logic
+// ═══════════════════════════════════════════════
+
+const DW = {
+  lang: 'pt',
+  mode: 'all',      // all | wrong | unanswered | sim
+  cat: 'all',
+  correct: 0,
+  total: 0,
+  answered: {},     // id -> {correct, chosen}
+  simQueue: [],
+  simIdx: 0,
+  simMode: false,
+
+  // ── I18N ──
+  t(key){ return I18N[key]?.[this.lang] || I18N[key]?.en || key },
+
+  // ── STORAGE ──
+  save(){
+    try{
+      localStorage.setItem('kl-lang', this.lang);
+      localStorage.setItem('kl-answered', JSON.stringify(this.answered));
+    }catch(e){}
+  },
+  load(){
+    try{
+      const l = localStorage.getItem('kl-lang');
+      if(l) this.lang = l;
+      const a = localStorage.getItem('kl-answered');
+      if(a) this.answered = JSON.parse(a);
+    }catch(e){}
+  },
+  clearProgress(){
+    this.answered = {};
+    this.correct = 0;
+    this.total = 0;
+    localStorage.removeItem('kl-answered');
+    this.renderQuiz();
+    this.updateScore();
+    // confetti on reset
+  },
+
+  // ── LANG ──
+  setLang(lang, el){
+    this.lang = lang;
+    document.body.className = 'mode-' + lang;
+    document.documentElement.lang = lang.startsWith('pt') ? 'pt-BR' : lang.startsWith('es') ? 'es' : 'en';
+    document.getElementById('ld-flag').textContent = FLAGS[lang] || '🌐';
+    document.getElementById('ld-name').textContent = NAMES[lang] || lang;
+    document.querySelectorAll('.ld-option').forEach(o => o.classList.remove('active'));
+    if(el) el.classList.add('active');
+    document.getElementById('ld-panel').classList.remove('open');
+    document.getElementById('ld-trigger').classList.remove('open');
+    this.save();
+    this.renderFilters();
+    this.renderQuiz();
+  },
+
+  // ── DROPDOWN ──
+  ldToggle(){
+    const t = document.getElementById('ld-trigger');
+    const p = document.getElementById('ld-panel');
+    const rect = t.getBoundingClientRect();
+    const isOpen = p.classList.contains('open');
+    if(!isOpen){
+      p.style.top = (rect.bottom + 6) + 'px';
+      p.style.left = Math.min(rect.left, window.innerWidth - 250) + 'px';
+      p.style.width = Math.max(rect.width, 240) + 'px';
+    }
+    p.classList.toggle('open', !isOpen);
+    t.classList.toggle('open', !isOpen);
+  },
+
+  // ── FILTERS ──
+  renderFilters(){
+    const bar = document.getElementById('filter-bar');
+    const l = this.lang.replace('pten','en').replace('esen','en').slice(0,2);
+    const safeL = ['pt','en','es'].includes(l) ? l : 'en';
+    
+    const allLabel = {pt:'Todas',en:'All',es:'Todas'}[safeL] || 'All';
+    let html = `<button class="fcat ${this.cat==='all'?'active':''}" data-cat="all" onclick="DW.setCat('all')">${allLabel}</button>`;
+    CATEGORIES.forEach(c => {
+      const label = c.label[safeL] || c.label.en;
+      html += `<button class="fcat ${this.cat===c.key?'active':''}" data-cat="${c.key}" onclick="DW.setCat('${c.key}')">${c.icon} ${label}</button>`;
+    });
+    bar.innerHTML = html;
+  },
+
+  setCat(cat){
+    this.cat = cat;
+    document.querySelectorAll('.fcat').forEach(b => {
+      b.classList.toggle('active', b.dataset.cat === cat);
+    });
+    this.renderQuiz();
+  },
+
+  setMode(mode){
+    this.mode = mode;
+    document.querySelectorAll('.fmode').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    if(mode === 'sim'){
+      this.startSim();
+    } else {
+      this.simMode = false;
+      document.getElementById('sim-wrapper').style.display = 'none';
+      document.getElementById('study-wrapper').style.display = 'block';
+      this.renderQuiz();
+    }
+  },
+
+  // ── QUIZ RENDER ──
+  getFilteredQ(){
+    let qs = QUESTIONS;
+    if(this.cat !== 'all') qs = qs.filter(q => q.cat === this.cat);
+    if(this.mode === 'wrong') qs = qs.filter(q => this.answered[q.id] && !this.answered[q.id].correct);
+    if(this.mode === 'unanswered') qs = qs.filter(q => !this.answered[q.id]);
+    return qs;
+  },
+
+  renderQuiz(){
+    const container = document.getElementById('quiz-cards');
+    const qs = this.getFilteredQ();
+    const lang = this.lang;
+    const safeL = lang.includes('pt') ? 'pt' : lang.includes('es') ? 'es' : 'en';
+
+    if(qs.length === 0){
+      container.innerHTML = `<div class="empty-state">
+        <div class="empty-icon">🎉</div>
+        <div class="empty-title">${this.t('empty_title')}</div>
+        <div class="empty-sub">${this.t('empty_sub')}</div>
+      </div>`;
+      return;
+    }
+
+    // Group by category
+    const groups = {};
+    qs.forEach(q => {
+      if(!groups[q.cat]) groups[q.cat] = [];
+      groups[q.cat].push(q);
+    });
+
+    let html = '';
+    Object.entries(groups).forEach(([cat, catQs]) => {
+      const catData = CATEGORIES.find(c => c.key === cat);
+      const icon = catData?.icon || '📚';
+      const label = catData?.label?.[safeL] || cat;
+      html += `<div class="sec-head"><span class="sec-icon">${icon}</span><span>${label}</span></div>`;
+      catQs.forEach(q => { html += this.renderCard(q, lang, safeL); });
+    });
+
+    container.innerHTML = html;
+
+    // Restore answered state visually
+    Object.entries(this.answered).forEach(([qid, state]) => {
+      const card = document.getElementById(qid);
+      if(!card) return;
+      const opts = card.querySelectorAll('.opt');
+      opts.forEach(o => {
+        o.setAttribute('data-done','1');
+        o.style.cursor = 'default';
+        const isCorrect = o.dataset.correct === 'true';
+        const isChosen = o.dataset.letter === state.chosen;
+        if(isCorrect) o.classList.add(state.correct ? 'correct' : 'missed');
+        else if(isChosen && !state.correct) o.classList.add('wrong');
+      });
+      const ans = document.getElementById('ans-' + qid);
+      if(ans) ans.classList.add('show');
+    });
+
+    this.updateScore();
+  },
+
+  renderCard(q, lang, safeL){
+    const letters = ['A','B','C','D'];
+    const qtext = q.q[safeL] || q.q.en || '';
+    
+    let signHtml = '';
+    if(q.sign){
+      const cap = q.cap ? (q.cap[safeL] || q.cap.en || '') : '';
+      signHtml = `<div class="sign-box">${q.sign}${cap ? `<div class="img-cap">${cap}</div>` : ''}</div>`;
+    }
+
+    let optsHtml = '';
+    q.opts.forEach((o,i) => {
+      const otxt = o.t[safeL] || o.t.en || '';
+      optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" onclick="DW.pick(this,'${q.id}')">
+        <span class="oletter">${o.l}</span>
+        <span class="otext">${otxt}</span>
+      </div>`;
+    });
+
+    const exp = q.exp[safeL] || q.exp.en || '';
+    const tip = q.tip ? (q.tip[safeL] || q.tip.en || '') : '';
+    const tipHtml = tip ? `<div class="atip">💡 ${tip}</div>` : '';
+
+    return `<div class="qcard" id="${q.id}">
+  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${CATEGORIES.find(c=>c.key===q.cat)?.icon||''} ${CATEGORIES.find(c=>c.key===q.cat)?.label?.[safeL]||q.cat}</span></div>
+  <div class="qtext">${qtext}</div>
+  ${signHtml}
+  <div class="opts">${optsHtml}</div>
+  <div class="answer" id="ans-${q.id}">
+    <div class="alabel">✅ ${lang.includes('pt')?'Resposta':'Answer'}</div>
+    <div class="atext">${exp}</div>
+    ${tipHtml}
+  </div>
+</div>`;
+  },
+
+  // ── ANSWER PICK ──
+  pick(el, qid){
+    if(el.getAttribute('data-done')) return;
+    const q = QUESTIONS.find(x => x.id === qid);
+    if(!q) return;
+    const isCorrect = el.dataset.correct === 'true';
+    const card = document.getElementById(qid);
+    const opts = card.querySelectorAll('.opt');
+    opts.forEach(o => {
+      o.setAttribute('data-done','1');
+      o.style.cursor = 'default';
+      if(o.dataset.correct === 'true') o.classList.add(isCorrect ? 'correct' : 'missed');
+      else if(o === el && !isCorrect) o.classList.add('wrong');
+    });
+    document.getElementById('ans-' + qid)?.classList.add('show');
+    
+    if(!this.answered[qid]){
+      this.total++;
+      if(isCorrect) this.correct++;
+      this.answered[qid] = { correct: isCorrect, chosen: el.dataset.letter };
+      this.save();
+      this.updateScore();
+      if(isCorrect) this.spawnConfetti(el);
+    }
+
+    // Sim mode: advance
+    if(this.simMode){
+      setTimeout(() => this.simNext(), 900);
+    }
+  },
+
+  // ── SCORE ──
+  updateScore(){
+    const total = Object.keys(this.answered).length;
+    const correct = Object.values(this.answered).filter(a => a.correct).length;
+    const pct = total > 0 ? Math.round(correct/total*100) : 0;
+    const el = document.getElementById('score-val');
+    if(el){
+      el.textContent = `${correct} / ${total}`;
+      el.style.color = pct >= 80 ? 'var(--green)' : pct >= 60 ? 'var(--gold)' : total > 0 ? 'var(--red)' : '#fff';
+    }
+    const pbar = document.getElementById('score-pbar');
+    if(pbar) pbar.style.width = pct + '%';
+    const pct_el = document.getElementById('score-pct');
+    if(pct_el) pct_el.textContent = total > 0 ? pct + '%' : '';
+  },
+
+  // ── CONFETTI ──
+  spawnConfetti(el){
+    const rect = el.getBoundingClientRect();
+    const cx = rect.left + rect.width/2;
+    const cy = rect.top + rect.height/2;
+    const colors = ['#F4A900','#30D158','#FFBE33','#fff','#FFD700'];
+    for(let i=0;i<18;i++){
+      const d = document.createElement('div');
+      d.className = 'confetti-dot';
+      d.style.cssText = `left:${cx}px;top:${cy}px;background:${colors[i%colors.length]};
+        --dx:${(Math.random()-0.5)*160}px;--dy:${-(Math.random()*120+60)}px;
+        width:${5+Math.random()*5}px;height:${5+Math.random()*5}px;
+        border-radius:${Math.random()>0.5?'50%':'2px'};`;
+      document.body.appendChild(d);
+      setTimeout(() => d.remove(), 900);
+    }
+  },
+
+  // ── SIM MODE ──
+  startSim(){
+    this.simMode = true;
+    this.simQueue = [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 30);
+    this.simIdx = 0;
+    this.simAnswered = {};
+    document.getElementById('study-wrapper').style.display = 'none';
+    document.getElementById('sim-wrapper').style.display = 'block';
+    this.renderSimCard();
+  },
+
+  renderSimCard(){
+    const q = this.simQueue[this.simIdx];
+    const lang = this.lang;
+    const safeL = lang.includes('pt') ? 'pt' : lang.includes('es') ? 'es' : 'en';
+    const total = this.simQueue.length;
+    const pct = Math.round((this.simIdx / total) * 100);
+
+    document.getElementById('sim-progress-text').textContent = `${this.simIdx + 1} / ${total}`;
+    document.getElementById('sim-progress-bar').style.width = pct + '%';
+
+    const container = document.getElementById('sim-card-container');
+    container.innerHTML = this.renderCard(q, lang, safeL);
+  },
+
+  simNext(){
+    this.simIdx++;
+    if(this.simIdx >= this.simQueue.length){
+      this.showSimResult();
+    } else {
+      this.renderSimCard();
+    }
+  },
+
+  showSimResult(){
+    const total = this.simQueue.length;
+    let score = 0;
+    this.simQueue.forEach(q => { if(this.answered[q.id]?.correct) score++; });
+    const pct = Math.round(score/total*100);
+    const pass = pct >= 80;
+    const safeL = this.lang.includes('pt') ? 'pt' : this.lang.includes('es') ? 'es' : 'en';
+    const msgs = {
+      pass: {pt:'Parabéns! Você passou!', en:'Congratulations! You passed!', es:'¡Felicidades! ¡Aprobaste!'},
+      fail: {pt:'Continue estudando. Você precisa de 80%.', en:'Keep studying. You need 80%.', es:'Sigue estudiando. Necesitas 80%.'},
+      back: {pt:'Voltar ao estudo', en:'Back to study', es:'Volver al estudio'}
+    };
+    document.getElementById('sim-card-container').innerHTML = `
+      <div class="sim-result">
+        <div class="sim-result-icon">${pass ? '🎉' : '📚'}</div>
+        <div class="sim-result-score">${score}/${total}</div>
+        <div class="sim-result-pct" style="color:${pass?'var(--green)':'var(--red)'}">${pct}%</div>
+        <div class="sim-result-msg">${pass ? msgs.pass[safeL] : msgs.fail[safeL]}</div>
+        <button class="btn btn-gold" onclick="DW.setMode('all')" style="margin-top:20px">${msgs.back[safeL]}</button>
+      </div>`;
+  },
+
+  // ── INIT ──
+  init(){
+    this.load();
+    // restore lang UI
+    const langEl = document.querySelector(`.ld-option[data-lang="${this.lang}"]`);
+    if(langEl) { langEl.classList.add('active'); }
+    document.body.className = 'mode-' + this.lang;
+    document.getElementById('ld-flag').textContent = FLAGS[this.lang] || '🇧🇷';
+    document.getElementById('ld-name').textContent = NAMES[this.lang] || 'Português';
+
+    // close dropdown on outside click
+    document.addEventListener('click', e => {
+      if(!document.getElementById('ld')?.contains(e.target)){
+        document.getElementById('ld-panel').classList.remove('open');
+        document.getElementById('ld-trigger').classList.remove('open');
+      }
+    });
+
+    // nav active on scroll
+    const navLinks = document.querySelectorAll('nav a');
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+      const y = window.scrollY + 120;
+      sections.forEach(s => {
+        if(y >= s.offsetTop && y < s.offsetTop + s.offsetHeight){
+          navLinks.forEach(a => { a.classList.remove('active'); if(a.getAttribute('href') === '#' + s.id) a.classList.add('active'); });
+        }
+      });
+    }, {passive:true});
+
+    // Restore score counts from storage
+    const total = Object.keys(this.answered).length;
+    const correct = Object.values(this.answered).filter(a => a.correct).length;
+    this.total = total; this.correct = correct;
+
+    this.renderFilters();
+    this.renderQuiz();
+    this.updateScore();
+
+    // Wire mode buttons
+    document.querySelectorAll('.fmode').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.fmode').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        DW.setMode(btn.dataset.mode);
+      });
+    });
+
+    // Wire reset button
+    const resetBtn = document.getElementById('reset-btn');
+    if(resetBtn) resetBtn.addEventListener('click', () => DW.clearProgress());
+
+    // Remove old onclick from mode buttons (safety)
+  }
+};
+
+const FLAGS={pt:'🇧🇷',en:'🇦🇺',es:'🇪🇸',pten:'🇧🇷\u2009🇦🇺',esen:'🇪🇸\u2009🇦🇺'};
+const NAMES={pt:'Português',en:'English',es:'Español',pten:'Bilíngue PT+EN',esen:'Bilíngüe ES+EN'};
+
+const I18N = {
+  empty_title: {pt:'Sem questões nesta categoria!',en:'No questions in this category!',es:'¡Sin preguntas en esta categoría!'},
+  empty_sub:   {pt:'Tente mudar o filtro ou o modo.',en:'Try changing the filter or mode.',es:'Prueba cambiando el filtro o el modo.'},
+  mode_all:    {pt:'Todas',en:'All',es:'Todas'},
+  mode_wrong:  {pt:'Erradas',en:'Wrong',es:'Erradas'},
+  mode_unans:  {pt:'Não respondidas',en:'Unanswered',es:'Sin responder'},
+  mode_sim:    {pt:'Simulado (30 perguntas)',en:'Simulate (30 questions)',es:'Simulacro (30 preguntas)'},
+};
+
+function ldToggle(){ DW.ldToggle(); }
+function setLang(lang, el){ DW.setLang(lang, el); }
+
+
+// KangaLearner state selector interactions
+function initStateSelector(){
+  const cards = document.querySelectorAll('.state-card');
+  const select = document.getElementById('state-select');
+  const saved = localStorage.getItem('kl-state') || 'WA';
+  function setState(code){
+    localStorage.setItem('kl-state', code);
+    cards.forEach(c => c.classList.toggle('active', c.dataset.state === code));
+    if(select) select.value = code === 'AU' ? 'AU' : code;
+  }
+  cards.forEach(card => card.addEventListener('click', () => setState(card.dataset.state)));
+  if(select) select.addEventListener('change', () => setState(select.value === 'AU' ? 'WA' : select.value));
+  setState(saved);
+}
+
+window.addEventListener('DOMContentLoaded', () => { DW.init(); initStateSelector(); });
+
+
+
+// Reading progress bar
+(function(){
+  const bar = document.getElementById('reading-progress');
+  if(!bar) return;
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }, {passive: true});
+})();
+
+// aria-expanded for lang dropdown
+const ldTrigger = document.getElementById('ld-trigger');
+const ldPanel = document.getElementById('ld-panel');
+if(ldTrigger && ldPanel){
+  ldTrigger.setAttribute('aria-haspopup','listbox');
+  ldTrigger.setAttribute('aria-expanded','false');
+  const origToggle = window.ldToggle;
+  window.ldToggle = function(){
+    origToggle && origToggle();
+    const isOpen = ldPanel.classList.contains('open');
+    ldTrigger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  };
+}
+
+</script>
+</body>
+</html>

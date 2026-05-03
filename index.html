@@ -1,0 +1,441 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KangaLearner — Australia Learner Test Practice</title>
+<meta name="description" content="Study Australian road rules by state. Practice learner test questions, take mock tests and track your progress.">
+<meta property="og:title" content="KangaLearner — Australia Learner Test Practice">
+<meta property="og:description" content="Study Australian road rules by state, practice unlimited questions and track your progress.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#071A2C">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230B1D2D'/><path d='M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 Z' fill='white'/><path d='M12 30 C12 20 18 12 26 10' stroke='%2352B788' stroke-width='4' fill='none'/><path d='M34 44 C38 44 45 46 49 42' stroke='%2352B788' stroke-width='4' fill='none'/><path d='M46 38 L49 42 L44 44' stroke='%2352B788' stroke-width='4' fill='none'/></svg>"><rect width='64' height='64' rx='16' fill='%23071A2C'/><path d='M16 46C23 29 32 20 48 14C43 22 37 30 34 46Z' fill='white'/><path d='M22 44C29 28 38 19 51 13' stroke='%2352B788' stroke-width='5' fill='none' stroke-linecap='round'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/quiz.css">
+</head>
+<body class="mode-pt">
+<div class="reading-progress" id="reading-progress"></div>
+
+<header class="site-header" id="top">
+  <div class="nav-shell">
+    <a class="brand" href="#top" aria-label="KangaLearner home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Kangaroo body (navy silhouette) -->
+  <path d="M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 C34 48 32 50 30 52 Z" fill="#0B1D2D"/>
+  <!-- Road stripe inside kangaroo -->
+  <path d="M27 20 L30 46" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+  <!-- Head -->
+  <path d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z" fill="#0B1D2D"/>
+  <!-- Ear -->
+  <path d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z" fill="#0B1D2D"/>
+  <!-- Arc (speed/forward motion) -->
+  <path d="M12 30 C12 20 18 12 26 10" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Arrow (progress/confidence) -->
+  <path d="M34 44 C38 44 46 46 50 42" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M47 38 L50 42 L45 44" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+      </span>
+      <span class="logo-word">
+        <span class="logo-name">KangaLearner</span>
+        <span class="logo-sub">Learner Driver Platform</span>
+      </span>
+    </a>
+
+    <nav class="main-nav" aria-label="Main navigation">
+      <a class="active" href="#top">Home</a>
+      <a href="#questoes">Practice</a>
+      <a href="#questoes" onclick="setTimeout(()=>DW.setMode('sim'),50)">Mock Test</a>
+      <a href="#topics">Road Rules</a>
+      <a href="#resources">Resources</a>
+    </nav>
+
+    <div class="header-controls">
+      <div class="state-control" title="State selector">
+        <span>⌖</span>
+        <select id="state-select" aria-label="Select state">
+          <option value="AU">State: Australia</option>
+          <option value="WA">WA</option>
+          <option value="NSW">NSW</option>
+          <option value="VIC">VIC</option>
+          <option value="QLD">QLD</option>
+          <option value="SA">SA</option>
+          <option value="TAS">TAS</option>
+          <option value="ACT">ACT</option>
+          <option value="NT">NT</option>
+        </select>
+      </div>
+
+      <div class="ld-wrap" id="ld">
+        <div class="ld-trigger" id="ld-trigger" onclick="ldToggle()">
+          <span class="ld-flag" id="ld-flag">🇧🇷</span>
+          <span class="ld-name" id="ld-name">Português</span>
+          <span class="ld-arrow">▼</span>
+        </div>
+        <div class="ld-panel" id="ld-panel">
+          <div class="ld-option active" data-lang="pt" onclick="setLang('pt',this)">
+            <span class="ld-oflag">🇧🇷</span><span class="ld-oname">Português</span>
+            <span class="ld-osub">Somente PT</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="en" onclick="setLang('en',this)">
+            <span class="ld-oflag">🇦🇺</span><span class="ld-oname">English</span>
+            <span class="ld-osub">English only</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="es" onclick="setLang('es',this)">
+            <span class="ld-oflag">🇪🇸</span><span class="ld-oname">Español</span>
+            <span class="ld-osub">Solo ES</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="pten" onclick="setLang('pten',this)">
+            <span class="ld-oflag">🇧🇷 🇦🇺</span><span class="ld-oname">PT + EN</span>
+            <span class="ld-osub">Bilíngue</span><span class="ld-check">✓</span>
+          </div>
+          <div class="ld-option" data-lang="esen" onclick="setLang('esen',this)">
+            <span class="ld-oflag">🇪🇸 🇦🇺</span><span class="ld-oname">ES + EN</span>
+            <span class="ld-osub">Bilíngüe</span><span class="ld-check">✓</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">
+          <span class="l-pt">Plataforma australiana para learner drivers</span>
+          <span class="l-en">Australia’s trusted learner driver platform</span>
+          <span class="l-es">Plataforma australiana para conductores principiantes</span>
+        </div>
+
+        <h1>
+          <span class="l-pt">Passe na prova teórica com confiança.</span>
+          <span class="l-en">Pass your learner test with confidence.</span>
+          <span class="l-es">Aprueba tu examen teórico con confianza.</span>
+        </h1>
+
+        <p class="hero-desc">
+          <span class="l-pt">Estude as regras de trânsito da Austrália por estado, pratique perguntas ilimitadas e acompanhe seu progresso em cada etapa.</span>
+          <span class="l-en">Study Australian road rules by state, practice unlimited questions and track your progress every step of the way.</span>
+          <span class="l-es">Estudia las reglas de tránsito australianas por estado, practica preguntas ilimitadas y sigue tu progreso paso a paso.</span>
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#questoes">
+            <span>▱</span>
+            <span class="l-pt">Começar prática</span>
+            <span class="l-en">Start Practice</span>
+            <span class="l-es">Empezar práctica</span>
+            <span>→</span>
+          </a>
+          <a class="btn btn-secondary" href="#questoes" onclick="setTimeout(()=>DW.setMode('sim'),50)">
+            <span>▣</span>
+            <span class="l-pt">Fazer simulado</span>
+            <span class="l-en">Take a Mock Test</span>
+            <span class="l-es">Hacer simulacro</span>
+            <span>→</span>
+          </a>
+        </div>
+
+        <div class="hero-proof">
+          <span class="proof-icon">✓</span>
+          <span>
+            <span class="l-pt">Regras oficiais. Conteúdo atualizado. Feito para learner drivers em toda a Austrália.</span>
+            <span class="l-en">Official road rules. Up to date. Trusted by learner drivers Australia-wide.</span>
+            <span class="l-es">Reglas oficiales. Contenido actualizado. Para learner drivers en toda Australia.</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="hero-preview" aria-label="Practice preview">
+        <div class="preview-head">
+          <div class="preview-title">⌁ Practice</div>
+          <div class="preview-pill">⌖ WA</div>
+        </div>
+        <div class="preview-grid">
+          <div class="practice-card">
+            <div class="preview-small">Question 12 of 30</div>
+            <div class="preview-progress">
+              <div class="preview-track"><div class="preview-fill"></div></div>
+              <strong>40%</strong>
+            </div>
+            <div class="preview-question">
+              When turning right at an intersection, you must give way to vehicles travelling straight ahead.
+            </div>
+            <div class="preview-options">
+              <div class="preview-option correct"><span class="letter">A</span> True <span style="margin-left:auto">✓</span></div>
+              <div class="preview-option"><span class="letter">B</span> False</div>
+              <div class="preview-option"><span class="letter">C</span> Only when a sign says so</div>
+              <div class="preview-option"><span class="letter">D</span> Only at roundabouts</div>
+            </div>
+          </div>
+          <div>
+            <div class="progress-card">
+              <div class="preview-small">Your Progress</div>
+              <div class="ring"></div>
+              <div class="legend">
+                <span><span class="dot green"></span>Correct <strong style="float:right">21</strong></span>
+                <span><span class="dot red"></span>Incorrect <strong style="float:right">8</strong></span>
+                <span><span class="dot gray"></span>Unanswered <strong style="float:right">1</strong></span>
+              </div>
+            </div>
+            <div class="score-card">
+              <div class="preview-small">Score</div>
+              <div class="score-big">85%</div>
+              <small>Awesome work!</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<section class="feature-row">
+  <div class="container">
+    <div class="feature-grid">
+      <article class="feature-card">
+        <div class="feature-icon">⌂</div>
+        <div>
+          <h3>Study by State</h3>
+          <p>Learn the road rules for your state or territory.</p>
+        </div>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">?</div>
+        <div>
+          <h3>Practice Questions</h3>
+          <p>Up-to-date multiple choice questions.</p>
+        </div>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">🏆</div>
+        <div>
+          <h3>Mock Tests</h3>
+          <p>Simulate the real test and build confidence.</p>
+        </div>
+      </article>
+      <article class="feature-card">
+        <div class="feature-icon">↗</div>
+        <div>
+          <h3>Track Progress</h3>
+          <p>Focus on your weak areas and improve faster.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="state-section" id="states">
+  <div class="container">
+    <div class="state-row">
+      <div class="state-copy">
+        <span class="l-pt">Selecione seu estado e estude as regras certas.</span>
+        <span class="l-en">Select your state and study the rules that apply to you.</span>
+        <span class="l-es">Selecciona tu estado y estudia las reglas correctas.</span>
+      </div>
+      <button class="state-card active" data-state="WA"><div class="state-icon">⌁</div><div class="state-code">WA</div><div class="state-name">Western Australia</div></button>
+      <button class="state-card" data-state="NSW"><div class="state-icon">⌁</div><div class="state-code">NSW</div><div class="state-name">New South Wales</div></button>
+      <button class="state-card" data-state="VIC"><div class="state-icon">⌁</div><div class="state-code">VIC</div><div class="state-name">Victoria</div></button>
+      <button class="state-card" data-state="QLD"><div class="state-icon">⌁</div><div class="state-code">QLD</div><div class="state-name">Queensland</div></button>
+      <button class="state-card" data-state="SA"><div class="state-icon">⌁</div><div class="state-code">SA</div><div class="state-name">South Australia</div></button>
+      <button class="state-card" data-state="TAS"><div class="state-icon">⌁</div><div class="state-code">TAS</div><div class="state-name">Tasmania</div></button>
+      <button class="state-card" data-state="ACT"><div class="state-icon">⌁</div><div class="state-code">ACT</div><div class="state-name">Australian Capital Territory</div></button>
+      <button class="state-card" data-state="NT"><div class="state-icon">⌁</div><div class="state-code">NT</div><div class="state-name">Northern Territory</div></button>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-grid">
+      <div class="trust-title">Why KangaLearner</div>
+      <article class="trust-item">
+        <div class="trust-icon">◎</div>
+        <div><h4>Multilingual Support</h4><p>Study in English, Portuguese and Spanish now; more languages later.</p></div>
+      </article>
+      <article class="trust-item">
+        <div class="trust-icon">☁</div>
+        <div><h4>Save Progress</h4><p>Your progress is saved automatically in your browser.</p></div>
+      </article>
+      <article class="trust-item">
+        <div class="trust-icon">◇</div>
+        <div><h4>Official Rule Based</h4><p>Content is structured around official road rules and test topics.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="topics-section" id="topics">
+  <div class="container">
+    <div class="topics-title">Learn key road rule topics</div>
+    <div class="topic-grid">
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Speed Limits'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/></svg>
+        <div><h4>Speed Limits</h4><p>Understand speed rules and limits</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Signs'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 6l20 36H4L24 6Z"/><path d="M24 18v10"/><path d="M24 35h.01"/></svg>
+        <div><h4>Signs</h4><p>Recognise road signs and markings</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Parking'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/></svg>
+        <div><h4>Parking</h4><p>Parking rules and restrictions</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Alcohol'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/></svg>
+        <div><h4>Alcohol</h4><p>Drink driving laws and penalties</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Lane Rules'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M14 42l4-36"/><path d="M34 42L30 6"/><path d="M24 10v7M24 24v7M24 38v4"/></svg>
+        <div><h4>Lane Rules</h4><p>Lane use and merging rules</p></div>
+      </a>
+      <a class="topic-card" href="#questoes" onclick="setTimeout(()=>DW.setCat('Safety'),50)">
+        <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 4l16 6v12c0 10-6 17-16 22C14 39 8 32 8 22V10l16-6Z"/><path d="M17 24l5 5 10-12"/></svg>
+        <div><h4>Safety</h4><p>Safe driving tips for life</p></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="practice-section" id="questoes">
+  <div class="container">
+    <div class="practice-head">
+      <div>
+        <h2 class="section-title">
+          <span class="l-pt">Pratique como se fosse a prova real.</span>
+          <span class="l-en">Practice like the real test.</span>
+          <span class="l-es">Practica como si fuera el examen real.</span>
+        </h2>
+        <p class="section-sub">
+          <span class="l-pt">Comece pelas questões de WA. A estrutura já está pronta para receber NSW, VIC, QLD, SA, TAS, ACT e NT.</span>
+          <span class="l-en">Start with WA questions. The structure is ready to expand to NSW, VIC, QLD, SA, TAS, ACT and NT.</span>
+          <span class="l-es">Empieza con preguntas de WA. La estructura está lista para expandirse a todos los estados.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="app-shell">
+      <aside class="panel panel-pad">
+        <div class="panel-title">Study Mode</div>
+        <div class="mode-bar">
+          <button class="fmode active" data-mode="all">
+            <span class="l-pt">Todas</span>
+            <span class="l-en">All questions</span>
+            <span class="l-es">Todas</span>
+          </button>
+          <button class="fmode" data-mode="wrong">
+            <span class="l-pt">Erradas</span>
+            <span class="l-en">Wrong answers</span>
+            <span class="l-es">Erradas</span>
+          </button>
+          <button class="fmode" data-mode="unanswered">
+            <span class="l-pt">Não respondidas</span>
+            <span class="l-en">Unanswered</span>
+            <span class="l-es">Sin responder</span>
+          </button>
+          <button class="fmode" data-mode="sim">
+            <span class="l-pt">Simulado</span>
+            <span class="l-en">Mock test</span>
+            <span class="l-es">Simulacro</span>
+          </button>
+        </div>
+
+        <div class="filter-wrap">
+          <div class="filter-label">
+            <span class="l-pt">Filtrar por tema</span>
+            <span class="l-en">Filter by topic</span>
+            <span class="l-es">Filtrar por tema</span>
+          </div>
+          <div id="filter-bar"></div>
+        </div>
+      </aside>
+
+      <section class="panel quiz-panel">
+        <div id="study-wrapper">
+          <div id="quiz-cards"></div>
+        </div>
+        <div id="sim-wrapper">
+          <div class="sim-header">
+            <div class="sim-meta">
+              <span class="sim-label">
+                <span class="l-pt">Simulado</span>
+                <span class="l-en">Simulation</span>
+                <span class="l-es">Simulacro</span>
+              </span>
+              <span id="sim-progress-text">1 / 30</span>
+            </div>
+            <div class="sim-track"><div id="sim-progress-bar"></div></div>
+          </div>
+          <div id="sim-card-container"></div>
+        </div>
+      </section>
+
+      <aside class="panel panel-pad">
+        <div class="panel-title">Your Progress</div>
+        <div class="score-bar">
+          <div class="score-row">
+            <span class="slabel">Score</span>
+            <span id="score-val">0 / 0</span>
+            <span id="score-pct"></span>
+            <div class="pbar-track"><div id="score-pbar"></div></div>
+            <button class="score-reset" id="reset-btn">
+              <span class="l-pt">Reiniciar tudo</span>
+              <span class="l-en">Reset all</span>
+              <span class="l-es">Reiniciar todo</span>
+            </button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="site-footer" id="resources">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <!-- Kangaroo body (navy silhouette) -->
+  <path d="M22 52 C18 45 14 36 16 26 C18 18 24 13 28 10 C30 9 32 9 33 11 C34 13 32 16 30 18 C28 20 27 22 28 26 C29 30 33 32 35 35 C37 38 37 42 35 46 C34 48 32 50 30 52 Z" fill="#0B1D2D"/>
+  <!-- Road stripe inside kangaroo -->
+  <path d="M27 20 L30 46" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 3"/>
+  <!-- Head -->
+  <path d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z" fill="#0B1D2D"/>
+  <!-- Ear -->
+  <path d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z" fill="#0B1D2D"/>
+  <!-- Arc (speed/forward motion) -->
+  <path d="M12 30 C12 20 18 12 26 10" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <!-- Arrow (progress/confidence) -->
+  <path d="M34 44 C38 44 46 46 50 42" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+  <path d="M47 38 L50 42 L45 44" stroke="#2E7D5B" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
+          </span>
+          <span class="logo-name">KangaLearner</span>
+        </div>
+        <p class="footer-note">Empowering learner drivers Australia-wide to pass with confidence.</p>
+      </div>
+      <div class="footer-col"><h4>Product</h4><a href="#questoes">Practice</a><a href="#questoes">Mock Test</a><a href="#topics">Road Rules</a><a href="#states">States</a></div>
+      <div class="footer-col"><h4>Company</h4><a>About Us</a><a>Contact Us</a><a>Careers</a><a>Blog</a></div>
+      <div class="footer-col"><h4>Legal</h4><a>Terms of Use</a><a>Privacy Policy</a><a>Cookie Policy</a></div>
+      <div class="footer-col"><h4>Stay on the right track</h4><p>Get tips, updates and study reminders.</p><div class="subscribe"><input placeholder="Enter your email"><button>Subscribe</button></div></div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 KangaLearner. All rights reserved.</span>
+      <span>This guide is for study support only. Always confirm current requirements with the relevant state transport authority.</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/data/questions.js"></script>
+<script src="assets/js/quiz-engine.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
