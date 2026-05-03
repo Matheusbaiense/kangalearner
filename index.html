@@ -8,9 +8,14 @@
 <meta property="og:title" content="KangaLearner — Australia Learner Test Practice">
 <meta property="og:description" content="Study Australian road rules by state, practice unlimited questions and track your progress.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://raw.githubusercontent.com/Matheusbaiense/kangalearner/main/assets/img/logo-full.svg">
+<meta property="og:image" content="https://raw.githubusercontent.com/Matheusbaiense/kangalearner/main/assets/img/social/og-image.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="KangaLearner — Australia Learner Test Practice">
+<meta name="twitter:description" content="Study Australian road rules by state, practice questions, mock tests and short learn guides.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/Matheusbaiense/kangalearner/main/assets/img/social/og-image.svg">
 <meta name="theme-color" content="#071A2C">
-<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="assets/img/brand/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/img/brand/apple-touch-icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/tokens.css">
@@ -24,39 +29,39 @@
 <header class="site-header" id="top">
   <div class="nav-shell">
     <a class="brand" href="#top" aria-label="KangaLearner home">
-      <span class="logo-mark" aria-hidden="true"><img src="assets/img/logo-mark.svg" alt=""></span>
+      <span class="logo-mark" aria-hidden="true"><img src="assets/img/brand/logo-mark.svg" alt=""></span>
       <span class="logo-word">
-        <img src="assets/img/logo-full.svg" alt="KangaLearner" style="height:24px">
-        <span class="logo-sub">Learner Driver Platform</span>
+        <img src="assets/img/brand/logo-full.svg" alt="KangaLearner" style="height:24px">
+        <span class="logo-sub"><span class="l-pt">Plataforma para learner drivers</span><span class="l-en">Learner driver platform</span><span class="l-es">Plataforma para learner drivers</span></span>
       </span>
     </a>
 
     <nav class="main-nav" aria-label="Main navigation">
-      <a class="active" href="#top">Home</a>
+      <a class="active" href="#top"><span class="l-pt">Início</span><span class="l-en">Home</span><span class="l-es">Inicio</span></a>
       <a href="#learn">
         <span class="l-pt">Aprender</span>
         <span class="l-en">Learn</span>
         <span class="l-es">Aprender</span>
       </a>
-      <a href="#questoes">Practice</a>
-      <a href="#questoes" data-action="mode-sim">Mock Test</a>
-      <a href="#topics">Road Rules</a>
-      <a href="#resources">Resources</a>
+      <a href="#questoes"><span class="l-pt">Prática</span><span class="l-en">Practice</span><span class="l-es">Práctica</span></a>
+      <a href="#questoes" data-action="mode-sim"><span class="l-pt">Simulado</span><span class="l-en">Mock Test</span><span class="l-es">Simulacro</span></a>
+      <a href="#topics"><span class="l-pt">Regras</span><span class="l-en">Road Rules</span><span class="l-es">Normas</span></a>
+      <a href="#resources"><span class="l-pt">Recursos</span><span class="l-en">Resources</span><span class="l-es">Recursos</span></a>
     </nav>
 
     <div class="header-controls">
       <div class="state-control" title="State selector">
         <span aria-hidden="true"><img src="assets/icons/ui/map.svg" alt="" width="16" height="16"></span>
-        <select id="state-select" aria-label="Select state">
-          <option value="AU">State: Australia</option>
+        <select id="state-select" aria-label="Select state or Australia (all available)">
+          <option value="AU">AU — all available</option>
           <option value="WA">WA</option>
-          <option value="NSW" disabled>NSW</option>
-          <option value="VIC" disabled>VIC</option>
-          <option value="QLD" disabled>QLD</option>
-          <option value="SA" disabled>SA</option>
-          <option value="TAS" disabled>TAS</option>
-          <option value="ACT" disabled>ACT</option>
-          <option value="NT" disabled>NT</option>
+          <option value="NSW">NSW</option>
+          <option value="VIC">VIC</option>
+          <option value="QLD">QLD</option>
+          <option value="SA">SA</option>
+          <option value="TAS">TAS</option>
+          <option value="ACT">ACT</option>
+          <option value="NT">NT</option>
         </select>
       </div>
 
@@ -117,18 +122,18 @@
 
         <div class="hero-actions">
           <a class="btn btn-primary" href="#questoes">
-            <span>▱</span>
+            <span class="btn-ico" aria-hidden="true"><img src="assets/icons/ui/practice.svg" alt="" width="18" height="18"></span>
             <span class="l-pt">Começar prática</span>
             <span class="l-en">Start Practice</span>
             <span class="l-es">Empezar práctica</span>
-            <span>→</span>
+            <span aria-hidden="true">→</span>
           </a>
           <a class="btn btn-secondary" href="#questoes" data-action="mode-sim">
-            <span>▣</span>
+            <span class="btn-ico" aria-hidden="true"><img src="assets/icons/ui/mock.svg" alt="" width="18" height="18"></span>
             <span class="l-pt">Fazer simulado</span>
             <span class="l-en">Take a Mock Test</span>
             <span class="l-es">Hacer simulacro</span>
-            <span>→</span>
+            <span aria-hidden="true">→</span>
           </a>
         </div>
 
@@ -144,40 +149,42 @@
 
       <div class="hero-preview" aria-label="Practice preview">
         <div class="preview-head">
-          <div class="preview-title"><img src="assets/icons/ui/practice.svg" alt="" width="16" height="16" aria-hidden="true"> Practice</div>
+          <div class="preview-title"><img src="assets/icons/ui/practice.svg" alt="" width="16" height="16" aria-hidden="true"><span class="l-pt">Prática</span><span class="l-en">Practice</span><span class="l-es">Práctica</span></div>
           <div class="preview-pill"><img src="assets/icons/ui/map.svg" alt="" width="14" height="14" aria-hidden="true"> WA</div>
         </div>
         <div class="preview-grid">
           <div class="practice-card">
-            <div class="preview-small">Question 12 of 30</div>
+            <div class="preview-small"><span class="l-pt">Pergunta 12 de 30</span><span class="l-en">Question 12 of 30</span><span class="l-es">Pregunta 12 de 30</span></div>
             <div class="preview-progress">
               <div class="preview-track"><div class="preview-fill"></div></div>
               <strong>40%</strong>
             </div>
             <div class="preview-question">
-              When turning right at an intersection, you must give way to vehicles travelling straight ahead.
+              <span class="l-pt">Ao virar à direita num cruzamento, você deve dar preferência aos veículos que seguem em frente.</span>
+              <span class="l-en">When turning right at an intersection, you must give way to vehicles travelling straight ahead.</span>
+              <span class="l-es">Al girar a la derecha en un cruce, debes ceder el paso a los vehículos que siguen recto.</span>
             </div>
             <div class="preview-options">
-              <div class="preview-option correct"><span class="letter">A</span> True <span style="margin-left:auto">✓</span></div>
-              <div class="preview-option"><span class="letter">B</span> False</div>
-              <div class="preview-option"><span class="letter">C</span> Only when a sign says so</div>
-              <div class="preview-option"><span class="letter">D</span> Only at roundabouts</div>
+              <div class="preview-option correct"><span class="letter">A</span> <span class="l-pt">Verdadeiro</span><span class="l-en">True</span><span class="l-es">Verdadero</span> <span style="margin-left:auto" aria-hidden="true">✓</span></div>
+              <div class="preview-option"><span class="letter">B</span> <span class="l-pt">Falso</span><span class="l-en">False</span><span class="l-es">Falso</span></div>
+              <div class="preview-option"><span class="letter">C</span> <span class="l-pt">Só se a placa disser</span><span class="l-en">Only when a sign says so</span><span class="l-es">Solo si la señal lo indica</span></div>
+              <div class="preview-option"><span class="letter">D</span> <span class="l-pt">Só em rotatórias</span><span class="l-en">Only at roundabouts</span><span class="l-es">Solo en rotondas</span></div>
             </div>
           </div>
           <div>
             <div class="progress-card">
-              <div class="preview-small">Your Progress</div>
+              <div class="preview-small"><span class="l-pt">Seu progresso</span><span class="l-en">Your progress</span><span class="l-es">Tu progreso</span></div>
               <div class="ring"></div>
               <div class="legend">
-                <span><span class="dot green"></span>Correct <strong style="float:right">21</strong></span>
-                <span><span class="dot red"></span>Incorrect <strong style="float:right">8</strong></span>
-                <span><span class="dot gray"></span>Unanswered <strong style="float:right">1</strong></span>
+                <span><span class="dot green"></span><span class="l-pt">Corretas</span><span class="l-en">Correct</span><span class="l-es">Correctas</span> <strong style="float:right">21</strong></span>
+                <span><span class="dot red"></span><span class="l-pt">Erradas</span><span class="l-en">Incorrect</span><span class="l-es">Incorrectas</span> <strong style="float:right">8</strong></span>
+                <span><span class="dot gray"></span><span class="l-pt">Não respondidas</span><span class="l-en">Unanswered</span><span class="l-es">Sin responder</span> <strong style="float:right">1</strong></span>
               </div>
             </div>
             <div class="score-card">
-              <div class="preview-small">Score</div>
+              <div class="preview-small"><span class="l-pt">Pontuação</span><span class="l-en">Score</span><span class="l-es">Puntuación</span></div>
               <div class="score-big">85%</div>
-              <small>Awesome work!</small>
+              <small><span class="l-pt">Ótimo trabalho!</span><span class="l-en">Awesome work!</span><span class="l-es">¡Buen trabajo!</span></small>
             </div>
           </div>
         </div>
@@ -349,24 +356,24 @@
 
     <div class="app-shell">
       <aside class="panel panel-pad">
-        <div class="panel-title">Study Mode</div>
+        <div class="panel-title"><span class="l-pt">Modo de estudo</span><span class="l-en">Study mode</span><span class="l-es">Modo de estudio</span></div>
         <div class="mode-bar">
-          <button class="fmode active" data-mode="all">
+          <button class="fmode active" type="button" data-mode="all" aria-pressed="true">
             <span class="l-pt">Todas</span>
             <span class="l-en">All questions</span>
             <span class="l-es">Todas</span>
           </button>
-          <button class="fmode" data-mode="wrong">
+          <button class="fmode" type="button" data-mode="wrong" aria-pressed="false">
             <span class="l-pt">Erradas</span>
             <span class="l-en">Wrong answers</span>
             <span class="l-es">Erradas</span>
           </button>
-          <button class="fmode" data-mode="unanswered">
+          <button class="fmode" type="button" data-mode="unanswered" aria-pressed="false">
             <span class="l-pt">Não respondidas</span>
             <span class="l-en">Unanswered</span>
             <span class="l-es">Sin responder</span>
           </button>
-          <button class="fmode" data-mode="sim">
+          <button class="fmode" type="button" data-mode="sim" aria-pressed="false">
             <span class="l-pt">Simulado</span>
             <span class="l-en">Mock test</span>
             <span class="l-es">Simulacro</span>
@@ -407,7 +414,7 @@
         <div class="panel-title"><span class="l-en">Your Progress</span><span class="l-pt">Seu progresso</span><span class="l-es">Tu progreso</span></div>
         <div class="score-bar">
           <div class="score-row">
-            <span class="slabel">Score</span>
+            <span class="slabel"><span class="l-pt">Pontuação</span><span class="l-en">Score</span><span class="l-es">Puntuación</span></span>
             <span id="score-val" aria-live="polite">0 / 0</span>
             <span id="score-pct" aria-live="polite"></span>
             <div class="pbar-track"><div id="score-pbar" role="progressbar" aria-label="Score progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div></div>
@@ -428,17 +435,17 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <div class="footer-brand"><span class="logo-mark" aria-hidden="true"><img src="assets/img/logo-mark.svg" alt=""></span><img src="assets/img/logo-full.svg" alt="KangaLearner" style="height:22px"></div>
-        <p class="footer-note">Empowering learner drivers Australia-wide to pass with confidence.</p>
+        <div class="footer-brand"><span class="logo-mark" aria-hidden="true"><img src="assets/img/brand/logo-mark.svg" alt=""></span><img src="assets/img/brand/logo-full-dark.svg" alt="KangaLearner" style="height:22px"></div>
+        <p class="footer-note"><span class="l-pt">Apoio a learner drivers em toda a Austrália para passar com confiança.</span><span class="l-en">Empowering learner drivers Australia-wide to pass with confidence.</span><span class="l-es">Apoyo a learner drivers en toda Australia para aprobar con confianza.</span></p>
       </div>
-      <div class="footer-col"><h4>Product</h4><a href="#questoes">Practice</a><a href="#questoes">Mock Test</a><a href="#topics">Road Rules</a><a href="#states">States</a></div>
-      <div class="footer-col"><h4>Company</h4><a href="#">About Us</a><a href="#">Contact Us</a><a href="#">Careers</a><a href="#">Blog</a></div>
-      <div class="footer-col"><h4>Legal</h4><a>Terms of Use</a><a>Privacy Policy</a><a>Cookie Policy</a></div>
-      <div class="footer-col"><h4>Stay on the right track</h4><p>Get tips, updates and study reminders.</p><form class="subscribe" id="subscribe-form" novalidate><input id="subscribe-email" type="email" placeholder="Enter your email" required aria-label="Email address"><button type="submit">Subscribe</button></form><p id="subscribe-feedback" aria-live="polite"></p></div>
+      <div class="footer-col"><h4><span class="l-pt">Produto</span><span class="l-en">Product</span><span class="l-es">Producto</span></h4><a href="#learn"><span class="l-pt">Aprender</span><span class="l-en">Learn</span><span class="l-es">Aprender</span></a><a href="#questoes"><span class="l-pt">Prática</span><span class="l-en">Practice</span><span class="l-es">Práctica</span></a><a href="#questoes" data-action="mode-sim"><span class="l-pt">Simulado</span><span class="l-en">Mock Test</span><span class="l-es">Simulacro</span></a><a href="#topics"><span class="l-pt">Regras</span><span class="l-en">Road Rules</span><span class="l-es">Normas</span></a><a href="#states"><span class="l-pt">Estados</span><span class="l-en">States</span><span class="l-es">Estados</span></a></div>
+      <div class="footer-col"><h4><span class="l-pt">Empresa</span><span class="l-en">Company</span><span class="l-es">Empresa</span></h4><a href="#"><span class="l-pt">Sobre</span><span class="l-en">About Us</span><span class="l-es">Sobre nosotros</span></a><a href="#"><span class="l-pt">Contato</span><span class="l-en">Contact Us</span><span class="l-es">Contacto</span></a><a href="#"><span class="l-pt">Carreiras</span><span class="l-en">Careers</span><span class="l-es">Empleo</span></a><a href="#"><span class="l-pt">Blog</span><span class="l-en">Blog</span><span class="l-es">Blog</span></a></div>
+      <div class="footer-col"><h4><span class="l-pt">Legal</span><span class="l-en">Legal</span><span class="l-es">Legal</span></h4><a href="#"><span class="l-pt">Termos de uso</span><span class="l-en">Terms of Use</span><span class="l-es">Términos de uso</span></a><a href="#"><span class="l-pt">Privacidade</span><span class="l-en">Privacy Policy</span><span class="l-es">Privacidad</span></a><a href="#"><span class="l-pt">Cookies</span><span class="l-en">Cookie Policy</span><span class="l-es">Cookies</span></a></div>
+      <div class="footer-col"><h4><span class="l-pt">Fique no caminho certo</span><span class="l-en">Stay on the right track</span><span class="l-es">Sigue el buen camino</span></h4><p><span class="l-pt">Receba dicas, novidades e lembretes de estudo.</span><span class="l-en">Get tips, updates and study reminders.</span><span class="l-es">Recibe consejos, novedades y recordatorios.</span></p><form class="subscribe" id="subscribe-form" novalidate><input id="subscribe-email" type="email" placeholder="email@example.com" required inputmode="email" autocomplete="email" aria-label="Email"><button type="submit"><span class="l-pt">Inscrever</span><span class="l-en">Subscribe</span><span class="l-es">Suscribirse</span></button></form><p id="subscribe-feedback" aria-live="polite"></p></div>
     </div>
     <div class="footer-bottom">
-      <span>© 2026 KangaLearner. All rights reserved.</span>
-      <span>This guide is for study support only. Always confirm current requirements with the relevant state transport authority.</span>
+      <span class="l-pt">© 2026 KangaLearner. Todos os direitos reservados.</span><span class="l-en">© 2026 KangaLearner. All rights reserved.</span><span class="l-es">© 2026 KangaLearner. Todos los derechos reservados.</span>
+      <span class="l-pt">Material de apoio ao estudo. Confirme sempre com o órgão de trânsito do seu estado.</span><span class="l-en">This guide is for study support only. Always confirm current requirements with the relevant state transport authority.</span><span class="l-es">Material de apoyo al estudio. Confirma siempre con la autoridad de tránsito de tu estado.</span>
     </div>
   </div>
 </footer>

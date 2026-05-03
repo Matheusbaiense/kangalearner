@@ -255,6 +255,9 @@
 .topic-card h4{font-size:.83rem;font-weight:900}
 .topic-card p{font-size:.71rem;color:var(--muted2);line-height:1.25}
 
+.hero-actions .btn-ico{display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto}
+.hero-actions .btn-ico img{display:block}
+
 /* ══════════════════════════════════════════
    LEARN ROAD RULES
 ══════════════════════════════════════════ */

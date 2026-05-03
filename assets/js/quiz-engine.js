@@ -35,6 +35,11 @@ const DW = {
       if(a) this.answered = JSON.parse(a);
     }catch(e){}
   },
+
+  getQuestionsForState(){
+    if(this.state === 'AU') return QUESTIONS.slice();
+    return QUESTIONS.filter(q => Array.isArray(q.states) && q.states.includes(this.state));
+  },
   clearProgress(){
     this.answered = {};
     this.correct = 0;
@@ -83,7 +88,12 @@ const DW = {
   // ── FILTERS ──
   setState(state){
     this.state = state;
-    this.renderQuiz();
+    try{ localStorage.setItem('kl-state', state); }catch(e){}
+    if(this.simMode){
+      this.startSim();
+    } else {
+      this.renderQuiz();
+    }
   },
 
   renderFilters(){
@@ -99,6 +109,7 @@ const DW = {
     });
     bar.innerHTML = html;
     bar.querySelectorAll('.fcat').forEach(btn => {
+      btn.setAttribute('aria-pressed', btn.dataset.cat === this.cat ? 'true' : 'false');
       btn.addEventListener('click', () => this.setCat(btn.dataset.cat || 'all'));
     });
   },
@@ -106,14 +117,20 @@ const DW = {
   setCat(cat){
     this.cat = cat;
     document.querySelectorAll('.fcat').forEach(b => {
-      b.classList.toggle('active', b.dataset.cat === cat);
+      const on = b.dataset.cat === cat;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
     });
     this.renderQuiz();
   },
 
   setMode(mode){
     this.mode = mode;
-    document.querySelectorAll('.fmode').forEach(b => b.classList.toggle('active', b.dataset.mode === mode));
+    document.querySelectorAll('.fmode').forEach(b => {
+      const on = b.dataset.mode === mode;
+      b.classList.toggle('active', on);
+      b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    });
     if(mode === 'sim'){
       this.startSim();
     } else {
@@ -126,8 +143,7 @@ const DW = {
 
   // ── QUIZ RENDER ──
   getFilteredQ(){
-    let qs = QUESTIONS;
-    qs = qs.filter(q => !q.states || q.states.includes(this.state));
+    let qs = this.getQuestionsForState();
     if(this.cat !== 'all') qs = qs.filter(q => q.cat === this.cat);
     if(this.mode === 'wrong') qs = qs.filter(q => this.answered[q.id] && !this.answered[q.id].correct);
     if(this.mode === 'unanswered') qs = qs.filter(q => !this.answered[q.id]);
@@ -136,16 +152,29 @@ const DW = {
 
   renderQuiz(){
     const container = document.getElementById('quiz-cards');
-    const qs = this.getFilteredQ();
     const lang = this.lang;
     const safeL = lang.includes('pt') ? 'pt' : lang.includes('es') ? 'es' : 'en';
+    const pool = this.getQuestionsForState();
+
+    if(pool.length === 0){
+      container.innerHTML = `<div class="empty-state" role="status">
+        <div class="empty-icon" aria-hidden="true">📍</div>
+        <div class="empty-title">${this.t('empty_state_title')}</div>
+        <div class="empty-sub">${this.t('empty_state_sub')}</div>
+      </div>`;
+      this.updateScore();
+      return;
+    }
+
+    const qs = this.getFilteredQ();
 
     if(qs.length === 0){
-      container.innerHTML = `<div class="empty-state">
-        <div class="empty-icon">🎉</div>
+      container.innerHTML = `<div class="empty-state" role="status">
+        <div class="empty-icon" aria-hidden="true">🎉</div>
         <div class="empty-title">${this.t('empty_title')}</div>
         <div class="empty-sub">${this.t('empty_sub')}</div>
       </div>`;
+      this.updateScore();
       return;
     }
 
@@ -300,9 +329,18 @@ const DW = {
 
   // ── SIM MODE ──
   startSim(){
+    const pool = this.getQuestionsForState();
+    if(pool.length === 0){
+      this.simMode = false;
+      document.getElementById('sim-wrapper').style.display = 'none';
+      document.getElementById('study-wrapper').style.display = 'block';
+      this.renderQuiz();
+      return;
+    }
+    const n = Math.min(30, pool.length);
     this.simMode = true;
     this.simAnswered = {};
-    this.simQueue = [...QUESTIONS].sort(() => Math.random() - 0.5).slice(0, 30);
+    this.simQueue = [...pool].sort(() => Math.random() - 0.5).slice(0, n);
     this.simIdx = 0;
     document.getElementById('study-wrapper').style.display = 'none';
     document.getElementById('sim-wrapper').style.display = 'block';
@@ -397,6 +435,7 @@ const DW = {
 
     // Wire mode buttons
     document.querySelectorAll('.fmode').forEach(btn => {
+      btn.setAttribute('aria-pressed', btn.classList.contains('active') ? 'true' : 'false');
       btn.addEventListener('click', () => {
         document.querySelectorAll('.fmode').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
@@ -464,8 +503,12 @@ const FLAGS={pt:'🇧🇷',en:'🇦🇺',es:'🇪🇸',pten:'🇧🇷\u2009🇦�
 const NAMES={pt:'Português',en:'English',es:'Español',pten:'Bilíngue PT+EN',esen:'Bilíngüe ES+EN'};
 
 const I18N = {
+  empty_state_title: {pt:'Em breve para este estado',en:'Questions for this state are coming soon',es:'Preguntas para este estado: próximamente'},
+  empty_state_sub:   {pt:'Por enquanto você pode continuar praticando WA.',en:'You can keep practising WA questions for now.',es:'Por ahora puedes seguir practicando WA.'},
   empty_title: {pt:'Sem questões nesta categoria!',en:'No questions in this category!',es:'¡Sin preguntas en esta categoría!'},
   empty_sub:   {pt:'Tente mudar o filtro ou o modo.',en:'Try changing the filter or mode.',es:'Prueba cambiando el filtro o el modo.'},
+  subscribe_ok: {pt:'Obrigado! Inscrição registrada.',en:'Thanks! You are subscribed.',es:'¡Gracias! Te has suscrito.'},
+  subscribe_err: {pt:'Digite um e-mail válido.',en:'Please enter a valid email.',es:'Introduce un correo válido.'},
   mode_all:    {pt:'Todas',en:'All',es:'Todas'},
   mode_wrong:  {pt:'Erradas',en:'Wrong',es:'Erradas'},
   mode_unans:  {pt:'Não respondidas',en:'Unanswered',es:'Sin responder'},

@@ -3,21 +3,40 @@
   function initStateSelector(){
     const cards = document.querySelectorAll('.state-card');
     const select = document.getElementById('state-select');
-    const savedRaw = localStorage.getItem('kl-state') || 'WA';
-    const saved = savedRaw === 'WA' ? 'WA' : 'WA';
-    function setState(code){
-      if(code !== 'WA' && code !== 'AU') return;
-      localStorage.setItem('kl-state', code);
-      cards.forEach(c => c.classList.toggle('active', c.dataset.state === code));
-      cards.forEach(c => c.setAttribute('aria-pressed', c.dataset.state === code ? 'true' : 'false'));
-      if(select) select.value = code === 'AU' ? 'AU' : code;
-      if(window.DW && typeof window.DW.setState === 'function') window.DW.setState(code === 'AU' ? 'WA' : code);
+    const saved = localStorage.getItem('kl-state') || 'WA';
+
+    function applyUI(code){
+      cards.forEach(c => {
+        const on = c.dataset.state === code;
+        c.classList.toggle('active', on);
+        c.setAttribute('aria-pressed', on ? 'true' : 'false');
+      });
+      if(select) select.value = code;
     }
-    cards.forEach(card => card.addEventListener('click', () => {
-      if(card.classList.contains('coming-soon')) return;
-      setState(card.dataset.state);
-    }));
-    if(select) select.addEventListener('change', () => setState(select.value === 'AU' ? 'AU' : 'WA'));
+
+    function setState(code){
+      if(!code) return;
+      localStorage.setItem('kl-state', code);
+      applyUI(code);
+      if(window.DW && typeof window.DW.setState === 'function'){
+        window.DW.setState(code);
+      }
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        if(card.classList.contains('coming-soon')){
+          setState(card.dataset.state);
+          return;
+        }
+        setState(card.dataset.state);
+      });
+    });
+
+    if(select){
+      select.addEventListener('change', () => setState(select.value));
+    }
+
     setState(saved);
   }
 
