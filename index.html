@@ -33,6 +33,11 @@
 
     <nav class="main-nav" aria-label="Main navigation">
       <a class="active" href="#top">Home</a>
+      <a href="#learn">
+        <span class="l-pt">Aprender</span>
+        <span class="l-en">Learn</span>
+        <span class="l-es">Aprender</span>
+      </a>
       <a href="#questoes">Practice</a>
       <a href="#questoes" data-action="mode-sim">Mock Test</a>
       <a href="#topics">Road Rules</a>
@@ -291,6 +296,40 @@
   </div>
 </section>
 
+<section class="learn-section" id="learn">
+  <div class="container">
+    <div class="learn-head">
+      <div>
+        <p class="learn-kicker">
+          <span class="l-pt">Aprenda antes de praticar</span>
+          <span class="l-en">Learn before you practise</span>
+          <span class="l-es">Aprende antes de practicar</span>
+        </p>
+
+        <h2 class="section-title">
+          <span class="l-pt">Regras de trânsito em formato simples.</span>
+          <span class="l-en">Road rules in a simple format.</span>
+          <span class="l-es">Reglas de tránsito en formato simple.</span>
+        </h2>
+
+        <p class="section-sub">
+          <span class="l-pt">Guias curtos, práticos e baseados em materiais oficiais. Leia o essencial, veja erros comuns e pratique o tema logo em seguida.</span>
+          <span class="l-en">Short, practical guides based on official materials. Learn the essentials, review common mistakes and practise the topic right after.</span>
+          <span class="l-es">Guías cortas y prácticas basadas en materiales oficiales. Aprende lo esencial, revisa errores comunes y practica el tema enseguida.</span>
+        </p>
+      </div>
+
+      <a class="btn btn-secondary btn-sm" href="#questoes">
+        <span class="l-pt">Ir para prática</span>
+        <span class="l-en">Go to practice</span>
+        <span class="l-es">Ir a la práctica</span>
+      </a>
+    </div>
+
+    <div id="learn-root" class="learn-root"></div>
+  </div>
+</section>
+
 <section class="practice-section" id="questoes">
   <div class="container">
     <div class="practice-head">
@@ -405,7 +444,9 @@
 </footer>
 
 <script src="assets/js/data/questions.js"></script>
+<script src="assets/js/data/learn-topics.js"></script>
 <script src="assets/js/quiz-engine.js"></script>
+<script src="assets/js/learn-engine.js"></script>
 <script src="assets/js/app.js"></script>
 </body>
 </html>

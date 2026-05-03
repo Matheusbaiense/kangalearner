@@ -60,6 +60,9 @@ const DW = {
     this.save();
     this.renderFilters();
     this.renderQuiz();
+    if (window.KL_LEARN && typeof window.KL_LEARN.refreshLanguage === "function") {
+      window.KL_LEARN.refreshLanguage();
+    }
   },
 
   // ── DROPDOWN ──
