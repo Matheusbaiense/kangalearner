@@ -9,3 +9,12 @@ apps/web/.next/
 apps/mobile/.expo/
 .cursor/
 .claude/
+
+# Turbo / local caches
+.turbo/
+**/.turbo/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.log

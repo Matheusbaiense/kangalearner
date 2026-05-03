@@ -36,7 +36,7 @@ On push to `main`, [.github/workflows/pages.yml](.github/workflows/pages.yml) pu
 | `assets/css/` | `tokens.css`, `base.css`, `components.css`, `quiz.css` |
 | `assets/js/` | App bootstrap, quiz engine, learn engine |
 | `assets/js/data/` | `questions.js`, `learn-topics.js` |
-| `assets/img/brand/` | Logo mark/full, favicon, apple touch icon |
+| `assets/img/brand/` | Logo mark/full, `favicon.svg`, `apple-touch-icon.svg` |
 | `assets/img/social/` | `og-image.svg` (use absolute URL in production for OG) |
 | `assets/icons/` | UI and sign SVGs |
 
@@ -51,6 +51,8 @@ pnpm run validate:questions
 # or
 node scripts/validate-questions.cjs
 ```
+
+4. After changes, refresh the shared package used by Next/mobile: `pnpm run gen:core-questions` (writes `packages/core/src/data/questions.ts` from the JS file).
 
 ## Add learn topics
 

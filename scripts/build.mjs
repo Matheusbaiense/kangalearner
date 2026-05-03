@@ -21,7 +21,13 @@ execSync(
 );
 
 execSync(
-  "npx terser assets/js/app.js -c -m -o dist/assets/js/app.js && npx terser assets/js/quiz-engine.js -c -m -o dist/assets/js/quiz-engine.js && npx terser assets/js/data/questions.js -c -m -o dist/assets/js/data/questions.js",
+  [
+    "npx terser assets/js/app.js -c -m -o dist/assets/js/app.js",
+    "&& npx terser assets/js/quiz-engine.js -c -m -o dist/assets/js/quiz-engine.js",
+    "&& npx terser assets/js/learn-engine.js -c -m -o dist/assets/js/learn-engine.js",
+    "&& npx terser assets/js/data/questions.js -c -m -o dist/assets/js/data/questions.js",
+    "&& npx terser assets/js/data/learn-topics.js -c -m -o dist/assets/js/data/learn-topics.js"
+  ].join(" "),
   { stdio: "inherit" }
 );
 
@@ -32,7 +38,7 @@ const minifiedHtml = execSync(
 writeFileSync(join(dist, "index.html"), minifiedHtml, "utf8");
 
 const srcHtml = readFileSync(join(root, "index.html"), "utf8");
-if (!srcHtml.includes("assets/js/data/questions.js")) {
+if (!srcHtml.includes("assets/js/data/questions.js") || !srcHtml.includes("learn-topics.js")) {
   throw new Error("Unexpected HTML structure while building.");
 }
 
