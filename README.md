@@ -53,6 +53,8 @@ Conteúdo educacional **não substitui** material oficial dos órgãos de trâns
 
 | Ficheiro | Propósito |
 |----------|-----------|
+| [AGENTS.md](AGENTS.md) | Instruções curtas para IAs: que docs manter alinhados. |
+| [docs/MAINTENANCE-POLICY-IA.md](docs/MAINTENANCE-POLICY-IA.md) | **Padrão** checklist history / codemaps / backlog / planner / QA log. |
 | [docs/QA-EXECUTION-LOG.md](docs/QA-EXECUTION-LOG.md) | Log do que foi executado e resultados (build, lint, smoke). |
 | [docs/BACKLOG.md](docs/BACKLOG.md) | Itens pendentes priorizados. |
 | [docs/PLANNER-WEB-INFRA.md](docs/PLANNER-WEB-INFRA.md) | Plano faseado web (CI, auth, dados, deploy). |

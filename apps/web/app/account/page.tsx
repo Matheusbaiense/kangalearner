@@ -8,5 +8,5 @@ export default async function AccountPage() {
     const { data: { user } } = await supabase.auth.getUser();
     if (user) redirect("/dashboard");
   } catch {}
-  redirect("/login");
+  redirect("/auth/login?redirect=/dashboard");
 }

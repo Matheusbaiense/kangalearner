@@ -9,13 +9,12 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | Comando | Resultado |
 |---------|-----------|
 | `pnpm run build` (raiz: `prebuild` + `turbo run build`) | **OK** — `validate-questions`, `gen:core-questions`, `@kanga/core` tsc, `@kanga/web` next build, `@kanga/mobile` echo build |
-| `pnpm run lint` (raiz: `turbo run lint`) | **Falhou** — `@kanga/mobile`: `expo lint` tentou instalar ESLint e terminou com `ERR_PNPM_UNEXPECTED_STORE` (loja pnpm diferente da usada no `node_modules`). **Não bloqueia** alterações em `apps/web`. |
-| `pnpm run lint` em `apps/web` apenas | **OK (exit 0)** — 1 *warning* ESLint pré-existente |
+| `pnpm run lint` (raiz: `turbo run lint`) | **Falhou** na primeira sessão — `@kanga/mobile` com `expo lint`. *Corrigido depois:* ver secção “Entrega higiene” abaixo. |
+| `pnpm run lint` em `apps/web` apenas | **OK** — antes: 1 warning em `PracticeClient`; *corrigido* na entrega higiene. |
 
-### Avisos conhecidos (Next / ESLint)
+### Avisos (histórico — primeira sessão)
 
-- `PracticeClient.tsx`: `react-hooks/exhaustive-deps` em `useCallback` (linha ~316) — backlog para corrigir ou documentar exceção.
-- Vários avisos Next: `themeColor` em `metadata` deve migrar para `export const viewport` — backlog UX/SEO.
+- ~~`themeColor` / `exhaustive-deps`~~ — resolvidos na entrega 2026-05-04 (pós-QA); ver secção seguinte.
 
 ### Smoke HTTP (dev server `pnpm dev` em `apps/web`)
 
@@ -31,7 +30,17 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 ### Próxima execução sugerida
 
-1. `pnpm install` (se `pnpm lint` na raiz falhar por store, alinhar `pnpm config get store-dir` com o usado no clone).
-2. `pnpm run build`
-3. `pnpm --filter @kanga/web run lint` (ou corrigir `apps/mobile` para não auto-instalar no lint).
-4. Manual: fluxos em `docs/BACKLOG.md` secção “QA manual”.
+1. `pnpm run build`
+2. `pnpm run lint` (raiz — mobile usa `tsc --noEmit`).
+3. Manual: fluxos em `docs/BACKLOG.md` secção “QA manual”.
+
+---
+
+## 2026-05-04 — Entrega higiene (viewport, hooks, mobile lint, legal, política docs)
+
+| Comando | Resultado |
+|---------|-----------|
+| `pnpm run lint` (raiz) | **OK** — mobile `tsc --noEmit`; web **sem** avisos ESLint. |
+| `pnpm run build` (raiz) | **OK** — sem avisos `themeColor` no Next build. |
+
+**Alterações:** ver `docs/HISTORY-INFRA-WEB.md` linha “Entrega 2026-05-04 (pós-QA)”.

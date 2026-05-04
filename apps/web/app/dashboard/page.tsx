@@ -36,11 +36,11 @@ export default async function DashboardPage() {
   try {
     supabase = await createSupabaseServerClient();
   } catch {
-    redirect("/login?next=/dashboard");
+    redirect("/auth/login?redirect=/dashboard");
   }
 
   const { data: { user } } = await supabase!.auth.getUser();
-  if (!user) redirect("/login?next=/dashboard");
+  if (!user) redirect("/auth/login?redirect=/dashboard");
 
   const displayName =
     (user.user_metadata?.full_name as string | undefined) ??
@@ -221,7 +221,7 @@ export default async function DashboardPage() {
           {/* Sign-out note */}
           <p style={{ fontSize: ".75rem", color: "var(--muted)", marginTop: 32 }}>
             Signed in as {user.email} ·{" "}
-            <Link href="/login" style={{ color: "var(--muted)", textDecoration: "underline" }}>
+            <Link href="/auth/login?redirect=/dashboard" style={{ color: "var(--muted)", textDecoration: "underline" }}>
               sign out from nav
             </Link>
           </p>

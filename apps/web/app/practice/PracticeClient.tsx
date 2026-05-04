@@ -249,21 +249,24 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   }, [filtered]);
 
   /* ── Sync attempt to Supabase (silent — 401 ok for guests) ── */
-  function syncAttempt(qid: string, cat: string, isCorrect: boolean, chosen: string) {
-    fetch("/api/attempts", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        question_id: qid,
-        state: selectedState,
-        category: cat,
-        is_correct: isCorrect,
-        chosen,
-        source: "web"
-      }),
-      keepalive: true
-    }).catch(() => {});
-  }
+  const syncAttempt = useCallback(
+    (qid: string, cat: string, isCorrect: boolean, chosen: string) => {
+      fetch("/api/attempts", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          question_id: qid,
+          state: selectedState,
+          category: cat,
+          is_correct: isCorrect,
+          chosen,
+          source: "web"
+        }),
+        keepalive: true
+      }).catch(() => {});
+    },
+    [selectedState]
+  );
 
   /* ── Pick an answer ── */
   const pick = useCallback(
@@ -313,7 +316,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         }, 900);
       }
     },
-    [answered, simQueue, selectedState]
+    [answered, simQueue, selectedState, syncAttempt]
   );
 
   /* ── Reset ── */

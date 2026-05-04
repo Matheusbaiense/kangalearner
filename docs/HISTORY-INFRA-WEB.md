@@ -12,6 +12,7 @@ Linha do tempo das entregas **INFRA-4 … INFRA-10** e QA associado, para contex
 | **INFRA-9** | CSS auth | `src/app/auth/auth.css` + `app/auth/layout.tsx` (wrapper `.auth-route`); remoção de duplicados conflituosos em `globals.css` para o shell legado. |
 | **INFRA-10** | Verificação | Middleware: redirect protegido → `/auth/login?redirect=…`; página `/progress`; smoke HTTP em dev; tipos: comentário `supabase gen types`. |
 | **QA 2026-05-04** | Execução | `pnpm run build` OK; `pnpm run lint` na raiz falhou no mobile (pnpm store); `apps/web` lint OK com 1 warning conhecido. Documentação em `docs/QA-EXECUTION-LOG.md`, `BACKLOG.md`, `PLANNER-WEB-INFRA.md`, codemap. |
+| **Entrega 2026-05-04 (pós-QA)** | Higiene + padrão docs | `viewport` em `app/layout.tsx`; `PracticeClient` hooks; `apps/mobile` lint = `tsc --noEmit`; `/terms`, `/privacy` placeholder; redirects `account`/`dashboard` → `/auth/login`; `AGENTS.md`, `MAINTENANCE-POLICY-IA.md`, regra Cursor `docs-maintenance.mdc`; BACKLOG/QA atualizados. |
 
 ## Convenções úteis para próxima IA
 

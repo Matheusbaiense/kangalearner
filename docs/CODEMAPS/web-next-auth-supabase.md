@@ -14,6 +14,8 @@ apps/web/
 │   │   └── callback/route.ts  → OAuth/magic link; cookies na redirect response
 │   ├── login/, signup/        → fluxos legados (AuthCard)
 │   ├── progress/page.tsx      → placeholder; middleware protege
+│   ├── terms/page.tsx         → placeholder legal (signup link)
+│   ├── privacy/page.tsx       → idem
 │   └── api/                   → REST handlers (attempts, mock-sessions, health, …)
 └── src/
     ├── middleware.ts          → createServerClient; PROTECTED_ROUTES; AUTH_ROUTES
@@ -50,6 +52,10 @@ apps/web/
 2. Com env: `getUser()`; se path protegido e sem user → `/auth/login?redirect=<path>`.
 3. Se `/login`, `/signup`, `/auth/login`, `/auth/signup` e com user → `/`.
 
+## Layout raiz
+
+- `app/layout.tsx`: `export const viewport` com `themeColor` (Next 15+); `metadata` sem `themeColor`.
+
 ## Variáveis de ambiente (web)
 
 | Variável | Uso |
@@ -65,4 +71,4 @@ apps/web/
 Migrações em `supabase/migrations/` — tabelas `public` esperadas alinhadas com `database.types.ts` (12 tabelas no desenho atual do repo).
 
 ---
-*Última revisão: 2026-05-04 (QA + documentação).*
+*Última revisão: 2026-05-04 (higiene: viewport, legal, mobile lint, política docs).*

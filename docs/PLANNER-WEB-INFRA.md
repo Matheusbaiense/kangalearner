@@ -10,13 +10,13 @@ Plano faseado para agentes de IA e developers continuarem a partir do estado atu
 
 ## Fase 1 — Estabilizar CI e lint (curto prazo)
 
-1. Corrigir `apps/mobile` lint ou excluir da pipeline até haver ESLint configurado sem auto-install.
-2. Opcional: job GitHub Actions só `pnpm --filter @kanga/web run build` + `lint` para PRs que toquem `apps/web`.
+1. [x] `apps/mobile`: `lint` = `tsc --noEmit` (sem `expo lint` que quebrava com store pnpm).
+2. Opcional: job GitHub Actions filtrado a `apps/web` em PRs só web.
 
 ## Fase 2 — Auth e produto (médio prazo)
 
-1. Unificar ou documentar `/login` vs `/auth/login`.
-2. Páginas legais (`/terms`, `/privacy`) ou remover links.
+1. Parcial: `dashboard` / `account` redirecionam anónimos para `/auth/login`; `/login` legado mantido.
+2. [x] Placeholder `/terms` e `/privacy` (substituir texto antes de lançamento).
 3. Testes E2E (Playwright): login, signup, redirect `/progress` → login.
 
 ## Fase 3 — Dados e observabilidade

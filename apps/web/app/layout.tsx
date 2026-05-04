@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter, Sora } from "next/font/google";
 import "./globals.css";
@@ -16,6 +16,10 @@ const sora = Sora({
   display: "swap"
 });
 
+export const viewport: Viewport = {
+  themeColor: "#071A2C"
+};
+
 export const metadata: Metadata = {
   title: "KangaLearner — Australia Learner Test Practice",
   description:
@@ -25,8 +29,7 @@ export const metadata: Metadata = {
     description:
       "Study Australian road rules by state, practice unlimited questions and track your progress.",
     type: "website"
-  },
-  themeColor: "#071A2C"
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
