@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.12.0",
   "scripts": {
-    "prebuild": "node scripts/validate-questions.cjs",
+    "prebuild": "node scripts/validate-questions.cjs && node scripts/convert-questions.cjs",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",

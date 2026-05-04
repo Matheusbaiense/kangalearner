@@ -30,5 +30,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Check questions.ts sync
+        run: |
+          pnpm gen:core-questions
+          git diff --exit-code packages/core/src/data/questions.ts || \
+            (echo "ERROR: questions.ts is out of sync. Run pnpm gen:core-questions" && exit 1)
+
       - name: Build
         run: pnpm run build
