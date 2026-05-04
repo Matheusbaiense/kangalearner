@@ -14,12 +14,20 @@ apps/web/
 │   │   └── callback/route.ts  → OAuth/magic link; cookies na redirect response
 │   ├── login/, signup/        → fluxos legados (AuthCard)
 │   ├── progress/page.tsx      → placeholder; middleware protege
+│   ├── dashboard/page.tsx     → painel do utilizador (server)
+│   ├── practice/page.tsx      → prática por categorias (server)
+│   ├── mock-test/             → setup + session/results (placeholders)
+│   ├── learn/                 → hub + [slug] (placeholders)
+│   ├── resources/page.tsx     → links oficiais (placeholder)
 │   ├── terms/page.tsx         → placeholder legal (signup link)
 │   ├── privacy/page.tsx       → idem
 │   └── api/                   → REST handlers (attempts, mock-sessions, health, …)
 └── src/
     ├── middleware.ts          → createServerClient; PROTECTED_ROUTES; AUTH_ROUTES
     ├── app/auth/auth.css      → estilos INFRA-9 (prefixo .auth-route)
+    ├── components/
+    │   ├── layout/SiteNav.tsx  → navegação global (presentational)
+    │   └── Onboarding.tsx      → onboarding client (localStorage)
     └── lib/
         ├── supabase/
         │   ├── client.ts      → createBrowserClient<Database>
@@ -54,7 +62,7 @@ apps/web/
 
 ## Layout raiz
 
-- `app/layout.tsx`: `export const viewport` com `themeColor` (Next 15+); `metadata` sem `themeColor`.
+- `app/layout.tsx`: renderiza `SiteNav` global + `Onboarding` (client). `export const viewport` com `themeColor` (Next 15+); `metadata` sem `themeColor`.
 
 ## Variáveis de ambiente (web)
 

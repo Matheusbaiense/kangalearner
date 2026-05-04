@@ -1,6 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Inter, Sora } from "next/font/google";
+import { SiteNav } from "@/components/layout/SiteNav";
+import { Onboarding } from "@/components/Onboarding";
 import "./globals.css";
 
 const inter = Inter({
@@ -39,7 +41,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       className={`${inter.variable} ${sora.variable}`}
       suppressHydrationWarning
     >
-      <body suppressHydrationWarning>{children}</body>
+      <body suppressHydrationWarning>
+        <SiteNav />
+        <Onboarding />
+        {children}
+      </body>
     </html>
   );
 }

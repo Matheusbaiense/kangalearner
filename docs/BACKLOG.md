@@ -12,6 +12,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 - [x] **`themeColor`** — migrado para `export const viewport` em `app/layout.tsx` (Next 15+).
 - [ ] **Rotas duplicadas de auth**: `/login` (AuthCard) ainda existe para compat; fluxos server (`dashboard`, `account`) redirecionam para **`/auth/login`**. *Opcional:* redirect 308 de `/login` → `/auth/login` ou unificar UI.
 - [x] **`/terms` e `/privacy`**: páginas placeholder em `app/terms/page.tsx` e `app/privacy/page.tsx` (substituir por texto jurídico antes de lançamento público).
+- [ ] **Novas rotas placeholder**: implementar conteúdo real e/ou “coming soon” consistente para `/mock-test/*`, `/learn/*`, `/resources` (hoje são scaffolds).
 
 ## P2 — Dados e tipos
 
@@ -30,6 +31,8 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 
 - [ ] `pnpm run validate:questions` em PRs que toquem `assets/js/data/questions.js`.
 - [ ] Documentar deploy Next (ex. Vercel) vs GitHub Pages estático.
+- [ ] **A11y/contraste**: validar contraste real do CTA amber (`.btn-primary`/`.btn-gold`) e foco global (`:focus-visible`) em browsers alvo.
+- [x] **Tokens radius**: corrigido `--radius-lg`/`--radius-xl` para manter escala (evita `lg == md`).
 
 ## Documentação / IA
 

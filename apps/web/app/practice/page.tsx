@@ -1,4 +1,3 @@
-import { SiteNav } from "../../src/components/layout/SiteNav";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
@@ -6,10 +5,5 @@ export const metadata = {
 };
 
 export default function PracticePage() {
-  return (
-    <>
-      <SiteNav />
-      <PracticeClient />
-    </>
-  );
+  return <PracticeClient />;
 }

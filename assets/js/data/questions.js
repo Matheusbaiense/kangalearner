@@ -2181,7 +2181,11 @@
         },
         {
           l: "B",
-          t: { en: "At least 1 m (1.5 m when over 60 km/h)", pt: "Pelo menos 1 m (1,5 m acima de 60 km/h)", es: "Al menos 1 m (1,5 m por encima de 60 km/h)" },
+          t: {
+            en: "At least 1 m (1.5 m when over 60 km/h)",
+            pt: "Pelo menos 1 m (1,5 m acima de 60 km/h)",
+            es: "Al menos 1 m (1,5 m por encima de 60 km/h)"
+          },
           ok: true
         },
         {

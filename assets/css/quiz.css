@@ -523,8 +523,8 @@
   height: 38px;
   border: 0;
   border-radius: 8px;
-  background: linear-gradient(135deg, var(--green2), var(--green));
-  color: white;
+  background: linear-gradient(135deg, #fbbf24, var(--gold));
+  color: #1b2b3a;
   font-weight: 850;
   padding: 0 14px;
   cursor: pointer;
@@ -728,7 +728,7 @@
   top: 0;
   left: 0;
   height: 2px;
-  background: var(--green2);
+  background: var(--gold);
   width: 0%;
   z-index: 600;
   transition: width 0.1s linear;
@@ -736,7 +736,7 @@
 
 /* Focus visible for keyboard users */
 :focus-visible {
-  outline: 2px solid var(--green2);
+  outline: 2px solid var(--gold);
   outline-offset: 3px;
   border-radius: 4px;
 }

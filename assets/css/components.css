@@ -20,10 +20,16 @@
 .btn:hover {
   transform: translateY(-1px);
 }
-.btn-primary {
-  background: linear-gradient(135deg, var(--green2), var(--green));
-  color: white;
-  box-shadow: 0 16px 30px rgba(46, 125, 91, 0.24);
+.btn-primary,
+.btn-gold {
+  background: linear-gradient(135deg, #fbbf24, var(--gold));
+  color: #1b2b3a;
+  box-shadow: 0 16px 30px rgba(217, 119, 6, 0.26);
+}
+.btn-primary:hover,
+.btn-gold:hover {
+  filter: brightness(1.04);
+  box-shadow: 0 20px 36px rgba(217, 119, 6, 0.34);
 }
 .btn-secondary {
   color: var(--text);
@@ -32,14 +38,6 @@
 }
 .btn-secondary:hover {
   background: rgba(255, 255, 255, 0.08);
-}
-.btn-gold {
-  background: linear-gradient(135deg, #fbbf24, var(--gold));
-  color: #1b2b3a;
-  box-shadow: 0 16px 30px rgba(217, 119, 6, 0.22);
-}
-.btn-gold:hover {
-  filter: brightness(1.03);
 }
 .btn-sm {
   min-height: 38px;
@@ -54,7 +52,7 @@
 .hero {
   min-height: 540px;
   background:
-    radial-gradient(circle at 76% 8%, rgba(82, 183, 136, 0.16), transparent 31%),
+    radial-gradient(circle at 76% 8%, rgba(217, 119, 6, 0.13), transparent 31%),
     linear-gradient(90deg, rgba(6, 19, 33, 0.98), rgba(7, 26, 44, 0.94) 53%, rgba(7, 26, 44, 0.97)),
     url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='900' height='520' viewBox='0 0 900 520'%3E%3Crect width='900' height='520' fill='%23061525'/%3E%3Cpath d='M0 475 C160 400 270 357 380 520 L0 520Z' fill='%23102237'/%3E%3Cpath d='M0 520 C140 410 260 350 380 280' stroke='%23F5C542' stroke-width='3' fill='none' opacity='.85'/%3E%3Cpath d='M0 500 C130 405 260 355 390 295' stroke='%23FFFFFF' stroke-width='2' fill='none' opacity='.3'/%3E%3Cpath d='M28 0 C22 100 54 191 18 290' stroke='%23203651' stroke-width='6' fill='none' opacity='.35'/%3E%3C/svg%3E");
   background-size: cover;
@@ -79,7 +77,7 @@
   gap: 12px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
-  color: var(--green2);
+  color: var(--gold);
   font-weight: 900;
   font-size: 0.86rem;
   margin-bottom: 18px;
@@ -89,13 +87,14 @@
   width: 22px;
   height: 3px;
   border-radius: 10px;
-  background: var(--green2);
+  background: var(--gold);
 }
 .hero h1 {
-  font-family: "Sora", sans-serif;
-  font-size: clamp(2.7rem, 5vw, 4.45rem);
-  line-height: 1.08;
-  letter-spacing: -0.065em;
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
   max-width: 620px;
   margin-bottom: 22px;
 }
@@ -126,11 +125,11 @@
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: rgba(82, 183, 136, 0.16);
+  background: rgba(217, 119, 6, 0.15);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--green2);
+  color: var(--gold);
   font-weight: 900;
 }
 
@@ -630,7 +629,7 @@
   cursor: pointer;
 }
 .learn-card-head:focus-visible {
-  outline: 2px solid rgba(82, 183, 136, 0.9);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
 }
 .learn-icon {

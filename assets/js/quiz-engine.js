@@ -37,16 +37,7 @@ const DW = {
   simCompleted: false,
   simReviewMode: "all",
   visibleQuestionCount: 10,
-  _questionById: null,
-
-  rebuildQuestionMap() {
-    this._questionById = new Map(QUESTIONS.map((q) => [String(q.id), q]));
-  },
-
-  questionById(qid) {
-    const key = String(qid);
-    return this._questionById?.get(key) ?? QUESTIONS.find((x) => String(x.id) === key);
-  },
+  _questionsMap: null,
 
   syncLdTriggerAria() {
     const t = document.getElementById("ld-trigger");
@@ -429,7 +420,7 @@ const DW = {
 
   pick(el, qid) {
     if (el.getAttribute("data-done")) return;
-    const q = this.questionById(qid);
+    const q = this._questionsMap.get(qid);
     if (!q) return;
 
     if (this.simMode) {
@@ -495,17 +486,13 @@ const DW = {
   },
 
   updateScore() {
-    const total = Object.keys(this.answered).length;
-    const correct = Object.values(this.answered).filter((a) => a.correct).length;
-    const wrong = Object.values(this.answered).filter((a) => !a.correct).length;
+    const correct = this.correct;
+    const total = this.total;
+    const wrong = total - correct;
     const pool = this.getQuestionsForState();
-    const poolIds = new Set(pool.map((q) => q.id));
-    let unanswered = 0;
-    pool.forEach((q) => {
-      if (!this.answered[q.id]) unanswered++;
-    });
-
+    const unanswered = pool.length - total;
     const pct = total > 0 ? Math.round((correct / total) * 100) : 0;
+
     const el = document.getElementById("score-val");
     if (el) {
       el.textContent = `${correct} / ${total}`;
@@ -519,17 +506,14 @@ const DW = {
     }
     const pct_el = document.getElementById("score-pct");
     if (pct_el) pct_el.textContent = total > 0 ? `${this.t("prog_accuracy")}: ${pct}%` : "";
-
     const accEl = document.getElementById("prog-accuracy");
     if (accEl) accEl.textContent = total > 0 ? `${pct}%` : "—";
-
     const cEl = document.getElementById("prog-correct");
     const iEl = document.getElementById("prog-incorrect");
     const uEl = document.getElementById("prog-unanswered");
     if (cEl) cEl.textContent = String(correct);
     if (iEl) iEl.textContent = String(wrong);
-    if (uEl) uEl.textContent = String(unanswered);
-
+    if (uEl) uEl.textContent = String(Math.max(0, unanswered));
     const mob = document.getElementById("quiz-mobile-progress");
     if (mob)
       mob.textContent = `${this.t("prog_score")}: ${correct}/${total} · ${this.t("prog_accuracy")}: ${total ? pct + "%" : "—"}`;
@@ -540,6 +524,7 @@ const DW = {
     const cx = rect.left + rect.width / 2;
     const cy = rect.top + rect.height / 2;
     const colors = ["#F4A900", "#30D158", "#FFBE33", "#fff", "#FFD700"];
+    const dots = [];
     for (let i = 0; i < 18; i++) {
       const d = document.createElement("div");
       d.className = "confetti-dot";
@@ -548,8 +533,19 @@ const DW = {
         width:${5 + Math.random() * 5}px;height:${5 + Math.random() * 5}px;
         border-radius:${Math.random() > 0.5 ? "50%" : "2px"};`;
       document.body.appendChild(d);
-      setTimeout(() => d.remove(), 900);
+      dots.push(d);
     }
+    const cleanup = () => dots.forEach((d) => d.parentNode?.removeChild(d));
+    const timer = setTimeout(cleanup, 900);
+    const obs = new MutationObserver(() => {
+      if (!document.body.contains(el)) {
+        clearTimeout(timer);
+        cleanup();
+        obs.disconnect();
+      }
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+    setTimeout(() => obs.disconnect(), 1000);
   },
 
   startSim() {
@@ -720,7 +716,7 @@ const DW = {
 
   init() {
     this.load();
-    this.rebuildQuestionMap();
+    this._questionsMap = new Map((window.QUESTIONS || QUESTIONS).map((q) => [q.id, q]));
     const langEl = document.querySelector(`.ld-option[data-lang="${this.lang}"]`);
     if (langEl) {
       langEl.classList.add("active");
@@ -893,6 +889,19 @@ const DW = {
 
 DW.syncAttempt = function (q, isCorrect, chosen) {
   if (!window.KANGA_ENABLE_BACKEND_SYNC) return;
+  // Do not sync anonymous users
+  const hasSession = (() => {
+    try {
+      return (
+        document.cookie.includes("sb-access-token") ||
+        !!localStorage.getItem("sb-access-token") ||
+        !!localStorage.getItem("supabase.auth.token")
+      );
+    } catch {
+      return false;
+    }
+  })();
+  if (!hasSession) return;
   try {
     fetch("/api/attempts", {
       method: "POST",

@@ -1,18 +1,74 @@
+import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "KangaLearner — Pass your Australian learner test",
+  description:
+    "Practice questions, take mock tests and track your progress in English, Portuguese or Spanish."
+};
+
 export default function HomePage() {
   return (
-    <main style={{ fontFamily: "Inter, sans-serif", padding: 32 }}>
-      <h1>KangaLearner Web (Next.js)</h1>
-      <p>Monorepo scaffold created. Next step is migrating UI and quiz logic.</p>
-      <p style={{ marginTop: 12 }}>
-        <a href="/login" style={{ fontWeight: 800 }}>
-          Login with Google →
-        </a>
-      </p>
-      <p style={{ marginTop: 10 }}>
-        <a href="/practice" style={{ fontWeight: 800 }}>
-          Practice (React) →
-        </a>
-      </p>
+    <main>
+      <section className="hero-section">
+        <div className="hero-inner">
+          <div className="hero-badge">Western Australia · WA</div>
+          <h1 className="hero-title">
+            Pass your learner test
+            <br />
+            with confidence
+          </h1>
+          <p className="hero-sub">
+            Practice real questions, take timed mock tests, and track your weak spots — in English,
+            Portuguese or Spanish.
+          </p>
+          <div className="hero-ctas">
+            <Link href="/practice" className="btn btn-primary">
+              Start Practising →
+            </Link>
+            <Link href="/mock-test" className="btn btn-secondary">
+              Take a Mock Test
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section className="features-section">
+        <div className="features-inner">
+          {[
+            {
+              icon: "📖",
+              title: "Learn",
+              sub: "Study road rules by topic with clear explanations.",
+              href: "/learn"
+            },
+            {
+              icon: "✏️",
+              title: "Practice",
+              sub: "Answer questions filtered by category and difficulty.",
+              href: "/practice"
+            },
+            {
+              icon: "🎯",
+              title: "Mock Test",
+              sub: "Simulate the official 30-question WA learner test.",
+              href: "/mock-test"
+            },
+            {
+              icon: "📊",
+              title: "Progress",
+              sub: "See your accuracy by category and review mistakes.",
+              href: "/progress"
+            }
+          ].map((f) => (
+            <Link key={f.href} href={f.href} className="feature-card">
+              <span className="feature-icon">{f.icon}</span>
+              <strong>{f.title}</strong>
+              <span>{f.sub}</span>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }

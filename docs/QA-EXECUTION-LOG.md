@@ -44,3 +44,18 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | `pnpm run build` (raiz) | **OK** — sem avisos `themeColor` no Next build. |
 
 **Alterações:** ver `docs/HISTORY-INFRA-WEB.md` linha “Entrega 2026-05-04 (pós-QA)”.
+
+---
+
+## 2026-05-04 — Refresh UI (site estático)
+
+| Comando | Resultado |
+|---------|-----------|
+| `pnpm run format:check` | **OK** — `index.html`, `assets/css/**/*.css`, `assets/js/**/*.js` |
+| `pnpm run validate:questions` | **OK** — 69 questões / 10 categorias |
+| `pnpm run gen:core-questions` | **OK** — gerou `packages/core/src/data/questions.ts` |
+| `pnpm run legacy:build` | **OK** — gerou `dist/` |
+| `pnpm run build` | **OK** — monorepo (`@kanga/web` Next build) |
+| `pnpm run lint` | **OK** — web sem warnings; mobile `tsc --noEmit` |
+
+**Alterações:** ver `docs/HISTORY-STATIC-SITE.md` + `docs/CODEMAPS/static-site.md`.
