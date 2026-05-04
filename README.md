@@ -46,3 +46,15 @@ Conteúdo educacional **não substitui** material oficial dos órgãos de trâns
 
 - Repositório **privado** e distribuição via **app** (fora do escopo deste README).
 - Detalhes de build, ambientes e release ficam com o processo interno da equipe quando o produto fechar.
+
+---
+
+## Documentação para QA e agentes de IA
+
+| Ficheiro | Propósito |
+|----------|-----------|
+| [docs/QA-EXECUTION-LOG.md](docs/QA-EXECUTION-LOG.md) | Log do que foi executado e resultados (build, lint, smoke). |
+| [docs/BACKLOG.md](docs/BACKLOG.md) | Itens pendentes priorizados. |
+| [docs/PLANNER-WEB-INFRA.md](docs/PLANNER-WEB-INFRA.md) | Plano faseado web (CI, auth, dados, deploy). |
+| [docs/HISTORY-INFRA-WEB.md](docs/HISTORY-INFRA-WEB.md) | Histórico compacto INFRA-4…10. |
+| [docs/CODEMAPS/](docs/CODEMAPS/) | Mapas de código (ex.: Next + Supabase + Stripe). |

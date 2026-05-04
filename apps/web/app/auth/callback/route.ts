@@ -1,23 +1,38 @@
-import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
+/** Evita open redirect: só caminhos relativos à app. */
+function safeNextPath(raw: string | null): string {
+  const fallback = "/account";
+  if (!raw) return fallback;
+  if (!raw.startsWith("/") || raw.startsWith("//")) return fallback;
+  return raw;
+}
+
+/**
+ * OAuth / magic-link callback (INFRA-7).
+ * Troca o código por sessão (cookies na resposta de redirect) e, se aplicável,
+ * cria customer Stripe e associa a `profiles.stripe_customer_id`.
+ *
+ * Rotas vivem em `app/` (requisito do Next). Imports `@/` → `src/`.
+ */
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
-  const next = url.searchParams.get("next") ?? "/account";
+  const next = safeNextPath(url.searchParams.get("next") ?? url.searchParams.get("redirect"));
 
   if (!code) {
-    return NextResponse.redirect(new URL(`/login?error=missing_code`, url.origin));
+    return NextResponse.redirect(new URL("/login?error=no_code", url.origin));
   }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-
   if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.redirect(new URL(`/login?error=missing_env`, url.origin));
+    return NextResponse.redirect(new URL("/login?error=missing_env", url.origin));
   }
 
-  // IMPORTANT: exchangeCodeForSession must write cookies on the response.
+  // exchangeCodeForSession tem de escrever cookies na mesma resposta do redirect.
   const response = NextResponse.redirect(new URL(next, url.origin));
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
@@ -28,16 +43,47 @@ export async function GET(request: NextRequest) {
         cookiesToSet.forEach(({ name, value, options }) => {
           response.cookies.set(name, value, options);
         });
-      }
-    }
+      },
+    },
   });
 
-  const { error } = await supabase.auth.exchangeCodeForSession(code);
+  const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
-  if (error) {
-    return NextResponse.redirect(new URL(`/login?error=${encodeURIComponent(error.message)}`, url.origin));
+  if (error || !data.user) {
+    console.error("Auth callback error:", error);
+    return NextResponse.redirect(new URL("/login?error=auth_failed", url.origin));
+  }
+
+  const user = data.user;
+
+  const { data: profile, error: profileError } = await supabaseAdmin
+    .from("profiles")
+    .select("stripe_customer_id")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (profileError) {
+    console.error("Auth callback profile read:", profileError);
+  }
+
+  if (profile && !profile.stripe_customer_id && process.env.STRIPE_SECRET_KEY && user.email) {
+    try {
+      const { createStripeCustomer } = await import("@/lib/stripe");
+      const stripeCustomerId = await createStripeCustomer({
+        email: user.email,
+        name:
+          (typeof user.user_metadata?.full_name === "string" && user.user_metadata.full_name) ||
+          (typeof user.user_metadata?.name === "string" && user.user_metadata.name) ||
+          undefined,
+        userId: user.id,
+        country: "AU",
+      });
+
+      await supabaseAdmin.from("profiles").update({ stripe_customer_id: stripeCustomerId }).eq("id", user.id);
+    } catch (stripeError) {
+      console.error("Stripe customer creation failed:", stripeError);
+    }
   }
 
   return response;
 }
-
