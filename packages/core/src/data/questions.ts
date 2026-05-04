@@ -46,14 +46,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -96,20 +89,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "School zones usually reduce the speed limit to 40 km/h during the signed times. Always check the school zone signs because times and days may vary.",
+      "pt": "Zonas escolares geralmente reduzem o limite para 40 km/h nos horários indicados nas placas. Sempre confira a sinalização, pois horários e dias podem variar.",
+      "es": "Las zonas escolares normalmente reducen el límite a 40 km/h durante los horarios señalizados. Revise siempre las señales, porque los horarios y días pueden variar."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -152,20 +138,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "At road works, you must follow the temporary speed limit shown on the road works signs. These limits protect workers, drivers and pedestrians.",
+      "pt": "Em obras, você deve seguir o limite temporário indicado nas placas de road works. Esses limites protegem trabalhadores, motoristas e pedestres.",
+      "es": "En obras, debe obedecer el límite temporal indicado en las señales de obras. Estos límites protegen a trabajadores, conductores y peatones."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -208,20 +187,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Learner drivers must not exceed 100 km/h, even if the posted speed limit is higher. The L-plate speed limit is a maximum, not a target.",
+      "pt": "Motoristas com L-plate não devem exceder 100 km/h, mesmo que a via permita mais. Esse limite é o máximo permitido, não uma meta.",
+      "es": "Los conductores con L-plate no deben superar 100 km/h, aunque la vía permita más. Ese límite es el máximo permitido, no un objetivo."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -264,20 +236,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "When towing a caravan or trailer, the maximum speed is 100 km/h. Towing changes braking distance, stability and vehicle control.",
+      "pt": "Ao rebocar caravana ou trailer, a velocidade máxima é 100 km/h. Rebocar altera a frenagem, a estabilidade e o controle do veículo.",
+      "es": "Al remolcar una caravana o tráiler, la velocidad máxima es 100 km/h. Remolcar cambia la distancia de frenado, la estabilidad y el control del vehículo."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -320,20 +285,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You must never exceed the speed limit, even when overtaking. Overtake only when it is safe and legal without going over the limit.",
+      "pt": "Você nunca pode ultrapassar o limite de velocidade, nem durante uma ultrapassagem. Só ultrapasse quando for seguro e legal sem exceder o limite.",
+      "es": "Nunca debe superar el límite de velocidad, ni siquiera al adelantar. Adelante solo cuando sea seguro y legal sin exceder el límite."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -382,14 +340,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -442,14 +393,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -492,20 +436,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "At a STOP sign, you must come to a complete stop and give way to all traffic on the intersecting road. Slowing down is not enough.",
+      "pt": "No sinal de STOP, você deve parar completamente e dar preferência a todo o tráfego da via que cruza. Apenas reduzir a velocidade não é suficiente.",
+      "es": "Ante una señal de STOP, debe detenerse por completo y ceder el paso a todo el tráfico de la vía que cruza. Reducir la velocidad no es suficiente."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -548,20 +485,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "If there is no stop line, stop as close as possible to the intersection without entering it. You must still have a clear view before proceeding.",
+      "pt": "Se não houver linha de parada, pare o mais próximo possível da interseção sem entrar nela. Você ainda precisa ter visão clara antes de seguir.",
+      "es": "Si no hay línea de detención, deténgase lo más cerca posible de la intersección sin entrar en ella. Aun así debe tener buena visibilidad antes de avanzar."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -604,20 +534,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "When turning, you must give way to pedestrians crossing the road you are entering. This applies whether you are turning left or right.",
+      "pt": "Ao virar, você deve dar preferência aos pedestres que atravessam a via em que você está entrando. Isso vale para conversões à esquerda ou à direita.",
+      "es": "Al girar, debe ceder el paso a los peatones que cruzan la vía a la que está entrando. Esto aplica tanto al girar a la izquierda como a la derecha."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -660,20 +583,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You must give way to emergency vehicles when required. Move safely out of the way and do not block their path.",
+      "pt": "Você deve dar passagem a veículos de emergência quando necessário. Saia do caminho com segurança e não bloqueie a passagem.",
+      "es": "Debe ceder el paso a los vehículos de emergencia cuando sea necesario. Apártese de forma segura y no bloquee su recorrido."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -722,14 +638,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -778,14 +687,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -828,20 +730,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "For full licence holders, the legal BAC limit is less than 0.05%. This does not apply to novice drivers, who must remain at 0.00%.",
+      "pt": "Para motoristas com habilitação plena, o limite legal é menos de 0.05% BAC. Isso não se aplica a motoristas novatos, que devem permanecer em 0.00%.",
+      "es": "Para conductores con licencia completa, el límite legal es menos de 0.05% BAC. Esto no aplica a conductores novatos, que deben mantenerse en 0.00%."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -890,14 +785,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -946,14 +834,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -996,20 +877,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Even small amounts of alcohol can affect judgement and confidence. Alcohol may make you think you are driving better than you really are.",
+      "pt": "Mesmo pequenas quantidades de álcool podem afetar seu julgamento e sua confiança. O álcool pode fazer você achar que dirige melhor do que realmente dirige.",
+      "es": "Incluso pequeñas cantidades de alcohol pueden afectar el juicio y la confianza. El alcohol puede hacerle creer que conduce mejor de lo que realmente conduce."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1052,20 +926,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You must leave at least 1 metre from a fire hydrant. Emergency services need clear access at all times.",
+      "pt": "Você deve deixar pelo menos 1 metro de distância de um hidrante. Serviços de emergência precisam ter acesso livre a qualquer momento.",
+      "es": "Debe dejar al menos 1 metro de distancia de una boca de incendio. Los servicios de emergencia necesitan acceso libre en todo momento."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1108,20 +975,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You must leave at least 3 metres from a public letter box. This keeps access clear for postal services and other road users.",
+      "pt": "Você deve deixar pelo menos 3 metros de distância de uma caixa de correio pública. Isso mantém o acesso livre para serviços postais e usuários da via.",
+      "es": "Debe dejar al menos 3 metros de distancia de un buzón público. Esto mantiene el acceso libre para servicios postales y otros usuarios de la vía."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1164,20 +1024,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "At an intersection without traffic lights, you must park at least 10 metres away. Parking too close can block visibility and create danger.",
+      "pt": "Em interseções sem semáforo, você deve estacionar a pelo menos 10 metros. Estacionar muito perto pode bloquear a visão e criar risco.",
+      "es": "En una intersección sin semáforos, debe estacionar al menos a 10 metros. Estacionar demasiado cerca puede bloquear la visibilidad y crear peligro."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1220,20 +1073,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "At an intersection with traffic lights, you must park at least 20 metres away. This keeps the intersection clear and protects visibility.",
+      "pt": "Em interseções com semáforo, você deve estacionar a pelo menos 20 metros. Isso mantém a interseção livre e protege a visibilidade.",
+      "es": "En una intersección con semáforos, debe estacionar al menos a 20 metros. Esto mantiene la intersección despejada y protege la visibilidad."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1276,20 +1122,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Before a bus stop or pedestrian crossing, leave at least 20 metres. Drivers need enough time and space to see people crossing or buses stopping.",
+      "pt": "Antes de um ponto de ônibus ou faixa de pedestre, deixe pelo menos 20 metros. Motoristas precisam de tempo e espaço para ver pedestres ou ônibus parando.",
+      "es": "Antes de una parada de autobús o paso de peatones, deje al menos 20 metros. Los conductores necesitan tiempo y espacio para ver peatones o autobuses."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1332,20 +1171,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "After a bus stop or pedestrian crossing, leave at least 10 metres. This helps keep the area visible and clear for other road users.",
+      "pt": "Depois de um ponto de ônibus ou faixa de pedestre, deixe pelo menos 10 metros. Isso ajuda a manter a área visível e livre para outros usuários.",
+      "es": "Después de una parada de autobús o paso de peatones, deje al menos 10 metros. Esto ayuda a mantener el área visible y despejada."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1388,20 +1220,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You must park at least 20 metres from a railway crossing. This keeps the crossing clear and protects visibility around trains.",
+      "pt": "Você deve estacionar a pelo menos 20 metros de um cruzamento ferroviário. Isso mantém a área livre e protege a visibilidade perto dos trens.",
+      "es": "Debe estacionar al menos a 20 metros de un paso a nivel. Esto mantiene el cruce despejado y protege la visibilidad cerca de los trenes."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1444,20 +1269,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You are not allowed to park on a footpath. Footpaths must remain clear for pedestrians, wheelchairs, prams and mobility aids.",
+      "pt": "Você não pode estacionar na calçada. Calçadas precisam ficar livres para pedestres, cadeiras de rodas, carrinhos de bebê e dispositivos de mobilidade.",
+      "es": "No está permitido estacionar en la acera. Las aceras deben quedar libres para peatones, sillas de ruedas, cochecitos y ayudas de movilidad."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1504,20 +1322,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "A green light with a green arrow allows you to travel in the direction of the arrow or continue straight ahead if that movement is permitted and safe.",
+      "pt": "Um semáforo verde com seta verde permite seguir na direção da seta ou continuar em frente, se esse movimento for permitido e seguro.",
+      "es": "Un semáforo verde con flecha verde permite avanzar en la dirección de la flecha o seguir recto, si ese movimiento está permitido y es seguro."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1564,20 +1375,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "A red light with a green arrow means you may proceed only in the direction of the green arrow. Other movements are still stopped by the red light.",
+      "pt": "Um sinal vermelho com seta verde significa que você pode seguir apenas na direção da seta verde. Outros movimentos continuam proibidos pelo vermelho.",
+      "es": "Un semáforo rojo con flecha verde significa que puede avanzar solo en la dirección de la flecha verde. Los demás movimientos siguen detenidos por la luz roja."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1624,20 +1428,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "A green light with a red arrow means you may go where permitted, but you must not travel in the direction of the red arrow.",
+      "pt": "Um semáforo verde com seta vermelha permite seguir onde for permitido, mas você não pode ir na direção indicada pela seta vermelha.",
+      "es": "Un semáforo verde con flecha roja permite avanzar donde esté permitido, pero no puede ir en la dirección indicada por la flecha roja."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1680,20 +1477,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "You must not make a U-turn at traffic lights unless a sign says U TURN PERMITTED. Without that sign, the U-turn is not allowed.",
+      "pt": "Você não pode fazer retorno em semáforo, a menos que haja uma placa U TURN PERMITTED. Sem essa placa, o retorno não é permitido.",
+      "es": "No puede hacer un cambio de sentido en un semáforo salvo que haya una señal U TURN PERMITTED. Sin esa señal, no está permitido."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1736,20 +1526,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "When turning right on a green light, you must give way and turn only when you can do so without interfering with other traffic.",
+      "pt": "Ao virar à direita com o semáforo verde, você deve dar preferência e só virar quando puder fazer isso sem atrapalhar o tráfego.",
+      "es": "Al girar a la derecha con luz verde, debe ceder el paso y girar solo cuando pueda hacerlo sin interferir con el tráfico."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1792,20 +1575,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "When turning at traffic lights, you must give way to pedestrians crossing the road you are entering. Do not push through pedestrians.",
+      "pt": "Ao virar no semáforo, você deve dar preferência aos pedestres que atravessam a via em que você está entrando. Não avance entre pedestres.",
+      "es": "Al girar en un semáforo, debe ceder el paso a los peatones que cruzan la vía a la que entra. No avance entre peatones."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1848,20 +1624,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "A police officer directing traffic overrules traffic lights and signs. Follow the officer's directions, even if they differ from the signals.",
+      "pt": "Um policial controlando o tráfego prevalece sobre semáforos e placas. Siga as instruções do policial, mesmo que sejam diferentes da sinalização.",
+      "es": "Un agente de policía dirigiendo el tráfico prevalece sobre semáforos y señales. Siga sus indicaciones aunque sean diferentes de la señalización."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1914,14 +1683,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -1974,14 +1736,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2028,20 +1783,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "NO ENTRY means you must not enter that road or area at any time from that direction. It is not limited to heavy vehicles.",
+      "pt": "NO ENTRY significa que você não pode entrar naquela via ou área por aquela direção em nenhum momento. Não é apenas para veículos pesados.",
+      "es": "NO ENTRY significa que no puede entrar en esa vía o área desde esa dirección en ningún momento. No se limita a vehículos pesados."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2088,20 +1836,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "This warning sign means a crossroad is ahead. Slow down, scan both directions and be ready to give way if required.",
+      "pt": "Esse sinal de advertência indica cruzamento à frente. Reduza, observe os dois lados e esteja pronto para dar preferência se necessário.",
+      "es": "Esta señal de advertencia indica un cruce adelante. Reduzca la velocidad, mire ambos lados y esté listo para ceder el paso si es necesario."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2148,20 +1889,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "This sign warns that a pedestrian crossing is ahead. Slow down and be ready to stop for people crossing.",
+      "pt": "Esse sinal alerta que há uma faixa de pedestre à frente. Reduza e esteja pronto para parar para pessoas atravessando.",
+      "es": "Esta señal advierte que hay un paso de peatones adelante. Reduzca la velocidad y esté listo para detenerse por personas cruzando."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2208,20 +1942,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "This sign warns that an attended children's crossing is ahead. Slow down and be prepared to stop when the attendant displays the sign.",
+      "pt": "Esse sinal alerta que há um cruzamento de crianças supervisionado à frente. Reduza e esteja pronto para parar quando o atendente mostrar o sinal.",
+      "es": "Esta señal advierte que hay un cruce escolar supervisado adelante. Reduzca la velocidad y prepárese para detenerse cuando el agente muestre la señal."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2274,14 +2001,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2328,20 +2048,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "ONE WAY means traffic is allowed to travel only in the direction shown by the arrow. Do not drive against the arrow.",
+      "pt": "ONE WAY significa que o tráfego só pode seguir na direção indicada pela seta. Não dirija contra a seta.",
+      "es": "ONE WAY significa que el tráfico solo puede circular en la dirección indicada por la flecha. No conduzca contra la flecha."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2388,20 +2101,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "KEEP LEFT means you must pass to the left side of the sign. It is not an instruction to turn left at the next street.",
+      "pt": "KEEP LEFT significa que você deve passar pelo lado esquerdo da placa. Não é uma instrução para virar à esquerda na próxima rua.",
+      "es": "KEEP LEFT significa que debe pasar por el lado izquierdo de la señal. No es una instrucción para girar a la izquierda en la próxima calle."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2448,20 +2154,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "This warning sign means a T-junction is ahead. Slow down and prepare to give way or turn depending on the road layout.",
+      "pt": "Esse sinal de advertência indica cruzamento em T à frente. Reduza e prepare-se para dar preferência ou virar conforme a via.",
+      "es": "Esta señal de advertencia indica una intersección en T adelante. Reduzca la velocidad y prepárese para ceder el paso o girar según la vía."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2508,20 +2207,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "This sign warns that the road curves right and then left. Slow down and keep good lane position through the bends.",
+      "pt": "Esse sinal alerta que a estrada curva à direita e depois à esquerda. Reduza e mantenha boa posição na faixa durante as curvas.",
+      "es": "Esta señal advierte que la carretera curva a la derecha y luego a la izquierda. Reduzca la velocidad y mantenga buena posición en el carril."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2564,20 +2256,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Yes. Seat belt rules apply to passengers and drivers of all ages, including people over 65.",
+      "pt": "Sim. As regras de cinto de segurança se aplicam a motoristas e passageiros de todas as idades, inclusive pessoas acima de 65 anos.",
+      "es": "Sí. Las reglas del cinturón de seguridad aplican a conductores y pasajeros de todas las edades, incluso mayores de 65 años."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2620,20 +2305,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Everyone must use a seat belt or approved child restraint. The rule applies to all ages, not only adults or older children.",
+      "pt": "Todas as pessoas devem usar cinto de segurança ou dispositivo infantil aprovado. A regra vale para todas as idades, não só adultos ou crianças maiores.",
+      "es": "Todas las personas deben usar cinturón o sistema de retención infantil aprobado. La regla aplica a todas las edades, no solo adultos o niños mayores."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2676,20 +2354,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "The driver is responsible for passengers under 16 wearing a seat belt or approved restraint. If they are not restrained, the driver can be fined.",
+      "pt": "O motorista é responsável por passageiros menores de 16 anos usarem cinto ou dispositivo aprovado. Se não usarem, o motorista pode ser multado.",
+      "es": "El conductor es responsable de que los pasajeros menores de 16 años usen cinturón o retención aprobada. Si no lo usan, el conductor puede ser multado."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2732,20 +2403,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Passengers must not travel in the back of a utility or open load space. They must travel in approved seating positions with restraints.",
+      "pt": "Passageiros não podem viajar na carroceria de uma ute ou em área de carga aberta. Devem viajar em assentos aprovados com proteção adequada.",
+      "es": "Los pasajeros no pueden viajar en la parte trasera de una camioneta o espacio de carga abierto. Deben ir en asientos aprobados con retención adecuada."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2788,20 +2452,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Hand-held mobile phone use while driving is not allowed. Looking away or holding the phone increases reaction time and crash risk.",
+      "pt": "O uso de celular na mão enquanto dirige não é permitido. Olhar para o aparelho ou segurá-lo aumenta o tempo de reação e o risco de acidente.",
+      "es": "No está permitido usar un teléfono en mano mientras conduce. Mirar o sostener el teléfono aumenta el tiempo de reacción y el riesgo de accidente."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2844,20 +2501,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Switch your headlights on at sunset and whenever visibility is poor. Being seen is as important as seeing the road.",
+      "pt": "Acenda os faróis ao pôr do sol e sempre que a visibilidade estiver ruim. Ser visto é tão importante quanto enxergar a via.",
+      "es": "Encienda los faros al atardecer y siempre que la visibilidad sea reducida. Ser visto es tan importante como ver la vía."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2906,14 +2556,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -2956,20 +2599,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "Use low beam in fog or smoke. High beam reflects back and can make visibility worse.",
+      "pt": "Use farol baixo em neblina ou fumaça. O farol alto reflete de volta e pode piorar a visibilidade.",
+      "es": "Use luces cortas con niebla o humo. Las luces largas se reflejan y pueden empeorar la visibilidad."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3018,14 +2654,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3074,14 +2703,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3130,14 +2752,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3190,14 +2805,301 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
+    ]
+  },
+  {
+    "id": "MOV-02",
+    "cat": "Blind Spot & Overtaking",
+    "q": {
+      "en": "Before overtaking, what must you make sure of?",
+      "pt": "Antes de ultrapassar, o que você precisa garantir?",
+      "es": "Antes de adelantar, ¿qué debe asegurarse?"
+    },
+    "sign": "",
+    "cap": null,
+    "opts": [
+      {
+        "l": "A",
+        "t": {
+          "en": "Only that your indicator is on for at least one second",
+          "pt": "Somente que o pisca-pisca esteja ligado por pelo menos um segundo",
+          "es": "Solo que el intermitente lleve al menos un segundo encendido"
+        },
+        "ok": false
+      },
+      {
+        "l": "B",
+        "t": {
+          "en": "That you can see far enough ahead and will not exceed the speed limit while overtaking",
+          "pt": "Que consegue ver longe o suficiente à frente e que não vai exceder o limite de velocidade ao ultrapassar",
+          "es": "Que puede ver lo suficientemente lejos y que no superará el límite de velocidad al adelantar"
+        },
+        "ok": true
+      },
+      {
+        "l": "C",
+        "t": {
+          "en": "Only that the vehicle in front is travelling under the limit",
+          "pt": "Somente que o veículo à frente está abaixo do limite",
+          "es": "Solo que el vehículo de delante vaya por debajo del límite"
+        },
+        "ok": false
+      }
+    ],
+    "exp": {
+      "en": "Before overtaking you need a <strong>clear view of the road ahead</strong> for the whole manoeuvre and enough space to return safely. You must <strong>not exceed the speed limit</strong> at any time, including while passing.",
+      "pt": "Antes de ultrapassar você precisa de <strong>visão clara da via à frente</strong> durante toda a manobra e espaço suficiente para voltar com segurança. Você <strong>não pode exceder o limite de velocidade</strong> em nenhum momento, inclusive ao ultrapassar.",
+      "es": "Antes de adelantar necesita <strong>visibilidad clara de la vía</strong> durante todo el adelantamiento y espacio para volver con seguridad. <strong>No debe superar el límite de velocidad</strong> en ningún momento, incluso al adelantar."
+    },
+    "tip": null,
+    "states": [
+      "WA"
+    ]
+  },
+  {
+    "id": "MOV-03",
+    "cat": "Blind Spot & Overtaking",
+    "q": {
+      "en": "What is the minimum passing distance when overtaking a cyclist at speeds up to 60 km/h?",
+      "pt": "Qual é a distância mínima ao ultrapassar um ciclista em até 60 km/h?",
+      "es": "¿Cuál es la distancia mínima al adelantar a un ciclista hasta 60 km/h?"
+    },
+    "sign": "",
+    "cap": null,
+    "opts": [
+      {
+        "l": "A",
+        "t": {
+          "en": "At least 0.5 m",
+          "pt": "Pelo menos 0,5 m",
+          "es": "Al menos 0,5 m"
+        },
+        "ok": false
+      },
+      {
+        "l": "B",
+        "t": {
+          "en": "At least 1 m (1.5 m when over 60 km/h)",
+          "pt": "Pelo menos 1 m (1,5 m acima de 60 km/h)",
+          "es": "Al menos 1 m (1,5 m por encima de 60 km/h)"
+        },
+        "ok": true
+      },
+      {
+        "l": "C",
+        "t": {
+          "en": "There is no minimum if you pass slowly",
+          "pt": "Não há mínimo se passar devagar",
+          "es": "No hay mínimo si adelanta despacio"
+        },
+        "ok": false
+      }
+    ],
+    "exp": {
+      "en": "In WA, drivers must leave <strong>at least 1 metre</strong> when passing a bicycle rider at speeds up to <strong>60 km/h</strong>, and <strong>at least 1.5 metres</strong> when travelling over 60 km/h. This reduces the risk of sideswipe crashes.",
+      "pt": "Em WA, o motorista deve deixar <strong>pelo menos 1 metro</strong> ao ultrapassar um ciclista em até <strong>60 km/h</strong>, e <strong>pelo menos 1,5 metro</strong> acima de 60 km/h. Isso reduz o risco de colisão lateral.",
+      "es": "En WA, debe dejar <strong>al menos 1 m</strong> al adelantar a un ciclista hasta <strong>60 km/h</strong>, y <strong>al menos 1,5 m</strong> por encima de 60 km/h. Reduce el riesgo de roce lateral."
+    },
+    "tip": null,
+    "states": [
+      "WA"
+    ]
+  },
+  {
+    "id": "MOV-04",
+    "cat": "Blind Spot & Overtaking",
+    "q": {
+      "en": "When is it illegal to overtake on a two-way road with one lane each direction?",
+      "pt": "Quando é ilegal ultrapassar numa via de mão dupla com uma faixa por sentido?",
+      "es": "¿Cuándo es ilegal adelantar en una vía de doble sentido con un carril por dirección?"
+    },
+    "sign": "",
+    "cap": null,
+    "opts": [
+      {
+        "l": "A",
+        "t": {
+          "en": "Only within 30 m of a pedestrian crossing",
+          "pt": "Somente a 30 m de faixa de pedestres",
+          "es": "Solo a 30 m de un paso de peatones"
+        },
+        "ok": false
+      },
+      {
+        "l": "B",
+        "t": {
+          "en": "When there is a continuous (unbroken) centre line on your side of the road",
+          "pt": "Quando há linha central contínua (sem quebras) do seu lado da via",
+          "es": "Cuando hay una línea central continua (sin interrupción) en su lado de la calzada"
+        },
+        "ok": true
+      },
+      {
+        "l": "C",
+        "t": {
+          "en": "Whenever another vehicle is in front of you",
+          "pt": "Sempre que houver outro veículo à frente",
+          "es": "Siempre que haya otro vehículo delante"
+        },
+        "ok": false
+      }
+    ],
+    "exp": {
+      "en": "You must not cross a <strong>continuous centre line</strong> on your side to overtake. Broken lines may be crossed when safe and legal; double lines with a solid line on your side generally prohibit crossing for overtaking.",
+      "pt": "Você não pode cruzar uma <strong>linha central contínua</strong> do seu lado para ultrapassar. Linhas tracejadas podem ser cruzadas quando seguro e legal; linhas duplas com traço contínuo do seu lado em geral proíbem cruzar para ultrapassar.",
+      "es": "No debe cruzar una <strong>línea central continua</strong> de su lado para adelantar. Las discontinuas pueden cruzarse si es seguro y legal; las dobles con línea continua en su lado suelen prohibir adelantar cruzándolas."
+    },
+    "tip": null,
+    "states": [
+      "WA"
+    ]
+  },
+  {
+    "id": "MOV-05",
+    "cat": "Blind Spot & Overtaking",
+    "q": {
+      "en": "What should you do before changing lanes?",
+      "pt": "O que fazer antes de mudar de faixa?",
+      "es": "¿Qué debe hacer antes de cambiar de carril?"
+    },
+    "sign": "",
+    "cap": null,
+    "opts": [
+      {
+        "l": "A",
+        "t": {
+          "en": "Signal first, then glance briefly in one mirror",
+          "pt": "Sinalizar primeiro e olhar rapidamente em um espelho",
+          "es": "Señalizar primero y mirar rápido a un espejo"
+        },
+        "ok": false
+      },
+      {
+        "l": "B",
+        "t": {
+          "en": "Check mirrors and blind spots, then signal when it is safe to move",
+          "pt": "Verificar espelhos e pontos cegos, depois sinalizar quando for seguro mover",
+          "es": "Revisar espejos y ángulos muertos, luego señalizar cuando sea seguro moverse"
+        },
+        "ok": true
+      },
+      {
+        "l": "C",
+        "t": {
+          "en": "Change lane quickly if the gap looks large enough",
+          "pt": "Mudar rapidamente se o espaço parecer grande",
+          "es": "Cambiar rápido si el hueco parece suficiente"
+        },
+        "ok": false
+      }
+    ],
+    "exp": {
+      "en": "Always <strong>plan the lane change</strong>: check interior and exterior mirrors, <strong>head-check blind spots</strong>, then signal your intention. Move only when the space is clear and you will not force others to brake.",
+      "pt": "Sempre <strong>planeje a mudança de faixa</strong>: confira espelhos retrovisor e laterais, faça <strong>verificação visual dos pontos cegos</strong>, depois sinalize. Só mova quando o espaço estiver livre e sem forçar outros a frear.",
+      "es": "<strong>Planifique el cambio</strong>: revise espejos, <strong>mire por encima del hombro los ángulos muertos</strong> y señalice. Solo mueva el vehículo si hay espacio libre y sin obligar a frenar a otros."
+    },
+    "tip": null,
+    "states": [
+      "WA"
+    ]
+  },
+  {
+    "id": "MOV-06",
+    "cat": "Blind Spot & Overtaking",
+    "q": {
+      "en": "What is a recommended minimum following distance in normal conditions?",
+      "pt": "Qual é a distância de seguimento mínima recomendada em condições normais?",
+      "es": "¿Cuál es la distancia de seguimiento mínima recomendada en condiciones normales?"
+    },
+    "sign": "",
+    "cap": null,
+    "opts": [
+      {
+        "l": "A",
+        "t": {
+          "en": "One car length at any speed",
+          "pt": "Um comprimento de carro em qualquer velocidade",
+          "es": "Una longitud de coche a cualquier velocidad"
+        },
+        "ok": false
+      },
+      {
+        "l": "B",
+        "t": {
+          "en": "At least a 3-second gap (allow 4+ seconds in rain, at night, or when towing)",
+          "pt": "Pelo menos 3 segundos (4+ em chuva, à noite ou com reboque)",
+          "es": "Al menos 3 segundos (4+ con lluvia, de noche o remolque)"
+        },
+        "ok": true
+      },
+      {
+        "l": "C",
+        "t": {
+          "en": "As long as you can see the vehicle’s brake lights",
+          "pt": "Enquanto conseguir ver as luzes de freio",
+          "es": "Mientras vea las luces de freno"
+        },
+        "ok": false
+      }
+    ],
+    "exp": {
+      "en": "The <strong>three-second gap</strong> rule gives you time to react if the vehicle ahead slows suddenly. Increase to <strong>four or more seconds</strong> in rain, poor light, when towing, or when visibility is reduced.",
+      "pt": "A regra dos <strong>três segundos</strong> dá tempo de reagir se o veículo à frente frear de repente. Aumente para <strong>quatro ou mais segundos</strong> com chuva, pouca luz, reboque ou visibilidade reduzida.",
+      "es": "La regla de los <strong>tres segundos</strong> da margen de reacción. Aumente a <strong>cuatro o más</strong> con lluvia, poca luz, remolque o baja visibilidad."
+    },
+    "tip": null,
+    "states": [
+      "WA"
+    ]
+  },
+  {
+    "id": "MOV-07",
+    "cat": "Blind Spot & Overtaking",
+    "q": {
+      "en": "When are you allowed to overtake on the left?",
+      "pt": "Quando pode ultrapassar pela esquerda?",
+      "es": "¿Cuándo puede adelantar por la izquierda?"
+    },
+    "sign": "",
+    "cap": null,
+    "opts": [
+      {
+        "l": "A",
+        "t": {
+          "en": "Whenever the left lane is clear",
+          "pt": "Sempre que a faixa da esquerda estiver livre",
+          "es": "Siempre que el carril izquierdo esté libre"
+        },
+        "ok": false
+      },
+      {
+        "l": "B",
+        "t": {
+          "en": "When the vehicle ahead has moved to the right to turn right (and it is safe)",
+          "pt": "Quando o veículo à frente se deslocou à direita para virar à direita (e for seguro)",
+          "es": "Cuando el vehículo de delante se apartó a la derecha para girar a la derecha (y sea seguro)"
+        },
+        "ok": true
+      },
+      {
+        "l": "C",
+        "t": {
+          "en": "On any residential street under 50 km/h",
+          "pt": "Em qualquer rua residencial abaixo de 50 km/h",
+          "es": "En cualquier calle residencial por debajo de 50 km/h"
+        },
+        "ok": false
+      }
+    ],
+    "exp": {
+      "en": "Generally you overtake to the <strong>right</strong>. You may pass on the <strong>left</strong> when the driver ahead has moved right to turn right and left lane traffic allows it safely — or in specific multi-lane situations as defined by local rules. Always confirm it is legal and safe before moving.",
+      "pt": "Em geral ultrapassa-se pela <strong>direita</strong>. Pode passar pela <strong>esquerda</strong> quando o motorista à frente se deslocou à direita para virar à direita e o tráfego da faixa esquerda permitir com segurança — ou em vias com várias faixas conforme as regras locais. Confirme sempre que é legal e seguro.",
+      "es": "Normalmente se adelanta por la <strong>derecha</strong>. Puede adelantar por la <strong>izquierda</strong> cuando el vehículo de delante se apartó a la derecha para girar a la derecha y el carril izquierdo lo permite con seguridad — o en vías de varios carriles según la norma local. Verifique siempre legalidad y seguridad."
+    },
+    "tip": null,
+    "states": [
+      "WA"
     ]
   },
   {
@@ -3240,20 +3142,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "A broken white centre line may be crossed to overtake or turn right, but only when it is safe and legal to do so.",
+      "pt": "Uma linha branca tracejada no centro da via pode ser cruzada para ultrapassar ou virar à direita, mas apenas quando for seguro e legal.",
+      "es": "Una línea blanca discontinua en el centro de la vía puede cruzarse para adelantar o girar a la derecha, pero solo cuando sea seguro y legal."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3302,14 +3197,7 @@ export const QUESTIONS = [
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3352,20 +3240,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "A continuous white lane line means you must not change lanes across it. Stay in your lane until the marking allows a lane change.",
+      "pt": "Uma linha branca contínua entre faixas significa que você não deve mudar de faixa cruzando-a. Permaneça na faixa até a marcação permitir mudança.",
+      "es": "Una línea blanca continua entre carriles significa que no debe cambiar de carril cruzándola. Permanezca en su carril hasta que la marca lo permita."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3408,20 +3289,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "If the accelerator sticks, select neutral or press the clutch, then brake firmly and safely. This removes engine power from the wheels.",
+      "pt": "Se o acelerador travar, coloque em neutro ou acione a embreagem e depois freie com segurança. Isso tira a força do motor das rodas.",
+      "es": "Si el acelerador se queda trabado, ponga neutro o presione el embrague y luego frene con seguridad. Esto quita la fuerza del motor de las ruedas."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3464,20 +3338,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "If the brakes fail, change to a lower gear and apply the handbrake gently. Avoid sudden movements and steer to a safe area.",
+      "pt": "Se os freios falharem, reduza a marcha e use o freio de mão suavemente. Evite movimentos bruscos e direcione o veículo para um local seguro.",
+      "es": "Si fallan los frenos, reduzca la marcha y use el freno de mano suavemente. Evite movimientos bruscos y diríjase a un lugar seguro."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3520,20 +3387,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "If a head-on collision seems likely, brake firmly and steer toward open ground if possible. Avoid swerving into oncoming traffic.",
+      "pt": "Se uma colisão frontal parecer provável, freie com força e direcione para um espaço aberto se possível. Evite desviar para o tráfego contrário.",
+      "es": "Si parece probable una colisión frontal, frene firmemente y diríjase a terreno abierto si es posible. Evite desviarse hacia el tráfico contrario."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   },
   {
@@ -3576,20 +3436,13 @@ export const QUESTIONS = [
       }
     ],
     "exp": {
-      "en": "",
-      "pt": "",
-      "es": ""
+      "en": "If your vehicle catches fire, stop safely, turn off the ignition and move people away from the vehicle. Call emergency services if needed.",
+      "pt": "Se o veículo pegar fogo, pare em segurança, desligue o motor e afaste as pessoas do veículo. Chame os serviços de emergência se necessário.",
+      "es": "Si el vehículo se incendia, deténgase con seguridad, apague el motor y aleje a las personas del vehículo. Llame a emergencias si es necesario."
     },
     "tip": null,
     "states": [
-      "WA",
-      "NSW",
-      "VIC",
-      "QLD",
-      "SA",
-      "TAS",
-      "ACT",
-      "NT"
+      "WA"
     ]
   }
 ] as const;

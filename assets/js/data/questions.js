@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
   const QUESTIONS = [
     {
       id: "VEL-01",
@@ -2112,6 +2112,280 @@
         en: "The blind spot is <strong>beside and behind</strong> the car — not visible in mirrors. X is in the blind spot.",
         pt: "O ponto cego é <strong>ao lado e atrás</strong> do carro — não visível nos espelhos. X está no ponto cego.",
         es: "El ángulo muerto está <strong>al lado y detrás</strong> del coche — no visible en los espejos. X está en el ángulo muerto."
+      },
+      tip: null,
+      states: ["WA"]
+    },
+    {
+      id: "MOV-02",
+      cat: "Blind Spot & Overtaking",
+      q: {
+        en: "Before overtaking, what must you make sure of?",
+        pt: "Antes de ultrapassar, o que você precisa garantir?",
+        es: "Antes de adelantar, ¿qué debe asegurarse?"
+      },
+      sign: "",
+      cap: null,
+      opts: [
+        {
+          l: "A",
+          t: {
+            en: "Only that your indicator is on for at least one second",
+            pt: "Somente que o pisca-pisca esteja ligado por pelo menos um segundo",
+            es: "Solo que el intermitente lleve al menos un segundo encendido"
+          },
+          ok: false
+        },
+        {
+          l: "B",
+          t: {
+            en: "That you can see far enough ahead and will not exceed the speed limit while overtaking",
+            pt: "Que consegue ver longe o suficiente à frente e que não vai exceder o limite de velocidade ao ultrapassar",
+            es: "Que puede ver lo suficientemente lejos y que no superará el límite de velocidad al adelantar"
+          },
+          ok: true
+        },
+        {
+          l: "C",
+          t: {
+            en: "Only that the vehicle in front is travelling under the limit",
+            pt: "Somente que o veículo à frente está abaixo do limite",
+            es: "Solo que el vehículo de delante vaya por debajo del límite"
+          },
+          ok: false
+        }
+      ],
+      exp: {
+        en: "Before overtaking you need a <strong>clear view of the road ahead</strong> for the whole manoeuvre and enough space to return safely. You must <strong>not exceed the speed limit</strong> at any time, including while passing.",
+        pt: "Antes de ultrapassar você precisa de <strong>visão clara da via à frente</strong> durante toda a manobra e espaço suficiente para voltar com segurança. Você <strong>não pode exceder o limite de velocidade</strong> em nenhum momento, inclusive ao ultrapassar.",
+        es: "Antes de adelantar necesita <strong>visibilidad clara de la vía</strong> durante todo el adelantamiento y espacio para volver con seguridad. <strong>No debe superar el límite de velocidad</strong> en ningún momento, incluso al adelantar."
+      },
+      tip: null,
+      states: ["WA"]
+    },
+    {
+      id: "MOV-03",
+      cat: "Blind Spot & Overtaking",
+      q: {
+        en: "What is the minimum passing distance when overtaking a cyclist at speeds up to 60 km/h?",
+        pt: "Qual é a distância mínima ao ultrapassar um ciclista em até 60 km/h?",
+        es: "¿Cuál es la distancia mínima al adelantar a un ciclista hasta 60 km/h?"
+      },
+      sign: "",
+      cap: null,
+      opts: [
+        {
+          l: "A",
+          t: { en: "At least 0.5 m", pt: "Pelo menos 0,5 m", es: "Al menos 0,5 m" },
+          ok: false
+        },
+        {
+          l: "B",
+          t: { en: "At least 1 m (1.5 m when over 60 km/h)", pt: "Pelo menos 1 m (1,5 m acima de 60 km/h)", es: "Al menos 1 m (1,5 m por encima de 60 km/h)" },
+          ok: true
+        },
+        {
+          l: "C",
+          t: {
+            en: "There is no minimum if you pass slowly",
+            pt: "Não há mínimo se passar devagar",
+            es: "No hay mínimo si adelanta despacio"
+          },
+          ok: false
+        }
+      ],
+      exp: {
+        en: "In WA, drivers must leave <strong>at least 1 metre</strong> when passing a bicycle rider at speeds up to <strong>60 km/h</strong>, and <strong>at least 1.5 metres</strong> when travelling over 60 km/h. This reduces the risk of sideswipe crashes.",
+        pt: "Em WA, o motorista deve deixar <strong>pelo menos 1 metro</strong> ao ultrapassar um ciclista em até <strong>60 km/h</strong>, e <strong>pelo menos 1,5 metro</strong> acima de 60 km/h. Isso reduz o risco de colisão lateral.",
+        es: "En WA, debe dejar <strong>al menos 1 m</strong> al adelantar a un ciclista hasta <strong>60 km/h</strong>, y <strong>al menos 1,5 m</strong> por encima de 60 km/h. Reduce el riesgo de roce lateral."
+      },
+      tip: null,
+      states: ["WA"]
+    },
+    {
+      id: "MOV-04",
+      cat: "Blind Spot & Overtaking",
+      q: {
+        en: "When is it illegal to overtake on a two-way road with one lane each direction?",
+        pt: "Quando é ilegal ultrapassar numa via de mão dupla com uma faixa por sentido?",
+        es: "¿Cuándo es ilegal adelantar en una vía de doble sentido con un carril por dirección?"
+      },
+      sign: "",
+      cap: null,
+      opts: [
+        {
+          l: "A",
+          t: {
+            en: "Only within 30 m of a pedestrian crossing",
+            pt: "Somente a 30 m de faixa de pedestres",
+            es: "Solo a 30 m de un paso de peatones"
+          },
+          ok: false
+        },
+        {
+          l: "B",
+          t: {
+            en: "When there is a continuous (unbroken) centre line on your side of the road",
+            pt: "Quando há linha central contínua (sem quebras) do seu lado da via",
+            es: "Cuando hay una línea central continua (sin interrupción) en su lado de la calzada"
+          },
+          ok: true
+        },
+        {
+          l: "C",
+          t: {
+            en: "Whenever another vehicle is in front of you",
+            pt: "Sempre que houver outro veículo à frente",
+            es: "Siempre que haya otro vehículo delante"
+          },
+          ok: false
+        }
+      ],
+      exp: {
+        en: "You must not cross a <strong>continuous centre line</strong> on your side to overtake. Broken lines may be crossed when safe and legal; double lines with a solid line on your side generally prohibit crossing for overtaking.",
+        pt: "Você não pode cruzar uma <strong>linha central contínua</strong> do seu lado para ultrapassar. Linhas tracejadas podem ser cruzadas quando seguro e legal; linhas duplas com traço contínuo do seu lado em geral proíbem cruzar para ultrapassar.",
+        es: "No debe cruzar una <strong>línea central continua</strong> de su lado para adelantar. Las discontinuas pueden cruzarse si es seguro y legal; las dobles con línea continua en su lado suelen prohibir adelantar cruzándolas."
+      },
+      tip: null,
+      states: ["WA"]
+    },
+    {
+      id: "MOV-05",
+      cat: "Blind Spot & Overtaking",
+      q: {
+        en: "What should you do before changing lanes?",
+        pt: "O que fazer antes de mudar de faixa?",
+        es: "¿Qué debe hacer antes de cambiar de carril?"
+      },
+      sign: "",
+      cap: null,
+      opts: [
+        {
+          l: "A",
+          t: {
+            en: "Signal first, then glance briefly in one mirror",
+            pt: "Sinalizar primeiro e olhar rapidamente em um espelho",
+            es: "Señalizar primero y mirar rápido a un espejo"
+          },
+          ok: false
+        },
+        {
+          l: "B",
+          t: {
+            en: "Check mirrors and blind spots, then signal when it is safe to move",
+            pt: "Verificar espelhos e pontos cegos, depois sinalizar quando for seguro mover",
+            es: "Revisar espejos y ángulos muertos, luego señalizar cuando sea seguro moverse"
+          },
+          ok: true
+        },
+        {
+          l: "C",
+          t: {
+            en: "Change lane quickly if the gap looks large enough",
+            pt: "Mudar rapidamente se o espaço parecer grande",
+            es: "Cambiar rápido si el hueco parece suficiente"
+          },
+          ok: false
+        }
+      ],
+      exp: {
+        en: "Always <strong>plan the lane change</strong>: check interior and exterior mirrors, <strong>head-check blind spots</strong>, then signal your intention. Move only when the space is clear and you will not force others to brake.",
+        pt: "Sempre <strong>planeje a mudança de faixa</strong>: confira espelhos retrovisor e laterais, faça <strong>verificação visual dos pontos cegos</strong>, depois sinalize. Só mova quando o espaço estiver livre e sem forçar outros a frear.",
+        es: "<strong>Planifique el cambio</strong>: revise espejos, <strong>mire por encima del hombro los ángulos muertos</strong> y señalice. Solo mueva el vehículo si hay espacio libre y sin obligar a frenar a otros."
+      },
+      tip: null,
+      states: ["WA"]
+    },
+    {
+      id: "MOV-06",
+      cat: "Blind Spot & Overtaking",
+      q: {
+        en: "What is a recommended minimum following distance in normal conditions?",
+        pt: "Qual é a distância de seguimento mínima recomendada em condições normais?",
+        es: "¿Cuál es la distancia de seguimiento mínima recomendada en condiciones normales?"
+      },
+      sign: "",
+      cap: null,
+      opts: [
+        {
+          l: "A",
+          t: {
+            en: "One car length at any speed",
+            pt: "Um comprimento de carro em qualquer velocidade",
+            es: "Una longitud de coche a cualquier velocidad"
+          },
+          ok: false
+        },
+        {
+          l: "B",
+          t: {
+            en: "At least a 3-second gap (allow 4+ seconds in rain, at night, or when towing)",
+            pt: "Pelo menos 3 segundos (4+ em chuva, à noite ou com reboque)",
+            es: "Al menos 3 segundos (4+ con lluvia, de noche o remolque)"
+          },
+          ok: true
+        },
+        {
+          l: "C",
+          t: {
+            en: "As long as you can see the vehicle’s brake lights",
+            pt: "Enquanto conseguir ver as luzes de freio",
+            es: "Mientras vea las luces de freno"
+          },
+          ok: false
+        }
+      ],
+      exp: {
+        en: "The <strong>three-second gap</strong> rule gives you time to react if the vehicle ahead slows suddenly. Increase to <strong>four or more seconds</strong> in rain, poor light, when towing, or when visibility is reduced.",
+        pt: "A regra dos <strong>três segundos</strong> dá tempo de reagir se o veículo à frente frear de repente. Aumente para <strong>quatro ou mais segundos</strong> com chuva, pouca luz, reboque ou visibilidade reduzida.",
+        es: "La regla de los <strong>tres segundos</strong> da margen de reacción. Aumente a <strong>cuatro o más</strong> con lluvia, poca luz, remolque o baja visibilidad."
+      },
+      tip: null,
+      states: ["WA"]
+    },
+    {
+      id: "MOV-07",
+      cat: "Blind Spot & Overtaking",
+      q: {
+        en: "When are you allowed to overtake on the left?",
+        pt: "Quando pode ultrapassar pela esquerda?",
+        es: "¿Cuándo puede adelantar por la izquierda?"
+      },
+      sign: "",
+      cap: null,
+      opts: [
+        {
+          l: "A",
+          t: {
+            en: "Whenever the left lane is clear",
+            pt: "Sempre que a faixa da esquerda estiver livre",
+            es: "Siempre que el carril izquierdo esté libre"
+          },
+          ok: false
+        },
+        {
+          l: "B",
+          t: {
+            en: "When the vehicle ahead has moved to the right to turn right (and it is safe)",
+            pt: "Quando o veículo à frente se deslocou à direita para virar à direita (e for seguro)",
+            es: "Cuando el vehículo de delante se apartó a la derecha para girar a la derecha (y sea seguro)"
+          },
+          ok: true
+        },
+        {
+          l: "C",
+          t: {
+            en: "On any residential street under 50 km/h",
+            pt: "Em qualquer rua residencial abaixo de 50 km/h",
+            es: "En cualquier calle residencial por debajo de 50 km/h"
+          },
+          ok: false
+        }
+      ],
+      exp: {
+        en: "Generally you overtake to the <strong>right</strong>. You may pass on the <strong>left</strong> when the driver ahead has moved right to turn right and left lane traffic allows it safely — or in specific multi-lane situations as defined by local rules. Always confirm it is legal and safe before moving.",
+        pt: "Em geral ultrapassa-se pela <strong>direita</strong>. Pode passar pela <strong>esquerda</strong> quando o motorista à frente se deslocou à direita para virar à direita e o tráfego da faixa esquerda permitir com segurança — ou em vias com várias faixas conforme as regras locais. Confirme sempre que é legal e seguro.",
+        es: "Normalmente se adelanta por la <strong>derecha</strong>. Puede adelantar por la <strong>izquierda</strong> cuando el vehículo de delante se apartó a la derecha para girar a la derecha y el carril izquierdo lo permite con seguridad — o en vías de varios carriles según la norma local. Verifique siempre legalidad y seguridad."
       },
       tip: null,
       states: ["WA"]
