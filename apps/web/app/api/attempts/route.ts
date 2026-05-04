@@ -1,7 +1,9 @@
+import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
 type AttemptPayload = {
+  attempt_id?: string;
   question_id: string;
   state: string;
   category?: string;
@@ -44,8 +46,14 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
+  const attemptId =
+    typeof payload.attempt_id === "string" && payload.attempt_id.trim().length > 0
+      ? payload.attempt_id.trim()
+      : randomUUID();
+
   const { error } = await supabase.from("question_attempts").insert({
     user_id: user.id,
+    attempt_id: attemptId,
     question_id: payload.question_id,
     state: payload.state,
     category: payload.category ?? null,

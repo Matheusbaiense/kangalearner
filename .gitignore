@@ -2,6 +2,8 @@ node_modules/
 dist/
 .env
 .env.*
+!.env.example
+!**/.env.example
 ChatGPT Image*.png
 .next/
 apps/web/.next/
