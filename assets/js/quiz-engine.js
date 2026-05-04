@@ -898,6 +898,10 @@ DW.syncAttempt = function (q, isCorrect, chosen) {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify({
+        attempt_id:
+          typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+            ? crypto.randomUUID()
+            : "web-" + Date.now() + "-" + Math.random().toString(36).slice(2, 11),
         question_id: q.id,
         state: this.state || "WA",
         category: q.cat,

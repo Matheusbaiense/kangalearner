@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseServerClient } from "../../src/lib/supabase/server";
 import { SiteNav } from "../../src/components/layout/SiteNav";
+import { MigrateLocalProgress } from "../../src/components/MigrateLocalProgress";
 import { CATEGORIES } from "@kanga/core";
 
 export const metadata = { title: "Dashboard — KangaLearner" };
@@ -94,6 +95,7 @@ export default async function DashboardPage() {
 
   return (
     <>
+      <MigrateLocalProgress />
       <SiteNav />
       <div className="app-page">
         <div className="app-container app-section">

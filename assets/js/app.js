@@ -153,6 +153,29 @@
       console.error("KangaLearner: DW.init failed", e);
     }
 
+    (function enableBackendSyncIfSession() {
+      var hasSbSession = document.cookie.split(";").some(function (c) {
+        return c.trim().indexOf("sb-") === 0;
+      });
+      if (!hasSbSession) return;
+      var ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      var tid = ctrl
+        ? setTimeout(function () {
+            try {
+              ctrl.abort();
+            } catch (e) {}
+          }, 2000)
+        : null;
+      fetch("/api/health", { signal: ctrl ? ctrl.signal : undefined })
+        .then(function (r) {
+          if (r.ok) window.KANGA_ENABLE_BACKEND_SYNC = true;
+        })
+        .catch(function () {})
+        .finally(function () {
+          if (tid) clearTimeout(tid);
+        });
+    })();
+
     hydrateStaticI18n(window.DW?.lang || initialLang);
 
     if (window.KL_LEARN && typeof window.KL_LEARN.init === "function") {

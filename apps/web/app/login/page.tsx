@@ -4,6 +4,7 @@ import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseBrowserClient } from "../../src/lib/supabase/client";
+import { runLocalAttemptMigration } from "../../src/lib/migrateLocalAttempts";
 import { AuthCard } from "../../src/components/auth/AuthCard";
 
 function GoogleIcon() {
@@ -76,6 +77,7 @@ function LoginForm() {
       setError(error.message);
       setBusy(false);
     } else {
+      await runLocalAttemptMigration();
       window.location.assign(next);
     }
   }
