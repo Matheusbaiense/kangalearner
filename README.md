@@ -26,6 +26,42 @@ Protótipo e base de **prática para learner test** (Austrália): regras por est
 
 Fonte de verdade das questões para o estático: **`assets/js/data/questions.js`**. Sincronização opcional com core: `pnpm run gen:core-questions`.
 
+### Correr o site estático localmente
+
+Na raiz do repositório (com Node 18+):
+
+```bash
+npx --yes serve -l 3000 .
+```
+
+Abre `http://localhost:3000`. Rotas são por hash (`#practice`, `#resources`, etc.).
+
+### Estrutura (raiz)
+
+| Pasta / ficheiro              | Conteúdo                          |
+| ----------------------------- | --------------------------------- |
+| `index.html`                  | Shell + scripts                   |
+| `assets/js/`                  | App, router, quiz, páginas, dados |
+| `assets/css/`                 | Tokens, layout, quiz              |
+| `assets/js/data/questions.js` | Banco de questões                 |
+| `assets/js/locales.js`        | Cadeias i18n                      |
+| `e2e/`                        | Testes Playwright                 |
+| `manifest.json` / `sw.js`     | PWA                               |
+
+### Novas perguntas
+
+1. Editar `assets/js/data/questions.js` (categorias em `CATEGORIES` no mesmo ficheiro).
+2. `pnpm run validate:questions`
+3. `pnpm run gen:core-questions` (mantém `packages/core` alinhado).
+
+### Novas traduções
+
+Editar `assets/js/locales.js` e, no HTML, atributos `data-i18n` / `data-i18n-aria` onde aplicável.
+
+### Deploy (GitHub Pages)
+
+Push para `main` que altere ficheiros listados em `.github/workflows/pages.yml` dispara **E2E** e, em seguida, o artefacto estático (`_site`). Domínio: ver `docs/production/G17-domain-manual-steps.md`.
+
 ### Nota importante (dois produtos)
 
 - **GitHub Pages (hoje)** publica apenas o **site estático da raiz** (`index.html` + `assets/`). O workflow é `.github/workflows/pages.yml` e roda **somente** quando `index.html`/`assets/**` mudam.

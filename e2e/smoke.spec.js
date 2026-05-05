@@ -15,9 +15,12 @@ test.describe("static site smoke", () => {
 
   test("resources route renders official sources block", async ({ page }) => {
     await page.goto("/#resources");
-    await expect(page.locator("#page-root")).toContainText(/Western Australia|New South Wales|Official/i, {
-      timeout: 20000,
-    });
+    await expect(page.locator("#page-root")).toContainText(
+      /Western Australia|New South Wales|Official/i,
+      {
+        timeout: 20000
+      }
+    );
   });
 
   test("responsive screenshots home", async ({ page }) => {
