@@ -202,13 +202,14 @@ body.mode-es .l-pt {
   content: "";
   position: absolute;
   left: 50%;
-  bottom: -12px;
+  bottom: -6px;
   width: 28px;
   height: 3px;
   border-radius: 999px;
   background: var(--green);
   transform: translateX(-50%);
   box-shadow: 0 0 18px rgba(46, 125, 91, 0.45);
+  z-index: 2;
 }
 .header-controls {
   display: flex;
