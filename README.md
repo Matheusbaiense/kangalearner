@@ -1,5 +1,8 @@
 # KangaLearner
 
+[![Deploy Pages](https://github.com/Matheusbaiense/kangalearner/actions/workflows/pages.yml/badge.svg)](https://github.com/Matheusbaiense/kangalearner/actions/workflows/pages.yml)
+[![Build](https://github.com/Matheusbaiense/kangalearner/actions/workflows/build.yml/badge.svg)](https://github.com/Matheusbaiense/kangalearner/actions/workflows/build.yml)
+
 **Uso interno da equipe.** Este repositório pode estar público por um período; a intenção é restringir acesso e migrar a experiência para **aplicativo** (equipe / produto fechado). Este README descreve o **código e o conteúdo**, não um manual de uso para usuário final.
 
 ---

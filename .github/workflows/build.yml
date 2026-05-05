@@ -74,5 +74,13 @@ jobs:
           git diff --exit-code packages/core/src/data/questions.ts || \
             (echo "ERROR: questions.ts is out of sync. Run pnpm gen:core-questions" && exit 1)
 
+      - name: Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: E2E smoke (static site)
+        run: pnpm run test:e2e
+        env:
+          CI: true
+
       - name: Build
         run: pnpm run build
