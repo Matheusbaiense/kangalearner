@@ -139,6 +139,14 @@
     });
   }
 
+  function documentLangFromKangaLang(lang) {
+    if (lang === "pten") return "pt-BR";
+    if (lang === "esen") return "es";
+    if (String(lang).startsWith("pt")) return "pt-BR";
+    if (String(lang).startsWith("es")) return "es";
+    return "en";
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     try {
       window.KangaStorage?.migrateFromLegacy?.();
@@ -158,6 +166,8 @@
       initialLang = "en";
     }
     if (!initialLang) initialLang = "en";
+
+    document.documentElement.lang = documentLangFromKangaLang(initialLang);
 
     hydrateStaticI18n(initialLang);
 
