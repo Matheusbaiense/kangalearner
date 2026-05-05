@@ -2,6 +2,17 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-06 — Phase G (production readiness, site estático)
+
+| Comando                       | Resultado                                                                |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| `pnpm run format:check`       | **OK**                                                                   |
+| `pnpm run test:e2e`           | **OK** (4 testes Chromium)                                               |
+| `pnpm run lint` (turbo)       | **OK** (warning conhecido Next `no-img-element` em `PracticeClient.tsx`) |
+| `pnpm run validate:questions` | **OK** (após campo opcional `lastVerified` exemplo)                      |
+
+Relatório de lançamento: `docs/production/G18-LAUNCH-REPORT.md`.
+
 ## 2026-05-04 — QA pós-INFRA (sessão Cursor)
 
 ### Comandos executados
