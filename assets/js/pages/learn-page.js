@@ -26,6 +26,22 @@
 
   window.KL_PAGES = window.KL_PAGES || {};
 
+  function iconEmoji(icon) {
+    var map = {
+      speed: "🚦",
+      giveway: "🛑",
+      signs: "🚧",
+      lights: "🚦",
+      markings: "🛣️",
+      lane: "🛣️",
+      parking: "🅿️",
+      alcohol: "🍺",
+      emergency: "🚨",
+      safety: "🛡️",
+    };
+    return map[icon] || "📘";
+  }
+
   window.KL_PAGES.learn = function () {
     var topics = window.LEARN_TOPICS || [];
     var lang = getLang();
@@ -43,9 +59,9 @@
           topic.slug +
           '">' +
           '<div class="learn-card-icon">' +
-          '<img src="assets/icons/topics/' +
-          topic.icon +
-          '.svg" alt="" width="32" height="32" aria-hidden="true" onerror="this.style.display=\'none\'">' +
+          '<span class="learn-emoji" aria-hidden="true">' +
+          iconEmoji(topic.icon) +
+          "</span>" +
           "</div>" +
           '<div class="learn-card-body">' +
           '<h3 class="learn-card-title">' +
@@ -54,7 +70,7 @@
           '<p class="learn-card-summary">' +
           summary +
           "</p>" +
-          '<span class="learn-card-cta">Study topic &rarr;</span>' +
+          '<span class="learn-card-cta" data-i18n="learn.cardCta"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span>' +
           "</div></a>"
         );
       })
@@ -63,9 +79,9 @@
     return (
       '<section class="page-section learn-hub"><div class="container">' +
       '<div class="page-header">' +
-      '<p class="page-kicker">Study guides</p>' +
-      '<h1 class="page-title">Learn the road rules</h1>' +
-      '<p class="page-sub">Select a topic to read the key rules, understand common mistakes, and test yourself with quick questions.</p>' +
+      '<p class="page-kicker" data-i18n="learn.kicker"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<h1 class="page-title" data-i18n="learn.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
+      '<p class="page-sub" data-i18n="learn.sub"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       "</div>" +
       '<div class="learn-grid">' +
       cards +
@@ -110,7 +126,7 @@
     return (
       '<section class="page-section topic-detail"><div class="container">' +
       '<nav class="breadcrumb" aria-label="Breadcrumb">' +
-      '<a href="#learn">Learn</a> <span aria-hidden="true">/</span> <span>' +
+      '<a href="#learn" data-i18n="learn.breadcrumb"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a> <span aria-hidden="true">/</span> <span>' +
       t(topic.title, lang) +
       "</span>" +
       "</nav>" +
@@ -123,21 +139,21 @@
       "</p>" +
       "</div>" +
       '<div class="topic-body">' +
-      '<div class="topic-card-block"><h2 class="topic-block-title">✓ Key rules</h2><ul class="topic-rules-list">' +
+      '<div class="topic-card-block"><h2 class="topic-block-title" data-i18n="learn.keyRules"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2><ul class="topic-rules-list">' +
       keyRules +
       "</ul></div>" +
       (mistakes
-        ? '<div class="topic-card-block topic-mistakes"><h2 class="topic-block-title">⚠ Common mistakes</h2><ul class="topic-rules-list">' +
+        ? '<div class="topic-card-block topic-mistakes"><h2 class="topic-block-title" data-i18n="learn.mistakes"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2><ul class="topic-rules-list">' +
           mistakes +
           "</ul></div>"
         : "") +
       (exampleText
-        ? '<div class="topic-card-block topic-example"><h2 class="topic-block-title">📋 Example scenario</h2><p>' +
+        ? '<div class="topic-card-block topic-example"><h2 class="topic-block-title" data-i18n="learn.example"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2><p>' +
           exampleText +
           "</p></div>"
         : "") +
       (quickChecks
-        ? '<div class="topic-card-block topic-quiz"><h2 class="topic-block-title">❓ Quick check</h2><ul class="topic-rules-list">' +
+        ? '<div class="topic-card-block topic-quiz"><h2 class="topic-block-title" data-i18n="learn.quickCheck"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2><ul class="topic-rules-list">' +
           quickChecks +
           "</ul></div>"
         : "") +
@@ -145,10 +161,10 @@
       '<div class="topic-actions">' +
       '<a class="btn btn-primary" href="#practice" data-cat="' +
       (topic.category || "") +
-      '">Practise ' +
+      '"><span data-i18n="learn.ctaPracticePrefix"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span> ' +
       escapeHtml(t(topic.title, lang)) +
-      " questions &rarr;</a>" +
-      '<a class="btn btn-secondary" href="#learn">← All topics</a>' +
+      ' <span data-i18n="learn.ctaPracticeSuffix"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span> &rarr;</a>' +
+      '<a class="btn btn-secondary" href="#learn" data-i18n="learn.ctaAllTopics"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
       "</div>" +
       (sourceText ? '<p class="topic-source">' + sourceText + "</p>" : "") +
       "</div></section>"

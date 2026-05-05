@@ -206,9 +206,9 @@ body.mode-es .l-pt {
   width: 28px;
   height: 3px;
   border-radius: 999px;
-  background: var(--gold);
+  background: var(--green);
   transform: translateX(-50%);
-  box-shadow: 0 0 18px rgba(217, 119, 6, 0.5);
+  box-shadow: 0 0 18px rgba(46, 125, 91, 0.45);
 }
 .header-controls {
   display: flex;

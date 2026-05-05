@@ -15,36 +15,44 @@
         '<span class="mock-last-score">' +
         lastResults.pct +
         "%</span>" +
-        '<span class="mock-last-label">Last attempt — ' +
+        '<span class="mock-last-label" data-i18n="mock.lastAttempt"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span> — ' +
         lastResults.correct +
         "/" +
         lastResults.total +
         "</span>" +
-        '<a href="#mock-results" class="mock-last-link">View full results →</a>' +
+        '<a href="#mock-results" class="mock-last-link" data-i18n="mock.viewResults"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span> →</a>' +
         "</div>"
       : "";
 
     return (
       '<section class="page-section mock-setup"><div class="container">' +
-      '<div class="page-header"><p class="page-kicker">Simulated exam</p><h1 class="page-title">Mock Test</h1>' +
-      '<p class="page-sub">Choose how you want to practise. Both modes use real test questions in random order.</p></div>' +
+      '<div class="page-header"><p class="page-kicker" data-i18n="mock.kicker"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p><h1 class="page-title" data-i18n="mock.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
+      '<p class="page-sub" data-i18n="mock.sub"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
       lastBadge +
       '<div class="mock-mode-grid">' +
       '<div class="mock-mode-card">' +
-      '<div class="mock-mode-icon">📚</div><h2 class="mock-mode-title">Practice Mock</h2>' +
-      '<p class="mock-mode-desc">See the correct answer and explanation after each question. Great for learning as you go.</p>' +
-      '<ul class="mock-mode-features"><li>Immediate feedback per question</li><li>Explanations shown</li><li>No time pressure</li></ul>' +
-      '<button class="btn btn-secondary mock-mode-btn" data-action="start-mock" data-mode="practice">Start Practice Mock</button>' +
+      '<div class="mock-mode-icon">📚</div><h2 class="mock-mode-title" data-i18n="mock.practiceTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2>' +
+      '<p class="mock-mode-desc" data-i18n="mock.practiceDesc"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<ul class="mock-mode-features">' +
+      '<li data-i18n="mock.practiceFeat1"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
+      '<li data-i18n="mock.practiceFeat2"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
+      '<li data-i18n="mock.practiceFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
+      "</ul>" +
+      '<button class="btn btn-secondary mock-mode-btn" data-action="start-mock" data-mode="practice" data-i18n="mock.practiceBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
       "</div>" +
       '<div class="mock-mode-card mock-mode-card--featured">' +
-      '<div class="mock-mode-badge">Exam Simulation</div>' +
-      '<div class="mock-mode-icon">⏱</div><h2 class="mock-mode-title">Exam Mode</h2>' +
-      '<p class="mock-mode-desc">No feedback until the end — just like the real test. See your result and weak areas when you finish.</p>' +
-      '<ul class="mock-mode-features"><li>No hints during the test</li><li>Full results at the end</li><li>Category breakdown</li></ul>' +
-      '<button class="btn btn-primary mock-mode-btn" data-action="start-mock" data-mode="exam">Start Exam Mode</button>' +
+      '<div class="mock-mode-badge" data-i18n="mock.examBadge"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
+      '<div class="mock-mode-icon">⏱</div><h2 class="mock-mode-title" data-i18n="mock.examTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2>' +
+      '<p class="mock-mode-desc" data-i18n="mock.examDesc"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<ul class="mock-mode-features">' +
+      '<li data-i18n="mock.examFeat1"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
+      '<li data-i18n="mock.examFeat2"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
+      '<li data-i18n="mock.examFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
+      "</ul>" +
+      '<button class="btn btn-primary mock-mode-btn" data-action="start-mock" data-mode="exam" data-i18n="mock.examBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
       "</div>" +
       "</div>" +
-      '<div class="mock-info"><p>ℹ️ The mock test uses 30 questions drawn from the official question bank for your selected state.</p></div>' +
+      '<div class="mock-info"><p data-i18n="mock.info"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
       "</div></section>"
     );
   };
