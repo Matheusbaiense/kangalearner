@@ -42,6 +42,8 @@ jobs:
           cp _headers _site/ 2>/dev/null || true
           cp robots.txt _site/ 2>/dev/null || true
           cp sitemap.xml _site/ 2>/dev/null || true
+          cp manifest.json _site/ 2>/dev/null || true
+          cp sw.js _site/ 2>/dev/null || true
           touch _site/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
