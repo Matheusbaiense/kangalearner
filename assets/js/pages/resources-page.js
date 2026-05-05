@@ -12,6 +12,76 @@
       testInfo: "https://www.transport.wa.gov.au/licensing/computer-theory-test.asp",
       authority_site: "https://www.transport.wa.gov.au",
       available: true
+    },
+    {
+      state: "NSW",
+      name: "New South Wales",
+      authority: "Transport for NSW",
+      handbook: "Road Users' Handbook (NSW)",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://www.nsw.gov.au/transport-nsw",
+      available: false
+    },
+    {
+      state: "VIC",
+      name: "Victoria",
+      authority: "VicRoads",
+      handbook: "Road to Solo Driving handbook",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://www.vicroads.vic.gov.au",
+      available: false
+    },
+    {
+      state: "QLD",
+      name: "Queensland",
+      authority: "Department of Transport and Main Roads (Queensland)",
+      handbook: "Your Keys to Driving in Queensland",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://www.qld.gov.au/transport",
+      available: false
+    },
+    {
+      state: "SA",
+      name: "South Australia",
+      authority: "Government of South Australia — Department for Infrastructure and Transport",
+      handbook: "The Driver's Handbook (SA)",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://www.sa.gov.au/topics/driving-and-transport",
+      available: false
+    },
+    {
+      state: "TAS",
+      name: "Tasmania",
+      authority: "Department of State Growth — Transport",
+      handbook: "Road Rules Handbook (Tasmania)",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://www.transport.tas.gov.au",
+      available: false
+    },
+    {
+      state: "ACT",
+      name: "Australian Capital Territory",
+      authority: "Access Canberra — Road Transport Authority",
+      handbook: "Road Rules Handbook (ACT)",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://www.accesscanberra.act.gov.au",
+      available: false
+    },
+    {
+      state: "NT",
+      name: "Northern Territory",
+      authority: "Northern Territory Government",
+      handbook: "Road Users' Handbook (NT)",
+      handbookUrl: "#",
+      testInfo: "#",
+      authority_site: "https://nt.gov.au/driving",
+      available: false
     }
   ];
 
