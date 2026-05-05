@@ -328,7 +328,7 @@
   text-align: center;
 }
 .score-card .score-big {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-size: 1.65rem;
   font-weight: 900;
   color: var(--ink);
@@ -489,7 +489,7 @@
   align-items: center;
 }
 .trust-title {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 1.1rem;
 }
@@ -653,7 +653,7 @@
   min-width: 0;
 }
 .learn-topic-title {
-  font-family: "Sora", sans-serif;
+  font-family: var(--font-display);
   font-weight: 900;
   font-size: 1rem;
   color: var(--ink);

@@ -2,8 +2,10 @@
    KANGALEARNER V9 — DESIGN SYSTEM
 ══════════════════════════════════════════ */
 :root {
-  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-display: "Sora", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-display: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
   /* Heading font: keep it clean (no fancy serif). */
   --font-heading: var(--font-sans);
   --navy-950: #061321;
