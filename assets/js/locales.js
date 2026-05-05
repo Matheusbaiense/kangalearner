@@ -29,6 +29,7 @@
         learn: "Aprender",
         practice: "Prática",
         mockTest: "Simulado",
+        progress: "Progresso",
         roadRules: "Regras",
         resources: "Recursos"
       },
@@ -234,6 +235,7 @@
         learn: "Learn",
         practice: "Practice",
         mockTest: "Mock Test",
+        progress: "Progress",
         roadRules: "Road Rules",
         resources: "Resources"
       },
@@ -438,6 +440,7 @@
         learn: "Aprender",
         practice: "Práctica",
         mockTest: "Simulacro",
+        progress: "Progreso",
         roadRules: "Normas",
         resources: "Recursos"
       },
