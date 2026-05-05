@@ -123,7 +123,16 @@
       }
       var targetCat = cat || savedCat;
       if (window.DW) {
-        window.DW.setMode("all");
+        var selectedMode = null;
+        try {
+          selectedMode = sessionStorage.getItem("kl-practice-mode");
+        } catch (e) {}
+        if (!selectedMode) selectedMode = "practice";
+
+        // "practice" = regular study (shows explanations), "exam" = sim mode
+        if (selectedMode === "exam") window.DW.setMode("sim");
+        else window.DW.setMode("all");
+
         if (targetCat) window.DW.setCat(targetCat);
         window.DW.renderFilters();
         window.DW.renderQuiz();
@@ -163,10 +172,17 @@
 
   function getPreferredLang() {
     try {
+      var live = window.DW && window.DW.lang ? window.DW.lang : null;
+      var stored = null;
       if (window.KangaStorage && typeof window.KangaStorage.getLang === "function") {
-        return window.KangaStorage.getLang() || (window.DW && window.DW.lang) || "en";
+        stored = window.KangaStorage.getLang();
+      } else {
+        stored = localStorage.getItem("kl-lang");
       }
-      return localStorage.getItem("kl-lang") || (window.DW && window.DW.lang) || "en";
+
+      // Prefer the live selection (user just changed it) over any stale persisted value.
+      if (live && stored && live !== stored) return live;
+      return stored || live || "en";
     } catch (e) {
       return (window.DW && window.DW.lang) || "en";
     }
@@ -302,6 +318,10 @@
   function bindMockSetup() {
     document.querySelectorAll('[data-action="start-mock"]').forEach(function (btn) {
       btn.addEventListener("click", function () {
+        try {
+          var mode = btn.getAttribute("data-mode") || "exam";
+          sessionStorage.setItem("kl-practice-mode", mode);
+        } catch (e) {}
         location.hash = "mock-run";
       });
     });

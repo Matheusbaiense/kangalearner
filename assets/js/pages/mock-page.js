@@ -38,7 +38,7 @@
       '<li data-i18n="mock.practiceFeat2"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       '<li data-i18n="mock.practiceFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       "</ul>" +
-      '<button class="btn btn-secondary mock-mode-btn" data-action="start-mock" data-mode="practice" data-i18n="mock.practiceBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
+      '<button class="btn btn-primary mock-mode-btn" data-action="start-mock" data-mode="practice" data-i18n="mock.practiceBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
       "</div>" +
       '<div class="mock-mode-card mock-mode-card--featured">' +
       '<div class="mock-mode-badge" data-i18n="mock.examBadge"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
@@ -49,7 +49,7 @@
       '<li data-i18n="mock.examFeat2"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       '<li data-i18n="mock.examFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       "</ul>" +
-      '<button class="btn btn-primary mock-mode-btn" data-action="start-mock" data-mode="exam" data-i18n="mock.examBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
+      '<button class="btn btn-secondary mock-mode-btn" data-action="start-mock" data-mode="exam" data-i18n="mock.examBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
       "</div>" +
       "</div>" +
       '<div class="mock-info"><p data-i18n="mock.info"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
