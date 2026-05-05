@@ -464,6 +464,7 @@ const DW = {
         o.style.cursor = "default";
         const isCorrect = o.dataset.correct === "true";
         const isChosen = o.dataset.letter === state.chosen;
+        o.setAttribute("aria-checked", isChosen ? "true" : "false");
         if (isCorrect) o.classList.add(state.correct ? "correct" : "missed");
         else if (isChosen && !state.correct) o.classList.add("wrong");
       });
@@ -497,7 +498,7 @@ const DW = {
       const oMain = o.t[dLang] || o.t.en || "";
       const oTrans = tLang ? o.t[tLang] || "" : "";
       const oHtml = this.formatBilingualBlock(oMain, oTrans);
-      optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="button" tabindex="0">
+      optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="radio" aria-checked="false" tabindex="0">
         <span class="oletter">${o.l}</span>
         <span class="otext">${oHtml}</span>
       </div>`;
@@ -530,7 +531,7 @@ const DW = {
   <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${catBadge}</span></div>
   <div class="qtext">${qtextHtml}</div>
   ${signHtml}
-  <div class="opts">${optsHtml}</div>
+  <div class="opts" role="radiogroup">${optsHtml}</div>
   ${answerBlock}
 </div>`;
   },
@@ -563,6 +564,7 @@ const DW = {
         opts.forEach((o) => {
           o.setAttribute("data-done", "1");
           o.style.cursor = "default";
+          o.setAttribute("aria-checked", o === el ? "true" : "false");
           if (o.dataset.correct === "true") o.classList.add(isCorrect ? "correct" : "missed");
           else if (o === el && !isCorrect) o.classList.add("wrong");
         });
@@ -758,6 +760,7 @@ const DW = {
       card.querySelectorAll(".opt").forEach((o) => {
         o.setAttribute("data-done", "1");
         o.style.cursor = "default";
+        o.setAttribute("aria-checked", o.dataset.letter === ans.chosen ? "true" : "false");
         if (o.dataset.correct === "true") o.classList.add(isCorrect ? "correct" : "missed");
         else if (o.dataset.letter === ans.chosen && !isCorrect) o.classList.add("wrong");
       });
