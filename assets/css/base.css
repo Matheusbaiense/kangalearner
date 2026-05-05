@@ -435,3 +435,16 @@ body.mode-es .l-pt {
     font-size: 0.78rem;
   }
 }
+
+/* Touch targets (WCAG 2.5.5) — coarse pointers */
+@media (pointer: coarse) {
+  .main-nav a {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    padding-inline: 4px;
+  }
+  .ld-trigger {
+    min-height: 44px;
+  }
+}
