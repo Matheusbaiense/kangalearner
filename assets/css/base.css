@@ -9,6 +9,37 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: var(--header-height, 72px);
 }
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 10000;
+  padding: 0.65rem 1rem;
+  background: var(--navy-900);
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  font-weight: 600;
+}
+.skip-link:focus {
+  left: 0.75rem;
+  top: 0.75rem;
+  outline: 3px solid var(--green2);
+  outline-offset: 2px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--green2);
+  outline-offset: 2px;
+}
+button:focus:not(:focus-visible),
+a:focus:not(:focus-visible) {
+  outline: none;
+}
 body {
   font-family: var(--font-sans);
   background: var(--paper);
