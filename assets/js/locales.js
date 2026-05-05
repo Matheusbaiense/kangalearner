@@ -159,7 +159,17 @@
         correct: "Certas",
         incorrect: "Erradas",
         unanswered: "Não respondidas",
-        reset: "Reiniciar tudo"
+        reset: "Reiniciar tudo",
+        pageTitle: "Acompanhamento de progresso",
+        pageKickerSuffix: " — seu progresso",
+        catPerf: "Desempenho por categoria",
+        colCat: "Categoria",
+        colAnswered: "Respondidas",
+        colCorrect: "Corretas",
+        colPct: "% de acerto",
+        weakHead: "Recomendamos praticar mais:",
+        emptyHint: "Ainda não há dados de prática para este estado.",
+        startPractice: "Começar a praticar"
       },
       resources: {
         kicker: "Fontes oficiais",
@@ -364,7 +374,17 @@
         correct: "Correct",
         incorrect: "Incorrect",
         unanswered: "Unanswered",
-        reset: "Reset all"
+        reset: "Reset all",
+        pageTitle: "Progress tracker",
+        pageKickerSuffix: " — your progress",
+        catPerf: "Performance by category",
+        colCat: "Category",
+        colAnswered: "Answered",
+        colCorrect: "Correct",
+        colPct: "% correct",
+        weakHead: "We recommend more practice on:",
+        emptyHint: "No practice data for this state yet.",
+        startPractice: "Start practising"
       },
       resources: {
         kicker: "Official sources",
@@ -569,7 +589,17 @@
         correct: "Correctas",
         incorrect: "Incorrectas",
         unanswered: "Sin responder",
-        reset: "Reiniciar todo"
+        reset: "Reiniciar todo",
+        pageTitle: "Seguimiento del progreso",
+        pageKickerSuffix: " — tu progreso",
+        catPerf: "Rendimiento por categoría",
+        colCat: "Categoría",
+        colAnswered: "Respondidas",
+        colCorrect: "Correctas",
+        colPct: "% acierto",
+        weakHead: "Recomendamos practicar más:",
+        emptyHint: "Aún no hay datos de práctica para este estado.",
+        startPractice: "Empezar a practicar"
       },
       resources: {
         kicker: "Fuentes oficiales",

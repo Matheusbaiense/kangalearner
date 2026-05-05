@@ -506,6 +506,43 @@
   margin-top: 2rem;
 }
 
+.progress-cat-wrap {
+  margin-top: 2rem;
+}
+.progress-cat-title {
+  font-size: 1.15rem;
+  margin: 0 0 1rem;
+}
+.progress-cat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.progress-cat-table th,
+.progress-cat-table td {
+  text-align: left;
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border, #e0e0e0);
+}
+.progress-cat-table th {
+  font-weight: 700;
+  background: var(--surface-2, #f8f8f8);
+}
+.progress-weak-callout {
+  margin-top: 1.75rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--gold, #c9a227);
+  background: #fffbf0;
+}
+.progress-weak-callout p {
+  margin: 0.35rem 0;
+}
+.progress-weak-link {
+  color: var(--green, #2e7d32);
+  font-weight: 600;
+}
+
 /* ── Glossary ───────────────────────────────────────────────────────────── */
 .glossary-list {
   display: flex;
