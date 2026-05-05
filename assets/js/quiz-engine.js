@@ -923,7 +923,11 @@ const DW = {
     });
 
     const resetBtn = document.getElementById("reset-btn");
-    if (resetBtn) resetBtn.addEventListener("click", () => DW.clearProgress());
+    if (resetBtn)
+      resetBtn.addEventListener("click", () => {
+        const msg = "Are you sure you want to reset your progress?";
+        if (window.confirm(msg)) DW.clearProgress();
+      });
 
     document.addEventListener("click", (e) => {
       const loadMore = e.target.closest?.('[data-action="load-more-quiz"]');
