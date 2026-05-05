@@ -13,6 +13,8 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 Relatório de lançamento: `docs/production/G18-LAUNCH-REPORT.md`.
 
+Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes** consecutivas — **OK** (4 testes × 2). `pnpm run format:check` — **OK**. Browser QA pós-deploy: pendente (ver `.claude/plan/post-phase-g-verification.md`).
+
 ## 2026-05-04 — QA pós-INFRA (sessão Cursor)
 
 ### Comandos executados

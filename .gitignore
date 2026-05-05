@@ -15,6 +15,9 @@ apps/mobile/.expo/
 .cursor/
 .claude/
 
+# OpenWolf — estado local (não versionar)
+.wolf/
+
 # Turbo / local caches
 .turbo/
 **/.turbo/
