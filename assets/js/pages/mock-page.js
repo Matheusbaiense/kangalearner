@@ -79,8 +79,16 @@
     var pct = results.pct || 0;
     var passed = pct >= 80;
     var statusClass = passed ? "result-pass" : pct >= 60 ? "result-warn" : "result-fail";
-    var statusKey = passed ? "mock.resultsStatusPass" : pct >= 60 ? "mock.resultsStatusMid" : "mock.resultsStatusLow";
-    var msgKey = passed ? "mock.resultsMsgPass" : pct >= 60 ? "mock.resultsMsgMid" : "mock.resultsMsgLow";
+    var statusKey = passed
+      ? "mock.resultsStatusPass"
+      : pct >= 60
+        ? "mock.resultsStatusMid"
+        : "mock.resultsStatusLow";
+    var msgKey = passed
+      ? "mock.resultsMsgPass"
+      : pct >= 60
+        ? "mock.resultsMsgMid"
+        : "mock.resultsMsgLow";
 
     var timeRow = "";
     if (results.timeSpentSec != null && results.timeSpentSec >= 0) {
@@ -142,13 +150,13 @@
       statusKey +
       '"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       '<div class="result-counts">' +
-      '<span><strong>' +
+      "<span><strong>" +
       results.correct +
       '</strong> <span data-i18n="progress.correct"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span> · ' +
-      '<span><strong>' +
+      "<span><strong>" +
       results.wrong +
       '</strong> <span data-i18n="progress.incorrect"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span> · ' +
-      '<span><strong>' +
+      "<span><strong>" +
       results.total +
       '</strong> <span data-i18n="mock.resultsTotalQs"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span></div>' +
       timeRow +
