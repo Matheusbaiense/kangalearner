@@ -128,6 +128,30 @@
         unanswered: "Não respondidas",
         reset: "Reiniciar tudo"
       },
+      resources: {
+        kicker: "Fontes oficiais",
+        title: "Recursos",
+        sub: "Links diretos para manuais oficiais e informações do teste.",
+        availableNow: "Disponível agora",
+        learnerTestInfo: "Informações do teste teórico",
+        officialSite: "Site oficial do órgão",
+        ctaStudy: "Guias de estudo",
+        ctaPractice: "Praticar questões"
+      },
+      about: {
+        title: "Sobre o KangaLearner",
+        body: "O KangaLearner é uma plataforma de estudo para ajudar learner drivers a passar na prova teórica de regras de trânsito na Austrália.",
+        ctaPractice: "Começar prática",
+        ctaContact: "Fale com a gente"
+      },
+      contact: {
+        title: "Contato",
+        sub: "Encontrou um erro nas questões? Tem uma sugestão? Queremos ouvir você.",
+        nameLabel: "Nome",
+        emailLabel: "Email",
+        msgLabel: "Mensagem",
+        send: "Enviar mensagem"
+      },
       footer: {
         note: "Apoio a learner drivers em toda a Austrália para passar com confiança.",
         disclaimer:
@@ -276,6 +300,30 @@
         unanswered: "Unanswered",
         reset: "Reset all"
       },
+      resources: {
+        kicker: "Official sources",
+        title: "Resources",
+        sub: "Direct links to official government handbooks and test information.",
+        availableNow: "Available now",
+        learnerTestInfo: "Learner test information",
+        officialSite: "Official authority website",
+        ctaStudy: "Study guides",
+        ctaPractice: "Practice questions"
+      },
+      about: {
+        title: "About KangaLearner",
+        body: "KangaLearner is a study platform built to help learner drivers pass the Australian road rules knowledge test.",
+        ctaPractice: "Start practising",
+        ctaContact: "Contact us"
+      },
+      contact: {
+        title: "Contact",
+        sub: "Found an error in the questions? Have a suggestion? We'd love to hear from you.",
+        nameLabel: "Name",
+        emailLabel: "Email",
+        msgLabel: "Message",
+        send: "Send message"
+      },
       footer: {
         note: "Empowering learner drivers Australia-wide to pass with confidence.",
         disclaimer:
@@ -423,6 +471,30 @@
         incorrect: "Incorrectas",
         unanswered: "Sin responder",
         reset: "Reiniciar todo"
+      },
+      resources: {
+        kicker: "Fuentes oficiales",
+        title: "Recursos",
+        sub: "Enlaces directos a manuales oficiales e información del examen.",
+        availableNow: "Disponible ahora",
+        learnerTestInfo: "Información del examen teórico",
+        officialSite: "Sitio oficial de la autoridad",
+        ctaStudy: "Guías de estudio",
+        ctaPractice: "Practicar preguntas"
+      },
+      about: {
+        title: "Acerca de KangaLearner",
+        body: "KangaLearner es una plataforma de estudio para ayudar a los conductores principiantes a aprobar el examen teórico de normas viales en Australia.",
+        ctaPractice: "Empezar práctica",
+        ctaContact: "Contáctanos"
+      },
+      contact: {
+        title: "Contacto",
+        sub: "¿Encontraste un error en las preguntas? ¿Tienes una sugerencia? Nos encantaría escucharte.",
+        nameLabel: "Nombre",
+        emailLabel: "Correo",
+        msgLabel: "Mensaje",
+        send: "Enviar mensaje"
       },
       footer: {
         note: "Apoyo a learner drivers en toda Australia para aprobar con confianza.",

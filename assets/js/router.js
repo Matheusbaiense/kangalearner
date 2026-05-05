@@ -64,6 +64,13 @@
     var parts = raw.split("/");
     var page = parts[0];
     var param = parts[1] || null;
+    var scrollTarget = null;
+
+    // In-page anchors: render home and scroll.
+    if (page === "topics" || page === "states") {
+      scrollTarget = page;
+      page = "home";
+    }
 
     window.scrollTo(0, 0);
     updateNavActive(page);
@@ -81,6 +88,13 @@
         PAGE_ROOT.innerHTML = ROUTES["home"](null);
       }
       hydrateAfterRender();
+
+      if (scrollTarget) {
+        setTimeout(function () {
+          var el = document.getElementById(scrollTarget);
+          if (el && typeof el.scrollIntoView === "function") el.scrollIntoView({ block: "start", behavior: "smooth" });
+        }, 0);
+      }
     }
   }
 
@@ -134,6 +148,9 @@
    */
   function ensureDWInit() {
     if (!_dwInitPromise) {
+      var lang = getPreferredLang();
+      persistPreferredLang(lang);
+      if (window.DW) window.DW.lang = lang;
       _dwInitPromise =
         window.DW && typeof window.DW.init === "function"
           ? window.DW.init().catch(function (e) {
@@ -142,6 +159,24 @@
           : Promise.resolve();
     }
     return _dwInitPromise;
+  }
+
+  function getPreferredLang() {
+    try {
+      if (window.KangaStorage && typeof window.KangaStorage.getLang === "function") {
+        return window.KangaStorage.getLang() || (window.DW && window.DW.lang) || "en";
+      }
+      return localStorage.getItem("kl-lang") || (window.DW && window.DW.lang) || "en";
+    } catch (e) {
+      return (window.DW && window.DW.lang) || "en";
+    }
+  }
+
+  function persistPreferredLang(lang) {
+    try {
+      if (window.KangaStorage && typeof window.KangaStorage.setLang === "function") window.KangaStorage.setLang(lang);
+      else localStorage.setItem("kl-lang", lang);
+    } catch (e) {}
   }
 
   // ── MutationObserver: detect sim completion ───────────────────────────────
@@ -222,7 +257,7 @@
 
   // ── Post-render hydration ─────────────────────────────────────────────────
   function hydrateAfterRender() {
-    var lang = (window.DW && window.DW.lang) || "en";
+    var lang = getPreferredLang();
     if (typeof window.hydrateKangaStaticI18n === "function") {
       window.hydrateKangaStaticI18n(lang);
     }

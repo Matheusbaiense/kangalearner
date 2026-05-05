@@ -91,7 +91,7 @@
         s.name +
         "</div>" +
         (comingSoon
-          ? '<div class="state-badge" data-i18n="state.comingSoon"><span class="l-en">Coming soon</span></div>'
+          ? '<div class="state-badge" data-i18n="state.comingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>'
           : "") +
         "</button>"
       );
@@ -127,21 +127,21 @@
     return (
       '<section class="hero" id="home-hero">' +
       '<div class="hero-inner"><div class="hero-copy">' +
-      '<div class="eyebrow" data-i18n="hero.eyebrow"><span class="l-en">Australia\\u2019s trusted learner driver platform</span></div>' +
-      '<h1 data-i18n="hero.title"><span class="l-en">Pass your learner test with confidence.</span></h1>' +
-      '<p class="hero-desc" data-i18n="hero.description"><span class="l-en">Study Australian road rules by state, practice unlimited questions and track your progress every step of the way.</span></p>' +
+      '<div class="eyebrow" data-i18n="hero.eyebrow"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
+      '<h1 data-i18n="hero.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
+      '<p class="hero-desc" data-i18n="hero.description"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       '<div class="hero-actions">' +
-      '<a class="btn btn-primary" href="#practice" data-i18n="hero.ctaPractice"><span class="l-en">Start Practice</span><span aria-hidden="true">\\u2192</span></a>' +
-      '<a class="btn btn-secondary" href="#mock" data-i18n="hero.ctaMock"><span class="l-en">Take a Mock Test</span><span aria-hidden="true">\\u2192</span></a>' +
+      '<a class="btn btn-primary" href="#practice" data-i18n="hero.ctaPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span><span aria-hidden="true">→</span></a>' +
+      '<a class="btn btn-secondary" href="#mock" data-i18n="hero.ctaMock"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span><span aria-hidden="true">→</span></a>' +
       "</div>" +
-      '<div class="hero-proof"><span class="proof-icon">\\u2713</span><span data-i18n="hero.proof"><span class="l-en">Official road rules. Up to date. Trusted by learner drivers Australia-wide.</span></span></div>' +
+      '<div class="hero-proof"><span class="proof-icon">✓</span><span data-i18n="hero.proof"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></div>' +
       "</div></div></section>" +
       '<section class="state-section" id="states"><div class="container"><div class="state-row">' +
-      '<div class="state-copy" data-i18n="state.banner"><span class="l-en">Choose your state</span></div>' +
+      '<div class="state-copy" data-i18n="state.banner"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       stateCardsHTML(currentState) +
       "</div></div></section>" +
       '<section class="topics-section" id="topics"><div class="container">' +
-      '<div class="topics-title" data-i18n="topics.sectionTitle"><span class="l-en">Practise by topic</span></div>' +
+      '<div class="topics-title" data-i18n="topics.sectionTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       '<div class="topic-grid">' +
       topicCardsHTML() +
       "</div>" +
