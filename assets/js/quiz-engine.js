@@ -247,12 +247,18 @@ const DW = {
     this.correct = 0;
     this.total = 0;
     this.save();
+    if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
+      window.kangaAnalytics.track("quiz_reset", { state: this.state });
+    }
     this.renderQuiz();
     this.updateScore();
   },
 
   setLang(lang, el) {
     this.lang = lang;
+    if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
+      window.kangaAnalytics.track("language_change", { lang: lang });
+    }
     const d = this.getDisplayLang();
     document.body.className = "mode-" + d;
     document.documentElement.lang = d === "pt" ? "pt-BR" : d === "es" ? "es" : "en";
@@ -599,6 +605,17 @@ const DW = {
         if (this.simAnswered[q.id]?.correct) score++;
       });
       this.syncMockSession({ state: this.state || "WA", score, total });
+      if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
+        const pct = total > 0 ? Math.round((score / total) * 100) : 0;
+        window.kangaAnalytics.track("quiz_complete", {
+          mode: "mock",
+          score,
+          total,
+          pct,
+          state: this.state,
+          high_score: pct >= 80
+        });
+      }
       this._simScrollTarget = "sim-final-panel";
     }
     this.renderSimStack();
@@ -678,6 +695,13 @@ const DW = {
     }
     const n = Math.min(30, pool.length);
     this.simMode = true;
+    if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
+      window.kangaAnalytics.track("quiz_start", {
+        mode: "mock",
+        state: this.state,
+        question_count: n
+      });
+    }
     this.simAnswered = {};
     this.simRenderedCount = 1;
     this.simCompleted = false;

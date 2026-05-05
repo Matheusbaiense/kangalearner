@@ -88,7 +88,12 @@
 
     if (QUIZ_ROUTES[page]) {
       activateQuizRoot();
-      if (page === "practice") startPractice(param);
+      if (page === "practice") {
+        if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
+          window.kangaAnalytics.track("quiz_start", { mode: "practice" });
+        }
+        startPractice(param);
+      }
       if (page === "mock-run") startMockRun();
     } else {
       activatePageRoot();
@@ -107,6 +112,10 @@
             el.scrollIntoView({ block: "start", behavior: "smooth" });
         }, 0);
       }
+    }
+
+    if (window.kangaAnalytics && typeof window.kangaAnalytics.pageView === "function") {
+      window.kangaAnalytics.pageView(page + (param ? "/" + param : ""));
     }
   }
 
