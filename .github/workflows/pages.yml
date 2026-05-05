@@ -10,6 +10,12 @@ on:
       - "index.html"
       - "assets/**"
       - "scripts/**"
+      - "CNAME"
+      - "_headers"
+      - "robots.txt"
+      - "sitemap.xml"
+      - "manifest.json"
+      - "sw.js"
   workflow_dispatch:
 
 permissions:
@@ -32,6 +38,8 @@ jobs:
           mkdir -p _site
           cp index.html _site/
           cp -r assets _site/
+          cp CNAME _site/ 2>/dev/null || true
+          cp _headers _site/ 2>/dev/null || true
           touch _site/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
