@@ -594,6 +594,446 @@ const LEARN_TOPICS = [
       en: "Based on the Drive Safe Handbook — section 4.2 How to Handle Emergencies.",
       es: "Basado en el Drive Safe Handbook — sección 4.2 How to Handle Emergencies."
     }
+  },
+  {
+    slug: "roundabouts",
+    category: "Roundabouts",
+    icon: "roundabouts",
+    title: { pt: "Rotatórias", en: "Roundabouts", es: "Rotondas" },
+    summary: {
+      pt: "Em rotatórias, você escolhe a faixa correta antes de entrar, dá preferência a quem já circula e sinaliza ao sair. Reduza a velocidade e não troque de faixa dentro da rotatória.",
+      en: "At roundabouts, choose the correct lane before entering, give way to traffic already circulating and signal when exiting. Slow down and do not change lanes inside the roundabout.",
+      es: "En rotondas, elija el carril correcto antes de entrar, ceda el paso al tráfico que ya circula y señalice al salir. Reduzca la velocidad y no cambie de carril dentro de la rotonda."
+    },
+    keyRules: [
+      {
+        pt: "Dê preferência a todos os veículos que já estão na rotatória antes de entrar.",
+        en: "Give way to all vehicles already in the roundabout before you enter.",
+        es: "Ceda el paso a todos los vehículos que ya están en la rotonda antes de entrar."
+      },
+      {
+        pt: "Sinalize com antecedência ao sair na saída desejada.",
+        en: "Signal in good time when exiting at your intended exit.",
+        es: "Señalice con tiempo al salir por su salida prevista."
+      },
+      {
+        pt: "Escolha a faixa de acordo com se a sua saída é à esquerda, em frente ou à direita.",
+        en: "Choose your lane based on whether your exit is ahead, left or right.",
+        es: "Elija el carril según si su salida está al frente, a la izquierda o a la derecha."
+      },
+      {
+        pt: "Ciclistas e pedestres próximos à rotatória ainda precisam de atenção extra.",
+        en: "Cyclists and pedestrians near the roundabout still need extra care.",
+        es: "Los ciclistas y peatones cerca de la rotonda aún requieren atención extra."
+      }
+    ],
+    mistakes: [
+      {
+        pt: "Entrar sem reduzir ou sem verificar a circulação interna.",
+        en: "Entering without slowing or checking traffic inside.",
+        es: "Entrar sin reducir o sin comprobar el tráfico interior."
+      },
+      {
+        pt: "Parar desnecessariamente dentro da rotatória quando o fluxo está livre.",
+        en: "Stopping unnecessarily inside the roundabout when it is clear.",
+        es: "Detenerse innecesariamente dentro de la rotonda cuando está despejado."
+      }
+    ],
+    example: {
+      pt: "Você vai sair na segunda saída. Entra na faixa correta, reduz, cede passagem à direita, entra quando seguro e liga a seta ao sair.",
+      en: "You will take the second exit. Use the correct lane, slow down, give way to the right, enter when safe and signal as you leave.",
+      es: "Va a tomar la segunda salida. Use el carril correcto, reduzca, ceda el paso a la derecha, entre cuando sea seguro y señalice al salir."
+    },
+    quickCheck: [
+      {
+        pt: "A quem você deve dar preferência ao entrar na rotatória?",
+        en: "Who must you give way to when entering a roundabout?",
+        es: "¿A quién debe ceder el paso al entrar en una rotonda?"
+      },
+      {
+        pt: "Quando você deve sinalizar ao sair?",
+        en: "When should you signal to exit?",
+        es: "¿Cuándo debe señalizar al salir?"
+      },
+      {
+        pt: "É seguro mudar de faixa dentro da rotatória?",
+        en: "Is it safe to change lanes inside a roundabout?",
+        es: "¿Es seguro cambiar de carril dentro de la rotonda?"
+      }
+    ],
+    source: {
+      pt: "Baseado no Drive Safe Handbook (WA). Detalhes: transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      en: "Based on the Drive Safe Handbook (WA). See transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      es: "Basado en el Drive Safe Handbook (WA). Ver transport.wa.gov.au/licensing/road-rules-handbook.asp"
+    }
+  },
+  {
+    slug: "lane-changing",
+    category: "Lane Changing",
+    icon: "lane-changing",
+    title: { pt: "Mudança de faixa", en: "Lane changing", es: "Cambio de carril" },
+    summary: {
+      pt: "Mudar de faixa só é seguro após espelhos, verificação do ponto cego e sinalização. Linhas contínuas e áreas próximas a cruzamentos costumam proibir mudanças.",
+      en: "Lane changes are safe only after mirrors, head checks and signalling. Continuous lines and areas near intersections often prohibit lane changes.",
+      es: "El cambio de carril solo es seguro tras espejos, punto ciego y señalización. Las líneas continuas y zonas cerca de cruces suelen prohibir el cambio."
+    },
+    keyRules: [
+      {
+        pt: "Verifique espelhos e ponto cego antes de cada mudança.",
+        en: "Check mirrors and blind spots before each lane change.",
+        es: "Revise espejos y punto ciego antes de cada cambio."
+      },
+      {
+        pt: "Sinalize com antecedência e só mude quando houver espaço seguro.",
+        en: "Signal early and move only when there is a safe gap.",
+        es: "Señalice con tiempo y mueva solo cuando haya hueco seguro."
+      },
+      {
+        pt: "Não cruze linha contínua se isso proibir a mudança.",
+        en: "Do not cross a continuous line where it prohibits changing lanes.",
+        es: "No cruce una línea continua donde prohíba cambiar de carril."
+      },
+      {
+        pt: "Em congestionamento, mudanças bruscas aumentam risco de colisão lateral.",
+        en: "In congestion, sudden lane changes increase side-impact risk.",
+        es: "En congestión, los cambios bruscos aumentan el riesgo de impacto lateral."
+      }
+    ],
+    mistakes: [
+      {
+        pt: "Mudar só olhando o espelho retrovisor, sem ponto cego.",
+        en: "Changing lanes using only the rear mirror, with no head check.",
+        es: "Cambiar solo con el retrovisor, sin mirar el punto ciego."
+      },
+      {
+        pt: "Sinalizar e mover ao mesmo tempo, sem tempo para outros reagirem.",
+        en: "Signalling and moving at once, with no time for others to react.",
+        es: "Señalizar y moverse a la vez, sin tiempo para que otros reaccionen."
+      }
+    ],
+    example: {
+      pt: "Você quer a faixa da direita para sair. Aciona a seta, verifica pelo ombro, vê um veículo na linha de visão e espera passar antes de mudar.",
+      en: "You want the right lane to exit. Indicate, shoulder check, see a vehicle in the gap and wait until it passes before moving.",
+      es: "Quiere el carril derecho para salir. Intermitente, mire por encima del hombro, ve un vehículo y espere a que pase antes de moverse."
+    },
+    quickCheck: [
+      {
+        pt: "Qual a ordem: espelho, ponto cego ou seta primeiro?",
+        en: "What order: mirror, blind spot or signal first?",
+        es: "¿Qué orden: espejo, punto ciego o intermitente primero?"
+      },
+      {
+        pt: "Quando uma linha contínua impede mudança?",
+        en: "When does a continuous line prevent a lane change?",
+        es: "¿Cuándo una línea continua impide el cambio?"
+      },
+      {
+        pt: "Por que o ponto cego importa?",
+        en: "Why does the blind spot matter?",
+        es: "¿Por qué importa el punto ciego?"
+      }
+    ],
+    source: {
+      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+    }
+  },
+  {
+    slug: "overtaking",
+    category: "Overtaking",
+    icon: "overtaking",
+    title: { pt: "Ultrapassagem", en: "Overtaking", es: "Adelantamiento" },
+    summary: {
+      pt: "Ultrapasse só quando a linha de centro permitir, a visibilidade for suficiente e houver espaço para voltar com margem segura. Respeite distâncias mínimas para ciclistas.",
+      en: "Overtake only when centre lines allow, visibility is good and you can return with a safe margin. Respect minimum passing distances for cyclists.",
+      es: "Adelante solo cuando las líneas lo permitan, haya buena visibilidad y pueda volver con margen seguro. Respete distancias mínimas con ciclistas."
+    },
+    keyRules: [
+      {
+        pt: "Nunca ultrapasse onde a sinalização ou linha contínua proíbe.",
+        en: "Never overtake where signs or continuous lines prohibit it.",
+        es: "Nunca adelante donde las señales o líneas continuas lo prohíban."
+      },
+      {
+        pt: "Em WA, mantenha pelo menos 1 m de distância lateral de ciclistas em vias até 60 km/h e 1,5 m acima disso (regras podem variar; confira o handbook).",
+        en: "In WA, keep at least 1 m lateral clearance when passing cyclists on roads up to 60 km/h and 1.5 m above that (confirm in the official handbook).",
+        es: "En WA, mantenga al menos 1 m al adelantar ciclistas hasta 60 km/h y 1,5 m por encima (confirme en el handbook oficial)."
+      },
+      {
+        pt: "Não ultrapasse em curvas ou topo de aclive com visibilidade reduzida.",
+        en: "Do not overtake on bends or crests with reduced visibility.",
+        es: "No adelante en curvas o cuestas con poca visibilidad."
+      },
+      {
+        pt: "Volte à sua faixa só quando puder ver com segurança o veículo ultrapassado no retrovisor.",
+        en: "Return to your lane only when you can see the overtaken vehicle safely in your mirror.",
+        es: "Vuelva a su carril solo cuando vea con seguridad al vehículo adelantado en el espejo."
+      }
+    ],
+    mistakes: [
+      {
+        pt: "Apertar demais o ciclista ao passar.",
+        en: "Passing too close to a cyclist.",
+        es: "Pasar demasiado cerca de un ciclista."
+      },
+      {
+        pt: "Ultrapassar vários veículos de uma vez sem planejar a saída.",
+        en: "Overtaking multiple vehicles in one manoeuvre without planning the exit.",
+        es: "Adelantar varios vehículos de golpe sin planificar la salida."
+      }
+    ],
+    example: {
+      pt: "Você segue um carro lento em trecho com linha tracejada e visão clara. Sinaliza, acelera com moderação, ultrapassa e retorna deixando distância segura.",
+      en: "You follow a slow car where the line is broken and visibility is clear. Signal, accelerate smoothly, pass and return leaving a safe gap.",
+      es: "Sigue un coche lento con línea discontinua y buena visión. Señalice, acelere con suavidad, adelante y vuelva dejando margen."
+    },
+    quickCheck: [
+      {
+        pt: "Quando a ultrapassagem é proibida por linha contínua?",
+        en: "When is overtaking prohibited by a continuous line?",
+        es: "¿Cuándo el adelantamiento está prohibido por línea continua?"
+      },
+      {
+        pt: "Por que ciclistas precisam de mais espaço lateral?",
+        en: "Why do cyclists need more lateral space?",
+        es: "¿Por qué los ciclistas necesitan más espacio lateral?"
+      },
+      {
+        pt: "O que verificar antes de voltar à faixa?",
+        en: "What should you check before returning to your lane?",
+        es: "¿Qué comprobar antes de volver a su carril?"
+      }
+    ],
+    source: {
+      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+    }
+  },
+  {
+    slug: "seatbelts",
+    category: "Seatbelts",
+    icon: "seatbelts",
+    title: { pt: "Cintos de segurança", en: "Seatbelts", es: "Cinturones de seguridad" },
+    summary: {
+      pt: "Todos os ocupantes devem usar cinto adequadamente ajustado. Crianças precisam de sistemas de retenção apropriados à idade e tamanho.",
+      en: "All occupants must wear seatbelts properly adjusted. Children need child restraints appropriate to age and size.",
+      es: "Todos los ocupantes deben usar el cinturón bien ajustado. Los niños necesitan sistemas de retención adecuados a la edad y talla."
+    },
+    keyRules: [
+      {
+        pt: "Motorista é responsável por garantir que menores usem cinto ou cadeirinha corretamente.",
+        en: "The driver is responsible for ensuring children wear belts or restraints correctly.",
+        es: "El conductor es responsable de que los menores usen cinturón o sillita correctamente."
+      },
+      {
+        pt: "O cinto deve cruzar o ombro e a pelve, não sob o braço ou atrás das costas.",
+        en: "The belt should cross the shoulder and pelvis, not under the arm or behind the back.",
+        es: "El cinturón debe cruzar hombro y pelvis, no bajo el brazo ni detrás de la espalda."
+      },
+      {
+        pt: "Airbags não substituem cintos; trabalham em conjunto.",
+        en: "Airbags do not replace seatbelts; they work together.",
+        es: "Los airbags no sustituyen el cinturón; funcionan juntos."
+      },
+      {
+        pt: "Carga solta no habitáculo pode virar projétil em frenagem ou colisão.",
+        en: "Loose items in the cabin can become projectiles in braking or a crash.",
+        es: "Objetos sueltos pueden convertirse en proyectiles al frenar o chocar."
+      }
+    ],
+    mistakes: [
+      {
+        pt: "Colocar apenas o cinto abdominal para “mais conforto”.",
+        en: "Wearing only the lap part for “comfort”.",
+        es: "Usar solo la banda abdominal por “comodidad”."
+      },
+      {
+        pt: "Transportar criança no colo em vez de assento homologado.",
+        en: "Carrying a child on the lap instead of an approved seat.",
+        es: "Llevar un niño en brazos en lugar de asiento homologado."
+      }
+    ],
+    example: {
+      pt: "Antes de sair, você verifica se todos clicaram o cinto e se a cadeirinha está firme nos ISOFIX/cinto de três pontos.",
+      en: "Before leaving, you check everyone has clicked in and the child seat is firm on ISOFIX or the three-point belt.",
+      es: "Antes de salir, comprueba que todos abrochen el cinturón y la sillita esté firme en ISOFIX o cinturón de tres puntos."
+    },
+    quickCheck: [
+      {
+        pt: "Quem é responsável pelos cintos dos passageiros menores?",
+        en: "Who is responsible for under-age passengers’ seatbelts?",
+        es: "¿Quién es responsable de los cinturones de menores?"
+      },
+      {
+        pt: "Por que objetos soltos são perigosos?",
+        en: "Why are loose items dangerous?",
+        es: "¿Por qué los objetos sueltos son peligrosos?"
+      },
+      {
+        pt: "Airbag substitui cinto?",
+        en: "Does an airbag replace a seatbelt?",
+        es: "¿El airbag sustituye el cinturón?"
+      }
+    ],
+    source: {
+      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+    }
+  },
+  {
+    slug: "weather-conditions",
+    category: "Weather conditions",
+    icon: "weather-conditions",
+    title: {
+      pt: "Condições climáticas",
+      en: "Weather conditions",
+      es: "Condiciones climáticas"
+    },
+    summary: {
+      pt: "Chuva, neblina e baixa luz exigem mais distância de seguimento, velocidade menor e uso correto de faróis. Planeje paradas se a visibilidade for muito ruim.",
+      en: "Rain, fog and low light need more following distance, lower speed and correct use of lights. Plan to stop if visibility is very poor.",
+      es: "Lluvia, niebla y poca luz exigen más distancia, menos velocidad y luces correctas. Planee detenerse si la visibilidad es muy mala."
+    },
+    keyRules: [
+      {
+        pt: "Aumente a distância do veículo da frente em piso molhado.",
+        en: "Increase the gap to the vehicle ahead on wet roads.",
+        es: "Aumente la distancia con el vehículo de delante en mojado."
+      },
+      {
+        pt: "Em neblina densa, reduza e use luzes adequadas; evite luz alta se reflete de volta.",
+        en: "In dense fog, slow down and use appropriate lights; avoid high beam if it reflects back.",
+        es: "En niebla densa, reduzca y use luces adecuadas; evite largas si deslumbran."
+      },
+      {
+        pt: "Aquaplanagem: solte o acelerador suavemente e evite freadas bruscas.",
+        en: "Aquaplaning: ease off the accelerator smoothly and avoid harsh braking.",
+        es: "Aquaplaning: suelte el acelerador con suavidad y evite frenar en seco."
+      },
+      {
+        pt: "Para-brisa e limpadores limpos melhoram visibilidade — verifique antes de viajar.",
+        en: "Clean windscreen and wipers improve visibility — check before you drive.",
+        es: "Parabrisas y limpiaparabrisas limpios mejoran la visibilidad — revíselos antes."
+      }
+    ],
+    mistakes: [
+      {
+        pt: "Manter a mesma velocidade da estrada seca quando chove.",
+        en: "Keeping dry-road speed when it rains.",
+        es: "Mantener la velocidad de piso seco cuando llueve."
+      },
+      {
+        pt: "Seguir muito perto porque “só é chuva leve”.",
+        en: "Following too closely because “it is only light rain”.",
+        es: "Ir muy pegado porque “solo es lluvia ligera”."
+      }
+    ],
+    example: {
+      pt: "Começa a chover forte na rodovia. Você reduz, aumenta a distância, liga os faróis baixos e evita mudanças bruscas de direção.",
+      en: "Heavy rain starts on the freeway. You slow down, widen the gap, use low beam and avoid sudden steering.",
+      es: "Empieza a llover fuerte. Reduce, aumenta distancia, enciende cortas y evita giros bruscos."
+    },
+    quickCheck: [
+      {
+        pt: "Por que o piso molhado aumenta a distância de frenagem?",
+        en: "Why does a wet road increase braking distance?",
+        es: "¿Por qué el mojado aumenta la distancia de frenado?"
+      },
+      {
+        pt: "O que fazer se sentir aquaplanagem?",
+        en: "What should you do if you feel aquaplaning?",
+        es: "¿Qué hacer si nota aquaplaning?"
+      },
+      {
+        pt: "Faróis altos ajudam sempre na neblina?",
+        en: "Do high beams always help in fog?",
+        es: "¿Las largas siempre ayudan en niebla?"
+      }
+    ],
+    source: {
+      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
+      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+    }
+  },
+  {
+    slug: "demerit-points",
+    category: "Demerit points",
+    icon: "demerit-points",
+    title: {
+      pt: "Sistema de pontos (demerits)",
+      en: "Demerit points system",
+      es: "Sistema de puntos WA (demerits)"
+    },
+    summary: {
+      pt: "Infrações gravadas podem somar pontos (demerits) na sua licença WA. Acumular demais pode levar a suspensão ou outras medidas — consulte sempre o guia oficial.",
+      en: "Recorded offences can add demerit points to your WA licence. Too many can lead to suspension or other actions — always check the official guide.",
+      es: "Las infracciones pueden sumar puntos demerit en su licencia WA. Demasiados pueden llevar a suspensión — consulte la guía oficial."
+    },
+    keyRules: [
+      {
+        pt: "Pontos aplicam-se ao titular da licença e podem afetar seguro e permissão para dirigir.",
+        en: "Points attach to the licence holder and can affect insurance and permission to drive.",
+        es: "Los puntos van al titular y pueden afectar seguro y permiso para conducir."
+      },
+      {
+        pt: "Novatos e condutores profissionais podem ter limites ou regras diferentes.",
+        en: "Novice and professional drivers may have different thresholds or rules.",
+        es: "Novatos y conductores profesionales pueden tener umbrales distintos."
+      },
+      {
+        pt: "Respeitar limites de velocidade e álcool reduz risco de pontos e colisões.",
+        en: "Respecting speed and alcohol limits reduces points risk and crashes.",
+        es: "Respetar límites de velocidad y alcohol reduce puntos y siniestros."
+      },
+      {
+        pt: "Use apenas fontes oficiais WA para valores atualizados de infrações e pontos.",
+        en: "Use official WA sources only for up-to-date offence and point values.",
+        es: "Use solo fuentes oficiales WA para valores actualizados."
+      }
+    ],
+    mistakes: [
+      {
+        pt: "Achar que “só uma infração leve” não tem consequência acumulada.",
+        en: "Thinking “just one minor offence” has no cumulative consequence.",
+        es: "Pensar que “solo una multa leve” no acumula consecuencias."
+      },
+      {
+        pt: "Confundir regras de outros estados com WA.",
+        en: "Confusing other states’ rules with WA.",
+        es: "Confundir reglas de otros estados con WA."
+      }
+    ],
+    example: {
+      pt: "Você recebe uma notificação de multa com pontos. Verifica no site do Departamento de Transportes WA quantos pontos já tem e qual o período de acumulação.",
+      en: "You receive an infringement notice with points. You check the WA Department of Transport site for your current tally and accumulation period.",
+      es: "Recibe una multa con puntos. Consulta en el sitio de Transport WA su saldo y el período de acumulación."
+    },
+    quickCheck: [
+      {
+        pt: "Onde verificar pontos atualizados e regras de suspensão?",
+        en: "Where should you check current points and suspension rules?",
+        es: "¿Dónde comprobar puntos y suspensiones?"
+      },
+      {
+        pt: "Por que várias infrações “pequenas” ainda são sérias?",
+        en: "Why can several “small” offences still be serious?",
+        es: "¿Por qué varias infracciones “pequeñas” siguen siendo graves?"
+      },
+      {
+        pt: "Novatos têm os mesmos limites de pontos?",
+        en: "Do novices have the same point limits?",
+        es: "¿Los novatos tienen los mismos límites?"
+      }
+    ],
+    source: {
+      pt: "Resumo educativo; valores oficiais: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp",
+      en: "Educational summary; official details: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp",
+      es: "Resumen educativo; detalles oficiales: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp"
+    }
   }
 ];
 

@@ -37,7 +37,13 @@
       parking: "🅿️",
       alcohol: "🍺",
       emergency: "🚨",
-      safety: "🛡️"
+      safety: "🛡️",
+      roundabouts: "🔁",
+      "lane-changing": "🔀",
+      overtaking: "⏩",
+      seatbelts: "🔒",
+      "weather-conditions": "🌧️",
+      "demerit-points": "⚖️"
     };
     return map[icon] || "📘";
   }
