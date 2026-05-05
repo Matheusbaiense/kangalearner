@@ -24,3 +24,6 @@ apps/mobile/.expo/
 Thumbs.db
 *.log
 *.tsbuildinfo
+
+test-results/
+playwright-report/
