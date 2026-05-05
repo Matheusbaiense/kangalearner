@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { QUESTIONS } from "@kanga/core";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 type MockConfig = {
   state: string;
@@ -241,7 +242,11 @@ export default function MockTestSessionPage() {
         {reveal && isCurrentAnswered && (
           <div style={{ marginTop: 14, padding: 12, borderRadius: 12, background: "rgba(15, 23, 42, 0.04)" }}>
             <div style={{ fontWeight: 800, marginBottom: 6 }}>Explanation</div>
-            <div dangerouslySetInnerHTML={{ __html: (activeQuestion as any).exp?.en ?? "" }} />
+            <div
+              dangerouslySetInnerHTML={{
+                __html: sanitizeHtml((activeQuestion as any).exp?.en ?? ""),
+              }}
+            />
           </div>
         )}
 

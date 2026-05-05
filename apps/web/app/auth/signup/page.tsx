@@ -4,6 +4,7 @@ import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { safeNextPath } from "@/lib/auth/safeNextPath";
 
 function getAppOrigin(): string {
   const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
@@ -14,8 +15,7 @@ function getAppOrigin(): string {
 
 function SignupForm() {
   const searchParams = useSearchParams();
-  const redirect =
-    searchParams.get("redirect") || searchParams.get("next") || "/";
+  const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -44,8 +44,8 @@ function SignupForm() {
       password,
       options: {
         data: { full_name: name },
-        emailRedirectTo: `${origin}/auth/callback?redirect=${encodeURIComponent(redirect)}`,
-      },
+        emailRedirectTo: `${origin}/auth/callback?redirect=${encodeURIComponent(redirect)}`
+      }
     });
 
     if (signError) {
@@ -66,8 +66,8 @@ function SignupForm() {
     const { error: oauthError } = await supabase.auth.signInWithOAuth({
       provider: "google",
       options: {
-        redirectTo: `${origin}/auth/callback?redirect=${encodeURIComponent(redirect)}`,
-      },
+        redirectTo: `${origin}/auth/callback?redirect=${encodeURIComponent(redirect)}`
+      }
     });
     if (oauthError) {
       setError(oauthError.message);
@@ -88,8 +88,8 @@ function SignupForm() {
             </div>
             <h2>Check your email</h2>
             <p>
-              We sent a confirmation link to <strong>{email}</strong>. Click the link to activate your
-              account.
+              We sent a confirmation link to <strong>{email}</strong>. Click the link to activate
+              your account.
             </p>
           </div>
         </div>

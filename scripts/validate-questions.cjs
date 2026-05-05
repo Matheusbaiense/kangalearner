@@ -13,7 +13,7 @@ vm.createContext(sandbox);
 try {
   vm.runInContext(code, sandbox, {
     timeout: 3000,
-    breakOnSigint: true,
+    breakOnSigint: true
   });
 } catch (err) {
   if (err && err.code === "ERR_SCRIPT_EXECUTION_TIMEOUT") {
@@ -56,7 +56,8 @@ for (const q of QUESTIONS) {
 
   const exp = q.exp || {};
   ["en", "pt", "es"].forEach((lang) => {
-    if (!exp[lang] || String(exp[lang]).trim() === "") issues.push({ id: q.id, msg: `empty exp.${lang}` });
+    if (!exp[lang] || String(exp[lang]).trim() === "")
+      issues.push({ id: q.id, msg: `empty exp.${lang}` });
   });
 
   if (!Array.isArray(q.opts) || q.opts.length === 0) issues.push({ id: q.id, msg: "no options" });
@@ -65,7 +66,8 @@ for (const q of QUESTIONS) {
     for (const o of q.opts) {
       ["en", "pt", "es"].forEach((lang) => {
         const ot = o.t?.[lang];
-        if (!ot || String(ot).trim() === "") issues.push({ id: q.id, msg: `empty option ${o.l} t.${lang}` });
+        if (!ot || String(ot).trim() === "")
+          issues.push({ id: q.id, msg: `empty option ${o.l} t.${lang}` });
       });
       if (o.ok) okCount++;
     }
@@ -73,7 +75,25 @@ for (const q of QUESTIONS) {
     if (okCount > 1) issues.push({ id: q.id, msg: "multiple correct options" });
   }
 
-  if (!Array.isArray(q.states) || q.states.length === 0) issues.push({ id: q.id, msg: "missing states[]" });
+  if (!Array.isArray(q.states) || q.states.length === 0)
+    issues.push({ id: q.id, msg: "missing states[]" });
+}
+
+function looksUnsafeHtml(s) {
+  const lower = String(s || "").toLowerCase();
+  if (lower.includes("<script")) return true;
+  if (lower.includes("<iframe")) return true;
+  if (/\son\w+\s*=/.test(lower)) return true;
+  if (lower.includes("javascript:")) return true;
+  return false;
+}
+
+for (const q of QUESTIONS) {
+  const exp = q.exp || {};
+  ["en", "pt", "es"].forEach((lang) => {
+    const s = exp[lang];
+    if (s && looksUnsafeHtml(s)) issues.push({ id: q.id, msg: `unsafe html in exp.${lang}` });
+  });
 }
 
 if (issues.length) {
@@ -82,4 +102,6 @@ if (issues.length) {
   process.exit(1);
 }
 
-console.log(`OK: ${QUESTIONS.length} questions, ${CATEGORIES.length} categories — no issues found.`);
+console.log(
+  `OK: ${QUESTIONS.length} questions, ${CATEGORIES.length} categories — no issues found.`
+);

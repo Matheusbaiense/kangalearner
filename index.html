@@ -63,6 +63,7 @@
     <link rel="stylesheet" href="assets/css/base.css" />
     <link rel="stylesheet" href="assets/css/components.css" />
     <link rel="stylesheet" href="assets/css/quiz.css" />
+    <link rel="stylesheet" href="assets/css/pages.css" />
   </head>
   <body class="mode-en">
     <div class="page-root">
@@ -91,12 +92,13 @@
             <a href="#learn" data-i18n="nav.learn"
               ><span class="l-pt"></span><span class="l-en">Learn</span><span class="l-es"></span>
             </a>
-            <a href="#questoes" data-action="mode-all" data-i18n="nav.practice"
+            <a href="#practice" data-i18n="nav.practice"
               ><span class="l-pt"></span><span class="l-en">Practice</span><span class="l-es"></span
             ></a>
-            <a href="#questoes" data-action="mode-sim" data-i18n="nav.mockTest"
+            <a href="#mock" data-i18n="nav.mockTest"
               ><span class="l-pt"></span><span class="l-en">Mock Test</span><span class="l-es"></span
             ></a>
+            <a href="#progress" data-i18n="nav.progress"><span class="l-en">Progress</span></a>
             <a href="#topics" data-i18n="nav.roadRules"
               ><span class="l-pt"></span><span class="l-en">Road Rules</span><span class="l-es"></span
             ></a>
@@ -155,6 +157,7 @@
       </header>
 
       <main>
+        <div id="page-root">
         <section class="hero" id="home">
           <div class="hero-inner">
             <div class="hero-copy">
@@ -633,6 +636,8 @@
           </div>
         </section>
 
+        </div>
+        <div id="quiz-root" hidden>
         <section class="practice-section" id="questoes">
           <div class="container">
             <div class="practice-head">
@@ -775,6 +780,7 @@
             </div>
           </div>
         </section>
+        </div>
       </main>
 
       <footer class="site-footer" id="resources">
@@ -876,8 +882,15 @@
 
     <script defer src="assets/js/storage.js"></script>
     <script defer src="assets/js/locales.js"></script>
-    <script defer src="assets/js/data/questions.js"></script>
+    <script defer src="assets/js/data/questions-loader.js"></script>
     <script defer src="assets/js/data/learn-topics.js"></script>
+    <script defer src="assets/js/pages/home-page.js"></script>
+    <script defer src="assets/js/pages/learn-page.js"></script>
+    <script defer src="assets/js/pages/mock-page.js"></script>
+    <script defer src="assets/js/pages/progress-page.js"></script>
+    <script defer src="assets/js/pages/glossary-page.js"></script>
+    <script defer src="assets/js/pages/resources-page.js"></script>
+    <script defer src="assets/js/router.js"></script>
     <script defer src="assets/js/quiz-engine.js"></script>
     <script defer src="assets/js/learn-engine.js"></script>
     <script defer src="assets/js/app.js"></script>

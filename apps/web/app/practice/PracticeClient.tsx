@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CATEGORIES, QUESTIONS } from "@kanga/core";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 /* ── Local types (full shape of the question data) ── */
 type Lang = "en" | "pt" | "es";
@@ -85,7 +86,16 @@ function QuizCard({
 
       {q.sign && (
         <div className="sign-box">
-          <div dangerouslySetInnerHTML={{ __html: q.sign }} />
+          {/^\/?assets\//.test(q.sign) ? (
+            // `sign` is a path; render as an image (avoid HTML injection).
+            <img
+              src={q.sign}
+              alt={q.cap ? tx(q.cap, lang) : "Road sign"}
+              loading="lazy"
+              decoding="async"
+              style={{ maxWidth: "100%", height: "auto" }}
+            />
+          ) : null}
           {q.cap && <div className="img-cap">{tx(q.cap, lang)}</div>}
         </div>
       )}
@@ -116,7 +126,7 @@ function QuizCard({
       {state && expText && (
         <div className="answer show">
           <div className="alabel">✓ Answer</div>
-          <div className="atext" dangerouslySetInnerHTML={{ __html: expText }} />
+          <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
           {tipText && <div className="atip">💡 {tipText}</div>}
         </div>
       )}

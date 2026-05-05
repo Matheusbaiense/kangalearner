@@ -58,6 +58,9 @@
     setState(saved);
   }
 
+  // Expose for SPA router hydration (state cards are injected dynamically).
+  window.KL_initStateSelector = initStateSelector;
+
   function initReadingProgress() {
     const bar = document.getElementById("reading-progress");
     if (!bar) return;
@@ -123,6 +126,19 @@
     });
   }
 
+  function initContactForm() {
+    const form = document.getElementById("contact-form");
+    const feedback = document.getElementById("contact-feedback");
+    if (!form || !feedback) return;
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      feedback.textContent =
+        window.DW?.t?.("contact_not_live") ||
+        "Contact form isn’t available yet — please try again later.";
+      form.reset();
+    });
+  }
+
   document.addEventListener("DOMContentLoaded", () => {
     try {
       window.KangaStorage?.migrateFromLegacy?.();
@@ -144,14 +160,6 @@
     if (!initialLang) initialLang = "en";
 
     hydrateStaticI18n(initialLang);
-
-    try {
-      if (window.DW && typeof window.DW.init === "function") {
-        window.DW.init();
-      }
-    } catch (e) {
-      console.error("KangaLearner: DW.init failed", e);
-    }
 
     (function enableBackendSyncIfSession() {
       var hasSbSession = document.cookie.split(";").some(function (c) {
@@ -178,21 +186,8 @@
 
     hydrateStaticI18n(window.DW?.lang || initialLang);
 
-    if (window.KL_LEARN && typeof window.KL_LEARN.init === "function") {
-      window.KL_LEARN.init();
-    }
-
+    // Bind header state <select> immediately; router will re-call after page renders.
     initStateSelector();
-
-    document.querySelectorAll('[data-action="mode-sim"]').forEach((el) => {
-      el.addEventListener("click", () => setTimeout(() => window.DW?.setMode?.("sim"), 30));
-    });
-
-    document.querySelectorAll(".topic-card[data-cat]").forEach((card) => {
-      card.addEventListener("click", () =>
-        setTimeout(() => window.DW?.setCat?.(card.dataset.cat), 30)
-      );
-    });
 
     const ldTrigger = document.getElementById("ld-trigger");
     if (ldTrigger) {
@@ -205,5 +200,6 @@
     initReadingProgress();
     initHeaderScrollBehavior();
     initSubscribe();
+    initContactForm();
   });
 })();

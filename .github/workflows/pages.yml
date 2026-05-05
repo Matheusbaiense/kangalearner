@@ -6,6 +6,10 @@ name: Deploy Pages
 on:
   push:
     branches: ["main"]
+    paths:
+      - "index.html"
+      - "assets/**"
+      - "scripts/**"
   workflow_dispatch:
 
 permissions:
@@ -15,7 +19,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:

@@ -17,3 +17,14 @@ export function filterByState<T extends { states?: string[] }>(questions: T[], s
 }
 
 export { QUESTIONS, CATEGORIES } from "./data/questions";
+export {
+  LANGS,
+  validateQuestionsDataset,
+  type Category,
+  type DatasetIssue,
+  type Lang,
+  type LocalizedText,
+  type Question,
+  type QuestionOption,
+  type QuestionsDataset
+} from "./data/questionsSchema";

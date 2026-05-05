@@ -7,7 +7,7 @@ const PROTECTED_ROUTES = [
   "/dashboard",
   "/account",
   "/mock-test/session",
-  "/mock-test/results",
+  "/mock-test/results"
 ];
 
 /**
@@ -37,21 +37,22 @@ export async function middleware(request: NextRequest) {
         cookiesToSet.forEach(({ name, value, options }) =>
           supabaseResponse.cookies.set(name, value, options)
         );
-      },
-    },
+      }
+    }
   });
 
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
 
   const pathname = request.nextUrl.pathname;
+  const search = request.nextUrl.search;
 
   const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
   if (isProtected && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/auth/login";
-    url.searchParams.set("redirect", pathname);
+    url.searchParams.set("redirect", pathname + search);
     return NextResponse.redirect(url);
   }
 
@@ -64,5 +65,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|assets|api/webhooks).*)"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|assets|api/webhooks).*)"]
 };

@@ -21,6 +21,74 @@ function fisherYatesSlice(arr, k) {
   return a.slice(0, take);
 }
 
+function sanitizeExpHtml(html) {
+  const raw = String(html || "");
+  if (!raw) return "";
+  const allowedTags = new Set([
+    "A",
+    "B",
+    "BR",
+    "CODE",
+    "DIV",
+    "EM",
+    "I",
+    "LI",
+    "OL",
+    "P",
+    "SPAN",
+    "STRONG",
+    "UL"
+  ]);
+  const allowedAttrs = {
+    A: new Set(["href", "target", "rel"]),
+    DIV: new Set([]),
+    SPAN: new Set([]),
+    P: new Set([]),
+    STRONG: new Set([]),
+    EM: new Set([]),
+    B: new Set([]),
+    I: new Set([]),
+    CODE: new Set([]),
+    BR: new Set([]),
+    UL: new Set([]),
+    OL: new Set([]),
+    LI: new Set([])
+  };
+
+  const tpl = document.createElement("template");
+  tpl.innerHTML = raw;
+
+  const walker = document.createTreeWalker(tpl.content, NodeFilter.SHOW_ELEMENT, null);
+  const toRemove = [];
+  while (walker.nextNode()) {
+    const el = walker.currentNode;
+    const tag = el.tagName;
+    if (!allowedTags.has(tag)) {
+      toRemove.push(el);
+      continue;
+    }
+    Array.from(el.attributes).forEach((a) => {
+      const name = a.name.toLowerCase();
+      if (name.startsWith("on")) {
+        el.removeAttribute(a.name);
+        return;
+      }
+      const allow = allowedAttrs[tag] || new Set();
+      if (!allow.has(a.name)) el.removeAttribute(a.name);
+    });
+    if (tag === "A") {
+      const href = el.getAttribute("href") || "";
+      const ok = href.startsWith("https://") || href.startsWith("http://") || href.startsWith("/");
+      if (!ok) el.removeAttribute("href");
+      if (el.getAttribute("target") === "_blank") {
+        el.setAttribute("rel", "noopener noreferrer");
+      }
+    }
+  }
+  toRemove.forEach((n) => n.replaceWith(document.createTextNode(n.textContent || "")));
+  return tpl.innerHTML;
+}
+
 const DW = {
   lang: "en",
   mode: "all",
@@ -38,6 +106,41 @@ const DW = {
   simReviewMode: "all",
   visibleQuestionCount: 10,
   _questionsMap: null,
+  _questionsByState: null,
+  _questionsByCat: null,
+  _catMetaByKey: null,
+
+  async ensureDataset() {
+    if (window.KangaQuestions && typeof window.KangaQuestions.ensureLoaded === "function") {
+      await window.KangaQuestions.ensureLoaded();
+    }
+  },
+
+  getQuestions() {
+    return Array.isArray(window.QUESTIONS) ? window.QUESTIONS : [];
+  },
+
+  getCategories() {
+    return Array.isArray(window.CATEGORIES) ? window.CATEGORIES : [];
+  },
+
+  initIndexes() {
+    const qs = this.getQuestions();
+    const cats = this.getCategories();
+    this._questionsMap = new Map(qs.map((q) => [q.id, q]));
+    this._catMetaByKey = new Map(cats.map((c) => [c.key, c]));
+    this._questionsByState = new Map();
+    this._questionsByCat = new Map();
+    qs.forEach((q) => {
+      const states = Array.isArray(q.states) ? q.states : [];
+      states.forEach((st) => {
+        const prev = this._questionsByState.get(st) || [];
+        this._questionsByState.set(st, prev.concat([q]));
+      });
+      const prevCat = this._questionsByCat.get(q.cat) || [];
+      this._questionsByCat.set(q.cat, prevCat.concat([q]));
+    });
+  },
 
   syncLdTriggerAria() {
     const t = document.getElementById("ld-trigger");
@@ -131,8 +234,11 @@ const DW = {
   },
 
   getQuestionsForState() {
-    if (this.state === "AU") return QUESTIONS.slice();
-    return QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(this.state));
+    const qs = this.getQuestions();
+    if (this.state === "AU") return qs.slice();
+    const byState = this._questionsByState && this._questionsByState.get(this.state);
+    if (Array.isArray(byState)) return byState.slice();
+    return qs.filter((q) => Array.isArray(q.states) && q.states.includes(this.state));
   },
   clearProgress() {
     const key = this.storageStateKey();
@@ -208,7 +314,7 @@ const DW = {
     const safeL = this.filterLabelLang(this.lang);
     const allLabel = { pt: "Todas", en: "All", es: "Todas" }[safeL] || "All";
     let html = `<button class="fcat ${this.cat === "all" ? "active" : ""}" data-cat="all" type="button">${allLabel}</button>`;
-    CATEGORIES.forEach((c) => {
+    this.getCategories().forEach((c) => {
       const label = c.label[safeL] || c.label.en;
       html += `<button class="fcat ${this.cat === c.key ? "active" : ""}" data-cat="${c.key}" type="button">${c.icon} ${label}</button>`;
     });
@@ -273,7 +379,9 @@ const DW = {
     const unit = this.t("practice_questions_unit");
     let topicLabel = this.t("practice_topic_all");
     if (this.cat !== "all") {
-      const catData = CATEGORIES.find((c) => c.key === this.cat);
+      const catData = this._catMetaByKey
+        ? this._catMetaByKey.get(this.cat)
+        : this.getCategories().find((c) => c.key === this.cat);
       topicLabel = catData?.label?.[dLang] || this.cat;
     }
     let middle = topicLabel;
@@ -329,7 +437,9 @@ const DW = {
 
     let html = this.buildPracticeContextBanner(qs);
     Object.entries(groups).forEach(([cat, catQs]) => {
-      const catData = CATEGORIES.find((c) => c.key === cat);
+      const catData = this._catMetaByKey
+        ? this._catMetaByKey.get(cat)
+        : this.getCategories().find((c) => c.key === cat);
       const icon = catData?.icon || "📚";
       const label = catData?.label?.[dLang] || cat;
       html += `<div class="sec-head"><span class="sec-icon">${icon}</span><span>${label}</span></div>`;
@@ -393,8 +503,8 @@ const DW = {
       </div>`;
     });
 
-    const expMain = q.exp[dLang] || q.exp.en || "";
-    const expTrans = tLang ? q.exp[tLang] || "" : "";
+    const expMain = sanitizeExpHtml(q.exp[dLang] || q.exp.en || "");
+    const expTrans = tLang ? sanitizeExpHtml(q.exp[tLang] || "") : "";
     const expHtml = this.formatBilingualBlock(expMain, expTrans);
     const tip = q.tip ? q.tip[dLang] || q.tip.en || "" : "";
     const tipTrans = tLang && q.tip ? q.tip[tLang] || "" : "";
@@ -410,8 +520,14 @@ const DW = {
     ${tipHtml}
   </div>`;
 
+    const catMeta = this._catMetaByKey
+      ? this._catMetaByKey.get(q.cat)
+      : this.getCategories().find((c) => c.key === q.cat);
+    const catBadge = catMeta
+      ? `${catMeta.icon || ""} ${catMeta.label?.[dLang] || catMeta.label?.en || q.cat}`.trim()
+      : q.cat;
     return `<div class="qcard" id="${q.id}">
-  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${CATEGORIES.find((c) => c.key === q.cat)?.icon || ""} ${CATEGORIES.find((c) => c.key === q.cat)?.label?.[dLang] || q.cat}</span></div>
+  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${catBadge}</span></div>
   <div class="qtext">${qtextHtml}</div>
   ${signHtml}
   <div class="opts">${optsHtml}</div>
@@ -609,8 +725,8 @@ const DW = {
         } else {
           review = `<div class="answer-review correct"><strong>${this.t("sim_badge_ok")}</strong></div>`;
         }
-        const expMain = q.exp[dLang] || q.exp.en || "";
-        const expTrans = tLang ? q.exp[tLang] || "" : "";
+        const expMain = sanitizeExpHtml(q.exp[dLang] || q.exp.en || "");
+        const expTrans = tLang ? sanitizeExpHtml(q.exp[tLang] || "") : "";
         const expHtml = this.formatBilingualBlock(expMain, expTrans);
         const tip = q.tip ? q.tip[dLang] || q.tip.en || "" : "";
         const tipTrans = tLang && q.tip ? q.tip[tLang] || "" : "";
@@ -688,7 +804,7 @@ const DW = {
       .slice(0, 5);
     let chips = "";
     weakSorted.forEach(([cat]) => {
-      const catMeta = CATEGORIES.find((c) => c.key === cat);
+      const catMeta = this.getCategories().find((c) => c.key === cat);
       const chipLabel = catMeta
         ? `${catMeta.icon || ""} ${catMeta.label?.[dLang] || catMeta.label?.en || cat}`.trim()
         : cat;
@@ -715,9 +831,10 @@ const DW = {
     </div>`;
   },
 
-  init() {
+  async init() {
     this.load();
-    this._questionsMap = new Map((window.QUESTIONS || QUESTIONS).map((q) => [q.id, q]));
+    await this.ensureDataset();
+    this.initIndexes();
     const langEl = document.querySelector(`.ld-option[data-lang="${this.lang}"]`);
     if (langEl) {
       langEl.classList.add("active");

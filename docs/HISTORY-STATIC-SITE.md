@@ -2,7 +2,7 @@
 
 Linha do tempo de alterações relevantes no **site estático** da raiz (`index.html` + `assets/`) para manter contexto para QA e agentes de IA.
 
-| Data | Tema | Entregas principais |
-|------|------|---------------------|
+| Data           | Tema                                        | Entregas principais                                                                                                                                                                                                                                                                                                                          |
+| -------------- | ------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **2026-05-04** | Refresh visual (accent gold + heading font) | `assets/css/tokens.css` (novo `--font-heading`, `--radius-*`), `assets/css/base.css` (nav active + language arrow em `--gold`), `assets/css/components.css` (hero + botões em amber, `h1` Playfair Display italic), `assets/css/quiz.css` (newsletter/button + progress/focus em `--gold`), `index.html` (Google Fonts: `Playfair+Display`). |
-
+| **2026-05-05** | Lazy-load dataset + deploy hygiene          | `assets/js/data/questions-loader.js` (loader), `index.html` (troca `questions.js` por loader), `assets/js/quiz-engine.js` (init async + caches + sanitize exp), `.github/workflows/pages.yml` (paths filter + cancel-in-progress).                                                                                                           |

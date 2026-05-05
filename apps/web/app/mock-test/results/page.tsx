@@ -4,6 +4,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { QUESTIONS } from "@kanga/core";
+import { sanitizeHtml } from "@/lib/sanitizeHtml";
 
 type MockConfig = {
   state: string;
@@ -153,7 +154,7 @@ export default function MockTestResultsPage() {
                         {r.q?.exp?.en && (
                           <div style={{ marginTop: 10 }}>
                             <div style={{ fontWeight: 800, marginBottom: 6 }}>Explanation</div>
-                            <div dangerouslySetInnerHTML={{ __html: r.q.exp.en }} />
+                            <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(r.q.exp.en) }} />
                           </div>
                         )}
                       </div>

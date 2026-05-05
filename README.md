@@ -12,16 +12,21 @@ Protótipo e base de **prática para learner test** (Austrália): regras por est
 
 ## Stack (raiz — site estático)
 
-| Área | Arquivos principais |
-|------|---------------------|
-| Página | `index.html` |
-| Estilo | `assets/css/tokens.css`, `base.css`, `components.css`, `quiz.css` |
-| Lógica | `assets/js/app.js`, `quiz-engine.js`, `learn-engine.js` |
-| Dados | `assets/js/data/questions.js`, `learn-topics.js` |
-| Validação | `scripts/validate-questions.cjs` (`pnpm run validate:questions`) |
+| Área       | Arquivos principais                                                |
+| ---------- | ------------------------------------------------------------------ |
+| Página     | `index.html`                                                       |
+| Estilo     | `assets/css/tokens.css`, `base.css`, `components.css`, `quiz.css`  |
+| Lógica     | `assets/js/app.js`, `quiz-engine.js`, `learn-engine.js`            |
+| Dados      | `assets/js/data/questions.js`, `learn-topics.js`                   |
+| Validação  | `scripts/validate-questions.cjs` (`pnpm run validate:questions`)   |
 | Publicação | `.github/workflows/pages.yml` (artefato: `index.html` + `assets/`) |
 
 Fonte de verdade das questões para o estático: **`assets/js/data/questions.js`**. Sincronização opcional com core: `pnpm run gen:core-questions`.
+
+### Nota importante (dois produtos)
+
+- **GitHub Pages (hoje)** publica apenas o **site estático da raiz** (`index.html` + `assets/`). O workflow é `.github/workflows/pages.yml` e roda **somente** quando `index.html`/`assets/**` mudam.
+- **`apps/web` (Next.js)** é um produto separado (Supabase/Stripe/Auth) e **não** é publicado pelo Pages. Se/quando for publicado, deve ir para um host adequado (ex.: Vercel) e com variáveis de ambiente.
 
 ---
 
@@ -51,12 +56,12 @@ Conteúdo educacional **não substitui** material oficial dos órgãos de trâns
 
 ## Documentação para QA e agentes de IA
 
-| Ficheiro | Propósito |
-|----------|-----------|
-| [AGENTS.md](AGENTS.md) | Instruções curtas para IAs: que docs manter alinhados. |
+| Ficheiro                                                       | Propósito                                                             |
+| -------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [AGENTS.md](AGENTS.md)                                         | Instruções curtas para IAs: que docs manter alinhados.                |
 | [docs/MAINTENANCE-POLICY-IA.md](docs/MAINTENANCE-POLICY-IA.md) | **Padrão** checklist history / codemaps / backlog / planner / QA log. |
-| [docs/QA-EXECUTION-LOG.md](docs/QA-EXECUTION-LOG.md) | Log do que foi executado e resultados (build, lint, smoke). |
-| [docs/BACKLOG.md](docs/BACKLOG.md) | Itens pendentes priorizados. |
-| [docs/PLANNER-WEB-INFRA.md](docs/PLANNER-WEB-INFRA.md) | Plano faseado web (CI, auth, dados, deploy). |
-| [docs/HISTORY-INFRA-WEB.md](docs/HISTORY-INFRA-WEB.md) | Histórico compacto INFRA-4…10. |
-| [docs/CODEMAPS/](docs/CODEMAPS/) | Mapas de código (ex.: Next + Supabase + Stripe). |
+| [docs/QA-EXECUTION-LOG.md](docs/QA-EXECUTION-LOG.md)           | Log do que foi executado e resultados (build, lint, smoke).           |
+| [docs/BACKLOG.md](docs/BACKLOG.md)                             | Itens pendentes priorizados.                                          |
+| [docs/PLANNER-WEB-INFRA.md](docs/PLANNER-WEB-INFRA.md)         | Plano faseado web (CI, auth, dados, deploy).                          |
+| [docs/HISTORY-INFRA-WEB.md](docs/HISTORY-INFRA-WEB.md)         | Histórico compacto INFRA-4…10.                                        |
+| [docs/CODEMAPS/](docs/CODEMAPS/)                               | Mapas de código (ex.: Next + Supabase + Stripe).                      |
