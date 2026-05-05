@@ -11,8 +11,8 @@
       handbookUrl: "https://www.transport.wa.gov.au/licensing/road-rules-handbook.asp",
       testInfo: "https://www.transport.wa.gov.au/licensing/computer-theory-test.asp",
       authority_site: "https://www.transport.wa.gov.au",
-      available: true,
-    },
+      available: true
+    }
   ];
 
   window.KL_PAGES = window.KL_PAGES || {};
@@ -94,4 +94,3 @@
     );
   };
 })();
-

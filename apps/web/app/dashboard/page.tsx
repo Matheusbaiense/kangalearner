@@ -22,7 +22,9 @@ interface SessionRow {
 
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-AU", {
-    day: "numeric", month: "short", year: "numeric"
+    day: "numeric",
+    month: "short",
+    year: "numeric"
   });
 }
 
@@ -46,7 +48,9 @@ export default async function DashboardPage() {
     redirect("/auth/login?redirect=/dashboard");
   }
 
-  const { data: { user } } = await supabase!.auth.getUser();
+  const {
+    data: { user }
+  } = await supabase!.auth.getUser();
   if (!user) redirect("/auth/login?redirect=/dashboard");
 
   const displayName =
@@ -56,18 +60,18 @@ export default async function DashboardPage() {
     "there";
 
   /* ── Fetch question attempts ── */
-  const { data: attempts } = await supabase!
+  const { data: attempts } = (await supabase!
     .from("question_attempts")
     .select("category, is_correct, created_at")
-    .eq("user_id", user.id) as { data: AttemptRow[] | null };
+    .eq("user_id", user.id)) as { data: AttemptRow[] | null };
 
   /* ── Fetch last 5 mock sessions ── */
-  const { data: sessions } = await supabase!
+  const { data: sessions } = (await supabase!
     .from("mock_sessions")
     .select("id, state, score, total, created_at")
     .eq("user_id", user.id)
     .order("created_at", { ascending: false })
-    .limit(5) as { data: SessionRow[] | null };
+    .limit(5)) as { data: SessionRow[] | null };
 
   /* ── Aggregate stats ── */
   const allAttempts = attempts ?? [];
@@ -109,23 +113,28 @@ export default async function DashboardPage() {
     .slice(0, 3);
 
   const allSessions = sessions ?? [];
-  const bestSession = allSessions.length > 0
-    ? allSessions.reduce((best, s) => pct(s.score, s.total) > pct(best.score, best.total) ? s : best)
-    : null;
+  const bestSession =
+    allSessions.length > 0
+      ? allSessions.reduce((best, s) =>
+          pct(s.score, s.total) > pct(best.score, best.total) ? s : best
+        )
+      : null;
 
   /* ── Score colour ── */
   const scoreColor =
-    totalAnswered === 0 ? "var(--ink)" :
-    overallPct >= 80 ? "var(--green)" :
-    overallPct >= 60 ? "var(--orange)" :
-    "var(--red)";
+    totalAnswered === 0
+      ? "var(--ink)"
+      : overallPct >= 80
+        ? "var(--green)"
+        : overallPct >= 60
+          ? "var(--orange)"
+          : "var(--red)";
 
   return (
     <>
       <MigrateLocalProgress />
       <div className="app-page">
         <div className="app-container app-section">
-
           {/* Header */}
           <div className="page-header">
             <h1 className="page-title">Hello, {displayName} 👋</h1>
@@ -148,7 +157,11 @@ export default async function DashboardPage() {
                 {totalAnswered === 0 ? "—" : `${overallPct}%`}
               </div>
               <div className="stat-card-sub">
-                {totalAnswered === 0 ? "No attempts yet" : overallPct >= 80 ? "Above pass threshold ✓" : "Target: 80%"}
+                {totalAnswered === 0
+                  ? "No attempts yet"
+                  : overallPct >= 80
+                    ? "Above pass threshold ✓"
+                    : "Target: 80%"}
               </div>
             </div>
 
@@ -172,13 +185,20 @@ export default async function DashboardPage() {
               <div className="cat-row" style={{ alignItems: "center" }}>
                 <span className="cat-row-icon">📈</span>
                 <span className="cat-row-name">Accuracy</span>
-                <span className="cat-row-frac">{last7Correct}/{last7Answered}</span>
+                <span className="cat-row-frac">
+                  {last7Correct}/{last7Answered}
+                </span>
                 <div className="cat-row-track" aria-label="Last 7 days accuracy">
                   <div
                     className="cat-row-fill"
                     style={{
                       width: `${Math.round(clamp01(last7Correct / Math.max(last7Answered, 1)) * 100)}%`,
-                      background: last7Pct >= 80 ? "var(--green)" : last7Pct >= 60 ? "var(--orange)" : "var(--red)"
+                      background:
+                        last7Pct >= 80
+                          ? "var(--green)"
+                          : last7Pct >= 60
+                            ? "var(--orange)"
+                            : "var(--red)"
                     }}
                   />
                 </div>
@@ -188,7 +208,9 @@ export default async function DashboardPage() {
 
           {/* Quick actions */}
           <div style={{ display: "flex", gap: 10, marginBottom: 32, flexWrap: "wrap" }}>
-            <Link href="/practice" className="dash-cta">Continue practice →</Link>
+            <Link href="/practice" className="dash-cta">
+              Continue practice →
+            </Link>
             <Link href="/mock-test" className="btn-outline" style={{ textDecoration: "none" }}>
               Take mock test
             </Link>
@@ -210,13 +232,16 @@ export default async function DashboardPage() {
                     <div className="cat-row" key={cat}>
                       <span className="cat-row-icon">{catData?.icon ?? "📚"}</span>
                       <span className="cat-row-name">{cat}</span>
-                      <span className="cat-row-frac">{s.correct}/{s.total}</span>
+                      <span className="cat-row-frac">
+                        {s.correct}/{s.total}
+                      </span>
                       <div className="cat-row-track">
                         <div
                           className="cat-row-fill"
                           style={{
                             width: `${cp}%`,
-                            background: cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                            background:
+                              cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
                           }}
                         />
                       </div>
@@ -250,13 +275,16 @@ export default async function DashboardPage() {
                     <div className="cat-row" key={cat}>
                       <span className="cat-row-icon">{catData?.icon ?? "📚"}</span>
                       <span className="cat-row-name">{cat}</span>
-                      <span className="cat-row-frac">{s.correct}/{s.total}</span>
+                      <span className="cat-row-frac">
+                        {s.correct}/{s.total}
+                      </span>
                       <div className="cat-row-track">
                         <div
                           className="cat-row-fill"
                           style={{
                             width: `${cp}%`,
-                            background: cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                            background:
+                              cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
                           }}
                         />
                       </div>
@@ -292,11 +320,16 @@ export default async function DashboardPage() {
                   const pass = p >= 80;
                   return (
                     <div className="session-row" key={s.id}>
-                      <div className="session-score" style={{ color: pass ? "var(--green)" : "var(--red)" }}>
+                      <div
+                        className="session-score"
+                        style={{ color: pass ? "var(--green)" : "var(--red)" }}
+                      >
                         {s.score}/{s.total}
                       </div>
                       <div className="session-info">
-                        <div className="session-state">{s.state} · {p}%</div>
+                        <div className="session-state">
+                          {s.state} · {p}%
+                        </div>
                         <div className="session-date">{formatDate(s.created_at)}</div>
                       </div>
                       <span className={`badge ${pass ? "badge-pass" : "badge-fail"}`}>
@@ -312,7 +345,10 @@ export default async function DashboardPage() {
           {/* Sign-out note */}
           <p style={{ fontSize: ".75rem", color: "var(--muted)", marginTop: 32 }}>
             Signed in as {user.email} ·{" "}
-            <Link href="/auth/login?redirect=/dashboard" style={{ color: "var(--muted)", textDecoration: "underline" }}>
+            <Link
+              href="/auth/login?redirect=/dashboard"
+              style={{ color: "var(--muted)", textDecoration: "underline" }}
+            >
               sign out from nav
             </Link>
           </p>

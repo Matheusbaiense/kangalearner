@@ -4,14 +4,14 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 
 ## P0 — Integridade / CI
 
-- [x] **Monorepo `pnpm run lint` com `@kanga/mobile`**: script `lint` do mobile alterado para `tsc --noEmit` (evita `expo lint` a instalar ESLint e falhar com `ERR_PNPM_UNEXPECTED_STORE`). *Follow-up:* introduzir ESLint Expo explícito quando a equipa quiser lint de estilo no app nativo.
+- [x] **Monorepo `pnpm run lint` com `@kanga/mobile`**: script `lint` do mobile alterado para `tsc --noEmit` (evita `expo lint` a instalar ESLint e falhar com `ERR_PNPM_UNEXPECTED_STORE`). _Follow-up:_ introduzir ESLint Expo explícito quando a equipa quiser lint de estilo no app nativo.
 - [x] **Security hotfix (web)**: open redirect em `/login`/`/auth/login`; bloquear alteração de `profiles.role`; headers de segurança; erros de DB não devem vazar schema.
 
 ## P1 — Web (`apps/web`)
 
 - [x] **PracticeClient** — `syncAttempt` em `useCallback` + dependências de `pick` corrigidas (warning `exhaustive-deps`).
 - [x] **`themeColor`** — migrado para `export const viewport` em `app/layout.tsx` (Next 15+).
-- [ ] **Rotas duplicadas de auth**: `/login` (AuthCard) ainda existe para compat; fluxos server (`dashboard`, `account`) redirecionam para **`/auth/login`**. *Opcional:* redirect 308 de `/login` → `/auth/login` ou unificar UI.
+- [ ] **Rotas duplicadas de auth**: `/login` (AuthCard) ainda existe para compat; fluxos server (`dashboard`, `account`) redirecionam para **`/auth/login`**. _Opcional:_ redirect 308 de `/login` → `/auth/login` ou unificar UI.
 - [x] **`/terms` e `/privacy`**: páginas placeholder em `app/terms/page.tsx` e `app/privacy/page.tsx` (substituir por texto jurídico antes de lançamento público).
 - [ ] **Novas rotas placeholder**: implementar conteúdo real e/ou “coming soon” consistente para `/mock-test/*`, `/learn/*`, `/resources` (hoje são scaffolds).
 

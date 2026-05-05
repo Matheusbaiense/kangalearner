@@ -7,7 +7,7 @@ if (!process.env.STRIPE_SECRET_KEY) {
 // Alinhado ao tipo `LatestApiVersion` do pacote `stripe` instalado (ex.: ^17 → 2025-02-24.acacia).
 export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
   apiVersion: "2025-02-24.acacia",
-  typescript: true,
+  typescript: true
 });
 
 /**
@@ -27,8 +27,8 @@ export async function createStripeCustomer(params: {
     metadata: {
       supabase_user_id: params.userId,
       country: params.country || "AU",
-      source: "kangalearner",
-    },
+      source: "kangalearner"
+    }
   });
   return customer.id;
 }
@@ -43,5 +43,5 @@ export const XP_VALUES = {
   LEARN_UNIT_COMPLETE: 25,
   MOCK_PASS: 50,
   LEARN_ALL_COMPLETE: 100,
-  PERFECT_MOCK: 75,
+  PERFECT_MOCK: 75
 } as const;

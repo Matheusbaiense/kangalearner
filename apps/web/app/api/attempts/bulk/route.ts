@@ -25,7 +25,9 @@ export async function POST(request: NextRequest) {
         return request.cookies.getAll();
       },
       setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+        cookiesToSet.forEach(({ name, value, options }) =>
+          response.cookies.set(name, value, options)
+        );
       }
     }
   });
@@ -77,7 +79,11 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("attempts/bulk: upsert failed", { code: error.code, details: error.details, hint: error.hint });
+    console.error("attempts/bulk: upsert failed", {
+      code: error.code,
+      details: error.details,
+      hint: error.hint
+    });
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
 

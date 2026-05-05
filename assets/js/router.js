@@ -35,7 +35,7 @@
     },
     contact: function (p) {
       return window.KL_PAGES.contact(p);
-    },
+    }
   };
 
   // Quiz routes use #quiz-root directly (never destroyed)
@@ -45,7 +45,7 @@
   window.KL_ROUTER = {
     go: function (hash) {
       location.hash = hash;
-    },
+    }
   };
   window.KL_PAGES = window.KL_PAGES || {};
 
@@ -92,7 +92,8 @@
       if (scrollTarget) {
         setTimeout(function () {
           var el = document.getElementById(scrollTarget);
-          if (el && typeof el.scrollIntoView === "function") el.scrollIntoView({ block: "start", behavior: "smooth" });
+          if (el && typeof el.scrollIntoView === "function")
+            el.scrollIntoView({ block: "start", behavior: "smooth" });
         }, 0);
       }
     }
@@ -190,7 +191,8 @@
 
   function persistPreferredLang(lang) {
     try {
-      if (window.KangaStorage && typeof window.KangaStorage.setLang === "function") window.KangaStorage.setLang(lang);
+      if (window.KangaStorage && typeof window.KangaStorage.setLang === "function")
+        window.KangaStorage.setLang(lang);
       else localStorage.setItem("kl-lang", lang);
     } catch (e) {}
   }
@@ -206,7 +208,8 @@
         for (var j = 0; j < nodes.length; j++) {
           var node = nodes[j];
           var isFinal =
-            node.id === "sim-final-panel" || (node.querySelector && node.querySelector("#sim-final-panel"));
+            node.id === "sim-final-panel" ||
+            (node.querySelector && node.querySelector("#sim-final-panel"));
           if (isFinal) {
             saveMockResults();
             showMockResultsLink();
@@ -242,7 +245,7 @@
       pct: total > 0 ? Math.round((correct / total) * 100) : 0,
       byCategory: byCategory,
       date: new Date().toISOString(),
-      state: (window.KangaStorage && window.KangaStorage.getState()) || "WA",
+      state: (window.KangaStorage && window.KangaStorage.getState()) || "WA"
     };
 
     try {
@@ -266,7 +269,8 @@
     var normalised = page === "mock-run" ? "mock" : page;
     document.querySelectorAll(".main-nav a[href]").forEach(function (a) {
       var href = (a.getAttribute("href") || "").replace("#", "");
-      var active = href === normalised || (normalised === "home" && (href === "home" || href === ""));
+      var active =
+        href === normalised || (normalised === "home" && (href === "home" || href === ""));
       a.classList.toggle("active", active);
     });
   }
@@ -329,4 +333,3 @@
 
   document.addEventListener("DOMContentLoaded", init);
 })();
-

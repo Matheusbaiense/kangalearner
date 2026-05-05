@@ -110,14 +110,28 @@ export default function MockTestResultsPage() {
           </>
         ) : (
           <>
-            <div className="mock-meta" style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-              <span>{session.cfg.state} · {session.cfg.mode === "exam" ? "Exam mode" : "Practice mock"}</span>
+            <div
+              className="mock-meta"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 12,
+                flexWrap: "wrap"
+              }}
+            >
+              <span>
+                {session.cfg.state} · {session.cfg.mode === "exam" ? "Exam mode" : "Practice mock"}
+              </span>
               <span>{scored.pct}%</span>
             </div>
 
             <h1 style={{ marginTop: 10 }}>Your result</h1>
             <p className="mock-meta">
-              Score: <strong>{scored.score}/{scored.total}</strong> · {scored.pass ? "Pass ✓" : "Fail"}
+              Score:{" "}
+              <strong>
+                {scored.score}/{scored.total}
+              </strong>{" "}
+              · {scored.pass ? "Pass ✓" : "Fail"}
             </p>
 
             <div style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap" }}>
@@ -139,16 +153,29 @@ export default function MockTestResultsPage() {
                     .filter((r) => !r.ok)
                     .slice(0, 10)
                     .map((r) => (
-                      <div key={r.qid} style={{ padding: 12, borderRadius: 12, background: "rgba(15, 23, 42, 0.04)" }}>
-                        <div style={{ fontWeight: 800, marginBottom: 6 }}>{r.q?.q?.en ?? r.qid}</div>
+                      <div
+                        key={r.qid}
+                        style={{
+                          padding: 12,
+                          borderRadius: 12,
+                          background: "rgba(15, 23, 42, 0.04)"
+                        }}
+                      >
+                        <div style={{ fontWeight: 800, marginBottom: 6 }}>
+                          {r.q?.q?.en ?? r.qid}
+                        </div>
                         <div style={{ display: "grid", gap: 4, fontSize: ".95rem" }}>
                           <div>
                             Your answer: <strong>{r.chosen ?? "—"}</strong>{" "}
-                            <span style={{ opacity: 0.8 }}>{r.q?.opts?.find((o: any) => o?.l === r.chosen)?.t?.en ?? ""}</span>
+                            <span style={{ opacity: 0.8 }}>
+                              {r.q?.opts?.find((o: any) => o?.l === r.chosen)?.t?.en ?? ""}
+                            </span>
                           </div>
                           <div>
                             Correct: <strong>{r.correct ?? "—"}</strong>{" "}
-                            <span style={{ opacity: 0.8 }}>{r.q?.opts?.find((o: any) => o?.l === r.correct)?.t?.en ?? ""}</span>
+                            <span style={{ opacity: 0.8 }}>
+                              {r.q?.opts?.find((o: any) => o?.l === r.correct)?.t?.en ?? ""}
+                            </span>
                           </div>
                         </div>
                         {r.q?.exp?.en && (

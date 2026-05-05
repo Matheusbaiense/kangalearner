@@ -37,7 +37,7 @@
       parking: "🅿️",
       alcohol: "🍺",
       emergency: "🚨",
-      safety: "🛡️",
+      safety: "🛡️"
     };
     return map[icon] || "📘";
   }
@@ -171,4 +171,3 @@
     );
   };
 })();
-

@@ -74,7 +74,9 @@
   background: var(--paper, #fff);
   text-decoration: none;
   color: inherit;
-  transition: box-shadow 0.15s, transform 0.15s;
+  transition:
+    box-shadow 0.15s,
+    transform 0.15s;
 }
 .learn-card:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -703,4 +705,3 @@
     grid-template-columns: 1fr;
   }
 }
-

@@ -16,4 +16,3 @@ export function safeNextPath(raw: string | null, fallback = "/account"): string 
     return fallback;
   }
 }
-

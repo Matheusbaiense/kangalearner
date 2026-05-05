@@ -30,4 +30,3 @@ const content =
 fs.writeFileSync(outPath, content, "utf8");
 console.log(`Wrote ${outPath}`);
 console.log(`Questions: ${QUESTIONS.length}, Categories: ${CATEGORIES.length}`);
-

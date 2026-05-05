@@ -2,17 +2,17 @@
 
 Run each file **in numeric order** in **Supabase Dashboard → SQL Editor**. Run one migration at a time and confirm success before the next.
 
-| #   | File                               | Purpose                                      |
-| --- | ---------------------------------- | -------------------------------------------- |
-| 001 | `001_update_updated_at.sql`        | `update_updated_at()` trigger helper         |
-| 002 | `002_profiles.sql`                 | `profiles` + RLS                            |
-| 003 | `003_on_auth_user_created.sql`     | Auto-create profile on `auth.users` insert   |
-| 004 | `004_question_attempts.sql`       | `question_attempts` + indexes + RLS          |
-| 005 | `005_mock_sessions.sql`           | `mock_sessions` + RLS                        |
-| 006 | `006_user_category_stats.sql`     | Category stats + `upsert_category_stat()`    |
-| 007 | `007_gamification.sql`            | XP, badges, levels                          |
-| 008 | `008_saved_questions.sql`         | Saved / bookmarked questions               |
-| 009 | `009_marketplace_scaffold.sql`    | Marketplace tables (schema only)           |
+| #   | File                           | Purpose                                    |
+| --- | ------------------------------ | ------------------------------------------ |
+| 001 | `001_update_updated_at.sql`    | `update_updated_at()` trigger helper       |
+| 002 | `002_profiles.sql`             | `profiles` + RLS                           |
+| 003 | `003_on_auth_user_created.sql` | Auto-create profile on `auth.users` insert |
+| 004 | `004_question_attempts.sql`    | `question_attempts` + indexes + RLS        |
+| 005 | `005_mock_sessions.sql`        | `mock_sessions` + RLS                      |
+| 006 | `006_user_category_stats.sql`  | Category stats + `upsert_category_stat()`  |
+| 007 | `007_gamification.sql`         | XP, badges, levels                         |
+| 008 | `008_saved_questions.sql`      | Saved / bookmarked questions               |
+| 009 | `009_marketplace_scaffold.sql` | Marketplace tables (schema only)           |
 
 ## After running all migrations
 

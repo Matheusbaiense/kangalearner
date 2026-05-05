@@ -4,14 +4,14 @@
 
 ## Checklist por entrega
 
-| Artefacto | Quando atualizar | Conteúdo típico |
-|-----------|------------------|-----------------|
-| `docs/HISTORY-INFRA-WEB.md` (ou secção equivalente) | Qualquer INFRA, migração DB, mudança de auth/deploy | Linha na tabela: ID, tema, ficheiros tocados |
-| `docs/CODEMAPS/*.md` | Novos módulos, rotas, ou fluxos (Supabase, Stripe, middleware) | Árvore de paths, fluxos, env vars |
-| `docs/BACKLOG.md` | Fechar itens feitos; acrescentar novos gaps | P0/P1/P2 + QA manual se aplicável |
-| `docs/PLANNER-WEB-INFRA.md` (ou planner do domínio) | Mudança de fase ou prioridades | Ajustar fases e “estado atual” |
-| `docs/QA-EXECUTION-LOG.md` | Após correr build/lint/testes relevantes | Comando, resultado, data, notas |
-| `README.md` | Novos comandos, links críticos, ou secção de docs | Tabela “Documentação para QA e IA” |
+| Artefacto                                           | Quando atualizar                                               | Conteúdo típico                              |
+| --------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------- |
+| `docs/HISTORY-INFRA-WEB.md` (ou secção equivalente) | Qualquer INFRA, migração DB, mudança de auth/deploy            | Linha na tabela: ID, tema, ficheiros tocados |
+| `docs/CODEMAPS/*.md`                                | Novos módulos, rotas, ou fluxos (Supabase, Stripe, middleware) | Árvore de paths, fluxos, env vars            |
+| `docs/BACKLOG.md`                                   | Fechar itens feitos; acrescentar novos gaps                    | P0/P1/P2 + QA manual se aplicável            |
+| `docs/PLANNER-WEB-INFRA.md` (ou planner do domínio) | Mudança de fase ou prioridades                                 | Ajustar fases e “estado atual”               |
+| `docs/QA-EXECUTION-LOG.md`                          | Após correr build/lint/testes relevantes                       | Comando, resultado, data, notas              |
+| `README.md`                                         | Novos comandos, links críticos, ou secção de docs              | Tabela “Documentação para QA e IA”           |
 
 ## O que não fazer
 

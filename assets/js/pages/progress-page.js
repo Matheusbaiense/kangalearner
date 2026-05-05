@@ -48,7 +48,7 @@
       '<section class="page-section progress-page"><div class="container">' +
       '<div class="page-header"><p class="page-kicker">' +
       currentState +
-      " — Your progress</p><h1 class=\"page-title\">Progress Tracker</h1></div>" +
+      ' — Your progress</p><h1 class="page-title">Progress Tracker</h1></div>' +
       emptyState +
       (total > 0
         ? '<div class="progress-summary">' +
@@ -70,4 +70,3 @@
     );
   };
 })();
-

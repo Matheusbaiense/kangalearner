@@ -64,18 +64,24 @@ export default function MockTestSessionPage() {
     if (!parsed) return null;
     const state = typeof parsed.state === "string" ? parsed.state : "WA";
     const mode = parsed.mode === "exam" ? "exam" : "practice";
-    const questions = Number.isFinite(parsed.questions) ? Math.max(1, Math.min(50, parsed.questions)) : 30;
+    const questions = Number.isFinite(parsed.questions)
+      ? Math.max(1, Math.min(50, parsed.questions))
+      : 30;
     return { state, mode, questions };
   }, [raw]);
 
-  const session = useMemo<MockSession | null>(() => safeParseJson<MockSession>(sessionRaw), [sessionRaw]);
+  const session = useMemo<MockSession | null>(
+    () => safeParseJson<MockSession>(sessionRaw),
+    [sessionRaw]
+  );
 
   const questionPool = useMemo(() => {
     if (!cfg) return [];
     const state = cfg.state;
-    const pool = state === "AU"
-      ? QUESTIONS.slice()
-      : QUESTIONS.filter((q: any) => Array.isArray(q.states) && q.states.includes(state));
+    const pool =
+      state === "AU"
+        ? QUESTIONS.slice()
+        : QUESTIONS.filter((q: any) => Array.isArray(q.states) && q.states.includes(state));
     return pool;
   }, [cfg]);
 
@@ -95,7 +101,10 @@ export default function MockTestSessionPage() {
     if (!cfg) return;
     if (session) return;
     if (questionPool.length === 0) return;
-    const ids = fisherYatesSlice(questionPool.map((q: any) => q.id), cfg.questions);
+    const ids = fisherYatesSlice(
+      questionPool.map((q: any) => q.id),
+      cfg.questions
+    );
     const s: MockSession = {
       cfg,
       startedAtIso: new Date().toISOString(),
@@ -176,7 +185,10 @@ export default function MockTestSessionPage() {
       <main className="container section-pad">
         <div className="mock-setup-card">
           <h1>Preparing your session…</h1>
-          <p className="mock-meta">{cfg.state} · {cfg.questions} questions · {cfg.mode === "exam" ? "Exam mode" : "Practice mock"}</p>
+          <p className="mock-meta">
+            {cfg.state} · {cfg.questions} questions ·{" "}
+            {cfg.mode === "exam" ? "Exam mode" : "Practice mock"}
+          </p>
         </div>
       </main>
     );
@@ -204,12 +216,21 @@ export default function MockTestSessionPage() {
   return (
     <main className="container section-pad">
       <div className="mock-setup-card">
-        <div className="mock-meta" style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-          <span>{cfg.state} · {total} questions · {cfg.mode === "exam" ? "Exam mode" : "Practice mock"}</span>
-          <span aria-live="polite">{Math.min(answeredCount + 1, total)} / {total}</span>
+        <div
+          className="mock-meta"
+          style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}
+        >
+          <span>
+            {cfg.state} · {total} questions · {cfg.mode === "exam" ? "Exam mode" : "Practice mock"}
+          </span>
+          <span aria-live="polite">
+            {Math.min(answeredCount + 1, total)} / {total}
+          </span>
         </div>
 
-        <h1 style={{ marginTop: 10, marginBottom: 10 }}>{(activeQuestion as any).q?.en ?? "Question"}</h1>
+        <h1 style={{ marginTop: 10, marginBottom: 10 }}>
+          {(activeQuestion as any).q?.en ?? "Question"}
+        </h1>
 
         <div style={{ display: "grid", gap: 10, marginTop: 14 }}>
           {((activeQuestion as any).opts ?? []).map((o: any) => {
@@ -219,7 +240,13 @@ export default function MockTestSessionPage() {
             const className =
               "mock-mode-option" +
               (isChosen ? " active" : "") +
-              (showResult ? (isCorrect ? " mock-opt-correct" : isChosen ? " mock-opt-wrong" : "") : "");
+              (showResult
+                ? isCorrect
+                  ? " mock-opt-correct"
+                  : isChosen
+                    ? " mock-opt-wrong"
+                    : ""
+                : "");
             return (
               <button
                 key={o.l}
@@ -231,8 +258,14 @@ export default function MockTestSessionPage() {
                 <span className="mode-icon">{o.l}</span>
                 <div>
                   <strong>{o.t?.en ?? ""}</strong>
-                  {showResult && isCorrect && <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>Correct</span>}
-                  {showResult && isChosen && !isCorrect && <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>Your answer</span>}
+                  {showResult && isCorrect && (
+                    <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>Correct</span>
+                  )}
+                  {showResult && isChosen && !isCorrect && (
+                    <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>
+                      Your answer
+                    </span>
+                  )}
                 </div>
               </button>
             );
@@ -240,11 +273,18 @@ export default function MockTestSessionPage() {
         </div>
 
         {reveal && isCurrentAnswered && (
-          <div style={{ marginTop: 14, padding: 12, borderRadius: 12, background: "rgba(15, 23, 42, 0.04)" }}>
+          <div
+            style={{
+              marginTop: 14,
+              padding: 12,
+              borderRadius: 12,
+              background: "rgba(15, 23, 42, 0.04)"
+            }}
+          >
             <div style={{ fontWeight: 800, marginBottom: 6 }}>Explanation</div>
             <div
               dangerouslySetInnerHTML={{
-                __html: sanitizeHtml((activeQuestion as any).exp?.en ?? ""),
+                __html: sanitizeHtml((activeQuestion as any).exp?.en ?? "")
               }}
             />
           </div>
@@ -254,7 +294,12 @@ export default function MockTestSessionPage() {
           <Link href="/mock-test" className="btn btn-secondary">
             Exit
           </Link>
-          <button className="btn btn-primary btn-full" type="button" onClick={nextStep} disabled={!isCurrentAnswered}>
+          <button
+            className="btn btn-primary btn-full"
+            type="button"
+            onClick={nextStep}
+            disabled={!isCurrentAnswered}
+          >
             {activeIndex + 1 >= total ? "Finish →" : "Next →"}
           </button>
         </div>
@@ -262,4 +307,3 @@ export default function MockTestSessionPage() {
     </main>
   );
 }
-

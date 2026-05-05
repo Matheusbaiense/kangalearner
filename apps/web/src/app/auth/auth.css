@@ -73,7 +73,9 @@
   font-weight: 700;
   font-size: 0.9rem;
   cursor: pointer;
-  transition: background 0.15s, border-color 0.15s;
+  transition:
+    background 0.15s,
+    border-color 0.15s;
 }
 
 .auth-route .btn-google:hover:not(:disabled) {
@@ -156,7 +158,9 @@
   font-size: 0.9rem;
   color: var(--ink);
   background: white;
-  transition: border-color 0.15s, box-shadow 0.15s;
+  transition:
+    border-color 0.15s,
+    box-shadow 0.15s;
   width: 100%;
   outline: none;
 }

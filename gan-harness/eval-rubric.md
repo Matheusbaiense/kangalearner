@@ -8,27 +8,28 @@ Each delivery (PR) is evaluated on 4 axes. Score 1–5 per axis.
 
 ### 1. Completeness (weight: 0.35)
 
-| Score | Criteria |
-|---|---|
-| 5 | All acceptance criteria met, edge cases handled |
-| 4 | All acceptance criteria met, minor edge cases missing |
-| 3 | Most criteria met, 1 gap |
-| 2 | Several criteria unmet |
-| 1 | Delivery is incomplete / does not match spec |
+| Score | Criteria                                              |
+| ----- | ----------------------------------------------------- |
+| 5     | All acceptance criteria met, edge cases handled       |
+| 4     | All acceptance criteria met, minor edge cases missing |
+| 3     | Most criteria met, 1 gap                              |
+| 2     | Several criteria unmet                                |
+| 1     | Delivery is incomplete / does not match spec          |
 
 **Check method**: Walk through each `[ ]` criterion in `spec.md` for this delivery. Verify with the listed `pnpm` command.
 
 ### 2. CI Health (weight: 0.25)
 
-| Score | Criteria |
-|---|---|
-| 5 | All CI checks pass, no new warnings |
-| 4 | All CI checks pass, ≤ 2 pre-existing warnings |
-| 3 | CI passes but new warnings introduced |
-| 2 | CI fails on non-critical step |
-| 1 | CI build broken |
+| Score | Criteria                                      |
+| ----- | --------------------------------------------- |
+| 5     | All CI checks pass, no new warnings           |
+| 4     | All CI checks pass, ≤ 2 pre-existing warnings |
+| 3     | CI passes but new warnings introduced         |
+| 2     | CI fails on non-critical step                 |
+| 1     | CI build broken                               |
 
 **Check method**: Run in order:
+
 1. `pnpm run build`
 2. `pnpm run lint`
 3. `pnpm run format:check`
@@ -36,15 +37,16 @@ Each delivery (PR) is evaluated on 4 axes. Score 1–5 per axis.
 
 ### 3. Code Quality (weight: 0.25)
 
-| Score | Criteria |
-|---|---|
-| 5 | Clean, well-typed, no duplication, follows coding-style rules (immutability, small files, error handling) |
-| 4 | Minor style issues, overall solid |
-| 3 | Some duplication or mutation patterns |
-| 2 | Significant style violations |
-| 1 | Unmaintainable code |
+| Score | Criteria                                                                                                  |
+| ----- | --------------------------------------------------------------------------------------------------------- |
+| 5     | Clean, well-typed, no duplication, follows coding-style rules (immutability, small files, error handling) |
+| 4     | Minor style issues, overall solid                                                                         |
+| 3     | Some duplication or mutation patterns                                                                     |
+| 2     | Significant style violations                                                                              |
+| 1     | Unmaintainable code                                                                                       |
 
 **Check method**: Review diff for:
+
 - Immutable patterns (no mutation of existing objects)
 - File size < 400 lines (800 max)
 - Functions < 50 lines
@@ -53,15 +55,16 @@ Each delivery (PR) is evaluated on 4 axes. Score 1–5 per axis.
 
 ### 4. Documentation Alignment (weight: 0.15)
 
-| Score | Criteria |
-|---|---|
-| 5 | All required docs updated per `AGENTS.md` policy |
-| 4 | Most docs updated, minor omission |
-| 3 | Key doc missing but others updated |
-| 2 | Docs not updated |
-| 1 | Docs contradicted by code |
+| Score | Criteria                                         |
+| ----- | ------------------------------------------------ |
+| 5     | All required docs updated per `AGENTS.md` policy |
+| 4     | Most docs updated, minor omission                |
+| 3     | Key doc missing but others updated               |
+| 2     | Docs not updated                                 |
+| 1     | Docs contradicted by code                        |
 
 **Check method**: Per `MAINTENANCE-POLICY-IA.md`, verify:
+
 - `docs/HISTORY-INFRA-WEB.md` — new entry if infra/auth/API changed
 - `docs/CODEMAPS/` — updated if architecture changed
 - `docs/BACKLOG.md` — items resolved marked, new items added
@@ -85,14 +88,14 @@ After all deliveries in a phase are complete:
 
 ### Phase-Specific Gates
 
-| Phase | Extra Gate |
-|---|---|
-| 0 | CI rejects bad format, bad lint, bad questions schema |
-| 1 | `@kanga/core` exports types + quiz + mock-test + i18n; tsc green |
-| 2 | Web pages render with real data; auth flow works end-to-end |
-| 3 | Mobile app starts in Expo Go; practice + mock test functional |
-| 4 | E2E tests pass; core coverage ≥ 80%; a11y ≥ 90 |
-| 5 | Mobile sync works; gamification visible; static site has deprecation notice |
+| Phase | Extra Gate                                                                  |
+| ----- | --------------------------------------------------------------------------- |
+| 0     | CI rejects bad format, bad lint, bad questions schema                       |
+| 1     | `@kanga/core` exports types + quiz + mock-test + i18n; tsc green            |
+| 2     | Web pages render with real data; auth flow works end-to-end                 |
+| 3     | Mobile app starts in Expo Go; practice + mock test functional               |
+| 4     | E2E tests pass; core coverage ≥ 80%; a11y ≥ 90                              |
+| 5     | Mobile sync works; gamification visible; static site has deprecation notice |
 
 ---
 

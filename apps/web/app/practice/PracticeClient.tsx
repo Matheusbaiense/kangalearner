@@ -15,7 +15,11 @@ interface Opt {
   t: Record<Lang, string>;
   ok: boolean;
 }
-interface Cap { en: string; pt: string; es: string }
+interface Cap {
+  en: string;
+  pt: string;
+  es: string;
+}
 interface Question {
   id: string;
   cat: string;
@@ -135,13 +139,7 @@ function QuizCard({
 }
 
 /* ── ScoreSidebar ── */
-function ScoreSidebar({
-  answered,
-  onReset
-}: {
-  answered: Answered;
-  onReset: () => void;
-}) {
+function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () => void }) {
   const total = Object.keys(answered).length;
   const correct = Object.values(answered).filter((a) => a.correct).length;
   const p = pct(correct, total);
@@ -156,11 +154,19 @@ function ScoreSidebar({
       map[q.cat].total++;
       if (a.correct) map[q.cat].correct++;
     });
-    return Object.entries(map).sort((a, b) => b[1].total - a[1].total).slice(0, 6);
+    return Object.entries(map)
+      .sort((a, b) => b[1].total - a[1].total)
+      .slice(0, 6);
   }, [answered]);
 
   const scoreColor =
-    total === 0 ? "var(--ink)" : p >= 80 ? "var(--green)" : p >= 60 ? "var(--orange)" : "var(--red)";
+    total === 0
+      ? "var(--ink)"
+      : p >= 80
+        ? "var(--green)"
+        : p >= 60
+          ? "var(--orange)"
+          : "var(--red)";
 
   return (
     <aside className="panel score-sidebar">
@@ -181,8 +187,12 @@ function ScoreSidebar({
             const cp = pct(s.correct, s.total);
             return (
               <div className="score-cat-row" key={cat}>
-                <span className="score-cat-name">{catData?.icon} {cat}</span>
-                <span className="score-cat-frac">{s.correct}/{s.total}</span>
+                <span className="score-cat-name">
+                  {catData?.icon} {cat}
+                </span>
+                <span className="score-cat-frac">
+                  {s.correct}/{s.total}
+                </span>
                 <div className="score-cat-track">
                   <div className="score-cat-fill" style={{ width: `${cp}%` }} />
                 </div>
@@ -197,7 +207,10 @@ function ScoreSidebar({
       </button>
 
       <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid var(--border)" }}>
-        <Link href="/dashboard" style={{ fontSize: ".78rem", fontWeight: 800, color: "var(--green)" }}>
+        <Link
+          href="/dashboard"
+          style={{ fontSize: ".78rem", fontWeight: 800, color: "var(--green)" }}
+        >
           View full dashboard →
         </Link>
       </div>
@@ -290,7 +303,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
       const next: Answered = { ...answered, [qid]: { chosen: letter, correct } };
       setAnswered(next);
-      try { localStorage.setItem("kl-answered", JSON.stringify(next)); } catch {}
+      try {
+        localStorage.setItem("kl-answered", JSON.stringify(next));
+      } catch {}
 
       if (correct) {
         const rect = (ev.target as HTMLElement).getBoundingClientRect();
@@ -317,7 +332,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               fetch("/api/mock-sessions", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
-                body: JSON.stringify({ state: selectedState, score, total: simQueue.length, source: "web" }),
+                body: JSON.stringify({
+                  state: selectedState,
+                  score,
+                  total: simQueue.length,
+                  source: "web"
+                }),
                 keepalive: true
               }).catch(() => {});
             }
@@ -332,7 +352,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Reset ── */
   function resetAll() {
     setAnswered({});
-    try { localStorage.removeItem("kl-answered"); } catch {}
+    try {
+      localStorage.removeItem("kl-answered");
+    } catch {}
   }
 
   /* ── Change mode ── */
@@ -344,7 +366,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Change lang ── */
   function changeLang(l: Lang) {
     setLang(l);
-    try { localStorage.setItem("kl-lang", l); } catch {}
+    try {
+      localStorage.setItem("kl-lang", l);
+    } catch {}
   }
 
   /* ──────────────── RENDER ──────────────── */
@@ -369,7 +393,15 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
           gap: 10
         }}
       >
-        <span style={{ fontSize: ".78rem", fontWeight: 800, color: "var(--muted2)", textTransform: "uppercase", letterSpacing: ".08em" }}>
+        <span
+          style={{
+            fontSize: ".78rem",
+            fontWeight: 800,
+            color: "var(--muted2)",
+            textTransform: "uppercase",
+            letterSpacing: ".08em"
+          }}
+        >
           Language:
         </span>
         {(["en", "pt", "es"] as Lang[]).map((l) => (
@@ -555,7 +587,9 @@ function SimView({
     return (
       <div className="sim-result">
         <div className="sim-result-emoji">{pass ? "🏆" : "📚"}</div>
-        <div className="sim-result-score">{result.score}/{result.total}</div>
+        <div className="sim-result-score">
+          {result.score}/{result.total}
+        </div>
         <div className="sim-result-pct" style={{ color: pass ? "var(--green)" : "var(--red)" }}>
           {p}%
         </div>
@@ -565,9 +599,15 @@ function SimView({
             : "Keep practising — you need 80% to pass. Review wrong answers in study mode."}
         </div>
         <div className="sim-result-actions">
-          <button className="btn-green" onClick={onRestart}>Try again</button>
-          <button className="btn-outline" onClick={onStudy}>Back to study</button>
-          <Link href="/dashboard" className="btn-outline">View dashboard</Link>
+          <button className="btn-green" onClick={onRestart}>
+            Try again
+          </button>
+          <button className="btn-outline" onClick={onStudy}>
+            Back to study
+          </button>
+          <Link href="/dashboard" className="btn-outline">
+            View dashboard
+          </Link>
         </div>
       </div>
     );
@@ -583,7 +623,9 @@ function SimView({
       <div className="sim-header">
         <div className="sim-meta">
           <span className="sim-label">Mock Test</span>
-          <span className="sim-progress-text">{idx + 1} / {queue.length}</span>
+          <span className="sim-progress-text">
+            {idx + 1} / {queue.length}
+          </span>
         </div>
         <div className="pbar-track">
           <div className="pbar-fill" style={{ width: `${progress}%` }} />
@@ -591,13 +633,7 @@ function SimView({
       </div>
 
       {/* Current question */}
-      <QuizCard
-        key={current.id}
-        q={current}
-        lang={lang}
-        answered={answered}
-        onPick={onPick}
-      />
+      <QuizCard key={current.id} q={current} lang={lang} answered={answered} onPick={onPick} />
     </>
   );
 }

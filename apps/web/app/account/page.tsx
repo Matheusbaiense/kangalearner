@@ -5,7 +5,9 @@ import { createSupabaseServerClient } from "../../src/lib/supabase/server";
 export default async function AccountPage() {
   try {
     const supabase = await createSupabaseServerClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
     if (user) redirect("/dashboard");
   } catch {}
   redirect("/auth/login?redirect=/dashboard");

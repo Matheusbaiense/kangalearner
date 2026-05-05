@@ -60,11 +60,7 @@ async function startStaticServer() {
 function runPuppeteer(url) {
   return new Promise((resolve, reject) => {
     const runnerPath = join(root, "scripts", "smoke-static-site.puppeteer.mjs");
-    const child = spawn(
-      process.execPath,
-      [runnerPath, url],
-      { stdio: "inherit" }
-    );
+    const child = spawn(process.execPath, [runnerPath, url], { stdio: "inherit" });
     child.on("exit", (code) => {
       if (code === 0) resolve();
       else reject(new Error(`Smoke failed (exit ${code})`));
@@ -80,4 +76,3 @@ try {
 } finally {
   await new Promise((resolve) => server.close(resolve));
 }
-

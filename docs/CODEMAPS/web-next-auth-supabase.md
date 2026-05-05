@@ -66,17 +66,18 @@ apps/web/
 
 ## Variáveis de ambiente (web)
 
-| Variável | Uso |
-|----------|-----|
-| `NEXT_PUBLIC_SUPABASE_URL` | Client + server + admin |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client + server |
-| `SUPABASE_SERVICE_ROLE_KEY` | `admin.ts`, callback |
-| `STRIPE_SECRET_KEY` | `stripe.ts` (import dinâmico no callback se ausente evita crash em dev) |
-| `NEXT_PUBLIC_APP_URL` | OAuth `redirectTo` / `emailRedirectTo` nas páginas `/auth/*` |
+| Variável                        | Uso                                                                     |
+| ------------------------------- | ----------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Client + server + admin                                                 |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client + server                                                         |
+| `SUPABASE_SERVICE_ROLE_KEY`     | `admin.ts`, callback                                                    |
+| `STRIPE_SECRET_KEY`             | `stripe.ts` (import dinâmico no callback se ausente evita crash em dev) |
+| `NEXT_PUBLIC_APP_URL`           | OAuth `redirectTo` / `emailRedirectTo` nas páginas `/auth/*`            |
 
 ## Schema SQL (referência)
 
 Migrações em `supabase/migrations/` — tabelas `public` esperadas alinhadas com `database.types.ts` (12 tabelas no desenho atual do repo).
 
 ---
-*Última revisão: 2026-05-04 (higiene: viewport, legal, mobile lint, política docs).*
+
+_Última revisão: 2026-05-04 (higiene: viewport, legal, mobile lint, política docs)._

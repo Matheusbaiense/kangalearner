@@ -20,7 +20,10 @@ export function buildAttemptsFromLocalStorage(): BulkAttemptPayload[] {
 
   let byState: Record<string, Record<string, { correct?: boolean; chosen?: string }>>;
   try {
-    byState = JSON.parse(raw) as Record<string, Record<string, { correct?: boolean; chosen?: string }>>;
+    byState = JSON.parse(raw) as Record<
+      string,
+      Record<string, { correct?: boolean; chosen?: string }>
+    >;
   } catch {
     return [];
   }

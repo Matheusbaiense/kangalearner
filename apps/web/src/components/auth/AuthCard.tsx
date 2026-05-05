@@ -4,12 +4,7 @@ import type { ReactNode } from "react";
 /* Inline SVG so no public/ path dependency */
 function LogoMark() {
   return (
-    <svg
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <rect width="64" height="64" rx="14" fill="#0B1D2D" />
       {/* Body */}
       <path
@@ -25,15 +20,9 @@ function LogoMark() {
         strokeDasharray="4 3"
       />
       {/* Head */}
-      <path
-        d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z"
-        fill="white"
-      />
+      <path d="M30 10 C30 10 33 7 36 8 C38 9 38 12 36 14 C34 15 32 14 30 12 Z" fill="white" />
       {/* Ear */}
-      <path
-        d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z"
-        fill="white"
-      />
+      <path d="M36 8 C37 5 40 4 41 6 C42 8 40 10 38 10 Z" fill="white" />
       {/* Arc */}
       <path
         d="M12 30 C12 20 18 12 26 10"

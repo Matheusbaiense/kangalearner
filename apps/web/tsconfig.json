@@ -3,12 +3,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@kanga/core/*": [
-        "../../packages/core/src/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@kanga/core/*": ["../../packages/core/src/*"],
+      "@/*": ["./src/*"]
     },
     "jsx": "preserve",
     "plugins": [
@@ -20,19 +16,8 @@
     "noEmit": true,
     "incremental": false,
     "isolatedModules": true,
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ]
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
-  "include": [
-    "**/*.ts",
-    "**/*.tsx",
-    "next-env.d.ts",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["**/*.ts", "**/*.tsx", "next-env.d.ts", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }

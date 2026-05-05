@@ -49,8 +49,8 @@ function SignupForm() {
     return (
       <AuthCard title="Check your email">
         <div className="auth-success">
-          We sent a confirmation link to <strong>{email}</strong>. Open it to
-          activate your account and start saving your progress.
+          We sent a confirmation link to <strong>{email}</strong>. Open it to activate your account
+          and start saving your progress.
         </div>
         <div className="auth-card-footer" style={{ marginTop: 20 }}>
           <Link href={`/login?next=${encodeURIComponent(next)}`} className="auth-link">
@@ -86,9 +86,7 @@ function SignupForm() {
         <div className="auth-field">
           <label className="auth-label" htmlFor="password">
             Password
-            <span
-              style={{ fontWeight: 600, color: "var(--muted)", marginLeft: 6 }}
-            >
+            <span style={{ fontWeight: 600, color: "var(--muted)", marginLeft: 6 }}>
               (min. 8 characters)
             </span>
           </label>
@@ -105,19 +103,12 @@ function SignupForm() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="btn-auth-primary"
-          disabled={busy || !supabase}
-        >
+        <button type="submit" className="btn-auth-primary" disabled={busy || !supabase}>
           {busy ? "Creating account…" : "Create account"}
         </button>
 
         <div className="auth-card-footer">
-          <Link
-            href={`/login?next=${encodeURIComponent(next)}`}
-            className="auth-link-muted"
-          >
+          <Link href={`/login?next=${encodeURIComponent(next)}`} className="auth-link-muted">
             ← Already have an account?
           </Link>
         </div>

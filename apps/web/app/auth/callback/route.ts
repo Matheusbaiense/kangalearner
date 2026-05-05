@@ -36,8 +36,8 @@ export async function GET(request: NextRequest) {
         cookiesToSet.forEach(({ name, value, options }) => {
           response.cookies.set(name, value, options);
         });
-      },
-    },
+      }
+    }
   });
 
   const { data, error } = await supabase.auth.exchangeCodeForSession(code);
@@ -69,10 +69,13 @@ export async function GET(request: NextRequest) {
           (typeof user.user_metadata?.name === "string" && user.user_metadata.name) ||
           undefined,
         userId: user.id,
-        country: "AU",
+        country: "AU"
       });
 
-      await supabaseAdmin.from("profiles").update({ stripe_customer_id: stripeCustomerId }).eq("id", user.id);
+      await supabaseAdmin
+        .from("profiles")
+        .update({ stripe_customer_id: stripeCustomerId })
+        .eq("id", user.id);
     } catch (stripeError) {
       console.error("Stripe customer creation failed:", stripeError);
     }

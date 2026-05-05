@@ -54,7 +54,9 @@ try {
   await assertHiddenByAttr("#quiz-root");
 
   // Wait for router boot
-  await page.waitForFunction(() => typeof window.KL_ROUTER === "object" && typeof window.KL_PAGES === "object");
+  await page.waitForFunction(
+    () => typeof window.KL_ROUTER === "object" && typeof window.KL_PAGES === "object"
+  );
 
   // Router should render something into page-root on #home
   await assertPageRootRendered();
@@ -110,4 +112,3 @@ try {
 } finally {
   await browser.close();
 }
-

@@ -12,7 +12,11 @@ export default function ForgotPasswordPage() {
   const [sent, setSent] = useState(false);
 
   const supabase = useMemo(() => {
-    try { return createSupabaseBrowserClient(); } catch { return null; }
+    try {
+      return createSupabaseBrowserClient();
+    } catch {
+      return null;
+    }
   }, []);
 
   async function sendReset(e: React.FormEvent) {
@@ -23,32 +27,38 @@ export default function ForgotPasswordPage() {
     const { error } = await supabase.auth.resetPasswordForEmail(email.trim(), {
       redirectTo: `${window.location.origin}/reset-password`
     });
-    if (error) { setError(error.message); setBusy(false); }
-    else { setSent(true); setBusy(false); }
+    if (error) {
+      setError(error.message);
+      setBusy(false);
+    } else {
+      setSent(true);
+      setBusy(false);
+    }
   }
 
   if (sent) {
     return (
       <AuthCard title="Check your email">
         <div className="auth-success">
-          We sent a password reset link to <strong>{email}</strong>. Check your
-          inbox and follow the link to choose a new password.
+          We sent a password reset link to <strong>{email}</strong>. Check your inbox and follow the
+          link to choose a new password.
         </div>
         <div className="auth-card-footer" style={{ marginTop: 20 }}>
-          <Link href="/login" className="auth-link">← Back to login</Link>
+          <Link href="/login" className="auth-link">
+            ← Back to login
+          </Link>
         </div>
       </AuthCard>
     );
   }
 
   return (
-    <AuthCard
-      title="Reset password"
-      subtitle="Enter your email and we'll send you a reset link."
-    >
+    <AuthCard title="Reset password" subtitle="Enter your email and we'll send you a reset link.">
       <form className="auth-form" onSubmit={sendReset}>
         <div className="auth-field">
-          <label className="auth-label" htmlFor="email">Email</label>
+          <label className="auth-label" htmlFor="email">
+            Email
+          </label>
           <input
             id="email"
             className="auth-input"
@@ -61,16 +71,14 @@ export default function ForgotPasswordPage() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="btn-auth-primary"
-          disabled={busy || !supabase}
-        >
+        <button type="submit" className="btn-auth-primary" disabled={busy || !supabase}>
           {busy ? "Sending…" : "Send reset link"}
         </button>
 
         <div className="auth-card-footer">
-          <Link href="/login" className="auth-link-muted">← Back to login</Link>
+          <Link href="/login" className="auth-link-muted">
+            ← Back to login
+          </Link>
         </div>
       </form>
 

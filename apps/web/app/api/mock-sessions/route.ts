@@ -22,7 +22,9 @@ export async function POST(request: NextRequest) {
         return request.cookies.getAll();
       },
       setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) => response.cookies.set(name, value, options));
+        cookiesToSet.forEach(({ name, value, options }) =>
+          response.cookies.set(name, value, options)
+        );
       }
     }
   });
@@ -38,7 +40,12 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  if (!payload?.state || !Number.isFinite(payload.score) || !Number.isFinite(payload.total) || payload.total <= 0) {
+  if (
+    !payload?.state ||
+    !Number.isFinite(payload.score) ||
+    !Number.isFinite(payload.total) ||
+    payload.total <= 0
+  ) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
@@ -61,9 +68,12 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("mock-sessions: insert failed", { code: error.code, details: error.details, hint: error.hint });
+    console.error("mock-sessions: insert failed", {
+      code: error.code,
+      details: error.details,
+      hint: error.hint
+    });
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
   return NextResponse.json({ ok: true });
 }
-

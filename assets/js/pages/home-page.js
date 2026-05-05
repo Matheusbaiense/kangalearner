@@ -22,7 +22,7 @@
     { code: "SA", name: "South Australia", active: false },
     { code: "TAS", name: "Tasmania", active: false },
     { code: "ACT", name: "Australian Capital Territory", active: false },
-    { code: "NT", name: "Northern Territory", active: false },
+    { code: "NT", name: "Northern Territory", active: false }
   ];
 
   var TOPICS = [
@@ -31,43 +31,43 @@
       icon: "speed",
       titleKey: "topics.speedTitle",
       descKey: "topics.speedDesc",
-      svg: '<path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/>',
+      svg: '<path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/>'
     },
     {
       cat: "Road Signs",
       icon: "signs",
       titleKey: "topics.signsTitle",
       descKey: "topics.signsDesc",
-      svg: '<path d="M24 6l20 36H4L24 6Z"/><path d="M24 18v10"/><path d="M24 35h.01"/>',
+      svg: '<path d="M24 6l20 36H4L24 6Z"/><path d="M24 18v10"/><path d="M24 35h.01"/>'
     },
     {
       cat: "Parking Rules",
       icon: "parking",
       titleKey: "topics.parkingTitle",
       descKey: "topics.parkingDesc",
-      svg: '<rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/>',
+      svg: '<rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/>'
     },
     {
       cat: "Alcohol & BAC",
       icon: "alcohol",
       titleKey: "topics.alcoholTitle",
       descKey: "topics.alcoholDesc",
-      svg: '<path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/>',
+      svg: '<path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/>'
     },
     {
       cat: "Road Markings",
       icon: "markings",
       titleKey: "topics.lanesTitle",
       descKey: "topics.lanesDesc",
-      svg: '<path d="M14 42l4-36"/><path d="M34 42L30 6"/><path d="M24 10v7M24 24v7M24 38v4"/>',
+      svg: '<path d="M14 42l4-36"/><path d="M34 42L30 6"/><path d="M24 10v7M24 24v7M24 38v4"/>'
     },
     {
       cat: "Road Safety",
       icon: "safety",
       titleKey: "topics.safetyTitle",
       descKey: "topics.safetyDesc",
-      svg: '<path d="M24 4l16 6v12c0 10-6 17-16 22C14 39 8 32 8 22V10l16-6Z"/><path d="M17 24l5 5 10-12"/>',
-    },
+      svg: '<path d="M24 4l16 6v12c0 10-6 17-16 22C14 39 8 32 8 22V10l16-6Z"/><path d="M17 24l5 5 10-12"/>'
+    }
   ];
 
   function stateCardsHTML(currentState) {
@@ -149,4 +149,3 @@
     );
   };
 })();
-

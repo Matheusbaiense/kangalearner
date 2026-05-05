@@ -32,12 +32,12 @@ Plano faseado para agentes de IA e developers continuarem a partir do estado atu
 
 ## Referências de ficheiros (para IA)
 
-| Tópico | Caminho |
-|--------|---------|
-| Middleware | `apps/web/src/middleware.ts`, `apps/web/middleware.ts` |
-| Callback OAuth | `apps/web/app/auth/callback/route.ts` |
-| Clientes Supabase | `apps/web/src/lib/supabase/client.ts`, `server.ts`, `admin.ts` |
-| Tipos DB | `apps/web/src/lib/supabase/database.types.ts` |
-| Stripe | `apps/web/src/lib/stripe.ts` |
-| Auth UI | `apps/web/app/auth/*/page.tsx`, `apps/web/src/app/auth/auth.css`, `apps/web/app/auth/layout.tsx` |
-| Migrações | `supabase/migrations/*.sql` |
+| Tópico            | Caminho                                                                                          |
+| ----------------- | ------------------------------------------------------------------------------------------------ |
+| Middleware        | `apps/web/src/middleware.ts`, `apps/web/middleware.ts`                                           |
+| Callback OAuth    | `apps/web/app/auth/callback/route.ts`                                                            |
+| Clientes Supabase | `apps/web/src/lib/supabase/client.ts`, `server.ts`, `admin.ts`                                   |
+| Tipos DB          | `apps/web/src/lib/supabase/database.types.ts`                                                    |
+| Stripe            | `apps/web/src/lib/stripe.ts`                                                                     |
+| Auth UI           | `apps/web/app/auth/*/page.tsx`, `apps/web/src/app/auth/auth.css`, `apps/web/app/auth/layout.tsx` |
+| Migrações         | `supabase/migrations/*.sql`                                                                      |

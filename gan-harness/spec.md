@@ -10,13 +10,13 @@ KangaLearner é uma plataforma de prática para learner driving test australiano
 
 ## Estado Atual (baseline)
 
-| Superfície | Estado | Stack |
-|---|---|---|
-| **Root estático** | Produção via GitHub Pages (`pages.yml`). Quiz, Learn, Mock Test, progresso em `localStorage`. 69 questões, 10 categorias. | HTML/CSS/JS vanilla |
-| **`apps/web`** | Scaffold funcional. Auth (Supabase SSR + Stripe customer), middleware, pages scaffold (`/practice`, `/mock-test/*`, `/learn/*`, `/resources`, `/progress`, `/account`, `/dashboard`). Build CI verde. | Next 15, React 18, Supabase, Stripe |
-| **`apps/mobile`** | Scaffold mínimo — single screen placeholder, `tsc --noEmit` lint. | Expo 51, React Native 0.74 |
-| **`packages/core`** | Tipos + dados. `QUESTIONS` + `CATEGORIES` gerados de `questions.js`. `filterByState`, tipos `QuizQuestion`, `SupportedState`, `SupportedLanguage`. | TypeScript puro |
-| **CI** | `build.yml` (pnpm install → validate → gen:core-questions → turbo build). `pages.yml` (deploy estático). `format-check.yml`. | GitHub Actions |
+| Superfície          | Estado                                                                                                                                                                                                | Stack                               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------- |
+| **Root estático**   | Produção via GitHub Pages (`pages.yml`). Quiz, Learn, Mock Test, progresso em `localStorage`. 69 questões, 10 categorias.                                                                             | HTML/CSS/JS vanilla                 |
+| **`apps/web`**      | Scaffold funcional. Auth (Supabase SSR + Stripe customer), middleware, pages scaffold (`/practice`, `/mock-test/*`, `/learn/*`, `/resources`, `/progress`, `/account`, `/dashboard`). Build CI verde. | Next 15, React 18, Supabase, Stripe |
+| **`apps/mobile`**   | Scaffold mínimo — single screen placeholder, `tsc --noEmit` lint.                                                                                                                                     | Expo 51, React Native 0.74          |
+| **`packages/core`** | Tipos + dados. `QUESTIONS` + `CATEGORIES` gerados de `questions.js`. `filterByState`, tipos `QuizQuestion`, `SupportedState`, `SupportedLanguage`.                                                    | TypeScript puro                     |
+| **CI**              | `build.yml` (pnpm install → validate → gen:core-questions → turbo build). `pages.yml` (deploy estático). `format-check.yml`.                                                                          | GitHub Actions                      |
 
 ---
 
@@ -409,25 +409,25 @@ Fase 0 (CI/Higiene)
 
 ### Dependências Críticas
 
-| De | Para | Motivo |
-|---|---|---|
-| 0.1-0.4 | Todas | CI gates são pré-requisito para merge seguro |
-| 1.1 (tipos core) | 2.1, 3.2 | Web e mobile importam tipos do core |
-| 1.2 (quiz engine) | 2.1, 3.2 | Lógica partilhada de selecção/shuffle |
-| 1.3 (mock test) | 2.2, 3.3 | Lógica partilhada de mock session |
+| De                   | Para          | Motivo                                            |
+| -------------------- | ------------- | ------------------------------------------------- |
+| 0.1-0.4              | Todas         | CI gates são pré-requisito para merge seguro      |
+| 1.1 (tipos core)     | 2.1, 3.2      | Web e mobile importam tipos do core               |
+| 1.2 (quiz engine)    | 2.1, 3.2      | Lógica partilhada de selecção/shuffle             |
+| 1.3 (mock test)      | 2.2, 3.3      | Lógica partilhada de mock session                 |
 | 2.6 (database.types) | 2.2, 2.3, 2.7 | Tipos correctos necessários para queries Supabase |
-| 3.5 (auth mobile) | 5.1 | Sync requer autenticação |
+| 3.5 (auth mobile)    | 5.1           | Sync requer autenticação                          |
 
 ### Riscos
 
-| # | Risco | Impacto | Mitigação |
-|---|---|---|---|
-| R1 | **Schema Supabase desalinhado** — `database.types.ts` manual pode divergir do remoto | Erros de tipo silenciosos em runtime | Entrega 2.6 cedo; adicionar `supabase gen types` ao CI |
-| R2 | **Expo SDK upgrade** — Expo 51 pode requerer upgrade para SDK 52+ antes de features avançadas | Bloqueio de Fase 3 | Verificar compatibilidade na Entrega 3.1; orçamentar 1 PR de upgrade |
-| R3 | **Stripe keys em CI** — build.yml usa placeholders; testes E2E que toquem Stripe podem falhar | Falsos positivos em CI | Separar CI em build (sem secrets) e e2e (com secrets); mock Stripe em testes |
-| R4 | **Duplicação temporária** — durante migração, lógica existirá em `assets/js/` e `@kanga/core` | Drift entre versões | `questions.ts` sync check no CI já existe; estender para lógica de quiz se necessário |
-| R5 | **Migração `localStorage` → Supabase** — dados legados do estático não são triviais de importar | Perda de progresso para early adopters | Componente `MigrateLocalProgress` já existe; testar com dados reais |
-| R6 | **Mobile deep links OAuth** — configuração de scheme/redirect varia por plataforma | Auth Google bloqueado no mobile | Testar em device real (não apenas Expo Go); documentar `app.json` scheme |
+| #   | Risco                                                                                           | Impacto                                | Mitigação                                                                             |
+| --- | ----------------------------------------------------------------------------------------------- | -------------------------------------- | ------------------------------------------------------------------------------------- |
+| R1  | **Schema Supabase desalinhado** — `database.types.ts` manual pode divergir do remoto            | Erros de tipo silenciosos em runtime   | Entrega 2.6 cedo; adicionar `supabase gen types` ao CI                                |
+| R2  | **Expo SDK upgrade** — Expo 51 pode requerer upgrade para SDK 52+ antes de features avançadas   | Bloqueio de Fase 3                     | Verificar compatibilidade na Entrega 3.1; orçamentar 1 PR de upgrade                  |
+| R3  | **Stripe keys em CI** — build.yml usa placeholders; testes E2E que toquem Stripe podem falhar   | Falsos positivos em CI                 | Separar CI em build (sem secrets) e e2e (com secrets); mock Stripe em testes          |
+| R4  | **Duplicação temporária** — durante migração, lógica existirá em `assets/js/` e `@kanga/core`   | Drift entre versões                    | `questions.ts` sync check no CI já existe; estender para lógica de quiz se necessário |
+| R5  | **Migração `localStorage` → Supabase** — dados legados do estático não são triviais de importar | Perda de progresso para early adopters | Componente `MigrateLocalProgress` já existe; testar com dados reais                   |
+| R6  | **Mobile deep links OAuth** — configuração de scheme/redirect varia por plataforma              | Auth Google bloqueado no mobile        | Testar em device real (não apenas Expo Go); documentar `app.json` scheme              |
 
 ---
 
@@ -435,23 +435,23 @@ Fase 0 (CI/Higiene)
 
 ### Existentes (raiz)
 
-| Script | Descrição |
-|---|---|
-| `pnpm run build` | Turbo build (prebuild: validate + gen → turbo build core → web → mobile) |
-| `pnpm run dev` | Turbo dev paralelo |
-| `pnpm run lint` | Turbo lint |
-| `pnpm run format` | Prettier write |
-| `pnpm run format:check` | Prettier check |
-| `pnpm run validate:questions` | Valida schema de `questions.js` |
-| `pnpm run gen:core-questions` | Gera `packages/core/src/data/questions.ts` |
-| `pnpm run legacy:build` | Build minificado do estático |
+| Script                        | Descrição                                                                |
+| ----------------------------- | ------------------------------------------------------------------------ |
+| `pnpm run build`              | Turbo build (prebuild: validate + gen → turbo build core → web → mobile) |
+| `pnpm run dev`                | Turbo dev paralelo                                                       |
+| `pnpm run lint`               | Turbo lint                                                               |
+| `pnpm run format`             | Prettier write                                                           |
+| `pnpm run format:check`       | Prettier check                                                           |
+| `pnpm run validate:questions` | Valida schema de `questions.js`                                          |
+| `pnpm run gen:core-questions` | Gera `packages/core/src/data/questions.ts`                               |
+| `pnpm run legacy:build`       | Build minificado do estático                                             |
 
 ### A Criar (propostos)
 
-| Script | Workspace | Entrega |
-|---|---|---|
-| `test` | `@kanga/core` | 4.2 |
-| `test:coverage` | `@kanga/core` | 4.2 |
-| `test:e2e` | `@kanga/web` | 4.1 |
-| `gen:db-types` | `@kanga/web` | 2.6 |
-| `test` (raiz) | root | 4.2 (turbo delegação) |
+| Script          | Workspace     | Entrega               |
+| --------------- | ------------- | --------------------- |
+| `test`          | `@kanga/core` | 4.2                   |
+| `test:coverage` | `@kanga/core` | 4.2                   |
+| `test:e2e`      | `@kanga/web`  | 4.1                   |
+| `gen:db-types`  | `@kanga/web`  | 2.6                   |
+| `test` (raiz)   | root          | 4.2 (turbo delegação) |

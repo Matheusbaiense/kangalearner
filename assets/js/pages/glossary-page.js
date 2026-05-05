@@ -7,14 +7,14 @@
       term: "BAC",
       en: "Blood Alcohol Concentration — the percentage of alcohol in your blood. Learner drivers must have 0.00 BAC.",
       pt: "Concentração de Álcool no Sangue — porcentagem de álcool no sangue. Motoristas aprendizes devem ter 0,00 BAC.",
-      es: "Concentración de Alcohol en Sangre — porcentaje de alcohol en la sangre. Los conductores aprendices deben tener 0,00 BAC.",
+      es: "Concentración de Alcohol en Sangre — porcentaje de alcohol en la sangre. Los conductores aprendices deben tener 0,00 BAC."
     },
     {
       term: "Give Way",
       en: "You must slow down and let other vehicles or pedestrians pass before you proceed.",
       pt: "Você deve reduzir a velocidade e deixar outros veículos ou pedestres passarem antes de prosseguir.",
-      es: "Debe reducir la velocidad y dejar pasar a otros vehículos o peatones antes de continuar.",
-    },
+      es: "Debe reducir la velocidad y dejar pasar a otros vehículos o peatones antes de continuar."
+    }
   ];
 
   function getLang() {
@@ -61,4 +61,3 @@
     );
   };
 })();
-

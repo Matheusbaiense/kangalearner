@@ -37,9 +37,9 @@ export type ProfilesInsert = {
 };
 
 /** Campos mutáveis em `profiles` (alinha com tipos gerados do Supabase). */
-export type ProfilesUpdate = Partial<
-  Omit<ProfilesRow, "id" | "created_at" | "updated_at">
-> & { id?: string };
+export type ProfilesUpdate = Partial<Omit<ProfilesRow, "id" | "created_at" | "updated_at">> & {
+  id?: string;
+};
 
 export type QuestionAttemptsRow = {
   id: string;

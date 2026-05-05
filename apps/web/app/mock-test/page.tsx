@@ -50,4 +50,3 @@ export default function MockTestSetupPage() {
     </main>
   );
 }
-

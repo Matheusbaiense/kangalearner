@@ -23,4 +23,3 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     </main>
   );
 }
-

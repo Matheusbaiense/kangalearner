@@ -84,16 +84,9 @@ function LoginForm() {
   }
 
   return (
-    <AuthCard
-      title="Sign in"
-      subtitle="Save your progress and sync across devices."
-    >
+    <AuthCard title="Sign in" subtitle="Save your progress and sync across devices.">
       {/* Google OAuth */}
-      <button
-        className="btn-google"
-        onClick={signInWithGoogle}
-        disabled={busy || !supabase}
-      >
+      <button className="btn-google" onClick={signInWithGoogle} disabled={busy || !supabase}>
         <GoogleIcon />
         {busy ? "Redirecting…" : "Continue with Google"}
       </button>
@@ -136,19 +129,12 @@ function LoginForm() {
           />
         </div>
 
-        <button
-          type="submit"
-          className="btn-auth-primary"
-          disabled={busy || !supabase}
-        >
+        <button type="submit" className="btn-auth-primary" disabled={busy || !supabase}>
           {busy ? "Signing in…" : "Sign in"}
         </button>
 
         <div className="auth-card-footer">
-          <Link
-            href={`/signup?next=${encodeURIComponent(next)}`}
-            className="auth-link"
-          >
+          <Link href={`/signup?next=${encodeURIComponent(next)}`} className="auth-link">
             Create account →
           </Link>
           <Link href="/forgot-password" className="auth-link-muted">

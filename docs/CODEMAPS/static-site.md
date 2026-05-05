@@ -36,4 +36,3 @@ Mapa rápido do site **HTML/CSS/JS estático** na raiz do repo (GitHub Pages).
 ---
 
 Última atualização: **2026-05-04**
-
