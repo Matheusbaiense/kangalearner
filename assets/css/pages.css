@@ -543,6 +543,50 @@
   font-weight: 600;
 }
 
+.kl-exam-timer-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink, #1a1a1a);
+}
+.kl-exam-timer-display {
+  font-variant-numeric: tabular-nums;
+  color: var(--green, #2e7d32);
+}
+.mock-exam-timer-option {
+  margin: 1rem 0 1.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  border: 1px solid var(--border, #e0e0e0);
+  background: var(--surface-2, #f8f8f8);
+}
+.mock-timer-label {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+.mock-timer-hint {
+  margin: 0.5rem 0 0 1.75rem;
+  font-size: 0.85rem;
+  color: var(--ink-muted, #666);
+}
+.mock-results-cat {
+  margin: 2rem 0 1rem;
+}
+.mock-results-cat h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.75rem;
+}
+.result-time {
+  margin: 0.75rem 0 0;
+  font-size: 0.95rem;
+}
+
 /* ── Glossary ───────────────────────────────────────────────────────────── */
 .glossary-list {
   display: flex;

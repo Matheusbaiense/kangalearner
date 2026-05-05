@@ -1000,6 +1000,26 @@ const DW = {
     });
   },
 
+  completeSimExamTimeout() {
+    if (!this.simMode || this.simCompleted || !this.simQueue || !this.simQueue.length) return;
+    const nextAnswered = { ...this.simAnswered };
+    this.simQueue.forEach((q) => {
+      if (!nextAnswered[q.id]) {
+        const wrongOpt = q.opts.find((o) => !o.ok) || q.opts[0];
+        nextAnswered[q.id] = { correct: false, chosen: wrongOpt.l };
+      }
+    });
+    this.simAnswered = nextAnswered;
+    this.simCompleted = true;
+    this.simRenderedCount = this.simQueue.length;
+    let score = 0;
+    this.simQueue.forEach((q) => {
+      if (this.simAnswered[q.id]?.correct) score++;
+    });
+    this.syncMockSession({ state: this.state || "WA", score, total: this.simQueue.length });
+    this.renderSimStack();
+  },
+
   applyEmptyStateWA() {
     this.state = "WA";
     try {

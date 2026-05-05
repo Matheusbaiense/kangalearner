@@ -29,6 +29,10 @@
       '<div class="page-header"><p class="page-kicker" data-i18n="mock.kicker"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p><h1 class="page-title" data-i18n="mock.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
       '<p class="page-sub" data-i18n="mock.sub"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
       lastBadge +
+      '<div class="mock-exam-timer-option">' +
+      '<label class="mock-timer-label"><input type="checkbox" id="kl-exam-real-timer" /> <span data-i18n="mock.examTimerToggle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></label>' +
+      '<p class="mock-timer-hint" data-i18n="mock.examTimerHint"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      "</div>" +
       '<div class="mock-mode-grid">' +
       '<div class="mock-mode-card">' +
       '<div class="mock-mode-icon">📚</div><h2 class="mock-mode-title" data-i18n="mock.practiceTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2>' +
@@ -66,8 +70,8 @@
     if (!results) {
       return (
         '<section class="page-section mock-results"><div class="container">' +
-        '<h1 class="page-title">Mock Test Results</h1>' +
-        '<p>No results yet. <a href="#mock">Take a mock test</a> to see your results here.</p>' +
+        '<div class="page-header"><h1 class="page-title" data-i18n="mock.resultsTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1></div>' +
+        '<p data-i18n="mock.resultsEmpty"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span> <a href="#mock" data-i18n="mock.resultsEmptyCta"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></p>' +
         "</div></section>"
       );
     }
@@ -75,38 +79,88 @@
     var pct = results.pct || 0;
     var passed = pct >= 80;
     var statusClass = passed ? "result-pass" : pct >= 60 ? "result-warn" : "result-fail";
-    var statusLabel = passed ? "Pass" : "Needs improvement";
-    var statusMsg = passed
-      ? "Excellent — you're on track for the real test!"
-      : pct >= 60
-        ? "Good progress. Keep practising to build confidence."
-        : "Keep studying — focused practice on your weak areas will help.";
+    var statusKey = passed ? "mock.resultsStatusPass" : pct >= 60 ? "mock.resultsStatusMid" : "mock.resultsStatusLow";
+    var msgKey = passed ? "mock.resultsMsgPass" : pct >= 60 ? "mock.resultsMsgMid" : "mock.resultsMsgLow";
+
+    var timeRow = "";
+    if (results.timeSpentSec != null && results.timeSpentSec >= 0) {
+      var m = Math.floor(results.timeSpentSec / 60);
+      var s = results.timeSpentSec % 60;
+      var ts = m + ":" + (s < 10 ? "0" : "") + s;
+      timeRow =
+        '<p class="result-time"><span data-i18n="mock.resultsElapsed"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span> <strong>' +
+        ts +
+        "</strong></p>";
+    }
+
+    var catRows = "";
+    var bc = results.byCategory || {};
+    var cats = Object.keys(bc).sort();
+    if (cats.length > 0) {
+      catRows =
+        '<div class="mock-results-cat"><h2 data-i18n="mock.resultsCatBreakdown"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2><table class="progress-cat-table"><thead><tr><th data-i18n="progress.colCat"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></th><th data-i18n="mock.resultsCatPct"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></th></tr></thead><tbody>';
+      cats.forEach(function (c) {
+        var row = bc[c];
+        var t = row.total || 0;
+        var cr = row.correct || 0;
+        var cp = t > 0 ? Math.round((cr / t) * 100) : 0;
+        catRows += "<tr><td>" + c + "</td><td>" + cp + "%</td></tr>";
+      });
+      catRows += "</tbody></table></div>";
+    }
+
+    var weakCat = "";
+    var worst = null;
+    var worstPct = 101;
+    cats.forEach(function (c) {
+      var row = bc[c];
+      var t = row.total || 0;
+      var cr = row.correct || 0;
+      var cp = t > 0 ? Math.round((cr / t) * 100) : 0;
+      if (t > 0 && cp < worstPct) {
+        worstPct = cp;
+        worst = c;
+      }
+    });
+    if (worst != null && worstPct < 100) {
+      weakCat =
+        '<a href="#practice" class="btn btn-secondary mock-redo-cat" data-cat="' +
+        String(worst).replace(/"/g, "&quot;") +
+        '" data-i18n="mock.resultsRedoMistakes"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>';
+    }
 
     return (
       '<section class="page-section mock-results"><div class="container">' +
-      '<div class="page-header"><h1 class="page-title">Mock Test Results</h1></div>' +
+      '<div class="page-header"><h1 class="page-title" data-i18n="mock.resultsTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1></div>' +
       '<div class="result-summary ' +
       statusClass +
       '">' +
       '<div class="result-score">' +
       pct +
       '<span class="result-pct-sign">%</span></div>' +
-      '<div class="result-status">' +
-      statusLabel +
-      "</div>" +
+      '<div class="result-status" data-i18n="' +
+      statusKey +
+      '"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       '<div class="result-counts">' +
+      '<span><strong>' +
       results.correct +
-      " correct — " +
+      '</strong> <span data-i18n="progress.correct"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span> · ' +
+      '<span><strong>' +
       results.wrong +
-      " incorrect — " +
+      '</strong> <span data-i18n="progress.incorrect"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span> · ' +
+      '<span><strong>' +
       results.total +
-      " total</div>" +
-      '<p class="result-msg">' +
-      statusMsg +
-      "</p>" +
+      '</strong> <span data-i18n="mock.resultsTotalQs"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span></div>' +
+      timeRow +
+      '<p class="result-msg" data-i18n="' +
+      msgKey +
+      '"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       "</div>" +
-      '<div class="result-actions"><a href="#mock" class="btn btn-primary">Take another test</a>' +
-      '<a href="#practice" class="btn btn-secondary">Practise questions</a></div>' +
+      catRows +
+      '<div class="result-actions"><a href="#mock" class="btn btn-primary" data-i18n="mock.resultsAgain"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
+      '<a href="#practice" class="btn btn-secondary" data-i18n="mock.resultsPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
+      weakCat +
+      "</div>" +
       "</div></section>"
     );
   };

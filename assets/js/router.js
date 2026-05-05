@@ -7,6 +7,15 @@
   var PAGE_ROOT = null;
   var QUIZ_ROOT = null;
 
+  function clearExamTimer() {
+    if (window.__klExamTimerInterval) {
+      clearInterval(window.__klExamTimerInterval);
+      window.__klExamTimerInterval = null;
+    }
+    var w = document.getElementById("kl-exam-timer-wrap");
+    if (w) w.setAttribute("hidden", "");
+  }
+
   // ── Route table ───────────────────────────────────────────────────────────
   var ROUTES = {
     home: function (p) {
@@ -74,6 +83,8 @@
 
     window.scrollTo(0, 0);
     updateNavActive(page);
+
+    if (page !== "mock-run") clearExamTimer();
 
     if (QUIZ_ROUTES[page]) {
       activateQuizRoot();
@@ -145,8 +156,52 @@
   // ── Mock run ──────────────────────────────────────────────────────────────
   function startMockRun() {
     ensureDWInit().then(function () {
+      clearExamTimer();
       if (window.DW && typeof window.DW.setMode === "function") {
         window.DW.setMode("sim");
+      }
+
+      var useTimer = false;
+      try {
+        useTimer =
+          sessionStorage.getItem("kl-exam-real-timer") === "1" &&
+          sessionStorage.getItem("kl-practice-mode") === "exam";
+      } catch (e) {}
+
+      if (useTimer) {
+        try {
+          sessionStorage.setItem("kl-exam-started-at", String(Date.now()));
+        } catch (e) {}
+        var wrap = document.getElementById("kl-exam-timer-wrap");
+        if (wrap) wrap.removeAttribute("hidden");
+        var remain = 45 * 60;
+        function tick() {
+          var el = document.getElementById("kl-exam-timer-display");
+          if (el) {
+            var mm = Math.floor(Math.max(0, remain) / 60);
+            var ss = Math.max(0, remain) % 60;
+            el.textContent = mm + ":" + (ss < 10 ? "0" : "") + ss;
+          }
+          if (remain <= 0) {
+            clearExamTimer();
+            if (window.DW && typeof window.DW.completeSimExamTimeout === "function") {
+              window.DW.completeSimExamTimeout();
+            }
+            return;
+          }
+          remain--;
+        }
+        window.__klExamTimerInterval = setInterval(tick, 1000);
+        tick();
+      } else {
+        try {
+          sessionStorage.removeItem("kl-exam-started-at");
+        } catch (e) {}
+      }
+
+      var lang = getPreferredLang();
+      if (typeof window.hydrateKangaStaticI18n === "function") {
+        window.hydrateKangaStaticI18n(lang);
       }
     });
   }
@@ -238,6 +293,14 @@
       }
     });
 
+    var timeSpentSec = null;
+    try {
+      var started = sessionStorage.getItem("kl-exam-started-at");
+      if (started) {
+        timeSpentSec = Math.max(0, Math.round((Date.now() - parseInt(started, 10)) / 1000));
+      }
+    } catch (e) {}
+
     var results = {
       total: total,
       correct: correct,
@@ -245,7 +308,8 @@
       pct: total > 0 ? Math.round((correct / total) * 100) : 0,
       byCategory: byCategory,
       date: new Date().toISOString(),
-      state: (window.KangaStorage && window.KangaStorage.getState()) || "WA"
+      state: (window.KangaStorage && window.KangaStorage.getState()) || "WA",
+      timeSpentSec: timeSpentSec
     };
 
     try {
@@ -325,6 +389,12 @@
         try {
           var mode = btn.getAttribute("data-mode") || "exam";
           sessionStorage.setItem("kl-practice-mode", mode);
+          var cb = document.getElementById("kl-exam-real-timer");
+          if (cb && cb.checked && mode === "exam") {
+            sessionStorage.setItem("kl-exam-real-timer", "1");
+          } else {
+            sessionStorage.removeItem("kl-exam-real-timer");
+          }
         } catch (e) {}
         location.hash = "mock-run";
       });
