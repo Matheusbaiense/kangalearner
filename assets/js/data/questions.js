@@ -21,7 +21,8 @@
         es: "<strong>50 km/h</strong> es el límite por defecto en WA — ¡NO 60! Esta es la pregunta más fallada."
       },
       tip: null,
-      states: ["WA"]
+      states: ["WA"],
+      lastVerified: "2026-05-06"
     },
     {
       id: "VEL-02",
