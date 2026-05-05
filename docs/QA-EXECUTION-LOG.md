@@ -59,3 +59,37 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | `pnpm run lint` | **OK** — web sem warnings; mobile `tsc --noEmit` |
 
 **Alterações:** ver `docs/HISTORY-STATIC-SITE.md` + `docs/CODEMAPS/static-site.md`.
+
+---
+
+## 2026-05-04 — Security hotfix (apps/web)
+
+### Comandos executados
+
+| Comando | Resultado |
+|---------|-----------|
+| `pnpm --filter @kanga/web lint` | **OK** — sem warnings |
+| `pnpm --filter @kanga/web build` | **OK** — Next build completo |
+
+### Notas
+
+- Fix open redirect aplicado em `/login` e `/auth/login` via helper `safeNextPath`.
+- Rotas `/api/*` agora devolvem erros genéricos (`db_error`) e logam detalhes server-side.
+- `next.config.ts` agora injeta headers de segurança e desliga `X-Powered-By`.
+
+---
+
+## 2026-05-04 — Dashboard + Mock test flow + Glass UI (apps/web)
+
+### Comandos executados
+
+| Comando | Resultado |
+|---------|-----------|
+| `pnpm --filter @kanga/web lint` | **OK** — sem warnings |
+| `pnpm --filter @kanga/web build` | **OK** — Next build completo |
+
+### Notas
+
+- Mock test (`/mock-test/session`, `/mock-test/results`) implementado com persistência em `sessionStorage` e POST best-effort para `/api/mock-sessions` quando autenticado.
+- Dashboard agora inclui “Last 7 days”, “What to practise next” e CTAs por tópico para `/practice?cat=...`.
+- UI “glass” aplicada em header e cards via `backdrop-filter` com fallback.

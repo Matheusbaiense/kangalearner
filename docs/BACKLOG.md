@@ -5,6 +5,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 ## P0 — Integridade / CI
 
 - [x] **Monorepo `pnpm run lint` com `@kanga/mobile`**: script `lint` do mobile alterado para `tsc --noEmit` (evita `expo lint` a instalar ESLint e falhar com `ERR_PNPM_UNEXPECTED_STORE`). *Follow-up:* introduzir ESLint Expo explícito quando a equipa quiser lint de estilo no app nativo.
+- [x] **Security hotfix (web)**: open redirect em `/login`/`/auth/login`; bloquear alteração de `profiles.role`; headers de segurança; erros de DB não devem vazar schema.
 
 ## P1 — Web (`apps/web`)
 
@@ -29,7 +30,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 
 ## Legado estático (raiz)
 
-- [ ] `pnpm run validate:questions` em PRs que toquem `assets/js/data/questions.js`.
+- [x] `pnpm run validate:questions` em PRs que toquem `assets/js/data/questions.js`.
 - [ ] Documentar deploy Next (ex. Vercel) vs GitHub Pages estático.
 - [ ] **A11y/contraste**: validar contraste real do CTA amber (`.btn-primary`/`.btn-gold`) e foco global (`:focus-visible`) em browsers alvo.
 - [x] **Tokens radius**: corrigido `--radius-lg`/`--radius-xl` para manter escala (evita `lg == md`).

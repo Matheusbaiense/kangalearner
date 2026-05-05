@@ -62,7 +62,10 @@ export async function POST(request: NextRequest) {
     source: payload.source ?? "web"
   });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  if (error) {
+    console.error("attempts: insert failed", { code: error.code, details: error.details, hint: error.hint });
+    return NextResponse.json({ error: "db_error" }, { status: 400 });
+  }
   return NextResponse.json({ ok: true });
 }
 

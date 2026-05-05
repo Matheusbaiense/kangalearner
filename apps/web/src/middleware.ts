@@ -4,6 +4,7 @@ import { NextResponse, type NextRequest } from "next/server";
 /** Rotas que exigem sessão válida. */
 const PROTECTED_ROUTES = [
   "/progress",
+  "/dashboard",
   "/account",
   "/mock-test/session",
   "/mock-test/results",

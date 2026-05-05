@@ -246,6 +246,7 @@ const DW = {
       document.getElementById("study-wrapper").style.display = "block";
       this.renderQuiz();
     }
+    if (typeof this._refreshMainNavFromScroll === "function") this._refreshMainNavFromScroll();
   },
 
   getFilteredQ() {
@@ -752,22 +753,39 @@ const DW = {
     });
 
     const navLinks = document.querySelectorAll("nav a");
-    const sections = document.querySelectorAll("section[id]");
-    window.addEventListener(
-      "scroll",
-      () => {
-        const y = window.scrollY + 88;
-        sections.forEach((s) => {
-          if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) {
-            navLinks.forEach((a) => {
-              a.classList.remove("active");
-              if (a.getAttribute("href") === "#" + s.id) a.classList.add("active");
-            });
+    const sections = Array.from(document.querySelectorAll("section[id]"));
+    const setActiveNavForSection = (s) => {
+      navLinks.forEach((a) => {
+        a.classList.remove("active");
+        const href = a.getAttribute("href") || "";
+        if (href !== "#" + s.id) return;
+        if (s.id === "questoes") {
+          const isSim = a.getAttribute("data-action") === "mode-sim";
+          const isPractice = a.getAttribute("data-action") === "mode-all";
+          if (isSim) {
+            if (DW.mode === "sim") a.classList.add("active");
+            return;
           }
-        });
-      },
-      { passive: true }
-    );
+          if (isPractice) {
+            if (DW.mode !== "sim") a.classList.add("active");
+            return;
+          }
+        }
+        a.classList.add("active");
+      });
+    };
+    const refreshMainNavFromScroll = () => {
+      const y = window.scrollY + 88;
+      let current = null;
+      sections.forEach((s) => {
+        if (y >= s.offsetTop && y < s.offsetTop + s.offsetHeight) current = s;
+      });
+      if (current) setActiveNavForSection(current);
+    };
+    window.addEventListener("scroll", refreshMainNavFromScroll, { passive: true });
+    window.addEventListener("resize", refreshMainNavFromScroll, { passive: true });
+    refreshMainNavFromScroll();
+    DW._refreshMainNavFromScroll = refreshMainNavFromScroll;
 
     const total = Object.keys(this.answered).length;
     const correct = Object.values(this.answered).filter((a) => a.correct).length;
@@ -833,15 +851,7 @@ const DW = {
       const weak = e.target.closest?.('[data-action="sim-weak-topic"]');
       if (weak) {
         const cat = weak.getAttribute("data-cat");
-        this.simMode = false;
-        document.getElementById("sim-wrapper").style.display = "none";
-        document.getElementById("study-wrapper").style.display = "block";
-        document.querySelectorAll(".fmode").forEach((b) => {
-          const on = b.dataset.mode === "all";
-          b.classList.toggle("active", on);
-          b.setAttribute("aria-pressed", on ? "true" : "false");
-        });
-        this.mode = "all";
+        this.setMode("all");
         this.setCat(cat || "all");
         document.getElementById("questoes")?.scrollIntoView({ behavior: "smooth", block: "start" });
         return;

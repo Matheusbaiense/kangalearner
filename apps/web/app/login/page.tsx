@@ -6,6 +6,7 @@ import Link from "next/link";
 import { createSupabaseBrowserClient } from "../../src/lib/supabase/client";
 import { runLocalAttemptMigration } from "../../src/lib/migrateLocalAttempts";
 import { AuthCard } from "../../src/components/auth/AuthCard";
+import { safeNextPath } from "../../src/lib/auth/safeNextPath";
 
 function GoogleIcon() {
   return (
@@ -32,7 +33,7 @@ function GoogleIcon() {
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") ?? "/account";
+  const next = safeNextPath(searchParams.get("next"), "/account");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { runLocalAttemptMigration } from "@/lib/migrateLocalAttempts";
+import { safeNextPath } from "@/lib/auth/safeNextPath";
 
 function getAppOrigin(): string {
   const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
@@ -16,8 +17,7 @@ function getAppOrigin(): string {
 function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const redirect =
-    searchParams.get("redirect") || searchParams.get("next") || "/";
+  const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/");
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");

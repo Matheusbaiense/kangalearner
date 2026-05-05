@@ -22,14 +22,14 @@
 }
 .btn-primary,
 .btn-gold {
-  background: linear-gradient(135deg, #fbbf24, var(--gold));
-  color: #1b2b3a;
-  box-shadow: 0 16px 30px rgba(217, 119, 6, 0.26);
+  background: linear-gradient(135deg, var(--green2), var(--green));
+  color: white;
+  box-shadow: 0 16px 30px rgba(46, 125, 91, 0.26);
 }
 .btn-primary:hover,
 .btn-gold:hover {
   filter: brightness(1.04);
-  box-shadow: 0 20px 36px rgba(217, 119, 6, 0.34);
+  box-shadow: 0 20px 36px rgba(46, 125, 91, 0.34);
 }
 .btn-secondary {
   color: var(--text);
@@ -91,10 +91,10 @@
 }
 .hero h1 {
   font-family: var(--font-heading);
-  font-style: italic;
-  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  font-style: normal;
+  font-size: clamp(2.3rem, 4.4vw, 3.6rem);
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
   max-width: 620px;
   margin-bottom: 22px;
 }

@@ -53,6 +53,13 @@
   --color-red: var(--red);
   --color-border: var(--border);
   --color-muted: var(--muted2);
+
+  /* Glass (web approximation of “Liquid Glass”) */
+  --glass-bg: rgba(255, 255, 255, 0.68);
+  --glass-bg-strong: rgba(255, 255, 255, 0.78);
+  --glass-border: rgba(7, 26, 44, 0.12);
+  --glass-shadow: 0 18px 55px rgba(7, 26, 44, 0.10);
+  --glass-blur: 16px;
 }
 
 /* ── Reset ── */
@@ -77,6 +84,25 @@ body {
   color: var(--ink);
   line-height: 1.55;
   font-size: 15px;
+}
+
+/* Glass utilities */
+.glass {
+  background: var(--paper);
+  border: 1px solid var(--border);
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .glass {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
+}
+
+.glass-card {
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
 }
 
 a {
@@ -721,6 +747,15 @@ button {
   border-radius: var(--radius-md); padding: 18px 20px;
   box-shadow: 0 3px 12px rgba(7,26,44,.04);
 }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .stat-card {
+    background: var(--glass-bg-strong);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--glass-shadow);
+  }
+}
 .stat-card-label {
   font-size: .7rem; font-weight: 900;
   text-transform: uppercase; letter-spacing: .09em;
@@ -746,6 +781,14 @@ button {
   background: white; border: 1px solid var(--border);
   border-radius: 12px; padding: 11px 14px;
 }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .cat-row {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
+}
 .cat-row-icon { font-size: 1rem; flex: 0 0 20px; }
 .cat-row-name { font-weight: 800; font-size: .88rem; flex: 1; }
 .cat-row-frac { font-size: .8rem; color: var(--muted2); font-weight: 700; white-space: nowrap; min-width: 44px; text-align: right; }
@@ -760,6 +803,14 @@ button {
   display: flex; align-items: center; gap: 12px;
   background: white; border: 1px solid var(--border);
   border-radius: 12px; padding: 11px 14px;
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .session-row {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
 }
 .session-score {
   font-family: var(--font-display);
@@ -805,11 +856,28 @@ button {
   top: 0;
   z-index: 100;
   height: var(--header-height);
-  background: var(--navy-925);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  background: transparent;
+  border-bottom: none;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: rgba(6, 19, 33, 0.55);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .site-header::before {
+    background: rgba(6, 19, 33, 0.38);
+    -webkit-backdrop-filter: blur(18px);
+    backdrop-filter: blur(18px);
+  }
 }
 
 .site-header .nav-shell {
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
@@ -1042,6 +1110,15 @@ button {
   padding: 22px 20px;
   box-shadow: 0 18px 50px rgba(7, 26, 44, 0.08);
 }
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .mock-setup-card {
+    background: var(--glass-bg-strong);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+    box-shadow: var(--glass-shadow);
+  }
+}
 
 .mock-setup-card h1 {
   font-family: var(--font-display);
@@ -1078,6 +1155,17 @@ button {
   margin-top: 10px;
   cursor: pointer;
   transition: border-color 0.12s ease, box-shadow 0.12s ease, transform 0.12s ease, background 0.12s ease;
+}
+@supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
+  .mock-mode-option {
+    background: rgba(255, 255, 255, 0.70);
+    border-color: var(--glass-border);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .mock-mode-option.active {
+    background: rgba(46, 125, 91, 0.08);
+  }
 }
 
 .mock-mode-option:hover {

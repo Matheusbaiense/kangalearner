@@ -76,7 +76,10 @@ export async function POST(request: NextRequest) {
     ignoreDuplicates: true
   });
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 400 });
+  if (error) {
+    console.error("attempts/bulk: upsert failed", { code: error.code, details: error.details, hint: error.hint });
+    return NextResponse.json({ error: "db_error" }, { status: 400 });
+  }
 
   const json = NextResponse.json({ ok: true, accepted: rows.length });
   response.cookies.getAll().forEach((c) => {

@@ -30,6 +30,44 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Lint
+        run: pnpm run lint
+
+      - name: Format check (static root)
+        run: pnpm run format:check
+
+      - name: Detect questions data changes
+        id: questions_changes
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            base_sha="${{ github.event.pull_request.base.sha }}"
+            head_sha="${{ github.event.pull_request.head.sha }}"
+          else
+            base_sha="${{ github.event.before }}"
+            head_sha="${{ github.sha }}"
+          fi
+
+          if [ -z "$base_sha" ] || [ "$base_sha" = "0000000000000000000000000000000000000000" ]; then
+            base_sha="$(git rev-parse HEAD~1)"
+            head_sha="$(git rev-parse HEAD)"
+          fi
+
+          echo "Diff range: $base_sha..$head_sha"
+          changed="$(git diff --name-only "$base_sha" "$head_sha" || true)"
+          echo "$changed"
+
+          if echo "$changed" | grep -E '^assets/js/data/' >/dev/null 2>&1; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Validate questions (when data changes)
+        if: steps.questions_changes.outputs.changed == 'true'
+        run: pnpm run validate:questions
+
       - name: Check questions.ts sync
         run: |
           pnpm gen:core-questions

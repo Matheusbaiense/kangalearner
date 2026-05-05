@@ -10,6 +10,7 @@ export const metadata = { title: "Dashboard — KangaLearner" };
 interface AttemptRow {
   category: string | null;
   is_correct: boolean;
+  created_at: string;
 }
 interface SessionRow {
   id: string;
@@ -27,6 +28,13 @@ function formatDate(iso: string) {
 
 function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
+}
+
+function clamp01(n: number) {
+  if (!Number.isFinite(n)) return 0;
+  if (n < 0) return 0;
+  if (n > 1) return 1;
+  return n;
 }
 
 export default async function DashboardPage() {
@@ -50,7 +58,7 @@ export default async function DashboardPage() {
   /* ── Fetch question attempts ── */
   const { data: attempts } = await supabase!
     .from("question_attempts")
-    .select("category, is_correct")
+    .select("category, is_correct, created_at")
     .eq("user_id", user.id) as { data: AttemptRow[] | null };
 
   /* ── Fetch last 5 mock sessions ── */
@@ -67,6 +75,16 @@ export default async function DashboardPage() {
   const totalCorrect = allAttempts.filter((a) => a.is_correct).length;
   const overallPct = pct(totalCorrect, totalAnswered);
 
+  const now = Date.now();
+  const last7 = allAttempts.filter((a) => {
+    const t = Date.parse(a.created_at);
+    if (!Number.isFinite(t)) return false;
+    return now - t <= 7 * 24 * 60 * 60 * 1000;
+  });
+  const last7Answered = last7.length;
+  const last7Correct = last7.filter((a) => a.is_correct).length;
+  const last7Pct = pct(last7Correct, last7Answered);
+
   /* Per-category */
   const catMap: Record<string, { total: number; correct: number }> = {};
   allAttempts.forEach((a) => {
@@ -79,6 +97,16 @@ export default async function DashboardPage() {
   const catStats = Object.entries(catMap)
     .sort((a, b) => b[1].total - a[1].total)
     .slice(0, 10);
+
+  const weakTopics = Object.entries(catMap)
+    .filter(([_, s]) => s.total >= 3)
+    .sort((a, b) => {
+      const ap = a[1].total > 0 ? a[1].correct / a[1].total : 0;
+      const bp = b[1].total > 0 ? b[1].correct / b[1].total : 0;
+      if (ap !== bp) return ap - bp;
+      return b[1].total - a[1].total;
+    })
+    .slice(0, 3);
 
   const allSessions = sessions ?? [];
   const bestSession = allSessions.length > 0
@@ -135,17 +163,75 @@ export default async function DashboardPage() {
             </div>
           </div>
 
+          {/* Trend */}
+          <div className="dash-section" style={{ marginTop: 22 }}>
+            <p className="dash-section-title">Last 7 days</p>
+            {last7Answered === 0 ? (
+              <div className="dash-empty">No activity yet in the last week.</div>
+            ) : (
+              <div className="cat-row" style={{ alignItems: "center" }}>
+                <span className="cat-row-icon">📈</span>
+                <span className="cat-row-name">Accuracy</span>
+                <span className="cat-row-frac">{last7Correct}/{last7Answered}</span>
+                <div className="cat-row-track" aria-label="Last 7 days accuracy">
+                  <div
+                    className="cat-row-fill"
+                    style={{
+                      width: `${Math.round(clamp01(last7Correct / Math.max(last7Answered, 1)) * 100)}%`,
+                      background: last7Pct >= 80 ? "var(--green)" : last7Pct >= 60 ? "var(--orange)" : "var(--red)"
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* Quick actions */}
           <div style={{ display: "flex", gap: 10, marginBottom: 32, flexWrap: "wrap" }}>
             <Link href="/practice" className="dash-cta">Continue practice →</Link>
-            <Link
-              href="/practice"
-              onClick={undefined}
-              className="btn-outline"
-              style={{ textDecoration: "none" }}
-            >
+            <Link href="/mock-test" className="btn-outline" style={{ textDecoration: "none" }}>
               Take mock test
             </Link>
+          </div>
+
+          {/* Weak topics */}
+          <div className="dash-section">
+            <p className="dash-section-title">What to practise next</p>
+            {weakTopics.length === 0 ? (
+              <div className="dash-empty">
+                Answer more questions to get personalised recommendations.
+              </div>
+            ) : (
+              <div className="cat-list">
+                {weakTopics.map(([cat, s]) => {
+                  const catData = CATEGORIES.find((c) => c.key === cat);
+                  const cp = pct(s.correct, s.total);
+                  return (
+                    <div className="cat-row" key={cat}>
+                      <span className="cat-row-icon">{catData?.icon ?? "📚"}</span>
+                      <span className="cat-row-name">{cat}</span>
+                      <span className="cat-row-frac">{s.correct}/{s.total}</span>
+                      <div className="cat-row-track">
+                        <div
+                          className="cat-row-fill"
+                          style={{
+                            width: `${cp}%`,
+                            background: cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                          }}
+                        />
+                      </div>
+                      <Link
+                        href={`/practice?cat=${encodeURIComponent(cat)}`}
+                        className="btn-outline"
+                        style={{ marginLeft: "auto", textDecoration: "none" }}
+                      >
+                        Practise →
+                      </Link>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
 
           {/* Category breakdown */}
@@ -174,6 +260,13 @@ export default async function DashboardPage() {
                           }}
                         />
                       </div>
+                      <Link
+                        href={`/practice?cat=${encodeURIComponent(cat)}`}
+                        className="btn-outline"
+                        style={{ marginLeft: "auto", textDecoration: "none" }}
+                      >
+                        Practise
+                      </Link>
                     </div>
                   );
                 })}

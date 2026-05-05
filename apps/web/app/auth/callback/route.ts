@@ -1,14 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-
-/** Evita open redirect: só caminhos relativos à app. */
-function safeNextPath(raw: string | null): string {
-  const fallback = "/account";
-  if (!raw) return fallback;
-  if (!raw.startsWith("/") || raw.startsWith("//")) return fallback;
-  return raw;
-}
+import { safeNextPath } from "@/lib/auth/safeNextPath";
 
 /**
  * OAuth / magic-link callback (INFRA-7).
