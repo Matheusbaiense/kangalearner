@@ -504,10 +504,10 @@ const DW = {
       const oMain = o.t[dLang] || o.t.en || "";
       const oTrans = tLang ? o.t[tLang] || "" : "";
       const oHtml = this.formatBilingualBlock(oMain, oTrans);
-      optsHtml += `<div class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="radio" aria-checked="false" tabindex="0">
+      optsHtml += `<button type="button" class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="radio" aria-checked="false">
         <span class="oletter">${o.l}</span>
         <span class="otext">${oHtml}</span>
-      </div>`;
+      </button>`;
     });
 
     const expMain = sanitizeExpHtml(q.exp[dLang] || q.exp.en || "");
@@ -952,7 +952,7 @@ const DW = {
     const resetBtn = document.getElementById("reset-btn");
     if (resetBtn)
       resetBtn.addEventListener("click", () => {
-        const msg = "Are you sure you want to reset your progress?";
+        const msg = this.t("reset_confirm");
         if (window.confirm(msg)) DW.clearProgress();
       });
 
@@ -1136,9 +1136,9 @@ const I18N = {
     es: "Las preguntas de este estado estarán disponibles pronto."
   },
   empty_state_sub: {
-    pt: "Pratique WA por enquanto.",
-    en: "Practise WA questions for now.",
-    es: "Practica WA por ahora."
+    pt: "As perguntas deste estado estarão disponíveis em breve. Você pode praticar WA por enquanto.",
+    en: "Questions for this state are coming soon. You can practise WA questions for now.",
+    es: "Las preguntas de este estado estarán disponibles pronto. Puedes practicar WA por ahora."
   },
   empty_btn_wa: { pt: "Praticar WA", en: "Practise WA questions", es: "Practicar WA" },
   empty_btn_learn: { pt: "Voltar para Aprender", en: "Back to Learn", es: "Volver a Aprender" },
@@ -1186,6 +1186,11 @@ const I18N = {
   prog_correct: { pt: "Certas", en: "Correct", es: "Correctas" },
   prog_incorrect: { pt: "Erradas", en: "Incorrect", es: "Incorrectas" },
   prog_unanswered: { pt: "Não respondidas", en: "Unanswered", es: "Sin responder" },
+  reset_confirm: {
+    pt: "Tem certeza que deseja apagar todo o progresso?",
+    en: "Are you sure you want to reset all progress?",
+    es: "¿Seguro que deseas borrar todo el progreso?"
+  },
   sim_badge_ok: { pt: "Correta", en: "Correct", es: "Correcta" },
   sim_badge_bad: { pt: "Errada", en: "Incorrect", es: "Incorrecta" },
   sim_your_answer: { pt: "Sua resposta:", en: "Your answer:", es: "Tu respuesta:" },

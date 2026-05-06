@@ -33,6 +33,86 @@
     return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><rect x="9" y="9" width="30" height="30" rx="5"/></svg>';
   }
 
+  function stateCardsBlockHTML() {
+    var lang = getLang();
+    var copy = {
+      en: {
+        kicker: "Road rules by state",
+        title: "Choose your state",
+        sub: "WA questions are available now. Other states are coming soon — you can practise WA for now."
+      },
+      pt: {
+        kicker: "Regras por estado",
+        title: "Escolha seu estado",
+        sub: "As questões de WA já estão disponíveis. Os demais estados chegam em breve — você pode praticar WA por enquanto."
+      },
+      es: {
+        kicker: "Reglas por estado",
+        title: "Elige tu estado",
+        sub: "Las preguntas de WA ya están disponibles. Los demás estados estarán disponibles pronto — puedes practicar WA por ahora."
+      }
+    }[lang] || {
+      kicker: "Road rules by state",
+      title: "Choose your state",
+      sub: "WA questions are available now. Other states are coming soon — you can practise WA for now."
+    };
+
+    // Keep WA as available, others as coming soon (visual badge + reduced emphasis handled by CSS).
+    var states = [
+      { code: "WA", name: "Western Australia", active: true },
+      { code: "NSW", name: "New South Wales", active: false },
+      { code: "VIC", name: "Victoria", active: false },
+      { code: "QLD", name: "Queensland", active: false },
+      { code: "SA", name: "South Australia", active: false },
+      { code: "TAS", name: "Tasmania", active: false },
+      { code: "ACT", name: "Australian Capital Territory", active: false },
+      { code: "NT", name: "Northern Territory", active: false }
+    ];
+
+    var cards = states
+      .map(function (s) {
+        var comingSoon = !s.active;
+        return (
+          '<button class="state-card' +
+          (s.active ? "" : " coming-soon") +
+          '" data-state="' +
+          s.code +
+          '" type="button" aria-pressed="false">' +
+          '<div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"/></div>' +
+          '<div class="state-code">' +
+          s.code +
+          "</div>" +
+          '<div class="state-name">' +
+          s.name +
+          "</div>" +
+          (comingSoon
+            ? '<div class="state-badge" data-i18n="state.comingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>'
+            : "") +
+          "</button>"
+        );
+      })
+      .join("");
+
+    return (
+      '<section class="page-section" id="road-rules"><div class="container">' +
+      '<div class="page-header">' +
+      '<p class="page-kicker">' +
+      escapeHtml(copy.kicker) +
+      "</p>" +
+      '<h2 class="page-title">' +
+      escapeHtml(copy.title) +
+      "</h2>" +
+      '<p class="page-sub">' +
+      escapeHtml(copy.sub) +
+      "</p>" +
+      "</div>" +
+      '<div class="state-row">' +
+      cards +
+      "</div>" +
+      "</div></section>"
+    );
+  }
+
   window.KL_PAGES.learn = function () {
     var topics = window.LEARN_TOPICS || [];
     var lang = getLang();
@@ -74,6 +154,7 @@
       '<h1 class="page-title" data-i18n="learn.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
       '<p class="page-sub" data-i18n="learn.sub"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       "</div>" +
+      stateCardsBlockHTML() +
       '<div class="learn-grid">' +
       cards +
       "</div>" +

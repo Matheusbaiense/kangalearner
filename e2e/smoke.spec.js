@@ -23,10 +23,10 @@ test.describe("static site smoke", () => {
     );
   });
 
-  test("states hash highlights Road Rules nav, not Home", async ({ page }) => {
+  test("states hash routes into Learn road rules section", async ({ page }) => {
     await page.goto("/#states");
-    await expect(page.locator('.main-nav a[href="#states"]')).toHaveClass(/active/);
-    await expect(page.locator('.main-nav a[href="#home"]')).not.toHaveClass(/active/);
+    await expect(page.locator('.main-nav a[href="#learn"]')).toHaveClass(/active/);
+    await expect(page.locator("#road-rules")).toBeVisible({ timeout: 20000 });
   });
 
   test("learn hub renders stroke icons instead of emoji", async ({ page }) => {

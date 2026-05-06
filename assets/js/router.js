@@ -80,10 +80,16 @@
     var param = parts[1] || null;
     var scrollTarget = null;
 
-    // In-page anchors: render home and scroll.
-    if (page === "topics" || page === "states") {
+    // In-page anchors:
+    // - #topics: render home and scroll to topics section
+    // - #states: consolidate with Learn and scroll to its "Road Rules" block
+    if (page === "topics") {
       scrollTarget = page;
       page = "home";
+    }
+    if (page === "states") {
+      scrollTarget = "road-rules";
+      page = "learn";
     }
 
     window.scrollTo(0, 0);
@@ -345,13 +351,14 @@
   // ── Nav active state ──────────────────────────────────────────────────────
   function updateNavActive(page, scrollTarget) {
     var normalised = page === "mock-run" ? "mock" : page;
-    var roadRulesSection = scrollTarget === "states" && normalised === "home";
+    // If #states routes into Learn, Learn is the active nav item.
+    var treatAsLearn = scrollTarget === "road-rules" && normalised === "learn";
     document.querySelectorAll(".main-nav a[href]").forEach(function (a) {
       var href = (a.getAttribute("href") || "").replace("#", "").split("/")[0];
       var active = false;
-      if (roadRulesSection && href === "states") {
-        active = true;
-      } else if (!roadRulesSection) {
+      if (treatAsLearn) {
+        active = href === "learn";
+      } else {
         active = href === normalised || (normalised === "home" && (href === "home" || href === ""));
       }
       a.classList.toggle("active", active);
@@ -365,6 +372,7 @@
       window.hydrateKangaStaticI18n(lang);
     }
     bindStateCards();
+    bindLearnStateCards();
     bindTopicCards();
     bindMockSetup();
     if (typeof window.KL_initStateSelector === "function") {
@@ -385,6 +393,20 @@
         });
       });
     });
+  }
+
+  // State cards rendered inside the Learn page (Road Rules section)
+  function bindLearnStateCards() {
+    document
+      .querySelectorAll("#page-root #road-rules .state-card[data-state]")
+      .forEach(function (card) {
+        card.addEventListener("click", function () {
+          var code = card.dataset.state;
+          if (window.KangaStorage) window.KangaStorage.setState(code);
+          if (window.DW && typeof window.DW.setState === "function") window.DW.setState(code);
+          location.hash = "practice";
+        });
+      });
   }
 
   function bindTopicCards() {
