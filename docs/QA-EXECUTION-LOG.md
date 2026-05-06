@@ -21,6 +21,15 @@ Dev local do site estático: `pnpm run site:dev` (Vite, porta 5173). Preview do 
 
 **Alterações:** `assets/js/router.js` (`updateNavActive` com `scrollTarget` para Road Rules), `assets/js/pages/home-page.js` (anexa `KL_PAGES.learn()` após topics), `e2e/smoke.spec.js`.
 
+## 2026-05-06 — F0: ícones SVG (Learn hub)
+
+| Comando                 | Resultado                          |
+| ----------------------- | ---------------------------------- |
+| `pnpm run format:check` | **OK**                             |
+| `pnpm run test:e2e`     | **OK** — 6 testes (incl. `#learn`) |
+
+**Alterações:** `assets/js/learn-engine.js` (mapa de ícones + aliases + tópicos novos), `assets/js/pages/learn-page.js` (cards usam `KL_LEARN.icon`), `assets/css/pages.css` (`.learn-hub-icon`), `e2e/smoke.spec.js`.
+
 ## 2026-05-06 — Phase G (production readiness, site estático)
 
 | Comando                       | Resultado                                                                |

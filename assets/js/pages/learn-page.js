@@ -26,26 +26,11 @@
 
   window.KL_PAGES = window.KL_PAGES || {};
 
-  function iconEmoji(icon) {
-    var map = {
-      speed: "🚦",
-      giveway: "🛑",
-      signs: "🚧",
-      lights: "🚦",
-      markings: "🛣️",
-      lane: "🛣️",
-      parking: "🅿️",
-      alcohol: "🍺",
-      emergency: "🚨",
-      safety: "🛡️",
-      roundabouts: "🔁",
-      "lane-changing": "🔀",
-      overtaking: "⏩",
-      seatbelts: "🔒",
-      "weather-conditions": "🌧️",
-      "demerit-points": "⚖️"
-    };
-    return map[icon] || "📘";
+  function topicIconSvg(iconKey) {
+    if (window.KL_LEARN && typeof window.KL_LEARN.icon === "function") {
+      return window.KL_LEARN.icon(iconKey);
+    }
+    return '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><rect x="9" y="9" width="30" height="30" rx="5"/></svg>';
   }
 
   window.KL_PAGES.learn = function () {
@@ -65,8 +50,8 @@
           topic.slug +
           '">' +
           '<div class="learn-card-icon">' +
-          '<span class="learn-emoji" aria-hidden="true">' +
-          iconEmoji(topic.icon) +
+          '<span class="learn-hub-icon" aria-hidden="true">' +
+          topicIconSvg(topic.icon) +
           "</span>" +
           "</div>" +
           '<div class="learn-card-body">' +

@@ -29,16 +29,30 @@ const KL_LEARN = {
     return main;
   },
 
-  icon(type) {
+  normalizeIconType(type) {
+    if (!type || typeof type !== "string") return "sign";
+    const aliases = { signs: "sign", markings: "lane" };
+    return aliases[type] || type;
+  },
+
+  icon(rawType) {
+    const type = this.normalizeIconType(rawType);
     const icons = {
-      speed: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/></svg>`,
-      giveway: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 6l18 32H6L24 6Z"/><path d="M24 17v10"/><path d="M24 34h.01"/></svg>`,
-      sign: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="9" y="9" width="30" height="30" rx="5"/><path d="M24 16v16"/><path d="M16 24h16"/></svg>`,
-      lights: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="16" y="4" width="16" height="40" rx="8"/><circle cx="24" cy="14" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="24" cy="34" r="3"/></svg>`,
-      lane: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M14 42l5-36"/><path d="M34 42L29 6"/><path d="M24 8v7M24 22v7M24 36v6"/></svg>`,
-      parking: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/></svg>`,
-      alcohol: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/></svg>`,
-      emergency: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M24 5l18 34H6L24 5Z"/><path d="M24 17v10"/><path d="M24 34h.01"/></svg>`
+      speed: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 31a16 16 0 1 1 32 0"/><path d="M24 31l9-14"/><path d="M12 31h24"/></svg>`,
+      giveway: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6l18 32H6L24 6Z"/><path d="M24 17v10"/><path d="M24 34h.01"/></svg>`,
+      sign: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="30" height="30" rx="5"/><path d="M24 16v16"/><path d="M16 24h16"/></svg>`,
+      lights: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="16" y="4" width="16" height="40" rx="8"/><circle cx="24" cy="14" r="3"/><circle cx="24" cy="24" r="3"/><circle cx="24" cy="34" r="3"/></svg>`,
+      lane: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 42l5-36"/><path d="M34 42L29 6"/><path d="M24 8v7M24 22v7M24 36v6"/></svg>`,
+      parking: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="10" y="6" width="28" height="36" rx="4"/><path d="M19 33V15h8a6 6 0 0 1 0 12h-8"/></svg>`,
+      alcohol: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M19 5h10l-2 12v6l6 16H15l6-16v-6L19 5Z"/><path d="M18 32h12"/></svg>`,
+      emergency: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 5l18 34H6L24 5Z"/><path d="M24 17v10"/><path d="M24 34h.01"/></svg>`,
+      safety: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 6 38 11v11c0 10-6 17-14 20-8-3-14-10-14-20V11L24 6Z"/><path d="M18 24l4 4 8-10"/></svg>`,
+      roundabouts: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="11"/><path d="M24 9v5M35 15l-4 4M39 24h-5M35 33l-4-4M24 39v-5M13 33l4-4M9 24h5M13 15l4 4"/></svg>`,
+      "lane-changing": `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 8v32"/><path d="M34 8v32"/><path d="M10 24h10"/><path d="M28 24h10"/><path d="M17 16l-5 8 5 8"/><path d="M31 32l5-8-5-8"/></svg>`,
+      overtaking: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M8 26h22"/><path d="M26 18l12 8-12 8"/><path d="M18 14l9 5-9 5"/><path d="M18 34l9-5-9-5"/></svg>`,
+      seatbelts: `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><rect x="14" y="12" width="20" height="24" rx="3"/><path d="M18 16 30 32"/></svg>`,
+      "weather-conditions": `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M10 30a9 9 0 0 1 8-14 11 11 0 0 1 21 5 9 9 0 0 1-7 17H12"/><path d="M17 36v6M24 36v6M31 36v6"/></svg>`,
+      "demerit-points": `<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M24 8v5"/><path d="M14 15h20"/><path d="M12 17h24v7H12z"/><path d="M17 24v15"/><path d="M31 24v15"/><circle cx="19" cy="42" r="3.5"/><circle cx="29" cy="42" r="3.5"/></svg>`
     };
 
     return icons[type] || icons.sign;

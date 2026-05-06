@@ -29,6 +29,13 @@ test.describe("static site smoke", () => {
     await expect(page.locator('.main-nav a[href="#home"]')).not.toHaveClass(/active/);
   });
 
+  test("learn hub renders stroke icons instead of emoji", async ({ page }) => {
+    await page.goto("/#learn");
+    await expect(page.locator(".learn-hub .learn-hub-icon svg").first()).toBeVisible({
+      timeout: 20000
+    });
+  });
+
   test("responsive screenshots home", async ({ page }) => {
     const widths = [375, 768, 1024, 1440];
     for (const width of widths) {
