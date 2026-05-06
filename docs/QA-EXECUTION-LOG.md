@@ -12,6 +12,8 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 **Ficheiros principais:** `apps/web/app/page.tsx`, `learn/page.tsx`, `mock-test/page.tsx`, `mock-test/results/page.tsx`, `dashboard/page.tsx`, `practice/PracticeClient.tsx`, `app/globals.css`, `src/components/icons.tsx`, `IconBadge.tsx`, `categoryLucideIcon.ts`, `pnpm-lock.yaml`.
 
+**Nota:** `.claude/plan/kangalearner-roadmap.md` está ignorado pelo git; a decisão F0 está espelhada em `docs/DESIGN-LUCIDE-ICONOGRAPHY.md` (versionado).
+
 ### Comandos
 
 | Comando                                      | Resultado                                                                 |
