@@ -47,6 +47,14 @@ Dev local do site estático: `pnpm run site:dev` (Vite, porta 5173). Preview do 
 
 **Alterações:** `scripts/check-static-links.mjs`, `package.json`.
 
+## 2026-05-06 — Smoke server (static, sem Vite)
+
+| Comando                 | Resultado |
+| ----------------------- | --------- |
+| `pnpm run smoke:static` | **OK**    |
+
+**Notas:** `src/main.js` agora é seguro fora do Vite (não assume `import.meta.env`).
+
 ## 2026-05-06 — Phase G (production readiness, site estático)
 
 | Comando                       | Resultado                                                                |
