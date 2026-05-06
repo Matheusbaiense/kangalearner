@@ -2,6 +2,16 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-06 — Phase I0 (Vite + artefacto Vercel, site estático raiz)
+
+| Comando                 | Resultado                                   |
+| ----------------------- | ------------------------------------------- |
+| `pnpm run site:build`   | **OK** — saída em `dist-vite/`              |
+| `pnpm run format:check` | **OK**                                      |
+| `pnpm run test:e2e`     | **OK** (4 testes Chromium, `serve` na raiz) |
+
+Dev local do site estático: `pnpm run site:dev` (Vite, porta 5173). Preview do bundle: `pnpm run site:preview`. GitHub Pages **não** mudou: `pages.yml` continua a copiar `index.html` + `assets/`.
+
 ## 2026-05-06 — Phase G (production readiness, site estático)
 
 | Comando                       | Resultado                                                                |

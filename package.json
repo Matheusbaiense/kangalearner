@@ -10,13 +10,19 @@
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
     "format": "prettier -w .",
-    "format:check": "prettier --check index.html \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"e2e/**/*.js\" playwright.config.js",
+    "format:check": "prettier --check index.html \"assets/js/**/*.js\" \"assets/css/**/*.css\" \"e2e/**/*.js\" \"src/**/*.js\" playwright.config.js vite.config.js",
     "legacy:build": "node scripts/build.mjs",
     "validate:questions": "node scripts/validate-questions.cjs",
     "gen:core-questions": "node scripts/convert-questions.cjs",
     "optimize:images": "node scripts/optimize-social-images.mjs",
     "test:e2e": "playwright test",
-    "test:e2e:install": "playwright install chromium"
+    "test:e2e:install": "playwright install chromium",
+    "site:dev": "vite",
+    "site:build": "vite build",
+    "site:preview": "vite preview --port 5174 --strictPort"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.49.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",
@@ -26,6 +32,8 @@
     "puppeteer": "24.42.0",
     "sharp": "^0.34.5",
     "terser": "^5.39.0",
-    "turbo": "^2.1.3"
+    "turbo": "^2.1.3",
+    "vite": "^6.3.5",
+    "vite-plugin-static-copy": "^4.1.0"
   }
 }

@@ -20,6 +20,10 @@ on:
       - "playwright.config.js"
       - "package.json"
       - "pnpm-lock.yaml"
+      - "vite.config.js"
+      - "vercel.json"
+      - "src/**"
+      - ".env.example"
   workflow_dispatch:
 
 permissions:
