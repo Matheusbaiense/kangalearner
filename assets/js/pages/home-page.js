@@ -126,7 +126,8 @@
 
     return (
       '<section class="hero" id="home-hero">' +
-      '<div class="hero-inner"><div class="hero-copy">' +
+      '<div class="hero-inner">' +
+      '<div class="hero-copy">' +
       '<div class="eyebrow" data-i18n="hero.eyebrow"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       '<h1 data-i18n="hero.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
       '<p class="hero-desc" data-i18n="hero.description"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
@@ -135,7 +136,35 @@
       '<a class="btn btn-secondary" href="#mock" data-i18n="hero.ctaMock"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span><span aria-hidden="true">→</span></a>' +
       "</div>" +
       '<div class="hero-proof"><span class="proof-icon">✓</span><span data-i18n="hero.proof"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></div>' +
-      "</div></div></section>" +
+      "</div>" +
+      '<div class="hero-preview" data-i18n-aria="aria.previewPractice" aria-label="" aria-hidden="true">' +
+      '<div class="preview-head">' +
+      '<div class="preview-title" data-i18n="preview.practiceTitle"><img loading="lazy" src="assets/icons/ui/practice.svg" alt="" width="16" height="16" aria-hidden="true"/><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
+      '<div class="preview-pill"><img loading="lazy" src="assets/icons/ui/map.svg" alt="" width="14" height="14" aria-hidden="true"/>WA</div>' +
+      "</div>" +
+      '<div class="preview-grid">' +
+      '<div class="practice-card">' +
+      '<div class="preview-small" data-i18n="preview.questionProgress"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
+      '<div class="preview-progress"><div class="preview-track"><div class="preview-fill"></div></div><strong>40%</strong></div>' +
+      '<div class="preview-question" data-i18n="preview.questionDemo"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
+      '<div class="preview-options">' +
+      '<div class="preview-option correct"><span class="letter">A</span><span data-i18n="preview.optTrue"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span><span style="margin-left: auto" aria-hidden="true">✓</span></div>' +
+      '<div class="preview-option"><span class="letter">B</span><span data-i18n="preview.optFalse"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></div>' +
+      '<div class="preview-option"><span class="letter">C</span><span data-i18n="preview.optOnlySign"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></div>' +
+      '<div class="preview-option"><span class="letter">D</span><span data-i18n="preview.optRoundabout"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></div>' +
+      "</div>" +
+      "</div>" +
+      "<div>" +
+      '<div class="progress-card"><div class="preview-small" data-i18n="preview.progressTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div><div class="ring"></div><div class="legend">' +
+      '<span class="legend-row"><span class="legend-label"><span class="dot green"></span><span data-i18n="preview.legendCorrect"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span><strong class="legend-val">21</strong></span>' +
+      '<span class="legend-row"><span class="legend-label"><span class="dot red"></span><span data-i18n="preview.legendIncorrect"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span><strong class="legend-val">8</strong></span>' +
+      '<span class="legend-row"><span class="legend-label"><span class="dot gray"></span><span data-i18n="preview.legendUnanswered"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></span><strong class="legend-val">1</strong></span>' +
+      "</div></div>" +
+      '<div class="score-card"><div class="preview-small" data-i18n="preview.scoreTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div><div class="score-big">85%</div><small data-i18n="preview.scoreAwesome"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></small></div>' +
+      "</div>" +
+      "</div>" +
+      "</div>" +
+      "</div></section>" +
       '<section class="state-section" id="states"><div class="container"><div class="state-row">' +
       '<div class="state-copy" data-i18n="state.banner"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       stateCardsHTML(currentState) +
