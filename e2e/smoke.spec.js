@@ -23,6 +23,12 @@ test.describe("static site smoke", () => {
     );
   });
 
+  test("states hash highlights Road Rules nav, not Home", async ({ page }) => {
+    await page.goto("/#states");
+    await expect(page.locator('.main-nav a[href="#states"]')).toHaveClass(/active/);
+    await expect(page.locator('.main-nav a[href="#home"]')).not.toHaveClass(/active/);
+  });
+
   test("responsive screenshots home", async ({ page }) => {
     const widths = [375, 768, 1024, 1440];
     for (const width of widths) {

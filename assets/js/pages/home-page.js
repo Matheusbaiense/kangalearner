@@ -123,6 +123,7 @@
 
   window.KL_PAGES.home = function () {
     var currentState = getState();
+    var learnBlock = typeof window.KL_PAGES.learn === "function" ? window.KL_PAGES.learn() : "";
 
     return (
       '<section class="hero" id="home-hero">' +
@@ -174,7 +175,8 @@
       '<div class="topic-grid">' +
       topicCardsHTML() +
       "</div>" +
-      "</div></section>"
+      "</div></section>" +
+      learnBlock
     );
   };
 })();

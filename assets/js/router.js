@@ -87,7 +87,7 @@
     }
 
     window.scrollTo(0, 0);
-    updateNavActive(page);
+    updateNavActive(page, scrollTarget);
 
     if (page !== "mock-run") clearExamTimer();
 
@@ -343,12 +343,17 @@
   }
 
   // ── Nav active state ──────────────────────────────────────────────────────
-  function updateNavActive(page) {
+  function updateNavActive(page, scrollTarget) {
     var normalised = page === "mock-run" ? "mock" : page;
+    var roadRulesSection = scrollTarget === "states" && normalised === "home";
     document.querySelectorAll(".main-nav a[href]").forEach(function (a) {
-      var href = (a.getAttribute("href") || "").replace("#", "");
-      var active =
-        href === normalised || (normalised === "home" && (href === "home" || href === ""));
+      var href = (a.getAttribute("href") || "").replace("#", "").split("/")[0];
+      var active = false;
+      if (roadRulesSection && href === "states") {
+        active = true;
+      } else if (!roadRulesSection) {
+        active = href === normalised || (normalised === "home" && (href === "home" || href === ""));
+      }
       a.classList.toggle("active", active);
     });
   }
