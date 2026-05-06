@@ -12,6 +12,15 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 Dev local do site estático: `pnpm run site:dev` (Vite, porta 5173). Preview do bundle: `pnpm run site:preview`. GitHub Pages **não** mudou: `pages.yml` continua a copiar `index.html` + `assets/`.
 
+## 2026-05-06 — SPA: `#states` nav + learn hub na home
+
+| Comando                 | Resultado                                        |
+| ----------------------- | ------------------------------------------------ |
+| `pnpm run format:check` | **OK**                                           |
+| `pnpm run test:e2e`     | **OK** — 5 testes Chromium (incl. `#states` nav) |
+
+**Alterações:** `assets/js/router.js` (`updateNavActive` com `scrollTarget` para Road Rules), `assets/js/pages/home-page.js` (anexa `KL_PAGES.learn()` após topics), `e2e/smoke.spec.js`.
+
 ## 2026-05-06 — Phase G (production readiness, site estático)
 
 | Comando                       | Resultado                                                                |
