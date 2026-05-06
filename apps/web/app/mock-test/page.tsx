@@ -1,6 +1,8 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { Icons } from "@/components/icons";
+import { IconBadge } from "@/components/ui/IconBadge";
 
 type MockMode = "practice" | "exam";
 
@@ -24,8 +26,11 @@ export default function MockTestSetupPage() {
         <button
           className={`mock-mode-option ${mode === "practice" ? "active" : ""}`}
           onClick={() => setMode("practice")}
+          type="button"
         >
-          <span className="mode-icon">📖</span>
+          <span className="mode-icon">
+            <IconBadge icon={Icons.book} tone="brand" size="md" />
+          </span>
           <div>
             <strong>Practice Mock</strong>
             <span>Explanation shown after each answer. Best for learning.</span>
@@ -35,15 +40,18 @@ export default function MockTestSetupPage() {
         <button
           className={`mock-mode-option ${mode === "exam" ? "active" : ""}`}
           onClick={() => setMode("exam")}
+          type="button"
         >
-          <span className="mode-icon">🎯</span>
+          <span className="mode-icon">
+            <IconBadge icon={Icons.timer} tone="brand" size="md" />
+          </span>
           <div>
             <strong>Exam Mode</strong>
             <span>No feedback until the end. Simulates the real test.</span>
           </div>
         </button>
 
-        <button className="btn btn-primary btn-full" onClick={handleStart}>
+        <button className="btn btn-primary btn-full" onClick={handleStart} type="button">
           Start Mock Test →
         </button>
       </div>

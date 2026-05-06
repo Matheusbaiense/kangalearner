@@ -523,7 +523,8 @@ button {
   text-align: left;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 8px;
   background: white;
   border: 1.5px solid var(--border);
   color: var(--muted2);
@@ -572,6 +573,14 @@ button {
   background: var(--border);
   flex: 1;
 }
+.sec-head-ico {
+  flex-shrink: 0;
+  color: var(--green);
+}
+.sec-head-ico svg {
+  width: 16px;
+  height: 16px;
+}
 
 /* Question card */
 .qcard {
@@ -603,6 +612,9 @@ button {
 }
 .qcat-badge {
   margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: var(--paper2);
   border: 1px solid var(--border);
   border-radius: 99px;
@@ -610,6 +622,14 @@ button {
   font-size: 0.68rem;
   color: var(--muted2);
   font-weight: 850;
+}
+.qcat-ico {
+  flex-shrink: 0;
+  color: var(--green2);
+}
+.qcat-ico svg {
+  width: 13px;
+  height: 13px;
 }
 .qtext {
   font-size: 0.97rem;
@@ -743,6 +763,9 @@ button {
   }
 }
 .alabel {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-size: 0.68rem;
   font-weight: 900;
   text-transform: uppercase;
@@ -750,16 +773,34 @@ button {
   color: var(--green);
   margin-bottom: 4px;
 }
+.alabel-ico {
+  flex-shrink: 0;
+}
+.alabel-ico svg {
+  width: 14px;
+  height: 14px;
+}
 .atext {
   font-size: 0.84rem;
   color: #245a42;
   line-height: 1.46;
 }
 .atip {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
   margin-top: 7px;
   font-size: 0.8rem;
   color: var(--green);
   font-style: italic;
+}
+.atip-ico {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.atip-ico svg {
+  width: 14px;
+  height: 14px;
 }
 
 /* Score sidebar */
@@ -837,11 +878,27 @@ button {
 }
 .score-cat-name {
   flex: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 0;
   color: var(--muted2);
   font-weight: 700;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.score-cat-ico svg {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  color: var(--green2);
+}
+.fcat-ico svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: inherit;
 }
 .score-cat-frac {
   font-weight: 900;
@@ -869,8 +926,13 @@ button {
   padding: 48px 20px;
 }
 .empty-icon {
-  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-bottom: 10px;
+}
+.empty-icon .icon-badge {
+  margin: 0 auto;
 }
 .empty-title {
   font-family: var(--font-display);
@@ -915,7 +977,9 @@ button {
   padding: 52px 22px;
 }
 .sim-result-emoji {
-  font-size: 2.6rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 4px;
 }
 .sim-result-score {
   font-family: var(--font-display);
@@ -1108,8 +1172,17 @@ button {
   }
 }
 .cat-row-icon {
-  font-size: 1rem;
-  flex: 0 0 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  color: var(--green);
+}
+.cat-row-icon svg {
+  width: 18px;
+  height: 18px;
 }
 .cat-row-name {
   font-weight: 800;
@@ -1477,6 +1550,68 @@ button {
   font-size: 1.1rem;
 }
 
+/* Lucide badge (shared) */
+.icon-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(148, 163, 184, 0.18);
+  color: var(--muted2);
+}
+.icon-badge--sm {
+  width: 32px;
+  height: 32px;
+}
+.icon-badge--md {
+  width: 40px;
+  height: 40px;
+}
+.icon-badge--lg {
+  width: 48px;
+  height: 48px;
+}
+.icon-badge--brand {
+  background: rgba(46, 125, 91, 0.1);
+  color: var(--green);
+}
+.icon-badge--success {
+  background: rgba(46, 125, 91, 0.1);
+  color: var(--green);
+}
+.icon-badge--warning {
+  background: rgba(245, 158, 11, 0.14);
+  color: var(--orange);
+}
+.icon-badge--danger {
+  background: rgba(239, 68, 68, 0.14);
+  color: var(--red);
+}
+.icon-badge--muted {
+  background: rgba(148, 163, 184, 0.12);
+  color: var(--muted2);
+}
+.icon-badge__icon {
+  width: 20px;
+  height: 20px;
+}
+.icon-badge--sm .icon-badge__icon {
+  width: 16px;
+  height: 16px;
+}
+.icon-badge--lg .icon-badge__icon {
+  width: 24px;
+  height: 24px;
+}
+@keyframes icon-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.icon-badge__icon--spin {
+  animation: icon-spin 0.9s linear infinite;
+}
+
 .feature-card strong {
   font-family: var(--font-display);
   font-weight: 900;
@@ -1616,14 +1751,11 @@ button {
 }
 
 .mode-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(46, 125, 91, 0.1);
-  font-size: 1.1rem;
+  min-width: 40px;
+  min-height: 40px;
 }
 
 .btn-full {
@@ -1660,7 +1792,7 @@ button {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 .topic-icon {
-  font-size: 1.5rem;
+  align-self: flex-start;
 }
 
 .onboarding-overlay {

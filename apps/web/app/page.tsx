@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import { Icons } from "@/components/icons";
+import { IconBadge } from "@/components/ui/IconBadge";
 
 export const metadata: Metadata = {
   title: "KangaLearner — Pass your Australian learner test",
@@ -37,32 +39,32 @@ export default function HomePage() {
         <div className="features-inner">
           {[
             {
-              icon: "📖",
+              icon: Icons.book,
               title: "Learn",
               sub: "Study road rules by topic with clear explanations.",
               href: "/learn"
             },
             {
-              icon: "✏️",
+              icon: Icons.car,
               title: "Practice",
               sub: "Answer questions filtered by category and difficulty.",
               href: "/practice"
             },
             {
-              icon: "🎯",
+              icon: Icons.mock,
               title: "Mock Test",
               sub: "Simulate the official 30-question WA learner test.",
               href: "/mock-test"
             },
             {
-              icon: "📊",
+              icon: Icons.progress,
               title: "Progress",
               sub: "See your accuracy by category and review mistakes.",
               href: "/progress"
             }
           ].map((f) => (
             <Link key={f.href} href={f.href} className="feature-card">
-              <span className="feature-icon">{f.icon}</span>
+              <IconBadge icon={f.icon} tone="brand" />
               <strong>{f.title}</strong>
               <span>{f.sub}</span>
             </Link>

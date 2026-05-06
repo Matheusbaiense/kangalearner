@@ -2,7 +2,8 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseServerClient } from "../../src/lib/supabase/server";
 import { MigrateLocalProgress } from "../../src/components/MigrateLocalProgress";
-import { CATEGORIES } from "@kanga/core";
+import { Icons } from "@/components/icons";
+import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 
 export const metadata = { title: "Dashboard — KangaLearner" };
 
@@ -137,7 +138,7 @@ export default async function DashboardPage() {
         <div className="app-container app-section">
           {/* Header */}
           <div className="page-header">
-            <h1 className="page-title">Hello, {displayName} 👋</h1>
+            <h1 className="page-title">Hello, {displayName}</h1>
             <p className="page-sub">Your progress across all practice sessions.</p>
           </div>
 
@@ -160,7 +161,7 @@ export default async function DashboardPage() {
                 {totalAnswered === 0
                   ? "No attempts yet"
                   : overallPct >= 80
-                    ? "Above pass threshold ✓"
+                    ? "Above pass threshold"
                     : "Target: 80%"}
               </div>
             </div>
@@ -183,7 +184,9 @@ export default async function DashboardPage() {
               <div className="dash-empty">No activity yet in the last week.</div>
             ) : (
               <div className="cat-row" style={{ alignItems: "center" }}>
-                <span className="cat-row-icon">📈</span>
+                <span className="cat-row-icon" aria-hidden>
+                  <Icons.trendingUp />
+                </span>
                 <span className="cat-row-name">Accuracy</span>
                 <span className="cat-row-frac">
                   {last7Correct}/{last7Answered}
@@ -226,11 +229,13 @@ export default async function DashboardPage() {
             ) : (
               <div className="cat-list">
                 {weakTopics.map(([cat, s]) => {
-                  const catData = CATEGORIES.find((c) => c.key === cat);
+                  const CatIco = categoryLucideIcon(cat);
                   const cp = pct(s.correct, s.total);
                   return (
                     <div className="cat-row" key={cat}>
-                      <span className="cat-row-icon">{catData?.icon ?? "📚"}</span>
+                      <span className="cat-row-icon" aria-hidden>
+                        <CatIco />
+                      </span>
                       <span className="cat-row-name">{cat}</span>
                       <span className="cat-row-frac">
                         {s.correct}/{s.total}
@@ -269,11 +274,13 @@ export default async function DashboardPage() {
             ) : (
               <div className="cat-list">
                 {catStats.map(([cat, s]) => {
-                  const catData = CATEGORIES.find((c) => c.key === cat);
+                  const CatIco = categoryLucideIcon(cat);
                   const cp = pct(s.correct, s.total);
                   return (
                     <div className="cat-row" key={cat}>
-                      <span className="cat-row-icon">{catData?.icon ?? "📚"}</span>
+                      <span className="cat-row-icon" aria-hidden>
+                        <CatIco />
+                      </span>
                       <span className="cat-row-name">{cat}</span>
                       <span className="cat-row-frac">
                         {s.correct}/{s.total}

@@ -2,6 +2,26 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-07 — Lucide Iconography Standardisation (`apps/web`)
+
+**Alvo:** aplicação Next.js de produção (`pnpm --filter @kanga/web`). O site estático na raiz não foi migrado para o pacote `lucide` (mantém SVGs existentes).
+
+**Pacote:** `lucide-react` em `apps/web/package.json`.
+
+**Decisão:** iconografia oficial na frente Vercel/Next via `lucide-react`; registo central `src/components/icons.tsx`; wrapper `src/components/ui/IconBadge.tsx`; mapeamento de categorias de perguntas em `src/lib/categoryLucideIcon.ts` (UI apenas — sem alterar `QUESTIONS` / `CATEGORIES` no core).
+
+**Ficheiros principais:** `apps/web/app/page.tsx`, `learn/page.tsx`, `mock-test/page.tsx`, `mock-test/results/page.tsx`, `dashboard/page.tsx`, `practice/PracticeClient.tsx`, `app/globals.css`, `src/components/icons.tsx`, `IconBadge.tsx`, `categoryLucideIcon.ts`, `pnpm-lock.yaml`.
+
+### Comandos
+
+| Comando                                      | Resultado                                                                 |
+| -------------------------------------------- | ------------------------------------------------------------------------- |
+| `pnpm run format:check` (script raiz)       | **Falhou** — 5 ficheiros em `assets/js/` (fora do âmbito desta entrega)   |
+| `npx prettier --check "apps/web/**/*.{tsx,ts,css}"` | **OK** após `prettier -w` nos ficheiros tocados em `apps/web`        |
+| `pnpm --filter @kanga/web lint`              | **OK** — apenas warning existente `@next/next/no-img-element` em `PracticeClient.tsx` |
+| `pnpm --filter @kanga/web build`             | **OK** — `next build` concluído (exit 0)                                  |
+| `pnpm run test:e2e` / `smoke:static`         | N/A — alterações concentradas em `apps/web`; estático raiz não tocado    |
+
 ## 2026-05-06 — Phase I0 (Vite + artefacto Vercel, site estático raiz)
 
 | Comando                 | Resultado                                   |

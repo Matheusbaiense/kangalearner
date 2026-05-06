@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
+import { Icons } from "@/components/icons";
 
 type MockConfig = {
   state: string;
@@ -126,12 +127,38 @@ export default function MockTestResultsPage() {
             </div>
 
             <h1 style={{ marginTop: 10 }}>Your result</h1>
-            <p className="mock-meta">
+            <p
+              className="mock-meta"
+              style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap" }}
+            >
               Score:{" "}
               <strong>
                 {scored.score}/{scored.total}
-              </strong>{" "}
-              · {scored.pass ? "Pass ✓" : "Fail"}
+              </strong>
+              <span style={{ display: "inline-flex", alignItems: "center", gap: 6 }}>
+                ·{" "}
+                {scored.pass ? (
+                  <>
+                    <span>Pass</span>
+                    <Icons.success
+                      width={18}
+                      height={18}
+                      aria-hidden
+                      style={{ color: "var(--green)" }}
+                    />
+                  </>
+                ) : (
+                  <>
+                    <span>Fail</span>
+                    <Icons.error
+                      width={18}
+                      height={18}
+                      aria-hidden
+                      style={{ color: "var(--red)" }}
+                    />
+                  </>
+                )}
+              </span>
             </p>
 
             <div style={{ display: "flex", gap: 10, marginTop: 14, flexWrap: "wrap" }}>

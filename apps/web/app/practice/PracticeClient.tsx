@@ -4,6 +4,9 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CATEGORIES, QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
+import { Icons } from "@/components/icons";
+import { IconBadge } from "@/components/ui/IconBadge";
+import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 
 /* ── Local types (full shape of the question data) ── */
 type Lang = "en" | "pt" | "es";
@@ -74,6 +77,7 @@ function QuizCard({
 }) {
   const state = answered[q.id];
   const catData = CATEGORIES.find((c) => c.key === q.cat);
+  const CatIco = categoryLucideIcon(q.cat);
   const expText = tx(q.exp, lang);
   const tipText = q.tip ? tx(q.tip, lang) : "";
 
@@ -82,7 +86,8 @@ function QuizCard({
       <div className="qmeta">
         <span className="qnum">{q.id}</span>
         <span className="qcat-badge">
-          {catData?.icon} {catData?.label?.[lang] ?? q.cat}
+          <CatIco className="qcat-ico" aria-hidden />
+          {catData?.label?.[lang] ?? q.cat}
         </span>
       </div>
 
@@ -129,9 +134,17 @@ function QuizCard({
 
       {state && expText && (
         <div className="answer show">
-          <div className="alabel">✓ Answer</div>
+          <div className="alabel">
+            <Icons.success className="alabel-ico" aria-hidden />
+            Answer
+          </div>
           <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
-          {tipText && <div className="atip">💡 {tipText}</div>}
+          {tipText && (
+            <div className="atip">
+              <Icons.lightbulb className="atip-ico" aria-hidden />
+              <span>{tipText}</span>
+            </div>
+          )}
         </div>
       )}
     </div>
@@ -183,12 +196,13 @@ function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () =
       {catStats.length > 0 && (
         <div className="score-cats">
           {catStats.map(([cat, s]) => {
-            const catData = CATEGORIES.find((c) => c.key === cat);
+            const CatIco = categoryLucideIcon(cat);
             const cp = pct(s.correct, s.total);
             return (
               <div className="score-cat-row" key={cat}>
                 <span className="score-cat-name">
-                  {catData?.icon} {cat}
+                  <CatIco className="score-cat-ico" aria-hidden />
+                  {cat}
                 </span>
                 <span className="score-cat-frac">
                   {s.correct}/{s.total}
@@ -460,15 +474,20 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                   >
                     All topics
                   </button>
-                  {CATEGORIES.map((c) => (
-                    <button
-                      key={c.key}
-                      className={`fcat${cat === c.key ? " active" : ""}`}
-                      onClick={() => setCat(c.key)}
-                    >
-                      {c.icon} {c.label[lang] ?? c.label.en}
-                    </button>
-                  ))}
+                  {CATEGORIES.map((c) => {
+                    const CI = categoryLucideIcon(c.key);
+                    return (
+                      <button
+                        key={c.key}
+                        className={`fcat${cat === c.key ? " active" : ""}`}
+                        onClick={() => setCat(c.key)}
+                        type="button"
+                      >
+                        <CI className="fcat-ico" aria-hidden />
+                        {c.label[lang] ?? c.label.en}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
             )}
@@ -523,7 +542,9 @@ function StudyView({
   if (entries.length === 0) {
     return (
       <div className="empty-state">
-        <div className="empty-icon">🎉</div>
+        <div className="empty-icon">
+          <IconBadge icon={Icons.party} tone="success" size="lg" />
+        </div>
         <div className="empty-title">No questions here!</div>
         <div className="empty-sub">Try a different mode or reset your progress.</div>
       </div>
@@ -534,10 +555,11 @@ function StudyView({
     <>
       {entries.map(([cat, qs]) => {
         const catData = CATEGORIES.find((c) => c.key === cat);
+        const HeadIco = categoryLucideIcon(cat);
         return (
           <div key={cat}>
             <div className="sec-head">
-              <span>{catData?.icon}</span>
+              <HeadIco className="sec-head-ico" aria-hidden />
               <span>{catData?.label?.[lang] ?? cat}</span>
             </div>
             {qs.map((q) => (
@@ -575,7 +597,14 @@ function SimView({
   if (queue.length === 0) {
     return (
       <div className="empty-state">
-        <div className="empty-icon">⏳</div>
+        <div className="empty-icon">
+          <IconBadge
+            icon={Icons.loader}
+            tone="muted"
+            size="lg"
+            iconClassName="icon-badge__icon--spin"
+          />
+        </div>
         <div className="empty-title">Loading mock test…</div>
       </div>
     );
@@ -586,7 +615,14 @@ function SimView({
     const pass = p >= 80;
     return (
       <div className="sim-result">
-        <div className="sim-result-emoji">{pass ? "🏆" : "📚"}</div>
+        <div className="sim-result-emoji">
+          <IconBadge
+            icon={pass ? Icons.trophy : Icons.book}
+            tone={pass ? "success" : "muted"}
+            size="lg"
+            label={pass ? "Passed" : "Keep practising"}
+          />
+        </div>
         <div className="sim-result-score">
           {result.score}/{result.total}
         </div>
