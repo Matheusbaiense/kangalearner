@@ -4,6 +4,7 @@
   "private": true,
   "packageManager": "pnpm@9.12.0",
   "scripts": {
+    "check:static-links": "node scripts/check-static-links.mjs",
     "smoke:static": "node scripts/smoke-static-site.mjs",
     "prebuild": "node scripts/validate-questions.cjs && node scripts/convert-questions.cjs",
     "build": "turbo run build",

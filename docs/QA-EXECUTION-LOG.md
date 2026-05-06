@@ -39,6 +39,14 @@ Dev local do site estático: `pnpm run site:dev` (Vite, porta 5173). Preview do 
 
 **Alterações:** `assets/js/analytics.js` (lazy-load GA4 via meta/global), `assets/js/error-monitoring.js` (lazy-load Sentry Loader Script via meta/global), `.env.example`, `README.md`.
 
+## 2026-05-06 — G18: verificação de links estáticos
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run check:static-links` | **OK**    |
+
+**Alterações:** `scripts/check-static-links.mjs`, `package.json`.
+
 ## 2026-05-06 — Phase G (production readiness, site estático)
 
 | Comando                       | Resultado                                                                |
