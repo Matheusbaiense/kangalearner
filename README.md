@@ -36,6 +36,27 @@ npx --yes serve -l 3000 .
 
 Abre `http://localhost:3000`. Rotas são por hash (`#practice`, `#resources`, etc.).
 
+### Correr via Vite (dev/build para Vercel)
+
+O repositório mantém o fluxo do Pages (copy de `index.html` + `assets/`) **e** adiciona um build Vite separado para uso com Vercel.
+
+```bash
+pnpm run site:dev
+pnpm run site:build
+pnpm run site:preview
+```
+
+O artefacto do Vite sai em `dist-vite/`.
+
+#### Variáveis de ambiente (Vite)
+
+Cria `.env.local` (não versionado) com base em `.env.example`. As variáveis do Vite expostas no browser começam por `VITE_`.
+
+- `VITE_SUPABASE_URL`
+- `VITE_SUPABASE_ANON_KEY` (anon key do Supabase; é pública por design)
+- `VITE_CONTENT_VERSION` (ex.: `WA-v1.0`)
+- `VITE_PASS_PERCENTAGE` (ex.: `80`)
+
 ### Estrutura (raiz)
 
 | Pasta / ficheiro              | Conteúdo                          |
