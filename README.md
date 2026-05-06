@@ -56,6 +56,28 @@ Cria `.env.local` (não versionado) com base em `.env.example`. As variáveis do
 - `VITE_SUPABASE_ANON_KEY` (anon key do Supabase; é pública por design)
 - `VITE_CONTENT_VERSION` (ex.: `WA-v1.0`)
 - `VITE_PASS_PERCENTAGE` (ex.: `80`)
+- `VITE_GA_MEASUREMENT_ID` (opcional; GA4 `G-...`)
+- `VITE_SENTRY_LOADER_SRC` (opcional; Loader Script do Sentry)
+
+#### Analytics/monitorização (runtime-config, site estático)
+
+Para o site estático da raiz (`index.html` + `assets/**`), GA4 e Sentry são configuráveis em runtime (sem hardcode no repo).
+
+Opção A: metas no `<head>`:
+
+```html
+<meta name="kanga-ga-measurement-id" content="G-XXXXXXXXXX" />
+<meta name="kanga-sentry-loader-src" content="https://js.sentry-cdn.com/<PUBLIC_KEY>.min.js" />
+```
+
+Opção B: globals (antes de `assets/js/analytics.js` e `assets/js/error-monitoring.js`):
+
+```html
+<script>
+  window.KANGA_GA_MEASUREMENT_ID = "G-XXXXXXXXXX";
+  window.KANGA_SENTRY_LOADER_SRC = "https://js.sentry-cdn.com/<PUBLIC_KEY>.min.js";
+</script>
+```
 
 ### Estrutura (raiz)
 

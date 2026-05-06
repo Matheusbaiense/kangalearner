@@ -30,6 +30,15 @@ Dev local do site estático: `pnpm run site:dev` (Vite, porta 5173). Preview do 
 
 **Alterações:** `assets/js/learn-engine.js` (mapa de ícones + aliases + tópicos novos), `assets/js/pages/learn-page.js` (cards usam `KL_LEARN.icon`), `assets/css/pages.css` (`.learn-hub-icon`), `e2e/smoke.spec.js`.
 
+## 2026-05-06 — G18: GA4 + Sentry (runtime hooks)
+
+| Comando                 | Resultado |
+| ----------------------- | --------- |
+| `pnpm run format:check` | **OK**    |
+| `pnpm run test:e2e`     | **OK**    |
+
+**Alterações:** `assets/js/analytics.js` (lazy-load GA4 via meta/global), `assets/js/error-monitoring.js` (lazy-load Sentry Loader Script via meta/global), `.env.example`, `README.md`.
+
 ## 2026-05-06 — Phase G (production readiness, site estático)
 
 | Comando                       | Resultado                                                                |
