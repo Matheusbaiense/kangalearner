@@ -20,6 +20,24 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 **Pendências conhecidas:** revisão manual PT+EN/ES+EN em todos os blocos longos; timer de exame 45 min não coberto por E2E completo.
 
+## 2026-05-07 — Copy WA-first (fallback + Twitter meta)
+
+**Objetivo:** eliminar texto “Australia-wide / pass your test” visível no HTML estático (fallback e crawlers), alinhando com WA-first.
+
+**Alterações principais:**
+
+- `index.html`: hero fallback (EN) e `twitter:*` meta atualizados para WA-first.
+
+**Comandos verificados nesta rodada:**
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static`       | **OK** |
+| `pnpm run site:build`         | **OK** |
+| `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
+
 ## 2026-05-07 — Pós-deploy hardening (SW cache bump + Practice landing + idioma)
 
 **Objetivo:** resolver regressões visuais/UX em browsers que ainda serviam assets antigos (GitHub Pages + SW cache), impedir auto-flip para PT+EN/ES+EN sem escolha explícita, separar `#practice` (landing) de `#practice-run` (quiz) e diferenciar Practice Mock vs Exam Mode.
