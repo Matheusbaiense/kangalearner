@@ -167,8 +167,35 @@
       },
       practice: {
         kicker: "Prática",
-        title: "Pratique para a prova de learner de WA",
-        sub: "Escolha um modo de estudo. Comece por temas, faça um simulado com feedback ou simule a prova sem feedback até o final.",
+        page: {
+          title: "Pratique para a prova de learner de WA",
+          subtitle:
+            "Escolha um modo de estudo. Comece por tema, pratique 30 perguntas aleatórias ou simule a prova sem feedback até o final."
+        },
+        path: {
+          label: "Caminho recomendado:",
+          steps: "Praticar perguntas → Simulado com prática → Simulação da prova"
+        },
+        questions: {
+          label: "Melhor para aprender",
+          title: "Praticar perguntas",
+          description: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
+          cta: "Começar prática"
+        },
+        mock: {
+          label: "Melhor para praticar 30 questões",
+          title: "Simulado com prática",
+          description:
+            "Pratique 30 perguntas de WA em ordem aleatória com feedback imediato. Este modo é para aprender.",
+          cta: "Iniciar simulado com prática"
+        },
+        exam: {
+          label: "Melhor para se preparar para a prova",
+          title: "Simulação da prova",
+          description:
+            "Responda 30 perguntas de WA sem feedback até o final, como uma simulação real da prova.",
+          cta: "Iniciar simulação da prova"
+        },
         cards: {
           questionsTitle: "Praticar perguntas",
           questionsDesc: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
@@ -185,6 +212,23 @@
             "Responda 30 perguntas de WA sem feedback até o final, como uma simulação real da prova.",
           examBtn: "Iniciar simulação da prova",
           examNeedsQuestions: "A Simulação da prova precisa de 30 perguntas disponíveis de WA."
+        },
+        tip: "Não sabe por onde começar? Comece por Praticar perguntas, depois faça o Simulado com prática antes da Simulação da prova.",
+        progress: {
+          title: "Seu progresso",
+          description:
+            "Acompanhe suas perguntas respondidas, taxa de acerto, resultados dos simulados e próximo passo recomendado.",
+          answered: "Respondidas",
+          correct: "Certas",
+          incorrect: "Erradas",
+          accuracy: "Taxa de acerto",
+          bestMock: "Melhor simulado",
+          recommendedNextStep: "Próximo passo recomendado",
+          empty:
+            "Ainda não há progresso. Comece praticando as perguntas de WA para ver seus resultados aqui.",
+          viewFull: "Ver progresso completo",
+          backToPractice: "Voltar para Praticar",
+          notAvailable: "Ainda não disponível"
         },
         note: "ℹ️ Dica: o modo prova não mostra feedback até o final."
       },
@@ -461,8 +505,36 @@
       },
       practice: {
         kicker: "Practice",
-        title: "Practice for your WA learner test",
-        sub: "Choose a study mode. Start with topic practice, try a 30-question practice mock, or simulate the exam with no feedback until the end.",
+        page: {
+          title: "Practice for your WA learner test",
+          subtitle:
+            "Choose a study mode. Start by topic, practise 30 random questions, or simulate the exam with no feedback until the end."
+        },
+        path: {
+          label: "Recommended path:",
+          steps: "Practice Questions → Practice Mock → Exam Simulation"
+        },
+        questions: {
+          label: "Best for learning",
+          title: "Practice Questions",
+          description:
+            "Practise WA learner questions by topic with instant feedback and explanations.",
+          cta: "Start practice"
+        },
+        mock: {
+          label: "Best for 30-question practice",
+          title: "Practice Mock",
+          description:
+            "Practise 30 WA questions in random order with instant feedback. This mode is for learning.",
+          cta: "Start practice mock"
+        },
+        exam: {
+          label: "Best for exam readiness",
+          title: "Exam Simulation",
+          description:
+            "Answer 30 WA questions without feedback until the end, just like a real test simulation.",
+          cta: "Start exam simulation"
+        },
         cards: {
           questionsTitle: "Practice Questions",
           questionsDesc:
@@ -480,6 +552,22 @@
             "Answer 30 WA questions without feedback until the end, just like a real test simulation.",
           examBtn: "Start exam simulation",
           examNeedsQuestions: "Exam Simulation needs 30 available WA questions."
+        },
+        tip: "Not sure where to start? Begin with Practice Questions, then try Practice Mock before Exam Simulation.",
+        progress: {
+          title: "Your Progress",
+          description:
+            "Track your answered questions, accuracy, mock results and recommended next step.",
+          answered: "Answered",
+          correct: "Correct",
+          incorrect: "Incorrect",
+          accuracy: "Accuracy",
+          bestMock: "Best mock score",
+          recommendedNextStep: "Recommended next step",
+          empty: "No progress yet. Start practising WA questions to see your results here.",
+          viewFull: "View full progress",
+          backToPractice: "Back to Practice",
+          notAvailable: "Not available yet"
         },
         note: "ℹ️ Tip: exam simulation shows no feedback until the end."
       },
@@ -753,8 +841,35 @@
       },
       practice: {
         kicker: "Práctica",
-        title: "Practica para el examen learner de WA",
-        sub: "Elige un modo de estudio. Empieza por temas, haz un simulacro con feedback o simula el examen sin feedback hasta el final.",
+        page: {
+          title: "Practica para el examen learner de WA",
+          subtitle:
+            "Elige un modo de estudio. Empieza por tema, practica 30 preguntas aleatorias o simula el examen sin feedback hasta el final."
+        },
+        path: {
+          label: "Ruta recomendada:",
+          steps: "Practicar preguntas → Simulacro con práctica → Simulación del examen"
+        },
+        questions: {
+          label: "Mejor para aprender",
+          title: "Practicar preguntas",
+          description: "Practica preguntas de WA por tema con feedback inmediato y explicaciones.",
+          cta: "Empezar práctica"
+        },
+        mock: {
+          label: "Mejor para practicar 30 preguntas",
+          title: "Simulacro con práctica",
+          description:
+            "Practica 30 preguntas de WA en orden aleatorio con feedback inmediato. Este modo es para aprender.",
+          cta: "Iniciar simulacro con práctica"
+        },
+        exam: {
+          label: "Mejor para prepararte para el examen",
+          title: "Simulación del examen",
+          description:
+            "Responde 30 preguntas de WA sin feedback hasta el final, como una simulación real del examen.",
+          cta: "Iniciar simulación del examen"
+        },
         cards: {
           questionsTitle: "Practicar preguntas",
           questionsDesc:
@@ -772,6 +887,23 @@
             "Responde 30 preguntas de WA sin feedback hasta el final, como una simulación real del examen.",
           examBtn: "Iniciar simulación del examen",
           examNeedsQuestions: "La Simulación del examen necesita 30 preguntas disponibles de WA."
+        },
+        tip: "¿No sabes por dónde empezar? Empieza con Practicar preguntas, luego haz el Simulacro con práctica antes de la Simulación del examen.",
+        progress: {
+          title: "Tu progreso",
+          description:
+            "Sigue tus preguntas respondidas, tasa de acierto, resultados de simulacros y próximo paso recomendado.",
+          answered: "Respondidas",
+          correct: "Correctas",
+          incorrect: "Incorrectas",
+          accuracy: "Tasa de acierto",
+          bestMock: "Mejor simulacro",
+          recommendedNextStep: "Próximo paso recomendado",
+          empty:
+            "Todavía no hay progreso. Empieza practicando las preguntas de WA para ver tus resultados aquí.",
+          viewFull: "Ver progreso completo",
+          backToPractice: "Volver a Practicar",
+          notAvailable: "Aún no disponible"
         },
         note: "ℹ️ Consejo: la simulación del examen no muestra feedback hasta el final."
       },

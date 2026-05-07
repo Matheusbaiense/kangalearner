@@ -8,11 +8,12 @@ test.describe("static site smoke", () => {
     await expect(page.locator("#top .brand-wordmark")).toContainText("KangaLearner");
   });
 
-  test("main nav has five top-level items", async ({ page }) => {
+  test("main nav has four top-level items", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator(".main-nav a[href^='#']")).toHaveCount(5);
+    await expect(page.locator(".main-nav a[href^='#']")).toHaveCount(4);
     await expect(page.locator('.main-nav a[href="#roadRules"]')).toHaveCount(0);
     await expect(page.locator('.main-nav a[href="#mock"]')).toHaveCount(0);
+    await expect(page.locator('.main-nav a[href="#progress"]')).toHaveCount(0);
   });
 
   test("EN navigation Home → Learn → Practice does not flip into bilingual", async ({ page }) => {
@@ -31,6 +32,9 @@ test.describe("static site smoke", () => {
   test("practice route shows landing with three cards", async ({ page }) => {
     await page.goto("/#practice");
     await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator(".practice-path")).toBeVisible();
+    await expect(page.locator(".practice-tip")).toBeVisible();
+    await expect(page.locator(".practice-progress-panel")).toBeVisible();
     await expect(
       page.locator('[data-action="start-practice"][data-mode="questions"]')
     ).toBeVisible();
@@ -38,6 +42,20 @@ test.describe("static site smoke", () => {
       page.locator('[data-action="start-practice"][data-mode="practice-mock"]')
     ).toBeVisible();
     await expect(page.locator('[data-action="start-practice"][data-mode="exam"]')).toBeVisible();
+    await expect(
+      page.locator(
+        '.practice-progress-actions a[href="#progress"][data-i18n="practice.progress.viewFull"]'
+      )
+    ).toBeVisible();
+  });
+
+  test("progress route: practice is active and back to practice exists", async ({ page }) => {
+    await page.goto("/#progress");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator('.main-nav a[href="#practice"]')).toHaveClass(/active/);
+    await expect(
+      page.locator('a[href="#practice"][data-i18n="practice.progress.backToPractice"]')
+    ).toBeVisible();
   });
 
   test("practice landing: start practice goes to practice-run quiz", async ({ page }) => {

@@ -70,6 +70,31 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | `pnpm run site:build`         | **OK** (`dist-vite/`) |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
+## 2026-05-07 — Practice hub polish + Progress integration (static root)
+
+**Objetivo:** tornar `#practice` o hub central (modos + caminho recomendado + tip + resumo de progresso), manter `#progress` como rota detalhada/deep link e remover Progress do menu principal (Practice continua ativo em `#progress`).
+
+**Mudanças principais (site estático root):**
+
+- `index.html` — menu principal agora: Home | Learn | Practice | Resources (sem Progress / Mock Test).
+- `assets/js/router.js` — `#progress` passa a marcar Practice como ativo (IA centralizada).
+- `assets/js/pages/practice-page.js` — adicionados “Recommended path”, tip melhorada e painel “Your Progress” integrado com CTA “View full progress”.
+- `assets/js/pages/progress-page.js` — adiciona breadcrumb “Back to Practice”.
+- `assets/js/locales.js` — novas chaves i18n para Practice hub + progress panel (`practice.page.*`, `practice.path.*`, `practice.*.label/title/description/cta`, `practice.tip`, `practice.progress.*`).
+- `assets/css/pages.css` — novo layout/estilos para `.practice-path`, `.practice-mode-card`, `.practice-tip`, `.practice-progress-panel`.
+- `sw.js` — bump de cache `kanga-assets-v4` → `kanga-assets-v5`.
+- `e2e/smoke.spec.js` — testes atualizados para menu (4 itens) + presença de path/tip/progress e Practice ativo em `#progress`.
+
+**Comandos (executar antes de commit):**
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | TODO |
+| `pnpm run check:static-links` | TODO |
+| `pnpm run smoke:static`       | TODO |
+| `pnpm run site:build`         | TODO |
+| `pnpm run test:e2e`           | TODO |
+
 ## QA Manual Fix Round — Navigation, i18n, Resources, Reset, Progress, Mock (2026-05-07)
 
 **Objetivo:** fechar lacunas do QA manual no site estático (GitHub Pages): WA-first, estados “coming soon” não clicáveis, mock exam strict (30 WA, sem feedback intermédio), categorias traduzidas em Progress/mock results, `tSafe` para reset, `uniqueQuestionCountForState` para habilitar Exam Mode, router + E2E alinhados.

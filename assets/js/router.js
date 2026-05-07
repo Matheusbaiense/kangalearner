@@ -402,7 +402,8 @@
             page === "mock-run" ||
             page === "exam" ||
             page === "exam-run" ||
-            page === "mock-results"
+            page === "mock-results" ||
+            page === "progress"
           ? "practice"
           : page;
     // If #states routes into Learn, Learn is the active nav item.

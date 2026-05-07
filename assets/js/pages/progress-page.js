@@ -188,7 +188,7 @@
 
     return (
       '<section class="page-section progress-page"><div class="container">' +
-      '<div class="page-header"><p class="page-kicker">' +
+      '<div class="page-header"><a class="breadcrumb" href="#practice" data-i18n="practice.progress.backToPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a><p class="page-kicker">' +
       currentState +
       '<span data-i18n="progress.pageKickerSuffix"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span></p><h1 class="page-title" data-i18n="progress.pageTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1></div>' +
       emptyState +

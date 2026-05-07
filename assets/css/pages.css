@@ -190,6 +190,27 @@
 .practice-landing .page-header {
   max-width: 720px;
 }
+.practice-path {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.55rem;
+  align-items: center;
+  border: 1px solid rgba(46, 125, 50, 0.18);
+  background: rgba(46, 125, 50, 0.08);
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  margin: 0 0 1.25rem;
+}
+.practice-path-label {
+  font-weight: 800;
+  color: var(--green, #2e7d32);
+  font-size: 0.85rem;
+}
+.practice-path-steps {
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.92);
+  font-size: 0.9rem;
+}
 .mock-mode-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -202,7 +223,8 @@
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
-.mock-mode-card {
+.mock-mode-card,
+.practice-mode-card {
   padding: 2rem;
   border-radius: var(--radius, 12px);
   border: 1px solid var(--border, #e0e0e0);
@@ -212,17 +234,43 @@
   gap: 0.75rem;
   position: relative;
 }
+.practice-mode-card.is-featured {
+  border-color: var(--green, #2e7d32);
+  background: #f1f8f2;
+}
 .mock-mode-card--featured {
   border-color: var(--green, #2e7d32);
   background: #f1f8f2;
+}
+.practice-mode-card.is-exam {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.1);
 }
 .mock-mode-card--exam {
   border-color: rgba(245, 158, 11, 0.55);
   background: #fffbeb;
 }
+.practice-mode-card.is-focus {
+  outline: 3px solid rgba(245, 158, 11, 0.55);
+  outline-offset: 2px;
+}
 .mock-mode-card.is-focus {
   outline: 3px solid rgba(245, 158, 11, 0.55);
   outline-offset: 2px;
+}
+.mode-badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--green, #2e7d32);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.75rem;
+  border-radius: 99px;
 }
 .mock-mode-badge {
   position: absolute;
@@ -238,12 +286,26 @@
   padding: 0.2rem 0.75rem;
   border-radius: 99px;
 }
+.practice-mode-icon {
+  font-size: 2.5rem;
+}
 .mock-mode-icon {
   font-size: 2.5rem;
+}
+.practice-mode-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  margin: 0;
 }
 .mock-mode-title {
   font-size: 1.25rem;
   font-weight: 800;
+  margin: 0;
+}
+.practice-mode-desc {
+  font-size: 0.9rem;
+  color: var(--ink-muted, #555);
+  line-height: 1.55;
   margin: 0;
 }
 .mock-mode-desc {
@@ -252,12 +314,22 @@
   line-height: 1.55;
   margin: 0;
 }
-.mock-mode-card .btn.btn-secondary {
+.mode-label {
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(15, 23, 42, 0.78);
+}
+.practice-mode-btn {
+  margin-top: auto;
+  width: 100%;
+}
+.practice-mode-card .btn.btn-secondary {
   background: #f1f5f9;
   border-color: #cbd5e1;
   color: #0f172a;
 }
-.mock-mode-card .btn.btn-secondary:hover {
+.practice-mode-card .btn.btn-secondary:hover {
   background: #e2e8f0;
 }
 .btn:disabled,
@@ -271,6 +343,66 @@
   box-shadow: none;
   transform: none;
   filter: none;
+}
+
+.practice-tip {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(15, 23, 42, 0.04);
+  padding: 1rem 1.1rem;
+  border-radius: 12px;
+  margin: -0.5rem 0 1.5rem;
+  color: rgba(15, 23, 42, 0.88);
+}
+
+.practice-progress-panel {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+.practice-progress-header {
+  margin-bottom: 1rem;
+  max-width: 760px;
+}
+.practice-progress-title {
+  margin: 0 0 0.35rem;
+  font-size: 1.15rem;
+  font-weight: 900;
+}
+.practice-progress-desc {
+  margin: 0;
+  color: var(--ink-muted, #555);
+  line-height: 1.55;
+}
+.practice-progress-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.75rem;
+}
+.practice-progress-stat {
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 12px;
+  padding: 0.85rem 0.9rem;
+}
+.pps-value {
+  font-size: 1.25rem;
+  font-weight: 950;
+  margin-bottom: 0.15rem;
+}
+.pps-label {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: rgba(15, 23, 42, 0.72);
+}
+.practice-progress-empty {
+  padding: 0.5rem 0;
+  color: var(--ink-muted, #555);
+}
+.practice-progress-actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: flex-end;
 }
 .mock-mode-features {
   list-style: none;
