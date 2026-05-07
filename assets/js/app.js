@@ -18,12 +18,12 @@
   }
 
   function initStateSelector() {
-    const KS = window.KangaStorage;
+    const KS = window.KL_STORAGE || window.KangaStorage;
     const cards = document.querySelectorAll(".state-card");
     const select = document.getElementById("state-select");
     let saved = "WA";
     try {
-      saved = (KS && KS.getState()) || localStorage.getItem("kl-state") || "WA";
+      saved = (KS && KS.getState && KS.getState()) || localStorage.getItem("kl-state") || "WA";
     } catch (e) {
       saved = "WA";
     }
@@ -39,7 +39,7 @@
 
     function setState(code) {
       if (!code) return;
-      if (KS) KS.setState(code);
+      if (KS && KS.setState) KS.setState(code);
       else localStorage.setItem("kl-state", code);
       applyUI(code);
       if (window.DW && typeof window.DW.setState === "function") {
@@ -140,6 +140,14 @@
   }
 
   function documentLangFromKangaLang(lang) {
+    if (window.KL_I18N && typeof window.KL_I18N.setDocumentLang === "function") {
+      try {
+        window.KL_I18N.setDocumentLang(lang);
+        return document.documentElement.lang || "en";
+      } catch (e) {
+        return "en";
+      }
+    }
     if (lang === "pten") return "pt-BR";
     if (lang === "esen") return "es";
     if (String(lang).startsWith("pt")) return "pt-BR";
@@ -159,6 +167,7 @@
     let initialLang = "en";
     try {
       initialLang =
+        (window.KL_STORAGE && window.KL_STORAGE.getLang && window.KL_STORAGE.getLang()) ||
         (window.KangaStorage && window.KangaStorage.getLang && window.KangaStorage.getLang()) ||
         localStorage.getItem("kl-lang") ||
         "en";

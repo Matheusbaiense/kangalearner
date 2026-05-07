@@ -77,6 +77,8 @@
           (s.active ? "" : " coming-soon") +
           '" data-state="' +
           s.code +
+          '" data-available="' +
+          (s.active ? "true" : "false") +
           '" type="button" aria-pressed="false">' +
           '<div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"/></div>' +
           '<div class="state-code">' +

@@ -708,6 +708,19 @@
 .resource-link:hover {
   text-decoration: underline;
 }
+.resource-coming {
+  margin-top: 0.25rem;
+}
+.resource-coming-text {
+  font-size: 0.85rem;
+  line-height: 1.45;
+  margin: 0 0 0.75rem;
+  color: var(--ink-muted, #666);
+}
+.resource-coming-btn {
+  align-self: flex-start;
+  cursor: not-allowed;
+}
 .resource-tips {
   margin-bottom: 2rem;
 }

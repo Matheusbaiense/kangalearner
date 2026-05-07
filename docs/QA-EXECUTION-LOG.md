@@ -2,6 +2,35 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-07 — Fecho da rodada UX (site estático: Resources, Learn/practice, a11y E2E)
+
+**Objetivo:** corrigir falhas da auditoria (formato Prettier, Resources por estado WA vs coming soon, i18n, empty state NSW→practice, teclado nas opções, modo bilíngue, conflito `id` vs hash `#resources`), sem novas features nem alterações a `questions.js`.
+
+**Correções principais:**
+
+- `assets/js/data/official-resources.js` — cada estado com `status: "available" | "coming-soon"`; apenas WA com links verificados; restantes com `links: []`.
+- `assets/js/pages/resources-page.js` — disponibilidade por `status === "available"` (não por `links.length`); badges e textos via i18n; sem `href="#"` para estados futuros.
+- `assets/js/locales.js` — chaves `resources.*` (EN/PT/ES): available, coming soon, texto de recursos oficiais, Practise WA, Back to Learn.
+- `index.html` — id do bloco de links do footer renomeado para `site-footer-resources` (evitar colisão com rota/hash `#resources`).
+- `assets/js/pages/learn-page.js` — `data-available` nos state cards (WA vs outros).
+- `assets/js/quiz-engine.js` — empty learn: navegação para `#learn` em vez de scroll a elemento oculto.
+- `assets/css/pages.css` — estilos para cards Resources “coming soon”.
+- `e2e/smoke.spec.js` — WA + estados disabled; Learn NSW → empty state + CTA WA; teclado Enter na primeira opção; PT+EN / ES+EN (classes no body, sem `.translation-line` em header/footer).
+
+**Prettier:** `npx prettier -w` nos ficheiros que falhavam em `format:check` (`glossary.js`, `official-resources.js`, `ui-copy.js`, `validate-questions.js`, `i18n.js`, mais ficheiros tocados acima).
+
+### Comandos (todos OK nesta sessão)
+
+| Comando                       | Resultado                          |
+| ----------------------------- | ---------------------------------- |
+| `pnpm run format:check`       | **OK**                             |
+| `pnpm run test:e2e`           | **OK** — 9 testes Chromium         |
+| `pnpm run check:static-links` | **OK**                             |
+| `pnpm run smoke:static`       | **OK**                             |
+| `pnpm run site:build`         | **OK** — `dist-vite/`             |
+
+**Manual QA pendente (não bloqueante para esta entrega):** regressão visual fina em dispositivos reais; leitores de ecrã além do que os E2E cobrem.
+
 ## 2026-05-07 — Lucide Iconography Standardisation (`apps/web`)
 
 **Alvo:** aplicação Next.js de produção (`pnpm --filter @kanga/web`). O site estático na raiz não foi migrado para o pacote `lucide` (mantém SVGs existentes).

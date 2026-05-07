@@ -170,6 +170,9 @@ const DW = {
 
   /** UI + nav: single language (no duplicate l-pt + l-en in header). */
   getDisplayLang() {
+    if (window.KL_I18N && typeof window.KL_I18N.getDisplayLang === "function") {
+      return window.KL_I18N.getDisplayLang(this.lang);
+    }
     if (this.lang === "pten") return "pt";
     if (this.lang === "esen") return "es";
     if (String(this.lang).startsWith("pt")) return "pt";
@@ -179,6 +182,9 @@ const DW = {
 
   /** Study aid: English line under PT/ES in questions & explanations. */
   getTranslationLang() {
+    if (window.KL_I18N && typeof window.KL_I18N.getTranslationLang === "function") {
+      return window.KL_I18N.getTranslationLang(this.lang);
+    }
     if (this.lang === "pten" || this.lang === "esen") return "en";
     return null;
   },
@@ -197,7 +203,10 @@ const DW = {
   save() {
     try {
       const json = JSON.stringify(this.answeredByState);
-      if (window.KangaStorage) {
+      if (window.KL_STORAGE) {
+        window.KL_STORAGE.setLang(this.lang);
+        window.KL_STORAGE.setAnswers(this.answeredByState);
+      } else if (window.KangaStorage) {
         window.KangaStorage.setLang(this.lang);
         window.KangaStorage.setAnsweredByStateJson(json);
       } else {
@@ -209,21 +218,33 @@ const DW = {
   load() {
     try {
       const KS = window.KangaStorage;
-      const l = KS ? KS.getLang() : localStorage.getItem("kl-lang");
+      const l = window.KL_STORAGE
+        ? window.KL_STORAGE.getLang()
+        : KS
+          ? KS.getLang()
+          : localStorage.getItem("kl-lang");
       if (l) this.lang = l;
-      const s = KS ? KS.getState() : localStorage.getItem("kl-state");
+      const s = window.KL_STORAGE
+        ? window.KL_STORAGE.getState()
+        : KS
+          ? KS.getState()
+          : localStorage.getItem("kl-state");
       if (s) this.state = s;
       let byState = {};
-      const v2 = KS ? KS.getAnsweredByStateRaw() : localStorage.getItem("kl-answered-by-state");
-      const v1 = localStorage.getItem("kl-answered");
-      if (v2) {
-        byState = JSON.parse(v2);
-      } else if (v1) {
-        const old = JSON.parse(v1);
-        byState = { WA: old };
-        const migrated = JSON.stringify(byState);
-        if (KS) KS.setAnsweredByStateJson(migrated);
-        else localStorage.setItem("kl-answered-by-state", migrated);
+      if (window.KL_STORAGE) {
+        byState = window.KL_STORAGE.getAnswers() || {};
+      } else {
+        const v2 = KS ? KS.getAnsweredByStateRaw() : localStorage.getItem("kl-answered-by-state");
+        const v1 = localStorage.getItem("kl-answered");
+        if (v2) {
+          byState = JSON.parse(v2);
+        } else if (v1) {
+          const old = JSON.parse(v1);
+          byState = { WA: old };
+          const migrated = JSON.stringify(byState);
+          if (KS) KS.setAnsweredByStateJson(migrated);
+          else localStorage.setItem("kl-answered-by-state", migrated);
+        }
       }
       this.answeredByState = byState && typeof byState === "object" ? byState : {};
       this.hydrateAnsweredForCurrentState();
@@ -302,7 +323,8 @@ const DW = {
   setState(state) {
     this.state = state;
     try {
-      if (window.KangaStorage) window.KangaStorage.setState(state);
+      if (window.KL_STORAGE) window.KL_STORAGE.setState(state);
+      else if (window.KangaStorage) window.KangaStorage.setState(state);
       else localStorage.setItem("kl-state", state);
     } catch (e) {}
     this.hydrateAnsweredForCurrentState();
@@ -367,6 +389,14 @@ const DW = {
     if (this.mode === "wrong")
       qs = qs.filter((q) => this.answered[q.id] && !this.answered[q.id].correct);
     if (this.mode === "unanswered") qs = qs.filter((q) => !this.answered[q.id]);
+    if (this.mode === "saved") {
+      const saved =
+        (window.KL_STORAGE && typeof window.KL_STORAGE.getSavedQuestions === "function"
+          ? window.KL_STORAGE.getSavedQuestions()
+          : []) || [];
+      const savedSet = new Set(saved);
+      qs = qs.filter((q) => savedSet.has(q.id));
+    }
     return qs;
   },
 
@@ -395,6 +425,8 @@ const DW = {
       middle = `${this.t("practice_mode_wrong")} · ${topicLabel}`;
     } else if (this.mode === "unanswered") {
       middle = `${this.t("practice_mode_unanswered")} · ${topicLabel}`;
+    } else if (this.mode === "saved") {
+      middle = `${this.t("practice_mode_saved")} · ${topicLabel}`;
     }
     const line = `${this.t("practice_context_prefix")} ${middle} · ${count} ${unit}`;
     return `<p class="quiz-context-banner" aria-live="polite">${line}</p>`;
@@ -423,6 +455,27 @@ const DW = {
     const qs = this.getFilteredQ();
 
     if (qs.length === 0) {
+      if (this.mode === "saved") {
+        const msg =
+          (window.KL_UI_COPY &&
+          window.KL_UI_COPY.emptyStates &&
+          window.KL_UI_COPY.emptyStates.savedEmpty
+            ? window.KL_I18N?.t?.(
+                window.KL_UI_COPY.emptyStates.savedEmpty.body,
+                this.t("empty_sub")
+              ) || this.t("empty_sub")
+            : this.t("empty_sub")) || this.t("empty_sub");
+        container.innerHTML = `<div class="empty-state" role="status">
+        <div class="empty-icon" aria-hidden="true">🔖</div>
+        <div class="empty-title">${this.t("empty_title")}</div>
+        <div class="empty-sub">${msg}</div>
+        <div class="empty-actions">
+          <button type="button" class="btn btn-secondary btn-sm" data-action="mode-all">${this.t("practice_mode_all")}</button>
+        </div>
+      </div>`;
+        this.updateScore();
+        return;
+      }
       container.innerHTML = `<div class="empty-state" role="status">
         <div class="empty-icon" aria-hidden="true">🎉</div>
         <div class="empty-title">${this.t("empty_title")}</div>
@@ -533,12 +586,33 @@ const DW = {
     const catBadge = catMeta
       ? `${catMeta.icon || ""} ${catMeta.label?.[dLang] || catMeta.label?.en || q.cat}`.trim()
       : q.cat;
+    const savedIds =
+      window.KL_STORAGE && typeof window.KL_STORAGE.getSavedQuestions === "function"
+        ? window.KL_STORAGE.getSavedQuestions()
+        : [];
+    const isSaved = Array.isArray(savedIds) && savedIds.includes(q.id);
+    const saveLabel = isSaved
+      ? window.KL_UI_COPY?.buttons?.saved?.[dLang] || "Saved"
+      : window.KL_UI_COPY?.buttons?.save?.[dLang] || "Save";
+
+    const reportLabel = window.KL_UI_COPY?.buttons?.reportIssue?.[dLang] || "Report issue";
+    const reportHref =
+      "mailto:hello@kangaleaner.example?subject=" +
+      encodeURIComponent("KangaLearner question issue: " + q.id) +
+      "&body=" +
+      encodeURIComponent("Question ID: " + q.id + "\n\nDescribe the issue:\n");
+
     return `<div class="qcard" id="${q.id}">
-  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${catBadge}</span></div>
+  <div class="qmeta"><span class="qnum">${q.id}</span><span class="qcat-badge">${catBadge}</span>
+    <button type="button" class="qsave-btn" data-action="toggle-save" data-qid="${q.id}" aria-pressed="${
+      isSaved ? "true" : "false"
+    }">${saveLabel}</button>
+  </div>
   <div class="qtext">${qtextHtml}</div>
   ${signHtml}
   <div class="opts" role="radiogroup">${optsHtml}</div>
   ${answerBlock}
+  <div class="qactions"><a class="qreport" href="${reportHref}" data-qid="${q.id}">${reportLabel}</a></div>
 </div>`;
   },
 
@@ -952,7 +1026,11 @@ const DW = {
     const resetBtn = document.getElementById("reset-btn");
     if (resetBtn)
       resetBtn.addEventListener("click", () => {
-        const msg = this.t("reset_confirm");
+        const msg =
+          (window.KL_UI_COPY && window.KL_UI_COPY.confirm && window.KL_UI_COPY.confirm.resetAll
+            ? window.KL_I18N?.t?.(window.KL_UI_COPY.confirm.resetAll, this.t("reset_confirm")) ||
+              this.t("reset_confirm")
+            : this.t("reset_confirm")) || this.t("reset_confirm");
         if (window.confirm(msg)) DW.clearProgress();
       });
 
@@ -970,7 +1048,7 @@ const DW = {
       }
       const emptyLearn = e.target.closest?.('[data-action="empty-learn"]');
       if (emptyLearn) {
-        document.getElementById("learn")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        window.location.hash = "#learn";
         return;
       }
       const simM = e.target.closest?.('[data-action="sim-review-mistakes"]');
@@ -1012,6 +1090,24 @@ const DW = {
       }
       const actionEl = e.target.closest?.('[data-action="mode-all"]');
       if (actionEl) DW.setMode("all");
+
+      const saveBtn = e.target.closest?.('[data-action="toggle-save"][data-qid]');
+      if (saveBtn) {
+        const qid = saveBtn.getAttribute("data-qid");
+        if (window.KL_STORAGE && typeof window.KL_STORAGE.toggleSavedQuestion === "function") {
+          const res = window.KL_STORAGE.toggleSavedQuestion(qid);
+          const dLang = DW.getDisplayLang();
+          const nextLabel = res.saved
+            ? window.KL_UI_COPY?.buttons?.saved?.[dLang] || "Saved"
+            : window.KL_UI_COPY?.buttons?.save?.[dLang] || "Save";
+          saveBtn.textContent = nextLabel;
+          saveBtn.setAttribute("aria-pressed", res.saved ? "true" : "false");
+          if (DW.mode === "saved") {
+            DW.renderQuiz();
+          }
+        }
+        return;
+      }
     });
 
     document.addEventListener("keydown", (e) => {
@@ -1047,7 +1143,8 @@ const DW = {
   applyEmptyStateWA() {
     this.state = "WA";
     try {
-      if (window.KangaStorage) window.KangaStorage.setState("WA");
+      if (window.KL_STORAGE) window.KL_STORAGE.setState("WA");
+      else if (window.KangaStorage) window.KangaStorage.setState("WA");
       else localStorage.setItem("kl-state", "WA");
     } catch (e) {}
     this.hydrateAnsweredForCurrentState();
@@ -1166,6 +1263,8 @@ const I18N = {
   practice_questions_unit: { pt: "perguntas", en: "questions", es: "preguntas" },
   practice_mode_wrong: { pt: "Erradas", en: "Wrong answers", es: "Incorrectas" },
   practice_mode_unanswered: { pt: "Não respondidas", en: "Unanswered", es: "Sin responder" },
+  practice_mode_saved: { pt: "Salvas", en: "Saved", es: "Guardadas" },
+  practice_mode_all: { pt: "Todas", en: "All", es: "Todas" },
   subscribe_ok: {
     pt: "Obrigado! Inscrição registrada.",
     en: "Thanks! You are subscribed.",

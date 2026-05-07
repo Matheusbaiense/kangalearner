@@ -2,6 +2,9 @@ const KL_LEARN = {
   openSlug: null,
 
   lang() {
+    if (window.KL_I18N && typeof window.KL_I18N.getDisplayLang === "function") {
+      return window.KL_I18N.getDisplayLang(window.KL_I18N.getLang());
+    }
     if (window.DW && typeof window.DW.getDisplayLang === "function") {
       return window.DW.getDisplayLang();
     }
@@ -12,6 +15,9 @@ const KL_LEARN = {
   },
 
   translationLang() {
+    if (window.KL_I18N && typeof window.KL_I18N.getTranslationLang === "function") {
+      return window.KL_I18N.getTranslationLang(window.KL_I18N.getLang());
+    }
     return window.DW && typeof window.DW.getTranslationLang === "function"
       ? window.DW.getTranslationLang()
       : null;

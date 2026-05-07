@@ -7,7 +7,11 @@
   window.KL_PAGES.mock = function () {
     var lastResults = null;
     try {
-      lastResults = JSON.parse(localStorage.getItem("kl-last-mock-results") || "null");
+      if (window.KL_STORAGE && typeof window.KL_STORAGE.getLastMockResults === "function") {
+        lastResults = window.KL_STORAGE.getLastMockResults();
+      } else {
+        lastResults = JSON.parse(localStorage.getItem("kl-last-mock-results") || "null");
+      }
     } catch (e) {}
 
     var lastBadge = lastResults
@@ -64,7 +68,11 @@
   window.KL_PAGES.mockResults = function () {
     var results = null;
     try {
-      results = JSON.parse(localStorage.getItem("kl-last-mock-results") || "null");
+      if (window.KL_STORAGE && typeof window.KL_STORAGE.getLastMockResults === "function") {
+        results = window.KL_STORAGE.getLastMockResults();
+      } else {
+        results = JSON.parse(localStorage.getItem("kl-last-mock-results") || "null");
+      }
     } catch (e) {}
 
     if (!results) {

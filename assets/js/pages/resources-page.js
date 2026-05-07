@@ -2,127 +2,80 @@
 (function () {
   "use strict";
 
-  var OFFICIAL_SOURCES = [
-    {
-      state: "WA",
-      name: "Western Australia",
-      authority: "Department of Transport WA",
-      handbook: "Road Rules Handbook for Western Australia",
-      handbookUrl: "https://www.transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      testInfo: "https://www.transport.wa.gov.au/licensing/computer-theory-test.asp",
-      authority_site: "https://www.transport.wa.gov.au",
-      available: true
-    },
-    {
-      state: "NSW",
-      name: "New South Wales",
-      authority: "Transport for NSW",
-      handbook: "Road Users' Handbook (NSW)",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://www.nsw.gov.au/transport-nsw",
-      available: false
-    },
-    {
-      state: "VIC",
-      name: "Victoria",
-      authority: "VicRoads",
-      handbook: "Road to Solo Driving handbook",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://www.vicroads.vic.gov.au",
-      available: false
-    },
-    {
-      state: "QLD",
-      name: "Queensland",
-      authority: "Department of Transport and Main Roads (Queensland)",
-      handbook: "Your Keys to Driving in Queensland",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://www.qld.gov.au/transport",
-      available: false
-    },
-    {
-      state: "SA",
-      name: "South Australia",
-      authority: "Government of South Australia — Department for Infrastructure and Transport",
-      handbook: "The Driver's Handbook (SA)",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://www.sa.gov.au/topics/driving-and-transport",
-      available: false
-    },
-    {
-      state: "TAS",
-      name: "Tasmania",
-      authority: "Department of State Growth — Transport",
-      handbook: "Road Rules Handbook (Tasmania)",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://www.transport.tas.gov.au",
-      available: false
-    },
-    {
-      state: "ACT",
-      name: "Australian Capital Territory",
-      authority: "Access Canberra — Road Transport Authority",
-      handbook: "Road Rules Handbook (ACT)",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://www.accesscanberra.act.gov.au",
-      available: false
-    },
-    {
-      state: "NT",
-      name: "Northern Territory",
-      authority: "Northern Territory Government",
-      handbook: "Road Users' Handbook (NT)",
-      handbookUrl: "#",
-      testInfo: "#",
-      authority_site: "https://nt.gov.au/driving",
-      available: false
-    }
-  ];
+  function escapeHtml(s) {
+    return String(s || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
+  function sources() {
+    return Array.isArray(window.KL_OFFICIAL_RESOURCES) ? window.KL_OFFICIAL_RESOURCES : [];
+  }
+
+  function isAvailable(src) {
+    return src.status === "available";
+  }
 
   window.KL_PAGES = window.KL_PAGES || {};
 
   window.KL_PAGES.resources = function () {
-    var cards = OFFICIAL_SOURCES.map(function (src) {
-      var badge = src.available
-        ? '<span class="resource-badge resource-badge--active" data-i18n="resources.availableNow"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span>'
-        : '<span class="resource-badge resource-badge--soon" data-i18n="state.comingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span>';
-      return (
-        '<div class="resource-card' +
-        (src.available ? "" : " resource-card--disabled") +
-        '">' +
-        '<div class="resource-card-head">' +
-        '<span class="resource-state-code">' +
-        src.state +
-        "</span>" +
-        '<span class="resource-state-name">' +
-        src.name +
-        "</span>" +
-        badge +
-        "</div>" +
-        '<p class="resource-authority">' +
-        src.authority +
-        "</p>" +
-        '<ul class="resource-links">' +
-        '<li><a href="' +
-        src.handbookUrl +
-        '" target="_blank" rel="noopener noreferrer" class="resource-link">📖 ' +
-        src.handbook +
-        "</a></li>" +
-        '<li><a href="' +
-        src.testInfo +
-        '" target="_blank" rel="noopener noreferrer" class="resource-link" data-i18n="resources.learnerTestInfo">📋 <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></li>' +
-        '<li><a href="' +
-        src.authority_site +
-        '" target="_blank" rel="noopener noreferrer" class="resource-link" data-i18n="resources.officialSite">🔗 <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></li>' +
-        "</ul></div>"
-      );
-    }).join("");
+    var cards = sources()
+      .map(function (src) {
+        var avail = isAvailable(src);
+        var links = Array.isArray(src.links) ? src.links : [];
+        var safeLinks = avail
+          ? links.filter(function (l) {
+              return l && typeof l.url === "string" && l.url.indexOf("http") === 0;
+            })
+          : [];
+
+        var badge = avail
+          ? '<span class="resource-badge resource-badge--active" data-i18n="resources.available"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span>'
+          : '<span class="resource-badge resource-badge--soon" data-i18n="resources.comingSoonBadge"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span>';
+
+        var bodyHtml = avail
+          ? '<ul class="resource-links">' +
+            safeLinks
+              .map(function (l) {
+                return (
+                  '<li><a href="' +
+                  escapeHtml(l.url) +
+                  '" target="_blank" rel="noopener noreferrer" class="resource-link">' +
+                  escapeHtml(l.label) +
+                  "</a></li>"
+                );
+              })
+              .join("") +
+            "</ul>"
+          : '<div class="resource-coming">' +
+            '<p class="resource-coming-text" data-i18n="resources.officialResourcesComingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+            '<button type="button" class="btn btn-secondary btn-sm resource-coming-btn" disabled aria-disabled="true" data-i18n="resources.comingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
+            "</div>";
+
+        return (
+          '<div class="resource-card' +
+          (avail ? "" : " resource-card--disabled") +
+          '">' +
+          '<div class="resource-card-head">' +
+          '<span class="resource-state-code">' +
+          escapeHtml(src.state) +
+          "</span>" +
+          '<span class="resource-state-name">' +
+          escapeHtml(src.name) +
+          "</span>" +
+          badge +
+          "</div>" +
+          '<p class="resource-authority">' +
+          escapeHtml(src.authority) +
+          "</p>" +
+          bodyHtml +
+          "</div>"
+        );
+      })
+      .join("");
 
     return (
       '<section class="page-section resources-page"><div class="container">' +
@@ -132,8 +85,11 @@
       '<div class="resources-grid">' +
       cards +
       "</div>" +
-      '<div class="page-footer-actions"><a href="#learn" class="btn btn-primary" data-i18n="resources.ctaStudy"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
-      '<a href="#practice" class="btn btn-secondary" data-i18n="resources.ctaPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
+      '<p class="resources-disclaimer">' +
+      (window.KL_I18N?.t?.(window.KL_UI_COPY?.disclaimer?.studyAid, "") || "") +
+      "</p>" +
+      '<div class="page-footer-actions"><a href="#learn" class="btn btn-primary" data-i18n="resources.backToLearn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
+      '<a href="#practice" class="btn btn-secondary" data-i18n="resources.practiseWA"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
       "</div></section>"
     );
   };
