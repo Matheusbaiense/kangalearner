@@ -173,6 +173,7 @@
     state: "kl-state",
     answers: "dw-answers",
     lastMock: "kl-last-mock-results",
+    lastExam: "kl-last-exam-results",
     savedQuestions: "kl-saved-questions"
   };
 
@@ -316,6 +317,22 @@
     return safeRemove(KL_KEYS.lastMock);
   }
 
+  function saveLastExamResults(results) {
+    const json = safeStringifyJson(results);
+    if (!json) return false;
+    return safeSet(KL_KEYS.lastExam, json);
+  }
+
+  function getLastExamResults() {
+    const raw = safeGet(KL_KEYS.lastExam);
+    const parsed = safeParseJson(raw, null);
+    return parsed && typeof parsed === "object" ? parsed : null;
+  }
+
+  function clearLastExamResults() {
+    return safeRemove(KL_KEYS.lastExam);
+  }
+
   function getStats(questions) {
     const qs = Array.isArray(questions) ? questions : [];
     const state = storageStateKeyForAnswers(currentState());
@@ -354,15 +371,30 @@
       }
     });
 
+    const byCatAcc = Object.keys(byCategory).map((k) => {
+      const c = byCategory[k];
+      const pct = c.answered > 0 ? Math.round((c.correct / c.answered) * 100) : null;
+      return { key: k, answered: c.answered, accuracy: pct };
+    });
+    const answeredCats = byCatAcc.filter((x) => typeof x.accuracy === "number");
+    answeredCats.sort((a, b) => a.accuracy - b.accuracy);
+    const weakest = answeredCats.length ? answeredCats[0] : null;
+    const strongest = answeredCats.length ? answeredCats[answeredCats.length - 1] : null;
+
     return {
       state: state,
       totalQuestions,
       answered,
+      answeredUnique: answered,
       correct,
       incorrect,
       unanswered,
       accuracy,
-      byCategory
+      byCategory,
+      weakestTopicKey: weakest ? weakest.key : null,
+      weakestTopicAccuracy: weakest ? weakest.accuracy : null,
+      strongestTopicKey: strongest ? strongest.key : null,
+      strongestTopicAccuracy: strongest ? strongest.accuracy : null
     };
   }
 
@@ -382,6 +414,9 @@
     saveLastMockResults,
     getLastMockResults,
     clearLastMockResults,
+    saveLastExamResults,
+    getLastExamResults,
+    clearLastExamResults,
     getStats
   };
 })();

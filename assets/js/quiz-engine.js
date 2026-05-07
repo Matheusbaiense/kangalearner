@@ -106,6 +106,11 @@ const DW = {
   simRenderedCount: 1,
   simCompleted: false,
   simReviewMode: "all",
+  topicFlowStage: "practice", // practice | summary | review
+  topicSessionId: null,
+  topicSessionAnswered: [],
+  topicSessionWrong: [],
+  topicReview: null, // { queue: string[], cycles: Record<string, number>, needed: string[] }
   visibleQuestionCount: 10,
   _questionsMap: null,
   _questionsByState: null,
@@ -393,12 +398,7 @@ const DW = {
     if (mode === "sim") {
       this.simExamStrict = false;
       try {
-        const h = String(location.hash || "");
-        if (h.indexOf("mock-run") !== -1 || h.indexOf("exam-run") !== -1) {
-          this.simExamStrict = sessionStorage.getItem("kl-sim-strict-exam") === "1";
-        } else {
-          sessionStorage.setItem("kl-sim-strict-exam", "0");
-        }
+        this.simExamStrict = sessionStorage.getItem("kl-sim-strict-exam") === "1";
       } catch (e) {
         this.simExamStrict = false;
       }
@@ -460,7 +460,200 @@ const DW = {
       middle = `${this.t("practice_mode_saved")} · ${topicLabel}`;
     }
     const line = `${this.t("practice_context_prefix")} ${middle} · ${count} ${unit}`;
+    if (this.isTopicPracticeActive() && this.topicFlowStage === "practice") {
+      this.ensureTopicSession();
+      return `<div class="quiz-context-row" aria-live="polite">
+        <p class="quiz-context-banner">${line}</p>
+        <button type="button" class="btn btn-secondary btn-sm" data-action="topic-finish-session">${this.t(
+          "topic_finish_session"
+        )}</button>
+      </div>`;
+    }
     return `<p class="quiz-context-banner" aria-live="polite">${line}</p>`;
+  },
+
+  isTopicPracticeActive() {
+    if (this.simMode) return false;
+    if (this.mode !== "all") return false;
+    try {
+      return sessionStorage.getItem("kl-practice-mode") === "topic";
+    } catch (e) {
+      return false;
+    }
+  },
+
+  isTopicReviewActive() {
+    return this.isTopicPracticeActive() && this.topicFlowStage === "review" && this.topicReview;
+  },
+
+  loadTopicSession() {
+    try {
+      this.topicSessionId = sessionStorage.getItem("kl-topic-session-id");
+      this.topicSessionAnswered = JSON.parse(
+        sessionStorage.getItem("kl-topic-session-answered") || "[]"
+      );
+      this.topicSessionWrong = JSON.parse(sessionStorage.getItem("kl-topic-session-wrong") || "[]");
+      if (!Array.isArray(this.topicSessionAnswered)) this.topicSessionAnswered = [];
+      if (!Array.isArray(this.topicSessionWrong)) this.topicSessionWrong = [];
+    } catch (e) {
+      this.topicSessionId = null;
+      this.topicSessionAnswered = [];
+      this.topicSessionWrong = [];
+    }
+  },
+
+  persistTopicSession() {
+    try {
+      if (!this.topicSessionId) return;
+      sessionStorage.setItem("kl-topic-session-id", String(this.topicSessionId));
+      sessionStorage.setItem(
+        "kl-topic-session-answered",
+        JSON.stringify(this.topicSessionAnswered || [])
+      );
+      sessionStorage.setItem(
+        "kl-topic-session-wrong",
+        JSON.stringify(this.topicSessionWrong || [])
+      );
+    } catch (e) {}
+  },
+
+  ensureTopicSession() {
+    if (!this.topicSessionId) this.loadTopicSession();
+    if (!this.topicSessionId) {
+      try {
+        this.topicSessionId =
+          typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+            ? crypto.randomUUID()
+            : "topic-" + Date.now() + "-" + Math.random().toString(36).slice(2, 9);
+      } catch (e) {
+        this.topicSessionId = "topic-" + Date.now();
+      }
+      this.topicSessionAnswered = [];
+      this.topicSessionWrong = [];
+      this.persistTopicSession();
+    }
+  },
+
+  startNewTopicSession() {
+    this.topicFlowStage = "practice";
+    this.topicReview = null;
+    this.topicSessionId = null;
+    this.topicSessionAnswered = [];
+    this.topicSessionWrong = [];
+    try {
+      sessionStorage.removeItem("kl-topic-session-id");
+      sessionStorage.removeItem("kl-topic-session-answered");
+      sessionStorage.removeItem("kl-topic-session-wrong");
+    } catch (e) {}
+    this.ensureTopicSession();
+  },
+
+  recordTopicSessionAttempt(qid, isCorrect) {
+    if (!this.isTopicPracticeActive()) return;
+    this.ensureTopicSession();
+    const id = String(qid);
+    if (!this.topicSessionAnswered.includes(id))
+      this.topicSessionAnswered = this.topicSessionAnswered.concat([id]);
+    if (!isCorrect) {
+      if (!this.topicSessionWrong.includes(id))
+        this.topicSessionWrong = this.topicSessionWrong.concat([id]);
+    }
+    this.persistTopicSession();
+  },
+
+  renderTopicSummary() {
+    const a = Array.isArray(this.topicSessionAnswered) ? this.topicSessionAnswered.length : 0;
+    const w = Array.isArray(this.topicSessionWrong) ? this.topicSessionWrong.length : 0;
+    const hasMistakes = w > 0;
+    const reviewBtn = hasMistakes
+      ? `<button type="button" class="btn btn-primary btn-sm" data-action="topic-review-mistakes">${this.t(
+          "topic_review_mistakes"
+        )}</button>`
+      : "";
+    return `<div class="topic-summary" role="region" aria-label="${this.t("topic_summary_title")}">
+      <h2 class="topic-summary-title">${this.t("topic_summary_title")}</h2>
+      <p class="topic-summary-sub">${this.t("topic_summary_sub").replace("{a}", String(a)).replace("{w}", String(w))}</p>
+      <div class="topic-summary-actions">
+        ${reviewBtn}
+        <button type="button" class="btn btn-secondary btn-sm" data-action="topic-resume">${this.t(
+          "topic_resume"
+        )}</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-action="topic-new-session">${this.t(
+          "topic_new_session"
+        )}</button>
+      </div>
+    </div>`;
+  },
+
+  startTopicReview() {
+    this.ensureTopicSession();
+    const queue = (this.topicSessionWrong || []).map(String).filter(Boolean);
+    this.topicReview = { queue, cycles: {}, needed: [] };
+    this.topicFlowStage = "review";
+  },
+
+  renderTopicReview() {
+    const qids =
+      this.topicReview && Array.isArray(this.topicReview.queue) ? this.topicReview.queue : [];
+    if (!qids.length) {
+      const needed =
+        this.topicReview && Array.isArray(this.topicReview.needed)
+          ? this.topicReview.needed.length
+          : 0;
+      return `<div class="topic-summary" role="region" aria-label="${this.t("topic_review_done_title")}">
+        <h2 class="topic-summary-title">${this.t("topic_review_done_title")}</h2>
+        <p class="topic-summary-sub">${this.t("topic_review_done_sub").replace("{n}", String(needed))}</p>
+        <div class="topic-summary-actions">
+          <button type="button" class="btn btn-secondary btn-sm" data-action="topic-resume">${this.t(
+            "topic_resume"
+          )}</button>
+        </div>
+      </div>`;
+    }
+    const qid = qids[0];
+    const q = this._questionsMap.get(qid);
+    if (!q) {
+      this.topicReview.queue = qids.slice(1);
+      return this.renderTopicReview();
+    }
+    const dLang = this.getDisplayLang();
+    const tLang = this.getTranslationLang();
+    const card = this.renderCard(q, dLang, tLang, { omitAnswer: false });
+    return `<div class="topic-review">
+      <div class="topic-review-head">
+        <div class="topic-review-title">${this.t("topic_review_title")}</div>
+        <div class="topic-review-meta">${this.t("topic_review_left").replace("{n}", String(qids.length))}</div>
+      </div>
+      ${card}
+      <div class="topic-summary-actions">
+        <button type="button" class="btn btn-secondary btn-sm" data-action="topic-review-exit">${this.t(
+          "topic_review_exit"
+        )}</button>
+      </div>
+    </div>`;
+  },
+
+  advanceTopicReview(qid, isCorrect) {
+    if (!this.isTopicReviewActive()) return;
+    const id = String(qid);
+    const qids = this.topicReview.queue || [];
+    const rest = qids.slice(1);
+    if (isCorrect) {
+      this.topicReview.queue = rest;
+      this.renderQuiz();
+      return;
+    }
+    const prev = typeof this.topicReview.cycles[id] === "number" ? this.topicReview.cycles[id] : 0;
+    const next = prev + 1;
+    this.topicReview.cycles = { ...this.topicReview.cycles, [id]: next };
+    if (next >= 3) {
+      this.topicReview.queue = rest;
+      this.topicReview.needed = (this.topicReview.needed || []).concat([id]);
+      this.renderQuiz();
+      return;
+    }
+    this.topicReview.queue = rest.concat([id]);
+    this.renderQuiz();
   },
 
   renderQuiz() {
@@ -512,6 +705,19 @@ const DW = {
         <div class="empty-title">${this.t("empty_title")}</div>
         <div class="empty-sub">${this.t("empty_sub")}</div>
       </div>`;
+      this.updateScore();
+      return;
+    }
+
+    if (this.isTopicPracticeActive() && this.topicFlowStage === "summary") {
+      this.ensureTopicSession();
+      container.innerHTML = this.renderTopicSummary();
+      this.updateScore();
+      return;
+    }
+
+    if (this.isTopicReviewActive()) {
+      container.innerHTML = this.renderTopicReview();
       this.updateScore();
       return;
     }
@@ -658,7 +864,7 @@ const DW = {
     const q = this._questionsMap.get(qid);
     if (!q) return;
 
-    if (!this.simMode && this.answered[qid]) return;
+    if (!this.simMode && this.answered[qid] && !this.isTopicReviewActive()) return;
 
     if (this.simMode) {
       const wrap = el.closest(".sim-card-wrap");
@@ -691,6 +897,10 @@ const DW = {
       }
     }
 
+    if (!this.simMode) {
+      this.recordTopicSessionAttempt(qid, isCorrect);
+    }
+
     const deferPracticeStats = this.simMode && this.simExamStrict && !this.simCompleted;
     if (!this.answered[qid] && !deferPracticeStats) {
       this.total++;
@@ -700,6 +910,11 @@ const DW = {
       this.updateScore();
       if (isCorrect && !this.simMode) this.spawnConfetti(el);
       this.syncAttempt(q, isCorrect, el.dataset.letter);
+    }
+
+    if (this.isTopicReviewActive()) {
+      setTimeout(() => this.advanceTopicReview(qid, isCorrect), 260);
+      return;
     }
 
     if (this.simMode) {
@@ -988,13 +1203,19 @@ const DW = {
 
     const dLang = this.getDisplayLang();
     const wrongByCat = {};
+    const correctByCat = {};
     this.simQueue.forEach((q) => {
       const a = this.simAnswered[q.id];
       if (a && !a.correct) {
         wrongByCat[q.cat] = (wrongByCat[q.cat] || 0) + 1;
+      } else if (a && a.correct) {
+        correctByCat[q.cat] = (correctByCat[q.cat] || 0) + 1;
       }
     });
     const weakSorted = Object.entries(wrongByCat)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 5);
+    const strongSorted = Object.entries(correctByCat)
       .sort((a, b) => b[1] - a[1])
       .slice(0, 5);
     let chips = "";
@@ -1007,20 +1228,55 @@ const DW = {
     });
     if (!chips) chips = `<span class="weak-none">${this.t("sim_no_weak")}</span>`;
 
+    let strongChips = "";
+    strongSorted.forEach(([cat]) => {
+      const catMeta = this.getCategories().find((c) => c.key === cat);
+      const chipLabel = catMeta
+        ? `${catMeta.icon || ""} ${catMeta.label?.[dLang] || catMeta.label?.en || cat}`.trim()
+        : cat;
+      strongChips += `<span class="strong-chip">${chipLabel}</span>`;
+    });
+    if (!strongChips) strongChips = `<span class="weak-none">${this.t("sim_no_strong")}</span>`;
+
+    const isExam = Boolean(this.simExamStrict);
+    const nextMode = isExam
+      ? pct >= 80
+        ? "practice-mock"
+        : "topic"
+      : pct >= 80
+        ? "exam"
+        : "topic";
+    const nextLabel =
+      nextMode === "exam"
+        ? this.t("sim_next_exam")
+        : nextMode === "practice-mock"
+          ? this.t("sim_next_mock")
+          : this.t("sim_next_topic");
+
     return `<div id="sim-final-panel" class="sim-final-panel">
       <div class="sim-final-inner">
         <h3 class="sim-final-title">${this.t("sim_final_title")}</h3>
         <div class="sim-result-score">${score} / ${total}</div>
         <div class="sim-result-pct">${pct}%</div>
         <p class="sim-result-msg">${this.t(msgKey)}</p>
-        <div class="sim-final-actions">
-          <button type="button" class="btn btn-secondary btn-sm" data-action="sim-review-mistakes">${this.t("sim_btn_mistakes")}</button>
-          <button type="button" class="btn btn-secondary btn-sm" data-action="sim-review-all">${this.t("sim_btn_all")}</button>
-          <button type="button" class="btn btn-gold btn-sm" data-action="sim-restart">${this.t("sim_btn_restart")}</button>
+        <div class="sim-debrief">
+          <div class="sim-debrief-row">
+            <div class="sim-debrief-label">${this.t("sim_debrief_strong")}</div>
+            <div class="strong-chips">${strongChips}</div>
+          </div>
+          <div class="sim-debrief-row">
+            <div class="sim-debrief-label">${this.t("sim_debrief_weak")}</div>
+            <div class="weak-chips">${chips}</div>
+          </div>
+          <div class="sim-debrief-row">
+            <div class="sim-debrief-label">${this.t("sim_debrief_next")}</div>
+            <div class="sim-debrief-next">${nextLabel}</div>
+          </div>
         </div>
-        <div class="sim-weak-block">
-          <div class="sim-weak-label">${this.t("sim_weak_label")}</div>
-          <div class="weak-chips">${chips}</div>
+        <div class="sim-final-actions">
+          <button type="button" class="btn btn-primary btn-sm" data-action="sim-next-step" data-next="${nextMode}">${nextLabel}</button>
+          <a class="btn btn-secondary btn-sm" href="#practice">${this.t("sim_back_practice")}</a>
+          <button type="button" class="btn btn-gold btn-sm" data-action="sim-restart">${this.t("sim_btn_restart")}</button>
         </div>
       </div>
     </div>`;
@@ -1147,27 +1403,23 @@ const DW = {
         window.location.hash = "#learn";
         return;
       }
-      const simM = e.target.closest?.('[data-action="sim-review-mistakes"]');
-      if (simM) {
-        this.simReviewMode = "mistakes";
-        const firstWrong = this.simQueue.find(
-          (q) => this.simAnswered[q.id] && !this.simAnswered[q.id].correct
-        );
-        this._simScrollTarget = firstWrong ? `sim-q-${firstWrong.id}` : "sim-final-panel";
-        this.renderSimStack();
-        return;
-      }
-      const simAll = e.target.closest?.('[data-action="sim-review-all"]');
-      if (simAll) {
-        this.simReviewMode = "all";
-        this._simScrollTarget = null;
-        this.renderSimStack();
-        return;
-      }
       const simRes = e.target.closest?.('[data-action="sim-restart"]');
       if (simRes) {
         this.startSim();
         document.getElementById("questoes")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+      const simNext = e.target.closest?.('[data-action="sim-next-step"][data-next]');
+      if (simNext) {
+        const next = simNext.getAttribute("data-next") || "topic";
+        try {
+          sessionStorage.setItem("kl-practice-mode", next);
+          if (next === "exam") sessionStorage.setItem("kl-sim-strict-exam", "1");
+          else sessionStorage.setItem("kl-sim-strict-exam", "0");
+        } catch (e) {}
+        try {
+          window.location.hash = "#practice-run";
+        } catch (e2) {}
         return;
       }
       const weak = e.target.closest?.('[data-action="sim-weak-topic"]');
@@ -1176,6 +1428,39 @@ const DW = {
         this.setMode("all");
         this.setCat(cat || "all");
         document.getElementById("questoes")?.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
+
+      const finish = e.target.closest?.('[data-action="topic-finish-session"]');
+      if (finish) {
+        this.ensureTopicSession();
+        this.topicFlowStage = "summary";
+        this.renderQuiz();
+        return;
+      }
+      const resume = e.target.closest?.('[data-action="topic-resume"]');
+      if (resume) {
+        this.topicFlowStage = "practice";
+        this.topicReview = null;
+        this.renderQuiz();
+        return;
+      }
+      const startNew = e.target.closest?.('[data-action="topic-new-session"]');
+      if (startNew) {
+        this.startNewTopicSession();
+        this.renderQuiz();
+        return;
+      }
+      const review = e.target.closest?.('[data-action="topic-review-mistakes"]');
+      if (review) {
+        this.startTopicReview();
+        this.renderQuiz();
+        return;
+      }
+      const reviewExit = e.target.closest?.('[data-action="topic-review-exit"]');
+      if (reviewExit) {
+        this.topicFlowStage = "summary";
+        this.renderQuiz();
         return;
       }
 
@@ -1391,6 +1676,33 @@ const I18N = {
     en: "Answer options",
     es: "Opciones de respuesta"
   },
+  topic_finish_session: { pt: "Finalizar sessão", en: "Finish session", es: "Finalizar sesión" },
+  topic_summary_title: {
+    pt: "Resumo da sessão",
+    en: "Session summary",
+    es: "Resumen de la sesión"
+  },
+  topic_summary_sub: {
+    pt: "Respondidas: {a}. Erradas: {w}.",
+    en: "Answered: {a}. Mistakes: {w}.",
+    es: "Respondidas: {a}. Errores: {w}."
+  },
+  topic_review_mistakes: { pt: "Revisar erros", en: "Review mistakes", es: "Revisar errores" },
+  topic_resume: { pt: "Voltar para a sessão", en: "Back to session", es: "Volver a la sesión" },
+  topic_new_session: { pt: "Nova sessão", en: "New session", es: "Nueva sesión" },
+  topic_review_title: { pt: "Revisar erros", en: "Review mistakes", es: "Revisar errores" },
+  topic_review_left: { pt: "Restam {n}", en: "{n} left", es: "Quedan {n}" },
+  topic_review_exit: { pt: "Sair da revisão", en: "Exit review", es: "Salir de la revisión" },
+  topic_review_done_title: {
+    pt: "Revisão concluída",
+    en: "Review complete",
+    es: "Revisión completada"
+  },
+  topic_review_done_sub: {
+    pt: "Itens que ainda precisam de revisão: {n}.",
+    en: "Items that still need review: {n}.",
+    es: "Elementos que aún necesitan repaso: {n}."
+  },
   sim_exam_scoreline: {
     pt: "Respondidas {a} / {b}",
     en: "Answered {a} / {b}",
@@ -1417,13 +1729,38 @@ const I18N = {
     en: "Keep practising — you will improve.",
     es: "Sigue practicando — mejorarás."
   },
-  sim_btn_mistakes: { pt: "Rever erros", en: "Review mistakes", es: "Revisar errores" },
-  sim_btn_all: { pt: "Ver todas", en: "Show all", es: "Ver todas" },
   sim_btn_restart: { pt: "Reiniciar simulado", en: "Restart mock test", es: "Reiniciar simulacro" },
-  sim_weak_label: {
-    pt: "Praticar tópicos fracos",
-    en: "Practice weak topics",
-    es: "Practicar temas débiles"
+  sim_debrief_strong: { pt: "Pontos fortes", en: "Strong areas", es: "Puntos fuertes" },
+  sim_debrief_weak: { pt: "Pontos fracos", en: "Weak areas", es: "Puntos débiles" },
+  sim_debrief_next: {
+    pt: "Próximo passo recomendado",
+    en: "Recommended next step",
+    es: "Próximo paso recomendado"
+  },
+  sim_next_topic: {
+    pt: "Ir para Prática por tema",
+    en: "Go to Topic Practice",
+    es: "Ir a Práctica por tema"
+  },
+  sim_next_mock: {
+    pt: "Ir para Simulado com prática",
+    en: "Go to Practice Mock",
+    es: "Ir a Simulacro con práctica"
+  },
+  sim_next_exam: {
+    pt: "Ir para Simulação da prova",
+    en: "Go to Exam Simulation",
+    es: "Ir a Simulación del examen"
+  },
+  sim_back_practice: {
+    pt: "Voltar para Praticar",
+    en: "Back to Practice",
+    es: "Volver a Practicar"
+  },
+  sim_no_strong: {
+    pt: "Sem destaques nesta sessão.",
+    en: "No highlights in this run.",
+    es: "Sin destacados en esta sesión."
   },
   sim_no_weak: {
     pt: "Nenhum tópico fraco neste simulado.",

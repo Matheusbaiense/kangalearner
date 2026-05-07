@@ -35,9 +35,8 @@ test.describe("static site smoke", () => {
     await expect(page.locator(".practice-path")).toBeVisible();
     await expect(page.locator(".practice-tip")).toBeVisible();
     await expect(page.locator(".practice-progress-panel")).toBeVisible();
-    await expect(
-      page.locator('[data-action="start-practice"][data-mode="questions"]')
-    ).toBeVisible();
+    await expect(page.locator(".practice-readiness-panel")).toBeVisible();
+    await expect(page.locator('[data-action="start-practice"][data-mode="topic"]')).toBeVisible();
     await expect(
       page.locator('[data-action="start-practice"][data-mode="practice-mock"]')
     ).toBeVisible();
@@ -60,7 +59,7 @@ test.describe("static site smoke", () => {
 
   test("practice landing: start practice goes to practice-run quiz", async ({ page }) => {
     await page.goto("/#practice");
-    await page.locator('[data-action="start-practice"][data-mode="questions"]').click();
+    await page.locator('[data-action="start-practice"][data-mode="topic"]').click();
     await expect(page.locator("#quiz-root")).toBeVisible({ timeout: 20000 });
   });
 

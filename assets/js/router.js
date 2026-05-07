@@ -182,18 +182,26 @@
         try {
           selectedMode = sessionStorage.getItem("kl-practice-mode");
         } catch (e) {}
-        if (!selectedMode) selectedMode = "questions";
+        if (!selectedMode) selectedMode = "topic";
 
-        // "questions" = regular study (shows explanations), "practice-mock" = sim with feedback,
-        // "exam" = strict exam mode (only in #mock-run)
+        // "topic" = regular study (instant feedback + explanations)
+        // "practice-mock" = 30Q sim with feedback, "exam" = 30Q exam-style (no feedback until end)
         if (selectedMode === "practice-mock") {
           try {
             sessionStorage.setItem("kl-sim-strict-exam", "0");
+            sessionStorage.removeItem("kl-exam-real-timer");
           } catch (e) {}
           window.DW.setMode("sim");
         } else if (selectedMode === "exam") {
+          try {
+            sessionStorage.setItem("kl-sim-strict-exam", "1");
+          } catch (e2) {}
           window.DW.setMode("sim");
         } else {
+          try {
+            sessionStorage.setItem("kl-sim-strict-exam", "0");
+            sessionStorage.removeItem("kl-exam-real-timer");
+          } catch (e3) {}
           window.DW.setMode("all");
         }
 
@@ -378,7 +386,26 @@
     };
 
     try {
-      localStorage.setItem("kl-last-mock-results", JSON.stringify(results));
+      var mode = null;
+      try {
+        mode = sessionStorage.getItem("kl-practice-mode");
+      } catch (e0) {
+        mode = null;
+      }
+      var isExam = mode === "exam";
+      if (window.KL_STORAGE && typeof window.KL_STORAGE.saveLastMockResults === "function") {
+        window.KL_STORAGE.saveLastMockResults(results);
+      } else {
+        localStorage.setItem("kl-last-mock-results", JSON.stringify(results));
+      }
+      // Persist exam results separately (for readiness) while keeping mock results for compatibility.
+      if (isExam) {
+        if (window.KL_STORAGE && typeof window.KL_STORAGE.saveLastExamResults === "function") {
+          window.KL_STORAGE.saveLastExamResults(results);
+        } else {
+          localStorage.setItem("kl-last-exam-results", JSON.stringify(results));
+        }
+      }
     } catch (e) {}
   }
 
@@ -566,16 +593,20 @@
       btn.addEventListener("click", function () {
         if (btn.disabled) return;
         try {
-          var mode = btn.getAttribute("data-mode") || "questions";
+          var mode = btn.getAttribute("data-mode") || "topic";
           sessionStorage.setItem("kl-practice-mode", mode);
           if (mode === "practice-mock") {
             sessionStorage.setItem("kl-sim-strict-exam", "0");
             sessionStorage.removeItem("kl-exam-real-timer");
           } else if (mode === "exam") {
             sessionStorage.setItem("kl-sim-strict-exam", "1");
+            sessionStorage.removeItem("kl-exam-real-timer");
+          } else {
+            sessionStorage.setItem("kl-sim-strict-exam", "0");
+            sessionStorage.removeItem("kl-exam-real-timer");
           }
         } catch (e) {}
-        location.hash = mode === "exam" ? "exam-run" : "practice-run";
+        location.hash = "practice-run";
       });
     });
   }

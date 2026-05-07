@@ -2,6 +2,41 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-08 — Practice hub redesign + Review mistakes (Topic) + Readiness/Debrief (static root)
+
+**Objetivo:** transformar `#practice` no hub principal com 3 cards totalmente padronizados, integrar “Your Progress” + “Readiness & Next step”, manter `#progress` como rota detalhada (sem menu), adicionar “Review mistakes” estilo Duolingo **somente** para Topic Practice, e adicionar Debrief/Next step no final de Practice Mock + Exam Simulation.
+
+### Comandos executados
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static`       | **OK** |
+| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| `pnpm run test:e2e`           | **OK** — 15 testes Chromium |
+| `pnpm run validate:questions` | **OK** |
+
+### QA visual (Playwright)
+
+- Script local: `qa-practice-polish-check.mjs` (**não commitar**)
+- Screenshots gerados em `qa-output/` (**não commitar**):
+  - `en-practice-final-polished.png`
+  - `pt-practice-final-polished.png`
+  - `es-practice-final-polished.png`
+  - `en-progress-panel.png`
+  - `pt-progress-panel.png`
+  - `es-progress-panel.png`
+  - `en-progress-detail.png`
+  - `topic-practice-review-mistakes.png`
+  - `practice-mock-debrief.png`
+  - `exam-simulation-debrief.png`
+  - `mobile-practice-final.png`
+
+### Notas
+
+- `sw.js` cache bump: `kanga-assets-v6`.
+
 ## 2026-05-07 — CI hardening (env guards) + verificação final (static + e2e)
 
 **Objetivo:** evitar crash de build no GitHub Actions (monorepo `apps/web`) quando env vars sensíveis não estão presentes e registar uma verificação final completa do site estático.

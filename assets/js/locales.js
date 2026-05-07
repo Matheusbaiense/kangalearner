@@ -174,63 +174,72 @@
         },
         path: {
           label: "Caminho recomendado:",
-          steps: "Praticar perguntas → Simulado com prática → Simulação da prova"
-        },
-        questions: {
-          label: "Melhor para aprender",
-          title: "Praticar perguntas",
-          description: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
-          cta: "Começar prática"
-        },
-        mock: {
-          label: "Melhor para praticar 30 questões",
-          title: "Simulado com prática",
-          description:
-            "Pratique 30 perguntas de WA em ordem aleatória com feedback imediato. Este modo é para aprender.",
-          cta: "Iniciar simulado com prática"
-        },
-        exam: {
-          label: "Melhor para se preparar para a prova",
-          title: "Simulação da prova",
-          description:
-            "Responda 30 perguntas de WA sem feedback até o final, como uma simulação real da prova.",
-          cta: "Iniciar simulação da prova"
+          steps: "Prática por tema → Simulado com prática → Simulação da prova"
         },
         cards: {
-          questionsTitle: "Praticar perguntas",
-          questionsDesc: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
-          questionsBtn: "Começar prática",
-          mockBadge: "30 questões",
-          mockTitle: "Simulado com prática",
-          mockDesc:
-            "Faça um simulado de 30 perguntas com feedback imediato. Este modo é para aprender, não simular a prova real.",
-          mockBtn: "Iniciar simulado com prática",
+          topic: {
+            badge: "POR TEMA",
+            micro: "Melhor para aprender",
+            title: "Prática por tema",
+            description: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
+            cta: "Começar prática"
+          },
+          mock: {
+            badge: "30 QUESTÕES",
+            micro: "Melhor para praticar 30 questões",
+            title: "Simulado com prática",
+            description:
+              "Pratique 30 perguntas de WA em ordem aleatória com feedback imediato. Este modo é para aprender.",
+            cta: "Iniciar simulado"
+          },
+          exam: {
+            badge: "ESTILO PROVA",
+            micro: "Melhor para se preparar para a prova",
+            title: "Simulação da prova",
+            description:
+              "Responda 30 perguntas de WA sem feedback até o final, como uma simulação real da prova.",
+            cta: "Iniciar prova"
+          },
           mockNeedsQuestions: "O Simulado com prática precisa de 30 perguntas disponíveis de WA.",
-          examBadge: "Simulação de prova",
-          examTitle: "Simulação da prova",
-          examDesc:
-            "Responda 30 perguntas de WA sem feedback até o final, como uma simulação real da prova.",
-          examBtn: "Iniciar simulação da prova",
           examNeedsQuestions: "A Simulação da prova precisa de 30 perguntas disponíveis de WA."
         },
-        tip: "Não sabe por onde começar? Comece por Praticar perguntas, depois faça o Simulado com prática antes da Simulação da prova.",
+        tip: "Não sabe por onde começar? Comece com Prática por tema, depois faça o Simulado com prática antes da Simulação da prova.",
         progress: {
           title: "Seu progresso",
           description:
             "Acompanhe suas perguntas respondidas, taxa de acerto, resultados dos simulados e próximo passo recomendado.",
           answered: "Respondidas",
-          correct: "Certas",
-          incorrect: "Erradas",
           accuracy: "Taxa de acerto",
           bestMock: "Melhor simulado",
-          recommendedNextStep: "Próximo passo recomendado",
+          examReadiness: "Prontidão para a prova",
+          weakestTopic: "Tema mais fraco",
+          nextStep: "Próximo passo",
           empty:
             "Ainda não há progresso. Comece praticando as perguntas de WA para ver seus resultados aqui.",
           viewFull: "Ver progresso completo",
           backToPractice: "Voltar para Praticar",
           notAvailable: "Ainda não disponível"
         },
-        note: "ℹ️ Dica: o modo prova não mostra feedback até o final."
+        readiness: {
+          title: "Readiness & próximo passo",
+          description: "Seu resumo de preparação e a próxima melhor ação para hoje.",
+          scoreLabel: "Readiness score",
+          nextLabel: "Próximo passo",
+          band: {
+            foundation: "Construindo sua base",
+            keep: "Continue praticando",
+            nearly: "Quase pronto",
+            ready: "Pronto para a simulação da prova"
+          }
+        },
+        nextstep: {
+          startTopic: "Comece por Prática por tema",
+          focusTopic: "Faça mais Prática por tema",
+          weakTopic: "Reforce seu tema mais fraco",
+          tryMock: "Tente o Simulado com prática",
+          retryMock: "Faça um novo Simulado com prática",
+          tryExam: "Tente a Simulação da prova"
+        }
       },
       study: {
         modeLabel: "Modo de estudo",
@@ -512,64 +521,72 @@
         },
         path: {
           label: "Recommended path:",
-          steps: "Practice Questions → Practice Mock → Exam Simulation"
-        },
-        questions: {
-          label: "Best for learning",
-          title: "Practice Questions",
-          description:
-            "Practise WA learner questions by topic with instant feedback and explanations.",
-          cta: "Start practice"
-        },
-        mock: {
-          label: "Best for 30-question practice",
-          title: "Practice Mock",
-          description:
-            "Practise 30 WA questions in random order with instant feedback. This mode is for learning.",
-          cta: "Start practice mock"
-        },
-        exam: {
-          label: "Best for exam readiness",
-          title: "Exam Simulation",
-          description:
-            "Answer 30 WA questions without feedback until the end, just like a real test simulation.",
-          cta: "Start exam simulation"
+          steps: "Topic Practice → Practice Mock → Exam Simulation"
         },
         cards: {
-          questionsTitle: "Practice Questions",
-          questionsDesc:
-            "Practise WA learner questions by topic with instant feedback and explanations.",
-          questionsBtn: "Start practice",
-          mockBadge: "30 questions",
-          mockTitle: "Practice Mock",
-          mockDesc:
-            "Practise a 30-question mock with instant feedback. This is for learning, not exam simulation.",
-          mockBtn: "Start practice mock",
+          topic: {
+            badge: "BY TOPIC",
+            micro: "Best for learning",
+            title: "Topic Practice",
+            description:
+              "Practise WA learner questions by topic with instant feedback and explanations.",
+            cta: "Start practice"
+          },
+          mock: {
+            badge: "30 QUESTIONS",
+            micro: "Best for 30-question practice",
+            title: "Practice Mock",
+            description:
+              "Practise 30 WA questions in random order with instant feedback. This mode is for learning.",
+            cta: "Start mock"
+          },
+          exam: {
+            badge: "EXAM STYLE",
+            micro: "Best for exam readiness",
+            title: "Exam Simulation",
+            description:
+              "Answer 30 WA questions without feedback until the end, just like a real test simulation.",
+            cta: "Start exam"
+          },
           mockNeedsQuestions: "Practice Mock needs 30 available WA questions.",
-          examBadge: "Exam simulation",
-          examTitle: "Exam Simulation",
-          examDesc:
-            "Answer 30 WA questions without feedback until the end, just like a real test simulation.",
-          examBtn: "Start exam simulation",
           examNeedsQuestions: "Exam Simulation needs 30 available WA questions."
         },
-        tip: "Not sure where to start? Begin with Practice Questions, then try Practice Mock before Exam Simulation.",
+        tip: "Not sure where to start? Begin with Topic Practice, then try Practice Mock before Exam Simulation.",
         progress: {
           title: "Your Progress",
           description:
             "Track your answered questions, accuracy, mock results and recommended next step.",
           answered: "Answered",
-          correct: "Correct",
-          incorrect: "Incorrect",
           accuracy: "Accuracy",
           bestMock: "Best mock score",
-          recommendedNextStep: "Recommended next step",
+          examReadiness: "Exam readiness",
+          weakestTopic: "Weakest topic",
+          nextStep: "Next step",
           empty: "No progress yet. Start practising WA questions to see your results here.",
           viewFull: "View full progress",
           backToPractice: "Back to Practice",
           notAvailable: "Not available yet"
         },
-        note: "ℹ️ Tip: exam simulation shows no feedback until the end."
+        readiness: {
+          title: "Readiness & Next step",
+          description: "Your readiness summary and the smartest next move for today.",
+          scoreLabel: "Readiness score",
+          nextLabel: "Next step",
+          band: {
+            foundation: "Building your foundation",
+            keep: "Keep practising",
+            nearly: "Nearly ready",
+            ready: "Ready for exam simulation"
+          }
+        },
+        nextstep: {
+          startTopic: "Start with Topic Practice",
+          focusTopic: "Do more Topic Practice",
+          weakTopic: "Focus on your weakest topic",
+          tryMock: "Try Practice Mock",
+          retryMock: "Take another Practice Mock",
+          tryExam: "Try Exam Simulation"
+        }
       },
       study: {
         modeLabel: "Study mode",
@@ -848,64 +865,73 @@
         },
         path: {
           label: "Ruta recomendada:",
-          steps: "Practicar preguntas → Simulacro con práctica → Simulación del examen"
-        },
-        questions: {
-          label: "Mejor para aprender",
-          title: "Practicar preguntas",
-          description: "Practica preguntas de WA por tema con feedback inmediato y explicaciones.",
-          cta: "Empezar práctica"
-        },
-        mock: {
-          label: "Mejor para practicar 30 preguntas",
-          title: "Simulacro con práctica",
-          description:
-            "Practica 30 preguntas de WA en orden aleatorio con feedback inmediato. Este modo es para aprender.",
-          cta: "Iniciar simulacro con práctica"
-        },
-        exam: {
-          label: "Mejor para prepararte para el examen",
-          title: "Simulación del examen",
-          description:
-            "Responde 30 preguntas de WA sin feedback hasta el final, como una simulación real del examen.",
-          cta: "Iniciar simulación del examen"
+          steps: "Práctica por tema → Simulacro con práctica → Simulación del examen"
         },
         cards: {
-          questionsTitle: "Practicar preguntas",
-          questionsDesc:
-            "Practica preguntas de WA por tema con feedback inmediato y explicaciones.",
-          questionsBtn: "Empezar práctica",
-          mockBadge: "30 preguntas",
-          mockTitle: "Simulacro con práctica",
-          mockDesc:
-            "Haz un simulacro de 30 preguntas con feedback inmediato. Este modo es para aprender, no para simular el examen real.",
-          mockBtn: "Iniciar simulacro con práctica",
+          topic: {
+            badge: "POR TEMA",
+            micro: "Mejor para aprender",
+            title: "Práctica por tema",
+            description:
+              "Practica preguntas de WA por tema con feedback inmediato y explicaciones.",
+            cta: "Empezar práctica"
+          },
+          mock: {
+            badge: "30 PREGUNTAS",
+            micro: "Mejor para practicar 30 preguntas",
+            title: "Simulacro con práctica",
+            description:
+              "Practica 30 preguntas de WA en orden aleatorio con feedback inmediato. Este modo es para aprender.",
+            cta: "Iniciar simulacro"
+          },
+          exam: {
+            badge: "ESTILO EXAMEN",
+            micro: "Mejor para prepararte para el examen",
+            title: "Simulación del examen",
+            description:
+              "Responde 30 preguntas de WA sin feedback hasta el final, como una simulación real del examen.",
+            cta: "Iniciar examen"
+          },
           mockNeedsQuestions: "El Simulacro con práctica necesita 30 preguntas disponibles de WA.",
-          examBadge: "Simulación del examen",
-          examTitle: "Simulación del examen",
-          examDesc:
-            "Responde 30 preguntas de WA sin feedback hasta el final, como una simulación real del examen.",
-          examBtn: "Iniciar simulación del examen",
           examNeedsQuestions: "La Simulación del examen necesita 30 preguntas disponibles de WA."
         },
-        tip: "¿No sabes por dónde empezar? Empieza con Practicar preguntas, luego haz el Simulacro con práctica antes de la Simulación del examen.",
+        tip: "¿No sabes por dónde empezar? Empieza con Práctica por tema, luego haz el Simulacro con práctica antes de la Simulación del examen.",
         progress: {
           title: "Tu progreso",
           description:
             "Sigue tus preguntas respondidas, tasa de acierto, resultados de simulacros y próximo paso recomendado.",
           answered: "Respondidas",
-          correct: "Correctas",
-          incorrect: "Incorrectas",
           accuracy: "Tasa de acierto",
           bestMock: "Mejor simulacro",
-          recommendedNextStep: "Próximo paso recomendado",
+          examReadiness: "Preparación para el examen",
+          weakestTopic: "Tema más débil",
+          nextStep: "Próximo paso",
           empty:
             "Todavía no hay progreso. Empieza practicando las preguntas de WA para ver tus resultados aquí.",
           viewFull: "Ver progreso completo",
           backToPractice: "Volver a Practicar",
           notAvailable: "Aún no disponible"
         },
-        note: "ℹ️ Consejo: la simulación del examen no muestra feedback hasta el final."
+        readiness: {
+          title: "Readiness & próximo paso",
+          description: "Tu resumen de preparación y el mejor próximo paso para hoy.",
+          scoreLabel: "Readiness score",
+          nextLabel: "Próximo paso",
+          band: {
+            foundation: "Construyendo tu base",
+            keep: "Sigue practicando",
+            nearly: "Casi listo",
+            ready: "Listo para la simulación del examen"
+          }
+        },
+        nextstep: {
+          startTopic: "Empieza con Práctica por tema",
+          focusTopic: "Haz más Práctica por tema",
+          weakTopic: "Refuerza tu tema más débil",
+          tryMock: "Prueba el Simulacro con práctica",
+          retryMock: "Haz otro Simulacro con práctica",
+          tryExam: "Prueba la Simulación del examen"
+        }
       },
       study: {
         modeLabel: "Modo de estudio",
