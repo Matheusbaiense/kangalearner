@@ -248,7 +248,43 @@
       ldTrigger.addEventListener("click", () => window.DW?.ldToggle?.());
     }
     document.querySelectorAll(".ld-option[data-lang]").forEach((btn) => {
-      btn.addEventListener("click", () => window.DW?.setLang?.(btn.dataset.lang, btn));
+      btn.addEventListener("click", () => {
+        const lang = btn.dataset.lang;
+        if (!lang) return;
+
+        // Update static UI even if DW hasn't initialized yet.
+        try {
+          const d =
+            window.KL_I18N && typeof window.KL_I18N.getDisplayLang === "function"
+              ? window.KL_I18N.getDisplayLang(lang)
+              : String(lang).startsWith("pt")
+                ? "pt"
+                : String(lang).startsWith("es")
+                  ? "es"
+                  : "en";
+          document.body.className = "mode-" + d;
+        } catch (e) {}
+
+        try {
+          if (window.KL_I18N && typeof window.KL_I18N.setLang === "function") {
+            window.KL_I18N.setLang(lang);
+          }
+        } catch (e) {}
+
+        // Keep dropdown state in sync.
+        try {
+          document.querySelectorAll(".ld-option").forEach((o) => o.classList.remove("active"));
+          btn.classList.add("active");
+          document
+            .querySelectorAll(".ld-option")
+            .forEach((o) =>
+              o.setAttribute("aria-selected", o.classList.contains("active") ? "true" : "false")
+            );
+        } catch (e) {}
+
+        // If DW is available, let it re-render quiz surfaces too.
+        window.DW?.setLang?.(lang, btn);
+      });
     });
 
     initReadingProgress();
