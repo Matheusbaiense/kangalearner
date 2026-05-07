@@ -74,15 +74,7 @@
     return STATES.map(function (s) {
       var isActive = s.code === currentState;
       var comingSoon = !s.active;
-      return (
-        '<button class="state-card' +
-        (isActive ? " active" : "") +
-        (comingSoon ? " coming-soon" : "") +
-        '" data-state="' +
-        s.code +
-        '" aria-pressed="' +
-        (isActive ? "true" : "false") +
-        '">' +
+      var inner =
         '<div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"/></div>' +
         '<div class="state-code">' +
         s.code +
@@ -92,7 +84,27 @@
         "</div>" +
         (comingSoon
           ? '<div class="state-badge" data-i18n="state.comingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>'
-          : "") +
+          : "");
+      if (comingSoon) {
+        return (
+          '<div class="state-card coming-soon' +
+          (isActive ? " active" : "") +
+          '" data-state="' +
+          s.code +
+          '" data-available="false" tabindex="-1" aria-disabled="true">' +
+          inner +
+          "</div>"
+        );
+      }
+      return (
+        '<button class="state-card' +
+        (isActive ? " active" : "") +
+        '" data-state="' +
+        s.code +
+        '" data-available="true" type="button" aria-pressed="' +
+        (isActive ? "true" : "false") +
+        '">' +
+        inner +
         "</button>"
       );
     }).join("");

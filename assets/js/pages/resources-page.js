@@ -19,6 +19,29 @@
     return src.status === "available";
   }
 
+  function localePickString(root, dotKey) {
+    if (!root || !dotKey) return "";
+    var cur = root;
+    var parts = dotKey.split(".");
+    for (var i = 0; i < parts.length; i++) {
+      cur = cur && cur[parts[i]];
+    }
+    return typeof cur === "string" ? cur : "";
+  }
+
+  function resolveLinkLabel(l) {
+    if (l && l.labelKey && window.__KANGA_LOCALES__) {
+      var lang =
+        window.KL_I18N && typeof window.KL_I18N.getDisplayLang === "function"
+          ? window.KL_I18N.getDisplayLang(window.KL_I18N.getLang())
+          : "en";
+      var pack = window.__KANGA_LOCALES__[lang] || window.__KANGA_LOCALES__.en;
+      var t = localePickString(pack, l.labelKey);
+      if (t) return t;
+    }
+    return typeof (l && l.label) === "string" ? l.label : "";
+  }
+
   window.KL_PAGES = window.KL_PAGES || {};
 
   window.KL_PAGES.resources = function () {
@@ -40,11 +63,12 @@
           ? '<ul class="resource-links">' +
             safeLinks
               .map(function (l) {
+                var lab = resolveLinkLabel(l);
                 return (
                   '<li><a href="' +
                   escapeHtml(l.url) +
                   '" target="_blank" rel="noopener noreferrer" class="resource-link">' +
-                  escapeHtml(l.label) +
+                  escapeHtml(lab) +
                   "</a></li>"
                 );
               })
@@ -82,6 +106,7 @@
       '<div class="page-header"><p class="page-kicker" data-i18n="resources.kicker"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       '<h1 class="page-title" data-i18n="resources.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
       '<p class="page-sub" data-i18n="resources.sub"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
+      '<p class="resources-wa-notice" data-i18n="resources.waOnlyNotice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       '<div class="resources-grid">' +
       cards +
       "</div>" +

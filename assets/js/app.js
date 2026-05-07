@@ -27,12 +27,21 @@
     } catch (e) {
       saved = "WA";
     }
+    if (saved === "AU") {
+      saved = "WA";
+      try {
+        if (KS && KS.setState) KS.setState("WA");
+        else localStorage.setItem("kl-state", "WA");
+      } catch (e) {}
+    }
 
     function applyUI(code) {
       cards.forEach((c) => {
         const on = c.dataset.state === code;
         c.classList.toggle("active", on);
-        c.setAttribute("aria-pressed", on ? "true" : "false");
+        if (c.tagName === "BUTTON") {
+          c.setAttribute("aria-pressed", on ? "true" : "false");
+        }
       });
       if (select) select.value = code;
     }
@@ -48,6 +57,7 @@
     }
 
     cards.forEach((card) => {
+      if (card.getAttribute("data-available") === "false") return;
       card.addEventListener("click", () => setState(card.dataset.state));
     });
 

@@ -2,6 +2,24 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## QA Manual Fix Round — Navigation, i18n, Resources, Reset, Progress, Mock (2026-05-07)
+
+**Objetivo:** fechar lacunas do QA manual no site estático (GitHub Pages): WA-first, estados “coming soon” não clicáveis, mock exam strict (30 WA, sem feedback intermédio), categorias traduzidas em Progress/mock results, `tSafe` para reset, `uniqueQuestionCountForState` para habilitar Exam Mode, router + E2E alinhados.
+
+**Ficheiros alterados (principais):** `assets/js/quiz-engine.js` (slice por estado, exam scoreline, reset `tSafe`, stats diferidas em exam strict, `aria_answer_options`), `assets/js/router.js` (`kl-sim-strict-exam`, `refreshMockExamUi`, bind só cards `data-available="true"`), `assets/js/locales.js` (`window.tSafe`), `assets/js/app.js` (AU→WA, cards coming soon sem listener), `assets/js/pages/learn-page.js` / `home-page.js` (cards WA vs `div` coming soon), `assets/js/pages/mock-page.js` (hint exam), `assets/js/pages/progress-page.js` (labels de categoria via `KANGA_CATEGORIES`), `assets/js/i18n.js` (copy reset + ES “Próximamente”), `assets/css/components.css` + `quiz.css` + `pages.css`, `e2e/smoke.spec.js`.
+
+**Testes:** registar na tabela abaixo após correr `pnpm run format:check`, `pnpm run check:static-links`, `pnpm run smoke:static`, `pnpm run site:build`, `pnpm run test:e2e` na raiz do repo.
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | **OK** (após `prettier -w` em `category-labels.js`, `state-availability.js`, `locales.js`, `e2e/smoke.spec.js`) |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static`       | **OK** |
+| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| `pnpm run test:e2e`           | **OK** — 12 testes Chromium |
+
+**Pendências conhecidas:** revisão manual PT+EN/ES+EN em todos os blocos longos; timer de exame 45 min não coberto por E2E completo.
+
 ## 2026-05-07 — Fecho da rodada UX (site estático: Resources, Learn/practice, a11y E2E)
 
 **Objetivo:** corrigir falhas da auditoria (formato Prettier, Resources por estado WA vs coming soon, i18n, empty state NSW→practice, teclado nas opções, modo bilíngue, conflito `id` vs hash `#resources`), sem novas features nem alterações a `questions.js`.

@@ -15,15 +15,15 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KangaLearner — Australia Learner Test Practice</title>
+    <title>KangaLearner — WA learner test practice</title>
     <meta
       name="description"
-      content="Study Australian road rules by state. Practice learner test questions, take mock tests and track your progress."
+      content="Study WA road rules, practise learner questions, take a 30-question mock test and track progress in English, Portuguese or Spanish."
     />
-    <meta property="og:title" content="KangaLearner — Australia Learner Test Practice" />
+    <meta property="og:title" content="KangaLearner — WA learner test practice" />
     <meta
       property="og:description"
-      content="Study Australian road rules by state, practice unlimited questions and track your progress."
+      content="Prepare for your WA learner test: road-rule guides, WA question practice, mock test and progress tracking in English, Portuguese or Spanish."
     />
     <meta property="og:type" content="website" />
     <!-- TODO: GitHub → Settings → Pages → Custom domain kangalearner.com.au + Enforce HTTPS (docs/production/G17-domain-manual-steps.md) -->
@@ -111,7 +111,6 @@
                 ><img loading="lazy" src="assets/icons/ui/map.svg" alt="" width="16" height="16"
               /></span>
               <select id="state-select" data-i18n-aria="aria.stateSelect" aria-label="">
-                <option value="AU">AU — all available</option>
                 <option value="WA">WA</option>
                 <option value="NSW">NSW</option>
                 <option value="VIC">VIC</option>
@@ -998,25 +997,12 @@
               <h4 data-i18n="footer.newsletterTitle">
                 <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>
               </h4>
-              <p data-i18n="footer.newsletterBody">
+              <p class="footer-newsletter-static" data-i18n="footer.studyUpdatesSoon">
                 <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>
               </p>
-              <form class="subscribe" id="subscribe-form" novalidate>
-                <input
-                  id="subscribe-email"
-                  type="email"
-                  data-i18n-placeholder="footer.emailPlaceholder"
-                  placeholder=""
-                  required
-                  inputmode="email"
-                  autocomplete="email"
-                  data-i18n-aria="aria.subscribeEmail"
-                  aria-label=""
-                /><button type="submit" data-i18n="footer.subscribe">
-                  <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>
-                </button>
-              </form>
-              <p id="subscribe-feedback" aria-live="polite"></p>
+              <p class="footer-wa-first" data-i18n="footer.waFirstBlurb">
+                <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>
+              </p>
             </div>
           </div>
           <div class="footer-bottom" data-i18n="footer.copyright">
@@ -1028,8 +1014,10 @@
 
     <script type="module" src="/src/main.js"></script>
     <script defer src="assets/js/storage.js"></script>
+    <script defer src="assets/js/state-availability.js"></script>
     <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/locales.js"></script>
+    <script defer src="assets/js/category-labels.js"></script>
     <script defer src="assets/js/data/questions-loader.js"></script>
     <script defer src="assets/js/data/ui-copy.js"></script>
     <script defer src="assets/js/data/official-resources.js"></script>

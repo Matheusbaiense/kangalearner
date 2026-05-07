@@ -3,7 +3,7 @@
   "use strict";
 
   // Each entry: status "available" (verified links) or "coming-soon" (links must be []).
-  // TODO: add official links after verification for non-WA states.
+  // Link labels use labelKey → resolved in resources-page.js from __KANGA_LOCALES__.
   window.KL_OFFICIAL_RESOURCES = [
     {
       state: "WA",
@@ -11,14 +11,16 @@
       authority: "Department of Transport WA",
       status: "available",
       links: [
-        { label: "Official website", url: "https://www.transport.wa.gov.au" },
+        { labelKey: "resources.linkWaSite", url: "https://www.transport.wa.gov.au", type: "site" },
         {
-          label: "Road Rules Handbook for Western Australia",
-          url: "https://www.transport.wa.gov.au/licensing/road-rules-handbook.asp"
+          labelKey: "resources.linkWaHandbook",
+          url: "https://www.transport.wa.gov.au/licensing/road-rules-handbook.asp",
+          type: "handbook"
         },
         {
-          label: "Computer theory test info",
-          url: "https://www.transport.wa.gov.au/licensing/computer-theory-test.asp"
+          labelKey: "resources.linkWaTheory",
+          url: "https://www.transport.wa.gov.au/licensing/computer-theory-test.asp",
+          type: "theory"
         }
       ]
     },

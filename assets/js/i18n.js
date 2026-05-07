@@ -51,7 +51,7 @@
     explanation: { en: "Explanation", pt: "Explicação", es: "Explicación" },
     yourAnswer: { en: "Your answer", pt: "Sua resposta", es: "Tu respuesta" },
     correctAnswer: { en: "Correct answer", pt: "Resposta correta", es: "Respuesta correcta" },
-    comingSoon: { en: "Coming soon", pt: "Em breve", es: "Muy pronto" },
+    comingSoon: { en: "Coming soon", pt: "Em breve", es: "Próximamente" },
     practiseWA: { en: "Practise WA", pt: "Praticar WA", es: "Practicar WA" },
     backToLearn: { en: "Back to Learn", pt: "Voltar para Aprender", es: "Volver a Aprender" },
     studyAidDisclaimer: {
@@ -60,9 +60,9 @@
       es: "KangaLearner es una herramienta de apoyo al estudio. Confirma siempre los requisitos actuales con la autoridad de transporte de tu estado."
     },
     confirmReset: {
-      en: "Are you sure you want to reset all progress?",
-      pt: "Tem certeza que deseja apagar todo o progresso?",
-      es: "¿Seguro que deseas borrar todo el progreso?"
+      en: "Are you sure you want to reset your progress?",
+      pt: "Tem certeza que deseja apagar seu progresso?",
+      es: "¿Seguro que deseas borrar tu progreso?"
     }
   };
 

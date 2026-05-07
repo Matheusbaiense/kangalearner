@@ -2,6 +2,29 @@
 (function () {
   "use strict";
 
+  function displayLang() {
+    try {
+      var raw =
+        (window.KL_I18N && window.KL_I18N.getLang && window.KL_I18N.getLang()) ||
+        (window.DW && window.DW.lang) ||
+        "en";
+      if (window.KL_I18N && window.KL_I18N.getDisplayLang) {
+        return window.KL_I18N.getDisplayLang(raw);
+      }
+      return raw;
+    } catch (e) {
+      return "en";
+    }
+  }
+
+  function catLabel(cat) {
+    var lang = displayLang();
+    if (window.KANGA_CATEGORIES && typeof window.KANGA_CATEGORIES.getCategoryLabel === "function") {
+      return window.KANGA_CATEGORIES.getCategoryLabel(cat, lang);
+    }
+    return cat;
+  }
+
   window.KL_PAGES = window.KL_PAGES || {};
 
   window.KL_PAGES.mock = function () {
@@ -58,6 +81,7 @@
       '<li data-i18n="mock.examFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       "</ul>" +
       '<button class="btn btn-secondary mock-mode-btn" data-action="start-mock" data-mode="exam" data-i18n="mock.examBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
+      '<p id="kl-mock-exam-hint" class="mock-exam-hint" hidden data-i18n="mock.examNeedsQuestions"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       "</div>" +
       "</div>" +
       '<div class="mock-info"><p data-i18n="mock.info"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
@@ -120,7 +144,7 @@
         var t = row.total || 0;
         var cr = row.correct || 0;
         var cp = t > 0 ? Math.round((cr / t) * 100) : 0;
-        catRows += "<tr><td>" + c + "</td><td>" + cp + "%</td></tr>";
+        catRows += "<tr><td>" + catLabel(c) + "</td><td>" + cp + "%</td></tr>";
       });
       catRows += "</tbody></table></div>";
     }

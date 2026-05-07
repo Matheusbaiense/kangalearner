@@ -350,6 +350,10 @@
   color: white;
   border-color: var(--green);
 }
+.opt.opt--exam-selected {
+  border-color: rgba(244, 169, 0, 0.75);
+  box-shadow: 0 0 0 2px rgba(244, 169, 0, 0.35);
+}
 .answer.answer-panel {
   display: none;
   margin-top: 14px;
@@ -956,6 +960,10 @@
 }
 .sim-card-wrap.incorrect {
   background: linear-gradient(180deg, #fff, rgba(239, 68, 68, 0.04));
+}
+.sim-card-wrap.sim-exam-pending {
+  background: #fff;
+  border-color: var(--border);
 }
 .sim-card-wrap .qcard.sim-qcard-inner {
   margin-bottom: 0;

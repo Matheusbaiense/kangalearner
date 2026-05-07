@@ -446,13 +446,14 @@
 
 .state-card.coming-soon {
   opacity: 0.38;
-  cursor: default;
+  cursor: not-allowed;
   transform: none !important;
   box-shadow: none !important;
   filter: grayscale(0.45);
   border-style: dashed;
   background: var(--paper3);
-  pointer-events: auto;
+  pointer-events: none;
+  user-select: none;
 }
 .state-card.coming-soon:hover {
   transform: none;

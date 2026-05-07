@@ -100,6 +100,8 @@ const DW = {
   answeredByState: {},
   simQueue: [],
   simMode: false,
+  /** True during #mock-run when user chose Exam Mode — no per-question feedback until the end. */
+  simExamStrict: false,
   simAnswered: {},
   simRenderedCount: 1,
   simCompleted: false,
@@ -163,9 +165,7 @@ const DW = {
   },
 
   filterLabelLang(lang) {
-    if (lang === "pten" || lang === "esen") return "en";
-    const l = String(lang).slice(0, 2);
-    return ["pt", "en", "es"].includes(l) ? l : "en";
+    return this.getDisplayLang();
   },
 
   /** UI + nav: single language (no duplicate l-pt + l-en in header). */
@@ -254,12 +254,22 @@ const DW = {
     }
   },
 
-  getQuestionsForState() {
+  questionsSliceForState(stateCode) {
     const qs = this.getQuestions();
-    if (this.state === "AU") return qs.slice();
-    const byState = this._questionsByState && this._questionsByState.get(this.state);
+    const code = stateCode || this.state;
+    if (code === "AU") return qs.slice();
+    const byState = this._questionsByState && this._questionsByState.get(code);
     if (Array.isArray(byState)) return byState.slice();
-    return qs.filter((q) => Array.isArray(q.states) && q.states.includes(this.state));
+    return qs.filter((q) => Array.isArray(q.states) && q.states.includes(code));
+  },
+
+  getQuestionsForState() {
+    return this.questionsSliceForState(this.state);
+  },
+
+  uniqueQuestionCountForState(stateCode) {
+    const pool = this.questionsSliceForState(stateCode);
+    return new Set(pool.map((q) => q && q.id).filter(Boolean)).size;
   },
   clearProgress() {
     const key = this.storageStateKey();
@@ -372,10 +382,21 @@ const DW = {
       b.setAttribute("aria-pressed", on ? "true" : "false");
     });
     if (mode === "sim") {
+      this.simExamStrict = false;
+      try {
+        if (String(location.hash || "").indexOf("mock-run") !== -1) {
+          this.simExamStrict = sessionStorage.getItem("kl-sim-strict-exam") === "1";
+        } else {
+          sessionStorage.setItem("kl-sim-strict-exam", "0");
+        }
+      } catch (e) {
+        this.simExamStrict = false;
+      }
       this.visibleQuestionCount = 10;
       this.startSim();
     } else {
       this.simMode = false;
+      this.simExamStrict = false;
       document.getElementById("sim-wrapper").style.display = "none";
       document.getElementById("study-wrapper").style.display = "block";
       this.renderQuiz();
@@ -537,6 +558,7 @@ const DW = {
   renderCard(q, dLang, tLang, opts) {
     opts = opts || {};
     const omitAnswer = opts.omitAnswer;
+    const simChosenLetter = opts.simChosenLetter || null;
     const qMain = q.q[dLang] || q.q.en || "";
     const qTrans = tLang ? q.q[tLang] || "" : "";
     const qtextHtml = this.formatBilingualBlock(qMain, qTrans);
@@ -552,12 +574,17 @@ const DW = {
       signHtml = `<div class="sign-box">${signMarkup}${cap ? `<div class="img-cap">${capHtml}</div>` : ""}</div>`;
     }
 
+    const optsAria = String(this.t("aria_answer_options") || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/"/g, "&quot;");
     let optsHtml = "";
     q.opts.forEach((o) => {
       const oMain = o.t[dLang] || o.t.en || "";
       const oTrans = tLang ? o.t[tLang] || "" : "";
       const oHtml = this.formatBilingualBlock(oMain, oTrans);
-      optsHtml += `<button type="button" class="opt" data-correct="${o.ok}" data-letter="${o.l}" role="radio" aria-checked="false">
+      const selCls = simChosenLetter && o.l === simChosenLetter ? " opt--exam-selected" : "";
+      optsHtml += `<button type="button" class="opt${selCls}" data-correct="${o.ok}" data-letter="${o.l}" role="radio" aria-checked="false">
         <span class="oletter">${o.l}</span>
         <span class="otext">${oHtml}</span>
       </button>`;
@@ -610,7 +637,7 @@ const DW = {
   </div>
   <div class="qtext">${qtextHtml}</div>
   ${signHtml}
-  <div class="opts" role="radiogroup">${optsHtml}</div>
+  <div class="opts" role="radiogroup" aria-label="${optsAria}">${optsHtml}</div>
   ${answerBlock}
   <div class="qactions"><a class="qreport" href="${reportHref}" data-qid="${q.id}">${reportLabel}</a></div>
 </div>`;
@@ -620,6 +647,8 @@ const DW = {
     if (el.getAttribute("data-done")) return;
     const q = this._questionsMap.get(qid);
     if (!q) return;
+
+    if (!this.simMode && this.answered[qid]) return;
 
     if (this.simMode) {
       const wrap = el.closest(".sim-card-wrap");
@@ -652,7 +681,8 @@ const DW = {
       }
     }
 
-    if (!this.answered[qid]) {
+    const deferPracticeStats = this.simMode && this.simExamStrict && !this.simCompleted;
+    if (!this.answered[qid] && !deferPracticeStats) {
       this.total++;
       if (isCorrect) this.correct++;
       this.answered[qid] = { correct: isCorrect, chosen: el.dataset.letter };
@@ -696,6 +726,38 @@ const DW = {
   },
 
   updateScore() {
+    if (this.simMode && this.simExamStrict && !this.simCompleted && Array.isArray(this.simQueue)) {
+      const answeredN = Object.keys(this.simAnswered).length;
+      const t = this.simQueue.length || 30;
+      const line = this.t("sim_exam_scoreline")
+        .replace("{a}", String(answeredN))
+        .replace("{b}", String(t));
+      const el = document.getElementById("score-val");
+      if (el) {
+        el.textContent = line;
+        el.style.color = "#fff";
+      }
+      const pbar = document.getElementById("score-pbar");
+      if (pbar) {
+        const pctBar = t > 0 ? Math.round((answeredN / t) * 100) : 0;
+        pbar.style.width = pctBar + "%";
+        pbar.setAttribute("aria-valuenow", String(pctBar));
+      }
+      const pct_el = document.getElementById("score-pct");
+      if (pct_el) pct_el.textContent = "";
+      const accEl = document.getElementById("prog-accuracy");
+      if (accEl) accEl.textContent = "—";
+      const cEl0 = document.getElementById("prog-correct");
+      const iEl0 = document.getElementById("prog-incorrect");
+      const uEl0 = document.getElementById("prog-unanswered");
+      if (cEl0) cEl0.textContent = "—";
+      if (iEl0) iEl0.textContent = "—";
+      if (uEl0) uEl0.textContent = "—";
+      const mob0 = document.getElementById("quiz-mobile-progress");
+      if (mob0) mob0.textContent = line;
+      return;
+    }
+
     const correct = this.correct;
     const total = this.total;
     const wrong = total - correct;
@@ -762,12 +824,21 @@ const DW = {
     const pool = this.getQuestionsForState();
     if (pool.length === 0) {
       this.simMode = false;
+      this.simExamStrict = false;
       document.getElementById("sim-wrapper").style.display = "none";
       document.getElementById("study-wrapper").style.display = "block";
       this.renderQuiz();
       return;
     }
-    const n = Math.min(30, pool.length);
+    const n = this.simExamStrict ? 30 : Math.min(30, pool.length);
+    if (this.simExamStrict && pool.length < 30) {
+      this.simMode = false;
+      this.simExamStrict = false;
+      document.getElementById("sim-wrapper").style.display = "none";
+      document.getElementById("study-wrapper").style.display = "block";
+      this.renderQuiz();
+      return;
+    }
     this.simMode = true;
     if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
       window.kangaAnalytics.track("quiz_start", {
@@ -802,13 +873,23 @@ const DW = {
 
       const answered = !!ans;
       const isCorrect = ans?.correct;
-      const wrapCls = `sim-card-wrap${answered ? ` sim-card answered ${isCorrect ? "correct" : "incorrect"}` : ""}`;
+      const strictHide = this.simExamStrict && !this.simCompleted;
+      let wrapCls = "sim-card-wrap";
+      if (answered) {
+        wrapCls += strictHide
+          ? " sim-card answered sim-exam-pending"
+          : ` sim-card answered ${isCorrect ? "correct" : "incorrect"}`;
+      }
 
-      let inner = this.renderCard(q, dLang, tLang, { omitAnswer: true });
+      const chosenForCard = strictHide && answered && ans ? ans.chosen : null;
+      let inner = this.renderCard(q, dLang, tLang, {
+        omitAnswer: true,
+        simChosenLetter: chosenForCard
+      });
       inner = inner.replace('<div class="qcard"', `<div class="qcard sim-qcard-inner"`);
 
       let extra = "";
-      if (answered) {
+      if (answered && (!this.simExamStrict || this.simCompleted)) {
         const correctOpt = q.opts.find((o) => o.ok);
         const chosenOpt = q.opts.find((o) => o.l === ans.chosen);
         const yourTxt = chosenOpt ? chosenOpt.t[dLang] || chosenOpt.t.en : ans.chosen;
@@ -848,6 +929,7 @@ const DW = {
 
     container.innerHTML = html;
 
+    const strictHidePost = this.simExamStrict && !this.simCompleted;
     for (const q of revealed) {
       const ans = this.simAnswered[q.id];
       if (!ans) continue;
@@ -859,8 +941,10 @@ const DW = {
         o.setAttribute("data-done", "1");
         o.style.cursor = "default";
         o.setAttribute("aria-checked", o.dataset.letter === ans.chosen ? "true" : "false");
-        if (o.dataset.correct === "true") o.classList.add(isCorrect ? "correct" : "missed");
-        else if (o.dataset.letter === ans.chosen && !isCorrect) o.classList.add("wrong");
+        if (!strictHidePost) {
+          if (o.dataset.correct === "true") o.classList.add(isCorrect ? "correct" : "missed");
+          else if (o.dataset.letter === ans.chosen && !isCorrect) o.classList.add("wrong");
+        }
       });
     }
 
@@ -1026,11 +1110,11 @@ const DW = {
     const resetBtn = document.getElementById("reset-btn");
     if (resetBtn)
       resetBtn.addEventListener("click", () => {
+        const fallback = this.t("reset_confirm");
         const msg =
-          (window.KL_UI_COPY && window.KL_UI_COPY.confirm && window.KL_UI_COPY.confirm.resetAll
-            ? window.KL_I18N?.t?.(window.KL_UI_COPY.confirm.resetAll, this.t("reset_confirm")) ||
-              this.t("reset_confirm")
-            : this.t("reset_confirm")) || this.t("reset_confirm");
+          typeof window.tSafe === "function"
+            ? window.tSafe("confirm.resetProgress", fallback)
+            : fallback;
         if (window.confirm(msg)) DW.clearProgress();
       });
 
@@ -1044,6 +1128,9 @@ const DW = {
       const emptyWa = e.target.closest?.('[data-action="empty-wa"]');
       if (emptyWa) {
         this.applyEmptyStateWA();
+        try {
+          window.location.hash = "#practice";
+        } catch (e) {}
         return;
       }
       const emptyLearn = e.target.closest?.('[data-action="empty-learn"]');
@@ -1281,14 +1368,24 @@ const I18N = {
     es: "Introduce un correo válido."
   },
   prog_score: { pt: "Pontuação", en: "Score", es: "Puntuación" },
-  prog_accuracy: { pt: "Precisão", en: "Accuracy", es: "Precisión" },
+  prog_accuracy: { pt: "Taxa de acerto", en: "Accuracy", es: "Tasa de acierto" },
   prog_correct: { pt: "Certas", en: "Correct", es: "Correctas" },
   prog_incorrect: { pt: "Erradas", en: "Incorrect", es: "Incorrectas" },
   prog_unanswered: { pt: "Não respondidas", en: "Unanswered", es: "Sin responder" },
   reset_confirm: {
-    pt: "Tem certeza que deseja apagar todo o progresso?",
-    en: "Are you sure you want to reset all progress?",
-    es: "¿Seguro que deseas borrar todo el progreso?"
+    pt: "Tem certeza que deseja apagar seu progresso?",
+    en: "Are you sure you want to reset your progress?",
+    es: "¿Seguro que deseas borrar tu progreso?"
+  },
+  aria_answer_options: {
+    pt: "Opções de resposta",
+    en: "Answer options",
+    es: "Opciones de respuesta"
+  },
+  sim_exam_scoreline: {
+    pt: "Respondidas {a} / {b}",
+    en: "Answered {a} / {b}",
+    es: "Respondidas {a} / {b}"
   },
   sim_badge_ok: { pt: "Correta", en: "Correct", es: "Correcta" },
   sim_badge_bad: { pt: "Errada", en: "Incorrect", es: "Incorrecta" },

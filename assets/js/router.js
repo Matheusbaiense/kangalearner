@@ -144,6 +144,9 @@
   // ── Practice ──────────────────────────────────────────────────────────────
   function startPractice(cat) {
     ensureDWInit().then(function () {
+      try {
+        sessionStorage.removeItem("kl-sim-strict-exam");
+      } catch (e) {}
       var savedCat = null;
       try {
         savedCat = sessionStorage.getItem("kl-practice-cat");
@@ -375,30 +378,57 @@
     bindLearnStateCards();
     bindTopicCards();
     bindMockSetup();
+    refreshMockExamUi();
     if (typeof window.KL_initStateSelector === "function") {
       window.KL_initStateSelector();
     }
   }
 
+  function refreshMockExamUi() {
+    var examBtn = document.querySelector('[data-action="start-mock"][data-mode="exam"]');
+    var hint = document.getElementById("kl-mock-exam-hint");
+    ensureDWInit().then(function () {
+      var ok = false;
+      if (window.DW && typeof window.DW.uniqueQuestionCountForState === "function") {
+        ok = window.DW.uniqueQuestionCountForState("WA") >= 30;
+      }
+      if (examBtn) {
+        examBtn.disabled = !ok;
+        examBtn.setAttribute("aria-disabled", ok ? "false" : "true");
+      }
+      if (hint) {
+        if (ok) {
+          hint.setAttribute("hidden", "");
+          hint.style.display = "none";
+        } else {
+          hint.removeAttribute("hidden");
+          hint.style.display = "";
+        }
+      }
+    });
+  }
+
   function bindStateCards() {
-    document.querySelectorAll("#page-root .state-card[data-state]").forEach(function (card) {
-      card.addEventListener("click", function () {
-        var code = card.dataset.state;
-        if (window.KangaStorage) window.KangaStorage.setState(code);
-        if (window.DW && typeof window.DW.setState === "function") window.DW.setState(code);
-        document.querySelectorAll("#page-root .state-card").forEach(function (c) {
-          var on = c.dataset.state === code;
-          c.classList.toggle("active", on);
-          c.setAttribute("aria-pressed", on ? "true" : "false");
+    document
+      .querySelectorAll('#page-root .state-card[data-state][data-available="true"]')
+      .forEach(function (card) {
+        card.addEventListener("click", function () {
+          var code = card.dataset.state;
+          if (window.KangaStorage) window.KangaStorage.setState(code);
+          if (window.DW && typeof window.DW.setState === "function") window.DW.setState(code);
+          document.querySelectorAll("#page-root .state-card").forEach(function (c) {
+            var on = c.dataset.state === code;
+            c.classList.toggle("active", on);
+            if (c.matches("button")) c.setAttribute("aria-pressed", on ? "true" : "false");
+          });
         });
       });
-    });
   }
 
   // State cards rendered inside the Learn page (Road Rules section)
   function bindLearnStateCards() {
     document
-      .querySelectorAll("#page-root #road-rules .state-card[data-state]")
+      .querySelectorAll('#page-root #road-rules .state-card[data-state][data-available="true"]')
       .forEach(function (card) {
         card.addEventListener("click", function () {
           var code = card.dataset.state;
@@ -427,9 +457,11 @@
   function bindMockSetup() {
     document.querySelectorAll('[data-action="start-mock"]').forEach(function (btn) {
       btn.addEventListener("click", function () {
+        if (btn.disabled) return;
         try {
           var mode = btn.getAttribute("data-mode") || "exam";
           sessionStorage.setItem("kl-practice-mode", mode);
+          sessionStorage.setItem("kl-sim-strict-exam", mode === "exam" ? "1" : "0");
           var cb = document.getElementById("kl-exam-real-timer");
           if (cb && cb.checked && mode === "exam") {
             sessionStorage.setItem("kl-exam-real-timer", "1");
@@ -440,6 +472,13 @@
         location.hash = "mock-run";
       });
     });
+    var timerCb = document.getElementById("kl-exam-real-timer");
+    if (timerCb && !timerCb.__klBound) {
+      timerCb.__klBound = true;
+      timerCb.addEventListener("change", function () {
+        refreshMockExamUi();
+      });
+    }
   }
 
   document.addEventListener("DOMContentLoaded", init);

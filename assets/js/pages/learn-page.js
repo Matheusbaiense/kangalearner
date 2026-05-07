@@ -4,7 +4,14 @@
 
   function getLang() {
     try {
-      return (window.DW && window.DW.lang) || "en";
+      var raw =
+        (window.KL_I18N && window.KL_I18N.getLang && window.KL_I18N.getLang()) ||
+        (window.DW && window.DW.lang) ||
+        "en";
+      if (window.KL_I18N && window.KL_I18N.getDisplayLang) {
+        return window.KL_I18N.getDisplayLang(raw);
+      }
+      return raw;
     } catch (e) {
       return "en";
     }
@@ -72,14 +79,7 @@
     var cards = states
       .map(function (s) {
         var comingSoon = !s.active;
-        return (
-          '<button class="state-card' +
-          (s.active ? "" : " coming-soon") +
-          '" data-state="' +
-          s.code +
-          '" data-available="' +
-          (s.active ? "true" : "false") +
-          '" type="button" aria-pressed="false">' +
+        var inner =
           '<div class="state-icon"><img src="assets/icons/ui/map.svg" alt="" width="18" height="18" aria-hidden="true"/></div>' +
           '<div class="state-code">' +
           s.code +
@@ -89,7 +89,21 @@
           "</div>" +
           (comingSoon
             ? '<div class="state-badge" data-i18n="state.comingSoon"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>'
-            : "") +
+            : "");
+        if (comingSoon) {
+          return (
+            '<div class="state-card coming-soon" data-state="' +
+            s.code +
+            '" data-available="false" tabindex="-1" aria-disabled="true">' +
+            inner +
+            "</div>"
+          );
+        }
+        return (
+          '<button class="state-card" data-state="' +
+          s.code +
+          '" data-available="true" type="button" aria-pressed="false">' +
+          inner +
           "</button>"
         );
       })

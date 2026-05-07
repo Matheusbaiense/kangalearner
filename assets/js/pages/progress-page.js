@@ -39,6 +39,29 @@
     return byId;
   }
 
+  function displayLang() {
+    try {
+      var raw =
+        (window.KL_I18N && window.KL_I18N.getLang && window.KL_I18N.getLang()) ||
+        (window.DW && window.DW.lang) ||
+        "en";
+      if (window.KL_I18N && window.KL_I18N.getDisplayLang) {
+        return window.KL_I18N.getDisplayLang(raw);
+      }
+      return raw;
+    } catch (e) {
+      return "en";
+    }
+  }
+
+  function catLabel(cat) {
+    var lang = displayLang();
+    if (window.KANGA_CATEGORIES && typeof window.KANGA_CATEGORIES.getCategoryLabel === "function") {
+      return window.KANGA_CATEGORIES.getCategoryLabel(cat, lang);
+    }
+    return cat;
+  }
+
   window.KL_PAGES = window.KL_PAGES || {};
 
   window.KL_PAGES.progress = function () {
@@ -115,7 +138,7 @@
                 '<a href="#practice" class="progress-weak-link" data-cat="' +
                 String(r.cat).replace(/"/g, "&quot;") +
                 '">' +
-                r.cat +
+                catLabel(r.cat) +
                 " (" +
                 r.pct +
                 "%)</a>"
@@ -138,7 +161,7 @@
           .map(function (r) {
             return (
               "<tr><td>" +
-              r.cat +
+              catLabel(r.cat) +
               "</td><td>" +
               r.answered +
               "</td><td>" +

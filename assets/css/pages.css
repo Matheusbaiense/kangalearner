@@ -250,6 +250,15 @@
   margin-top: auto;
   width: 100%;
 }
+.mock-exam-hint {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  color: var(--ink-muted, #555);
+  line-height: 1.35;
+}
+.mock-mode-card--featured .mock-exam-hint {
+  margin-top: 0.5rem;
+}
 .mock-last-result {
   display: flex;
   align-items: center;

@@ -10,7 +10,7 @@
         mainNav: "Navegação principal",
         langSelector: "Seletor de idioma",
         langOptions: "Opções de idioma",
-        stateSelect: "Selecionar estado ou Austrália (todos disponíveis)",
+        stateSelect: "Selecionar estado ou território",
         scoreProgress: "Progresso da pontuação",
         practiceBreakdown: "Detalhe da prática",
         previewPractice: "Pré-visualização da prática",
@@ -30,21 +30,23 @@
         practice: "Prática",
         mockTest: "Simulado",
         progress: "Progresso",
-        roadRules: "Regras",
+        roadRules: "Aprender",
         resources: "Recursos"
       },
+      confirm: {
+        resetProgress: "Tem certeza que deseja apagar seu progresso?"
+      },
       brand: {
-        logoSub: "Plataforma para learner drivers"
+        logoSub: "Prática para a prova de learner de WA"
       },
       hero: {
-        eyebrow: "Plataforma australiana para learner drivers",
-        title: "Passe na prova teórica com confiança.",
+        eyebrow: "Prática para a prova de learner de WA",
+        title: "Prepare-se para a prova de learner de WA com confiança.",
         description:
-          "Estude as regras de trânsito da Austrália por estado, pratique perguntas ilimitadas e acompanhe seu progresso em cada etapa.",
-        ctaPractice: "Começar prática",
-        ctaMock: "Fazer simulado",
-        proof:
-          "Regras oficiais. Conteúdo atualizado. Feito para learner drivers em toda a Austrália."
+          "Estude as principais regras de trânsito de WA, pratique as perguntas existentes, faça um simulado com 30 questões e acompanhe seu progresso em inglês, português ou espanhol.",
+        ctaPractice: "Praticar perguntas de WA",
+        ctaMock: "Fazer simulado de 30 questões",
+        proof: "WA disponível agora. Outros estados da Austrália em breve."
       },
       preview: {
         practiceTitle: "Prática",
@@ -63,17 +65,18 @@
         scoreAwesome: "Ótimo trabalho!"
       },
       features: {
-        byStateTitle: "Estude por estado",
-        byStateBody: "Aprenda as regras do seu estado ou território.",
+        byStateTitle: "Foco em WA, com expansão futura",
+        byStateBody:
+          "Pratique regras e questões de WA agora; outros estados australianos virão em breve.",
         practiceTitle: "Questões de prática",
-        practiceBody: "Perguntas de múltipla escolha atualizadas.",
+        practiceBody: "Perguntas de múltipla escolha alinhadas ao conteúdo de WA.",
         mockTitle: "Simulados",
-        mockBody: "Simule a prova real e ganhe confiança.",
+        mockBody: "Simulado de 30 questões e modo prova sem dicas até o final.",
         trackTitle: "Acompanhe o progresso",
-        trackBody: "Foque nos pontos fracos e evolua mais rápido."
+        trackBody: "Veja acertos por tema e o que revisar a seguir."
       },
       state: {
-        banner: "Selecione seu estado e estude as regras certas.",
+        banner: "WA está disponível; outros estados em breve.",
         comingSoon: "Em breve"
       },
       trust: {
@@ -83,7 +86,8 @@
         saveTitle: "Salvar progresso",
         saveBody: "Seu progresso é salvo automaticamente no navegador.",
         officialTitle: "Baseado em regras oficiais",
-        officialBody: "Conteúdo estruturado em regras oficiais e temas da prova."
+        officialBody:
+          "Conteúdo estruturado a partir de fontes públicas de WA; confirme sempre com o Departamento de Transportes."
       },
       topics: {
         sectionTitle: "Aprenda os principais tópicos",
@@ -95,14 +99,14 @@
         parkingDesc: "Regras e restrições de estacionamento",
         alcoholTitle: "Álcool/BAC",
         alcoholDesc: "Leis e penalidades de álcool ao volante",
-        lanesTitle: "Faixas",
-        lanesDesc: "Uso de faixas, linhas e preferências",
+        lanesTitle: "Faixas e mudança de faixa",
+        lanesDesc: "Uso de faixas, linhas e dar passagem",
         safetyTitle: "Segurança",
         safetyDesc: "Dicas para dirigir com segurança"
       },
       learn: {
         kicker: "Aprenda antes de praticar",
-        title: "Regras de trânsito em formato simples.",
+        title: "Regras de trânsito em formato simples",
         sub: "Guias curtos, práticos e baseados em materiais oficiais. Leia o essencial, veja erros comuns e pratique o tema logo em seguida.",
         breadcrumb: "Aprender",
         cardCta: "Estudar tema →",
@@ -140,6 +144,7 @@
         examTimerToggle: "Modo prova real (limite de 45 minutos)",
         examTimerHint:
           "O simulado encerra automaticamente quando o tempo acaba. Questões sem resposta contam como erro.",
+        examNeedsQuestions: "O Modo Prova precisa de 30 perguntas disponíveis de WA.",
         resultsTitle: "Resultado do simulado",
         resultsEmpty: "Ainda não há resultados.",
         resultsEmptyCta: "Fazer um simulado",
@@ -167,7 +172,7 @@
         wrong: "Erradas",
         unanswered: "Não respondidas",
         saved: "Salvas",
-        mock: "Simulado",
+        mock: "Simulado (prática)",
         filterLabel: "Filtrar por tema"
       },
       sim: {
@@ -176,7 +181,7 @@
       progress: {
         panelTitle: "Seu progresso",
         score: "Pontuação",
-        accuracy: "Precisão",
+        accuracy: "Taxa de acerto",
         correct: "Certas",
         incorrect: "Erradas",
         unanswered: "Não respondidas",
@@ -189,12 +194,14 @@
         pageTitle: "Acompanhamento de progresso",
         pageKickerSuffix: " — seu progresso",
         catPerf: "Desempenho por categoria",
+        recommendMore: "Recomendamos praticar mais:",
         colCat: "Categoria",
         colAnswered: "Respondidas",
         colCorrect: "Corretas",
         colPct: "% de acerto",
         weakHead: "Recomendamos praticar mais:",
-        emptyHint: "Ainda não há dados de prática para este estado.",
+        emptyHint:
+          "Ainda não há progresso. Comece praticando as perguntas de WA para ver seus resultados aqui.",
         startPractice: "Começar a praticar"
       },
       resources: {
@@ -203,12 +210,17 @@
         sub: "Links diretos para manuais oficiais e informações do teste.",
         availableNow: "Disponível agora",
         officialLinksSoon: "Links oficiais em breve",
-        available: "Disponível",
+        available: "Disponível agora",
         comingSoonBadge: "Em breve",
         comingSoon: "Em breve",
         officialResourcesComingSoon:
           "Os recursos oficiais deste estado serão adicionados em breve.",
-        practiseWA: "Praticar WA",
+        waOnlyNotice:
+          "Os recursos de WA estão disponíveis agora. Outros estados estarão disponíveis em breve.",
+        linkWaSite: "Site oficial (WA)",
+        linkWaHandbook: "Manual de regras de trânsito (WA)",
+        linkWaTheory: "Informações do teste teórico no computador (WA)",
+        practiseWA: "Praticar perguntas de WA",
         backToLearn: "Voltar para Aprender",
         learnerTestInfo: "Informações do teste teórico",
         officialSite: "Site oficial do órgão",
@@ -237,16 +249,16 @@
         send: "Enviar mensagem"
       },
       footer: {
-        note: "Apoio a learner drivers em toda a Austrália para passar com confiança.",
+        note: "O KangaLearner ajuda learner drivers a praticarem perguntas de regras de trânsito de WA com suporte multilíngue.",
         disclaimer:
-          "O KangaLearner é uma ferramenta de apoio ao estudo. Confirme sempre as regras atuais com o órgão de trânsito do seu estado.",
+          "O KangaLearner é uma ferramenta de apoio ao estudo. Confirme sempre os requisitos atuais com o órgão de trânsito do seu estado.",
         officialTitle: "Fontes oficiais (referência)",
         waLearn: "WA — Aprendendo a dirigir",
         product: "Produto",
         navLearn: "Aprender",
         navPractice: "Prática",
         navMock: "Simulado",
-        navRules: "Regras",
+        navRules: "Aprender",
         navStates: "Estados",
         company: "Empresa",
         about: "Sobre",
@@ -254,8 +266,11 @@
         legal: "Legal",
         terms: "Termos",
         privacy: "Privacidade",
-        newsletterTitle: "Fique no caminho certo",
+        newsletterTitle: "Novidades",
         newsletterBody: "Receba dicas, novidades e lembretes de estudo.",
+        studyUpdatesSoon: "Novidades de estudo em breve.",
+        waFirstBlurb:
+          "O KangaLearner ajuda learner drivers a praticarem perguntas de regras de trânsito de WA com suporte multilíngue.",
         subscribe: "Inscrever",
         emailPlaceholder: "email@example.com",
         copyright: "© 2026 KangaLearner. Todos os direitos reservados."
@@ -267,7 +282,7 @@
         mainNav: "Main navigation",
         langSelector: "Language selector",
         langOptions: "Language options",
-        stateSelect: "Select state or Australia (all available)",
+        stateSelect: "Select state or territory",
         scoreProgress: "Score progress",
         practiceBreakdown: "Practice breakdown",
         previewPractice: "Practice preview",
@@ -287,20 +302,23 @@
         practice: "Practice",
         mockTest: "Mock Test",
         progress: "Progress",
-        roadRules: "Road Rules",
+        roadRules: "Learn",
         resources: "Resources"
       },
+      confirm: {
+        resetProgress: "Are you sure you want to reset your progress?"
+      },
       brand: {
-        logoSub: "Learner driver platform"
+        logoSub: "WA learner test practice"
       },
       hero: {
-        eyebrow: "Australia’s trusted learner driver platform",
-        title: "Pass your learner test with confidence.",
+        eyebrow: "WA learner test practice",
+        title: "Prepare for your WA learner test with confidence.",
         description:
-          "Study Australian road rules by state, practice unlimited questions and track your progress every step of the way.",
-        ctaPractice: "Start Practice",
-        ctaMock: "Take a Mock Test",
-        proof: "Official road rules. Up to date. Trusted by learner drivers Australia-wide."
+          "Study key WA road rules, practise the existing WA questions, take a 30-question mock test and track your progress in English, Portuguese or Spanish.",
+        ctaPractice: "Start practising WA questions",
+        ctaMock: "Take the 30-question mock test",
+        proof: "WA available now. More Australian states coming soon."
       },
       preview: {
         practiceTitle: "Practice",
@@ -319,27 +337,29 @@
         scoreAwesome: "Awesome work!"
       },
       features: {
-        byStateTitle: "Study by State",
-        byStateBody: "Learn the road rules for your state or territory.",
-        practiceTitle: "Practice Questions",
-        practiceBody: "Up-to-date multiple choice questions.",
-        mockTitle: "Mock Tests",
-        mockBody: "Simulate the real test and build confidence.",
-        trackTitle: "Track Progress",
-        trackBody: "Focus on your weak areas and improve faster."
+        byStateTitle: "WA-first, with more states later",
+        byStateBody:
+          "Practise WA road rules and questions now; other Australian states are coming soon.",
+        practiceTitle: "Practice questions",
+        practiceBody: "Multiple-choice questions aligned with WA learner content.",
+        mockTitle: "Mock tests",
+        mockBody: "30-question mock and an exam-style mode with no hints until the end.",
+        trackTitle: "Track progress",
+        trackBody: "See how you score by topic and what to review next."
       },
       state: {
-        banner: "Select your state and study the rules that apply to you.",
+        banner: "WA is available; other states are coming soon.",
         comingSoon: "Coming soon"
       },
       trust: {
         sectionTitle: "Why KangaLearner",
-        multiTitle: "Multilingual Support",
+        multiTitle: "Multilingual support",
         multiBody: "Study in English, Portuguese and Spanish now; more languages later.",
-        saveTitle: "Save Progress",
+        saveTitle: "Save progress",
         saveBody: "Your progress is saved automatically in your browser.",
-        officialTitle: "Official Rule Based",
-        officialBody: "Content is structured around official road rules and test topics."
+        officialTitle: "Grounded in official materials",
+        officialBody:
+          "Structured from public WA sources — always confirm details with the Department of Transport."
       },
       topics: {
         sectionTitle: "Learn key road rule topics",
@@ -358,7 +378,7 @@
       },
       learn: {
         kicker: "Learn before you practise",
-        title: "Road rules in a simple format.",
+        title: "Road rules in a simple format",
         sub: "Short, practical guides based on official materials. Learn the essentials, review common mistakes and practise the topic right after.",
         breadcrumb: "Learn",
         cardCta: "Study topic →",
@@ -396,6 +416,7 @@
         examTimerToggle: "Real exam mode (45 minute limit)",
         examTimerHint:
           "The mock ends automatically when time runs out. Unanswered questions count as incorrect.",
+        examNeedsQuestions: "Exam Mode needs 30 available WA questions.",
         resultsTitle: "Mock test results",
         resultsEmpty: "No results yet.",
         resultsEmptyCta: "Take a mock test",
@@ -414,8 +435,8 @@
         resultsTotalQs: "questions"
       },
       practice: {
-        title: "Practice like the real test.",
-        sub: "Start with WA questions. The structure is ready to expand to NSW, VIC, QLD, SA, TAS, ACT and NT."
+        title: "Practise WA questions like the real test.",
+        sub: "Start with WA questions. More Australian states are coming soon."
       },
       study: {
         modeLabel: "Study mode",
@@ -423,14 +444,14 @@
         wrong: "Wrong answers",
         unanswered: "Unanswered",
         saved: "Saved",
-        mock: "Mock test",
+        mock: "Practice mock",
         filterLabel: "Filter by topic"
       },
       sim: {
         headerLabel: "Mock test"
       },
       progress: {
-        panelTitle: "Your Progress",
+        panelTitle: "Progress tracker",
         score: "Score",
         accuracy: "Accuracy",
         correct: "Correct",
@@ -445,12 +466,13 @@
         pageTitle: "Progress tracker",
         pageKickerSuffix: " — your progress",
         catPerf: "Performance by category",
+        recommendMore: "We recommend more practice on:",
         colCat: "Category",
         colAnswered: "Answered",
         colCorrect: "Correct",
         colPct: "% correct",
         weakHead: "We recommend more practice on:",
-        emptyHint: "No practice data for this state yet.",
+        emptyHint: "No progress yet. Start practising WA questions to see your results here.",
         startPractice: "Start practising"
       },
       resources: {
@@ -459,11 +481,15 @@
         sub: "Direct links to official government handbooks and test information.",
         availableNow: "Available now",
         officialLinksSoon: "Official links coming soon",
-        available: "Available",
+        available: "Available now",
         comingSoonBadge: "Coming soon",
         comingSoon: "Coming soon",
         officialResourcesComingSoon: "Official resources for this state will be added soon.",
-        practiseWA: "Practise WA",
+        waOnlyNotice: "WA resources are available now. More states are coming soon.",
+        linkWaSite: "Official website (WA)",
+        linkWaHandbook: "Road Rules Handbook (WA)",
+        linkWaTheory: "Computer theory test information (WA)",
+        practiseWA: "Practise WA questions",
         backToLearn: "Back to Learn",
         learnerTestInfo: "Learner test information",
         officialSite: "Official authority website",
@@ -492,16 +518,16 @@
         send: "Send message"
       },
       footer: {
-        note: "Empowering learner drivers Australia-wide to pass with confidence.",
+        note: "KangaLearner helps learner drivers practise WA road-rule questions with multilingual support.",
         disclaimer:
-          "KangaLearner is a study aid. Always confirm current requirements with your state transport authority.",
+          "KangaLearner is an independent study tool. Always confirm current requirements with your state transport authority.",
         officialTitle: "Official sources",
         waLearn: "WA — Learn to drive",
         product: "Product",
         navLearn: "Learn",
         navPractice: "Practice",
         navMock: "Mock Test",
-        navRules: "Road Rules",
+        navRules: "Learn",
         navStates: "States",
         company: "Company",
         about: "About",
@@ -509,8 +535,11 @@
         legal: "Legal",
         terms: "Terms",
         privacy: "Privacy",
-        newsletterTitle: "Stay on the right track",
+        newsletterTitle: "Updates",
         newsletterBody: "Get tips, updates and study reminders.",
+        studyUpdatesSoon: "Study updates coming soon.",
+        waFirstBlurb:
+          "KangaLearner helps learner drivers practise WA road-rule questions with multilingual support.",
         subscribe: "Subscribe",
         emailPlaceholder: "email@example.com",
         copyright: "© 2026 KangaLearner. All rights reserved."
@@ -522,7 +551,7 @@
         mainNav: "Navegación principal",
         langSelector: "Selector de idioma",
         langOptions: "Opciones de idioma",
-        stateSelect: "Seleccionar estado o Australia (todos los disponibles)",
+        stateSelect: "Seleccionar estado o territorio",
         scoreProgress: "Progreso de puntuación",
         practiceBreakdown: "Desglose de práctica",
         previewPractice: "Vista previa de práctica",
@@ -542,20 +571,23 @@
         practice: "Práctica",
         mockTest: "Simulacro",
         progress: "Progreso",
-        roadRules: "Normas",
+        roadRules: "Aprender",
         resources: "Recursos"
       },
+      confirm: {
+        resetProgress: "¿Seguro que deseas borrar tu progreso?"
+      },
       brand: {
-        logoSub: "Plataforma para learner drivers"
+        logoSub: "Práctica para el examen learner de WA"
       },
       hero: {
-        eyebrow: "Plataforma australiana para conductores principiantes",
-        title: "Aprueba tu examen teórico con confianza.",
+        eyebrow: "Práctica para el examen learner de WA",
+        title: "Prepárate para el examen learner de WA con confianza.",
         description:
-          "Estudia las reglas de tránsito australianas por estado, practica preguntas ilimitadas y sigue tu progreso paso a paso.",
-        ctaPractice: "Empezar práctica",
-        ctaMock: "Hacer simulacro",
-        proof: "Reglas oficiales. Contenido actualizado. Para learner drivers en toda Australia."
+          "Estudia las principales reglas de tránsito de WA, practica las preguntas existentes, haz un simulacro de 30 preguntas y sigue tu progreso en inglés, portugués o español.",
+        ctaPractice: "Practicar preguntas de WA",
+        ctaMock: "Hacer simulacro de 30 preguntas",
+        proof: "WA disponible ahora. Otros estados de Australia próximamente."
       },
       preview: {
         practiceTitle: "Práctica",
@@ -574,17 +606,18 @@
         scoreAwesome: "¡Buen trabajo!"
       },
       features: {
-        byStateTitle: "Estudia por estado",
-        byStateBody: "Aprende las reglas de tu estado o territorio.",
+        byStateTitle: "Enfoque en WA, con más estados después",
+        byStateBody:
+          "Practica reglas y preguntas de WA ahora; otros estados de Australia llegarán pronto.",
         practiceTitle: "Preguntas de práctica",
-        practiceBody: "Preguntas de opción múltiple actualizadas.",
+        practiceBody: "Preguntas de opción múltiple alineadas con el contenido de WA.",
         mockTitle: "Simulacros",
-        mockBody: "Simula el examen real y gana confianza.",
+        mockBody: "Simulacro de 30 preguntas y modo examen sin pistas hasta el final.",
         trackTitle: "Sigue tu progreso",
-        trackBody: "Enfócate en tus puntos débiles y mejora más rápido."
+        trackBody: "Ve tus aciertos por tema y qué repasar después."
       },
       state: {
-        banner: "Selecciona tu estado y estudia las reglas correctas.",
+        banner: "WA está disponible; otros estados llegarán pronto.",
         comingSoon: "Próximamente"
       },
       trust: {
@@ -593,8 +626,9 @@
         multiBody: "Estudia en inglés, portugués y español; más idiomas pronto.",
         saveTitle: "Guardar progreso",
         saveBody: "Tu progreso se guarda automáticamente en el navegador.",
-        officialTitle: "Basado en normas oficiales",
-        officialBody: "Contenido estructurado en reglas oficiales y temas del examen."
+        officialTitle: "Basado en materiales oficiales",
+        officialBody:
+          "Estructurado a partir de fuentes públicas de WA; confirma siempre con la autoridad de transporte."
       },
       topics: {
         sectionTitle: "Aprende los temas principales",
@@ -606,14 +640,14 @@
         parkingDesc: "Reglas y restricciones de estacionamiento",
         alcoholTitle: "Alcohol/TAC",
         alcoholDesc: "Leyes y sanciones por alcohol al volante",
-        lanesTitle: "Marcas viales",
-        lanesDesc: "Uso de carriles, líneas y señales viales",
+        lanesTitle: "Carriles y cambio de carril",
+        lanesDesc: "Uso de carriles, líneas y ceder el paso",
         safetyTitle: "Seguridad",
         safetyDesc: "Consejos para conducir con seguridad"
       },
       learn: {
         kicker: "Aprende antes de practicar",
-        title: "Reglas de tránsito en formato simple.",
+        title: "Reglas de tránsito en formato simple",
         sub: "Guías cortas y prácticas basadas en materiales oficiales. Aprende lo esencial, revisa errores comunes y practica el tema enseguida.",
         breadcrumb: "Aprender",
         cardCta: "Estudiar tema →",
@@ -651,6 +685,7 @@
         examTimerToggle: "Modo examen real (límite 45 minutos)",
         examTimerHint:
           "El simulacro termina automáticamente al acabar el tiempo. Las sin responder cuentan como error.",
+        examNeedsQuestions: "El Modo Examen necesita 30 preguntas disponibles de WA.",
         resultsTitle: "Resultado del simulacro",
         resultsEmpty: "Aún no hay resultados.",
         resultsEmptyCta: "Hacer un simulacro",
@@ -669,8 +704,8 @@
         resultsTotalQs: "preguntas"
       },
       practice: {
-        title: "Practica como si fuera el examen real.",
-        sub: "Empieza con preguntas de WA. La estructura está lista para expandirse a NSW, VIC, QLD, SA, TAS, ACT y NT."
+        title: "Practica preguntas de WA como en el examen real.",
+        sub: "Empieza con preguntas de WA. Más estados de Australia llegarán pronto."
       },
       study: {
         modeLabel: "Modo de estudio",
@@ -678,16 +713,16 @@
         wrong: "Incorrectas",
         unanswered: "Sin responder",
         saved: "Guardadas",
-        mock: "Simulacro",
+        mock: "Simulacro (práctica)",
         filterLabel: "Filtrar por tema"
       },
       sim: {
         headerLabel: "Simulacro"
       },
       progress: {
-        panelTitle: "Tu progreso",
+        panelTitle: "Seguimiento del progreso",
         score: "Puntuación",
-        accuracy: "Precisión",
+        accuracy: "Tasa de acierto",
         correct: "Correctas",
         incorrect: "Incorrectas",
         unanswered: "Sin responder",
@@ -700,12 +735,14 @@
         pageTitle: "Seguimiento del progreso",
         pageKickerSuffix: " — tu progreso",
         catPerf: "Rendimiento por categoría",
+        recommendMore: "Recomendamos practicar más:",
         colCat: "Categoría",
         colAnswered: "Respondidas",
         colCorrect: "Correctas",
         colPct: "% acierto",
         weakHead: "Recomendamos practicar más:",
-        emptyHint: "Aún no hay datos de práctica para este estado.",
+        emptyHint:
+          "Todavía no hay progreso. Empieza practicando las preguntas de WA para ver tus resultados aquí.",
         startPractice: "Empezar a practicar"
       },
       resources: {
@@ -714,11 +751,16 @@
         sub: "Enlaces directos a manuales oficiales e información del examen.",
         availableNow: "Disponible ahora",
         officialLinksSoon: "Enlaces oficiales próximamente",
-        available: "Disponible",
+        available: "Disponible ahora",
         comingSoonBadge: "Próximamente",
         comingSoon: "Próximamente",
         officialResourcesComingSoon: "Los recursos oficiales de este estado se agregarán pronto.",
-        practiseWA: "Practicar WA",
+        waOnlyNotice:
+          "Los recursos de WA están disponibles ahora. Otros estados estarán disponibles próximamente.",
+        linkWaSite: "Sitio oficial (WA)",
+        linkWaHandbook: "Manual de reglas de tránsito (WA)",
+        linkWaTheory: "Información del examen teórico por computadora (WA)",
+        practiseWA: "Practicar preguntas de WA",
         backToLearn: "Volver a Aprender",
         learnerTestInfo: "Información del examen teórico",
         officialSite: "Sitio oficial de la autoridad",
@@ -747,7 +789,7 @@
         send: "Enviar mensaje"
       },
       footer: {
-        note: "Apoyo a learner drivers en toda Australia para aprobar con confianza.",
+        note: "KangaLearner ayuda a learner drivers a practicar preguntas de reglas de tránsito de WA con soporte multilingüe.",
         disclaimer:
           "KangaLearner es una herramienta de apoyo al estudio. Confirma siempre los requisitos actuales con la autoridad de transporte de tu estado.",
         officialTitle: "Fuentes oficiales",
@@ -756,7 +798,7 @@
         navLearn: "Aprender",
         navPractice: "Práctica",
         navMock: "Simulacro",
-        navRules: "Normas",
+        navRules: "Aprender",
         navStates: "Estados",
         company: "Empresa",
         about: "Sobre",
@@ -764,8 +806,11 @@
         legal: "Legal",
         terms: "Términos",
         privacy: "Privacidad",
-        newsletterTitle: "Sigue el buen camino",
+        newsletterTitle: "Novedades",
         newsletterBody: "Recibe consejos, novedades y recordatorios.",
+        studyUpdatesSoon: "Novedades de estudio próximamente.",
+        waFirstBlurb:
+          "KangaLearner ayuda a learner drivers a practicar preguntas de reglas de tránsito de WA con soporte multilingüe.",
         subscribe: "Suscribirse",
         emailPlaceholder: "email@example.com",
         copyright: "© 2026 KangaLearner. Todos los derechos reservados."
@@ -835,6 +880,27 @@
   }
 
   window.hydrateKangaStaticI18n = hydrateKangaStaticI18n;
+
+  function tSafe(key, fallback) {
+    var L = window.__KANGA_LOCALES__;
+    var raw = "en";
+    try {
+      if (window.KangaStorage && typeof window.KangaStorage.getLang === "function") {
+        raw = window.KangaStorage.getLang() || "en";
+      } else {
+        raw = localStorage.getItem("kl-lang") || "en";
+      }
+    } catch (e) {
+      raw = "en";
+    }
+    var pk = L && (L[packLang(raw)] || L.en);
+    if (pk) {
+      var v = localePick(pk, key);
+      if (typeof v === "string" && v.length) return v;
+    }
+    return fallback || "";
+  }
+  window.tSafe = tSafe;
 
   document.addEventListener("DOMContentLoaded", function () {
     var initialLang = "en";
