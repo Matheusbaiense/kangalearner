@@ -8,13 +8,15 @@
 
   function patchDWLangHydrate() {
     var DW = window.DW;
-    if (!DW || typeof DW.setLang !== "function" || DW.__kangaStaticI18nPatched) return;
+    if (!DW || typeof DW.setLang !== "function") return false;
+    if (DW.__kangaStaticI18nPatched) return true;
     DW.__kangaStaticI18nPatched = true;
     var orig = DW.setLang.bind(DW);
     DW.setLang = function (lang, el) {
       orig(lang, el);
       hydrateStaticI18n(lang);
     };
+    return true;
   }
 
   function initStateSelector() {
@@ -172,7 +174,21 @@
       console.warn("KangaLearner: migrateFromLegacy failed", e);
     }
 
-    patchDWLangHydrate();
+    // Ensure language changes re-hydrate static i18n (Practice/Resources/Progress pages).
+    // DW can be initialized slightly later depending on script timing, so retry briefly.
+    (function ensurePatched() {
+      var attempts = 0;
+      var timer = setInterval(function () {
+        attempts++;
+        var ok = false;
+        try {
+          ok = patchDWLangHydrate();
+        } catch (e) {
+          ok = false;
+        }
+        if (ok || attempts >= 40) clearInterval(timer); // ~2s
+      }, 50);
+    })();
 
     function getActiveLang() {
       try {

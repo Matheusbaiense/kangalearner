@@ -35,3 +35,4 @@ playwright-report/
 # Local QA harness artifacts (do not commit)
 qa-runner/
 qa-visual-check.mjs
+qa-output/

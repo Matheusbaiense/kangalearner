@@ -21,6 +21,30 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | `pnpm run site:build`         | **OK** (`dist-vite/`) |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
+## 2026-05-07 — Public visual QA fixes (assets 404 + i18n hydrate + SW bump)
+
+**Objetivo:** corrigir problemas reais detectados por Playwright na URL pública:
+
+- 404 + `console.error` por referência a `/src/main.js`
+- troca para PT/ES não refletia no `#practice` e labels do `#progress` (depende de re-hidratação após `DW.setLang`)
+
+**Correções (site estático root):**
+
+- `index.html` — removido `<script type="module" src="/src/main.js"></script>` (não existe no GitHub Pages).
+- `assets/js/app.js` — `DW.setLang` passa a re-hidratar i18n estático com retry curto (evita falha quando `DW` ainda não está pronto).
+- `sw.js` — bump de cache `kanga-assets-v2` → `kanga-assets-v3` para forçar refresh pós-deploy.
+- `.gitignore` — ignora `qa-output/` (artefactos de QA visual).
+
+**Comandos (todos OK nesta sessão):**
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static`       | **OK** |
+| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
+
 ## QA Manual Fix Round — Navigation, i18n, Resources, Reset, Progress, Mock (2026-05-07)
 
 **Objetivo:** fechar lacunas do QA manual no site estático (GitHub Pages): WA-first, estados “coming soon” não clicáveis, mock exam strict (30 WA, sem feedback intermédio), categorias traduzidas em Progress/mock results, `tSafe` para reset, `uniqueQuestionCountForState` para habilitar Exam Mode, router + E2E alinhados.
