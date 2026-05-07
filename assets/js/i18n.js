@@ -117,4 +117,34 @@
     label: label,
     applyStaticLanguage: applyStaticLanguage
   };
+
+  // Fallback binding: ensure the language dropdown works even if other bootstraps
+  // haven't attached handlers yet (e.g. race with DW init).
+  document.addEventListener("click", function (e) {
+    try {
+      var btn =
+        e && e.target && e.target.closest ? e.target.closest(".ld-option[data-lang]") : null;
+      if (!btn) return;
+      var lang = btn.getAttribute("data-lang");
+      if (!lang) return;
+
+      // Keep body mode in sync with the selected UI language.
+      try {
+        document.body.className = "mode-" + displayLang(lang);
+      } catch (e2) {}
+
+      setLang(lang);
+
+      // Mark active option (UI only).
+      try {
+        document.querySelectorAll(".ld-option").forEach(function (o) {
+          o.classList.remove("active");
+        });
+        btn.classList.add("active");
+        document.querySelectorAll(".ld-option").forEach(function (o) {
+          o.setAttribute("aria-selected", o.classList.contains("active") ? "true" : "false");
+        });
+      } catch (e3) {}
+    } catch (err) {}
+  });
 })();
