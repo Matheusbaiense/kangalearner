@@ -1,14 +1,15 @@
 import Stripe from "stripe";
 
-if (!process.env.STRIPE_SECRET_KEY) {
-  throw new Error("STRIPE_SECRET_KEY is not set");
-}
-
 // Alinhado ao tipo `LatestApiVersion` do pacote `stripe` instalado (ex.: ^17 → 2025-02-24.acacia).
-export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY, {
-  apiVersion: "2025-02-24.acacia",
-  typescript: true
-});
+let _stripe: Stripe | null = null;
+
+function getStripe(): Stripe {
+  const key = process.env.STRIPE_SECRET_KEY;
+  if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
+  if (_stripe) return _stripe;
+  _stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia", typescript: true });
+  return _stripe;
+}
 
 /**
  * Cria um customer no Stripe no momento do cadastro.
@@ -21,7 +22,7 @@ export async function createStripeCustomer(params: {
   userId: string;
   country?: string;
 }): Promise<string> {
-  const customer = await stripe.customers.create({
+  const customer = await getStripe().customers.create({
     email: params.email,
     name: params.name,
     metadata: {
