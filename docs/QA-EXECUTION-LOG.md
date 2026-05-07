@@ -20,6 +20,30 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 **Pendências conhecidas:** revisão manual PT+EN/ES+EN em todos os blocos longos; timer de exame 45 min não coberto por E2E completo.
 
+## 2026-05-07 — Pós-deploy hardening (SW cache bump + Practice landing + idioma)
+
+**Objetivo:** resolver regressões visuais/UX em browsers que ainda serviam assets antigos (GitHub Pages + SW cache), impedir auto-flip para PT+EN/ES+EN sem escolha explícita, separar `#practice` (landing) de `#practice-run` (quiz) e diferenciar Practice Mock vs Exam Mode.
+
+**Alterações principais:**
+
+- `sw.js`: bump de cache `kanga-assets-v1` → `kanga-assets-v2` (limpa caches antigos no `activate`).
+- `assets/js/router.js`: `#practice` vira landing (`#page-root`), novo `#practice-run` para quiz; nav active cobre `#practice-run`; suporte a `#road-rules`; UI lang (dropdown ativo) como fonte de verdade.
+- `assets/js/app.js` + `assets/js/quiz-engine.js`: inicialização de idioma respeita opção ativa no dropdown antes de ler `kl-lang` (evita auto-flip).
+- `assets/js/pages/practice-page.js`: landing com 2 cards (Practice Questions / Practice Mock).
+- `assets/js/pages/mock-page.js`: Exam Mode vira CTA principal; Practice Mock redireciona para Practice.
+- `scripts/smoke-static-site.puppeteer.mjs`: smoke atualizado (`#practice` landing; quiz em `#practice-run`).
+- `e2e/smoke.spec.js`: novos testes para landing de Practice + fluxo `practice-run` + “não flip” em navegação EN.
+
+**Comandos verificados nesta rodada:**
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static`       | **OK** |
+| `pnpm run site:build`         | **OK** |
+| `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
+
 ## 2026-05-07 — Fecho da rodada UX (site estático: Resources, Learn/practice, a11y E2E)
 
 **Objetivo:** corrigir falhas da auditoria (formato Prettier, Resources por estado WA vs coming soon, i18n, empty state NSW→practice, teclado nas opções, modo bilíngue, conflito `id` vs hash `#resources`), sem novas features nem alterações a `questions.js`.

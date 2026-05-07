@@ -74,7 +74,7 @@
       '<dl class="glossary-list">' +
       items +
       "</dl>" +
-      '<div class="page-footer-actions"><a href="#practice" class="btn btn-primary" data-i18n="glossary.ctaPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
+      '<div class="page-footer-actions"><a href="#practice-run" class="btn btn-primary" data-i18n="glossary.ctaPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
       '<a href="#learn" class="btn btn-secondary" data-i18n="glossary.ctaLearn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
       "</div></section>"
     );

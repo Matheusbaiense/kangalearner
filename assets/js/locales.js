@@ -145,6 +145,9 @@
         examTimerHint:
           "O simulado encerra automaticamente quando o tempo acaba. Questões sem resposta contam como erro.",
         examNeedsQuestions: "O Modo Prova precisa de 30 perguntas disponíveis de WA.",
+        practiceRedirect:
+          "O Practice Mock agora fica na página Practice. Use este botão para ir para lá.",
+        practiceGoToPractice: "Ir para Practice Mock",
         resultsTitle: "Resultado do simulado",
         resultsEmpty: "Ainda não há resultados.",
         resultsEmptyCta: "Fazer um simulado",
@@ -163,8 +166,20 @@
         resultsTotalQs: "questões"
       },
       practice: {
-        title: "Pratique como se fosse a prova real.",
-        sub: "Comece pelas questões de WA. A estrutura já está pronta para receber NSW, VIC, QLD, SA, TAS, ACT e NT."
+        kicker: "Prática",
+        title: "Escolha como você quer praticar",
+        sub: "A prática é focada em WA por enquanto. O modo prova real fica no Mock Test.",
+        cards: {
+          questionsTitle: "Praticar perguntas",
+          questionsDesc: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
+          questionsBtn: "Começar prática",
+          mockBadge: "30 questões",
+          mockTitle: "Simulado com prática",
+          mockDesc:
+            "Faça um simulado de 30 perguntas com feedback imediato. Este modo é para aprender, não simular a prova real.",
+          mockBtn: "Iniciar simulado com prática"
+        },
+        note: "ℹ️ Para simular a prova real (sem feedback até o final), use o Exam Mode em Mock Test."
       },
       study: {
         modeLabel: "Modo de estudo",
@@ -417,6 +432,9 @@
         examTimerHint:
           "The mock ends automatically when time runs out. Unanswered questions count as incorrect.",
         examNeedsQuestions: "Exam Mode needs 30 available WA questions.",
+        practiceRedirect:
+          "Practice Mock now lives on the Practice page. Use this button to go there.",
+        practiceGoToPractice: "Go to Practice Mock",
         resultsTitle: "Mock test results",
         resultsEmpty: "No results yet.",
         resultsEmptyCta: "Take a mock test",
@@ -435,8 +453,21 @@
         resultsTotalQs: "questions"
       },
       practice: {
-        title: "Practise WA questions like the real test.",
-        sub: "Start with WA questions. More Australian states are coming soon."
+        kicker: "Practice",
+        title: "Choose how you want to practise",
+        sub: "Practice is WA-first for now. Real Exam Mode lives in Mock Test.",
+        cards: {
+          questionsTitle: "Practice Questions",
+          questionsDesc:
+            "Practise WA learner questions by topic with instant feedback and explanations.",
+          questionsBtn: "Start practice",
+          mockBadge: "30 questions",
+          mockTitle: "Practice Mock",
+          mockDesc:
+            "Practise a 30-question mock with instant feedback. This is for learning, not exam simulation.",
+          mockBtn: "Start practice mock"
+        },
+        note: "ℹ️ For real exam simulation (no feedback until the end), use Exam Mode in Mock Test."
       },
       study: {
         modeLabel: "Study mode",
@@ -686,6 +717,9 @@
         examTimerHint:
           "El simulacro termina automáticamente al acabar el tiempo. Las sin responder cuentan como error.",
         examNeedsQuestions: "El Modo Examen necesita 30 preguntas disponibles de WA.",
+        practiceRedirect:
+          "El Practice Mock ahora está en la página Practice. Usa este botón para ir allí.",
+        practiceGoToPractice: "Ir a Practice Mock",
         resultsTitle: "Resultado del simulacro",
         resultsEmpty: "Aún no hay resultados.",
         resultsEmptyCta: "Hacer un simulacro",
@@ -704,8 +738,21 @@
         resultsTotalQs: "preguntas"
       },
       practice: {
-        title: "Practica preguntas de WA como en el examen real.",
-        sub: "Empieza con preguntas de WA. Más estados de Australia llegarán pronto."
+        kicker: "Práctica",
+        title: "Elige cómo quieres practicar",
+        sub: "La práctica es WA-first por ahora. El Modo Examen real está en Mock Test.",
+        cards: {
+          questionsTitle: "Practicar preguntas",
+          questionsDesc:
+            "Practica preguntas de WA por tema con feedback inmediato y explicaciones.",
+          questionsBtn: "Empezar práctica",
+          mockBadge: "30 preguntas",
+          mockTitle: "Simulacro con práctica",
+          mockDesc:
+            "Haz un simulacro de 30 preguntas con feedback inmediato. Este modo es para aprender, no para simular el examen real.",
+          mockBtn: "Iniciar simulacro con práctica"
+        },
+        note: "ℹ️ Para simular el examen real (sin feedback hasta el final), usa el Modo Examen en Mock Test."
       },
       study: {
         modeLabel: "Modo de estudio",

@@ -113,7 +113,7 @@
   function topicCardsHTML() {
     return TOPICS.map(function (t) {
       return (
-        '<a class="topic-card" href="#practice" data-cat="' +
+        '<a class="topic-card" href="#practice-run" data-cat="' +
         t.cat +
         '">' +
         '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3">' +

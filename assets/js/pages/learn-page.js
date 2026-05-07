@@ -247,7 +247,7 @@
         : "") +
       "</div>" +
       '<div class="topic-actions">' +
-      '<a class="btn btn-primary" href="#practice" data-cat="' +
+      '<a class="btn btn-primary" href="#practice-run" data-cat="' +
       (topic.category || "") +
       '"><span data-i18n="learn.ctaPracticePrefix"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></span> ' +
       escapeHtml(t(topic.title, lang)) +

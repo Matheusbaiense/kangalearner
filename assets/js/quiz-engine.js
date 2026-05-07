@@ -223,7 +223,16 @@ const DW = {
         : KS
           ? KS.getLang()
           : localStorage.getItem("kl-lang");
-      if (l) this.lang = l;
+      const uiLang = (() => {
+        try {
+          const active = document.querySelector(".ld-option.active[data-lang]");
+          return active ? active.getAttribute("data-lang") : null;
+        } catch (e) {
+          return null;
+        }
+      })();
+      if (uiLang) this.lang = uiLang;
+      else if (l) this.lang = l;
       const s = window.KL_STORAGE
         ? window.KL_STORAGE.getState()
         : KS
@@ -1021,9 +1030,8 @@ const DW = {
     await this.ensureDataset();
     this.initIndexes();
     const langEl = document.querySelector(`.ld-option[data-lang="${this.lang}"]`);
-    if (langEl) {
-      langEl.classList.add("active");
-    }
+    document.querySelectorAll(".ld-option").forEach((o) => o.classList.remove("active"));
+    if (langEl) langEl.classList.add("active");
     const d = this.getDisplayLang();
     document.body.className = "mode-" + d;
     document.documentElement.lang = d === "pt" ? "pt-BR" : d === "es" ? "es" : "en";

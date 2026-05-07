@@ -29,6 +29,9 @@
     learn: function (p) {
       return p ? window.KL_PAGES.topic(p) : window.KL_PAGES.learn(p);
     },
+    practice: function (p) {
+      return window.KL_PAGES.practice(p);
+    },
     mock: function (p) {
       return window.KL_PAGES.mock(p);
     },
@@ -53,7 +56,7 @@
   };
 
   // Quiz routes use #quiz-root directly (never destroyed)
-  var QUIZ_ROUTES = { practice: true, "mock-run": true };
+  var QUIZ_ROUTES = { "practice-run": true, "mock-run": true };
 
   // ── Public API ────────────────────────────────────────────────────────────
   window.KL_ROUTER = {
@@ -91,6 +94,10 @@
       scrollTarget = "road-rules";
       page = "learn";
     }
+    if (page === "road-rules" || page === "roadrules" || page === "roadRules") {
+      scrollTarget = "road-rules";
+      page = "learn";
+    }
 
     window.scrollTo(0, 0);
     updateNavActive(page, scrollTarget);
@@ -99,7 +106,7 @@
 
     if (QUIZ_ROUTES[page]) {
       activateQuizRoot();
-      if (page === "practice") {
+      if (page === "practice-run") {
         if (window.kangaAnalytics && typeof window.kangaAnalytics.track === "function") {
           window.kangaAnalytics.track("quiz_start", { mode: "practice" });
         }
@@ -162,11 +169,20 @@
         try {
           selectedMode = sessionStorage.getItem("kl-practice-mode");
         } catch (e) {}
-        if (!selectedMode) selectedMode = "practice";
+        if (!selectedMode) selectedMode = "questions";
 
-        // "practice" = regular study (shows explanations), "exam" = sim mode
-        if (selectedMode === "exam") window.DW.setMode("sim");
-        else window.DW.setMode("all");
+        // "questions" = regular study (shows explanations), "practice-mock" = sim with feedback,
+        // "exam" = strict exam mode (only in #mock-run)
+        if (selectedMode === "practice-mock") {
+          try {
+            sessionStorage.setItem("kl-sim-strict-exam", "0");
+          } catch (e) {}
+          window.DW.setMode("sim");
+        } else if (selectedMode === "exam") {
+          window.DW.setMode("sim");
+        } else {
+          window.DW.setMode("all");
+        }
 
         if (targetCat) window.DW.setCat(targetCat);
         window.DW.renderFilters();
@@ -249,15 +265,28 @@
     return _dwInitPromise;
   }
 
+  function getUiLang() {
+    try {
+      var active = document.querySelector(".ld-option.active[data-lang]");
+      return active ? active.getAttribute("data-lang") : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
   function getPreferredLang() {
     try {
       var live = window.DW && window.DW.lang ? window.DW.lang : null;
+      var ui = getUiLang();
       var stored = null;
       if (window.KangaStorage && typeof window.KangaStorage.getLang === "function") {
         stored = window.KangaStorage.getLang();
       } else {
         stored = localStorage.getItem("kl-lang");
       }
+
+      // UI selection is source of truth; never let stored bilingual override EN/PT/ES view.
+      if (ui) return ui;
 
       // Prefer the live selection (user just changed it) over any stale persisted value.
       if (live && stored && live !== stored) return live;
@@ -353,7 +382,7 @@
 
   // ── Nav active state ──────────────────────────────────────────────────────
   function updateNavActive(page, scrollTarget) {
-    var normalised = page === "mock-run" ? "mock" : page;
+    var normalised = page === "mock-run" ? "mock" : page === "practice-run" ? "practice" : page;
     // If #states routes into Learn, Learn is the active nav item.
     var treatAsLearn = scrollTarget === "road-rules" && normalised === "learn";
     document.querySelectorAll(".main-nav a[href]").forEach(function (a) {
@@ -377,6 +406,7 @@
     bindStateCards();
     bindLearnStateCards();
     bindTopicCards();
+    bindPracticeLanding();
     bindMockSetup();
     refreshMockExamUi();
     if (typeof window.KL_initStateSelector === "function") {
@@ -434,7 +464,7 @@
           var code = card.dataset.state;
           if (window.KangaStorage) window.KangaStorage.setState(code);
           if (window.DW && typeof window.DW.setState === "function") window.DW.setState(code);
-          location.hash = "practice";
+          location.hash = "practice-run";
         });
       });
   }
@@ -449,7 +479,22 @@
             sessionStorage.setItem("kl-practice-cat", cat);
           } catch (ex) {}
         }
-        location.hash = "practice";
+        location.hash = "practice-run";
+      });
+    });
+  }
+
+  function bindPracticeLanding() {
+    document.querySelectorAll('[data-action="start-practice"][data-mode]').forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        try {
+          var mode = btn.getAttribute("data-mode") || "questions";
+          sessionStorage.setItem("kl-practice-mode", mode);
+          if (mode === "practice-mock") {
+            sessionStorage.setItem("kl-sim-strict-exam", "0");
+          }
+        } catch (e) {}
+        location.hash = "practice-run";
       });
     });
   }

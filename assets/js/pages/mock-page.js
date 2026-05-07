@@ -61,16 +61,6 @@
       '<p class="mock-timer-hint" data-i18n="mock.examTimerHint"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       "</div>" +
       '<div class="mock-mode-grid">' +
-      '<div class="mock-mode-card">' +
-      '<div class="mock-mode-icon">📚</div><h2 class="mock-mode-title" data-i18n="mock.practiceTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2>' +
-      '<p class="mock-mode-desc" data-i18n="mock.practiceDesc"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
-      '<ul class="mock-mode-features">' +
-      '<li data-i18n="mock.practiceFeat1"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
-      '<li data-i18n="mock.practiceFeat2"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
-      '<li data-i18n="mock.practiceFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
-      "</ul>" +
-      '<button class="btn btn-primary mock-mode-btn" data-action="start-mock" data-mode="practice" data-i18n="mock.practiceBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
-      "</div>" +
       '<div class="mock-mode-card mock-mode-card--featured">' +
       '<div class="mock-mode-badge" data-i18n="mock.examBadge"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></div>' +
       '<div class="mock-mode-icon">⏱</div><h2 class="mock-mode-title" data-i18n="mock.examTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2>' +
@@ -80,8 +70,13 @@
       '<li data-i18n="mock.examFeat2"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       '<li data-i18n="mock.examFeat3"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></li>' +
       "</ul>" +
-      '<button class="btn btn-secondary mock-mode-btn" data-action="start-mock" data-mode="exam" data-i18n="mock.examBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
+      '<button class="btn btn-primary mock-mode-btn" data-action="start-mock" data-mode="exam" data-i18n="mock.examBtn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></button>' +
       '<p id="kl-mock-exam-hint" class="mock-exam-hint" hidden data-i18n="mock.examNeedsQuestions"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      "</div>" +
+      '<div class="mock-mode-card">' +
+      '<div class="mock-mode-icon">📚</div><h2 class="mock-mode-title" data-i18n="practice.cards.mockTitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h2>' +
+      '<p class="mock-mode-desc" data-i18n="mock.practiceRedirect"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<a class="btn btn-secondary mock-mode-btn" href="#practice" data-i18n="mock.practiceGoToPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
       "</div>" +
       "</div>" +
       '<div class="mock-info"><p data-i18n="mock.info"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
@@ -164,7 +159,7 @@
     });
     if (worst != null && worstPct < 100) {
       weakCat =
-        '<a href="#practice" class="btn btn-secondary mock-redo-cat" data-cat="' +
+        '<a href="#practice-run" class="btn btn-secondary mock-redo-cat" data-cat="' +
         String(worst).replace(/"/g, "&quot;") +
         '" data-i18n="mock.resultsRedoMistakes"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>';
     }
@@ -198,7 +193,7 @@
       "</div>" +
       catRows +
       '<div class="result-actions"><a href="#mock" class="btn btn-primary" data-i18n="mock.resultsAgain"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
-      '<a href="#practice" class="btn btn-secondary" data-i18n="mock.resultsPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
+      '<a href="#practice-run" class="btn btn-secondary" data-i18n="mock.resultsPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
       weakCat +
       "</div>" +
       "</div></section>"

@@ -135,7 +135,7 @@
           weakCats
             .map(function (r) {
               return (
-                '<a href="#practice" class="progress-weak-link" data-cat="' +
+                '<a href="#practice-run" class="progress-weak-link" data-cat="' +
                 String(r.cat).replace(/"/g, "&quot;") +
                 '">' +
                 catLabel(r.cat) +
@@ -183,7 +183,7 @@
 
     var emptyState =
       answeredCount === 0
-        ? '<div class="progress-empty"><p data-i18n="progress.emptyHint"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p><a href="#practice" class="btn btn-primary" data-i18n="progress.startPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>'
+        ? '<div class="progress-empty"><p data-i18n="progress.emptyHint"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p><a href="#practice-run" class="btn btn-primary" data-i18n="progress.startPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>'
         : "";
 
     return (

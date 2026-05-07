@@ -61,8 +61,14 @@ try {
   // Router should render something into page-root on #home
   await assertPageRootRendered();
 
-  // Practice shows quiz-root and hides page-root
+  // Practice shows landing (page-root); quiz is on #practice-run
   await page.evaluate(() => (location.hash = "#practice"));
+  await sleep(250);
+  await assertHiddenByAttr("#quiz-root");
+  await assertVisible("#page-root");
+
+  // Practice run shows quiz-root and hides page-root
+  await page.evaluate(() => (location.hash = "#practice-run"));
   await page.waitForFunction(() => {
     const el = document.getElementById("quiz-root");
     return !!el && !el.hasAttribute("hidden");

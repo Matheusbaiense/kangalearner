@@ -114,7 +114,7 @@
       (window.KL_I18N?.t?.(window.KL_UI_COPY?.disclaimer?.studyAid, "") || "") +
       "</p>" +
       '<div class="page-footer-actions"><a href="#learn" class="btn btn-primary" data-i18n="resources.backToLearn"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
-      '<a href="#practice" class="btn btn-secondary" data-i18n="resources.practiseWA"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
+      '<a href="#practice-run" class="btn btn-secondary" data-i18n="resources.practiseWA"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
       "</div></section>"
     );
   };
@@ -124,7 +124,7 @@
       '<section class="page-section about-page"><div class="container">' +
       '<div class="page-header"><h1 class="page-title" data-i18n="about.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1></div>' +
       '<div class="about-body"><p data-i18n="about.body"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p></div>' +
-      '<div class="page-footer-actions"><a href="#practice" class="btn btn-primary" data-i18n="about.ctaPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
+      '<div class="page-footer-actions"><a href="#practice-run" class="btn btn-primary" data-i18n="about.ctaPractice"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a>' +
       '<a href="#contact" class="btn btn-secondary" data-i18n="about.ctaContact"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
       "</div></section>"
     );

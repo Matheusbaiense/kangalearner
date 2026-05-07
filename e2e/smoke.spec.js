@@ -14,6 +14,19 @@ test.describe("static site smoke", () => {
     await expect(page.locator('.main-nav a[href="#roadRules"]')).toHaveCount(0);
   });
 
+  test("EN navigation Home → Learn → Practice does not flip into bilingual", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("body")).toHaveClass(/mode-en/);
+    await page.locator('.main-nav a[href="#learn"]').click();
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator("body")).toHaveClass(/mode-en/);
+    await page.locator('.main-nav a[href="#practice"]').click();
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator("body")).toHaveClass(/mode-en/);
+    const info = await page.evaluate(() => ({ dwLang: window.DW && window.DW.lang }));
+    expect(["en", "pt", "es"].includes(info.dwLang)).toBeTruthy();
+  });
+
   test("mock setup: exam start button is enabled when WA question bank is large enough", async ({
     page
   }) => {
@@ -23,8 +36,20 @@ test.describe("static site smoke", () => {
     });
   });
 
-  test("practice route shows quiz shell", async ({ page }) => {
+  test("practice route shows landing with two cards", async ({ page }) => {
     await page.goto("/#practice");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(
+      page.locator('[data-action="start-practice"][data-mode="questions"]')
+    ).toBeVisible();
+    await expect(
+      page.locator('[data-action="start-practice"][data-mode="practice-mock"]')
+    ).toBeVisible();
+  });
+
+  test("practice landing: start practice goes to practice-run quiz", async ({ page }) => {
+    await page.goto("/#practice");
+    await page.locator('[data-action="start-practice"][data-mode="questions"]').click();
     await expect(page.locator("#quiz-root")).toBeVisible({ timeout: 20000 });
   });
 
@@ -41,7 +66,7 @@ test.describe("static site smoke", () => {
   });
 
   test("header state select: NSW shows practice empty state with WA CTA", async ({ page }) => {
-    await page.goto("/#practice");
+    await page.goto("/#practice-run");
     await expect(page.locator("#quiz-root")).toBeVisible({ timeout: 20000 });
     await expect(page.locator("#state-select")).toBeVisible({ timeout: 20000 });
     await page.selectOption("#state-select", "NSW");
@@ -65,7 +90,7 @@ test.describe("static site smoke", () => {
   });
 
   test("practice: first option can be chosen with keyboard", async ({ page }) => {
-    await page.goto("/#practice");
+    await page.goto("/#practice-run");
     await expect(page.locator("#quiz-root")).toBeVisible({ timeout: 20000 });
     const firstOpt = page.locator("#quiz-root .qcard .opt").first();
     await expect(firstOpt).toBeVisible({ timeout: 20000 });
@@ -79,7 +104,7 @@ test.describe("static site smoke", () => {
   test("bilingual PT+EN and ES+EN: body mode, DW lang, no translation-line in header/footer", async ({
     page
   }) => {
-    await page.goto("/#practice");
+    await page.goto("/#practice-run");
     await expect(page.locator("#quiz-root")).toBeVisible({ timeout: 20000 });
     await page.locator("#ld-trigger").click();
     await page.locator('.ld-option[data-lang="pten"]').click();
@@ -108,6 +133,7 @@ test.describe("static site smoke", () => {
 
   test("states hash routes into Learn road rules section", async ({ page }) => {
     await page.goto("/#states");
+    await page.waitForTimeout(50);
     await expect(page.locator('.main-nav a[href="#learn"]')).toHaveClass(/active/);
     await expect(page.locator("#road-rules")).toBeVisible({ timeout: 20000 });
   });

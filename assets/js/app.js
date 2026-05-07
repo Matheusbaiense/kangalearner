@@ -174,16 +174,25 @@
 
     patchDWLangHydrate();
 
-    let initialLang = "en";
-    try {
-      initialLang =
-        (window.KL_STORAGE && window.KL_STORAGE.getLang && window.KL_STORAGE.getLang()) ||
-        (window.KangaStorage && window.KangaStorage.getLang && window.KangaStorage.getLang()) ||
-        localStorage.getItem("kl-lang") ||
-        "en";
-    } catch (e) {
-      initialLang = "en";
+    function getActiveLang() {
+      try {
+        const active = document.querySelector(".ld-option.active[data-lang]");
+        const ui = active ? active.getAttribute("data-lang") : null;
+        if (ui) return ui;
+      } catch (e) {}
+      try {
+        return (
+          (window.KL_STORAGE && window.KL_STORAGE.getLang && window.KL_STORAGE.getLang()) ||
+          (window.KangaStorage && window.KangaStorage.getLang && window.KangaStorage.getLang()) ||
+          localStorage.getItem("kl-lang") ||
+          "en"
+        );
+      } catch (e) {
+        return "en";
+      }
     }
+
+    let initialLang = getActiveLang();
     if (!initialLang) initialLang = "en";
 
     document.documentElement.lang = documentLangFromKangaLang(initialLang);

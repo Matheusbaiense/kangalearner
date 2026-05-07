@@ -1,5 +1,5 @@
 /* Minimal service worker: network-first for documents; cache fallback for static assets under /assets/. */
-const CACHE = "kanga-assets-v1";
+const CACHE = "kanga-assets-v2";
 
 self.addEventListener("install", (event) => {
   self.skipWaiting();
