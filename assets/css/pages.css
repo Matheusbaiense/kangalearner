@@ -187,9 +187,18 @@
 .mock-setup .page-header {
   max-width: 600px;
 }
+.practice-landing .page-header {
+  max-width: 720px;
+}
 .mock-mode-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+.practice-mode-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -206,6 +215,14 @@
 .mock-mode-card--featured {
   border-color: var(--green, #2e7d32);
   background: #f1f8f2;
+}
+.mock-mode-card--exam {
+  border-color: rgba(245, 158, 11, 0.55);
+  background: #fffbeb;
+}
+.mock-mode-card.is-focus {
+  outline: 3px solid rgba(245, 158, 11, 0.55);
+  outline-offset: 2px;
 }
 .mock-mode-badge {
   position: absolute;
@@ -234,6 +251,26 @@
   color: var(--ink-muted, #555);
   line-height: 1.55;
   margin: 0;
+}
+.mock-mode-card .btn.btn-secondary {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+.mock-mode-card .btn.btn-secondary:hover {
+  background: #e2e8f0;
+}
+.btn:disabled,
+.btn[aria-disabled="true"],
+.btn.is-disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  color: #334155;
+  background: #e2e8f0;
+  border-color: #cbd5e1;
+  box-shadow: none;
+  transform: none;
+  filter: none;
 }
 .mock-mode-features {
   list-style: none;

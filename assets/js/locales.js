@@ -27,7 +27,7 @@
       nav: {
         home: "Início",
         learn: "Aprender",
-        practice: "Prática",
+        practice: "Praticar",
         mockTest: "Simulado",
         progress: "Progresso",
         roadRules: "Aprender",
@@ -167,8 +167,8 @@
       },
       practice: {
         kicker: "Prática",
-        title: "Escolha como você quer praticar",
-        sub: "A prática é focada em WA por enquanto. O modo prova real fica no Mock Test.",
+        title: "Pratique para a prova de learner de WA",
+        sub: "Escolha um modo de estudo. Comece por temas, faça um simulado com feedback ou simule a prova sem feedback até o final.",
         cards: {
           questionsTitle: "Praticar perguntas",
           questionsDesc: "Pratique perguntas de WA por tema com feedback imediato e explicações.",
@@ -177,9 +177,16 @@
           mockTitle: "Simulado com prática",
           mockDesc:
             "Faça um simulado de 30 perguntas com feedback imediato. Este modo é para aprender, não simular a prova real.",
-          mockBtn: "Iniciar simulado com prática"
+          mockBtn: "Iniciar simulado com prática",
+          mockNeedsQuestions: "O Simulado com prática precisa de 30 perguntas disponíveis de WA.",
+          examBadge: "Simulação de prova",
+          examTitle: "Simulação da prova",
+          examDesc:
+            "Responda 30 perguntas de WA sem feedback até o final, como uma simulação real da prova.",
+          examBtn: "Iniciar simulação da prova",
+          examNeedsQuestions: "A Simulação da prova precisa de 30 perguntas disponíveis de WA."
         },
-        note: "ℹ️ Para simular a prova real (sem feedback até o final), use o Exam Mode em Mock Test."
+        note: "ℹ️ Dica: o modo prova não mostra feedback até o final."
       },
       study: {
         modeLabel: "Modo de estudo",
@@ -454,8 +461,8 @@
       },
       practice: {
         kicker: "Practice",
-        title: "Choose how you want to practise",
-        sub: "Practice is WA-first for now. Real Exam Mode lives in Mock Test.",
+        title: "Practice for your WA learner test",
+        sub: "Choose a study mode. Start with topic practice, try a 30-question practice mock, or simulate the exam with no feedback until the end.",
         cards: {
           questionsTitle: "Practice Questions",
           questionsDesc:
@@ -465,9 +472,16 @@
           mockTitle: "Practice Mock",
           mockDesc:
             "Practise a 30-question mock with instant feedback. This is for learning, not exam simulation.",
-          mockBtn: "Start practice mock"
+          mockBtn: "Start practice mock",
+          mockNeedsQuestions: "Practice Mock needs 30 available WA questions.",
+          examBadge: "Exam simulation",
+          examTitle: "Exam Simulation",
+          examDesc:
+            "Answer 30 WA questions without feedback until the end, just like a real test simulation.",
+          examBtn: "Start exam simulation",
+          examNeedsQuestions: "Exam Simulation needs 30 available WA questions."
         },
-        note: "ℹ️ For real exam simulation (no feedback until the end), use Exam Mode in Mock Test."
+        note: "ℹ️ Tip: exam simulation shows no feedback until the end."
       },
       study: {
         modeLabel: "Study mode",
@@ -599,7 +613,7 @@
       nav: {
         home: "Inicio",
         learn: "Aprender",
-        practice: "Práctica",
+        practice: "Practicar",
         mockTest: "Simulacro",
         progress: "Progreso",
         roadRules: "Aprender",
@@ -739,8 +753,8 @@
       },
       practice: {
         kicker: "Práctica",
-        title: "Elige cómo quieres practicar",
-        sub: "La práctica es WA-first por ahora. El Modo Examen real está en Mock Test.",
+        title: "Practica para el examen learner de WA",
+        sub: "Elige un modo de estudio. Empieza por temas, haz un simulacro con feedback o simula el examen sin feedback hasta el final.",
         cards: {
           questionsTitle: "Practicar preguntas",
           questionsDesc:
@@ -750,9 +764,16 @@
           mockTitle: "Simulacro con práctica",
           mockDesc:
             "Haz un simulacro de 30 preguntas con feedback inmediato. Este modo es para aprender, no para simular el examen real.",
-          mockBtn: "Iniciar simulacro con práctica"
+          mockBtn: "Iniciar simulacro con práctica",
+          mockNeedsQuestions: "El Simulacro con práctica necesita 30 preguntas disponibles de WA.",
+          examBadge: "Simulación del examen",
+          examTitle: "Simulación del examen",
+          examDesc:
+            "Responde 30 preguntas de WA sin feedback hasta el final, como una simulación real del examen.",
+          examBtn: "Iniciar simulación del examen",
+          examNeedsQuestions: "La Simulación del examen necesita 30 preguntas disponibles de WA."
         },
-        note: "ℹ️ Para simular el examen real (sin feedback hasta el final), usa el Modo Examen en Mock Test."
+        note: "ℹ️ Consejo: la simulación del examen no muestra feedback hasta el final."
       },
       study: {
         modeLabel: "Modo de estudio",

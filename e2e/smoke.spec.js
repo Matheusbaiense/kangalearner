@@ -8,10 +8,11 @@ test.describe("static site smoke", () => {
     await expect(page.locator("#top .brand-wordmark")).toContainText("KangaLearner");
   });
 
-  test("main nav has six top-level items", async ({ page }) => {
+  test("main nav has five top-level items", async ({ page }) => {
     await page.goto("/");
-    await expect(page.locator(".main-nav a[href^='#']")).toHaveCount(6);
+    await expect(page.locator(".main-nav a[href^='#']")).toHaveCount(5);
     await expect(page.locator('.main-nav a[href="#roadRules"]')).toHaveCount(0);
+    await expect(page.locator('.main-nav a[href="#mock"]')).toHaveCount(0);
   });
 
   test("EN navigation Home → Learn → Practice does not flip into bilingual", async ({ page }) => {
@@ -27,16 +28,7 @@ test.describe("static site smoke", () => {
     expect(["en", "pt", "es"].includes(info.dwLang)).toBeTruthy();
   });
 
-  test("mock setup: exam start button is enabled when WA question bank is large enough", async ({
-    page
-  }) => {
-    await page.goto("/#mock");
-    await expect(page.locator('[data-action="start-mock"][data-mode="exam"]')).toBeEnabled({
-      timeout: 30000
-    });
-  });
-
-  test("practice route shows landing with two cards", async ({ page }) => {
+  test("practice route shows landing with three cards", async ({ page }) => {
     await page.goto("/#practice");
     await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
     await expect(
@@ -45,12 +37,20 @@ test.describe("static site smoke", () => {
     await expect(
       page.locator('[data-action="start-practice"][data-mode="practice-mock"]')
     ).toBeVisible();
+    await expect(page.locator('[data-action="start-practice"][data-mode="exam"]')).toBeVisible();
   });
 
   test("practice landing: start practice goes to practice-run quiz", async ({ page }) => {
     await page.goto("/#practice");
     await page.locator('[data-action="start-practice"][data-mode="questions"]').click();
     await expect(page.locator("#quiz-root")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("mock route is legacy and lands on practice with exam card visible", async ({ page }) => {
+    await page.goto("/#mock");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page).toHaveURL(/#practice/);
+    await expect(page.locator('[data-action="start-practice"][data-mode="exam"]')).toBeVisible();
   });
 
   test("resources route: WA links and other states coming soon", async ({ page }) => {

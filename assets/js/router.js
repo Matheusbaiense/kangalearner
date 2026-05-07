@@ -56,7 +56,7 @@
   };
 
   // Quiz routes use #quiz-root directly (never destroyed)
-  var QUIZ_ROUTES = { "practice-run": true, "mock-run": true };
+  var QUIZ_ROUTES = { "practice-run": true, "mock-run": true, "exam-run": true };
 
   // ── Public API ────────────────────────────────────────────────────────────
   window.KL_ROUTER = {
@@ -99,10 +99,23 @@
       page = "learn";
     }
 
+    // Legacy: #mock is now an alias to #practice focused on Exam Simulation.
+    if (page === "mock") {
+      try {
+        sessionStorage.setItem("kl-practice-focus", "exam");
+      } catch (e) {}
+      // Redirect so URL (and back button) match the unified IA.
+      if (location.hash !== "#practice") {
+        location.hash = "practice";
+        return;
+      }
+      page = "practice";
+    }
+
     window.scrollTo(0, 0);
     updateNavActive(page, scrollTarget);
 
-    if (page !== "mock-run") clearExamTimer();
+    if (page !== "mock-run" && page !== "exam-run") clearExamTimer();
 
     if (QUIZ_ROUTES[page]) {
       activateQuizRoot();
@@ -112,7 +125,7 @@
         }
         startPractice(param);
       }
-      if (page === "mock-run") startMockRun();
+      if (page === "mock-run" || page === "exam-run") startMockRun();
     } else {
       activatePageRoot();
       var renderer = ROUTES[page] || ROUTES["home"];
@@ -382,7 +395,16 @@
 
   // ── Nav active state ──────────────────────────────────────────────────────
   function updateNavActive(page, scrollTarget) {
-    var normalised = page === "mock-run" ? "mock" : page === "practice-run" ? "practice" : page;
+    var normalised =
+      page === "practice-run"
+        ? "practice"
+        : page === "mock" ||
+            page === "mock-run" ||
+            page === "exam" ||
+            page === "exam-run" ||
+            page === "mock-results"
+          ? "practice"
+          : page;
     // If #states routes into Learn, Learn is the active nav item.
     var treatAsLearn = scrollTarget === "road-rules" && normalised === "learn";
     document.querySelectorAll(".main-nav a[href]").forEach(function (a) {
@@ -409,14 +431,40 @@
     bindPracticeLanding();
     bindMockSetup();
     refreshMockExamUi();
+    applyPracticeFocus();
     if (typeof window.KL_initStateSelector === "function") {
       window.KL_initStateSelector();
     }
   }
 
+  function applyPracticeFocus() {
+    var focus = null;
+    try {
+      focus = sessionStorage.getItem("kl-practice-focus");
+      sessionStorage.removeItem("kl-practice-focus");
+    } catch (e) {}
+    if (focus !== "exam") return;
+    var card = document.getElementById("kl-exam-card");
+    if (!card) return;
+    try {
+      card.classList.add("is-focus");
+      var btn = card.querySelector("button, a");
+      if (btn && typeof btn.focus === "function") btn.focus();
+      if (typeof card.scrollIntoView === "function") card.scrollIntoView({ block: "start" });
+    } catch (e2) {}
+  }
+
   function refreshMockExamUi() {
     var examBtn = document.querySelector('[data-action="start-mock"][data-mode="exam"]');
     var hint = document.getElementById("kl-mock-exam-hint");
+    var practiceMockBtn = document.querySelector(
+      '[data-action="start-practice"][data-mode="practice-mock"]'
+    );
+    var practiceMockHint = document.getElementById("kl-practice-mock-hint");
+    var practiceExamBtn = document.querySelector(
+      '[data-action="start-practice"][data-mode="exam"]'
+    );
+    var practiceExamHint = document.getElementById("kl-practice-exam-hint");
     ensureDWInit().then(function () {
       var ok = false;
       if (window.DW && typeof window.DW.uniqueQuestionCountForState === "function") {
@@ -433,6 +481,34 @@
         } else {
           hint.removeAttribute("hidden");
           hint.style.display = "";
+        }
+      }
+
+      if (practiceMockBtn) {
+        practiceMockBtn.disabled = !ok;
+        practiceMockBtn.setAttribute("aria-disabled", ok ? "false" : "true");
+      }
+      if (practiceMockHint) {
+        if (ok) {
+          practiceMockHint.setAttribute("hidden", "");
+          practiceMockHint.style.display = "none";
+        } else {
+          practiceMockHint.removeAttribute("hidden");
+          practiceMockHint.style.display = "";
+        }
+      }
+
+      if (practiceExamBtn) {
+        practiceExamBtn.disabled = !ok;
+        practiceExamBtn.setAttribute("aria-disabled", ok ? "false" : "true");
+      }
+      if (practiceExamHint) {
+        if (ok) {
+          practiceExamHint.setAttribute("hidden", "");
+          practiceExamHint.style.display = "none";
+        } else {
+          practiceExamHint.removeAttribute("hidden");
+          practiceExamHint.style.display = "";
         }
       }
     });
@@ -487,14 +563,18 @@
   function bindPracticeLanding() {
     document.querySelectorAll('[data-action="start-practice"][data-mode]').forEach(function (btn) {
       btn.addEventListener("click", function () {
+        if (btn.disabled) return;
         try {
           var mode = btn.getAttribute("data-mode") || "questions";
           sessionStorage.setItem("kl-practice-mode", mode);
           if (mode === "practice-mock") {
             sessionStorage.setItem("kl-sim-strict-exam", "0");
+            sessionStorage.removeItem("kl-exam-real-timer");
+          } else if (mode === "exam") {
+            sessionStorage.setItem("kl-sim-strict-exam", "1");
           }
         } catch (e) {}
-        location.hash = "practice-run";
+        location.hash = mode === "exam" ? "exam-run" : "practice-run";
       });
     });
   }

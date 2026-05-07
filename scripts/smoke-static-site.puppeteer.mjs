@@ -76,11 +76,12 @@ try {
   await assertVisible("#filter-bar");
   await assertVisible("#quiz-cards");
 
-  // Mock page (page-root) visible again
+  // Legacy #mock redirects to unified Practice landing
   await page.evaluate(() => (location.hash = "#mock"));
   await sleep(250);
   await assertHiddenByAttr("#quiz-root");
   await assertVisible("#page-root");
+  await page.waitForFunction(() => location.hash === "#practice");
 
   // Other pages render (basic existence checks)
   for (const hash of ["#progress", "#glossary", "#resources", "#about", "#contact", "#learn"]) {
@@ -93,18 +94,18 @@ try {
   await page.evaluate(() => (location.hash = "#learn/speed-limits"));
   await assertPageRootRendered();
 
-  // Refresh at hash restores route
+  // Refresh at hash restores route (legacy mock keeps working)
   await page.evaluate(() => (location.hash = "#mock"));
   await assertPageRootRendered();
   await page.reload({ waitUntil: "networkidle2" });
-  await page.waitForFunction(() => location.hash === "#mock");
+  await page.waitForFunction(() => location.hash === "#practice");
   await assertPageRootRendered();
 
   // Back/forward works
   await page.evaluate(() => (location.hash = "#home"));
   await assertPageRootRendered();
   await page.goBack({ waitUntil: "networkidle2" });
-  await page.waitForFunction(() => location.hash === "#mock");
+  await page.waitForFunction(() => location.hash === "#practice");
   await assertPageRootRendered();
   await page.goForward({ waitUntil: "networkidle2" });
   await page.waitForFunction(() => location.hash === "#home");

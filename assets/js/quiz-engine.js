@@ -393,7 +393,8 @@ const DW = {
     if (mode === "sim") {
       this.simExamStrict = false;
       try {
-        if (String(location.hash || "").indexOf("mock-run") !== -1) {
+        const h = String(location.hash || "");
+        if (h.indexOf("mock-run") !== -1 || h.indexOf("exam-run") !== -1) {
           this.simExamStrict = sessionStorage.getItem("kl-sim-strict-exam") === "1";
         } else {
           sessionStorage.setItem("kl-sim-strict-exam", "0");
@@ -1305,13 +1306,13 @@ DW.syncMockSession = function (session) {
   } catch (e) {}
 };
 
-const FLAGS = { pt: "🇧🇷", en: "🇦🇺", es: "🇪🇸", pten: "🇧🇷\u2009🇦🇺", esen: "🇪🇸\u2009🇦🇺" };
+const FLAGS = { pt: "PT", en: "EN", es: "ES", pten: "PT+EN", esen: "ES+EN" };
 const LD_TRIGGER_LONG = {
-  pt: "BR Português",
-  en: "AU English",
-  es: "ES Español",
-  pten: "PT + EN",
-  esen: "ES + EN"
+  pt: "Português",
+  en: "English",
+  es: "Español",
+  pten: "Português + English",
+  esen: "Español + English"
 };
 const LD_TRIGGER_SHORT = { pt: "PT", en: "EN", es: "ES", pten: "PT+EN", esen: "ES+EN" };
 

@@ -45,6 +45,31 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | `pnpm run site:build`         | **OK** (`dist-vite/`) |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
+## 2026-05-07 — Practice + Mock unificados (IA) + correções QA público (static root)
+
+**Objetivo:** aplicar a decisão de produto (Practice e Mock Test viram **uma única tela**) e corrigir problemas visuais/UX encontrados no QA público (botões “fantasma”, label de idioma “AU AU English”, duplicação de telas).
+
+**Mudanças principais (site estático root):**
+
+- `index.html` — removido “Mock Test” do menu principal; selector de idioma no header agora mostra `English` (sem `AU AU`).
+- `assets/js/pages/practice-page.js` — `#practice` virou landing única com **3 modos**: Practice Questions, Practice Mock e Exam Simulation.
+- `assets/js/router.js` — `#mock` virou **rota legada** que redireciona para `#practice` e foca/destaca o card “Exam Simulation”; novo `#exam-run` para simulação; Practice ativo no menu para `#practice`, `#practice-run`, `#mock`, `#mock-run`, `#exam-run`.
+- `assets/js/quiz-engine.js` — label do seletor de idioma sem prefixos por país (ex. `AU English`); `exam-run` tratado como simulação strict (sem feedback até o final).
+- `assets/js/locales.js` — copy da tela Practice atualizado (EN/PT/ES) + chaves para Exam Simulation + mensagens claras quando faltam 30 questões WA.
+- `assets/css/pages.css` — grid da landing unificada + correções de contraste para `btn-secondary` em cards claros + estilo legível para `:disabled`.
+- `scripts/smoke-static-site.puppeteer.mjs` + `e2e/smoke.spec.js` — testes alinhados com a IA unificada (menu sem Mock Test, `#mock` legado, landing 3 cards).
+- `sw.js` — bump de cache `kanga-assets-v3` → `kanga-assets-v4` para forçar refresh pós-deploy.
+
+**Comandos (todos OK nesta sessão):**
+
+| Comando                       | Resultado |
+| ----------------------------- | --------- |
+| `pnpm run format:check`       | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static`       | **OK** |
+| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
+
 ## QA Manual Fix Round — Navigation, i18n, Resources, Reset, Progress, Mock (2026-05-07)
 
 **Objetivo:** fechar lacunas do QA manual no site estático (GitHub Pages): WA-first, estados “coming soon” não clicáveis, mock exam strict (30 WA, sem feedback intermédio), categorias traduzidas em Progress/mock results, `tSafe` para reset, `uniqueQuestionCountForState` para habilitar Exam Mode, router + E2E alinhados.
