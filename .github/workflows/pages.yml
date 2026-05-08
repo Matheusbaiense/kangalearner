@@ -1,4 +1,5 @@
-# Deploys the static site at repo root (index.html + assets/) to GitHub Pages.
+# Deploys the root static SPA to GitHub Pages using the Vite build (`pnpm run site:build`).
+# Output: `dist-vite/` (includes `window.__KANGA_ENV__` from optional repo Variables — see docs).
 # After the first successful run, set: Settings → Pages → Build and deployment → Source: GitHub Actions.
 
 name: Deploy Pages
@@ -24,6 +25,7 @@ on:
       - "vercel.json"
       - "src/**"
       - ".env.example"
+      - ".github/workflows/pages.yml"
   workflow_dispatch:
 
 permissions:
@@ -63,22 +65,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Assemble static site
-        run: |
-          mkdir -p _site
-          cp index.html _site/
-          cp -r assets _site/
-          cp CNAME _site/ 2>/dev/null || true
-          cp _headers _site/ 2>/dev/null || true
-          cp robots.txt _site/ 2>/dev/null || true
-          cp sitemap.xml _site/ 2>/dev/null || true
-          cp manifest.json _site/ 2>/dev/null || true
-          cp sw.js _site/ 2>/dev/null || true
-          touch _site/.nojekyll
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: "pnpm"
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build site (Vite → dist-vite)
+        run: pnpm run site:build
+        env:
+          # Repository Variables (Settings → Secrets and variables → Actions → Variables).
+          # Optional: omit or leave empty → __KANGA_ENV__ strings empty → Supabase "not configured" mode.
+          # Anon key is public in the browser by design; never use the service role key here.
+          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
+      - name: Prepare Pages root
+        run: touch dist-vite/.nojekyll
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
+          path: dist-vite
 
   deploy:
     environment:

@@ -77,10 +77,28 @@ test.describe("static site smoke", () => {
     await expect(page.locator("#kl-reset-form")).toBeVisible({ timeout: 20000 });
     await page.goto("/#verify-email");
     await expect(page.locator("#kl-verify-resend")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#auth-callback");
+    await expect(page.locator("#kl-auth-callback-status")).toBeVisible({ timeout: 20000 });
     await page.goto("/#session-expired");
     await expect(
       page.locator('a[data-i18n="auth.sessionExpired.signInAgain"][href="#login"]')
     ).toBeVisible({ timeout: 20000 });
+  });
+
+  test("supabase auth is not configured under static serve (no secrets)", async ({ page }) => {
+    await page.goto("/#home");
+    const configured = await page.evaluate(() => {
+      return window.KL_SUPABASE && typeof window.KL_SUPABASE.isSupabaseConfigured === "function"
+        ? window.KL_SUPABASE.isSupabaseConfigured()
+        : null;
+    });
+    expect(configured).toBe(false);
+  });
+
+  test("index does not reference /src/main.js", async ({ page }) => {
+    await page.goto("/");
+    const html = await page.content();
+    expect(html.includes("/src/main.js")).toBe(false);
   });
 
   test("login invalid email shows error", async ({ page }) => {
@@ -102,13 +120,18 @@ test.describe("static site smoke", () => {
     await expect(page.locator("#kl-signup-terms-err")).toBeVisible({ timeout: 20000 });
   });
 
-  test("valid login submit shows placeholder notice and does not reload", async ({ page }) => {
+  test("valid login submit shows not-configured notice when supabase env missing", async ({
+    page
+  }) => {
     await page.goto("/#login");
     await page.fill("#kl-login-email", "alex@example.com");
     await page.fill("#kl-login-password", "Password1");
     await page.locator("#kl-login-form button[type='submit']").click();
     await expect(page).toHaveURL(/#login/);
     await expect(page.locator("#kl-login-notice")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator("#kl-login-notice")).toContainText(
+      /not configured|não está configurad|no está configurad/i
+    );
   });
 
   test("account guard: guest redirected to login with notice", async ({ page }) => {

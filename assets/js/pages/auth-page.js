@@ -223,6 +223,7 @@
       '<div class="auth-card">' +
       '<h1 class="auth-title" data-i18n="auth.callback.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
       '<p class="auth-subtitle" data-i18n="auth.callback.subtitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<div class="auth-notice" id="kl-auth-callback-status" role="status" aria-live="polite"></div>' +
       '<div class="auth-footer-links"><a href="#login" data-i18n="auth.common.backToLogin"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
       "</div>" +
       "</div>" +
@@ -236,7 +237,7 @@
       '<div class="container auth-shell-inner">' +
       '<div class="auth-card">' +
       '<h1 class="auth-title" data-i18n="auth.logout.title"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></h1>' +
-      '<p class="auth-subtitle" data-i18n="auth.logout.subtitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<p class="auth-subtitle" id="kl-logout-status" data-i18n="auth.logout.subtitle"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
       '<div class="auth-footer-links"><a href="#home" data-i18n="auth.logout.backHome"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a></div>' +
       "</div>" +
       "</div>" +

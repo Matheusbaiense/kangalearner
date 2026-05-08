@@ -5,6 +5,7 @@ Plano faseado para agentes de IA e developers continuarem a partir do estado atu
 ## Estado atual (resumo)
 
 - **`apps/web`**: Next 15 App Router; Supabase SSR (`@supabase/ssr`); clientes em `src/lib/supabase/`; Stripe server em `src/lib/stripe.ts`; middleware em `src/middleware.ts` reexportado por `middleware.ts` na raiz do pacote web.
+- **Site estático (raiz / Pages)**: Supabase Auth **opcional** — `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` (Vite → `window.__KANGA_ENV__`); módulos `assets/js/auth/supabase-client.js`, `auth-service.js`, `auth-provider.js`; sem env continua guest + mock roles (`KL_AUTH_MOCK`). Ver `docs/CODEMAPS/static-site.md`.
 - **Auth**: rotas `/auth/login`, `/auth/signup`, `auth.css` (scope `.auth-route`), callback `/auth/callback` com Stripe customer opcional; rotas legadas `/login`, `/signup`.
 - **Proteção**: middleware redireciona anónimos para `/auth/login?redirect=<path>` para paths em `PROTECTED_ROUTES`; placeholder `/progress`.
 
@@ -29,6 +30,7 @@ Plano faseado para agentes de IA e developers continuarem a partir do estado atu
 
 1. Documentar variáveis de ambiente obrigatórias por ambiente (`NEXT_PUBLIC_*`, `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`).
 2. Escolher alojamento Next (ex.: Vercel) vs Pages estático na raiz — dois produtos possíveis; evitar confusão no README.
+3. **GitHub Pages (SPA raiz):** `.github/workflows/pages.yml` publica **`dist-vite`** (`pnpm run site:build`); variáveis opcionais `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` em **Actions → Variables** para auth Supabase no browser (nunca service role).
 
 ## Referências de ficheiros (para IA)
 
@@ -40,4 +42,5 @@ Plano faseado para agentes de IA e developers continuarem a partir do estado atu
 | Tipos DB          | `apps/web/src/lib/supabase/database.types.ts`                                                    |
 | Stripe            | `apps/web/src/lib/stripe.ts`                                                                     |
 | Auth UI           | `apps/web/app/auth/*/page.tsx`, `apps/web/src/app/auth/auth.css`, `apps/web/app/auth/layout.tsx` |
+| Auth estático     | `assets/js/auth/supabase-client.js`, `auth-service.js`, `auth-provider.js`, `mock-auth-state.js`, `route-guards.js` |
 | Migrações         | `supabase/migrations/*.sql`                                                                      |
