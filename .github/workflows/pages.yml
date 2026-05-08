@@ -77,6 +77,8 @@ jobs:
       - name: Build site (Vite → dist-vite)
         run: pnpm run site:build
         env:
+          # Project Pages URL is https://<user>.github.io/<repository>/ — Rollup must emit /repo/... URLs.
+          VITE_BASE_PATH: /${{ github.event.repository.name }}/
           # Repository Variables (Settings → Secrets and variables → Actions → Variables).
           # Optional: omit or leave empty → __KANGA_ENV__ strings empty → Supabase "not configured" mode.
           # Anon key is public in the browser by design; never use the service role key here.

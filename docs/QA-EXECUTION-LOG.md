@@ -2,6 +2,27 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — GitHub Pages: `VITE_BASE_PATH` + URLs absolutas no HTML (fix layout quebrado)
+
+**Problema:** em `https://matheusbaiense.github.io/kangalearner/`, HTML carregava mas CSS/JS podiam falhar (página sem estilo, i18n a mostrar todos os idiomas) por dependência de `<base>` + scripts relativos `assets/js/...`.
+
+**Alterações (só build/CI/SW, sem quiz/auth/perguntas):**
+
+- `vite.config.js`: `base` a partir de `VITE_BASE_PATH`; plugin pós-build que prefixa `assets/` nos `src`/`href` do `index.html` quando `base !== "/"`.
+- `.github/workflows/pages.yml`: `VITE_BASE_PATH: /${{ github.event.repository.name }}/` no passo `pnpm run site:build`.
+- `sw.js`: `kanga-assets-v10` para invalidar caches antigos.
+
+### Verificação local
+
+| Comando | Resultado |
+| ------- | --------- |
+| `VITE_BASE_PATH=/kangalearner/ pnpm run site:build` | **OK** — `dist-vite/index.html` com `/kangalearner/...` em CSS Vite e scripts `assets/js`. |
+| `pnpm run format:check` | **OK** |
+
+**Deploy:** push para `main` (ou `workflow_dispatch` em Deploy Pages) após merge.
+
+---
+
 ## 2026-05-09 — Dead-code audit refreshed after Supabase Auth merge (docs only)
 
 **Objetivo:** recriar a auditoria de dead-code em cima de `main` pós–PR #7 (`94a7ef1`), incluindo a stack Supabase Auth + Pages/Vite, **sem alterações funcionais** e **sem executar cleanup Batch 1**.
