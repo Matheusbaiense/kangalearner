@@ -264,9 +264,13 @@ Applied (SAFE):
   - Align unknown-language fallback emoji to `🌐` (consistent with `setLang`).
 - `assets/js/storage.js`: add clarifying comment to `answeredUnique` alias (compat field).
 
-Deferred (CAREFUL — needs separate approval):
+**Timeline (deferred first, then applied after approval):** these CAREFUL items were held until explicit approval; they are **not** pending now.
+- `56fc684`: FLAGS/LD_TRIGGER_SHORT dedupe + v2-oriented session detection (gated sync).
+- `aef9cd1`: cookie check narrowed to `sb-*-auth-token=` regex + `TODO(supabase-v2-cutover)` on legacy keys.
+
+Historical list (completed):
 - `assets/js/quiz-engine.js`: ~~dedupe `FLAGS` vs `LD_TRIGGER_SHORT`.~~ (Applied in `56fc684`)
-- `assets/js/quiz-engine.js`: ~~replace stale Supabase v1 session keys (`supabase.auth.token`, `sb-access-token`) check.~~ (Applied in `56fc684`; tightened further in follow-up)
+- `assets/js/quiz-engine.js`: ~~replace stale Supabase v1 session keys (`supabase.auth.token`, `sb-access-token`) check.~~ (Applied in `56fc684`; cookie regex + legacy TODO in `aef9cd1`)
 
 ### CAREFUL auth prep (applied)
 

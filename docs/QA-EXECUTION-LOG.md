@@ -662,10 +662,10 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
   - fallback emoji consistente (`🌐`) no `ld-flag` quando lang é inesperado.
 - `assets/js/storage.js`: comentário explicando alias `answeredUnique` (compat).
 
-### Careful items deferred (needs separate approval)
+### Careful items (historical — aplicados depois em `56fc684` / `aef9cd1`)
 
-- Deduplicar `FLAGS` vs `LD_TRIGGER_SHORT`.
-- Ajustar detecção de sessão Supabase v1→v2 (`supabase.auth.token`/`sb-access-token`) no `quiz-engine.js`.
+- ~~Deduplicar `FLAGS` vs `LD_TRIGGER_SHORT`.~~
+- ~~Ajustar detecção de sessão Supabase v1→v2 no `quiz-engine.js`.~~
 
 ### Comandos executados
 
@@ -693,9 +693,9 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 ### CAREFUL item 2 applied — Supabase Auth session detection (v2-compatible)
 
 - `assets/js/quiz-engine.js`: detecção de sessão (usada apenas quando `KANGA_ENABLE_BACKEND_SYNC` está ativo) agora reconhece:
-  - cookies com prefixo `sb-` (padrão Supabase v2)
+  - cookie no padrão `sb-<project-ref>-auth-token=…` (regex; commit `aef9cd1` — antes era check amplo `sb-`)
   - chaves `localStorage` no padrão `sb-<project-ref>-auth-token`
-  - mantém fallback legacy para `supabase.auth.token` / `sb-access-token` (compat)
+  - mantém fallback legacy para `supabase.auth.token` / `sb-access-token` (compat), com `TODO(supabase-v2-cutover)` em `aef9cd1`
 
 ### Garantias
 
@@ -714,3 +714,10 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 | `pnpm run site:build`         | **OK**    |
 | `pnpm run test:e2e`           | **OK** — 27/27 passed |
 | `pnpm run validate:questions` | **OK**    |
+
+---
+
+## 2026-05-09 — Audit timeline clarification (docs only)
+
+- `docs/architecture/pre-supabase-code-cleanup-audit.md`: secção CAREFUL com **timeline** explícita (`56fc684` → `aef9cd1`), sem parecer pendente.
+- Código de produção já estava em `aef9cd1` (`chore(static): tighten supabase auth session prep`); esta entrada só alinha documentação.
