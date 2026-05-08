@@ -2,6 +2,62 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-08 — Pre-auth freeze audit (site estático root, antes de Login/Supabase)
+
+**Objetivo:** fechar a fase atual do produto público (GitHub Pages / SPA estático), confirmar estabilidade e documentação antes de iniciar Auth (Phase I / Supabase).
+
+### Git
+
+| Item | Resultado |
+| --- | --- |
+| Branch | `main` @ `7110cb9` alinhado com `origin/main` (0 ahead / 0 behind) |
+| Working tree | **Não totalmente limpo** — ficheiro **untracked** `qa-practice-polish-check.mjs` (artefacto de QA; **não commitar**; manter fora do git ou apagar) |
+| `qa-output/` | Existe localmente (Playwright; **ignorado pelo `.gitignore`**) |
+
+### Comandos executados (local)
+
+| Comando | Resultado |
+| --- | --- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** (`dist-vite/`) |
+| `pnpm run test:e2e` | **OK** — 15 testes Chromium |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+
+### QA público — https://matheusbaiense.github.io/kangalearner/
+
+Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar `localStorage`/`sessionStorage`/Cache Storage + reload):
+
+| Verificação | Resultado |
+| --- | --- |
+| HTTP 404 nas respostas rastreadas | **Nenhum** |
+| `console.error` | **Nenhum** |
+| Referência a `/src/main.js` no DOM | **Não** |
+| Menu principal (header): 4 itens `#home`, `#learn`, `#practice`, `#resources` | **OK** |
+| Sem `#mock` nem `#progress` no header | **OK** |
+| Um único seletor de idioma (`#ld.ld-wrap`) | **OK** |
+| `body.mode-en` após reload limpo | **OK** |
+| Rota `#/progress`: link “voltar” para Practice presente no HTML | **OK** |
+
+**Nota:** Rotas `#resources` / `#glossary` renderizam conteúdo dentro de `#page-root` (sem `<section id="resources">` dedicado no HTML inicial); validação funcional segue o mesmo critério dos testes e2e (`#page-root` + texto/links esperados).
+
+### Bugs / pendências
+
+| Severidade | Estado |
+| --- | --- |
+| Críticos | **Nenhum** identificado nesta auditoria (local + público básico) |
+| Médios | Itens manuais externos não verificados aqui (GA4 real, Sentry real, domínio, Search Console, Lighthouse produção, tag `v1.0.0`) — ver checklist G18 no roadmap |
+| Baixo / polish | Encoding legível em secções antigas do roadmap (UTF-8); opcional **descartar** ou ignorar `qa-practice-polish-check.mjs` local |
+
+### Pronto para iniciar Login / Supabase?
+
+**Sim, com reservas:** o site estático em `main` passa a suíte local e o smoke público automático; a próxima fase pode ser **Auth/Supabase** no fluxo planeado, desde que itens **manuais G18** e métricas de produção continuem listados como trabalho humano/ops.
+
+**Liquid Glass:** análise/design mantém-se como **track separado** — **não** implementado nesta fase (ver entrada correspondente no roadmap).
+
+---
+
 ## 2026-05-08 — Practice hub redesign + Review mistakes (Topic) + Readiness/Debrief (static root)
 
 **Objetivo:** transformar `#practice` no hub principal com 3 cards totalmente padronizados, integrar “Your Progress” + “Readiness & Next step”, manter `#progress` como rota detalhada (sem menu), adicionar “Review mistakes” estilo Duolingo **somente** para Topic Practice, e adicionar Debrief/Next step no final de Practice Mock + Exam Simulation.
