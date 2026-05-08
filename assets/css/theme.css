@@ -4,6 +4,12 @@
 ══════════════════════════════════════════ */
 
 :root {
+  /* Typography (authorial but neutral) */
+  --type-tracking-tight: -0.02em;
+  --type-tracking-tighter: -0.035em;
+  --type-leading-ui: 1.35;
+  --type-leading-body: 1.6;
+
   /* Page surfaces */
   --surface-page: #eef6fb;
   --surface-page-alt: #f7fbff;
@@ -87,6 +93,53 @@ body {
   );
 }
 
+/* ── Road / route motif (subtle lane lines) ────────────────────────────── */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  pointer-events: none;
+  opacity: 0.42;
+  background:
+    radial-gradient(circle at 24% 22%, rgba(68, 194, 255, 0.14), transparent 38%),
+    linear-gradient(
+      110deg,
+      rgba(255, 255, 255, 0.06) 0%,
+      rgba(255, 255, 255, 0) 22%,
+      rgba(255, 255, 255, 0.05) 52%,
+      rgba(255, 255, 255, 0) 78%,
+      rgba(255, 255, 255, 0.04) 100%
+    );
+  mix-blend-mode: screen;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  left: 52%;
+  top: -30%;
+  width: 320px;
+  height: 160%;
+  transform: rotate(16deg);
+  pointer-events: none;
+  opacity: 0.22;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.34) 18%,
+    rgba(255, 255, 255, 0) 36%,
+    rgba(255, 255, 255, 0.34) 54%,
+    rgba(255, 255, 255, 0) 72%,
+    rgba(255, 255, 255, 0.28) 90%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 100% 42px;
+  filter: blur(0.2px);
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -136,6 +189,17 @@ body {
   border: 1px solid rgba(216, 226, 234, 0.9);
   box-shadow: var(--glass-shadow-soft);
   border-radius: var(--glass-radius);
+}
+
+/* Reduce glass blur for reading-heavy pages */
+.legal-card,
+.admin-card,
+.cat-table th,
+.cat-table td,
+.progress-cat-table th,
+.progress-cat-table td {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
 }
 
 .glass-surface-strong {
