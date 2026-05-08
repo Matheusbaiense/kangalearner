@@ -585,3 +585,27 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 - **Auth real**: **não implementado** (mock permanece).
 - **sw.js**: cache bump para `kanga-assets-v8`.
 - **CSS**: tokens e utilitários em `assets/css/theme.css` com fallback de `backdrop-filter`.
+
+---
+
+## 2026-05-08 — Art Direction + Typography Pass (Liquid Glass v2)
+
+### Comandos executados
+
+| Comando                       | Resultado             |
+| ----------------------------- | --------------------- |
+| `pnpm run format:check`       | **OK**                |
+| `pnpm run check:static-links` | **OK**                |
+| `pnpm run smoke:static`       | **OK**                |
+| `pnpm run site:build`         | **OK**                |
+| `pnpm run test:e2e`           | **OK** — 27/27 passed |
+| `pnpm run validate:questions` | **OK**                |
+
+### Notas
+
+- **Escopo**: **visual-only** (tipografia + refinamento de glass + art direction) — sem alteração de lógica, rotas, dados ou perguntas.
+- **Fonts**: Google Fonts via `index.html` (**Space Grotesk** headings + **Manrope** body/UI).
+- **Road motif**: linhas “lane/route” discretas via pseudo-elementos no hero (sem imagens).
+- **Legibilidade**: páginas longas/tabelas (Legal/Admin) mais sólidas, com menos blur.
+- **sw.js**: cache bump para `kanga-assets-v9`.
+- **QA screenshots**: gerados em `test-results/qa-art-direction-v1/` (não versionados).

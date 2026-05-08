@@ -365,6 +365,22 @@
   max-width: 520px;
   padding: 28px;
 }
+.auth-card {
+  position: relative;
+  overflow: hidden;
+}
+.auth-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background:
+    radial-gradient(circle at 18% 18%, rgba(68, 194, 255, 0.16), transparent 36%),
+    radial-gradient(circle at 86% 22%, rgba(47, 158, 103, 0.12), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.38), rgba(255, 255, 255, 0));
+  mix-blend-mode: multiply;
+}
 
 .auth-eyebrow {
   font-size: 0.75rem;
@@ -379,6 +395,9 @@
   font-size: 1.75rem;
   line-height: 1.2;
   margin: 0 0 0.5rem;
+}
+.auth-title {
+  letter-spacing: var(--type-tracking-tighter, -0.035em);
 }
 
 .auth-subtitle {
@@ -565,6 +584,11 @@ textarea.auth-input {
 
 .legal-card {
   padding: 22px;
+}
+.legal-card {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(216, 226, 234, 0.92);
+  box-shadow: 0 16px 44px rgba(15, 23, 42, 0.08);
 }
 .legal-section {
   margin: 18px 0 8px;

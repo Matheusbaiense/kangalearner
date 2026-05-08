@@ -44,10 +44,24 @@ body {
   font-family: var(--font-sans);
   background: transparent;
   color: var(--text-primary, var(--ink));
-  line-height: 1.55;
+  line-height: var(--type-leading-body, 1.6);
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+.page-title,
+.auth-title,
+.section-title {
+  font-family: var(--font-heading);
+  letter-spacing: var(--type-tracking-tighter, -0.035em);
+}
+
+.brand-wordmark {
+  letter-spacing: var(--type-tracking-tight, -0.02em);
 }
 
 /* Horizontal bleed clipped here instead of on body — keeps position:sticky working in descendants */
