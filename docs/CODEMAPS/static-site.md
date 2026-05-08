@@ -31,8 +31,9 @@ Mapa rápido do site **HTML/CSS/JS estático** na raiz do repo (GitHub Pages).
 ## Build / publicação (Pages)
 
 - `pnpm run legacy:build` → gera `dist/`
-- `pnpm run site:build` → Vite (`vite.config.js`) copia assets e injeta `window.__KANGA_ENV__` a partir de `VITE_*` (incl. Supabase URL/anon key **apenas** para build local/CI com env definido; em Pages público típico sem secrets, auth real fica desativada).
-- Workflow: `.github/workflows/pages.yml`
+- `pnpm run site:build` → Vite (`vite.config.js`) → **`dist-vite/`**; injeta `window.__KANGA_ENV__` a partir de `VITE_*`.
+- **GitHub Actions:** `.github/workflows/pages.yml` corre `pnpm run site:build` e publica **`dist-vite`** (variáveis opcionais `vars.VITE_SUPABASE_URL` / `vars.VITE_SUPABASE_ANON_KEY`). Sem variáveis → mesmo fallback que build local sem env.
+- E2E locais/CI para o site servido na raiz continuam a usar `serve .` (HTML fonte), não `dist-vite`.
 
 ## Auth (Supabase opcional + mock)
 

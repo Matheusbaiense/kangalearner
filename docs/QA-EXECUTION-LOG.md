@@ -2,6 +2,34 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — GitHub Pages: deploy via Vite (`dist-vite`) + env público Supabase (CI)
+
+**Objetivo:** fechar o gap operacional em que o workflow copiava `index.html`/`assets` crus e **não** injetava `window.__KANGA_ENV__`. O job `build` em `.github/workflows/pages.yml` passa a correr `pnpm run site:build` e publica **`dist-vite`**.
+
+### GitHub Actions
+
+| Item | Detalhe |
+| ---- | ------- |
+| **Artefacto** | `dist-vite/` (output do Vite + `vite-plugin-static-copy`) |
+| **Variáveis** | `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` via **Repository Variables** (`vars.*`). Se ausentes → strings vazias → modo **not configured**. |
+| **Service role** | Nunca no frontend; não configurar `SUPABASE_SERVICE_ROLE_KEY` neste workflow. |
+| **Redirect URLs** | Continuam a ser definidas no dashboard Supabase (e IdP OAuth) — não automáticas só com este deploy. |
+
+### Comandos locais (corrida de verificação)
+
+| Comando | Resultado |
+| ------- | --------- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run test:e2e` | **OK** — **29/29** |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+| `pnpm run site:build` sem `VITE_*` | `__KANGA_ENV__` com `""` / `""` |
+| `pnpm run site:build` com URL/key dummy | `__KANGA_ENV__` preenchido (só teste local) |
+
+---
+
 ## 2026-05-09 — Site estático: fundação Supabase Auth (branch `feature/supabase-auth-implementation`)
 
 **Objetivo:** integrar **Supabase Auth opcional** no SPA estático (raiz): `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` via Vite → `window.__KANGA_ENV__` e metas de fallback; lazy-load `@supabase/supabase-js`; manter **guest** e **mock roles** quando Supabase não está configurado; sem service role no cliente; sem alterar quiz/questions/scoring, `apps/web`, Stripe ou migrações.

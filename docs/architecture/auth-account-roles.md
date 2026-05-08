@@ -17,6 +17,10 @@ When `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set at build time (or 
 
 When Supabase is **not** configured, behavior matches the original mock-only model: no network auth, guest + `kl-mock-role` drive guards.
 
+### GitHub Pages (produção estática)
+
+The **Deploy Pages** workflow runs **`pnpm run site:build`** and publishes **`dist-vite`**, so `window.__KANGA_ENV__` can include `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` when set as **GitHub Actions repository variables** (`Settings → Secrets and variables → Actions → Variables`). If those variables are missing, the build uses empty strings and the site stays in **not configured** / guest+mock mode. **Never** put the service role key in the frontend or in these variables. **Redirect URLs** must still be allowlisted in the Supabase project (and the OAuth provider) for real sign-in.
+
 ### What this is NOT (yet / out of scope)
 
 - No shared backend beyond Supabase Auth for the static product line
