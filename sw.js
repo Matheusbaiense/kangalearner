@@ -21,7 +21,8 @@ self.addEventListener("fetch", (event) => {
   if (url.origin !== self.location.origin) return;
 
   const path = url.pathname;
-  const isAsset = path.includes("/assets/") || path.endsWith("manifest.json") || path.endsWith("/sw.js");
+  const isAsset =
+    path.includes("/assets/") || path.endsWith("manifest.json") || path.endsWith("/sw.js");
 
   if (isAsset) {
     event.respondWith(

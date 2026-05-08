@@ -8,29 +8,29 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 
 ### Git
 
-| Item | Resultado |
-| --- | --- |
+| Item                     | Resultado                                                                                                   |
+| ------------------------ | ----------------------------------------------------------------------------------------------------------- |
 | **Latest `origin/main`** | **`5c02ffa`** (`docs(static): record pre-auth freeze audit`); **contém `7110cb9`** na história (pai direto) |
-| **Working tree** | **Não limpo** — `qa-practice-polish-check.mjs` continua **untracked** (não commitar) |
-| **`qa-output/`** | Ignorado por `.gitignore` |
+| **Working tree**         | **Não limpo** — `qa-practice-polish-check.mjs` continua **untracked** (não commitar)                        |
+| **`qa-output/`**         | Ignorado por `.gitignore`                                                                                   |
 
 ### Deploy público
 
-| Verificação | Resultado |
-| --- | --- |
-| **API GitHub** `commits/main` | SHA **`5c02ffa`** (HEAD publicado no default branch) |
-| **`sw.js` público** | `kanga-assets-v6` confirmado por fetch a `https://matheusbaiense.github.io/kangalearner/sw.js` |
-| **`7110cb9` “deployed”** | **Sim** no sentido de **estar contido no branch que alimenta Pages**; o HTML/JS de produto do hub Practice é o de **`7110cb9`** (filho apenas de `5c02ffa` é bump de docs) |
+| Verificação                   | Resultado                                                                                                                                                                  |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **API GitHub** `commits/main` | SHA **`5c02ffa`** (HEAD publicado no default branch)                                                                                                                       |
+| **`sw.js` público**           | `kanga-assets-v6` confirmado por fetch a `https://matheusbaiense.github.io/kangalearner/sw.js`                                                                             |
+| **`7110cb9` “deployed”**      | **Sim** no sentido de **estar contido no branch que alimenta Pages**; o HTML/JS de produto do hub Practice é o de **`7110cb9`** (filho apenas de `5c02ffa` é bump de docs) |
 
 ### Comandos locais (todos existem, todos OK nesta corrida)
 
-| Comando | Resultado |
-| --- | --- |
-| `pnpm run format:check` | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static` | **OK** |
-| `pnpm run site:build` | **OK** |
-| `pnpm run test:e2e` | **OK** — **15/15** |
+| Comando                       | Resultado             |
+| ----------------------------- | --------------------- |
+| `pnpm run format:check`       | **OK**                |
+| `pnpm run check:static-links` | **OK**                |
+| `pnpm run smoke:static`       | **OK**                |
+| `pnpm run site:build`         | **OK**                |
+| `pnpm run test:e2e`           | **OK** — **15/15**    |
 | `pnpm run validate:questions` | **OK** — 69 perguntas |
 
 ### QA público obrigatório (Puppeteer, sessão limpa)
@@ -38,17 +38,17 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 Script **temporário** (não versionado): unregister SW + limpar storages/caches + verificações EN/PT/ES, PT+EN / ES+EN, `#practice` (3 cards, sem Mock/Progress no header), `#progress` + back, Resources (WA + coming soon), Glossary (carrega; **sem campo de busca** — esperado), Topic Practice (feedback após resposta), Practice Mock (1/30, sem “Review mistakes” no início), Exam Simulation (sem feedback imediato tipo `answer-review` no cartão após 1 clique), **0** `console.error` rastreados, **0** respostas **404** rastreadas, **sem** `/src/main.js`.
 
 | Resultado | **PASS** |
-| --- | --- |
+| --------- | -------- |
 
 **Nota:** “Revisar erros” / fila Duolingo / debrief completo ao fim de 30Q **não** foram exaustivamente automatizados linha-a-linha; comportamento parcial está coberto por **e2e locais** e revisão manual continua recomendada para G18.
 
 ### Bugs
 
-| Severidade | Estado |
-| --- | --- |
-| Críticos | **Nenhum** na corrida local + público |
-| Médios | Checklist **G18** (GA4, Sentry, domínio, Search Console, Lighthouse prod, tag `v1.0.0`) ainda **manual / sem evidência** |
-| Baixo | `qa-practice-polish-check.mjs` local; roadmap UTF-8 em blocos antigos |
+| Severidade | Estado                                                                                                                   |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------ |
+| Críticos   | **Nenhum** na corrida local + público                                                                                    |
+| Médios     | Checklist **G18** (GA4, Sentry, domínio, Search Console, Lighthouse prod, tag `v1.0.0`) ainda **manual / sem evidência** |
+| Baixo      | `qa-practice-polish-check.mjs` local; roadmap UTF-8 em blocos antigos                                                    |
 
 ### Auth / Supabase
 
@@ -66,47 +66,47 @@ Mantém-se **fora desta fase** — track de design separado (ver roadmap local).
 
 ### Git
 
-| Item | Resultado |
-| --- | --- |
-| Branch | `main` @ `7110cb9` alinhado com `origin/main` (0 ahead / 0 behind) |
+| Item         | Resultado                                                                                                                                          |
+| ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Branch       | `main` @ `7110cb9` alinhado com `origin/main` (0 ahead / 0 behind)                                                                                 |
 | Working tree | **Não totalmente limpo** — ficheiro **untracked** `qa-practice-polish-check.mjs` (artefacto de QA; **não commitar**; manter fora do git ou apagar) |
-| `qa-output/` | Existe localmente (Playwright; **ignorado pelo `.gitignore`**) |
+| `qa-output/` | Existe localmente (Playwright; **ignorado pelo `.gitignore`**)                                                                                     |
 
 ### Comandos executados (local)
 
-| Comando | Resultado |
-| --- | --- |
-| `pnpm run format:check` | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static` | **OK** |
-| `pnpm run site:build` | **OK** (`dist-vite/`) |
-| `pnpm run test:e2e` | **OK** — 15 testes Chromium |
-| `pnpm run validate:questions` | **OK** — 69 perguntas |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK** (`dist-vite/`)       |
+| `pnpm run test:e2e`           | **OK** — 15 testes Chromium |
+| `pnpm run validate:questions` | **OK** — 69 perguntas       |
 
 ### QA público — https://matheusbaiense.github.io/kangalearner/
 
 Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar `localStorage`/`sessionStorage`/Cache Storage + reload):
 
-| Verificação | Resultado |
-| --- | --- |
-| HTTP 404 nas respostas rastreadas | **Nenhum** |
-| `console.error` | **Nenhum** |
-| Referência a `/src/main.js` no DOM | **Não** |
-| Menu principal (header): 4 itens `#home`, `#learn`, `#practice`, `#resources` | **OK** |
-| Sem `#mock` nem `#progress` no header | **OK** |
-| Um único seletor de idioma (`#ld.ld-wrap`) | **OK** |
-| `body.mode-en` após reload limpo | **OK** |
-| Rota `#/progress`: link “voltar” para Practice presente no HTML | **OK** |
+| Verificação                                                                   | Resultado  |
+| ----------------------------------------------------------------------------- | ---------- |
+| HTTP 404 nas respostas rastreadas                                             | **Nenhum** |
+| `console.error`                                                               | **Nenhum** |
+| Referência a `/src/main.js` no DOM                                            | **Não**    |
+| Menu principal (header): 4 itens `#home`, `#learn`, `#practice`, `#resources` | **OK**     |
+| Sem `#mock` nem `#progress` no header                                         | **OK**     |
+| Um único seletor de idioma (`#ld.ld-wrap`)                                    | **OK**     |
+| `body.mode-en` após reload limpo                                              | **OK**     |
+| Rota `#/progress`: link “voltar” para Practice presente no HTML               | **OK**     |
 
 **Nota:** Rotas `#resources` / `#glossary` renderizam conteúdo dentro de `#page-root` (sem `<section id="resources">` dedicado no HTML inicial); validação funcional segue o mesmo critério dos testes e2e (`#page-root` + texto/links esperados).
 
 ### Bugs / pendências
 
-| Severidade | Estado |
-| --- | --- |
-| Críticos | **Nenhum** identificado nesta auditoria (local + público básico) |
-| Médios | Itens manuais externos não verificados aqui (GA4 real, Sentry real, domínio, Search Console, Lighthouse produção, tag `v1.0.0`) — ver checklist G18 no roadmap |
-| Baixo / polish | Encoding legível em secções antigas do roadmap (UTF-8); opcional **descartar** ou ignorar `qa-practice-polish-check.mjs` local |
+| Severidade     | Estado                                                                                                                                                         |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Críticos       | **Nenhum** identificado nesta auditoria (local + público básico)                                                                                               |
+| Médios         | Itens manuais externos não verificados aqui (GA4 real, Sentry real, domínio, Search Console, Lighthouse produção, tag `v1.0.0`) — ver checklist G18 no roadmap |
+| Baixo / polish | Encoding legível em secções antigas do roadmap (UTF-8); opcional **descartar** ou ignorar `qa-practice-polish-check.mjs` local                                 |
 
 ### Pronto para iniciar Login / Supabase?
 
@@ -122,14 +122,14 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 ### Comandos executados
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
-| `pnpm run format:check`       | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK** (`dist-vite/`)       |
 | `pnpm run test:e2e`           | **OK** — 15 testes Chromium |
-| `pnpm run validate:questions` | **OK** |
+| `pnpm run validate:questions` | **OK**                      |
 
 ### QA visual (Playwright)
 
@@ -162,12 +162,12 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 **Comandos (todos OK nesta sessão):**
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
-| `pnpm run format:check`       | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK** (`dist-vite/`)       |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
 ## 2026-05-07 — Public visual QA fixes (assets 404 + i18n hydrate + SW bump)
@@ -186,12 +186,12 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 **Comandos (todos OK nesta sessão):**
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
-| `pnpm run format:check`       | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK** (`dist-vite/`)       |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
 ## 2026-05-07 — Practice + Mock unificados (IA) + correções QA público (static root)
@@ -211,12 +211,12 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 **Comandos (todos OK nesta sessão):**
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
-| `pnpm run format:check`       | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** (`dist-vite/`) |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK** (`dist-vite/`)       |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
 ## 2026-05-07 — Practice hub polish + Progress integration (static root)
@@ -238,11 +238,11 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 | Comando                       | Resultado |
 | ----------------------------- | --------- |
-| `pnpm run format:check`       | TODO |
-| `pnpm run check:static-links` | TODO |
-| `pnpm run smoke:static`       | TODO |
-| `pnpm run site:build`         | TODO |
-| `pnpm run test:e2e`           | TODO |
+| `pnpm run format:check`       | TODO      |
+| `pnpm run check:static-links` | TODO      |
+| `pnpm run smoke:static`       | TODO      |
+| `pnpm run site:build`         | TODO      |
+| `pnpm run test:e2e`           | TODO      |
 
 ## QA Manual Fix Round — Navigation, i18n, Resources, Reset, Progress, Mock (2026-05-07)
 
@@ -252,13 +252,13 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 **Testes:** registar na tabela abaixo após correr `pnpm run format:check`, `pnpm run check:static-links`, `pnpm run smoke:static`, `pnpm run site:build`, `pnpm run test:e2e` na raiz do repo.
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
+| Comando                       | Resultado                                                                                                       |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------- |
 | `pnpm run format:check`       | **OK** (após `prettier -w` em `category-labels.js`, `state-availability.js`, `locales.js`, `e2e/smoke.spec.js`) |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** (`dist-vite/`) |
-| `pnpm run test:e2e`           | **OK** — 12 testes Chromium |
+| `pnpm run check:static-links` | **OK**                                                                                                          |
+| `pnpm run smoke:static`       | **OK**                                                                                                          |
+| `pnpm run site:build`         | **OK** (`dist-vite/`)                                                                                           |
+| `pnpm run test:e2e`           | **OK** — 12 testes Chromium                                                                                     |
 
 **Pendências conhecidas:** revisão manual PT+EN/ES+EN em todos os blocos longos; timer de exame 45 min não coberto por E2E completo.
 
@@ -272,12 +272,12 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 **Comandos verificados nesta rodada:**
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
-| `pnpm run format:check`       | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK**                      |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
 ## 2026-05-07 — Pós-deploy hardening (SW cache bump + Practice landing + idioma)
@@ -296,12 +296,12 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 **Comandos verificados nesta rodada:**
 
-| Comando                       | Resultado |
-| ----------------------------- | --------- |
-| `pnpm run format:check`       | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static`       | **OK** |
-| `pnpm run site:build`         | **OK** |
+| Comando                       | Resultado                   |
+| ----------------------------- | --------------------------- |
+| `pnpm run format:check`       | **OK**                      |
+| `pnpm run check:static-links` | **OK**                      |
+| `pnpm run smoke:static`       | **OK**                      |
+| `pnpm run site:build`         | **OK**                      |
 | `pnpm run test:e2e`           | **OK** — 14 testes Chromium |
 
 ## 2026-05-07 — Fecho da rodada UX (site estático: Resources, Learn/practice, a11y E2E)
@@ -323,13 +323,13 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 ### Comandos (todos OK nesta sessão)
 
-| Comando                       | Resultado                          |
-| ----------------------------- | ---------------------------------- |
-| `pnpm run format:check`       | **OK**                             |
-| `pnpm run test:e2e`           | **OK** — 9 testes Chromium         |
-| `pnpm run check:static-links` | **OK**                             |
-| `pnpm run smoke:static`       | **OK**                             |
-| `pnpm run site:build`         | **OK** — `dist-vite/`             |
+| Comando                       | Resultado                  |
+| ----------------------------- | -------------------------- |
+| `pnpm run format:check`       | **OK**                     |
+| `pnpm run test:e2e`           | **OK** — 9 testes Chromium |
+| `pnpm run check:static-links` | **OK**                     |
+| `pnpm run smoke:static`       | **OK**                     |
+| `pnpm run site:build`         | **OK** — `dist-vite/`      |
 
 **Manual QA pendente (não bloqueante para esta entrega):** regressão visual fina em dispositivos reais; leitores de ecrã além do que os E2E cobrem.
 
@@ -347,13 +347,13 @@ Verificação automatizada com Puppeteer (sessão limpa: unregister SW + limpar 
 
 ### Comandos
 
-| Comando                                      | Resultado                                                                 |
-| -------------------------------------------- | ------------------------------------------------------------------------- |
-| `pnpm run format:check` (script raiz)       | **Falhou** — 5 ficheiros em `assets/js/` (fora do âmbito desta entrega)   |
-| `npx prettier --check "apps/web/**/*.{tsx,ts,css}"` | **OK** após `prettier -w` nos ficheiros tocados em `apps/web`        |
-| `pnpm --filter @kanga/web lint`              | **OK** — apenas warning existente `@next/next/no-img-element` em `PracticeClient.tsx` |
-| `pnpm --filter @kanga/web build`             | **OK** — `next build` concluído (exit 0)                                  |
-| `pnpm run test:e2e` / `smoke:static`         | N/A — alterações concentradas em `apps/web`; estático raiz não tocado    |
+| Comando                                             | Resultado                                                                             |
+| --------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `pnpm run format:check` (script raiz)               | **Falhou** — 5 ficheiros em `assets/js/` (fora do âmbito desta entrega)               |
+| `npx prettier --check "apps/web/**/*.{tsx,ts,css}"` | **OK** após `prettier -w` nos ficheiros tocados em `apps/web`                         |
+| `pnpm --filter @kanga/web lint`                     | **OK** — apenas warning existente `@next/next/no-img-element` em `PracticeClient.tsx` |
+| `pnpm --filter @kanga/web build`                    | **OK** — `next build` concluído (exit 0)                                              |
+| `pnpm run test:e2e` / `smoke:static`                | N/A — alterações concentradas em `apps/web`; estático raiz não tocado                 |
 
 ## 2026-05-06 — Phase I0 (Vite + artefacto Vercel, site estático raiz)
 
@@ -541,14 +541,14 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 
 ### Comandos executados
 
-| Comando | Resultado |
-| --- | --- |
-| `pnpm run format:check` | **OK** |
-| `pnpm run check:static-links` | **OK** |
-| `pnpm run smoke:static` | **OK** |
-| `pnpm run site:build` | **OK** |
-| `pnpm run test:e2e` | **OK** — 26/26 passed |
-| `pnpm run validate:questions` | **OK** |
+| Comando                                                    | Resultado                                                          |
+| ---------------------------------------------------------- | ------------------------------------------------------------------ |
+| `pnpm run format:check`                                    | **OK**                                                             |
+| `pnpm run check:static-links`                              | **OK**                                                             |
+| `pnpm run smoke:static`                                    | **OK**                                                             |
+| `pnpm run site:build`                                      | **OK**                                                             |
+| `pnpm run test:e2e`                                        | **OK** — 26/26 passed                                              |
+| `pnpm run validate:questions`                              | **OK**                                                             |
 | `pnpm exec playwright test e2e/qa-auth-ui-screens.spec.js` | **OK** — screenshots gerados em `test-results/qa/` (não versionar) |
 
 ### Notas

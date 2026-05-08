@@ -2,13 +2,13 @@
 
 ## Metas (roadmap)
 
-| Métrica | Alvo |
-|--------|------|
-| LCP | &lt; 2,5 s |
-| INP | &lt; 200 ms |
-| CLS | &lt; 0,1 |
-| Lighthouse Performance (mobile) | ≥ 85 |
-| Lighthouse Performance (desktop) | ≥ 95 |
+| Métrica                          | Alvo        |
+| -------------------------------- | ----------- |
+| LCP                              | &lt; 2,5 s  |
+| INP                              | &lt; 200 ms |
+| CLS                              | &lt; 0,1    |
+| Lighthouse Performance (mobile)  | ≥ 85        |
+| Lighthouse Performance (desktop) | ≥ 95        |
 
 ## Já aplicado no código
 

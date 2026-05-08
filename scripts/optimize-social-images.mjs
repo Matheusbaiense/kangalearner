@@ -18,9 +18,7 @@ async function main() {
     console.error("Missing", ogPng);
     process.exit(1);
   }
-  await sharp(ogPng)
-    .webp({ quality: 82 })
-    .toFile(path.join(socialDir, "og-image.webp"));
+  await sharp(ogPng).webp({ quality: 82 }).toFile(path.join(socialDir, "og-image.webp"));
   console.log("Wrote assets/img/social/og-image.webp");
 
   const markSvg = path.join(brandDir, "logo-mark.svg");

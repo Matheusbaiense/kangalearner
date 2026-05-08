@@ -2,14 +2,14 @@
 
 ## Matriz de testes manual (roadmap)
 
-| Ambiente        | Versão / notas                          |
-|----------------|-------------------------------------------|
-| Chrome desktop | Última estável                            |
-| Firefox        | Última estável                            |
-| Safari desktop | Última estável (macOS)                    |
-| Edge           | Última estável                            |
-| iOS Safari     | iPhone — larguras 390 / 414              |
-| Android Chrome | Larguras típicas 360–412                  |
+| Ambiente       | Versão / notas              |
+| -------------- | --------------------------- |
+| Chrome desktop | Última estável              |
+| Firefox        | Última estável              |
+| Safari desktop | Última estável (macOS)      |
+| Edge           | Última estável              |
+| iOS Safari     | iPhone — larguras 390 / 414 |
+| Android Chrome | Larguras típicas 360–412    |
 
 ## Larguras úteis (px)
 

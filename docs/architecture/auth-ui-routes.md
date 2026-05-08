@@ -3,6 +3,7 @@
 This document describes the **hash-based** routes implemented in the static site (repo root) for the I1 UI skeleton.
 
 ### Principles
+
 - **No real authentication**: no Supabase session, no backend calls, no `.env`.
 - **Role model is mocked locally** using `localStorage`.
 - **Guards are client-side only** and exist to keep UI flows realistic.
@@ -12,6 +13,7 @@ This document describes the **hash-based** routes implemented in the static site
 ### Route groups
 
 #### Auth (public)
+
 - `#login`
 - `#signup`
 - `#forgot-password`
@@ -22,6 +24,7 @@ This document describes the **hash-based** routes implemented in the static site
 - `#session-expired`
 
 #### Account (guarded: signed-in)
+
 - `#account`
 - `#profile`
 - `#settings`
@@ -31,6 +34,7 @@ This document describes the **hash-based** routes implemented in the static site
 - `#notifications`
 
 #### Premium / pricing / billing
+
 - Public:
   - `#pricing`
 - Guarded (premium or admin):
@@ -40,6 +44,7 @@ This document describes the **hash-based** routes implemented in the static site
   - `#upgrade-cancelled`
 
 #### Admin (guarded: admin)
+
 - `#admin`
 - `#admin-users`
 - `#admin-reports`
@@ -49,6 +54,7 @@ This document describes the **hash-based** routes implemented in the static site
 - `#admin-audit-log`
 
 #### Legal / trust (public)
+
 - `#privacy-policy`
 - `#terms`
 - `#security-policy`
@@ -57,9 +63,9 @@ This document describes the **hash-based** routes implemented in the static site
 - `#contact-support`
 
 ### Key files
+
 - `assets/js/router.js`: route table + `#page-root` renderer + guard hook
 - `assets/js/auth/mock-auth-state.js`: mock role state
 - `assets/js/auth/route-guards.js`: guard decisions + notice handoff
 - `assets/js/pages/*-page.js`: page renderers
 - `assets/js/locales.js`: EN/PT/ES strings (static i18n)
-
