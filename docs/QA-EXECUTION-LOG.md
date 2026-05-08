@@ -644,3 +644,36 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 ### Notas
 
 - **/api sync hooks** em `assets/js/app.js` e `assets/js/quiz-engine.js`: **não alterados** (deferido por risco).
+
+---
+
+## 2026-05-08 — SAFE hygiene follow-up (static root)
+
+### Branch
+
+- `chore/pre-supabase-code-cleanup`
+
+### Safe items applied
+
+- `assets/js/router.js`: removido comentário redundante (JSDoc já descreve o módulo).
+- `assets/js/quiz-engine.js`:
+  - `_lang` param name (antes `lang`) em `filterLabelLang` (sem mudança funcional).
+  - comentário de compatibilidade em `questionLang()`.
+  - fallback emoji consistente (`🌐`) no `ld-flag` quando lang é inesperado.
+- `assets/js/storage.js`: comentário explicando alias `answeredUnique` (compat).
+
+### Careful items deferred (needs separate approval)
+
+- Deduplicar `FLAGS` vs `LD_TRIGGER_SHORT`.
+- Ajustar detecção de sessão Supabase v1→v2 (`supabase.auth.token`/`sb-access-token`) no `quiz-engine.js`.
+
+### Comandos executados
+
+| Comando                       | Resultado |
+| ---------------------------- | --------- |
+| `pnpm run format:check`       | **OK**    |
+| `pnpm run check:static-links` | **OK**    |
+| `pnpm run smoke:static`       | **OK**    |
+| `pnpm run site:build`         | **OK**    |
+| `pnpm run test:e2e`           | **OK** — 27/27 passed |
+| `pnpm run validate:questions` | **OK**    |

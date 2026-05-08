@@ -252,7 +252,21 @@ Evidence highlights:
 - No changes to router/auth guards/quiz/storage/i18n behavior.
 
 Verification after Code Hygiene Pass:
-- Pending (will be executed after any edits; if no edits, keep last green status as baseline).
+- PASS (SAFE edits only): `format:check`, `check:static-links`, `smoke:static`, `site:build`, `test:e2e`, `validate:questions`
+
+### SAFE hygiene follow-up (applied)
+
+Applied (SAFE):
+- `assets/js/router.js`: remove redundant one-line comment duplicating module JSDoc.
+- `assets/js/quiz-engine.js`:
+  - Rename unused param `filterLabelLang(lang)` → `filterLabelLang(_lang)` (no behavior change).
+  - Update misleading comment on `questionLang()` (compat alias).
+  - Align unknown-language fallback emoji to `🌐` (consistent with `setLang`).
+- `assets/js/storage.js`: add clarifying comment to `answeredUnique` alias (compat field).
+
+Deferred (CAREFUL — needs separate approval):
+- `assets/js/quiz-engine.js`: dedupe `FLAGS` vs `LD_TRIGGER_SHORT`.
+- `assets/js/quiz-engine.js`: replace stale Supabase v1 session keys (`supabase.auth.token`, `sb-access-token`) check.
 
 ### Build notes (Vite)
 

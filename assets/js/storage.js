@@ -385,7 +385,7 @@
       state: state,
       totalQuestions,
       answered,
-      answeredUnique: answered,
+      answeredUnique: answered, // intentional alias kept for practice-page.js compatibility
       correct,
       incorrect,
       unanswered,

@@ -169,7 +169,7 @@ const DW = {
     return this.state === "AU" ? "WA" : this.state;
   },
 
-  filterLabelLang(lang) {
+  filterLabelLang(_lang) {
     return this.getDisplayLang();
   },
 
@@ -194,7 +194,7 @@ const DW = {
     return null;
   },
 
-  /** Legacy alias for question copy primary language (= display). */
+  /** Kept for external-script compatibility; internally superseded by getDisplayLang(). */
   questionLang() {
     return this.getDisplayLang();
   },
@@ -1292,7 +1292,7 @@ const DW = {
     const d = this.getDisplayLang();
     document.body.className = "mode-" + d;
     document.documentElement.lang = d === "pt" ? "pt-BR" : d === "es" ? "es" : "en";
-    document.getElementById("ld-flag").textContent = FLAGS[this.lang] || "🇧🇷";
+    document.getElementById("ld-flag").textContent = FLAGS[this.lang] || "🌐";
     document.getElementById("ld-name").textContent = ldTriggerLabel(this.lang);
 
     let ldResizeT;
