@@ -180,7 +180,14 @@
     QUIZ_ROOT = document.getElementById("quiz-root");
     watchSimCompletion();
     window.addEventListener("hashchange", navigate);
-    navigate();
+    function startNav() {
+      navigate();
+    }
+    if (window.KL_AUTH_PROVIDER && typeof window.KL_AUTH_PROVIDER.whenReady === "function") {
+      window.KL_AUTH_PROVIDER.whenReady().then(startNav).catch(startNav);
+    } else {
+      startNav();
+    }
   }
 
   // ── Navigate ──────────────────────────────────────────────────────────────
@@ -191,7 +198,7 @@
     var param = parts[1] || null;
     var scrollTarget = null;
 
-    // Route guards (mock roles only). Never destroy #quiz-root.
+    // Route guards (KL_AUTH_PROVIDER: Supabase session + mock fallback). Never destroy #quiz-root.
     try {
       var GG = window.KL_ROUTE_GUARDS;
       if (GG && typeof GG.guardRoute === "function") {
@@ -592,11 +599,16 @@
   function bindAuthAndAccountUi() {
     bindLoginForm();
     bindSignupForm();
+    bindGoogleAuthButtons();
     bindForgotForm();
     bindResetForm();
     bindVerifyButtons();
+    bindAuthCallbackPage();
+    bindLogoutPage();
     bindAccountRoleButtons();
     bindProfileForm();
+    bindProfilePrefill();
+    bindSecurityStatus();
     bindPrivacyToggles();
     bindDataControls();
     bindSupportForm();
@@ -663,13 +675,58 @@
       } else hide("kl-login-password-err");
 
       if (emailErr || passErr) return;
+      if (form.__klSubmitting) return;
+      var submitBtn = form.querySelector("button[type='submit']");
+      form.__klSubmitting = true;
+      if (submitBtn) submitBtn.disabled = true;
 
-      // Mock behaviour: show placeholder notice and set role to "user" (still no real auth).
-      try {
-        if (window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.setRole) window.KL_AUTH_MOCK.setRole("user");
-      } catch (e2) {}
-      setText("kl-login-notice", t("auth.login.placeholderNotice", "Auth is not connected yet."));
-      show("kl-login-notice");
+      var S = window.KL_AUTH_SERVICE;
+      var finish = function () {
+        form.__klSubmitting = false;
+        if (submitBtn) submitBtn.disabled = false;
+      };
+
+      if (!S || typeof S.signInWithEmail !== "function") {
+        setText(
+          "kl-login-notice",
+          t("auth.common.notConfigured", "Authentication is not configured yet.")
+        );
+        show("kl-login-notice");
+        finish();
+        return;
+      }
+
+      S.signInWithEmail(email, pass)
+        .then(function (res) {
+          if (!res || !res.ok) {
+            var msg =
+              res && res.error
+                ? res.error
+                : t("auth.error.generic", "Something went wrong. Please try again.");
+            if (res && res.error === S.NOT_CONFIGURED_MSG) {
+              msg = t("auth.common.notConfigured", "Authentication is not configured yet.");
+            }
+            setText("kl-login-notice", msg);
+            show("kl-login-notice");
+            return;
+          }
+          try {
+            if (window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.setRole) {
+              window.KL_AUTH_MOCK.setRole("user");
+            }
+          } catch (e2) {}
+          setText("kl-login-notice", t("auth.login.success", "Signed in."));
+          show("kl-login-notice");
+          window.location.hash = "#account";
+        })
+        .catch(function () {
+          setText(
+            "kl-login-notice",
+            t("auth.error.generic", "Something went wrong. Please try again.")
+          );
+          show("kl-login-notice");
+        })
+        .finally(finish);
     });
   }
 
@@ -735,15 +792,69 @@
         hasErr = true;
       }
       if (hasErr) return;
+      if (form.__klSubmitting) return;
+      var submitBtn = form.querySelector("button[type='submit']");
+      form.__klSubmitting = true;
+      if (submitBtn) submitBtn.disabled = true;
 
-      try {
-        if (window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.setRole) window.KL_AUTH_MOCK.setRole("user");
-      } catch (e2) {}
-      setText(
-        "kl-signup-notice",
-        t("auth.signup.placeholderNotice", "Account creation is not connected.")
-      );
-      show("kl-signup-notice");
+      var S = window.KL_AUTH_SERVICE;
+      var finish = function () {
+        form.__klSubmitting = false;
+        if (submitBtn) submitBtn.disabled = false;
+      };
+
+      if (!S || typeof S.signUpWithEmail !== "function") {
+        setText(
+          "kl-signup-notice",
+          t("auth.common.notConfigured", "Authentication is not configured yet.")
+        );
+        show("kl-signup-notice");
+        finish();
+        return;
+      }
+
+      S.signUpWithEmail(email, pass, { full_name: first, first_name: first })
+        .then(function (res) {
+          if (!res || !res.ok) {
+            var msg =
+              res && res.error
+                ? res.error
+                : t("auth.error.generic", "Something went wrong. Please try again.");
+            if (res && res.error === S.NOT_CONFIGURED_MSG) {
+              msg = t("auth.common.notConfigured", "Authentication is not configured yet.");
+            }
+            setText("kl-signup-notice", msg);
+            show("kl-signup-notice");
+            return;
+          }
+          try {
+            if (window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.setRole) {
+              window.KL_AUTH_MOCK.setRole("user");
+            }
+          } catch (e2) {}
+          if (res.session) {
+            setText(
+              "kl-signup-notice",
+              t("auth.signup.success", "Account created. You are signed in.")
+            );
+            show("kl-signup-notice");
+            window.location.hash = "#account";
+          } else {
+            setText(
+              "kl-signup-notice",
+              t("auth.signup.checkEmail", "Check your email to confirm your account.")
+            );
+            show("kl-signup-notice");
+          }
+        })
+        .catch(function () {
+          setText(
+            "kl-signup-notice",
+            t("auth.error.generic", "Something went wrong. Please try again.")
+          );
+          show("kl-signup-notice");
+        })
+        .finally(finish);
     });
   }
 
@@ -760,11 +871,54 @@
         return;
       }
       hide("kl-forgot-email-err");
-      setText(
-        "kl-forgot-notice",
-        t("auth.forgot.placeholderNotice", "Password reset is not connected.")
-      );
-      show("kl-forgot-notice");
+      if (form.__klSubmitting) return;
+      var submitBtn = form.querySelector("button[type='submit']");
+      form.__klSubmitting = true;
+      if (submitBtn) submitBtn.disabled = true;
+      var S = window.KL_AUTH_SERVICE;
+      var finish = function () {
+        form.__klSubmitting = false;
+        if (submitBtn) submitBtn.disabled = false;
+      };
+
+      if (!S || typeof S.resetPassword !== "function") {
+        setText(
+          "kl-forgot-notice",
+          t("auth.common.notConfigured", "Authentication is not configured yet.")
+        );
+        show("kl-forgot-notice");
+        finish();
+        return;
+      }
+
+      S.resetPassword(email)
+        .then(function (res) {
+          if (!res || !res.ok) {
+            var msg =
+              res && res.error
+                ? res.error
+                : t("auth.error.generic", "Something went wrong. Please try again.");
+            if (res && res.error === S.NOT_CONFIGURED_MSG) {
+              msg = t("auth.common.notConfigured", "Authentication is not configured yet.");
+            }
+            setText("kl-forgot-notice", msg);
+            show("kl-forgot-notice");
+            return;
+          }
+          setText(
+            "kl-forgot-notice",
+            t("auth.forgot.sent", "If that email is registered, you will receive a reset link.")
+          );
+          show("kl-forgot-notice");
+        })
+        .catch(function () {
+          setText(
+            "kl-forgot-notice",
+            t("auth.error.generic", "Something went wrong. Please try again.")
+          );
+          show("kl-forgot-notice");
+        })
+        .finally(finish);
     });
   }
 
@@ -793,11 +947,54 @@
         hasErr = true;
       }
       if (hasErr) return;
-      setText(
-        "kl-reset-notice",
-        t("auth.reset.placeholderNotice", "Password reset is not connected.")
-      );
-      show("kl-reset-notice");
+      if (form.__klSubmitting) return;
+      var submitBtn = form.querySelector("button[type='submit']");
+      form.__klSubmitting = true;
+      if (submitBtn) submitBtn.disabled = true;
+      var S = window.KL_AUTH_SERVICE;
+      var finish = function () {
+        form.__klSubmitting = false;
+        if (submitBtn) submitBtn.disabled = false;
+      };
+
+      if (!S || typeof S.updatePassword !== "function") {
+        setText(
+          "kl-reset-notice",
+          t("auth.common.notConfigured", "Authentication is not configured yet.")
+        );
+        show("kl-reset-notice");
+        finish();
+        return;
+      }
+
+      S.updatePassword(pass)
+        .then(function (res) {
+          if (!res || !res.ok) {
+            var msg =
+              res && res.error
+                ? res.error
+                : t("auth.error.generic", "Something went wrong. Please try again.");
+            if (res && res.error === S.NOT_CONFIGURED_MSG) {
+              msg = t("auth.common.notConfigured", "Authentication is not configured yet.");
+            }
+            setText("kl-reset-notice", msg);
+            show("kl-reset-notice");
+            return;
+          }
+          setText("kl-reset-notice", t("auth.reset.success", "Your password was updated."));
+          show("kl-reset-notice");
+          window.setTimeout(function () {
+            window.location.hash = "#login";
+          }, 800);
+        })
+        .catch(function () {
+          setText(
+            "kl-reset-notice",
+            t("auth.error.generic", "Something went wrong. Please try again.")
+          );
+          show("kl-reset-notice");
+        })
+        .finally(finish);
     });
   }
 
@@ -806,17 +1003,250 @@
     if (resend && !resend.__klBound) {
       resend.__klBound = true;
       resend.addEventListener("click", function () {
-        setText("kl-verify-notice", t("auth.verify.placeholderNotice", "Not connected yet."));
-        show("kl-verify-notice");
+        if (resend.__klBusy) return;
+        var S = window.KL_AUTH_SERVICE;
+        if (!S || !window.KL_SUPABASE || !window.KL_SUPABASE.isSupabaseConfigured()) {
+          setText(
+            "kl-verify-notice",
+            t("auth.common.notConfigured", "Authentication is not configured yet.")
+          );
+          show("kl-verify-notice");
+          return;
+        }
+        resend.__klBusy = true;
+        resend.disabled = true;
+        S.getCurrentUser()
+          .then(function (u) {
+            if (!u || !u.email) {
+              setText(
+                "kl-verify-notice",
+                t("auth.verify.noUser", "Sign in again to resend verification.")
+              );
+              show("kl-verify-notice");
+              return;
+            }
+            return window.KL_SUPABASE.ensureClientReady().then(function (c) {
+              if (!c) return;
+              return c.auth.resend({ type: "signup", email: u.email });
+            });
+          })
+          .then(function (r) {
+            if (r && r.error) {
+              setText("kl-verify-notice", t("auth.error.generic", "Something went wrong."));
+              show("kl-verify-notice");
+              return;
+            }
+            if (r === undefined) return;
+            setText("kl-verify-notice", t("auth.verify.resent", "Verification email sent."));
+            show("kl-verify-notice");
+          })
+          .catch(function () {
+            setText(
+              "kl-verify-notice",
+              t("auth.error.generic", "Something went wrong. Please try again.")
+            );
+            show("kl-verify-notice");
+          })
+          .finally(function () {
+            resend.__klBusy = false;
+            resend.disabled = false;
+          });
       });
     }
     var change = document.getElementById("kl-verify-change");
     if (change && !change.__klBound) {
       change.__klBound = true;
       change.addEventListener("click", function () {
-        setText("kl-verify-notice", t("auth.verify.placeholderNotice", "Not connected yet."));
-        show("kl-verify-notice");
+        window.location.hash = "#signup";
       });
+    }
+  }
+
+  function bindGoogleAuthButtons() {
+    ["kl-login-google", "kl-signup-google"].forEach(function (id) {
+      var btn = document.getElementById(id);
+      if (!btn || btn.__klBound) return;
+      btn.__klBound = true;
+      btn.addEventListener("click", function () {
+        if (btn.__klBusy) return;
+        var S = window.KL_AUTH_SERVICE;
+        if (!S || !window.KL_SUPABASE || !window.KL_SUPABASE.isSupabaseConfigured()) {
+          var nid = id === "kl-login-google" ? "kl-login-notice" : "kl-signup-notice";
+          setText(nid, t("auth.common.googleUnavailable", "Google sign-in is not available yet."));
+          show(nid);
+          return;
+        }
+        btn.__klBusy = true;
+        btn.disabled = true;
+        S.signInWithGoogle()
+          .then(function (res) {
+            if (!res || !res.ok) {
+              var nid = id === "kl-login-google" ? "kl-login-notice" : "kl-signup-notice";
+              var msg =
+                res && res.error
+                  ? res.error
+                  : t("auth.error.generic", "Something went wrong. Please try again.");
+              if (res && res.error === S.NOT_CONFIGURED_MSG) {
+                msg = t("auth.common.notConfigured", "Authentication is not configured yet.");
+              }
+              setText(nid, msg);
+              show(nid);
+            }
+          })
+          .catch(function () {
+            var nid = id === "kl-login-google" ? "kl-login-notice" : "kl-signup-notice";
+            setText(nid, t("auth.error.generic", "Something went wrong. Please try again."));
+            show(nid);
+          })
+          .finally(function () {
+            btn.__klBusy = false;
+            btn.disabled = false;
+          });
+      });
+    });
+  }
+
+  function bindAuthCallbackPage() {
+    var st = document.getElementById("kl-auth-callback-status");
+    if (!st || st.__klBound) return;
+    st.__klBound = true;
+    var S = window.KL_AUTH_SERVICE;
+    if (!S || typeof S.exchangeUrlForSession !== "function") {
+      setText(
+        "kl-auth-callback-status",
+        t("auth.common.notConfigured", "Authentication is not configured yet.")
+      );
+      window.setTimeout(function () {
+        window.location.hash = "#login";
+      }, 1200);
+      return;
+    }
+    if (!window.KL_SUPABASE || !window.KL_SUPABASE.isSupabaseConfigured()) {
+      setText(
+        "kl-auth-callback-status",
+        t("auth.common.notConfigured", "Authentication is not configured yet.")
+      );
+      window.setTimeout(function () {
+        window.location.hash = "#login";
+      }, 1200);
+      return;
+    }
+    try {
+      var q = window.location.search || "";
+      if (q.indexOf("error=") !== -1) {
+        setText(
+          "kl-auth-callback-status",
+          t("auth.callback.failed", "Sign-in was cancelled or failed.")
+        );
+        window.setTimeout(function () {
+          window.location.hash = "#login";
+        }, 1600);
+        return;
+      }
+    } catch (e) {}
+    S.exchangeUrlForSession()
+      .then(function (res) {
+        if (!res || !res.ok) {
+          setText(
+            "kl-auth-callback-status",
+            (res && res.error) || t("auth.callback.failed", "Sign-in was cancelled or failed.")
+          );
+          window.setTimeout(function () {
+            window.location.hash = "#login";
+          }, 1600);
+          return;
+        }
+        if (res.session) {
+          try {
+            if (window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.setRole) {
+              window.KL_AUTH_MOCK.setRole("user");
+            }
+          } catch (e2) {}
+          window.location.hash = "#account";
+        } else {
+          window.location.hash = "#login";
+        }
+      })
+      .catch(function () {
+        setText(
+          "kl-auth-callback-status",
+          t("auth.callback.failed", "Sign-in was cancelled or failed.")
+        );
+        window.setTimeout(function () {
+          window.location.hash = "#login";
+        }, 1600);
+      });
+  }
+
+  function bindLogoutPage() {
+    var st = document.getElementById("kl-logout-status");
+    if (!st || st.__klBound) return;
+    st.__klBound = true;
+    var S = window.KL_AUTH_SERVICE;
+    if (S && typeof S.signOut === "function") {
+      S.signOut()
+        .then(function () {
+          setText("kl-logout-status", t("auth.logout.done", "You are signed out."));
+        })
+        .catch(function () {
+          setText("kl-logout-status", t("auth.logout.done", "You are signed out."));
+        });
+    } else {
+      setText("kl-logout-status", t("auth.logout.done", "You are signed out."));
+    }
+  }
+
+  function bindProfilePrefill() {
+    var emailEl = document.getElementById("kl-profile-email");
+    if (!emailEl || emailEl.__klPrefilled) return;
+    var S = window.KL_AUTH_SERVICE;
+    if (!S || typeof S.getCurrentUser !== "function") return;
+    S.getCurrentUser().then(function (u) {
+      if (!u) return;
+      emailEl.__klPrefilled = true;
+      if (u.email) emailEl.value = u.email;
+      var nameEl = document.getElementById("kl-profile-name");
+      if (nameEl && u.user_metadata) {
+        var m = u.user_metadata;
+        if (m.full_name) nameEl.value = String(m.full_name);
+        else if (m.first_name) nameEl.value = String(m.first_name);
+      }
+    });
+  }
+
+  function bindSecurityStatus() {
+    var el = document.getElementById("kl-security-status");
+    if (!el || el.__klBound) return;
+    el.__klBound = true;
+    var parts = [];
+    var cfg =
+      window.KL_SUPABASE && window.KL_SUPABASE.isSupabaseConfigured
+        ? window.KL_SUPABASE.isSupabaseConfigured()
+        : false;
+    parts.push(
+      cfg
+        ? t("account.security.supabaseOn", "Cloud sign-in is configured for this build.")
+        : t("account.security.supabaseOff", "Cloud sign-in is not configured (guest / mock mode).")
+    );
+    var S = window.KL_AUTH_SERVICE;
+    if (S && typeof S.getCurrentSession === "function") {
+      S.getCurrentSession().then(function (sess) {
+        if (sess && sess.user && sess.user.email) {
+          parts.push(
+            t("account.security.signedInAs", "Session email: {{email}}").replace(
+              "{{email}}",
+              String(sess.user.email)
+            )
+          );
+        } else {
+          parts.push(
+            t("account.security.noCloudSession", "No active cloud session in this browser.")
+          );
+        }
+        el.textContent = parts.join(" ");
+      });
+    } else {
+      el.textContent = parts.join(" ");
     }
   }
 

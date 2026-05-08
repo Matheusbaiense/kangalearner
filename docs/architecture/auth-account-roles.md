@@ -11,12 +11,16 @@ This branch implements a **UI skeleton** for future authentication and accounts.
 - Legal/trust pages (privacy, terms, security policy, deletion, not official, support)
 - Architecture docs + future Supabase migration draft
 
-### What this is NOT
+### Optional Supabase (static site)
 
-- No Supabase connection
-- No real auth/session
-- No backend / API
-- No Stripe / billing logic
+When `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are set at build time (or matching `<meta name="kl-supabase-*">` / injected env), the static SPA loads `@supabase/supabase-js` and uses **`window.KL_AUTH_PROVIDER`** for real sessions (email, Google OAuth, password reset). **Service role is never used in the browser.**
+
+When Supabase is **not** configured, behavior matches the original mock-only model: no network auth, guest + `kl-mock-role` drive guards.
+
+### What this is NOT (yet / out of scope)
+
+- No shared backend beyond Supabase Auth for the static product line
+- No Stripe / billing logic on static (premium remains mock for routing demos)
 - No Liquid Glass work
 
 ### Role model
@@ -40,7 +44,10 @@ Stored in `localStorage` under key `kl-mock-role`.
 ### Key modules
 
 - `assets/js/auth/mock-auth-state.js`: `window.KL_AUTH_MOCK`
-- `assets/js/auth/route-guards.js`: `window.KL_ROUTE_GUARDS`
+- `assets/js/auth/supabase-client.js`: `window.KL_SUPABASE`
+- `assets/js/auth/auth-service.js`: `window.KL_AUTH_SERVICE`
+- `assets/js/auth/auth-provider.js`: `window.KL_AUTH_PROVIDER`
+- `assets/js/auth/route-guards.js`: `window.KL_ROUTE_GUARDS` (prefers provider when present)
 
 ### Guard notice handoff
 

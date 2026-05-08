@@ -358,7 +358,9 @@
         },
         common: {
           or: "ou",
-          backToLogin: "Voltar para entrar"
+          backToLogin: "Voltar para entrar",
+          notConfigured: "A autenticação ainda não está configurada.",
+          googleUnavailable: "O login com Google ainda não está disponível."
         },
         fields: {
           firstName: "Nome",
@@ -378,6 +380,9 @@
           confirmMismatch: "As senhas não coincidem.",
           termsRequired: "Você precisa aceitar os Termos e a Política de Privacidade."
         },
+        error: {
+          generic: "Algo deu errado. Tente novamente."
+        },
         login: {
           eyebrow: "Conta",
           title: "Entrar no KangaLearner",
@@ -389,6 +394,7 @@
           forgot: "Esqueceu a senha?",
           create: "Criar conta",
           guest: "Continuar como visitante",
+          success: "Sessão iniciada.",
           placeholderNotice:
             "A autenticação ainda não está conectada. Esta tela está pronta para integração com Supabase."
         },
@@ -404,6 +410,8 @@
           google: "Continuar com Google",
           haveAccount: "Já tem conta? Entrar",
           guest: "Continuar como visitante",
+          success: "Conta criada. Você está conectado.",
+          checkEmail: "Verifique seu e-mail para confirmar a conta.",
           placeholderNotice:
             "A criação de conta ainda não está conectada. Esta tela está pronta para integração com Supabase."
         },
@@ -412,6 +420,7 @@
           title: "Esqueci minha senha",
           subtitle: "Enviaremos um link para redefinir sua senha.",
           submit: "Enviar link de redefinição",
+          sent: "Se esse e-mail estiver cadastrado, você receberá um link de redefinição.",
           placeholderNotice: "A redefinição de senha ainda não está conectada."
         },
         reset: {
@@ -419,6 +428,7 @@
           title: "Redefinir senha",
           subtitle: "Defina uma nova senha para sua conta.",
           submit: "Salvar nova senha",
+          success: "Sua senha foi atualizada.",
           placeholderNotice: "A redefinição de senha ainda não está conectada."
         },
         verify: {
@@ -427,15 +437,19 @@
           subtitle: "Enviamos um link de verificação para seu endereço de e-mail.",
           resend: "Reenviar e-mail",
           changeEmail: "Alterar e-mail",
+          resent: "E-mail de verificação enviado.",
+          noUser: "Entre novamente para reenviar a verificação.",
           placeholderNotice: "A verificação de e-mail ainda não está conectada."
         },
         callback: {
           title: "Entrando…",
-          subtitle: "Esta página será conectada ao Supabase mais tarde."
+          subtitle: "Esta página será conectada ao Supabase mais tarde.",
+          failed: "O login foi cancelado ou falhou."
         },
         logout: {
           title: "Saindo…",
           subtitle: "O logout será conectado ao Supabase mais tarde.",
+          done: "Você saiu da conta.",
           backHome: "Voltar para o início"
         },
         sessionExpired: {
@@ -511,7 +525,11 @@
           kicker: "Conta",
           title: "Segurança",
           subtitle: "Controles de segurança serão habilitados quando o sync estiver conectado.",
-          placeholder: "Tudo aqui é placeholder nesta fase."
+          placeholder: "Tudo aqui é placeholder nesta fase.",
+          supabaseOn: "Login em nuvem configurado para esta versão.",
+          supabaseOff: "Login em nuvem não configurado (modo visitante / mock).",
+          signedInAs: "E-mail da sessão: {{email}}",
+          noCloudSession: "Não há sessão em nuvem ativa neste navegador."
         },
         privacy: {
           kicker: "Conta",
@@ -1092,7 +1110,12 @@
       },
       auth: {
         header: { signIn: "Sign in" },
-        common: { or: "or", backToLogin: "Back to login" },
+        common: {
+          or: "or",
+          backToLogin: "Back to login",
+          notConfigured: "Authentication is not configured yet.",
+          googleUnavailable: "Google sign-in is not available yet."
+        },
         fields: {
           firstName: "First name",
           email: "Email",
@@ -1111,6 +1134,9 @@
           confirmMismatch: "Passwords do not match.",
           termsRequired: "You must agree to the Terms and Privacy Policy."
         },
+        error: {
+          generic: "Something went wrong. Please try again."
+        },
         login: {
           eyebrow: "Account",
           title: "Sign in to KangaLearner",
@@ -1122,6 +1148,7 @@
           forgot: "Forgot password?",
           create: "Create an account",
           guest: "Continue as guest",
+          success: "Signed in.",
           placeholderNotice:
             "Authentication is not connected yet. This screen is ready for Supabase integration."
         },
@@ -1136,6 +1163,8 @@
           google: "Continue with Google",
           haveAccount: "Already have an account? Sign in",
           guest: "Continue as guest",
+          success: "Account created. You are signed in.",
+          checkEmail: "Check your email to confirm your account.",
           placeholderNotice:
             "Account creation is not connected yet. This screen is ready for Supabase integration."
         },
@@ -1144,6 +1173,7 @@
           title: "Forgot your password?",
           subtitle: "We'll email you a reset link.",
           submit: "Send reset link",
+          sent: "If that email is registered, you will receive a reset link.",
           placeholderNotice: "Password reset is not connected yet."
         },
         reset: {
@@ -1151,6 +1181,7 @@
           title: "Reset password",
           subtitle: "Set a new password for your account.",
           submit: "Save new password",
+          success: "Your password was updated.",
           placeholderNotice: "Password reset is not connected yet."
         },
         verify: {
@@ -1159,15 +1190,19 @@
           subtitle: "We sent a verification link to your email address.",
           resend: "Resend email",
           changeEmail: "Change email",
+          resent: "Verification email sent.",
+          noUser: "Sign in again to resend verification.",
           placeholderNotice: "Email verification is not connected yet."
         },
         callback: {
           title: "Signing you in…",
-          subtitle: "This page will connect to Supabase later."
+          subtitle: "This page will connect to Supabase later.",
+          failed: "Sign-in was cancelled or failed."
         },
         logout: {
           title: "Signing you out…",
           subtitle: "Logout will connect to Supabase later.",
+          done: "You are signed out.",
           backHome: "Back to home"
         },
         sessionExpired: {
@@ -1231,7 +1266,11 @@
           kicker: "Account",
           title: "Security",
           subtitle: "Security controls will be enabled when account sync is connected.",
-          placeholder: "Everything here is placeholder in this phase."
+          placeholder: "Everything here is placeholder in this phase.",
+          supabaseOn: "Cloud sign-in is configured for this build.",
+          supabaseOff: "Cloud sign-in is not configured (guest / mock mode).",
+          signedInAs: "Session email: {{email}}",
+          noCloudSession: "No active cloud session in this browser."
         },
         privacy: {
           kicker: "Account",
@@ -1807,7 +1846,12 @@
       },
       auth: {
         header: { signIn: "Iniciar sesión" },
-        common: { or: "o", backToLogin: "Volver al inicio de sesión" },
+        common: {
+          or: "o",
+          backToLogin: "Volver al inicio de sesión",
+          notConfigured: "La autenticación aún no está configurada.",
+          googleUnavailable: "El inicio de sesión con Google aún no está disponible."
+        },
         fields: {
           firstName: "Nombre",
           email: "Correo electrónico",
@@ -1826,6 +1870,9 @@
           confirmMismatch: "Las contraseñas no coinciden.",
           termsRequired: "Debes aceptar los Términos y la Política de Privacidad."
         },
+        error: {
+          generic: "Algo salió mal. Inténtalo de nuevo."
+        },
         login: {
           eyebrow: "Cuenta",
           title: "Iniciar sesión en KangaLearner",
@@ -1837,6 +1884,7 @@
           forgot: "¿Olvidaste tu contraseña?",
           create: "Crear cuenta",
           guest: "Continuar como visitante",
+          success: "Sesión iniciada.",
           placeholderNotice:
             "La autenticación aún no está conectada. Esta pantalla está lista para integrarse con Supabase."
         },
@@ -1851,6 +1899,8 @@
           google: "Continuar con Google",
           haveAccount: "¿Ya tienes cuenta? Iniciar sesión",
           guest: "Continuar como visitante",
+          success: "Cuenta creada. Has iniciado sesión.",
+          checkEmail: "Revisa tu correo para confirmar la cuenta.",
           placeholderNotice:
             "La creación de cuenta aún no está conectada. Esta pantalla está lista para integrarse con Supabase."
         },
@@ -1859,6 +1909,7 @@
           title: "Recuperar contraseña",
           subtitle: "Te enviaremos un enlace para restablecer tu contraseña.",
           submit: "Enviar enlace de restablecimiento",
+          sent: "Si ese correo está registrado, recibirás un enlace de restablecimiento.",
           placeholderNotice: "El restablecimiento de contraseña aún no está conectado."
         },
         reset: {
@@ -1866,6 +1917,7 @@
           title: "Restablecer contraseña",
           subtitle: "Elige una nueva contraseña.",
           submit: "Guardar nueva contraseña",
+          success: "Tu contraseña se actualizó.",
           placeholderNotice: "El restablecimiento de contraseña aún no está conectado."
         },
         verify: {
@@ -1874,15 +1926,19 @@
           subtitle: "Te enviamos un enlace de verificación a tu correo.",
           resend: "Reenviar correo",
           changeEmail: "Cambiar correo",
+          resent: "Correo de verificación enviado.",
+          noUser: "Inicia sesión de nuevo para reenviar la verificación.",
           placeholderNotice: "La verificación de correo aún no está conectada."
         },
         callback: {
           title: "Iniciando sesión…",
-          subtitle: "Esta página se conectará a Supabase más adelante."
+          subtitle: "Esta página se conectará a Supabase más adelante.",
+          failed: "El inicio de sesión se canceló o falló."
         },
         logout: {
           title: "Cerrando sesión…",
           subtitle: "El logout se conectará a Supabase más adelante.",
+          done: "Has cerrado sesión.",
           backHome: "Volver al inicio"
         },
         sessionExpired: {
@@ -1946,7 +2002,11 @@
           kicker: "Cuenta",
           title: "Seguridad",
           subtitle: "Los controles se habilitarán cuando el sync esté conectado.",
-          placeholder: "Todo aquí es placeholder en esta fase."
+          placeholder: "Todo aquí es placeholder en esta fase.",
+          supabaseOn: "Inicio de sesión en la nube configurado para esta versión.",
+          supabaseOff: "Inicio de sesión en la nube no configurado (modo visitante / mock).",
+          signedInAs: "Correo de la sesión: {{email}}",
+          noCloudSession: "No hay sesión en la nube activa en este navegador."
         },
         privacy: {
           kicker: "Cuenta",

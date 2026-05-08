@@ -1,8 +1,7 @@
 /**
  * KangaLearner — Route guards for static-site hash routes.
  *
- * No backend. No Supabase. No Stripe.
- * Guards are based on KL_AUTH_MOCK role only.
+ * Client-side only. Uses KL_AUTH_PROVIDER (Supabase session + mock fallback).
  */
 (function () {
   "use strict";
@@ -48,7 +47,7 @@
   }
 
   function roleApi() {
-    return window.KL_AUTH_MOCK;
+    return window.KL_AUTH_PROVIDER || window.KL_AUTH_MOCK;
   }
 
   function requireSignedIn() {

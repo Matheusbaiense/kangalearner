@@ -31,6 +31,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 ## Legado estático (raiz)
 
 - [x] `pnpm run validate:questions` em PRs que toquem `assets/js/data/questions.js`.
+- [x] **Supabase Auth (fundação)**: cliente lazy + serviço + provider no estático; env `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` em `.env.example`; sem service role no browser. _Follow-up:_ QA manual com projeto Supabase real (OAuth redirect URLs, email confirm).
 - [ ] Documentar deploy Next (ex. Vercel) vs GitHub Pages estático.
 - [ ] **A11y/contraste**: validar contraste real do CTA amber (`.btn-primary`/`.btn-gold`) e foco global (`:focus-visible`) em browsers alvo.
 - [x] **Tokens radius**: corrigido `--radius-lg`/`--radius-xl` para manter escala (evita `lg == md`).

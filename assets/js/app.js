@@ -220,11 +220,14 @@
       var host = document.getElementById("kl-auth-header-controls");
       if (!host) return;
 
+      function authSurface() {
+        return window.KL_AUTH_PROVIDER || window.KL_AUTH_MOCK;
+      }
+
       function currentRole() {
         try {
-          return window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.getRole
-            ? window.KL_AUTH_MOCK.getRole()
-            : "guest";
+          var A = authSurface();
+          return A && A.getRole ? A.getRole() : "guest";
         } catch (e) {
           return "guest";
         }
@@ -232,9 +235,8 @@
 
       function roleName() {
         try {
-          return window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.getDisplayName
-            ? window.KL_AUTH_MOCK.getDisplayName()
-            : "Guest";
+          var A = authSurface();
+          return A && A.getDisplayName ? A.getDisplayName() : "Guest";
         } catch (e) {
           return "Guest";
         }

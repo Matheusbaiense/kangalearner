@@ -22,6 +22,8 @@
 
   function roleLabel() {
     try {
+      var P = window.KL_AUTH_PROVIDER;
+      if (P && typeof P.getDisplayName === "function") return P.getDisplayName();
       var A = window.KL_AUTH_MOCK;
       if (A && typeof A.getDisplayName === "function") return A.getDisplayName();
       return "Guest";
@@ -139,6 +141,7 @@
       "</div>" +
       '<div class="account-card">' +
       '<p class="page-sub" data-i18n="account.security.placeholder"><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></p>' +
+      '<div class="auth-notice" id="kl-security-status" role="status"></div>' +
       "</div>" +
       "</div>" +
       "</section>"
