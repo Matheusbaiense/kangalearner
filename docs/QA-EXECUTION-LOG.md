@@ -2,6 +2,64 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-08 — Auditoria final pós-7110cb9 (pre-auth, público + local)
+
+**Objetivo:** confirmar fecho de fase **depois** do commit de produto `7110cb9`, com `origin/main` já em **`5c02ffa`** (só docs), validar **GitHub Pages** e QA público obrigatório antes de Login/Supabase.
+
+### Git
+
+| Item | Resultado |
+| --- | --- |
+| **Latest `origin/main`** | **`5c02ffa`** (`docs(static): record pre-auth freeze audit`); **contém `7110cb9`** na história (pai direto) |
+| **Working tree** | **Não limpo** — `qa-practice-polish-check.mjs` continua **untracked** (não commitar) |
+| **`qa-output/`** | Ignorado por `.gitignore` |
+
+### Deploy público
+
+| Verificação | Resultado |
+| --- | --- |
+| **API GitHub** `commits/main` | SHA **`5c02ffa`** (HEAD publicado no default branch) |
+| **`sw.js` público** | `kanga-assets-v6` confirmado por fetch a `https://matheusbaiense.github.io/kangalearner/sw.js` |
+| **`7110cb9` “deployed”** | **Sim** no sentido de **estar contido no branch que alimenta Pages**; o HTML/JS de produto do hub Practice é o de **`7110cb9`** (filho apenas de `5c02ffa` é bump de docs) |
+
+### Comandos locais (todos existem, todos OK nesta corrida)
+
+| Comando | Resultado |
+| --- | --- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run test:e2e` | **OK** — **15/15** |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+
+### QA público obrigatório (Puppeteer, sessão limpa)
+
+Script **temporário** (não versionado): unregister SW + limpar storages/caches + verificações EN/PT/ES, PT+EN / ES+EN, `#practice` (3 cards, sem Mock/Progress no header), `#progress` + back, Resources (WA + coming soon), Glossary (carrega; **sem campo de busca** — esperado), Topic Practice (feedback após resposta), Practice Mock (1/30, sem “Review mistakes” no início), Exam Simulation (sem feedback imediato tipo `answer-review` no cartão após 1 clique), **0** `console.error` rastreados, **0** respostas **404** rastreadas, **sem** `/src/main.js`.
+
+| Resultado | **PASS** |
+| --- | --- |
+
+**Nota:** “Revisar erros” / fila Duolingo / debrief completo ao fim de 30Q **não** foram exaustivamente automatizados linha-a-linha; comportamento parcial está coberto por **e2e locais** e revisão manual continua recomendada para G18.
+
+### Bugs
+
+| Severidade | Estado |
+| --- | --- |
+| Críticos | **Nenhum** na corrida local + público |
+| Médios | Checklist **G18** (GA4, Sentry, domínio, Search Console, Lighthouse prod, tag `v1.0.0`) ainda **manual / sem evidência** |
+| Baixo | `qa-practice-polish-check.mjs` local; roadmap UTF-8 em blocos antigos |
+
+### Auth / Supabase
+
+**Pronto para iniciar planeamento/implementação de Login/Supabase no static pre-auth sense: Sim**, com reservas: **G/H** no ficheiro de roadmap mantêm itens formais por fechar; decisão de produto deve assumir **ops manuais** e possível **gap** entre texto do roadmap (“após H18”) e trabalho já feito no hub — ver bloco “Cursor execution log” em `.claude/plan/kangalearner-roadmap.md`.
+
+### Liquid Glass
+
+Mantém-se **fora desta fase** — track de design separado (ver roadmap local).
+
+---
+
 ## 2026-05-08 — Pre-auth freeze audit (site estático root, antes de Login/Supabase)
 
 **Objetivo:** fechar a fase atual do produto público (GitHub Pages / SPA estático), confirmar estabilidade e documentação antes de iniciar Auth (Phase I / Supabase).
