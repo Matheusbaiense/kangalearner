@@ -215,7 +215,7 @@
 
     hydrateStaticI18n(initialLang);
 
-    // ── Auth header controls (mock roles only) ──────────────────────────────
+    // ── Auth header controls (KL_AUTH_PROVIDER when configured, else KL_AUTH_MOCK) ──
     (function initMockAuthHeaderControls() {
       var host = document.getElementById("kl-auth-header-controls");
       if (!host) return;

@@ -2,6 +2,35 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Cleanup Batch 1: comentários obsoletos (hygiene apenas)
+
+**Objetivo:** executar a primeira fatia **conservadora** da auditoria dead-code: só comentários em `assets/js/app.js` e `vite.config.js`, mais registo nos docs. **Sem** alteração de lógica, rotas, auth, quiz, perguntas, CSS, service worker, dependências, `apps/*`, `packages/core`.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **`app.js`** | Comentário do bloco auth header alinhado com `KL_AUTH_PROVIDER` + fallback `KL_AUTH_MOCK`. |
+| **`vite.config.js`** | JSDoc do topo alinhado com `pages.yml` + `pnpm run site:build` → `dist-vite`. |
+| **Docs** | `docs/QA-EXECUTION-LOG.md` (esta entrada); `docs/architecture/dead-code-and-refactor-audit.md` (Batch 1 comentários marcados como feitos; `pnpm why`/deps ainda pendentes). |
+
+### O que **não** foi feito (adiado)
+
+- `quiz-engine.js` TODO, root `@supabase/supabase-js`, exports `KL_SUPABASE`, CSS, `sw.js`, router, auth-provider, `package.json`.
+
+### Comandos de verificação
+
+| Comando | Resultado |
+| ------- | --------- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+| `pnpm run test:e2e` | **OK** — **29/29** |
+
+---
+
 ## 2026-05-09 — GitHub Pages: `VITE_BASE_PATH` + URLs absolutas no HTML (fix layout quebrado)
 
 **Problema:** em `https://matheusbaiense.github.io/kangalearner/`, HTML carregava mas CSS/JS podiam falhar (página sem estilo, i18n a mostrar todos os idiomas) por dependência de `<base>` + scripts relativos `assets/js/...`.
