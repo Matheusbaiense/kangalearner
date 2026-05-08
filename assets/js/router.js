@@ -3,7 +3,6 @@
  * Rotas de quiz mostram `#quiz-root` e escondem `#page-root`; as restantes fazem render HTML em `#page-root`.
  * API: `window.KL_ROUTER.go("#learn")`, páginas em `window.KL_PAGES`.
  */
-// KangaLearner SPA Router — hash-based navigation
 (function () {
   "use strict";
 

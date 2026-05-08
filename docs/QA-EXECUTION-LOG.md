@@ -609,3 +609,115 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 - **Legibilidade**: páginas longas/tabelas (Legal/Admin) mais sólidas, com menos blur.
 - **sw.js**: cache bump para `kanga-assets-v9`.
 - **QA screenshots**: gerados em `test-results/qa-art-direction-v1/` (não versionados).
+
+---
+
+## 2026-05-08 — Pre-Supabase code hygiene pass (static root)
+
+### Branch
+
+- `chore/pre-supabase-code-cleanup`
+
+### Escopo
+
+- Hygiene conservador + documentação (sem mudanças funcionais).
+- **Sem** Supabase/Stripe real.
+- **Sem** mudanças em perguntas/quiz/scoring/rotas públicas.
+- **Sem** mudanças em `apps/web`, `apps/mobile`, `supabase/migrations`, `packages/core/src/data/questions.ts`.
+- **Sem** mudanças em `.gitignore` e `sw.js`.
+
+### Limpeza executada
+
+- Batch 1 (local-only): removidos localmente `dist-vite/`, `qa-output/`, `test-results/`, `dist/` (não versionados).
+- Code hygiene: nenhuma remoção segura aplicada além de docs (comentários/logs mantidos quando intencionais).
+- `ChatGPT Image ... .png`: **mantidas** (não mover/deletar).
+- `qa-runner/`: **mantido** (deferido).
+
+### Comandos executados
+
+| Comando                       | Resultado |
+| ---------------------------- | --------- |
+| `pnpm run format:check`       | **OK**    |
+| `pnpm run check:static-links` | **OK**    |
+| `pnpm run smoke:static`       | **OK**    |
+
+### Notas
+
+- **/api sync hooks** em `assets/js/app.js` e `assets/js/quiz-engine.js`: **não alterados** (deferido por risco).
+
+---
+
+## 2026-05-08 — SAFE hygiene follow-up (static root)
+
+### Branch
+
+- `chore/pre-supabase-code-cleanup`
+
+### Safe items applied
+
+- `assets/js/router.js`: removido comentário redundante (JSDoc já descreve o módulo).
+- `assets/js/quiz-engine.js`:
+  - `_lang` param name (antes `lang`) em `filterLabelLang` (sem mudança funcional).
+  - comentário de compatibilidade em `questionLang()`.
+  - fallback emoji consistente (`🌐`) no `ld-flag` quando lang é inesperado.
+- `assets/js/storage.js`: comentário explicando alias `answeredUnique` (compat).
+
+### Careful items (historical — aplicados depois em `56fc684` / `aef9cd1`)
+
+- ~~Deduplicar `FLAGS` vs `LD_TRIGGER_SHORT`.~~
+- ~~Ajustar detecção de sessão Supabase v1→v2 no `quiz-engine.js`.~~
+
+### Comandos executados
+
+| Comando                       | Resultado |
+| ---------------------------- | --------- |
+| `pnpm run format:check`       | **OK**    |
+| `pnpm run check:static-links` | **OK**    |
+| `pnpm run smoke:static`       | **OK**    |
+| `pnpm run site:build`         | **OK**    |
+| `pnpm run test:e2e`           | **OK** — 27/27 passed |
+| `pnpm run validate:questions` | **OK**    |
+
+---
+
+## 2026-05-08 — CAREFUL auth prep (static root)
+
+### Branch
+
+- `chore/pre-supabase-code-cleanup`
+
+### CAREFUL item 1 applied — FLAGS / LD_TRIGGER_SHORT
+
+- `assets/js/quiz-engine.js`: `LD_TRIGGER_SHORT` agora aponta para `FLAGS` (fonte única; valores inalterados).
+
+### CAREFUL item 2 applied — Supabase Auth session detection (v2-compatible)
+
+- `assets/js/quiz-engine.js`: detecção de sessão (usada apenas quando `KANGA_ENABLE_BACKEND_SYNC` está ativo) agora reconhece:
+  - cookie no padrão `sb-<project-ref>-auth-token=…` (regex; commit `aef9cd1` — antes era check amplo `sb-`)
+  - chaves `localStorage` no padrão `sb-<project-ref>-auth-token`
+  - mantém fallback legacy para `supabase.auth.token` / `sb-access-token` (compat), com `TODO(supabase-v2-cutover)` em `aef9cd1`
+
+### Garantias
+
+- **Supabase conectado:** Não
+- **Network calls adicionadas:** Não (continua apenas `fetch("/api/attempts")` gated por flag, já existente)
+- **Env/secrets adicionados:** Não
+- **Perguntas/quiz/rotas/auth guards/storage schema:** sem mudanças
+
+### Comandos executados (smoke + full)
+
+| Comando                       | Resultado |
+| ---------------------------- | --------- |
+| `pnpm run format:check`       | **OK**    |
+| `pnpm run check:static-links` | **OK**    |
+| `pnpm run smoke:static`       | **OK**    |
+| `pnpm run site:build`         | **OK**    |
+| `pnpm run test:e2e`           | **OK** — 27/27 passed |
+| `pnpm run validate:questions` | **OK**    |
+
+---
+
+## 2026-05-09 — Audit timeline clarification (docs only)
+
+- `docs/architecture/pre-supabase-code-cleanup-audit.md`: secção CAREFUL com **timeline** explícita (`56fc684` → `aef9cd1`), sem parecer pendente.
+- Código de produção já estava em `aef9cd1` (`chore(static): tighten supabase auth session prep`); esta entrada só alinha documentação.
