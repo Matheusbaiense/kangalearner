@@ -268,6 +268,12 @@ Deferred (CAREFUL — needs separate approval):
 - `assets/js/quiz-engine.js`: dedupe `FLAGS` vs `LD_TRIGGER_SHORT`.
 - `assets/js/quiz-engine.js`: replace stale Supabase v1 session keys (`supabase.auth.token`, `sb-access-token`) check.
 
+### CAREFUL auth prep (applied)
+
+Applied (CAREFUL):
+- `assets/js/quiz-engine.js`: deduplicated `FLAGS` / `LD_TRIGGER_SHORT` (single source of truth; no label value changes).
+- `assets/js/quiz-engine.js`: updated session detection used by gated backend sync to recognize Supabase v2-style auth keys/cookies (still **no Supabase client**, **no env/secrets**, **no new network calls**).
+
 ### Build notes (Vite)
 
 - `pnpm run site:build` completes successfully, but Vite prints warnings like:

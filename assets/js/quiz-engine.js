@@ -1548,11 +1548,27 @@ DW.syncAttempt = function (q, isCorrect, chosen) {
   // Do not sync anonymous users
   const hasSession = (() => {
     try {
-      return (
-        document.cookie.includes("sb-access-token") ||
-        !!localStorage.getItem("sb-access-token") ||
-        !!localStorage.getItem("supabase.auth.token")
-      );
+      // Supabase v2 typically stores auth in localStorage under: sb-<project-ref>-auth-token
+      const modernSessionPattern = /^sb-.+-auth-token$/;
+      const legacyKeys = ["supabase.auth.token", "sb-access-token"];
+
+      if (typeof document !== "undefined" && typeof document.cookie === "string") {
+        const hasSbCookie = document.cookie
+          .split(";")
+          .some((c) => String(c).trim().startsWith("sb-"));
+        if (hasSbCookie) return true;
+      }
+
+      if (typeof localStorage === "undefined" || localStorage == null) return false;
+
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (!key) continue;
+        if (legacyKeys.includes(key)) return true;
+        if (modernSessionPattern.test(key)) return true;
+      }
+
+      return false;
     } catch {
       return false;
     }
@@ -1599,7 +1615,7 @@ const LD_TRIGGER_LONG = {
   pten: "Português + English",
   esen: "Español + English"
 };
-const LD_TRIGGER_SHORT = { pt: "PT", en: "EN", es: "ES", pten: "PT+EN", esen: "ES+EN" };
+const LD_TRIGGER_SHORT = FLAGS;
 
 function ldTriggerLabel(lang) {
   const short = window.matchMedia("(max-width: 640px)").matches;

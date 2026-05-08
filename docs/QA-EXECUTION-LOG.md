@@ -677,3 +677,40 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 | `pnpm run site:build`         | **OK**    |
 | `pnpm run test:e2e`           | **OK** — 27/27 passed |
 | `pnpm run validate:questions` | **OK**    |
+
+---
+
+## 2026-05-08 — CAREFUL auth prep (static root)
+
+### Branch
+
+- `chore/pre-supabase-code-cleanup`
+
+### CAREFUL item 1 applied — FLAGS / LD_TRIGGER_SHORT
+
+- `assets/js/quiz-engine.js`: `LD_TRIGGER_SHORT` agora aponta para `FLAGS` (fonte única; valores inalterados).
+
+### CAREFUL item 2 applied — Supabase Auth session detection (v2-compatible)
+
+- `assets/js/quiz-engine.js`: detecção de sessão (usada apenas quando `KANGA_ENABLE_BACKEND_SYNC` está ativo) agora reconhece:
+  - cookies com prefixo `sb-` (padrão Supabase v2)
+  - chaves `localStorage` no padrão `sb-<project-ref>-auth-token`
+  - mantém fallback legacy para `supabase.auth.token` / `sb-access-token` (compat)
+
+### Garantias
+
+- **Supabase conectado:** Não
+- **Network calls adicionadas:** Não (continua apenas `fetch("/api/attempts")` gated por flag, já existente)
+- **Env/secrets adicionados:** Não
+- **Perguntas/quiz/rotas/auth guards/storage schema:** sem mudanças
+
+### Comandos executados (smoke + full)
+
+| Comando                       | Resultado |
+| ---------------------------- | --------- |
+| `pnpm run format:check`       | **OK**    |
+| `pnpm run check:static-links` | **OK**    |
+| `pnpm run smoke:static`       | **OK**    |
+| `pnpm run site:build`         | **OK**    |
+| `pnpm run test:e2e`           | **OK** — 27/27 passed |
+| `pnpm run validate:questions` | **OK**    |
