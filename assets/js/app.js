@@ -215,6 +215,79 @@
 
     hydrateStaticI18n(initialLang);
 
+    // ── Auth header controls (mock roles only) ──────────────────────────────
+    (function initMockAuthHeaderControls() {
+      var host = document.getElementById("kl-auth-header-controls");
+      if (!host) return;
+
+      function currentRole() {
+        try {
+          return window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.getRole
+            ? window.KL_AUTH_MOCK.getRole()
+            : "guest";
+        } catch (e) {
+          return "guest";
+        }
+      }
+
+      function roleName() {
+        try {
+          return window.KL_AUTH_MOCK && window.KL_AUTH_MOCK.getDisplayName
+            ? window.KL_AUTH_MOCK.getDisplayName()
+            : "Guest";
+        } catch (e) {
+          return "Guest";
+        }
+      }
+
+      function render() {
+        var role = currentRole();
+        var signedIn = role !== "guest";
+        var isAdmin = role === "admin";
+
+        host.innerHTML = "";
+
+        if (!signedIn) {
+          var a = document.createElement("a");
+          a.className = "btn btn-secondary btn-compact";
+          a.href = "#login";
+          a.setAttribute("data-i18n", "auth.header.signIn");
+          a.innerHTML =
+            '<span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>';
+          host.appendChild(a);
+          return;
+        }
+
+        var chip = document.createElement("a");
+        chip.className = "auth-chip";
+        chip.href = "#account";
+        chip.setAttribute("aria-label", "Account");
+        chip.innerHTML =
+          '<span class="auth-chip-dot" aria-hidden="true"></span><span class="auth-chip-text">' +
+          roleName() +
+          "</span>";
+        host.appendChild(chip);
+
+        if (isAdmin) {
+          var admin = document.createElement("a");
+          admin.className = "btn btn-secondary btn-compact";
+          admin.href = "#admin";
+          admin.setAttribute("data-i18n", "admin.header.link");
+          admin.innerHTML =
+            '<span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>';
+          host.appendChild(admin);
+        }
+      }
+
+      render();
+      hydrateStaticI18n(getActiveLang());
+
+      window.addEventListener("kl:authRoleChanged", function () {
+        render();
+        hydrateStaticI18n(getActiveLang());
+      });
+    })();
+
     (function enableBackendSyncIfSession() {
       var hasSbSession = document.cookie.split(";").some(function (c) {
         return c.trim().indexOf("sb-") === 0;

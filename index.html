@@ -145,6 +145,9 @@
                 </button>
               </div>
             </div>
+
+            <!-- Auth/account controls (mock-only in I1 skeleton). Populated by JS. -->
+            <div class="auth-header-controls" id="kl-auth-header-controls"></div>
           </div>
         </div>
       </header>
@@ -979,9 +982,15 @@
               <h4 data-i18n="footer.legal">
                 <span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span>
               </h4>
-              <a href="#top" data-i18n="footer.terms"
+              <a href="#terms" data-i18n="footer.terms"
                 ><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span></a
-              ><a href="#top" data-i18n="footer.privacy"
+              ><a href="#privacy-policy" data-i18n="footer.privacy"
+                ><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span
+              ></a>
+              <a href="#security-policy" data-i18n="footer.security"
+                ><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span
+              ></a>
+              <a href="#contact-support" data-i18n="footer.contactSupport"
                 ><span class="l-pt"></span><span class="l-en"></span><span class="l-es"></span
               ></a>
             </div>
@@ -1008,6 +1017,8 @@
     <script defer src="assets/js/state-availability.js"></script>
     <script defer src="assets/js/i18n.js"></script>
     <script defer src="assets/js/locales.js"></script>
+    <script defer src="assets/js/auth/mock-auth-state.js"></script>
+    <script defer src="assets/js/auth/route-guards.js"></script>
     <script defer src="assets/js/category-labels.js"></script>
     <script defer src="assets/js/data/questions-loader.js"></script>
     <script defer src="assets/js/data/ui-copy.js"></script>
@@ -1021,6 +1032,11 @@
     <script defer src="assets/js/pages/progress-page.js"></script>
     <script defer src="assets/js/pages/glossary-page.js"></script>
     <script defer src="assets/js/pages/resources-page.js"></script>
+    <script defer src="assets/js/pages/auth-page.js"></script>
+    <script defer src="assets/js/pages/account-page.js"></script>
+    <script defer src="assets/js/pages/premium-page.js"></script>
+    <script defer src="assets/js/pages/admin-page.js"></script>
+    <script defer src="assets/js/pages/legal-page.js"></script>
     <script defer src="assets/js/error-monitoring.js"></script>
     <script defer src="assets/js/analytics.js"></script>
     <script defer src="assets/js/router.js"></script>

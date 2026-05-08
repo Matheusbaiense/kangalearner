@@ -2,6 +2,22 @@
 const { test, expect } = require("@playwright/test");
 
 test.describe("static site smoke", () => {
+  test("no console.error on core routes", async ({ page }) => {
+    const errors = [];
+    page.on("console", (msg) => {
+      if (msg.type() === "error") errors.push(msg.text());
+    });
+
+    await page.goto("/#home");
+    await expect(page.locator(".hero")).toBeVisible();
+    await page.goto("/#login");
+    await expect(page.locator("#kl-login-form")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#privacy-policy");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+
+    expect(errors).toEqual([]);
+  });
+
   test("home hero and brand visible", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator(".hero")).toBeVisible();
@@ -46,6 +62,128 @@ test.describe("static site smoke", () => {
         '.practice-progress-actions a[href="#progress"][data-i18n="practice.progress.viewFull"]'
       )
     ).toBeVisible();
+  });
+
+  test("auth routes render (login/signup/forgot/reset/verify/session-expired)", async ({
+    page
+  }) => {
+    await page.goto("/#login");
+    await expect(page.locator("#kl-login-form")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#signup");
+    await expect(page.locator("#kl-signup-form")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#forgot-password");
+    await expect(page.locator("#kl-forgot-form")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#reset-password");
+    await expect(page.locator("#kl-reset-form")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#verify-email");
+    await expect(page.locator("#kl-verify-resend")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#session-expired");
+    await expect(
+      page.locator('a[data-i18n="auth.sessionExpired.signInAgain"][href="#login"]')
+    ).toBeVisible({ timeout: 20000 });
+  });
+
+  test("login invalid email shows error", async ({ page }) => {
+    await page.goto("/#login");
+    await page.fill("#kl-login-email", "not-an-email");
+    await page.fill("#kl-login-password", "password");
+    await page.locator("#kl-login-form button[type='submit']").click();
+    await expect(page.locator("#kl-login-email-err")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("signup requires terms and password match", async ({ page }) => {
+    await page.goto("/#signup");
+    await page.fill("#kl-signup-first", "Alex");
+    await page.fill("#kl-signup-email", "alex@example.com");
+    await page.fill("#kl-signup-password", "Password1");
+    await page.fill("#kl-signup-confirm", "Password2");
+    await page.locator("#kl-signup-form button[type='submit']").click();
+    await expect(page.locator("#kl-signup-confirm-err")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator("#kl-signup-terms-err")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("valid login submit shows placeholder notice and does not reload", async ({ page }) => {
+    await page.goto("/#login");
+    await page.fill("#kl-login-email", "alex@example.com");
+    await page.fill("#kl-login-password", "Password1");
+    await page.locator("#kl-login-form button[type='submit']").click();
+    await expect(page).toHaveURL(/#login/);
+    await expect(page.locator("#kl-login-notice")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("account guard: guest redirected to login with notice", async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("kl-mock-role", "guest");
+    });
+    await page.goto("/#account");
+    await expect(page).toHaveURL(/#login/);
+    await expect(page.locator("#kl-login-form")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("mock user can access account routes", async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("kl-mock-role", "user");
+    });
+    await page.goto("/#account");
+    await expect(page.locator("#page-root")).toContainText("account", { timeout: 20000 });
+    await page.goto("/#settings");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("mock premium can access billing", async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("kl-mock-role", "premium");
+    });
+    await page.goto("/#billing");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator("#page-root")).toContainText(/billing|cobrança|facturación/i);
+  });
+
+  test("admin routes blocked for user but allowed for admin", async ({ page }) => {
+    await page.addInitScript(() => {
+      localStorage.setItem("kl-mock-role", "user");
+    });
+    await page.goto("/#admin");
+    await expect(page).toHaveURL(/#account|#login/);
+
+    await page.addInitScript(() => {
+      localStorage.setItem("kl-mock-role", "admin");
+    });
+    await page.goto("/#admin");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await expect(page.locator("#page-root")).toContainText(/admin/i);
+  });
+
+  test("legal pages render (privacy/terms/security/data deletion/not official/support)", async ({
+    page
+  }) => {
+    await page.goto("/#privacy-policy");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#terms");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#security-policy");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#data-deletion");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#not-official");
+    await expect(page.locator("#page-root")).toBeVisible({ timeout: 20000 });
+    await page.goto("/#contact-support");
+    await expect(page.locator("#kl-support-form")).toBeVisible({ timeout: 20000 });
+  });
+
+  test("i18n: login title changes for EN/PT/ES without forcing bilingual", async ({ page }) => {
+    await page.goto("/#login");
+    await expect(page.locator("body")).toHaveClass(/mode-en/);
+
+    await page.locator("#ld-trigger").click();
+    await page.locator('.ld-option[data-lang="pt"]').click();
+    await expect(page.locator("body")).toHaveClass(/mode-pt/);
+    await expect(page.locator("#page-root")).toContainText(/Entrar no KangaLearner/i);
+
+    await page.locator("#ld-trigger").click();
+    await page.locator('.ld-option[data-lang="es"]').click();
+    await expect(page.locator("body")).toHaveClass(/mode-es/);
+    await expect(page.locator("#page-root")).toContainText(/Iniciar sesión/i);
   });
 
   test("progress route: practice is active and back to practice exists", async ({ page }) => {
