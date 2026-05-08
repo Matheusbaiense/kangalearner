@@ -10,6 +10,8 @@ const srcHtml = readFileSync(join(root, "index.html"), "utf8");
 const requiredRefs = [
   "assets/js/storage.js",
   "assets/js/locales.js",
+  "assets/js/auth/mock-auth-state.js",
+  "assets/js/auth/route-guards.js",
   "assets/js/data/questions-loader.js",
   "assets/js/data/learn-topics.js",
   "assets/js/pages/home-page.js",
@@ -18,6 +20,11 @@ const requiredRefs = [
   "assets/js/pages/progress-page.js",
   "assets/js/pages/glossary-page.js",
   "assets/js/pages/resources-page.js",
+  "assets/js/pages/auth-page.js",
+  "assets/js/pages/account-page.js",
+  "assets/js/pages/premium-page.js",
+  "assets/js/pages/admin-page.js",
+  "assets/js/pages/legal-page.js",
   "assets/js/router.js",
   "assets/js/app.js"
 ];
@@ -35,6 +42,7 @@ mkdirSync(dist, { recursive: true });
 mkdirSync(join(dist, "assets", "css"), { recursive: true });
 mkdirSync(join(dist, "assets", "js", "pages"), { recursive: true });
 mkdirSync(join(dist, "assets", "js", "data"), { recursive: true });
+mkdirSync(join(dist, "assets", "js", "auth"), { recursive: true });
 mkdirSync(join(dist, "assets", "icons"), { recursive: true });
 mkdirSync(join(dist, "assets", "img"), { recursive: true });
 
@@ -50,6 +58,8 @@ execSync(
   [
     "npx terser assets/js/storage.js -c -m -o dist/assets/js/storage.js",
     "&& npx terser assets/js/locales.js -c -m -o dist/assets/js/locales.js",
+    "&& npx terser assets/js/auth/mock-auth-state.js -c -m -o dist/assets/js/auth/mock-auth-state.js",
+    "&& npx terser assets/js/auth/route-guards.js -c -m -o dist/assets/js/auth/route-guards.js",
     "&& npx terser assets/js/router.js -c -m -o dist/assets/js/router.js",
     "&& npx terser assets/js/pages/home-page.js -c -m -o dist/assets/js/pages/home-page.js",
     "&& npx terser assets/js/pages/learn-page.js -c -m -o dist/assets/js/pages/learn-page.js",
@@ -57,6 +67,11 @@ execSync(
     "&& npx terser assets/js/pages/progress-page.js -c -m -o dist/assets/js/pages/progress-page.js",
     "&& npx terser assets/js/pages/glossary-page.js -c -m -o dist/assets/js/pages/glossary-page.js",
     "&& npx terser assets/js/pages/resources-page.js -c -m -o dist/assets/js/pages/resources-page.js",
+    "&& npx terser assets/js/pages/auth-page.js -c -m -o dist/assets/js/pages/auth-page.js",
+    "&& npx terser assets/js/pages/account-page.js -c -m -o dist/assets/js/pages/account-page.js",
+    "&& npx terser assets/js/pages/premium-page.js -c -m -o dist/assets/js/pages/premium-page.js",
+    "&& npx terser assets/js/pages/admin-page.js -c -m -o dist/assets/js/pages/admin-page.js",
+    "&& npx terser assets/js/pages/legal-page.js -c -m -o dist/assets/js/pages/legal-page.js",
     "&& npx terser assets/js/app.js -c -m -o dist/assets/js/app.js",
     "&& npx terser assets/js/quiz-engine.js -c -m -o dist/assets/js/quiz-engine.js",
     "&& npx terser assets/js/learn-engine.js -c -m -o dist/assets/js/learn-engine.js",

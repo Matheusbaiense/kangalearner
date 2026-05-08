@@ -534,3 +534,30 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 - Mock test (`/mock-test/session`, `/mock-test/results`) implementado com persistência em `sessionStorage` e POST best-effort para `/api/mock-sessions` quando autenticado.
 - Dashboard agora inclui “Last 7 days”, “What to practise next” e CTAs por tópico para `/practice?cat=...`.
 - UI “glass” aplicada em header e cards via `backdrop-filter` com fallback.
+
+---
+
+## 2026-05-08 — I1 Auth UI + Roles + Premium + Admin + Future schema (static root)
+
+### Comandos executados
+
+| Comando | Resultado |
+| --- | --- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run test:e2e` | **OK** — 26/26 passed |
+| `pnpm run validate:questions` | **OK** |
+| `pnpm exec playwright test e2e/qa-auth-ui-screens.spec.js` | **OK** — screenshots gerados em `test-results/qa/` (não versionar) |
+
+### Notas
+
+- **Supabase**: **não conectado** (sem sessão real, sem `.env`, sem backend).
+- **Stripe**: **não conectado** (billing/pricing placeholders).
+- **Liquid Glass**: **deferido** (nenhuma mudança de design global/glass).
+- **sw.js**: cache bump para `kanga-assets-v7`.
+- **Rotas novas**: Auth, Account, Premium, Admin, Legal (hash router).
+- **Guards**: baseados em role mockado (localStorage) — UI-only.
+- **Docs**: adicionados documentos de arquitetura em `docs/architecture/*`.
+- **Migration draft**: adicionada migration futura em `supabase/migrations/0001_auth_account_product_schema.sql` com RLS/policies draft (não aplicada).
