@@ -30,6 +30,7 @@ Plano faseado para agentes de IA e developers continuarem a partir do estado atu
 
 1. Documentar variáveis de ambiente obrigatórias por ambiente (`NEXT_PUBLIC_*`, `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`).
 2. Escolher alojamento Next (ex.: Vercel) vs Pages estático na raiz — dois produtos possíveis; evitar confusão no README.
+3. **GitHub Pages (SPA raiz):** `.github/workflows/pages.yml` publica **`dist-vite`** (`pnpm run site:build`); variáveis opcionais `VITE_SUPABASE_URL` / `VITE_SUPABASE_ANON_KEY` em **Actions → Variables** para auth Supabase no browser (nunca service role).
 
 ## Referências de ficheiros (para IA)
 
