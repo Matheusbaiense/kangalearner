@@ -4,7 +4,7 @@
 **Refreshed:** 2026-05-09 (audit v2)  
 **Baseline:** branch `main` @ **`94a7ef1`** — PR #7 **merged** (Supabase Auth foundation + Pages/Vite `dist-vite` deploy).  
 **Sources:** local snapshot `.tmp-audit-backup/dead-code-and-refactor-audit.local.md`; `origin/chore/dead-code-and-refactor-audit` @ **`353977d`**; post-merge tree review.  
-**Scope:** documentation-only audit; **no code changes** in this pass. **Batch 1 cleanup still pending approval.**  
+**Scope:** documentation-only audit in v2 PR; **Batch 1 (comment hygiene only)** executed 2026-05-09 on `chore/cleanup-batch-1-comments` — see §3. **`pnpm why` / root dependency trim** still **not** done (defer to later batch / human approval).  
 **Exclusions (do not touch without approval):** quiz/scoring/questions content, Liquid Glass, migrations, Stripe, Supabase project wiring, auth guard semantics, route tables, `apps/web`, `apps/mobile`, `packages/core` implementations.
 
 ---
@@ -21,7 +21,7 @@ Main technical-debt clusters:
 4. **Windows/git noise:** local “modified” files with **identical blob to HEAD** — operational, not code debt.
 5. **CSS / exhaustive dead-class scan:** not fully enumerated; recommend **incremental** grep + visual QA (Batch 3).
 6. **New — `window.KL_SUPABASE` surface:** three methods are exposed (`getPublicEnv`, `getSupabaseClient`, `getSupabaseSession`) but **no other file references them** (`rg` 2026-05-09). Likely intentional public/debug API — **defer removal** until product confirms.
-7. **New — `vite.config.js` header comment** still says Pages uses “copy-based workflow”; **`pages.yml` now runs `pnpm run site:build`** — comment is **obsolete** (safe doc/comment fix in Batch 1).
+7. **Resolved (Batch 1, 2026-05-09):** obsolete header comments in `assets/js/app.js` (auth chip banner) and `vite.config.js` (Pages deploy description) were updated; **no logic changes.**
 
 ---
 
@@ -42,11 +42,14 @@ Main technical-debt clusters:
 |------|----------|------|------|
 | None **automatically** removed in this pass | N/A | — | All candidates need a **small PR** + tests. |
 
-**Candidates for “safe” follow-up (confirm in Batch 1):**
+**Batch 1 (2026-05-09) — comment hygiene — DONE:**
 
-- **Outdated comment** in `assets/js/app.js` (`initMockAuthHeaderControls` still described as “mock roles only” while `KL_AUTH_PROVIDER` is used) — comment-only fix, no behaviour change.
-- **Outdated comment** in `vite.config.js` (lines 6–8: workflow description vs current `pages.yml`) — comment-only fix.
-- **Root `@supabase/supabase-js` dependency:** static app uses **CDN UMD** in `supabase-client.js`; verify with `pnpm why @supabase/supabase-js` at repo root; if unused at root, consider removing from **root** `package.json` only (not from `apps/web`).
+- **`assets/js/app.js`:** header-controls banner comment updated (reflects `KL_AUTH_PROVIDER` + `KL_AUTH_MOCK` fallback).
+- **`vite.config.js`:** top JSDoc updated (CI runs `site:build` → `dist-vite`, Pages publish).
+
+**Still pending (not Batch 1 scope):**
+
+- **Root `@supabase/supabase-js` dependency:** static app uses **CDN UMD** in `supabase-client.js`; verify with `pnpm why @supabase/supabase-js` at repo root; if unused at root, consider removing from **root** `package.json` only (not from `apps/web`) — **needs human approval** in a later batch.
 
 ---
 
@@ -76,7 +79,7 @@ Main technical-debt clusters:
 
 ## 6. Refactor tasks (overview)
 
-1. **Batch 1 — Docs & dependency clarity:** comments (`app.js`, `vite.config.js`), `pnpm why`, optional root dep trim. **Pending approval.**
+1. **Batch 1 — Docs & dependency clarity:** comment updates in `app.js`, `vite.config.js` — **done (2026-05-09)**. **`pnpm why` + optional root dep trim** — **still pending** (separate approval).
 2. **Batch 2 — Backend sync stub:** document or gate `KANGA_ENABLE_BACKEND_SYNC` for static-only deploy.
 3. **Batch 3 — CSS inventory:** class usage script + manual sign-off.
 4. **Batch 4 — `src/` Vite entry:** document in README or remove if unused.
@@ -153,8 +156,8 @@ Main technical-debt clusters:
 |----------|------|-------|
 | `quiz-engine.js` | `TODO(supabase-v2-cutover)` | **Needs decision** |
 | `questions-loader.js` | “legacy questions dataset” | **Keep** (accurate) |
-| `app.js` | “mock roles only” in header init | **Update** (stale) |
-| `vite.config.js` | “copy-based workflow” for Pages | **Obsolete** vs `pages.yml` |
+| `app.js` | “mock roles only” in header init | **Fixed** (Batch 1) |
+| `vite.config.js` | “copy-based workflow” for Pages | **Fixed** (Batch 1) |
 
 ---
 
@@ -185,7 +188,7 @@ Main technical-debt clusters:
 | `assets/js/auth/route-guards.js` | Yes | `window.KL_ROUTE_GUARDS` | `router.js`, `auth-page.js` (`consumeNoticeKey`) | — | `test:e2e` |
 | `assets/js/pages/auth-page.js` | Yes | `KL_PAGES` auth suite | Registered; uses guards | — | `test:e2e` |
 | `assets/js/pages/account-page.js` | Yes | `KL_PAGES` account suite | Uses `KL_AUTH_PROVIDER` / `KL_AUTH_MOCK` | — | `test:e2e` |
-| `vite.config.js` | N/A (build) | `__KANGA_ENV__`, static copy to `dist-vite` | Stale top comment vs CI | **Safe to fix** (comment) | `site:build` |
+| `vite.config.js` | N/A (build) | `__KANGA_ENV__`, static copy to `dist-vite` | Top JSDoc aligned with CI (Batch 1) | — | `site:build` |
 | `.github/workflows/pages.yml` | N/A | E2E gate + `pnpm run site:build` + Pages upload | Paths trigger on `vite.config.js`, `assets/**`, etc. | **Defer** structural change | CI |
 | `e2e/smoke.spec.js` | N/A | Auth/not-configured, guards, i18n | **Used** | — | `test:e2e` |
 
@@ -207,7 +210,7 @@ Main technical-debt clusters:
 ## 9. Final recommendation
 
 - **Do not** bulk-delete CSS, globals, or auth exports without per-symbol evidence and e2e.
-- **Batch 1** remains **low-risk**: comment fixes (`app.js`, `vite.config.js`), dependency audit (`pnpm why`), documentation for `src/` and `/api/health` stub.
+- **Batch 1** comment fixes (`app.js`, `vite.config.js`) are **done**. Remaining **low-risk** follow-ups: dependency audit (`pnpm why`), documentation for `src/` and `/api/health` stub — **separate PRs**.
 - **Branch `chore/dead-code-and-refactor-audit` (353977d)** is **pre–PR #7**; this document (**v2**) supersedes it for **main @ 94a7ef1**. Do not delete the old remote branch without team process.
 
 ---
@@ -231,7 +234,7 @@ Main technical-debt clusters:
 |-------|---------|
 | **Goal** | Align comments with `KL_AUTH_PROVIDER` + quiz TODO ownership + Vite/Pages reality. |
 | **Files** | `app.js`, `quiz-engine.js`, `vite.config.js` |
-| **Subtasks** | (1) Update auth header comment. (2) Assign owner to Supabase TODO. (3) Fix Vite header. |
+| **Subtasks** | (1) Update auth header comment — **done (Batch 1).** (2) Assign owner to Supabase TODO — **deferred.** (3) Fix Vite header — **done (Batch 1).** |
 | **Risk** | Low |
 | **Tests** | `format:check` |
 
@@ -291,13 +294,13 @@ Main technical-debt clusters:
 
 | Category | Count / note |
 |----------|----------------|
-| **Safe removals identified (awaiting Batch 1)** | 0 code deletions; **2 comment-only candidates** (`app.js`, `vite.config.js`) |
+| **Batch 1 comment hygiene** | **Done** (`app.js`, `vite.config.js`); 0 code deletions |
 | **Needs human decision** | 5 rows (§4) |
 | **Defer / risky** | Auth export surface, SW, CSS bulk, quiz routes |
 | **Components never rendered** | **0** confirmed orphans |
 | **Functions never called (confirmed unused externally)** | **3** (`KL_SUPABASE` methods on `window` — §7.3) |
 | **Unused scripts in `index.html`** | None beyond documented dynamic/dev paths (§7.1) |
 | **Dead state variables (flagged)** | `KANGA_ENABLE_BACKEND_SYNC` path mostly inert on Pages |
-| **Obsolete comments** | `app.js` header text; `vite.config.js` workflow blurb |
+| **Obsolete comments** | **Cleared** in Batch 1 for `app.js` / `vite.config.js`; `quiz-engine.js` TODO still **needs decision** |
 | **CSS candidates** | Not enumerated — Batch 3 |
 | **Package/workflow candidates** | Root `@supabase/supabase-js`; `pages.yml` vs docs drift |

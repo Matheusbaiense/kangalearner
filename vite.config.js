@@ -12,8 +12,9 @@ function viteBaseFromEnv(raw) {
 
 /**
  * Dev + production bundle for the root static SPA (hash router).
- * GitHub Pages continues to use the copy-based workflow in pages.yml;
- * this build targets Vercel or local preview (`pnpm site:build`).
+ * CI (`.github/workflows/pages.yml`) runs `pnpm run site:build`, producing `dist-vite/`
+ * with `window.__KANGA_ENV__` injected and static assets copied; Actions publishes that output to GitHub Pages.
+ * Use locally the same command or `vite` dev server.
  *
  * Set `VITE_BASE_PATH=/repo-name/` in CI so emitted asset URLs are root-absolute
  * (`/repo-name/assets/...`) and do not depend on runtime `<base>` injection.
