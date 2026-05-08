@@ -233,13 +233,25 @@
   font-size: 1rem;
 }
 .qcard {
-  background: white;
-  border: 1px solid var(--border);
+  background: var(--glass-bg-strong, #ffffff);
+  border: 1px solid rgba(216, 226, 234, 0.9);
   border-radius: 18px;
   padding: 20px 20px 18px;
   margin-bottom: 18px;
   transition: 0.15s;
-  box-shadow: 0 4px 18px rgba(7, 26, 44, 0.04);
+  box-shadow: var(--glass-shadow-soft, 0 4px 18px rgba(7, 26, 44, 0.04));
+}
+.qcard {
+  box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .qcard {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+  }
 }
 .qcard:hover {
   box-shadow: 0 14px 34px rgba(7, 26, 44, 0.08);
@@ -408,10 +420,19 @@
 .answer.answer-panel {
   display: none;
   margin-top: 14px;
-  background: #f8fafc;
-  border: 1px solid rgba(46, 125, 91, 0.28);
+  background: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(47, 158, 103, 0.22);
   border-radius: 14px;
   padding: 14px 16px;
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .answer.answer-panel {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    border-color: rgba(255, 255, 255, 0.62);
+    box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+  }
 }
 .answer.answer-panel.show {
   display: block;

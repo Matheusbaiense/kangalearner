@@ -42,8 +42,8 @@ a:focus:not(:focus-visible) {
 }
 body {
   font-family: var(--font-sans);
-  background: var(--paper);
-  color: var(--ink);
+  background: transparent;
+  color: var(--text-primary, var(--ink));
   line-height: 1.55;
   font-size: 15px;
   -webkit-font-smoothing: antialiased;
@@ -167,20 +167,25 @@ body.mode-es .l-pt {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(4, 18, 32, 0.86);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  color: var(--text);
+  background: var(--glass-nav-bg, rgba(4, 18, 32, 0.86));
+  border-bottom: 1px solid var(--glass-nav-border, rgba(255, 255, 255, 0.1));
+  box-shadow: var(--glass-nav-highlight, inset 0 1px 0 rgba(255, 255, 255, 0.08));
+  color: rgba(255, 255, 255, 0.96);
   transition:
     background 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease;
 }
+.site-header {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
 .site-header.is-scrolled-down {
-  background: rgba(4, 18, 32, 0.72);
-  border-bottom-color: rgba(255, 255, 255, 0.05);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+  background: rgba(7, 26, 44, 0.66);
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+  box-shadow:
+    var(--glass-nav-highlight, inset 0 1px 0 rgba(255, 255, 255, 0.08)),
+    0 14px 44px rgba(2, 12, 22, 0.22);
 }
 .nav-shell {
   max-width: 1320px;
@@ -221,7 +226,8 @@ body.mode-es .l-pt {
   text-decoration: none;
   font-weight: 750;
   font-size: 0.95rem;
-  padding: 8px 0;
+  padding: 10px 12px;
+  border-radius: 999px;
   transition: color 0.16s ease;
   white-space: nowrap;
 }
@@ -229,18 +235,16 @@ body.mode-es .l-pt {
 .main-nav a.active {
   color: #ffffff;
 }
-.main-nav a.active::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -6px;
-  width: 28px;
-  height: 3px;
-  border-radius: 999px;
-  background: var(--green);
-  transform: translateX(-50%);
-  box-shadow: 0 0 18px rgba(46, 125, 91, 0.45);
-  z-index: 2;
+.main-nav a.active {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.main-nav a:focus-visible {
+  outline: none;
+  box-shadow:
+    var(--focus-ring, 0 0 0 4px rgba(15, 107, 255, 0.18)),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .header-controls {
   display: flex;

@@ -70,8 +70,8 @@
   gap: 1rem;
   padding: 1.25rem;
   border-radius: var(--radius, 10px);
-  border: 1px solid var(--border, #e0e0e0);
-  background: var(--paper, #fff);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: var(--glass-bg-strong, #ffffff);
   text-decoration: none;
   color: inherit;
   transition:
@@ -79,8 +79,17 @@
     transform 0.15s;
 }
 .learn-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
   transform: translateY(-2px);
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .learn-card {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+  }
 }
 .learn-card-icon {
   flex-shrink: 0;
@@ -141,8 +150,17 @@
 .topic-card-block {
   padding: 1.5rem;
   border-radius: var(--radius, 10px);
-  border: 1px solid var(--border, #e0e0e0);
-  background: var(--paper, #fff);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: var(--glass-bg-strong, #ffffff);
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .topic-card-block {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+  }
 }
 .topic-mistakes {
   border-color: var(--gold, #f59e0b);
@@ -195,11 +213,20 @@
   flex-wrap: wrap;
   gap: 0.4rem 0.55rem;
   align-items: center;
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: rgba(255, 255, 255, 0.78);
   padding: 0.75rem 1rem;
   border-radius: 14px;
   margin: 0 0 1.25rem;
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .practice-path {
+    background: var(--glass-bg-soft, rgba(255, 255, 255, 0.46));
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+  }
 }
 .practice-path-label {
   font-weight: 800;
@@ -227,13 +254,30 @@
 .practice-mode-card {
   padding: 28px;
   border-radius: 20px;
-  border: 1px solid #d8e2ea;
-  background: #ffffff;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.05);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: var(--glass-bg-strong, #ffffff);
+  box-shadow: var(--glass-shadow-soft, 0 10px 24px rgba(15, 23, 42, 0.05));
   display: flex;
   flex-direction: column;
   gap: 12px;
   position: relative;
+}
+.mock-mode-card {
+  box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+}
+.mock-mode-card,
+.practice-mode-card {
+  box-shadow: var(--glass-shadow-soft, 0 10px 24px rgba(15, 23, 42, 0.05));
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .mock-mode-card,
+  .practice-mode-card {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+  }
 }
 .practice-mode-card:focus-within {
   outline: 3px solid rgba(47, 158, 103, 0.25);
@@ -297,10 +341,23 @@
 .legal-card,
 .premium-card,
 .admin-card {
-  background: #fff;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  background: var(--glass-bg-strong, #ffffff);
+  border: 1px solid rgba(216, 226, 234, 0.9);
   border-radius: 20px;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  box-shadow: var(--glass-shadow-soft, 0 10px 24px rgba(15, 23, 42, 0.06));
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .auth-card,
+  .account-card,
+  .legal-card,
+  .premium-card,
+  .admin-card {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+  }
 }
 
 .auth-card {
@@ -351,9 +408,16 @@
   height: 48px;
   padding: 0 14px;
   border-radius: 14px;
-  border: 1px solid rgba(15, 23, 42, 0.18);
-  background: #fff;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  background: rgba(255, 255, 255, 0.88);
   font-size: 1rem;
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .auth-input {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+  }
 }
 
 textarea.auth-input {
@@ -379,7 +443,7 @@ textarea.auth-input {
 .auth-notice {
   font-size: 0.9rem;
   background: rgba(47, 158, 103, 0.08);
-  border: 1px solid rgba(47, 158, 103, 0.25);
+  border: 1px solid rgba(47, 158, 103, 0.22);
   padding: 10px 12px;
   border-radius: 14px;
   color: rgba(15, 23, 42, 0.9);
@@ -529,11 +593,12 @@ textarea.auth-input {
   align-items: center;
   gap: 10px;
   padding: 8px 12px;
-  border: 1px solid rgba(15, 23, 42, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.14);
   text-decoration: none;
-  color: rgba(15, 23, 42, 0.92);
+  color: rgba(255, 255, 255, 0.94);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 .auth-chip:focus {
   outline: 3px solid rgba(47, 158, 103, 0.25);
@@ -645,8 +710,8 @@ textarea.auth-input {
 }
 
 .practice-tip {
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(15, 23, 42, 0.04);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: rgba(255, 255, 255, 0.78);
   padding: 1rem 1.1rem;
   border-radius: 14px;
   margin: 0 0 24px;
@@ -654,6 +719,15 @@ textarea.auth-input {
   display: flex;
   gap: 0.75rem;
   align-items: flex-start;
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .practice-tip {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+  }
 }
 .practice-tip-icon {
   width: 28px;
@@ -673,10 +747,19 @@ textarea.auth-input {
 }
 
 .practice-progress-panel {
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: #ffffff;
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: var(--glass-bg-strong, #ffffff);
   border-radius: 20px;
   padding: 28px;
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .practice-progress-panel {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+  }
 }
 .practice-progress-header {
   margin-bottom: 16px;
@@ -698,10 +781,18 @@ textarea.auth-input {
   gap: 12px;
 }
 .practice-progress-stat {
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 14px;
   padding: 14px;
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .practice-progress-stat {
+    background: var(--glass-bg-soft, rgba(255, 255, 255, 0.46));
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+  }
 }
 .pps-value {
   font-size: 1.25rem;
@@ -724,11 +815,20 @@ textarea.auth-input {
 }
 
 .practice-readiness-panel {
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: #ffffff;
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: var(--glass-bg-strong, #ffffff);
   border-radius: 20px;
   padding: 28px;
   margin-top: 24px;
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .practice-readiness-panel {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow, 0 20px 60px rgba(15, 23, 42, 0.12));
+  }
 }
 .practice-readiness-header {
   margin-bottom: 16px;
@@ -752,10 +852,20 @@ textarea.auth-input {
 .readiness-score,
 .readiness-band,
 .readiness-next {
-  border: 1px solid rgba(15, 23, 42, 0.12);
-  background: rgba(248, 250, 252, 0.8);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 14px;
   padding: 14px;
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .readiness-score,
+  .readiness-band,
+  .readiness-next {
+    background: var(--glass-bg-soft, rgba(255, 255, 255, 0.46));
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+  }
 }
 .rs-value {
   font-size: 1.35rem;
@@ -1200,8 +1310,8 @@ textarea.auth-input {
 /* ── Resources ──────────────────────────────────────────────────────────── */
 .disclaimer-banner {
   padding: 0.85rem 1.25rem;
-  background: #fffbeb;
-  border: 1px solid var(--gold, #f59e0b);
+  background: rgba(246, 198, 69, 0.12);
+  border: 1px solid rgba(246, 198, 69, 0.32);
   border-radius: var(--radius, 8px);
   font-size: 0.875rem;
   margin-bottom: 2rem;
@@ -1216,8 +1326,17 @@ textarea.auth-input {
 .resource-card {
   padding: 1.5rem;
   border-radius: var(--radius, 10px);
-  border: 1px solid var(--border, #e0e0e0);
-  background: var(--paper, #fff);
+  border: 1px solid rgba(216, 226, 234, 0.9);
+  background: var(--glass-bg-strong, #ffffff);
+}
+@supports ((backdrop-filter: blur(12px)) or (-webkit-backdrop-filter: blur(12px))) {
+  .resource-card {
+    background: var(--glass-bg, rgba(255, 255, 255, 0.68));
+    backdrop-filter: blur(var(--glass-blur, 18px));
+    -webkit-backdrop-filter: blur(var(--glass-blur, 18px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+  }
 }
 .resource-card--disabled {
   opacity: 0.7;
@@ -1321,19 +1440,30 @@ textarea.auth-input {
 }
 .form-field input,
 .form-field textarea {
-  padding: 0.65rem 0.85rem;
-  border: 1px solid var(--border, #ccc);
-  border-radius: var(--radius, 6px);
+  min-height: 48px;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(15, 23, 42, 0.16);
+  border-radius: 16px;
   font: inherit;
   font-size: 0.95rem;
-  background: var(--paper, #fff);
-  color: var(--ink, #222);
+  background: rgba(255, 255, 255, 0.88);
+  color: var(--text-primary, var(--ink, #222));
+}
+@supports ((backdrop-filter: blur(10px)) or (-webkit-backdrop-filter: blur(10px))) {
+  .form-field input,
+  .form-field textarea {
+    background: rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    -webkit-backdrop-filter: blur(var(--glass-blur-soft, 10px));
+    border-color: var(--glass-border, rgba(255, 255, 255, 0.62));
+    box-shadow: var(--glass-shadow-soft, 0 12px 32px rgba(15, 23, 42, 0.08));
+  }
 }
 .form-field input:focus,
 .form-field textarea:focus {
-  outline: 2px solid var(--green, #2e7d32);
-  outline-offset: 1px;
-  border-color: var(--green, #2e7d32);
+  outline: none;
+  border-color: rgba(15, 107, 255, 0.38);
+  box-shadow: var(--focus-ring, 0 0 0 4px rgba(15, 107, 255, 0.18));
 }
 .form-field textarea {
   resize: vertical;
