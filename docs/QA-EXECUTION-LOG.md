@@ -561,3 +561,27 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 - **Guards**: baseados em role mockado (localStorage) — UI-only.
 - **Docs**: adicionados documentos de arquitetura em `docs/architecture/*`.
 - **Migration draft**: adicionada migration futura em `supabase/migrations/0001_auth_account_product_schema.sql` com RLS/policies draft (não aplicada).
+
+---
+
+## 2026-05-08 — Liquid Glass / Crystal Liquid design system (static root)
+
+### Comandos executados
+
+| Comando                       | Resultado             |
+| ----------------------------- | --------------------- |
+| `pnpm run format:check`       | **OK**                |
+| `pnpm run check:static-links` | **OK**                |
+| `pnpm run smoke:static`       | **OK**                |
+| `pnpm run site:build`         | **OK**                |
+| `pnpm run test:e2e`           | **OK** — 27/27 passed |
+| `pnpm run validate:questions` | **OK**                |
+
+### Notas
+
+- **Escopo**: **visual-only** (tokens + classes + restyle de superfícies) — sem alteração de lógica, rotas, dados ou perguntas.
+- **Supabase**: **não conectado**.
+- **Stripe**: **não conectado**.
+- **Auth real**: **não implementado** (mock permanece).
+- **sw.js**: cache bump para `kanga-assets-v8`.
+- **CSS**: tokens e utilitários em `assets/css/theme.css` com fallback de `backdrop-filter`.
