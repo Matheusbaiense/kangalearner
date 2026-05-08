@@ -1550,12 +1550,12 @@ DW.syncAttempt = function (q, isCorrect, chosen) {
     try {
       // Supabase v2 typically stores auth in localStorage under: sb-<project-ref>-auth-token
       const modernSessionPattern = /^sb-.+-auth-token$/;
+      // TODO(supabase-v2-cutover): remove legacy v1 keys once v1→v2 re-auth is confirmed complete
       const legacyKeys = ["supabase.auth.token", "sb-access-token"];
 
       if (typeof document !== "undefined" && typeof document.cookie === "string") {
-        const hasSbCookie = document.cookie
-          .split(";")
-          .some((c) => String(c).trim().startsWith("sb-"));
+        const sbCookiePattern = /(?:^|;\s*)sb-.+-auth-token=/;
+        const hasSbCookie = sbCookiePattern.test(document.cookie);
         if (hasSbCookie) return true;
       }
 

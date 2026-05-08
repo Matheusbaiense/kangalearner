@@ -265,8 +265,8 @@ Applied (SAFE):
 - `assets/js/storage.js`: add clarifying comment to `answeredUnique` alias (compat field).
 
 Deferred (CAREFUL — needs separate approval):
-- `assets/js/quiz-engine.js`: dedupe `FLAGS` vs `LD_TRIGGER_SHORT`.
-- `assets/js/quiz-engine.js`: replace stale Supabase v1 session keys (`supabase.auth.token`, `sb-access-token`) check.
+- `assets/js/quiz-engine.js`: ~~dedupe `FLAGS` vs `LD_TRIGGER_SHORT`.~~ (Applied in `56fc684`)
+- `assets/js/quiz-engine.js`: ~~replace stale Supabase v1 session keys (`supabase.auth.token`, `sb-access-token`) check.~~ (Applied in `56fc684`; tightened further in follow-up)
 
 ### CAREFUL auth prep (applied)
 
