@@ -14,6 +14,7 @@ Registo orientado a humanos e a agentes de IA para reproduzir verificações e e
 | **Variáveis** | `VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY` via **Repository Variables** (`vars.*`). Se ausentes → strings vazias → modo **not configured**. |
 | **Service role** | Nunca no frontend; não configurar `SUPABASE_SERVICE_ROLE_KEY` neste workflow. |
 | **Redirect URLs** | Continuam a ser definidas no dashboard Supabase (e IdP OAuth) — não automáticas só com este deploy. |
+| **Planner** | `docs/PLANNER-WEB-INFRA.md` — item em Fase 4 sobre Pages + `dist-vite` + Variables. |
 
 ### Comandos locais (corrida de verificação)
 
