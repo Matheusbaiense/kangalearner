@@ -609,3 +609,38 @@ Verificação dupla na mesma sessão: `pnpm run test:e2e` executado **duas vezes
 - **Legibilidade**: páginas longas/tabelas (Legal/Admin) mais sólidas, com menos blur.
 - **sw.js**: cache bump para `kanga-assets-v9`.
 - **QA screenshots**: gerados em `test-results/qa-art-direction-v1/` (não versionados).
+
+---
+
+## 2026-05-08 — Pre-Supabase code hygiene pass (static root)
+
+### Branch
+
+- `chore/pre-supabase-code-cleanup`
+
+### Escopo
+
+- Hygiene conservador + documentação (sem mudanças funcionais).
+- **Sem** Supabase/Stripe real.
+- **Sem** mudanças em perguntas/quiz/scoring/rotas públicas.
+- **Sem** mudanças em `apps/web`, `apps/mobile`, `supabase/migrations`, `packages/core/src/data/questions.ts`.
+- **Sem** mudanças em `.gitignore` e `sw.js`.
+
+### Limpeza executada
+
+- Batch 1 (local-only): removidos localmente `dist-vite/`, `qa-output/`, `test-results/`, `dist/` (não versionados).
+- Code hygiene: nenhuma remoção segura aplicada além de docs (comentários/logs mantidos quando intencionais).
+- `ChatGPT Image ... .png`: **mantidas** (não mover/deletar).
+- `qa-runner/`: **mantido** (deferido).
+
+### Comandos executados
+
+| Comando                       | Resultado |
+| ---------------------------- | --------- |
+| `pnpm run format:check`       | **OK**    |
+| `pnpm run check:static-links` | **OK**    |
+| `pnpm run smoke:static`       | **OK**    |
+
+### Notas
+
+- **/api sync hooks** em `assets/js/app.js` e `assets/js/quiz-engine.js`: **não alterados** (deferido por risco).
