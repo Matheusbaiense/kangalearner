@@ -2,6 +2,35 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Dead-code audit refreshed after Supabase Auth merge (docs only)
+
+**Objetivo:** recriar a auditoria de dead-code em cima de `main` pós–PR #7 (`94a7ef1`), incluindo a stack Supabase Auth + Pages/Vite, **sem alterações funcionais** e **sem executar cleanup Batch 1**.
+
+### Git
+
+| Item | Detalhe |
+| ---- | ------- |
+| **Branch** | `chore/dead-code-and-refactor-audit-v2` (a partir de `main` atual) |
+| **Documento** | `docs/architecture/dead-code-and-refactor-audit.md` (v2; substitui contexto da branch antiga `353977d` para o estado pós-merge) |
+| **Backup local** | `.tmp-audit-backup/dead-code-and-refactor-audit.local.md` — cópia do untracked anterior; **não versionado** |
+
+### Alterações de produto
+
+| Item | Resultado |
+| ---- | --------- |
+| **Perguntas / quiz / auth / rotas** | **Nenhuma** alteração de código |
+| **Cleanup Batch 1** | **Ainda pendente** de aprovação |
+
+### Comandos de verificação (esta entrega)
+
+| Comando | Resultado |
+| ------- | --------- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+
+---
+
 ## 2026-05-09 — GitHub Pages: deploy via Vite (`dist-vite`) + env público Supabase (CI)
 
 **Objetivo:** fechar o gap operacional em que o workflow copiava `index.html`/`assets` crus e **não** injetava `window.__KANGA_ENV__`. O job `build` em `.github/workflows/pages.yml` passa a correr `pnpm run site:build` e publica **`dist-vite`**.
