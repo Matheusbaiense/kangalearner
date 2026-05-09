@@ -4,6 +4,7 @@
 
 1. **Planning PR (merged to `main`):** introduced this document + QA log entry — **docs only**, no execution.
 2. **Moderate execution (`chore/cleanup-batch-2-moderate`):** **documentation + read-only investigation only** — consolidated deploy reality, backend-sync **documentation** (no runtime edits), `scripts/` evidence matrix, `pnpm why @supabase/supabase-js` capture. **Zero tracked file removals.** See `docs/architecture/cleanup-batch-2-results.md`.
+3. **Batch 2B (`chore/cleanup-batch-2b-real-cleanup`):** removed **unused root** `@supabase/supabase-js` (`pnpm remove` + lockfile); `apps/web` dependency untouched. Other candidates (`src/`, sync hooks, `KL_SUPABASE` exports, `gen-og-png.ps1`) **still deferred** — see results doc §Batch 2B.
 
 Future PRs still own: code deletion (`src/`), dependency trims, `KANGA_ENABLE_BACKEND_SYNC` behaviour, `KL_SUPABASE` export surface, CSS/SW work — see §Recommended Batch 2C and the results ledger.
 

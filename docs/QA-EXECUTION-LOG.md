@@ -2,6 +2,42 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Cleanup Batch 2B (root dependency removal)
+
+**Objetivo:** executar limpeza **real** controlada: remover dependência **não usada** na raiz do monorepo, com evidência (`pnpm why`, `rg`), sem tocar em quiz/perguntas/auth/router/CSS/SW nem em `apps/web` / `apps/mobile` / `packages/core`.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **Raiz** | `pnpm remove @supabase/supabase-js` — removido bloco `dependencies` do `package.json` raiz (única entrada); `pnpm-lock.yaml` atualizado pelo pnpm. |
+| **Docs** | `docs/architecture/cleanup-batch-2-results.md` (secção Batch 2B), `docs/architecture/dead-code-and-refactor-audit.md`, `docs/HISTORY-INFRA-WEB.md` (linha **STATIC-ROOT-DEP-1**), `docs/QA-EXECUTION-LOG.md` (esta entrada). |
+
+### Evidência (resumo)
+
+- **`pnpm why @supabase/supabase-js`:** apenas o pacote raiz listava a dependência.
+- **`rg`:** nenhum `import`/`require` de `@supabase/supabase-js` fora de `apps/web/`; `assets/js/auth/supabase-client.js` usa **CDN UMD** (`jsdelivr`); `vite.config.js` e `scripts/*` não importam o pacote npm.
+
+### O que **não** foi feito (intencional)
+
+- `src/`, `KANGA_ENABLE_BACKEND_SYNC` / `/api/health`, `gen-og-png.ps1`, trim de exports `KL_SUPABASE` — **adiados** (ver `cleanup-batch-2-results.md`).
+- Nenhuma alteração a ficheiros em `assets/js` (exceto lockfile indireto), `apps/*`, `packages/core`.
+- Nenhum `audit fix`; nenhum Supabase/Stripe/rate limit novo.
+
+### Comandos de verificação
+
+| Comando | Resultado |
+| ------- | --------- |
+| `pnpm install --frozen-lockfile` | **OK** |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+| `pnpm run test:e2e` | **OK** — **29/29** |
+
+---
+
 ## 2026-05-09 — Cleanup Batch 2 moderate (docs + investigation only)
 
 **Objetivo:** executar a fase **moderada** do plano já em `main`: consolidar documentação (“o que está deployado hoje”, sync backend inerte em Pages, papel do `src/`), inventário com evidência de `scripts/*`, captura **read-only** de `pnpm why @supabase/supabase-js`, e registos de itens adiados. **Sem** remoção de ficheiros rastreados, **sem** alterações a código de produto.

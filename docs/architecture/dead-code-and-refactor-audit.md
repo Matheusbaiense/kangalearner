@@ -15,7 +15,7 @@ The static site is a **hash router SPA** with explicit `ROUTES` ↔ `window.KL_P
 
 Main technical-debt clusters:
 
-1. **Dual Supabase story:** root `package.json` may still list `@supabase/supabase-js` while the static app loads **UMD from jsDelivr**; `apps/web` uses the npm package. Root dependency may be **redundant** or kept for hoisting — **needs human confirmation** (unchanged from v1).
+1. **Dual Supabase story (updated 2026-05-09, Batch 2B):** root `package.json` **no longer** lists `@supabase/supabase-js` — removed after `pnpm why` + `rg` showed **no** root/static/scripts usage (SPA uses **CDN UMD**; `apps/web` keeps its **own** `package.json` entry). Hoisting/monorepo noise risk: **low**; CI/`pnpm install --frozen-lockfile` verified on branch.
 2. **Legacy / future hooks:** `KANGA_ENABLE_BACKEND_SYNC` + `/api/health` fetch; quiz-engine **TODO** for Supabase v2 key cleanup; `src/main.js` + `src/js/config.js` are **Vite-sidecar** entries not loaded by production `index.html`.
 3. **Service worker:** runtime cache is **network-first for assets** with bump `kanga-assets-v9`; **dist-vite** `/_vite/` paths should be monitored on real Pages URLs.
 4. **Windows/git noise:** local “modified” files with **identical blob to HEAD** — operational, not code debt.
@@ -23,6 +23,8 @@ Main technical-debt clusters:
 6. **New — `window.KL_SUPABASE` surface:** three methods are exposed (`getPublicEnv`, `getSupabaseClient`, `getSupabaseSession`) but **no other file references them** (`rg` 2026-05-09). Likely intentional public/debug API — **defer removal** until product confirms.
 7. **Resolved (Batch 1, 2026-05-09):** obsolete header comments in `assets/js/app.js` (auth chip banner) and `vite.config.js` (Pages deploy description) were updated; **no logic changes.**
 8. **Cleanup Batch 2 moderate (2026-05-09):** documentation + read-only `pnpm why @supabase/supabase-js`; **zero** tracked file removals and **no** runtime edits to sync hooks, quiz, auth, router, CSS, or SW. Details: `docs/architecture/cleanup-batch-2-results.md`, `docs/architecture/cleanup-batch-2-plan.md` (status section).
+
+**Cleanup Batch 2B (2026-05-09):** removed **root-only** `@supabase/supabase-js` (`pnpm remove`); lockfile updated. **No** `assets/js` / router / quiz / SW edits. See `cleanup-batch-2-results.md` §Batch 2B.
 
 ---
 
@@ -60,14 +62,14 @@ Authoritative cross-links for security reachability vs static production:
 
 **Cleanup Batch 2 moderate (2026-05-09):** re-validated `scripts/*` — **no** orphan script qualified for deletion (see `cleanup-batch-2-results.md`). **No** new safe-to-remove rows yet.
 
+**Cleanup Batch 2B (2026-05-09):** root **`@supabase/supabase-js`** dependency removed (not a “file”, but dead weight at the workspace root). **Still not auto-removing** `src/`, sync hooks, or `KL_SUPABASE` exports without dedicated PRs.
+
 **Batch 1 (2026-05-09) — comment hygiene — DONE:**
 
 - **`assets/js/app.js`:** header-controls banner comment updated (reflects `KL_AUTH_PROVIDER` + `KL_AUTH_MOCK` fallback).
 - **`vite.config.js`:** top JSDoc updated (CI runs `site:build` → `dist-vite`, Pages publish).
 
-**Still pending (not Batch 1 scope):**
-
-- **Root `@supabase/supabase-js` dependency:** static app uses **CDN UMD** in `supabase-client.js`; verify with `pnpm why @supabase/supabase-js` at repo root; if unused at root, consider removing from **root** `package.json` only (not from `apps/web`) — **needs human approval** in a later batch.
+**Still pending (not Batch 1 / not Batch 2B scope):** `src/` archival, backend-sync runtime, `KL_SUPABASE` export trim, quiz-engine TODO — see §4.
 
 ---
 
@@ -75,7 +77,7 @@ Authoritative cross-links for security reachability vs static production:
 
 | Item | File(s) | Evidence | Decision |
 |------|---------|----------|----------|
-| Root `@supabase/supabase-js` | `package.json`, `supabase-client.js` (CDN), `apps/web/...` | Static site does not `import` npm package in `assets/js` | Keep for monorepo hoisting vs remove from root |
+| Root `@supabase/supabase-js` | `package.json`, `supabase-client.js` (CDN), `apps/web/...` | Static site does not `import` npm package in `assets/js`; **Batch 2B removed root entry** — `apps/web` unchanged | **Resolved at root**; web package retains dependency |
 | `src/main.js` + `src/js/config.js` | `src/` | Not referenced in `index.html`; e2e asserts **no** `/src/main.js` | Keep as Vite dev/bootstrap only vs delete/archive |
 | `fetch("/api/health")` + `KANGA_ENABLE_BACKEND_SYNC` | `app.js`, `quiz-engine.js` | Inert on static hosting | Remove dead path vs keep for future Next/backend |
 | Quiz-engine `TODO(supabase-v2-cutover)` | `quiz-engine.js` ~1553 | Legacy key cleanup | Product decision when Supabase v2 is real |
@@ -97,7 +99,7 @@ Authoritative cross-links for security reachability vs static production:
 
 ## 6. Refactor tasks (overview)
 
-1. **Batch 1 — Docs & dependency clarity:** comment updates in `app.js`, `vite.config.js` — **done (2026-05-09)**. **`pnpm why` + optional root dep trim** — `pnpm why` **done (read-only, 2026-05-09)**; root dep trim **still pending** (separate approval + lockfile PR).
+1. **Batch 1 — Docs & dependency clarity:** comment updates in `app.js`, `vite.config.js` — **done (2026-05-09)**. **`pnpm why` + root dep trim** — `pnpm why` **done**; root **`@supabase/supabase-js` removed (Batch 2B, 2026-05-09)** with full QA + frozen lockfile check.
 2. **Batch 2 — Backend sync stub:** **documentation done** (§1.1 + results ledger); **runtime gate / behaviour change** still pending if product adds a real `/api` origin.
 3. **Batch 3 — CSS inventory:** class usage script + manual sign-off.
 4. **Batch 4 — `src/` Vite entry:** document in README or remove if unused.
@@ -314,7 +316,8 @@ Authoritative cross-links for security reachability vs static production:
 |----------|----------------|
 | **Batch 1 comment hygiene** | **Done** (`app.js`, `vite.config.js`); 0 code deletions |
 | **Batch 2 moderate (docs + investigation)** | **Done** — 0 file deletions; see `cleanup-batch-2-results.md` |
-| **Needs human decision** | 5 rows (§4) |
+| **Batch 2B (root dep trim)** | **Done** — removed unused root `@supabase/supabase-js`; `apps/web` unchanged |
+| **Needs human decision** | §4 table: **1 resolved** (root dep); **4 open** (`src/`, backend sync, quiz TODO, `KL_SUPABASE` exports) |
 | **Defer / risky** | Auth export surface, SW, CSS bulk, quiz routes |
 | **Components never rendered** | **0** confirmed orphans |
 | **Functions never called (confirmed unused externally)** | **3** (`KL_SUPABASE` methods on `window` — §7.3) |
@@ -322,4 +325,4 @@ Authoritative cross-links for security reachability vs static production:
 | **Dead state variables (flagged)** | `KANGA_ENABLE_BACKEND_SYNC` path mostly inert on Pages |
 | **Obsolete comments** | **Cleared** in Batch 1 for `app.js` / `vite.config.js`; `quiz-engine.js` TODO still **needs decision** |
 | **CSS candidates** | Not enumerated — Batch 3 |
-| **Package/workflow candidates** | Root `@supabase/supabase-js`; `pages.yml` vs docs drift |
+| **Package/workflow candidates** | Root supabase **done** (Batch 2B); `pages.yml` vs docs drift still TBD |
