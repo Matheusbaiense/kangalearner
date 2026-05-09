@@ -2,6 +2,36 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Cleanup Batch 2 planning (docs only)
+
+**Objetivo:** criar o plano do Cleanup Batch 2 com base nas auditorias existentes, sem executar remoções nem alterações de código.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **Novo** | `docs/architecture/cleanup-batch-2-plan.md` — plano Batch 2 (2A docs/config, 2B investigação deps, 2C cleanup deferido). |
+| **Atualizado** | `docs/QA-EXECUTION-LOG.md` (esta entrada). |
+
+### O que **não** foi feito (intencional)
+
+- Nenhuma remoção de ficheiros/funções.
+- Nenhuma alteração a código de produto, perguntas, quiz, auth, rotas, CSS, service worker.
+- Nenhuma alteração a `package.json` ou `pnpm-lock.yaml`. Nenhum upgrade de dependências.
+- Nenhum `pnpm audit fix` / `npm audit fix`.
+- Nenhuma ligação Supabase/Stripe, nenhum rate limit implementado.
+- Não mexer em `apps/web`, `apps/mobile`, `packages/core`.
+
+### Comandos de verificação
+
+| Comando | Resultado |
+| ------- | --------- |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+
+---
+
 ## 2026-05-09 — Security P0.1: triagem Dependabot/alerts (docs only)
 
 **Objetivo:** inventariar e classificar alertas Dependabot + `pnpm audit` sem atualizar dependências, sem `audit fix`, sem alterar código, env, Supabase, Stripe, rate limit ou Cleanup Batch 2.
