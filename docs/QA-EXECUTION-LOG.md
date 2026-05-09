@@ -2,6 +2,43 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Security P0: Dependabot + hardening checklist (docs + GitHub config only)
+
+**Objetivo:** iniciar Security P0 de forma conservadora: Dependabot versionado, checklist operacional de hardening do Supabase Auth, verificação/ativação de recursos GitHub quando possível. **Sem** alterar código de produto, `package.json`, lockfile, env, Supabase real, Stripe, rate limit, perguntas, quiz, auth, rotas, CSS ou service worker.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **GitHub** | `gh api --method PUT .../vulnerability-alerts` e `.../automated-security-fixes` executados com sucesso (token com permissão). Estado pós-exec: `secret_scanning` enabled, `secret_scanning_push_protection` enabled, `dependabot_security_updates` **enabled** (passou de disabled após os PUTs), `vulnerability-alerts` GET passa (antes 404 “disabled”). |
+| **Novo** | `.github/dependabot.yml` — npm em `/`, `/apps/web`, `/apps/mobile`, `/packages/core` + `github-actions` em `/`; weekly Australia/Perth; labels `dependencies`/`security` (e `github-actions` onde aplicável). |
+| **Novo** | `docs/security/supabase-auth-hardening-checklist.md` — checklist antes de auth real em produção + QA manual + “do not do”. |
+| **Atualizado** | `docs/security/security-audit-initial.md` — secção “Security P0 follow-up”. |
+| **Atualizado** | `docs/QA-EXECUTION-LOG.md` (esta entrada). |
+
+### O que **não** foi feito (intencional)
+
+- Nenhum `pnpm audit fix` / `npm audit fix`. Nenhuma bump de dependência. Nenhuma alteração a `package.json` ou `pnpm-lock.yaml`.
+- Nenhum código em `assets/`, `apps/web`, `apps/mobile`, `packages/core`, rotas, CSS, SW, perguntas.
+- Nenhum env/secret commitado. Nenhuma ligação Supabase ou Stripe. Rate limit e cap em `/api/attempts/bulk` continuam adiados até backend/API em produção.
+- Cleanup Batch 2 não iniciado. PR não aberto (push só da branch).
+
+### Comandos de verificação (branch `chore/security-p0-dependabot-hardening`, HEAD após commit)
+
+| Comando | Resultado |
+| ------- | --------- |
+| `git checkout main` / `git pull origin main` | OK — `eb2650b` ou posterior; `.gitattributes` e `docs/security/security-audit-initial.md` presentes. |
+| `gh api repos/... --jq '.security_and_analysis'` | Ver entrada “GitHub” acima (antes e depois dos PUTs registados no relatório final da sessão). |
+| `gh api repos/.../vulnerability-alerts` | Antes: 404 (alerts desativados). Depois dos PUTs: sucesso (exit 0). |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+| `pnpm run test:e2e` | **OK** — **29/29** |
+
+---
+
 ## 2026-05-09 — Auditoria de segurança inicial (read-only, docs only)
 
 **Objetivo:** auditoria inicial de postura de segurança do KangaLearner sem alterar código, dependências, env, Supabase, Stripe ou rotas. Avalia: dependency audit, password hashing, secrets, rate limit, Supabase Auth hardening.

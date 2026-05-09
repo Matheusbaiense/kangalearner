@@ -89,6 +89,8 @@ Atualizações disponíveis (apenas listadas, **não aplicar agora**):
 - `.github/dependabot.yml`: **ausente** ⚠️
 - `secret_scanning_validity_checks`: **disabled** (informativo)
 
+*Atualização 2026-05-09 (Security P0):* `vulnerability-alerts`, `automated-security-fixes` e `dependabot_security_updates` foram ativados via `gh api`; `.github/dependabot.yml` adicionado. Ver subsecção **Security P0 follow-up** em §10.
+
 ## 5. Password hashing assessment
 
 - Não existe nenhuma implementação de hash de password no frontend, nem em `apps/web`, nem em scripts.
@@ -162,6 +164,13 @@ Coisas que **só podem ser confirmadas no Supabase Dashboard** (P0/P1 para próx
 2. **Adicionar `.github/dependabot.yml`** para PRs semanais opt-in (revisão manual antes de merge).
 3. **Confirmar Supabase Dashboard hardening** (password policy + leaked password protection + redirect URLs allowlist + email confirm).
 4. **CAPTCHA** em signup/login/reset — Turnstile ou hCaptcha via dashboard, sem mexer no código de UI.
+
+### Security P0 follow-up (2026-05-09)
+
+- **Dependabot config:** adicionado `.github/dependabot.yml` (npm em raiz + `apps/web` + `apps/mobile` + `packages/core`; `github-actions` na raiz). PRs semanais com revisão manual; **nenhuma** alteração a `package.json` ou lockfile nesta entrega.
+- **GitHub:** `vulnerability-alerts` e `automated-security-fixes` ativados via `gh api` (token com permissão). `security_and_analysis` pós-exec: `secret_scanning` + `push_protection` mantidos **enabled**; `dependabot_security_updates` passou a **enabled** após ativação dos alerts/fixes.
+- **Checklist Supabase Auth:** `docs/security/supabase-auth-hardening-checklist.md` — guia operacional antes de ligar projeto real e produção.
+- **P0 remanescente (fora do repo):** validação manual no Supabase Dashboard (policy, leaked passwords, redirects, CAPTCHA, templates) conforme secção 8 e checklist; **rate limit + cap** em `/api/attempts/bulk` e restantes Route Handlers **permanecem P1** até deploy de `apps/web`.
 
 ### P1 — antes de deploy de `apps/web` ou Edge Functions
 1. **Rate limit + payload caps** em `apps/web/app/api/attempts/bulk/route.ts` (limitar array a N itens, ex.: 200) e nos demais Route Handlers.
