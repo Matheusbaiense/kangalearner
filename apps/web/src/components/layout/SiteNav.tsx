@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import { createClient } from "@/lib/supabase/client";
 
 const NAV_LINKS = [
   { href: "/learn", label: "Learn" },
@@ -29,12 +30,29 @@ const LANGUAGES = [
   { code: "es", flag: "🇪🇸", label: "Español" }
 ];
 
+interface NavUser {
+  email: string;
+  name: string;
+  initials: string;
+}
+
+function getInitials(name: string, email: string): string {
+  const src = name || email;
+  const parts = src.split(/[\s@]+/).filter(Boolean);
+  if (parts.length >= 2) return (parts[0][0] + parts[1][0]).toUpperCase();
+  return src.slice(0, 2).toUpperCase();
+}
+
 export function SiteNav() {
   const pathname = usePathname();
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [activeLang, setActiveLang] = useState("en");
   const langRef = useRef<HTMLDivElement>(null);
+  const userMenuRef = useRef<HTMLDivElement>(null);
+  const [user, setUser] = useState<NavUser | null>(null);
+  const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -53,6 +71,56 @@ export function SiteNav() {
     document.addEventListener("mousedown", handler);
     return () => document.removeEventListener("mousedown", handler);
   }, [langOpen]);
+
+  // Close user menu on outside click
+  useEffect(() => {
+    if (!userMenuOpen) return;
+    const handler = (e: MouseEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
+        setUserMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, [userMenuOpen]);
+
+  // Auth state
+  useEffect(() => {
+    const supabase = createClient();
+
+    supabase.auth.getUser().then(({ data: { user: u } }) => {
+      if (u) {
+        const name =
+          (u.user_metadata?.full_name as string | undefined) ||
+          (u.user_metadata?.name as string | undefined) ||
+          "";
+        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? "") });
+      }
+    });
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        const u = session.user;
+        const name =
+          (u.user_metadata?.full_name as string | undefined) ||
+          (u.user_metadata?.name as string | undefined) ||
+          "";
+        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? "") });
+      } else {
+        setUser(null);
+      }
+    });
+
+    return () => listener.subscription.unsubscribe();
+  }, []);
+
+  async function handleSignOut() {
+    const supabase = createClient();
+    await supabase.auth.signOut();
+    setUserMenuOpen(false);
+    router.push("/");
+    router.refresh();
+  }
 
   const currentLang = LANGUAGES.find((l) => l.code === activeLang) ?? LANGUAGES[0];
 
@@ -133,9 +201,39 @@ export function SiteNav() {
           </div>
 
           {/* Auth */}
-          <Link href="/auth/login" className="btn-nav-login">
-            Sign in
-          </Link>
+          {user ? (
+            <div className={`user-menu${userMenuOpen ? " open" : ""}`} ref={userMenuRef}>
+              <button
+                className="user-trigger"
+                onClick={() => setUserMenuOpen((o) => !o)}
+                aria-expanded={userMenuOpen}
+                aria-haspopup="menu"
+                aria-label="Account menu"
+              >
+                <span className="user-avatar" aria-hidden="true">
+                  {user.initials}
+                </span>
+              </button>
+              <div className="user-panel" role="menu">
+                <div className="user-panel-email">{user.email}</div>
+                <Link
+                  href="/dashboard"
+                  className="user-panel-item"
+                  role="menuitem"
+                  onClick={() => setUserMenuOpen(false)}
+                >
+                  Dashboard
+                </Link>
+                <button className="user-panel-item danger" role="menuitem" onClick={handleSignOut}>
+                  Sign out
+                </button>
+              </div>
+            </div>
+          ) : (
+            <Link href="/auth/login" className="btn-nav-login">
+              Sign in
+            </Link>
+          )}
         </div>
       </nav>
     </header>
