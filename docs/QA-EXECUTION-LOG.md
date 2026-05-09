@@ -2,6 +2,41 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Cleanup Batch 2 moderate (docs + investigation only)
+
+**Objetivo:** executar a fase **moderada** do plano já em `main`: consolidar documentação (“o que está deployado hoje”, sync backend inerte em Pages, papel do `src/`), inventário com evidência de `scripts/*`, captura **read-only** de `pnpm why @supabase/supabase-js`, e registos de itens adiados. **Sem** remoção de ficheiros rastreados, **sem** alterações a código de produto.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **Novo** | `docs/architecture/cleanup-batch-2-results.md` — tabela de itens, evidência, risco, testes; matriz `scripts/`; saída `pnpm why`. |
+| **Atualizado** | `docs/architecture/cleanup-batch-2-plan.md` — secção de estado pós-merge + candidatos marcados (feito / parcial / adiado). |
+| **Atualizado** | `docs/architecture/dead-code-and-refactor-audit.md` — §1.1 “What ships today…”, contagens, refactor overview (Batch 2 docs). |
+| **Atualizado** | `docs/QA-EXECUTION-LOG.md` (esta entrada). |
+
+### O que **não** foi feito (intencional)
+
+- Nenhuma pergunta, scoring, lógica de quiz, auth, router principal, CSS ou service worker alterados.
+- Nenhum ficheiro removido do repositório (critérios de órfão completos não reunidos para nenhum candidato).
+- `package.json` / `pnpm-lock.yaml` inalterados; nenhum `audit fix`; nenhuma ligação Supabase/Stripe; nenhum rate limit.
+- `apps/web`, `apps/mobile`, `packages/core` não mexidos.
+- Runtime de `KANGA_ENABLE_BACKEND_SYNC` / `/api/health` **não** alterado (só documentação).
+
+### Comandos de verificação
+
+| Comando | Resultado |
+| ------- | --------- |
+| `pnpm why @supabase/supabase-js` | OK — dependência direta na raiz (só leitura; registo no results doc). |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+| `pnpm run site:build` | **OK** |
+| `pnpm run validate:questions` | **OK** — 69 perguntas |
+| `pnpm run test:e2e` | **OK** — **29/29** |
+
+---
+
 ## 2026-05-09 — Cleanup Batch 2 planning (docs only)
 
 **Objetivo:** criar o plano do Cleanup Batch 2 com base nas auditorias existentes, sem executar remoções nem alterações de código.

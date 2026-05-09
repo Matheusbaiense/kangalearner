@@ -1,8 +1,8 @@
 # Dead code & refactor audit — static KangaLearner (SPA root)
 
 **Created:** 2026-05-09  
-**Refreshed:** 2026-05-09 (audit v2)  
-**Baseline:** branch `main` @ **`94a7ef1`** — PR #7 **merged** (Supabase Auth foundation + Pages/Vite `dist-vite` deploy).  
+**Refreshed:** 2026-05-09 (audit v2 + Cleanup Batch 2 **moderate** — docs + `pnpm why` ledger only; see §1.1).  
+**Baseline:** branch `main` @ **`94a7ef1`** — PR #7 **merged** (Supabase Auth foundation + Pages/Vite `dist-vite` deploy). *(Commit hash is the audit snapshot; newer merges — e.g. security P0, Cleanup Batch 2 plan — do not invalidate the technical findings unless explicitly re-verified.)*  
 **Sources:** local snapshot `.tmp-audit-backup/dead-code-and-refactor-audit.local.md`; `origin/chore/dead-code-and-refactor-audit` @ **`353977d`**; post-merge tree review.  
 **Scope:** documentation-only audit in v2 PR; **Batch 1 (comment hygiene only)** executed 2026-05-09 on `chore/cleanup-batch-1-comments` — see §3. **`pnpm why` / root dependency trim** still **not** done (defer to later batch / human approval).  
 **Exclusions (do not touch without approval):** quiz/scoring/questions content, Liquid Glass, migrations, Stripe, Supabase project wiring, auth guard semantics, route tables, `apps/web`, `apps/mobile`, `packages/core` implementations.
@@ -22,6 +22,22 @@ Main technical-debt clusters:
 5. **CSS / exhaustive dead-class scan:** not fully enumerated; recommend **incremental** grep + visual QA (Batch 3).
 6. **New — `window.KL_SUPABASE` surface:** three methods are exposed (`getPublicEnv`, `getSupabaseClient`, `getSupabaseSession`) but **no other file references them** (`rg` 2026-05-09). Likely intentional public/debug API — **defer removal** until product confirms.
 7. **Resolved (Batch 1, 2026-05-09):** obsolete header comments in `assets/js/app.js` (auth chip banner) and `vite.config.js` (Pages deploy description) were updated; **no logic changes.**
+8. **Cleanup Batch 2 moderate (2026-05-09):** documentation + read-only `pnpm why @supabase/supabase-js`; **zero** tracked file removals and **no** runtime edits to sync hooks, quiz, auth, router, CSS, or SW. Details: `docs/architecture/cleanup-batch-2-results.md`, `docs/architecture/cleanup-batch-2-plan.md` (status section).
+
+---
+
+## 1.1 What ships today & deferred deploy surfaces (Batch 2A docs)
+
+Authoritative cross-links for security reachability vs static production:
+
+- `docs/security/security-audit-initial.md` — posture, headers, rate-limit **gates before** `apps/web` production.
+- `docs/security/dependabot-alerts-triage.md` — Dependabot vs `pnpm audit`; confirms advisories sit in **non-deployed** mobile/web graphs today.
+
+**Product surface today:** root **hash-router SPA** on **GitHub Pages** (`index.html` → `assets/js/**` → Vite output `dist-vite/`). Supabase client for static auth loads from **CDN UMD** per `index.html` / `supabase-client.js`; root `package.json` still lists `@supabase/supabase-js` for the workspace — `pnpm why` shows it as a **direct** production dependency (investigation output captured in `cleanup-batch-2-results.md`). Removing it from root remains a **separate, human-approved** dependency PR.
+
+**`src/main.js` + `src/js/config.js`:** Vite-sidecar / bootstrap; **not** `<script>`-linked from production `index.html`. E2E smoke continues to assert the static app does not rely on `/src/main.js`. Deletion/archival is **out of scope** for Batch 2 moderate.
+
+**Backend sync (`KANGA_ENABLE_BACKEND_SYNC`, `fetch("/api/health")`):** on static Pages hosting there is no same-origin `/api/health` endpoint; the feature stays **inert** unless a backend is colocated. **No code changes** were made here — only this clarification for future “API + static” deploy gates.
 
 ---
 
@@ -41,6 +57,8 @@ Main technical-debt clusters:
 | Item | Evidence | Risk | Note |
 |------|----------|------|------|
 | None **automatically** removed in this pass | N/A | — | All candidates need a **small PR** + tests. |
+
+**Cleanup Batch 2 moderate (2026-05-09):** re-validated `scripts/*` — **no** orphan script qualified for deletion (see `cleanup-batch-2-results.md`). **No** new safe-to-remove rows yet.
 
 **Batch 1 (2026-05-09) — comment hygiene — DONE:**
 
@@ -79,8 +97,8 @@ Main technical-debt clusters:
 
 ## 6. Refactor tasks (overview)
 
-1. **Batch 1 — Docs & dependency clarity:** comment updates in `app.js`, `vite.config.js` — **done (2026-05-09)**. **`pnpm why` + optional root dep trim** — **still pending** (separate approval).
-2. **Batch 2 — Backend sync stub:** document or gate `KANGA_ENABLE_BACKEND_SYNC` for static-only deploy.
+1. **Batch 1 — Docs & dependency clarity:** comment updates in `app.js`, `vite.config.js` — **done (2026-05-09)**. **`pnpm why` + optional root dep trim** — `pnpm why` **done (read-only, 2026-05-09)**; root dep trim **still pending** (separate approval + lockfile PR).
+2. **Batch 2 — Backend sync stub:** **documentation done** (§1.1 + results ledger); **runtime gate / behaviour change** still pending if product adds a real `/api` origin.
 3. **Batch 3 — CSS inventory:** class usage script + manual sign-off.
 4. **Batch 4 — `src/` Vite entry:** document in README or remove if unused.
 5. **Batch 5 — SW / dist-vite:** confirm asset URLs under GitHub Pages after Vite publish.
@@ -295,6 +313,7 @@ Main technical-debt clusters:
 | Category | Count / note |
 |----------|----------------|
 | **Batch 1 comment hygiene** | **Done** (`app.js`, `vite.config.js`); 0 code deletions |
+| **Batch 2 moderate (docs + investigation)** | **Done** — 0 file deletions; see `cleanup-batch-2-results.md` |
 | **Needs human decision** | 5 rows (§4) |
 | **Defer / risky** | Auth export surface, SW, CSS bulk, quiz routes |
 | **Components never rendered** | **0** confirmed orphans |
