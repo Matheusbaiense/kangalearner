@@ -33,16 +33,3 @@ export async function createStripeCustomer(params: {
   });
   return customer.id;
 }
-
-/**
- * Constantes de XP — centralizadas aqui para consistência
- * entre web e futuro mobile
- */
-export const XP_VALUES = {
-  PRACTICE_ANSWER: 5,
-  MOCK_COMPLETE: 15,
-  LEARN_UNIT_COMPLETE: 25,
-  MOCK_PASS: 50,
-  LEARN_ALL_COMPLETE: 100,
-  PERFECT_MOCK: 75
-} as const;

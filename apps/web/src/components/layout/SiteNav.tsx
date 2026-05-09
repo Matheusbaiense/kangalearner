@@ -133,7 +133,7 @@ export function SiteNav() {
           </div>
 
           {/* Auth */}
-          <Link href="/login" className="btn-nav-login">
+          <Link href="/auth/login" className="btn-nav-login">
             Sign in
           </Link>
         </div>
