@@ -1,20 +1,21 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Inter, Sora } from "next/font/google";
+import { Manrope, Space_Grotesk } from "next/font/google";
 import { SiteNav } from "@/components/layout/SiteNav";
 import { Onboarding } from "@/components/Onboarding";
 import "./globals.css";
 
-const inter = Inter({
+const manrope = Manrope({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
   display: "swap"
 });
 
-const sora = Sora({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["600", "700", "800"],
-  variable: "--font-sora",
+  weight: ["500", "600", "700"],
+  variable: "--font-space-grotesk",
   display: "swap"
 });
 
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable}`}>
+    <html lang="en" className={`${manrope.variable} ${spaceGrotesk.variable}`}>
       <body>
         <SiteNav />
         <Onboarding />
