@@ -13,16 +13,16 @@ import { safeNextPath } from "@/lib/auth/safeNextPath";
 export async function GET(request: NextRequest) {
   const url = new URL(request.url);
   const code = url.searchParams.get("code");
-  const next = safeNextPath(url.searchParams.get("next") ?? url.searchParams.get("redirect"));
+  const next = safeNextPath(url.searchParams.get("next") ?? url.searchParams.get("redirect"), "/");
 
   if (!code) {
-    return NextResponse.redirect(new URL("/login?error=no_code", url.origin));
+    return NextResponse.redirect(new URL("/auth/login?error=no_code", url.origin));
   }
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.redirect(new URL("/login?error=missing_env", url.origin));
+    return NextResponse.redirect(new URL("/auth/login?error=missing_env", url.origin));
   }
 
   // exchangeCodeForSession tem de escrever cookies na mesma resposta do redirect.
@@ -44,7 +44,7 @@ export async function GET(request: NextRequest) {
 
   if (error || !data.user) {
     console.error("Auth callback error:", error);
-    return NextResponse.redirect(new URL("/login?error=auth_failed", url.origin));
+    return NextResponse.redirect(new URL("/auth/login?error=auth_failed", url.origin));
   }
 
   const user = data.user;
