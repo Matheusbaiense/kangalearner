@@ -2,6 +2,43 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Security P0.1: triagem Dependabot/alerts (docs only)
+
+**Objetivo:** inventariar e classificar alertas Dependabot + `pnpm audit` sem atualizar dependências, sem `audit fix`, sem alterar código, env, Supabase, Stripe, rate limit ou Cleanup Batch 2.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **Novo** | `docs/security/dependabot-alerts-triage.md` — 17 alertas GitHub (0 critical / 14 high / 2 moderate / 1 low), inventário por `#`, comparação com `pnpm audit` e `security-audit-initial.md`, plano de PRs sugerido. |
+| **Atualizado** | `docs/QA-EXECUTION-LOG.md` (esta entrada). |
+
+### Resultados-chave
+
+- **Dependabot API:** 17 alertas `open`, todos `pnpm-lock.yaml` / npm.
+- **`pnpm audit`:** metadados 14 high, 3 moderate, 1 low (18 “slots” vs 17 alertas — agregação ligeiramente diferente).
+- **Superfície GitHub Pages atual:** nenhum alerta classificado como *production reachable* no site estático; clusters em `apps/mobile` (não deployado) e `postcss` também via `apps/web`/Next (não deployado).
+- **P0 imediato para produção atual:** nenhuma correção obrigatória nesta triagem.
+
+### O que **não** foi feito (intencional)
+
+- Nenhum `pnpm audit fix` / `npm audit fix`. Nenhuma alteração a `package.json` ou `pnpm-lock.yaml`.
+- Nenhum código de produto, perguntas, quiz, auth, rotas, CSS, SW.
+- Nenhum Supabase/Stripe; rate limit não implementado; Cleanup Batch 2 não iniciado.
+
+### Comandos de verificação
+
+| Comando | Resultado |
+| ------- | --------- |
+| `git checkout main` / `git pull` / branch `chore/security-p0-dependabot-triage` | OK — base `ab89c95`. |
+| `gh api repos/.../dependabot/alerts --paginate --jq '...'` | OK — 17 alertas listados. |
+| `pnpm audit` / `pnpm audit --json` | OK — leitura apenas (exit 1 esperado com vulnerabilidades presentes). |
+| `pnpm run format:check` | **OK** |
+| `pnpm run check:static-links` | **OK** |
+| `pnpm run smoke:static` | **OK** |
+
+---
+
 ## 2026-05-09 — Security P0: Dependabot + hardening checklist (docs + GitHub config only)
 
 **Objetivo:** iniciar Security P0 de forma conservadora: Dependabot versionado, checklist operacional de hardening do Supabase Auth, verificação/ativação de recursos GitHub quando possível. **Sem** alterar código de produto, `package.json`, lockfile, env, Supabase real, Stripe, rate limit, perguntas, quiz, auth, rotas, CSS ou service worker.
