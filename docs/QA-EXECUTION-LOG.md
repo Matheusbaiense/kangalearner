@@ -2,6 +2,47 @@
 
 Registo orientado a humanos e a agentes de IA para reproduzir verificações e entender o que passou / falhou.
 
+## 2026-05-09 — Auditoria de segurança inicial (read-only, docs only)
+
+**Objetivo:** auditoria inicial de postura de segurança do KangaLearner sem alterar código, dependências, env, Supabase, Stripe ou rotas. Avalia: dependency audit, password hashing, secrets, rate limit, Supabase Auth hardening.
+
+### Alterações
+
+| Área | Detalhe |
+| ---- | ------- |
+| **Docs novo** | `docs/security/security-audit-initial.md` — sumário executivo, advisories, posture e backlog P0/P1/P2. |
+| **Docs atualizado** | `docs/QA-EXECUTION-LOG.md` (esta entrada). |
+
+### Resultados-chave
+
+- `pnpm audit`: **0 critical**, **13 high**, **3 moderate**, **1 low** — todas em `apps/mobile` (Expo CLI/RN) e `apps/web` (postcss build). Nenhuma atinge a superfície de produção atual (SPA estático no GitHub Pages).
+- **Nenhum secret** real exposto. Service-role apenas em `apps/web/src/lib/supabase/admin.ts` (server-only). Push protection GitHub ativo.
+- **Nenhum hash próprio de senha**: Supabase Auth é o único guardião.
+- **Rate limit** próprio não é necessário hoje (sem backend em produção). Necessário antes de deploy de `apps/web`.
+- **Dependabot alerts e security updates desativados** (gap a habilitar P0).
+- **Supabase Dashboard hardening** (password policy, leaked password protection, CAPTCHA, redirect URLs allowlist) precisa de validação fora do código.
+
+### O que **não** foi feito (intencional)
+
+- Nenhum upgrade de dependência. Nenhum `pnpm audit fix`. Nenhum `npm audit fix`.
+- Nenhum env/secret adicionado. Nenhum Supabase ou Stripe conectado.
+- Nenhum código alterado (assets, src, apps, scripts, sw.js, CSS, perguntas, rotas, auth, quiz).
+- Nenhum AgentShield rodado (escopo de não-execução).
+
+### Comandos de verificação
+
+| Comando | Resultado |
+| ------- | --------- |
+| `git status --short` / `git log --oneline -10` | OK — main em paridade com `origin/main`, base `ba7adcf`. |
+| `pnpm audit --json` / `pnpm audit` | OK — 17 hits, ver doc. |
+| `pnpm outdated --recursive` | OK — informativo, sem ação. |
+| `gh api repos/.../vulnerability-alerts` | 404 (disabled) — confirmado gap. |
+| `gh api repos/.../security_and_analysis` | secret_scanning enabled, push_protection enabled, dependabot disabled. |
+| `pnpm run format:check` | **FAIL pré-existente em `main`** — `assets/js/app.js` e `vite.config.js` (não tocados nesta auditoria; ficheiros vêm do PR #9). Reproduzido em `main` antes de criar a branch. Mantido sem fix por respeito à regra "não alterar código". Anotado como item de hygiene fora do escopo desta auditoria. |
+| `pnpm run check:static-links` | **OK** |
+
+---
+
 ## 2026-05-09 — Cleanup Batch 1: comentários obsoletos (hygiene apenas)
 
 **Objetivo:** executar a primeira fatia **conservadora** da auditoria dead-code: só comentários em `assets/js/app.js` e `vite.config.js`, mais registo nos docs. **Sem** alteração de lógica, rotas, auth, quiz, perguntas, CSS, service worker, dependências, `apps/*`, `packages/core`.
