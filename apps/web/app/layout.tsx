@@ -29,6 +29,10 @@ export const metadata: Metadata = {
   title: "KangaLearner — Australia Learner Test Practice",
   description:
     "Study Australian road rules by state. Practice learner test questions, take mock tests and track your progress.",
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg"
+  },
   openGraph: {
     title: "KangaLearner — Australia Learner Test Practice",
     description:

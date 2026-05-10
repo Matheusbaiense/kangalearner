@@ -156,14 +156,13 @@ export function SiteNav() {
         {/* Brand */}
         <Link href="/" className="brand" aria-label="KangaLearner home">
           <Image
-            src="/brand/logo-mark.svg"
-            alt="KangaLearner kangaroo logo"
-            width={32}
-            height={32}
+            src="/brand/logo.png"
+            alt="KangaLearner"
+            width={108}
+            height={36}
             className="brand-logo"
             priority
           />
-          <span className="brand-name">KangaLearner</span>
         </Link>
 
         {/* Nav links */}

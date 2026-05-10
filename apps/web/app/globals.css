@@ -1612,9 +1612,9 @@ button {
   text-decoration: none;
 }
 .brand-logo {
-  width: 32px;
-  height: 32px;
-  flex: 0 0 32px;
+  height: 36px;
+  width: auto;
+  flex-shrink: 0;
   display: block;
 }
 .site-header .brand-name {
