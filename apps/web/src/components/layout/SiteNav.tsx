@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 
 const NAV_LINKS = [
+  { href: "/", key: "home", exact: true },
   { href: "/learn", key: "learn" },
   { href: "/practice", key: "practice" },
   { href: "/mock-test", key: "mockTest" },
@@ -167,26 +168,18 @@ export function SiteNav() {
 
         {/* Nav links */}
         <ul className="main-nav" role="list">
-          {user && (
-            <li>
-              <Link
-                href="/dashboard"
-                className={pathname.startsWith("/dashboard") ? "nav-link active" : "nav-link"}
-              >
-                {s.dashboard}
-              </Link>
-            </li>
-          )}
-          {NAV_LINKS.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className={pathname.startsWith(link.href) ? "nav-link active" : "nav-link"}
-              >
-                {s[link.key]}
-              </Link>
-            </li>
-          ))}
+          {NAV_LINKS.map((link) => {
+            const isActive = "exact" in link && link.exact
+              ? pathname === link.href
+              : pathname.startsWith(link.href);
+            return (
+              <li key={link.href}>
+                <Link href={link.href} className={isActive ? "nav-link active" : "nav-link"}>
+                  {s[link.key]}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Right controls */}

@@ -21,6 +21,7 @@ export const VALID_LANGS: Lang[] = ["en", "pt", "es", "pt-en", "es-en"];
 export const t = {
   en: {
     // ── Nav ───────────────────────────────────────────────
+    home: "Home",
     learn: "Learn",
     practice: "Practice",
     mockTest: "Mock Test",
@@ -30,6 +31,18 @@ export const t = {
     signIn: "Sign in",
     account: "Account",
     signOut: "Sign out",
+
+    // ── Learn page ────────────────────────────────────────
+    learnTitle: "Learn Road Rules",
+    learnSub: "Study by topic before taking the practice quiz or mock test.",
+    learnKeyRules: "Key Rules",
+    learnMistakes: "Common Mistakes",
+    learnExample: "Practical Example",
+    learnQuickCheck: "Quick Check",
+    learnSource: "Source",
+    learnBack: "← All topics",
+    learnPractice: "Practise this topic →",
+    learnAllTopics: "All practice questions →",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "WA learner test practice",
@@ -166,6 +179,7 @@ export const t = {
 
   pt: {
     // ── Nav ───────────────────────────────────────────────
+    home: "Início",
     learn: "Aprender",
     practice: "Praticar",
     mockTest: "Simulado",
@@ -175,6 +189,18 @@ export const t = {
     signIn: "Entrar",
     account: "Conta",
     signOut: "Sair",
+
+    // ── Learn page ────────────────────────────────────────
+    learnTitle: "Aprender as regras de trânsito",
+    learnSub: "Estude por tópico antes de fazer o simulado ou praticar.",
+    learnKeyRules: "Regras principais",
+    learnMistakes: "Erros comuns",
+    learnExample: "Exemplo prático",
+    learnQuickCheck: "Verificação rápida",
+    learnSource: "Fonte",
+    learnBack: "← Todos os tópicos",
+    learnPractice: "Praticar este tópico →",
+    learnAllTopics: "Todas as perguntas →",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Prática para a prova de learner de WA",
@@ -311,6 +337,7 @@ export const t = {
 
   es: {
     // ── Nav ───────────────────────────────────────────────
+    home: "Inicio",
     learn: "Aprender",
     practice: "Practicar",
     mockTest: "Simulacro",
@@ -320,6 +347,18 @@ export const t = {
     signIn: "Ingresar",
     account: "Cuenta",
     signOut: "Salir",
+
+    // ── Learn page ────────────────────────────────────────
+    learnTitle: "Aprender las reglas de tránsito",
+    learnSub: "Estudia por tema antes de hacer el simulacro o practicar.",
+    learnKeyRules: "Reglas clave",
+    learnMistakes: "Errores comunes",
+    learnExample: "Ejemplo práctico",
+    learnQuickCheck: "Comprobación rápida",
+    learnSource: "Fuente",
+    learnBack: "← Todos los temas",
+    learnPractice: "Practicar este tema →",
+    learnAllTopics: "Todas las preguntas →",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Práctica para el examen learner de WA",
