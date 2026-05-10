@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
@@ -48,12 +48,23 @@ function tx(obj: Record<string, string> | null | undefined, lang: UiLang): strin
   return obj[lang] ?? obj.en ?? "";
 }
 
+const EXAM_SECONDS = 45 * 60; // 45 minutes
+
+function formatTime(secs: number) {
+  const m = Math.floor(secs / 60).toString().padStart(2, "0");
+  const s = (secs % 60).toString().padStart(2, "0");
+  return `${m}:${s}`;
+}
+
 export default function MockTestSessionPage() {
   const [raw, setRaw] = useState<string | null>(null);
   const [sessionRaw, setSessionRaw] = useState<string | null>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [picked, setPicked] = useState<Record<string, string> | null>(null);
   const [reveal, setReveal] = useState(false);
+  const [timeLeft, setTimeLeft] = useState(EXAM_SECONDS);
+  const [timeExpired, setTimeExpired] = useState(false);
+  const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const router = useRouter();
   const { uiLang: lang, isBilingual: bilingual, s } = useLang();
 
@@ -130,6 +141,30 @@ export default function MockTestSessionPage() {
     const firstUnanswered = session.qids.findIndex((id) => !session.answers[id]);
     setActiveIndex(firstUnanswered === -1 ? 0 : firstUnanswered);
   }, [sessionRaw]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* ── Countdown timer (exam mode only) ── */
+  useEffect(() => {
+    if (!cfg || cfg.mode !== "exam" || !session || session.completedAtIso) return;
+    timerRef.current = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timerRef.current!);
+          setTimeExpired(true);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+  }, [cfg?.mode, !!session, !!session?.completedAtIso]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  /* Auto-submit when time expires */
+  useEffect(() => {
+    if (!timeExpired || !session) return;
+    const completed: MockSession = { ...session, completedAtIso: new Date().toISOString() };
+    persistSession(completed);
+    router.push("/mock-test/results");
+  }, [timeExpired]); // eslint-disable-line react-hooks/exhaustive-deps
 
   function persistSession(next: MockSession) {
     try {
@@ -221,14 +256,29 @@ export default function MockTestSessionPage() {
       <div className="mock-setup-card">
         <div
           className="mock-meta"
-          style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}
+          style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}
         >
           <span>
             {cfg.state} · {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </span>
-          <span aria-live="polite">
-            {Math.min(answeredCount + 1, total)} / {total}
-          </span>
+          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
+            {cfg.mode === "exam" && (
+              <span
+                aria-live="polite"
+                style={{
+                  fontWeight: 800,
+                  fontSize: ".88rem",
+                  color: timeLeft < 300 ? "var(--red)" : "var(--muted)",
+                  fontVariantNumeric: "tabular-nums",
+                }}
+              >
+                ⏱ {s.timeRemaining}: {formatTime(timeLeft)}
+              </span>
+            )}
+            <span aria-live="polite">
+              {Math.min(answeredCount + 1, total)} / {total}
+            </span>
+          </div>
         </div>
 
         {/* Progress bar */}
@@ -320,7 +370,7 @@ export default function MockTestSessionPage() {
 
         <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
           <Link href="/mock-test" className="btn btn-secondary">
-            Exit
+            {s.exitLabel}
           </Link>
           <button
             className="btn btn-primary btn-full"
@@ -328,7 +378,7 @@ export default function MockTestSessionPage() {
             onClick={nextStep}
             disabled={!isCurrentAnswered}
           >
-            {activeIndex + 1 >= total ? "Finish →" : "Next →"}
+            {activeIndex + 1 >= total ? s.finishLabel : s.nextLabel}
           </button>
         </div>
       </div>

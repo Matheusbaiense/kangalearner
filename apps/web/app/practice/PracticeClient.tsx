@@ -12,7 +12,7 @@ import type { UiLang } from "@/lib/i18n";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
-type Mode = "all" | "wrong" | "unanswered" | "sim";
+type Mode = "all" | "wrong" | "unanswered" | "saved" | "sim";
 
 interface Opt {
   l: string;
@@ -67,7 +67,11 @@ function QuizCard({
   isBilingual,
   answered,
   onPick,
-  answerLabel
+  answerLabel,
+  isSaved,
+  onToggleSave,
+  saveLabel,
+  unsaveLabel,
 }: {
   q: Question;
   lang: UiLang;
@@ -75,6 +79,10 @@ function QuizCard({
   answered: Answered;
   onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
   answerLabel: string;
+  isSaved?: boolean;
+  onToggleSave?: (qid: string) => void;
+  saveLabel?: string;
+  unsaveLabel?: string;
 }) {
   const bilingual = isBilingual;
   const state = answered[q.id];
@@ -92,6 +100,16 @@ function QuizCard({
           <CatIco className="qcat-ico" aria-hidden />
           {catData?.label?.[lang] ?? q.cat}
         </span>
+        {onToggleSave && (
+          <button
+            onClick={() => onToggleSave(q.id)}
+            title={isSaved ? unsaveLabel : saveLabel}
+            aria-label={isSaved ? unsaveLabel : saveLabel}
+            style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: "1.1rem", lineHeight: 1, padding: "0 2px", color: isSaved ? "var(--green)" : "var(--muted)", flexShrink: 0 }}
+          >
+            {isSaved ? "★" : "☆"}
+          </button>
+        )}
       </div>
 
       <p className="qtext">{tx(q.q, lang)}</p>
@@ -274,6 +292,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [mode, setMode] = useState<Mode>(initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
+  const [saved, setSaved] = useState<Set<string>>(new Set());
 
   /* Sim state */
   const [simQueue, setSimQueue] = useState<Question[]>([]);
@@ -282,11 +301,15 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
 
-  /* ── Load answered from localStorage ── */
+  /* ── Load answered + saved from localStorage ── */
   useEffect(() => {
     try {
       const raw = localStorage.getItem("kl-answered");
       if (raw) setAnswered(JSON.parse(raw));
+    } catch {}
+    try {
+      const savedRaw = localStorage.getItem("kl-saved");
+      if (savedRaw) setSaved(new Set(JSON.parse(savedRaw)));
     } catch {}
   }, []);
 
@@ -305,8 +328,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     if (cat !== "all") qs = qs.filter((q) => q.cat === cat);
     if (mode === "wrong") qs = qs.filter((q) => answered[q.id] && !answered[q.id].correct);
     if (mode === "unanswered") qs = qs.filter((q) => !answered[q.id]);
+    if (mode === "saved") qs = qs.filter((q) => saved.has(q.id));
     return qs;
-  }, [mode, cat, answered, selectedState]);
+  }, [mode, cat, answered, selectedState, saved]);
 
   /* Group study questions by category */
   const grouped = useMemo(() => {
@@ -391,6 +415,17 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     [answered, simQueue, selectedState, syncAttempt]
   );
 
+  /* ── Toggle save ── */
+  function toggleSave(qid: string) {
+    setSaved((prev) => {
+      const next = new Set(prev);
+      if (next.has(qid)) next.delete(qid);
+      else next.add(qid);
+      try { localStorage.setItem("kl-saved", JSON.stringify([...next])); } catch {}
+      return next;
+    });
+  }
+
   /* ── Reset ── */
   function resetAll() {
     setAnswered({});
@@ -411,6 +446,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     { key: "all", label: s.allQuestions },
     { key: "wrong", label: s.wrongAnswers },
     { key: "unanswered", label: s.unanswered },
+    { key: "saved", label: `${s.savedMode}${saved.size > 0 ? ` (${saved.size})` : ""}` },
     { key: "sim", label: s.mockTestMode }
   ];
 
@@ -493,9 +529,13 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                 isBilingual={isBilingual}
                 answered={answered}
                 onPick={(qid, letter, ev) => pick(qid, letter, ev, false)}
-                noQuestionsTitle={s.noQuestionsTitle}
-                noQuestionsSub={s.noQuestionsSub}
+                noQuestionsTitle={mode === "saved" ? s.noSavedTitle : s.noQuestionsTitle}
+                noQuestionsSub={mode === "saved" ? s.noSavedSub : s.noQuestionsSub}
                 answerLabel={s.answer}
+                saved={saved}
+                onToggleSave={toggleSave}
+                saveLabel={s.saveQuestion}
+                unsaveLabel={s.unsaveQuestion}
               />
             )}
           </section>
@@ -516,7 +556,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   );
 }
 
-/* ── Study view (all / wrong / unanswered modes) ── */
+/* ── Study view (all / wrong / unanswered / saved modes) ── */
 function StudyView({
   grouped,
   lang,
@@ -525,7 +565,11 @@ function StudyView({
   onPick,
   noQuestionsTitle,
   noQuestionsSub,
-  answerLabel
+  answerLabel,
+  saved,
+  onToggleSave,
+  saveLabel,
+  unsaveLabel,
 }: {
   grouped: Record<string, Question[]>;
   lang: UiLang;
@@ -535,6 +579,10 @@ function StudyView({
   noQuestionsTitle: string;
   noQuestionsSub: string;
   answerLabel: string;
+  saved: Set<string>;
+  onToggleSave: (qid: string) => void;
+  saveLabel: string;
+  unsaveLabel: string;
 }) {
   const entries = Object.entries(grouped);
 
@@ -570,6 +618,10 @@ function StudyView({
                 answered={answered}
                 onPick={onPick}
                 answerLabel={answerLabel}
+                isSaved={saved.has(q.id)}
+                onToggleSave={onToggleSave}
+                saveLabel={saveLabel}
+                unsaveLabel={unsaveLabel}
               />
             ))}
           </div>

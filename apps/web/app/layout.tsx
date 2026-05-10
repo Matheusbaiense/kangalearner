@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import { SiteNav } from "@/components/layout/SiteNav";
+import { Footer } from "@/components/layout/Footer";
 import { Onboarding } from "@/components/Onboarding";
 import { LangProvider } from "@/contexts/LangContext";
 import "./globals.css";
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           <SiteNav />
           <Onboarding />
           {children}
+          <Footer />
         </LangProvider>
       </body>
     </html>
