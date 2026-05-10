@@ -224,7 +224,7 @@ export function SiteNav() {
                     setLangOpen(false);
                   }}
                 >
-                  <FlagImg country={l.country} size={18} />
+                  <FlagImg country={l.country} size={20} />
                   <span style={{ flex: 1 }}>{l.label}</span>
                   {l.bilingual && <span className="lang-bilingual-badge">EN</span>}
                 </button>
@@ -247,7 +247,18 @@ export function SiteNav() {
                 </span>
               </button>
               <div className="user-panel" role="menu">
-                <div className="user-panel-email">{user.email}</div>
+                <div className="user-panel-header">
+                  <div className="user-panel-name">{user.name || user.email.split("@")[0]}</div>
+                  <div className="user-panel-email">{user.email}</div>
+                </div>
+                <Link
+                  href="/"
+                  className="user-panel-item"
+                  role="menuitem"
+                  onClick={() => setUserMenuOpen(false)}
+                >
+                  {s.home}
+                </Link>
                 <Link
                   href="/dashboard"
                   className="user-panel-item"
@@ -262,8 +273,17 @@ export function SiteNav() {
                   role="menuitem"
                   onClick={() => setUserMenuOpen(false)}
                 >
-                  {s.account}
+                  {s.settings}
                 </Link>
+                <Link
+                  href="/resources"
+                  className="user-panel-item"
+                  role="menuitem"
+                  onClick={() => setUserMenuOpen(false)}
+                >
+                  {s.help}
+                </Link>
+                <div className="user-panel-divider" role="separator" />
                 <button className="user-panel-item danger" role="menuitem" onClick={handleSignOut}>
                   {s.signOut}
                 </button>

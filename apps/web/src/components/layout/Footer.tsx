@@ -85,6 +85,7 @@ export function Footer() {
             <li><Link href="/mock-test">{s.mockTest}</Link></li>
             <li><Link href="/progress">{s.progress}</Link></li>
             <li><Link href="/resources">{s.resources}</Link></li>
+            <li><Link href="/#faq">{s.faqTitle}</Link></li>
           </ul>
         </div>
 

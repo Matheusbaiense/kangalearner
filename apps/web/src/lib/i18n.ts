@@ -30,6 +30,9 @@ export const t = {
     dashboard: "Dashboard",
     signIn: "Sign in",
     account: "Account",
+    settings: "Settings",
+    achievements: "Achievements",
+    help: "Help",
     signOut: "Sign out",
 
     // ── Learn page ────────────────────────────────────────
@@ -45,12 +48,12 @@ export const t = {
     learnAllTopics: "All practice questions →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "WA learner test practice",
-    heroTitle: "Prepare for your WA learner test with confidence.",
-    heroDesc: "Study key WA road rules, practise the existing WA questions, take a 30-question mock test and track your progress in English, Portuguese or Spanish.",
-    heroCta1: "Start practising WA questions",
+    heroEyebrow: "Australian learner test practice",
+    heroTitle: "Prepare for your Australian learner test with confidence.",
+    heroDesc: "Study key road rules, practise authentic questions and take a 30-question mock test — in English, Portuguese or Spanish. WA available now.",
+    heroCta1: "Start practising now",
     heroCta2: "Take the 30-question mock test",
-    heroProof: "WA available now. More Australian states coming soon.",
+    heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
     // Features
     feat1Title: "Learn",
     feat1Sub: "Study road rules by topic with clear explanations.",
@@ -90,10 +93,13 @@ export const t = {
     faqTitle: "Frequently asked questions",
     ctaTitle: "Ready to pass your learner test?",
     ctaBtn: "Start practising now →",
-    // Social proof
-    proofQuestions: "Questions",
-    proofLanguages: "Languages",
-    proofFree: "Forever",
+    // How it works strip
+    howStep1Label: "Study",
+    howStep1Desc: "Learn road rules by topic with clear explanations",
+    howStep2Label: "Practice",
+    howStep2Desc: "Answer exam-style questions filtered by category",
+    howStep3Label: "Mock Test",
+    howStep3Desc: "Simulate the official 30-question WA learner test",
 
     // ── Practice UI ───────────────────────────────────────
     studyMode: "Study Mode",
@@ -154,7 +160,7 @@ export const t = {
     resetConfirm: "Reset all progress? This cannot be undone.",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Pass your WA learner test — in English, Portuguese or Spanish.",
+    footerTagline: "Pass your Australian learner test — in English, Portuguese or Spanish.",
     footerProductTitle: "Product",
     footerCompanyTitle: "Company",
     footerLegalTitle: "Legal",
@@ -188,6 +194,9 @@ export const t = {
     dashboard: "Painel",
     signIn: "Entrar",
     account: "Conta",
+    settings: "Configurações",
+    achievements: "Conquistas",
+    help: "Ajuda",
     signOut: "Sair",
 
     // ── Learn page ────────────────────────────────────────
@@ -203,12 +212,12 @@ export const t = {
     learnAllTopics: "Todas as perguntas →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Prática para a prova de learner de WA",
-    heroTitle: "Prepare-se para a prova de learner de WA com confiança.",
-    heroDesc: "Estude as principais regras de trânsito de WA, pratique as perguntas existentes, faça um simulado com 30 questões e acompanhe seu progresso em inglês, português ou espanhol.",
-    heroCta1: "Praticar perguntas de WA",
+    heroEyebrow: "Prática para a prova de learner na Austrália",
+    heroTitle: "Prepare-se para a prova de learner na Austrália com confiança.",
+    heroDesc: "Estude as principais regras de trânsito, pratique questões autênticas e faça um simulado de 30 questões — em inglês, português ou espanhol. WA disponível agora.",
+    heroCta1: "Começar a praticar agora",
     heroCta2: "Fazer simulado de 30 questões",
-    heroProof: "WA disponível agora. Outros estados da Austrália em breve.",
+    heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estude as regras de trânsito por tema com explicações claras.",
@@ -248,10 +257,13 @@ export const t = {
     faqTitle: "Perguntas frequentes",
     ctaTitle: "Pronto para passar na prova de learner?",
     ctaBtn: "Começar a praticar agora →",
-    // Social proof
-    proofQuestions: "Perguntas",
-    proofLanguages: "Idiomas",
-    proofFree: "Para sempre",
+    // How it works strip
+    howStep1Label: "Estudar",
+    howStep1Desc: "Aprenda as regras de trânsito por tópico com explicações claras",
+    howStep2Label: "Praticar",
+    howStep2Desc: "Responda perguntas no formato do exame filtradas por categoria",
+    howStep3Label: "Simulado",
+    howStep3Desc: "Simule a prova oficial de 30 questões do learner de WA",
 
     // ── Practice UI ───────────────────────────────────────
     studyMode: "Modo de Estudo",
@@ -312,7 +324,7 @@ export const t = {
     resetConfirm: "Reiniciar todo o progresso? Esta ação não pode ser desfeita.",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Passe na prova de learner de WA — em inglês, português ou espanhol.",
+    footerTagline: "Passe na prova de learner australiana — em inglês, português ou espanhol.",
     footerProductTitle: "Produto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
@@ -346,6 +358,9 @@ export const t = {
     dashboard: "Panel",
     signIn: "Ingresar",
     account: "Cuenta",
+    settings: "Configuración",
+    achievements: "Logros",
+    help: "Ayuda",
     signOut: "Salir",
 
     // ── Learn page ────────────────────────────────────────
@@ -361,12 +376,12 @@ export const t = {
     learnAllTopics: "Todas las preguntas →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Práctica para el examen learner de WA",
-    heroTitle: "Prepárate para el examen learner de WA con confianza.",
-    heroDesc: "Estudia las principales reglas de tránsito de WA, practica las preguntas existentes, haz un simulacro de 30 preguntas y sigue tu progreso en inglés, portugués o español.",
-    heroCta1: "Practicar preguntas de WA",
+    heroEyebrow: "Práctica para el examen learner en Australia",
+    heroTitle: "Prepárate para el examen learner australiano con confianza.",
+    heroDesc: "Estudia las reglas de tránsito, practica preguntas auténticas y haz un simulacro de 30 preguntas — en inglés, portugués o español. WA disponible ahora.",
+    heroCta1: "Empezar a practicar ahora",
     heroCta2: "Hacer simulacro de 30 preguntas",
-    heroProof: "WA disponible ahora. Otros estados de Australia próximamente.",
+    heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estudia las reglas de tránsito por tema con explicaciones claras.",
@@ -406,10 +421,13 @@ export const t = {
     faqTitle: "Preguntas frecuentes",
     ctaTitle: "¿Listo para aprobar el examen learner?",
     ctaBtn: "Empezar a practicar ahora →",
-    // Social proof
-    proofQuestions: "Preguntas",
-    proofLanguages: "Idiomas",
-    proofFree: "Para siempre",
+    // How it works strip
+    howStep1Label: "Estudiar",
+    howStep1Desc: "Aprende las reglas viales por tema con explicaciones claras",
+    howStep2Label: "Practicar",
+    howStep2Desc: "Responde preguntas estilo examen filtradas por categoría",
+    howStep3Label: "Simulacro",
+    howStep3Desc: "Simula el examen oficial de 30 preguntas del learner de WA",
 
     // ── Practice UI ───────────────────────────────────────
     studyMode: "Modo de Estudio",
@@ -470,7 +488,7 @@ export const t = {
     resetConfirm: "¿Reiniciar todo el progreso? Esta acción no se puede deshacer.",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Aprueba el examen learner de WA — en inglés, portugués o español.",
+    footerTagline: "Aprueba el examen learner australiano — en inglés, portugués o español.",
     footerProductTitle: "Producto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
