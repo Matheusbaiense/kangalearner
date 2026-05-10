@@ -163,7 +163,7 @@ function SlidePractice({ lang }: { lang: UiLang }) {
     pt: "O que significa um semáforo amarelo numa interseção?",
     es: "¿Qué significa un semáforo amarillo en una intersección?",
   };
-  const options = [
+  const options: { en: string; pt: string; es: string; correct: boolean }[] = [
     { en: "Stop if it is safe to do so", pt: "Pare se for seguro fazê-lo", es: "Detenerse si es seguro", correct: true },
     { en: "Speed up to clear the intersection", pt: "Acelere para cruzar", es: "Acelera para cruzar", correct: false },
     { en: "Sound your horn before proceeding", pt: "Toque a buzina antes", es: "Toca el claxon antes", correct: false },
@@ -185,7 +185,7 @@ function SlidePractice({ lang }: { lang: UiLang }) {
             <span className={`slide-opt-letter${opt.correct ? " correct" : ""}`}>
               {opt.correct ? "✓" : String.fromCharCode(65 + i)}
             </span>
-            <span>{tx(opt, lang)}</span>
+            <span>{tx({ en: opt.en, pt: opt.pt, es: opt.es }, lang)}</span>
           </div>
         ))}
       </div>
