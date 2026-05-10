@@ -48,7 +48,7 @@ export function SiteNav() {
   const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
-  const [activeLang, setActiveLang] = useState("en");
+  const [activeLang, setActiveLang] = useState("en"); // initialised from localStorage below
   const langRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<NavUser | null>(null);
@@ -60,28 +60,44 @@ export function SiteNav() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close lang dropdown on outside click
+  // Initialise language from localStorage (set by Onboarding or previous selection)
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("kl-lang");
+      if (saved && ["en", "pt", "es"].includes(saved)) setActiveLang(saved);
+    } catch {}
+  }, []);
+
+  // Close lang dropdown on outside click (mouse + touch)
   useEffect(() => {
     if (!langOpen) return;
-    const handler = (e: MouseEvent) => {
+    const handler = (e: Event) => {
       if (langRef.current && !langRef.current.contains(e.target as Node)) {
         setLangOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("touchstart", handler);
+    };
   }, [langOpen]);
 
-  // Close user menu on outside click
+  // Close user menu on outside click (mouse + touch)
   useEffect(() => {
     if (!userMenuOpen) return;
-    const handler = (e: MouseEvent) => {
+    const handler = (e: Event) => {
       if (userMenuRef.current && !userMenuRef.current.contains(e.target as Node)) {
         setUserMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("touchstart", handler);
+    };
   }, [userMenuOpen]);
 
   // Auth state
@@ -188,7 +204,7 @@ export function SiteNav() {
               aria-label="Select language"
             >
               <span aria-hidden="true">{currentLang.flag}</span>
-              <span>{currentLang.label}</span>
+              <span className="lang-label">{currentLang.label}</span>
               <span className="lang-arrow" aria-hidden="true">▼</span>
             </button>
             <div className="lang-panel" role="listbox" aria-label="Language options">
@@ -201,6 +217,12 @@ export function SiteNav() {
                   onClick={() => {
                     setActiveLang(lang.code);
                     setLangOpen(false);
+                    try {
+                      localStorage.setItem("kl-lang", lang.code);
+                      window.dispatchEvent(
+                        new CustomEvent("kl-lang-change", { detail: lang.code })
+                      );
+                    } catch {}
                   }}
                 >
                   <span aria-hidden="true">{lang.flag}</span>

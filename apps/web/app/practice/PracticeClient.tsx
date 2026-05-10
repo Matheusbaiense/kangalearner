@@ -257,6 +257,16 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     } catch {}
   }, []);
 
+  /* ── React to language changes from the nav (same-tab) ── */
+  useEffect(() => {
+    function onLangChange(e: Event) {
+      const lang = (e as CustomEvent<string>).detail as Lang;
+      if (["en", "pt", "es"].includes(lang)) setLang(lang);
+    }
+    window.addEventListener("kl-lang-change", onLangChange);
+    return () => window.removeEventListener("kl-lang-change", onLangChange);
+  }, []);
+
   /* ── Start sim when mode switches ── */
   useEffect(() => {
     if (mode !== "sim") return;

@@ -1869,6 +1869,28 @@ button {
   }
   .site-header .nav-shell {
     grid-template-columns: auto 1fr auto;
+    padding: 0 16px;
+    gap: 12px;
+  }
+  /* On small screens hide the lang label — show only flag */
+  .lang-trigger .lang-label {
+    display: none;
+  }
+  .lang-trigger .lang-arrow {
+    display: none;
+  }
+  /* Tighten nav-controls gap */
+  .site-header .nav-controls {
+    gap: 6px;
+  }
+  /* Ensure lang dropdown opens to the right anchor point */
+  .lang-panel {
+    right: 0;
+    left: auto;
+  }
+  .user-panel {
+    right: 0;
+    left: auto;
   }
 }
 
