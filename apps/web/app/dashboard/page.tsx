@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import Link from "next/link";
 import { createSupabaseServerClient } from "../../src/lib/supabase/server";
 import { MigrateLocalProgress } from "../../src/components/MigrateLocalProgress";
-import { Icons } from "@/components/icons";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 
 export const metadata = { title: "Dashboard — KangaLearner" };
@@ -21,6 +20,17 @@ interface SessionRow {
   created_at: string;
 }
 
+// Weekly bar chart helpers — defined outside component (no component state needed)
+function startOfWeek(d: Date): Date {
+  const day = d.getDay(); // 0=Sun
+  const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Monday
+  return new Date(d.getFullYear(), d.getMonth(), diff);
+}
+
+function weekLabel(monday: Date): string {
+  return monday.toLocaleDateString("en-AU", { day: "numeric", month: "short" });
+}
+
 function formatDate(iso: string) {
   return new Date(iso).toLocaleDateString("en-AU", {
     day: "numeric",
@@ -31,13 +41,6 @@ function formatDate(iso: string) {
 
 function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
-}
-
-function clamp01(n: number) {
-  if (!Number.isFinite(n)) return 0;
-  if (n < 0) return 0;
-  if (n > 1) return 1;
-  return n;
 }
 
 export default async function DashboardPage() {
@@ -80,16 +83,6 @@ export default async function DashboardPage() {
   const totalCorrect = allAttempts.filter((a) => a.is_correct).length;
   const overallPct = pct(totalCorrect, totalAnswered);
 
-  const now = Date.now();
-  const last7 = allAttempts.filter((a) => {
-    const t = Date.parse(a.created_at);
-    if (!Number.isFinite(t)) return false;
-    return now - t <= 7 * 24 * 60 * 60 * 1000;
-  });
-  const last7Answered = last7.length;
-  const last7Correct = last7.filter((a) => a.is_correct).length;
-  const last7Pct = pct(last7Correct, last7Answered);
-
   /* Per-category */
   const catMap: Record<string, { total: number; correct: number }> = {};
   allAttempts.forEach((a) => {
@@ -112,6 +105,31 @@ export default async function DashboardPage() {
       return b[1].total - a[1].total;
     })
     .slice(0, 3);
+
+  // Weekly bar chart — last 8 weeks
+  const WEEKS = 8;
+  const weekBuckets: { label: string; total: number; correct: number }[] = [];
+  const nowDate = new Date();
+  const thisWeekStart = startOfWeek(nowDate);
+
+  for (let i = WEEKS - 1; i >= 0; i--) {
+    const weekStart = new Date(thisWeekStart);
+    weekStart.setDate(weekStart.getDate() - i * 7);
+    const weekEnd = new Date(weekStart);
+    weekEnd.setDate(weekEnd.getDate() + 7);
+    const label = weekLabel(weekStart);
+    const bucket = allAttempts.filter((a) => {
+      const t = Date.parse(a.created_at);
+      return Number.isFinite(t) && t >= weekStart.getTime() && t < weekEnd.getTime();
+    });
+    weekBuckets.push({
+      label,
+      total: bucket.length,
+      correct: bucket.filter((a) => a.is_correct).length
+    });
+  }
+
+  const maxWeekTotal = Math.max(...weekBuckets.map((b) => b.total), 1);
 
   const allSessions = sessions ?? [];
   const bestSession =
@@ -177,34 +195,38 @@ export default async function DashboardPage() {
             </div>
           </div>
 
-          {/* Trend */}
+          {/* Weekly chart */}
           <div className="dash-section" style={{ marginTop: 22 }}>
-            <p className="dash-section-title">Last 7 days</p>
-            {last7Answered === 0 ? (
-              <div className="dash-empty">No activity yet in the last week.</div>
+            <p className="dash-section-title">Weekly activity</p>
+            {allAttempts.length === 0 ? (
+              <div className="dash-empty">No activity yet — start practising to see your trend.</div>
             ) : (
-              <div className="cat-row" style={{ alignItems: "center" }}>
-                <span className="cat-row-icon" aria-hidden>
-                  <Icons.trendingUp />
-                </span>
-                <span className="cat-row-name">Accuracy</span>
-                <span className="cat-row-frac">
-                  {last7Correct}/{last7Answered}
-                </span>
-                <div className="cat-row-track" aria-label="Last 7 days accuracy">
-                  <div
-                    className="cat-row-fill"
-                    style={{
-                      width: `${Math.round(clamp01(last7Correct / Math.max(last7Answered, 1)) * 100)}%`,
-                      background:
-                        last7Pct >= 80
-                          ? "var(--green)"
-                          : last7Pct >= 60
-                            ? "var(--orange)"
-                            : "var(--red)"
-                    }}
-                  />
-                </div>
+              <div className="weekly-chart">
+                {weekBuckets.map((b, i) => {
+                  const heightPct = b.total === 0 ? 0 : Math.max(8, Math.round((b.total / maxWeekTotal) * 100));
+                  const accuracy = b.total > 0 ? Math.round((b.correct / b.total) * 100) : 0;
+                  const barColor =
+                    b.total === 0
+                      ? "var(--border)"
+                      : accuracy >= 80
+                        ? "var(--green)"
+                        : accuracy >= 60
+                          ? "var(--orange)"
+                          : "var(--red)";
+                  return (
+                    <div key={i} className="weekly-col">
+                      <div className="weekly-bar-wrap">
+                        <div
+                          className="weekly-bar"
+                          style={{ height: `${heightPct}%`, background: barColor }}
+                          title={b.total === 0 ? "No activity" : `${accuracy}% (${b.correct}/${b.total})`}
+                        />
+                      </div>
+                      <div className="weekly-label">{b.label}</div>
+                      {b.total > 0 && <div className="weekly-count">{accuracy}%</div>}
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>

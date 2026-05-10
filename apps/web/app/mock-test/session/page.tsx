@@ -4,6 +4,8 @@ import { useEffect, useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
+import { useLang } from "@/contexts/LangContext";
+import type { UiLang } from "@/lib/i18n";
 
 type MockConfig = {
   state: string;
@@ -15,7 +17,7 @@ type MockSession = {
   cfg: MockConfig;
   startedAtIso: string;
   qids: string[];
-  answers: Record<string, string>; // question_id -> option letter
+  answers: Record<string, string>;
   completedAtIso: string | null;
 };
 
@@ -41,6 +43,11 @@ function fisherYatesSlice<T>(arr: T[], k: number): T[] {
   return a.slice(0, take);
 }
 
+function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
+  if (!obj) return "";
+  return obj[lang] ?? obj.en ?? "";
+}
+
 export default function MockTestSessionPage() {
   const [raw, setRaw] = useState<string | null>(null);
   const [sessionRaw, setSessionRaw] = useState<string | null>(null);
@@ -48,6 +55,7 @@ export default function MockTestSessionPage() {
   const [picked, setPicked] = useState<Record<string, string> | null>(null);
   const [reveal, setReveal] = useState(false);
   const router = useRouter();
+  const { uiLang: lang, isBilingual: bilingual, s } = useLang();
 
   useEffect(() => {
     try {
@@ -78,11 +86,9 @@ export default function MockTestSessionPage() {
   const questionPool = useMemo(() => {
     if (!cfg) return [];
     const state = cfg.state;
-    const pool =
-      state === "AU"
-        ? QUESTIONS.slice()
-        : QUESTIONS.filter((q: any) => Array.isArray(q.states) && q.states.includes(state));
-    return pool;
+    return state === "AU"
+      ? QUESTIONS.slice()
+      : QUESTIONS.filter((q: any) => Array.isArray(q.states) && q.states.includes(state));
   }, [cfg]);
 
   const activeQuestion = useMemo(() => {
@@ -110,15 +116,13 @@ export default function MockTestSessionPage() {
       startedAtIso: new Date().toISOString(),
       qids: ids,
       answers: {},
-      completedAtIso: null
+      completedAtIso: null,
     };
     try {
       const nextRaw = JSON.stringify(s);
       sessionStorage.setItem("mock-session", nextRaw);
       setSessionRaw(nextRaw);
-    } catch {
-      // ignore
-    }
+    } catch {}
   }, [cfg, session, questionPool]);
 
   useEffect(() => {
@@ -132,18 +136,16 @@ export default function MockTestSessionPage() {
       const nextRaw = JSON.stringify(next);
       sessionStorage.setItem("mock-session", nextRaw);
       setSessionRaw(nextRaw);
-    } catch {
-      // ignore
-    }
+    } catch {}
   }
 
   function choose(letter: string) {
     if (!session || !activeQuestion) return;
-    if (picked && picked[activeQuestion.id]) return;
-    const nextAnswers = { ...session.answers, [activeQuestion.id]: letter };
+    if (picked && picked[(activeQuestion as any).id]) return;
+    const nextAnswers = { ...session.answers, [(activeQuestion as any).id]: letter };
     const next: MockSession = { ...session, answers: nextAnswers };
     persistSession(next);
-    setPicked({ [activeQuestion.id]: letter });
+    setPicked({ [(activeQuestion as any).id]: letter });
     setReveal(session.cfg.mode === "practice");
   }
 
@@ -170,10 +172,10 @@ export default function MockTestSessionPage() {
     return (
       <main className="container section-pad">
         <div className="mock-setup-card">
-          <h1>Mock Test</h1>
+          <h1>{s.mockTest}</h1>
           <p className="mock-meta">No mock config found.</p>
           <Link href="/mock-test" className="btn btn-secondary">
-            Back to setup
+            ← {s.mockTest}
           </Link>
         </div>
       </main>
@@ -184,10 +186,10 @@ export default function MockTestSessionPage() {
     return (
       <main className="container section-pad">
         <div className="mock-setup-card">
-          <h1>Preparing your session…</h1>
+          <h1>{s.loading}</h1>
           <p className="mock-meta">
             {cfg.state} · {cfg.questions} questions ·{" "}
-            {cfg.mode === "exam" ? "Exam mode" : "Practice mock"}
+            {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </p>
         </div>
       </main>
@@ -199,9 +201,9 @@ export default function MockTestSessionPage() {
       <main className="container section-pad">
         <div className="mock-setup-card">
           <h1>Session error</h1>
-          <p className="mock-meta">We couldn’t load the next question.</p>
+          <p className="mock-meta">We couldn&apos;t load the next question.</p>
           <Link href="/mock-test" className="btn btn-secondary">
-            Back to setup
+            ← {s.mockTest}
           </Link>
         </div>
       </main>
@@ -210,8 +212,9 @@ export default function MockTestSessionPage() {
 
   const total = session.qids.length;
   const answeredCount = session.qids.filter((id) => !!session.answers[id]).length;
-  const isCurrentAnswered = !!session.answers[activeQuestion.id];
-  const chosen = session.answers[activeQuestion.id] ?? null;
+  const isCurrentAnswered = !!session.answers[(activeQuestion as any).id];
+  const chosen = session.answers[(activeQuestion as any).id] ?? null;
+  const q = activeQuestion as any;
 
   return (
     <main className="container section-pad">
@@ -221,19 +224,34 @@ export default function MockTestSessionPage() {
           style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}
         >
           <span>
-            {cfg.state} · {total} questions · {cfg.mode === "exam" ? "Exam mode" : "Practice mock"}
+            {cfg.state} · {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </span>
           <span aria-live="polite">
             {Math.min(answeredCount + 1, total)} / {total}
           </span>
         </div>
 
-        <h1 style={{ marginTop: 10, marginBottom: 10 }}>
-          {(activeQuestion as any).q?.en ?? "Question"}
-        </h1>
+        {/* Progress bar */}
+        <div className="pbar-track" style={{ marginTop: 10, marginBottom: 14 }}>
+          <div
+            className="pbar-fill"
+            style={{ width: `${Math.round((answeredCount / total) * 100)}%` }}
+          />
+        </div>
 
-        <div style={{ display: "grid", gap: 10, marginTop: 14 }}>
-          {((activeQuestion as any).opts ?? []).map((o: any) => {
+        {/* Question text */}
+        <p style={{ fontWeight: 850, fontSize: "1rem", lineHeight: 1.45, marginBottom: bilingual ? 4 : 14 }}>
+          {tx(q.q, lang)}
+        </p>
+        {bilingual && q.q?.en && (
+          <p style={{ fontSize: ".82rem", color: "var(--muted2)", fontStyle: "italic", marginBottom: 14, lineHeight: 1.4 }}>
+            {q.q.en}
+          </p>
+        )}
+
+        {/* Options */}
+        <div style={{ display: "grid", gap: 10, marginTop: 4 }}>
+          {(q.opts ?? []).map((o: any) => {
             const isChosen = chosen === o.l;
             const isCorrect = correctLetter === o.l;
             const showResult = reveal && isCurrentAnswered;
@@ -256,14 +274,21 @@ export default function MockTestSessionPage() {
                 disabled={isCurrentAnswered}
               >
                 <span className="mode-icon">{o.l}</span>
-                <div>
-                  <strong>{o.t?.en ?? ""}</strong>
+                <div style={{ textAlign: "left" }}>
+                  <strong>{tx(o.t, lang)}</strong>
+                  {bilingual && o.t?.en && tx(o.t, lang) !== o.t.en && (
+                    <span style={{ display: "block", fontSize: ".75rem", fontWeight: 400, opacity: 0.65, fontStyle: "italic" }}>
+                      {o.t.en}
+                    </span>
+                  )}
                   {showResult && isCorrect && (
-                    <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>Correct</span>
+                    <span style={{ display: "block", marginTop: 4, opacity: 0.9, fontWeight: 700 }}>
+                      ✓ {s.answer}
+                    </span>
                   )}
                   {showResult && isChosen && !isCorrect && (
                     <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>
-                      Your answer
+                      ✗
                     </span>
                   )}
                 </div>
@@ -272,21 +297,24 @@ export default function MockTestSessionPage() {
           })}
         </div>
 
-        {reveal && isCurrentAnswered && (
+        {/* Explanation (practice mode) */}
+        {reveal && isCurrentAnswered && q.exp && (
           <div
             style={{
               marginTop: 14,
               padding: 12,
               borderRadius: 12,
-              background: "rgba(15, 23, 42, 0.04)"
+              background: "rgba(15, 23, 42, 0.04)",
             }}
           >
-            <div style={{ fontWeight: 800, marginBottom: 6 }}>Explanation</div>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: sanitizeHtml((activeQuestion as any).exp?.en ?? "")
-              }}
-            />
+            <div style={{ fontWeight: 800, marginBottom: 6 }}>{s.answer}</div>
+            <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(tx(q.exp, lang)) }} />
+            {bilingual && q.exp?.en && tx(q.exp, lang) !== q.exp.en && (
+              <div
+                style={{ marginTop: 8, opacity: 0.6, fontSize: ".8rem", fontStyle: "italic" }}
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(q.exp.en) }}
+              />
+            )}
           </div>
         )}
 

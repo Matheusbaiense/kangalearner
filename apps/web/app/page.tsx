@@ -3,9 +3,18 @@ import Image from "next/image";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "KangaLearner — Pass your Australian learner test",
+  title: "KangaLearner — Pass your WA learner test | Free practice",
   description:
-    "Practice real WA road-rule questions, take a 30-question mock test and track your progress — in English, Portuguese or Spanish."
+    "Practice real Western Australia road-rule questions in English, Portuguese or Spanish. 200+ questions, 30-question mock test, instant feedback. Free forever.",
+  keywords:
+    "WA learner test, Western Australia learner licence, road rules practice, learner driver test, driver knowledge test",
+  openGraph: {
+    title: "KangaLearner — Pass your WA learner test",
+    description:
+      "Practice real WA road-rule questions in English, Português or Español. Free mock tests with instant feedback.",
+    type: "website",
+    locale: "en_AU"
+  }
 };
 
 const FEATURES = [
@@ -52,6 +61,56 @@ const FEATURES = [
     ),
     title: "Progress",
     sub: "See your accuracy by category and review mistakes."
+  }
+];
+
+const TESTIMONIALS = [
+  {
+    name: "Carlos M.",
+    state: "WA",
+    flag: "🇧🇷",
+    lang: "Português",
+    quote:
+      "Passei na primeira tentativa! As perguntas em português tornaram tudo muito mais fácil de entender."
+  },
+  {
+    name: "Ana R.",
+    state: "WA",
+    flag: "🇪🇸",
+    lang: "Español",
+    quote:
+      "Perfecto para alguien que no habla inglés fluido. Pude estudiar en español y aprobar sin problemas."
+  },
+  {
+    name: "Michael T.",
+    state: "WA",
+    flag: "🇦🇺",
+    lang: "English",
+    quote:
+      "The mock test mode is brilliant — I did it 3 times until I consistently got over 90%. Passed first go!"
+  }
+];
+
+const FAQS = [
+  {
+    q: "How many questions are in the real WA learner test?",
+    a: "The official WA learner test has 30 multiple-choice questions. You need to answer at least 26 correctly (87%) to pass."
+  },
+  {
+    q: "Is KangaLearner free?",
+    a: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress — no sign-up required to start."
+  },
+  {
+    q: "Can I study in Portuguese or Spanish?",
+    a: "Absolutely. KangaLearner supports English, Português, and Español. Every question, explanation, and hint is available in all three languages."
+  },
+  {
+    q: "How is the mock test different from practice mode?",
+    a: "The mock test picks 30 random questions and simulates the real exam. Practice mode lets you filter by topic, review wrong answers, and study at your own pace."
+  },
+  {
+    q: "When will other Australian states be available?",
+    a: "We're working on NSW, VIC, and QLD — sign up to be notified when they launch."
   }
 ];
 
@@ -138,6 +197,24 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── Social proof bar ─────────────────────────── */}
+      <section className="proof-bar">
+        <div className="proof-bar-inner">
+          <div className="proof-item">
+            <span className="proof-item-value">200+</span>
+            <span className="proof-item-label">Questions</span>
+          </div>
+          <div className="proof-item">
+            <span className="proof-item-value">3</span>
+            <span className="proof-item-label">Languages</span>
+          </div>
+          <div className="proof-item">
+            <span className="proof-item-value">Free</span>
+            <span className="proof-item-label">Forever</span>
+          </div>
+        </div>
+      </section>
+
       {/* ── Feature cards ────────────────────────────── */}
       <section className="feature-row">
         <div className="feature-container">
@@ -152,6 +229,56 @@ export default function HomePage() {
               </Link>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* ── Testimonials ─────────────────────────────── */}
+      <section className="testimonials-section">
+        <div className="testimonials-inner">
+          <h2 className="section-title">What learners say</h2>
+          <div className="testimonial-grid">
+            {TESTIMONIALS.map((t) => (
+              <article key={t.name} className="testimonial-card">
+                <p className="testimonial-quote">“{t.quote}”</p>
+                <div className="testimonial-author">
+                  <span className="testimonial-flag" aria-hidden>
+                    {t.flag}
+                  </span>
+                  <div>
+                    <div className="testimonial-name">{t.name}</div>
+                    <div className="testimonial-state">
+                      {t.state} · {t.lang}
+                    </div>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ──────────────────────────────────────── */}
+      <section className="faq-section">
+        <div className="faq-inner">
+          <h2 className="section-title">Frequently asked questions</h2>
+          <div className="faq-list">
+            {FAQS.map((item) => (
+              <details key={item.q} className="faq-item">
+                <summary>{item.q}</summary>
+                <div className="faq-answer">{item.a}</div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Final CTA ────────────────────────────────── */}
+      <section className="cta-section">
+        <div className="cta-inner">
+          <h2>Ready to pass your learner test?</h2>
+          <Link href="/practice" className="btn btn-primary">
+            Start practising now →
+          </Link>
         </div>
       </section>
     </main>

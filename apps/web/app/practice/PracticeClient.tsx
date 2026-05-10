@@ -7,32 +7,29 @@ import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
+import { useLang } from "@/contexts/LangContext";
+import type { UiLang } from "@/lib/i18n";
 
 /* ── Local types (full shape of the question data) ── */
-type Lang = "en" | "pt" | "es";
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
 type Mode = "all" | "wrong" | "unanswered" | "sim";
 
 interface Opt {
   l: string;
-  t: Record<Lang, string>;
+  t: Record<UiLang, string>;
   ok: boolean;
 }
-interface Cap {
-  en: string;
-  pt: string;
-  es: string;
-}
+type Cap = Record<string, string>;
 interface Question {
   id: string;
   cat: string;
   states?: string[];
-  q: Record<Lang, string>;
+  q: Record<UiLang, string>;
   sign: string;
   cap: Cap | null;
   opts: Opt[];
-  exp: Record<Lang, string>;
-  tip: Record<Lang, string> | null;
+  exp: Record<UiLang, string>;
+  tip: Record<UiLang, string> | null;
 }
 
 const QS = QUESTIONS as unknown as Question[];
@@ -40,7 +37,7 @@ const QS = QUESTIONS as unknown as Question[];
 type Answered = Record<string, { chosen: string; correct: boolean }>;
 
 /* ── helpers ── */
-function tx(obj: Record<Lang, string> | null | undefined, lang: Lang): string {
+function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
   if (!obj) return "";
   return obj[lang] ?? obj.en ?? "";
 }
@@ -67,18 +64,24 @@ function spawnConfetti(x: number, y: number) {
 function QuizCard({
   q,
   lang,
+  isBilingual,
   answered,
-  onPick
+  onPick,
+  answerLabel
 }: {
   q: Question;
-  lang: Lang;
+  lang: UiLang;
+  isBilingual: boolean;
   answered: Answered;
   onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
+  answerLabel: string;
 }) {
+  const bilingual = isBilingual;
   const state = answered[q.id];
   const catData = CATEGORIES.find((c) => c.key === q.cat);
   const CatIco = categoryLucideIcon(q.cat);
   const expText = tx(q.exp, lang);
+  const expTextEn = bilingual ? tx(q.exp, "en") : null;
   const tipText = q.tip ? tx(q.tip, lang) : "";
 
   return (
@@ -92,11 +95,13 @@ function QuizCard({
       </div>
 
       <p className="qtext">{tx(q.q, lang)}</p>
+      {bilingual && q.q.en && (
+        <p className="qtext-en">{q.q.en}</p>
+      )}
 
       {q.sign && (
         <div className="sign-box">
           {/^\/?assets\//.test(q.sign) ? (
-            // `sign` is a path; render as an image (avoid HTML injection).
             <img
               src={q.sign}
               alt={q.cap ? tx(q.cap, lang) : "Road sign"}
@@ -126,7 +131,12 @@ function QuizCard({
               onClick={(ev) => !state && onPick(q.id, o.l, ev)}
             >
               <span className="oletter">{o.l}</span>
-              <span className="otext">{tx(o.t, lang)}</span>
+              <span className="otext">
+                {tx(o.t, lang)}
+                {bilingual && o.t.en && (
+                  <span className="otext-en">{o.t.en}</span>
+                )}
+              </span>
             </button>
           );
         })}
@@ -136,9 +146,15 @@ function QuizCard({
         <div className="answer show">
           <div className="alabel">
             <Icons.success className="alabel-ico" aria-hidden />
-            Answer
+            {answerLabel}
           </div>
           <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
+          {bilingual && expTextEn && (
+            <div
+              className="atext atext-en"
+              dangerouslySetInnerHTML={{ __html: sanitizeHtml(expTextEn) }}
+            />
+          )}
           {tipText && (
             <div className="atip">
               <Icons.lightbulb className="atip-ico" aria-hidden />
@@ -152,12 +168,27 @@ function QuizCard({
 }
 
 /* ── ScoreSidebar ── */
-function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () => void }) {
+function ScoreSidebar({
+  answered,
+  onReset,
+  yourProgressLabel,
+  scoreLabel,
+  correctLabel,
+  resetLabel,
+  dashboardLabel
+}: {
+  answered: Answered;
+  onReset: () => void;
+  yourProgressLabel: string;
+  scoreLabel: string;
+  correctLabel: string;
+  resetLabel: string;
+  dashboardLabel: string;
+}) {
   const total = Object.keys(answered).length;
   const correct = Object.values(answered).filter((a) => a.correct).length;
   const p = pct(correct, total);
 
-  /* Per-category mini stats */
   const catStats = useMemo(() => {
     const map: Record<string, { total: number; correct: number }> = {};
     Object.entries(answered).forEach(([qid, a]) => {
@@ -183,12 +214,16 @@ function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () =
 
   return (
     <aside className="panel score-sidebar">
-      <p className="panel-title">Your Progress</p>
-      <span className="slabel">Score</span>
+      <p className="panel-title">{yourProgressLabel}</p>
+      <span className="slabel">{scoreLabel}</span>
       <span className="score-val" style={{ color: scoreColor }}>
         {correct} / {total}
       </span>
-      {total > 0 && <span className="score-pct">{p}% correct</span>}
+      {total > 0 && (
+        <span className="score-pct">
+          {p}% {correctLabel}
+        </span>
+      )}
       <div className="pbar-track">
         <div className="pbar-fill" style={{ width: `${p}%` }} />
       </div>
@@ -217,7 +252,7 @@ function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () =
       )}
 
       <button className="btn-reset" onClick={onReset}>
-        Reset all
+        {resetLabel}
       </button>
 
       <div style={{ marginTop: 16, paddingTop: 14, borderTop: "1px solid var(--border)" }}>
@@ -225,7 +260,7 @@ function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () =
           href="/dashboard"
           style={{ fontSize: ".78rem", fontWeight: 800, color: "var(--green)" }}
         >
-          View full dashboard →
+          {dashboardLabel}
         </Link>
       </div>
     </aside>
@@ -234,8 +269,8 @@ function ScoreSidebar({ answered, onReset }: { answered: Answered; onReset: () =
 
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
-  const [lang, setLang] = useState<Lang>("en");
-  const [selectedState] = useState<StateCode>("WA"); // expand later
+  const { uiLang: lang, isBilingual, s } = useLang();
+  const [selectedState] = useState<StateCode>("WA");
   const [mode, setMode] = useState<Mode>(initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
@@ -247,24 +282,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
 
-  /* ── Load / persist ── */
+  /* ── Load answered from localStorage ── */
   useEffect(() => {
     try {
       const raw = localStorage.getItem("kl-answered");
       if (raw) setAnswered(JSON.parse(raw));
-      const savedLang = localStorage.getItem("kl-lang") as Lang | null;
-      if (savedLang && ["en", "pt", "es"].includes(savedLang)) setLang(savedLang);
     } catch {}
-  }, []);
-
-  /* ── React to language changes from the nav (same-tab) ── */
-  useEffect(() => {
-    function onLangChange(e: Event) {
-      const lang = (e as CustomEvent<string>).detail as Lang;
-      if (["en", "pt", "es"].includes(lang)) setLang(lang);
-    }
-    window.addEventListener("kl-lang-change", onLangChange);
-    return () => window.removeEventListener("kl-lang-change", onLangChange);
   }, []);
 
   /* ── Start sim when mode switches ── */
@@ -343,16 +366,11 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
           setSimIdx((prev) => {
             const nextIdx = prev + 1;
             if (nextIdx >= simQueue.length) {
-              /* calculate score from simQueue + new answers */
-              const score = simQueue.filter((sq) => {
-                const a = next[sq.id];
-                return a?.correct;
-              }).length;
+              const score = simQueue.filter((sq) => next[sq.id]?.correct).length;
               const result = { score, total: simQueue.length };
               simResultRef.current = result;
               setSimResult(result);
               setSimDone(true);
-              /* Save mock session (silent) */
               fetch("/api/mock-sessions", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -387,71 +405,20 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     if (m !== "sim") setSimDone(false);
   }
 
-  /* ── Change lang ── */
-  function changeLang(l: Lang) {
-    setLang(l);
-    try {
-      localStorage.setItem("kl-lang", l);
-    } catch {}
-  }
-
   /* ──────────────── RENDER ──────────────── */
 
   const modes: { key: Mode; label: string }[] = [
-    { key: "all", label: "All questions" },
-    { key: "wrong", label: "Wrong answers" },
-    { key: "unanswered", label: "Unanswered" },
-    { key: "sim", label: "Mock test (30)" }
+    { key: "all", label: s.allQuestions },
+    { key: "wrong", label: s.wrongAnswers },
+    { key: "unanswered", label: s.unanswered },
+    { key: "sim", label: s.mockTestMode }
   ];
 
   return (
     <div className="app-page">
-      {/* Lang selector strip */}
-      <div
-        style={{
-          borderBottom: "1px solid var(--border)",
-          background: "white",
-          padding: "10px 28px",
-          display: "flex",
-          alignItems: "center",
-          gap: 10
-        }}
-      >
-        <span
-          style={{
-            fontSize: ".78rem",
-            fontWeight: 800,
-            color: "var(--muted2)",
-            textTransform: "uppercase",
-            letterSpacing: ".08em"
-          }}
-        >
-          Language:
-        </span>
-        {(["en", "pt", "es"] as Lang[]).map((l) => (
-          <button
-            key={l}
-            onClick={() => changeLang(l)}
-            style={{
-              height: 30,
-              padding: "0 12px",
-              borderRadius: 8,
-              border: "1.5px solid",
-              borderColor: lang === l ? "var(--green2)" : "var(--border)",
-              background: lang === l ? "var(--green3)" : "white",
-              color: lang === l ? "var(--green)" : "var(--muted2)",
-              fontWeight: 800,
-              fontSize: ".78rem"
-            }}
-          >
-            {l.toUpperCase()}
-          </button>
-        ))}
-      </div>
-
       <div className="app-container app-section">
         <div className="page-header">
-          <h1 className="page-title">Practice</h1>
+          <h1 className="page-title">{s.practice}</h1>
           <p className="page-sub">
             {QS.length} questions · {CATEGORIES.length} topics · WA road rules
           </p>
@@ -460,7 +427,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         <div className="app-shell">
           {/* ── LEFT SIDEBAR ── */}
           <aside className="panel panel-pad">
-            <p className="panel-title">Study Mode</p>
+            <p className="panel-title">{s.studyMode}</p>
 
             <div className="mode-bar">
               {modes.map((m) => (
@@ -476,13 +443,13 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
             {mode !== "sim" && (
               <div className="filter-wrap">
-                <p className="filter-label">Filter by topic</p>
+                <p className="filter-label">{s.filterByTopic}</p>
                 <div className="filter-bar">
                   <button
                     className={`fcat${cat === "all" ? " active" : ""}`}
                     onClick={() => setCat("all")}
                   >
-                    All topics
+                    {s.allTopics}
                   </button>
                   {CATEGORIES.map((c) => {
                     const CI = categoryLucideIcon(c.key);
@@ -512,23 +479,37 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                 done={simDone}
                 result={simResult}
                 lang={lang}
+                isBilingual={isBilingual}
                 answered={answered}
                 onPick={(qid, letter, ev) => pick(qid, letter, ev, true)}
                 onRestart={() => changeMode("sim")}
                 onStudy={() => changeMode("all")}
+                s={s}
               />
             ) : (
               <StudyView
                 grouped={grouped}
                 lang={lang}
+                isBilingual={isBilingual}
                 answered={answered}
                 onPick={(qid, letter, ev) => pick(qid, letter, ev, false)}
+                noQuestionsTitle={s.noQuestionsTitle}
+                noQuestionsSub={s.noQuestionsSub}
+                answerLabel={s.answer}
               />
             )}
           </section>
 
           {/* ── RIGHT SIDEBAR ── */}
-          <ScoreSidebar answered={answered} onReset={resetAll} />
+          <ScoreSidebar
+            answered={answered}
+            onReset={resetAll}
+            yourProgressLabel={s.yourProgress}
+            scoreLabel={s.score}
+            correctLabel={s.correctLabel}
+            resetLabel={s.resetAll}
+            dashboardLabel={s.viewDashboard}
+          />
         </div>
       </div>
     </div>
@@ -539,13 +520,21 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 function StudyView({
   grouped,
   lang,
+  isBilingual,
   answered,
-  onPick
+  onPick,
+  noQuestionsTitle,
+  noQuestionsSub,
+  answerLabel
 }: {
   grouped: Record<string, Question[]>;
-  lang: Lang;
+  lang: UiLang;
+  isBilingual: boolean;
   answered: Answered;
   onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
+  noQuestionsTitle: string;
+  noQuestionsSub: string;
+  answerLabel: string;
 }) {
   const entries = Object.entries(grouped);
 
@@ -555,8 +544,8 @@ function StudyView({
         <div className="empty-icon">
           <IconBadge icon={Icons.party} tone="success" size="lg" />
         </div>
-        <div className="empty-title">No questions here!</div>
-        <div className="empty-sub">Try a different mode or reset your progress.</div>
+        <div className="empty-title">{noQuestionsTitle}</div>
+        <div className="empty-sub">{noQuestionsSub}</div>
       </div>
     );
   }
@@ -573,7 +562,15 @@ function StudyView({
               <span>{catData?.label?.[lang] ?? cat}</span>
             </div>
             {qs.map((q) => (
-              <QuizCard key={q.id} q={q} lang={lang} answered={answered} onPick={onPick} />
+              <QuizCard
+                key={q.id}
+                q={q}
+                lang={lang}
+                isBilingual={isBilingual}
+                answered={answered}
+                onPick={onPick}
+                answerLabel={answerLabel}
+              />
             ))}
           </div>
         );
@@ -589,20 +586,24 @@ function SimView({
   done,
   result,
   lang,
+  isBilingual,
   answered,
   onPick,
   onRestart,
-  onStudy
+  onStudy,
+  s
 }: {
   queue: Question[];
   idx: number;
   done: boolean;
   result: { score: number; total: number };
-  lang: Lang;
+  lang: UiLang;
+  isBilingual: boolean;
   answered: Answered;
   onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
   onRestart: () => void;
   onStudy: () => void;
+  s: Record<string, string>;
 }) {
   if (queue.length === 0) {
     return (
@@ -615,7 +616,7 @@ function SimView({
             iconClassName="icon-badge__icon--spin"
           />
         </div>
-        <div className="empty-title">Loading mock test…</div>
+        <div className="empty-title">{s.loading}</div>
       </div>
     );
   }
@@ -630,7 +631,7 @@ function SimView({
             icon={pass ? Icons.trophy : Icons.book}
             tone={pass ? "success" : "muted"}
             size="lg"
-            label={pass ? "Passed" : "Keep practising"}
+            label={pass ? s.pass : s.fail}
           />
         </div>
         <div className="sim-result-score">
@@ -641,18 +642,26 @@ function SimView({
         </div>
         <div className="sim-result-msg">
           {pass
-            ? "Well done! You passed the mock test."
-            : "Keep practising — you need 80% to pass. Review wrong answers in study mode."}
+            ? (lang === "en"
+                ? "Well done! You passed the mock test."
+                : lang === "pt"
+                  ? "Parabéns! Você passou no simulado."
+                  : "¡Felicidades! Pasaste el simulacro.")
+            : (lang === "en"
+                ? "Keep practising — you need 80% to pass. Review wrong answers in study mode."
+                : lang === "pt"
+                  ? "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas no modo de estudo."
+                  : "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas en el modo de estudio.")}
         </div>
         <div className="sim-result-actions">
           <button className="btn-green" onClick={onRestart}>
-            Try again
+            {lang === "en" ? "Try again" : lang === "pt" ? "Tentar de novo" : "Intentar de nuevo"}
           </button>
           <button className="btn-outline" onClick={onStudy}>
-            Back to study
+            {lang === "en" ? "Back to study" : lang === "pt" ? "Voltar ao estudo" : "Volver al estudio"}
           </button>
           <Link href="/dashboard" className="btn-outline">
-            View dashboard
+            {lang === "en" ? "View dashboard" : lang === "pt" ? "Ver painel" : "Ver panel"}
           </Link>
         </div>
       </div>
@@ -665,10 +674,9 @@ function SimView({
 
   return (
     <>
-      {/* Progress header */}
       <div className="sim-header">
         <div className="sim-meta">
-          <span className="sim-label">Mock Test</span>
+          <span className="sim-label">{s.mockTest}</span>
           <span className="sim-progress-text">
             {idx + 1} / {queue.length}
           </span>
@@ -678,8 +686,15 @@ function SimView({
         </div>
       </div>
 
-      {/* Current question */}
-      <QuizCard key={current.id} q={current} lang={lang} answered={answered} onPick={onPick} />
+      <QuizCard
+        key={current.id}
+        q={current}
+        lang={lang}
+        isBilingual={isBilingual}
+        answered={answered}
+        onPick={onPick}
+        answerLabel={s.answer}
+      />
     </>
   );
 }

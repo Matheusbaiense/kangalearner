@@ -3,12 +3,25 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
+import { useLang } from "@/contexts/LangContext";
 
 type MockMode = "practice" | "exam";
+
+const PRACTICE_DESC = {
+  en: "Explanation shown after each answer. Best for learning.",
+  pt: "Explicação exibida após cada resposta. Melhor para aprender.",
+  es: "Explicación mostrada después de cada respuesta. Mejor para aprender.",
+};
+const EXAM_DESC = {
+  en: "No feedback until the end. Simulates the real test.",
+  pt: "Sem feedback até o final. Simula o teste real.",
+  es: "Sin retroalimentación hasta el final. Simula el examen real.",
+};
 
 export default function MockTestSetupPage() {
   const [mode, setMode] = useState<MockMode>("practice");
   const router = useRouter();
+  const { uiLang: lang, s } = useLang();
 
   function handleStart() {
     sessionStorage.setItem("mock-config", JSON.stringify({ state: "WA", mode, questions: 30 }));
@@ -18,10 +31,12 @@ export default function MockTestSetupPage() {
   return (
     <main className="container section-pad">
       <div className="mock-setup-card">
-        <h1>Mock Test</h1>
+        <h1>{s.mockTest}</h1>
         <p className="mock-meta">Western Australia · 30 questions · Pass mark: 26/30</p>
 
-        <h2>Choose your mode</h2>
+        <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>
+          {s.studyMode}
+        </h2>
 
         <button
           className={`mock-mode-option ${mode === "practice" ? "active" : ""}`}
@@ -32,8 +47,8 @@ export default function MockTestSetupPage() {
             <IconBadge icon={Icons.book} tone="brand" size="md" />
           </span>
           <div>
-            <strong>Practice Mock</strong>
-            <span>Explanation shown after each answer. Best for learning.</span>
+            <strong>{s.practiceMode}</strong>
+            <span>{PRACTICE_DESC[lang]}</span>
           </div>
         </button>
 
@@ -46,13 +61,13 @@ export default function MockTestSetupPage() {
             <IconBadge icon={Icons.timer} tone="brand" size="md" />
           </span>
           <div>
-            <strong>Exam Mode</strong>
-            <span>No feedback until the end. Simulates the real test.</span>
+            <strong>{s.examMode}</strong>
+            <span>{EXAM_DESC[lang]}</span>
           </div>
         </button>
 
         <button className="btn btn-primary btn-full" onClick={handleStart} type="button">
-          Start Mock Test →
+          {s.startMockTest} →
         </button>
       </div>
     </main>
