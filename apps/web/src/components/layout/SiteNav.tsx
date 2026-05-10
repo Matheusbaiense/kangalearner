@@ -142,6 +142,16 @@ export function SiteNav() {
 
         {/* Nav links */}
         <ul className="main-nav" role="list">
+          {user && (
+            <li>
+              <Link
+                href="/dashboard"
+                className={pathname.startsWith("/dashboard") ? "nav-link active" : "nav-link"}
+              >
+                Dashboard
+              </Link>
+            </li>
+          )}
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
               <Link
@@ -223,6 +233,14 @@ export function SiteNav() {
                   onClick={() => setUserMenuOpen(false)}
                 >
                   Dashboard
+                </Link>
+                <Link
+                  href="/account"
+                  className="user-panel-item"
+                  role="menuitem"
+                  onClick={() => setUserMenuOpen(false)}
+                >
+                  Account
                 </Link>
                 <button className="user-panel-item danger" role="menuitem" onClick={handleSignOut}>
                   Sign out

@@ -1367,6 +1367,169 @@ button {
   box-shadow: 0 10px 26px rgba(46, 125, 91, 0.3);
 }
 
+/* ── Progress page ── */
+.cat-row-pct {
+  font-size: 0.78rem;
+  font-weight: 800;
+  min-width: 36px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+.progress-weekly-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 120px;
+  padding: 0 4px 0;
+}
+.progress-week-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+}
+.progress-week-bar-wrap {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+.progress-week-bar {
+  width: 100%;
+  min-height: 3px;
+  border-radius: 4px 4px 0 0;
+  transition: height 0.3s ease;
+}
+.progress-week-label {
+  font-size: 0.62rem;
+  color: var(--muted2);
+  margin-top: 5px;
+  font-weight: 700;
+}
+.progress-week-count {
+  font-size: 0.62rem;
+  color: var(--muted2);
+  margin-top: 2px;
+}
+
+/* ── Account page ── */
+.account-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 480px;
+}
+.account-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.account-label {
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.account-input {
+  height: 46px;
+  padding: 0 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--ink);
+  background: white;
+  transition: border-color 0.15s;
+  font-family: var(--font-sans);
+}
+.account-input:focus {
+  outline: none;
+  border-color: var(--liquid-green);
+}
+.account-input:disabled {
+  background: var(--paper3);
+  color: var(--muted2);
+  cursor: not-allowed;
+}
+.account-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23536778' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 36px;
+  cursor: pointer;
+}
+.account-hint {
+  font-size: 0.75rem;
+  color: var(--muted2);
+  margin: 0;
+}
+.account-message {
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin: 0;
+}
+.account-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+  max-width: 480px;
+}
+.account-section {
+  max-width: 480px;
+  margin-bottom: 28px;
+}
+.account-section-title {
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+  margin: 0 0 12px;
+}
+.account-danger-zone {
+  padding: 16px;
+  border: 1.5px solid #fecaca;
+  border-radius: 12px;
+  background: #fff5f5;
+}
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: white;
+  color: var(--ink);
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.btn-outline-dark:hover {
+  border-color: var(--ink);
+  background: var(--paper2);
+}
+.btn-danger {
+  display: inline-flex;
+  align-items: center;
+  height: 42px;
+  padding: 0 18px;
+  border-radius: 10px;
+  border: none;
+  background: #ef4444;
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.btn-danger:hover { background: #dc2626; }
+
 @media (max-width: 720px) {
   .stat-grid {
     grid-template-columns: repeat(2, 1fr);
