@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import type { LucideIcon } from "lucide-react";
 import {
   Gauge,
   TrafficCone,
@@ -12,7 +12,7 @@ import {
   ShieldCheck,
   Globe,
   Database,
-  CheckCircle2,
+  Check,
   BookOpen,
   Target,
   ClipboardList,
@@ -41,12 +41,12 @@ function tx(obj: Record<string, string>, lang: UiLang): string {
 }
 
 /* ── Data ── */
-const FEATURES = [
-  { href: "/learn",     iconKey: "feat1" as const, svgD: ["M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z", "M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"] },
-  { href: "/practice",  iconKey: "feat2" as const, svgD: ["M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z", "M9 9h6v6H9z"] },
-  { href: "/mock-test", iconKey: "feat3" as const, svgD: ["M6 4h12v3a6 6 0 0 1-12 0V4Z", "M12 13v4", "M8 21h8"] },
-  { href: "/progress",  iconKey: "feat4" as const, svgD: ["M22 12h-4l-3 9L9 3l-3 9H2"] },
-] as const;
+const FEATURES: { href: string; iconKey: "feat1" | "feat2" | "feat3" | "feat4"; Icon: LucideIcon }[] = [
+  { href: "/learn",     iconKey: "feat1", Icon: BookOpen     },
+  { href: "/practice",  iconKey: "feat2", Icon: Target        },
+  { href: "/mock-test", iconKey: "feat3", Icon: ClipboardList },
+  { href: "/progress",  iconKey: "feat4", Icon: TrendingUp    },
+];
 
 const TOPICS = [
   { key: "Speed",   Icon: Gauge,          titleKey: "topicSpeed" as const,   descKey: "topicSpeedDesc" as const,   cat: "speed_limits" },
@@ -60,7 +60,7 @@ const TOPICS = [
 const TRUST_ITEMS = [
   { Icon: Globe,        titleKey: "trustMultiTitle" as const, bodyKey: "trustMultiBody" as const, hasFlags: true },
   { Icon: Database,     titleKey: "trustSaveTitle" as const,  bodyKey: "trustSaveBody" as const,  hasFlags: false },
-  { Icon: CheckCircle2, titleKey: "trustOfficialTitle" as const, bodyKey: "trustOfficialBody" as const, hasFlags: false },
+  { Icon: Check,        titleKey: "trustOfficialTitle" as const, bodyKey: "trustOfficialBody" as const, hasFlags: false },
 ] as const;
 
 const AU_STATES = [
@@ -141,13 +141,13 @@ function SlideLearn({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <BookOpen size={15} className="slide-header-icon" aria-hidden="true" />
+        <BookOpen size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{lang === "pt" ? "Aprender Tópicos" : lang === "es" ? "Aprender Temas" : "Learn Topics"}</span>
       </div>
       <div className="slide-chip-grid">
         {chips.map(({ Icon, label }) => (
           <div key={label.en} className="slide-chip">
-            <span className="slide-chip-icon"><Icon size={15} aria-hidden="true" /></span>
+            <span className="slide-chip-icon"><Icon size={16} strokeWidth={2} aria-hidden="true" /></span>
             <span>{tx(label, lang)}</span>
           </div>
         ))}
@@ -171,7 +171,7 @@ function SlidePractice({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <Target size={15} className="slide-header-icon" aria-hidden="true" />
+        <Target size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{lang === "pt" ? "Modo Prática" : lang === "es" ? "Modo Práctica" : "Practice Mode"}</span>
         <span className="slide-progress-pill">17 / 30</span>
       </div>
@@ -209,7 +209,7 @@ function SlideMock({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <ClipboardList size={15} className="slide-header-icon" aria-hidden="true" />
+        <ClipboardList size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{lang === "pt" ? "Simulado" : lang === "es" ? "Simulacro" : "Mock Test"}</span>
       </div>
       <div className="slide-score-wrap">
@@ -258,7 +258,7 @@ function SlideProgress({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <TrendingUp size={15} className="slide-header-icon" aria-hidden="true" />
+        <TrendingUp size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{tx(title, lang)}</span>
       </div>
       <div className="slide-cat-bars">
@@ -337,11 +337,11 @@ export function LandingClient() {
             <p className="hero-desc">{s.heroDesc}</p>
             <div className="hero-actions">
               <Link href="/practice" className="btn btn-primary">
-                <Image src="/icons/practice.svg" alt="" width={18} height={18} />
+                <Target size={18} strokeWidth={2} aria-hidden="true" />
                 {s.heroCta1}
               </Link>
               <Link href="/mock-test" className="btn btn-secondary">
-                <Image src="/icons/mock.svg" alt="" width={18} height={18} />
+                <ClipboardList size={18} strokeWidth={2} aria-hidden="true" />
                 {s.heroCta2}
               </Link>
             </div>
@@ -392,9 +392,7 @@ export function LandingClient() {
             {FEATURES.map((f) => (
               <Link key={f.href} href={f.href} className="feature-card">
                 <div className="feature-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
-                    {f.svgD.map((d, i) => <path key={i} d={d} />)}
-                  </svg>
+                  <f.Icon size={24} strokeWidth={2} aria-hidden="true" />
                 </div>
                 <div className="feature-text">
                   <strong>{s[`${f.iconKey}Title`]}</strong>
@@ -414,7 +412,7 @@ export function LandingClient() {
             {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }) => (
               <div key={titleKey} className="trust-item">
                 <div className="trust-icon-wrap" aria-hidden="true">
-                  <Icon size={22} strokeWidth={1.75} />
+                  <Icon size={24} strokeWidth={2} />
                 </div>
                 <strong>{s[titleKey]}</strong>
                 <p>{s[bodyKey]}</p>
@@ -441,7 +439,7 @@ export function LandingClient() {
                 className="topic-card"
               >
                 <span className="topic-icon" aria-hidden="true">
-                  <topic.Icon size={22} strokeWidth={1.75} />
+                  <topic.Icon size={24} strokeWidth={2} />
                 </span>
                 <strong>{s[topic.titleKey]}</strong>
                 <span>{s[topic.descKey]}</span>
