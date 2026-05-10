@@ -147,7 +147,7 @@ function SlideLearn({ lang }: { lang: UiLang }) {
       <div className="slide-chip-grid">
         {chips.map(({ Icon, label }) => (
           <div key={label.en} className="slide-chip">
-            <span className="slide-chip-icon"><Icon size={12} aria-hidden="true" /></span>
+            <span className="slide-chip-icon"><Icon size={15} aria-hidden="true" /></span>
             <span>{tx(label, lang)}</span>
           </div>
         ))}

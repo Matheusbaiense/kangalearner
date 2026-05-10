@@ -3187,8 +3187,8 @@ button {
   background: rgba(4, 18, 32, 0.82);
   border: 1px solid rgba(255, 255, 255, 0.13);
   border-radius: var(--radius-lg);
-  padding: 24px;
-  min-height: 280px;
+  padding: 28px;
+  min-height: 360px;
   position: relative;
   box-shadow:
     0 32px 80px rgba(0, 0, 0, 0.38),
@@ -3238,18 +3238,18 @@ button {
 .slide-chip-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 7px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 .slide-chip {
   display: flex;
   align-items: center;
-  gap: 7px;
+  gap: 9px;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  padding: 7px 10px;
-  font-size: 0.78rem;
+  border-radius: 10px;
+  padding: 11px 13px;
+  font-size: 0.84rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.82);
 }
@@ -3258,11 +3258,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   flex-shrink: 0;
   background: rgba(82, 183, 136, 0.18);
-  border-radius: 6px;
+  border-radius: 7px;
   color: var(--green2);
 }
 
@@ -3444,9 +3444,9 @@ button {
 
 /* Shared hint text */
 .slide-hint {
-  font-size: 0.74rem;
+  font-size: 0.78rem;
   color: rgba(255, 255, 255, 0.4);
-  margin-top: 14px;
+  margin-top: 18px;
   line-height: 1.4;
 }
 
