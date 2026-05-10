@@ -14,7 +14,9 @@ apps/web/.next/
 .expo/
 apps/mobile/.expo/
 .cursor/
-.claude/
+# Claude Code — ignorar config local sensível, mas versionar comandos
+.claude/rc-config.json
+.claude/settings.local.json
 
 # OpenWolf — estado local (não versionar)
 .wolf/
