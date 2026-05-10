@@ -65,8 +65,7 @@ export function Footer() {
         {/* ── Col 1: Brand ── */}
         <div>
           <Link href="/" className="footer-brand">
-            <Image src="/brand/logo-mark.svg" alt="KangaLearner" width={28} height={28} />
-            <span className="footer-brand-name">KangaLearner</span>
+            <Image src="/brand/logo-nav.svg" alt="KangaLearner" width={110} height={28} />
           </Link>
           <p className="footer-tagline">{s.footerTagline}</p>
           <div className="footer-flags">

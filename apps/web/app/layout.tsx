@@ -30,8 +30,14 @@ export const metadata: Metadata = {
   description:
     "Study Australian road rules by state. Practice learner test questions, take mock tests and track your progress.",
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon.svg"
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/icon.png",    type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png",type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png",type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/icon-192.png",
   },
   openGraph: {
     title: "KangaLearner — Australia Learner Test Practice",
