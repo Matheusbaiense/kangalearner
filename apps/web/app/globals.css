@@ -3326,14 +3326,14 @@ button {
 .slide-score-wrap {
   display: flex;
   align-items: center;
-  gap: 20px;
-  margin-bottom: 14px;
+  gap: 22px;
+  margin-bottom: 18px;
 }
 .slide-score-ring {
   position: relative;
   flex-shrink: 0;
-  width: 80px;
-  height: 80px;
+  width: 96px;
+  height: 96px;
 }
 .slide-score-ring svg { display: block; }
 .slide-score-num {
@@ -3343,7 +3343,7 @@ button {
   align-items: center;
   justify-content: center;
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   font-weight: 800;
   color: var(--green2);
   letter-spacing: -0.03em;
@@ -3351,45 +3351,45 @@ button {
 .slide-score-meta {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 .slide-score-frac {
-  font-size: 0.82rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.82);
 }
 .slide-pass-badge {
   display: inline-flex;
   align-items: center;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
   background: rgba(82, 183, 136, 0.18);
   border: 1px solid rgba(82, 183, 136, 0.35);
   color: var(--green2);
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
 }
 
 /* ── Slide 3: Progress bars ── */
-.slide-cat-bars { display: grid; gap: 10px; }
+.slide-cat-bars { display: grid; gap: 14px; }
 .slide-cat-row {
   display: grid;
   grid-template-columns: 1fr auto auto;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 .slide-cat-label {
-  font-size: 0.76rem;
+  font-size: 0.82rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.78);
+  color: rgba(255, 255, 255, 0.82);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .slide-cat-track {
-  width: 90px;
-  height: 6px;
+  width: 100px;
+  height: 7px;
   border-radius: 99px;
   background: rgba(255, 255, 255, 0.1);
   overflow: hidden;
@@ -3400,10 +3400,10 @@ button {
   transition: width 0.6s ease;
 }
 .slide-cat-pct {
-  font-size: 0.72rem;
+  font-size: 0.78rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.55);
-  min-width: 30px;
+  color: rgba(255, 255, 255, 0.6);
+  min-width: 34px;
   text-align: right;
 }
 
@@ -3411,29 +3411,29 @@ button {
 .slide-mock-divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.1);
-  margin: 12px 0 10px;
+  margin: 16px 0 14px;
 }
 .slide-mock-results {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px 16px;
+  gap: 10px 20px;
 }
 .slide-mock-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 .slide-mock-label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 500;
-  color: rgba(255, 255, 255, 0.55);
+  color: rgba(255, 255, 255, 0.65);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .slide-mock-score {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 700;
   color: var(--green2);
   flex-shrink: 0;

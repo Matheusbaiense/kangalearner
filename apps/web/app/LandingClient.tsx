@@ -214,7 +214,7 @@ function SlideMock({ lang }: { lang: UiLang }) {
       </div>
       <div className="slide-score-wrap">
         <div className="slide-score-ring">
-          <svg viewBox="0 0 80 80" width="80" height="80">
+          <svg viewBox="0 0 80 80" width="96" height="96">
             <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="7" />
             <circle
               cx="40" cy="40" r="34" fill="none"
@@ -248,10 +248,12 @@ function SlideMock({ lang }: { lang: UiLang }) {
 function SlideProgress({ lang }: { lang: UiLang }) {
   const title = { en: "Your Progress", pt: "Seu Progresso", es: "Tu Progreso" };
   const bars = [
-    { label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" }, pct: 92, color: "var(--green2)" },
-    { label: { en: "Road Signs",   pt: "Sinais",     es: "Señales" },   pct: 78, color: "var(--green2)" },
-    { label: { en: "Alcohol & BAC",pt: "Álcool",     es: "Alcohol" },   pct: 65, color: "var(--orange)" },
-    { label: { en: "Parking Rules",pt: "Parking",    es: "Parking" },   pct: 54, color: "var(--red)" },
+    { label: { en: "Speed Limits", pt: "Velocidade",     es: "Velocidad" },   pct: 92, color: "var(--green2)" },
+    { label: { en: "Road Signs",   pt: "Sinais",          es: "Señales" },     pct: 78, color: "var(--green2)" },
+    { label: { en: "Alcohol & BAC",pt: "Álcool / BAC",   es: "Alcohol / BAC" },pct: 65, color: "var(--orange)" },
+    { label: { en: "Parking Rules",pt: "Estacionamento", es: "Estacionamiento" },pct: 54, color: "var(--red)" },
+    { label: { en: "Lanes",        pt: "Faixas",          es: "Carriles" },    pct: 71, color: "var(--orange)" },
+    { label: { en: "Road Safety",  pt: "Segurança",       es: "Seguridad" },   pct: 83, color: "var(--green2)" },
   ];
   return (
     <>
