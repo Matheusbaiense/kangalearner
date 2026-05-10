@@ -1,16 +1,24 @@
 "use client";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 const KEY = "kl-onboarding-v1";
 
+/** Routes where the onboarding modal should never appear. */
+const SUPPRESS_PATHS = ["/auth/", "/login", "/signup", "/forgot-password", "/reset-password"];
+
 export function Onboarding() {
+  const pathname = usePathname();
   const [visible, setVisible] = useState(false);
   const [step, setStep] = useState(0);
   const [sel, setSel] = useState({ state: "", lang: "", level: "" });
 
+  const isAuthRoute = SUPPRESS_PATHS.some((p) => pathname.startsWith(p));
+
   useEffect(() => {
+    if (isAuthRoute) return;
     if (!localStorage.getItem(KEY)) setVisible(true);
-  }, []);
+  }, [isAuthRoute]);
 
   function done(final: typeof sel) {
     localStorage.setItem(KEY, "1");
@@ -19,7 +27,7 @@ export function Onboarding() {
     setVisible(false);
   }
 
-  if (!visible) return null;
+  if (!visible || isAuthRoute) return null;
 
   return (
     <div
