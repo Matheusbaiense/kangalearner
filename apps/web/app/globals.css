@@ -3331,10 +3331,12 @@ button {
 
 /* ── Slide 2: Mock test score ── */
 .slide-score-wrap {
+  position: relative;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 22px;
   margin-bottom: 18px;
+  justify-content: center;
 }
 .slide-score-ring {
   position: relative;
@@ -3359,6 +3361,8 @@ button {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  align-items: flex-start;
+  padding-top: 6px;
 }
 .slide-score-frac {
   font-size: 0.9rem;
@@ -3366,16 +3370,21 @@ button {
   color: rgba(255, 255, 255, 0.82);
 }
 .slide-pass-badge {
+  position: absolute;
+  left: 48px;
+  top: 48px;
+  transform: translate(-50%, -50%);
   display: inline-flex;
   align-items: center;
-  padding: 4px 12px;
+  padding: 5px 13px;
   border-radius: 999px;
   background: rgba(82, 183, 136, 0.18);
-  border: 1px solid rgba(82, 183, 136, 0.35);
+  border: 1px solid rgba(82, 183, 136, 0.4);
   color: var(--green2);
   font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
+  white-space: nowrap;
 }
 
 /* ── Slide 3: Progress bars ── */

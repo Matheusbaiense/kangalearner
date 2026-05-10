@@ -229,8 +229,8 @@ function SlideMock({ lang }: { lang: UiLang }) {
         </div>
         <div className="slide-score-meta">
           <span className="slide-score-frac">{tx(labelScore, lang)}</span>
-          <span className="slide-pass-badge">{tx(passLabel, lang)}</span>
         </div>
+        <span className="slide-pass-badge">{tx(passLabel, lang)}</span>
       </div>
       <div className="slide-mock-divider" aria-hidden="true" />
       <div className="slide-mock-results">
