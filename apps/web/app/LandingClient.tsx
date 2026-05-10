@@ -141,13 +141,13 @@ function SlideLearn({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <BookOpen size={15} className="slide-header-icon" aria-hidden="true" />
+        <BookOpen size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{lang === "pt" ? "Aprender Tópicos" : lang === "es" ? "Aprender Temas" : "Learn Topics"}</span>
       </div>
       <div className="slide-chip-grid">
         {chips.map(({ Icon, label }) => (
           <div key={label.en} className="slide-chip">
-            <span className="slide-chip-icon"><Icon size={15} aria-hidden="true" /></span>
+            <span className="slide-chip-icon"><Icon size={16} strokeWidth={2} aria-hidden="true" /></span>
             <span>{tx(label, lang)}</span>
           </div>
         ))}
@@ -171,7 +171,7 @@ function SlidePractice({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <Target size={15} className="slide-header-icon" aria-hidden="true" />
+        <Target size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{lang === "pt" ? "Modo Prática" : lang === "es" ? "Modo Práctica" : "Practice Mode"}</span>
         <span className="slide-progress-pill">17 / 30</span>
       </div>
@@ -209,7 +209,7 @@ function SlideMock({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <ClipboardList size={15} className="slide-header-icon" aria-hidden="true" />
+        <ClipboardList size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{lang === "pt" ? "Simulado" : lang === "es" ? "Simulacro" : "Mock Test"}</span>
       </div>
       <div className="slide-score-wrap">
@@ -258,7 +258,7 @@ function SlideProgress({ lang }: { lang: UiLang }) {
   return (
     <>
       <div className="slide-header">
-        <TrendingUp size={15} className="slide-header-icon" aria-hidden="true" />
+        <TrendingUp size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
         <span className="slide-header-label">{tx(title, lang)}</span>
       </div>
       <div className="slide-cat-bars">
@@ -414,7 +414,7 @@ export function LandingClient() {
             {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }) => (
               <div key={titleKey} className="trust-item">
                 <div className="trust-icon-wrap" aria-hidden="true">
-                  <Icon size={22} strokeWidth={1.75} />
+                  <Icon size={24} strokeWidth={2} />
                 </div>
                 <strong>{s[titleKey]}</strong>
                 <p>{s[bodyKey]}</p>
@@ -441,7 +441,7 @@ export function LandingClient() {
                 className="topic-card"
               >
                 <span className="topic-icon" aria-hidden="true">
-                  <topic.Icon size={22} strokeWidth={1.75} />
+                  <topic.Icon size={24} strokeWidth={2} />
                 </span>
                 <strong>{s[topic.titleKey]}</strong>
                 <span>{s[topic.descKey]}</span>

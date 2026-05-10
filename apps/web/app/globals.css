@@ -97,6 +97,28 @@
   /* Focus rings */
   --focus-ring: 0 0 0 4px rgba(15, 107, 255, 0.18);
   --focus-ring-strong: 0 0 0 4px rgba(47, 158, 103, 0.22);
+
+  /* Spacing scale (4px base) */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+  --space-2xl: 32px;
+  --space-3xl: 48px;
+
+  /* Shadows scale */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+
+  /* Icon sizing */
+  --icon-size-sm: 16px;
+  --icon-size-md: 20px;
+  --icon-size-lg: 24px;
+  --icon-stroke: 2px;
 }
 
 /* ── Reset ── */
@@ -2397,6 +2419,9 @@ a:focus-visible,
   height: 24px;
   display: block;
   flex-shrink: 0;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .feature-text {
@@ -2565,6 +2590,41 @@ a:focus-visible,
 
   .newsletter-form input {
     min-height: 44px;
+  }
+
+  /* Stats grid: single column on mobile */
+  .preview-stats {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  /* Topics grid: 2 columns on mobile */
+  .topics-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .topic-card {
+    padding: 16px;
+    gap: 6px;
+  }
+  .topic-card strong {
+    font-size: 0.9rem;
+  }
+  .topic-card span {
+    font-size: 0.75rem;
+  }
+
+  /* Trust grid: stack on small mobile */
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .trust-item {
+    padding: 20px;
+  }
+
+  /* Testimonials: 1 column on mobile */
+  .testimonial-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -2833,13 +2893,22 @@ a:focus-visible,
   text-decoration: none;
   color: var(--color-ink);
   transition:
-    transform 0.15s,
-    box-shadow 0.15s;
+    transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.15s ease,
+    background 0.15s ease;
   background: white;
+  box-shadow: var(--shadow-xs);
 }
 .topic-card:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: var(--shadow-md);
+  border-color: var(--green2);
+  background: rgba(47, 158, 103, 0.02);
+}
+.topic-card:focus-visible {
+  outline: 3px solid var(--green2);
+  outline-offset: 2px;
 }
 .topic-icon {
   align-self: flex-start;
@@ -3147,6 +3216,18 @@ a:focus-visible,
   display: flex;
   flex-direction: column;
   gap: 8px;
+  transition:
+    transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.15s ease,
+    background 0.15s ease;
+  box-shadow: var(--shadow-xs);
+}
+.trust-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--green2);
+  background: rgba(47, 158, 103, 0.01);
 }
 .trust-icon {
   font-size: 1.6rem;
@@ -3255,7 +3336,7 @@ a:focus-visible,
 }
 .state-card.coming-soon {
   background: rgba(255,255,255,0.03);
-  opacity: 0.55;
+  border-color: rgba(255,255,255,0.05);
 }
 .state-code {
   font-size: .95rem;
@@ -3263,12 +3344,18 @@ a:focus-visible,
   color: var(--text);
   letter-spacing: 0.04em;
 }
+.state-card.coming-soon .state-code {
+  color: rgba(255,255,255,0.6);
+}
 .state-badge {
   font-size: .65rem;
   font-weight: 700;
-  color: var(--muted);
+  color: var(--muted2);
   text-transform: uppercase;
   letter-spacing: 0.08em;
+}
+.state-card.coming-soon .state-badge {
+  color: rgba(255,255,255,0.5);
 }
 .state-card.active .state-badge {
   color: var(--green2);
@@ -3750,6 +3837,11 @@ a:focus-visible,
 .topic-icon svg {
   display: block;
   flex-shrink: 0;
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ══════════════════════════════════════════
@@ -3776,6 +3868,9 @@ a:focus-visible,
   height: 100%;
   display: block;
   flex-shrink: 0;
+  stroke-width: var(--icon-stroke);
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 /* ══════════════════════════════════════════
