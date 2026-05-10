@@ -191,6 +191,14 @@ button {
   border-radius: 4px;
 }
 
+/* Focus ring on buttons */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--green2);
+  outline-offset: 2px;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1120,7 +1128,8 @@ button {
   transition:
     transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
-    filter 0.2s ease;
+    filter 0.2s ease,
+    outline 0.15s ease;
 }
 .btn-green:hover:not(:disabled) {
   transform: translateY(-2px);
@@ -1129,6 +1138,10 @@ button {
 }
 .btn-green:active:not(:disabled) {
   transform: translateY(0);
+}
+.btn-green:focus-visible {
+  outline: 3px solid var(--green2);
+  outline-offset: 2px;
 }
 
 .btn-outline {
@@ -1148,13 +1161,18 @@ button {
     background 0.2s cubic-bezier(0.16, 1, 0.3, 1),
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    outline 0.15s ease;
 }
 .btn-outline:hover:not(:disabled) {
   background: var(--paper2);
   border-color: #c4cdd5;
   box-shadow: 0 8px 18px rgba(7, 26, 44, 0.1);
   transform: translateY(-1px);
+}
+.btn-outline:focus-visible {
+  outline: 3px solid var(--green2);
+  outline-offset: 2px;
 }
 
 /* Confetti */
@@ -1287,11 +1305,17 @@ button {
   flex: 0 0 28px;
   width: 28px;
   height: 28px;
+  min-width: 28px;
+  min-height: 28px;
   color: var(--green);
+  line-height: 1;
+  flex-shrink: 0;
 }
 .cat-row-icon svg {
   width: 18px;
   height: 18px;
+  display: block;
+  flex-shrink: 0;
 }
 .cat-row-name {
   font-weight: 800;
@@ -1641,7 +1665,7 @@ button {
 .site-header .main-nav {
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -1649,13 +1673,16 @@ button {
 
 .site-header .nav-link {
   display: block;
-  padding: 10px 12px;
+  padding: 12px 16px;
   border-radius: 999px;
   font-size: 0.95rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
   border: 1px solid transparent;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
   transition:
     color 0.16s ease,
     background 0.16s ease,
@@ -1670,12 +1697,16 @@ button {
   background: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.18);
 }
+.site-header .nav-link:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.6);
+  outline-offset: 2px;
+}
 
 /* Header right controls */
 .site-header .nav-controls {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
 }
 
 /* State selector */
@@ -1692,11 +1723,16 @@ button {
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   transition:
     background 0.16s ease,
-    border-color 0.16s ease;
+    border-color 0.16s ease,
+    outline 0.15s ease;
   cursor: pointer;
 }
 .state-control:hover {
   background: rgba(255, 255, 255, 0.105);
+}
+.state-control:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.6);
+  outline-offset: 2px;
   border-color: rgba(255, 255, 255, 0.24);
 }
 .state-control svg {
@@ -1833,11 +1869,16 @@ button {
   text-decoration: none;
   transition:
     background 0.16s ease,
-    border-color 0.16s ease;
+    border-color 0.16s ease,
+    outline 0.15s ease;
 }
 .site-header .btn-nav-login:hover {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.3);
+}
+.site-header .btn-nav-login:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.6);
+  outline-offset: 2px;
 }
 
 /* ── User menu ── */
@@ -2315,6 +2356,9 @@ button {
     background 0.2s ease;
   min-height: 160px;
 }
+.feature-card > :first-child {
+  align-self: center;
+}
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .feature-card {
     background: var(--glass-bg-strong);
@@ -2332,6 +2376,8 @@ button {
 .feature-icon {
   width: 56px;
   height: 56px;
+  min-width: 56px;
+  min-height: 56px;
   border-radius: 50%;
   flex-shrink: 0;
   display: flex;
@@ -2341,6 +2387,7 @@ button {
   color: var(--green);
   box-shadow: 0 4px 12px rgba(46, 125, 91, 0.16);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  line-height: 1;
 }
 .feature-card:hover .feature-icon {
   transform: scale(1.08);
@@ -2348,6 +2395,8 @@ button {
 .feature-icon svg {
   width: 24px;
   height: 24px;
+  display: block;
+  flex-shrink: 0;
 }
 
 .feature-text {
@@ -2385,12 +2434,151 @@ button {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 40px 0 48px;
+  }
+  .hero-inner {
+    padding: 0 16px;
+    gap: 32px;
+  }
+  .hero-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 16px;
+  }
+  .hero-desc {
+    font-size: 1rem;
+    margin-bottom: 24px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .hero-actions .btn-green,
+  .hero-actions .btn-outline {
+    width: 100%;
+  }
+}
+@media (max-width: 640px) {
+  .feature-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .feature-card {
+    padding: 20px;
+    gap: 12px;
+    min-height: auto;
+  }
+}
 @media (max-width: 500px) {
+  /* Hero section optimization for mobile */
+  .hero-inner {
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+
+  .hero-slideshow {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .hero-slide-card {
+    min-height: 280px;
+    padding: 20px;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .hero-actions > * {
+    width: 100%;
+  }
+
+  .hero-section {
+    padding: 40px 16px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    line-height: 1.2;
+  }
+
+  .hero-desc {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  /* Feature grid */
   .feature-grid {
     grid-template-columns: 1fr;
   }
+
+  /* On mobile, icons should align naturally with text (flex-start), not centered */
+  .feature-card > :first-child {
+    align-self: flex-start;
+  }
+
   .feature-row {
     margin-top: 0;
+  }
+
+  /* Why KangaLearner section */
+  .values-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .values-card {
+    padding: 20px;
+  }
+
+  /* Navigation improvements */
+  .site-header .nav-controls {
+    gap: 10px;
+  }
+
+  /* App container padding */
+  .app-container {
+    padding: 0 16px;
+  }
+
+  /* Focus states more visible on mobile */
+  button:focus-visible,
+  a:focus-visible,
+  [role="button"]:focus-visible {
+    outline: 4px solid var(--green2);
+    outline-offset: 3px;
+  }
+
+  /* Form inputs touch-friendly */
+  input,
+  select,
+  textarea {
+    min-height: 44px;
+    padding: 12px;
+  }
+
+  .newsletter-form input {
+    min-height: 44px;
+  }
+}
+
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+  }
+
+  .site-header .nav-shell {
+    padding: 0 12px;
+  }
+
+  .app-container {
+    padding: 0 12px;
   }
 }
 
@@ -2400,20 +2588,28 @@ button {
   align-items: center;
   justify-content: center;
   border-radius: 14px;
-  background: rgba(148, 163, 184, 0.18);
-  color: var(--muted2);
+  background: rgba(46, 125, 91, 0.12);
+  color: var(--green);
+  flex-shrink: 0;
+  line-height: 1;
 }
 .icon-badge--sm {
   width: 32px;
   height: 32px;
+  min-width: 32px;
+  min-height: 32px;
 }
 .icon-badge--md {
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
 }
 .icon-badge--lg {
   width: 48px;
   height: 48px;
+  min-width: 48px;
+  min-height: 48px;
 }
 .icon-badge--brand {
   background: rgba(46, 125, 91, 0.1);
@@ -2438,6 +2634,16 @@ button {
 .icon-badge__icon {
   width: 20px;
   height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.icon-badge__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 .icon-badge--sm .icon-badge__icon {
   width: 16px;
@@ -3249,7 +3455,14 @@ button {
   gap: 8px;
   margin-bottom: 18px;
 }
-.slide-header-icon { color: var(--green2); flex-shrink: 0; }
+.slide-header-icon {
+  color: var(--green2);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
 .slide-header-label {
   font-size: 0.72rem;
   font-weight: 800;
@@ -3294,10 +3507,17 @@ button {
   justify-content: center;
   width: 28px;
   height: 28px;
+  min-width: 28px;
+  min-height: 28px;
   flex-shrink: 0;
   background: rgba(82, 183, 136, 0.18);
   border-radius: 7px;
   color: var(--green2);
+  line-height: 1;
+}
+.slide-chip-icon svg {
+  display: block;
+  flex-shrink: 0;
 }
 
 /* ── Slide 1: Practice question ── */
@@ -3525,8 +3745,12 @@ button {
   justify-content: flex-start;
   color: var(--green);
   margin-bottom: 4px;
+  line-height: 1;
 }
-.topic-icon svg { display: block; }
+.topic-icon svg {
+  display: block;
+  flex-shrink: 0;
+}
 
 /* ══════════════════════════════════════════
    TRUST ICON (Lucide — replaces emoji)
@@ -3535,6 +3759,8 @@ button {
 .trust-icon-wrap {
   width: 40px;
   height: 40px;
+  min-width: 40px;
+  min-height: 40px;
   border-radius: 10px;
   background: var(--green3);
   display: flex;
@@ -3542,6 +3768,13 @@ button {
   justify-content: center;
   color: var(--green);
   margin-bottom: 6px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.trust-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+  display: block;
   flex-shrink: 0;
 }
 
