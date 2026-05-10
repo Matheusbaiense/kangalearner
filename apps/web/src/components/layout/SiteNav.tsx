@@ -26,12 +26,26 @@ const AU_STATES = [
 ];
 
 const LANGUAGES = [
-  { code: "en",    flag: "🇦🇺", label: "English",         triggerLabel: "English",    bilingual: false },
-  { code: "pt",    flag: "🇧🇷", label: "Português",       triggerLabel: "Português",  bilingual: false },
-  { code: "pt-en", flag: "🇧🇷", label: "Bilingue PT·EN",  triggerLabel: "PT·EN",      bilingual: true  },
-  { code: "es",    flag: "🇪🇸", label: "Español",         triggerLabel: "Español",    bilingual: false },
-  { code: "es-en", flag: "🇪🇸", label: "Bilingüe ES·EN",  triggerLabel: "ES·EN",      bilingual: true  },
+  { code: "en",    country: "au", label: "English",         triggerLabel: "English",    bilingual: false },
+  { code: "pt",    country: "br", label: "Português",       triggerLabel: "Português",  bilingual: false },
+  { code: "pt-en", country: "br", label: "Bilingue PT·EN",  triggerLabel: "PT·EN",      bilingual: true  },
+  { code: "es",    country: "es", label: "Español",         triggerLabel: "Español",    bilingual: false },
+  { code: "es-en", country: "es", label: "Bilingüe ES·EN",  triggerLabel: "ES·EN",      bilingual: true  },
 ] as const;
+
+function FlagImg({ country, size = 20 }: { country: string; size?: number }) {
+  return (
+    <img
+      src={`https://flagcdn.com/w${size}/${country}.png`}
+      srcSet={`https://flagcdn.com/w${size * 2}/${country}.png 2x`}
+      width={size}
+      height={Math.round(size * 0.75)}
+      alt=""
+      aria-hidden="true"
+      style={{ borderRadius: 2, objectFit: "cover", display: "block", flexShrink: 0 }}
+    />
+  );
+}
 
 interface NavUser {
   email: string;
@@ -198,7 +212,7 @@ export function SiteNav() {
               aria-haspopup="listbox"
               aria-label={s.language}
             >
-              <span aria-hidden="true">{currentLang.flag}</span>
+              <FlagImg country={currentLang.country} size={20} />
               <span className="lang-label">{currentLang.triggerLabel}</span>
               {currentLang.bilingual && (
                 <span className="lang-bilingual-badge" aria-hidden="true">EN</span>
@@ -217,7 +231,7 @@ export function SiteNav() {
                     setLangOpen(false);
                   }}
                 >
-                  <span aria-hidden="true">{l.flag}</span>
+                  <FlagImg country={l.country} size={18} />
                   <span style={{ flex: 1 }}>{l.label}</span>
                   {l.bilingual && <span className="lang-bilingual-badge">EN</span>}
                 </button>
