@@ -53,6 +53,7 @@ interface NavUser {
   name: string;
   initials: string;
   role: string;
+  avatarUrl: string | null;
 }
 
 function getInitials(name: string, email: string): string {
@@ -123,8 +124,14 @@ export function SiteNav() {
           (u.user_metadata?.name as string | undefined) ||
           "";
         const { data: profile } = await supabase
-          .from("profiles").select("role").eq("id", u.id).single();
-        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? ""), role: profile?.role ?? "free" });
+          .from("profiles").select("role, avatar_url").eq("id", u.id).single();
+        setUser({
+          email: u.email ?? "",
+          name,
+          initials: getInitials(name, u.email ?? ""),
+          role: profile?.role ?? "free",
+          avatarUrl: (profile?.avatar_url as string | null) ?? null,
+        });
       }
     }
     loadUser();
@@ -137,8 +144,14 @@ export function SiteNav() {
           (u.user_metadata?.name as string | undefined) ||
           "";
         const { data: profile } = await supabase
-          .from("profiles").select("role").eq("id", u.id).single();
-        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? ""), role: profile?.role ?? "free" });
+          .from("profiles").select("role, avatar_url").eq("id", u.id).single();
+        setUser({
+          email: u.email ?? "",
+          name,
+          initials: getInitials(name, u.email ?? ""),
+          role: profile?.role ?? "free",
+          avatarUrl: (profile?.avatar_url as string | null) ?? null,
+        });
       } else {
         setUser(null);
       }
@@ -249,7 +262,9 @@ export function SiteNav() {
                 aria-label={s.account}
               >
                 <span className="user-avatar" aria-hidden="true">
-                  {user.initials}
+                  {user.avatarUrl
+                    ? <img src={user.avatarUrl} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
+                    : user.initials}
                 </span>
               </button>
               <div className="user-panel" role="menu">

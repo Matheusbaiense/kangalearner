@@ -51,12 +51,25 @@ export async function GET(request: NextRequest) {
 
   const { data: profile, error: profileError } = await supabaseAdmin
     .from("profiles")
-    .select("stripe_customer_id")
+    .select("stripe_customer_id, avatar_url")
     .eq("id", user.id)
     .maybeSingle();
 
   if (profileError) {
     console.error("Auth callback profile read:", profileError);
+  }
+
+  // Sync Google avatar for existing users who didn't have one yet
+  if (profile && !profile.avatar_url) {
+    const googleAvatar =
+      (user.user_metadata?.avatar_url as string | undefined) ||
+      (user.user_metadata?.picture as string | undefined);
+    if (googleAvatar) {
+      await supabaseAdmin
+        .from("profiles")
+        .update({ avatar_url: googleAvatar })
+        .eq("id", user.id);
+    }
   }
 
   if (profile && !profile.stripe_customer_id && process.env.STRIPE_SECRET_KEY && user.email) {
