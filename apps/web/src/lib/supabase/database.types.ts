@@ -6,7 +6,7 @@
 
 export type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
 
-export type UserRole = "student" | "instructor" | "admin";
+export type UserRole = "free" | "premium" | "admin" | "super_admin";
 export type BookingStatus = "pending" | "confirmed" | "cancelled" | "completed" | "disputed";
 export type MockMode = "practice" | "exam";
 
