@@ -85,6 +85,9 @@ export default function AccountPage() {
   const [email, setEmail] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [phone, setPhone] = useState("");
+  const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+  const [uploadingAvatar, setUploadingAvatar] = useState(false);
+  const [avatarMsg, setAvatarMsg] = useState<{ text: string; ok: boolean } | null>(null);
   const [savingProfile, setSavingProfile] = useState(false);
   const [profileMsg, setProfileMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
@@ -118,6 +121,10 @@ export default function AccountPage() {
       setDisplayName((meta.full_name as string | undefined) || (meta.name as string | undefined) || "");
       setPhone((meta.phone as string | undefined) || "");
       setStateVal((meta.state as string | undefined) || "WA");
+      // Load avatar from profiles table
+      const supabase2 = createClient();
+      supabase2.from("profiles").select("avatar_url").eq("id", user.id).single()
+        .then(({ data }) => { if (data?.avatar_url) setAvatarUrl(data.avatar_url); });
       setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
       const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem("kanga-theme") as Theme | null) || "system";
       setTheme(savedTheme);
@@ -172,6 +179,39 @@ export default function AccountPage() {
     } else {
       setPwdMsg({ text: "Password changed successfully.", ok: true });
       setCurrentPwd(""); setNewPwd(""); setConfirmPwd("");
+    }
+  }
+
+  async function handleAvatarUpload(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setUploadingAvatar(true);
+    setAvatarMsg(null);
+    const form = new FormData();
+    form.append("file", file);
+    try {
+      const res = await fetch("/api/profile/avatar", { method: "POST", body: form });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error ?? "Upload failed");
+      setAvatarUrl(json.url);
+      setAvatarMsg({ text: "Avatar updated!", ok: true });
+    } catch (err) {
+      setAvatarMsg({ text: (err as Error).message, ok: false });
+    } finally {
+      setUploadingAvatar(false);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+    }
+  }
+
+  async function handleAvatarRemove() {
+    setUploadingAvatar(true);
+    setAvatarMsg(null);
+    try {
+      await fetch("/api/profile/avatar", { method: "DELETE" });
+      setAvatarUrl(null);
+      setAvatarMsg({ text: "Avatar removed.", ok: true });
+    } finally {
+      setUploadingAvatar(false);
     }
   }
 
@@ -259,11 +299,51 @@ export default function AccountPage() {
                 <h2 className="settings-section-title">Profile</h2>
                 <p className="settings-section-sub">Your public name and contact info.</p>
 
-                {/* Avatar display */}
+                {/* Avatar upload */}
                 <div className="settings-avatar-large-wrap">
-                  <div className="settings-avatar-large" aria-hidden="true">{initials}</div>
-                  <div>
-                    <p className="settings-avatar-hint">Avatar with photo upload coming soon.</p>
+                  <div className="settings-avatar-large-container">
+                    {avatarUrl ? (
+                      <img
+                        src={avatarUrl}
+                        alt="Avatar"
+                        className="settings-avatar-img"
+                        width={72} height={72}
+                      />
+                    ) : (
+                      <div className="settings-avatar-large" aria-hidden="true">{initials}</div>
+                    )}
+                    {uploadingAvatar && <div className="settings-avatar-overlay"><div className="admin-spinner" /></div>}
+                  </div>
+                  <div className="settings-avatar-actions">
+                    <input
+                      ref={fileInputRef}
+                      type="file"
+                      accept="image/jpeg,image/png,image/webp,image/gif"
+                      style={{ display: "none" }}
+                      onChange={handleAvatarUpload}
+                    />
+                    <button
+                      type="button"
+                      className="btn btn-outline-dark"
+                      style={{ fontSize: "0.82rem", padding: "6px 14px" }}
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={uploadingAvatar}
+                    >
+                      {uploadingAvatar ? "Uploading…" : "Upload photo"}
+                    </button>
+                    {avatarUrl && (
+                      <button
+                        type="button"
+                        className="btn btn-ghost"
+                        style={{ fontSize: "0.82rem", padding: "6px 14px", color: "var(--red)" }}
+                        onClick={handleAvatarRemove}
+                        disabled={uploadingAvatar}
+                      >
+                        Remove
+                      </button>
+                    )}
+                    <p className="settings-hint" style={{ margin: 0 }}>JPG, PNG, WebP or GIF · max 2 MB</p>
+                    {avatarMsg && <Msg text={avatarMsg.text} ok={avatarMsg.ok} />}
                   </div>
                 </div>
 

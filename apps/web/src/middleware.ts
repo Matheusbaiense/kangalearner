@@ -6,6 +6,7 @@ const PROTECTED_ROUTES = [
   "/progress",
   "/dashboard",
   "/account",
+  "/admin",
   "/mock-test/session",
   "/mock-test/results"
 ];

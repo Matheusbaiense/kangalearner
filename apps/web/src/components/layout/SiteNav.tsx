@@ -52,6 +52,7 @@ interface NavUser {
   email: string;
   name: string;
   initials: string;
+  role: string;
 }
 
 function getInitials(name: string, email: string): string {
@@ -114,24 +115,30 @@ export function SiteNav() {
   useEffect(() => {
     const supabase = createClient();
 
-    supabase.auth.getUser().then(({ data: { user: u } }) => {
+    async function loadUser() {
+      const { data: { user: u } } = await supabase.auth.getUser();
       if (u) {
         const name =
           (u.user_metadata?.full_name as string | undefined) ||
           (u.user_metadata?.name as string | undefined) ||
           "";
-        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? "") });
+        const { data: profile } = await supabase
+          .from("profiles").select("role").eq("id", u.id).single();
+        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? ""), role: profile?.role ?? "free" });
       }
-    });
+    }
+    loadUser();
 
-    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session?.user) {
         const u = session.user;
         const name =
           (u.user_metadata?.full_name as string | undefined) ||
           (u.user_metadata?.name as string | undefined) ||
           "";
-        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? "") });
+        const { data: profile } = await supabase
+          .from("profiles").select("role").eq("id", u.id).single();
+        setUser({ email: u.email ?? "", name, initials: getInitials(name, u.email ?? ""), role: profile?.role ?? "free" });
       } else {
         setUser(null);
       }
@@ -282,6 +289,19 @@ export function SiteNav() {
                 >
                   {s.help}
                 </Link>
+                {["admin", "super_admin"].includes(user.role) && (
+                  <>
+                    <div className="user-panel-divider" role="separator" />
+                    <Link
+                      href="/admin"
+                      className="user-panel-item admin-link"
+                      role="menuitem"
+                      onClick={() => setUserMenuOpen(false)}
+                    >
+                      ⚡ Admin Dashboard
+                    </Link>
+                  </>
+                )}
                 <div className="user-panel-divider" role="separator" />
                 <button className="user-panel-item danger" role="menuitem" onClick={handleSignOut}>
                   {s.signOut}
