@@ -35,7 +35,7 @@ export async function GET(req: NextRequest) {
 
   let query = supabaseAdmin
     .from("profiles")
-    .select("id, role, display_name, country, state, lang, created_at, updated_at", { count: "exact" })
+    .select("id, role, display_name, country, preferred_state, lang, created_at, updated_at", { count: "exact" })
     .order("created_at", { ascending: false })
     .range(page * limit, (page + 1) * limit - 1);
 

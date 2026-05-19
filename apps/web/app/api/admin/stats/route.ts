@@ -106,14 +106,15 @@ export async function GET() {
         return { data: unique.size };
       }),
 
-    // Pass rate on mock tests
+    // Pass rate on mock tests (pass = score/total >= 80%)
     supabaseAdmin.from("mock_sessions")
-      .select("passed")
+      .select("score, total")
       .gte("created_at", d30.toISOString())
       .then(({ data }) => {
-        const total = (data ?? []).length;
-        const passed = (data ?? []).filter((r) => r.passed).length;
-        return { data: total > 0 ? Math.round((passed / total) * 100) : 0 };
+        const sessions = data ?? [];
+        const count = sessions.length;
+        const passed = sessions.filter((r) => r.total > 0 && r.score / r.total >= 0.8).length;
+        return { data: count > 0 ? Math.round((passed / count) * 100) : 0 };
       }),
   ]);
 

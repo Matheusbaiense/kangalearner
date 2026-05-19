@@ -72,6 +72,7 @@ export function SiteNav() {
   const langRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<NavUser | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -116,42 +117,36 @@ export function SiteNav() {
   useEffect(() => {
     const supabase = createClient();
 
+    async function buildNavUser(u: { id: string; email?: string; user_metadata?: Record<string, unknown> }) {
+      const name =
+        (u.user_metadata?.full_name as string | undefined) ||
+        (u.user_metadata?.name as string | undefined) ||
+        "";
+      const { data: profile } = await supabase
+        .from("profiles").select("role, avatar_url").eq("id", u.id).single();
+      setUser({
+        email: u.email ?? "",
+        name,
+        initials: getInitials(name, u.email ?? ""),
+        role: profile?.role ?? "free",
+        avatarUrl: (profile?.avatar_url as string | null) ?? null,
+      });
+    }
+
     async function loadUser() {
-      const { data: { user: u } } = await supabase.auth.getUser();
-      if (u) {
-        const name =
-          (u.user_metadata?.full_name as string | undefined) ||
-          (u.user_metadata?.name as string | undefined) ||
-          "";
-        const { data: profile } = await supabase
-          .from("profiles").select("role, avatar_url").eq("id", u.id).single();
-        setUser({
-          email: u.email ?? "",
-          name,
-          initials: getInitials(name, u.email ?? ""),
-          role: profile?.role ?? "free",
-          avatarUrl: (profile?.avatar_url as string | null) ?? null,
-        });
+      try {
+        const { data: { user: u } } = await supabase.auth.getUser();
+        if (u) await buildNavUser(u);
+      } finally {
+        setAuthLoading(false);
       }
     }
     loadUser();
 
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      setAuthLoading(false);
       if (session?.user) {
-        const u = session.user;
-        const name =
-          (u.user_metadata?.full_name as string | undefined) ||
-          (u.user_metadata?.name as string | undefined) ||
-          "";
-        const { data: profile } = await supabase
-          .from("profiles").select("role, avatar_url").eq("id", u.id).single();
-        setUser({
-          email: u.email ?? "",
-          name,
-          initials: getInitials(name, u.email ?? ""),
-          role: profile?.role ?? "free",
-          avatarUrl: (profile?.avatar_url as string | null) ?? null,
-        });
+        await buildNavUser(session.user);
       } else {
         setUser(null);
       }
@@ -251,8 +246,10 @@ export function SiteNav() {
             </div>
           </div>
 
-          {/* Auth */}
-          {user ? (
+          {/* Auth — hidden while session check is pending to prevent race-condition redirect */}
+          {authLoading ? (
+            <div style={{ width: 72, height: 36 }} aria-hidden="true" />
+          ) : user ? (
             <div className={`user-menu${userMenuOpen ? " open" : ""}`} ref={userMenuRef}>
               <button
                 className="user-trigger"

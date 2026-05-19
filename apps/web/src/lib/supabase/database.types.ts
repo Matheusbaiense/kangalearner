@@ -1,353 +1,308 @@
-// Regenerate when schema changes (Dashboard → Settings → General → Project ID):
-//   npx supabase gen types typescript --project-id <PROJECT_REF> --schema public \
-//     > apps/web/src/lib/supabase/database.types.ts
-//
-// Manual types aligned with supabase/migrations/*.sql
+// Auto-generated via Supabase MCP — project: kangalearner-prod (olgogtaeifyxwzencilo)
+// Regenerate: npx supabase gen types typescript --project-id olgogtaeifyxwzencilo --schema public
 
-export type Json = string | number | boolean | null | { [key: string]: Json } | Json[];
+export type Json =
+  | string
+  | number
+  | boolean
+  | null
+  | { [key: string]: Json | undefined }
+  | Json[]
 
-export type UserRole = "free" | "premium" | "admin" | "super_admin";
-export type BookingStatus = "pending" | "confirmed" | "cancelled" | "completed" | "disputed";
-export type MockMode = "practice" | "exam";
-
-export type ProfilesRow = {
-  id: string;
-  role: UserRole;
-  display_name: string | null;
-  avatar_url: string | null;
-  country: string;
-  state: string | null;
-  lang: string;
-  stripe_customer_id: string | null;
-  onboarding_done: boolean;
-  created_at: string;
-  updated_at: string;
-};
-
-export type ProfilesInsert = {
-  id: string;
-  role?: UserRole;
-  display_name?: string | null;
-  avatar_url?: string | null;
-  country?: string;
-  state?: string | null;
-  lang?: string;
-  stripe_customer_id?: string | null;
-  onboarding_done?: boolean;
-};
-
-/** Campos mutáveis em `profiles` (alinha com tipos gerados do Supabase). */
-export type ProfilesUpdate = Partial<Omit<ProfilesRow, "id" | "created_at" | "updated_at">> & {
-  id?: string;
-};
-
-export type QuestionAttemptsRow = {
-  id: string;
-  attempt_id: string;
-  user_id: string;
-  question_id: string;
-  country: string;
-  state: string;
-  category: string | null;
-  is_correct: boolean;
-  chosen: string | null;
-  source: string | null;
-  created_at: string;
-};
-
-export type QuestionAttemptsInsert = {
-  attempt_id: string;
-  user_id: string;
-  question_id: string;
-  country?: string;
-  state: string;
-  category?: string | null;
-  is_correct: boolean;
-  chosen?: string | null;
-  source?: string | null;
-};
-
-export type QuestionAttemptsUpdate = Partial<QuestionAttemptsInsert>;
-
-export type MockSessionsRow = {
-  id: string;
-  user_id: string;
-  country: string;
-  state: string;
-  mode: MockMode;
-  score: number;
-  total: number;
-  pct: number;
-  passed: boolean;
-  time_seconds: number | null;
-  answers: Json;
-  weak_categories: Json | null;
-  source: string | null;
-  created_at: string;
-};
-
-export type MockSessionsInsert = {
-  user_id: string;
-  country?: string;
-  state: string;
-  mode: MockMode;
-  score: number;
-  total: number;
-  passed: boolean;
-  time_seconds?: number | null;
-  answers?: Json;
-  weak_categories?: Json | null;
-  source?: string | null;
-};
-
-export type UserCategoryStatsRow = {
-  id: string;
-  user_id: string;
-  country: string;
-  state: string;
-  category: string;
-  total_attempts: number;
-  correct_attempts: number;
-  last_attempt_at: string | null;
-  updated_at: string;
-};
-
-export type UserCategoryStatsInsert = {
-  user_id: string;
-  country?: string;
-  state: string;
-  category: string;
-  total_attempts?: number;
-  correct_attempts?: number;
-  last_attempt_at?: string | null;
-};
-
-export type UserCategoryStatsUpdate = Partial<Omit<UserCategoryStatsInsert, "user_id">>;
-
-export type UserXpRow = {
-  id: string;
-  user_id: string;
-  total_xp: number;
-  level: string;
-  streak_days: number;
-  last_activity_date: string | null;
-  updated_at: string;
-};
-
-export type UserXpInsert = {
-  user_id: string;
-  total_xp?: number;
-  level?: string;
-  streak_days?: number;
-  last_activity_date?: string | null;
-};
-
-export type UserXpUpdate = Partial<Omit<UserXpInsert, "user_id">>;
-
-export type XpEventsRow = {
-  id: string;
-  user_id: string;
-  event_type: string;
-  xp_earned: number;
-  metadata: Json | null;
-  created_at: string;
-};
-
-export type XpEventsInsert = {
-  user_id: string;
-  event_type: string;
-  xp_earned: number;
-  metadata?: Json | null;
-};
-
-export type UserBadgesRow = {
-  id: string;
-  user_id: string;
-  badge_key: string;
-  earned_at: string;
-};
-
-export type UserBadgesInsert = {
-  user_id: string;
-  badge_key: string;
-};
-
-export type SavedQuestionsRow = {
-  id: string;
-  user_id: string;
-  question_id: string;
-  country: string;
-  created_at: string;
-};
-
-export type SavedQuestionsInsert = {
-  user_id: string;
-  question_id: string;
-  country?: string;
-};
-
-export type MarketplaceWaitlistRow = {
-  id: string;
-  email: string;
-  country: string;
-  state: string | null;
-  role: "student" | "instructor";
-  created_at: string;
-};
-
-export type MarketplaceWaitlistInsert = {
-  email: string;
-  country?: string;
-  state?: string | null;
-  role?: "student" | "instructor";
-};
-
-export type InstructorsRow = {
-  id: string;
-  user_id: string;
-  country: string;
-  state: string;
-  license_number: string | null;
-  license_verified: boolean;
-  background_check_passed: boolean;
-  bio: Json | null;
-  specialties: Json | null;
-  languages_spoken: Json | null;
-  hourly_rate_cents: number | null;
-  currency: string;
-  stripe_account_id: string | null;
-  is_active: boolean;
-  rating_avg: number | null;
-  rating_count: number;
-  created_at: string;
-  updated_at: string;
-};
-
-export type BookingsRow = {
-  id: string;
-  student_id: string | null;
-  instructor_id: string | null;
-  country: string;
-  state: string;
-  scheduled_at: string;
-  duration_minutes: number;
-  status: BookingStatus;
-  amount_cents: number | null;
-  currency: string;
-  stripe_payment_intent_id: string | null;
-  stripe_transfer_id: string | null;
-  notes_student: string | null;
-  notes_instructor: string | null;
-  cancelled_by: "student" | "instructor" | "admin" | null;
-  cancel_reason: string | null;
-  created_at: string;
-  updated_at: string;
-};
-
-export type InstructorReviewsRow = {
-  id: string;
-  booking_id: string | null;
-  student_id: string | null;
-  instructor_id: string | null;
-  rating: number;
-  comment: string | null;
-  created_at: string;
-};
-
-export interface Database {
+export type Database = {
+  // Allows to automatically instantiate createClient with right options
+  // instead of createClient<Database, { PostgrestVersion: 'XX' }>(URL, KEY)
+  __InternalSupabase: {
+    PostgrestVersion: "14.5"
+  }
   public: {
     Tables: {
-      profiles: {
-        Row: ProfilesRow;
-        Insert: ProfilesInsert;
-        Update: ProfilesUpdate;
-        Relationships: [];
-      };
-      question_attempts: {
-        Row: QuestionAttemptsRow;
-        Insert: QuestionAttemptsInsert;
-        Update: QuestionAttemptsUpdate;
-        Relationships: [];
-      };
       mock_sessions: {
-        Row: MockSessionsRow;
-        Insert: MockSessionsInsert;
-        Update: never;
-        Relationships: [];
-      };
-      user_category_stats: {
-        Row: UserCategoryStatsRow;
-        Insert: UserCategoryStatsInsert;
-        Update: UserCategoryStatsUpdate;
-        Relationships: [];
-      };
-      user_xp: {
-        Row: UserXpRow;
-        Insert: UserXpInsert;
-        Update: UserXpUpdate;
-        Relationships: [];
-      };
-      xp_events: {
-        Row: XpEventsRow;
-        Insert: XpEventsInsert;
-        Update: Partial<XpEventsInsert>;
-        Relationships: [];
-      };
-      user_badges: {
-        Row: UserBadgesRow;
-        Insert: UserBadgesInsert;
-        Update: never;
-        Relationships: [];
-      };
-      saved_questions: {
-        Row: SavedQuestionsRow;
-        Insert: SavedQuestionsInsert;
-        Update: never;
-        Relationships: [];
-      };
-      marketplace_waitlist: {
-        Row: MarketplaceWaitlistRow;
-        Insert: MarketplaceWaitlistInsert;
-        Update: never;
-        Relationships: [];
-      };
-      instructors: {
-        Row: InstructorsRow;
-        Insert: Partial<InstructorsRow> & { user_id: string; country: string; state: string };
-        Update: Partial<Omit<InstructorsRow, "id" | "user_id">>;
-        Relationships: [];
-      };
-      bookings: {
-        Row: BookingsRow;
-        Insert: Partial<BookingsRow> & { country: string; state: string; scheduled_at: string };
-        Update: Partial<Omit<BookingsRow, "id">>;
-        Relationships: [];
-      };
-      instructor_reviews: {
-        Row: InstructorReviewsRow;
-        Insert: Partial<InstructorReviewsRow> & { rating: number };
-        Update: never;
-        Relationships: [];
-      };
-    };
-    Views: Record<string, never>;
+        Row: {
+          completed_at: string
+          id: number
+          percent: number | null
+          score: number
+          source: string
+          state: string
+          total: number
+          user_id: string
+        }
+        Insert: {
+          completed_at?: string
+          id?: number
+          percent?: number | null
+          score: number
+          source?: string
+          state: string
+          total: number
+          user_id: string
+        }
+        Update: {
+          completed_at?: string
+          id?: number
+          percent?: number | null
+          score?: number
+          source?: string
+          state?: string
+          total?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          avatar_url: string | null
+          country: string
+          created_at: string
+          display_name: string | null
+          email: string | null
+          id: string
+          lang: string
+          name: string | null
+          onboarding_done: boolean
+          preferred_lang: string
+          preferred_state: string
+          role: string
+          stripe_customer_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          avatar_url?: string | null
+          country?: string
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id: string
+          lang?: string
+          name?: string | null
+          onboarding_done?: boolean
+          preferred_lang?: string
+          preferred_state?: string
+          role?: string
+          stripe_customer_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          avatar_url?: string | null
+          country?: string
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id?: string
+          lang?: string
+          name?: string | null
+          onboarding_done?: boolean
+          preferred_lang?: string
+          preferred_state?: string
+          role?: string
+          stripe_customer_id?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      question_attempts: {
+        Row: {
+          answered_at: string
+          category: string | null
+          chosen: string | null
+          id: number
+          is_correct: boolean
+          question_id: string
+          source: string
+          state: string
+          user_id: string
+        }
+        Insert: {
+          answered_at?: string
+          category?: string | null
+          chosen?: string | null
+          id?: number
+          is_correct: boolean
+          question_id: string
+          source?: string
+          state: string
+          user_id: string
+        }
+        Update: {
+          answered_at?: string
+          category?: string | null
+          chosen?: string | null
+          id?: number
+          is_correct?: boolean
+          question_id?: string
+          source?: string
+          state?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_settings: {
+        Row: {
+          created_at: string
+          daily_goal: number
+          notifications_enabled: boolean
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          daily_goal?: number
+          notifications_enabled?: boolean
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          daily_goal?: number
+          notifications_enabled?: boolean
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
     Functions: {
-      upsert_category_stat: {
-        Args: {
-          p_user_id: string;
-          p_country: string;
-          p_state: string;
-          p_category: string;
-          p_is_correct: boolean;
-        };
-        Returns: void;
-      };
-      xp_to_level: {
-        Args: { p_xp: number };
-        Returns: string;
-      };
-    };
-    Enums: Record<string, never>;
-    CompositeTypes: Record<string, never>;
-  };
+      [_ in never]: never
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
 }
+
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
+
+type DefaultSchema = DatabaseWithoutInternals[Extract<keyof Database, "public">]
+
+export type Tables<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+        DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? (DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"] &
+      DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Views"])[TableName] extends {
+      Row: infer R
+    }
+    ? R
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])
+    ? (DefaultSchema["Tables"] &
+        DefaultSchema["Views"])[DefaultSchemaTableNameOrOptions] extends {
+        Row: infer R
+      }
+      ? R
+      : never
+    : never
+
+export type TablesInsert<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Insert: infer I
+    }
+    ? I
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Insert: infer I
+      }
+      ? I
+      : never
+    : never
+
+export type TablesUpdate<
+  DefaultSchemaTableNameOrOptions extends
+    | keyof DefaultSchema["Tables"]
+    | { schema: keyof DatabaseWithoutInternals },
+  TableName extends DefaultSchemaTableNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"]
+    : never = never,
+> = DefaultSchemaTableNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaTableNameOrOptions["schema"]]["Tables"][TableName] extends {
+      Update: infer U
+    }
+    ? U
+    : never
+  : DefaultSchemaTableNameOrOptions extends keyof DefaultSchema["Tables"]
+    ? DefaultSchema["Tables"][DefaultSchemaTableNameOrOptions] extends {
+        Update: infer U
+      }
+      ? U
+      : never
+    : never
+
+export type Enums<
+  DefaultSchemaEnumNameOrOptions extends
+    | keyof DefaultSchema["Enums"]
+    | { schema: keyof DatabaseWithoutInternals },
+  EnumName extends DefaultSchemaEnumNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"]
+    : never = never,
+> = DefaultSchemaEnumNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[DefaultSchemaEnumNameOrOptions["schema"]]["Enums"][EnumName]
+  : DefaultSchemaEnumNameOrOptions extends keyof DefaultSchema["Enums"]
+    ? DefaultSchema["Enums"][DefaultSchemaEnumNameOrOptions]
+    : never
+
+export type CompositeTypes<
+  PublicCompositeTypeNameOrOptions extends
+    | keyof DefaultSchema["CompositeTypes"]
+    | { schema: keyof DatabaseWithoutInternals },
+  CompositeTypeName extends PublicCompositeTypeNameOrOptions extends {
+    schema: keyof DatabaseWithoutInternals
+  }
+    ? keyof DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"]
+    : never = never,
+> = PublicCompositeTypeNameOrOptions extends {
+  schema: keyof DatabaseWithoutInternals
+}
+  ? DatabaseWithoutInternals[PublicCompositeTypeNameOrOptions["schema"]]["CompositeTypes"][CompositeTypeName]
+  : PublicCompositeTypeNameOrOptions extends keyof DefaultSchema["CompositeTypes"]
+    ? DefaultSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
+    : never
+
+export const Constants = {
+  public: {
+    Enums: {},
+  },
+} as const
+
+// Convenience aliases
+export type UserRole = "free" | "premium" | "admin" | "super_admin"
+export type Profile = Tables<"profiles">
+export type MockSession = Tables<"mock_sessions">
+export type QuestionAttempt = Tables<"question_attempts">
+export type UserSettings = Tables<"user_settings">
