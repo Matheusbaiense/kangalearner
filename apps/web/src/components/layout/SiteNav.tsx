@@ -4,13 +4,14 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
+import { syncLocalProgressToSupabase } from "@/lib/sync-local-progress";
 import { useLang } from "@/contexts/LangContext";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
   { href: "/learn", key: "learn" },
   { href: "/practice", key: "practice" },
-  { href: "/mock-test", key: "mockTest" },
+  { href: "/practice?mode=sim", key: "mockTest" },
   { href: "/progress", key: "progress" },
   { href: "/resources", key: "resources" },
 ] as const;
@@ -119,6 +120,7 @@ export function SiteNav() {
     async function loadUser() {
       const { data: { user: u } } = await supabase.auth.getUser();
       if (u) {
+        void syncLocalProgressToSupabase(supabase);
         const name =
           (u.user_metadata?.full_name as string | undefined) ||
           (u.user_metadata?.name as string | undefined) ||
@@ -139,6 +141,7 @@ export function SiteNav() {
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session?.user) {
         const u = session.user;
+        void syncLocalProgressToSupabase(supabase);
         const name =
           (u.user_metadata?.full_name as string | undefined) ||
           (u.user_metadata?.name as string | undefined) ||

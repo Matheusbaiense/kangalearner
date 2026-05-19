@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { CATEGORIES, QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
@@ -287,9 +288,11 @@ function ScoreSidebar({
 
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
+  const searchParams = useSearchParams();
+  const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
   const [selectedState] = useState<StateCode>("WA");
-  const [mode, setMode] = useState<Mode>(initialMode ?? "all");
+  const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
@@ -312,6 +315,15 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       if (savedRaw) setSaved(new Set(JSON.parse(savedRaw)));
     } catch {}
   }, []);
+
+  /* ── Allow /practice?mode=sim to start the mock test flow ── */
+  useEffect(() => {
+    if (requestedMode === "sim") {
+      setMode("sim");
+      return;
+    }
+    setMode(initialMode ?? "all");
+  }, [requestedMode, initialMode]);
 
   /* ── Start sim when mode switches ── */
   useEffect(() => {

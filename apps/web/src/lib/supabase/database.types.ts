@@ -17,6 +17,8 @@ export type ProfilesRow = {
   avatar_url: string | null;
   country: string;
   state: string | null;
+  preferred_lang: string | null;
+  preferred_state: string | null;
   lang: string;
   stripe_customer_id: string | null;
   onboarding_done: boolean;
@@ -31,6 +33,8 @@ export type ProfilesInsert = {
   avatar_url?: string | null;
   country?: string;
   state?: string | null;
+  preferred_lang?: string | null;
+  preferred_state?: string | null;
   lang?: string;
   stripe_customer_id?: string | null;
   onboarding_done?: boolean;
@@ -52,6 +56,7 @@ export type QuestionAttemptsRow = {
   is_correct: boolean;
   chosen: string | null;
   source: string | null;
+  answered_at: string;
   created_at: string;
 };
 
@@ -65,38 +70,45 @@ export type QuestionAttemptsInsert = {
   is_correct: boolean;
   chosen?: string | null;
   source?: string | null;
+  answered_at?: string;
 };
 
 export type QuestionAttemptsUpdate = Partial<QuestionAttemptsInsert>;
 
+export type UserSettingsRow = {
+  user_id: string;
+  daily_goal: number;
+  notifications_enabled: boolean;
+  created_at: string;
+  updated_at: string;
+};
+
+export type UserSettingsInsert = {
+  user_id: string;
+  daily_goal?: number;
+  notifications_enabled?: boolean;
+};
+
+export type UserSettingsUpdate = Partial<Omit<UserSettingsInsert, "user_id">>;
+
 export type MockSessionsRow = {
   id: string;
   user_id: string;
-  country: string;
   state: string;
-  mode: MockMode;
   score: number;
   total: number;
-  pct: number;
-  passed: boolean;
-  time_seconds: number | null;
-  answers: Json;
-  weak_categories: Json | null;
+  percent: number;
+  completed_at: string;
   source: string | null;
-  created_at: string;
 };
 
 export type MockSessionsInsert = {
   user_id: string;
-  country?: string;
   state: string;
-  mode: MockMode;
   score: number;
   total: number;
-  passed: boolean;
-  time_seconds?: number | null;
-  answers?: Json;
-  weak_categories?: Json | null;
+  percent?: number;
+  completed_at?: string;
   source?: string | null;
 };
 
@@ -273,6 +285,12 @@ export interface Database {
         Row: MockSessionsRow;
         Insert: MockSessionsInsert;
         Update: never;
+        Relationships: [];
+      };
+      user_settings: {
+        Row: UserSettingsRow;
+        Insert: UserSettingsInsert;
+        Update: UserSettingsUpdate;
         Relationships: [];
       };
       user_category_stats: {

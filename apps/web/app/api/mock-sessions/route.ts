@@ -51,19 +51,14 @@ export async function POST(request: NextRequest) {
 
   const total = payload.total;
   const score = payload.score;
-  const passed = total > 0 && score / total >= 0.8;
+  const percent = Math.round((score / total) * 100);
 
   const { error } = await supabase.from("mock_sessions").insert({
     user_id: user.id,
-    country: "AU",
     state: payload.state,
-    mode: "exam",
     score,
     total,
-    passed,
-    time_seconds: null,
-    answers: {},
-    weak_categories: null,
+    percent,
     source: payload.source ?? "web"
   });
 

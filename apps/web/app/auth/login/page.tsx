@@ -2,9 +2,9 @@
 
 import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { runLocalAttemptMigration } from "@/lib/migrateLocalAttempts";
+import { syncLocalProgressToSupabase } from "@/lib/sync-local-progress";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 
 function getAppOrigin(): string {
@@ -16,7 +16,6 @@ function getAppOrigin(): string {
 
 function LoginForm() {
   const searchParams = useSearchParams();
-  const router = useRouter();
   const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/");
 
   const [email, setEmail] = useState("");
@@ -31,6 +30,9 @@ function LoginForm() {
       return null;
     }
   }, []);
+  const configurationError = supabase
+    ? null
+    : "Login unavailable — missing configuration. Contact support.";
 
   async function handleEmailLogin(e: React.FormEvent) {
     e.preventDefault();
@@ -46,9 +48,8 @@ function LoginForm() {
       return;
     }
 
-    await runLocalAttemptMigration();
-    router.push(redirect);
-    router.refresh();
+    void syncLocalProgressToSupabase(supabase);
+    window.location.href = redirect;
   }
 
   async function handleGoogleLogin() {
@@ -112,6 +113,12 @@ function LoginForm() {
         <div className="auth-divider">
           <span>or</span>
         </div>
+
+        {configurationError && (
+          <div className="auth-error" role="alert">
+            {configurationError}
+          </div>
+        )}
 
         <form onSubmit={handleEmailLogin} className="auth-form">
           <div className="auth-field form-field">

@@ -84,7 +84,7 @@ export async function GET() {
 
     // Mock sessions last 7 days
     supabaseAdmin.from("mock_sessions").select("id", { count: "exact", head: true })
-      .gte("created_at", d7.toISOString()),
+      .gte("completed_at", d7.toISOString()),
 
     // Top categories practiced
     supabaseAdmin.from("question_attempts")
@@ -108,11 +108,11 @@ export async function GET() {
 
     // Pass rate on mock tests
     supabaseAdmin.from("mock_sessions")
-      .select("passed")
-      .gte("created_at", d30.toISOString())
+      .select("percent")
+      .gte("completed_at", d30.toISOString())
       .then(({ data }) => {
         const total = (data ?? []).length;
-        const passed = (data ?? []).filter((r) => r.passed).length;
+        const passed = (data ?? []).filter((r) => r.percent >= 80).length;
         return { data: total > 0 ? Math.round((passed / total) * 100) : 0 };
       }),
   ]);

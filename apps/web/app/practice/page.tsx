@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
@@ -5,5 +6,9 @@ export const metadata = {
 };
 
 export default function PracticePage() {
-  return <PracticeClient />;
+  return (
+    <Suspense fallback={<div className="app-page" aria-busy="true" />}>
+      <PracticeClient />
+    </Suspense>
+  );
 }

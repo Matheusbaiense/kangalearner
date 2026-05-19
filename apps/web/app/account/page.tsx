@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
-import type { Lang } from "@/lib/i18n";
+import type { Lang, UiLang } from "@/lib/i18n";
 
 /* ── Constants ── */
 const AU_STATES = [
@@ -28,11 +28,9 @@ const AU_TIMEZONES = [
 ];
 
 const LANGUAGES = [
-  { code: "en",    label: "English" },
-  { code: "pt",    label: "Português" },
-  { code: "pt-en", label: "Bilingue PT·EN" },
-  { code: "es",    label: "Español" },
-  { code: "es-en", label: "Bilingüe ES·EN" },
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português" },
+  { code: "es", label: "Español" },
 ] as const;
 
 const THEMES = [
@@ -43,6 +41,17 @@ const THEMES = [
 
 type Theme = "light" | "dark" | "system";
 type Section = "profile" | "preferences" | "security" | "danger";
+type PreferredLang = UiLang;
+
+function normalizePreferredLang(value: unknown): PreferredLang {
+  return value === "pt" || value === "es" ? value : "en";
+}
+
+function normalizeState(value: unknown): string {
+  if (typeof value !== "string") return "WA";
+  const upper = value.toUpperCase();
+  return AU_STATES.some((s) => s.code === upper) ? upper : "WA";
+}
 
 /* ── Avatar initials ── */
 function getInitials(name: string, email: string): string {
@@ -93,6 +102,7 @@ export default function AccountPage() {
 
   /* ── Preferences ── */
   const [state, setStateVal] = useState("WA");
+  const [preferredLang, setPreferredLang] = useState<PreferredLang>(normalizePreferredLang(lang));
   const [timezone, setTimezone] = useState("Australia/Perth");
   const [theme, setTheme] = useState<Theme>("system");
   const [savingPrefs, setSavingPrefs] = useState(false);
@@ -110,28 +120,54 @@ export default function AccountPage() {
 
   /* ── Load user ── */
   useEffect(() => {
+    let cancelled = false;
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    async function loadAccount() {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
       if (!user) {
         router.replace("/auth/login?redirect=/account");
         return;
       }
+
       const meta = user.user_metadata ?? {};
+      const nextDisplayName =
+        (meta.full_name as string | undefined) || (meta.name as string | undefined) || "";
+      const nextPhone = (meta.phone as string | undefined) || "";
+      let nextLang = normalizePreferredLang(meta.lang ?? lang);
+      let nextState = normalizeState(meta.state);
+      let nextAvatarUrl: string | null = null;
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("avatar_url, preferred_lang, preferred_state")
+        .eq("id", user.id)
+        .single();
+
+      if (profile?.avatar_url) nextAvatarUrl = profile.avatar_url;
+      nextLang = normalizePreferredLang(profile?.preferred_lang ?? nextLang);
+      nextState = normalizeState(profile?.preferred_state ?? nextState);
+
+      if (cancelled) return;
       setEmail(user.email ?? "");
-      setDisplayName((meta.full_name as string | undefined) || (meta.name as string | undefined) || "");
-      setPhone((meta.phone as string | undefined) || "");
-      setStateVal((meta.state as string | undefined) || "WA");
-      // Load avatar from profiles table
-      const supabase2 = createClient();
-      supabase2.from("profiles").select("avatar_url").eq("id", user.id).single()
-        .then(({ data }) => { if (data?.avatar_url) setAvatarUrl(data.avatar_url); });
+      setDisplayName(nextDisplayName);
+      setPhone(nextPhone);
+      setAvatarUrl(nextAvatarUrl);
+      setPreferredLang(nextLang);
+      setStateVal(nextState);
       setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
       const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem("kanga-theme") as Theme | null) || "system";
       setTheme(savedTheme);
       applyTheme(savedTheme);
       setLoading(false);
-    });
-  }, [router]);
+    }
+
+    loadAccount();
+    return () => {
+      cancelled = true;
+    };
+  }, [router, lang]);
 
   /* ── Handlers ── */
   async function handleSaveProfile(e: React.FormEvent) {
@@ -151,12 +187,53 @@ export default function AccountPage() {
     setSavingPrefs(true);
     setPrefsMsg(null);
     const supabase = createClient();
-    const { error } = await supabase.auth.updateUser({
-      data: { state, timezone, theme },
+    const {
+      data: { user },
+      error: userError
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      setSavingPrefs(false);
+      setPrefsMsg({ text: userError?.message ?? "You need to be signed in.", ok: false });
+      return;
+    }
+
+    const normalizedLang = normalizePreferredLang(preferredLang);
+    const normalizedState = normalizeState(state);
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        preferred_lang: normalizedLang,
+        preferred_state: normalizedState
+      })
+      .eq("id", user.id);
+
+    if (profileError) {
+      setSavingPrefs(false);
+      setPrefsMsg({ text: profileError.message, ok: false });
+      return;
+    }
+
+    const { error: authError } = await supabase.auth.updateUser({
+      data: { lang: normalizedLang, state: normalizedState, timezone, theme },
     });
-    applyTheme(theme);
+
     setSavingPrefs(false);
-    setPrefsMsg(error ? { text: error.message, ok: false } : { text: "Preferences saved.", ok: true });
+    if (authError) {
+      setPrefsMsg({ text: authError.message, ok: false });
+      return;
+    }
+
+    setPreferredLang(normalizedLang);
+    setStateVal(normalizedState);
+    setLang(normalizedLang as Lang);
+    try {
+      localStorage.setItem("kl-lang", normalizedLang);
+      localStorage.setItem("kl-state", normalizedState);
+      localStorage.setItem("kl-state-v2", normalizedState);
+    } catch {}
+    applyTheme(theme);
+    setPrefsMsg({ text: "Preferences saved.", ok: true });
   }
 
   async function handleChangePassword(e: React.FormEvent) {
@@ -420,7 +497,7 @@ export default function AccountPage() {
                         </option>
                       ))}
                     </select>
-                    <p className="settings-hint">Used to load the correct question set. Only WA is available now.</p>
+                    <p className="settings-hint">Saved as your default state across the app and static site.</p>
                   </div>
 
                   {/* Language */}
@@ -429,14 +506,14 @@ export default function AccountPage() {
                     <select
                       id="s-lang"
                       className="settings-input settings-select"
-                      value={lang}
-                      onChange={(e) => setLang(e.target.value as Lang)}
+                      value={preferredLang}
+                      onChange={(e) => setPreferredLang(normalizePreferredLang(e.target.value))}
                     >
                       {LANGUAGES.map((l) => (
                         <option key={l.code} value={l.code}>{l.label}</option>
                       ))}
                     </select>
-                    <p className="settings-hint">Sets the display language for questions and the interface.</p>
+                    <p className="settings-hint">Saved as your default display language across the app and static site.</p>
                   </div>
 
                   {/* Timezone */}
