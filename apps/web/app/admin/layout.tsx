@@ -1,36 +1,27 @@
-"use client";
+import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
+import { createServerClient } from "@supabase/ssr";
 import "../admin.css";
-import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
-import { createClient } from "@/lib/supabase/client";
 
-export default function AdminLayout({ children }: { children: React.ReactNode }) {
-  const router = useRouter();
-  const [checking, setChecking] = useState(true);
+export default async function AdminLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const supabase = createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
+  );
 
-  useEffect(() => {
-    const supabase = createClient();
-    supabase.auth.getUser().then(async ({ data: { user } }) => {
-      if (!user) { router.replace("/auth/login?redirect=/admin"); return; }
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("role")
-        .eq("id", user.id)
-        .single();
-      if (!profile || !["admin", "super_admin"].includes(profile.role as string)) {
-        router.replace("/");
-        return;
-      }
-      setChecking(false);
-    });
-  }, [router]);
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) redirect("/auth/login?redirect=/admin");
 
-  if (checking) {
-    return (
-      <div className="app-page" style={{ display: "flex", alignItems: "center", justifyContent: "center", minHeight: "60vh" }}>
-        <div className="admin-spinner" />
-      </div>
-    );
+  const { data: profile } = await supabase
+    .from("profiles")
+    .select("role")
+    .eq("id", user.id)
+    .single();
+
+  if (!profile || !["admin", "super_admin"].includes(profile.role as string)) {
+    redirect("/");
   }
 
   return <>{children}</>;
