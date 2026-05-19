@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
@@ -9,8 +9,8 @@ import { useLang } from "@/contexts/LangContext";
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
   { href: "/learn", key: "learn" },
-  { href: "/practice", key: "practice" },
-  { href: "/mock-test", key: "mockTest" },
+  { href: "/practice", key: "practice", excludeMode: "sim" },
+  { href: "/practice?mode=sim", key: "mockTest", activePath: "/practice", activeMode: "sim" },
   { href: "/progress", key: "progress" },
   { href: "/resources", key: "resources" },
 ] as const;
@@ -65,6 +65,7 @@ function getInitials(name: string, email: string): string {
 
 export function SiteNav() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const { lang, setLang, s } = useLang();
   const [scrolled, setScrolled] = useState(false);
@@ -183,9 +184,22 @@ export function SiteNav() {
         {/* Nav links */}
         <ul className="main-nav" role="list">
           {NAV_LINKS.map((link) => {
-            const isActive = "exact" in link && link.exact
-              ? pathname === link.href
-              : pathname.startsWith(link.href);
+            const isActive = (() => {
+              if ("exact" in link && link.exact) return pathname === link.href;
+              if ("activeMode" in link) {
+                return (
+                  pathname.startsWith(link.activePath) &&
+                  searchParams.get("mode") === link.activeMode
+                );
+              }
+              if ("excludeMode" in link) {
+                return (
+                  pathname.startsWith(link.href) &&
+                  searchParams.get("mode") !== link.excludeMode
+                );
+              }
+              return pathname.startsWith(link.href);
+            })();
             return (
               <li key={link.href}>
                 <Link href={link.href} className={isActive ? "nav-link active" : "nav-link"}>

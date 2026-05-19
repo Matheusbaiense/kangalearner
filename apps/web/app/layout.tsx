@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
+import { Suspense } from "react";
 import { Manrope, Space_Grotesk } from "next/font/google";
 import { SiteNav } from "@/components/layout/SiteNav";
 import { Footer } from "@/components/layout/Footer";
@@ -52,7 +53,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${manrope.variable} ${spaceGrotesk.variable}`}>
       <body>
         <LangProvider>
-          <SiteNav />
+          <Suspense fallback={<header style={{ height: 60 }} aria-hidden="true" />}>
+            <SiteNav />
+          </Suspense>
           <Onboarding />
           {children}
           <Footer />
