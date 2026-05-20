@@ -38,7 +38,7 @@ export function Onboarding() {
   function done() {
     localStorage.setItem(KEY, "1");
     localStorage.setItem(SK.stateV2, state);
-    localStorage.setItem("kl-lang", lang);
+    localStorage.setItem(SK.lang, lang);
     setVisible(false);
   }
 

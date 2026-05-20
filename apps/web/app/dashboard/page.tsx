@@ -29,6 +29,14 @@ type DashboardSearchParams = {
 
 const UTC_MINUS_8_OFFSET_MS = -8 * 60 * 60 * 1000;
 
+function errCode(e: unknown): string {
+  if (e && typeof e === "object") {
+    if ("code" in e) return String((e as { code: unknown }).code);
+    if ("message" in e) return String((e as { message: unknown }).message);
+  }
+  return String(e);
+}
+
 function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
 }
@@ -141,7 +149,7 @@ export default async function DashboardPage({
     .from("user_settings")
     .upsert({ user_id: user.id, daily_goal: 10 }, { onConflict: "user_id", ignoreDuplicates: true });
 
-  if (settingsUpsertError) console.error("Dashboard user settings upsert failed", settingsUpsertError);
+  if (settingsUpsertError) console.error("Dashboard user settings upsert failed", errCode(settingsUpsertError));
 
   const [
     attemptsResult,
@@ -232,16 +240,16 @@ export default async function DashboardPage({
     error: unknown;
   };
 
-  if (attemptsError) console.error("Dashboard attempts lookup failed", attemptsError);
-  if (stateAttemptsError) console.error("Dashboard state attempts lookup failed", stateAttemptsError);
-  if (attemptsCountError) console.error("Dashboard attempts count failed", attemptsCountError);
-  if (attemptsCorrectCountError) console.error("Dashboard correct attempts count failed", attemptsCorrectCountError);
-  if (stateAttemptsCountError) console.error("Dashboard state attempts count failed", stateAttemptsCountError);
+  if (attemptsError) console.error("Dashboard attempts lookup failed", errCode(attemptsError));
+  if (stateAttemptsError) console.error("Dashboard state attempts lookup failed", errCode(stateAttemptsError));
+  if (attemptsCountError) console.error("Dashboard attempts count failed", errCode(attemptsCountError));
+  if (attemptsCorrectCountError) console.error("Dashboard correct attempts count failed", errCode(attemptsCorrectCountError));
+  if (stateAttemptsCountError) console.error("Dashboard state attempts count failed", errCode(stateAttemptsCountError));
   if (stateAttemptsCorrectCountError) {
-    console.error("Dashboard state correct attempts count failed", stateAttemptsCorrectCountError);
+    console.error("Dashboard state correct attempts count failed", errCode(stateAttemptsCorrectCountError));
   }
-  if (sessionsError) console.error("Dashboard sessions lookup failed", sessionsError);
-  if (settingsError) console.error("Dashboard user settings lookup failed", settingsError);
+  if (sessionsError) console.error("Dashboard sessions lookup failed", errCode(sessionsError));
+  if (settingsError) console.error("Dashboard user settings lookup failed", errCode(settingsError));
 
   /* ── Aggregate stats ── */
   const allAttempts = attempts ?? [];

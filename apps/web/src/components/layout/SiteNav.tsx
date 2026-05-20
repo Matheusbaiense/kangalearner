@@ -6,6 +6,7 @@ import { useState, useEffect, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { SK } from "@/lib/storageKeys";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
@@ -52,7 +53,7 @@ function getInitials(name: string, email: string): string {
 
 function readStoredState(): string {
   try {
-    return localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state") ?? "WA";
+    return localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy) ?? "WA";
   } catch {
     return "WA";
   }
@@ -213,8 +214,8 @@ export function SiteNav() {
               onChange={(e) => {
                 const code = e.target.value;
                 try {
-                  localStorage.setItem("kl-state-v2", code);
-                  localStorage.setItem("kl-state", code);
+                  localStorage.setItem(SK.stateV2, code);
+                  localStorage.setItem(SK.stateLegacy, code);
                 } catch {}
                 setStateCode(code);
                 window.dispatchEvent(new CustomEvent("kanga:state-changed"));

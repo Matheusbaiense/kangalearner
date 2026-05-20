@@ -225,9 +225,9 @@ export default function AccountPage() {
     setStateVal(normalizedState);
     setLang(normalizedLang as Lang);
     try {
-      localStorage.setItem("kl-lang", normalizedLang);
-      localStorage.setItem("kl-state", normalizedState);
-      localStorage.setItem("kl-state-v2", normalizedState);
+      localStorage.setItem(SK.lang, normalizedLang);
+      localStorage.setItem(SK.stateLegacy, normalizedState);
+      localStorage.setItem(SK.stateV2, normalizedState);
     } catch {}
     applyTheme(theme);
     setPrefsMsg({ text: s.accountPreferencesSaved, ok: true });

@@ -9,6 +9,7 @@ import {
   isBilingualLang,
   VALID_LANGS,
 } from "@/lib/i18n";
+import { SK } from "@/lib/storageKeys";
 
 interface LangContextValue {
   lang: Lang;          // full code e.g. "pt-en"
@@ -32,7 +33,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     // Read saved lang from localStorage on mount
     try {
-      const saved = localStorage.getItem("kl-lang") as Lang | null;
+      const saved = localStorage.getItem(SK.lang) as Lang | null;
       if (saved && VALID_LANGS.includes(saved)) setLangState(saved);
     } catch {}
 
@@ -48,7 +49,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   function setLang(l: Lang) {
     setLangState(l);
     try {
-      localStorage.setItem("kl-lang", l);
+      localStorage.setItem(SK.lang, l);
       window.dispatchEvent(new CustomEvent("kl-lang-change", { detail: l }));
     } catch {}
   }

@@ -129,4 +129,7 @@ create policy "reviews: student insert"
   with check (auth.uid() = student_id);
 
 create policy "waitlist: insert"
-  on marketplace_waitlist for insert with check (true);
+  on marketplace_waitlist for insert
+  with check (
+    email ~ '^[^@\s]+@[^@\s]+\.[^@\s]+$'
+  );
