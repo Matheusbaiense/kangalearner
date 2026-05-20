@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import { SK } from "@/lib/storageKeys";
 
 const KEY = "kl-onboarding-v1";
 
@@ -36,7 +37,7 @@ export function Onboarding() {
 
   function done() {
     localStorage.setItem(KEY, "1");
-    localStorage.setItem("kl-state-v2", state);
+    localStorage.setItem(SK.stateV2, state);
     localStorage.setItem("kl-lang", lang);
     setVisible(false);
   }
