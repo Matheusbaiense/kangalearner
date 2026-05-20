@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { CATEGORIES, QUESTIONS } from "@kanga/core";
+import { CATEGORIES, QUESTIONS, WA_PASS_THRESHOLD } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
@@ -247,7 +247,7 @@ function ScoreSidebar({
   const scoreColor =
     total === 0
       ? "var(--ink)"
-      : p >= 80
+      : p >= WA_PASS_THRESHOLD * 100
         ? "var(--green)"
         : p >= 60
           ? "var(--orange)"
@@ -722,7 +722,7 @@ function SimView({
 
   if (done) {
     const p = pct(result.score, result.total);
-    const pass = p >= 80;
+    const pass = p >= WA_PASS_THRESHOLD * 100;
     return (
       <div className="sim-result">
         <div className="sim-result-emoji">

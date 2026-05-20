@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
 
 export type DashboardMockSession = {
@@ -36,7 +37,7 @@ export function MockSessionHistory({ sessions }: { sessions: DashboardMockSessio
     <>
       <div className="session-list">
         {visibleSessions.map((session) => {
-          const pass = session.percent >= 80;
+          const pass = session.percent >= WA_PASS_THRESHOLD * 100;
           return (
             <div className="session-row" key={session.id}>
               <div

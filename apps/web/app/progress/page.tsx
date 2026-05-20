@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { useLang } from "@/contexts/LangContext";
-import { QUESTIONS } from "@kanga/core";
+import { QUESTIONS, WA_PASS_THRESHOLD } from "@kanga/core";
 import { SK } from "@/lib/storageKeys";
 import { AuthNudge } from "@/components/ui/AuthNudge";
 
@@ -24,7 +24,7 @@ function pct(correct: number, total: number) {
 
 function accuracyColor(acc: number, total: number) {
   if (total === 0) return "var(--muted)";
-  if (acc >= 80) return "var(--green)";
+  if (acc >= WA_PASS_THRESHOLD * 100) return "var(--green)";
   if (acc >= 60) return "var(--orange)";
   return "var(--red)";
 }

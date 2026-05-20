@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { Flame, Target } from "lucide-react";
+import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
@@ -99,7 +100,7 @@ export function DashboardClient({
             <div className="stat-card-sub">
               {totalAnswered === 0
                 ? s.dashNoAttemptsYet
-                : overallPct >= 80
+                : overallPct >= WA_PASS_THRESHOLD * 100
                   ? s.dashAbovePassThreshold
                   : s.dashTarget80}
             </div>
@@ -211,7 +212,7 @@ export function DashboardClient({
                   color:
                     stateTotalAnswered === 0
                       ? "var(--ink)"
-                      : stateAccuracy >= 80
+                      : stateAccuracy >= WA_PASS_THRESHOLD * 100
                         ? "var(--green)"
                         : stateAccuracy >= 60
                           ? "var(--orange)"
@@ -262,7 +263,7 @@ export function DashboardClient({
                           style={{
                             width: `${cp}%`,
                             background:
-                              cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                              cp >= WA_PASS_THRESHOLD * 100 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
                           }}
                         />
                       </div>
@@ -290,7 +291,7 @@ export function DashboardClient({
                 const barColor =
                   b.total === 0
                     ? "var(--border)"
-                    : accuracy >= 80
+                    : accuracy >= WA_PASS_THRESHOLD * 100
                       ? "var(--green)"
                       : accuracy >= 60
                         ? "var(--orange)"
@@ -350,7 +351,7 @@ export function DashboardClient({
                         style={{
                           width: `${cp}%`,
                           background:
-                            cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                            cp >= WA_PASS_THRESHOLD * 100 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
                         }}
                       />
                     </div>
@@ -392,7 +393,7 @@ export function DashboardClient({
                         style={{
                           width: `${cp}%`,
                           background:
-                            cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                            cp >= WA_PASS_THRESHOLD * 100 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
                         }}
                       />
                     </div>

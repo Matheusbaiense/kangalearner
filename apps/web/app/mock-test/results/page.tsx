@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { QUESTIONS } from "@kanga/core";
+import { QUESTIONS, WA_PASS_THRESHOLD } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
@@ -73,7 +73,7 @@ export default function MockTestResultsPage() {
     const total = rows.length;
     const score = rows.filter((r) => r.ok).length;
     const pct = total > 0 ? Math.round((score / total) * 100) : 0;
-    const pass = total > 0 ? score / total >= 0.8 : false;
+    const pass = total > 0 ? score / total >= WA_PASS_THRESHOLD : false;
     return { rows, total, score, pct, pass };
   }, [session]);
 
