@@ -24,6 +24,12 @@ const csp = [
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  outputFileTracingRoot: require("node:path").join(__dirname, "../../"),
+  images: {
+    remotePatterns: [
+      { protocol: "https", hostname: "flagcdn.com" },
+    ],
+  },
   async headers() {
     return [
       {
