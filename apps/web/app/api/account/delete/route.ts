@@ -23,7 +23,8 @@ export async function DELETE() {
     .from("profiles")
     .update({
       deleted_at: new Date().toISOString(),
-      full_name: "Deleted User",
+      display_name: "Deleted User",
+      name: null,
       avatar_url: null,
     })
     .eq("id", user.id);
