@@ -11,7 +11,7 @@
   "dependencies": {
     "@kanga/core": "workspace:*",
     "@supabase/ssr": "^0.10.3",
-    "@supabase/supabase-js": "^2.105.1",
+    "@supabase/supabase-js": "^2.106.0",
     "lucide-react": "^1.14.0",
     "next": "^15.5.18",
     "react": "^18.3.1",
