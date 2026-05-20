@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useLang } from "@/contexts/LangContext";
 import { QUESTIONS } from "@kanga/core";
 import { SK } from "@/lib/storageKeys";
+import { AuthNudge } from "@/components/ui/AuthNudge";
 
 /* ── Types ── */
 type AnswerRecord = Record<string, { chosen: string; correct: boolean }>;
@@ -133,6 +134,8 @@ export default function ProgressPage() {
           <h1 className="page-title">{s.progressTitle}</h1>
           <p className="page-sub">{s.progressSub}</p>
         </div>
+
+        <AuthNudge />
 
         {isEmpty ? (
           /* Empty state */

@@ -297,6 +297,12 @@ export const t = {
     forgotPassword: "Forgot password?",
     continueWithGoogle: "Continue with Google",
 
+    // ── Auth nudge ────────────────────────────────────────
+    nudgeTitle: "Sign in to save your progress",
+    nudgeBody: "Your results are only stored locally. Create a free account to sync across devices and track your history.",
+    nudgeSignUp: "Create free account",
+    nudgeSignIn: "Sign in",
+
     // ── Misc ──────────────────────────────────────────────
     pass: "Pass",
     fail: "Fail",
@@ -576,6 +582,12 @@ export const t = {
     forgotPassword: "Esqueceu a senha?",
     continueWithGoogle: "Continuar com Google",
 
+    // ── Auth nudge ────────────────────────────────────────
+    nudgeTitle: "Faça login para salvar seu progresso",
+    nudgeBody: "Seus resultados estão armazenados apenas localmente. Crie uma conta gratuita para sincronizar entre dispositivos e acompanhar seu histórico.",
+    nudgeSignUp: "Criar conta grátis",
+    nudgeSignIn: "Entrar",
+
     // ── Misc ──────────────────────────────────────────────
     pass: "Aprovado",
     fail: "Reprovado",
@@ -854,6 +866,12 @@ export const t = {
     passwordLabel: "Contraseña",
     forgotPassword: "¿Olvidó su contraseña?",
     continueWithGoogle: "Continuar con Google",
+
+    // ── Auth nudge ────────────────────────────────────────
+    nudgeTitle: "Inicia sesión para guardar tu progreso",
+    nudgeBody: "Tus resultados solo están almacenados localmente. Crea una cuenta gratuita para sincronizar entre dispositivos y seguir tu historial.",
+    nudgeSignUp: "Crear cuenta gratis",
+    nudgeSignIn: "Ingresar",
 
     // ── Misc ──────────────────────────────────────────────
     pass: "Aprobado",
