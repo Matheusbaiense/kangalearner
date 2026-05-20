@@ -2910,7 +2910,7 @@ a:focus-visible,
   outline: 3px solid var(--green2);
   outline-offset: 2px;
 }
-.topic-icon {
+.topic-card .topic-icon {
   align-self: flex-start;
 }
 
@@ -3283,7 +3283,7 @@ a:focus-visible,
   border-color: var(--green2);
   transform: translateY(-2px);
 }
-.topic-icon {
+.topics-section .topic-icon {
   font-size: 1.4rem;
   line-height: 1;
   margin-bottom: 2px;
