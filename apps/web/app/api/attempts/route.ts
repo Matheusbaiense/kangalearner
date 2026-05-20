@@ -77,11 +77,7 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("attempts: insert failed", {
-      code: error.code,
-      details: error.details,
-      hint: error.hint
-    });
+    console.error("attempts: insert failed", error.code);
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
   return NextResponse.json({ ok: true });
