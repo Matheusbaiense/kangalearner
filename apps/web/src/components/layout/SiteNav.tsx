@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { href: "/practice", key: "practice" },
   { href: "/mock-test", key: "mockTest" },
   { href: "/progress", key: "progress", requiresAuth: true },
+  { href: "/dashboard", key: "dashboard", requiresAuth: true },
   { href: "/resources", key: "resources" },
 ] as const;
 
