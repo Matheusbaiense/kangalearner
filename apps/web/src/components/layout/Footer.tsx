@@ -5,20 +5,7 @@ import Image from "next/image";
 import { useState } from "react";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
-
-function FlagImg({ country }: { country: string }) {
-  return (
-    <img
-      src={`https://flagcdn.com/w20/${country}.png`}
-      srcSet={`https://flagcdn.com/w40/${country}.png 2x`}
-      width={20}
-      height={15}
-      alt=""
-      aria-hidden="true"
-      style={{ borderRadius: 2, objectFit: "cover", display: "block", flexShrink: 0 }}
-    />
-  );
-}
+import { FlagImg } from "@/components/ui/FlagImg";
 
 const COMPANY_LINKS = [
   { href: "/about",   en: "About",   pt: "Sobre",   es: "Acerca de" },

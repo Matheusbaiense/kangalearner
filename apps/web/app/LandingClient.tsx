@@ -20,25 +20,8 @@ import {
 } from "lucide-react";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
-
-/* ── Helpers ── */
-function FlagImg({ country }: { country: string }) {
-  return (
-    <img
-      src={`https://flagcdn.com/w20/${country}.png`}
-      srcSet={`https://flagcdn.com/w40/${country}.png 2x`}
-      width={20}
-      height={15}
-      alt=""
-      aria-hidden="true"
-      style={{ borderRadius: 2, objectFit: "cover", display: "inline-block", verticalAlign: "middle" }}
-    />
-  );
-}
-
-function tx(obj: Record<string, string>, lang: UiLang): string {
-  return obj[lang] ?? obj.en ?? "";
-}
+import { tx } from "@/lib/i18n";
+import { FlagImg } from "@/components/ui/FlagImg";
 
 /* ── Data ── */
 const FEATURES: { href: string; iconKey: "feat1" | "feat2" | "feat3" | "feat4"; Icon: LucideIcon }[] = [

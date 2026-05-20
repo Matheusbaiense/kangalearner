@@ -7,10 +7,7 @@ import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import { findTopic } from "@/lib/learnTopics";
 import type { UiLang } from "@/lib/i18n";
-
-function tx(obj: Record<UiLang, string>, lang: UiLang): string {
-  return obj[lang] ?? obj.en;
-}
+import { tx } from "@/lib/i18n";
 
 export default function TopicPage() {
   const params = useParams();

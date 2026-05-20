@@ -2,6 +2,8 @@ import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 
+const AU_STATES = ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"];
+
 type AttemptPayload = {
   attempt_id?: string;
   question_id: string;
@@ -46,6 +48,10 @@ export async function POST(request: NextRequest) {
 
   if (!payload?.question_id || !payload?.state || typeof payload.is_correct !== "boolean") {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+  }
+
+  if (!AU_STATES.includes(payload.state)) {
+    return NextResponse.json({ error: "invalid_state" }, { status: 400 });
   }
 
   const attemptId =
