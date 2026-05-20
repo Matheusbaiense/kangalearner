@@ -128,7 +128,7 @@ export function SiteNav() {
         (u.user_metadata?.name as string | undefined) ||
         "";
       const { data: profile } = await supabase
-        .from("profiles").select("role, avatar_url").eq("id", u.id).single();
+        .from("profiles").select("role, avatar_url").eq("id", u.id).maybeSingle();
       setUser({
         email: u.email ?? "",
         name,
@@ -283,6 +283,7 @@ export function SiteNav() {
                     ? <img src={user.avatarUrl} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
                     : user.initials}
                 </span>
+                <span className="user-trigger-chevron" aria-hidden="true">▾</span>
               </button>
               <div className="user-panel" role="menu">
                 <div className="user-panel-header">

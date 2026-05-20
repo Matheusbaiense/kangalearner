@@ -1910,17 +1910,35 @@ a:focus-visible,
 .user-trigger {
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 40px;
+  gap: 4px;
   height: 40px;
-  border-radius: 50%;
+  padding: 0 10px 0 4px;
+  border-radius: 999px;
   background: linear-gradient(135deg, var(--liquid-green), var(--liquid-blue));
   border: 2px solid rgba(255, 255, 255, 0.25);
   cursor: pointer;
   transition: opacity 0.15s ease;
 }
 .user-trigger:hover { opacity: 0.85; }
+.user-trigger-chevron {
+  font-size: 0.65rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1;
+  margin-left: 2px;
+  transition: transform 0.15s ease;
+}
+.user-menu.open .user-trigger-chevron {
+  transform: rotate(180deg);
+}
 .user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
   font-size: 0.75rem;
   font-weight: 800;
   color: #fff;
