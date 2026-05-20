@@ -43,7 +43,10 @@ export async function GET(req: NextRequest) {
   if (search) query = query.ilike("display_name", `%${search}%`);
 
   const { data, count, error } = await query;
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error("[admin/users]", error.code);
+    return NextResponse.json({ error: "internal_error" }, { status: 500 });
+  }
 
   // Enrich with auth.users email via admin API
   const enriched = await Promise.all(
@@ -69,7 +72,12 @@ export async function PATCH(req: NextRequest) {
   const uid = await assertAdmin();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  const body = await req.json() as { userId: string; role: string };
+  let body: { userId: string; role: string };
+  try {
+    body = (await req.json()) as { userId: string; role: string };
+  } catch {
+    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+  }
   const { userId, role } = body;
 
   const validRoles = ["free", "premium", "admin", "super_admin"];
@@ -90,6 +98,9 @@ export async function PATCH(req: NextRequest) {
     .update({ role: role as UserRole })
     .eq("id", userId);
 
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error("[admin/users]", error.code);
+    return NextResponse.json({ error: "internal_error" }, { status: 500 });
+  }
   return NextResponse.json({ ok: true });
 }

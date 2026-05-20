@@ -44,7 +44,9 @@ export async function POST(request: NextRequest) {
     !payload?.state ||
     !Number.isFinite(payload.score) ||
     !Number.isFinite(payload.total) ||
-    payload.total <= 0
+    payload.total <= 0 ||
+    payload.score < 0 ||
+    payload.score > payload.total
   ) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }

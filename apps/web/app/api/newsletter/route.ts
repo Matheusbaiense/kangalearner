@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
     const supabase = await createClient();
 
-    const { error } = await (supabase as any)
+    const { error } = await supabase
       .from("newsletter_subscribers")
       .insert({ email, subscribed_at: new Date().toISOString(), source: "footer" });
 
@@ -25,7 +25,8 @@ export async function POST(req: NextRequest) {
       if (error.code === "42P01") {
         return NextResponse.json({ ok: false, error: "Service unavailable" }, { status: 503 });
       }
-      return NextResponse.json({ ok: false, error: error.message }, { status: 500 });
+      console.error("[newsletter]", error.code);
+      return NextResponse.json({ ok: false, error: "subscribe_failed" }, { status: 500 });
     }
 
     return NextResponse.json({ ok: true });

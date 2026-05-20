@@ -224,9 +224,18 @@ export default function AccountPage() {
 
   async function handleDeleteAccount() {
     if (!deleteConfirm) { setDeleteConfirm(true); return; }
+    if (!confirm("Tem certeza? Esta ação é irreversível e apaga todos os seus dados.")) return;
+
+    const res = await fetch("/api/account/delete", { method: "DELETE" });
+    if (!res.ok) {
+      setProfileMsg({ text: "Erro ao apagar conta. Tente novamente.", ok: false });
+      setDeleteConfirm(false);
+      return;
+    }
     const supabase = createClient();
     await supabase.auth.signOut();
-    router.push("/?deleted=1");
+    router.push("/");
+    router.refresh();
   }
 
   /* ── Loading state ── */

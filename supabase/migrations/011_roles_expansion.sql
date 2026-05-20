@@ -14,12 +14,9 @@ alter table profiles
   add constraint profiles_role_check
   check (role in ('free', 'premium', 'admin', 'super_admin'));
 
--- 4. Set super_admin for the owner email (idempotent via sub-select)
-update profiles
-set role = 'super_admin'
-where id = (
-  select id from auth.users where email = 'baiensem@gmail.com' limit 1
-);
+-- 4. To promote a user to super_admin, run manually in Supabase SQL Editor:
+-- UPDATE profiles SET role = 'super_admin' WHERE id = '<USER_UUID>';
+-- Do not hardcode emails in migrations.
 
 -- 5. Update prevent_role_escalation trigger to allow service_role changes
 --    (already handles any role; re-create to be explicit)
