@@ -7,6 +7,7 @@ import { QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
+import { AuthNudge } from "@/components/ui/AuthNudge";
 import type { UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
 
@@ -159,6 +160,8 @@ export default function MockTestResultsPage() {
                 {s.dashboard}
               </Link>
             </div>
+
+            <AuthNudge />
 
             {/* Wrong answer review */}
             <div className="dash-section" style={{ marginTop: 26 }}>
