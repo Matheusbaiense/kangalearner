@@ -8,22 +8,7 @@ import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
-import { tx } from "@/lib/i18n";
-
-type MockConfig = {
-  state: string;
-  mode: "practice" | "exam";
-  questions: number;
-};
-
-type MockSession = {
-  cfg: MockConfig;
-  startedAtIso: string;
-  qids: string[];
-  answers: Record<string, string>;
-  completedAtIso: string | null;
-  postedAtIso?: string | null;
-};
+import type { MockConfig, MockSession } from "@/types/mock";
 
 function safeParseJson<T>(raw: string | null): T | null {
   if (!raw) return null;
@@ -32,6 +17,11 @@ function safeParseJson<T>(raw: string | null): T | null {
   } catch {
     return null;
   }
+}
+
+function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
+  if (!obj) return "";
+  return obj[lang] ?? obj.en ?? "";
 }
 
 const RESULT_MSG = {

@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { useLang } from "@/contexts/LangContext";
 import { QUESTIONS } from "@kanga/core";
+import { SK } from "@/lib/storageKeys";
 
 /* ── Types ── */
 type AnswerRecord = Record<string, { chosen: string; correct: boolean }>;
@@ -49,7 +50,7 @@ export default function ProgressPage() {
   /* Load from localStorage on mount */
   useEffect(() => {
     try {
-      const raw = localStorage.getItem("kl-answered");
+      const raw = localStorage.getItem(SK.answered);
       setAnswers(raw ? JSON.parse(raw) : {});
     } catch {
       setAnswers({});
@@ -104,8 +105,8 @@ export default function ProgressPage() {
 
   function handleReset() {
     if (!window.confirm(s.resetConfirm)) return;
-    localStorage.removeItem("kl-answered");
-    localStorage.removeItem("kl-saved");
+    localStorage.removeItem(SK.answered);
+    localStorage.removeItem(SK.saved);
     setAnswers({});
   }
 

@@ -1,8 +1,8 @@
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import { createSupabaseServerClient } from "../../src/lib/supabase/server";
 import { MigrateLocalProgress } from "../../src/components/MigrateLocalProgress";
-import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
+import { DashboardClient } from "./DashboardClient";
+import { AU_STATE_OPTIONS, normalizeAuState, type AuStateCode } from "./state-options";
 
 export const metadata = { title: "Dashboard — KangaLearner" };
 
@@ -10,40 +10,108 @@ export const metadata = { title: "Dashboard — KangaLearner" };
 interface AttemptRow {
   category: string | null;
   is_correct: boolean;
-  created_at: string;
+  answered_at: string;
 }
 interface SessionRow {
-  id: string;
+  id: number | string;
   state: string;
   score: number;
   total: number;
-  created_at: string;
+  percent: number;
+  completed_at: string;
 }
+interface UserSettingsRow {
+  daily_goal: number;
+}
+type DashboardSearchParams = {
+  state?: string | string[];
+};
 
-// Weekly bar chart helpers — defined outside component (no component state needed)
-function startOfWeek(d: Date): Date {
-  const day = d.getDay(); // 0=Sun
-  const diff = d.getDate() - day + (day === 0 ? -6 : 1); // Monday
-  return new Date(d.getFullYear(), d.getMonth(), diff);
-}
-
-function weekLabel(monday: Date): string {
-  return monday.toLocaleDateString("en-AU", { day: "numeric", month: "short" });
-}
-
-function formatDate(iso: string) {
-  return new Date(iso).toLocaleDateString("en-AU", {
-    day: "numeric",
-    month: "short",
-    year: "numeric"
-  });
-}
+const UTC_MINUS_8_OFFSET_MS = -8 * 60 * 60 * 1000;
 
 function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
 }
 
-export default async function DashboardPage() {
+function dayKeyUtcMinus8(value: string | Date): string | null {
+  const date = value instanceof Date ? value : new Date(value);
+  if (Number.isNaN(date.getTime())) return null;
+  return new Date(date.getTime() + UTC_MINUS_8_OFFSET_MS).toISOString().slice(0, 10);
+}
+
+function shiftDayKey(dayKey: string, deltaDays: number): string {
+  const date = new Date(`${dayKey}T00:00:00.000Z`);
+  date.setUTCDate(date.getUTCDate() + deltaDays);
+  return date.toISOString().slice(0, 10);
+}
+
+function startOfWeekDayKey(dayKey: string): string {
+  const date = new Date(`${dayKey}T00:00:00.000Z`);
+  const day = date.getUTCDay(); // 0=Sun
+  const diff = date.getUTCDate() - day + (day === 0 ? -6 : 1); // Monday
+  date.setUTCDate(diff);
+  return date.toISOString().slice(0, 10);
+}
+
+function weekLabel(dayKey: string): string {
+  return new Date(`${dayKey}T00:00:00.000Z`).toLocaleDateString("en-AU", {
+    day: "numeric",
+    month: "short",
+    timeZone: "UTC"
+  });
+}
+
+function streakForAttempts(attempts: Pick<AttemptRow, "answered_at">[]): number {
+  const activeDays = new Set(
+    attempts
+      .map((attempt) => dayKeyUtcMinus8(attempt.answered_at))
+      .filter((dayKey): dayKey is string => Boolean(dayKey))
+  );
+
+  let day = dayKeyUtcMinus8(new Date());
+  let streak = 0;
+  while (day && activeDays.has(day)) {
+    streak++;
+    day = shiftDayKey(day, -1);
+  }
+  return streak;
+}
+
+function firstSearchParam(value: string | string[] | undefined): string | undefined {
+  return Array.isArray(value) ? value[0] : value;
+}
+
+function categoryStatsFor(attempts: Pick<AttemptRow, "category" | "is_correct">[]) {
+  const catMap: Record<string, { total: number; correct: number }> = {};
+  attempts.forEach((a) => {
+    const key = a.category ?? "Other";
+    if (!catMap[key]) catMap[key] = { total: 0, correct: 0 };
+    catMap[key].total++;
+    if (a.is_correct) catMap[key].correct++;
+  });
+  return Object.entries(catMap);
+}
+
+async function loadPreferredState(
+  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
+  userId: string
+): Promise<AuStateCode> {
+  const { data } = await supabase
+    .from("profiles")
+    .select("preferred_state")
+    .eq("id", userId)
+    .maybeSingle();
+
+  return normalizeAuState(data?.preferred_state) ?? "WA";
+}
+
+export default async function DashboardPage({
+  searchParams
+}: {
+  searchParams?: Promise<DashboardSearchParams>;
+}) {
+  const params = searchParams ? await searchParams : {};
+
   /* ── Auth check ── */
   let supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>;
   try {
@@ -63,42 +131,136 @@ export default async function DashboardPage() {
     user.email?.split("@")[0] ??
     "there";
 
-  /* ── Fetch question attempts (bounded to last 500 for performance) ── */
-  const { data: attempts } = (await supabase!
-    .from("question_attempts")
-    .select("category, is_correct, created_at")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false })
-    .limit(500)) as { data: AttemptRow[] | null };
+  const preferredState = await loadPreferredState(supabase!, user.id);
+  const selectedState: AuStateCode =
+    normalizeAuState(firstSearchParam(params.state)) ?? preferredState;
+  const selectedStateName =
+    AU_STATE_OPTIONS.find((state) => state.code === selectedState)?.name ?? selectedState;
 
-  /* ── Fetch last 5 mock sessions ── */
-  const { data: sessions } = (await supabase!
-    .from("mock_sessions")
-    .select("id, state, score, total, created_at")
-    .eq("user_id", user.id)
-    .order("created_at", { ascending: false })
-    .limit(5)) as { data: SessionRow[] | null };
+  const { error: settingsUpsertError } = await supabase!
+    .from("user_settings")
+    .upsert({ user_id: user.id, daily_goal: 10 }, { onConflict: "user_id", ignoreDuplicates: true });
+
+  if (settingsUpsertError) console.error("Dashboard user settings upsert failed", settingsUpsertError);
+
+  const [
+    attemptsResult,
+    stateAttemptsResult,
+    attemptsCountResult,
+    attemptsCorrectCountResult,
+    stateAttemptsCountResult,
+    stateAttemptsCorrectCountResult,
+    sessionsResult,
+    settingsResult
+  ] = await Promise.all([
+    supabase!
+      .from("question_attempts")
+      .select("category, is_correct, answered_at")
+      .eq("user_id", user.id)
+      .order("created_at", { ascending: false })
+      .limit(500),
+    supabase!
+      .from("question_attempts")
+      .select("category, is_correct, answered_at")
+      .eq("user_id", user.id)
+      .eq("state", selectedState)
+      .order("created_at", { ascending: false })
+      .limit(500),
+    supabase!
+      .from("question_attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id),
+    supabase!
+      .from("question_attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("is_correct", true),
+    supabase!
+      .from("question_attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("state", selectedState),
+    supabase!
+      .from("question_attempts")
+      .select("*", { count: "exact", head: true })
+      .eq("user_id", user.id)
+      .eq("state", selectedState)
+      .eq("is_correct", true),
+    supabase!
+      .from("mock_sessions")
+      .select("id, state, score, total, percent, completed_at")
+      .eq("user_id", user.id)
+      .order("completed_at", { ascending: false }),
+    supabase!
+      .from("user_settings")
+      .select("daily_goal")
+      .eq("user_id", user.id)
+      .maybeSingle()
+  ]);
+
+  const { data: attempts, error: attemptsError } = attemptsResult as {
+    data: AttemptRow[] | null;
+    error: unknown;
+  };
+  const { data: stateAttempts, error: stateAttemptsError } = stateAttemptsResult as {
+    data: AttemptRow[] | null;
+    error: unknown;
+  };
+  const { count: attemptsCount, error: attemptsCountError } = attemptsCountResult as {
+    count: number | null;
+    error: unknown;
+  };
+  const { count: attemptsCorrectCount, error: attemptsCorrectCountError } = attemptsCorrectCountResult as {
+    count: number | null;
+    error: unknown;
+  };
+  const { count: stateAttemptsCount, error: stateAttemptsCountError } = stateAttemptsCountResult as {
+    count: number | null;
+    error: unknown;
+  };
+  const { count: stateAttemptsCorrectCount, error: stateAttemptsCorrectCountError } =
+    stateAttemptsCorrectCountResult as {
+      count: number | null;
+      error: unknown;
+    };
+  const { data: sessions, error: sessionsError } = sessionsResult as {
+    data: SessionRow[] | null;
+    error: unknown;
+  };
+  const { data: settings, error: settingsError } = settingsResult as {
+    data: UserSettingsRow | null;
+    error: unknown;
+  };
+
+  if (attemptsError) console.error("Dashboard attempts lookup failed", attemptsError);
+  if (stateAttemptsError) console.error("Dashboard state attempts lookup failed", stateAttemptsError);
+  if (attemptsCountError) console.error("Dashboard attempts count failed", attemptsCountError);
+  if (attemptsCorrectCountError) console.error("Dashboard correct attempts count failed", attemptsCorrectCountError);
+  if (stateAttemptsCountError) console.error("Dashboard state attempts count failed", stateAttemptsCountError);
+  if (stateAttemptsCorrectCountError) {
+    console.error("Dashboard state correct attempts count failed", stateAttemptsCorrectCountError);
+  }
+  if (sessionsError) console.error("Dashboard sessions lookup failed", sessionsError);
+  if (settingsError) console.error("Dashboard user settings lookup failed", settingsError);
 
   /* ── Aggregate stats ── */
   const allAttempts = attempts ?? [];
-  const totalAnswered = allAttempts.length;
-  const totalCorrect = allAttempts.filter((a) => a.is_correct).length;
+  const totalAnswered = attemptsCount ?? allAttempts.length;
+  const totalCorrect = attemptsCorrectCount ?? allAttempts.filter((a) => a.is_correct).length;
   const overallPct = pct(totalCorrect, totalAnswered);
+  const dailyGoal = Math.max(1, settings?.daily_goal ?? 10);
+  const todayKey = dayKeyUtcMinus8(new Date());
+  const answeredToday = todayKey
+    ? allAttempts.filter((attempt) => dayKeyUtcMinus8(attempt.answered_at) === todayKey).length
+    : 0;
+  const dailyGoalPct = Math.min(100, pct(answeredToday, dailyGoal));
+  const streakDays = streakForAttempts(allAttempts);
 
-  /* Per-category */
-  const catMap: Record<string, { total: number; correct: number }> = {};
-  allAttempts.forEach((a) => {
-    const key = a.category ?? "Other";
-    if (!catMap[key]) catMap[key] = { total: 0, correct: 0 };
-    catMap[key].total++;
-    if (a.is_correct) catMap[key].correct++;
-  });
-
-  const catStats = Object.entries(catMap)
+  const catStats = categoryStatsFor(allAttempts)
     .sort((a, b) => b[1].total - a[1].total)
     .slice(0, 10);
 
-  const weakTopics = Object.entries(catMap)
+  const weakTopics = categoryStatsFor(allAttempts)
     .filter(([_, s]) => s.total >= 3)
     .sort((a, b) => {
       const ap = a[1].total > 0 ? a[1].correct / a[1].total : 0;
@@ -108,21 +270,26 @@ export default async function DashboardPage() {
     })
     .slice(0, 3);
 
+  const selectedStateAttempts = stateAttempts ?? [];
+  const stateTotalAnswered = stateAttemptsCount ?? selectedStateAttempts.length;
+  const stateTotalCorrect = stateAttemptsCorrectCount ?? selectedStateAttempts.filter((a) => a.is_correct).length;
+  const stateAccuracy = pct(stateTotalCorrect, stateTotalAnswered);
+  const stateCategoryStats = categoryStatsFor(selectedStateAttempts)
+    .sort((a, b) => b[1].total - a[1].total)
+    .slice(0, 10);
+
   // Weekly bar chart — last 8 weeks
   const WEEKS = 8;
   const weekBuckets: { label: string; total: number; correct: number }[] = [];
-  const nowDate = new Date();
-  const thisWeekStart = startOfWeek(nowDate);
+  const thisWeekStart = startOfWeekDayKey(todayKey ?? dayKeyUtcMinus8(new Date()) ?? "1970-01-01");
 
   for (let i = WEEKS - 1; i >= 0; i--) {
-    const weekStart = new Date(thisWeekStart);
-    weekStart.setDate(weekStart.getDate() - i * 7);
-    const weekEnd = new Date(weekStart);
-    weekEnd.setDate(weekEnd.getDate() + 7);
+    const weekStart = shiftDayKey(thisWeekStart, -i * 7);
+    const weekEnd = shiftDayKey(weekStart, 7);
     const label = weekLabel(weekStart);
     const bucket = allAttempts.filter((a) => {
-      const t = Date.parse(a.created_at);
-      return Number.isFinite(t) && t >= weekStart.getTime() && t < weekEnd.getTime();
+      const dayKey = dayKeyUtcMinus8(a.answered_at);
+      return Boolean(dayKey && dayKey >= weekStart && dayKey < weekEnd);
     });
     weekBuckets.push({
       label,
@@ -137,7 +304,7 @@ export default async function DashboardPage() {
   const bestSession =
     allSessions.length > 0
       ? allSessions.reduce((best, s) =>
-          pct(s.score, s.total) > pct(best.score, best.total) ? s : best
+          s.percent > best.percent ? s : best
         )
       : null;
 
@@ -154,237 +321,32 @@ export default async function DashboardPage() {
   return (
     <>
       <MigrateLocalProgress />
-      <div className="app-page">
-        <div className="app-container app-section">
-          {/* Header */}
-          <div className="page-header">
-            <h1 className="page-title">Hello, {displayName}</h1>
-            <p className="page-sub">Your progress across all practice sessions.</p>
-          </div>
-
-          {/* Stat cards */}
-          <div className="stat-grid">
-            <div className="stat-card">
-              <div className="stat-card-label">Questions answered</div>
-              <div className="stat-card-value">{totalAnswered}</div>
-              <div className="stat-card-sub">
-                {totalAnswered === 0 ? "Start practising to see stats" : `${totalCorrect} correct`}
-              </div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-card-label">Overall accuracy</div>
-              <div className="stat-card-value" style={{ color: scoreColor }}>
-                {totalAnswered === 0 ? "—" : `${overallPct}%`}
-              </div>
-              <div className="stat-card-sub">
-                {totalAnswered === 0
-                  ? "No attempts yet"
-                  : overallPct >= 80
-                    ? "Above pass threshold"
-                    : "Target: 80%"}
-              </div>
-            </div>
-
-            <div className="stat-card">
-              <div className="stat-card-label">Mock tests taken</div>
-              <div className="stat-card-value">{allSessions.length}</div>
-              <div className="stat-card-sub">
-                {bestSession
-                  ? `Best: ${pct(bestSession.score, bestSession.total)}%`
-                  : "No mock tests yet"}
-              </div>
-            </div>
-          </div>
-
-          {/* Weekly chart */}
-          <div className="dash-section" style={{ marginTop: 22 }}>
-            <p className="dash-section-title">Weekly activity</p>
-            {allAttempts.length === 0 ? (
-              <div className="dash-empty">No activity yet — start practising to see your trend.</div>
-            ) : (
-              <div className="weekly-chart">
-                {weekBuckets.map((b, i) => {
-                  const heightPct = b.total === 0 ? 0 : Math.max(8, Math.round((b.total / maxWeekTotal) * 100));
-                  const accuracy = b.total > 0 ? Math.round((b.correct / b.total) * 100) : 0;
-                  const barColor =
-                    b.total === 0
-                      ? "var(--border)"
-                      : accuracy >= 80
-                        ? "var(--green)"
-                        : accuracy >= 60
-                          ? "var(--orange)"
-                          : "var(--red)";
-                  return (
-                    <div key={i} className="weekly-col">
-                      <div className="weekly-bar-wrap">
-                        <div
-                          className="weekly-bar"
-                          style={{ height: `${heightPct}%`, background: barColor }}
-                          title={b.total === 0 ? "No activity" : `${accuracy}% (${b.correct}/${b.total})`}
-                        />
-                      </div>
-                      <div className="weekly-label">{b.label}</div>
-                      {b.total > 0 && <div className="weekly-count">{accuracy}%</div>}
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* Quick actions */}
-          <div style={{ display: "flex", gap: 10, marginBottom: 32, flexWrap: "wrap" }}>
-            <Link href="/practice" className="dash-cta">
-              Continue practice →
-            </Link>
-            <Link href="/mock-test" className="btn-outline" style={{ textDecoration: "none" }}>
-              Take mock test
-            </Link>
-          </div>
-
-          {/* Weak topics */}
-          <div className="dash-section">
-            <p className="dash-section-title">What to practise next</p>
-            {weakTopics.length === 0 ? (
-              <div className="dash-empty">
-                Answer more questions to get personalised recommendations.
-              </div>
-            ) : (
-              <div className="cat-list">
-                {weakTopics.map(([cat, s]) => {
-                  const CatIco = categoryLucideIcon(cat);
-                  const cp = pct(s.correct, s.total);
-                  return (
-                    <div className="cat-row" key={cat}>
-                      <span className="cat-row-icon" aria-hidden>
-                        <CatIco />
-                      </span>
-                      <span className="cat-row-name">{cat}</span>
-                      <span className="cat-row-frac">
-                        {s.correct}/{s.total}
-                      </span>
-                      <div className="cat-row-track">
-                        <div
-                          className="cat-row-fill"
-                          style={{
-                            width: `${cp}%`,
-                            background:
-                              cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
-                          }}
-                        />
-                      </div>
-                      <Link
-                        href={`/practice?cat=${encodeURIComponent(cat)}`}
-                        className="btn-outline"
-                        style={{ marginLeft: "auto", textDecoration: "none" }}
-                      >
-                        Practise →
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* Category breakdown */}
-          <div className="dash-section">
-            <p className="dash-section-title">Progress by topic</p>
-            {catStats.length === 0 ? (
-              <div className="dash-empty">
-                No data yet — answer some questions in Practice mode.
-              </div>
-            ) : (
-              <div className="cat-list">
-                {catStats.map(([cat, s]) => {
-                  const CatIco = categoryLucideIcon(cat);
-                  const cp = pct(s.correct, s.total);
-                  return (
-                    <div className="cat-row" key={cat}>
-                      <span className="cat-row-icon" aria-hidden>
-                        <CatIco />
-                      </span>
-                      <span className="cat-row-name">{cat}</span>
-                      <span className="cat-row-frac">
-                        {s.correct}/{s.total}
-                      </span>
-                      <div className="cat-row-track">
-                        <div
-                          className="cat-row-fill"
-                          style={{
-                            width: `${cp}%`,
-                            background:
-                              cp >= 80 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
-                          }}
-                        />
-                      </div>
-                      <Link
-                        href={`/practice?cat=${encodeURIComponent(cat)}`}
-                        className="btn-outline"
-                        style={{ marginLeft: "auto", textDecoration: "none" }}
-                      >
-                        Practise
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* Mock session history */}
-          <div className="dash-section">
-            <p className="dash-section-title">Mock test history</p>
-            {allSessions.length === 0 ? (
-              <div className="dash-empty">
-                No mock tests yet — try the{" "}
-                <Link href="/practice" style={{ color: "var(--green)", fontWeight: 800 }}>
-                  Mock Test mode
-                </Link>
-                .
-              </div>
-            ) : (
-              <div className="session-list">
-                {allSessions.map((s) => {
-                  const p = pct(s.score, s.total);
-                  const pass = p >= 80;
-                  return (
-                    <div className="session-row" key={s.id}>
-                      <div
-                        className="session-score"
-                        style={{ color: pass ? "var(--green)" : "var(--red)" }}
-                      >
-                        {s.score}/{s.total}
-                      </div>
-                      <div className="session-info">
-                        <div className="session-state">
-                          {s.state} · {p}%
-                        </div>
-                        <div className="session-date">{formatDate(s.created_at)}</div>
-                      </div>
-                      <span className={`badge ${pass ? "badge-pass" : "badge-fail"}`}>
-                        {pass ? "Pass" : "Fail"}
-                      </span>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-
-          {/* Sign-out note */}
-          <p style={{ fontSize: ".75rem", color: "var(--muted)", marginTop: 32 }}>
-            Signed in as {user.email} ·{" "}
-            <Link
-              href="/auth/login?redirect=/dashboard"
-              style={{ color: "var(--muted)", textDecoration: "underline" }}
-            >
-              sign out from nav
-            </Link>
-          </p>
-        </div>
-      </div>
+      <DashboardClient
+        displayName={displayName}
+        userEmail={user.email}
+        totalAnswered={totalAnswered}
+        totalCorrect={totalCorrect}
+        overallPct={overallPct}
+        scoreColor={scoreColor}
+        mockSessionCount={allSessions.length}
+        bestSession={bestSession}
+        streakDays={streakDays}
+        answeredToday={answeredToday}
+        dailyGoal={dailyGoal}
+        dailyGoalPct={dailyGoalPct}
+        selectedState={selectedState}
+        selectedStateName={selectedStateName}
+        stateTotalAnswered={stateTotalAnswered}
+        stateTotalCorrect={stateTotalCorrect}
+        stateAccuracy={stateAccuracy}
+        stateCategoryStats={stateCategoryStats}
+        weekBuckets={weekBuckets}
+        maxWeekTotal={maxWeekTotal}
+        hasAttempts={allAttempts.length > 0}
+        catStats={catStats}
+        weakTopics={weakTopics}
+        sessions={allSessions}
+      />
     </>
   );
 }

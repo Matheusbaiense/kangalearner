@@ -3,7 +3,8 @@ import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
-import type { Lang } from "@/lib/i18n";
+import type { Lang, UiLang } from "@/lib/i18n";
+import { SK } from "@/lib/storageKeys";
 
 /* ── Constants ── */
 const AU_STATES = [
@@ -28,21 +29,26 @@ const AU_TIMEZONES = [
 ];
 
 const LANGUAGES = [
-  { code: "en",    label: "English" },
-  { code: "pt",    label: "Português" },
-  { code: "pt-en", label: "Bilingue PT·EN" },
-  { code: "es",    label: "Español" },
-  { code: "es-en", label: "Bilingüe ES·EN" },
+  { code: "en", label: "English" },
+  { code: "pt", label: "Português" },
+  { code: "es", label: "Español" },
 ] as const;
 
-const THEMES = [
-  { value: "light",  label: "Light" },
-  { value: "dark",   label: "Dark" },
-  { value: "system", label: "System" },
-] as const;
+const THEME_VALUES = ["light", "dark", "system"] as const;
 
 type Theme = "light" | "dark" | "system";
 type Section = "profile" | "preferences" | "security" | "danger";
+type PreferredLang = UiLang;
+
+function normalizePreferredLang(value: unknown): PreferredLang {
+  return value === "pt" || value === "es" ? value : "en";
+}
+
+function normalizeState(value: unknown): string {
+  if (typeof value !== "string") return "WA";
+  const upper = value.toUpperCase();
+  return AU_STATES.some((s) => s.code === upper) ? upper : "WA";
+}
 
 /* ── Avatar initials ── */
 function getInitials(name: string, email: string): string {
@@ -57,7 +63,7 @@ function applyTheme(theme: Theme) {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const isDark = theme === "dark" || (theme === "system" && prefersDark);
   document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-  try { localStorage.setItem("kanga-theme", theme); } catch { /* noop */ }
+  try { localStorage.setItem(SK.theme, theme); } catch { /* noop */ }
 }
 
 /* ── Message component ── */
@@ -74,7 +80,7 @@ function Msg({ text, ok }: { text: string; ok: boolean }) {
 ══════════════════════════════════════════ */
 export default function AccountPage() {
   const router = useRouter();
-  const { lang, setLang } = useLang();
+  const { lang, setLang, s } = useLang();
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   /* ── Auth & loading ── */
@@ -93,6 +99,7 @@ export default function AccountPage() {
 
   /* ── Preferences ── */
   const [state, setStateVal] = useState("WA");
+  const [preferredLang, setPreferredLang] = useState<PreferredLang>(normalizePreferredLang(lang));
   const [timezone, setTimezone] = useState("Australia/Perth");
   const [theme, setTheme] = useState<Theme>("system");
   const [savingPrefs, setSavingPrefs] = useState(false);
@@ -105,32 +112,59 @@ export default function AccountPage() {
   const [pwdMsg, setPwdMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
   /* ── Danger zone ── */
-  const [deleteConfirm, setDeleteConfirm] = useState(false);
+  const [deletingAccount, setDeletingAccount] = useState(false);
+  const [deleteMsg, setDeleteMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
   /* ── Load user ── */
   useEffect(() => {
+    let cancelled = false;
     const supabase = createClient();
-    supabase.auth.getUser().then(({ data: { user } }) => {
+    async function loadAccount() {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
       if (!user) {
         router.replace("/auth/login?redirect=/account");
         return;
       }
+
       const meta = user.user_metadata ?? {};
+      const nextDisplayName =
+        (meta.full_name as string | undefined) || (meta.name as string | undefined) || "";
+      const nextPhone = (meta.phone as string | undefined) || "";
+      let nextLang = normalizePreferredLang(meta.lang ?? lang);
+      let nextState = normalizeState(meta.state);
+      let nextAvatarUrl: string | null = null;
+
+      const { data: profile } = await supabase
+        .from("profiles")
+        .select("avatar_url, preferred_lang, preferred_state")
+        .eq("id", user.id)
+        .single();
+
+      if (profile?.avatar_url) nextAvatarUrl = profile.avatar_url;
+      nextLang = normalizePreferredLang(profile?.preferred_lang ?? nextLang);
+      nextState = normalizeState(profile?.preferred_state ?? nextState);
+
+      if (cancelled) return;
       setEmail(user.email ?? "");
-      setDisplayName((meta.full_name as string | undefined) || (meta.name as string | undefined) || "");
-      setPhone((meta.phone as string | undefined) || "");
-      setStateVal((meta.state as string | undefined) || "WA");
-      // Load avatar from profiles table
-      const supabase2 = createClient();
-      supabase2.from("profiles").select("avatar_url").eq("id", user.id).single()
-        .then(({ data }) => { if (data?.avatar_url) setAvatarUrl(data.avatar_url); });
+      setDisplayName(nextDisplayName);
+      setPhone(nextPhone);
+      setAvatarUrl(nextAvatarUrl);
+      setPreferredLang(nextLang);
+      setStateVal(nextState);
       setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
-      const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem("kanga-theme") as Theme | null) || "system";
+      const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem(SK.theme) as Theme | null) || "system";
       setTheme(savedTheme);
       applyTheme(savedTheme);
       setLoading(false);
-    });
-  }, [router]);
+    }
+
+    loadAccount();
+    return () => {
+      cancelled = true;
+    };
+  }, [router, lang]);
 
   /* ── Handlers ── */
   async function handleSaveProfile(e: React.FormEvent) {
@@ -142,7 +176,7 @@ export default function AccountPage() {
       data: { full_name: displayName.trim(), phone: phone.trim() },
     });
     setSavingProfile(false);
-    setProfileMsg(error ? { text: error.message, ok: false } : { text: "Profile saved.", ok: true });
+    setProfileMsg(error ? { text: error.message, ok: false } : { text: s.accountProfileSaved, ok: true });
   }
 
   async function handleSavePrefs(e: React.FormEvent) {
@@ -150,23 +184,64 @@ export default function AccountPage() {
     setSavingPrefs(true);
     setPrefsMsg(null);
     const supabase = createClient();
-    const { error } = await supabase.auth.updateUser({
-      data: { state, timezone, theme },
+    const {
+      data: { user },
+      error: userError
+    } = await supabase.auth.getUser();
+
+    if (userError || !user) {
+      setSavingPrefs(false);
+      setPrefsMsg({ text: userError?.message ?? s.accountSignInRequired, ok: false });
+      return;
+    }
+
+    const normalizedLang = normalizePreferredLang(preferredLang);
+    const normalizedState = normalizeState(state);
+    const { error: profileError } = await supabase
+      .from("profiles")
+      .update({
+        preferred_lang: normalizedLang,
+        preferred_state: normalizedState
+      })
+      .eq("id", user.id);
+
+    if (profileError) {
+      setSavingPrefs(false);
+      setPrefsMsg({ text: profileError.message, ok: false });
+      return;
+    }
+
+    const { error: authError } = await supabase.auth.updateUser({
+      data: { lang: normalizedLang, state: normalizedState, timezone, theme },
     });
-    applyTheme(theme);
+
     setSavingPrefs(false);
-    setPrefsMsg(error ? { text: error.message, ok: false } : { text: "Preferences saved.", ok: true });
+    if (authError) {
+      setPrefsMsg({ text: authError.message, ok: false });
+      return;
+    }
+
+    setPreferredLang(normalizedLang);
+    setStateVal(normalizedState);
+    setLang(normalizedLang as Lang);
+    try {
+      localStorage.setItem("kl-lang", normalizedLang);
+      localStorage.setItem("kl-state", normalizedState);
+      localStorage.setItem("kl-state-v2", normalizedState);
+    } catch {}
+    applyTheme(theme);
+    setPrefsMsg({ text: s.accountPreferencesSaved, ok: true });
   }
 
   async function handleChangePassword(e: React.FormEvent) {
     e.preventDefault();
     setPwdMsg(null);
     if (!newPwd || newPwd.length < 8) {
-      setPwdMsg({ text: "New password must be at least 8 characters.", ok: false });
+      setPwdMsg({ text: s.accountPasswordMinLength, ok: false });
       return;
     }
     if (newPwd !== confirmPwd) {
-      setPwdMsg({ text: "Passwords don't match.", ok: false });
+      setPwdMsg({ text: s.accountPasswordMismatch, ok: false });
       return;
     }
     setSavingPwd(true);
@@ -176,7 +251,7 @@ export default function AccountPage() {
     if (error) {
       setPwdMsg({ text: error.message, ok: false });
     } else {
-      setPwdMsg({ text: "Password changed successfully.", ok: true });
+      setPwdMsg({ text: s.accountPasswordChanged, ok: true });
       setNewPwd(""); setConfirmPwd("");
     }
   }
@@ -191,9 +266,9 @@ export default function AccountPage() {
     try {
       const res = await fetch("/api/profile/avatar", { method: "POST", body: form });
       const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? "Upload failed");
+      if (!res.ok) throw new Error(json.error ?? s.accountUploadFailed);
       setAvatarUrl(json.url);
-      setAvatarMsg({ text: "Avatar updated!", ok: true });
+      setAvatarMsg({ text: s.accountAvatarUpdated, ok: true });
     } catch (err) {
       setAvatarMsg({ text: (err as Error).message, ok: false });
     } finally {
@@ -208,7 +283,7 @@ export default function AccountPage() {
     try {
       await fetch("/api/profile/avatar", { method: "DELETE" });
       setAvatarUrl(null);
-      setAvatarMsg({ text: "Avatar removed.", ok: true });
+      setAvatarMsg({ text: s.accountAvatarRemoved, ok: true });
     } finally {
       setUploadingAvatar(false);
     }
@@ -222,13 +297,24 @@ export default function AccountPage() {
   }
 
   async function handleDeleteAccount() {
-    if (!deleteConfirm) { setDeleteConfirm(true); return; }
-    if (!confirm("Tem certeza? Esta ação é irreversível e apaga todos os seus dados.")) return;
+    if (deletingAccount) return;
+    if (!confirm(s.accountDeleteConfirm)) return;
 
-    const res = await fetch("/api/account/delete", { method: "DELETE" });
+    setDeletingAccount(true);
+    setDeleteMsg(null);
+
+    let res: Response;
+    try {
+      res = await fetch("/api/account/delete", { method: "DELETE" });
+    } catch {
+      setDeletingAccount(false);
+      setDeleteMsg({ text: s.accountNetworkError, ok: false });
+      return;
+    }
+
     if (!res.ok) {
-      setProfileMsg({ text: "Erro ao apagar conta. Tente novamente.", ok: false });
-      setDeleteConfirm(false);
+      setDeletingAccount(false);
+      setDeleteMsg({ text: s.accountDeleteFailed, ok: false });
       return;
     }
     const supabase = createClient();
@@ -242,7 +328,7 @@ export default function AccountPage() {
     return (
       <div className="app-page">
         <div className="app-container app-section">
-          <div className="dash-empty">Loading…</div>
+          <div className="dash-empty">{s.loading}</div>
         </div>
       </div>
     );
@@ -251,11 +337,17 @@ export default function AccountPage() {
   const initials = getInitials(displayName, email);
 
   const NAV_ITEMS: { key: Section; label: string }[] = [
-    { key: "profile",     label: "Profile" },
-    { key: "preferences", label: "Preferences" },
-    { key: "security",    label: "Security" },
-    { key: "danger",      label: "Danger Zone" },
+    { key: "profile", label: s.accountNavProfile },
+    { key: "preferences", label: s.accountNavPreferences },
+    { key: "security", label: s.accountNavSecurity },
+    { key: "danger", label: s.accountNavDanger },
   ];
+
+  const themeLabels: Record<Theme, string> = {
+    light: s.accountThemeLight,
+    dark: s.accountThemeDark,
+    system: s.accountThemeSystem,
+  };
 
   return (
     <div className="app-page">
@@ -263,8 +355,8 @@ export default function AccountPage() {
 
         {/* ── Page header ── */}
         <div className="page-header">
-          <h1 className="page-title">Settings</h1>
-          <p className="page-sub">Manage your profile, preferences and security.</p>
+          <h1 className="page-title">{s.settings}</h1>
+          <p className="page-sub">{s.accountPageSub}</p>
         </div>
 
         <div className="settings-layout">
@@ -294,7 +386,7 @@ export default function AccountPage() {
             </nav>
 
             <button className="settings-signout-btn" type="button" onClick={handleSignOut}>
-              Sign out
+              {s.signOut}
             </button>
           </aside>
 
@@ -304,8 +396,8 @@ export default function AccountPage() {
             {/* ── PROFILE ── */}
             {activeSection === "profile" && (
               <section className="settings-section">
-                <h2 className="settings-section-title">Profile</h2>
-                <p className="settings-section-sub">Your public name and contact info.</p>
+                <h2 className="settings-section-title">{s.accountNavProfile}</h2>
+                <p className="settings-section-sub">{s.accountProfileSub}</p>
 
                 {/* Avatar upload */}
                 <div className="settings-avatar-large-wrap">
@@ -313,7 +405,7 @@ export default function AccountPage() {
                     {avatarUrl ? (
                       <img
                         src={avatarUrl}
-                        alt="Avatar"
+                        alt={s.accountAvatarAlt}
                         className="settings-avatar-img"
                         width={72} height={72}
                       />
@@ -337,7 +429,7 @@ export default function AccountPage() {
                       onClick={() => fileInputRef.current?.click()}
                       disabled={uploadingAvatar}
                     >
-                      {uploadingAvatar ? "Uploading…" : "Upload photo"}
+                      {uploadingAvatar ? s.accountUploading : s.accountUploadPhoto}
                     </button>
                     {avatarUrl && (
                       <button
@@ -347,10 +439,10 @@ export default function AccountPage() {
                         onClick={handleAvatarRemove}
                         disabled={uploadingAvatar}
                       >
-                        Remove
+                        {s.accountRemove}
                       </button>
                     )}
-                    <p className="settings-hint" style={{ margin: 0 }}>JPG, PNG, WebP or GIF · max 2 MB</p>
+                    <p className="settings-hint" style={{ margin: 0 }}>{s.accountAvatarHint}</p>
                     {avatarMsg && <Msg text={avatarMsg.text} ok={avatarMsg.ok} />}
                   </div>
                 </div>
@@ -358,19 +450,19 @@ export default function AccountPage() {
                 <form onSubmit={handleSaveProfile} className="settings-form">
                   <div className="settings-field-row">
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-name">Full name</label>
+                      <label className="settings-label" htmlFor="s-name">{s.accountFullName}</label>
                       <input
                         id="s-name"
                         className="settings-input"
                         type="text"
                         value={displayName}
                         onChange={(e) => setDisplayName(e.target.value)}
-                        placeholder="Your full name"
+                        placeholder={s.accountFullNamePlaceholder}
                         maxLength={80}
                       />
                     </div>
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-email">Email</label>
+                      <label className="settings-label" htmlFor="s-email">{s.emailLabel}</label>
                       <input
                         id="s-email"
                         className="settings-input"
@@ -379,13 +471,13 @@ export default function AccountPage() {
                         disabled
                         readOnly
                       />
-                      <p className="settings-hint">Email cannot be changed here.</p>
+                      <p className="settings-hint">{s.accountEmailHint}</p>
                     </div>
                   </div>
 
                   <div className="settings-field">
                     <label className="settings-label" htmlFor="s-phone">
-                      Phone <span className="settings-optional">(optional)</span>
+                      {s.accountPhone} <span className="settings-optional">{s.accountOptional}</span>
                     </label>
                     <input
                       id="s-phone"
@@ -393,14 +485,14 @@ export default function AccountPage() {
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
-                      placeholder="+61 4xx xxx xxx"
+                      placeholder={s.accountPhonePlaceholder}
                       maxLength={20}
                     />
                   </div>
 
                   {profileMsg && <Msg {...profileMsg} />}
                   <button className="btn btn-primary" type="submit" disabled={savingProfile}>
-                    {savingProfile ? "Saving…" : "Save profile"}
+                    {savingProfile ? s.accountSaving : s.accountSaveProfile}
                   </button>
                 </form>
               </section>
@@ -409,13 +501,13 @@ export default function AccountPage() {
             {/* ── PREFERENCES ── */}
             {activeSection === "preferences" && (
               <section className="settings-section">
-                <h2 className="settings-section-title">Preferences</h2>
-                <p className="settings-section-sub">State, language, timezone and display settings.</p>
+                <h2 className="settings-section-title">{s.accountNavPreferences}</h2>
+                <p className="settings-section-sub">{s.accountPreferencesSub}</p>
 
                 <form onSubmit={handleSavePrefs} className="settings-form">
                   {/* State */}
                   <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-state">State</label>
+                    <label className="settings-label" htmlFor="s-state">{s.accountState}</label>
                     <select
                       id="s-state"
                       className="settings-input settings-select"
@@ -428,28 +520,28 @@ export default function AccountPage() {
                         </option>
                       ))}
                     </select>
-                    <p className="settings-hint">Used to load the correct question set. Only WA is available now.</p>
+                    <p className="settings-hint">{s.accountStateHint}</p>
                   </div>
 
                   {/* Language */}
                   <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-lang">Language</label>
+                    <label className="settings-label" htmlFor="s-lang">{s.language}</label>
                     <select
                       id="s-lang"
                       className="settings-input settings-select"
-                      value={lang}
-                      onChange={(e) => setLang(e.target.value as Lang)}
+                      value={preferredLang}
+                      onChange={(e) => setPreferredLang(normalizePreferredLang(e.target.value))}
                     >
                       {LANGUAGES.map((l) => (
                         <option key={l.code} value={l.code}>{l.label}</option>
                       ))}
                     </select>
-                    <p className="settings-hint">Sets the display language for questions and the interface.</p>
+                    <p className="settings-hint">{s.accountLanguageHint}</p>
                   </div>
 
                   {/* Timezone */}
                   <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-tz">Timezone</label>
+                    <label className="settings-label" htmlFor="s-tz">{s.accountTimezone}</label>
                     <select
                       id="s-tz"
                       className="settings-input settings-select"
@@ -462,46 +554,46 @@ export default function AccountPage() {
                         </option>
                       ))}
                     </select>
-                    <p className="settings-hint">Used for scheduling practice reminders (coming soon).</p>
+                    <p className="settings-hint">{s.accountTimezoneHint}</p>
                   </div>
 
                   {/* Theme */}
                   <div className="settings-field">
-                    <label className="settings-label">Theme</label>
+                    <label className="settings-label">{s.accountTheme}</label>
                     <div className="settings-theme-row">
-                      {THEMES.map((t) => (
+                      {THEME_VALUES.map((value) => (
                         <button
-                          key={t.value}
+                          key={value}
                           type="button"
-                          className={`settings-theme-btn${theme === t.value ? " active" : ""}`}
-                          onClick={() => setTheme(t.value)}
-                          aria-pressed={theme === t.value}
+                          className={`settings-theme-btn${theme === value ? " active" : ""}`}
+                          onClick={() => setTheme(value)}
+                          aria-pressed={theme === value}
                         >
-                          {t.value === "light" && (
+                          {value === "light" && (
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                               <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                             </svg>
                           )}
-                          {t.value === "dark" && (
+                          {value === "dark" && (
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                             </svg>
                           )}
-                          {t.value === "system" && (
+                          {value === "system" && (
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
                               <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
                             </svg>
                           )}
-                          {t.label}
+                          {themeLabels[value]}
                         </button>
                       ))}
                     </div>
-                    <p className="settings-hint">Light mode is the default. Dark mode coming soon.</p>
+                    <p className="settings-hint">{s.accountThemeHint}</p>
                   </div>
 
                   {prefsMsg && <Msg {...prefsMsg} />}
                   <button className="btn btn-primary" type="submit" disabled={savingPrefs}>
-                    {savingPrefs ? "Saving…" : "Save preferences"}
+                    {savingPrefs ? s.accountSaving : s.accountSavePreferences}
                   </button>
                 </form>
               </section>
@@ -510,33 +602,33 @@ export default function AccountPage() {
             {/* ── SECURITY ── */}
             {activeSection === "security" && (
               <section className="settings-section">
-                <h2 className="settings-section-title">Security</h2>
-                <p className="settings-section-sub">Update your password.</p>
+                <h2 className="settings-section-title">{s.accountNavSecurity}</h2>
+                <p className="settings-section-sub">{s.accountSecuritySub}</p>
 
                 <form onSubmit={handleChangePassword} className="settings-form">
                   <div className="settings-field-row">
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-npwd">New password</label>
+                      <label className="settings-label" htmlFor="s-npwd">{s.accountNewPassword}</label>
                       <input
                         id="s-npwd"
                         className="settings-input"
                         type="password"
                         value={newPwd}
                         onChange={(e) => setNewPwd(e.target.value)}
-                        placeholder="Min. 8 characters"
+                        placeholder={s.accountNewPasswordPlaceholder}
                         autoComplete="new-password"
                         minLength={8}
                       />
                     </div>
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-cpwd2">Confirm new password</label>
+                      <label className="settings-label" htmlFor="s-cpwd2">{s.accountConfirmPassword}</label>
                       <input
                         id="s-cpwd2"
                         className="settings-input"
                         type="password"
                         value={confirmPwd}
                         onChange={(e) => setConfirmPwd(e.target.value)}
-                        placeholder="Repeat new password"
+                        placeholder={s.accountConfirmPasswordPlaceholder}
                         autoComplete="new-password"
                       />
                     </div>
@@ -544,7 +636,7 @@ export default function AccountPage() {
 
                   {pwdMsg && <Msg {...pwdMsg} />}
                   <button className="btn btn-primary" type="submit" disabled={savingPwd}>
-                    {savingPwd ? "Changing…" : "Change password"}
+                    {savingPwd ? s.accountChanging : s.accountChangePassword}
                   </button>
                 </form>
               </section>
@@ -553,39 +645,24 @@ export default function AccountPage() {
             {/* ── DANGER ZONE ── */}
             {activeSection === "danger" && (
               <section className="settings-section">
-                <h2 className="settings-section-title" style={{ color: "var(--red)" }}>Danger Zone</h2>
-                <p className="settings-section-sub">Irreversible actions — proceed with caution.</p>
+                <h2 className="settings-section-title" style={{ color: "var(--red)" }}>{s.accountNavDanger}</h2>
+                <p className="settings-section-sub">{s.accountDangerSub}</p>
 
                 <div className="settings-danger-card">
                   <div>
-                    <p className="settings-danger-title">Delete account</p>
-                    <p className="settings-hint">
-                      This will permanently delete your account and all progress data. This action cannot be undone.
-                    </p>
+                    <p className="settings-danger-title">{s.accountDeleteTitle}</p>
+                    <p className="settings-hint">{s.accountDeleteDesc}</p>
                   </div>
-                  {deleteConfirm ? (
-                    <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 16 }}>
-                      <button className="btn btn-danger" type="button" onClick={handleDeleteAccount}>
-                        Yes, delete my account
-                      </button>
-                      <button
-                        className="btn btn-outline-dark"
-                        type="button"
-                        onClick={() => setDeleteConfirm(false)}
-                      >
-                        Cancel
-                      </button>
-                    </div>
-                  ) : (
-                    <button
-                      className="btn btn-danger"
-                      type="button"
-                      onClick={handleDeleteAccount}
-                      style={{ marginTop: 16 }}
-                    >
-                      Delete account
-                    </button>
-                  )}
+                  <button
+                    className="btn btn-danger"
+                    type="button"
+                    onClick={handleDeleteAccount}
+                    style={{ marginTop: 16 }}
+                    disabled={deletingAccount}
+                  >
+                    {deletingAccount ? s.accountDeleting : s.accountDeleteBtn}
+                  </button>
+                  {deleteMsg && <Msg {...deleteMsg} />}
                 </div>
               </section>
             )}

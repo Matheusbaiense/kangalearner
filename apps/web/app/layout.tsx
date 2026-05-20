@@ -1,24 +1,24 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Suspense } from "react";
-import { Manrope, Space_Grotesk } from "next/font/google";
+import { Nunito, Sora } from "next/font/google";
 import { SiteNav } from "@/components/layout/SiteNav";
 import { Footer } from "@/components/layout/Footer";
 import { Onboarding } from "@/components/Onboarding";
 import { LangProvider } from "@/contexts/LangContext";
 import "./globals.css";
 
-const manrope = Manrope({
+const nunito = Nunito({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-manrope",
+  weight: ["400", "600", "700", "800"],
+  variable: "--kl-font-body",
   display: "swap"
 });
 
-const spaceGrotesk = Space_Grotesk({
+const sora = Sora({
   subsets: ["latin"],
-  weight: ["500", "600", "700"],
-  variable: "--font-space-grotesk",
+  weight: ["600", "700", "800"],
+  variable: "--kl-font-heading",
   display: "swap"
 });
 
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" className={`${manrope.variable} ${spaceGrotesk.variable}`}>
+    <html lang="en" className={`${nunito.variable} ${sora.variable}`} suppressHydrationWarning>
       <body>
         <LangProvider>
           <Suspense fallback={<header style={{ height: 60 }} aria-hidden="true" />}>
