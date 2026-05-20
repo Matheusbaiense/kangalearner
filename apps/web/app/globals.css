@@ -2848,7 +2848,7 @@ a:focus-visible,
   margin-bottom: 2px;
 }
 
-.mock-mode-option span {
+.mock-mode-option > div > span {
   display: block;
   color: var(--muted2);
   font-size: 0.92rem;

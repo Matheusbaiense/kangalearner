@@ -37,3 +37,6 @@ qa-runner/
 qa-visual-check.mjs
 qa-*.mjs
 qa-output/
+
+# Design source files (binaries and raw exports, not for version control)
+designer/

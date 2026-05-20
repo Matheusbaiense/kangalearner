@@ -1,7 +1,6 @@
-import { spawn } from "node:child_process";
-import { createServer } from "node:http";
+import { createServer, get as httpGet } from "node:http";
 import { readFile } from "node:fs/promises";
-import { extname, join, resolve, sep } from "node:path";
+import { extname, resolve, sep } from "node:path";
 
 const root = process.cwd();
 
@@ -57,21 +56,48 @@ async function startStaticServer() {
   return { server, port: address.port };
 }
 
-function runPuppeteer(url) {
+async function fetchText(url) {
   return new Promise((resolve, reject) => {
-    const runnerPath = join(root, "scripts", "smoke-static-site.puppeteer.mjs");
-    const child = spawn(process.execPath, [runnerPath, url], { stdio: "inherit" });
-    child.on("exit", (code) => {
-      if (code === 0) resolve();
-      else reject(new Error(`Smoke failed (exit ${code})`));
+    const req = httpGet(url, (res) => {
+      let data = "";
+      res.on("data", (chunk) => { data += chunk; });
+      res.on("end", () => resolve({ status: res.statusCode, body: data }));
     });
+    req.on("error", reject);
   });
+}
+
+async function smoke(baseUrl) {
+  const checks = [
+    { label: "index.html returns 200", fn: async () => {
+      const { status } = await fetchText(baseUrl);
+      if (status !== 200) throw new Error(`Expected 200, got ${status}`);
+    }},
+    { label: "path traversal blocked (403)", fn: async () => {
+      const { status } = await fetchText(baseUrl.replace("index.html", "../../../etc/passwd"));
+      if (status !== 403) throw new Error(`Expected 403, got ${status}`);
+    }},
+    { label: "404 for unknown file", fn: async () => {
+      const { status } = await fetchText(baseUrl.replace("index.html", "__nonexistent__.html"));
+      if (status !== 404) throw new Error(`Expected 404, got ${status}`);
+    }},
+  ];
+
+  for (const { label, fn } of checks) {
+    try {
+      await fn();
+      console.log(`  ✓ ${label}`);
+    } catch (err) {
+      console.error(`  ✗ ${label}: ${err.message}`);
+      throw err;
+    }
+  }
 }
 
 const { server, port } = await startStaticServer();
 try {
   const baseUrl = `http://127.0.0.1:${port}/index.html`;
-  await runPuppeteer(baseUrl);
+  await smoke(baseUrl);
   console.log("✓ Smoke OK");
 } finally {
   await new Promise((resolve) => server.close(resolve));

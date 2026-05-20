@@ -63,11 +63,13 @@ export default async function DashboardPage() {
     user.email?.split("@")[0] ??
     "there";
 
-  /* ── Fetch question attempts ── */
+  /* ── Fetch question attempts (bounded to last 500 for performance) ── */
   const { data: attempts } = (await supabase!
     .from("question_attempts")
     .select("category, is_correct, created_at")
-    .eq("user_id", user.id)) as { data: AttemptRow[] | null };
+    .eq("user_id", user.id)
+    .order("created_at", { ascending: false })
+    .limit(500)) as { data: AttemptRow[] | null };
 
   /* ── Fetch last 5 mock sessions ── */
   const { data: sessions } = (await supabase!

@@ -513,3 +513,9 @@ export const t = {
 } as const satisfies Record<UiLang, Record<string, string>>;
 
 export type UIStrings = typeof t["en"];
+
+/** Translate a localized string map to the active UI language. */
+export function tx(obj: Record<string, string> | null | undefined, lang: string): string {
+  if (!obj) return "";
+  return obj[lang] ?? obj["en"] ?? Object.values(obj)[0] ?? "";
+}

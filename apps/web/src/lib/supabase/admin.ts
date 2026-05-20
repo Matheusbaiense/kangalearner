@@ -19,14 +19,12 @@ function createSupabaseAdmin(): SupabaseClient<Database> {
   });
 }
 
-/**
- * Lazy proxy to avoid crashing builds when service-role env vars are absent.
- * The proxy throws only when a method is actually used.
- */
+let _adminClient: SupabaseClient<Database> | null = null;
+
 export const supabaseAdmin: SupabaseClient<Database> = new Proxy({} as SupabaseClient<Database>, {
   get(_target, prop) {
-    const client = createSupabaseAdmin();
-    const value = (client as any)[prop];
-    return typeof value === "function" ? value.bind(client) : value;
+    if (!_adminClient) _adminClient = createSupabaseAdmin();
+    const value = (_adminClient as unknown as Record<string | symbol, unknown>)[prop];
+    return typeof value === "function" ? value.bind(_adminClient) : value;
   }
 });

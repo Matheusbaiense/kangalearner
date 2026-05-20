@@ -1,16 +1,17 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
+import { FlagImg } from "@/components/ui/FlagImg";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
   { href: "/learn", key: "learn" },
-  { href: "/practice", key: "practice" },
-  { href: "/mock-test", key: "mockTest" },
+  { href: "/practice", key: "practice", excludeMode: "sim" },
+  { href: "/practice?mode=sim", key: "mockTest", activePath: "/practice", activeMode: "sim" },
   { href: "/progress", key: "progress" },
   { href: "/resources", key: "resources" },
 ] as const;
@@ -34,20 +35,6 @@ const LANGUAGES = [
   { code: "es-en", country: "es", label: "Bilingüe ES·EN",  triggerLabel: "ES·EN",      bilingual: true  },
 ] as const;
 
-function FlagImg({ country, size = 20 }: { country: string; size?: number }) {
-  return (
-    <img
-      src={`https://flagcdn.com/w${size}/${country}.png`}
-      srcSet={`https://flagcdn.com/w${size * 2}/${country}.png 2x`}
-      width={size}
-      height={Math.round(size * 0.75)}
-      alt=""
-      aria-hidden="true"
-      style={{ borderRadius: 2, objectFit: "cover", display: "block", flexShrink: 0 }}
-    />
-  );
-}
-
 interface NavUser {
   email: string;
   name: string;
@@ -63,8 +50,17 @@ function getInitials(name: string, email: string): string {
   return src.slice(0, 2).toUpperCase();
 }
 
+function readStoredState(): string {
+  try {
+    return localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state") ?? "WA";
+  } catch {
+    return "WA";
+  }
+}
+
 export function SiteNav() {
   const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const { lang, setLang, s } = useLang();
   const [scrolled, setScrolled] = useState(false);
@@ -72,12 +68,21 @@ export function SiteNav() {
   const langRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<NavUser | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [stateCode, setStateCode] = useState<string>("WA");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setStateCode(readStoredState());
+    const handler = () => setStateCode(readStoredState());
+    window.addEventListener("kanga:state-changed", handler);
+    return () => window.removeEventListener("kanga:state-changed", handler);
   }, []);
 
   // Close lang dropdown on outside click (mouse + touch)
@@ -116,42 +121,36 @@ export function SiteNav() {
   useEffect(() => {
     const supabase = createClient();
 
+    async function buildNavUser(u: { id: string; email?: string; user_metadata?: Record<string, unknown> }) {
+      const name =
+        (u.user_metadata?.full_name as string | undefined) ||
+        (u.user_metadata?.name as string | undefined) ||
+        "";
+      const { data: profile } = await supabase
+        .from("profiles").select("role, avatar_url").eq("id", u.id).single();
+      setUser({
+        email: u.email ?? "",
+        name,
+        initials: getInitials(name, u.email ?? ""),
+        role: profile?.role ?? "free",
+        avatarUrl: (profile?.avatar_url as string | null) ?? null,
+      });
+    }
+
     async function loadUser() {
-      const { data: { user: u } } = await supabase.auth.getUser();
-      if (u) {
-        const name =
-          (u.user_metadata?.full_name as string | undefined) ||
-          (u.user_metadata?.name as string | undefined) ||
-          "";
-        const { data: profile } = await supabase
-          .from("profiles").select("role, avatar_url").eq("id", u.id).single();
-        setUser({
-          email: u.email ?? "",
-          name,
-          initials: getInitials(name, u.email ?? ""),
-          role: profile?.role ?? "free",
-          avatarUrl: (profile?.avatar_url as string | null) ?? null,
-        });
+      try {
+        const { data: { user: u } } = await supabase.auth.getUser();
+        if (u) await buildNavUser(u);
+      } finally {
+        setAuthLoading(false);
       }
     }
     loadUser();
 
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      setAuthLoading(false);
       if (session?.user) {
-        const u = session.user;
-        const name =
-          (u.user_metadata?.full_name as string | undefined) ||
-          (u.user_metadata?.name as string | undefined) ||
-          "";
-        const { data: profile } = await supabase
-          .from("profiles").select("role, avatar_url").eq("id", u.id).single();
-        setUser({
-          email: u.email ?? "",
-          name,
-          initials: getInitials(name, u.email ?? ""),
-          role: profile?.role ?? "free",
-          avatarUrl: (profile?.avatar_url as string | null) ?? null,
-        });
+        await buildNavUser(session.user);
       } else {
         setUser(null);
       }
@@ -188,9 +187,22 @@ export function SiteNav() {
         {/* Nav links */}
         <ul className="main-nav" role="list">
           {NAV_LINKS.map((link) => {
-            const isActive = "exact" in link && link.exact
-              ? pathname === link.href
-              : pathname.startsWith(link.href);
+            const isActive = (() => {
+              if ("exact" in link && link.exact) return pathname === link.href;
+              if ("activeMode" in link) {
+                return (
+                  pathname.startsWith(link.activePath) &&
+                  searchParams.get("mode") === link.activeMode
+                );
+              }
+              if ("excludeMode" in link) {
+                return (
+                  pathname.startsWith(link.href) &&
+                  searchParams.get("mode") !== link.excludeMode
+                );
+              }
+              return pathname.startsWith(link.href);
+            })();
             return (
               <li key={link.href}>
                 <Link href={link.href} className={isActive ? "nav-link active" : "nav-link"}>
@@ -206,7 +218,20 @@ export function SiteNav() {
           {/* State selector */}
           <label className="state-control" aria-label="Select state">
             <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
-            <select className="state-select" defaultValue="WA">
+            <select
+              className="state-select"
+              value={stateCode}
+              onChange={(e) => {
+                const code = e.target.value;
+                try {
+                  localStorage.setItem("kl-state-v2", code);
+                  localStorage.setItem("kl-state", code);
+                } catch {}
+                setStateCode(code);
+                window.dispatchEvent(new CustomEvent("kanga:state-changed"));
+                router.refresh();
+              }}
+            >
               {AU_STATES.map((s) => (
                 <option key={s.code} value={s.code}>
                   {s.code}
@@ -251,8 +276,10 @@ export function SiteNav() {
             </div>
           </div>
 
-          {/* Auth */}
-          {user ? (
+          {/* Auth — hidden while session check is pending to prevent race-condition redirect */}
+          {authLoading ? (
+            <div style={{ width: 72, height: 36 }} aria-hidden="true" />
+          ) : user ? (
             <div className={`user-menu${userMenuOpen ? " open" : ""}`} ref={userMenuRef}>
               <button
                 className="user-trigger"

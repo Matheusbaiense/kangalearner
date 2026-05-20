@@ -9,6 +9,7 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
+import { tx } from "@/lib/i18n";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -35,12 +36,6 @@ interface Question {
 const QS = QUESTIONS as unknown as Question[];
 
 type Answered = Record<string, { chosen: string; correct: boolean }>;
-
-/* ── helpers ── */
-function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
-  if (!obj) return "";
-  return obj[lang] ?? obj.en ?? "";
-}
 
 function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
@@ -288,7 +283,13 @@ function ScoreSidebar({
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const { uiLang: lang, isBilingual, s } = useLang();
-  const [selectedState] = useState<StateCode>("WA");
+  const [selectedState, setSelectedState] = useState<StateCode>(() => {
+    try {
+      return (localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state") ?? "WA") as StateCode;
+    } catch {
+      return "WA";
+    }
+  });
   const [mode, setMode] = useState<Mode>(initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
@@ -300,6 +301,18 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simDone, setSimDone] = useState(false);
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
+
+  /* ── Sync state from nav selector ── */
+  useEffect(() => {
+    const handler = () => {
+      try {
+        const code = (localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state") ?? "WA") as StateCode;
+        setSelectedState(code);
+      } catch {}
+    };
+    window.addEventListener("kanga:state-changed", handler);
+    return () => window.removeEventListener("kanga:state-changed", handler);
+  }, []);
 
   /* ── Load answered + saved from localStorage ── */
   useEffect(() => {

@@ -20,25 +20,8 @@ import {
 } from "lucide-react";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
-
-/* ── Helpers ── */
-function FlagImg({ country }: { country: string }) {
-  return (
-    <img
-      src={`https://flagcdn.com/w20/${country}.png`}
-      srcSet={`https://flagcdn.com/w40/${country}.png 2x`}
-      width={20}
-      height={15}
-      alt=""
-      aria-hidden="true"
-      style={{ borderRadius: 2, objectFit: "cover", display: "inline-block", verticalAlign: "middle" }}
-    />
-  );
-}
-
-function tx(obj: Record<string, string>, lang: UiLang): string {
-  return obj[lang] ?? obj.en ?? "";
-}
+import { tx } from "@/lib/i18n";
+import { FlagImg } from "@/components/ui/FlagImg";
 
 /* ── Data ── */
 const FEATURES: { href: string; iconKey: "feat1" | "feat2" | "feat3" | "feat4"; Icon: LucideIcon }[] = [
@@ -104,7 +87,7 @@ const TESTIMONIALS = [
 const FAQS = [
   {
     q: { en: "How many questions are in the real WA learner test?", pt: "Quantas questões tem a prova de learner de WA?", es: "¿Cuántas preguntas tiene el examen learner de WA?" },
-    a: { en: "The official WA learner test has 30 multiple-choice questions. You need to answer at least 26 correctly (87%) to pass.", pt: "A prova oficial de learner de WA tem 30 questões de múltipla escolha. Você precisa acertar pelo menos 26 (87%) para passar.", es: "El examen oficial learner de WA tiene 30 preguntas de opción múltiple. Necesitas responder al menos 26 correctamente (87%) para aprobar." },
+    a: { en: "The official WA learner test has 30 multiple-choice questions. You need to answer at least 24 correctly (80%) to pass.", pt: "A prova oficial de learner de WA tem 30 questões de múltipla escolha. Você precisa acertar pelo menos 24 (80%) para passar.", es: "El examen oficial learner de WA tiene 30 preguntas de opción múltiple. Necesitas responder al menos 24 correctamente (80%) para aprobar." },
   },
   {
     q: { en: "Is KangaLearner free?", pt: "O KangaLearner é gratuito?", es: "¿KangaLearner es gratuito?" },
@@ -194,7 +177,7 @@ function SlidePractice({ lang }: { lang: UiLang }) {
 }
 
 function SlideMock({ lang }: { lang: UiLang }) {
-  const labelScore = { en: "26 of 30 correct", pt: "26 de 30 corretas", es: "26 de 30 correctas" };
+  const labelScore = { en: "24 of 30 correct", pt: "24 de 30 corretas", es: "24 de 30 correctas" };
   const passLabel  = { en: "PASS", pt: "APROVADO", es: "APROBADO" };
   const categories = [
     { label: { en: "Speed Limits", pt: "Velocidade",     es: "Velocidad" },  score: "5/5", ok: true  },
@@ -205,7 +188,7 @@ function SlideMock({ lang }: { lang: UiLang }) {
     { label: { en: "Road Safety",  pt: "Segurança",       es: "Seguridad" },  score: "3/5", ok: false },
   ];
   const circumference = 2 * Math.PI * 34;
-  const offset = circumference * (1 - 0.87);
+  const offset = circumference * (1 - 0.80);
   return (
     <>
       <div className="slide-header">
@@ -225,7 +208,7 @@ function SlideMock({ lang }: { lang: UiLang }) {
               transform="rotate(-90 40 40)"
             />
           </svg>
-          <span className="slide-score-num">87%</span>
+          <span className="slide-score-num">80%</span>
         </div>
         <div className="slide-score-meta">
           <span className="slide-score-frac">{tx(labelScore, lang)}</span>

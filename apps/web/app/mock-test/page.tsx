@@ -43,9 +43,7 @@ export default function MockTestSetupPage() {
           onClick={() => setMode("practice")}
           type="button"
         >
-          <span className="mode-icon">
-            <IconBadge icon={Icons.book} tone="brand" size="md" />
-          </span>
+          <IconBadge icon={Icons.book} tone="brand" size="md" />
           <div>
             <strong>{s.practiceMode}</strong>
             <span>{PRACTICE_DESC[lang]}</span>
@@ -57,9 +55,7 @@ export default function MockTestSetupPage() {
           onClick={() => setMode("exam")}
           type="button"
         >
-          <span className="mode-icon">
-            <IconBadge icon={Icons.timer} tone="brand" size="md" />
-          </span>
+          <IconBadge icon={Icons.timer} tone="brand" size="md" />
           <div>
             <strong>{s.examMode}</strong>
             <span>{EXAM_DESC[lang]}</span>

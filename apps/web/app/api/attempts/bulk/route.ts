@@ -48,6 +48,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, inserted: 0 });
   }
 
+  const MAX_BULK = 500;
+  if (attempts.length > MAX_BULK) {
+    return NextResponse.json({ error: "too_many_attempts", max: MAX_BULK }, { status: 400 });
+  }
+
   const rows = attempts
     .filter(
       (a) =>

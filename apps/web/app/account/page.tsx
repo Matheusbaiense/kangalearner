@@ -99,7 +99,6 @@ export default function AccountPage() {
   const [prefsMsg, setPrefsMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
   /* ── Security ── */
-  const [currentPwd, setCurrentPwd] = useState("");
   const [newPwd, setNewPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [savingPwd, setSavingPwd] = useState(false);
@@ -178,7 +177,7 @@ export default function AccountPage() {
       setPwdMsg({ text: error.message, ok: false });
     } else {
       setPwdMsg({ text: "Password changed successfully.", ok: true });
-      setCurrentPwd(""); setNewPwd(""); setConfirmPwd("");
+      setNewPwd(""); setConfirmPwd("");
     }
   }
 
@@ -224,9 +223,18 @@ export default function AccountPage() {
 
   async function handleDeleteAccount() {
     if (!deleteConfirm) { setDeleteConfirm(true); return; }
+    if (!confirm("Tem certeza? Esta ação é irreversível e apaga todos os seus dados.")) return;
+
+    const res = await fetch("/api/account/delete", { method: "DELETE" });
+    if (!res.ok) {
+      setProfileMsg({ text: "Erro ao apagar conta. Tente novamente.", ok: false });
+      setDeleteConfirm(false);
+      return;
+    }
     const supabase = createClient();
     await supabase.auth.signOut();
-    router.push("/?deleted=1");
+    router.push("/");
+    router.refresh();
   }
 
   /* ── Loading state ── */
@@ -506,18 +514,6 @@ export default function AccountPage() {
                 <p className="settings-section-sub">Update your password.</p>
 
                 <form onSubmit={handleChangePassword} className="settings-form">
-                  <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-cpwd">Current password</label>
-                    <input
-                      id="s-cpwd"
-                      className="settings-input"
-                      type="password"
-                      value={currentPwd}
-                      onChange={(e) => setCurrentPwd(e.target.value)}
-                      placeholder="Your current password"
-                      autoComplete="current-password"
-                    />
-                  </div>
                   <div className="settings-field-row">
                     <div className="settings-field">
                       <label className="settings-label" htmlFor="s-npwd">New password</label>
