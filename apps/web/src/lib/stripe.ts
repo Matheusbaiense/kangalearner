@@ -1,13 +1,13 @@
 import Stripe from "stripe";
 
-// Alinhado ao tipo `LatestApiVersion` do pacote `stripe` instalado (ex.: ^17 → 2025-02-24.acacia).
+// Alinhado ao tipo `LatestApiVersion` do pacote `stripe` instalado (ex.: ^22 → 2026-04-22.dahlia).
 let _stripe: Stripe | null = null;
 
 function getStripe(): Stripe {
   const key = process.env.STRIPE_SECRET_KEY;
   if (!key) throw new Error("STRIPE_SECRET_KEY is not set");
   if (_stripe) return _stripe;
-  _stripe = new Stripe(key, { apiVersion: "2025-02-24.acacia", typescript: true });
+  _stripe = new Stripe(key, { apiVersion: "2026-04-22.dahlia" });
   return _stripe;
 }
 
