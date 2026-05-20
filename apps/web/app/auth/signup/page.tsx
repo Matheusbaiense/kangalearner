@@ -15,7 +15,7 @@ function getAppOrigin(): string {
 
 function SignupForm() {
   const searchParams = useSearchParams();
-  const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/");
+  const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/dashboard");
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");

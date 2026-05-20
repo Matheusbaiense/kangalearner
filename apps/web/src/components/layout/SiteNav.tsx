@@ -10,9 +10,9 @@ import { FlagImg } from "@/components/ui/FlagImg";
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
   { href: "/learn", key: "learn" },
-  { href: "/practice", key: "practice", excludeMode: "sim" },
-  { href: "/practice?mode=sim", key: "mockTest", activePath: "/practice", activeMode: "sim" },
-  { href: "/progress", key: "progress" },
+  { href: "/practice", key: "practice" },
+  { href: "/mock-test", key: "mockTest" },
+  { href: "/progress", key: "progress", requiresAuth: true },
   { href: "/resources", key: "resources" },
 ] as const;
 
@@ -187,22 +187,11 @@ export function SiteNav() {
         {/* Nav links */}
         <ul className="main-nav" role="list">
           {NAV_LINKS.map((link) => {
-            const isActive = (() => {
-              if ("exact" in link && link.exact) return pathname === link.href;
-              if ("activeMode" in link) {
-                return (
-                  pathname.startsWith(link.activePath) &&
-                  searchParams.get("mode") === link.activeMode
-                );
-              }
-              if ("excludeMode" in link) {
-                return (
-                  pathname.startsWith(link.href) &&
-                  searchParams.get("mode") !== link.excludeMode
-                );
-              }
-              return pathname.startsWith(link.href);
-            })();
+            const needsAuth = "requiresAuth" in link && link.requiresAuth;
+            if (needsAuth && !authLoading && !user) return null;
+            const isActive = "exact" in link && link.exact
+              ? pathname === link.href
+              : pathname.startsWith(link.href);
             return (
               <li key={link.href}>
                 <Link href={link.href} className={isActive ? "nav-link active" : "nav-link"}>
