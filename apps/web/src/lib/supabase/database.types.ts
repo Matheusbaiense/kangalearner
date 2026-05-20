@@ -330,7 +330,7 @@ export const Constants = {
 // Convenience aliases
 export type UserRole = "free" | "premium" | "admin" | "super_admin"
 export type Profile = Tables<"profiles">
-export type MockSession = Tables<"mock_sessions">
+export type DbMockSession = Tables<"mock_sessions">
 export type QuestionAttempt = Tables<"question_attempts">
 export type UserSettings = Tables<"user_settings">
 export type NewsletterSubscriber = Tables<"newsletter_subscribers">

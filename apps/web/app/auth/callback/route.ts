@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error || !data.user) {
-    console.error("Auth callback error:", error);
+    console.error("Auth callback error:", error?.message ?? "unknown");
     return NextResponse.redirect(new URL("/auth/login?error=auth_failed", url.origin));
   }
 
@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
     .maybeSingle();
 
   if (profileError) {
-    console.error("Auth callback profile read:", profileError);
+    console.error("Auth callback profile read:", profileError.message);
   }
 
   // Sync Google avatar for existing users who didn't have one yet
@@ -90,7 +90,7 @@ export async function GET(request: NextRequest) {
         .update({ stripe_customer_id: stripeCustomerId })
         .eq("id", user.id);
     } catch (stripeError) {
-      console.error("Stripe customer creation failed:", stripeError);
+      console.error("Stripe customer creation failed:", stripeError instanceof Error ? stripeError.message : String(stripeError));
     }
   }
 
