@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
+import { rateLimit } from "@/lib/rateLimit";
 
 type MockPayload = {
   state: string;
@@ -9,6 +10,11 @@ type MockPayload = {
 };
 
 export async function POST(request: NextRequest) {
+  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+  if (!rateLimit(`mock-sessions:${ip}`, 20, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
   if (!supabaseUrl || !supabaseAnonKey) {
@@ -70,11 +76,7 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("mock-sessions: insert failed", {
-      code: error.code,
-      details: error.details,
-      hint: error.hint
-    });
+    console.error("mock-sessions: insert failed", error.code);
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
   return NextResponse.json({ ok: true });

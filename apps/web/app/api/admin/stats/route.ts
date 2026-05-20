@@ -1,6 +1,19 @@
 import { NextResponse } from "next/server";
-import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
+import { supabaseAdmin } from "@/lib/supabase/admin";
+
+type RoleBreakdownRow = { role: string; cnt: number };
+type CountryBreakdownRow = { country: string; cnt: number };
+type CategoryRow = { category: string; cnt: number };
+type SignupDayRow = { day: string; cnt: number };
+
+/** RPCs exist in Supabase but are not yet in generated database.types.ts */
+const adminRpc = supabaseAdmin as unknown as {
+  rpc: <T>(
+    fn: string,
+    args?: Record<string, unknown>
+  ) => Promise<{ data: T | null; error: { message: string } | null }>;
+};
 
 export async function GET() {
   const uid = await assertAdminRole();
@@ -11,113 +24,55 @@ export async function GET() {
   const d7  = new Date(now); d7.setDate(d7.getDate() - 7);
   const d1  = new Date(now); d1.setDate(d1.getDate() - 1);
 
-  // Parallel queries
   const [
     totalUsersRes,
-    roleBreakdownRes,
-    countryBreakdownRes,
     newUsersRes,
-    signupsLast30Res,
     totalAttemptsRes,
     attemptsLast7Res,
     totalMockRes,
     mockLast7Res,
+    roleBreakdownRes,
+    countryBreakdownRes,
     topCategoriesRes,
     activeUsersRes,
     passRateRes,
+    signupsPerDayRes,
   ] = await Promise.all([
-    // Total users
     supabaseAdmin.from("profiles").select("id", { count: "exact", head: true }),
-
-    // Role breakdown
-    supabaseAdmin.from("profiles").select("role").then(({ data }) => {
-      const counts: Record<string, number> = {};
-      (data ?? []).forEach((r) => { counts[r.role] = (counts[r.role] ?? 0) + 1; });
-      return { data: counts };
-    }),
-
-    // Country breakdown
-    supabaseAdmin.from("profiles").select("country").then(({ data }) => {
-      const counts: Record<string, number> = {};
-      (data ?? []).forEach((r) => { counts[r.country] = (counts[r.country] ?? 0) + 1; });
-      return { data: Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 10) };
-    }),
-
-    // New users last 24h
     supabaseAdmin.from("profiles").select("id", { count: "exact", head: true })
       .gte("created_at", d1.toISOString()),
-
-    // Signups per day last 30 days
-    supabaseAdmin.from("profiles")
-      .select("created_at")
-      .gte("created_at", d30.toISOString())
-      .order("created_at"),
-
-    // Total question attempts
     supabaseAdmin.from("question_attempts").select("id", { count: "exact", head: true }),
-
-    // Attempts last 7 days
     supabaseAdmin.from("question_attempts").select("id", { count: "exact", head: true })
-      .gte("created_at", d7.toISOString()),
-
-    // Total mock sessions
+      .gte("answered_at", d7.toISOString()),
     supabaseAdmin.from("mock_sessions").select("id", { count: "exact", head: true }),
-
-    // Mock sessions last 7 days
     supabaseAdmin.from("mock_sessions").select("id", { count: "exact", head: true })
-      .gte("created_at", d7.toISOString()),
-
-    // Top categories practiced
-    supabaseAdmin.from("question_attempts")
-      .select("category")
-      .not("category", "is", null)
-      .gte("created_at", d30.toISOString())
-      .then(({ data }) => {
-        const counts: Record<string, number> = {};
-        (data ?? []).forEach((r) => { if (r.category) counts[r.category] = (counts[r.category] ?? 0) + 1; });
-        return { data: Object.entries(counts).sort((a, b) => b[1] - a[1]).slice(0, 6) };
-      }),
-
-    // Unique active users last 7 days
-    supabaseAdmin.from("question_attempts")
-      .select("user_id")
-      .gte("created_at", d7.toISOString())
-      .then(({ data }) => {
-        const unique = new Set((data ?? []).map((r) => r.user_id));
-        return { data: unique.size };
-      }),
-
-    // Pass rate on mock tests (pass = score/total >= 80%)
-    supabaseAdmin.from("mock_sessions")
-      .select("score, total")
-      .gte("created_at", d30.toISOString())
-      .then(({ data }) => {
-        const sessions = data ?? [];
-        const count = sessions.length;
-        const passed = sessions.filter((r) => r.total > 0 && r.score / r.total >= 0.8).length;
-        return { data: count > 0 ? Math.round((passed / count) * 100) : 0 };
-      }),
+      .gte("completed_at", d7.toISOString()),
+    adminRpc.rpc<RoleBreakdownRow[]>("get_role_breakdown"),
+    adminRpc.rpc<CountryBreakdownRow[]>("get_country_breakdown", { limit_n: 10 }),
+    adminRpc.rpc<CategoryRow[]>("get_top_categories", { since_ts: d30.toISOString(), limit_n: 6 }),
+    adminRpc.rpc<number>("get_active_users_count", { since_ts: d7.toISOString() }),
+    adminRpc.rpc<number>("get_pass_rate", { since_ts: d30.toISOString() }),
+    adminRpc.rpc<SignupDayRow[]>("get_signups_per_day", { since_ts: d30.toISOString() }),
   ]);
 
-  // Build signups-per-day chart data
   const signupsByDay: Record<string, number> = {};
   for (let i = 29; i >= 0; i--) {
     const d = new Date(now);
     d.setDate(d.getDate() - i);
     signupsByDay[d.toISOString().slice(0, 10)] = 0;
   }
-  (signupsLast30Res.data ?? []).forEach((r) => {
-    const day = r.created_at.slice(0, 10);
-    if (day in signupsByDay) signupsByDay[day]++;
+  (signupsPerDayRes.data ?? []).forEach((r) => {
+    const day = r.day.slice(0, 10);
+    if (day in signupsByDay) signupsByDay[day] = r.cnt;
   });
 
   return NextResponse.json({
     users: {
       total: totalUsersRes.count ?? 0,
       newLast24h: newUsersRes.count ?? 0,
-      activeLastWeek: activeUsersRes.data ?? 0,
-      byRole: roleBreakdownRes.data,
-      byCountry: countryBreakdownRes.data,
+      activeLastWeek: Number(activeUsersRes.data ?? 0),
+      byRole: Object.fromEntries((roleBreakdownRes.data ?? []).map((r) => [r.role, r.cnt])),
+      byCountry: (countryBreakdownRes.data ?? []).map((r) => [r.country, r.cnt]),
       signupsLast30Days: Object.entries(signupsByDay).map(([date, count]) => ({ date, count })),
     },
     activity: {
@@ -125,8 +80,8 @@ export async function GET() {
       attemptsLast7d: attemptsLast7Res.count ?? 0,
       totalMockSessions: totalMockRes.count ?? 0,
       mockSessionsLast7d: mockLast7Res.count ?? 0,
-      passRateLast30d: passRateRes.data ?? 0,
-      topCategories: topCategoriesRes.data,
+      passRateLast30d: Number(passRateRes.data ?? 0),
+      topCategories: (topCategoriesRes.data ?? []).map((r) => [r.category, r.cnt]),
     },
   });
 }

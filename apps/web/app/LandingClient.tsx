@@ -46,15 +46,12 @@ const TRUST_ITEMS = [
   { Icon: Check,        titleKey: "trustOfficialTitle" as const, bodyKey: "trustOfficialBody" as const, hasFlags: false },
 ] as const;
 
+// Show WA (active) + 3 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
 const AU_STATES = [
   { code: "WA",  available: true },
   { code: "NSW", available: false },
   { code: "VIC", available: false },
   { code: "QLD", available: false },
-  { code: "SA",  available: false },
-  { code: "TAS", available: false },
-  { code: "ACT", available: false },
-  { code: "NT",  available: false },
 ];
 
 const TESTIMONIALS = [
@@ -445,6 +442,12 @@ export function LandingClient() {
               </div>
             ))}
           </div>
+          <p className="states-more-note">
+            {s.statesMoreNote ?? "More states coming soon —"}{" "}
+            <Link href="/auth/signup" className="states-more-link">
+              {s.statesMoreLink ?? "sign up to be notified"}
+            </Link>
+          </p>
         </div>
       </section>
 

@@ -2,14 +2,15 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { CATEGORIES, QUESTIONS } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { useLang } from "@/contexts/LangContext";
-import type { UiLang } from "@/lib/i18n";
-import { tx } from "@/lib/i18n";
+import { tx, type UiLang } from "@/lib/i18n";
+import { SK } from "@/lib/storageKeys";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -35,8 +36,35 @@ interface Question {
 
 const QS = QUESTIONS as unknown as Question[];
 
+const STATE_CODES = ["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as const;
+const STATE_STORAGE_KEY = SK.stateV2;
+const STATE_STORAGE_LEGACY_KEY = SK.stateLegacy;
+const STATE_CHANGED_EVENT = "kanga:state-changed";
+
+function readStoredState(): StateCode {
+  try {
+    const raw =
+      localStorage.getItem(STATE_STORAGE_KEY) ??
+      localStorage.getItem(STATE_STORAGE_LEGACY_KEY);
+    if (raw && STATE_CODES.includes(raw as StateCode)) return raw as StateCode;
+  } catch {
+    /* noop */
+  }
+  return "WA";
+}
+
+function persistState(code: StateCode): void {
+  try {
+    localStorage.setItem(STATE_STORAGE_KEY, code);
+    localStorage.setItem(STATE_STORAGE_LEGACY_KEY, code);
+  } catch {
+    /* noop */
+  }
+}
+
 type Answered = Record<string, { chosen: string; correct: boolean }>;
 
+/* ── helpers ── */
 function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
 }
@@ -282,15 +310,11 @@ function ScoreSidebar({
 
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
+  const searchParams = useSearchParams();
+  const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
-  const [selectedState, setSelectedState] = useState<StateCode>(() => {
-    try {
-      return (localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state") ?? "WA") as StateCode;
-    } catch {
-      return "WA";
-    }
-  });
-  const [mode, setMode] = useState<Mode>(initialMode ?? "all");
+  const [selectedState, setSelectedState] = useState<StateCode>(() => readStoredState());
+  const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
@@ -302,29 +326,39 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
 
-  /* ── Sync state from nav selector ── */
-  useEffect(() => {
-    const handler = () => {
-      try {
-        const code = (localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state") ?? "WA") as StateCode;
-        setSelectedState(code);
-      } catch {}
-    };
-    window.addEventListener("kanga:state-changed", handler);
-    return () => window.removeEventListener("kanga:state-changed", handler);
-  }, []);
-
   /* ── Load answered + saved from localStorage ── */
   useEffect(() => {
     try {
-      const raw = localStorage.getItem("kl-answered");
+      const raw = localStorage.getItem(SK.answered);
       if (raw) setAnswered(JSON.parse(raw));
     } catch {}
     try {
-      const savedRaw = localStorage.getItem("kl-saved");
+      const savedRaw = localStorage.getItem(SK.saved);
       if (savedRaw) setSaved(new Set(JSON.parse(savedRaw)));
     } catch {}
   }, []);
+
+  /* ── Sync state from nav selector (same tab or after navigation) ── */
+  useEffect(() => {
+    const onStateChanged = (event: Event) => {
+      const code = (event as CustomEvent<string>).detail;
+      if (!code || !STATE_CODES.includes(code as StateCode)) return;
+      const next = code as StateCode;
+      setSelectedState(next);
+      persistState(next);
+    };
+    window.addEventListener(STATE_CHANGED_EVENT, onStateChanged);
+    return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
+  }, []);
+
+  /* ── Allow /practice?mode=sim to start the mock test flow ── */
+  useEffect(() => {
+    if (requestedMode === "sim") {
+      setMode("sim");
+      return;
+    }
+    setMode(initialMode ?? "all");
+  }, [requestedMode, initialMode]);
 
   /* ── Start sim when mode switches ── */
   useEffect(() => {
@@ -388,7 +422,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       const next: Answered = { ...answered, [qid]: { chosen: letter, correct } };
       setAnswered(next);
       try {
-        localStorage.setItem("kl-answered", JSON.stringify(next));
+        localStorage.setItem(SK.answered, JSON.stringify(next));
       } catch {}
 
       if (correct) {
@@ -434,7 +468,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       const next = new Set(prev);
       if (next.has(qid)) next.delete(qid);
       else next.add(qid);
-      try { localStorage.setItem("kl-saved", JSON.stringify([...next])); } catch {}
+      try { localStorage.setItem(SK.saved, JSON.stringify([...next])); } catch {}
       return next;
     });
   }
@@ -443,7 +477,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   function resetAll() {
     setAnswered({});
     try {
-      localStorage.removeItem("kl-answered");
+      localStorage.removeItem(SK.answered);
     } catch {}
   }
 
