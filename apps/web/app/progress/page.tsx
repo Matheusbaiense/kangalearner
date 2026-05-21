@@ -6,6 +6,7 @@ import { useLang } from "@/contexts/LangContext";
 import { QUESTIONS, WA_PASS_THRESHOLD } from "@kanga/core";
 import { SK } from "@/lib/storageKeys";
 import { AuthNudge } from "@/components/ui/AuthNudge";
+import { createClient } from "@/lib/supabase/client";
 
 /* ── Types ── */
 type AnswerRecord = Record<string, { chosen: string; correct: boolean }>;
@@ -47,6 +48,7 @@ export default function ProgressPage() {
   const { s } = useLang();
   const [answers, setAnswers] = useState<AnswerRecord>({});
   const [mounted, setMounted] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   /* Load from localStorage on mount */
   useEffect(() => {
@@ -57,6 +59,16 @@ export default function ProgressPage() {
       setAnswers({});
     }
     setMounted(true);
+
+    try {
+      const supabase = createClient();
+      supabase.auth
+        .getSession()
+        .then(({ data }) => {
+          setIsAuthenticated(Boolean(data.session));
+        })
+        .catch(() => {});
+    } catch {}
   }, []);
 
   /* Derived stats */
@@ -136,6 +148,36 @@ export default function ProgressPage() {
         </div>
 
         <AuthNudge />
+
+        {isEmpty && isAuthenticated && (
+          <div
+            style={{
+              marginTop: 24,
+              padding: "14px 18px",
+              borderRadius: "var(--radius-md)",
+              background: "var(--green3)",
+              border: "1px solid var(--green2)",
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              flexWrap: "wrap"
+            }}
+          >
+            <span style={{ fontSize: ".9rem", color: "var(--ink)", flex: 1 }}>{s.progressCloudNote}</span>
+            <Link
+              href="/dashboard"
+              style={{
+                fontWeight: 800,
+                fontSize: ".85rem",
+                color: "var(--green)",
+                textDecoration: "none",
+                flexShrink: 0
+              }}
+            >
+              {s.dashboard} →
+            </Link>
+          </div>
+        )}
 
         {isEmpty ? (
           /* Empty state */
