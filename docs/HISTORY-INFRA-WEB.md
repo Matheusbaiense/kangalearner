@@ -26,3 +26,10 @@ Linha do tempo das entregas **INFRA-4 … INFRA-10** e QA associado, para contex
 - Imports `@/*` → `apps/web/src/*` (`tsconfig.json` do web).
 - Rotas App Router ficam em `apps/web/app/` (não `src/app/` para páginas, exceto CSS partilhado em `src/app/auth/`).
 - Service role: nunca importar `admin.ts` ou `stripe.ts` em Client Components.
+
+## 2026-05-21 — S0: GitHub Pages aposentado
+
+- `pages.yml` deletado (workflow estava suspenso desde que o site estático foi removido do git)
+- `build.yml` limpo: removidos blocos comentados de E2E estático e `gen:core-questions`
+- Decisão arquitetural: Vercel/Next.js é a plataforma canônica
+- GitHub Pages não será reativado; E2E Next.js via Playwright + Vercel preview é o próximo passo quando a cobertura for adicionada

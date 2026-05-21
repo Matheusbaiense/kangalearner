@@ -68,20 +68,9 @@ jobs:
         if: steps.questions_changes.outputs.changed == 'true'
         run: pnpm run validate:questions
 
-      # NOTE(S0): gen:core-questions reads assets/js/data/questions.js (static site source).
-      # That file is not tracked in git — step disabled until S0 (static vs Next) is resolved.
-      # - name: Check questions.ts sync
-      #   run: |
-      #     pnpm gen:core-questions
-      #     git diff --exit-code packages/core/src/data/questions.ts || exit 1
-
-      # NOTE(S0): E2E smoke tests target the static site root (index.html + assets/).
-      # Those files are not tracked in git — step disabled until S0 is resolved.
-      # Next.js E2E (apps/web) should replace this once Playwright is wired to Vercel preview.
-      # - name: Install Playwright Chromium
-      #   run: pnpm exec playwright install --with-deps chromium
-      # - name: E2E smoke (static site)
-      #   run: pnpm run test:e2e
+      # NOTE: Static site E2E and core-questions sync steps removed (2026-05-21).
+      # GitHub Pages retired — Vercel is the canonical platform. Next.js E2E to be
+      # added separately via Playwright + Vercel preview URLs when ready.
 
       - name: Build
         run: pnpm run build

@@ -22,6 +22,7 @@ Registro para contexto humano e para outras sessões de IA (complementa o git).
 
 ## Agora (curto prazo)
 
+- [x] **S0 — Decisão GitHub Pages**: Aposentado. Arquivos do site estático (`index.html`, `assets/`) não estão no git. `pages.yml` deletado. `build.yml` limpo. Plataforma canônica: Vercel (Next.js). _Resolvido 2026-05-21._
 - [x] **Portar Simulado (React/Next)**: fila de 30 perguntas, progresso, resultado e persistência local + UI de resultado.
 - [x] **Salvar simulados no Supabase**: `POST /api/mock-sessions` a partir do simulado React (quando autenticado).
 - [ ] **Deep link do simulado**: respeitar `?mode=sim` (ou equivalente) em `/practice` para coincidir com o link “Mock Test” na `SiteNav`.
