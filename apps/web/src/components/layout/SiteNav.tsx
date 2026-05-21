@@ -138,14 +138,20 @@ export function SiteNav() {
 
   // Auth state
   useEffect(() => {
-    const supabase = createClient();
+    let supabase: ReturnType<typeof createClient> | null = null;
+    try {
+      supabase = createClient();
+    } catch {
+      setAuthLoading(false);
+      return;
+    }
 
     async function buildNavUser(u: { id: string; email?: string; user_metadata?: Record<string, unknown> }) {
       const name =
         (u.user_metadata?.full_name as string | undefined) ||
         (u.user_metadata?.name as string | undefined) ||
         "";
-      const { data: profile } = await supabase
+      const { data: profile } = await supabase!
         .from("profiles").select("role, avatar_url").eq("id", u.id).maybeSingle();
       setUser({
         email: u.email ?? "",
@@ -158,7 +164,7 @@ export function SiteNav() {
 
     async function loadUser() {
       try {
-        const { data: { user: u } } = await supabase.auth.getUser();
+        const { data: { user: u } } = await supabase!.auth.getUser();
         if (u) await buildNavUser(u);
       } finally {
         setAuthLoading(false);

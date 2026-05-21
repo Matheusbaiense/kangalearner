@@ -47,8 +47,8 @@ function LoginForm() {
 
     const { runLocalAttemptMigration } = await import("@/lib/migrateLocalAttempts");
     await runLocalAttemptMigration();
-    router.push(redirect);
-    router.refresh();
+    // Full navigation so the middleware picks up the new Supabase session cookie
+    window.location.href = redirect;
   }
 
   async function handleGoogleLogin() {
@@ -81,6 +81,12 @@ function LoginForm() {
             Sign in to access your progress, insights and mock test history.
           </p>
         </div>
+
+        {!supabase && (
+          <div className="auth-error" role="alert">
+            Authentication service unavailable. Please refresh the page or try again later.
+          </div>
+        )}
 
         <button
           className="btn-google"
