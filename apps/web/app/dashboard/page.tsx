@@ -140,6 +140,15 @@ export default async function DashboardPage({
   const selectedStateName =
     AU_STATE_OPTIONS.find((state) => state.code === selectedState)?.name ?? selectedState;
 
+  // Auto-persist preferred state when user explicitly navigates to a different state
+  if (params.state && selectedState !== preferredState) {
+    const { error: prefStateErr } = await supabase!
+      .from("profiles")
+      .update({ preferred_state: selectedState })
+      .eq("id", user.id);
+    if (prefStateErr) console.error("Dashboard preferred_state update failed", errCode(prefStateErr));
+  }
+
   const { error: settingsUpsertError } = await supabase!
     .from("user_settings")
     .upsert({ user_id: user.id, daily_goal: 10 }, { onConflict: "user_id", ignoreDuplicates: true });
