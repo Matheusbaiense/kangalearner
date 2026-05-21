@@ -28,10 +28,16 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "internal_error" }, { status: 500 });
   }
 
-  // Batch: fetch all auth users once and index by id (avoids N+1)
-  const { data: authData } = await supabaseAdmin.auth.admin.listUsers({ perPage: 1000 });
-  const users = authData?.users ?? [];
-  const authMap = new Map(users.map((u) => [u.id, u]));
+  // Fetch auth user data only for the current page's profile IDs (no 1000 cap)
+  const profileIds = (data ?? []).map((p) => p.id);
+  const authResults = await Promise.all(
+    profileIds.map((id) => supabaseAdmin.auth.admin.getUserById(id))
+  );
+  const authMap = new Map(
+    authResults
+      .filter((r) => r.data.user != null)
+      .map((r) => [r.data.user!.id, r.data.user!])
+  );
 
   const enriched = (data ?? []).map((profile) => {
     const authUser = authMap.get(profile.id);
@@ -42,14 +48,7 @@ export async function GET(req: NextRequest) {
     };
   });
 
-  const res = NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
-
-  if (users.length >= 1000) {
-    res.headers.set("X-Admin-Warning", "user-list-capped-at-1000");
-    console.warn("[admin/users] user count hit 1000 cap — pagination not implemented");
-  }
-
-  return res;
+  return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
 }
 
 /** PATCH /api/admin/users — update a user's role */
