@@ -20,9 +20,17 @@ const LANGS = [
   { key: "en", label: "English" },
   { key: "pt", label: "Português" },
   { key: "es", label: "Español" },
+  { key: "pt-en", label: "Português + EN" },
+  { key: "es-en", label: "Español + EN" },
 ];
 
-const GO_LABEL: Record<string, string> = { en: "Let's go!", pt: "Vamos!", es: "¡Vamos!" };
+const GO_LABEL: Record<string, string> = {
+  en: "Let's go!",
+  pt: "Vamos!",
+  es: "¡Vamos!",
+  "pt-en": "Vamos!",
+  "es-en": "¡Vamos!",
+};
 
 export function Onboarding() {
   const pathname = usePathname();
