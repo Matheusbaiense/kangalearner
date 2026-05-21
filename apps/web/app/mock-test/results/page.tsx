@@ -59,9 +59,9 @@ export default function MockTestResultsPage() {
   const scored = useMemo(() => {
     if (!session) return null;
     const rows = session.qids.map((qid) => {
-      const q: any = QUESTIONS.find((x: any) => x.id === qid) ?? null;
+      const q = QUESTIONS.find((x) => x.id === qid) ?? null;
       const chosen = session.answers[qid] ?? null;
-      const correct = q?.opts?.find((o: any) => o && o.ok)?.l ?? null;
+      const correct = q?.opts?.find((o) => o.ok)?.l ?? null;
       const ok = chosen && correct ? chosen === correct : false;
       return { qid, q, chosen, correct, ok };
     });
@@ -186,14 +186,14 @@ export default function MockTestResultsPage() {
                             {YOUR_ANSWER[lang]}{" "}
                             <strong>{r.chosen ?? "—"}</strong>{" "}
                             <span style={{ opacity: 0.8 }}>
-                              {tx(r.q?.opts?.find((o: any) => o?.l === r.chosen)?.t, lang)}
+                              {tx(r.q?.opts?.find((o) => o.l === r.chosen)?.t, lang)}
                             </span>
                           </div>
                           <div>
                             {CORRECT_ANSWER[lang]}{" "}
                             <strong>{r.correct ?? "—"}</strong>{" "}
                             <span style={{ opacity: 0.8 }}>
-                              {tx(r.q?.opts?.find((o: any) => o?.l === r.correct)?.t, lang)}
+                              {tx(r.q?.opts?.find((o) => o.l === r.correct)?.t, lang)}
                             </span>
                           </div>
                         </div>
