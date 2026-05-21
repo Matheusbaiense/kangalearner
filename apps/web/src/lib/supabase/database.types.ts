@@ -1,4 +1,5 @@
 // Auto-generated via Supabase MCP — project: kangalearner-prod (olgogtaeifyxwzencilo)
+// Last regenerated: 2026-05-21 (post migration 016 — mock_sessions schema drift fix)
 // Regenerate: npx supabase gen types typescript --project-id olgogtaeifyxwzencilo --schema public
 
 export type Json =
@@ -19,34 +20,52 @@ export type Database = {
     Tables: {
       mock_sessions: {
         Row: {
+          answers: Json
           completed_at: string
+          country: string
           id: number
+          mode: string
+          passed: boolean
           percent: number | null
           score: number
           source: string
           state: string
+          time_seconds: number | null
           total: number
           user_id: string
+          weak_categories: Json | null
         }
         Insert: {
+          answers?: Json
           completed_at?: string
+          country?: string
           id?: number
+          mode: string
+          passed: boolean
           percent?: number | null
           score: number
           source?: string
           state: string
+          time_seconds?: number | null
           total: number
           user_id: string
+          weak_categories?: Json | null
         }
         Update: {
+          answers?: Json
           completed_at?: string
+          country?: string
           id?: number
+          mode?: string
+          passed?: boolean
           percent?: number | null
           score?: number
           source?: string
           state?: string
+          time_seconds?: number | null
           total?: number
           user_id?: string
+          weak_categories?: Json | null
         }
         Relationships: []
       }
@@ -193,6 +212,36 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      get_active_users_count: { Args: { since_ts: string }; Returns: number }
+      get_country_breakdown: {
+        Args: { limit_n?: number }
+        Returns: {
+          cnt: number
+          country: string
+        }[]
+      }
+      get_pass_rate: { Args: { since_ts: string }; Returns: number }
+      get_role_breakdown: {
+        Args: never
+        Returns: {
+          cnt: number
+          role: string
+        }[]
+      }
+      get_signups_per_day: {
+        Args: { since_ts: string }
+        Returns: {
+          cnt: number
+          day: string
+        }[]
+      }
+      get_top_categories: {
+        Args: { limit_n?: number; since_ts: string }
+        Returns: {
+          category: string
+          cnt: number
+        }[]
+      }
       is_admin: { Args: never; Returns: boolean }
     }
     Enums: {
@@ -326,11 +375,3 @@ export const Constants = {
     Enums: {},
   },
 } as const
-
-// Convenience aliases
-export type UserRole = "free" | "premium" | "admin" | "super_admin"
-export type Profile = Tables<"profiles">
-export type DbMockSession = Tables<"mock_sessions">
-export type QuestionAttempt = Tables<"question_attempts">
-export type UserSettings = Tables<"user_settings">
-export type NewsletterSubscriber = Tables<"newsletter_subscribers">
