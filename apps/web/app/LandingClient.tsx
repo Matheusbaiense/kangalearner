@@ -79,6 +79,62 @@ const TESTIMONIALS = [
       es: "El modo simulacro es brillante — lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!",
     },
   },
+  {
+    name: "Linh N.", state: "VIC", country: "vn",
+    quote: {
+      en: "I was nervous about studying in a second language, but the clear explanations made everything click. Passed easily!",
+      pt: "Estava nervosa em estudar em um segundo idioma, mas as explicações claras fizeram tudo fazer sentido. Passei com facilidade!",
+      es: "Estaba nerviosa estudiando en un segundo idioma, pero las explicaciones claras lo hicieron todo muy claro. ¡Aprobé fácilmente!",
+    },
+  },
+  {
+    name: "Priya S.", state: "NSW", country: "in",
+    quote: {
+      en: "I had failed twice before. After two weeks on KangaLearner the explanations finally made the rules stick. Third time's the charm!",
+      pt: "Havia reprovado duas vezes antes. Após duas semanas no KangaLearner as explicações finalmente fixaram as regras. Terceira é a sorte!",
+      es: "Había reprobado dos veces antes. Después de dos semanas en KangaLearner las explicaciones hicieron que las reglas se quedaran. ¡A la tercera va la vencida!",
+    },
+  },
+  {
+    name: "Marco R.", state: "WA", country: "it",
+    quote: {
+      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising — that's the difference.",
+      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar — essa é a diferença.",
+      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas — esa es la diferencia.",
+    },
+  },
+  {
+    name: "Mei L.", state: "QLD", country: "cn",
+    quote: {
+      en: "The practice mode shows exactly where you're weak. I focused on road signs and went from 60% to 93% in one week.",
+      pt: "O modo de prática mostra exatamente onde você é fraco. Foquei nos sinais e fui de 60% para 93% em uma semana.",
+      es: "El modo de práctica muestra exactamente dónde estás débil. Me centré en las señales y fui del 60% al 93% en una semana.",
+    },
+  },
+  {
+    name: "João S.", state: "WA", country: "br",
+    quote: {
+      en: "As a Brazilian, studying in Portuguese was essential. This is the only app that takes multilingual learners seriously.",
+      pt: "Como brasileiro, estudar em português foi essencial. Esse é o único app que leva a sério os estudantes multilíngues.",
+      es: "Como brasileño, estudiar en portugués fue esencial. Esta es la única app que toma en serio a los estudiantes multilingües.",
+    },
+  },
+  {
+    name: "Sofia V.", state: "WA", country: "mx",
+    quote: {
+      en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the questions are almost identical to the official exam!",
+      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — as questões são quase idênticas à prova oficial!",
+      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!",
+    },
+  },
+  {
+    name: "David C.", state: "WA", country: "au",
+    quote: {
+      en: "Some road rules were really confusing even as an English speaker. This app broke everything down perfectly. First try pass!",
+      pt: "Algumas regras de trânsito eram muito confusas mesmo sendo falante de inglês. Esse app explicou tudo perfeitamente. Passei na primeira!",
+      es: "Algunas normas de tráfico eran muy confusas incluso siendo anglohablante. Esta app lo explicó todo perfectamente. ¡Aprobé al primer intento!",
+    },
+  },
 ];
 
 const FAQS = [
@@ -301,6 +357,54 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
   );
 }
 
+/* ── Testimonial Carousel ── */
+function TestimonialCarousel({ lang }: { lang: UiLang }) {
+  const [idx, setIdx] = useState(0);
+
+  useEffect(() => {
+    const t = setInterval(() => setIdx(i => (i + 1) % TESTIMONIALS.length), 4500);
+    return () => clearInterval(t);
+  }, []);
+
+  const prev = () => setIdx(i => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  const next = () => setIdx(i => (i + 1) % TESTIMONIALS.length);
+
+  const visible = [0, 1, 2].map(offset => TESTIMONIALS[(idx + offset) % TESTIMONIALS.length]);
+
+  return (
+    <div className="testimonial-carousel">
+      <button className="testimonial-nav" onClick={prev} aria-label="Previous testimonial">&#8249;</button>
+      <div className="testimonial-track-wrap">
+        <div key={idx} className="testimonial-track">
+          {visible.map((t) => (
+            <article key={`${idx}-${t.name}`} className="testimonial-card">
+              <p className="testimonial-quote">&ldquo;{tx(t.quote, lang)}&rdquo;</p>
+              <div className="testimonial-author">
+                <FlagImg country={t.country} />
+                <div>
+                  <div className="testimonial-name">{t.name}</div>
+                  <div className="testimonial-state">{t.state}</div>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+      <button className="testimonial-nav" onClick={next} aria-label="Next testimonial">&#8250;</button>
+      <div className="testimonial-dots">
+        {TESTIMONIALS.map((_, i) => (
+          <button
+            key={i}
+            className={`testimonial-dot${i === idx ? " active" : ""}`}
+            onClick={() => setIdx(i)}
+            aria-label={`Testimonial ${i + 1}`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 /* ── Component ── */
 export function LandingClient() {
   const { uiLang: lang, s } = useLang();
@@ -455,20 +559,7 @@ export function LandingClient() {
       <section className="testimonials-section">
         <div className="testimonials-inner">
           <h2 className="section-title">{s.testimonialsTitle}</h2>
-          <div className="testimonial-grid">
-            {TESTIMONIALS.map((t) => (
-              <article key={t.name} className="testimonial-card">
-                <p className="testimonial-quote">&ldquo;{tx(t.quote, lang)}&rdquo;</p>
-                <div className="testimonial-author">
-                  <FlagImg country={t.country} />
-                  <div>
-                    <div className="testimonial-name">{t.name}</div>
-                    <div className="testimonial-state">{t.state}</div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
+          <TestimonialCarousel lang={lang} />
         </div>
       </section>
 

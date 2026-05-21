@@ -2640,9 +2640,15 @@ a:focus-visible,
     padding: 20px;
   }
 
-  /* Testimonials: 1 column on mobile */
-  .testimonial-grid {
+  /* Testimonials: 1 card at a time on mobile */
+  .testimonial-carousel {
+    grid-template-columns: 28px 1fr 28px;
+  }
+  .testimonial-track {
     grid-template-columns: 1fr;
+  }
+  .testimonial-track .testimonial-card:nth-child(n+2) {
+    display: none;
   }
 }
 
@@ -3112,10 +3118,27 @@ a:focus-visible,
   margin-bottom: 32px;
   text-align: center;
 }
-.testimonial-grid {
+.testimonial-carousel {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  grid-template-columns: 36px 1fr 36px;
+  grid-template-rows: auto auto;
+  gap: 16px;
+  align-items: center;
+}
+.testimonial-track-wrap {
+  overflow: hidden;
+  grid-column: 2;
+  grid-row: 1;
+}
+.testimonial-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
+  animation: tmSlide 0.4s ease both;
+}
+@keyframes tmSlide {
+  from { opacity: 0.35; transform: translateY(10px); }
+  to   { opacity: 1;    transform: translateY(0); }
 }
 .testimonial-card {
   background: var(--surface-page, #f8fafb);
@@ -3137,9 +3160,6 @@ a:focus-visible,
   align-items: center;
   gap: 10px;
 }
-.testimonial-flag {
-  font-size: 1.3rem;
-}
 .testimonial-name {
   font-weight: 800;
   font-size: .85rem;
@@ -3148,6 +3168,46 @@ a:focus-visible,
 .testimonial-state {
   font-size: .75rem;
   color: var(--muted2);
+}
+.testimonial-nav {
+  background: none;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--muted2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.15s, color 0.15s;
+}
+.testimonial-nav:hover {
+  border-color: var(--accent, #2563eb);
+  color: var(--accent, #2563eb);
+}
+.testimonial-dots {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.testimonial-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: none;
+  background: var(--border);
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+.testimonial-dot.active {
+  background: var(--accent, #2563eb);
+  transform: scale(1.25);
 }
 
 .faq-section {
