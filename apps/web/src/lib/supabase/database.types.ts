@@ -1,5 +1,5 @@
 // Auto-generated via Supabase MCP — project: kangalearner-prod (olgogtaeifyxwzencilo)
-// Last regenerated: 2026-05-21 (Sprint 5 — user_category_stats added manually; MCP schema lag)
+// Last regenerated: 2026-05-22 (Sprint 6 — MCP + migrations 007-009; user_category_stats retained)
 // Regenerate: npx supabase gen types typescript --project-id olgogtaeifyxwzencilo --schema public
 
 export type Json =
@@ -183,6 +183,220 @@ export type Database = {
         }
         Relationships: []
       }
+      bookings: {
+        Row: {
+          id: string
+          student_id: string | null
+          instructor_id: string | null
+          country: string
+          state: string
+          scheduled_at: string
+          duration_minutes: number
+          status: string
+          amount_cents: number | null
+          currency: string
+          stripe_payment_intent_id: string | null
+          stripe_transfer_id: string | null
+          notes_student: string | null
+          notes_instructor: string | null
+          cancelled_by: string | null
+          cancel_reason: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          student_id?: string | null
+          instructor_id?: string | null
+          country: string
+          state: string
+          scheduled_at: string
+          duration_minutes?: number
+          status?: string
+          amount_cents?: number | null
+          currency?: string
+          stripe_payment_intent_id?: string | null
+          stripe_transfer_id?: string | null
+          notes_student?: string | null
+          notes_instructor?: string | null
+          cancelled_by?: string | null
+          cancel_reason?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          student_id?: string | null
+          instructor_id?: string | null
+          country?: string
+          state?: string
+          scheduled_at?: string
+          duration_minutes?: number
+          status?: string
+          amount_cents?: number | null
+          currency?: string
+          stripe_payment_intent_id?: string | null
+          stripe_transfer_id?: string | null
+          notes_student?: string | null
+          notes_instructor?: string | null
+          cancelled_by?: string | null
+          cancel_reason?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      instructor_reviews: {
+        Row: {
+          id: string
+          booking_id: string | null
+          student_id: string | null
+          instructor_id: string | null
+          rating: number
+          comment: string | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          booking_id?: string | null
+          student_id?: string | null
+          instructor_id?: string | null
+          rating: number
+          comment?: string | null
+          created_at?: string
+        }
+        Update: {
+          booking_id?: string | null
+          student_id?: string | null
+          instructor_id?: string | null
+          rating?: number
+          comment?: string | null
+        }
+        Relationships: []
+      }
+      instructors: {
+        Row: {
+          id: string
+          user_id: string
+          country: string
+          state: string
+          license_number: string | null
+          license_verified: boolean
+          background_check_passed: boolean
+          bio: Json | null
+          specialties: Json | null
+          languages_spoken: Json | null
+          hourly_rate_cents: number | null
+          currency: string
+          stripe_account_id: string | null
+          is_active: boolean
+          rating_avg: number | null
+          rating_count: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          country: string
+          state: string
+          license_number?: string | null
+          license_verified?: boolean
+          background_check_passed?: boolean
+          bio?: Json | null
+          specialties?: Json | null
+          languages_spoken?: Json | null
+          hourly_rate_cents?: number | null
+          currency?: string
+          stripe_account_id?: string | null
+          is_active?: boolean
+          rating_avg?: number | null
+          rating_count?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          country?: string
+          state?: string
+          license_number?: string | null
+          license_verified?: boolean
+          background_check_passed?: boolean
+          bio?: Json | null
+          specialties?: Json | null
+          languages_spoken?: Json | null
+          hourly_rate_cents?: number | null
+          currency?: string
+          stripe_account_id?: string | null
+          is_active?: boolean
+          rating_avg?: number | null
+          rating_count?: number
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      marketplace_waitlist: {
+        Row: {
+          id: string
+          email: string
+          country: string
+          state: string | null
+          role: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          email: string
+          country?: string
+          state?: string | null
+          role?: string
+          created_at?: string
+        }
+        Update: {
+          email?: string
+          country?: string
+          state?: string | null
+          role?: string
+        }
+        Relationships: []
+      }
+      saved_questions: {
+        Row: {
+          id: string
+          user_id: string
+          question_id: string
+          country: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          question_id: string
+          country?: string
+          created_at?: string
+        }
+        Update: {
+          question_id?: string
+          country?: string
+        }
+        Relationships: []
+      }
+      user_badges: {
+        Row: {
+          id: string
+          user_id: string
+          badge_key: string
+          earned_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          badge_key: string
+          earned_at?: string
+        }
+        Update: {
+          badge_key?: string
+          earned_at?: string
+        }
+        Relationships: []
+      }
       user_category_stats: {
         Row: {
           id: string
@@ -211,6 +425,58 @@ export type Database = {
           correct_attempts?: number
           last_attempt_at?: string | null
           updated_at?: string
+        }
+        Relationships: []
+      }
+      user_xp: {
+        Row: {
+          id: string
+          user_id: string
+          total_xp: number
+          level: string
+          streak_days: number
+          last_activity_date: string | null
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          total_xp?: number
+          level?: string
+          streak_days?: number
+          last_activity_date?: string | null
+          updated_at?: string
+        }
+        Update: {
+          total_xp?: number
+          level?: string
+          streak_days?: number
+          last_activity_date?: string | null
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      xp_events: {
+        Row: {
+          id: string
+          user_id: string
+          event_type: string
+          xp_earned: number
+          metadata: Json | null
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          event_type: string
+          xp_earned: number
+          metadata?: Json | null
+          created_at?: string
+        }
+        Update: {
+          event_type?: string
+          xp_earned?: number
+          metadata?: Json | null
         }
         Relationships: []
       }
