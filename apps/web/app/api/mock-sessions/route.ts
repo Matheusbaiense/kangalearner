@@ -7,6 +7,7 @@ type MockPayload = {
   state: string;
   score: number;
   total: number;
+  mode?: string;
   source?: string;
 };
 
@@ -63,6 +64,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
+  const VALID_MODES = new Set(["exam", "practice"]);
+  const sessionMode = payload.mode && VALID_MODES.has(payload.mode) ? payload.mode : "exam";
+
   const total = payload.total;
   const score = payload.score;
   const passed = total > 0 && score / total >= WA_PASS_THRESHOLD;
@@ -71,7 +75,7 @@ export async function POST(request: NextRequest) {
     user_id: user.id,
     country: "AU",
     state: payload.state,
-    mode: "exam",
+    mode: sessionMode,
     score,
     total,
     passed,

@@ -363,11 +363,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Start sim when mode switches ── */
   useEffect(() => {
     if (mode !== "sim") return;
-    const shuffled = [...QS].sort(() => Math.random() - 0.5).slice(0, 30);
+    const stateQs = QS.filter((q) => !q.states || q.states.includes(selectedState));
+    const shuffled = [...stateQs].sort(() => Math.random() - 0.5).slice(0, 30);
     setSimQueue(shuffled);
     setSimIdx(0);
     setSimDone(false);
-  }, [mode]);
+  }, [mode, selectedState]);
 
   /* ── Filtered questions for study modes ── */
   const filtered = useMemo(() => {
@@ -449,6 +450,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                   state: selectedState,
                   score,
                   total: simQueue.length,
+                  mode: "practice",
                   source: "web"
                 }),
                 keepalive: true
