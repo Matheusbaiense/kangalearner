@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
-import type { UserRole } from "@/lib/supabase/database.types";
 
 /** GET /api/admin/users?page=0&limit=50&search=&role= */
 export async function GET(req: NextRequest) {
@@ -20,12 +19,12 @@ export async function GET(req: NextRequest) {
     .order("created_at", { ascending: false })
     .range(page * limit, (page + 1) * limit - 1);
 
-  if (role) query = query.eq("role", role as UserRole);
+  if (role) query = query.eq("role", role);
   if (search) query = query.ilike("display_name", `%${search}%`);
 
   const { data, count, error } = await query;
   if (error) {
-    console.error("[admin/users]", error.code);
+    console.error("[admin/users] GET failed:", error.code, error.message);
     return NextResponse.json({ error: "internal_error" }, { status: 500 });
   }
 
@@ -80,11 +79,11 @@ export async function PATCH(req: NextRequest) {
 
   const { error } = await supabaseAdmin
     .from("profiles")
-    .update({ role: role as UserRole })
+    .update({ role })
     .eq("id", userId);
 
   if (error) {
-    console.error("[admin/users]", error.code);
+    console.error("[admin/users] PATCH failed:", error.code, error.message);
     return NextResponse.json({ error: "internal_error" }, { status: 500 });
   }
   return NextResponse.json({ ok: true });
