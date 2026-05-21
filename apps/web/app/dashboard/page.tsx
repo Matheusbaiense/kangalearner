@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import { SUPPORTED_COUNTRY } from "@kanga/core";
 import { createSupabaseServerClient } from "../../src/lib/supabase/server";
 import { MigrateLocalProgress } from "../../src/components/MigrateLocalProgress";
 import { DashboardClient } from "./DashboardClient";
@@ -173,13 +174,13 @@ export default async function DashboardPage({
       .from("user_category_stats")
       .select("category, total_attempts, correct_attempts")
       .eq("user_id", user.id)
-      .eq("country", "AU"),
+      .eq("country", SUPPORTED_COUNTRY),
     // Category stats — state-specific (replaces 500-row state-filtered query)
     supabase!
       .from("user_category_stats")
       .select("category, total_attempts, correct_attempts")
       .eq("user_id", user.id)
-      .eq("country", "AU")
+      .eq("country", SUPPORTED_COUNTRY)
       .eq("state", selectedState),
     // Temporal data — last 90 days only, for streak/weekly chart/today count
     supabase!

@@ -2,6 +2,9 @@ export const WA_PASS_THRESHOLD = 0.80;   // 80% — DoT WA Learner Test
 export const WA_PASS_MIN_CORRECT = 24;   // out of 30 questions
 export const WA_TOTAL_QUESTIONS = 30;
 
+/** ISO 3166-1 alpha-2 country code for the single supported market. */
+export const SUPPORTED_COUNTRY = "AU" as const;
+
 export type SupportedLanguage = "pt" | "en" | "es" | "pten" | "esen";
 export type SupportedState = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
 

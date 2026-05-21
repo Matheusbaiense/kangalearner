@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
-import { WA_PASS_THRESHOLD } from "@kanga/core";
+import { SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
 
 type MockPayload = {
   state: string;
@@ -79,7 +79,7 @@ export async function POST(request: NextRequest) {
 
   const { error } = await supabase.from("mock_sessions").insert({
     user_id: user.id,
-    country: "AU",
+    country: SUPPORTED_COUNTRY,
     state: payload.state,
     mode: sessionMode,
     score,
