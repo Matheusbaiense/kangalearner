@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { rateLimit } from "@/lib/rateLimit";
 
 const MAX_SIZE_BYTES = 2 * 1024 * 1024; // 2 MB
 const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
@@ -29,6 +30,10 @@ export async function POST(req: NextRequest) {
   const { data: { user }, error: authErr } = await supabase.auth.getUser();
   if (authErr || !user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  if (!await rateLimit(`avatar:post:${user.id}`, 5, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
   const formData = await req.formData();
@@ -91,6 +96,10 @@ export async function DELETE() {
   const { data: { user }, error: authErr } = await supabase.auth.getUser();
   if (authErr || !user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  if (!await rateLimit(`avatar:delete:${user.id}`, 5, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
   const { data: profile, error: profileErr } = await supabaseAdmin
