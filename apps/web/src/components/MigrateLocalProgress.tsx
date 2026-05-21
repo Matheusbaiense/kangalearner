@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { buildAttemptsFromLocalStorage, postAttemptsBulk } from "../lib/migrateLocalAttempts";
 
 const SESSION_FLAG = "kanga-local-migration-done";
 
@@ -15,14 +14,15 @@ export function MigrateLocalProgress() {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(SESSION_FLAG)) return;
 
-    const attempts = buildAttemptsFromLocalStorage();
-    if (attempts.length === 0) {
-      sessionStorage.setItem(SESSION_FLAG, "1");
-      return;
-    }
-
-    void postAttemptsBulk(attempts).then((ok) => {
-      if (ok) sessionStorage.setItem(SESSION_FLAG, "1");
+    void import("../lib/migrateLocalAttempts").then(({ buildAttemptsFromLocalStorage, postAttemptsBulk }) => {
+      const attempts = buildAttemptsFromLocalStorage();
+      if (attempts.length === 0) {
+        sessionStorage.setItem(SESSION_FLAG, "1");
+        return;
+      }
+      void postAttemptsBulk(attempts).then((ok) => {
+        if (ok) sessionStorage.setItem(SESSION_FLAG, "1");
+      });
     });
   }, []);
 

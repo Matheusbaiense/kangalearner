@@ -4,7 +4,6 @@ import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { runLocalAttemptMigration } from "@/lib/migrateLocalAttempts";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 
 function getAppOrigin(): string {
@@ -46,6 +45,7 @@ function LoginForm() {
       return;
     }
 
+    const { runLocalAttemptMigration } = await import("@/lib/migrateLocalAttempts");
     await runLocalAttemptMigration();
     router.push(redirect);
     router.refresh();
