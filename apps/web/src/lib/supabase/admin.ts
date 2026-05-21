@@ -23,7 +23,7 @@ let _adminClient: SupabaseClient<Database> | null = null;
 
 export const supabaseAdmin: SupabaseClient<Database> = new Proxy({} as SupabaseClient<Database>, {
   get(_target, prop) {
-    if (!_adminClient) _adminClient = createSupabaseAdmin();
+    _adminClient ??= createSupabaseAdmin();
     const value = (_adminClient as unknown as Record<string | symbol, unknown>)[prop];
     return typeof value === "function" ? value.bind(_adminClient) : value;
   }

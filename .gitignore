@@ -40,3 +40,6 @@ qa-output/
 
 # Design source files (binaries and raw exports, not for version control)
 designer/
+
+# Jekyll / static site generator output
+_site/

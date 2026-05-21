@@ -4,9 +4,11 @@ import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
 /**
- * Soft-deletes the account: sets profiles.deleted_at and anonymises the display name.
- * The auth.users row and all attempt data are preserved for analytics / recovery.
- * A background job or manual admin action can hard-delete later if needed (GDPR request).
+ * Deletes the authenticated user's account:
+ * 1. Soft-deletes the profile row (sets deleted_at, anonymises display name).
+ * 2. Hard-deletes the auth.users record via the admin API so the user cannot
+ *    sign in again. Attempt data is preserved in the profiles row for
+ *    analytics / GDPR recovery because the FK is set to SET NULL on user deletion.
  */
 export async function DELETE() {
   const cookieStore = await cookies();
@@ -16,10 +18,13 @@ export async function DELETE() {
     { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
   );
 
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  const { error } = await supabaseAdmin
+  // Step 1: Soft-delete the profile row and anonymise PII.
+  const { error: profileError } = await supabaseAdmin
     .from("profiles")
     .update({
       deleted_at: new Date().toISOString(),
@@ -29,9 +34,20 @@ export async function DELETE() {
     })
     .eq("id", user.id);
 
-  if (error) {
-    console.error("[account/delete] soft-delete failed:", error.code);
+  if (profileError) {
+    console.error("[account/delete] profile soft-delete failed:", profileError.code);
     return NextResponse.json({ error: "delete_failed" }, { status: 500 });
+  }
+
+  // Step 2: Remove the auth.users record so the user cannot sign in again.
+  const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(user.id);
+
+  if (authError) {
+    console.error("[account/delete] auth user deletion failed:", authError.message);
+    // Profile is already anonymised; the auth deletion failure is non-fatal from
+    // a data-privacy standpoint but should be investigated. Return 500 so the
+    // client knows the operation was not fully completed.
+    return NextResponse.json({ error: "auth_delete_failed" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true });

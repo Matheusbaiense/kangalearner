@@ -2,7 +2,7 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import { QUESTIONS } from "@kanga/core";
+import { QUESTIONS, type Question, type QuestionOption } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
@@ -86,18 +86,18 @@ export default function MockTestSessionPage() {
     const state = cfg.state;
     return state === "AU"
       ? QUESTIONS.slice()
-      : QUESTIONS.filter((q: any) => Array.isArray(q.states) && q.states.includes(state));
+      : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
   }, [cfg]);
 
   const activeQuestion = useMemo(() => {
     if (!session) return null;
     const qid = session.qids[activeIndex];
-    return QUESTIONS.find((q: any) => q.id === qid) ?? null;
+    return QUESTIONS.find((q) => q.id === qid) ?? null;
   }, [session, activeIndex]);
 
   const correctLetter = useMemo(() => {
     if (!activeQuestion) return null;
-    const ok = (activeQuestion as any).opts?.find((o: any) => o && o.ok);
+    const ok = activeQuestion.opts.find((o) => o.ok);
     return ok?.l ?? null;
   }, [activeQuestion]);
 
@@ -106,7 +106,7 @@ export default function MockTestSessionPage() {
     if (session) return;
     if (questionPool.length === 0) return;
     const ids = fisherYatesSlice(
-      questionPool.map((q: any) => q.id),
+      questionPool.map((q) => q.id),
       cfg.questions
     );
     const s: MockSession = {
@@ -163,11 +163,11 @@ export default function MockTestSessionPage() {
 
   function choose(letter: string) {
     if (!session || !activeQuestion) return;
-    if (picked && picked[(activeQuestion as any).id]) return;
-    const nextAnswers = { ...session.answers, [(activeQuestion as any).id]: letter };
+    if (picked && picked[activeQuestion.id]) return;
+    const nextAnswers = { ...session.answers, [activeQuestion.id]: letter };
     const next: MockSession = { ...session, answers: nextAnswers };
     persistSession(next);
-    setPicked({ [(activeQuestion as any).id]: letter });
+    setPicked({ [activeQuestion.id]: letter });
     setReveal(session.cfg.mode === "practice");
   }
 
@@ -234,9 +234,9 @@ export default function MockTestSessionPage() {
 
   const total = session.qids.length;
   const answeredCount = session.qids.filter((id) => !!session.answers[id]).length;
-  const isCurrentAnswered = !!session.answers[(activeQuestion as any).id];
-  const chosen = session.answers[(activeQuestion as any).id] ?? null;
-  const q = activeQuestion as any;
+  const isCurrentAnswered = !!session.answers[activeQuestion.id];
+  const chosen = session.answers[activeQuestion.id] ?? null;
+  const q = activeQuestion;
 
   return (
     <main className="container section-pad">
@@ -288,7 +288,7 @@ export default function MockTestSessionPage() {
 
         {/* Options */}
         <div style={{ display: "grid", gap: 10, marginTop: 4 }}>
-          {(q.opts ?? []).map((o: any) => {
+          {q.opts.map((o) => {
             const isChosen = chosen === o.l;
             const isCorrect = correctLetter === o.l;
             const showResult = reveal && isCurrentAnswered;
