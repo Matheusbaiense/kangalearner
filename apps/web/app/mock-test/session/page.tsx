@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { QUESTIONS, type Question, type QuestionOption } from "@kanga/core";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { useLang } from "@/contexts/LangContext";
-import type { UiLang } from "@/lib/i18n";
+import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
 
 function safeParseJson<T>(raw: string | null): T | null {
@@ -28,11 +28,6 @@ function fisherYatesSlice<T>(arr: T[], k: number): T[] {
     a[j] = tmp;
   }
   return a.slice(0, take);
-}
-
-function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
-  if (!obj) return "";
-  return obj[lang] ?? obj.en ?? "";
 }
 
 const EXAM_SECONDS = 45 * 60; // 45 minutes

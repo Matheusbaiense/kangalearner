@@ -315,6 +315,7 @@ export default function AdminPage() {
                               src={`https://flagcdn.com/w20/${country.toLowerCase()}.png`}
                               alt={country}
                               width={18} height={14}
+                              loading="lazy"
                               style={{ borderRadius: 2 }}
                             />
                             {country}
@@ -422,6 +423,7 @@ export default function AdminPage() {
                             src={`https://flagcdn.com/w20/${u.country.toLowerCase()}.png`}
                             alt={u.country}
                             width={16} height={12}
+                            loading="lazy"
                             style={{ borderRadius: 2 }}
                           />
                           {u.country}

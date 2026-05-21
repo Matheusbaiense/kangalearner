@@ -8,7 +8,7 @@ import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import { AuthNudge } from "@/components/ui/AuthNudge";
-import type { UiLang } from "@/lib/i18n";
+import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
 
 function safeParseJson<T>(raw: string | null): T | null {
@@ -18,11 +18,6 @@ function safeParseJson<T>(raw: string | null): T | null {
   } catch {
     return null;
   }
-}
-
-function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
-  if (!obj) return "";
-  return obj[lang] ?? obj.en ?? "";
 }
 
 const RESULT_MSG = {
