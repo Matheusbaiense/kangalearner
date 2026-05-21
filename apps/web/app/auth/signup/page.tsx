@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
+import { useLang } from "@/contexts/LangContext";
 
 function getAppOrigin(): string {
   const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
@@ -23,6 +24,7 @@ function SignupForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const { s } = useLang();
 
   const supabase = useMemo(() => {
     try {
@@ -86,16 +88,16 @@ function SignupForm() {
             <div className="auth-success-icon" aria-hidden="true">
               ✉️
             </div>
-            <h2>Check your email</h2>
+            <h2>{s.authCheckYourEmail}</h2>
             <p>
-              We sent a confirmation link to <strong>{email}</strong>. Click the link to activate
-              your account.
+              {s.authEmailConfirmSentPrefix} <strong>{email}</strong>. {s.authEmailConfirmAction}
             </p>
           </div>
+          <p className="auth-footer-note">
+            <Link href="/auth/login">{s.authBackToSignIn}</Link>
+          </p>
         </div>
-        <p className="auth-tagline">
-          Official road rules · Up to date · Trusted by learner drivers Australia-wide
-        </p>
+        <p className="auth-tagline">{s.authTagline}</p>
       </main>
     );
   }
@@ -108,10 +110,8 @@ function SignupForm() {
 
       <div className="auth-card">
         <div className="auth-header">
-          <h1 className="auth-title">Create your account</h1>
-          <p className="auth-sub">
-            Save your progress, track insights and access your full mock test history.
-          </p>
+          <h1 className="auth-title">{s.authCreateAccount}</h1>
+          <p className="auth-sub">{s.authCreateAccountSub}</p>
         </div>
 
         <button
@@ -138,7 +138,7 @@ function SignupForm() {
               d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"
             />
           </svg>
-          Continue with Google
+          {s.continueWithGoogle}
         </button>
 
         <div className="auth-divider">
@@ -148,7 +148,7 @@ function SignupForm() {
         <form onSubmit={handleSignup} className="auth-form">
           <div className="auth-field form-field">
             <label className="auth-label" htmlFor="auth-signup-name">
-              Full name
+              {s.accountFullName}
             </label>
             <input
               id="auth-signup-name"
@@ -156,7 +156,7 @@ function SignupForm() {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Your name"
+              placeholder={s.authYourName}
               required
               autoComplete="name"
             />
@@ -164,7 +164,7 @@ function SignupForm() {
 
           <div className="auth-field form-field">
             <label className="auth-label" htmlFor="auth-signup-email">
-              Email
+              {s.emailLabel}
             </label>
             <input
               id="auth-signup-email"
@@ -180,7 +180,7 @@ function SignupForm() {
 
           <div className="auth-field form-field">
             <label className="auth-label" htmlFor="auth-signup-password">
-              Password
+              {s.passwordLabel}
             </label>
             <input
               id="auth-signup-password"
@@ -188,7 +188,7 @@ function SignupForm() {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              placeholder="At least 8 characters"
+              placeholder={s.authAtLeast8}
               required
               autoComplete="new-password"
               minLength={8}
@@ -202,24 +202,22 @@ function SignupForm() {
           )}
 
           <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
-            {loading ? "Creating account…" : "Create account"}
+            {loading ? s.authCreatingAccount : s.authCreateAccountBtn}
           </button>
 
           <p className="auth-legal-note">
-            By creating an account, you agree to our <Link href="/terms">Terms</Link> and{" "}
-            <Link href="/privacy">Privacy Policy</Link>.
+            {s.authAgreeTermsPrefix}{" "}
+            <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link>.
           </p>
         </form>
 
         <p className="auth-footer-note">
-          Already have an account?{" "}
-          <Link href={`/auth/login?redirect=${encodeURIComponent(redirect)}`}>Sign in</Link>
+          {s.authAlreadyHaveAccount}{" "}
+          <Link href={`/auth/login?redirect=${encodeURIComponent(redirect)}`}>{s.signIn}</Link>
         </p>
       </div>
 
-      <p className="auth-tagline">
-        Official road rules · Up to date · Trusted by learner drivers Australia-wide
-      </p>
+      <p className="auth-tagline">{s.authTagline}</p>
     </main>
   );
 }

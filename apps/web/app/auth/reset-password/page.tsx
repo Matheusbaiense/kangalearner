@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import { useLang } from "@/contexts/LangContext";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");
@@ -11,6 +12,7 @@ export default function ResetPasswordPage() {
   const [error, setError] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const [done, setDone] = useState(false);
+  const { s } = useLang();
 
   const supabase = useMemo(() => {
     try {
@@ -32,7 +34,7 @@ export default function ResetPasswordPage() {
     e.preventDefault();
     if (!supabase) return;
     if (password !== confirm) {
-      setError("Passwords do not match.");
+      setError(s.authPasswordsDoNotMatch);
       return;
     }
     setLoading(true);
@@ -58,16 +60,14 @@ export default function ResetPasswordPage() {
         </Link>
         <div className="auth-card">
           <div className="auth-success" role="status">
-            <h2>Password updated</h2>
-            <p>Your password has been updated successfully.</p>
+            <h2>{s.authPasswordUpdated}</h2>
+            <p>{s.authPasswordUpdatedSub}</p>
           </div>
           <p className="auth-footer-note">
-            <Link href="/auth/login">Sign in →</Link>
+            <Link href="/auth/login">{s.authSignInArrow}</Link>
           </p>
         </div>
-        <p className="auth-tagline">
-          Official road rules · Up to date · Trusted by learner drivers Australia-wide
-        </p>
+        <p className="auth-tagline">{s.authTagline}</p>
       </main>
     );
   }
@@ -80,19 +80,19 @@ export default function ResetPasswordPage() {
 
       <div className="auth-card">
         <div className="auth-header">
-          <h1 className="auth-title">Choose a new password</h1>
-          <p className="auth-sub">Enter a new password for your account.</p>
+          <h1 className="auth-title">{s.authChooseNewPassword}</h1>
+          <p className="auth-sub">{s.authChooseNewPasswordSub}</p>
         </div>
 
         {!ready ? (
           <p className="auth-sub" style={{ color: "var(--orange)", padding: "8px 0" }}>
-            Waiting for reset session… If this persists, open the email link again.
+            {s.authWaitingResetSession}
           </p>
         ) : (
           <form onSubmit={handleUpdate} className="auth-form">
             <div className="auth-field form-field">
               <label className="auth-label" htmlFor="auth-new-password">
-                New password
+                {s.authNewPasswordLabel}
               </label>
               <input
                 id="auth-new-password"
@@ -100,7 +100,7 @@ export default function ResetPasswordPage() {
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                placeholder="At least 8 characters"
+                placeholder={s.authAtLeast8}
                 required
                 autoComplete="new-password"
                 minLength={8}
@@ -109,7 +109,7 @@ export default function ResetPasswordPage() {
 
             <div className="auth-field form-field">
               <label className="auth-label" htmlFor="auth-confirm-password">
-                Confirm password
+                {s.authConfirmPasswordLabel}
               </label>
               <input
                 id="auth-confirm-password"
@@ -117,7 +117,7 @@ export default function ResetPasswordPage() {
                 type="password"
                 value={confirm}
                 onChange={(e) => setConfirm(e.target.value)}
-                placeholder="Repeat your password"
+                placeholder={s.authRepeatYourPassword}
                 required
                 autoComplete="new-password"
                 minLength={8}
@@ -131,19 +131,17 @@ export default function ResetPasswordPage() {
             )}
 
             <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
-              {loading ? "Updating…" : "Update password"}
+              {loading ? s.authUpdating : s.authUpdatePassword}
             </button>
           </form>
         )}
 
         <p className="auth-footer-note">
-          <Link href="/auth/login">← Back to sign in</Link>
+          <Link href="/auth/login">{s.authBackToSignIn}</Link>
         </p>
       </div>
 
-      <p className="auth-tagline">
-        Official road rules · Up to date · Trusted by learner drivers Australia-wide
-      </p>
+      <p className="auth-tagline">{s.authTagline}</p>
     </main>
   );
 }

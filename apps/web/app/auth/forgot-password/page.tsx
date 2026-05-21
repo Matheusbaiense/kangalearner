@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
+import { useLang } from "@/contexts/LangContext";
 
 function getAppOrigin(): string {
   const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
@@ -16,6 +17,7 @@ export default function ForgotPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+  const { s } = useLang();
 
   const supabase = useMemo(() => {
     try {
@@ -54,20 +56,19 @@ export default function ForgotPasswordPage() {
         </Link>
         <div className="auth-card">
           <div className="auth-success" role="status">
-            <div className="auth-success-icon" aria-hidden="true">✉️</div>
-            <h2>Check your email</h2>
+            <div className="auth-success-icon" aria-hidden="true">
+              ✉️
+            </div>
+            <h2>{s.authCheckYourEmail}</h2>
             <p>
-              We sent a password reset link to <strong>{email}</strong>. Follow the link to choose a
-              new password.
+              {s.authResetEmailSentPrefix} <strong>{email}</strong>. {s.authResetEmailSentSuffix}
             </p>
           </div>
           <p className="auth-footer-note">
-            <Link href="/auth/login">← Back to sign in</Link>
+            <Link href="/auth/login">{s.authBackToSignIn}</Link>
           </p>
         </div>
-        <p className="auth-tagline">
-          Official road rules · Up to date · Trusted by learner drivers Australia-wide
-        </p>
+        <p className="auth-tagline">{s.authTagline}</p>
       </main>
     );
   }
@@ -80,14 +81,14 @@ export default function ForgotPasswordPage() {
 
       <div className="auth-card">
         <div className="auth-header">
-          <h1 className="auth-title">Reset your password</h1>
-          <p className="auth-sub">Enter your email and we&apos;ll send you a reset link.</p>
+          <h1 className="auth-title">{s.authResetPassword}</h1>
+          <p className="auth-sub">{s.authResetSub}</p>
         </div>
 
         <form onSubmit={handleReset} className="auth-form">
           <div className="auth-field form-field">
             <label className="auth-label" htmlFor="auth-reset-email">
-              Email
+              {s.emailLabel}
             </label>
             <input
               id="auth-reset-email"
@@ -108,18 +109,16 @@ export default function ForgotPasswordPage() {
           )}
 
           <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
-            {loading ? "Sending…" : "Send reset link"}
+            {loading ? s.authSending : s.authSendResetLink}
           </button>
         </form>
 
         <p className="auth-footer-note">
-          Remembered it? <Link href="/auth/login">Sign in</Link>
+          {s.authRememberedIt} <Link href="/auth/login">{s.signIn}</Link>
         </p>
       </div>
 
-      <p className="auth-tagline">
-        Official road rules · Up to date · Trusted by learner drivers Australia-wide
-      </p>
+      <p className="auth-tagline">{s.authTagline}</p>
     </main>
   );
 }

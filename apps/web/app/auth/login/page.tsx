@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
+import { useLang } from "@/contexts/LangContext";
 
 function getAppOrigin(): string {
   const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
@@ -22,6 +23,7 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const { s } = useLang();
 
   const supabase = useMemo(() => {
     try {
@@ -76,15 +78,13 @@ function LoginForm() {
 
       <div className="auth-card">
         <div className="auth-header">
-          <h1 className="auth-title">Welcome back</h1>
-          <p className="auth-sub">
-            Sign in to access your progress, insights and mock test history.
-          </p>
+          <h1 className="auth-title">{s.authWelcomeBack}</h1>
+          <p className="auth-sub">{s.authSignInSub}</p>
         </div>
 
         {!supabase && (
           <div className="auth-error" role="alert">
-            Authentication service unavailable. Please refresh the page or try again later.
+            {s.authServiceUnavailable}
           </div>
         )}
 
@@ -112,7 +112,7 @@ function LoginForm() {
               d="M9 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.463.891 11.426 0 9 0 5.482 0 2.438 2.017.957 4.958L3.964 6.29C4.672 4.163 6.656 3.58 9 3.58z"
             />
           </svg>
-          Continue with Google
+          {s.continueWithGoogle}
         </button>
 
         <div className="auth-divider">
@@ -122,7 +122,7 @@ function LoginForm() {
         <form onSubmit={handleEmailLogin} className="auth-form">
           <div className="auth-field form-field">
             <label className="auth-label" htmlFor="auth-login-email">
-              Email
+              {s.emailLabel}
             </label>
             <input
               id="auth-login-email"
@@ -138,9 +138,9 @@ function LoginForm() {
 
           <div className="auth-field form-field">
             <label className="auth-label auth-label-row" htmlFor="auth-login-password">
-              <span>Password</span>
+              <span>{s.passwordLabel}</span>
               <Link href="/auth/forgot-password" className="form-field-link">
-                Forgot password?
+                {s.forgotPassword}
               </Link>
             </label>
             <input
@@ -163,19 +163,17 @@ function LoginForm() {
           )}
 
           <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
-            {loading ? "Signing in…" : "Sign in"}
+            {loading ? s.authSigningIn : s.signIn}
           </button>
         </form>
 
         <p className="auth-footer-note">
-          Don&apos;t have an account?{" "}
-          <Link href={`/auth/signup?redirect=${encodeURIComponent(redirect)}`}>Create one</Link>
+          {s.authNoAccount}{" "}
+          <Link href={`/auth/signup?redirect=${encodeURIComponent(redirect)}`}>{s.authCreateOne}</Link>
         </p>
       </div>
 
-      <p className="auth-tagline">
-        Official road rules · Up to date · Trusted by learner drivers Australia-wide
-      </p>
+      <p className="auth-tagline">{s.authTagline}</p>
     </main>
   );
 }
