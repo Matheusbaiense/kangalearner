@@ -4,7 +4,7 @@ import { rateLimit } from "@/lib/rateLimit";
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!rateLimit(`newsletter:${ip}`, 3, 60_000)) {
+  if (!await rateLimit(`newsletter:${ip}`, 3, 60_000)) {
     return NextResponse.json({ ok: false, error: "too_many_requests" }, { status: 429 });
   }
 

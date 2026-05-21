@@ -11,7 +11,7 @@ type MockPayload = {
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!rateLimit(`mock-sessions:${ip}`, 20, 60_000)) {
+  if (!await rateLimit(`mock-sessions:${ip}`, 20, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 

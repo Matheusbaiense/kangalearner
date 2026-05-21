@@ -14,7 +14,7 @@ type BulkAttempt = {
 
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!rateLimit(`attempts-bulk:${ip}`, 10, 60_000)) {
+  if (!await rateLimit(`attempts-bulk:${ip}`, 10, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
