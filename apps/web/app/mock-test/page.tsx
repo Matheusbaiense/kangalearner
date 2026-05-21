@@ -51,6 +51,8 @@ export default function MockTestSetupPage() {
     return "WA";
   });
 
+  const [showGuestPrompt, setShowGuestPrompt] = useState(false);
+
   async function handleStart() {
     const config = { state: selectedState, mode, questions: 30 };
 
@@ -61,20 +63,54 @@ export default function MockTestSetupPage() {
     const { data: { user } } = await supabase.auth.getUser();
 
     if (!user) {
-      // Guest: persist config to localStorage so the session page can recover it
-      // after login redirects back to /mock-test/session
+      // Guest: show value-prop prompt instead of immediate redirect
       try {
         localStorage.setItem("mock-config-saved", JSON.stringify(config));
       } catch { /* noop */ }
-      router.push("/auth/login?redirect=/mock-test/session");
+      setShowGuestPrompt(true);
       return;
     }
 
     router.push("/mock-test/session");
   }
 
+  function handleContinueAsGuest() {
+    router.push("/mock-test/session");
+  }
+
   return (
     <main className="container section-pad">
+      {showGuestPrompt && (
+        <div className="guest-prompt-overlay" role="dialog" aria-modal="true" aria-label="Save your results">
+          <div className="guest-prompt-card">
+            <h3>Save your mock test results</h3>
+            <p>Create a free account to track your score, review wrong answers, and see your progress over time.</p>
+            <div className="guest-prompt-actions">
+              <a href="/auth/signup?redirect=/mock-test/session" className="btn btn-primary">
+                Create free account
+              </a>
+              <a href="/auth/login?redirect=/mock-test/session" className="btn btn-secondary">
+                Sign in
+              </a>
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={handleContinueAsGuest}
+              >
+                Continue without saving
+              </button>
+            </div>
+            <button
+              type="button"
+              className="guest-prompt-dismiss"
+              aria-label="Dismiss"
+              onClick={() => setShowGuestPrompt(false)}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
       <div className="mock-setup-card">
         <h1>{s.mockTest}</h1>
         <p className="mock-meta">{STATE_NAMES[selectedState]} · 30 questions · Pass mark: 26/30</p>

@@ -4341,3 +4341,61 @@ a:focus-visible,
   .settings-section { padding: 20px 16px 24px; }
   .settings-theme-row { flex-direction: column; }
 }
+
+/* ── Guest prompt overlay (mock test auth nudge) ── */
+.guest-prompt-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 1rem;
+}
+
+.guest-prompt-card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+}
+
+.guest-prompt-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.guest-prompt-card p {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 0 0 1.5rem;
+  line-height: 1.5;
+}
+
+.guest-prompt-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.guest-prompt-dismiss {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  background: none;
+  border: none;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem;
+  line-height: 1;
+}
+
+.guest-prompt-dismiss:hover {
+  color: var(--ink);
+}
