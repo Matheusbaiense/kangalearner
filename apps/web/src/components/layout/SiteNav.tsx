@@ -72,6 +72,7 @@ export function SiteNav() {
   const [user, setUser] = useState<NavUser | null>(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [stateCode, setStateCode] = useState<string>("WA");
 
   useEffect(() => {
@@ -118,6 +119,22 @@ export function SiteNav() {
       document.removeEventListener("touchstart", handler);
     };
   }, [userMenuOpen]);
+
+  // Close mobile nav on Escape
+  useEffect(() => {
+    if (!mobileNavOpen) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileNavOpen(false);
+    };
+    document.addEventListener("keydown", handler);
+    return () => document.removeEventListener("keydown", handler);
+  }, [mobileNavOpen]);
+
+  // Lock body scroll when mobile nav is open
+  useEffect(() => {
+    document.body.style.overflow = mobileNavOpen ? "hidden" : "";
+    return () => { document.body.style.overflow = ""; };
+  }, [mobileNavOpen]);
 
   // Auth state
   useEffect(() => {
@@ -172,6 +189,7 @@ export function SiteNav() {
   const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
 
   return (
+    <>
     <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
       <nav className="nav-shell" aria-label="Main navigation">
         {/* Brand */}
@@ -185,6 +203,20 @@ export function SiteNav() {
             priority
           />
         </Link>
+
+        {/* Hamburger — mobile only */}
+        <button
+          className="nav-hamburger"
+          onClick={() => setMobileNavOpen((o) => !o)}
+          aria-expanded={mobileNavOpen}
+          aria-controls="mobile-nav-drawer"
+          aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+          type="button"
+        >
+          <span className="hamburger-bar" />
+          <span className="hamburger-bar" />
+          <span className="hamburger-bar" />
+        </button>
 
         {/* Nav links */}
         <ul className="main-nav" role="list">
@@ -350,5 +382,45 @@ export function SiteNav() {
         </div>
       </nav>
     </header>
+
+    {/* Mobile nav drawer */}
+    {mobileNavOpen && (
+      <>
+        {/* Backdrop */}
+        <div
+          className="mobile-nav-backdrop"
+          onClick={() => setMobileNavOpen(false)}
+          aria-hidden="true"
+        />
+        {/* Drawer */}
+        <nav
+          id="mobile-nav-drawer"
+          className="mobile-nav-drawer"
+          aria-label="Mobile navigation"
+        >
+          <ul role="list">
+            {NAV_LINKS.map((link) => {
+              const needsAuth = "requiresAuth" in link && link.requiresAuth;
+              if (needsAuth && !authLoading && !user) return null;
+              const isActive = "exact" in link && link.exact
+                ? pathname === link.href
+                : pathname.startsWith(link.href);
+              return (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className={isActive ? "mobile-nav-link active" : "mobile-nav-link"}
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    {s[link.key]}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </>
+    )}
+    </>
   );
 }

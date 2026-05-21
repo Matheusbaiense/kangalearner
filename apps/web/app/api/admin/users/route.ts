@@ -30,19 +30,27 @@ export async function GET(req: NextRequest) {
   }
 
   // Batch: fetch all auth users once and index by id (avoids N+1)
-  const { data: { users: authUsers } } = await supabaseAdmin.auth.admin.listUsers({ perPage: 1000 });
-  const authMap = new Map(authUsers.map((u) => [u.id, u]));
+  const { data: authData } = await supabaseAdmin.auth.admin.listUsers({ perPage: 1000 });
+  const users = authData?.users ?? [];
+  const authMap = new Map(users.map((u) => [u.id, u]));
 
   const enriched = (data ?? []).map((profile) => {
     const authUser = authMap.get(profile.id);
     return {
       ...profile,
-      email: authUser?.email ?? null,
+      email: authUser?.email ?? "(no email)",
       last_sign_in: authUser?.last_sign_in_at ?? null,
     };
   });
 
-  return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
+  const res = NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
+
+  if (users.length >= 1000) {
+    res.headers.set("X-Admin-Warning", "user-list-capped-at-1000");
+    console.warn("[admin/users] user count hit 1000 cap — pagination not implemented");
+  }
+
+  return res;
 }
 
 /** PATCH /api/admin/users — update a user's role */

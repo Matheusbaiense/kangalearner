@@ -11,6 +11,15 @@ import {
 } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
 
+// Map bilingual modes to primary language for the lang attribute
+const LANG_TO_HTML: Record<string, string> = {
+  en: "en",
+  pt: "pt",
+  "pt-en": "pt",
+  es: "es",
+  "es-en": "es",
+};
+
 interface LangContextValue {
   lang: Lang;          // full code e.g. "pt-en"
   uiLang: UiLang;      // base UI lang e.g. "pt"
@@ -45,6 +54,10 @@ export function LangProvider({ children }: { children: ReactNode }) {
     window.addEventListener("kl-lang-change", handler);
     return () => window.removeEventListener("kl-lang-change", handler);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.lang = LANG_TO_HTML[lang] ?? "en";
+  }, [lang]);
 
   function setLang(l: Lang) {
     setLangState(l);

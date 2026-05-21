@@ -1,11 +1,27 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { useLang } from "@/contexts/LangContext";
+import { createClient } from "@/lib/supabase/client";
 
 type MockMode = "practice" | "exam";
+
+type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
+
+const STATE_NAMES: Record<StateCode, string> = {
+  WA:  "Western Australia",
+  NSW: "New South Wales",
+  VIC: "Victoria",
+  QLD: "Queensland",
+  SA:  "South Australia",
+  TAS: "Tasmania",
+  ACT: "Australian Capital Territory",
+  NT:  "Northern Territory",
+};
+
+const STATE_CODES = Object.keys(STATE_NAMES) as StateCode[];
 
 const PRACTICE_DESC = {
   en: "Explanation shown after each answer. Best for learning.",
@@ -23,8 +39,39 @@ export default function MockTestSetupPage() {
   const router = useRouter();
   const { uiLang: lang, s } = useLang();
 
-  function handleStart() {
-    sessionStorage.setItem("mock-config", JSON.stringify({ state: "WA", mode, questions: 30 }));
+  const [selectedState, setSelectedState] = useState<StateCode>("WA");
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state");
+      if (raw && STATE_CODES.includes(raw as StateCode)) {
+        setSelectedState(raw as StateCode);
+      }
+    } catch {
+      // localStorage unavailable (SSR guard — this component is "use client" but be safe)
+    }
+  }, []);
+
+  async function handleStart() {
+    const config = { state: selectedState, mode, questions: 30 };
+
+    // Always write to sessionStorage (same-tab flow — authenticated users)
+    sessionStorage.setItem("mock-config", JSON.stringify(config));
+
+    const supabase = createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+
+    if (!user) {
+      // Guest: persist config to localStorage so the session page can recover it
+      // after login redirects back to /mock-test/session
+      try {
+        localStorage.setItem("mock-config-saved", JSON.stringify(config));
+      } catch { /* noop */ }
+      // Redirect to login with return URL
+      router.push("/auth/login?redirect=/mock-test/session");
+      return;
+    }
+
     router.push("/mock-test/session");
   }
 
@@ -32,7 +79,7 @@ export default function MockTestSetupPage() {
     <main className="container section-pad">
       <div className="mock-setup-card">
         <h1>{s.mockTest}</h1>
-        <p className="mock-meta">Western Australia · 30 questions · Pass mark: 26/30</p>
+        <p className="mock-meta">{STATE_NAMES[selectedState]} · 30 questions · Pass mark: 26/30</p>
 
         <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>
           {s.studyMode}

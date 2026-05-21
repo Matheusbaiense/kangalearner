@@ -2008,6 +2008,79 @@ a:focus-visible,
 .user-panel-item.danger { color: #f87171; }
 .user-panel-item.danger:hover { background: rgba(248, 113, 113, 0.12); }
 
+/* ── Hamburger button ── */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+.nav-hamburger:hover { background: rgba(0,0,0,0.06); }
+.hamburger-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: currentColor;
+  border-radius: 2px;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+/* ── Mobile drawer ── */
+.mobile-nav-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 1100;
+  animation: fade-in 0.2s ease both;
+}
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(280px, 85vw);
+  background: var(--surface, #fff);
+  box-shadow: -4px 0 24px rgba(0,0,0,0.14);
+  z-index: 1101;
+  padding: 72px 24px 32px;
+  overflow-y: auto;
+  animation: slide-in-right 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.mobile-nav-drawer ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 4px; }
+.mobile-nav-link {
+  display: block;
+  padding: 12px 16px;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 1.05rem;
+  color: var(--text, #111);
+  text-decoration: none;
+  transition: background 0.15s;
+}
+.mobile-nav-link:hover,
+.mobile-nav-link.active { background: var(--surface-alt, rgba(0,0,0,0.06)); }
+.mobile-nav-link.active { font-weight: 700; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slide-in-right {
+  from { transform: translateX(100%); }
+  to   { transform: translateX(0); }
+}
+
+/* ── Show hamburger, hide main-nav on mobile ── */
+@media (max-width: 640px) {
+  .nav-hamburger { display: flex; }
+}
+
 /* Responsive nav */
 @media (max-width: 960px) {
   .site-header .nav-shell {
@@ -2938,24 +3011,43 @@ a:focus-visible,
   align-self: flex-start;
 }
 
-.onboarding-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(7, 26, 44, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
 .onboarding-card {
-  background: white;
-  border-radius: 20px;
-  padding: 32px;
-  max-width: 420px;
-  width: 90%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 9999;
+  width: 340px;
+  max-width: calc(100vw - 32px);
+  background: var(--surface, #fff);
+  border: 1px solid var(--border, rgba(0,0,0,0.08));
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 24px;
+  animation: ob-slide-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes ob-slide-in {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.ob-dismiss {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--muted, #888);
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: background 0.15s;
+}
+.ob-dismiss:hover {
+  background: var(--surface-alt, rgba(0,0,0,0.06));
+  color: var(--text, #333);
 }
 .onboarding-card h2 {
   margin: 0 0 8px;

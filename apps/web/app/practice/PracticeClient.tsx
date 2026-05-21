@@ -503,7 +503,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         <div className="page-header">
           <h1 className="page-title">{s.practice}</h1>
           <p className="page-sub">
-            {QS.length} questions · {CATEGORIES.length} topics · WA road rules
+            {QS.length} questions · {CATEGORIES.length} topics · {selectedState} road rules
           </p>
         </div>
 

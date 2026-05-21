@@ -9,6 +9,10 @@ type MockPayload = {
   source?: string;
 };
 
+const AU_STATES = new Set([
+  "WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT",
+]);
+
 export async function POST(request: NextRequest) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
   if (!await rateLimit(`mock-sessions:${ip}`, 20, 60_000)) {
@@ -48,6 +52,7 @@ export async function POST(request: NextRequest) {
 
   if (
     !payload?.state ||
+    !AU_STATES.has(payload.state) ||
     !Number.isFinite(payload.score) ||
     !Number.isFinite(payload.total) ||
     payload.total <= 0 ||

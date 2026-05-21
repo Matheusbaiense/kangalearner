@@ -2,6 +2,8 @@ import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
 
+const AU_STATES = new Set(["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"]);
+
 type BulkAttempt = {
   attempt_id: string;
   question_id: string;
@@ -59,15 +61,24 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_attempts", max: MAX_BULK }, { status: 400 });
   }
 
-  const rows = attempts
+  const validRows = attempts.filter(
+    (r) =>
+      r &&
+      typeof r.question_id === "string" &&
+      typeof r.state === "string" &&
+      AU_STATES.has(r.state) &&
+      typeof r.is_correct === "boolean"
+  );
+
+  if (validRows.length === 0) {
+    return NextResponse.json({ ok: true, inserted: 0 });
+  }
+
+  const rows = validRows
     .filter(
       (a) =>
-        a &&
         typeof a.attempt_id === "string" &&
-        a.attempt_id.trim().length > 0 &&
-        typeof a.question_id === "string" &&
-        typeof a.state === "string" &&
-        typeof a.is_correct === "boolean"
+        a.attempt_id.trim().length > 0
     )
     .map((a) => ({
       user_id: user.id,

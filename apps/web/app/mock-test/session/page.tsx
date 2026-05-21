@@ -52,7 +52,15 @@ export default function MockTestSessionPage() {
 
   useEffect(() => {
     try {
-      setRaw(sessionStorage.getItem("mock-config"));
+      let configRaw = sessionStorage.getItem("mock-config");
+      if (!configRaw) {
+        configRaw = localStorage.getItem("mock-config-saved");
+        if (configRaw) {
+          sessionStorage.setItem("mock-config", configRaw);
+          try { localStorage.removeItem("mock-config-saved"); } catch { /* noop */ }
+        }
+      }
+      setRaw(configRaw);
       setSessionRaw(sessionStorage.getItem("mock-session"));
     } catch {
       setRaw(null);
