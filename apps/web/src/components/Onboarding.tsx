@@ -14,6 +14,10 @@ const STATES = [
   { key: "NSW", label: "New South Wales", soon: true },
   { key: "VIC", label: "Victoria", soon: true },
   { key: "QLD", label: "Queensland", soon: true },
+  { key: "SA", label: "South Australia", soon: true },
+  { key: "TAS", label: "Tasmania", soon: true },
+  { key: "ACT", label: "ACT", soon: true },
+  { key: "NT", label: "Northern Territory", soon: true },
 ];
 
 const LANGS = [
@@ -77,10 +81,10 @@ export function Onboarding() {
         ✕
       </button>
       <h2>Welcome to KangaLearner 🦘</h2>
-      <p className="ob-sub">Quick setup — takes 5 seconds.</p>
+      <p className="ob-sub">Practice questions for your Australian driving learner test — personalised to your state and language.</p>
 
       <div className="ob-group">
-        <p className="ob-group-label">I&apos;m studying for:</p>
+        <p className="ob-group-label">Which state are you getting your licence in?</p>
         <div className="ob-option-row">
           {STATES.map((s) => (
             <button
@@ -98,7 +102,7 @@ export function Onboarding() {
       </div>
 
       <div className="ob-group">
-        <p className="ob-group-label">Study in:</p>
+        <p className="ob-group-label">Preferred language:</p>
         <div className="ob-option-row">
           {LANGS.map((l) => (
             <button

@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { useLang } from "@/contexts/LangContext";
 import { createClient } from "@/lib/supabase/client";
+import { SK } from "@/lib/storageKeys";
 
 type MockMode = "practice" | "exam";
 
@@ -39,18 +40,16 @@ export default function MockTestSetupPage() {
   const router = useRouter();
   const { uiLang: lang, s } = useLang();
 
-  const [selectedState, setSelectedState] = useState<StateCode>("WA");
-
-  useEffect(() => {
+  const [selectedState, setSelectedState] = useState<StateCode>(() => {
+    if (typeof window === "undefined") return "WA";
     try {
-      const raw = localStorage.getItem("kl-state-v2") ?? localStorage.getItem("kl-state");
-      if (raw && STATE_CODES.includes(raw as StateCode)) {
-        setSelectedState(raw as StateCode);
-      }
+      const raw = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy);
+      if (raw && STATE_CODES.includes(raw as StateCode)) return raw as StateCode;
     } catch {
-      // localStorage unavailable (SSR guard — this component is "use client" but be safe)
+      // localStorage unavailable
     }
-  }, []);
+    return "WA";
+  });
 
   async function handleStart() {
     const config = { state: selectedState, mode, questions: 30 };
@@ -67,7 +66,6 @@ export default function MockTestSetupPage() {
       try {
         localStorage.setItem("mock-config-saved", JSON.stringify(config));
       } catch { /* noop */ }
-      // Redirect to login with return URL
       router.push("/auth/login?redirect=/mock-test/session");
       return;
     }
