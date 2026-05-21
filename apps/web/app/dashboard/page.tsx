@@ -165,14 +165,14 @@ export default async function DashboardPage({
       .from("question_attempts")
       .select("category, is_correct, answered_at")
       .eq("user_id", user.id)
-      .order("created_at", { ascending: false })
+      .order("answered_at", { ascending: false })
       .limit(500),
     supabase!
       .from("question_attempts")
       .select("category, is_correct, answered_at")
       .eq("user_id", user.id)
       .eq("state", selectedState)
-      .order("created_at", { ascending: false })
+      .order("answered_at", { ascending: false })
       .limit(500),
     supabase!
       .from("question_attempts")
