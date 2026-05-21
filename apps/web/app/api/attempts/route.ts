@@ -16,8 +16,9 @@ type AttemptPayload = {
 };
 
 export async function POST(request: NextRequest) {
+  // IP guard — defence against unauthenticated flood (loose: accounts for shared NAT)
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`attempts:${ip}`, 60, 60_000)) {
+  if (!await rateLimit(`attempts:ip:${ip}`, 120, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -44,6 +45,11 @@ export async function POST(request: NextRequest) {
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+
+  // Per-user rate limit — each authenticated user gets their own bucket
+  if (!await rateLimit(`attempts:user:${user.id}`, 60, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
 
   let payload: AttemptPayload;
   try {

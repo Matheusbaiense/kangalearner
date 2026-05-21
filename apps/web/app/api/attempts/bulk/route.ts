@@ -15,8 +15,9 @@ type BulkAttempt = {
 };
 
 export async function POST(request: NextRequest) {
+  // IP guard — defence against unauthenticated flood
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`attempts-bulk:${ip}`, 10, 60_000)) {
+  if (!await rateLimit(`attempts-bulk:ip:${ip}`, 20, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -43,6 +44,11 @@ export async function POST(request: NextRequest) {
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+
+  // Per-user rate limit — bulk migration is a one-time event; 5 per minute is ample
+  if (!await rateLimit(`attempts-bulk:user:${user.id}`, 5, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
 
   let body: { attempts?: BulkAttempt[] };
   try {

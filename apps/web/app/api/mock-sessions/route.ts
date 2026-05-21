@@ -16,8 +16,9 @@ const AU_STATES = new Set([
 ]);
 
 export async function POST(request: NextRequest) {
+  // IP guard — defence against unauthenticated flood
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`mock-sessions:${ip}`, 20, 60_000)) {
+  if (!await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -44,6 +45,11 @@ export async function POST(request: NextRequest) {
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+
+  // Per-user rate limit — 20 mock sessions per minute per user is generous
+  if (!await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
 
   let payload: MockPayload;
   try {
