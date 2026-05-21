@@ -1,6 +1,10 @@
-# Deploys the root static SPA to GitHub Pages using the Vite build (`pnpm run site:build`).
-# Output: `dist-vite/` (includes `window.__KANGA_ENV__` from optional repo Variables — see docs).
-# After the first successful run, set: Settings → Pages → Build and deployment → Source: GitHub Actions.
+# SUSPENDED — pending S0 architectural decision (restore static site vs retire GitHub Pages).
+# The static source files (index.html, assets/) are not currently tracked in git.
+# Running this workflow via workflow_dispatch will fail at `pnpm run site:build`.
+# See: .claude/plan/kangalearner-full-inspection-2026-05-21.md — S0
+#
+# Original purpose: Deploys the root static SPA to GitHub Pages using the Vite build.
+# Output: `dist-vite/` (includes `window.__KANGA_ENV__` from optional repo Variables).
 
 name: Deploy Pages
 

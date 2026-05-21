@@ -68,19 +68,20 @@ jobs:
         if: steps.questions_changes.outputs.changed == 'true'
         run: pnpm run validate:questions
 
-      - name: Check questions.ts sync
-        run: |
-          pnpm gen:core-questions
-          git diff --exit-code packages/core/src/data/questions.ts || \
-            (echo "ERROR: questions.ts is out of sync. Run pnpm gen:core-questions" && exit 1)
+      # NOTE(S0): gen:core-questions reads assets/js/data/questions.js (static site source).
+      # That file is not tracked in git — step disabled until S0 (static vs Next) is resolved.
+      # - name: Check questions.ts sync
+      #   run: |
+      #     pnpm gen:core-questions
+      #     git diff --exit-code packages/core/src/data/questions.ts || exit 1
 
-      - name: Install Playwright Chromium
-        run: pnpm exec playwright install --with-deps chromium
-
-      - name: E2E smoke (static site)
-        run: pnpm run test:e2e
-        env:
-          CI: true
+      # NOTE(S0): E2E smoke tests target the static site root (index.html + assets/).
+      # Those files are not tracked in git — step disabled until S0 is resolved.
+      # Next.js E2E (apps/web) should replace this once Playwright is wired to Vercel preview.
+      # - name: Install Playwright Chromium
+      #   run: pnpm exec playwright install --with-deps chromium
+      # - name: E2E smoke (static site)
+      #   run: pnpm run test:e2e
 
       - name: Build
         run: pnpm run build

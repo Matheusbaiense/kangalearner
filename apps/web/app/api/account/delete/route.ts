@@ -1,16 +1,23 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { rateLimit } from "@/lib/rateLimit";
 
 /**
  * Deletes the authenticated user's account:
  * 1. Soft-deletes the profile row (sets deleted_at, anonymises display name).
  * 2. Hard-deletes the auth.users record via the admin API so the user cannot
- *    sign in again. Attempt data is preserved in the profiles row for
- *    analytics / GDPR recovery because the FK is set to SET NULL on user deletion.
+ *    sign in again.
+ * Note: question_attempts FK is ON DELETE SET NULL (rows retained for analytics).
+ *       mock_sessions FK is ON DELETE CASCADE (rows deleted with the auth user).
  */
-export async function DELETE() {
+export async function DELETE(req: NextRequest) {
+  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+  if (!await rateLimit(`account-delete:${ip}`, 5, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
+
   const cookieStore = await cookies();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
