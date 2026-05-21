@@ -1,5 +1,5 @@
 // Auto-generated via Supabase MCP — project: kangalearner-prod (olgogtaeifyxwzencilo)
-// Last regenerated: 2026-05-21 (post migration 016 — mock_sessions schema drift fix)
+// Last regenerated: 2026-05-21 (Sprint 5 — user_category_stats added manually; MCP schema lag)
 // Regenerate: npx supabase gen types typescript --project-id olgogtaeifyxwzencilo --schema public
 
 export type Json =
@@ -180,6 +180,37 @@ export type Database = {
           source?: string
           state?: string
           user_id?: string
+        }
+        Relationships: []
+      }
+      user_category_stats: {
+        Row: {
+          id: string
+          user_id: string
+          country: string
+          state: string
+          category: string
+          total_attempts: number
+          correct_attempts: number
+          last_attempt_at: string | null
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          country?: string
+          state: string
+          category: string
+          total_attempts?: number
+          correct_attempts?: number
+          last_attempt_at?: string | null
+          updated_at?: string
+        }
+        Update: {
+          total_attempts?: number
+          correct_attempts?: number
+          last_attempt_at?: string | null
+          updated_at?: string
         }
         Relationships: []
       }

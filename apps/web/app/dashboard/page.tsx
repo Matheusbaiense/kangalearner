@@ -6,6 +6,12 @@ import { AU_STATE_OPTIONS, normalizeAuState, type AuStateCode } from "./state-op
 
 export const metadata = { title: "Dashboard — KangaLearner" };
 
+type CatStatRow = {
+  category: string;
+  total_attempts: number;
+  correct_attempts: number;
+};
+
 /* ── Data types ── */
 interface AttemptRow {
   category: string | null;
@@ -89,17 +95,6 @@ function firstSearchParam(value: string | string[] | undefined): string | undefi
   return Array.isArray(value) ? value[0] : value;
 }
 
-function categoryStatsFor(attempts: Pick<AttemptRow, "category" | "is_correct">[]) {
-  const catMap: Record<string, { total: number; correct: number }> = {};
-  attempts.forEach((a) => {
-    const key = a.category ?? "Other";
-    if (!catMap[key]) catMap[key] = { total: 0, correct: 0 };
-    catMap[key].total++;
-    if (a.is_correct) catMap[key].correct++;
-  });
-  return Object.entries(catMap);
-}
-
 async function loadPreferredState(
   supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
   userId: string
@@ -151,9 +146,12 @@ export default async function DashboardPage({
 
   if (settingsUpsertError) console.error("Dashboard user settings upsert failed", errCode(settingsUpsertError));
 
+  const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString();
+
   const [
-    attemptsResult,
-    stateAttemptsResult,
+    catStatsResult,
+    stateCatStatsResult,
+    temporalAttemptsResult,
     attemptsCountResult,
     attemptsCorrectCountResult,
     stateAttemptsCountResult,
@@ -161,19 +159,26 @@ export default async function DashboardPage({
     sessionsResult,
     settingsResult
   ] = await Promise.all([
+    // Category stats — all states aggregated (replaces 500-row attempts query)
+    supabase!
+      .from("user_category_stats")
+      .select("category, total_attempts, correct_attempts")
+      .eq("user_id", user.id)
+      .eq("country", "AU"),
+    // Category stats — state-specific (replaces 500-row state-filtered query)
+    supabase!
+      .from("user_category_stats")
+      .select("category, total_attempts, correct_attempts")
+      .eq("user_id", user.id)
+      .eq("country", "AU")
+      .eq("state", selectedState),
+    // Temporal data — last 90 days only, for streak/weekly chart/today count
     supabase!
       .from("question_attempts")
-      .select("category, is_correct, answered_at")
+      .select("answered_at, is_correct")
       .eq("user_id", user.id)
-      .order("answered_at", { ascending: false })
-      .limit(500),
-    supabase!
-      .from("question_attempts")
-      .select("category, is_correct, answered_at")
-      .eq("user_id", user.id)
-      .eq("state", selectedState)
-      .order("answered_at", { ascending: false })
-      .limit(500),
+      .gte("answered_at", ninetyDaysAgo)
+      .order("answered_at", { ascending: false }),
     supabase!
       .from("question_attempts")
       .select("*", { count: "exact", head: true })
@@ -206,12 +211,16 @@ export default async function DashboardPage({
       .maybeSingle()
   ]);
 
-  const { data: attempts, error: attemptsError } = attemptsResult as {
-    data: AttemptRow[] | null;
+  const { data: userCatStats, error: catStatsError } = catStatsResult as {
+    data: CatStatRow[] | null;
     error: unknown;
   };
-  const { data: stateAttempts, error: stateAttemptsError } = stateAttemptsResult as {
-    data: AttemptRow[] | null;
+  const { data: stateUserCatStats, error: stateCatStatsError } = stateCatStatsResult as {
+    data: CatStatRow[] | null;
+    error: unknown;
+  };
+  const { data: temporalAttempts, error: temporalAttemptsError } = temporalAttemptsResult as {
+    data: Pick<AttemptRow, "answered_at" | "is_correct">[] | null;
     error: unknown;
   };
   const { count: attemptsCount, error: attemptsCountError } = attemptsCountResult as {
@@ -240,8 +249,9 @@ export default async function DashboardPage({
     error: unknown;
   };
 
-  if (attemptsError) console.error("Dashboard attempts lookup failed", errCode(attemptsError));
-  if (stateAttemptsError) console.error("Dashboard state attempts lookup failed", errCode(stateAttemptsError));
+  if (catStatsError) console.error("Dashboard category stats lookup failed", errCode(catStatsError));
+  if (stateCatStatsError) console.error("Dashboard state category stats lookup failed", errCode(stateCatStatsError));
+  if (temporalAttemptsError) console.error("Dashboard temporal attempts lookup failed", errCode(temporalAttemptsError));
   if (attemptsCountError) console.error("Dashboard attempts count failed", errCode(attemptsCountError));
   if (attemptsCorrectCountError) console.error("Dashboard correct attempts count failed", errCode(attemptsCorrectCountError));
   if (stateAttemptsCountError) console.error("Dashboard state attempts count failed", errCode(stateAttemptsCountError));
@@ -252,41 +262,22 @@ export default async function DashboardPage({
   if (settingsError) console.error("Dashboard user settings lookup failed", errCode(settingsError));
 
   /* ── Aggregate stats ── */
-  const allAttempts = attempts ?? [];
-  const totalAnswered = attemptsCount ?? allAttempts.length;
-  const totalCorrect = attemptsCorrectCount ?? allAttempts.filter((a) => a.is_correct).length;
+  // Counts come from exact COUNT queries — no raw-row fallback needed
+  const totalAnswered = attemptsCount ?? 0;
+  const totalCorrect = attemptsCorrectCount ?? 0;
   const overallPct = pct(totalCorrect, totalAnswered);
   const dailyGoal = Math.max(1, settings?.daily_goal ?? 10);
   const todayKey = dayKeyUtcMinus8(new Date());
+
+  // Temporal analytics — last 90 days of question_attempts
+  const temporalData = temporalAttempts ?? [];
   const answeredToday = todayKey
-    ? allAttempts.filter((attempt) => dayKeyUtcMinus8(attempt.answered_at) === todayKey).length
+    ? temporalData.filter((attempt) => dayKeyUtcMinus8(attempt.answered_at) === todayKey).length
     : 0;
   const dailyGoalPct = Math.min(100, pct(answeredToday, dailyGoal));
-  const streakDays = streakForAttempts(allAttempts);
+  const streakDays = streakForAttempts(temporalData);
 
-  const catStats = categoryStatsFor(allAttempts)
-    .sort((a, b) => b[1].total - a[1].total)
-    .slice(0, 10);
-
-  const weakTopics = categoryStatsFor(allAttempts)
-    .filter(([_, s]) => s.total >= 3)
-    .sort((a, b) => {
-      const ap = a[1].total > 0 ? a[1].correct / a[1].total : 0;
-      const bp = b[1].total > 0 ? b[1].correct / b[1].total : 0;
-      if (ap !== bp) return ap - bp;
-      return b[1].total - a[1].total;
-    })
-    .slice(0, 3);
-
-  const selectedStateAttempts = stateAttempts ?? [];
-  const stateTotalAnswered = stateAttemptsCount ?? selectedStateAttempts.length;
-  const stateTotalCorrect = stateAttemptsCorrectCount ?? selectedStateAttempts.filter((a) => a.is_correct).length;
-  const stateAccuracy = pct(stateTotalCorrect, stateTotalAnswered);
-  const stateCategoryStats = categoryStatsFor(selectedStateAttempts)
-    .sort((a, b) => b[1].total - a[1].total)
-    .slice(0, 10);
-
-  // Weekly bar chart — last 8 weeks
+  // Weekly bar chart — built from temporal data (last 90 days covers 8+ weeks)
   const WEEKS = 8;
   const weekBuckets: { label: string; total: number; correct: number }[] = [];
   const thisWeekStart = startOfWeekDayKey(todayKey ?? dayKeyUtcMinus8(new Date()) ?? "1970-01-01");
@@ -295,7 +286,7 @@ export default async function DashboardPage({
     const weekStart = shiftDayKey(thisWeekStart, -i * 7);
     const weekEnd = shiftDayKey(weekStart, 7);
     const label = weekLabel(weekStart);
-    const bucket = allAttempts.filter((a) => {
+    const bucket = temporalData.filter((a) => {
       const dayKey = dayKeyUtcMinus8(a.answered_at);
       return Boolean(dayKey && dayKey >= weekStart && dayKey < weekEnd);
     });
@@ -307,6 +298,40 @@ export default async function DashboardPage({
   }
 
   const maxWeekTotal = Math.max(...weekBuckets.map((b) => b.total), 1);
+
+  // Category stats — from pre-aggregated user_category_stats (no row-scan limit)
+  const catMap = new Map<string, { total: number; correct: number }>();
+  for (const row of userCatStats ?? []) {
+    const e = catMap.get(row.category) ?? { total: 0, correct: 0 };
+    catMap.set(row.category, {
+      total: e.total + row.total_attempts,
+      correct: e.correct + row.correct_attempts
+    });
+  }
+  const catStats = [...catMap.entries()]
+    .sort((a, b) => b[1].total - a[1].total)
+    .slice(0, 10);
+  const weakTopics = [...catMap.entries()]
+    .filter(([, s]) => s.total >= 3)
+    .sort((a, b) => {
+      const ap = a[1].total > 0 ? a[1].correct / a[1].total : 0;
+      const bp = b[1].total > 0 ? b[1].correct / b[1].total : 0;
+      if (ap !== bp) return ap - bp;
+      return b[1].total - a[1].total;
+    })
+    .slice(0, 3);
+
+  // State-specific stats
+  const stateTotalAnswered = stateAttemptsCount ?? 0;
+  const stateTotalCorrect = stateAttemptsCorrectCount ?? 0;
+  const stateAccuracy = pct(stateTotalCorrect, stateTotalAnswered);
+  const stateCategoryStats = (stateUserCatStats ?? [])
+    .map((row): [string, { total: number; correct: number }] => [
+      row.category,
+      { total: row.total_attempts, correct: row.correct_attempts }
+    ])
+    .sort((a, b) => b[1].total - a[1].total)
+    .slice(0, 10);
 
   const allSessions = sessions ?? [];
   const bestSession =
@@ -350,7 +375,7 @@ export default async function DashboardPage({
         stateCategoryStats={stateCategoryStats}
         weekBuckets={weekBuckets}
         maxWeekTotal={maxWeekTotal}
-        hasAttempts={allAttempts.length > 0}
+        hasAttempts={totalAnswered > 0}
         catStats={catStats}
         weakTopics={weakTopics}
         sessions={allSessions}
