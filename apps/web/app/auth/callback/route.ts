@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { SUPPORTED_COUNTRY } from "@kanga/core";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 
@@ -82,7 +83,7 @@ export async function GET(request: NextRequest) {
           (typeof user.user_metadata?.name === "string" && user.user_metadata.name) ||
           undefined,
         userId: user.id,
-        country: "AU"
+        country: SUPPORTED_COUNTRY
       });
 
       await supabaseAdmin
