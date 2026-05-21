@@ -176,7 +176,7 @@ return NextResponse.json({ error: "subscribe_failed" }, { status: 500 });
 Localizar linha ~18:
 ```sql
 update profiles set role = 'super_admin'
-where id = (select id from auth.users where email = 'baiensem@gmail.com' limit 1);
+where id = (select id from auth.users where email = 'owner@example.com' limit 1); -- email redacted
 ```
 
 Substituir por:
