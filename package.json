@@ -6,7 +6,6 @@
   "scripts": {
     "check:static-links": "node scripts/check-static-links.mjs",
     "smoke:static": "node scripts/smoke-static-site.mjs",
-    "prebuild": "node scripts/validate-questions.cjs && node scripts/convert-questions.cjs",
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
