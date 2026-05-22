@@ -21,9 +21,31 @@ const sora = Sora({
 export const viewport: Viewport = { themeColor: "#071A2C" };
 
 export const metadata: Metadata = {
-  title: "KangaLearner — Australia Learner Test Practice",
+  title: {
+    default: "KangaLearner — WA Learner Test Practice",
+    template: "%s | KangaLearner"
+  },
   description:
-    "Study Australian road rules by state. Practice learner test questions, take mock tests and track your progress.",
+    "Free WA learner licence test practice in English, Portuguese and Spanish. " +
+    "Covers all road rule topics: signs, speed limits, give way, alcohol laws and more. " +
+    "Used by immigrants in Perth preparing for the DoT learner test.",
+  keywords: [
+    "WA learner test",
+    "Western Australia driving test",
+    "Perth learner licence",
+    "learner test practice WA",
+    "driving test WA",
+    "learner licence WA",
+    "prova de habilitação WA",
+    "examen de manejo WA",
+    "practice learner test Perth",
+    "immigrant driving test Australia"
+  ],
+  authors: [{ name: "KangaLearner" }],
+  creator: "KangaLearner",
+  alternates: {
+    canonical: "https://kangalearner.com.au"
+  },
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
@@ -35,10 +57,23 @@ export const metadata: Metadata = {
     apple: "/icon-192.png"
   },
   openGraph: {
-    title: "KangaLearner — Australia Learner Test Practice",
+    title: "KangaLearner — Pass Your WA Learner Test",
     description:
-      "Study Australian road rules by state, practice unlimited questions and track your progress.",
-    type: "website"
+      "Practice all WA learner test topics in English, Portuguese or Spanish. Free mock test — same format as the real DoT test.",
+    type: "website",
+    url: "https://kangalearner.com.au",
+    siteName: "KangaLearner",
+    locale: "en_AU"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "KangaLearner — WA Learner Test Practice",
+    description: "Free WA learner test in 3 languages. Pass first time."
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true }
   }
 };
 
