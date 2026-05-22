@@ -419,6 +419,11 @@ export function LandingClient() {
             <div className="hero-eyebrow">{s.heroEyebrow}</div>
             <h1 className="hero-title">{s.heroTitle}</h1>
             <p className="hero-desc">{s.heroDesc}</p>
+            <div className="hero-badges">
+              <span className="hero-badge">✓ {s.heroBadge1}</span>
+              <span className="hero-badge">✓ {s.heroBadge2}</span>
+              <span className="hero-badge">✓ {s.heroBadge3}</span>
+            </div>
             <div className="hero-actions">
               <Link href="/practice" className="btn btn-primary">
                 <Target size={18} strokeWidth={2} aria-hidden="true" />

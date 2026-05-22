@@ -64,11 +64,16 @@ export const t = {
     learnAllTopics: "All practice questions →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Australian learner test practice",
-    heroTitle: "Prepare for your Australian learner test with confidence.",
-    heroDesc: "Study key road rules, practise authentic questions and take a 30-question mock test — in English, Portuguese or Spanish. WA available now.",
-    heroCta1: "Start practising now",
-    heroCta2: "Take the 30-question mock test",
+    heroEyebrow: "For immigrants in Western Australia",
+    heroTitle: "Pass your WA learner test — in your language.",
+    heroDesc:
+      "Practice every road rule topic tested by the DoT WA learner licence exam. " +
+      "English, Portuguese or Spanish. Free mock test included.",
+    heroCta1: "Start free practice",
+    heroCta2: "Try mock test",
+    heroBadge1: "Free forever",
+    heroBadge2: "WA road rules only",
+    heroBadge3: "English · Português · Español",
     heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
     // Features
     feat1Title: "Learn",
@@ -394,11 +399,16 @@ export const t = {
     learnAllTopics: "Todas as perguntas →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Prática para a prova de learner na Austrália",
-    heroTitle: "Prepare-se para a prova de learner na Austrália com confiança.",
-    heroDesc: "Estude as principais regras de trânsito, pratique questões autênticas e faça um simulado de 30 questões — em inglês, português ou espanhol. WA disponível agora.",
-    heroCta1: "Começar a praticar agora",
-    heroCta2: "Fazer simulado de 30 questões",
+    heroEyebrow: "Para imigrantes na Western Australia",
+    heroTitle: "Passe na prova de learner de WA — no seu idioma.",
+    heroDesc:
+      "Pratique todos os tópicos cobrados na prova de learner licence do DoT WA. " +
+      "Inglês, Português ou Espanhol. Simulado gratuito incluído.",
+    heroCta1: "Começar a praticar",
+    heroCta2: "Tentar o simulado",
+    heroBadge1: "Gratuito para sempre",
+    heroBadge2: "Regras de WA",
+    heroBadge3: "English · Português · Español",
     heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
     // Features
     feat1Title: "Aprender",
@@ -732,11 +742,16 @@ export const t = {
     learnAllTopics: "Todas las preguntas →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Práctica para el examen learner en Australia",
-    heroTitle: "Prepárate para el examen learner australiano con confianza.",
-    heroDesc: "Estudia las reglas de tránsito, practica preguntas auténticas y haz un simulacro de 30 preguntas — en inglés, portugués o español. WA disponible ahora.",
-    heroCta1: "Empezar a practicar ahora",
-    heroCta2: "Hacer simulacro de 30 preguntas",
+    heroEyebrow: "Para inmigrantes en Western Australia",
+    heroTitle: "Aprueba el examen learner de WA — en tu idioma.",
+    heroDesc:
+      "Practica todos los temas evaluados en el examen learner licence del DoT WA. " +
+      "Inglés, Portugués o Español. Simulacro gratis incluido.",
+    heroCta1: "Empezar a practicar",
+    heroCta2: "Probar el simulacro",
+    heroBadge1: "Gratis para siempre",
+    heroBadge2: "Reglas de tránsito WA",
+    heroBadge3: "English · Português · Español",
     heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
     // Features
     feat1Title: "Aprender",
