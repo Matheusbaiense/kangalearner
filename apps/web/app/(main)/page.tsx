@@ -12,7 +12,16 @@ export const metadata: Metadata = {
     description:
       "Practice real WA road-rule questions in English, Português or Español. Free mock tests with instant feedback.",
     type: "website",
+    url: "https://kangalearner.com.au",
     locale: "en_AU",
+    images: [
+      {
+        url: "/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "KangaLearner — Pass Your WA Learner Test",
+      },
+    ],
   },
 };
 

@@ -21,6 +21,7 @@ const sora = Sora({
 export const viewport: Viewport = { themeColor: "#071A2C" };
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://kangalearner.com.au"),
   title: {
     default: "KangaLearner — WA Learner Test Practice",
     template: "%s | KangaLearner"
@@ -49,7 +50,6 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon.png", type: "image/png", sizes: "32x32" },
       { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
       { url: "/icon-512.png", type: "image/png", sizes: "512x512" }
     ],
@@ -69,6 +69,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "KangaLearner — WA Learner Test Practice",
     description: "Free WA learner test in 3 languages. Pass first time."
+  },
+  verification: {
+    google: "VWJLwG7qyIDqJQqIS5mjS4y2qk_IHETiRbzcsgjpuSc"
   },
   robots: {
     index: true,
