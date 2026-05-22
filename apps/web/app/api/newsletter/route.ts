@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { createClient } from "@/lib/supabase/server";
 import { rateLimit } from "@/lib/rateLimit";
+import { resend, FROM_ADDRESS } from "@/lib/resend";
+import { newsletterConfirmHtml, newsletterConfirmSubject } from "@/lib/emails/newsletter-confirm";
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
@@ -34,6 +36,19 @@ export async function POST(req: NextRequest) {
       console.error("[newsletter]", error.code);
       return NextResponse.json({ ok: false, error: "subscribe_failed" }, { status: 500 });
     }
+
+    void (async () => {
+      try {
+        await resend.emails.send({
+          from: FROM_ADDRESS,
+          to: [email],
+          subject: newsletterConfirmSubject(),
+          html: newsletterConfirmHtml(),
+        });
+      } catch (err) {
+        console.error("[newsletter] confirmation email failed:", err);
+      }
+    })();
 
     return NextResponse.json({ ok: true });
   } catch {

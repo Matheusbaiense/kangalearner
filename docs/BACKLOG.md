@@ -14,7 +14,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 - [ ] **Rotas duplicadas de auth**: `/login` (AuthCard) ainda existe para compat; fluxos server (`dashboard`, `account`) redirecionam para **`/auth/login`**. _Opcional:_ redirect 308 de `/login` → `/auth/login` ou unificar UI.
 - [x] **`/terms` e `/privacy`**: conteúdo real (Sprint 10 T60) — Terms of Use + Privacy Policy (APPs, terceiros, WA law). _Follow-up:_ revisão por advogado antes de campanha paga.
 - [x] **Sprint 10 (M2/M3)**: landing How It Works + label testimonials beta; newsletter no footer (`NewsletterForm`); 5 tópicos learn; `/resources` comunidade/guias/jornada/checklist.
-- [ ] **Sprint 11 (M4)**: Resend ESP — confirmação newsletter + sequência onboarding (D+0/D+3/D+7).
+- [x] **Sprint 11 (M4)**: Resend SDK — welcome no primeiro login (`auth/callback`) + confirmação newsletter (`/api/newsletter`); `profiles.welcome_sent_at` (migration 017). _Follow-up Sprint 12:_ D+3/D+7, unsubscribe, primeiro envio newsletter.
 
 ## P2 — Dados e tipos
 

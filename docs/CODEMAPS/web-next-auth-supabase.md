@@ -53,6 +53,7 @@ apps/web/
 1. Browser → Supabase hosted → retorno `GET /auth/callback?code=…&next|redirect=…`
 2. `route.ts` cria `NextResponse.redirect(destino)` **primeiro**, depois `createServerClient` com `setAll` a escrever cookies **nessa mesma resposta**.
 3. Opcional: `supabaseAdmin` lê `profiles`; se sem `stripe_customer_id` e com `STRIPE_SECRET_KEY` + email, `createStripeCustomer` + `update` profile.
+4. Novos utilizadores (`!profile.stripe_customer_id` em memória): fire-and-forget `sendWelcomeEmail` via Resend (`src/lib/resend.ts`, `src/lib/emails/welcome.ts`); grava `profiles.welcome_sent_at`.
 
 ### Middleware
 
@@ -72,7 +73,8 @@ apps/web/
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client + server                                                         |
 | `SUPABASE_SERVICE_ROLE_KEY`     | `admin.ts`, callback                                                    |
 | `STRIPE_SECRET_KEY`             | `stripe.ts` (import dinâmico no callback se ausente evita crash em dev) |
-| `NEXT_PUBLIC_APP_URL`           | OAuth `redirectTo` / `emailRedirectTo` nas páginas `/auth/*`            |
+| `NEXT_PUBLIC_APP_URL`           | OAuth `redirectTo` / `emailRedirectTo` nas páginas `/auth/*`; links em templates email |
+| `RESEND_API_KEY`                | `src/lib/resend.ts` — transacional (welcome, newsletter confirm); `FROM_ADDRESS` = `noreply@kangalearner.com.au` |
 
 ## Schema SQL (referência)
 

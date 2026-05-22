@@ -3,6 +3,29 @@ import { NextResponse, type NextRequest } from "next/server";
 import { SUPPORTED_COUNTRY } from "@kanga/core";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
+import { resend, FROM_ADDRESS } from "@/lib/resend";
+import { welcomeEmailHtml, welcomeEmailSubject } from "@/lib/emails/welcome";
+
+async function sendWelcomeEmail(
+  userId: string,
+  email: string,
+  name?: string
+): Promise<void> {
+  try {
+    await resend.emails.send({
+      from: FROM_ADDRESS,
+      to: [email],
+      subject: welcomeEmailSubject(),
+      html: welcomeEmailHtml({ name }),
+    });
+    await supabaseAdmin
+      .from("profiles")
+      .update({ welcome_sent_at: new Date().toISOString() })
+      .eq("id", userId);
+  } catch (err) {
+    console.error("[auth/callback] welcome email failed:", err);
+  }
+}
 
 /**
  * OAuth / magic-link callback (INFRA-7).
@@ -93,6 +116,16 @@ export async function GET(request: NextRequest) {
     } catch (stripeError) {
       console.error("Stripe customer creation failed:", stripeError instanceof Error ? stripeError.message : String(stripeError));
     }
+  }
+
+  if (profile && !profile.stripe_customer_id && user.email) {
+    void sendWelcomeEmail(
+      user.id,
+      user.email,
+      (typeof user.user_metadata?.full_name === "string" && user.user_metadata.full_name) ||
+        (typeof user.user_metadata?.name === "string" && user.user_metadata.name) ||
+        undefined
+    );
   }
 
   return response;
