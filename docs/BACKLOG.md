@@ -12,8 +12,9 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 - [x] **PracticeClient** — `syncAttempt` em `useCallback` + dependências de `pick` corrigidas (warning `exhaustive-deps`).
 - [x] **`themeColor`** — migrado para `export const viewport` em `app/layout.tsx` (Next 15+).
 - [ ] **Rotas duplicadas de auth**: `/login` (AuthCard) ainda existe para compat; fluxos server (`dashboard`, `account`) redirecionam para **`/auth/login`**. _Opcional:_ redirect 308 de `/login` → `/auth/login` ou unificar UI.
-- [x] **`/terms` e `/privacy`**: páginas placeholder em `app/terms/page.tsx` e `app/privacy/page.tsx` (substituir por texto jurídico antes de lançamento público).
-- [ ] **Novas rotas placeholder**: implementar conteúdo real e/ou “coming soon” consistente para `/mock-test/*`, `/learn/*`, `/resources` (hoje são scaffolds).
+- [x] **`/terms` e `/privacy`**: conteúdo real (Sprint 10 T60) — Terms of Use + Privacy Policy (APPs, terceiros, WA law). _Follow-up:_ revisão por advogado antes de campanha paga.
+- [x] **Sprint 10 (M2/M3)**: landing How It Works + label testimonials beta; newsletter no footer (`NewsletterForm`); 5 tópicos learn; `/resources` comunidade/guias/jornada/checklist.
+- [ ] **Sprint 11 (M4)**: Resend ESP — confirmação newsletter + sequência onboarding (D+0/D+3/D+7).
 
 ## P2 — Dados e tipos
 
