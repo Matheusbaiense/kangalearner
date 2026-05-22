@@ -313,11 +313,15 @@ export function SiteNav() {
                 aria-expanded={userMenuOpen}
                 aria-haspopup="menu"
                 aria-label={s.account}
+                title={s.account}
               >
                 <span className="user-avatar" aria-hidden="true">
                   {user.avatarUrl
                     ? <img src={user.avatarUrl} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
                     : user.initials}
+                </span>
+                <span className="user-trigger-name" aria-hidden="true">
+                  {(user.name || user.email).split(/[\s@]/)[0]}
                 </span>
                 <span className="user-trigger-chevron" aria-hidden="true">▾</span>
               </button>
@@ -420,6 +424,17 @@ export function SiteNav() {
                 </li>
               );
             })}
+            {!authLoading && user && (
+              <li>
+                <Link
+                  href="/account"
+                  className={pathname === "/account" ? "mobile-nav-link active" : "mobile-nav-link"}
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  {s.settings}
+                </Link>
+              </li>
+            )}
           </ul>
           <div className="mobile-nav-state">
             <label className="state-control" aria-label="Select state">

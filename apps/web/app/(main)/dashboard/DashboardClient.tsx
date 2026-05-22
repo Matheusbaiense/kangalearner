@@ -74,11 +74,20 @@ export function DashboardClient({
   return (
     <div className="app-page">
       <div className="app-container app-section">
-        <div className="page-header">
-          <h1 className="page-title">
-            {s.dashHello}, {displayName}
-          </h1>
-          <p className="page-sub">{s.dashSub}</p>
+        <div className="page-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
+          <div>
+            <h1 className="page-title">
+              {s.dashHello}, {displayName}
+            </h1>
+            <p className="page-sub">{s.dashSub}</p>
+          </div>
+          <Link
+            href="/account"
+            className="btn-outline"
+            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, whiteSpace: "nowrap", flexShrink: 0 }}
+          >
+            ⚙ {s.settings}
+          </Link>
         </div>
 
         <div className="stat-grid">
@@ -429,10 +438,10 @@ export function DashboardClient({
         <p style={{ fontSize: ".75rem", color: "var(--muted)", marginTop: 32 }}>
           {s.dashSignedInAs} {userEmail} ·{" "}
           <Link
-            href="/auth/login?redirect=/dashboard"
+            href="/account"
             style={{ color: "var(--muted)", textDecoration: "underline" }}
           >
-            {s.dashSignOutFromNav}
+            {s.settings}
           </Link>
         </p>
       </div>

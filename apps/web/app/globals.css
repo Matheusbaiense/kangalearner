@@ -1922,6 +1922,16 @@ a:focus-visible,
   transition: opacity 0.15s ease;
 }
 .user-trigger:hover { opacity: 0.85; }
+.user-trigger-name {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 96px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1;
+}
 .user-trigger-chevron {
   font-size: 0.65rem;
   color: rgba(255, 255, 255, 0.7);
@@ -2112,6 +2122,10 @@ a:focus-visible,
     display: none;
   }
   .lang-trigger .lang-arrow {
+    display: none;
+  }
+  /* On small screens hide user first-name in avatar button */
+  .user-trigger-name {
     display: none;
   }
   /* Tighten nav-controls gap */
