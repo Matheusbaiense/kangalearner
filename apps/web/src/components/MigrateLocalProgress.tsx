@@ -14,8 +14,8 @@ export function MigrateLocalProgress() {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(SESSION_FLAG)) return;
 
-    void import("../lib/migrateLocalAttempts").then(({ buildAttemptsFromLocalStorage, postAttemptsBulk }) => {
-      const attempts = buildAttemptsFromLocalStorage();
+    void import("../lib/migrateLocalAttempts").then(async ({ buildAttemptsFromLocalStorage, postAttemptsBulk }) => {
+      const attempts = await buildAttemptsFromLocalStorage();
       if (attempts.length === 0) {
         sessionStorage.setItem(SESSION_FLAG, "1");
         return;

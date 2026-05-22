@@ -1,4 +1,4 @@
-import { QUESTIONS } from "@kanga/core";
+import { loadQuestions } from "@/hooks/useQuestions";
 
 const STORAGE_KEY = "kl-answered-by-state-v2";
 
@@ -13,7 +13,7 @@ export type BulkAttemptPayload = {
 };
 
 /** Build deduplicated attempt rows from the static-site localStorage blob. */
-export function buildAttemptsFromLocalStorage(): BulkAttemptPayload[] {
+export async function buildAttemptsFromLocalStorage(): Promise<BulkAttemptPayload[]> {
   if (typeof window === "undefined") return [];
   const raw = window.localStorage.getItem(STORAGE_KEY);
   if (!raw) return [];
@@ -28,6 +28,7 @@ export function buildAttemptsFromLocalStorage(): BulkAttemptPayload[] {
     return [];
   }
 
+  const QUESTIONS = await loadQuestions();
   const catById = new Map<string, string>();
   for (const q of QUESTIONS) {
     catById.set(q.id, q.cat);
@@ -64,7 +65,7 @@ export async function postAttemptsBulk(attempts: BulkAttemptPayload[]): Promise<
 }
 
 export async function runLocalAttemptMigration(): Promise<boolean> {
-  const attempts = buildAttemptsFromLocalStorage();
+  const attempts = await buildAttemptsFromLocalStorage();
   if (attempts.length === 0) return true;
   return postAttemptsBulk(attempts);
 }
