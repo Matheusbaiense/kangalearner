@@ -160,15 +160,16 @@ export function SiteNav() {
     const fallbackTimer = setTimeout(() => setAuthLoading(false), 4000);
 
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      clearTimeout(fallbackTimer);
       if (session?.user) {
         await buildNavUser(session.user);
       } else {
         setUser(null);
       }
-      // Set loading false AFTER async work completes — prevents the flash where
-      // authLoading=false + user=null causes "Sign In" to appear before the
-      // profile query resolves.
+      // Clear fallback AFTER async work — the timer must also cover a slow/hanging
+      // buildNavUser() query, not just the case where the subscription never fires.
+      // If buildNavUser() stalls past 4 s the fallback fires first (shows "Sign In"),
+      // then when the query eventually resolves setUser() updates the nav.
+      clearTimeout(fallbackTimer);
       setAuthLoading(false);
     });
 
