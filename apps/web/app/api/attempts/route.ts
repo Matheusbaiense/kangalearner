@@ -2,8 +2,9 @@ import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
+import { AU_STATE_OPTIONS } from "@kanga/core";
 
-const AU_STATES = ["NSW", "VIC", "QLD", "WA", "SA", "TAS", "ACT", "NT"];
+const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 type AttemptPayload = {
   attempt_id?: string;
@@ -62,7 +63,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
-  if (!AU_STATES.includes(payload.state)) {
+  if (!AU_STATES.has(payload.state)) {
     return NextResponse.json({ error: "invalid_state" }, { status: 400 });
   }
 

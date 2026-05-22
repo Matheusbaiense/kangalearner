@@ -5,18 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang, UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
-
-/* ── Constants ── */
-const AU_STATES = [
-  { code: "WA",  name: "Western Australia" },
-  { code: "NSW", name: "New South Wales" },
-  { code: "VIC", name: "Victoria" },
-  { code: "QLD", name: "Queensland" },
-  { code: "SA",  name: "South Australia" },
-  { code: "TAS", name: "Tasmania" },
-  { code: "ACT", name: "Australian Capital Territory" },
-  { code: "NT",  name: "Northern Territory" },
-];
+import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const AU_TIMEZONES = [
   { value: "Australia/Perth",     label: "Perth",     offset: "GMT +8" },
@@ -47,7 +36,7 @@ function normalizePreferredLang(value: unknown): PreferredLang {
 function normalizeState(value: unknown): string {
   if (typeof value !== "string") return "WA";
   const upper = value.toUpperCase();
-  return AU_STATES.some((s) => s.code === upper) ? upper : "WA";
+  return AU_STATE_OPTIONS.some((s) => s.code === upper) ? upper : "WA";
 }
 
 /* ── Avatar initials ── */
@@ -514,7 +503,7 @@ export default function AccountPage() {
                       value={state}
                       onChange={(e) => setStateVal(e.target.value)}
                     >
-                      {AU_STATES.map((s) => (
+                      {AU_STATE_OPTIONS.map((s) => (
                         <option key={s.code} value={s.code}>
                           {s.name} ({s.code})
                         </option>

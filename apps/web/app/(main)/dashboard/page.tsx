@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { SUPPORTED_COUNTRY } from "@kanga/core";
-import { createSupabaseServerClient } from "../../src/lib/supabase/server";
-import { MigrateLocalProgress } from "../../src/components/MigrateLocalProgress";
+import { createClient } from "@/lib/supabase/server";
+import { MigrateLocalProgress } from "@/components/MigrateLocalProgress";
 import { DashboardClient } from "./DashboardClient";
 import { AU_STATE_OPTIONS, normalizeAuState, type AuStateCode } from "./state-options";
 
@@ -97,7 +97,7 @@ function firstSearchParam(value: string | string[] | undefined): string | undefi
 }
 
 async function loadPreferredState(
-  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
+  supabase: Awaited<ReturnType<typeof createClient>>,
   userId: string
 ): Promise<AuStateCode> {
   const { data } = await supabase
@@ -117,9 +117,9 @@ export default async function DashboardPage({
   const params = searchParams ? await searchParams : {};
 
   /* ── Auth check ── */
-  let supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>;
+  let supabase: Awaited<ReturnType<typeof createClient>>;
   try {
-    supabase = await createSupabaseServerClient();
+    supabase = await createClient();
   } catch {
     redirect("/auth/login?redirect=/dashboard");
   }

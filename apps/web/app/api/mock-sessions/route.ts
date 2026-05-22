@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
-import { SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
+import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
 
 type MockPayload = {
   state: string;
@@ -11,9 +11,7 @@ type MockPayload = {
   source?: string;
 };
 
-const AU_STATES = new Set([
-  "WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT",
-]);
+const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood

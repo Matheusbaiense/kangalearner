@@ -18,11 +18,18 @@ function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/dashboard");
+  const oauthErrorParam = searchParams.get("error");
+  const oauthErrorMsg = oauthErrorParam
+    ? oauthErrorParam === "oauthcancelled"
+      ? "Google sign-in was cancelled. Please try again."
+      : `Sign-in failed: ${oauthErrorParam.replace(/_/g, " ")}.`
+    : null;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const effectiveError = error ?? oauthErrorMsg;
   const { s } = useLang();
 
   const supabase = useMemo(() => {
@@ -115,6 +122,12 @@ function LoginForm() {
           {s.continueWithGoogle}
         </button>
 
+        {effectiveError && (
+          <div className="auth-error" role="alert" style={{ marginTop: 12 }}>
+            {effectiveError}
+          </div>
+        )}
+
         <div className="auth-divider">
           <span>or</span>
         </div>
@@ -155,12 +168,6 @@ function LoginForm() {
               minLength={8}
             />
           </div>
-
-          {error && (
-            <div className="auth-error" role="alert">
-              {error}
-            </div>
-          )}
 
           <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
             {loading ? s.authSigningIn : s.signIn}

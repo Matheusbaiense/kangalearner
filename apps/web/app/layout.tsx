@@ -1,10 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
-import { Suspense } from "react";
 import { Nunito, Sora } from "next/font/google";
-import { SiteNav } from "@/components/layout/SiteNav";
-import { Footer } from "@/components/layout/Footer";
-import { Onboarding } from "@/components/Onboarding";
 import { LangProvider } from "@/contexts/LangContext";
 import "./globals.css";
 
@@ -22,9 +18,7 @@ const sora = Sora({
   display: "swap"
 });
 
-export const viewport: Viewport = {
-  themeColor: "#071A2C"
-};
+export const viewport: Viewport = { themeColor: "#071A2C" };
 
 export const metadata: Metadata = {
   title: "KangaLearner — Australia Learner Test Practice",
@@ -33,12 +27,12 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: "/favicon.svg", type: "image/svg+xml" },
-      { url: "/icon.png",    type: "image/png", sizes: "32x32" },
-      { url: "/icon-192.png",type: "image/png", sizes: "192x192" },
-      { url: "/icon-512.png",type: "image/png", sizes: "512x512" },
+      { url: "/icon.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-192.png", type: "image/png", sizes: "192x192" },
+      { url: "/icon-512.png", type: "image/png", sizes: "512x512" }
     ],
     shortcut: "/favicon.svg",
-    apple: "/icon-192.png",
+    apple: "/icon-192.png"
   },
   openGraph: {
     title: "KangaLearner — Australia Learner Test Practice",
@@ -52,14 +46,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${nunito.variable} ${sora.variable}`} suppressHydrationWarning>
       <body>
-        <LangProvider>
-          <Suspense fallback={<header style={{ height: 60 }} aria-hidden="true" />}>
-            <SiteNav />
-          </Suspense>
-          <Onboarding />
-          {children}
-          <Footer />
-        </LangProvider>
+        <LangProvider>{children}</LangProvider>
       </body>
     </html>
   );

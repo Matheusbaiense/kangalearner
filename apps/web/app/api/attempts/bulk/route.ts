@@ -1,8 +1,9 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
+import { AU_STATE_OPTIONS } from "@kanga/core";
 
-const AU_STATES = new Set(["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"]);
+const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 type BulkAttempt = {
   attempt_id: string;
