@@ -36,37 +36,14 @@ jobs:
       - name: Format check (static root)
         run: pnpm run format:check
 
-      - name: Detect questions data changes
-        id: questions_changes
-        shell: bash
+      - name: Validate questions (core)
         run: |
-          set -euo pipefail
-          if [ "${{ github.event_name }}" = "pull_request" ]; then
-            base_sha="${{ github.event.pull_request.base.sha }}"
-            head_sha="${{ github.event.pull_request.head.sha }}"
-          else
-            base_sha="${{ github.event.before }}"
-            head_sha="${{ github.sha }}"
+          COUNT=$(grep -c '"id":' packages/core/src/data/questions.ts)
+          echo "Questions in core: $COUNT"
+          if [ "$COUNT" -lt 50 ]; then
+            echo "ERROR: Expected at least 50 questions, got $COUNT"
+            exit 1
           fi
-
-          if [ -z "$base_sha" ] || [ "$base_sha" = "0000000000000000000000000000000000000000" ]; then
-            base_sha="$(git rev-parse HEAD~1)"
-            head_sha="$(git rev-parse HEAD)"
-          fi
-
-          echo "Diff range: $base_sha..$head_sha"
-          changed="$(git diff --name-only "$base_sha" "$head_sha" || true)"
-          echo "$changed"
-
-          if echo "$changed" | grep -E '^assets/js/data/' >/dev/null 2>&1; then
-            echo "changed=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changed=false" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: Validate questions (when data changes)
-        if: steps.questions_changes.outputs.changed == 'true'
-        run: pnpm run validate:questions
 
       # NOTE: Static site E2E and core-questions sync steps removed (2026-05-21).
       # GitHub Pages retired — Vercel is the canonical platform. Next.js E2E to be

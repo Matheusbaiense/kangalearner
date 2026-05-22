@@ -7,7 +7,9 @@
     "build": "turbo run build",
     "dev": "turbo run dev --parallel",
     "lint": "turbo run lint",
-    "format": "prettier -w ."
+    "format": "prettier -w .",
+    "format:check": "prettier --check \"apps/web/**/*.{ts,tsx,css}\" \"packages/**/*.{ts,tsx}\" --no-error-on-unmatched-pattern",
+    "gen:questions-json": "pnpm exec tsx scripts/gen-questions-json.ts"
   },
   "pnpm": {
     "overrides": {
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "prettier": "^3.3.3",
+    "tsx": "^4.19.3",
     "turbo": "^2.9.14"
   }
 }
