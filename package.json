@@ -9,7 +9,6 @@
     "lint": "turbo run lint",
     "format": "prettier -w .",
     "format:check": "prettier --check \"apps/web/**/*.{ts,tsx,css}\" \"packages/**/*.{ts,tsx}\" --no-error-on-unmatched-pattern",
-    "gen:questions-json": "pnpm exec tsx scripts/gen-questions-json.ts",
     "test": "pnpm --filter @kanga/web run test"
   },
   "pnpm": {
@@ -21,7 +20,8 @@
       "@xmldom/xmldom": ">=0.8.13",
       "fast-xml-parser": ">=5.7.0",
       "tar": ">=7.5.11",
-      "send": ">=0.19.0"
+      "send": ">=0.19.0",
+      "uuid": ">=11.1.1"
     }
   },
   "devDependencies": {
