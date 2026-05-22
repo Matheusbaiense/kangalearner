@@ -81,6 +81,38 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${nunito.variable} ${sora.variable}`} suppressHydrationWarning>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebApplication",
+              name: "KangaLearner",
+              url: "https://kangalearner.com.au",
+              description:
+                "WA learner driving test practice in English, Portuguese and Spanish. " +
+                "Covers all road rule topics aligned with the DoT WA Learner Licence test.",
+              applicationCategory: "EducationApplication",
+              operatingSystem: "Web",
+              offers: {
+                "@type": "Offer",
+                price: "0",
+                priceCurrency: "AUD",
+                availability: "https://schema.org/InStock"
+              },
+              inLanguage: ["en", "pt", "es"],
+              areaServed: {
+                "@type": "AdministrativeArea",
+                name: "Western Australia",
+                containedInPlace: { "@type": "Country", name: "Australia" }
+              },
+              audience: {
+                "@type": "Audience",
+                audienceType: "Immigrants and new residents in Western Australia"
+              }
+            })
+          }}
+        />
         <LangProvider>{children}</LangProvider>
       </body>
     </html>
