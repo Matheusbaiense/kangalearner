@@ -1,107 +1,46 @@
-"use client";
-import Link from "next/link";
-import { useParams } from "next/navigation";
 import { notFound } from "next/navigation";
-import { IconBadge } from "@/components/ui/IconBadge";
-import { Icons } from "@/components/icons";
-import { useLang } from "@/contexts/LangContext";
-import { findTopic } from "@/lib/learnTopics";
-import type { UiLang } from "@/lib/i18n";
-import { tx } from "@/lib/i18n";
+import type { Metadata } from "next";
+import { findTopic, LEARN_TOPICS } from "@/lib/learnTopics";
+import { TopicPageClient } from "./TopicPageClient";
 
-export default function TopicPage() {
-  const params = useParams();
-  const slug = typeof params.slug === "string" ? params.slug : "";
+interface Props {
+  params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { slug } = await params;
   const topic = findTopic(slug);
 
-  const { uiLang: lang, s } = useLang();
-
   if (!topic) {
-    notFound();
-    return null;
+    return { title: "Topic not found" };
   }
 
-  const practiceHref = topic.practiceCategory
-    ? `/practice?category=${encodeURIComponent(topic.practiceCategory)}`
-    : "/practice";
+  const title = topic.title.en;
+  const summary = topic.summary.en;
 
-  return (
-    <main className="container section-pad">
-      <div className="mock-setup-card" style={{ maxWidth: 760 }}>
-        {/* Back link */}
-        <Link href="/learn" className="btn btn-secondary" style={{ marginBottom: 20, display: "inline-block" }}>
-          {s.learnBack}
-        </Link>
+  return {
+    title: `${title} — WA Learner Test`,
+    description: `${summary.slice(0, 155)}`,
+    alternates: {
+      canonical: `https://kangalearner.com.au/learn/${slug}`
+    },
+    openGraph: {
+      title: `${title} — WA Learner Test Guide`,
+      description: `${summary.slice(0, 155)}`,
+      url: `https://kangalearner.com.au/learn/${slug}`
+    }
+  };
+}
 
-        {/* Header */}
-        <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
-          <IconBadge icon={Icons[topic.icon]} tone="brand" className="topic-icon" />
-          <h1 style={{ fontSize: "1.4rem", fontWeight: 850, lineHeight: 1.2, margin: 0 }}>
-            {tx(topic.title, lang)}
-          </h1>
-        </div>
+export function generateStaticParams() {
+  return LEARN_TOPICS.map((t) => ({ slug: t.slug }));
+}
 
-        {/* Summary */}
-        <p style={{ lineHeight: 1.6, marginBottom: 24 }}>{tx(topic.summary, lang)}</p>
+export default async function TopicPage({ params }: Props) {
+  const { slug } = await params;
+  const topic = findTopic(slug);
 
-        {/* Key Rules */}
-        <section style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnKeyRules}</h2>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
-            {topic.keyRules.map((r, i) => (
-              <li key={i}>{tx(r, lang)}</li>
-            ))}
-          </ul>
-        </section>
+  if (!topic) notFound();
 
-        {/* Common Mistakes */}
-        <section style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnMistakes}</h2>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
-            {topic.mistakes.map((m, i) => (
-              <li key={i}>{tx(m, lang)}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Practical Example */}
-        <section
-          style={{
-            marginBottom: 24,
-            padding: "14px 16px",
-            borderRadius: 12,
-            background: "rgba(15,23,42,0.04)",
-          }}
-        >
-          <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 8 }}>{s.learnExample}</h2>
-          <p style={{ lineHeight: 1.6, margin: 0 }}>{tx(topic.example, lang)}</p>
-        </section>
-
-        {/* Quick Check */}
-        <section style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnQuickCheck}</h2>
-          <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
-            {topic.quickCheck.map((q, i) => (
-              <li key={i}>{tx(q, lang)}</li>
-            ))}
-          </ul>
-        </section>
-
-        {/* Source */}
-        <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 24 }}>
-          <strong>{s.learnSource}:</strong> {tx(topic.source, lang)}
-        </p>
-
-        {/* CTA buttons */}
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <Link href={practiceHref} className="btn btn-primary">
-            {s.learnPractice}
-          </Link>
-          <Link href="/practice" className="btn btn-secondary">
-            {s.learnAllTopics}
-          </Link>
-        </div>
-      </div>
-    </main>
-  );
+  return <TopicPageClient topic={topic} />;
 }
