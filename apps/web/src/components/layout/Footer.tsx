@@ -2,44 +2,23 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { NewsletterForm } from "./NewsletterForm";
 
 const COMPANY_LINKS = [
-  { href: "/about",   en: "About",   pt: "Sobre",   es: "Acerca de" },
-  { href: "/contact", en: "Contact", pt: "Contato",  es: "Contacto" },
+  { href: "/about", en: "About", pt: "Sobre", es: "Acerca de" },
+  { href: "/contact", en: "Contact", pt: "Contato", es: "Contacto" },
 ] as const;
 
 const LEGAL_LINKS = [
-  { href: "/terms",   en: "Terms of Service",   pt: "Termos de Uso",          es: "Términos de Servicio" },
-  { href: "/privacy", en: "Privacy Policy",     pt: "Política de Privacidade", es: "Política de Privacidad" },
+  { href: "/terms", en: "Terms of Service", pt: "Termos de Uso", es: "Términos de Servicio" },
+  { href: "/privacy", en: "Privacy Policy", pt: "Política de Privacidade", es: "Política de Privacidad" },
 ] as const;
-
-type NewsletterStatus = "idle" | "loading" | "success" | "error";
 
 export function Footer() {
   const { uiLang, s } = useLang();
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<NewsletterStatus>("idle");
-
-  async function handleSubscribe(e: React.FormEvent) {
-    e.preventDefault();
-    if (!email || status === "loading" || status === "success") return;
-    setStatus("loading");
-    try {
-      const res = await fetch("/api/newsletter", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-      const json = await res.json().catch(() => ({}));
-      setStatus(json?.ok ? "success" : "error");
-    } catch {
-      setStatus("error");
-    }
-  }
 
   function pick(link: { en: string; pt: string; es: string }, lang: UiLang): string {
     return link[lang] ?? link.en;
@@ -100,34 +79,10 @@ export function Footer() {
         </div>
 
         {/* ── Col 5: Newsletter ── */}
-        <div>
-          <p className="footer-col-title">{s.footerNewsletterTitle}</p>
-          <p className="footer-newsletter-sub">{s.footerNewsletterSub}</p>
-          <form className="newsletter-form" onSubmit={handleSubscribe} noValidate>
-            <input
-              className="newsletter-input"
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder={s.newsletterPlaceholder}
-              required
-              disabled={status === "loading" || status === "success"}
-              aria-label={s.newsletterPlaceholder}
-            />
-            <button
-              className="newsletter-btn"
-              type="submit"
-              disabled={status === "loading" || status === "success"}
-            >
-              {status === "loading" ? "…" : s.newsletterBtn}
-            </button>
-          </form>
-          {status === "success" && (
-            <p className="newsletter-msg success">{s.newsletterSuccess}</p>
-          )}
-          {status === "error" && (
-            <p className="newsletter-msg error">{s.newsletterError}</p>
-          )}
+        <div className="footer-newsletter-block">
+          <h3 className="footer-newsletter-heading">{s.footerNewsletterTitle}</h3>
+          <p className="footer-newsletter-desc">{s.footerNewsletterDesc}</p>
+          <NewsletterForm />
         </div>
 
       </div>
