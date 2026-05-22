@@ -1,5 +1,5 @@
 // Auto-generated via Supabase MCP — project: kangalearner-prod (olgogtaeifyxwzencilo)
-// Last regenerated: 2026-05-22 (Sprint 6 — MCP + migrations 007-009; user_category_stats retained)
+// Last regenerated: 2026-05-22 (Sprint 11 — welcome_sent_at on profiles; full schema retained)
 // Regenerate: npx supabase gen types typescript --project-id olgogtaeifyxwzencilo --schema public
 
 export type Json =
@@ -110,6 +110,7 @@ export type Database = {
           role: string
           stripe_customer_id: string | null
           updated_at: string
+          welcome_sent_at: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -127,6 +128,7 @@ export type Database = {
           role?: string
           stripe_customer_id?: string | null
           updated_at?: string
+          welcome_sent_at?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -144,6 +146,7 @@ export type Database = {
           role?: string
           stripe_customer_id?: string | null
           updated_at?: string
+          welcome_sent_at?: string | null
         }
         Relationships: []
       }
