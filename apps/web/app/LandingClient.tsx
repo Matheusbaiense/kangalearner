@@ -80,7 +80,7 @@ const TESTIMONIALS = [
     },
   },
   {
-    name: "Linh N.", state: "VIC", country: "vn",
+    name: "Linh N.", state: "WA", country: "vn",
     quote: {
       en: "I was nervous about studying in a second language, but the clear explanations made everything click. Passed easily!",
       pt: "Estava nervosa em estudar em um segundo idioma, mas as explicações claras fizeram tudo fazer sentido. Passei com facilidade!",
@@ -88,7 +88,7 @@ const TESTIMONIALS = [
     },
   },
   {
-    name: "Priya S.", state: "NSW", country: "in",
+    name: "Priya S.", state: "WA", country: "in",
     quote: {
       en: "I had failed twice before. After two weeks on KangaLearner the explanations finally made the rules stick. Third time's the charm!",
       pt: "Havia reprovado duas vezes antes. Após duas semanas no KangaLearner as explicações finalmente fixaram as regras. Terceira é a sorte!",
@@ -104,7 +104,7 @@ const TESTIMONIALS = [
     },
   },
   {
-    name: "Mei L.", state: "QLD", country: "cn",
+    name: "Mei L.", state: "WA", country: "cn",
     quote: {
       en: "The practice mode shows exactly where you're weak. I focused on road signs and went from 60% to 93% in one week.",
       pt: "O modo de prática mostra exatamente onde você é fraco. Foquei nos sinais e fui de 60% para 93% em uma semana.",
