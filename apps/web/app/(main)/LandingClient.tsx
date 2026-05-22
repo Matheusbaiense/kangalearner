@@ -173,7 +173,7 @@ function SlideLearn({ lang }: { lang: UiLang }) {
     { Icon: ArrowLeftRight, label: { en: "Lanes",         pt: "Faixas",           es: "Carriles" } },
     { Icon: ShieldCheck,    label: { en: "Road Safety",   pt: "Segurança",        es: "Seguridad" } },
   ];
-  const hint = { en: "6 topics · 200+ questions", pt: "6 tópicos · 200+ perguntas", es: "6 temas · 200+ preguntas" };
+  const hint = { en: "19 topics · 200+ questions", pt: "19 tópicos · 200+ perguntas", es: "19 temas · 200+ preguntas" };
   return (
     <>
       <div className="slide-header">
@@ -357,6 +357,32 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
   );
 }
 
+/* ── How It Works (M2.2) ── */
+function HowItWorks() {
+  const { s } = useLang();
+  const steps = [
+    { num: "①", title: s.howStep1Title, desc: s.howStep1DescCard, href: "/learn" },
+    { num: "②", title: s.howStep2Title, desc: s.howStep2DescCard, href: "/mock-test" },
+    { num: "③", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" },
+  ];
+  return (
+    <section className="how-it-works section-pad">
+      <div className="container">
+        <h2 className="section-title">{s.howItWorksTitle}</h2>
+        <div className="how-steps">
+          {steps.map((step) => (
+            <Link key={step.num} href={step.href} className="how-step-card">
+              <span className="how-step-num">{step.num}</span>
+              <h3 className="how-step-title">{step.title}</h3>
+              <p className="how-step-desc">{step.desc}</p>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ── Testimonial Carousel ── */
 function TestimonialCarousel({ lang }: { lang: UiLang }) {
   const [idx, setIdx] = useState(0);
@@ -445,34 +471,7 @@ export function LandingClient() {
         </div>
       </section>
 
-      {/* ── How it works strip ───────────────────────── */}
-      <section className="how-strip">
-        <div className="how-strip-inner">
-          <div className="how-step">
-            <span className="how-step-num">1</span>
-            <div className="how-step-body">
-              <span className="how-step-label">{s.howStep1Label}</span>
-              <span className="how-step-desc">{s.howStep1Desc}</span>
-            </div>
-          </div>
-          <div className="how-arrow" aria-hidden="true">→</div>
-          <div className="how-step">
-            <span className="how-step-num">2</span>
-            <div className="how-step-body">
-              <span className="how-step-label">{s.howStep2Label}</span>
-              <span className="how-step-desc">{s.howStep2Desc}</span>
-            </div>
-          </div>
-          <div className="how-arrow" aria-hidden="true">→</div>
-          <div className="how-step">
-            <span className="how-step-num">3</span>
-            <div className="how-step-body">
-              <span className="how-step-label">{s.howStep3Label}</span>
-              <span className="how-step-desc">{s.howStep3Desc}</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HowItWorks />
 
       {/* ── Feature cards ────────────────────────────── */}
       <section className="feature-row">
@@ -561,9 +560,10 @@ export function LandingClient() {
       </section>
 
       {/* ── Testimonials ─────────────────────────────── */}
-      <section className="testimonials-section">
-        <div className="testimonials-inner">
+      <section className="testimonials-section section-pad">
+        <div className="container testimonials-inner">
           <h2 className="section-title">{s.testimonialsTitle}</h2>
+          <p className="testimonial-context-label">{s.testimonialBetaLabel}</p>
           <TestimonialCarousel lang={lang} />
         </div>
       </section>
