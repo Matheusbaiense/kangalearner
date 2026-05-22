@@ -1,6 +1,5 @@
 # KangaLearner
 
-[![Deploy Pages](https://github.com/Matheusbaiense/kangalearner/actions/workflows/pages.yml/badge.svg)](https://github.com/Matheusbaiense/kangalearner/actions/workflows/pages.yml)
 [![Build](https://github.com/Matheusbaiense/kangalearner/actions/workflows/build.yml/badge.svg)](https://github.com/Matheusbaiense/kangalearner/actions/workflows/build.yml)
 
 **Uso interno da equipe.** Este repositório pode estar público por um período; a intenção é restringir acesso e migrar a experiência para **aplicativo** (equipe / produto fechado). Este README descreve o **código e o conteúdo**, não um manual de uso para usuário final.
@@ -9,11 +8,20 @@
 
 ## O que há neste repo
 
-Protótipo e base de **prática para learner test** (Austrália): regras por estado, banco de questões (foco WA), módulo Learn, prática com filtros, simulado com feedback acumulado, UI multilíngue e progresso em `localStorage`. A experiência principal na raiz é **HTML/CSS/JS estático**; podem coexistir pacotes em `apps/*` e `packages/*` para evolução web/mobile.
+Monorepo **Turborepo** para prática de learner test na Austrália: app Next.js em `apps/web` (Supabase, auth, mock test, progresso), pacote partilhado `@kanga/core` (questões e constantes), e legado estático na raiz (`index.html` + `assets/`) em transição.
 
 ---
 
-## Stack (raiz — site estático)
+## Apps/web (Next.js — produto principal)
+
+```bash
+pnpm install
+pnpm --filter @kanga/web run dev
+```
+
+Variáveis: ver `apps/web/.env.example`. Build: `pnpm --filter @kanga/web run build`.
+
+## Stack (raiz — site estático legado)
 
 | Área       | Arquivos principais                                                |
 | ---------- | ------------------------------------------------------------------ |
