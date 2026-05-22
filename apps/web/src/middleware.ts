@@ -7,8 +7,6 @@ const PROTECTED_ROUTES = [
   "/dashboard",
   "/account",
   "/admin",
-  "/mock-test/session",
-  "/mock-test/results"
 ];
 
 /**
@@ -125,5 +123,5 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|assets|api/webhooks).*)"]
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|assets|api/webhook|api/webhooks).*)"]
 };
