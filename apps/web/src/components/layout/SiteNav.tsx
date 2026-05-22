@@ -7,6 +7,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { SK } from "@/lib/storageKeys";
+import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
@@ -17,17 +18,6 @@ const NAV_LINKS = [
   { href: "/dashboard", key: "dashboard", requiresAuth: true },
   { href: "/resources", key: "resources" },
 ] as const;
-
-const AU_STATES = [
-  { code: "WA", name: "Western Australia" },
-  { code: "NSW", name: "New South Wales" },
-  { code: "VIC", name: "Victoria" },
-  { code: "QLD", name: "Queensland" },
-  { code: "SA", name: "South Australia" },
-  { code: "TAS", name: "Tasmania" },
-  { code: "ACT", name: "Australian Capital Territory" },
-  { code: "NT", name: "Northern Territory" }
-];
 
 const LANGUAGES = [
   { code: "en",    country: "au", label: "English",         triggerLabel: "English",    bilingual: false },
@@ -261,7 +251,7 @@ export function SiteNav() {
                 router.refresh();
               }}
             >
-              {AU_STATES.map((s) => (
+              {AU_STATE_OPTIONS.map((s) => (
                 <option key={s.code} value={s.code}>
                   {s.code}
                 </option>
@@ -424,6 +414,34 @@ export function SiteNav() {
               );
             })}
           </ul>
+          <div className="mobile-nav-state">
+            <label className="state-control" aria-label="Select state">
+              <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
+              <select
+                className="state-select"
+                value={stateCode}
+                onChange={(e) => {
+                  const code = e.target.value;
+                  try {
+                    localStorage.setItem(SK.stateV2, code);
+                    localStorage.setItem(SK.stateLegacy, code);
+                  } catch {
+                    /* noop */
+                  }
+                  setStateCode(code);
+                  window.dispatchEvent(new CustomEvent("kanga:state-changed"));
+                  router.refresh();
+                  setMobileNavOpen(false);
+                }}
+              >
+                {AU_STATE_OPTIONS.map((st) => (
+                  <option key={st.code} value={st.code}>
+                    {st.code} — {st.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
         </nav>
       </>
     )}

@@ -12,7 +12,12 @@ const csp = [
   `connect-src 'self' ${supabaseUrl} https://api.stripe.com wss://*.supabase.co`,
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com",
-  "img-src 'self' data: https: blob:",
+  "img-src 'self' data: blob: " +
+    "https://olgogtaeifyxwzencilo.supabase.co " +
+    "https://lh3.googleusercontent.com " +
+    "https://avatars.githubusercontent.com " +
+    "https://flagcdn.com " +
+    "https://www.google.com",
   "frame-src https://js.stripe.com https://hooks.stripe.com",
   "frame-ancestors 'none'",
   "object-src 'none'",
