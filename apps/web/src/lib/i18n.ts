@@ -123,6 +123,18 @@ export const t = {
     howStep2Desc: "Answer exam-style questions filtered by category",
     howStep3Label: "Mock Test",
     howStep3Desc: "Simulate the official 30-question WA learner test",
+    // How it works section (M2.2)
+    howItWorksTitle: "How it works",
+    howStep1Title: "Study by topic",
+    howStep1DescCard:
+      "19 road rule topics — signs, speed limits, give way, alcohol laws and more.",
+    howStep2Title: "Take a mock test",
+    howStep2DescCard:
+      "30 questions, 45 minutes. Same format as the real DoT WA learner test.",
+    howStep3Title: "Track your progress",
+    howStep3DescCard:
+      "See which topics need more practice. Sign up free to save your results.",
+    testimonialBetaLabel: "Stories from our early community",
 
     // ── Practice UI ───────────────────────────────────────
     studyMode: "Study Mode",
@@ -298,12 +310,19 @@ export const t = {
     footerProductTitle: "Product",
     footerCompanyTitle: "Company",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Stay updated",
-    footerNewsletterSub: "New states, features and tips — no spam.",
-    newsletterPlaceholder: "Your email address",
-    newsletterBtn: "Subscribe",
-    newsletterSuccess: "Thanks! We'll keep you posted.",
-    newsletterError: "Something went wrong. Please try again.",
+    footerNewsletterTitle: "Get weekly WA driving tips",
+    footerNewsletterDesc: "In English, Portuguese or Spanish. Unsubscribe anytime.",
+    footerNewsletterPlaceholder: "your@email.com",
+    footerNewsletterCta: "Subscribe",
+    footerNewsletterSuccess: "You're in! Check your inbox.",
+    footerNewsletterError: "Something went wrong. Please try again.",
+    resCommunityTitle: "Perth Immigrant Communities",
+    resCommunityDesc:
+      "Connect with other immigrants in Perth who are also getting their WA licence.",
+    resStudyTitle: "Free Study Guides",
+    resStudyDesc: "Official DoT resources — free to download.",
+    resJourneyTitle: "Your Road to a Full Licence",
+    resChecklistTitle: "Test Day Checklist",
     footerCopyright: "© 2026 KangaLearner. All rights reserved.",
 
     // ── Auth ──────────────────────────────────────────────
@@ -458,6 +477,17 @@ export const t = {
     howStep2Desc: "Responda perguntas no formato do exame filtradas por categoria",
     howStep3Label: "Simulado",
     howStep3Desc: "Simule a prova oficial de 30 questões do learner de WA",
+    howItWorksTitle: "Como funciona",
+    howStep1Title: "Estude por tópico",
+    howStep1DescCard:
+      "19 tópicos das regras de trânsito — placas, velocidade, preferência, álcool e mais.",
+    howStep2Title: "Faça um simulado",
+    howStep2DescCard:
+      "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT WA.",
+    howStep3Title: "Acompanhe seu progresso",
+    howStep3DescCard:
+      "Veja quais tópicos precisam mais prática. Crie conta grátis para salvar resultados.",
+    testimonialBetaLabel: "Histórias da nossa comunidade beta",
 
     // ── Practice UI ───────────────────────────────────────
     studyMode: "Modo de Estudo",
@@ -637,12 +667,19 @@ export const t = {
     footerProductTitle: "Produto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Fique por dentro",
-    footerNewsletterSub: "Novos estados, recursos e dicas — sem spam.",
-    newsletterPlaceholder: "Seu endereço de e-mail",
-    newsletterBtn: "Assinar",
-    newsletterSuccess: "Obrigado! Vamos te manter informado.",
-    newsletterError: "Algo deu errado. Tente novamente.",
+    footerNewsletterTitle: "Dicas semanais de direção em WA",
+    footerNewsletterDesc: "Em inglês, português ou espanhol. Cancele quando quiser.",
+    footerNewsletterPlaceholder: "seu@email.com",
+    footerNewsletterCta: "Inscrever-se",
+    footerNewsletterSuccess: "Inscrito! Verifique sua caixa de entrada.",
+    footerNewsletterError: "Algo deu errado. Tente novamente.",
+    resCommunityTitle: "Comunidades de Imigrantes em Perth",
+    resCommunityDesc:
+      "Conecte-se com outros imigrantes em Perth que também estão tirando carteira em WA.",
+    resStudyTitle: "Guias de Estudo Gratuitos",
+    resStudyDesc: "Recursos oficiais do DoT — gratuitos para download.",
+    resJourneyTitle: "Seu Caminho para a Carteira Completa",
+    resChecklistTitle: "Checklist do Dia da Prova",
     footerCopyright: "© 2026 KangaLearner. Todos os direitos reservados.",
 
     // ── Auth ──────────────────────────────────────────────
@@ -801,6 +838,17 @@ export const t = {
     howStep2Desc: "Responde preguntas estilo examen filtradas por categoría",
     howStep3Label: "Simulacro",
     howStep3Desc: "Simula el examen oficial de 30 preguntas del learner de WA",
+    howItWorksTitle: "Cómo funciona",
+    howStep1Title: "Estudia por tema",
+    howStep1DescCard:
+      "19 temas de normas de tránsito — señales, velocidades, ceder el paso, alcohol y más.",
+    howStep2Title: "Haz un simulacro",
+    howStep2DescCard:
+      "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT WA.",
+    howStep3Title: "Sigue tu progreso",
+    howStep3DescCard:
+      "Ve qué temas necesitan más práctica. Regístrate gratis para guardar tus resultados.",
+    testimonialBetaLabel: "Historias de nuestra comunidad beta",
 
     // ── Practice UI ───────────────────────────────────────
     studyMode: "Modo de Estudio",
@@ -980,12 +1028,19 @@ export const t = {
     footerProductTitle: "Producto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Mantente informado",
-    footerNewsletterSub: "Nuevos estados, funciones y consejos — sin spam.",
-    newsletterPlaceholder: "Tu dirección de correo electrónico",
-    newsletterBtn: "Suscribirse",
-    newsletterSuccess: "¡Gracias! Te mantendremos informado.",
-    newsletterError: "Algo salió mal. Inténtalo de nuevo.",
+    footerNewsletterTitle: "Consejos semanales sobre el manejo en WA",
+    footerNewsletterDesc: "En inglés, portugués o español. Cancela cuando quieras.",
+    footerNewsletterPlaceholder: "tu@email.com",
+    footerNewsletterCta: "Suscribirme",
+    footerNewsletterSuccess: "¡Ya estás! Revisa tu bandeja de entrada.",
+    footerNewsletterError: "Algo salió mal. Inténtalo de nuevo.",
+    resCommunityTitle: "Comunidades de Inmigrantes en Perth",
+    resCommunityDesc:
+      "Conéctate con otros inmigrantes en Perth que también están sacando su licencia en WA.",
+    resStudyTitle: "Guías de Estudio Gratuitas",
+    resStudyDesc: "Recursos oficiales del DoT — gratuitos para descargar.",
+    resJourneyTitle: "Tu Camino hacia la Licencia Completa",
+    resChecklistTitle: "Lista de Verificación para el Día del Examen",
     footerCopyright: "© 2026 KangaLearner. Todos los derechos reservados.",
 
     // ── Auth ──────────────────────────────────────────────

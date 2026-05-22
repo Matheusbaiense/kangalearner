@@ -4483,3 +4483,82 @@ a:focus-visible,
     color-scheme: dark;
   }
 }
+
+/* ── How It Works (M2.2) ─────────────────────────────────────────── */
+.how-it-works { background: var(--kl-color-surface-alt, #f8fafc); }
+.how-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.how-step-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: var(--kl-color-surface, #fff);
+  border: 1px solid var(--kl-color-border, #e2e8f0);
+  border-radius: var(--kl-radius-lg, 1rem);
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+.how-step-card:hover {
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+.how-step-num  { font-size: 1.75rem; line-height: 1; }
+.how-step-title { font-family: var(--kl-font-heading); font-size: 1.05rem; font-weight: 700; margin: 0; }
+.how-step-desc  { font-size: 0.875rem; color: var(--kl-color-text-muted, #64748b); margin: 0; }
+
+/* ── Testimonials beta label (M2.3) ───────────────────────────────── */
+.testimonial-context-label {
+  text-align: center;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--kl-color-text-muted, #94a3b8);
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* ── Newsletter footer block (M2.4) ───────────────────────────────── */
+.footer-newsletter-block {
+  padding: 2rem 0;
+  border-top: 1px solid var(--kl-color-border, #e2e8f0);
+}
+.footer-newsletter-heading {
+  font-family: var(--kl-font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+.footer-newsletter-desc {
+  font-size: 0.85rem;
+  color: var(--kl-color-text-muted, #64748b);
+  margin: 0 0 0.75rem;
+}
+.newsletter-success { color: var(--kl-color-success, #16a34a); font-weight: 600; font-size: 0.9rem; }
+.newsletter-error   { color: var(--kl-color-error, #dc2626); font-size: 0.8rem; margin-top: 0.25rem; width: 100%; }
+
+/* ── Resources page additions (M3.2) ──────────────────────────────── */
+.resource-section       { margin-bottom: 2.5rem; }
+.resource-section h2    { font-family: var(--kl-font-heading); font-size: 1.15rem; margin: 0 0 0.5rem; }
+.resource-link-list,
+.checklist-list         { list-style: none; padding: 0; margin: 0.5rem 0 0; display: flex; flex-direction: column; gap: 0.4rem; }
+.resource-link-list a   { color: var(--kl-color-primary, #1d4ed8); text-decoration: underline; font-size: 0.9rem; }
+.licence-journey        { padding-left: 1.5rem; display: flex; flex-direction: column; gap: 0.5rem; }
+.licence-journey li     { font-size: 0.9rem; line-height: 1.5; }
+.checklist-list li      { font-size: 0.9rem; }
+
+/* ── Legal pages (T60) ────────────────────────────────────────────── */
+.legal-page           { max-width: 720px; }
+.legal-page h1        { font-family: var(--kl-font-heading); font-size: 2rem; margin-bottom: 0.25rem; }
+.legal-page h2        { font-family: var(--kl-font-heading); font-size: 1.15rem; margin: 2rem 0 0.5rem; }
+.legal-page p,
+.legal-page li        { font-size: 0.95rem; line-height: 1.7; color: var(--kl-color-text, #0f172a); }
+.legal-page ul,
+.legal-page ol        { padding-left: 1.5rem; margin: 0.5rem 0; }
+.legal-page a         { color: var(--kl-color-primary, #1d4ed8); }
+.legal-updated        { font-size: 0.8rem; color: var(--kl-color-text-muted, #64748b); margin-bottom: 2rem; }
