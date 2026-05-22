@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
@@ -12,12 +12,7 @@ import { rateLimit } from "@/lib/rateLimit";
  * Note: question_attempts and mock_sessions reference auth.users with ON DELETE CASCADE
  *       (see migrations 004 and 005) — attempts and mock sessions are removed with the user.
  */
-export async function DELETE(req: NextRequest) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`account-delete:${ip}`, 5, 60_000)) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
-  }
-
+export async function DELETE() {
   const cookieStore = await cookies();
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -29,6 +24,10 @@ export async function DELETE(req: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+
+  if (!await rateLimit(`account-delete:${user.id}`, 5, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
 
   // Step 1: Soft-delete the profile row and anonymise PII.
   const { error: profileError } = await supabaseAdmin

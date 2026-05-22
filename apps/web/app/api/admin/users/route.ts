@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
+import { rateLimit } from "@/lib/rateLimit";
 
 /** GET /api/admin/users?page=0&limit=50&search=&role= */
 export async function GET(req: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+  if (!await rateLimit(`admin:users:get:${uid}`, 30, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
 
   const { searchParams } = new URL(req.url);
   const page   = Math.max(0, parseInt(searchParams.get("page") ?? "0"));
@@ -45,6 +50,10 @@ export async function PATCH(req: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
+  if (!await rateLimit(`admin:users:patch:${uid}`, 10, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
+
   let body: { userId: string; role: string };
   try {
     body = (await req.json()) as { userId: string; role: string };
@@ -58,11 +67,23 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Invalid userId or role" }, { status: 400 });
   }
 
-  // Only super_admins can promote to admin/super_admin
-  const { data: callerProfile } = await supabaseAdmin
-    .from("profiles").select("role").eq("id", uid).single();
+  // Fetch caller and target profiles in parallel
+  const [{ data: callerProfile }, { data: targetProfile }] = await Promise.all([
+    supabaseAdmin.from("profiles").select("role").eq("id", uid).single(),
+    supabaseAdmin.from("profiles").select("role").eq("id", userId).single(),
+  ]);
+
+  // Assigning admin/super_admin requires super_admin
   if (["admin", "super_admin"].includes(role) && callerProfile?.role !== "super_admin") {
     return NextResponse.json({ error: "Only super_admin can assign admin roles" }, { status: 403 });
+  }
+
+  // Modifying an existing admin/super_admin (even to demote) requires super_admin
+  if (
+    ["admin", "super_admin"].includes(targetProfile?.role ?? "") &&
+    callerProfile?.role !== "super_admin"
+  ) {
+    return NextResponse.json({ error: "Only super_admin can modify admin users" }, { status: 403 });
   }
 
   const { error } = await supabaseAdmin

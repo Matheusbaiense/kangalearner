@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
   const ext = file.type.split("/")[1].replace("jpeg", "jpg");
   const path = `${user.id}/avatar.${ext}`;
 
-  const { error: uploadErr } = await supabaseAdmin.storage
+  const { error: uploadErr } = await supabase.storage
     .from("avatars")
     .upload(path, buffer, { contentType: file.type, upsert: true });
 
@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "upload_failed" }, { status: 500 });
   }
 
-  const { data: { publicUrl } } = supabaseAdmin.storage.from("avatars").getPublicUrl(path);
+  const { data: { publicUrl } } = supabase.storage.from("avatars").getPublicUrl(path);
   const avatarUrl = `${publicUrl}?t=${Date.now()}`;
 
   const { error: dbErr } = await supabaseAdmin
@@ -113,27 +113,19 @@ export async function DELETE() {
     return NextResponse.json({ error: "profile_fetch_failed" }, { status: 500 });
   }
 
-  if (profile?.avatar_url) {
-    let storagePath: string | undefined;
-    try {
-      const url = new URL(profile.avatar_url);
-      const segment = url.pathname.split("/object/public/avatars/")[1];
-      if (segment && segment.startsWith(`${user.id}/`)) {
-        storagePath = segment;
-      }
-    } catch {
-      // malformed URL — skip storage removal, still zero DB
-    }
+  const { data: files } = await supabaseAdmin.storage
+    .from("avatars")
+    .list(user.id);
 
-    if (storagePath) {
-      const { error: storageError } = await supabaseAdmin.storage
-        .from("avatars")
-        .remove([storagePath]);
+  if (files && files.length > 0) {
+    const paths = files.map((f) => `${user.id}/${f.name}`);
+    const { error: storageError } = await supabaseAdmin.storage
+      .from("avatars")
+      .remove(paths);
 
-      if (storageError) {
-        console.error("[avatar/delete] storage remove failed:", storageError.message);
-        return NextResponse.json({ error: "storage_remove_failed" }, { status: 500 });
-      }
+    if (storageError) {
+      console.error("[avatar/delete] storage remove failed:", storageError.message);
+      return NextResponse.json({ error: "storage_remove_failed" }, { status: 500 });
     }
   }
 
