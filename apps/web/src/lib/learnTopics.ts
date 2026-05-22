@@ -1185,6 +1185,311 @@ export const LEARN_TOPICS: LearnTopic[] = [
       es: "Resumen educativo; detalles oficiales: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp",
     },
   },
+
+  {
+    slug: "mobile-phones",
+    icon: "mail",
+    practiceCategory: "Safe Driving",
+    title: {
+      en: "Mobile Phones While Driving WA",
+      pt: "Celular ao Volante em WA",
+      es: "Teléfono Móvil al Volante en WA",
+    },
+    summary: {
+      en: "WA has some of Australia's strictest rules on mobile phone use while driving. Learner and P1/P2 drivers must not use a mobile phone at all — not even hands-free. Full licence holders may use a phone only via Bluetooth/speaker if it is mounted.",
+      pt: "WA tem algumas das regras mais rígidas da Austrália sobre o uso de celular ao volante. Motoristas com learner ou carteira P1/P2 não podem usar celular de forma alguma — nem com viva-voz. Portadores de carteira plena só podem usar via Bluetooth/alto-falante com suporte fixo.",
+      es: "WA tiene algunas de las reglas más estrictas de Australia sobre el uso de teléfonos móviles al conducir. Los conductores con learner o licencia P1/P2 no pueden usar el móvil de ninguna forma — ni siquiera manos libres. Los titulares de licencia completa solo pueden usarlo vía Bluetooth/altavoz con soporte fijo.",
+    },
+    keyRules: [
+      {
+        en: "Learner and P1/P2 drivers: complete mobile phone ban — no calls, no texts, no hands-free, no GPS on phone.",
+        pt: "Motoristas com learner e P1/P2: proibição total — sem chamadas, mensagens, viva-voz ou GPS no celular.",
+        es: "Conductores con learner y P1/P2: prohibición total — sin llamadas, mensajes, manos libres ni GPS en el móvil.",
+      },
+      {
+        en: "Full licence holders: hands-free only. Phone must be in a mount — not held in the hand, even at a red light.",
+        pt: "Carteira plena: apenas viva-voz. O celular deve estar em suporte — não pode ser segurado na mão, nem no vermelho.",
+        es: "Licencia completa: solo manos libres. El móvil debe estar en un soporte — no puede sostenerse en la mano, ni en semáforo.",
+      },
+      {
+        en: "Penalty: from $1,000 fine + 3 demerit points. Doubled in a school zone or roadwork area.",
+        pt: "Multa: a partir de $1.000 + 3 pontos de infração. Dobrada em zonas escolares ou de obras.",
+        es: "Multa: desde $1.000 + 3 puntos de demérito. Se duplica en zonas escolares o de obras.",
+      },
+    ],
+    mistakes: [
+      {
+        en: "Thinking hands-free is OK as a learner driver — it is NOT. Any mobile use is banned.",
+        pt: "Pensar que viva-voz é permitido para motoristas learner — NÃO É. Qualquer uso é proibido.",
+        es: "Creer que el manos libres está permitido para conductores learner — NO LO ESTÁ. Cualquier uso está prohibido.",
+      },
+      {
+        en: "Using the phone at a red light while stopped — the rule applies even when stationary.",
+        pt: "Usar o celular parado no semáforo — a regra vale mesmo parado.",
+        es: "Usar el móvil parado en semáforo — la regla aplica incluso cuando está detenido.",
+      },
+    ],
+    example: {
+      en: "Maria (learner driver) plugs her phone into the car mount to use GPS. Even though it's mounted and hands-free, this is still illegal for a learner. She must use a dedicated GPS device or ask a passenger to navigate.",
+      pt: "Maria (learner) coloca o celular no suporte do carro para usar GPS. Mesmo no suporte e sem tocar, é ilegal para learner. Ela deve usar um GPS dedicado ou pedir ao passageiro que navegue.",
+      es: "María (conductora learner) coloca el móvil en el soporte para usar el GPS. Aunque esté montado y sin manos, sigue siendo ilegal para un conductor learner. Debe usar un GPS dedicado o pedir a un pasajero que navegue.",
+    },
+    quickCheck: [
+      {
+        en: "Can a learner driver use a Bluetooth headset for calls? → No. Any mobile phone use is banned for learner drivers.",
+        pt: "Um motorista learner pode usar fone de ouvido Bluetooth? → Não. Qualquer uso de celular é proibido.",
+        es: "¿Puede un conductor learner usar un auricular Bluetooth para llamadas? → No. Cualquier uso de móvil está prohibido.",
+      },
+      {
+        en: "A fully-licensed driver has her phone in her hand at a red light. Is this legal? → No. The phone must always be in a mount.",
+        pt: "Uma motorista habilitada segura o celular na mão no semáforo. É legal? → Não. O celular deve estar sempre em suporte.",
+        es: "Una conductora habilitada tiene el móvil en la mano en semáforo. ¿Es legal? → No. El móvil siempre debe estar en soporte.",
+      },
+    ],
+    source: {
+      en: "Road Traffic (Administration) Act 2008 + WA Learner Driver Guide (mobile phones section)",
+      pt: "Road Traffic (Administration) Act 2008 + Guia do Motorista Aprendiz de WA (secção celular)",
+      es: "Road Traffic (Administration) Act 2008 + Guía del Conductor Novato de WA (sección teléfono móvil)",
+    },
+  },
+
+  {
+    slug: "fatigue-driving",
+    icon: "timer",
+    practiceCategory: "Safe Driving",
+    title: {
+      en: "Fatigue and Drowsy Driving WA",
+      pt: "Fadiga ao Volante em WA",
+      es: "Fatiga al Volante en WA",
+    },
+    summary: {
+      en: "Fatigue is a leading cause of fatal crashes in WA. It slows your reaction time as much as alcohol. WA law requires drivers to stop and rest — there is no legal limit for hours driven, but failing to manage fatigue is an offence.",
+      pt: "A fadiga é uma das principais causas de acidentes fatais em WA. Ela reduz o tempo de reacção tanto quanto o álcool. A lei de WA exige que os motoristas parem para descansar — não há um limite legal de horas, mas não gerir a fadiga é infracção.",
+      es: "La fatiga es una de las principales causas de accidentes mortales en WA. Reduce el tiempo de reacción tanto como el alcohol. La ley de WA exige a los conductores parar a descansar — no hay límite legal de horas, pero no gestionar la fatiga es una infracción.",
+    },
+    keyRules: [
+      {
+        en: "On long trips, take a 15-minute break every 2 hours — pull over safely, rest, and do not continue if drowsy.",
+        pt: "Em viagens longas, faça uma pausa de 15 minutos a cada 2 horas — estacione com segurança e não continue se sentir sonolência.",
+        es: "En viajes largos, haz una pausa de 15 minutos cada 2 horas — detente en lugar seguro y no continúes si tienes sueño.",
+      },
+      {
+        en: "Warning signs of fatigue: heavy eyes, yawning, drifting lanes, can't remember the last few kilometres.",
+        pt: "Sinais de fadiga: olhos pesados, bocejos, desviar de faixa, não lembrar dos últimos quilómetros.",
+        es: "Señales de fatiga: ojos pesados, bostezos, salir del carril, no recordar los últimos kilómetros.",
+      },
+      {
+        en: "Driving while fatigued is an offence — police can issue infringement notices if your driving shows fatigue signs.",
+        pt: "Dirigir com fadiga é infracção — a polícia pode multar se a condução apresentar sinais de fadiga.",
+        es: "Conducir con fatiga es una infracción — la policía puede multar si la conducción muestra signos de fatiga.",
+      },
+    ],
+    mistakes: [
+      {
+        en: "Thinking coffee or loud music can replace sleep — they mask fatigue temporarily but do not reduce driving impairment.",
+        pt: "Pensar que café ou música alta substituem o sono — apenas mascaram a fadiga temporariamente.",
+        es: "Creer que el café o la música alta reemplazan el sueño — solo enmascaran la fatiga temporalmente.",
+      },
+      {
+        en: "Driving more than 5 hours without a break — fatigue builds up progressively and micro-sleeps can occur.",
+        pt: "Dirigir mais de 5 horas sem pausa — a fadiga se acumula progressivamente e microssonos podem ocorrer.",
+        es: "Conducir más de 5 horas sin pausa — la fatiga se acumula progresivamente y pueden producirse microsueños.",
+      },
+    ],
+    example: {
+      en: "Ahmed drives 4 hours to visit family and starts yawning repeatedly. The safest action is to pull off the highway, find a rest area, and sleep for at least 20 minutes before continuing.",
+      pt: "Ahmed dirige 4 horas para visitar a família e começa a bocejar repetidamente. A ação mais segura é sair da autoestrada, encontrar uma área de descanso e dormir pelo menos 20 minutos antes de continuar.",
+      es: "Ahmed conduce 4 horas para visitar a su familia y empieza a bostezar repetidamente. La acción más segura es salir de la autopista, encontrar un área de descanso y dormir al menos 20 minutos antes de continuar.",
+    },
+    quickCheck: [
+      {
+        en: "How often should you take a break on a long trip? → At least every 2 hours, for at least 15 minutes.",
+        pt: "Com que frequência deve fazer pausa em viagem longa? → Pelo menos a cada 2 horas, por pelo menos 15 minutos.",
+        es: "¿Con qué frecuencia hay que hacer una pausa en un viaje largo? → Al menos cada 2 horas, durante al menos 15 minutos.",
+      },
+      {
+        en: "Can drinking coffee before driving prevent fatigue? → No — only proper sleep can effectively combat fatigue.",
+        pt: "Beber café antes de dirigir previne a fadiga? → Não — apenas o sono adequado combate eficazmente a fadiga.",
+        es: "¿Tomar café antes de conducir previene la fatiga? → No — solo un sueño adecuado combate eficazmente la fatiga.",
+      },
+    ],
+    source: {
+      en: "WA Learner Driver Guide (fatigue chapter) + Main Roads WA fatigue resources",
+      pt: "Guia do Motorista Aprendiz de WA (capítulo fadiga) + Main Roads WA",
+      es: "Guía del Conductor Novato de WA (capítulo fatiga) + Main Roads WA",
+    },
+  },
+
+  {
+    slug: "school-zones",
+    icon: "warning",
+    practiceCategory: "Speed Limits",
+    title: {
+      en: "School Zones Speed Limits WA",
+      pt: "Zonas Escolares em WA",
+      es: "Zonas Escolares en WA",
+    },
+    summary: {
+      en: "School zones have a 40 km/h speed limit during school arrival and departure times. The limit applies even if no children are visible. Penalties are significantly higher in school zones.",
+      pt: "Zonas escolares têm limite de 40 km/h nos horários de entrada e saída escolar. O limite vale mesmo que não haja crianças visíveis. As multas são significativamente mais altas nessas zonas.",
+      es: "Las zonas escolares tienen un límite de 40 km/h durante los horarios de entrada y salida escolar. El límite aplica incluso si no hay niños visibles. Las multas son significativamente más altas en estas zonas.",
+    },
+    keyRules: [
+      {
+        en: "Speed limit: 40 km/h in school zones on school days (approx. 7:30–9:00 am and 2:30–4:00 pm). Check local signage — times can vary.",
+        pt: "Limite: 40 km/h em zonas escolares nos dias de aula (aprox. 7:30–9:00 e 14:30–16:00). Verifique as placas locais — os horários podem variar.",
+        es: "Límite: 40 km/h en zonas escolares en días lectivos (aprox. 7:30–9:00 y 14:30–16:00). Consultar señales locales — los horarios pueden variar.",
+      },
+      {
+        en: "Flashing yellow lights or electronic signs indicate when the 40 km/h zone is active.",
+        pt: "Luzes amarelas piscantes ou placas electrónicas indicam quando a zona de 40 km/h está activa.",
+        es: "Las luces amarillas intermitentes o señales electrónicas indican cuándo la zona de 40 km/h está activa.",
+      },
+      {
+        en: "Doubled demerit points and higher fines apply in school zones. Mobile phone use is an additional offence.",
+        pt: "Pontos de infracção dobrados e multas mais altas em zonas escolares. Uso de celular é infracção adicional.",
+        es: "Puntos de demérito doblados y multas más altas en zonas escolares. El uso del móvil es una infracción adicional.",
+      },
+    ],
+    mistakes: [
+      {
+        en: "Driving at 50 km/h thinking school is out — the zone applies whenever signs/lights indicate, regardless of visible students.",
+        pt: "Dirigir a 50 km/h achando que a escola terminou — a zona vale sempre que as placas/luzes indicarem, independentemente de alunos visíveis.",
+        es: "Conducir a 50 km/h creyendo que la escuela terminó — la zona aplica siempre que las señales/luces lo indiquen, independientemente de estudiantes visibles.",
+      },
+    ],
+    example: {
+      en: "You drive past a school at 3:00 pm on a Tuesday. Flashing lights are on. You must drive at 40 km/h through the zone even though no children are crossing.",
+      pt: "Você passa por uma escola às 15:00 de terça-feira. As luzes estão piscando. Você deve dirigir a 40 km/h na zona mesmo que nenhuma criança esteja atravessando.",
+      es: "Conduces por una escuela a las 15:00 de un martes. Las luces están intermitentes. Debes circular a 40 km/h en la zona aunque no haya niños cruzando.",
+    },
+    quickCheck: [
+      {
+        en: "What is the speed limit in a school zone when lights are flashing? → 40 km/h.",
+        pt: "Qual é o limite de velocidade em zona escolar com luzes piscando? → 40 km/h.",
+        es: "¿Cuál es el límite de velocidad en una zona escolar cuando las luces parpadean? → 40 km/h.",
+      },
+    ],
+    source: {
+      en: "WA Learner Driver Guide + Road Traffic Code 2000 (school zones)",
+      pt: "Guia do Motorista Aprendiz de WA + Road Traffic Code 2000 (zonas escolares)",
+      es: "Guía del Conductor Novato de WA + Road Traffic Code 2000 (zonas escolares)",
+    },
+  },
+
+  {
+    slug: "shared-zones",
+    icon: "mapPinned",
+    practiceCategory: "Road Signs",
+    title: {
+      en: "Shared Zones and Pedestrian Areas WA",
+      pt: "Zonas Compartilhadas e Áreas para Pedestres em WA",
+      es: "Zonas Compartidas y Áreas Peatonales en WA",
+    },
+    summary: {
+      en: "In shared zones, pedestrians and vehicles share the same space. Vehicles must give way to pedestrians at all times. The maximum speed in a shared zone is 10 km/h.",
+      pt: "Em zonas compartilhadas, pedestres e veículos dividem o mesmo espaço. Os veículos devem sempre dar preferência aos pedestres. A velocidade máxima é de 10 km/h.",
+      es: "En zonas compartidas, peatones y vehículos comparten el mismo espacio. Los vehículos deben ceder el paso a los peatones en todo momento. La velocidad máxima es de 10 km/h.",
+    },
+    keyRules: [
+      {
+        en: "Maximum speed: 10 km/h in shared zones — typically in pedestrian malls and laneways.",
+        pt: "Velocidade máxima: 10 km/h em zonas compartilhadas — geralmente em calçadões e vielas.",
+        es: "Velocidad máxima: 10 km/h en zonas compartidas — típicamente en malls peatonales y callejones.",
+      },
+      {
+        en: "Vehicles must give way to all pedestrians — pedestrians have absolute right of way in shared zones.",
+        pt: "Veículos devem dar preferência a todos os pedestres — eles têm prioridade absoluta nas zonas compartilhadas.",
+        es: "Los vehículos deben ceder el paso a todos los peatones — los peatones tienen prioridad absoluta en zonas compartidas.",
+      },
+      {
+        en: "Shared zone signs mark entry and exit points. If no speed sign is visible inside the zone, assume 10 km/h.",
+        pt: "Placas de zona compartilhada marcam os pontos de entrada e saída. Sem placa de velocidade visível, assumir 10 km/h.",
+        es: "Las señales de zona compartida marcan los puntos de entrada y salida. Sin señal de velocidad visible, asumir 10 km/h.",
+      },
+    ],
+    mistakes: [
+      {
+        en: "Driving at 20 km/h thinking it is close enough — 10 km/h is the strict limit.",
+        pt: "Dirigir a 20 km/h achando que é aceitável — 10 km/h é o limite rigoroso.",
+        es: "Circular a 20 km/h creyendo que es suficiente — 10 km/h es el límite estricto.",
+      },
+    ],
+    example: {
+      en: "You enter a shared zone laneway. A pedestrian is walking in the middle of the road ahead. You must give way — do not honk or expect them to move out of the way.",
+      pt: "Você entra em uma viela de zona compartilhada. Um pedestre caminha no meio da rua à frente. Você deve dar preferência — não buzine nem espere que ele saia do caminho.",
+      es: "Entras en un callejón de zona compartida. Un peatón camina en el centro de la calle frente a ti. Debes ceder el paso — no toques el claxon ni esperes que se quite.",
+    },
+    quickCheck: [
+      {
+        en: "What is the speed limit in a shared zone? → 10 km/h.",
+        pt: "Qual é o limite de velocidade em uma zona compartilhada? → 10 km/h.",
+        es: "¿Cuál es el límite de velocidad en una zona compartida? → 10 km/h.",
+      },
+    ],
+    source: {
+      en: "Road Traffic Code 2000 (Part 3 — shared zones) + WA Learner Driver Guide",
+      pt: "Road Traffic Code 2000 (Parte 3 — zonas compartilhadas) + Guia do Motorista Aprendiz de WA",
+      es: "Road Traffic Code 2000 (Parte 3 — zonas compartidas) + Guía del Conductor Novato de WA",
+    },
+  },
+
+  {
+    slug: "towing-rules",
+    icon: "car",
+    practiceCategory: "Safe Driving",
+    title: {
+      en: "Towing Rules WA",
+      pt: "Regras de Reboque em WA",
+      es: "Normas de Remolque en WA",
+    },
+    summary: {
+      en: "Towing a trailer or caravan in WA comes with specific speed limits, weight restrictions, and licence conditions. Learner drivers may not tow. P1 drivers have restrictions.",
+      pt: "Rebocar um trailer ou caravana em WA tem limites de velocidade, restrições de peso e condições de carteira específicas. Motoristas learner não podem rebocar. Motoristas P1 têm restrições.",
+      es: "Remolcar un remolque o caravana en WA tiene límites de velocidad, restricciones de peso y condiciones de licencia específicas. Los conductores learner no pueden remolcar. Los conductores P1 tienen restricciones.",
+    },
+    keyRules: [
+      {
+        en: "Learner drivers: cannot tow any trailer or caravan.",
+        pt: "Motoristas learner: não podem rebocar nenhum trailer ou caravana.",
+        es: "Conductores learner: no pueden remolcar ningún remolque ni caravana.",
+      },
+      {
+        en: "Maximum towing speed: 100 km/h (or the signed limit if lower). On some roads, towing vehicles are limited to 90 km/h — check local signs.",
+        pt: "Velocidade máxima ao rebocar: 100 km/h (ou o limite sinalizado se menor). Em algumas estradas, veículos a rebocar estão limitados a 90 km/h — verificar placas locais.",
+        es: "Velocidad máxima al remolcar: 100 km/h (o el límite señalizado si es inferior). En algunas carreteras, los vehículos que remolcan están limitados a 90 km/h — consultar señales locales.",
+      },
+      {
+        en: "All trailer lights (brake, indicator, tail) must work. Safety chains are mandatory.",
+        pt: "Todas as luzes do trailer (freio, sinalização, traseira) devem funcionar. Correntes de segurança são obrigatórias.",
+        es: "Todas las luces del remolque (freno, intermitente, trasera) deben funcionar. Las cadenas de seguridad son obligatorias.",
+      },
+    ],
+    mistakes: [
+      {
+        en: "Learner drivers attempting to tow — this is not permitted under any circumstances.",
+        pt: "Motoristas learner tentando rebocar — isso não é permitido em nenhuma circunstância.",
+        es: "Conductores learner intentando remolcar — no está permitido bajo ninguna circunstancia.",
+      },
+    ],
+    example: {
+      en: "David has a learner licence and wants to tow a small boat trailer to the beach. He cannot — learner drivers are not permitted to tow regardless of trailer size or weight.",
+      pt: "David tem carteira learner e quer rebocar um pequeno trailer de barco até a praia. Ele não pode — motoristas learner não têm permissão para rebocar independentemente do tamanho ou peso do trailer.",
+      es: "David tiene licencia learner y quiere remolcar un pequeño remolque de bote hasta la playa. No puede — los conductores learner no tienen permiso para remolcar independientemente del tamaño o peso del remolque.",
+    },
+    quickCheck: [
+      {
+        en: "Can a learner driver tow a small trailer? → No. Towing is not permitted for learner drivers.",
+        pt: "Um motorista learner pode rebocar um trailer pequeno? → Não. Rebocar não é permitido para motoristas learner.",
+        es: "¿Puede un conductor learner remolcar un remolque pequeño? → No. El remolque no está permitido para conductores learner.",
+      },
+    ],
+    source: {
+      en: "Road Traffic (Vehicles) Act 2012 + WA Learner Driver Guide (towing section)",
+      pt: "Road Traffic (Vehicles) Act 2012 + Guia do Motorista Aprendiz de WA (secção reboque)",
+      es: "Road Traffic (Vehicles) Act 2012 + Guía del Conductor Novato de WA (sección remolque)",
+    },
+  },
 ];
 
 export function findTopic(slug: string): LearnTopic | undefined {
