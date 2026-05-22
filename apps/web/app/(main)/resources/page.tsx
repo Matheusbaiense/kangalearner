@@ -156,6 +156,95 @@ export default function ResourcesPage() {
           {s.resourcesWaOnly}
         </div>
 
+        <section className="resource-section" style={{ marginTop: 40 }}>
+          <h2>{s.resCommunityTitle}</h2>
+          <p>{s.resCommunityDesc}</p>
+          <ul className="resource-link-list">
+            <li>
+              <a href="https://www.facebook.com/groups/brasileirosemperth" target="_blank" rel="noopener noreferrer">
+                Brasileiros em Perth (Facebook)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/groups/latinosperth" target="_blank" rel="noopener noreferrer">
+                Latinos en Perth Australia (Facebook)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/groups/filipinosinWA" target="_blank" rel="noopener noreferrer">
+                Filipinos in Western Australia (Facebook)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/groups/indiansperth" target="_blank" rel="noopener noreferrer">
+                Indians in Perth (Facebook)
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section className="resource-section">
+          <h2>{s.resStudyTitle}</h2>
+          <p>{s.resStudyDesc}</p>
+          <ul className="resource-link-list">
+            <li>
+              <a
+                href="https://www.transport.wa.gov.au/licensing/learner-driver-guide.asp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WA Learner Driver Guide (DoT)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.transport.wa.gov.au/licensing/drive-safe-wa-handbook.asp"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Drive Safe WA Handbook (DoT)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.rac.com.au/cars-transport/info/learner-licence-in-wa" target="_blank" rel="noopener noreferrer">
+                RAC Learner Licence Guide
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section className="resource-section">
+          <h2>{s.resJourneyTitle}</h2>
+          <ol className="licence-journey">
+            <li>
+              <strong>Learner Licence</strong> — Pass the theory test + 25 hours supervised driving (50h
+              if no mentor)
+            </li>
+            <li>
+              <strong>Provisional P1</strong> — Red plates, 0.00 BAC, limited passengers, max 90 km/h.
+              Hold for 6 months.
+            </li>
+            <li>
+              <strong>Provisional P2</strong> — Green plates, 0.00 BAC. Hold for 24 months.
+            </li>
+            <li>
+              <strong>Full Licence</strong> — 0.05 BAC (general limit). Restrictions lifted.
+            </li>
+          </ol>
+        </section>
+
+        <section className="resource-section">
+          <h2>{s.resChecklistTitle}</h2>
+          <ul className="checklist-list">
+            <li>✓ Valid photo ID (passport or ImmiCard accepted)</li>
+            <li>✓ Test fee (~$60 AUD — check current DoT fee schedule)</li>
+            <li>✓ Arrive 10–15 minutes early</li>
+            <li>✓ No mobile phone in the test room</li>
+            <li>✓ Review all 19 topics on KangaLearner beforehand</li>
+            <li>✓ Good night&apos;s sleep — fatigue affects test performance</li>
+          </ul>
+        </section>
+
         {/* CTA */}
         <div style={{ marginTop: 32, textAlign: "center" }}>
           <Link href="/practice" className="btn btn-primary">
