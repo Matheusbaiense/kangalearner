@@ -39,6 +39,14 @@ export async function GET(request: NextRequest) {
   const code = url.searchParams.get("code");
   const next = safeNextPath(url.searchParams.get("next") ?? url.searchParams.get("redirect"), "/");
 
+  const oauthError = url.searchParams.get("error");
+  if (oauthError) {
+    const desc = url.searchParams.get("error_description") ?? oauthError;
+    return NextResponse.redirect(
+      new URL(`/auth/login?error=${encodeURIComponent(oauthError)}&error_description=${encodeURIComponent(desc)}`, url.origin)
+    );
+  }
+
   if (!code) {
     return NextResponse.redirect(new URL("/auth/login?error=no_code", url.origin));
   }
@@ -75,13 +83,21 @@ export async function GET(request: NextRequest) {
 
   const { data: profile, error: profileError } = await supabaseAdmin
     .from("profiles")
-    .select("stripe_customer_id, avatar_url")
+    .select("stripe_customer_id, avatar_url, welcome_sent_at")
     .eq("id", user.id)
     .maybeSingle();
 
   if (profileError) {
     console.error("Auth callback profile read:", profileError.message);
   }
+
+  await supabaseAdmin
+    .from("profiles")
+    .update({
+      email: user.email ?? null,
+      last_sign_in_at: user.last_sign_in_at ?? new Date().toISOString(),
+    })
+    .eq("id", user.id);
 
   // Sync Google avatar for existing users who didn't have one yet
   if (profile && !profile.avatar_url) {
@@ -118,7 +134,7 @@ export async function GET(request: NextRequest) {
     }
   }
 
-  if (profile && !profile.stripe_customer_id && user.email) {
+  if (profile && !profile.welcome_sent_at && user.email) {
     void sendWelcomeEmail(
       user.id,
       user.email,

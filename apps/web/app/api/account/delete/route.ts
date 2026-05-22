@@ -9,8 +9,8 @@ import { rateLimit } from "@/lib/rateLimit";
  * 1. Soft-deletes the profile row (sets deleted_at, anonymises display name).
  * 2. Hard-deletes the auth.users record via the admin API so the user cannot
  *    sign in again.
- * Note: question_attempts FK is ON DELETE SET NULL (rows retained for analytics).
- *       mock_sessions FK is ON DELETE CASCADE (rows deleted with the auth user).
+ * Note: question_attempts and mock_sessions reference auth.users with ON DELETE CASCADE
+ *       (see migrations 004 and 005) — attempts and mock sessions are removed with the user.
  */
 export async function DELETE(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";

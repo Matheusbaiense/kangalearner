@@ -1,22 +1,27 @@
 # Instruções para agentes de IA (Cursor, etc.)
 
-## Documentação que deve permanecer alinhada ao código
+## Leitura inicial (sessão nova)
 
-Após mudanças de **infra**, **auth**, **API**, **schema** ou **fluxos críticos**, atualizar na mesma entrega:
+1. [.wolf/OPENWOLF.md](.wolf/OPENWOLF.md) + [.wolf/cerebrum.md](.wolf/cerebrum.md) + [.wolf/anatomy.md](.wolf/anatomy.md)
+2. **[docs/SPRINT-12-INSPECTION-FIXES.md](docs/SPRINT-12-INSPECTION-FIXES.md)** — última inspeção geral, migrations 018–020, deferidos
 
-- `docs/HISTORY-INFRA-WEB.md`
-- `docs/CODEMAPS/` (ficheiros afetados)
-- `docs/BACKLOG.md`
-- `docs/PLANNER-WEB-INFRA.md` (se mudar fases)
-- `docs/QA-EXECUTION-LOG.md` (comandos e resultados de verificação)
-- `README.md` (se mudarem comandos ou índice de docs)
+## Documentação alinhada ao código
 
-**Política detalhada:** [docs/MAINTENANCE-POLICY-IA.md](docs/MAINTENANCE-POLICY-IA.md)
+Após mudanças de **infra**, **auth**, **API**, **schema** ou fluxos críticos:
+
+- [docs/HISTORY-INFRA-WEB.md](docs/HISTORY-INFRA-WEB.md)
+- [docs/CODEMAPS/](docs/CODEMAPS/) (ficheiros afetados)
+- [docs/BACKLOG.md](docs/BACKLOG.md)
+- [docs/QA-EXECUTION-LOG.md](docs/QA-EXECUTION-LOG.md)
+- [README.md](README.md) (se mudarem comandos)
 
 ## Mapa rápido web
 
 - [docs/CODEMAPS/web-next-auth-supabase.md](docs/CODEMAPS/web-next-auth-supabase.md)
 
-## Regra local Cursor (opcional)
+## Verificação
 
-Se usares regras em `.cursor/rules/`, podes espelhar a política acima; o repositório ignora `.cursor/` no git — usa este `AGENTS.md` como fonte versionada.
+```bash
+pnpm test
+pnpm --filter @kanga/web run build
+```

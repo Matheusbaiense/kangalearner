@@ -4,21 +4,17 @@ import { usePathname } from "next/navigation";
 import { SK } from "@/lib/storageKeys";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang } from "@/lib/i18n";
+import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const KEY = "kl-onboarding-v1";
 
 const SUPPRESS_PATHS = ["/auth/", "/login", "/signup", "/forgot-password", "/reset-password"];
 
-const STATES = [
-  { key: "WA", label: "Western Australia" },
-  { key: "NSW", label: "New South Wales", soon: true },
-  { key: "VIC", label: "Victoria", soon: true },
-  { key: "QLD", label: "Queensland", soon: true },
-  { key: "SA", label: "South Australia", soon: true },
-  { key: "TAS", label: "Tasmania", soon: true },
-  { key: "ACT", label: "ACT", soon: true },
-  { key: "NT", label: "Northern Territory", soon: true },
-];
+const STATES = AU_STATE_OPTIONS.map((s) => ({
+  key: s.code,
+  label: s.name,
+  soon: s.code !== "WA",
+}));
 
 const LANGS = [
   { key: "en", label: "English" },

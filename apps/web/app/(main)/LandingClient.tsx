@@ -173,7 +173,11 @@ function SlideLearn({ lang }: { lang: UiLang }) {
     { Icon: ArrowLeftRight, label: { en: "Lanes",         pt: "Faixas",           es: "Carriles" } },
     { Icon: ShieldCheck,    label: { en: "Road Safety",   pt: "Segurança",        es: "Seguridad" } },
   ];
-  const hint = { en: "19 topics · 200+ questions", pt: "19 tópicos · 200+ perguntas", es: "19 temas · 200+ preguntas" };
+  const hint = {
+    en: "19 topics · growing WA question bank",
+    pt: "19 tópicos · banco de perguntas WA em expansão",
+    es: "19 temas · banco de preguntas WA en expansión",
+  };
   return (
     <>
       <div className="slide-header">

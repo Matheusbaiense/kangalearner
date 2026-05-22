@@ -106,6 +106,10 @@ export async function middleware(request: NextRequest) {
 
   const search = request.nextUrl.search;
 
+  if (pathname.startsWith("/api/admin/") && !user) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
   const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
   if (isProtected && !user) {
     const url = request.nextUrl.clone();

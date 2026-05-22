@@ -153,7 +153,7 @@ export default function AccountPage() {
     return () => {
       cancelled = true;
     };
-  }, [router, lang]);
+  }, [router]);
 
   /* ── Handlers ── */
   async function handleSaveProfile(e: React.FormEvent) {

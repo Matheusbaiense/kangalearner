@@ -9,7 +9,8 @@
     "lint": "turbo run lint",
     "format": "prettier -w .",
     "format:check": "prettier --check \"apps/web/**/*.{ts,tsx,css}\" \"packages/**/*.{ts,tsx}\" --no-error-on-unmatched-pattern",
-    "gen:questions-json": "pnpm exec tsx scripts/gen-questions-json.ts"
+    "gen:questions-json": "pnpm exec tsx scripts/gen-questions-json.ts",
+    "test": "pnpm --filter @kanga/web run test"
   },
   "pnpm": {
     "overrides": {

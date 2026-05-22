@@ -4,7 +4,7 @@ import { LandingClient } from "./LandingClient";
 export const metadata: Metadata = {
   title: "KangaLearner — Pass your WA learner test | Free practice in EN/PT/ES",
   description:
-    "Practice real Western Australia road-rule questions in English, Portuguese or Spanish. 200+ questions, 30-question mock test, instant feedback. Free forever.",
+    "Practice real Western Australia road-rule questions in English, Portuguese or Spanish. Growing question bank with 30-question mock tests and instant feedback. Free forever.",
   keywords:
     "WA learner test, Western Australia learner licence, road rules practice, learner driver test, driver knowledge test, prova de learner WA, examen learner WA",
   openGraph: {

@@ -44,9 +44,14 @@ export async function loadQuestions(): Promise<Question[]> {
   return _inFlight;
 }
 
-export function useQuestions(): { questions: Question[]; loading: boolean } {
+export function useQuestions(): {
+  questions: Question[];
+  loading: boolean;
+  error: string | null;
+} {
   const [questions, setQuestions] = useState<Question[]>(_resolved ?? []);
   const [loading, setLoading] = useState(_resolved === null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     if (_resolved !== null) return;
@@ -56,15 +61,19 @@ export function useQuestions(): { questions: Question[]; loading: boolean } {
         if (!cancelled) {
           setQuestions(data);
           setLoading(false);
+          setError(null);
         }
       })
-      .catch(() => {
-        if (!cancelled) setLoading(false);
+      .catch((err: unknown) => {
+        if (!cancelled) {
+          setLoading(false);
+          setError(err instanceof Error ? err.message : "Failed to load questions");
+        }
       });
     return () => {
       cancelled = true;
     };
   }, []);
 
-  return { questions, loading };
+  return { questions, loading, error };
 }

@@ -63,7 +63,9 @@ export function SiteNav() {
   const [authLoading, setAuthLoading] = useState(true);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [stateCode, setStateCode] = useState<string>("WA");
+  const [stateCode, setStateCode] = useState<string>(() =>
+    typeof window === "undefined" ? "WA" : readStoredState()
+  );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);

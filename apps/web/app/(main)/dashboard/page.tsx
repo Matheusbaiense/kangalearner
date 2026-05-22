@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { SUPPORTED_COUNTRY } from "@kanga/core";
+import { SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
 import { createClient } from "@/lib/supabase/server";
 import { MigrateLocalProgress } from "@/components/MigrateLocalProgress";
 import { DashboardClient } from "./DashboardClient";
@@ -188,7 +188,8 @@ export default async function DashboardPage({
       .select("answered_at, is_correct")
       .eq("user_id", user.id)
       .gte("answered_at", ninetyDaysAgo)
-      .order("answered_at", { ascending: false }),
+      .order("answered_at", { ascending: false })
+      .limit(5000),
     supabase!
       .from("question_attempts")
       .select("*", { count: "exact", head: true })
@@ -213,7 +214,8 @@ export default async function DashboardPage({
       .from("mock_sessions")
       .select("id, state, score, total, percent, completed_at")
       .eq("user_id", user.id)
-      .order("completed_at", { ascending: false }),
+      .order("completed_at", { ascending: false })
+      .limit(50),
     supabase!
       .from("user_settings")
       .select("daily_goal")
@@ -355,7 +357,7 @@ export default async function DashboardPage({
   const scoreColor =
     totalAnswered === 0
       ? "var(--ink)"
-      : overallPct >= 80
+      : overallPct >= WA_PASS_THRESHOLD * 100
         ? "var(--green)"
         : overallPct >= 60
           ? "var(--orange)"

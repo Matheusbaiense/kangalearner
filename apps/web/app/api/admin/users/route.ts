@@ -15,7 +15,10 @@ export async function GET(req: NextRequest) {
 
   let query = supabaseAdmin
     .from("profiles")
-    .select("id, role, display_name, country, preferred_state, lang, created_at, updated_at", { count: "exact" })
+    .select(
+      "id, role, display_name, country, preferred_state, lang, created_at, updated_at, email, last_sign_in_at",
+      { count: "exact" }
+    )
     .order("created_at", { ascending: false })
     .range(page * limit, (page + 1) * limit - 1);
 
@@ -28,25 +31,11 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: "internal_error" }, { status: 500 });
   }
 
-  // Fetch auth user data only for the current page's profile IDs (no 1000 cap)
-  const profileIds = (data ?? []).map((p) => p.id);
-  const authResults = await Promise.all(
-    profileIds.map((id) => supabaseAdmin.auth.admin.getUserById(id))
-  );
-  const authMap = new Map(
-    authResults
-      .filter((r) => r.data.user != null)
-      .map((r) => [r.data.user!.id, r.data.user!])
-  );
-
-  const enriched = (data ?? []).map((profile) => {
-    const authUser = authMap.get(profile.id);
-    return {
-      ...profile,
-      email: authUser?.email ?? "(no email)",
-      last_sign_in: authUser?.last_sign_in_at ?? null,
-    };
-  });
+  const enriched = (data ?? []).map((profile) => ({
+    ...profile,
+    email: profile.email ?? "(no email)",
+    last_sign_in: profile.last_sign_in_at ?? null,
+  }));
 
   return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
 }

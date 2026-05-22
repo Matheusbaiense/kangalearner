@@ -6,20 +6,24 @@
 2. Alterações focadas; evitar refactors não pedidos no mesmo PR.
 3. Antes de abrir PR:
    - `pnpm run format:check`
-   - `pnpm run lint`
-   - `pnpm run validate:questions` (se tocares em `assets/js/data/questions.js`)
-   - `pnpm run gen:core-questions` se alteraste o JS das questões
-   - `pnpm run test:e2e` (ou confiar no CI)
+   - `pnpm --filter @kanga/web run lint`
+   - `pnpm test`
+   - `pnpm --filter @kanga/web run build`
+
+## Questões
+
+- Fonte: `packages/core/src/data/questions.ts`
+- Sincronizar JSON: `pnpm run gen:questions-json`
 
 ## Estilo
 
-- Preferir dados **imutáveis** (sem mutar objetos partilhados in-place).
-- HTML/CSS/JS: seguir o estilo existente; Prettier na raiz para `index.html`, `assets/js`, `assets/css`.
+- Dados imutáveis (sem mutar objetos partilhados in-place).
+- TypeScript/React: seguir padrões em `apps/web`.
 
 ## Commits
 
-Formato sugerido: `feat: …`, `fix: …`, `chore: …`, `docs: …` (alinhado às regras do repositório).
+Formato: `feat: …`, `fix: …`, `chore: …`, `docs: …`
 
-## Documentação
+## Documentação (obrigatório após mudanças de infra/auth/API)
 
-Mudanças de infra/auth/API em `apps/web`: ver `AGENTS.md` e `docs/MAINTENANCE-POLICY-IA.md`.
+Ver [AGENTS.md](AGENTS.md) e [docs/SPRINT-12-INSPECTION-FIXES.md](docs/SPRINT-12-INSPECTION-FIXES.md).

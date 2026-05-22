@@ -5,7 +5,7 @@ export const alt = "KangaLearner — Pass Your WA Learner Test";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-const BADGES = ["Free Forever", "200+ Questions", "Mock Test", "3 Languages"] as const;
+const BADGES = ["Free Forever", "Growing Bank", "Mock Test", "3 Languages"] as const;
 
 export default function OgImage() {
   return new ImageResponse(

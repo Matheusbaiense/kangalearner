@@ -1,10 +1,13 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
-import { AU_STATE_OPTIONS } from "@kanga/core";
-
-const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
+import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
+import {
+  isValidAttemptCategory,
+  isValidAttemptState,
+  isValidQuestionId,
+  normalizeAttemptSource,
+} from "@/lib/api/attemptValidation";
 
 type AttemptPayload = {
   attempt_id?: string;
@@ -23,25 +26,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) {
+  let supabase;
+  let response;
+  try {
+    ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
+  } catch {
     return NextResponse.json({ error: "missing_env" }, { status: 500 });
   }
-
-  const response = NextResponse.next();
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll();
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) =>
-          response.cookies.set(name, value, options)
-        );
-      }
-    }
-  });
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
@@ -63,8 +54,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
-  if (!AU_STATES.has(payload.state)) {
+  if (!isValidAttemptState(payload.state)) {
     return NextResponse.json({ error: "invalid_state" }, { status: 400 });
+  }
+
+  if (!isValidQuestionId(payload.question_id)) {
+    return NextResponse.json({ error: "invalid_question_id" }, { status: 400 });
+  }
+
+  if (!isValidAttemptCategory(payload.category)) {
+    return NextResponse.json({ error: "invalid_category" }, { status: 400 });
   }
 
   const attemptId =
@@ -80,7 +79,7 @@ export async function POST(request: NextRequest) {
     category: payload.category ?? null,
     is_correct: payload.is_correct,
     chosen: payload.chosen ?? null,
-    source: payload.source ?? "web"
+    source: normalizeAttemptSource(payload.source)
   });
 
   if (error) {

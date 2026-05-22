@@ -23,7 +23,7 @@ export type Database = {
           answers: Json
           completed_at: string
           country: string
-          id: number
+          id: string
           mode: string
           passed: boolean
           percent: number | null
@@ -111,6 +111,7 @@ export type Database = {
           stripe_customer_id: string | null
           updated_at: string
           welcome_sent_at: string | null
+          last_sign_in_at: string | null
         }
         Insert: {
           avatar_url?: string | null
@@ -129,6 +130,7 @@ export type Database = {
           stripe_customer_id?: string | null
           updated_at?: string
           welcome_sent_at?: string | null
+          last_sign_in_at?: string | null
         }
         Update: {
           avatar_url?: string | null
@@ -147,15 +149,18 @@ export type Database = {
           stripe_customer_id?: string | null
           updated_at?: string
           welcome_sent_at?: string | null
+          last_sign_in_at?: string | null
         }
         Relationships: []
       }
       question_attempts: {
         Row: {
           answered_at: string
+          attempt_id: string
           category: string | null
           chosen: string | null
-          id: number
+          country: string
+          id: string
           is_correct: boolean
           question_id: string
           source: string
@@ -164,9 +169,11 @@ export type Database = {
         }
         Insert: {
           answered_at?: string
+          attempt_id: string
           category?: string | null
           chosen?: string | null
-          id?: number
+          country?: string
+          id?: string
           is_correct: boolean
           question_id: string
           source?: string
@@ -175,9 +182,11 @@ export type Database = {
         }
         Update: {
           answered_at?: string
+          attempt_id?: string
           category?: string | null
           chosen?: string | null
-          id?: number
+          country?: string
+          id?: string
           is_correct?: boolean
           question_id?: string
           source?: string

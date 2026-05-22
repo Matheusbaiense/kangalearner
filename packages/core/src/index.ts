@@ -44,6 +44,8 @@ export function normalizeAuState(value: string | null | undefined): AuStateCode 
   return null;
 }
 
+export { fisherYatesSlice } from "./shuffle";
+
 export { QUESTIONS, CATEGORIES } from "./data/questions";
 export {
   LANGS,

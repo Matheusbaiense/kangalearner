@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { CATEGORIES, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
+import { CATEGORIES, fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
@@ -299,7 +299,7 @@ function ScoreSidebar({
 
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
-  const { questions: QS, loading: questionsLoading } = useQuestions();
+  const { questions: QS, loading: questionsLoading, error: questionsError } = useQuestions();
   const searchParams = useSearchParams();
   const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
@@ -354,7 +354,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   useEffect(() => {
     if (mode !== "sim") return;
     const stateQs = QS.filter((q) => !q.states || q.states.includes(selectedState));
-    const shuffled = [...stateQs].sort(() => Math.random() - 0.5).slice(0, 30);
+    const shuffled = fisherYatesSlice(stateQs, 30);
     setSimQueue(shuffled);
     setSimIdx(0);
     setSimDone(false);
@@ -485,6 +485,19 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return (
       <div className="page-loading">
         <div className="spinner" />
+      </div>
+    );
+  }
+
+  if (questionsError) {
+    return (
+      <div className="app-page">
+        <div className="app-container app-section">
+          <p role="alert">{questionsError}</p>
+          <button type="button" className="btn btn-primary" onClick={() => window.location.reload()}>
+            Retry
+          </button>
+        </div>
       </div>
     );
   }

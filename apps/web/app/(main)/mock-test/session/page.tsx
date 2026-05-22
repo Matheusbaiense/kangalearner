@@ -2,34 +2,13 @@
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
-import type { Question } from "@kanga/core";
+import { fisherYatesSlice } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
+import { safeParseJson } from "@/lib/safeParseJson";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { useLang } from "@/contexts/LangContext";
 import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
-
-function safeParseJson<T>(raw: string | null): T | null {
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as T;
-  } catch {
-    return null;
-  }
-}
-
-function fisherYatesSlice<T>(arr: T[], k: number): T[] {
-  const a = arr.slice();
-  const n = a.length;
-  const take = Math.min(k, n);
-  for (let i = 0; i < take; i++) {
-    const j = i + Math.floor(Math.random() * (n - i));
-    const tmp = a[i];
-    a[i] = a[j];
-    a[j] = tmp;
-  }
-  return a.slice(0, take);
-}
 
 const EXAM_SECONDS = 45 * 60; // 45 minutes
 
@@ -71,7 +50,7 @@ export default function MockTestSessionPage() {
   }, []);
 
   const cfg = useMemo<MockConfig | null>(() => {
-    const parsed = safeParseJson<MockConfig>(raw);
+    const parsed = safeParseJson<MockConfig | null>(raw, null);
     if (!parsed) return null;
     const state = typeof parsed.state === "string" ? parsed.state : "WA";
     const mode = parsed.mode === "exam" ? "exam" : "practice";
@@ -82,7 +61,7 @@ export default function MockTestSessionPage() {
   }, [raw]);
 
   const session = useMemo<MockSession | null>(
-    () => safeParseJson<MockSession>(sessionRaw),
+    () => safeParseJson<MockSession | null>(sessionRaw, null),
     [sessionRaw]
   );
 
@@ -152,11 +131,11 @@ export default function MockTestSessionPage() {
 
   /* Auto-submit when time expires */
   useEffect(() => {
-    if (!timeExpired || !session) return;
+    if (!timeExpired || !session || session.completedAtIso) return;
     const completed: MockSession = { ...session, completedAtIso: new Date().toISOString() };
     persistSession(completed);
     router.push("/mock-test/results");
-  }, [timeExpired]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [timeExpired, session, router]);
 
   function persistSession(next: MockSession) {
     try {

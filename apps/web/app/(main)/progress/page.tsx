@@ -65,9 +65,9 @@ export default function ProgressPage() {
     try {
       const supabase = createClient();
       supabase.auth
-        .getSession()
+        .getUser()
         .then(({ data }) => {
-          setIsAuthenticated(Boolean(data.session));
+          setIsAuthenticated(Boolean(data.user));
         })
         .catch(() => {});
     } catch {}
@@ -101,8 +101,8 @@ export default function ProgressPage() {
 
     /* Next-step recommendation */
     const hasWrong = entries.some(([, v]) => !v.correct);
-    const totalQs = QUESTIONS.length;
-    const hasUnanswered = totalAnswered < totalQs;
+    const totalQs = questionsLoading ? 0 : QUESTIONS.length;
+    const hasUnanswered = !questionsLoading && totalAnswered < totalQs;
 
     let nextStep: string;
     if (totalAnswered === 0) {

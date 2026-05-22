@@ -1,9 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
-import { AU_STATE_OPTIONS } from "@kanga/core";
-
-const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
+import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
+import {
+  isValidAttemptCategory,
+  isValidAttemptState,
+  isValidQuestionId,
+  normalizeAttemptSource,
+} from "@/lib/api/attemptValidation";
 
 type BulkAttempt = {
   attempt_id: string;
@@ -22,25 +25,13 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) {
+  let supabase;
+  let response;
+  try {
+    ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
+  } catch {
     return NextResponse.json({ error: "missing_env" }, { status: 500 });
   }
-
-  const response = NextResponse.next();
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll();
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) =>
-          response.cookies.set(name, value, options)
-        );
-      }
-    }
-  });
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
@@ -71,9 +62,9 @@ export async function POST(request: NextRequest) {
   const validRows = attempts.filter(
     (r) =>
       r &&
-      typeof r.question_id === "string" &&
-      typeof r.state === "string" &&
-      AU_STATES.has(r.state) &&
+      isValidQuestionId(r.question_id) &&
+      isValidAttemptState(r.state) &&
+      isValidAttemptCategory(r.category) &&
       typeof r.is_correct === "boolean"
   );
 
@@ -95,7 +86,7 @@ export async function POST(request: NextRequest) {
       category: a.category ?? null,
       is_correct: a.is_correct,
       chosen: a.chosen ?? null,
-      source: typeof a.source === "string" ? a.source : "migration"
+      source: normalizeAttemptSource(a.source)
     }));
 
   if (rows.length === 0) {
@@ -112,9 +103,8 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
 
-  const json = NextResponse.json({ ok: true, accepted: rows.length });
-  response.cookies.getAll().forEach((c) => {
-    json.cookies.set(c.name, c.value);
-  });
-  return json;
+  return NextResponse.json(
+    { ok: true, accepted: rows.length },
+    { headers: response.headers }
+  );
 }
