@@ -126,7 +126,10 @@ export function SiteNav() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileNavOpen]);
 
-  // Auth state
+  // Auth state — single source of truth: onAuthStateChange only.
+  // Removing the parallel loadUser() call that caused a race condition where
+  // onAuthStateChange could fire SIGNED_OUT (empty localStorage on fresh device)
+  // and override the loadUser result, flashing "Sign In" or freezing the nav.
   useEffect(() => {
     let supabase: ReturnType<typeof createClient> | null = null;
     try {
@@ -152,26 +155,27 @@ export function SiteNav() {
       });
     }
 
-    async function loadUser() {
-      try {
-        const { data: { user: u } } = await supabase!.auth.getUser();
-        if (u) await buildNavUser(u);
-      } finally {
-        setAuthLoading(false);
-      }
-    }
-    loadUser();
+    // Safety fallback: if the subscription never resolves (e.g. corporate network
+    // blocking Supabase), unblock the nav after 4 s instead of staying frozen.
+    const fallbackTimer = setTimeout(() => setAuthLoading(false), 4000);
 
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
-      setAuthLoading(false);
+      clearTimeout(fallbackTimer);
       if (session?.user) {
         await buildNavUser(session.user);
       } else {
         setUser(null);
       }
+      // Set loading false AFTER async work completes — prevents the flash where
+      // authLoading=false + user=null causes "Sign In" to appear before the
+      // profile query resolves.
+      setAuthLoading(false);
     });
 
-    return () => listener.subscription.unsubscribe();
+    return () => {
+      clearTimeout(fallbackTimer);
+      listener.subscription.unsubscribe();
+    };
   }, []);
 
   async function handleSignOut() {
