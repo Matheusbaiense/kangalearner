@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { rateLimit } from "@/lib/rateLimit";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import {
   isValidAttemptCategory,
   isValidAttemptState,
@@ -87,5 +88,24 @@ export async function POST(request: NextRequest) {
     console.error("attempts: insert failed", error.code);
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
+
+  if (payload.category) {
+    const adminRpc = supabaseAdmin as unknown as {
+      rpc: (fn: string, args: Record<string, unknown>) => Promise<{ error: { message: string } | null }>;
+    };
+    void adminRpc
+      .rpc("upsert_category_stat", {
+        p_user_id: user.id,
+        p_country: "AU",
+        p_state: payload.state,
+        p_category: payload.category,
+        p_is_correct: payload.is_correct,
+      })
+      .then(({ error: statErr }) => {
+        if (statErr) console.error("upsert_category_stat:", statErr.message);
+      })
+      .catch(() => {});
+  }
+
   return NextResponse.json({ ok: true });
 }

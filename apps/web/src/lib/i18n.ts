@@ -378,6 +378,10 @@ export const t = {
     // ── Misc ──────────────────────────────────────────────
     pass: "Pass",
     fail: "Fail",
+    mockNoQuestions: "No questions available for this state.",
+    mockNoResults: "No results found for this session.",
+    mockSessionError: "Session error",
+    mockLoadNextQuestion: "We couldn't load the next question.",
   },
 
   pt: {
@@ -739,6 +743,10 @@ export const t = {
     // ── Misc ──────────────────────────────────────────────
     pass: "Aprovado",
     fail: "Reprovado",
+    mockNoQuestions: "Nenhuma questão disponível para este estado.",
+    mockNoResults: "Nenhum resultado encontrado para esta sessão.",
+    mockSessionError: "Erro de sessão",
+    mockLoadNextQuestion: "Não foi possível carregar a próxima questão.",
   },
 
   es: {
@@ -1101,6 +1109,10 @@ export const t = {
     // ── Misc ──────────────────────────────────────────────
     pass: "Aprobado",
     fail: "Reprobado",
+    mockNoQuestions: "No hay preguntas disponibles para este estado.",
+    mockNoResults: "No se encontraron resultados para esta sesión.",
+    mockSessionError: "Error de sesión",
+    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta.",
   },
 } as const satisfies Record<UiLang, Record<string, string>>;
 

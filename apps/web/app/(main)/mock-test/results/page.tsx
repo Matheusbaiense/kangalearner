@@ -133,7 +133,7 @@ export default function MockTestResultsPage() {
         {!session || !scored ? (
           <>
             <h1>{s.mockTest}</h1>
-            <p className="mock-meta">No results found for this session.</p>
+            <p className="mock-meta">{s.mockNoResults}</p>
             <Link href="/mock-test" className="btn btn-ghost-light">
               ← {s.mockTest}
             </Link>

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@/lib/supabase/server";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { newsletterConfirmHtml, newsletterConfirmSubject } from "@/lib/emails/newsletter-confirm";
@@ -18,9 +18,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
     }
 
-    const supabase = await createClient();
-
-    const { error } = await supabase
+    const { error } = await supabaseAdmin
       .from("newsletter_subscribers")
       .insert({ email, subscribed_at: new Date().toISOString(), source: "footer" });
 

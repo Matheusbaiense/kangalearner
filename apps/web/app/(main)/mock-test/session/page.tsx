@@ -204,7 +204,7 @@ export default function MockTestSessionPage() {
         <main className="container section-pad">
           <div className="mock-setup-card">
             <h1>{s.mockTest}</h1>
-            <p className="mock-meta">No questions available for {cfg.state}.</p>
+            <p className="mock-meta">{s.mockNoQuestions}</p>
             <Link href="/mock-test" className="btn btn-ghost-light">
               ← {s.mockTest}
             </Link>
@@ -229,8 +229,8 @@ export default function MockTestSessionPage() {
     return (
       <main className="container section-pad">
         <div className="mock-setup-card">
-          <h1>Session error</h1>
-          <p className="mock-meta">We couldn&apos;t load the next question.</p>
+          <h1>{s.mockSessionError}</h1>
+          <p className="mock-meta">{s.mockLoadNextQuestion}</p>
           <Link href="/mock-test" className="btn btn-ghost-light">
             ← {s.mockTest}
           </Link>
