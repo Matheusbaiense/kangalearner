@@ -124,7 +124,8 @@ export async function GET(request: NextRequest) {
       await supabaseAdmin
         .from("profiles")
         .update({ stripe_customer_id: stripeCustomerId })
-        .eq("id", user.id);
+        .eq("id", user.id)
+        .is("stripe_customer_id", null);
     } catch (stripeError) {
       console.error(
         "Stripe customer creation failed:",

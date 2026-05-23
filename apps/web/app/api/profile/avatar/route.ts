@@ -17,7 +17,20 @@ const MAGIC_BYTES: Record<string, number[][]> = {
   ]
 };
 
-function matchesMagicBytes(buf: Buffer, signatures: number[][]): boolean {
+function matchesMagicBytes(buf: Buffer, mime: string, signatures: number[][]): boolean {
+  if (mime === "image/webp") {
+    return (
+      buf.length >= 12 &&
+      buf[0] === 0x52 &&
+      buf[1] === 0x49 &&
+      buf[2] === 0x46 &&
+      buf[3] === 0x46 &&
+      buf[8] === 0x57 &&
+      buf[9] === 0x45 &&
+      buf[10] === 0x42 &&
+      buf[11] === 0x50
+    );
+  }
   return signatures.some((sig) => sig.every((byte, i) => buf[i] === byte));
 }
 
@@ -61,7 +74,7 @@ export async function POST(req: NextRequest) {
   const buffer = Buffer.from(await file.arrayBuffer());
 
   const signatures = MAGIC_BYTES[file.type];
-  if (!signatures || !matchesMagicBytes(buffer, signatures)) {
+  if (!signatures || !matchesMagicBytes(buffer, file.type, signatures)) {
     return NextResponse.json(
       { error: "File content does not match declared type." },
       { status: 400 }

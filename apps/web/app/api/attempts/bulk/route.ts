@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { rateLimit } from "@/lib/rateLimit";
+import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import {
   isValidAttemptCategory,
@@ -11,14 +12,14 @@ import {
 import { z } from "zod";
 
 const bulkAttemptSchema = z.object({
-  attempt_id: z.string().min(1),
-  question_id: z.string().min(1),
-  state: z.string().min(1),
-  category: z.string().nullable().optional(),
+  attempt_id: z.string().min(1).max(64),
+  question_id: z.string().min(1).max(64),
+  state: z.string().min(1).max(10),
+  category: z.string().max(50).nullable().optional(),
   is_correct: z.boolean(),
-  chosen: z.string().nullable().optional(),
-  source: z.string().optional(),
-  answered_at: z.string().optional()
+  chosen: z.string().max(20).nullable().optional(),
+  source: z.string().max(20).optional(),
+  answered_at: z.string().max(40).optional()
 });
 
 const bulkAttemptsPayloadSchema = z.object({
@@ -27,7 +28,7 @@ const bulkAttemptsPayloadSchema = z.object({
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+  const ip = getClientIp(request);
   if (!(await rateLimit(`attempts-bulk:ip:${ip}`, 20, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }

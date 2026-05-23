@@ -1,6 +1,5 @@
 import Stripe from "stripe";
 
-// Alinhado ao tipo `LatestApiVersion` do pacote `stripe` instalado (ex.: ^22 → 2026-04-22.dahlia).
 let _stripe: Stripe | null = null;
 
 function getStripe(): Stripe {
@@ -11,10 +10,19 @@ function getStripe(): Stripe {
   return _stripe;
 }
 
+/** Lookup existing Stripe customer by Supabase user id (idempotent signup). */
+export async function findStripeCustomerByUserId(userId: string): Promise<string | null> {
+  const stripe = getStripe();
+  const result = await stripe.customers.search({
+    query: `metadata['supabase_user_id']:'${userId}'`,
+    limit: 1
+  });
+  return result.data[0]?.id ?? null;
+}
+
 /**
- * Cria um customer no Stripe no momento do cadastro.
- * Não cobra nada — apenas registra o cliente para uso futuro.
- * Quando pagamentos forem ativados, o customer já existe.
+ * Creates a Stripe customer at signup. Idempotent: reuses existing customer
+ * or uses Stripe idempotency key to prevent duplicates under concurrent OAuth callbacks.
  */
 export async function createStripeCustomer(params: {
   email: string;
@@ -22,14 +30,20 @@ export async function createStripeCustomer(params: {
   userId: string;
   country?: string;
 }): Promise<string> {
-  const customer = await getStripe().customers.create({
-    email: params.email,
-    name: params.name,
-    metadata: {
-      supabase_user_id: params.userId,
-      country: params.country || "AU",
-      source: "kangalearner"
-    }
-  });
+  const existing = await findStripeCustomerByUserId(params.userId);
+  if (existing) return existing;
+
+  const customer = await getStripe().customers.create(
+    {
+      email: params.email,
+      name: params.name,
+      metadata: {
+        supabase_user_id: params.userId,
+        country: params.country || "AU",
+        source: "kangalearner"
+      }
+    },
+    { idempotencyKey: `kanga-customer-${params.userId}` }
+  );
   return customer.id;
 }

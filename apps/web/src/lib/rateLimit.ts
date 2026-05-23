@@ -6,10 +6,7 @@
 //       uses in-memory Map — correct for single-process local servers but NOT
 //       suitable for production serverless deployments.
 //
-// To activate Upstash, add to your Vercel project environment variables:
-//   UPSTASH_REDIS_REST_URL   https://<your-db>.upstash.io
-//   UPSTASH_REDIS_REST_TOKEN AX...
-// Free tier at https://console.upstash.com — no infra to manage.
+// Production without Upstash: FAIL CLOSED (deny) to prevent bypass across instances.
 
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
@@ -17,9 +14,8 @@ import { Ratelimit } from "@upstash/ratelimit";
 const upstashUrl = process.env.UPSTASH_REDIS_REST_URL;
 const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN;
 const useUpstash = Boolean(upstashUrl && upstashToken);
+const isProduction = process.env.NODE_ENV === "production";
 
-// Cache Ratelimit instances by "key:limit:windowMs" to avoid recreating on
-// every request (each instance holds an internal LRU cache).
 const limiterCache = new Map<string, Ratelimit>();
 
 function getUpstashLimiter(limit: number, windowMs: number): Ratelimit {
@@ -36,8 +32,8 @@ function getUpstashLimiter(limit: number, windowMs: number): Ratelimit {
   return limiter;
 }
 
-// In-memory fallback (development / single-process)
 const memMap = new Map<string, number[]>();
+
 function memRateLimit(key: string, limit: number, windowMs: number): boolean {
   const now = Date.now();
   const hits = (memMap.get(key) ?? []).filter((t) => t > now - windowMs);
@@ -48,12 +44,20 @@ function memRateLimit(key: string, limit: number, windowMs: number): boolean {
 }
 
 export async function rateLimit(key: string, limit: number, windowMs: number): Promise<boolean> {
-  if (!useUpstash) return memRateLimit(key, limit, windowMs);
+  if (!useUpstash) {
+    if (isProduction) {
+      console.error("[rateLimit] Upstash not configured in production — denying request");
+      return false;
+    }
+    return memRateLimit(key, limit, windowMs);
+  }
+
   try {
     const { success } = await getUpstashLimiter(limit, windowMs).limit(key);
     return success;
-  } catch {
-    // If Redis is unavailable, fall through to in-memory so the API stays up.
+  } catch (err) {
+    console.error("[rateLimit] Upstash error —", err instanceof Error ? err.message : "unknown");
+    if (isProduction) return false;
     return memRateLimit(key, limit, windowMs);
   }
 }

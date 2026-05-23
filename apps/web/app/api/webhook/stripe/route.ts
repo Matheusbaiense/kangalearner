@@ -51,6 +51,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ received: true });
   }
 
+  const { error: idempotencyError } = await supabaseAdmin
+    .from("stripe_webhook_events")
+    .insert({ event_id: event.id, event_type: event.type });
+
+  if (idempotencyError) {
+    if (idempotencyError.code === "23505") {
+      return NextResponse.json({ received: true });
+    }
+    console.error("webhook/stripe: idempotency insert failed:", idempotencyError.code);
+    return NextResponse.json({ error: "db_error" }, { status: 500 });
+  }
+
   const subscription = event.data.object as Stripe.Subscription;
   const customerId =
     typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id;

@@ -115,12 +115,12 @@ export default function AccountPage() {
     async function loadAccount() {
       try {
         const {
-          data: { session },
-          error: sessionError
-        } = await supabase.auth.getSession();
-        if (sessionError) throw sessionError;
+          data: { user: authUser },
+          error: userError
+        } = await supabase.auth.getUser();
+        if (userError) throw userError;
 
-        const user = session?.user;
+        const user = authUser;
         if (!user) {
           router.replace("/auth/login?redirect=/account");
           return;

@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
 import { rateLimit } from "@/lib/rateLimit";
+import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import {
@@ -13,18 +14,18 @@ import {
 import { z } from "zod";
 
 const attemptSchema = z.object({
-  attempt_id: z.string().optional(),
-  question_id: z.string().min(1),
-  state: z.string().min(1),
-  category: z.string().optional(),
+  attempt_id: z.string().max(64).optional(),
+  question_id: z.string().min(1).max(64),
+  state: z.string().min(1).max(10),
+  category: z.string().max(50).optional(),
   is_correct: z.boolean(),
-  chosen: z.string().optional(),
-  source: z.string().optional()
+  chosen: z.string().max(20).optional(),
+  source: z.string().max(20).optional()
 });
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood (loose: accounts for shared NAT)
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+  const ip = getClientIp(request);
   if (!(await rateLimit(`attempts:ip:${ip}`, 120, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }

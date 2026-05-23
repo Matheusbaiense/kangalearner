@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
+import { getClientIp } from "@/lib/requestClientIp";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { newsletterConfirmHtml, newsletterConfirmSubject } from "@/lib/emails/newsletter-confirm";
 
@@ -11,7 +12,7 @@ const newsletterSchema = z.object({
 });
 
 export async function POST(req: NextRequest) {
-  const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
+  const ip = getClientIp(req);
   if (!(await rateLimit(`newsletter:${ip}`, 3, 60_000))) {
     return NextResponse.json({ ok: false, error: "too_many_requests" }, { status: 429 });
   }

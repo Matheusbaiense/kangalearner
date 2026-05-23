@@ -13,6 +13,8 @@ Run each file **in numeric order** in **Supabase Dashboard → SQL Editor**. Run
 | 007 | `007_gamification.sql`         | XP, badges, levels                         |
 | 008 | `008_saved_questions.sql`      | Saved / bookmarked questions               |
 | 009 | `009_marketplace_scaffold.sql` | Marketplace tables (schema only)           |
+| …   | `010`–`021`                    | Roles, RLS hardening, admin RPCs (see repo) |
+| 022 | `022_security_hardening.sql`   | Audit fixes: RLS, RPC lockdown, mock integrity, Stripe idempotency |
 
 ## After running all migrations
 

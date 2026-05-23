@@ -9,6 +9,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 
 ## P1 — Web (`apps/web`)
 
+- [x] **Security audit remediation (2026-05-23)**: migration `022`, rate limit fail-closed prod, Zod bounds, Stripe idempotency, account delete rollback. _Follow-up:_ aplicar 022 em prod; DOMPurify; CSP nonce.
 - [x] **PracticeClient** — `syncAttempt` em `useCallback` + dependências de `pick` corrigidas (warning `exhaustive-deps`).
 - [x] **`themeColor`** — migrado para `export const viewport` em `app/layout.tsx` (Next 15+).
 - [ ] **Rotas duplicadas de auth**: `/login` (AuthCard) ainda existe para compat; fluxos server (`dashboard`, `account`) redirecionam para **`/auth/login`**. _Opcional:_ redirect 308 de `/login` → `/auth/login` ou unificar UI.

@@ -2,6 +2,21 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
 import { rateLimit } from "@/lib/rateLimit";
+import { z } from "zod";
+
+const PROFILE_ROLES = ["free", "premium", "admin", "super_admin"] as const;
+
+const adminUsersQuerySchema = z.object({
+  page: z.coerce.number().int().min(0).default(0),
+  limit: z.coerce.number().int().min(1).max(100).default(50),
+  search: z.string().max(100).optional(),
+  role: z.enum(PROFILE_ROLES).optional()
+});
+
+const patchUserSchema = z.object({
+  userId: z.string().uuid(),
+  role: z.enum(PROFILE_ROLES)
+});
 
 /** GET /api/admin/users?page=0&limit=50&search=&role= */
 export async function GET(req: NextRequest) {
@@ -13,10 +28,18 @@ export async function GET(req: NextRequest) {
   }
 
   const { searchParams } = new URL(req.url);
-  const page = Math.max(0, parseInt(searchParams.get("page") ?? "0"));
-  const limit = Math.min(100, parseInt(searchParams.get("limit") ?? "50"));
-  const search = searchParams.get("search") ?? "";
-  const role = searchParams.get("role") ?? "";
+  const parsed = adminUsersQuerySchema.safeParse({
+    page: searchParams.get("page") ?? undefined,
+    limit: searchParams.get("limit") ?? undefined,
+    search: searchParams.get("search") ?? undefined,
+    role: searchParams.get("role") || undefined
+  });
+
+  if (!parsed.success) {
+    return NextResponse.json({ error: "invalid_query" }, { status: 400 });
+  }
+
+  const { page, limit, search, role } = parsed.data;
 
   let query = supabaseAdmin
     .from("profiles")
@@ -45,13 +68,6 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
 }
 
-import { z } from "zod";
-
-const patchUserSchema = z.object({
-  userId: z.string().min(1),
-  role: z.enum(["free", "premium", "admin", "super_admin"])
-});
-
 /** PATCH /api/admin/users — update a user's role */
 export async function PATCH(req: NextRequest) {
   const uid = await assertAdminRole();
@@ -75,18 +91,22 @@ export async function PATCH(req: NextRequest) {
 
   const { userId, role } = parseResult.data;
 
-  // Fetch caller and target profiles in parallel
   const [{ data: callerProfile }, { data: targetProfile }] = await Promise.all([
     supabaseAdmin.from("profiles").select("role").eq("id", uid).single(),
     supabaseAdmin.from("profiles").select("role").eq("id", userId).single()
   ]);
 
-  // Assigning admin/super_admin requires super_admin
+  if (role === "premium" && callerProfile?.role !== "super_admin") {
+    return NextResponse.json(
+      { error: "Premium role is managed by Stripe billing" },
+      { status: 403 }
+    );
+  }
+
   if (["admin", "super_admin"].includes(role) && callerProfile?.role !== "super_admin") {
     return NextResponse.json({ error: "Only super_admin can assign admin roles" }, { status: 403 });
   }
 
-  // Modifying an existing admin/super_admin (even to demote) requires super_admin
   if (
     ["admin", "super_admin"].includes(targetProfile?.role ?? "") &&
     callerProfile?.role !== "super_admin"

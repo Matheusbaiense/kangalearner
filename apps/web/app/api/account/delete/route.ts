@@ -9,8 +9,7 @@ import { rateLimit } from "@/lib/rateLimit";
  * 1. Soft-deletes the profile row (sets deleted_at, anonymises display name).
  * 2. Hard-deletes the auth.users record via the admin API so the user cannot
  *    sign in again.
- * Note: question_attempts and mock_sessions reference auth.users with ON DELETE CASCADE
- *       (see migrations 004 and 005) — attempts and mock sessions are removed with the user.
+ * On auth deletion failure, rolls back the soft-delete to keep account consistent.
  */
 export async function DELETE() {
   const cookieStore = await cookies();
@@ -29,7 +28,27 @@ export async function DELETE() {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  // Step 1: Soft-delete the profile row and anonymise PII.
+  const { data: existingProfile, error: fetchError } = await supabaseAdmin
+    .from("profiles")
+    .select("display_name, name, avatar_url, deleted_at")
+    .eq("id", user.id)
+    .maybeSingle();
+
+  if (fetchError) {
+    console.error("[account/delete] profile fetch failed:", fetchError.code);
+    return NextResponse.json({ error: "delete_failed" }, { status: 500 });
+  }
+
+  if (existingProfile?.deleted_at) {
+    return NextResponse.json({ error: "already_deleted" }, { status: 409 });
+  }
+
+  const rollbackSnapshot = {
+    display_name: existingProfile?.display_name ?? null,
+    name: existingProfile?.name ?? null,
+    avatar_url: existingProfile?.avatar_url ?? null
+  };
+
   const { error: profileError } = await supabaseAdmin
     .from("profiles")
     .update({
@@ -45,14 +64,25 @@ export async function DELETE() {
     return NextResponse.json({ error: "delete_failed" }, { status: 500 });
   }
 
-  // Step 2: Remove the auth.users record so the user cannot sign in again.
   const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(user.id);
 
   if (authError) {
     console.error("[account/delete] auth user deletion failed:", authError.message);
-    // Profile is already anonymised; the auth deletion failure is non-fatal from
-    // a data-privacy standpoint but should be investigated. Return 500 so the
-    // client knows the operation was not fully completed.
+
+    const { error: rollbackError } = await supabaseAdmin
+      .from("profiles")
+      .update({
+        deleted_at: null,
+        display_name: rollbackSnapshot.display_name,
+        name: rollbackSnapshot.name,
+        avatar_url: rollbackSnapshot.avatar_url
+      })
+      .eq("id", user.id);
+
+    if (rollbackError) {
+      console.error("[account/delete] rollback failed:", rollbackError.code);
+    }
+
     return NextResponse.json({ error: "auth_delete_failed" }, { status: 500 });
   }
 

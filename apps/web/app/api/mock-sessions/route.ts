@@ -1,24 +1,25 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
+import { getClientIp } from "@/lib/requestClientIp";
 import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
+import { normalizeAttemptSource } from "@/lib/api/attemptValidation";
 
 import { z } from "zod";
 
 const mockSessionSchema = z.object({
-  state: z.string().min(1),
-  score: z.number().min(0),
-  total: z.number().positive(),
-  mode: z.string().optional(),
-  source: z.string().optional()
+  state: z.string().min(1).max(10),
+  score: z.number().int().min(0),
+  total: z.number().int().positive().max(500),
+  mode: z.enum(["exam", "practice"]).optional(),
+  source: z.string().max(20).optional()
 });
 
 const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 export async function POST(request: NextRequest) {
-  // IP guard — defence against unauthenticated flood
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!(await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000))) {
+  const ip = getClientIp(request);
+  if (!await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -46,8 +47,7 @@ export async function POST(request: NextRequest) {
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
-  // Per-user rate limit — 20 mock sessions per minute per user is generous
-  if (!(await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000))) {
+  if (!await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000)) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -69,9 +69,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
-  const VALID_MODES = new Set(["exam", "practice"]);
-  const sessionMode = payload.mode && VALID_MODES.has(payload.mode) ? payload.mode : "exam";
-
+  const sessionMode = payload.mode ?? "exam";
   const total = payload.total;
   const score = payload.score;
   const passed = total > 0 && score / total >= WA_PASS_THRESHOLD;
@@ -87,7 +85,7 @@ export async function POST(request: NextRequest) {
     time_seconds: null,
     answers: {},
     weak_categories: null,
-    source: payload.source ?? "web",
+    source: normalizeAttemptSource(payload.source),
     completed_at: new Date().toISOString()
   });
 

@@ -43,3 +43,5 @@ designer/
 
 # Jekyll / static site generator output
 _site/
+
+.vercel
