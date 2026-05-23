@@ -189,7 +189,7 @@ export default function MockTestSessionPage() {
       <main className="container section-pad">
         <div className="mock-setup-card">
           <h1>{s.mockTest}</h1>
-          <p className="mock-meta">No mock config found.</p>
+          <p className="mock-meta">{s.mockConfigNotFound}</p>
           <Link href="/mock-test" className="btn btn-ghost-light">
             ← {s.mockTest}
           </Link>
