@@ -16,6 +16,7 @@ type BulkAttempt = {
   is_correct: boolean;
   chosen?: string | null;
   source?: string;
+  answered_at?: string;
 };
 
 export async function POST(request: NextRequest) {
@@ -86,7 +87,8 @@ export async function POST(request: NextRequest) {
       category: a.category ?? null,
       is_correct: a.is_correct,
       chosen: a.chosen ?? null,
-      source: normalizeAttemptSource(a.source)
+      source: normalizeAttemptSource(a.source),
+      answered_at: a.answered_at ?? new Date().toISOString(),
     }));
 
   if (rows.length === 0) {

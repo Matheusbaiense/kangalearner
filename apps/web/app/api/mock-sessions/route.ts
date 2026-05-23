@@ -86,7 +86,8 @@ export async function POST(request: NextRequest) {
     time_seconds: null,
     answers: {},
     weak_categories: null,
-    source: payload.source ?? "web"
+    source: payload.source ?? "web",
+    completed_at: new Date().toISOString(),
   });
 
   if (error) {

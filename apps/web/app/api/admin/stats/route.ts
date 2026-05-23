@@ -1,6 +1,7 @@
-import { NextResponse } from "next/server";
+import { NextResponse, type NextRequest } from "next/server";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { rateLimit } from "@/lib/rateLimit";
 
 type RoleBreakdownRow = { role: string; cnt: number };
 type CountryBreakdownRow = { country: string; cnt: number };
@@ -15,9 +16,13 @@ const adminRpc = supabaseAdmin as unknown as {
   ) => Promise<{ data: T | null; error: { message: string } | null }>;
 };
 
-export async function GET() {
+export async function GET(_request: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+
+  if (!await rateLimit(`admin-stats:user:${uid}`, 30, 60_000)) {
+    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+  }
 
   const now = new Date();
   const d30 = new Date(now); d30.setDate(d30.getDate() - 30);

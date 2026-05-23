@@ -79,7 +79,8 @@ export async function POST(request: NextRequest) {
     category: payload.category ?? null,
     is_correct: payload.is_correct,
     chosen: payload.chosen ?? null,
-    source: normalizeAttemptSource(payload.source)
+    source: normalizeAttemptSource(payload.source),
+    answered_at: new Date().toISOString(),
   });
 
   if (error) {

@@ -72,6 +72,18 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ received: true });
   }
 
+  // Guard: never demote admin or super_admin via Stripe billing events
+  const { data: profile } = await supabaseAdmin
+    .from("profiles")
+    .select("role")
+    .eq("stripe_customer_id", customerId)
+    .single();
+
+  if (profile?.role === "admin" || profile?.role === "super_admin") {
+    console.warn("webhook/stripe: skipping role change for privileged user", customerId);
+    return NextResponse.json({ received: true });
+  }
+
   const { error: updateError } = await supabaseAdmin
     .from("profiles")
     .update({ role: newRole })
