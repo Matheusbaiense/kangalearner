@@ -3258,11 +3258,6 @@ a:focus-visible,
   opacity: 0.4;
   cursor: not-allowed;
 }
-  cursor: pointer;
-  transition: opacity 0.15s, transform 0.1s;
-}
-.ob-cta:hover { opacity: 0.88; transform: translateY(-1px); }
-.ob-cta:active { transform: translateY(0); opacity: 1; }
 
 .resources-list {
   display: flex;
