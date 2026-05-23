@@ -8,12 +8,19 @@ import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const KEY = "kl-onboarding-v1";
 
-const SUPPRESS_PATHS = ["/auth/", "/login", "/signup", "/forgot-password", "/reset-password", "/mock-test"];
+const SUPPRESS_PATHS = [
+  "/auth/",
+  "/login",
+  "/signup",
+  "/forgot-password",
+  "/reset-password",
+  "/mock-test"
+];
 
 const STATES = AU_STATE_OPTIONS.map((s) => ({
   key: s.code,
   label: s.name,
-  soon: s.code !== "WA",
+  soon: s.code !== "WA"
 }));
 
 const LANGS = [
@@ -21,7 +28,7 @@ const LANGS = [
   { key: "pt", label: "Português" },
   { key: "es", label: "Español" },
   { key: "pt-en", label: "Português + EN" },
-  { key: "es-en", label: "Español + EN" },
+  { key: "es-en", label: "Español + EN" }
 ];
 
 const GO_LABEL: Record<string, string> = {
@@ -29,7 +36,7 @@ const GO_LABEL: Record<string, string> = {
   pt: "Vamos!",
   es: "¡Vamos!",
   "pt-en": "Vamos!",
-  "es-en": "¡Vamos!",
+  "es-en": "¡Vamos!"
 };
 
 export function Onboarding() {
@@ -62,11 +69,7 @@ export function Onboarding() {
   if (!visible || isAuthRoute) return null;
 
   return (
-    <div
-      className="onboarding-banner"
-      role="dialog"
-      aria-label="Welcome to KangaLearner"
-    >
+    <div className="onboarding-banner" role="dialog" aria-label="Welcome to KangaLearner">
       <div className="ob-banner-inner">
         <div className="ob-banner-text">
           <strong>Welcome 🦘</strong> Pick state & language:
@@ -101,18 +104,18 @@ export function Onboarding() {
             ))}
           </div>
 
-          <button className="btn-auth-primary ob-banner-cta" onClick={done} type="button" style={{ height: "32px", fontSize: "0.8rem", padding: "0 14px", marginTop: 0 }}>
+          <button
+            className="btn-auth-primary ob-banner-cta"
+            onClick={done}
+            type="button"
+            style={{ height: "32px", fontSize: "0.8rem", padding: "0 14px", marginTop: 0 }}
+          >
             {GO_LABEL[lang] ?? "Let's go!"}
           </button>
         </div>
       </div>
 
-      <button
-        className="ob-dismiss-banner"
-        onClick={dismiss}
-        type="button"
-        aria-label="Dismiss"
-      >
+      <button className="ob-dismiss-banner" onClick={dismiss} type="button" aria-label="Dismiss">
         ✕
       </button>
     </div>

@@ -14,11 +14,7 @@ function toMode(raw: string | undefined): Mode {
 
 type PageSearchParams = Promise<{ mode?: string }>;
 
-export default async function PracticePage({
-  searchParams,
-}: {
-  searchParams: PageSearchParams;
-}) {
+export default async function PracticePage({ searchParams }: { searchParams: PageSearchParams }) {
   const { mode: rawMode } = await searchParams;
   const initialMode = toMode(rawMode);
   return (

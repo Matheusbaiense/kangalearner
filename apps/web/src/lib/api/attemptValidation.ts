@@ -14,7 +14,11 @@ export function isValidQuestionId(id: unknown): id is string {
 }
 
 export function isValidAttemptCategory(category: unknown): boolean {
-  return category === undefined || category === null || (typeof category === "string" && CATEGORY_RE.test(category));
+  return (
+    category === undefined ||
+    category === null ||
+    (typeof category === "string" && CATEGORY_RE.test(category))
+  );
 }
 
 export function normalizeAttemptSource(source: unknown): string {

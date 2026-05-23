@@ -4,11 +4,11 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import type { Lang } from "@/lib/i18n";
 
 const LANGS: { code: Lang; label: string }[] = [
-  { code: "en",    label: "EN" },
-  { code: "pt",    label: "PT" },
-  { code: "es",    label: "ES" },
+  { code: "en", label: "EN" },
+  { code: "pt", label: "PT" },
+  { code: "es", label: "ES" },
   { code: "pt-en", label: "PT·EN" },
-  { code: "es-en", label: "ES·EN" },
+  { code: "es-en", label: "ES·EN" }
 ];
 
 export function AuthTopBar() {

@@ -26,23 +26,35 @@ const RESULT_MSG = {
   pass: {
     en: "Well done! You passed the mock test.",
     pt: "Parabéns! Você passou no simulado.",
-    es: "¡Felicidades! Pasaste el simulacro.",
+    es: "¡Felicidades! Pasaste el simulacro."
   },
   fail: {
     en: "Keep practising — you need 80% to pass. Review wrong answers below.",
     pt: "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas abaixo.",
-    es: "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas abajo.",
-  },
+    es: "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas abajo."
+  }
 };
 
 const TRY_AGAIN = { en: "Try again", pt: "Tentar de novo", es: "Intentar de nuevo" };
 const NEW_TEST = { en: "New mock test", pt: "Novo simulado", es: "Nuevo simulacro" };
-const CONTINUE = { en: "Continue practice →", pt: "Continuar praticando →", es: "Continuar practicando →" };
+const CONTINUE = {
+  en: "Continue practice →",
+  pt: "Continuar praticando →",
+  es: "Continuar practicando →"
+};
 const YOUR_ANSWER = { en: "Your answer:", pt: "Sua resposta:", es: "Tu respuesta:" };
 const CORRECT_ANSWER = { en: "Correct:", pt: "Correto:", es: "Correcto:" };
 const EXPLANATION = { en: "Explanation", pt: "Explicação", es: "Explicación" };
-const REVIEW = { en: "Review wrong answers", pt: "Revisar respostas erradas", es: "Revisar respuestas incorrectas" };
-const PERFECT = { en: "Perfect score — no mistakes to review.", pt: "Pontuação perfeita — sem erros para revisar.", es: "Puntuación perfecta — sin errores para revisar." };
+const REVIEW = {
+  en: "Review wrong answers",
+  pt: "Revisar respostas erradas",
+  es: "Revisar respuestas incorrectas"
+};
+const PERFECT = {
+  en: "Perfect score — no mistakes to review.",
+  pt: "Pontuação perfeita — sem erros para revisar.",
+  es: "Puntuación perfecta — sin errores para revisar."
+};
 
 export default function MockTestResultsPage() {
   const { questions: QUESTIONS, loading: questionsLoading } = useQuestions();
@@ -86,30 +98,30 @@ export default function MockTestResultsPage() {
     void supabase.auth.getUser().then(({ data: { user } }) => {
       if (cancelled || !user) return;
 
-    const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
-    fetch("/api/mock-sessions", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        state: session.cfg.state,
-        score: scored.score,
-        total: scored.total,
-        source: "web",
-      }),
-      signal: ctrl ? ctrl.signal : undefined,
-    })
-      .then((r) => (r.ok ? r.json().catch(() => null) : null))
-      .then((j) => {
-        if (!j?.ok) return;
-        const next: MockSession = { ...session, postedAtIso: new Date().toISOString() };
-        try {
-          const nextRaw = JSON.stringify(next);
-          sessionStorage.setItem("mock-session", nextRaw);
-          setRaw(nextRaw);
-        } catch {}
+      const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
+      fetch("/api/mock-sessions", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          state: session.cfg.state,
+          score: scored.score,
+          total: scored.total,
+          source: "web"
+        }),
+        signal: ctrl ? ctrl.signal : undefined
       })
-      .catch(() => {})
-      .finally(() => ctrl?.abort());
+        .then((r) => (r.ok ? r.json().catch(() => null) : null))
+        .then((j) => {
+          if (!j?.ok) return;
+          const next: MockSession = { ...session, postedAtIso: new Date().toISOString() };
+          try {
+            const nextRaw = JSON.stringify(next);
+            sessionStorage.setItem("mock-session", nextRaw);
+            setRaw(nextRaw);
+          } catch {}
+        })
+        .catch(() => {})
+        .finally(() => ctrl?.abort());
     });
 
     return () => {
@@ -142,11 +154,15 @@ export default function MockTestResultsPage() {
           <>
             <div
               className="mock-meta"
-              style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 12,
+                flexWrap: "wrap"
+              }}
             >
               <span>
-                {session.cfg.state} ·{" "}
-                {session.cfg.mode === "exam" ? s.examMode : s.practiceMode}
+                {session.cfg.state} · {session.cfg.mode === "exam" ? s.examMode : s.practiceMode}
               </span>
               <span>{scored.pct}%</span>
             </div>
@@ -157,10 +173,21 @@ export default function MockTestResultsPage() {
 
             <p
               className="mock-meta"
-              style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: 6 }}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                flexWrap: "wrap",
+                marginTop: 6
+              }}
             >
               {scored.pass ? (
-                <Icons.success width={18} height={18} aria-hidden style={{ color: "var(--green)" }} />
+                <Icons.success
+                  width={18}
+                  height={18}
+                  aria-hidden
+                  style={{ color: "var(--green)" }}
+                />
               ) : (
                 <Icons.error width={18} height={18} aria-hidden style={{ color: "var(--red)" }} />
               )}
@@ -194,27 +221,34 @@ export default function MockTestResultsPage() {
                     .map((r) => (
                       <div
                         key={r.qid}
-                        style={{ padding: 12, borderRadius: 12, background: "rgba(15, 23, 42, 0.04)" }}
+                        style={{
+                          padding: 12,
+                          borderRadius: 12,
+                          background: "rgba(15, 23, 42, 0.04)"
+                        }}
                       >
-                        <div style={{ fontWeight: 800, marginBottom: 4 }}>
-                          {tx(r.q?.q, lang)}
-                        </div>
+                        <div style={{ fontWeight: 800, marginBottom: 4 }}>{tx(r.q?.q, lang)}</div>
                         {bilingual && r.q?.q?.en && tx(r.q?.q, lang) !== r.q.q.en && (
-                          <div style={{ fontSize: ".78rem", opacity: 0.55, fontStyle: "italic", marginBottom: 8 }}>
+                          <div
+                            style={{
+                              fontSize: ".78rem",
+                              opacity: 0.55,
+                              fontStyle: "italic",
+                              marginBottom: 8
+                            }}
+                          >
                             {r.q.q.en}
                           </div>
                         )}
                         <div style={{ display: "grid", gap: 4, fontSize: ".9rem" }}>
                           <div>
-                            {YOUR_ANSWER[lang]}{" "}
-                            <strong>{r.chosen ?? "—"}</strong>{" "}
+                            {YOUR_ANSWER[lang]} <strong>{r.chosen ?? "—"}</strong>{" "}
                             <span style={{ opacity: 0.8 }}>
                               {tx(r.q?.opts?.find((o) => o.l === r.chosen)?.t, lang)}
                             </span>
                           </div>
                           <div>
-                            {CORRECT_ANSWER[lang]}{" "}
-                            <strong>{r.correct ?? "—"}</strong>{" "}
+                            {CORRECT_ANSWER[lang]} <strong>{r.correct ?? "—"}</strong>{" "}
                             <span style={{ opacity: 0.8 }}>
                               {tx(r.q?.opts?.find((o) => o.l === r.correct)?.t, lang)}
                             </span>
@@ -222,11 +256,20 @@ export default function MockTestResultsPage() {
                         </div>
                         {r.q?.exp && (
                           <div style={{ marginTop: 10 }}>
-                            <div style={{ fontWeight: 800, marginBottom: 6 }}>{EXPLANATION[lang]}</div>
-                            <div dangerouslySetInnerHTML={{ __html: sanitizeHtml(tx(r.q.exp, lang)) }} />
+                            <div style={{ fontWeight: 800, marginBottom: 6 }}>
+                              {EXPLANATION[lang]}
+                            </div>
+                            <div
+                              dangerouslySetInnerHTML={{ __html: sanitizeHtml(tx(r.q.exp, lang)) }}
+                            />
                             {bilingual && r.q.exp?.en && tx(r.q.exp, lang) !== r.q.exp.en && (
                               <div
-                                style={{ marginTop: 6, opacity: 0.55, fontSize: ".8rem", fontStyle: "italic" }}
+                                style={{
+                                  marginTop: 6,
+                                  opacity: 0.55,
+                                  fontSize: ".8rem",
+                                  fontStyle: "italic"
+                                }}
                                 dangerouslySetInnerHTML={{ __html: sanitizeHtml(r.q.exp.en) }}
                               />
                             )}

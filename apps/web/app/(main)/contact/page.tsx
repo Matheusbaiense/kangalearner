@@ -9,8 +9,8 @@ export default function ContactPage() {
         Contact
       </h1>
       <p style={{ color: "var(--muted2, #536778)", marginBottom: "1.25rem" }}>
-        Have a question, found an error in a question, or want to suggest a feature? We&apos;d love to
-        hear from you.
+        Have a question, found an error in a question, or want to suggest a feature? We&apos;d love
+        to hear from you.
       </p>
       <p style={{ color: "var(--muted2, #536778)", marginBottom: "1.25rem" }}>
         Contact options and a support form are coming soon. In the meantime, reach out via the

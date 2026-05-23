@@ -44,7 +44,7 @@ export async function POST(request: NextRequest) {
   const HANDLED = new Set([
     "customer.subscription.created",
     "customer.subscription.updated",
-    "customer.subscription.deleted",
+    "customer.subscription.deleted"
   ]);
 
   if (!HANDLED.has(event.type)) {
@@ -53,9 +53,7 @@ export async function POST(request: NextRequest) {
 
   const subscription = event.data.object as Stripe.Subscription;
   const customerId =
-    typeof subscription.customer === "string"
-      ? subscription.customer
-      : subscription.customer?.id;
+    typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id;
 
   if (!customerId) {
     console.error("webhook/stripe: missing customer id in event", event.id);
@@ -64,7 +62,10 @@ export async function POST(request: NextRequest) {
 
   let newRole: SubscriptionRole;
 
-  if (event.type === "customer.subscription.deleted" || INACTIVE_STATUSES.has(subscription.status)) {
+  if (
+    event.type === "customer.subscription.deleted" ||
+    INACTIVE_STATUSES.has(subscription.status)
+  ) {
     newRole = "free";
   } else if (ACTIVE_STATUSES.has(subscription.status)) {
     newRole = "premium";

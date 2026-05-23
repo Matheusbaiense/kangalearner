@@ -7,7 +7,7 @@ import {
   type UIStrings,
   getUiLang,
   isBilingualLang,
-  VALID_LANGS,
+  VALID_LANGS
 } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
 
@@ -17,15 +17,15 @@ const LANG_TO_HTML: Record<string, string> = {
   pt: "pt",
   "pt-en": "pt",
   es: "es",
-  "es-en": "es",
+  "es-en": "es"
 };
 
 interface LangContextValue {
-  lang: Lang;          // full code e.g. "pt-en"
-  uiLang: UiLang;      // base UI lang e.g. "pt"
+  lang: Lang; // full code e.g. "pt-en"
+  uiLang: UiLang; // base UI lang e.g. "pt"
   isBilingual: boolean; // true when English subtitles should appear in questions
   setLang: (l: Lang) => void;
-  s: UIStrings;        // translated UI strings
+  s: UIStrings; // translated UI strings
 }
 
 const LangContext = createContext<LangContextValue>({
@@ -33,7 +33,7 @@ const LangContext = createContext<LangContextValue>({
   uiLang: "en",
   isBilingual: false,
   setLang: () => {},
-  s: t.en,
+  s: t.en
 });
 
 export function LangProvider({ children }: { children: ReactNode }) {
@@ -71,9 +71,7 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const isBilingual = isBilingualLang(lang);
 
   return (
-    <LangContext.Provider
-      value={{ lang, uiLang, isBilingual, setLang, s: t[uiLang] as UIStrings }}
-    >
+    <LangContext.Provider value={{ lang, uiLang, isBilingual, setLang, s: t[uiLang] as UIStrings }}>
       {children}
     </LangContext.Provider>
   );

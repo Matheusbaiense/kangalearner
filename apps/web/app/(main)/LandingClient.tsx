@@ -16,7 +16,7 @@ import {
   BookOpen,
   Target,
   ClipboardList,
-  TrendingUp,
+  TrendingUp
 } from "lucide-react";
 import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
@@ -24,140 +24,255 @@ import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
 
 /* ── Data ── */
-const FEATURES: { href: string; iconKey: "feat1" | "feat2" | "feat3" | "feat4"; Icon: LucideIcon }[] = [
-  { href: "/learn",     iconKey: "feat1", Icon: BookOpen     },
-  { href: "/practice",  iconKey: "feat2", Icon: Target        },
+const FEATURES: {
+  href: string;
+  iconKey: "feat1" | "feat2" | "feat3" | "feat4";
+  Icon: LucideIcon;
+}[] = [
+  { href: "/learn", iconKey: "feat1", Icon: BookOpen },
+  { href: "/practice", iconKey: "feat2", Icon: Target },
   { href: "/mock-test", iconKey: "feat3", Icon: ClipboardList },
-  { href: "/progress",  iconKey: "feat4", Icon: TrendingUp    },
+  { href: "/progress", iconKey: "feat4", Icon: TrendingUp }
 ];
 
 const TOPICS = [
-  { key: "Speed",   Icon: Gauge,          titleKey: "topicSpeed" as const,   descKey: "topicSpeedDesc" as const,   cat: "speed_limits" },
-  { key: "Signs",   Icon: TrafficCone,    titleKey: "topicSigns" as const,   descKey: "topicSignsDesc" as const,   cat: "road_signs" },
-  { key: "Parking", Icon: ParkingCircle,  titleKey: "topicParking" as const, descKey: "topicParkingDesc" as const, cat: "parking" },
-  { key: "Alcohol", Icon: AlertTriangle,  titleKey: "topicAlcohol" as const, descKey: "topicAlcoholDesc" as const, cat: "alcohol_drugs" },
-  { key: "Lanes",   Icon: ArrowLeftRight, titleKey: "topicLanes" as const,   descKey: "topicLanesDesc" as const,   cat: "lane_discipline" },
-  { key: "Safety",  Icon: ShieldCheck,    titleKey: "topicSafety" as const,  descKey: "topicSafetyDesc" as const,  cat: "road_safety" },
+  {
+    key: "Speed",
+    Icon: Gauge,
+    titleKey: "topicSpeed" as const,
+    descKey: "topicSpeedDesc" as const,
+    cat: "speed_limits"
+  },
+  {
+    key: "Signs",
+    Icon: TrafficCone,
+    titleKey: "topicSigns" as const,
+    descKey: "topicSignsDesc" as const,
+    cat: "road_signs"
+  },
+  {
+    key: "Parking",
+    Icon: ParkingCircle,
+    titleKey: "topicParking" as const,
+    descKey: "topicParkingDesc" as const,
+    cat: "parking"
+  },
+  {
+    key: "Alcohol",
+    Icon: AlertTriangle,
+    titleKey: "topicAlcohol" as const,
+    descKey: "topicAlcoholDesc" as const,
+    cat: "alcohol_drugs"
+  },
+  {
+    key: "Lanes",
+    Icon: ArrowLeftRight,
+    titleKey: "topicLanes" as const,
+    descKey: "topicLanesDesc" as const,
+    cat: "lane_discipline"
+  },
+  {
+    key: "Safety",
+    Icon: ShieldCheck,
+    titleKey: "topicSafety" as const,
+    descKey: "topicSafetyDesc" as const,
+    cat: "road_safety"
+  }
 ] as const;
 
 const TRUST_ITEMS = [
-  { Icon: Globe,        titleKey: "trustMultiTitle" as const, bodyKey: "trustMultiBody" as const, hasFlags: true },
-  { Icon: Database,     titleKey: "trustSaveTitle" as const,  bodyKey: "trustSaveBody" as const,  hasFlags: false },
-  { Icon: Check,        titleKey: "trustOfficialTitle" as const, bodyKey: "trustOfficialBody" as const, hasFlags: false },
+  {
+    Icon: Globe,
+    titleKey: "trustMultiTitle" as const,
+    bodyKey: "trustMultiBody" as const,
+    hasFlags: true
+  },
+  {
+    Icon: Database,
+    titleKey: "trustSaveTitle" as const,
+    bodyKey: "trustSaveBody" as const,
+    hasFlags: false
+  },
+  {
+    Icon: Check,
+    titleKey: "trustOfficialTitle" as const,
+    bodyKey: "trustOfficialBody" as const,
+    hasFlags: false
+  }
 ] as const;
 
 // Show WA (active) + 3 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
 const AU_STATES = [
-  { code: "WA",  available: true },
+  { code: "WA", available: true },
   { code: "NSW", available: false },
   { code: "VIC", available: false },
-  { code: "QLD", available: false },
+  { code: "QLD", available: false }
 ];
 
 const TESTIMONIALS = [
   {
-    name: "Carlos M.", state: "WA", country: "br",
+    name: "Carlos M.",
+    state: "WA",
+    country: "br",
     quote: {
       en: "Passed first try! The questions in Portuguese made everything so much easier to understand.",
       pt: "Passei na primeira tentativa! As perguntas em português tornaram tudo muito mais fácil de entender.",
-      es: "¡Pasé en el primer intento! Las preguntas en portugués hicieron que todo fuera más fácil de entender.",
-    },
+      es: "¡Pasé en el primer intento! Las preguntas en portugués hicieron que todo fuera más fácil de entender."
+    }
   },
   {
-    name: "Ana R.", state: "WA", country: "es",
+    name: "Ana R.",
+    state: "WA",
+    country: "es",
     quote: {
       en: "Perfect for someone who doesn't speak fluent English. I studied in Spanish and passed with no problems.",
       pt: "Perfeito para quem não fala inglês fluente. Estudei em espanhol e passei sem problemas.",
-      es: "Perfecto para alguien que no habla inglés fluido. Pude estudiar en español y aprobar sin problemas.",
-    },
+      es: "Perfecto para alguien que no habla inglés fluido. Pude estudiar en español y aprobar sin problemas."
+    }
   },
   {
-    name: "Michael T.", state: "WA", country: "au",
+    name: "Michael T.",
+    state: "WA",
+    country: "au",
     quote: {
       en: "The mock test mode is brilliant — I did it 3 times until I consistently got over 90%. Passed first go!",
       pt: "O modo simulado é ótimo — fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
-      es: "El modo simulacro es brillante — lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!",
-    },
+      es: "El modo simulacro es brillante — lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
+    }
   },
   {
-    name: "Linh N.", state: "WA", country: "vn",
+    name: "Linh N.",
+    state: "WA",
+    country: "vn",
     quote: {
       en: "I was nervous about studying in a second language, but the clear explanations made everything click. Passed easily!",
       pt: "Estava nervosa em estudar em um segundo idioma, mas as explicações claras fizeram tudo fazer sentido. Passei com facilidade!",
-      es: "Estaba nerviosa estudiando en un segundo idioma, pero las explicaciones claras lo hicieron todo muy claro. ¡Aprobé fácilmente!",
-    },
+      es: "Estaba nerviosa estudiando en un segundo idioma, pero las explicaciones claras lo hicieron todo muy claro. ¡Aprobé fácilmente!"
+    }
   },
   {
-    name: "Priya S.", state: "WA", country: "in",
+    name: "Priya S.",
+    state: "WA",
+    country: "in",
     quote: {
       en: "I had failed twice before. After two weeks on KangaLearner the explanations finally made the rules stick. Third time's the charm!",
       pt: "Havia reprovado duas vezes antes. Após duas semanas no KangaLearner as explicações finalmente fixaram as regras. Terceira é a sorte!",
-      es: "Había reprobado dos veces antes. Después de dos semanas en KangaLearner las explicaciones hicieron que las reglas se quedaran. ¡A la tercera va la vencida!",
-    },
+      es: "Había reprobado dos veces antes. Después de dos semanas en KangaLearner las explicaciones hicieron que las reglas se quedaran. ¡A la tercera va la vencida!"
+    }
   },
   {
-    name: "Marco R.", state: "WA", country: "it",
+    name: "Marco R.",
+    state: "WA",
+    country: "it",
     quote: {
       en: "Great app for new immigrants. You actually learn the road rules instead of just memorising — that's the difference.",
       pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar — essa é a diferença.",
-      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas — esa es la diferencia.",
-    },
+      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas — esa es la diferencia."
+    }
   },
   {
-    name: "Mei L.", state: "WA", country: "cn",
+    name: "Mei L.",
+    state: "WA",
+    country: "cn",
     quote: {
       en: "The practice mode shows exactly where you're weak. I focused on road signs and went from 60% to 93% in one week.",
       pt: "O modo de prática mostra exatamente onde você é fraco. Foquei nos sinais e fui de 60% para 93% em uma semana.",
-      es: "El modo de práctica muestra exactamente dónde estás débil. Me centré en las señales y fui del 60% al 93% en una semana.",
-    },
+      es: "El modo de práctica muestra exactamente dónde estás débil. Me centré en las señales y fui del 60% al 93% en una semana."
+    }
   },
   {
-    name: "João S.", state: "WA", country: "br",
+    name: "João S.",
+    state: "WA",
+    country: "br",
     quote: {
       en: "As a Brazilian, studying in Portuguese was essential. This is the only app that takes multilingual learners seriously.",
       pt: "Como brasileiro, estudar em português foi essencial. Esse é o único app que leva a sério os estudantes multilíngues.",
-      es: "Como brasileño, estudiar en portugués fue esencial. Esta es la única app que toma en serio a los estudiantes multilingües.",
-    },
+      es: "Como brasileño, estudiar en portugués fue esencial. Esta es la única app que toma en serio a los estudiantes multilingües."
+    }
   },
   {
-    name: "Sofia V.", state: "WA", country: "mx",
+    name: "Sofia V.",
+    state: "WA",
+    country: "mx",
     quote: {
       en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the questions are almost identical to the official exam!",
       pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — as questões são quase idênticas à prova oficial!",
-      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!",
-    },
+      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!"
+    }
   },
   {
-    name: "David C.", state: "WA", country: "au",
+    name: "David C.",
+    state: "WA",
+    country: "au",
     quote: {
       en: "Some road rules were really confusing even as an English speaker. This app broke everything down perfectly. First try pass!",
       pt: "Algumas regras de trânsito eram muito confusas mesmo sendo falante de inglês. Esse app explicou tudo perfeitamente. Passei na primeira!",
-      es: "Algunas normas de tráfico eran muy confusas incluso siendo anglohablante. Esta app lo explicó todo perfectamente. ¡Aprobé al primer intento!",
-    },
-  },
+      es: "Algunas normas de tráfico eran muy confusas incluso siendo anglohablante. Esta app lo explicó todo perfectamente. ¡Aprobé al primer intento!"
+    }
+  }
 ];
 
 const FAQS = [
   {
-    q: { en: "How many questions are in the real WA learner test?", pt: "Quantas questões tem a prova de learner de WA?", es: "¿Cuántas preguntas tiene el examen learner de WA?" },
-    a: { en: "The official WA learner test has 30 multiple-choice questions. You need to answer at least 24 correctly (80%) to pass.", pt: "A prova oficial de learner de WA tem 30 questões de múltipla escolha. Você precisa acertar pelo menos 24 (80%) para passar.", es: "El examen oficial learner de WA tiene 30 preguntas de opción múltiple. Necesitas responder al menos 24 correctamente (80%) para aprobar." },
+    q: {
+      en: "How many questions are in the real WA learner test?",
+      pt: "Quantas questões tem a prova de learner de WA?",
+      es: "¿Cuántas preguntas tiene el examen learner de WA?"
+    },
+    a: {
+      en: "The official WA learner test has 30 multiple-choice questions. You need to answer at least 24 correctly (80%) to pass.",
+      pt: "A prova oficial de learner de WA tem 30 questões de múltipla escolha. Você precisa acertar pelo menos 24 (80%) para passar.",
+      es: "El examen oficial learner de WA tiene 30 preguntas de opción múltiple. Necesitas responder al menos 24 correctamente (80%) para aprobar."
+    }
   },
   {
-    q: { en: "Is KangaLearner free?", pt: "O KangaLearner é gratuito?", es: "¿KangaLearner es gratuito?" },
-    a: { en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress — no sign-up required to start.", pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso — não é necessário se cadastrar para começar.", es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso — no necesitas registrarte para empezar." },
+    q: {
+      en: "Is KangaLearner free?",
+      pt: "O KangaLearner é gratuito?",
+      es: "¿KangaLearner es gratuito?"
+    },
+    a: {
+      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress — no sign-up required to start.",
+      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso — não é necessário se cadastrar para começar.",
+      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso — no necesitas registrarte para empezar."
+    }
   },
   {
-    q: { en: "Can I study in Portuguese or Spanish?", pt: "Posso estudar em português ou espanhol?", es: "¿Puedo estudiar en portugués o español?" },
-    a: { en: "Absolutely. KangaLearner supports English, Português, and Español. Every question, explanation, and hint is available in all three languages.", pt: "Com certeza. O KangaLearner suporta inglês, português e espanhol. Cada pergunta, explicação e dica está disponível nos três idiomas.", es: "Por supuesto. KangaLearner soporta inglés, português y español. Cada pregunta, explicación y pista está disponible en los tres idiomas." },
+    q: {
+      en: "Can I study in Portuguese or Spanish?",
+      pt: "Posso estudar em português ou espanhol?",
+      es: "¿Puedo estudiar en portugués o español?"
+    },
+    a: {
+      en: "Absolutely. KangaLearner supports English, Português, and Español. Every question, explanation, and hint is available in all three languages.",
+      pt: "Com certeza. O KangaLearner suporta inglês, português e espanhol. Cada pergunta, explicação e dica está disponível nos três idiomas.",
+      es: "Por supuesto. KangaLearner soporta inglés, português y español. Cada pregunta, explicación y pista está disponible en los tres idiomas."
+    }
   },
   {
-    q: { en: "How is the mock test different from practice mode?", pt: "Qual a diferença entre o simulado e o modo de prática?", es: "¿En qué se diferencia el simulacro del modo práctica?" },
-    a: { en: "The mock test picks 30 random questions and simulates the real exam. Practice mode lets you filter by topic, review wrong answers, and study at your own pace.", pt: "O simulado seleciona 30 questões aleatórias e simula a prova real. O modo de prática permite filtrar por tópico, revisar respostas erradas e estudar no seu ritmo.", es: "El simulacro selecciona 30 preguntas aleatorias y simula el examen real. El modo práctica te permite filtrar por tema, revisar respuestas incorrectas y estudiar a tu ritmo." },
+    q: {
+      en: "How is the mock test different from practice mode?",
+      pt: "Qual a diferença entre o simulado e o modo de prática?",
+      es: "¿En qué se diferencia el simulacro del modo práctica?"
+    },
+    a: {
+      en: "The mock test picks 30 random questions and simulates the real exam. Practice mode lets you filter by topic, review wrong answers, and study at your own pace.",
+      pt: "O simulado seleciona 30 questões aleatórias e simula a prova real. O modo de prática permite filtrar por tópico, revisar respostas erradas e estudar no seu ritmo.",
+      es: "El simulacro selecciona 30 preguntas aleatorias y simula el examen real. El modo práctica te permite filtrar por tema, revisar respuestas incorrectas y estudiar a tu ritmo."
+    }
   },
   {
-    q: { en: "When will other Australian states be available?", pt: "Quando outros estados australianos estarão disponíveis?", es: "¿Cuándo estarán disponibles otros estados australianos?" },
-    a: { en: "We're working on NSW, VIC, and QLD — sign up to be notified when they launch.", pt: "Estamos trabalhando em NSW, VIC e QLD — cadastre-se para ser notificado quando lançarmos.", es: "Estamos trabajando en NSW, VIC y QLD — regístrate para ser notificado cuando se lancen." },
-  },
+    q: {
+      en: "When will other Australian states be available?",
+      pt: "Quando outros estados australianos estarão disponíveis?",
+      es: "¿Cuándo estarán disponibles otros estados australianos?"
+    },
+    a: {
+      en: "We're working on NSW, VIC, and QLD — sign up to be notified when they launch.",
+      pt: "Estamos trabalhando em NSW, VIC e QLD — cadastre-se para ser notificado quando lançarmos.",
+      es: "Estamos trabajando en NSW, VIC y QLD — regístrate para ser notificado cuando se lancen."
+    }
+  }
 ];
 
 /* ── Hero Slideshow ── */
@@ -166,28 +281,38 @@ const SLIDE_COUNT = 4;
 
 function SlideLearn({ lang }: { lang: UiLang }) {
   const chips = [
-    { Icon: Gauge,          label: { en: "Speed Limits",  pt: "Velocidade",       es: "Velocidad" } },
-    { Icon: TrafficCone,    label: { en: "Road Signs",    pt: "Sinais",            es: "Señales" } },
-    { Icon: ParkingCircle,  label: { en: "Parking Rules", pt: "Estacionamento",   es: "Estacionamiento" } },
-    { Icon: AlertTriangle,  label: { en: "Alcohol & BAC", pt: "Álcool / BAC",     es: "Alcohol / BAC" } },
-    { Icon: ArrowLeftRight, label: { en: "Lanes",         pt: "Faixas",           es: "Carriles" } },
-    { Icon: ShieldCheck,    label: { en: "Road Safety",   pt: "Segurança",        es: "Seguridad" } },
+    { Icon: Gauge, label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" } },
+    { Icon: TrafficCone, label: { en: "Road Signs", pt: "Sinais", es: "Señales" } },
+    {
+      Icon: ParkingCircle,
+      label: { en: "Parking Rules", pt: "Estacionamento", es: "Estacionamiento" }
+    },
+    {
+      Icon: AlertTriangle,
+      label: { en: "Alcohol & BAC", pt: "Álcool / BAC", es: "Alcohol / BAC" }
+    },
+    { Icon: ArrowLeftRight, label: { en: "Lanes", pt: "Faixas", es: "Carriles" } },
+    { Icon: ShieldCheck, label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" } }
   ];
   const hint = {
     en: "19 topics · growing WA question bank",
     pt: "19 tópicos · banco de perguntas WA em expansão",
-    es: "19 temas · banco de preguntas WA en expansión",
+    es: "19 temas · banco de preguntas WA en expansión"
   };
   return (
     <>
       <div className="slide-header">
         <BookOpen size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">{lang === "pt" ? "Aprender Tópicos" : lang === "es" ? "Aprender Temas" : "Learn Topics"}</span>
+        <span className="slide-header-label">
+          {lang === "pt" ? "Aprender Tópicos" : lang === "es" ? "Aprender Temas" : "Learn Topics"}
+        </span>
       </div>
       <div className="slide-chip-grid">
         {chips.map(({ Icon, label }) => (
           <div key={label.en} className="slide-chip">
-            <span className="slide-chip-icon"><Icon size={16} strokeWidth={2} aria-hidden="true" /></span>
+            <span className="slide-chip-icon">
+              <Icon size={16} strokeWidth={2} aria-hidden="true" />
+            </span>
             <span>{tx(label, lang)}</span>
           </div>
         ))}
@@ -201,18 +326,35 @@ function SlidePractice({ lang }: { lang: UiLang }) {
   const question = {
     en: "What does a yellow traffic light mean at an intersection?",
     pt: "O que significa um semáforo amarelo numa interseção?",
-    es: "¿Qué significa un semáforo amarillo en una intersección?",
+    es: "¿Qué significa un semáforo amarillo en una intersección?"
   };
   const options: { en: string; pt: string; es: string; correct: boolean }[] = [
-    { en: "Stop if it is safe to do so", pt: "Pare se for seguro fazê-lo", es: "Detenerse si es seguro", correct: true },
-    { en: "Speed up to clear the intersection", pt: "Acelere para cruzar", es: "Acelera para cruzar", correct: false },
-    { en: "Sound your horn before proceeding", pt: "Toque a buzina antes", es: "Toca el claxon antes", correct: false },
+    {
+      en: "Stop if it is safe to do so",
+      pt: "Pare se for seguro fazê-lo",
+      es: "Detenerse si es seguro",
+      correct: true
+    },
+    {
+      en: "Speed up to clear the intersection",
+      pt: "Acelere para cruzar",
+      es: "Acelera para cruzar",
+      correct: false
+    },
+    {
+      en: "Sound your horn before proceeding",
+      pt: "Toque a buzina antes",
+      es: "Toca el claxon antes",
+      correct: false
+    }
   ];
   return (
     <>
       <div className="slide-header">
         <Target size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">{lang === "pt" ? "Modo Prática" : lang === "es" ? "Modo Práctica" : "Practice Mode"}</span>
+        <span className="slide-header-label">
+          {lang === "pt" ? "Modo Prática" : lang === "es" ? "Modo Práctica" : "Practice Mode"}
+        </span>
         <span className="slide-progress-pill">17 / 30</span>
       </div>
       <div className="slide-prog-wrap">
@@ -235,30 +377,51 @@ function SlidePractice({ lang }: { lang: UiLang }) {
 
 function SlideMock({ lang }: { lang: UiLang }) {
   const labelScore = { en: "24 of 30 correct", pt: "24 de 30 corretas", es: "24 de 30 correctas" };
-  const passLabel  = { en: "PASS", pt: "APROVADO", es: "APROBADO" };
+  const passLabel = { en: "PASS", pt: "APROVADO", es: "APROBADO" };
   const categories = [
-    { label: { en: "Speed Limits", pt: "Velocidade",     es: "Velocidad" },  score: "5/5", ok: true  },
-    { label: { en: "Road Signs",   pt: "Sinais",          es: "Señales" },    score: "5/5", ok: true  },
-    { label: { en: "Parking",      pt: "Estacionamento",  es: "Estacionamiento" }, score: "5/5", ok: true  },
-    { label: { en: "Alcohol & BAC",pt: "Álcool / BAC",   es: "Alcohol / BAC" }, score: "4/5", ok: true  },
-    { label: { en: "Lanes",        pt: "Faixas",          es: "Carriles" },   score: "4/5", ok: true  },
-    { label: { en: "Road Safety",  pt: "Segurança",       es: "Seguridad" },  score: "3/5", ok: false },
+    { label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" }, score: "5/5", ok: true },
+    { label: { en: "Road Signs", pt: "Sinais", es: "Señales" }, score: "5/5", ok: true },
+    {
+      label: { en: "Parking", pt: "Estacionamento", es: "Estacionamiento" },
+      score: "5/5",
+      ok: true
+    },
+    {
+      label: { en: "Alcohol & BAC", pt: "Álcool / BAC", es: "Alcohol / BAC" },
+      score: "4/5",
+      ok: true
+    },
+    { label: { en: "Lanes", pt: "Faixas", es: "Carriles" }, score: "4/5", ok: true },
+    { label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" }, score: "3/5", ok: false }
   ];
   const circumference = 2 * Math.PI * 34;
-  const offset = circumference * (1 - 0.80);
+  const offset = circumference * (1 - 0.8);
   return (
     <>
       <div className="slide-header">
         <ClipboardList size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">{lang === "pt" ? "Simulado" : lang === "es" ? "Simulacro" : "Mock Test"}</span>
+        <span className="slide-header-label">
+          {lang === "pt" ? "Simulado" : lang === "es" ? "Simulacro" : "Mock Test"}
+        </span>
       </div>
       <div className="slide-score-wrap">
         <div className="slide-score-ring">
           <svg viewBox="0 0 80 80" width="96" height="96">
-            <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="7" />
             <circle
-              cx="40" cy="40" r="34" fill="none"
-              stroke="var(--green2)" strokeWidth="7"
+              cx="40"
+              cy="40"
+              r="34"
+              fill="none"
+              stroke="rgba(255,255,255,0.1)"
+              strokeWidth="7"
+            />
+            <circle
+              cx="40"
+              cy="40"
+              r="34"
+              fill="none"
+              stroke="var(--green2)"
+              strokeWidth="7"
               strokeDasharray={circumference}
               strokeDashoffset={offset}
               strokeLinecap="round"
@@ -288,12 +451,28 @@ function SlideMock({ lang }: { lang: UiLang }) {
 function SlideProgress({ lang }: { lang: UiLang }) {
   const title = { en: "Your Progress", pt: "Seu Progresso", es: "Tu Progreso" };
   const bars = [
-    { label: { en: "Speed Limits", pt: "Velocidade",     es: "Velocidad" },   pct: 92, color: "var(--green2)" },
-    { label: { en: "Road Signs",   pt: "Sinais",          es: "Señales" },     pct: 78, color: "var(--green2)" },
-    { label: { en: "Alcohol & BAC",pt: "Álcool / BAC",   es: "Alcohol / BAC" },pct: 65, color: "var(--orange)" },
-    { label: { en: "Parking Rules",pt: "Estacionamento", es: "Estacionamiento" },pct: 54, color: "var(--red)" },
-    { label: { en: "Lanes",        pt: "Faixas",          es: "Carriles" },    pct: 71, color: "var(--orange)" },
-    { label: { en: "Road Safety",  pt: "Segurança",       es: "Seguridad" },   pct: 83, color: "var(--green2)" },
+    {
+      label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" },
+      pct: 92,
+      color: "var(--green2)"
+    },
+    { label: { en: "Road Signs", pt: "Sinais", es: "Señales" }, pct: 78, color: "var(--green2)" },
+    {
+      label: { en: "Alcohol & BAC", pt: "Álcool / BAC", es: "Alcohol / BAC" },
+      pct: 65,
+      color: "var(--orange)"
+    },
+    {
+      label: { en: "Parking Rules", pt: "Estacionamento", es: "Estacionamiento" },
+      pct: 54,
+      color: "var(--red)"
+    },
+    { label: { en: "Lanes", pt: "Faixas", es: "Carriles" }, pct: 71, color: "var(--orange)" },
+    {
+      label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" },
+      pct: 83,
+      color: "var(--green2)"
+    }
   ];
   return (
     <>
@@ -367,7 +546,7 @@ function HowItWorks() {
   const steps = [
     { num: "①", title: s.howStep1Title, desc: s.howStep1DescCard, href: "/learn" },
     { num: "②", title: s.howStep2Title, desc: s.howStep2DescCard, href: "/mock-test" },
-    { num: "③", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" },
+    { num: "③", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" }
   ];
   return (
     <section className="how-it-works section-pad">
@@ -392,18 +571,20 @@ function TestimonialCarousel({ lang }: { lang: UiLang }) {
   const [idx, setIdx] = useState(0);
 
   useEffect(() => {
-    const t = setInterval(() => setIdx(i => (i + 1) % TESTIMONIALS.length), 4500);
+    const t = setInterval(() => setIdx((i) => (i + 1) % TESTIMONIALS.length), 4500);
     return () => clearInterval(t);
   }, []);
 
-  const prev = () => setIdx(i => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  const next = () => setIdx(i => (i + 1) % TESTIMONIALS.length);
+  const prev = () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
+  const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
 
-  const visible = [0, 1, 2].map(offset => TESTIMONIALS[(idx + offset) % TESTIMONIALS.length]);
+  const visible = [0, 1, 2].map((offset) => TESTIMONIALS[(idx + offset) % TESTIMONIALS.length]);
 
   return (
     <div className="testimonial-carousel">
-      <button className="testimonial-nav" onClick={prev} aria-label="Previous testimonial">&#8249;</button>
+      <button className="testimonial-nav" onClick={prev} aria-label="Previous testimonial">
+        &#8249;
+      </button>
       <div className="testimonial-track-wrap">
         <div key={idx} className="testimonial-track">
           {visible.map((t) => (
@@ -420,7 +601,9 @@ function TestimonialCarousel({ lang }: { lang: UiLang }) {
           ))}
         </div>
       </div>
-      <button className="testimonial-nav" onClick={next} aria-label="Next testimonial">&#8250;</button>
+      <button className="testimonial-nav" onClick={next} aria-label="Next testimonial">
+        &#8250;
+      </button>
       <div className="testimonial-dots">
         {TESTIMONIALS.map((_, i) => (
           <button
@@ -441,7 +624,6 @@ export function LandingClient() {
 
   return (
     <main className="page-root">
-
       {/* ── Hero ─────────────────────────────────────── */}
       <section className="hero-section">
         <div className="hero-inner">
@@ -510,7 +692,9 @@ export function LandingClient() {
                 <p>{s[bodyKey]}</p>
                 {hasFlags && (
                   <div style={{ display: "flex", gap: 6, marginTop: 8, alignItems: "center" }}>
-                    <FlagImg country="au" /><FlagImg country="br" /><FlagImg country="es" />
+                    <FlagImg country="au" />
+                    <FlagImg country="br" />
+                    <FlagImg country="es" />
                   </div>
                 )}
               </div>
@@ -525,11 +709,7 @@ export function LandingClient() {
           <h2 className="section-title">{s.topicsTitle}</h2>
           <div className="topics-grid">
             {TOPICS.map((topic) => (
-              <Link
-                key={topic.key}
-                href={`/practice?cat=${topic.cat}`}
-                className="topic-card"
-              >
+              <Link key={topic.key} href={`/practice?cat=${topic.cat}`} className="topic-card">
                 <span className="topic-icon" aria-hidden="true">
                   <topic.Icon size={24} strokeWidth={2} />
                 </span>
@@ -546,7 +726,10 @@ export function LandingClient() {
         <div className="states-inner">
           <div className="states-grid">
             {AU_STATES.map((st) => (
-              <div key={st.code} className={`state-card${st.available ? " active" : " coming-soon"}`}>
+              <div
+                key={st.code}
+                className={`state-card${st.available ? " active" : " coming-soon"}`}
+              >
                 <span className="state-code">{st.code}</span>
                 <span className="state-badge">
                   {st.available ? s.stateAvailable : s.comingSoon}
@@ -596,7 +779,6 @@ export function LandingClient() {
           </Link>
         </div>
       </section>
-
     </main>
   );
 }

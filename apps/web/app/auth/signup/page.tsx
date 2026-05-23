@@ -16,7 +16,10 @@ function getAppOrigin(): string {
 
 function SignupForm() {
   const searchParams = useSearchParams();
-  const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/dashboard");
+  const redirect = safeNextPath(
+    searchParams.get("redirect") || searchParams.get("next"),
+    "/dashboard"
+  );
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -206,8 +209,8 @@ function SignupForm() {
           </button>
 
           <p className="auth-legal-note">
-            {s.authAgreeTermsPrefix}{" "}
-            <Link href="/terms">Terms</Link> and <Link href="/privacy">Privacy Policy</Link>.
+            {s.authAgreeTermsPrefix} <Link href="/terms">Terms</Link> and{" "}
+            <Link href="/privacy">Privacy Policy</Link>.
           </p>
         </form>
 

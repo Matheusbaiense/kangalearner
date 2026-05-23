@@ -8,7 +8,7 @@ describe("validateQuestionsDataset", () => {
 
   it("rejects missing arrays", () => {
     expect(validateQuestionsDataset({})).toEqual([
-      { msg: "missing QUESTIONS or CATEGORIES arrays" },
+      { msg: "missing QUESTIONS or CATEGORIES arrays" }
     ]);
   });
 
@@ -17,8 +17,8 @@ describe("validateQuestionsDataset", () => {
       CATEGORIES: [
         {
           key: "signs",
-          label: { en: "Signs", pt: "Sinais", es: "Señales" },
-        },
+          label: { en: "Signs", pt: "Sinais", es: "Señales" }
+        }
       ],
       QUESTIONS: [
         {
@@ -30,17 +30,17 @@ describe("validateQuestionsDataset", () => {
             {
               l: "A",
               t: { en: "No", pt: "Não", es: "No" },
-              ok: false,
+              ok: false
             },
             {
               l: "B",
               t: { en: "Yes", pt: "Sim", es: "Sí" },
-              ok: true,
-            },
+              ok: true
+            }
           ],
-          states: ["WA"],
-        },
-      ],
+          states: ["WA"]
+        }
+      ]
     };
     expect(validateQuestionsDataset(dataset)).toEqual([]);
   });
@@ -50,8 +50,8 @@ describe("validateQuestionsDataset", () => {
       CATEGORIES: [
         {
           key: "signs",
-          label: { en: "Signs", pt: "Sinais", es: "Señales" },
-        },
+          label: { en: "Signs", pt: "Sinais", es: "Señales" }
+        }
       ],
       QUESTIONS: [
         {
@@ -61,14 +61,12 @@ describe("validateQuestionsDataset", () => {
           exp: {
             en: "Safe",
             pt: '<script>alert("x")</script>',
-            es: "Safe",
+            es: "Safe"
           },
-          opts: [
-            { l: "A", t: { en: "A", pt: "A", es: "A" }, ok: true },
-          ],
-          states: ["WA"],
-        },
-      ],
+          opts: [{ l: "A", t: { en: "A", pt: "A", es: "A" }, ok: true }],
+          states: ["WA"]
+        }
+      ]
     };
     const issues = validateQuestionsDataset(dataset);
     expect(issues.some((i) => i.msg.includes("unsafe html"))).toBe(true);

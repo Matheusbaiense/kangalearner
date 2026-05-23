@@ -6,14 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: [
-          "/api/",
-          "/admin/",
-          "/dashboard/",
-          "/account/",
-          "/progress/",
-          "/auth/"
-        ]
+        disallow: ["/api/", "/admin/", "/dashboard/", "/account/", "/progress/", "/auth/"]
       }
     ],
     sitemap: "https://kangalearner.com.au/sitemap.xml"

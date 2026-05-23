@@ -147,14 +147,19 @@ export default async function DashboardPage({
       .from("profiles")
       .update({ preferred_state: selectedState })
       .eq("id", user.id);
-    if (prefStateErr) console.error("Dashboard preferred_state update failed", errCode(prefStateErr));
+    if (prefStateErr)
+      console.error("Dashboard preferred_state update failed", errCode(prefStateErr));
   }
 
   const { error: settingsUpsertError } = await supabase!
     .from("user_settings")
-    .upsert({ user_id: user.id, daily_goal: 10 }, { onConflict: "user_id", ignoreDuplicates: true });
+    .upsert(
+      { user_id: user.id, daily_goal: 10 },
+      { onConflict: "user_id", ignoreDuplicates: true }
+    );
 
-  if (settingsUpsertError) console.error("Dashboard user settings upsert failed", errCode(settingsUpsertError));
+  if (settingsUpsertError)
+    console.error("Dashboard user settings upsert failed", errCode(settingsUpsertError));
 
   const ninetyDaysAgo = new Date(Date.now() - 90 * 24 * 60 * 60 * 1000).toISOString();
 
@@ -216,11 +221,7 @@ export default async function DashboardPage({
       .eq("user_id", user.id)
       .order("completed_at", { ascending: false })
       .limit(50),
-    supabase!
-      .from("user_settings")
-      .select("daily_goal")
-      .eq("user_id", user.id)
-      .maybeSingle()
+    supabase!.from("user_settings").select("daily_goal").eq("user_id", user.id).maybeSingle()
   ]);
 
   const { data: userCatStats, error: catStatsError } = catStatsResult as {
@@ -239,14 +240,16 @@ export default async function DashboardPage({
     count: number | null;
     error: unknown;
   };
-  const { count: attemptsCorrectCount, error: attemptsCorrectCountError } = attemptsCorrectCountResult as {
-    count: number | null;
-    error: unknown;
-  };
-  const { count: stateAttemptsCount, error: stateAttemptsCountError } = stateAttemptsCountResult as {
-    count: number | null;
-    error: unknown;
-  };
+  const { count: attemptsCorrectCount, error: attemptsCorrectCountError } =
+    attemptsCorrectCountResult as {
+      count: number | null;
+      error: unknown;
+    };
+  const { count: stateAttemptsCount, error: stateAttemptsCountError } =
+    stateAttemptsCountResult as {
+      count: number | null;
+      error: unknown;
+    };
   const { count: stateAttemptsCorrectCount, error: stateAttemptsCorrectCountError } =
     stateAttemptsCorrectCountResult as {
       count: number | null;
@@ -261,14 +264,23 @@ export default async function DashboardPage({
     error: unknown;
   };
 
-  if (catStatsError) console.error("Dashboard category stats lookup failed", errCode(catStatsError));
-  if (stateCatStatsError) console.error("Dashboard state category stats lookup failed", errCode(stateCatStatsError));
-  if (temporalAttemptsError) console.error("Dashboard temporal attempts lookup failed", errCode(temporalAttemptsError));
-  if (attemptsCountError) console.error("Dashboard attempts count failed", errCode(attemptsCountError));
-  if (attemptsCorrectCountError) console.error("Dashboard correct attempts count failed", errCode(attemptsCorrectCountError));
-  if (stateAttemptsCountError) console.error("Dashboard state attempts count failed", errCode(stateAttemptsCountError));
+  if (catStatsError)
+    console.error("Dashboard category stats lookup failed", errCode(catStatsError));
+  if (stateCatStatsError)
+    console.error("Dashboard state category stats lookup failed", errCode(stateCatStatsError));
+  if (temporalAttemptsError)
+    console.error("Dashboard temporal attempts lookup failed", errCode(temporalAttemptsError));
+  if (attemptsCountError)
+    console.error("Dashboard attempts count failed", errCode(attemptsCountError));
+  if (attemptsCorrectCountError)
+    console.error("Dashboard correct attempts count failed", errCode(attemptsCorrectCountError));
+  if (stateAttemptsCountError)
+    console.error("Dashboard state attempts count failed", errCode(stateAttemptsCountError));
   if (stateAttemptsCorrectCountError) {
-    console.error("Dashboard state correct attempts count failed", errCode(stateAttemptsCorrectCountError));
+    console.error(
+      "Dashboard state correct attempts count failed",
+      errCode(stateAttemptsCorrectCountError)
+    );
   }
   if (sessionsError) console.error("Dashboard sessions lookup failed", errCode(sessionsError));
   if (settingsError) console.error("Dashboard user settings lookup failed", errCode(settingsError));
@@ -320,9 +332,7 @@ export default async function DashboardPage({
       correct: e.correct + row.correct_attempts
     });
   }
-  const catStats = [...catMap.entries()]
-    .sort((a, b) => b[1].total - a[1].total)
-    .slice(0, 10);
+  const catStats = [...catMap.entries()].sort((a, b) => b[1].total - a[1].total).slice(0, 10);
   const weakTopics = [...catMap.entries()]
     .filter(([, s]) => s.total >= 3)
     .sort((a, b) => {
@@ -348,9 +358,7 @@ export default async function DashboardPage({
   const allSessions = sessions ?? [];
   const bestSession =
     allSessions.length > 0
-      ? allSessions.reduce((best, s) =>
-          s.percent > best.percent ? s : best
-        )
+      ? allSessions.reduce((best, s) => (s.percent > best.percent ? s : best))
       : null;
 
   /* ── Score colour ── */

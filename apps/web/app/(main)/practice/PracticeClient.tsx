@@ -31,8 +31,7 @@ const STATE_CHANGED_EVENT = "kanga:state-changed";
 function readStoredState(): StateCode {
   try {
     const raw =
-      localStorage.getItem(STATE_STORAGE_KEY) ??
-      localStorage.getItem(STATE_STORAGE_LEGACY_KEY);
+      localStorage.getItem(STATE_STORAGE_KEY) ?? localStorage.getItem(STATE_STORAGE_LEGACY_KEY);
     if (raw && STATE_CODES.includes(raw as StateCode)) return raw as StateCode;
   } catch {
     /* noop */
@@ -81,7 +80,7 @@ function QuizCard({
   isSaved,
   onToggleSave,
   saveLabel,
-  unsaveLabel,
+  unsaveLabel
 }: {
   q: Question;
   lang: UiLang;
@@ -115,7 +114,17 @@ function QuizCard({
             onClick={() => onToggleSave(q.id)}
             title={isSaved ? unsaveLabel : saveLabel}
             aria-label={isSaved ? unsaveLabel : saveLabel}
-            style={{ marginLeft: "auto", background: "none", border: "none", cursor: "pointer", fontSize: "1.1rem", lineHeight: 1, padding: "0 2px", color: isSaved ? "var(--green)" : "var(--muted)", flexShrink: 0 }}
+            style={{
+              marginLeft: "auto",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              fontSize: "1.1rem",
+              lineHeight: 1,
+              padding: "0 2px",
+              color: isSaved ? "var(--green)" : "var(--muted)",
+              flexShrink: 0
+            }}
           >
             {isSaved ? "★" : "☆"}
           </button>
@@ -123,9 +132,7 @@ function QuizCard({
       </div>
 
       <p className="qtext">{tx(q.q, lang)}</p>
-      {bilingual && q.q.en && (
-        <p className="qtext-en">{q.q.en}</p>
-      )}
+      {bilingual && q.q.en && <p className="qtext-en">{q.q.en}</p>}
 
       {(() => {
         const legacySign = q.sign?.match(/^assets\/icons\/signs\/(.+)$/);
@@ -135,11 +142,7 @@ function QuizCard({
             ? `/icons/signs/${legacySign[1]}`
             : null;
         const capLabel =
-          q.cap == null
-            ? null
-            : typeof q.cap === "string"
-              ? q.cap
-              : tx(q.cap as Cap, lang);
+          q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
         if (!signSrc && !capLabel) return null;
         return (
           <div className="sign-box">
@@ -176,9 +179,7 @@ function QuizCard({
               <span className="oletter">{o.l}</span>
               <span className="otext">
                 {tx(o.t, lang)}
-                {bilingual && o.t.en && (
-                  <span className="otext-en">{o.t.en}</span>
-                )}
+                {bilingual && o.t.en && <span className="otext-en">{o.t.en}</span>}
               </span>
             </button>
           );
@@ -319,7 +320,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
   const [selectedState, setSelectedState] = useState<StateCode>(() => readStoredState());
-  const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : initialMode ?? "all");
+  const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : (initialMode ?? "all"));
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
@@ -475,7 +476,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       const next = new Set(prev);
       if (next.has(qid)) next.delete(qid);
       else next.add(qid);
-      try { localStorage.setItem(SK.saved, JSON.stringify([...next])); } catch {}
+      try {
+        localStorage.setItem(SK.saved, JSON.stringify([...next]));
+      } catch {}
       return next;
     });
   }
@@ -509,7 +512,11 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       <div className="app-page">
         <div className="app-container app-section">
           <p role="alert">{questionsError}</p>
-          <button type="button" className="btn btn-primary" onClick={() => window.location.reload()}>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => window.location.reload()}
+          >
             Retry
           </button>
         </div>
@@ -645,7 +652,7 @@ function StudyView({
   saved,
   onToggleSave,
   saveLabel,
-  unsaveLabel,
+  unsaveLabel
 }: {
   grouped: Record<string, Question[]>;
   lang: UiLang;
@@ -770,23 +777,27 @@ function SimView({
         </div>
         <div className="sim-result-msg">
           {pass
-            ? (lang === "en"
-                ? "Well done! You passed the mock test."
-                : lang === "pt"
-                  ? "Parabéns! Você passou no simulado."
-                  : "¡Felicidades! Pasaste el simulacro.")
-            : (lang === "en"
-                ? "Keep practising — you need 80% to pass. Review wrong answers in study mode."
-                : lang === "pt"
-                  ? "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas no modo de estudo."
-                  : "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas en el modo de estudio.")}
+            ? lang === "en"
+              ? "Well done! You passed the mock test."
+              : lang === "pt"
+                ? "Parabéns! Você passou no simulado."
+                : "¡Felicidades! Pasaste el simulacro."
+            : lang === "en"
+              ? "Keep practising — you need 80% to pass. Review wrong answers in study mode."
+              : lang === "pt"
+                ? "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas no modo de estudo."
+                : "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas en el modo de estudio."}
         </div>
         <div className="sim-result-actions">
           <button className="btn-green" onClick={onRestart}>
             {lang === "en" ? "Try again" : lang === "pt" ? "Tentar de novo" : "Intentar de nuevo"}
           </button>
           <button className="btn-outline" onClick={onStudy}>
-            {lang === "en" ? "Back to study" : lang === "pt" ? "Voltar ao estudo" : "Volver al estudio"}
+            {lang === "en"
+              ? "Back to study"
+              : lang === "pt"
+                ? "Voltar ao estudo"
+                : "Volver al estudio"}
           </button>
           <Link href="/dashboard" className="btn-outline">
             {lang === "en" ? "View dashboard" : lang === "pt" ? "Ver painel" : "Ver panel"}

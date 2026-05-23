@@ -3,7 +3,7 @@ import {
   isValidAttemptCategory,
   isValidAttemptState,
   isValidQuestionId,
-  normalizeAttemptSource,
+  normalizeAttemptSource
 } from "./attemptValidation";
 
 describe("attemptValidation", () => {

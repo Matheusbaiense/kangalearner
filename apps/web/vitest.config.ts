@@ -5,12 +5,12 @@ export default defineConfig({
   test: {
     environment: "node",
     include: ["src/**/*.test.ts"],
-    passWithNoTests: false,
+    passWithNoTests: false
   },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-      "@kanga/core": path.resolve(__dirname, "../../packages/core/src/index.ts"),
-    },
-  },
+      "@kanga/core": path.resolve(__dirname, "../../packages/core/src/index.ts")
+    }
+  }
 });

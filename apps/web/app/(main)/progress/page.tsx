@@ -35,10 +35,10 @@ function accuracyColor(acc: number, total: number) {
 const CAT_ICON: Record<string, string> = {
   "Speed Limits": "🚗",
   "Road Signs": "🚦",
-  "Parking": "🅿️",
+  Parking: "🅿️",
   "Alcohol / BAC": "🍺",
   "Lanes & Merging": "🛣️",
-  "Road Safety": "⛑️",
+  "Road Safety": "⛑️"
 };
 
 function catIcon(cat: string) {
@@ -95,7 +95,7 @@ export default function ProgressPage() {
         category,
         correct,
         total,
-        accuracy: pct(correct, total),
+        accuracy: pct(correct, total)
       }))
       .sort((a, b) => b.total - a.total);
 
@@ -128,7 +128,10 @@ export default function ProgressPage() {
   if (!mounted) {
     return (
       <main className="app-page">
-        <div className="container section-pad" style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}>
+        <div
+          className="container section-pad"
+          style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}
+        >
           <span style={{ color: "var(--muted)", fontSize: ".9rem" }}>{s.loading}</span>
         </div>
       </main>
@@ -142,7 +145,6 @@ export default function ProgressPage() {
   return (
     <main className="app-page">
       <div className="container section-pad">
-
         {/* Header */}
         <div className="page-header">
           <h1 className="page-title">{s.progressTitle}</h1>
@@ -165,7 +167,9 @@ export default function ProgressPage() {
               flexWrap: "wrap"
             }}
           >
-            <span style={{ fontSize: ".9rem", color: "var(--ink)", flex: 1 }}>{s.progressCloudNote}</span>
+            <span style={{ fontSize: ".9rem", color: "var(--ink)", flex: 1 }}>
+              {s.progressCloudNote}
+            </span>
             <Link
               href="/dashboard"
               style={{
@@ -183,24 +187,66 @@ export default function ProgressPage() {
 
         {isEmpty ? (
           /* Empty state */
-          <div style={{ marginTop: 40, padding: "32px 24px", borderRadius: "var(--radius-md)", background: "var(--paper)", border: "1px solid var(--border)", textAlign: "center" }}>
+          <div
+            style={{
+              marginTop: 40,
+              padding: "32px 24px",
+              borderRadius: "var(--radius-md)",
+              background: "var(--paper)",
+              border: "1px solid var(--border)",
+              textAlign: "center"
+            }}
+          >
             <p style={{ fontSize: "2.5rem", marginBottom: 12 }}>📊</p>
-            <p style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--ink)", marginBottom: 8 }}>{s.noQuestionsTitle}</p>
-            <p style={{ color: "var(--muted)", fontSize: ".9rem", marginBottom: 20 }}>{s.progressEmpty}</p>
-            <Link href="/practice" className="btn btn-primary">{s.practice} →</Link>
+            <p
+              style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--ink)", marginBottom: 8 }}
+            >
+              {s.noQuestionsTitle}
+            </p>
+            <p style={{ color: "var(--muted)", fontSize: ".9rem", marginBottom: 20 }}>
+              {s.progressEmpty}
+            </p>
+            <Link href="/practice" className="btn btn-primary">
+              {s.practice} →
+            </Link>
           </div>
         ) : (
           <>
             {/* Stat cards */}
-            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 14, marginTop: 28 }}>
-              <StatCard label={s.attemptedCol} value={String(totalAnswered)} sub={`${totalCorrect} ${s.correctLabel}`} />
-              <StatCard label={s.accuracyCol} value={`${overallAcc}%`} valueColor={scoreColor} sub="Target: 80%" />
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
+                gap: 14,
+                marginTop: 28
+              }}
+            >
+              <StatCard
+                label={s.attemptedCol}
+                value={String(totalAnswered)}
+                sub={`${totalCorrect} ${s.correctLabel}`}
+              />
+              <StatCard
+                label={s.accuracyCol}
+                value={`${overallAcc}%`}
+                valueColor={scoreColor}
+                sub="Target: 80%"
+              />
               <StatCard label={s.nextStepTitle} value={nextStep} isText />
             </div>
 
             {/* Category breakdown */}
             <div style={{ marginTop: 32 }}>
-              <p style={{ fontWeight: 800, fontSize: ".8rem", textTransform: "uppercase", letterSpacing: "0.08em", color: "var(--muted)", marginBottom: 12 }}>
+              <p
+                style={{
+                  fontWeight: 800,
+                  fontSize: ".8rem",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  color: "var(--muted)",
+                  marginBottom: 12
+                }}
+              >
                 {s.categoryCol}
               </p>
 
@@ -221,7 +267,7 @@ export default function ProgressPage() {
                           padding: "12px 16px",
                           borderRadius: "var(--radius-md)",
                           background: "var(--paper)",
-                          border: "1px solid var(--border)",
+                          border: "1px solid var(--border)"
                         }}
                       >
                         {/* Icon */}
@@ -229,24 +275,68 @@ export default function ProgressPage() {
 
                         {/* Name + progress bar */}
                         <div style={{ minWidth: 0 }}>
-                          <p style={{ fontWeight: 700, fontSize: ".9rem", color: "var(--ink)", marginBottom: 4, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                          <p
+                            style={{
+                              fontWeight: 700,
+                              fontSize: ".9rem",
+                              color: "var(--ink)",
+                              marginBottom: 4,
+                              whiteSpace: "nowrap",
+                              overflow: "hidden",
+                              textOverflow: "ellipsis"
+                            }}
+                          >
                             {c.category}
                           </p>
-                          <div style={{ height: 5, borderRadius: 99, background: "var(--border)", overflow: "hidden" }}>
-                            <div style={{ height: "100%", width: `${c.accuracy}%`, background: color, borderRadius: 99, transition: "width 0.4s ease" }} />
+                          <div
+                            style={{
+                              height: 5,
+                              borderRadius: 99,
+                              background: "var(--border)",
+                              overflow: "hidden"
+                            }}
+                          >
+                            <div
+                              style={{
+                                height: "100%",
+                                width: `${c.accuracy}%`,
+                                background: color,
+                                borderRadius: 99,
+                                transition: "width 0.4s ease"
+                              }}
+                            />
                           </div>
                         </div>
 
                         {/* Fraction */}
-                        <span style={{ fontSize: ".8rem", color: "var(--muted)", flexShrink: 0 }}>{c.correct}/{c.total}</span>
+                        <span style={{ fontSize: ".8rem", color: "var(--muted)", flexShrink: 0 }}>
+                          {c.correct}/{c.total}
+                        </span>
 
                         {/* Percentage */}
-                        <span style={{ fontSize: ".85rem", fontWeight: 800, color, flexShrink: 0, minWidth: 36, textAlign: "right" }}>{c.accuracy}%</span>
+                        <span
+                          style={{
+                            fontSize: ".85rem",
+                            fontWeight: 800,
+                            color,
+                            flexShrink: 0,
+                            minWidth: 36,
+                            textAlign: "right"
+                          }}
+                        >
+                          {c.accuracy}%
+                        </span>
 
                         {/* Practice link */}
                         <Link
                           href={`/practice?cat=${encodeURIComponent(c.category)}`}
-                          style={{ fontSize: ".78rem", fontWeight: 700, color: "var(--green)", textDecoration: "none", flexShrink: 0 }}
+                          style={{
+                            fontSize: ".78rem",
+                            fontWeight: 700,
+                            color: "var(--green)",
+                            textDecoration: "none",
+                            flexShrink: 0
+                          }}
                         >
                           →
                         </Link>
@@ -258,35 +348,84 @@ export default function ProgressPage() {
             </div>
 
             {/* Next-step recommendation */}
-            <div style={{ marginTop: 28, padding: "16px 20px", borderRadius: "var(--radius-md)", background: "var(--green3)", border: "1px solid var(--green2)" }}>
-              <p style={{ fontSize: ".75rem", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--green)", marginBottom: 4 }}>{s.nextStepTitle}</p>
+            <div
+              style={{
+                marginTop: 28,
+                padding: "16px 20px",
+                borderRadius: "var(--radius-md)",
+                background: "var(--green3)",
+                border: "1px solid var(--green2)"
+              }}
+            >
+              <p
+                style={{
+                  fontSize: ".75rem",
+                  fontWeight: 800,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                  color: "var(--green)",
+                  marginBottom: 4
+                }}
+              >
+                {s.nextStepTitle}
+              </p>
               <p style={{ fontWeight: 700, color: "var(--ink)", fontSize: ".95rem" }}>{nextStep}</p>
             </div>
 
             {/* CTA row */}
-            <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap", alignItems: "center" }}>
+            <div
+              style={{
+                marginTop: 24,
+                display: "flex",
+                gap: 10,
+                flexWrap: "wrap",
+                alignItems: "center"
+              }}
+            >
               {stats.hasWrong && (
-                <Link href="/practice?mode=wrong" className="btn btn-primary">{s.wrongAnswers} →</Link>
+                <Link href="/practice?mode=wrong" className="btn btn-primary">
+                  {s.wrongAnswers} →
+                </Link>
               )}
               {!stats.hasWrong && stats.hasUnanswered && (
-                <Link href="/practice?mode=unanswered" className="btn btn-primary">{s.unanswered} →</Link>
+                <Link href="/practice?mode=unanswered" className="btn btn-primary">
+                  {s.unanswered} →
+                </Link>
               )}
               {!stats.hasWrong && !stats.hasUnanswered && (
-                <Link href="/mock-test" className="btn btn-primary">{s.mockTest} →</Link>
+                <Link href="/mock-test" className="btn btn-primary">
+                  {s.mockTest} →
+                </Link>
               )}
-              <Link href="/practice" style={{ fontSize: ".85rem", fontWeight: 700, color: "var(--green)", textDecoration: "none" }}>
+              <Link
+                href="/practice"
+                style={{
+                  fontSize: ".85rem",
+                  fontWeight: 700,
+                  color: "var(--green)",
+                  textDecoration: "none"
+                }}
+              >
                 {s.practice}
               </Link>
               <button
                 onClick={handleReset}
-                style={{ marginLeft: "auto", fontSize: ".8rem", fontWeight: 700, color: "var(--muted)", background: "none", border: "none", cursor: "pointer", padding: "6px 0" }}
+                style={{
+                  marginLeft: "auto",
+                  fontSize: ".8rem",
+                  fontWeight: 700,
+                  color: "var(--muted)",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "6px 0"
+                }}
               >
                 {s.resetAll}
               </button>
             </div>
           </>
         )}
-
       </div>
     </main>
   );
@@ -298,7 +437,7 @@ function StatCard({
   value,
   sub,
   valueColor,
-  isText,
+  isText
 }: {
   label: string;
   value: string;
@@ -307,11 +446,34 @@ function StatCard({
   isText?: boolean;
 }) {
   return (
-    <div style={{ padding: "16px 18px", borderRadius: "var(--radius-md)", background: "var(--paper)", border: "1px solid var(--border)" }}>
-      <p style={{ fontSize: ".72rem", fontWeight: 800, letterSpacing: "0.08em", textTransform: "uppercase", color: "var(--muted)", marginBottom: 6 }}>
+    <div
+      style={{
+        padding: "16px 18px",
+        borderRadius: "var(--radius-md)",
+        background: "var(--paper)",
+        border: "1px solid var(--border)"
+      }}
+    >
+      <p
+        style={{
+          fontSize: ".72rem",
+          fontWeight: 800,
+          letterSpacing: "0.08em",
+          textTransform: "uppercase",
+          color: "var(--muted)",
+          marginBottom: 6
+        }}
+      >
         {label}
       </p>
-      <p style={{ fontSize: isText ? ".85rem" : "1.8rem", fontWeight: 800, color: valueColor ?? "var(--ink)", lineHeight: isText ? 1.4 : 1 }}>
+      <p
+        style={{
+          fontSize: isText ? ".85rem" : "1.8rem",
+          fontWeight: 800,
+          color: valueColor ?? "var(--ink)",
+          lineHeight: isText ? 1.4 : 1
+        }}
+      >
         {value}
       </p>
       {sub && <p style={{ fontSize: ".78rem", color: "var(--muted)", marginTop: 4 }}>{sub}</p>}

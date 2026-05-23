@@ -6,17 +6,13 @@ import { safeNextPath } from "@/lib/auth/safeNextPath";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { welcomeEmailHtml, welcomeEmailSubject } from "@/lib/emails/welcome";
 
-async function sendWelcomeEmail(
-  userId: string,
-  email: string,
-  name?: string
-): Promise<void> {
+async function sendWelcomeEmail(userId: string, email: string, name?: string): Promise<void> {
   try {
     await resend.emails.send({
       from: FROM_ADDRESS,
       to: [email],
       subject: welcomeEmailSubject(),
-      html: welcomeEmailHtml({ name }),
+      html: welcomeEmailHtml({ name })
     });
     await supabaseAdmin
       .from("profiles")
@@ -43,7 +39,10 @@ export async function GET(request: NextRequest) {
   if (oauthError) {
     const desc = url.searchParams.get("error_description") ?? oauthError;
     return NextResponse.redirect(
-      new URL(`/auth/login?error=${encodeURIComponent(oauthError)}&error_description=${encodeURIComponent(desc)}`, url.origin)
+      new URL(
+        `/auth/login?error=${encodeURIComponent(oauthError)}&error_description=${encodeURIComponent(desc)}`,
+        url.origin
+      )
     );
   }
 
@@ -95,7 +94,7 @@ export async function GET(request: NextRequest) {
     .from("profiles")
     .update({
       email: user.email ?? null,
-      last_sign_in_at: user.last_sign_in_at ?? new Date().toISOString(),
+      last_sign_in_at: user.last_sign_in_at ?? new Date().toISOString()
     })
     .eq("id", user.id);
 
@@ -105,10 +104,7 @@ export async function GET(request: NextRequest) {
       (user.user_metadata?.avatar_url as string | undefined) ||
       (user.user_metadata?.picture as string | undefined);
     if (googleAvatar) {
-      await supabaseAdmin
-        .from("profiles")
-        .update({ avatar_url: googleAvatar })
-        .eq("id", user.id);
+      await supabaseAdmin.from("profiles").update({ avatar_url: googleAvatar }).eq("id", user.id);
     }
   }
 
@@ -130,7 +126,10 @@ export async function GET(request: NextRequest) {
         .update({ stripe_customer_id: stripeCustomerId })
         .eq("id", user.id);
     } catch (stripeError) {
-      console.error("Stripe customer creation failed:", stripeError instanceof Error ? stripeError.message : String(stripeError));
+      console.error(
+        "Stripe customer creation failed:",
+        stripeError instanceof Error ? stripeError.message : String(stripeError)
+      );
     }
   }
 

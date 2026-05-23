@@ -5,7 +5,7 @@ import {
   isValidAttemptCategory,
   isValidAttemptState,
   isValidQuestionId,
-  normalizeAttemptSource,
+  normalizeAttemptSource
 } from "@/lib/api/attemptValidation";
 
 import { z } from "zod";
@@ -18,17 +18,17 @@ const bulkAttemptSchema = z.object({
   is_correct: z.boolean(),
   chosen: z.string().nullable().optional(),
   source: z.string().optional(),
-  answered_at: z.string().optional(),
+  answered_at: z.string().optional()
 });
 
 const bulkAttemptsPayloadSchema = z.object({
-  attempts: z.array(bulkAttemptSchema).optional(),
+  attempts: z.array(bulkAttemptSchema).optional()
 });
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`attempts-bulk:ip:${ip}`, 20, 60_000)) {
+  if (!(await rateLimit(`attempts-bulk:ip:${ip}`, 20, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
   // Per-user rate limit — bulk migration is a one-time event; 5 per minute is ample
-  if (!await rateLimit(`attempts-bulk:user:${user.id}`, 5, 60_000)) {
+  if (!(await rateLimit(`attempts-bulk:user:${user.id}`, 5, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -85,11 +85,7 @@ export async function POST(request: NextRequest) {
   }
 
   const rows = validRows
-    .filter(
-      (a) =>
-        typeof a.attempt_id === "string" &&
-        a.attempt_id.trim().length > 0
-    )
+    .filter((a) => typeof a.attempt_id === "string" && a.attempt_id.trim().length > 0)
     .map((a) => ({
       user_id: user.id,
       attempt_id: a.attempt_id.trim(),
@@ -99,7 +95,7 @@ export async function POST(request: NextRequest) {
       is_correct: a.is_correct,
       chosen: a.chosen ?? null,
       source: normalizeAttemptSource(a.source),
-      answered_at: a.answered_at ?? new Date().toISOString(),
+      answered_at: a.answered_at ?? new Date().toISOString()
     }));
 
   if (rows.length === 0) {
@@ -116,8 +112,5 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "db_error" }, { status: 400 });
   }
 
-  return NextResponse.json(
-    { ok: true, accepted: rows.length },
-    { headers: response.headers }
-  );
+  return NextResponse.json({ ok: true, accepted: rows.length }, { headers: response.headers });
 }

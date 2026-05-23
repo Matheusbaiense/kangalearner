@@ -27,25 +27,25 @@ function cookieAdapter() {
   return {
     getAll() {
       if (typeof document === "undefined" || !document.cookie) return [];
-      return document.cookie.split(";").reduce((acc, c) => {
-        const eqIdx = c.indexOf("=");
-        if (eqIdx !== -1) {
-          acc.push({
-            name: c.slice(0, eqIdx).trim(),
-            value: c.slice(eqIdx + 1).trim()
-          });
-        }
-        return acc;
-      }, [] as { name: string; value: string }[]);
+      return document.cookie.split(";").reduce(
+        (acc, c) => {
+          const eqIdx = c.indexOf("=");
+          if (eqIdx !== -1) {
+            acc.push({
+              name: c.slice(0, eqIdx).trim(),
+              value: c.slice(eqIdx + 1).trim()
+            });
+          }
+          return acc;
+        },
+        [] as { name: string; value: string }[]
+      );
     },
-    setAll(
-      cookiesToSet: { name: string; value: string; options?: Record<string, unknown> }[]
-    ) {
+    setAll(cookiesToSet: { name: string; value: string; options?: Record<string, unknown> }[]) {
       if (typeof document === "undefined") return;
       for (const { name, value, options = {} } of cookiesToSet) {
         const parts = [`${name}=${value}`];
-        if (options.maxAge != null)
-          parts.push(`max-age=${options.maxAge}`);
+        if (options.maxAge != null) parts.push(`max-age=${options.maxAge}`);
         else if (options.expires instanceof Date)
           parts.push(`expires=${options.expires.toUTCString()}`);
         if (options.path) parts.push(`path=${options.path}`);
@@ -54,7 +54,7 @@ function cookieAdapter() {
         if (options.secure) parts.push("secure");
         document.cookie = parts.join("; ");
       }
-    },
+    }
   };
 }
 
@@ -62,7 +62,7 @@ function cookieAdapter() {
 export function createClient() {
   const { url, anonKey } = requireSupabaseEnv();
   return createBrowserClient<Database>(url, anonKey, {
-    cookies: cookieAdapter(),
+    cookies: cookieAdapter()
   });
 }
 

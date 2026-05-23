@@ -6,7 +6,7 @@ import {
   WA_TOTAL_QUESTIONS,
   filterByState,
   normalizeAuState,
-  validateQuestionsDataset,
+  validateQuestionsDataset
 } from "./index";
 import { QUESTIONS } from "./data/questions";
 
@@ -32,7 +32,7 @@ describe("filterByState", () => {
     const qs = [
       { id: "1", states: ["WA"] },
       { id: "2", states: ["NSW"] },
-      { id: "3", states: ["WA", "NSW"] },
+      { id: "3", states: ["WA", "NSW"] }
     ];
     expect(filterByState(qs, "WA").map((q) => q.id)).toEqual(["1", "3"]);
   });

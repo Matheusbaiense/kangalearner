@@ -16,7 +16,7 @@ export function NewsletterForm() {
       const res = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email })
       });
       const json = await res.json().catch(() => ({}));
       setStatus(json?.ok ? "success" : "error");

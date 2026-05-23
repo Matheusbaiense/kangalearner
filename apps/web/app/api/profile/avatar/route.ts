@@ -9,9 +9,12 @@ const ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp", "image/gif"];
 
 const MAGIC_BYTES: Record<string, number[][]> = {
   "image/jpeg": [[0xff, 0xd8, 0xff]],
-  "image/png":  [[0x89, 0x50, 0x4e, 0x47]],
+  "image/png": [[0x89, 0x50, 0x4e, 0x47]],
   "image/webp": [[0x52, 0x49, 0x46, 0x46]],
-  "image/gif":  [[0x47, 0x49, 0x46, 0x38, 0x37], [0x47, 0x49, 0x46, 0x38, 0x39]],
+  "image/gif": [
+    [0x47, 0x49, 0x46, 0x38, 0x37],
+    [0x47, 0x49, 0x46, 0x38, 0x39]
+  ]
 };
 
 function matchesMagicBytes(buf: Buffer, signatures: number[][]): boolean {
@@ -27,12 +30,15 @@ export async function POST(req: NextRequest) {
     { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
   );
 
-  const { data: { user }, error: authErr } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error: authErr
+  } = await supabase.auth.getUser();
   if (authErr || !user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  if (!await rateLimit(`avatar:post:${user.id}`, 5, 60_000)) {
+  if (!(await rateLimit(`avatar:post:${user.id}`, 5, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -43,7 +49,10 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "No file provided" }, { status: 400 });
   }
   if (!ALLOWED_TYPES.includes(file.type)) {
-    return NextResponse.json({ error: "Invalid file type. Use JPG, PNG, WebP or GIF." }, { status: 400 });
+    return NextResponse.json(
+      { error: "Invalid file type. Use JPG, PNG, WebP or GIF." },
+      { status: 400 }
+    );
   }
   if (file.size > MAX_SIZE_BYTES) {
     return NextResponse.json({ error: "File too large. Max 2 MB." }, { status: 400 });
@@ -53,7 +62,10 @@ export async function POST(req: NextRequest) {
 
   const signatures = MAGIC_BYTES[file.type];
   if (!signatures || !matchesMagicBytes(buffer, signatures)) {
-    return NextResponse.json({ error: "File content does not match declared type." }, { status: 400 });
+    return NextResponse.json(
+      { error: "File content does not match declared type." },
+      { status: 400 }
+    );
   }
 
   const ext = file.type.split("/")[1].replace("jpeg", "jpg");
@@ -68,7 +80,9 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "upload_failed" }, { status: 500 });
   }
 
-  const { data: { publicUrl } } = supabase.storage.from("avatars").getPublicUrl(path);
+  const {
+    data: { publicUrl }
+  } = supabase.storage.from("avatars").getPublicUrl(path);
   const avatarUrl = `${publicUrl}?t=${Date.now()}`;
 
   const { error: dbErr } = await supabaseAdmin
@@ -93,12 +107,15 @@ export async function DELETE() {
     { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
   );
 
-  const { data: { user }, error: authErr } = await supabase.auth.getUser();
+  const {
+    data: { user },
+    error: authErr
+  } = await supabase.auth.getUser();
   if (authErr || !user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  if (!await rateLimit(`avatar:delete:${user.id}`, 5, 60_000)) {
+  if (!(await rateLimit(`avatar:delete:${user.id}`, 5, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -113,15 +130,11 @@ export async function DELETE() {
     return NextResponse.json({ error: "profile_fetch_failed" }, { status: 500 });
   }
 
-  const { data: files } = await supabase.storage
-    .from("avatars")
-    .list(user.id);
+  const { data: files } = await supabase.storage.from("avatars").list(user.id);
 
   if (files && files.length > 0) {
     const paths = files.map((f) => `${user.id}/${f.name}`);
-    const { error: storageError } = await supabase.storage
-      .from("avatars")
-      .remove(paths);
+    const { error: storageError } = await supabase.storage.from("avatars").remove(paths);
 
     if (storageError) {
       console.error("[avatar/delete] storage remove failed:", storageError.message);

@@ -1,8 +1,7 @@
 import { Resend } from "resend";
 
 export const FROM_ADDRESS = "KangaLearner <noreply@kangalearner.com.au>";
-export const APP_URL =
-  process.env.NEXT_PUBLIC_APP_URL ?? "https://kangalearner.com.au";
+export const APP_URL = process.env.NEXT_PUBLIC_APP_URL ?? "https://kangalearner.com.au";
 
 // Lazy singleton — instantiated only when actually called (not at import/build time).
 // This prevents Next.js from throwing during "Collecting page data" if the env var
@@ -22,7 +21,6 @@ function getClient(): Resend {
 
 export const resend = {
   emails: {
-    send: (...args: Parameters<Resend["emails"]["send"]>) =>
-      getClient().emails.send(...args),
-  },
+    send: (...args: Parameters<Resend["emails"]["send"]>) => getClient().emails.send(...args)
+  }
 };

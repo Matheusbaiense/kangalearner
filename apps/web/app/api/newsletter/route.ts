@@ -7,12 +7,12 @@ import { newsletterConfirmHtml, newsletterConfirmSubject } from "@/lib/emails/ne
 import { z } from "zod";
 
 const newsletterSchema = z.object({
-  email: z.string().email(),
+  email: z.string().email()
 });
 
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`newsletter:${ip}`, 3, 60_000)) {
+  if (!(await rateLimit(`newsletter:${ip}`, 3, 60_000))) {
     return NextResponse.json({ ok: false, error: "too_many_requests" }, { status: 429 });
   }
 
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
           from: FROM_ADDRESS,
           to: [email],
           subject: newsletterConfirmSubject(),
-          html: newsletterConfirmHtml(),
+          html: newsletterConfirmHtml()
         });
       } catch (err) {
         console.error("[newsletter] confirmation email failed:", err);

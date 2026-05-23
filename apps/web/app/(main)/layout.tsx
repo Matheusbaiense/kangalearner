@@ -17,7 +17,9 @@ export default async function MainLayout({ children }: { children: ReactNode }) 
 
   try {
     const supabase = await createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
 
     if (user) {
       const name =
@@ -36,7 +38,7 @@ export default async function MainLayout({ children }: { children: ReactNode }) 
         name,
         initials: getInitials(name, email),
         role: profile?.role ?? "free",
-        avatarUrl: (profile?.avatar_url as string | null) ?? null,
+        avatarUrl: (profile?.avatar_url as string | null) ?? null
       };
     }
   } catch {

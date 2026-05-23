@@ -17,15 +17,15 @@ const NAV_LINKS = [
   { href: "/mock-test", key: "mockTest" },
   { href: "/progress", key: "progress", requiresAuth: true },
   { href: "/dashboard", key: "dashboard", requiresAuth: true },
-  { href: "/resources", key: "resources" },
+  { href: "/resources", key: "resources" }
 ] as const;
 
 const LANGUAGES = [
-  { code: "en",    country: "au", label: "English",         triggerLabel: "English",    bilingual: false },
-  { code: "pt",    country: "br", label: "Português",       triggerLabel: "Português",  bilingual: false },
-  { code: "pt-en", country: "br", label: "Bilingue PT·EN",  triggerLabel: "PT·EN",      bilingual: true  },
-  { code: "es",    country: "es", label: "Español",         triggerLabel: "Español",    bilingual: false },
-  { code: "es-en", country: "es", label: "Bilingüe ES·EN",  triggerLabel: "ES·EN",      bilingual: true  },
+  { code: "en", country: "au", label: "English", triggerLabel: "English", bilingual: false },
+  { code: "pt", country: "br", label: "Português", triggerLabel: "Português", bilingual: false },
+  { code: "pt-en", country: "br", label: "Bilingue PT·EN", triggerLabel: "PT·EN", bilingual: true },
+  { code: "es", country: "es", label: "Español", triggerLabel: "Español", bilingual: false },
+  { code: "es-en", country: "es", label: "Bilingüe ES·EN", triggerLabel: "ES·EN", bilingual: true }
 ] as const;
 
 interface NavUser {
@@ -134,7 +134,9 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   // Lock body scroll when mobile nav is open
   useEffect(() => {
     document.body.style.overflow = mobileNavOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileNavOpen]);
 
   // Auth state — initialNavUser (server-fetched) is the primary source for the first render.
@@ -153,19 +155,26 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       return;
     }
 
-    async function buildNavUser(u: { id: string; email?: string; user_metadata?: Record<string, unknown> }) {
+    async function buildNavUser(u: {
+      id: string;
+      email?: string;
+      user_metadata?: Record<string, unknown>;
+    }) {
       const name =
         (u.user_metadata?.full_name as string | undefined) ||
         (u.user_metadata?.name as string | undefined) ||
         "";
       const { data: profile } = await supabase!
-        .from("profiles").select("role, avatar_url").eq("id", u.id).maybeSingle();
+        .from("profiles")
+        .select("role, avatar_url")
+        .eq("id", u.id)
+        .maybeSingle();
       setUser({
         email: u.email ?? "",
         name,
         initials: getInitials(name, u.email ?? ""),
         role: profile?.role ?? "free",
-        avatarUrl: (profile?.avatar_url as string | null) ?? null,
+        avatarUrl: (profile?.avatar_url as string | null) ?? null
       });
     }
 
@@ -217,288 +226,56 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
 
   return (
     <>
-    <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
-      <nav className="nav-shell" aria-label="Main navigation">
-        {/* Brand */}
-        <Link href="/" className="brand" aria-label="KangaLearner home">
-          <Image
-            src="/brand/logo-nav.svg"
-            alt="KangaLearner"
-            width={120}
-            height={30}
-            className="brand-logo"
-            priority
-          />
-        </Link>
+      <header className={`site-header${scrolled ? " is-scrolled" : ""}`}>
+        <nav className="nav-shell" aria-label="Main navigation">
+          {/* Brand */}
+          <Link href="/" className="brand" aria-label="KangaLearner home">
+            <Image
+              src="/brand/logo-nav.svg"
+              alt="KangaLearner"
+              width={120}
+              height={30}
+              className="brand-logo"
+              priority
+            />
+          </Link>
 
-        {/* Hamburger — mobile only */}
-        <button
-          className="nav-hamburger"
-          onClick={() => setMobileNavOpen((o) => !o)}
-          aria-expanded={mobileNavOpen}
-          aria-controls="mobile-nav-drawer"
-          aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
-          type="button"
-        >
-          <span className="hamburger-bar" />
-          <span className="hamburger-bar" />
-          <span className="hamburger-bar" />
-        </button>
+          {/* Hamburger — mobile only */}
+          <button
+            className="nav-hamburger"
+            onClick={() => setMobileNavOpen((o) => !o)}
+            aria-expanded={mobileNavOpen}
+            aria-controls="mobile-nav-drawer"
+            aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+            type="button"
+          >
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+            <span className="hamburger-bar" />
+          </button>
 
-        {/* Nav links */}
-        <ul className="main-nav" role="list">
-          {NAV_LINKS.map((link) => {
-            const needsAuth = "requiresAuth" in link && link.requiresAuth;
-            if (needsAuth && !authLoading && !user) return null;
-            const isActive = "exact" in link && link.exact
-              ? pathname === link.href
-              : pathname.startsWith(link.href);
-            return (
-              <li key={link.href}>
-                <Link href={link.href} className={isActive ? "nav-link active" : "nav-link"}>
-                  {s[link.key]}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Right controls */}
-        <div className="nav-controls">
-          {/* State selector */}
-          <label className="state-control" aria-label="Select state">
-            <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
-            <select
-              className="state-select"
-              value={stateCode}
-              onChange={(e) => {
-                const code = e.target.value;
-                try {
-                  localStorage.setItem(SK.stateV2, code);
-                  localStorage.setItem(SK.stateLegacy, code);
-                } catch {}
-                setStateCode(code);
-                window.dispatchEvent(new CustomEvent("kanga:state-changed"));
-                router.refresh();
-              }}
-            >
-              {AU_STATE_OPTIONS.map((s) => (
-                <option key={s.code} value={s.code}>
-                  {s.code}
-                </option>
-              ))}
-            </select>
-          </label>
-
-          {/* Language selector */}
-          <div className={`lang-control${langOpen ? " open" : ""}`} ref={langRef}>
-            <button
-              className="lang-trigger"
-              onClick={() => setLangOpen((o) => !o)}
-              aria-expanded={langOpen}
-              aria-haspopup="listbox"
-              aria-label={s.language}
-            >
-              <FlagImg country={currentLang.country} size={20} />
-              <span className="lang-label">{currentLang.triggerLabel}</span>
-              {currentLang.bilingual && (
-                <span className="lang-bilingual-badge" aria-hidden="true">EN</span>
-              )}
-              <span className="lang-arrow" aria-hidden="true">▼</span>
-            </button>
-            <div className="lang-panel" role="listbox" aria-label={s.language}>
-              {LANGUAGES.map((l) => (
-                <button
-                  key={l.code}
-                  className={`lang-option${lang === l.code ? " active" : ""}${l.bilingual ? " lang-option--bilingual" : ""}`}
-                  role="option"
-                  aria-selected={lang === l.code}
-                  onClick={() => {
-                    setLang(l.code);
-                    setLangOpen(false);
-                  }}
-                >
-                  <FlagImg country={l.country} size={20} />
-                  <span style={{ flex: 1 }}>{l.label}</span>
-                  {l.bilingual && <span className="lang-bilingual-badge">EN</span>}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Theme toggle */}
-          <ThemeToggle />
-
-          {/* Auth — hidden while session check is pending to prevent race-condition redirect */}
-          {authLoading ? (
-            <div style={{ width: 72, height: 36 }} aria-hidden="true" />
-          ) : user ? (
-            <div className={`user-menu${userMenuOpen ? " open" : ""}`} ref={userMenuRef}>
-              <button
-                className="user-trigger"
-                onClick={() => setUserMenuOpen((o) => !o)}
-                aria-expanded={userMenuOpen}
-                aria-haspopup="menu"
-                aria-label={s.account}
-                title={s.account}
-              >
-                <span className="user-avatar" aria-hidden="true">
-                  {user.avatarUrl
-                    ? <img src={user.avatarUrl} alt="" style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }} />
-                    : user.initials}
-                </span>
-                <span className="user-trigger-name" aria-hidden="true">
-                  {(user.name || user.email).split(/[\s@]/)[0]}
-                </span>
-                <span className="user-trigger-chevron" aria-hidden="true">▾</span>
-              </button>
-              <div className="user-panel" role="menu">
-                <div className="user-panel-header">
-                  <div className="user-panel-name">{user.name || user.email.split("@")[0]}</div>
-                  <div className="user-panel-email">{user.email}</div>
-                </div>
-                <Link
-                  href="/"
-                  className="user-panel-item"
-                  role="menuitem"
-                  onClick={() => setUserMenuOpen(false)}
-                >
-                  {s.home}
-                </Link>
-                <Link
-                  href="/dashboard"
-                  className="user-panel-item"
-                  role="menuitem"
-                  onClick={() => setUserMenuOpen(false)}
-                >
-                  {s.dashboard}
-                </Link>
-                <Link
-                  href="/account"
-                  className="user-panel-item"
-                  role="menuitem"
-                  onClick={() => setUserMenuOpen(false)}
-                >
-                  {s.settings}
-                </Link>
-                <Link
-                  href="/resources"
-                  className="user-panel-item"
-                  role="menuitem"
-                  onClick={() => setUserMenuOpen(false)}
-                >
-                  {s.help}
-                </Link>
-                {["admin", "super_admin"].includes(user.role) && (
-                  <>
-                    <div className="user-panel-divider" role="separator" />
-                    <Link
-                      href="/admin"
-                      className="user-panel-item admin-link"
-                      role="menuitem"
-                      onClick={() => setUserMenuOpen(false)}
-                    >
-                      ⚡ Admin Dashboard
-                    </Link>
-                  </>
-                )}
-                <div className="user-panel-divider" role="separator" />
-                <button className="user-panel-item danger" role="menuitem" onClick={handleSignOut}>
-                  {s.signOut}
-                </button>
-              </div>
-            </div>
-          ) : (
-            <Link href="/auth/login" className="btn-nav-login">
-              {s.signIn}
-            </Link>
-          )}
-        </div>
-      </nav>
-    </header>
-
-    {/* Mobile nav drawer */}
-    {mobileNavOpen && (
-      <>
-        {/* Backdrop */}
-        <div
-          className="mobile-nav-backdrop"
-          onClick={() => setMobileNavOpen(false)}
-          aria-hidden="true"
-        />
-        {/* Drawer */}
-        <nav
-          id="mobile-nav-drawer"
-          className="mobile-nav-drawer"
-          aria-label="Mobile navigation"
-        >
-          {/* User identity block — shown when logged in */}
-          {!authLoading && user && (
-            <div className="mobile-nav-user">
-              <div className="mobile-nav-user-info">
-                <div className="nav-avatar" aria-hidden="true">
-                  {user.avatarUrl ? (
-                    <Image src={user.avatarUrl} alt="" width={36} height={36} className="nav-avatar-img" />
-                  ) : (
-                    <span className="nav-avatar-initials">{user.initials}</span>
-                  )}
-                </div>
-                <div className="mobile-nav-user-text">
-                  <span className="mobile-nav-user-name">{user.name || user.email.split("@")[0]}</span>
-                  <span className="mobile-nav-user-email">{user.email}</span>
-                </div>
-              </div>
-              <button
-                className="mobile-nav-signout"
-                onClick={() => { void handleSignOut(); setMobileNavOpen(false); }}
-              >
-                {s.signOut}
-              </button>
-            </div>
-          )}
-          <ul role="list">
+          {/* Nav links */}
+          <ul className="main-nav" role="list">
             {NAV_LINKS.map((link) => {
               const needsAuth = "requiresAuth" in link && link.requiresAuth;
               if (needsAuth && !authLoading && !user) return null;
-              const isActive = "exact" in link && link.exact
-                ? pathname === link.href
-                : pathname.startsWith(link.href);
+              const isActive =
+                "exact" in link && link.exact
+                  ? pathname === link.href
+                  : pathname.startsWith(link.href);
               return (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={isActive ? "mobile-nav-link active" : "mobile-nav-link"}
-                    onClick={() => setMobileNavOpen(false)}
-                  >
+                  <Link href={link.href} className={isActive ? "nav-link active" : "nav-link"}>
                     {s[link.key]}
                   </Link>
                 </li>
               );
             })}
-            {!authLoading && user && (
-              <li>
-                <Link
-                  href="/account"
-                  className={pathname === "/account" ? "mobile-nav-link active" : "mobile-nav-link"}
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  {s.settings}
-                </Link>
-              </li>
-            )}
-            {!authLoading && !user && (
-              <li>
-                <Link
-                  href="/auth/login"
-                  className="mobile-nav-link mobile-nav-signin"
-                  onClick={() => setMobileNavOpen(false)}
-                >
-                  {s.signIn}
-                </Link>
-              </li>
-            )}
           </ul>
-          <div className="mobile-nav-state">
+
+          {/* Right controls */}
+          <div className="nav-controls">
+            {/* State selector */}
             <label className="state-control" aria-label="Select state">
               <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
               <select
@@ -509,26 +286,290 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                   try {
                     localStorage.setItem(SK.stateV2, code);
                     localStorage.setItem(SK.stateLegacy, code);
-                  } catch {
-                    /* noop */
-                  }
+                  } catch {}
                   setStateCode(code);
                   window.dispatchEvent(new CustomEvent("kanga:state-changed"));
                   router.refresh();
-                  setMobileNavOpen(false);
                 }}
               >
-                {AU_STATE_OPTIONS.map((st) => (
-                  <option key={st.code} value={st.code}>
-                    {st.code} — {st.name}
+                {AU_STATE_OPTIONS.map((s) => (
+                  <option key={s.code} value={s.code}>
+                    {s.code}
                   </option>
                 ))}
               </select>
             </label>
+
+            {/* Language selector */}
+            <div className={`lang-control${langOpen ? " open" : ""}`} ref={langRef}>
+              <button
+                className="lang-trigger"
+                onClick={() => setLangOpen((o) => !o)}
+                aria-expanded={langOpen}
+                aria-haspopup="listbox"
+                aria-label={s.language}
+              >
+                <FlagImg country={currentLang.country} size={20} />
+                <span className="lang-label">{currentLang.triggerLabel}</span>
+                {currentLang.bilingual && (
+                  <span className="lang-bilingual-badge" aria-hidden="true">
+                    EN
+                  </span>
+                )}
+                <span className="lang-arrow" aria-hidden="true">
+                  ▼
+                </span>
+              </button>
+              <div className="lang-panel" role="listbox" aria-label={s.language}>
+                {LANGUAGES.map((l) => (
+                  <button
+                    key={l.code}
+                    className={`lang-option${lang === l.code ? " active" : ""}${l.bilingual ? " lang-option--bilingual" : ""}`}
+                    role="option"
+                    aria-selected={lang === l.code}
+                    onClick={() => {
+                      setLang(l.code);
+                      setLangOpen(false);
+                    }}
+                  >
+                    <FlagImg country={l.country} size={20} />
+                    <span style={{ flex: 1 }}>{l.label}</span>
+                    {l.bilingual && <span className="lang-bilingual-badge">EN</span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Theme toggle */}
+            <ThemeToggle />
+
+            {/* Auth — hidden while session check is pending to prevent race-condition redirect */}
+            {authLoading ? (
+              <div style={{ width: 72, height: 36 }} aria-hidden="true" />
+            ) : user ? (
+              <div className={`user-menu${userMenuOpen ? " open" : ""}`} ref={userMenuRef}>
+                <button
+                  className="user-trigger"
+                  onClick={() => setUserMenuOpen((o) => !o)}
+                  aria-expanded={userMenuOpen}
+                  aria-haspopup="menu"
+                  aria-label={s.account}
+                  title={s.account}
+                >
+                  <span className="user-avatar" aria-hidden="true">
+                    {user.avatarUrl ? (
+                      <img
+                        src={user.avatarUrl}
+                        alt=""
+                        style={{
+                          width: "100%",
+                          height: "100%",
+                          borderRadius: "50%",
+                          objectFit: "cover"
+                        }}
+                      />
+                    ) : (
+                      user.initials
+                    )}
+                  </span>
+                  <span className="user-trigger-name" aria-hidden="true">
+                    {(user.name || user.email).split(/[\s@]/)[0]}
+                  </span>
+                  <span className="user-trigger-chevron" aria-hidden="true">
+                    ▾
+                  </span>
+                </button>
+                <div className="user-panel" role="menu">
+                  <div className="user-panel-header">
+                    <div className="user-panel-name">{user.name || user.email.split("@")[0]}</div>
+                    <div className="user-panel-email">{user.email}</div>
+                  </div>
+                  <Link
+                    href="/"
+                    className="user-panel-item"
+                    role="menuitem"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    {s.home}
+                  </Link>
+                  <Link
+                    href="/dashboard"
+                    className="user-panel-item"
+                    role="menuitem"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    {s.dashboard}
+                  </Link>
+                  <Link
+                    href="/account"
+                    className="user-panel-item"
+                    role="menuitem"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    {s.settings}
+                  </Link>
+                  <Link
+                    href="/resources"
+                    className="user-panel-item"
+                    role="menuitem"
+                    onClick={() => setUserMenuOpen(false)}
+                  >
+                    {s.help}
+                  </Link>
+                  {["admin", "super_admin"].includes(user.role) && (
+                    <>
+                      <div className="user-panel-divider" role="separator" />
+                      <Link
+                        href="/admin"
+                        className="user-panel-item admin-link"
+                        role="menuitem"
+                        onClick={() => setUserMenuOpen(false)}
+                      >
+                        ⚡ Admin Dashboard
+                      </Link>
+                    </>
+                  )}
+                  <div className="user-panel-divider" role="separator" />
+                  <button
+                    className="user-panel-item danger"
+                    role="menuitem"
+                    onClick={handleSignOut}
+                  >
+                    {s.signOut}
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <Link href="/auth/login" className="btn-nav-login">
+                {s.signIn}
+              </Link>
+            )}
           </div>
         </nav>
-      </>
-    )}
+      </header>
+
+      {/* Mobile nav drawer */}
+      {mobileNavOpen && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="mobile-nav-backdrop"
+            onClick={() => setMobileNavOpen(false)}
+            aria-hidden="true"
+          />
+          {/* Drawer */}
+          <nav id="mobile-nav-drawer" className="mobile-nav-drawer" aria-label="Mobile navigation">
+            {/* User identity block — shown when logged in */}
+            {!authLoading && user && (
+              <div className="mobile-nav-user">
+                <div className="mobile-nav-user-info">
+                  <div className="nav-avatar" aria-hidden="true">
+                    {user.avatarUrl ? (
+                      <Image
+                        src={user.avatarUrl}
+                        alt=""
+                        width={36}
+                        height={36}
+                        className="nav-avatar-img"
+                      />
+                    ) : (
+                      <span className="nav-avatar-initials">{user.initials}</span>
+                    )}
+                  </div>
+                  <div className="mobile-nav-user-text">
+                    <span className="mobile-nav-user-name">
+                      {user.name || user.email.split("@")[0]}
+                    </span>
+                    <span className="mobile-nav-user-email">{user.email}</span>
+                  </div>
+                </div>
+                <button
+                  className="mobile-nav-signout"
+                  onClick={() => {
+                    void handleSignOut();
+                    setMobileNavOpen(false);
+                  }}
+                >
+                  {s.signOut}
+                </button>
+              </div>
+            )}
+            <ul role="list">
+              {NAV_LINKS.map((link) => {
+                const needsAuth = "requiresAuth" in link && link.requiresAuth;
+                if (needsAuth && !authLoading && !user) return null;
+                const isActive =
+                  "exact" in link && link.exact
+                    ? pathname === link.href
+                    : pathname.startsWith(link.href);
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={isActive ? "mobile-nav-link active" : "mobile-nav-link"}
+                      onClick={() => setMobileNavOpen(false)}
+                    >
+                      {s[link.key]}
+                    </Link>
+                  </li>
+                );
+              })}
+              {!authLoading && user && (
+                <li>
+                  <Link
+                    href="/account"
+                    className={
+                      pathname === "/account" ? "mobile-nav-link active" : "mobile-nav-link"
+                    }
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    {s.settings}
+                  </Link>
+                </li>
+              )}
+              {!authLoading && !user && (
+                <li>
+                  <Link
+                    href="/auth/login"
+                    className="mobile-nav-link mobile-nav-signin"
+                    onClick={() => setMobileNavOpen(false)}
+                  >
+                    {s.signIn}
+                  </Link>
+                </li>
+              )}
+            </ul>
+            <div className="mobile-nav-state">
+              <label className="state-control" aria-label="Select state">
+                <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
+                <select
+                  className="state-select"
+                  value={stateCode}
+                  onChange={(e) => {
+                    const code = e.target.value;
+                    try {
+                      localStorage.setItem(SK.stateV2, code);
+                      localStorage.setItem(SK.stateLegacy, code);
+                    } catch {
+                      /* noop */
+                    }
+                    setStateCode(code);
+                    window.dispatchEvent(new CustomEvent("kanga:state-changed"));
+                    router.refresh();
+                    setMobileNavOpen(false);
+                  }}
+                >
+                  {AU_STATE_OPTIONS.map((st) => (
+                    <option key={st.code} value={st.code}>
+                      {st.code} — {st.name}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            </div>
+          </nav>
+        </>
+      )}
     </>
   );
 }

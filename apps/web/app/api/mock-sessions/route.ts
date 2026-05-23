@@ -10,7 +10,7 @@ const mockSessionSchema = z.object({
   score: z.number().min(0),
   total: z.number().positive(),
   mode: z.string().optional(),
-  source: z.string().optional(),
+  source: z.string().optional()
 });
 
 const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
@@ -18,7 +18,7 @@ const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000)) {
+  if (!(await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
   // Per-user rate limit — 20 mock sessions per minute per user is generous
-  if (!await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000)) {
+  if (!(await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -65,10 +65,7 @@ export async function POST(request: NextRequest) {
 
   const payload = parseResult.data;
 
-  if (
-    !AU_STATES.has(payload.state) ||
-    payload.score > payload.total
-  ) {
+  if (!AU_STATES.has(payload.state) || payload.score > payload.total) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
 
@@ -91,7 +88,7 @@ export async function POST(request: NextRequest) {
     answers: {},
     weak_categories: null,
     source: payload.source ?? "web",
-    completed_at: new Date().toISOString(),
+    completed_at: new Date().toISOString()
   });
 
   if (error) {

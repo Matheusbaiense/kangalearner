@@ -13,14 +13,14 @@ type MockMode = "practice" | "exam";
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
 
 const STATE_NAMES: Record<StateCode, string> = {
-  WA:  "Western Australia",
+  WA: "Western Australia",
   NSW: "New South Wales",
   VIC: "Victoria",
   QLD: "Queensland",
-  SA:  "South Australia",
+  SA: "South Australia",
   TAS: "Tasmania",
   ACT: "Australian Capital Territory",
-  NT:  "Northern Territory",
+  NT: "Northern Territory"
 };
 
 const STATE_CODES = Object.keys(STATE_NAMES) as StateCode[];
@@ -28,12 +28,12 @@ const STATE_CODES = Object.keys(STATE_NAMES) as StateCode[];
 const PRACTICE_DESC = {
   en: "Explanation shown after each answer. Best for learning.",
   pt: "Explicação exibida após cada resposta. Melhor para aprender.",
-  es: "Explicación mostrada después de cada respuesta. Mejor para aprender.",
+  es: "Explicación mostrada después de cada respuesta. Mejor para aprender."
 };
 const EXAM_DESC = {
   en: "No feedback until the end. Simulates the real test.",
   pt: "Sem feedback até o final. Simula o teste real.",
-  es: "Sin retroalimentación hasta el final. Simula el examen real.",
+  es: "Sin retroalimentación hasta el final. Simula el examen real."
 };
 
 export default function MockTestSetupPage() {
@@ -61,13 +61,17 @@ export default function MockTestSetupPage() {
     sessionStorage.setItem("mock-config", JSON.stringify(config));
 
     const supabase = createClient();
-    const { data: { user } } = await supabase.auth.getUser();
+    const {
+      data: { user }
+    } = await supabase.auth.getUser();
 
     if (!user) {
       // Guest: show value-prop prompt instead of immediate redirect
       try {
         localStorage.setItem("mock-config-saved", JSON.stringify(config));
-      } catch { /* noop */ }
+      } catch {
+        /* noop */
+      }
       setShowGuestPrompt(true);
       return;
     }
@@ -82,7 +86,12 @@ export default function MockTestSetupPage() {
   return (
     <main className="container section-pad">
       {showGuestPrompt && (
-        <div className="guest-prompt-overlay" role="dialog" aria-modal="true" aria-label={s.mockGuestTitle}>
+        <div
+          className="guest-prompt-overlay"
+          role="dialog"
+          aria-modal="true"
+          aria-label={s.mockGuestTitle}
+        >
           <div className="guest-prompt-card">
             <h3>{s.mockGuestTitle}</h3>
             <p>{s.mockGuestSub}</p>
@@ -93,11 +102,7 @@ export default function MockTestSetupPage() {
               <a href="/auth/login?redirect=/mock-test/session" className="btn btn-ghost-light">
                 {s.mockGuestSignIn}
               </a>
-              <button
-                type="button"
-                className="btn btn-ghost"
-                onClick={handleContinueAsGuest}
-              >
+              <button type="button" className="btn btn-ghost" onClick={handleContinueAsGuest}>
                 {s.mockGuestContinue}
               </button>
             </div>

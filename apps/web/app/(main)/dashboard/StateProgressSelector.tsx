@@ -11,7 +11,15 @@ export function StateProgressSelector({ selectedState }: { selectedState: AuStat
   const { s } = useLang();
 
   return (
-    <label style={{ display: "flex", flexDirection: "column", gap: 6, fontSize: ".78rem", fontWeight: 800 }}>
+    <label
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 6,
+        fontSize: ".78rem",
+        fontWeight: 800
+      }}
+    >
       <span style={{ color: "var(--muted)", textTransform: "uppercase", letterSpacing: ".08em" }}>
         {s.dashStateLabel}
       </span>

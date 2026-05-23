@@ -8,15 +8,15 @@ export async function GET(req: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  if (!await rateLimit(`admin:users:get:${uid}`, 30, 60_000)) {
+  if (!(await rateLimit(`admin:users:get:${uid}`, 30, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
   const { searchParams } = new URL(req.url);
-  const page   = Math.max(0, parseInt(searchParams.get("page") ?? "0"));
-  const limit  = Math.min(100, parseInt(searchParams.get("limit") ?? "50"));
+  const page = Math.max(0, parseInt(searchParams.get("page") ?? "0"));
+  const limit = Math.min(100, parseInt(searchParams.get("limit") ?? "50"));
   const search = searchParams.get("search") ?? "";
-  const role   = searchParams.get("role") ?? "";
+  const role = searchParams.get("role") ?? "";
 
   let query = supabaseAdmin
     .from("profiles")
@@ -39,7 +39,7 @@ export async function GET(req: NextRequest) {
   const enriched = (data ?? []).map((profile) => ({
     ...profile,
     email: profile.email ?? "(no email)",
-    last_sign_in: profile.last_sign_in_at ?? null,
+    last_sign_in: profile.last_sign_in_at ?? null
   }));
 
   return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
@@ -49,7 +49,7 @@ import { z } from "zod";
 
 const patchUserSchema = z.object({
   userId: z.string().min(1),
-  role: z.enum(["free", "premium", "admin", "super_admin"]),
+  role: z.enum(["free", "premium", "admin", "super_admin"])
 });
 
 /** PATCH /api/admin/users — update a user's role */
@@ -57,7 +57,7 @@ export async function PATCH(req: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  if (!await rateLimit(`admin:users:patch:${uid}`, 10, 60_000)) {
+  if (!(await rateLimit(`admin:users:patch:${uid}`, 10, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -78,7 +78,7 @@ export async function PATCH(req: NextRequest) {
   // Fetch caller and target profiles in parallel
   const [{ data: callerProfile }, { data: targetProfile }] = await Promise.all([
     supabaseAdmin.from("profiles").select("role").eq("id", uid).single(),
-    supabaseAdmin.from("profiles").select("role").eq("id", userId).single(),
+    supabaseAdmin.from("profiles").select("role").eq("id", userId).single()
   ]);
 
   // Assigning admin/super_admin requires super_admin
@@ -94,10 +94,7 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "Only super_admin can modify admin users" }, { status: 403 });
   }
 
-  const { error } = await supabaseAdmin
-    .from("profiles")
-    .update({ role })
-    .eq("id", userId);
+  const { error } = await supabaseAdmin.from("profiles").update({ role }).eq("id", userId);
 
   if (error) {
     console.error("[admin/users] PATCH failed:", error.code, error.message);

@@ -16,10 +16,7 @@ export function isBilingualLang(lang: Lang): boolean {
   return lang === "pt-en" || lang === "es-en";
 }
 
-export function tx(
-  obj: Record<string, string> | null | undefined,
-  lang: UiLang
-): string {
+export function tx(obj: Record<string, string> | null | undefined, lang: UiLang): string {
   if (!obj) return "";
   return obj[lang] ?? obj.en ?? Object.values(obj)[0] ?? "";
 }
@@ -34,7 +31,8 @@ export const t = {
     practice: "Practice",
     mockTest: "Mock Test",
     mockGuestTitle: "Save your mock test results",
-    mockGuestSub: "Create a free account to track your score, review wrong answers, and see your progress over time.",
+    mockGuestSub:
+      "Create a free account to track your score, review wrong answers, and see your progress over time.",
     mockGuestContinue: "Continue without saving",
     mockGuestSignIn: "Sign in",
     mockGuestBannerTitle: "Want to track your progress?",
@@ -91,7 +89,8 @@ export const t = {
     trustSaveTitle: "Progress saved",
     trustSaveBody: "Your progress is saved automatically in the browser.",
     trustOfficialTitle: "Based on official rules",
-    trustOfficialBody: "Content structured from WA public sources. Always confirm with the Department of Transport.",
+    trustOfficialBody:
+      "Content structured from WA public sources. Always confirm with the Department of Transport.",
     // Topics
     topicsTitle: "Study the key topics",
     topicSpeed: "Speed Limits",
@@ -126,14 +125,11 @@ export const t = {
     // How it works section (M2.2)
     howItWorksTitle: "How it works",
     howStep1Title: "Study by topic",
-    howStep1DescCard:
-      "19 road rule topics — signs, speed limits, give way, alcohol laws and more.",
+    howStep1DescCard: "19 road rule topics — signs, speed limits, give way, alcohol laws and more.",
     howStep2Title: "Take a mock test",
-    howStep2DescCard:
-      "30 questions, 45 minutes. Same format as the real DoT WA learner test.",
+    howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT WA learner test.",
     howStep3Title: "Track your progress",
-    howStep3DescCard:
-      "See which topics need more practice. Sign up free to save your results.",
+    howStep3DescCard: "See which topics need more practice. Sign up free to save your results.",
     testimonialBetaLabel: "Stories from our early community",
 
     // ── Practice UI ───────────────────────────────────────
@@ -175,7 +171,8 @@ export const t = {
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Official sources",
     resourcesTitle: "Study resources for the WA learner test",
-    resourcesSub: "These links open official Western Australia government websites. Use them alongside your KangaLearner practice for the best results.",
+    resourcesSub:
+      "These links open official Western Australia government websites. Use them alongside your KangaLearner practice for the best results.",
     resourcesWaOnly: "WA resources only — other states coming soon.",
     resourcesStudyGuide: "Study guide",
     resourcesPracticeNow: "Practise questions",
@@ -223,16 +220,14 @@ export const t = {
     dashCategoryBreakdownBelow: "Category breakdown below",
     dashCategoryBreakdown: "Category breakdown",
     dashNoAttemptsForStatePrefix: "No attempts found for",
-    dashNoAttemptsForStateSuffix:
-      "Practice questions from this state to see progress here.",
+    dashNoAttemptsForStateSuffix: "Practice questions from this state to see progress here.",
     dashWeeklyActivity: "Weekly activity",
     dashNoWeeklyActivity: "No activity yet — start practising to see your trend.",
     dashChartNoActivity: "No activity",
     dashContinuePractice: "Continue practice →",
     dashTakeMockTest: "Take mock test",
     dashWhatToPractiseNext: "What to practise next",
-    dashMoreQuestionsRecommendations:
-      "Answer more questions to get personalised recommendations.",
+    dashMoreQuestionsRecommendations: "Answer more questions to get personalised recommendations.",
     dashPractiseArrow: "Practise →",
     dashProgressByTopic: "Progress by topic",
     dashNoTopicData: "No data yet — answer some questions in Practice mode.",
@@ -268,8 +263,7 @@ export const t = {
     accountPreferencesSub: "State, language, timezone and display settings.",
     accountState: "State",
     accountStateHint: "Saved as your default state across the app and static site.",
-    accountLanguageHint:
-      "Saved as your default display language across the app and static site.",
+    accountLanguageHint: "Saved as your default display language across the app and static site.",
     accountTimezone: "Timezone",
     accountTimezoneHint: "Used for scheduling practice reminders (coming soon).",
     accountTheme: "Theme",
@@ -336,9 +330,11 @@ export const t = {
     authNoAccount: "Don't have an account?",
     authCreateOne: "Create one",
     authTagline: "Official road rules · Up to date · Trusted by learner drivers Australia-wide",
-    authServiceUnavailable: "Authentication service unavailable. Please refresh the page or try again later.",
+    authServiceUnavailable:
+      "Authentication service unavailable. Please refresh the page or try again later.",
     authCreateAccount: "Create your account",
-    authCreateAccountSub: "Save your progress, track insights and access your full mock test history.",
+    authCreateAccountSub:
+      "Save your progress, track insights and access your full mock test history.",
     authYourName: "Your name",
     authAtLeast8: "At least 8 characters",
     authCreatingAccount: "Creating account…",
@@ -357,7 +353,8 @@ export const t = {
     authResetEmailSentSuffix: "Follow the link to choose a new password.",
     authChooseNewPassword: "Choose a new password",
     authChooseNewPasswordSub: "Enter a new password for your account.",
-    authWaitingResetSession: "Waiting for reset session… If this persists, open the email link again.",
+    authWaitingResetSession:
+      "Waiting for reset session… If this persists, open the email link again.",
     authNewPasswordLabel: "New password",
     authConfirmPasswordLabel: "Confirm password",
     authRepeatYourPassword: "Repeat your password",
@@ -371,7 +368,8 @@ export const t = {
 
     // ── Auth nudge ────────────────────────────────────────
     nudgeTitle: "Sign in to save your progress",
-    nudgeBody: "Your results are only stored locally. Create a free account to sync across devices and track your history.",
+    nudgeBody:
+      "Your results are only stored locally. Create a free account to sync across devices and track your history.",
     nudgeSignUp: "Create free account",
     nudgeSignIn: "Sign in",
 
@@ -382,7 +380,7 @@ export const t = {
     mockNoResults: "No results found for this session.",
     mockConfigNotFound: "No mock config found.",
     mockSessionError: "Session error",
-    mockLoadNextQuestion: "We couldn't load the next question.",
+    mockLoadNextQuestion: "We couldn't load the next question."
   },
 
   pt: {
@@ -450,7 +448,8 @@ export const t = {
     trustSaveTitle: "Progresso salvo",
     trustSaveBody: "Seu progresso é salvo automaticamente no navegador.",
     trustOfficialTitle: "Baseado em regras oficiais",
-    trustOfficialBody: "Conteúdo baseado em fontes públicas de WA. Confirme sempre com o Departamento de Transportes.",
+    trustOfficialBody:
+      "Conteúdo baseado em fontes públicas de WA. Confirme sempre com o Departamento de Transportes.",
     // Topics
     topicsTitle: "Estude os principais tópicos",
     topicSpeed: "Velocidade",
@@ -487,8 +486,7 @@ export const t = {
     howStep1DescCard:
       "19 tópicos das regras de trânsito — placas, velocidade, preferência, álcool e mais.",
     howStep2Title: "Faça um simulado",
-    howStep2DescCard:
-      "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT WA.",
+    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT WA.",
     howStep3Title: "Acompanhe seu progresso",
     howStep3DescCard:
       "Veja quais tópicos precisam mais prática. Crie conta grátis para salvar resultados.",
@@ -533,7 +531,8 @@ export const t = {
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Fontes oficiais",
     resourcesTitle: "Recursos de estudo para a prova de learner de WA",
-    resourcesSub: "Esses links abrem sites oficiais do governo da Austrália Ocidental. Use-os junto com a prática no KangaLearner para melhores resultados.",
+    resourcesSub:
+      "Esses links abrem sites oficiais do governo da Austrália Ocidental. Use-os junto com a prática no KangaLearner para melhores resultados.",
     resourcesWaOnly: "Recursos de WA — outros estados em breve.",
     resourcesStudyGuide: "Guia de estudo",
     resourcesPracticeNow: "Praticar perguntas",
@@ -581,11 +580,9 @@ export const t = {
     dashCategoryBreakdownBelow: "Detalhamento por categoria abaixo",
     dashCategoryBreakdown: "Detalhamento por categoria",
     dashNoAttemptsForStatePrefix: "Nenhuma tentativa encontrada para",
-    dashNoAttemptsForStateSuffix:
-      "Pratique perguntas deste estado para ver o progresso aqui.",
+    dashNoAttemptsForStateSuffix: "Pratique perguntas deste estado para ver o progresso aqui.",
     dashWeeklyActivity: "Atividade semanal",
-    dashNoWeeklyActivity:
-      "Nenhuma atividade ainda — comece a praticar para ver sua tendência.",
+    dashNoWeeklyActivity: "Nenhuma atividade ainda — comece a praticar para ver sua tendência.",
     dashChartNoActivity: "Sem atividade",
     dashContinuePractice: "Continuar prática →",
     dashTakeMockTest: "Fazer simulado",
@@ -594,8 +591,7 @@ export const t = {
       "Responda mais perguntas para receber recomendações personalizadas.",
     dashPractiseArrow: "Praticar →",
     dashProgressByTopic: "Progresso por tópico",
-    dashNoTopicData:
-      "Sem dados ainda — responda perguntas no modo Prática.",
+    dashNoTopicData: "Sem dados ainda — responda perguntas no modo Prática.",
     dashPractise: "Praticar",
     dashMockTestHistory: "Histórico de simulados",
     dashNoMockTestsTryPrefix: "Nenhum simulado ainda — experimente o",
@@ -627,13 +623,10 @@ export const t = {
     accountProfileSaved: "Perfil salvo.",
     accountPreferencesSub: "Estado, idioma, fuso horário e exibição.",
     accountState: "Estado",
-    accountStateHint:
-      "Salvo como seu estado padrão no app e no site estático.",
-    accountLanguageHint:
-      "Salvo como seu idioma padrão no app e no site estático.",
+    accountStateHint: "Salvo como seu estado padrão no app e no site estático.",
+    accountLanguageHint: "Salvo como seu idioma padrão no app e no site estático.",
     accountTimezone: "Fuso horário",
-    accountTimezoneHint:
-      "Usado para lembretes de prática (em breve).",
+    accountTimezoneHint: "Usado para lembretes de prática (em breve).",
     accountTheme: "Tema",
     accountThemeLight: "Claro",
     accountThemeDark: "Escuro",
@@ -737,7 +730,8 @@ export const t = {
 
     // ── Auth nudge ────────────────────────────────────────
     nudgeTitle: "Faça login para salvar seu progresso",
-    nudgeBody: "Seus resultados estão armazenados apenas localmente. Crie uma conta gratuita para sincronizar entre dispositivos e acompanhar seu histórico.",
+    nudgeBody:
+      "Seus resultados estão armazenados apenas localmente. Crie uma conta gratuita para sincronizar entre dispositivos e acompanhar seu histórico.",
     nudgeSignUp: "Criar conta grátis",
     nudgeSignIn: "Entrar",
 
@@ -748,7 +742,7 @@ export const t = {
     mockNoResults: "Nenhum resultado encontrado para esta sessão.",
     mockConfigNotFound: "Configuração do simulado não encontrada.",
     mockSessionError: "Erro de sessão",
-    mockLoadNextQuestion: "Não foi possível carregar a próxima questão.",
+    mockLoadNextQuestion: "Não foi possível carregar a próxima questão."
   },
 
   es: {
@@ -763,8 +757,7 @@ export const t = {
     mockGuestContinue: "Continuar sin guardar",
     mockGuestSignIn: "Iniciar sesión",
     mockGuestBannerTitle: "¿Quieres seguir tu progreso?",
-    mockGuestBannerBody:
-      "Crea una cuenta gratuita para guardar resultados y ver tu evolución.",
+    mockGuestBannerBody: "Crea una cuenta gratuita para guardar resultados y ver tu evolución.",
     mockGuestBannerCta: "Crear cuenta gratis",
     progress: "Progreso",
     resources: "Recursos",
@@ -816,7 +809,8 @@ export const t = {
     trustSaveTitle: "Progreso guardado",
     trustSaveBody: "Tu progreso se guarda automáticamente en el navegador.",
     trustOfficialTitle: "Basado en reglas oficiales",
-    trustOfficialBody: "Contenido basado en fuentes públicas de WA. Confirma siempre con el Departamento de Transportes.",
+    trustOfficialBody:
+      "Contenido basado en fuentes públicas de WA. Confirma siempre con el Departamento de Transportes.",
     // Topics
     topicsTitle: "Estudia los temas clave",
     topicSpeed: "Velocidad",
@@ -853,8 +847,7 @@ export const t = {
     howStep1DescCard:
       "19 temas de normas de tránsito — señales, velocidades, ceder el paso, alcohol y más.",
     howStep2Title: "Haz un simulacro",
-    howStep2DescCard:
-      "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT WA.",
+    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT WA.",
     howStep3Title: "Sigue tu progreso",
     howStep3DescCard:
       "Ve qué temas necesitan más práctica. Regístrate gratis para guardar tus resultados.",
@@ -899,7 +892,8 @@ export const t = {
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Fuentes oficiales",
     resourcesTitle: "Recursos de estudio para el examen learner de WA",
-    resourcesSub: "Estos enlaces abren sitios oficiales del gobierno de Australia Occidental. Úsalos junto con la práctica en KangaLearner para mejores resultados.",
+    resourcesSub:
+      "Estos enlaces abren sitios oficiales del gobierno de Australia Occidental. Úsalos junto con la práctica en KangaLearner para mejores resultados.",
     resourcesWaOnly: "Recursos de WA — otros estados próximamente.",
     resourcesStudyGuide: "Guía de estudio",
     resourcesPracticeNow: "Practicar preguntas",
@@ -947,11 +941,9 @@ export const t = {
     dashCategoryBreakdownBelow: "Desglose por categoría abajo",
     dashCategoryBreakdown: "Desglose por categoría",
     dashNoAttemptsForStatePrefix: "No se encontraron intentos para",
-    dashNoAttemptsForStateSuffix:
-      "Practica preguntas de este estado para ver el progreso aquí.",
+    dashNoAttemptsForStateSuffix: "Practica preguntas de este estado para ver el progreso aquí.",
     dashWeeklyActivity: "Actividad semanal",
-    dashNoWeeklyActivity:
-      "Sin actividad aún — empieza a practicar para ver tu tendencia.",
+    dashNoWeeklyActivity: "Sin actividad aún — empieza a practicar para ver tu tendencia.",
     dashChartNoActivity: "Sin actividad",
     dashContinuePractice: "Continuar práctica →",
     dashTakeMockTest: "Hacer simulacro",
@@ -960,8 +952,7 @@ export const t = {
       "Responde más preguntas para obtener recomendaciones personalizadas.",
     dashPractiseArrow: "Practicar →",
     dashProgressByTopic: "Progreso por tema",
-    dashNoTopicData:
-      "Sin datos aún — responde preguntas en el modo Práctica.",
+    dashNoTopicData: "Sin datos aún — responde preguntas en el modo Práctica.",
     dashPractise: "Practicar",
     dashMockTestHistory: "Historial de simulacros",
     dashNoMockTestsTryPrefix: "Sin simulacros aún — prueba el",
@@ -993,13 +984,10 @@ export const t = {
     accountProfileSaved: "Perfil guardado.",
     accountPreferencesSub: "Estado, idioma, zona horaria y visualización.",
     accountState: "Estado",
-    accountStateHint:
-      "Guardado como tu estado predeterminado en la app y el sitio estático.",
-    accountLanguageHint:
-      "Guardado como tu idioma predeterminado en la app y el sitio estático.",
+    accountStateHint: "Guardado como tu estado predeterminado en la app y el sitio estático.",
+    accountLanguageHint: "Guardado como tu idioma predeterminado en la app y el sitio estático.",
     accountTimezone: "Zona horaria",
-    accountTimezoneHint:
-      "Usado para recordatorios de práctica (próximamente).",
+    accountTimezoneHint: "Usado para recordatorios de práctica (próximamente).",
     accountTheme: "Tema",
     accountThemeLight: "Claro",
     accountThemeDark: "Oscuro",
@@ -1064,8 +1052,7 @@ export const t = {
     authSigningIn: "Iniciando sesión…",
     authNoAccount: "¿No tienes cuenta?",
     authCreateOne: "Créala",
-    authTagline:
-      "Reglas viales oficiales · Actualizado · Confiado por conductores en Australia",
+    authTagline: "Reglas viales oficiales · Actualizado · Confiado por conductores en Australia",
     authServiceUnavailable:
       "Servicio de autenticación no disponible. Actualiza la página o inténtalo más tarde.",
     authCreateAccount: "Crea tu cuenta",
@@ -1104,7 +1091,8 @@ export const t = {
 
     // ── Auth nudge ────────────────────────────────────────
     nudgeTitle: "Inicia sesión para guardar tu progreso",
-    nudgeBody: "Tus resultados solo están almacenados localmente. Crea una cuenta gratuita para sincronizar entre dispositivos y seguir tu historial.",
+    nudgeBody:
+      "Tus resultados solo están almacenados localmente. Crea una cuenta gratuita para sincronizar entre dispositivos y seguir tu historial.",
     nudgeSignUp: "Crear cuenta gratis",
     nudgeSignIn: "Ingresar",
 
@@ -1115,8 +1103,8 @@ export const t = {
     mockNoResults: "No se encontraron resultados para esta sesión.",
     mockConfigNotFound: "No se encontró la configuración del simulacro.",
     mockSessionError: "Error de sesión",
-    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta.",
-  },
+    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta."
+  }
 } as const satisfies Record<UiLang, Record<string, string>>;
 
-export type UIStrings = typeof t["en"];
+export type UIStrings = (typeof t)["en"];

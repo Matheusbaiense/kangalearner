@@ -7,7 +7,7 @@ import {
   isValidAttemptCategory,
   isValidAttemptState,
   isValidQuestionId,
-  normalizeAttemptSource,
+  normalizeAttemptSource
 } from "@/lib/api/attemptValidation";
 
 import { z } from "zod";
@@ -19,13 +19,13 @@ const attemptSchema = z.object({
   category: z.string().optional(),
   is_correct: z.boolean(),
   chosen: z.string().optional(),
-  source: z.string().optional(),
+  source: z.string().optional()
 });
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood (loose: accounts for shared NAT)
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
-  if (!await rateLimit(`attempts:ip:${ip}`, 120, 60_000)) {
+  if (!(await rateLimit(`attempts:ip:${ip}`, 120, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
   // Per-user rate limit — each authenticated user gets their own bucket
-  if (!await rateLimit(`attempts:user:${user.id}`, 60, 60_000)) {
+  if (!(await rateLimit(`attempts:user:${user.id}`, 60, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -86,7 +86,7 @@ export async function POST(request: NextRequest) {
     is_correct: payload.is_correct,
     chosen: payload.chosen ?? null,
     source: normalizeAttemptSource(payload.source),
-    answered_at: new Date().toISOString(),
+    answered_at: new Date().toISOString()
   });
 
   if (error) {
@@ -96,7 +96,10 @@ export async function POST(request: NextRequest) {
 
   if (payload.category) {
     const adminRpc = supabaseAdmin as unknown as {
-      rpc: (fn: string, args: Record<string, unknown>) => Promise<{ error: { message: string } | null }>;
+      rpc: (
+        fn: string,
+        args: Record<string, unknown>
+      ) => Promise<{ error: { message: string } | null }>;
     };
     void adminRpc
       .rpc("upsert_category_stat", {
@@ -104,7 +107,7 @@ export async function POST(request: NextRequest) {
         p_country: "AU",
         p_state: payload.state,
         p_category: payload.category,
-        p_is_correct: payload.is_correct,
+        p_is_correct: payload.is_correct
       })
       .then(({ error: statErr }) => {
         if (statErr) console.error("upsert_category_stat:", statErr.message);

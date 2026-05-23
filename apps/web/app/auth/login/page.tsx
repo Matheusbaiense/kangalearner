@@ -17,7 +17,10 @@ function getAppOrigin(): string {
 function LoginForm() {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const redirect = safeNextPath(searchParams.get("redirect") || searchParams.get("next"), "/dashboard");
+  const redirect = safeNextPath(
+    searchParams.get("redirect") || searchParams.get("next"),
+    "/dashboard"
+  );
   const oauthErrorParam = searchParams.get("error");
   const oauthErrorMsg = oauthErrorParam
     ? oauthErrorParam === "oauthcancelled"
@@ -176,7 +179,9 @@ function LoginForm() {
 
         <p className="auth-footer-note">
           {s.authNoAccount}{" "}
-          <Link href={`/auth/signup?redirect=${encodeURIComponent(redirect)}`}>{s.authCreateOne}</Link>
+          <Link href={`/auth/signup?redirect=${encodeURIComponent(redirect)}`}>
+            {s.authCreateOne}
+          </Link>
         </p>
       </div>
 

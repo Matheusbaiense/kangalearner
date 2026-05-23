@@ -2,12 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 
 /** Rotas que exigem sessão válida. */
-const PROTECTED_ROUTES = [
-  "/progress",
-  "/dashboard",
-  "/account",
-  "/admin",
-];
+const PROTECTED_ROUTES = ["/progress", "/dashboard", "/account", "/admin"];
 
 /**
  * Rotas de entrada — utilizadores já autenticados são enviados para a home.
@@ -67,8 +62,8 @@ export async function middleware(request: NextRequest) {
           cookiesToSet.forEach(({ name, value, options }) =>
             apiResponse.cookies.set(name, value, options)
           );
-        },
-      },
+        }
+      }
     });
 
     if (matchedOrigin) addCorsHeaders(apiResponse, matchedOrigin);

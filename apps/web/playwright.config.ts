@@ -12,13 +12,13 @@ export default defineConfig({
   reporter: process.env.CI ? "github" : "list",
   use: {
     baseURL,
-    trace: "on-first-retry",
+    trace: "on-first-retry"
   },
   projects: [
     {
       name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
+      use: { ...devices["Desktop Chrome"] }
+    }
   ],
   webServer: process.env.PLAYWRIGHT_BASE_URL
     ? undefined
@@ -30,11 +30,10 @@ export default defineConfig({
         env: {
           ...process.env,
           NEXT_PUBLIC_SUPABASE_URL:
-            process.env.NEXT_PUBLIC_SUPABASE_URL ??
-            "https://ci-build-placeholder.supabase.co",
+            process.env.NEXT_PUBLIC_SUPABASE_URL ?? "https://ci-build-placeholder.supabase.co",
           NEXT_PUBLIC_SUPABASE_ANON_KEY:
             process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ??
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.ci-build-not-a-real-key",
-        },
-      },
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.ci-build-not-a-real-key"
+        }
+      }
 });

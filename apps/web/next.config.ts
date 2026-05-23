@@ -23,7 +23,7 @@ const csp = [
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
-  "upgrade-insecure-requests",
+  "upgrade-insecure-requests"
 ].join("; ");
 
 const nextConfig: NextConfig = {
@@ -35,8 +35,8 @@ const nextConfig: NextConfig = {
       { protocol: "https", hostname: "flagcdn.com" },
       { protocol: "https", hostname: "lh3.googleusercontent.com" },
       { protocol: "https", hostname: "avatars.githubusercontent.com" },
-      { protocol: "https", hostname: "olgogtaeifyxwzencilo.supabase.co" },
-    ],
+      { protocol: "https", hostname: "olgogtaeifyxwzencilo.supabase.co" }
+    ]
   },
   async headers() {
     return [
@@ -48,14 +48,24 @@ const nextConfig: NextConfig = {
           { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
           { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
           // HSTS: only in production — dev uses HTTP
-          ...(isDev ? [] : [
-            { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains; preload" },
-          ]),
-          { key: "Content-Security-Policy", value: isDev ? "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'" : csp },
-        ],
-      },
+          ...(isDev
+            ? []
+            : [
+                {
+                  key: "Strict-Transport-Security",
+                  value: "max-age=63072000; includeSubDomains; preload"
+                }
+              ]),
+          {
+            key: "Content-Security-Policy",
+            value: isDev
+              ? "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'"
+              : csp
+          }
+        ]
+      }
     ];
-  },
+  }
 };
 
 export default nextConfig;

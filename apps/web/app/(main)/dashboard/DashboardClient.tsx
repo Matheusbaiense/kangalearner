@@ -74,7 +74,16 @@ export function DashboardClient({
   return (
     <div className="app-page">
       <div className="app-container app-section">
-        <div className="page-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", flexWrap: "wrap", gap: 12 }}>
+        <div
+          className="page-header"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+            gap: 12
+          }}
+        >
           <div>
             <h1 className="page-title">
               {s.dashHello}, {displayName}
@@ -84,7 +93,14 @@ export function DashboardClient({
           <Link
             href="/account"
             className="btn-outline"
-            style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", gap: 6, whiteSpace: "nowrap", flexShrink: 0 }}
+            style={{
+              textDecoration: "none",
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 6,
+              whiteSpace: "nowrap",
+              flexShrink: 0
+            }}
           >
             ⚙ {s.settings}
           </Link>
@@ -148,9 +164,7 @@ export function DashboardClient({
               </div>
             </div>
             <div className="stat-card-sub">
-              {streakDays === 1
-                ? s.dashStreakOneDay
-                : `${streakDays} ${s.dashStreakDays}`}
+              {streakDays === 1 ? s.dashStreakOneDay : `${streakDays} ${s.dashStreakDays}`}
             </div>
           </div>
 
@@ -199,7 +213,10 @@ export function DashboardClient({
           >
             <div>
               <p className="dash-section-title">{s.dashProgressByState}</p>
-              <div className="dash-empty" style={{ padding: 0, background: "transparent", border: 0 }}>
+              <div
+                className="dash-empty"
+                style={{ padding: 0, background: "transparent", border: 0 }}
+              >
                 {s.dashFilteredFor} {selectedState} · {selectedStateName}
               </div>
             </div>
@@ -272,7 +289,11 @@ export function DashboardClient({
                           style={{
                             width: `${cp}%`,
                             background:
-                              cp >= WA_PASS_THRESHOLD * 100 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                              cp >= WA_PASS_THRESHOLD * 100
+                                ? "var(--green)"
+                                : cp >= 60
+                                  ? "var(--orange)"
+                                  : "var(--red)"
                           }}
                         />
                       </div>
@@ -331,7 +352,11 @@ export function DashboardClient({
           <Link href="/practice" className="dash-cta">
             {s.dashContinuePractice}
           </Link>
-          <Link href="/practice?mode=sim" className="btn-outline" style={{ textDecoration: "none" }}>
+          <Link
+            href="/practice?mode=sim"
+            className="btn-outline"
+            style={{ textDecoration: "none" }}
+          >
             {s.dashTakeMockTest}
           </Link>
         </div>
@@ -360,7 +385,11 @@ export function DashboardClient({
                         style={{
                           width: `${cp}%`,
                           background:
-                            cp >= WA_PASS_THRESHOLD * 100 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                            cp >= WA_PASS_THRESHOLD * 100
+                              ? "var(--green)"
+                              : cp >= 60
+                                ? "var(--orange)"
+                                : "var(--red)"
                         }}
                       />
                     </div>
@@ -402,7 +431,11 @@ export function DashboardClient({
                         style={{
                           width: `${cp}%`,
                           background:
-                            cp >= WA_PASS_THRESHOLD * 100 ? "var(--green)" : cp >= 60 ? "var(--orange)" : "var(--red)"
+                            cp >= WA_PASS_THRESHOLD * 100
+                              ? "var(--green)"
+                              : cp >= 60
+                                ? "var(--orange)"
+                                : "var(--red)"
                         }}
                       />
                     </div>
@@ -437,10 +470,7 @@ export function DashboardClient({
 
         <p style={{ fontSize: ".75rem", color: "var(--muted)", marginTop: 32 }}>
           {s.dashSignedInAs} {userEmail} ·{" "}
-          <Link
-            href="/account"
-            style={{ color: "var(--muted)", textDecoration: "underline" }}
-          >
+          <Link href="/account" style={{ color: "var(--muted)", textDecoration: "underline" }}>
             {s.settings}
           </Link>
         </p>

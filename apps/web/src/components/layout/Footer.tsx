@@ -9,12 +9,17 @@ import { NewsletterForm } from "./NewsletterForm";
 
 const COMPANY_LINKS = [
   { href: "/about", en: "About", pt: "Sobre", es: "Acerca de" },
-  { href: "/contact", en: "Contact", pt: "Contato", es: "Contacto" },
+  { href: "/contact", en: "Contact", pt: "Contato", es: "Contacto" }
 ] as const;
 
 const LEGAL_LINKS = [
   { href: "/terms", en: "Terms of Service", pt: "Termos de Uso", es: "Términos de Servicio" },
-  { href: "/privacy", en: "Privacy Policy", pt: "Política de Privacidade", es: "Política de Privacidad" },
+  {
+    href: "/privacy",
+    en: "Privacy Policy",
+    pt: "Política de Privacidade",
+    es: "Política de Privacidad"
+  }
 ] as const;
 
 interface FooterProps {
@@ -31,7 +36,6 @@ export function Footer({ isLoggedIn = false }: FooterProps) {
   return (
     <footer className="site-footer">
       <div className="footer-inner">
-
         {/* ── Col 1: Brand ── */}
         <div>
           <Link href="/" className="footer-brand">
@@ -49,12 +53,26 @@ export function Footer({ isLoggedIn = false }: FooterProps) {
         <div>
           <p className="footer-col-title">{s.footerProductTitle}</p>
           <ul className="footer-links">
-            <li><Link href="/learn">{s.learn}</Link></li>
-            <li><Link href="/practice">{s.practice}</Link></li>
-            <li><Link href="/mock-test">{s.mockTest}</Link></li>
-            {isLoggedIn && <li><Link href="/progress">{s.progress}</Link></li>}
-            <li><Link href="/resources">{s.resources}</Link></li>
-            <li><Link href="/#faq">{s.faqTitle}</Link></li>
+            <li>
+              <Link href="/learn">{s.learn}</Link>
+            </li>
+            <li>
+              <Link href="/practice">{s.practice}</Link>
+            </li>
+            <li>
+              <Link href="/mock-test">{s.mockTest}</Link>
+            </li>
+            {isLoggedIn && (
+              <li>
+                <Link href="/progress">{s.progress}</Link>
+              </li>
+            )}
+            <li>
+              <Link href="/resources">{s.resources}</Link>
+            </li>
+            <li>
+              <Link href="/#faq">{s.faqTitle}</Link>
+            </li>
           </ul>
         </div>
 
@@ -88,7 +106,6 @@ export function Footer({ isLoggedIn = false }: FooterProps) {
           <p className="footer-newsletter-desc">{s.footerNewsletterDesc}</p>
           <NewsletterForm />
         </div>
-
       </div>
 
       {/* ── Bottom bar ── */}

@@ -14,16 +14,18 @@ export function MigrateLocalProgress() {
     if (typeof window === "undefined") return;
     if (sessionStorage.getItem(SESSION_FLAG)) return;
 
-    void import("../lib/migrateLocalAttempts").then(async ({ buildAttemptsFromLocalStorage, postAttemptsBulk }) => {
-      const attempts = await buildAttemptsFromLocalStorage();
-      if (attempts.length === 0) {
-        sessionStorage.setItem(SESSION_FLAG, "1");
-        return;
+    void import("../lib/migrateLocalAttempts").then(
+      async ({ buildAttemptsFromLocalStorage, postAttemptsBulk }) => {
+        const attempts = await buildAttemptsFromLocalStorage();
+        if (attempts.length === 0) {
+          sessionStorage.setItem(SESSION_FLAG, "1");
+          return;
+        }
+        void postAttemptsBulk(attempts).then((ok) => {
+          if (ok) sessionStorage.setItem(SESSION_FLAG, "1");
+        });
       }
-      void postAttemptsBulk(attempts).then((ok) => {
-        if (ok) sessionStorage.setItem(SESSION_FLAG, "1");
-      });
-    });
+    );
   }, []);
 
   return null;

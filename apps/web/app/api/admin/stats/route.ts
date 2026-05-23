@@ -20,14 +20,17 @@ export async function GET(_request: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
 
-  if (!await rateLimit(`admin-stats:user:${uid}`, 30, 60_000)) {
+  if (!(await rateLimit(`admin-stats:user:${uid}`, 30, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
   const now = new Date();
-  const d30 = new Date(now); d30.setDate(d30.getDate() - 30);
-  const d7  = new Date(now); d7.setDate(d7.getDate() - 7);
-  const d1  = new Date(now); d1.setDate(d1.getDate() - 1);
+  const d30 = new Date(now);
+  d30.setDate(d30.getDate() - 30);
+  const d7 = new Date(now);
+  d7.setDate(d7.getDate() - 7);
+  const d1 = new Date(now);
+  d1.setDate(d1.getDate() - 1);
 
   const [
     totalUsersRes,
@@ -41,23 +44,29 @@ export async function GET(_request: NextRequest) {
     topCategoriesRes,
     activeUsersRes,
     passRateRes,
-    signupsPerDayRes,
+    signupsPerDayRes
   ] = await Promise.all([
     supabaseAdmin.from("profiles").select("id", { count: "exact", head: true }),
-    supabaseAdmin.from("profiles").select("id", { count: "exact", head: true })
+    supabaseAdmin
+      .from("profiles")
+      .select("id", { count: "exact", head: true })
       .gte("created_at", d1.toISOString()),
     supabaseAdmin.from("question_attempts").select("id", { count: "exact", head: true }),
-    supabaseAdmin.from("question_attempts").select("id", { count: "exact", head: true })
+    supabaseAdmin
+      .from("question_attempts")
+      .select("id", { count: "exact", head: true })
       .gte("answered_at", d7.toISOString()),
     supabaseAdmin.from("mock_sessions").select("id", { count: "exact", head: true }),
-    supabaseAdmin.from("mock_sessions").select("id", { count: "exact", head: true })
+    supabaseAdmin
+      .from("mock_sessions")
+      .select("id", { count: "exact", head: true })
       .gte("completed_at", d7.toISOString()),
     adminRpc.rpc<RoleBreakdownRow[]>("get_role_breakdown"),
     adminRpc.rpc<CountryBreakdownRow[]>("get_country_breakdown", { limit_n: 10 }),
     adminRpc.rpc<CategoryRow[]>("get_top_categories", { since_ts: d30.toISOString(), limit_n: 6 }),
     adminRpc.rpc<number>("get_active_users_count", { since_ts: d7.toISOString() }),
     adminRpc.rpc<number>("get_pass_rate", { since_ts: d30.toISOString() }),
-    adminRpc.rpc<SignupDayRow[]>("get_signups_per_day", { since_ts: d30.toISOString() }),
+    adminRpc.rpc<SignupDayRow[]>("get_signups_per_day", { since_ts: d30.toISOString() })
   ]);
 
   const signupsByDay: Record<string, number> = {};
@@ -78,7 +87,7 @@ export async function GET(_request: NextRequest) {
       activeLastWeek: Number(activeUsersRes.data ?? 0),
       byRole: Object.fromEntries((roleBreakdownRes.data ?? []).map((r) => [r.role, r.cnt])),
       byCountry: (countryBreakdownRes.data ?? []).map((r) => [r.country, r.cnt]),
-      signupsLast30Days: Object.entries(signupsByDay).map(([date, count]) => ({ date, count })),
+      signupsLast30Days: Object.entries(signupsByDay).map(([date, count]) => ({ date, count }))
     },
     activity: {
       totalAttempts: totalAttemptsRes.count ?? 0,
@@ -86,7 +95,7 @@ export async function GET(_request: NextRequest) {
       totalMockSessions: totalMockRes.count ?? 0,
       mockSessionsLast7d: mockLast7Res.count ?? 0,
       passRateLast30d: Number(passRateRes.data ?? 0),
-      topCategories: (topCategoriesRes.data ?? []).map((r) => [r.category, r.cnt]),
-    },
+      topCategories: (topCategoriesRes.data ?? []).map((r) => [r.category, r.cnt])
+    }
   });
 }

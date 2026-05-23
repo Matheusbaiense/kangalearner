@@ -14,9 +14,9 @@
 import { Redis } from "@upstash/redis";
 import { Ratelimit } from "@upstash/ratelimit";
 
-const upstashUrl   = process.env.UPSTASH_REDIS_REST_URL;
+const upstashUrl = process.env.UPSTASH_REDIS_REST_URL;
 const upstashToken = process.env.UPSTASH_REDIS_REST_TOKEN;
-const useUpstash   = Boolean(upstashUrl && upstashToken);
+const useUpstash = Boolean(upstashUrl && upstashToken);
 
 // Cache Ratelimit instances by "key:limit:windowMs" to avoid recreating on
 // every request (each instance holds an internal LRU cache).
@@ -29,7 +29,7 @@ function getUpstashLimiter(limit: number, windowMs: number): Ratelimit {
     limiter = new Ratelimit({
       redis: new Redis({ url: upstashUrl!, token: upstashToken! }),
       limiter: Ratelimit.slidingWindow(limit, `${windowMs} ms`),
-      analytics: false,
+      analytics: false
     });
     limiterCache.set(cacheKey, limiter);
   }
@@ -39,7 +39,7 @@ function getUpstashLimiter(limit: number, windowMs: number): Ratelimit {
 // In-memory fallback (development / single-process)
 const memMap = new Map<string, number[]>();
 function memRateLimit(key: string, limit: number, windowMs: number): boolean {
-  const now  = Date.now();
+  const now = Date.now();
   const hits = (memMap.get(key) ?? []).filter((t) => t > now - windowMs);
   if (hits.length >= limit) return false;
   hits.push(now);

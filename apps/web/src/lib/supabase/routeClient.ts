@@ -25,8 +25,8 @@ export function createRouteHandlerClient(request: NextRequest) {
         cookiesToSet.forEach(({ name, value, options }) =>
           cookieResponse.cookies.set(name, value, options)
         );
-      },
-    },
+      }
+    }
   });
 
   return { supabase, cookieResponse };

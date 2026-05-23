@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Privacy Policy — KangaLearner",
-  description: "KangaLearner privacy policy — what data we collect and how we use it.",
+  description: "KangaLearner privacy policy — what data we collect and how we use it."
 };
 
 export default function PrivacyPage() {
@@ -22,8 +22,8 @@ export default function PrivacyPage() {
           <strong>Account data:</strong> email address, name (optional), avatar image (optional).
         </li>
         <li>
-          <strong>Usage data:</strong> quiz answers, practice session results, mock test scores, study
-          progress, preferred language and state.
+          <strong>Usage data:</strong> quiz answers, practice session results, mock test scores,
+          study progress, preferred language and state.
         </li>
         <li>
           <strong>Technical data:</strong> browser type, device type, IP address (via our hosting
@@ -51,7 +51,8 @@ export default function PrivacyPage() {
           (ap-southeast-2).
         </li>
         <li>
-          <strong>Vercel</strong> (hosting and edge functions) — global CDN with Australian edge nodes.
+          <strong>Vercel</strong> (hosting and edge functions) — global CDN with Australian edge
+          nodes.
         </li>
         <li>
           <strong>Stripe</strong> (payments, if applicable) — Stripe&apos;s privacy policy:{" "}
@@ -68,15 +69,16 @@ export default function PrivacyPage() {
 
       <h2>4. Cookies and Local Storage</h2>
       <p>
-        We use cookies and browser localStorage for: session authentication, language preference, state
-        preference, and anonymous practice progress (before sign-in). We do not use advertising cookies.
+        We use cookies and browser localStorage for: session authentication, language preference,
+        state preference, and anonymous practice progress (before sign-in). We do not use
+        advertising cookies.
       </p>
 
       <h2>5. Data Retention</h2>
       <p>
-        Account data is kept until you delete your account. Practice data is deleted with your account.
-        Newsletter subscriptions are kept until you unsubscribe. Anonymised, aggregated usage data may
-        be retained indefinitely for product improvement.
+        Account data is kept until you delete your account. Practice data is deleted with your
+        account. Newsletter subscriptions are kept until you unsubscribe. Anonymised, aggregated
+        usage data may be retained indefinitely for product improvement.
       </p>
 
       <h2>6. Your Rights</h2>
@@ -85,11 +87,12 @@ export default function PrivacyPage() {
           <strong>Access:</strong> You can view your account data in Account Settings.
         </li>
         <li>
-          <strong>Deletion:</strong> You can permanently delete your account and all associated data in
-          Account Settings → Delete Account.
+          <strong>Deletion:</strong> You can permanently delete your account and all associated data
+          in Account Settings → Delete Account.
         </li>
         <li>
-          <strong>Correction:</strong> You can update your name, language, and state in Account Settings.
+          <strong>Correction:</strong> You can update your name, language, and state in Account
+          Settings.
         </li>
         <li>
           <strong>Newsletter opt-out:</strong> Use the unsubscribe link in any email we send.
@@ -98,15 +101,16 @@ export default function PrivacyPage() {
 
       <h2>7. Data Security</h2>
       <p>
-        We use industry-standard security practices including encrypted connections (HTTPS/TLS), row-level
-        security on all database tables, and rate limiting to prevent abuse. However, no system is 100%
-        secure — we recommend using a strong, unique password.
+        We use industry-standard security practices including encrypted connections (HTTPS/TLS),
+        row-level security on all database tables, and rate limiting to prevent abuse. However, no
+        system is 100% secure — we recommend using a strong, unique password.
       </p>
 
       <h2>8. Children&apos;s Privacy</h2>
       <p>
-        KangaLearner is not directed at children under 13. We do not knowingly collect data from children
-        under 13. If you believe a child has provided us data, contact us to have it removed.
+        KangaLearner is not directed at children under 13. We do not knowingly collect data from
+        children under 13. If you believe a child has provided us data, contact us to have it
+        removed.
       </p>
 
       <h2>9. Changes to This Policy</h2>

@@ -13,7 +13,9 @@ import type { MockConfig, MockSession } from "@/types/mock";
 const EXAM_SECONDS = 45 * 60; // 45 minutes
 
 function formatTime(secs: number) {
-  const m = Math.floor(secs / 60).toString().padStart(2, "0");
+  const m = Math.floor(secs / 60)
+    .toString()
+    .padStart(2, "0");
   const s = (secs % 60).toString().padStart(2, "0");
   return `${m}:${s}`;
 }
@@ -38,7 +40,11 @@ export default function MockTestSessionPage() {
         configRaw = localStorage.getItem("mock-config-saved");
         if (configRaw) {
           sessionStorage.setItem("mock-config", configRaw);
-          try { localStorage.removeItem("mock-config-saved"); } catch { /* noop */ }
+          try {
+            localStorage.removeItem("mock-config-saved");
+          } catch {
+            /* noop */
+          }
         }
       }
       setRaw(configRaw);
@@ -98,7 +104,7 @@ export default function MockTestSessionPage() {
       startedAtIso: new Date().toISOString(),
       qids: ids,
       answers: {},
-      completedAtIso: null,
+      completedAtIso: null
     };
     try {
       const nextRaw = JSON.stringify(s);
@@ -126,7 +132,9 @@ export default function MockTestSessionPage() {
         return prev - 1;
       });
     }, 1000);
-    return () => { if (timerRef.current) clearInterval(timerRef.current); };
+    return () => {
+      if (timerRef.current) clearInterval(timerRef.current);
+    };
   }, [cfg?.mode, !!session, !!session?.completedAtIso]); // eslint-disable-line react-hooks/exhaustive-deps
 
   /* Auto-submit when time expires */
@@ -250,7 +258,13 @@ export default function MockTestSessionPage() {
       <div className="mock-setup-card">
         <div
           className="mock-meta"
-          style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", alignItems: "center" }}
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            gap: 12,
+            flexWrap: "wrap",
+            alignItems: "center"
+          }}
         >
           <span>
             {cfg.state} · {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
@@ -263,7 +277,7 @@ export default function MockTestSessionPage() {
                   fontWeight: 800,
                   fontSize: ".88rem",
                   color: timeLeft < 300 ? "var(--red)" : "var(--muted)",
-                  fontVariantNumeric: "tabular-nums",
+                  fontVariantNumeric: "tabular-nums"
                 }}
               >
                 ⏱ {s.timeRemaining}: {formatTime(timeLeft)}
@@ -284,11 +298,26 @@ export default function MockTestSessionPage() {
         </div>
 
         {/* Question text */}
-        <p style={{ fontWeight: 850, fontSize: "1rem", lineHeight: 1.45, marginBottom: bilingual ? 4 : 14 }}>
+        <p
+          style={{
+            fontWeight: 850,
+            fontSize: "1rem",
+            lineHeight: 1.45,
+            marginBottom: bilingual ? 4 : 14
+          }}
+        >
           {tx(q.q, lang)}
         </p>
         {bilingual && q.q?.en && (
-          <p style={{ fontSize: ".82rem", color: "var(--muted2)", fontStyle: "italic", marginBottom: 14, lineHeight: 1.4 }}>
+          <p
+            style={{
+              fontSize: ".82rem",
+              color: "var(--muted2)",
+              fontStyle: "italic",
+              marginBottom: 14,
+              lineHeight: 1.4
+            }}
+          >
             {q.q.en}
           </p>
         )}
@@ -321,7 +350,15 @@ export default function MockTestSessionPage() {
                 <div style={{ textAlign: "left" }}>
                   <strong>{tx(o.t, lang)}</strong>
                   {bilingual && o.t?.en && tx(o.t, lang) !== o.t.en && (
-                    <span style={{ display: "block", fontSize: ".75rem", fontWeight: 400, opacity: 0.65, fontStyle: "italic" }}>
+                    <span
+                      style={{
+                        display: "block",
+                        fontSize: ".75rem",
+                        fontWeight: 400,
+                        opacity: 0.65,
+                        fontStyle: "italic"
+                      }}
+                    >
                       {o.t.en}
                     </span>
                   )}
@@ -331,9 +368,7 @@ export default function MockTestSessionPage() {
                     </span>
                   )}
                   {showResult && isChosen && !isCorrect && (
-                    <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>
-                      ✗
-                    </span>
+                    <span style={{ display: "block", marginTop: 4, opacity: 0.9 }}>✗</span>
                   )}
                 </div>
               </button>
@@ -348,7 +383,7 @@ export default function MockTestSessionPage() {
               marginTop: 14,
               padding: 12,
               borderRadius: 12,
-              background: "rgba(15, 23, 42, 0.04)",
+              background: "rgba(15, 23, 42, 0.04)"
             }}
           >
             <div style={{ fontWeight: 800, marginBottom: 6 }}>{s.answer}</div>

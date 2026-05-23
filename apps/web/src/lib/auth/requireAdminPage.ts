@@ -13,7 +13,7 @@ export async function requireAdminPage(): Promise<{ userId: string; role: string
   );
 
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
   if (!user) redirect("/auth/login?redirect=/admin");
 

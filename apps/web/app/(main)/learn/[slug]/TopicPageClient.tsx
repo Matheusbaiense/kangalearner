@@ -21,7 +21,11 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
   return (
     <main className="container section-pad">
       <div className="mock-setup-card" style={{ maxWidth: 760 }}>
-        <Link href="/learn" className="btn btn-secondary" style={{ marginBottom: 20, display: "inline-block" }}>
+        <Link
+          href="/learn"
+          className="btn btn-secondary"
+          style={{ marginBottom: 20, display: "inline-block" }}
+        >
           {s.learnBack}
         </Link>
 
@@ -65,7 +69,9 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
         </section>
 
         <section style={{ marginBottom: 24 }}>
-          <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnQuickCheck}</h2>
+          <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>
+            {s.learnQuickCheck}
+          </h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.quickCheck.map((q, i) => (
               <li key={i}>{tx(q, lang)}</li>

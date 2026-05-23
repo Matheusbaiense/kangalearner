@@ -8,19 +8,19 @@ import { SK } from "@/lib/storageKeys";
 import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const AU_TIMEZONES = [
-  { value: "Australia/Perth",     label: "Perth",     offset: "GMT +8" },
-  { value: "Australia/Adelaide",  label: "Adelaide",  offset: "GMT +9:30" },
-  { value: "Australia/Darwin",    label: "Darwin",    offset: "GMT +9:30" },
-  { value: "Australia/Brisbane",  label: "Brisbane",  offset: "GMT +10" },
-  { value: "Australia/Sydney",    label: "Sydney",    offset: "GMT +10" },
+  { value: "Australia/Perth", label: "Perth", offset: "GMT +8" },
+  { value: "Australia/Adelaide", label: "Adelaide", offset: "GMT +9:30" },
+  { value: "Australia/Darwin", label: "Darwin", offset: "GMT +9:30" },
+  { value: "Australia/Brisbane", label: "Brisbane", offset: "GMT +10" },
+  { value: "Australia/Sydney", label: "Sydney", offset: "GMT +10" },
   { value: "Australia/Melbourne", label: "Melbourne", offset: "GMT +10" },
-  { value: "Australia/Hobart",    label: "Hobart",    offset: "GMT +10" },
+  { value: "Australia/Hobart", label: "Hobart", offset: "GMT +10" }
 ];
 
 const LANGUAGES = [
   { code: "en", label: "English" },
   { code: "pt", label: "Português" },
-  { code: "es", label: "Español" },
+  { code: "es", label: "Español" }
 ] as const;
 
 const THEME_VALUES = ["light", "dark", "system"] as const;
@@ -52,14 +52,19 @@ function applyTheme(theme: Theme) {
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const isDark = theme === "dark" || (theme === "system" && prefersDark);
   document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
-  try { localStorage.setItem(SK.theme, theme); } catch { /* noop */ }
+  try {
+    localStorage.setItem(SK.theme, theme);
+  } catch {
+    /* noop */
+  }
 }
 
 /* ── Message component ── */
 function Msg({ text, ok }: { text: string; ok: boolean }) {
   return (
     <p className={`settings-msg ${ok ? "ok" : "err"}`} role="alert">
-      {ok ? "✓ " : "⚠ "}{text}
+      {ok ? "✓ " : "⚠ "}
+      {text}
     </p>
   );
 }
@@ -109,9 +114,12 @@ export default function AccountPage() {
     const supabase = createClient();
     async function loadAccount() {
       try {
-        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        const {
+          data: { session },
+          error: sessionError
+        } = await supabase.auth.getSession();
         if (sessionError) throw sessionError;
-        
+
         const user = session?.user;
         if (!user) {
           router.replace("/auth/login?redirect=/account");
@@ -131,7 +139,7 @@ export default function AccountPage() {
           .select("avatar_url, preferred_lang, preferred_state")
           .eq("id", user.id)
           .maybeSingle();
-        
+
         if (profileError && profileError.code !== "PGRST116") {
           console.error("Error loading profile:", profileError);
         }
@@ -148,7 +156,10 @@ export default function AccountPage() {
         setPreferredLang(nextLang);
         setStateVal(nextState);
         setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
-        const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem(SK.theme) as Theme | null) || "system";
+        const savedTheme =
+          (meta.theme as Theme | undefined) ||
+          (localStorage.getItem(SK.theme) as Theme | null) ||
+          "system";
         setTheme(savedTheme);
         applyTheme(savedTheme);
       } catch (err) {
@@ -173,10 +184,12 @@ export default function AccountPage() {
     setProfileMsg(null);
     const supabase = createClient();
     const { error } = await supabase.auth.updateUser({
-      data: { full_name: displayName.trim(), phone: phone.trim() },
+      data: { full_name: displayName.trim(), phone: phone.trim() }
     });
     setSavingProfile(false);
-    setProfileMsg(error ? { text: error.message, ok: false } : { text: s.accountProfileSaved, ok: true });
+    setProfileMsg(
+      error ? { text: error.message, ok: false } : { text: s.accountProfileSaved, ok: true }
+    );
   }
 
   async function handleSavePrefs(e: React.FormEvent) {
@@ -212,7 +225,7 @@ export default function AccountPage() {
     }
 
     const { error: authError } = await supabase.auth.updateUser({
-      data: { lang: normalizedLang, state: normalizedState, timezone, theme },
+      data: { lang: normalizedLang, state: normalizedState, timezone, theme }
     });
 
     setSavingPrefs(false);
@@ -252,7 +265,8 @@ export default function AccountPage() {
       setPwdMsg({ text: error.message, ok: false });
     } else {
       setPwdMsg({ text: s.accountPasswordChanged, ok: true });
-      setNewPwd(""); setConfirmPwd("");
+      setNewPwd("");
+      setConfirmPwd("");
     }
   }
 
@@ -340,19 +354,18 @@ export default function AccountPage() {
     { key: "profile", label: s.accountNavProfile },
     { key: "preferences", label: s.accountNavPreferences },
     { key: "security", label: s.accountNavSecurity },
-    { key: "danger", label: s.accountNavDanger },
+    { key: "danger", label: s.accountNavDanger }
   ];
 
   const themeLabels: Record<Theme, string> = {
     light: s.accountThemeLight,
     dark: s.accountThemeDark,
-    system: s.accountThemeSystem,
+    system: s.accountThemeSystem
   };
 
   return (
     <div className="app-page">
       <div className="app-container app-section">
-
         {/* ── Page header ── */}
         <div className="page-header">
           <h1 className="page-title">{s.settings}</h1>
@@ -360,12 +373,13 @@ export default function AccountPage() {
         </div>
 
         <div className="settings-layout">
-
           {/* ── Sidebar nav ── */}
           <aside className="settings-sidebar">
             {/* Avatar summary */}
             <div className="settings-avatar-wrap">
-              <div className="settings-avatar" aria-hidden="true">{initials}</div>
+              <div className="settings-avatar" aria-hidden="true">
+                {initials}
+              </div>
               <div className="settings-avatar-info">
                 <div className="settings-avatar-name">{displayName || email.split("@")[0]}</div>
                 <div className="settings-avatar-email">{email}</div>
@@ -392,7 +406,6 @@ export default function AccountPage() {
 
           {/* ── Main content ── */}
           <div className="settings-main">
-
             {/* ── PROFILE ── */}
             {activeSection === "profile" && (
               <section className="settings-section">
@@ -407,12 +420,19 @@ export default function AccountPage() {
                         src={avatarUrl}
                         alt={s.accountAvatarAlt}
                         className="settings-avatar-img"
-                        width={72} height={72}
+                        width={72}
+                        height={72}
                       />
                     ) : (
-                      <div className="settings-avatar-large" aria-hidden="true">{initials}</div>
+                      <div className="settings-avatar-large" aria-hidden="true">
+                        {initials}
+                      </div>
                     )}
-                    {uploadingAvatar && <div className="settings-avatar-overlay"><div className="admin-spinner" /></div>}
+                    {uploadingAvatar && (
+                      <div className="settings-avatar-overlay">
+                        <div className="admin-spinner" />
+                      </div>
+                    )}
                   </div>
                   <div className="settings-avatar-actions">
                     <input
@@ -442,7 +462,9 @@ export default function AccountPage() {
                         {s.accountRemove}
                       </button>
                     )}
-                    <p className="settings-hint" style={{ margin: 0 }}>{s.accountAvatarHint}</p>
+                    <p className="settings-hint" style={{ margin: 0 }}>
+                      {s.accountAvatarHint}
+                    </p>
                     {avatarMsg && <Msg text={avatarMsg.text} ok={avatarMsg.ok} />}
                   </div>
                 </div>
@@ -450,7 +472,9 @@ export default function AccountPage() {
                 <form onSubmit={handleSaveProfile} className="settings-form">
                   <div className="settings-field-row">
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-name">{s.accountFullName}</label>
+                      <label className="settings-label" htmlFor="s-name">
+                        {s.accountFullName}
+                      </label>
                       <input
                         id="s-name"
                         className="settings-input"
@@ -462,7 +486,9 @@ export default function AccountPage() {
                       />
                     </div>
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-email">{s.emailLabel}</label>
+                      <label className="settings-label" htmlFor="s-email">
+                        {s.emailLabel}
+                      </label>
                       <input
                         id="s-email"
                         className="settings-input"
@@ -477,7 +503,8 @@ export default function AccountPage() {
 
                   <div className="settings-field">
                     <label className="settings-label" htmlFor="s-phone">
-                      {s.accountPhone} <span className="settings-optional">{s.accountOptional}</span>
+                      {s.accountPhone}{" "}
+                      <span className="settings-optional">{s.accountOptional}</span>
                     </label>
                     <input
                       id="s-phone"
@@ -507,7 +534,9 @@ export default function AccountPage() {
                 <form onSubmit={handleSavePrefs} className="settings-form">
                   {/* State */}
                   <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-state">{s.accountState}</label>
+                    <label className="settings-label" htmlFor="s-state">
+                      {s.accountState}
+                    </label>
                     <select
                       id="s-state"
                       className="settings-input settings-select"
@@ -525,7 +554,9 @@ export default function AccountPage() {
 
                   {/* Language */}
                   <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-lang">{s.language}</label>
+                    <label className="settings-label" htmlFor="s-lang">
+                      {s.language}
+                    </label>
                     <select
                       id="s-lang"
                       className="settings-input settings-select"
@@ -533,7 +564,9 @@ export default function AccountPage() {
                       onChange={(e) => setPreferredLang(normalizePreferredLang(e.target.value))}
                     >
                       {LANGUAGES.map((l) => (
-                        <option key={l.code} value={l.code}>{l.label}</option>
+                        <option key={l.code} value={l.code}>
+                          {l.label}
+                        </option>
                       ))}
                     </select>
                     <p className="settings-hint">{s.accountLanguageHint}</p>
@@ -541,7 +574,9 @@ export default function AccountPage() {
 
                   {/* Timezone */}
                   <div className="settings-field">
-                    <label className="settings-label" htmlFor="s-tz">{s.accountTimezone}</label>
+                    <label className="settings-label" htmlFor="s-tz">
+                      {s.accountTimezone}
+                    </label>
                     <select
                       id="s-tz"
                       className="settings-input settings-select"
@@ -570,18 +605,52 @@ export default function AccountPage() {
                           aria-pressed={theme === value}
                         >
                           {value === "light" && (
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                              <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                              aria-hidden="true"
+                            >
+                              <circle cx="12" cy="12" r="5" />
+                              <line x1="12" y1="1" x2="12" y2="3" />
+                              <line x1="12" y1="21" x2="12" y2="23" />
+                              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                              <line x1="1" y1="12" x2="3" y2="12" />
+                              <line x1="21" y1="12" x2="23" y2="12" />
+                              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
                             </svg>
                           )}
                           {value === "dark" && (
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                              aria-hidden="true"
+                            >
+                              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
                             </svg>
                           )}
                           {value === "system" && (
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} aria-hidden="true">
-                              <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                            <svg
+                              width="16"
+                              height="16"
+                              viewBox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth={2}
+                              aria-hidden="true"
+                            >
+                              <rect x="2" y="3" width="20" height="14" rx="2" />
+                              <line x1="8" y1="21" x2="16" y2="21" />
+                              <line x1="12" y1="17" x2="12" y2="21" />
                             </svg>
                           )}
                           {themeLabels[value]}
@@ -608,7 +677,9 @@ export default function AccountPage() {
                 <form onSubmit={handleChangePassword} className="settings-form">
                   <div className="settings-field-row">
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-npwd">{s.accountNewPassword}</label>
+                      <label className="settings-label" htmlFor="s-npwd">
+                        {s.accountNewPassword}
+                      </label>
                       <input
                         id="s-npwd"
                         className="settings-input"
@@ -621,7 +692,9 @@ export default function AccountPage() {
                       />
                     </div>
                     <div className="settings-field">
-                      <label className="settings-label" htmlFor="s-cpwd2">{s.accountConfirmPassword}</label>
+                      <label className="settings-label" htmlFor="s-cpwd2">
+                        {s.accountConfirmPassword}
+                      </label>
                       <input
                         id="s-cpwd2"
                         className="settings-input"
@@ -645,7 +718,9 @@ export default function AccountPage() {
             {/* ── DANGER ZONE ── */}
             {activeSection === "danger" && (
               <section className="settings-section">
-                <h2 className="settings-section-title" style={{ color: "var(--red)" }}>{s.accountNavDanger}</h2>
+                <h2 className="settings-section-title" style={{ color: "var(--red)" }}>
+                  {s.accountNavDanger}
+                </h2>
                 <p className="settings-section-sub">{s.accountDangerSub}</p>
 
                 <div className="settings-danger-card">
@@ -666,9 +741,10 @@ export default function AccountPage() {
                 </div>
               </section>
             )}
-
-          </div>{/* end settings-main */}
-        </div>{/* end settings-layout */}
+          </div>
+          {/* end settings-main */}
+        </div>
+        {/* end settings-layout */}
       </div>
     </div>
   );

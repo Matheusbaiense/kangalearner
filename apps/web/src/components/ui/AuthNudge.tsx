@@ -28,22 +28,28 @@ export function AuthNudge() {
         display: "flex",
         flexWrap: "wrap",
         gap: "12px 20px",
-        alignItems: "center",
+        alignItems: "center"
       }}
     >
       <div style={{ flex: 1, minWidth: 200 }}>
         <p style={{ fontWeight: 800, fontSize: ".9rem", color: "var(--ink)", marginBottom: 2 }}>
           {s.nudgeTitle}
         </p>
-        <p style={{ fontSize: ".82rem", color: "var(--muted)", lineHeight: 1.45 }}>
-          {s.nudgeBody}
-        </p>
+        <p style={{ fontSize: ".82rem", color: "var(--muted)", lineHeight: 1.45 }}>{s.nudgeBody}</p>
       </div>
       <div style={{ display: "flex", gap: 8, flexShrink: 0, flexWrap: "wrap" }}>
-        <Link href="/auth/signup" className="btn btn-primary" style={{ fontSize: ".85rem", padding: "8px 16px" }}>
+        <Link
+          href="/auth/signup"
+          className="btn btn-primary"
+          style={{ fontSize: ".85rem", padding: "8px 16px" }}
+        >
           {s.nudgeSignUp}
         </Link>
-        <Link href="/auth/login" className="btn btn-secondary" style={{ fontSize: ".85rem", padding: "8px 16px" }}>
+        <Link
+          href="/auth/login"
+          className="btn btn-secondary"
+          style={{ fontSize: ".85rem", padding: "8px 16px" }}
+        >
           {s.nudgeSignIn}
         </Link>
       </div>

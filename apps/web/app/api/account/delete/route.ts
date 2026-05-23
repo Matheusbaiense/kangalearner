@@ -21,11 +21,11 @@ export async function DELETE() {
   );
 
   const {
-    data: { user },
+    data: { user }
   } = await supabase.auth.getUser();
   if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
 
-  if (!await rateLimit(`account-delete:${user.id}`, 5, 60_000)) {
+  if (!(await rateLimit(`account-delete:${user.id}`, 5, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -36,7 +36,7 @@ export async function DELETE() {
       deleted_at: new Date().toISOString(),
       display_name: "Deleted User",
       name: null,
-      avatar_url: null,
+      avatar_url: null
     })
     .eq("id", user.id);
 

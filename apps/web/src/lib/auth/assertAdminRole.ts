@@ -13,7 +13,9 @@ export async function assertAdminRole(): Promise<string | null> {
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
   );
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user }
+  } = await supabase.auth.getUser();
   if (!user) return null;
   const { data: profile } = await supabaseAdmin
     .from("profiles")

@@ -85,7 +85,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={`${nunito.variable} ${sora.variable}`} suppressHydrationWarning>
       <head>
         {/* Apply stored theme before first paint to avoid flash */}
-        <script dangerouslySetInnerHTML={{ __html: `try{var t=localStorage.getItem('kl-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}` }} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{var t=localStorage.getItem('kl-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`
+          }}
+        />
       </head>
       <body suppressHydrationWarning>
         <script
