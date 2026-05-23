@@ -19,7 +19,7 @@ const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
-  if (!await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000)) {
+  if (!(await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
-  if (!await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000)) {
+  if (!(await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
