@@ -128,10 +128,17 @@ export function SiteNav() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileNavOpen]);
 
-  // Auth state — single source of truth: onAuthStateChange only.
-  // Removing the parallel loadUser() call that caused a race condition where
-  // onAuthStateChange could fire SIGNED_OUT (empty localStorage on fresh device)
-  // and override the loadUser result, flashing "Sign In" or freezing the nav.
+  // Auth state — onAuthStateChange as primary, getSession() as recovery for stale localStorage.
+  //
+  // Background: The middleware refreshes the session server-side on every request and sets
+  // fresh cookies. But @supabase/ssr's createBrowserClient may fire SIGNED_OUT first if the
+  // localStorage access token is expired (even when valid cookies exist), and may not fire a
+  // subsequent SIGNED_IN if the localStorage refresh token was already rotated by the server.
+  //
+  // Fix: on a null-session event, call getSession() once as a sequential recovery step.
+  // getSession() reads from the SSR cookie storage (fresh from middleware) rather than stale
+  // localStorage, so it reliably recovers the session the server already validated.
+  // This is sequential (not parallel), so there is no race condition with the event stream.
   useEffect(() => {
     let supabase: ReturnType<typeof createClient> | null = null;
     try {
@@ -164,15 +171,21 @@ export function SiteNav() {
     const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
       if (session?.user) {
         await buildNavUser(session.user);
+        clearTimeout(fallbackTimer);
+        setAuthLoading(false);
       } else {
-        setUser(null);
+        // No session from the event. The middleware may have refreshed the token via cookies
+        // while localStorage holds a stale/rotated token. Try getSession() once as recovery —
+        // it reads the SSR cookie storage which reflects the middleware-refreshed session.
+        const { data: recovered } = await supabase!.auth.getSession();
+        if (recovered.session?.user) {
+          await buildNavUser(recovered.session.user);
+        } else {
+          setUser(null);
+        }
+        clearTimeout(fallbackTimer);
+        setAuthLoading(false);
       }
-      // Clear fallback AFTER async work — the timer must also cover a slow/hanging
-      // buildNavUser() query, not just the case where the subscription never fires.
-      // If buildNavUser() stalls past 4 s the fallback fires first (shows "Sign In"),
-      // then when the query eventually resolves setUser() updates the nav.
-      clearTimeout(fallbackTimer);
-      setAuthLoading(false);
     });
 
     return () => {

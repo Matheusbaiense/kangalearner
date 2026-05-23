@@ -109,9 +109,13 @@ export default function AccountPage() {
     let cancelled = false;
     const supabase = createClient();
     async function loadAccount() {
-      const {
-        data: { user }
-      } = await supabase.auth.getUser();
+      // Use getSession() here: the middleware already validates the JWT server-side on every
+      // request to /account (protected route), so we trust the cookie-based session.
+      // getUser() makes an extra network round-trip for server-validation, which can hang
+      // when the localStorage access token is stale/rotated — getSession() reads the fresh
+      // cookie session set by the middleware without a blocking network call.
+      const { data: { session } } = await supabase.auth.getSession();
+      const user = session?.user;
       if (!user) {
         router.replace("/auth/login?redirect=/account");
         return;
