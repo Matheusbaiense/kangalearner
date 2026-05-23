@@ -2,5 +2,8 @@
 
 | Data | Comando | Resultado |
 |------|---------|-----------|
+| 2026-05-23 | `pnpm test` | OK — 7 tests (safeNextPath, attemptValidation) |
+| 2026-05-23 | `pnpm --filter @kanga/web run build` | OK — após fixes sign/cap + migration 018 patch |
+| 2026-05-23 | Supabase MCP `apply_migration` 018–021 em `olgogtaeifyxwzencilo` | OK — prod alinhado (018 patch: sem `p.state`/`created_at`; 021 DROP+recreate RPCs) |
 | 2026-05-22 | `pnpm test` | OK — 7 tests (safeNextPath, attemptValidation) |
 | 2026-05-22 | `pnpm --filter @kanga/web run build` | OK — Next.js 15.5.18 |

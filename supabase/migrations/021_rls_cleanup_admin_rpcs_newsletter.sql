@@ -10,6 +10,14 @@
 -- ══════════════════════════════════════════════════════════════
 DROP POLICY IF EXISTS "profiles_select_own" ON profiles;
 
+-- Recreate admin RPCs (drop first when return types change vs legacy 014)
+DROP FUNCTION IF EXISTS get_role_breakdown();
+DROP FUNCTION IF EXISTS get_country_breakdown(int);
+DROP FUNCTION IF EXISTS get_top_categories(timestamptz, int);
+DROP FUNCTION IF EXISTS get_active_users_count(timestamptz);
+DROP FUNCTION IF EXISTS get_pass_rate(timestamptz);
+DROP FUNCTION IF EXISTS get_signups_per_day(timestamptz);
+
 -- ══════════════════════════════════════════════════════════════
 -- 2. Admin RPCs (SECURITY DEFINER, callable only by service_role)
 --    Called from /api/admin/stats via supabaseAdmin client.
@@ -88,7 +96,7 @@ GRANT  EXECUTE ON FUNCTION get_active_users_count(timestamptz) TO service_role;
 -- ──────────────────────────────────────────────────────────────
 
 CREATE OR REPLACE FUNCTION get_pass_rate(since_ts timestamptz)
-RETURNS numeric
+RETURNS integer
 LANGUAGE sql
 SECURITY DEFINER
 SET search_path = public
@@ -97,7 +105,7 @@ AS $$
     100.0 * COUNT(*) FILTER (WHERE passed = true)
     / NULLIF(COUNT(*), 0),
     1
-  )
+  )::integer
   FROM mock_sessions
   WHERE completed_at >= since_ts;
 $$;

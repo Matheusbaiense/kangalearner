@@ -127,20 +127,35 @@ function QuizCard({
         <p className="qtext-en">{q.q.en}</p>
       )}
 
-      {q.sign && (
-        <div className="sign-box">
-          {/^\/?assets\//.test(q.sign) ? (
-            <img
-              src={q.sign}
-              alt={q.cap ?? "Road sign"}
-              loading="lazy"
-              decoding="async"
-              style={{ maxWidth: "100%", height: "auto" }}
-            />
-          ) : null}
-          {q.cap && <div className="img-cap">{q.cap}</div>}
-        </div>
-      )}
+      {(() => {
+        const legacySign = q.sign?.match(/^assets\/icons\/signs\/(.+)$/);
+        const signSrc = q.sign?.startsWith("/")
+          ? q.sign
+          : legacySign
+            ? `/icons/signs/${legacySign[1]}`
+            : null;
+        const capLabel =
+          q.cap == null
+            ? null
+            : typeof q.cap === "string"
+              ? q.cap
+              : tx(q.cap as Cap, lang);
+        if (!signSrc && !capLabel) return null;
+        return (
+          <div className="sign-box">
+            {signSrc ? (
+              <img
+                src={signSrc}
+                alt={capLabel ?? "Road sign"}
+                loading="lazy"
+                decoding="async"
+                style={{ maxWidth: "100%", height: "auto" }}
+              />
+            ) : null}
+            {capLabel ? <div className="img-cap">{capLabel}</div> : null}
+          </div>
+        );
+      })()}
 
       <div className="opts">
         {q.opts.map((o) => {

@@ -19,7 +19,7 @@ SET
     u.raw_user_meta_data->>'name',
     split_part(u.email, '@', 1)
   ),
-  preferred_state = COALESCE(p.preferred_state, p.state, 'WA'),
+  preferred_state = COALESCE(p.preferred_state, 'WA'),
   preferred_lang = COALESCE(p.preferred_lang, p.lang, 'en')
 FROM auth.users u
 WHERE u.id = p.id;
@@ -45,7 +45,7 @@ ALTER TABLE public.mock_sessions
   ADD COLUMN IF NOT EXISTS completed_at timestamptz;
 
 UPDATE public.mock_sessions
-SET completed_at = COALESCE(completed_at, created_at)
+SET completed_at = COALESCE(completed_at, now())
 WHERE completed_at IS NULL;
 
 CREATE INDEX IF NOT EXISTS idx_mock_sessions_user_completed
@@ -56,22 +56,38 @@ ALTER TABLE public.question_attempts
   ADD COLUMN IF NOT EXISTS answered_at timestamptz;
 
 UPDATE public.question_attempts
-SET answered_at = COALESCE(answered_at, created_at)
+SET answered_at = COALESCE(answered_at, now())
 WHERE answered_at IS NULL;
 
 CREATE INDEX IF NOT EXISTS idx_attempts_user_answered_at
   ON public.question_attempts(user_id, answered_at DESC);
 
--- ── marketplace_waitlist: admin read via is_admin() ─────────────────────────
-DROP POLICY IF EXISTS "waitlist_admin_select" ON public.marketplace_waitlist;
-CREATE POLICY "waitlist_admin_select" ON public.marketplace_waitlist
-  FOR SELECT TO authenticated
-  USING (is_admin());
+-- ── marketplace_waitlist: admin read via is_admin() (if table exists) ───────
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'marketplace_waitlist'
+  ) THEN
+    DROP POLICY IF EXISTS "waitlist_admin_select" ON public.marketplace_waitlist;
+    CREATE POLICY "waitlist_admin_select" ON public.marketplace_waitlist
+      FOR SELECT TO authenticated
+      USING (is_admin());
+  END IF;
+END $$;
 
--- ── bookings: cascade delete when student removed ─────────────────────────────
-ALTER TABLE public.bookings
-  DROP CONSTRAINT IF EXISTS bookings_student_id_fkey;
+-- ── bookings: cascade delete when student removed (if table exists) ───────────
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1 FROM information_schema.tables
+    WHERE table_schema = 'public' AND table_name = 'bookings'
+  ) THEN
+    ALTER TABLE public.bookings
+      DROP CONSTRAINT IF EXISTS bookings_student_id_fkey;
 
-ALTER TABLE public.bookings
-  ADD CONSTRAINT bookings_student_id_fkey
-  FOREIGN KEY (student_id) REFERENCES auth.users(id) ON DELETE CASCADE;
+    ALTER TABLE public.bookings
+      ADD CONSTRAINT bookings_student_id_fkey
+      FOREIGN KEY (student_id) REFERENCES auth.users(id) ON DELETE CASCADE;
+  END IF;
+END $$;

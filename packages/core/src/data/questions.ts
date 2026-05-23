@@ -352,7 +352,7 @@ export const QUESTIONS = [
       "pt": "Qual é a regra básica em interseções de 4 vias sem sinalização?",
       "es": "¿Cuál es la regla básica en intersecciones de 4 vías sin señalización?"
     },
-    "sign": "assets/icons/signs/sign-01.svg",
+    "sign": "",
     "cap": {
       "en": "Uncontrolled 4-way: X gives way to Y",
       "pt": "Interseção sem sinalização: X dá preferência a Y",
@@ -1287,7 +1287,7 @@ export const QUESTIONS = [
       "pt": "Semáforo verde com SETA VERDE — o que significa?",
       "es": "Semáforo verde con FLECHA VERDE — ¿qué significa?"
     },
-    "sign": "assets/icons/signs/sign-02.svg",
+    "sign": "",
     "cap": {
       "en": "Green + green arrow",
       "pt": "Verde + seta verde",
@@ -1340,7 +1340,7 @@ export const QUESTIONS = [
       "pt": "Semáforo VERMELHO com SETA VERDE — o que significa?",
       "es": "Semáforo ROJO con FLECHA VERDE — ¿qué significa?"
     },
-    "sign": "assets/icons/signs/sign-03.svg",
+    "sign": "",
     "cap": {
       "en": "Red + green arrow",
       "pt": "Vermelho + seta verde",
@@ -1393,7 +1393,7 @@ export const QUESTIONS = [
       "pt": "Semáforo verde com SETA VERMELHA — o que significa?",
       "es": "Semáforo verde con FLECHA ROJA — ¿qué significa?"
     },
-    "sign": "assets/icons/signs/sign-04.svg",
+    "sign": "",
     "cap": {
       "en": "Green + red arrow",
       "pt": "Verde + seta vermelha",
@@ -1642,7 +1642,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal?",
       "es": "¿Cuál es el significado de esta señal?"
     },
-    "sign": "assets/icons/signs/sign-05.svg",
+    "sign": "",
     "cap": {
       "en": "Advisory speed sign",
       "pt": "Sinal de velocidade recomendada",
@@ -1695,7 +1695,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal?",
       "es": "¿Cuál es el significado de esta señal?"
     },
-    "sign": "assets/icons/signs/sign-06.svg",
+    "sign": "",
     "cap": {
       "en": "GIVE WAY sign",
       "pt": "Sinal GIVE WAY",
@@ -1748,7 +1748,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal?",
       "es": "¿Cuál es el significado de esta señal?"
     },
-    "sign": "assets/icons/signs/sign-07.svg",
+    "sign": "",
     "cap": {
       "en": "NO ENTRY sign",
       "pt": "Sinal NO ENTRY",
@@ -1801,7 +1801,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal? (losango amarelo com cruz +)",
       "es": "¿Cuál es el significado de esta señal? (rombo amarillo con cruz +)"
     },
-    "sign": "assets/icons/signs/sign-08.svg",
+    "sign": "",
     "cap": {
       "en": "Crossroad warning",
       "pt": "Aviso de cruzamento",
@@ -1854,7 +1854,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal? (círculo amarelo com figura caminhando)",
       "es": "¿Cuál es el significado de esta señal? (círculo amarillo con figura caminando)"
     },
-    "sign": "assets/icons/signs/sign-09.svg",
+    "sign": "",
     "cap": {
       "en": "Pedestrian crossing warning",
       "pt": "Aviso de faixa de pedestre",
@@ -1907,7 +1907,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal? (círculo amarelo com crianças)",
       "es": "¿Cuál es el significado de esta señal? (círculo amarillo con niños)"
     },
-    "sign": "assets/icons/signs/sign-10.svg",
+    "sign": "",
     "cap": {
       "en": "Children's crossing warning",
       "pt": "Aviso de cruzamento de crianças",
@@ -1960,7 +1960,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal de estacionamento?",
       "es": "¿Cuál es el significado de esta señal de estacionamiento?"
     },
-    "sign": "assets/icons/signs/sign-11.svg",
+    "sign": "",
     "cap": {
       "en": "ACROD disability parking",
       "pt": "Estacionamento para deficientes ACROD",
@@ -2013,7 +2013,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal?",
       "es": "¿Cuál es el significado de esta señal?"
     },
-    "sign": "assets/icons/signs/sign-12.svg",
+    "sign": "",
     "cap": {
       "en": "ONE WAY sign",
       "pt": "Sinal ONE WAY",
@@ -2066,7 +2066,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal?",
       "es": "¿Cuál es el significado de esta señal?"
     },
-    "sign": "assets/icons/signs/sign-13.svg",
+    "sign": "",
     "cap": {
       "en": "KEEP LEFT sign",
       "pt": "Sinal KEEP LEFT",
@@ -2119,7 +2119,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal? (losango amarelo com formato T)",
       "es": "¿Cuál es el significado de esta señal? (rombo amarillo con forma de T)"
     },
-    "sign": "assets/icons/signs/sign-14.svg",
+    "sign": "",
     "cap": {
       "en": "T-junction warning",
       "pt": "Aviso de cruzamento em T",
@@ -2172,7 +2172,7 @@ export const QUESTIONS = [
       "pt": "O que significa este sinal? (losango amarelo com seta curva em S)",
       "es": "¿Cuál es el significado de esta señal? (rombo amarillo con flecha curva en S)"
     },
-    "sign": "assets/icons/signs/sign-15.svg",
+    "sign": "",
     "cap": {
       "en": "Winding road warning",
       "pt": "Aviso de curvas",
@@ -2764,7 +2764,7 @@ export const QUESTIONS = [
       "pt": "Qual moto está no ponto cego do motorista do carro?",
       "es": "¿Qué moto está en el ángulo muerto del conductor?"
     },
-    "sign": "assets/icons/signs/sign-16.svg",
+    "sign": "",
     "cap": {
       "en": "Blind spot diagram",
       "pt": "Diagrama do ponto cego",

@@ -8,9 +8,9 @@ Correções aplicadas a partir do relatório de inspeção (5 agentes). Estado a
 
 | Área | Feito no repo | Ação manual / follow-up |
 |------|---------------|-------------------------|
-| P0 DB | Migrations `018`–`020` | Aplicar no Supabase prod: `supabase db push` ou SQL Editor |
-| P0 API | Admin users sem N+1; account/delete comentário | — |
-| P1 Segurança | Admin layout + middleware `/api/admin`; validação attempts | **Verificar Upstash no Vercel Production** |
+| P0 DB | Migrations `018`–`021` | Aplicadas em prod (`olgogtaeifyxwzencilo`) via Supabase MCP 2026-05-23 |
+| P0 API | Admin users sem N+1; Stripe guard; timestamps attempts/mock | Feito no repo (commits 32e9743, 0751dfe) |
+| P1 Segurança | Admin layout + middleware; newsletter via service_role; RPCs REVOKE PUBLIC | **Verificar Upstash no Vercel Production** |
 | P2 Frontend | Fisher-Yates, erros useQuestions, limits dashboard | — |
 | P3 Docs/tests | README, CONTRIBUTING, AGENTS, Vitest unitários | Playwright E2E = próximo sprint |
 | Deferido | CSP nonce-based | Ver secção «Deferido» |
@@ -59,7 +59,7 @@ pnpm --filter @kanga/web run build
 ## Verificação manual obrigatória
 
 - [ ] Vercel → Production → `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
-- [ ] Supabase → aplicar migrations 018–020
+- [x] Supabase → aplicar migrations 018–021 (prod 2026-05-23)
 - [ ] Smoke: login OAuth → dashboard; admin users page; practice sim 30 Q
 
 ## Histórico
