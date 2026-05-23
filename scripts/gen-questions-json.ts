@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { QUESTIONS } from "../packages/core/src/index.ts";
+import { QUESTIONS } from "../packages/core/src/data/questions.ts";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outDir = join(root, "apps/web/public/data");

@@ -63,59 +63,57 @@ export function Onboarding() {
 
   return (
     <div
-      className="onboarding-card"
+      className="onboarding-banner"
       role="dialog"
-      aria-modal="true"
       aria-label="Welcome to KangaLearner"
     >
+      <div className="ob-banner-inner">
+        <div className="ob-banner-text">
+          <strong>Welcome 🦘</strong> Pick state & language:
+        </div>
+
+        <div className="ob-banner-controls">
+          <div className="ob-option-row">
+            {STATES.map((s) => (
+              <button
+                key={s.key}
+                className={`ob-option${s.soon ? " ob-soon" : ""}${state === s.key ? " ob-selected" : ""}`}
+                disabled={s.soon}
+                onClick={() => setState(s.key)}
+                type="button"
+                title={s.label}
+              >
+                {s.key}
+              </button>
+            ))}
+          </div>
+
+          <div className="ob-option-row">
+            {LANGS.map((l) => (
+              <button
+                key={l.key}
+                className={`ob-option${lang === l.key ? " ob-selected" : ""}`}
+                onClick={() => setLang(l.key as Lang)}
+                type="button"
+              >
+                {l.key.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
+          <button className="btn-auth-primary ob-banner-cta" onClick={done} type="button" style={{ height: "32px", fontSize: "0.8rem", padding: "0 14px", marginTop: 0 }}>
+            {GO_LABEL[lang] ?? "Let's go!"}
+          </button>
+        </div>
+      </div>
+
       <button
-        className="ob-dismiss"
+        className="ob-dismiss-banner"
         onClick={dismiss}
         type="button"
         aria-label="Dismiss"
       >
         ✕
-      </button>
-      <h2>Welcome to KangaLearner 🦘</h2>
-      <p className="ob-sub">Pick your state and language to get started.</p>
-
-      <div className="ob-group">
-        <p className="ob-group-label">Your state</p>
-        <div className="ob-option-row">
-          {STATES.map((s) => (
-            <button
-              key={s.key}
-              className={`ob-option${s.soon ? " ob-soon" : ""}${state === s.key ? " ob-selected" : ""}`}
-              disabled={s.soon}
-              onClick={() => setState(s.key)}
-              type="button"
-              title={s.label}
-            >
-              {s.key}
-              {s.soon ? <span className="ob-soon-badge">soon</span> : null}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <div className="ob-group">
-        <p className="ob-group-label">Preferred language:</p>
-        <div className="ob-option-row">
-          {LANGS.map((l) => (
-            <button
-              key={l.key}
-              className={`ob-option${lang === l.key ? " ob-selected" : ""}`}
-              onClick={() => setLang(l.key as Lang)}
-              type="button"
-            >
-              {l.label}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      <button className="ob-cta" onClick={done} type="button">
-        {GO_LABEL[lang] ?? "Let's go!"}
       </button>
     </div>
   );

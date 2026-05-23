@@ -8,16 +8,22 @@ import {
   normalizeAttemptSource,
 } from "@/lib/api/attemptValidation";
 
-type BulkAttempt = {
-  attempt_id: string;
-  question_id: string;
-  state: string;
-  category?: string | null;
-  is_correct: boolean;
-  chosen?: string | null;
-  source?: string;
-  answered_at?: string;
-};
+import { z } from "zod";
+
+const bulkAttemptSchema = z.object({
+  attempt_id: z.string().min(1),
+  question_id: z.string().min(1),
+  state: z.string().min(1),
+  category: z.string().nullable().optional(),
+  is_correct: z.boolean(),
+  chosen: z.string().nullable().optional(),
+  source: z.string().optional(),
+  answered_at: z.string().optional(),
+});
+
+const bulkAttemptsPayloadSchema = z.object({
+  attempts: z.array(bulkAttemptSchema).optional(),
+});
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood
@@ -43,14 +49,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  let body: { attempts?: BulkAttempt[] };
+  let rawBody;
   try {
-    body = (await request.json()) as { attempts?: BulkAttempt[] };
+    rawBody = await request.json();
   } catch {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  const attempts = Array.isArray(body.attempts) ? body.attempts : [];
+  const parseResult = bulkAttemptsPayloadSchema.safeParse(rawBody);
+  if (!parseResult.success) {
+    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+  }
+
+  const attempts = parseResult.data.attempts ?? [];
   if (attempts.length === 0) {
     return NextResponse.json({ ok: true, inserted: 0 });
   }

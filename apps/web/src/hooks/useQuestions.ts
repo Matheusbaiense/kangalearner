@@ -9,19 +9,57 @@ const CACHE_KEY = `kl-questions-${QUESTIONS_VERSION}`;
 let _inFlight: Promise<Question[]> | null = null;
 let _resolved: Question[] | null = null;
 
+const DB_NAME = "kl-db";
+const STORE_NAME = "questions";
+
+function initDB(): Promise<IDBDatabase> {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, 1);
+    request.onupgradeneeded = (e) => {
+      const db = (e.target as IDBOpenDBRequest).result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME);
+      }
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error);
+  });
+}
+
+function getFromDB(key: string): Promise<any> {
+  return initDB().then((db) => {
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, "readonly");
+      const store = tx.objectStore(STORE_NAME);
+      const req = store.get(key);
+      req.onsuccess = () => resolve(req.result);
+      req.onerror = () => reject(req.error);
+    });
+  });
+}
+
+function saveToDB(key: string, data: any): Promise<void> {
+  return initDB().then((db) => {
+    return new Promise((resolve, reject) => {
+      const tx = db.transaction(STORE_NAME, "readwrite");
+      const store = tx.objectStore(STORE_NAME);
+      const req = store.put(data, key);
+      req.onsuccess = () => resolve();
+      req.onerror = () => reject(req.error);
+    });
+  });
+}
+
 export async function loadQuestions(): Promise<Question[]> {
   if (_resolved !== null) return _resolved;
   if (_inFlight !== null) return _inFlight;
 
   _inFlight = (async () => {
     try {
-      const raw = localStorage.getItem(CACHE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as Question[];
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          _resolved = parsed;
-          return parsed;
-        }
+      const cached = await getFromDB(CACHE_KEY);
+      if (Array.isArray(cached) && cached.length > 0) {
+        _resolved = cached;
+        return cached;
       }
     } catch {
       /* ignore */
@@ -32,9 +70,9 @@ export async function loadQuestions(): Promise<Question[]> {
     const data = (await res.json()) as Question[];
 
     try {
-      localStorage.setItem(CACHE_KEY, JSON.stringify(data));
+      await saveToDB(CACHE_KEY, data);
     } catch {
-      /* localStorage full */
+      /* ignore storage failure */
     }
 
     _resolved = data;

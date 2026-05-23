@@ -46,7 +46,7 @@ export function normalizeAuState(value: string | null | undefined): AuStateCode 
 
 export { fisherYatesSlice } from "./shuffle";
 
-export { QUESTIONS, CATEGORIES } from "./data/questions";
+export { CATEGORIES } from "./data/questions";
 export {
   LANGS,
   validateQuestionsDataset,

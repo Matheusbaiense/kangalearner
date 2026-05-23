@@ -1,7 +1,6 @@
 import { describe, expect, it } from "vitest";
 import {
   CATEGORIES,
-  QUESTIONS,
   WA_PASS_MIN_CORRECT,
   WA_PASS_THRESHOLD,
   WA_TOTAL_QUESTIONS,
@@ -9,6 +8,7 @@ import {
   normalizeAuState,
   validateQuestionsDataset,
 } from "./index";
+import { QUESTIONS } from "./data/questions";
 
 describe("questions dataset integrity", () => {
   it("has at least 50 questions", () => {

@@ -3,13 +3,15 @@ import { createServerClient } from "@supabase/ssr";
 import { rateLimit } from "@/lib/rateLimit";
 import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
 
-type MockPayload = {
-  state: string;
-  score: number;
-  total: number;
-  mode?: string;
-  source?: string;
-};
+import { z } from "zod";
+
+const mockSessionSchema = z.object({
+  state: z.string().min(1),
+  score: z.number().min(0),
+  total: z.number().positive(),
+  mode: z.string().optional(),
+  source: z.string().optional(),
+});
 
 const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
@@ -49,20 +51,22 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  let payload: MockPayload;
+  let rawPayload;
   try {
-    payload = (await request.json()) as MockPayload;
+    rawPayload = await request.json();
   } catch {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
+  const parseResult = mockSessionSchema.safeParse(rawPayload);
+  if (!parseResult.success) {
+    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+  }
+
+  const payload = parseResult.data;
+
   if (
-    !payload?.state ||
     !AU_STATES.has(payload.state) ||
-    !Number.isFinite(payload.score) ||
-    !Number.isFinite(payload.total) ||
-    payload.total <= 0 ||
-    payload.score < 0 ||
     payload.score > payload.total
   ) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });

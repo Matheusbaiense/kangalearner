@@ -10,15 +10,17 @@ import {
   normalizeAttemptSource,
 } from "@/lib/api/attemptValidation";
 
-type AttemptPayload = {
-  attempt_id?: string;
-  question_id: string;
-  state: string;
-  category?: string;
-  is_correct: boolean;
-  chosen?: string;
-  source?: string;
-};
+import { z } from "zod";
+
+const attemptSchema = z.object({
+  attempt_id: z.string().optional(),
+  question_id: z.string().min(1),
+  state: z.string().min(1),
+  category: z.string().optional(),
+  is_correct: z.boolean(),
+  chosen: z.string().optional(),
+  source: z.string().optional(),
+});
 
 export async function POST(request: NextRequest) {
   // IP guard — defence against unauthenticated flood (loose: accounts for shared NAT)
@@ -44,16 +46,19 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  let payload: AttemptPayload;
+  let rawPayload;
   try {
-    payload = (await request.json()) as AttemptPayload;
+    rawPayload = await request.json();
   } catch {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
 
-  if (!payload?.question_id || !payload?.state || typeof payload.is_correct !== "boolean") {
+  const parseResult = attemptSchema.safeParse(rawPayload);
+  if (!parseResult.success) {
     return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
   }
+
+  const payload = parseResult.data;
 
   if (!isValidAttemptState(payload.state)) {
     return NextResponse.json({ error: "invalid_state" }, { status: 400 });

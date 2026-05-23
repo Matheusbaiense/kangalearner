@@ -113,13 +113,13 @@ export async function DELETE() {
     return NextResponse.json({ error: "profile_fetch_failed" }, { status: 500 });
   }
 
-  const { data: files } = await supabaseAdmin.storage
+  const { data: files } = await supabase.storage
     .from("avatars")
     .list(user.id);
 
   if (files && files.length > 0) {
     const paths = files.map((f) => `${user.id}/${f.name}`);
-    const { error: storageError } = await supabaseAdmin.storage
+    const { error: storageError } = await supabase.storage
       .from("avatars")
       .remove(paths);
 
