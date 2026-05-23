@@ -77,10 +77,10 @@ export function Onboarding() {
         ✕
       </button>
       <h2>Welcome to KangaLearner 🦘</h2>
-      <p className="ob-sub">Practice questions for your Australian driving learner test — personalised to your state and language.</p>
+      <p className="ob-sub">Pick your state and language to get started.</p>
 
       <div className="ob-group">
-        <p className="ob-group-label">Which state are you getting your licence in?</p>
+        <p className="ob-group-label">Your state</p>
         <div className="ob-option-row">
           {STATES.map((s) => (
             <button
@@ -89,8 +89,9 @@ export function Onboarding() {
               disabled={s.soon}
               onClick={() => setState(s.key)}
               type="button"
+              title={s.label}
             >
-              {s.label}
+              {s.key}
               {s.soon ? <span className="ob-soon-badge">soon</span> : null}
             </button>
           ))}
