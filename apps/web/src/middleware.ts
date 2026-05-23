@@ -4,6 +4,50 @@ import { NextResponse, type NextRequest } from "next/server";
 /** Rotas que exigem sessão válida. */
 const PROTECTED_ROUTES = ["/progress", "/dashboard", "/account", "/admin"];
 
+/** Gera nonce base64 de 16 bytes aleatórios (Web Crypto — funciona em Edge e Node). */
+function generateNonce(): string {
+  const bytes = new Uint8Array(16);
+  crypto.getRandomValues(bytes);
+  return btoa(String.fromCharCode(...Array.from(bytes)));
+}
+
+/** Monta o CSP de produção com o nonce fornecido. */
+function buildCsp(nonce: string): string {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
+  let supabaseHost = "";
+  try {
+    if (supabaseUrl) supabaseHost = new URL(supabaseUrl).hostname;
+  } catch {
+    /* ignore */
+  }
+  const supabaseWss = supabaseHost ? `wss://${supabaseHost}` : "wss://*.supabase.co";
+  const supabaseImgSrc = supabaseHost ? `https://${supabaseHost}` : "";
+
+  return [
+    "default-src 'self'",
+    `script-src 'self' 'nonce-${nonce}' https://js.stripe.com`,
+    `connect-src 'self' ${supabaseUrl} https://api.stripe.com ${supabaseWss}`.trim(),
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+    "font-src 'self' https://fonts.gstatic.com",
+    [
+      "img-src 'self' data: blob:",
+      supabaseImgSrc,
+      "https://lh3.googleusercontent.com",
+      "https://avatars.githubusercontent.com",
+      "https://flagcdn.com",
+      "https://www.google.com"
+    ]
+      .filter(Boolean)
+      .join(" "),
+    "frame-src https://js.stripe.com https://hooks.stripe.com",
+    "frame-ancestors 'none'",
+    "object-src 'none'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "upgrade-insecure-requests"
+  ].join("; ");
+}
+
 /**
  * Rotas de entrada — utilizadores já autenticados são enviados para a home.
  * Inclui `/login` e `/signup` legados e `/auth/*` (INFRA-8).
@@ -71,14 +115,20 @@ export async function middleware(request: NextRequest) {
   }
 
   // --- Standard auth middleware for page routes ---
+
+  // Per-request nonce — forwarded to server components via x-nonce request header
+  const nonce = generateNonce();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
+
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.next({ request });
+    return NextResponse.next({ request: { headers: requestHeaders } });
   }
 
-  let supabaseResponse = NextResponse.next({ request });
+  let supabaseResponse = NextResponse.next({ request: { headers: requestHeaders } });
 
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
     cookies: {
@@ -87,7 +137,7 @@ export async function middleware(request: NextRequest) {
       },
       setAll(cookiesToSet) {
         cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-        supabaseResponse = NextResponse.next({ request });
+        supabaseResponse = NextResponse.next({ request: { headers: requestHeaders } });
         cookiesToSet.forEach(({ name, value, options }) =>
           supabaseResponse.cookies.set(name, value, options)
         );
@@ -118,6 +168,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
+  // Attach nonce-based CSP to the final page response
+  supabaseResponse.headers.set("Content-Security-Policy", buildCsp(nonce));
   return supabaseResponse;
 }
 

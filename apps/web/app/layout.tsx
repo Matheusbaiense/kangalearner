@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import { Nunito, Sora } from "next/font/google";
+import { headers } from "next/headers";
 import { LangProvider } from "@/contexts/LangContext";
 import "./globals.css";
 
@@ -80,12 +81,15 @@ export const metadata: Metadata = {
   }
 };
 
-export default function RootLayout({ children }: { children: ReactNode }) {
+export default async function RootLayout({ children }: { children: ReactNode }) {
+  const nonce = (await headers()).get("x-nonce") ?? "";
+
   return (
     <html lang="en" className={`${nunito.variable} ${sora.variable}`} suppressHydrationWarning>
       <head>
         {/* Apply stored theme before first paint to avoid flash */}
         <script
+          nonce={nonce}
           dangerouslySetInnerHTML={{
             __html: `try{var t=localStorage.getItem('kl-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`
           }}
@@ -93,6 +97,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       </head>
       <body suppressHydrationWarning>
         <script
+          nonce={nonce}
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({

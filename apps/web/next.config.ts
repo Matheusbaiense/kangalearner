@@ -13,32 +13,7 @@ function supabaseHostname(): string {
 }
 
 const supabaseHost = supabaseHostname();
-const supabaseImgSrc = supabaseHost ? `https://${supabaseHost}` : "";
-const supabaseWss = supabaseHost ? `wss://${supabaseHost}` : "wss://*.supabase.co";
-
-const csp = [
-  "default-src 'self'",
-  "script-src 'self' 'unsafe-inline' https://js.stripe.com",
-  `connect-src 'self' ${supabaseUrl} https://api.stripe.com ${supabaseWss}`.trim(),
-  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
-  "font-src 'self' https://fonts.gstatic.com",
-  [
-    "img-src 'self' data: blob:",
-    supabaseImgSrc,
-    "https://lh3.googleusercontent.com",
-    "https://avatars.githubusercontent.com",
-    "https://flagcdn.com",
-    "https://www.google.com"
-  ]
-    .filter(Boolean)
-    .join(" "),
-  "frame-src https://js.stripe.com https://hooks.stripe.com",
-  "frame-ancestors 'none'",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "upgrade-insecure-requests"
-].join("; ");
+// Note: CSP is set per-request in middleware.ts with a nonce — not here.
 
 const imageRemotePatterns: NonNullable<NextConfig["images"]>["remotePatterns"] = [
   { protocol: "https", hostname: "flagcdn.com" },
@@ -73,13 +48,7 @@ const nextConfig: NextConfig = {
                   key: "Strict-Transport-Security",
                   value: "max-age=63072000; includeSubDomains; preload"
                 }
-              ]),
-          {
-            key: "Content-Security-Policy",
-            value: isDev
-              ? "default-src *; script-src * 'unsafe-inline' 'unsafe-eval'; style-src * 'unsafe-inline'"
-              : csp
-          }
+              ])
         ]
       }
     ];
