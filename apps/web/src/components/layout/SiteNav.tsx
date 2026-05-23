@@ -8,6 +8,7 @@ import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { SK } from "@/lib/storageKeys";
 import { AU_STATE_OPTIONS } from "@kanga/core";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
@@ -324,6 +325,9 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
               ))}
             </div>
           </div>
+
+          {/* Theme toggle */}
+          <ThemeToggle />
 
           {/* Auth — hidden while session check is pending to prevent race-condition redirect */}
           {authLoading ? (

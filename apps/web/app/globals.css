@@ -4611,6 +4611,92 @@ a:focus-visible,
   }
 }
 
+/* Force dark regardless of system preference when data-theme="dark" is set */
+:root[data-theme="dark"] {
+  --paper: #1e293b;
+  --paper2: #0f172a;
+  --paper3: #273348;
+  --ink: #f1f5f9;
+  --text: #f8fafc;
+  --text2: #cbd5e1;
+  --muted: #94a3b8;
+  --muted2: #64748b;
+  --border: #334155;
+  --surface-page: #0f172a;
+  --surface-page-alt: #1e293b;
+  --text-primary: #f1f5f9;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --glass-bg: rgba(30, 41, 59, 0.82);
+  --glass-bg-strong: rgba(30, 41, 59, 0.94);
+  --glass-bg-soft: rgba(30, 41, 59, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-border-strong: rgba(255, 255, 255, 0.18);
+  --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --glass-shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.32);
+  color-scheme: dark;
+}
+
+/* ── Theme toggle button ──────────────────────────────────────────── */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s, border-color 0.15s;
+}
+.theme-toggle:hover {
+  background: var(--paper2);
+  border-color: var(--muted);
+}
+
+/* ── Auth top bar (lang + theme on auth pages) ────────────────────── */
+.auth-topbar {
+  position: fixed;
+  top: 14px;
+  right: 16px;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.auth-topbar-langs {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 3px;
+}
+.auth-topbar-lang {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.12s, color 0.12s;
+  line-height: 1;
+}
+.auth-topbar-lang:hover {
+  background: var(--paper2);
+  color: var(--ink);
+}
+.auth-topbar-lang.active {
+  background: var(--green);
+  color: #fff;
+}
+
 /* ── How It Works (M2.2) ─────────────────────────────────────────── */
 .how-it-works { background: var(--kl-color-surface-alt, #f8fafc); }
 .how-steps {
