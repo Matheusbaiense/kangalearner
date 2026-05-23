@@ -35,6 +35,9 @@ interface NavUser {
   avatarUrl: string | null;
 }
 
+/** Serializable user data passed from the Server Component layout. */
+export type InitialNavUser = NavUser;
+
 function getInitials(name: string, email: string): string {
   const src = name || email;
   const parts = src.split(/[\s@]+/).filter(Boolean);
@@ -50,7 +53,12 @@ function readStoredState(): string {
   }
 }
 
-export function SiteNav() {
+interface SiteNavProps {
+  /** Pre-fetched user from the server component layout — eliminates client-side auth race condition. */
+  initialNavUser?: InitialNavUser | null;
+}
+
+export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const router = useRouter();
@@ -59,8 +67,8 @@ export function SiteNav() {
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
-  const [user, setUser] = useState<NavUser | null>(null);
-  const [authLoading, setAuthLoading] = useState(true);
+  const [user, setUser] = useState<NavUser | null>(initialNavUser ?? null);
+  const [authLoading, setAuthLoading] = useState(!initialNavUser);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [stateCode, setStateCode] = useState<string>(() =>
@@ -128,17 +136,13 @@ export function SiteNav() {
     return () => { document.body.style.overflow = ""; };
   }, [mobileNavOpen]);
 
-  // Auth state — onAuthStateChange as primary, getSession() as recovery for stale localStorage.
+  // Auth state — initialNavUser (server-fetched) is the primary source for the first render.
+  // onAuthStateChange handles subsequent events: SIGNED_IN (after login), SIGNED_OUT, TOKEN_REFRESHED.
   //
-  // Background: The middleware refreshes the session server-side on every request and sets
-  // fresh cookies. But @supabase/ssr's createBrowserClient may fire SIGNED_OUT first if the
-  // localStorage access token is expired (even when valid cookies exist), and may not fire a
-  // subsequent SIGNED_IN if the localStorage refresh token was already rotated by the server.
-  //
-  // Fix: on a null-session event, call getSession() once as a sequential recovery step.
-  // getSession() reads from the SSR cookie storage (fresh from middleware) rather than stale
-  // localStorage, so it reliably recovers the session the server already validated.
-  // This is sequential (not parallel), so there is no race condition with the event stream.
+  // The server layout pre-fetches the user via supabase.auth.getUser() so the nav renders
+  // correctly without waiting for any client-side event. The getSession() recovery below is
+  // kept as a fallback for cases where the layout could not fetch the user (env not configured,
+  // or the subscription fires before initialNavUser is set on a fresh tab).
   useEffect(() => {
     let supabase: ReturnType<typeof createClient> | null = null;
     try {
@@ -168,19 +172,25 @@ export function SiteNav() {
     // blocking Supabase), unblock the nav after 4 s instead of staying frozen.
     const fallbackTimer = setTimeout(() => setAuthLoading(false), 4000);
 
-    const { data: listener } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    const { data: listener } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (session?.user) {
         await buildNavUser(session.user);
         clearTimeout(fallbackTimer);
         setAuthLoading(false);
+      } else if (event === "SIGNED_OUT") {
+        // Explicit sign-out — always clear regardless of initial state.
+        setUser(null);
+        clearTimeout(fallbackTimer);
+        setAuthLoading(false);
       } else {
-        // No session from the event. The middleware may have refreshed the token via cookies
-        // while localStorage holds a stale/rotated token. Try getSession() once as recovery —
-        // it reads the SSR cookie storage which reflects the middleware-refreshed session.
+        // INITIAL_SESSION or TOKEN_REFRESHED fired with no session. This can happen when the
+        // browser client reads stale / mismatched cookies. Try getSession() as recovery first.
         const { data: recovered } = await supabase!.auth.getSession();
         if (recovered.session?.user) {
           await buildNavUser(recovered.session.user);
-        } else {
+        } else if (!initialNavUser) {
+          // Only clear if the server layout also had no user — don't override a server-confirmed
+          // logged-in state with a potentially buggy client-side event.
           setUser(null);
         }
         clearTimeout(fallbackTimer);
