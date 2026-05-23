@@ -41,7 +41,8 @@ jobs:
 
       - name: Validate questions (core)
         run: |
-          COUNT=$(grep -c '"id":' packages/core/src/data/questions.ts)
+          # Match Prettier-formatted object keys (`id: "..."`), not legacy quoted keys (`"id":`).
+          COUNT=$(grep -cE '^\s+id: "' packages/core/src/data/questions.ts)
           echo "Questions in core: $COUNT"
           if [ "$COUNT" -lt 50 ]; then
             echo "ERROR: Expected at least 50 questions, got $COUNT"
