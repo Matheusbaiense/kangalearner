@@ -12,7 +12,7 @@ Correções aplicadas a partir do relatório de inspeção (5 agentes). Estado a
 | P0 API | Admin users sem N+1; Stripe guard; timestamps attempts/mock | Feito no repo (commits 32e9743, 0751dfe) |
 | P1 Segurança | Admin layout + middleware; newsletter via service_role; RPCs REVOKE PUBLIC | **Verificar Upstash no Vercel Production** |
 | P2 Frontend | Fisher-Yates, erros useQuestions, limits dashboard | — |
-| P3 Docs/tests | README, CONTRIBUTING, AGENTS, Vitest unitários | Playwright E2E = próximo sprint |
+| P3 Docs/tests | README, CONTRIBUTING, AGENTS, Vitest unitários + Playwright smoke | E2E auth/mock completo = próximo sprint |
 | Deferido | CSP nonce-based | Ver secção «Deferido» |
 
 ## Migrations novas
@@ -42,14 +42,15 @@ Correções aplicadas a partir do relatório de inspeção (5 agentes). Estado a
 
 ```bash
 pnpm install
-pnpm test          # vitest: safeNextPath + attemptValidation
+pnpm test          # vitest: core (shuffle, schema, dataset) + web (auth/api utils)
+pnpm test:e2e      # Playwright smoke (requer build prévio em CI)
 pnpm --filter @kanga/web run build
 ```
 
 ## Deferido (não bloqueia merge; registar em backlog)
 
 1. **CSP nonce** — `unsafe-inline` ainda em `next.config.ts` (Next App Router exige plano de nonce por request).
-2. **Playwright E2E** — fluxos signup, mock-test, admin gate.
+2. **Playwright E2E (auth)** — signup/login OAuth, mock-test end-to-end, admin gate com sessão real.
 3. **Zod** em todas as API routes + envelope JSON unificado.
 4. **Agente SEO** — reexecutar inspeção conteúdo/ACCC (falhou worktree na inspeção original).
 5. **Refator completo** `mock-sessions`, `profile/avatar`, `account/delete` → `routeClient` / `createClient`.

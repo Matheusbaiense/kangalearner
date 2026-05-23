@@ -45,6 +45,13 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
 }
 
+import { z } from "zod";
+
+const patchUserSchema = z.object({
+  userId: z.string().min(1),
+  role: z.enum(["free", "premium", "admin", "super_admin"]),
+});
+
 /** PATCH /api/admin/users — update a user's role */
 export async function PATCH(req: NextRequest) {
   const uid = await assertAdminRole();
@@ -54,18 +61,19 @@ export async function PATCH(req: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  let body: { userId: string; role: string };
+  let body;
   try {
-    body = (await req.json()) as { userId: string; role: string };
+    body = await req.json();
   } catch {
     return NextResponse.json({ error: "invalid_json" }, { status: 400 });
   }
-  const { userId, role } = body;
 
-  const validRoles = ["free", "premium", "admin", "super_admin"];
-  if (!userId || !validRoles.includes(role)) {
+  const parseResult = patchUserSchema.safeParse(body);
+  if (!parseResult.success) {
     return NextResponse.json({ error: "Invalid userId or role" }, { status: 400 });
   }
+
+  const { userId, role } = parseResult.data;
 
   // Fetch caller and target profiles in parallel
   const [{ data: callerProfile }, { data: targetProfile }] = await Promise.all([

@@ -18,6 +18,7 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 
 ## P2 — Dados e tipos
 
+- [x] **Testes automatizados (base)**: Vitest em `@kanga/core` + `@kanga/web`; Playwright smoke em CI (`pnpm test`, `pnpm test:e2e`). _Follow-up:_ E2E auth (signup/login), mock-test completo, admin com sessão.
 - [ ] **`database.types.ts`**: regenerar com `npx supabase gen types typescript --project-id <REF> --schema public` quando o schema remoto for fonte de verdade.
 - [ ] **`/dashboard` no middleware**: proteção só na página; avaliar incluir em `PROTECTED_ROUTES` como `/progress`.
 

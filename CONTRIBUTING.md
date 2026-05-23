@@ -8,6 +8,7 @@
    - `pnpm run format:check`
    - `pnpm --filter @kanga/web run lint`
    - `pnpm test`
+   - `pnpm test:e2e` (após `pnpm --filter @kanga/web run build`; 1ª vez: `pnpm --filter @kanga/web run test:e2e:install`)
    - `pnpm --filter @kanga/web run build`
 
 ## Questões

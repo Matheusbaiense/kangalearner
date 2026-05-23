@@ -7,9 +7,11 @@
   "types": "src/index.ts",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "lint": "echo \"Add linter config for @kanga/core\""
+    "lint": "echo \"Add linter config for @kanga/core\"",
+    "test": "vitest run"
   },
   "devDependencies": {
-    "typescript": "^5.6.2"
+    "typescript": "^5.6.2",
+    "vitest": "^3.2.4"
   }
 }

@@ -23,5 +23,6 @@ Após mudanças de **infra**, **auth**, **API**, **schema** ou fluxos críticos:
 
 ```bash
 pnpm test
+pnpm test:e2e   # smoke Playwright (build antes em CI)
 pnpm --filter @kanga/web run build
 ```

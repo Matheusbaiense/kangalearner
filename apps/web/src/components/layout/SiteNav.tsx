@@ -432,6 +432,30 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
           className="mobile-nav-drawer"
           aria-label="Mobile navigation"
         >
+          {/* User identity block — shown when logged in */}
+          {!authLoading && user && (
+            <div className="mobile-nav-user">
+              <div className="mobile-nav-user-info">
+                <div className="nav-avatar" aria-hidden="true">
+                  {user.avatarUrl ? (
+                    <Image src={user.avatarUrl} alt="" width={36} height={36} className="nav-avatar-img" />
+                  ) : (
+                    <span className="nav-avatar-initials">{user.initials}</span>
+                  )}
+                </div>
+                <div className="mobile-nav-user-text">
+                  <span className="mobile-nav-user-name">{user.name || user.email.split("@")[0]}</span>
+                  <span className="mobile-nav-user-email">{user.email}</span>
+                </div>
+              </div>
+              <button
+                className="mobile-nav-signout"
+                onClick={() => { void handleSignOut(); setMobileNavOpen(false); }}
+              >
+                {s.signOut}
+              </button>
+            </div>
+          )}
           <ul role="list">
             {NAV_LINKS.map((link) => {
               const needsAuth = "requiresAuth" in link && link.requiresAuth;
@@ -459,6 +483,17 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                   onClick={() => setMobileNavOpen(false)}
                 >
                   {s.settings}
+                </Link>
+              </li>
+            )}
+            {!authLoading && !user && (
+              <li>
+                <Link
+                  href="/auth/login"
+                  className="mobile-nav-link mobile-nav-signin"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  {s.signIn}
                 </Link>
               </li>
             )}

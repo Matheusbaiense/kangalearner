@@ -15,14 +15,14 @@ jobs:
       NEXT_PUBLIC_SUPABASE_ANON_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.e30.ci-build-not-a-real-key
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v4
 
       # Version comes from package.json "packageManager" (pnpm@9.12.0); do not set `version` here or the action errors on mismatch.
       - name: Setup pnpm
-        uses: pnpm/action-setup@v6
+        uses: pnpm/action-setup@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: "pnpm"
@@ -54,3 +54,11 @@ jobs:
 
       - name: Build
         run: pnpm run build
+
+      - name: Install Playwright Chromium
+        run: pnpm --filter @kanga/web run test:e2e:install
+
+      - name: E2E smoke (Playwright)
+        run: pnpm test:e2e
+        env:
+          CI: "true"

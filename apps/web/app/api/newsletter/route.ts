@@ -4,6 +4,12 @@ import { rateLimit } from "@/lib/rateLimit";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { newsletterConfirmHtml, newsletterConfirmSubject } from "@/lib/emails/newsletter-confirm";
 
+import { z } from "zod";
+
+const newsletterSchema = z.object({
+  email: z.string().email(),
+});
+
 export async function POST(req: NextRequest) {
   const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? "anon";
   if (!await rateLimit(`newsletter:${ip}`, 3, 60_000)) {
@@ -11,12 +17,14 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const body = await req.json().catch(() => ({}));
-    const email = typeof body?.email === "string" ? body.email.trim().toLowerCase() : "";
+    const rawBody = await req.json().catch(() => ({}));
+    const parseResult = newsletterSchema.safeParse(rawBody);
 
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!parseResult.success) {
       return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
     }
+
+    const email = parseResult.data.email.toLowerCase();
 
     const { error } = await supabaseAdmin
       .from("newsletter_subscribers")

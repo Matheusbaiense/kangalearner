@@ -383,7 +383,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     if (mode === "unanswered") qs = qs.filter((q) => !answered[q.id]);
     if (mode === "saved") qs = qs.filter((q) => saved.has(q.id));
     return qs;
-  }, [mode, cat, answered, selectedState, saved]);
+  }, [mode, cat, answered, selectedState, saved, QS]);
 
   /* Group study questions by category */
   const grouped = useMemo(() => {

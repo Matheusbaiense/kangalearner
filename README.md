@@ -12,7 +12,9 @@
 pnpm install
 pnpm dev                    # turbo — apps/web em http://localhost:3000
 pnpm --filter @kanga/web run build
-pnpm test                   # vitest (apps/web)
+pnpm test                   # vitest (core + web)
+pnpm test:e2e               # Playwright smoke (build antes se CI=true)
+pnpm --filter @kanga/web run test:e2e:install   # 1ª vez: browser Chromium
 ```
 
 Variáveis: `apps/web/.env.example` → copiar para `apps/web/.env.local`.

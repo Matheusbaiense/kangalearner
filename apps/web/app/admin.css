@@ -8,7 +8,7 @@
 }
 
 .admin-header {
-  background: white;
+  background: var(--paper);
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 60px;
@@ -91,7 +91,7 @@
 @media (max-width: 540px) { .admin-kpi-grid { grid-template-columns: 1fr; } }
 
 .admin-stat-card {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 18px 20px;
@@ -137,7 +137,7 @@
 
 /* Chart card */
 .admin-chart-card {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
@@ -191,7 +191,7 @@
 
 /* Generic card */
 .admin-card {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 20px;
@@ -337,7 +337,7 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.85rem;
-  background: white;
+  background: var(--paper);
   color: var(--ink);
   outline: none;
   transition: border-color 0.15s;
@@ -351,7 +351,7 @@
   border: 1px solid var(--border);
   border-radius: 8px;
   font-size: 0.83rem;
-  background: white;
+  background: var(--paper);
   color: var(--ink);
   cursor: pointer;
 }
@@ -363,7 +363,7 @@
 }
 
 .admin-table-wrap {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: 12px;
   overflow: auto;
@@ -427,7 +427,7 @@
   border: 1px solid var(--border);
   border-radius: 6px;
   font-size: 0.78rem;
-  background: white;
+  background: var(--paper);
   color: var(--ink);
   cursor: pointer;
 }
@@ -446,7 +446,7 @@
   font-weight: 600;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: white;
+  background: var(--paper);
   color: var(--ink);
   cursor: pointer;
   transition: background 0.15s, border-color 0.15s;
@@ -466,7 +466,7 @@
   font-weight: 600;
   border: 1px solid var(--border);
   border-radius: 8px;
-  background: white;
+  background: var(--paper);
   color: var(--ink);
   cursor: pointer;
   transition: border-color 0.15s;
