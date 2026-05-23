@@ -17,7 +17,11 @@ const LEGAL_LINKS = [
   { href: "/privacy", en: "Privacy Policy", pt: "Política de Privacidade", es: "Política de Privacidad" },
 ] as const;
 
-export function Footer() {
+interface FooterProps {
+  isLoggedIn?: boolean;
+}
+
+export function Footer({ isLoggedIn = false }: FooterProps) {
   const { uiLang, s } = useLang();
 
   function pick(link: { en: string; pt: string; es: string }, lang: UiLang): string {
@@ -48,7 +52,7 @@ export function Footer() {
             <li><Link href="/learn">{s.learn}</Link></li>
             <li><Link href="/practice">{s.practice}</Link></li>
             <li><Link href="/mock-test">{s.mockTest}</Link></li>
-            <li><Link href="/progress">{s.progress}</Link></li>
+            {isLoggedIn && <li><Link href="/progress">{s.progress}</Link></li>}
             <li><Link href="/resources">{s.resources}</Link></li>
             <li><Link href="/#faq">{s.faqTitle}</Link></li>
           </ul>

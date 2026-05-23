@@ -199,6 +199,19 @@ export default function MockTestSessionPage() {
   }
 
   if (!session) {
+    if (!questionsLoading && questionPool.length === 0) {
+      return (
+        <main className="container section-pad">
+          <div className="mock-setup-card">
+            <h1>{s.mockTest}</h1>
+            <p className="mock-meta">No questions available for {cfg.state}.</p>
+            <Link href="/mock-test" className="btn btn-ghost-light">
+              ← {s.mockTest}
+            </Link>
+          </div>
+        </main>
+      );
+    }
     return (
       <main className="container section-pad">
         <div className="mock-setup-card">

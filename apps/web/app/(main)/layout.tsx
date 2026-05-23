@@ -50,7 +50,7 @@ export default async function MainLayout({ children }: { children: ReactNode }) 
       </Suspense>
       <Onboarding />
       {children}
-      <Footer />
+      <Footer isLoggedIn={!!initialNavUser} />
     </>
   );
 }

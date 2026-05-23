@@ -117,6 +117,16 @@ export default function MockTestResultsPage() {
     };
   }, [session, scored]);
 
+  if (questionsLoading) {
+    return (
+      <main className="container section-pad">
+        <div className="page-loading">
+          <div className="spinner" />
+        </div>
+      </main>
+    );
+  }
+
   return (
     <main className="container section-pad">
       <div className="mock-setup-card">
