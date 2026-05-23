@@ -26,13 +26,17 @@ function requireSupabaseEnv(): { url: string; anonKey: string } {
 function cookieAdapter() {
   return {
     getAll() {
-      if (typeof document === "undefined") return [];
-      return document.cookie.split(";").map((c) => {
+      if (typeof document === "undefined" || !document.cookie) return [];
+      return document.cookie.split(";").reduce((acc, c) => {
         const eqIdx = c.indexOf("=");
-        const name = c.slice(0, eqIdx).trim();
-        const value = c.slice(eqIdx + 1).trim();
-        return { name, value };
-      });
+        if (eqIdx !== -1) {
+          acc.push({
+            name: c.slice(0, eqIdx).trim(),
+            value: c.slice(eqIdx + 1).trim()
+          });
+        }
+        return acc;
+      }, [] as { name: string; value: string }[]);
     },
     setAll(
       cookiesToSet: { name: string; value: string; options?: Record<string, unknown> }[]

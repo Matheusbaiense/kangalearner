@@ -104,60 +104,67 @@ export default function AccountPage() {
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [deleteMsg, setDeleteMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
-  /* ── Load user ── */
   useEffect(() => {
     let cancelled = false;
     const supabase = createClient();
     async function loadAccount() {
-      // Use getSession() here: the middleware already validates the JWT server-side on every
-      // request to /account (protected route), so we trust the cookie-based session.
-      // getUser() makes an extra network round-trip for server-validation, which can hang
-      // when the localStorage access token is stale/rotated — getSession() reads the fresh
-      // cookie session set by the middleware without a blocking network call.
-      const { data: { session } } = await supabase.auth.getSession();
-      const user = session?.user;
-      if (!user) {
-        router.replace("/auth/login?redirect=/account");
-        return;
+      try {
+        const { data: { session }, error: sessionError } = await supabase.auth.getSession();
+        if (sessionError) throw sessionError;
+        
+        const user = session?.user;
+        if (!user) {
+          router.replace("/auth/login?redirect=/account");
+          return;
+        }
+
+        const meta = user.user_metadata ?? {};
+        const nextDisplayName =
+          (meta.full_name as string | undefined) || (meta.name as string | undefined) || "";
+        const nextPhone = (meta.phone as string | undefined) || "";
+        let nextLang = normalizePreferredLang(meta.lang ?? lang);
+        let nextState = normalizeState(meta.state);
+        let nextAvatarUrl: string | null = null;
+
+        const { data: profile, error: profileError } = await supabase
+          .from("profiles")
+          .select("avatar_url, preferred_lang, preferred_state")
+          .eq("id", user.id)
+          .maybeSingle();
+        
+        if (profileError && profileError.code !== "PGRST116") {
+          console.error("Error loading profile:", profileError);
+        }
+
+        if (profile?.avatar_url) nextAvatarUrl = profile.avatar_url;
+        nextLang = normalizePreferredLang(profile?.preferred_lang ?? nextLang);
+        nextState = normalizeState(profile?.preferred_state ?? nextState);
+
+        if (cancelled) return;
+        setEmail(user.email ?? "");
+        setDisplayName(nextDisplayName);
+        setPhone(nextPhone);
+        setAvatarUrl(nextAvatarUrl);
+        setPreferredLang(nextLang);
+        setStateVal(nextState);
+        setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
+        const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem(SK.theme) as Theme | null) || "system";
+        setTheme(savedTheme);
+        applyTheme(savedTheme);
+      } catch (err) {
+        console.error("Account load error:", err);
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
-
-      const meta = user.user_metadata ?? {};
-      const nextDisplayName =
-        (meta.full_name as string | undefined) || (meta.name as string | undefined) || "";
-      const nextPhone = (meta.phone as string | undefined) || "";
-      let nextLang = normalizePreferredLang(meta.lang ?? lang);
-      let nextState = normalizeState(meta.state);
-      let nextAvatarUrl: string | null = null;
-
-      const { data: profile } = await supabase
-        .from("profiles")
-        .select("avatar_url, preferred_lang, preferred_state")
-        .eq("id", user.id)
-        .single();
-
-      if (profile?.avatar_url) nextAvatarUrl = profile.avatar_url;
-      nextLang = normalizePreferredLang(profile?.preferred_lang ?? nextLang);
-      nextState = normalizeState(profile?.preferred_state ?? nextState);
-
-      if (cancelled) return;
-      setEmail(user.email ?? "");
-      setDisplayName(nextDisplayName);
-      setPhone(nextPhone);
-      setAvatarUrl(nextAvatarUrl);
-      setPreferredLang(nextLang);
-      setStateVal(nextState);
-      setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
-      const savedTheme = (meta.theme as Theme | undefined) || (localStorage.getItem(SK.theme) as Theme | null) || "system";
-      setTheme(savedTheme);
-      applyTheme(savedTheme);
-      setLoading(false);
     }
 
     loadAccount();
     return () => {
       cancelled = true;
     };
-  }, [router]);
+  }, [router, lang]);
 
   /* ── Handlers ── */
   async function handleSaveProfile(e: React.FormEvent) {
