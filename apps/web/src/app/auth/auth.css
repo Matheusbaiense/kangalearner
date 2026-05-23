@@ -30,7 +30,7 @@
 }
 
 .auth-route .auth-card {
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: 40px 36px;
@@ -68,7 +68,7 @@
   height: 46px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: white;
+  background: var(--paper);
   color: var(--ink);
   font-weight: 700;
   font-size: 0.9rem;
@@ -157,7 +157,7 @@
   padding: 0 14px;
   font-size: 0.9rem;
   color: var(--ink);
-  background: white;
+  background: var(--paper);
   transition:
     border-color 0.15s,
     box-shadow 0.15s;

@@ -8,7 +8,7 @@ import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const KEY = "kl-onboarding-v1";
 
-const SUPPRESS_PATHS = ["/auth/", "/login", "/signup", "/forgot-password", "/reset-password"];
+const SUPPRESS_PATHS = ["/auth/", "/login", "/signup", "/forgot-password", "/reset-password", "/mock-test"];
 
 const STATES = AU_STATE_OPTIONS.map((s) => ({
   key: s.code,

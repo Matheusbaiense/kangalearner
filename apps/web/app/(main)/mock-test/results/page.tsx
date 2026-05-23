@@ -124,7 +124,7 @@ export default function MockTestResultsPage() {
           <>
             <h1>{s.mockTest}</h1>
             <p className="mock-meta">No results found for this session.</p>
-            <Link href="/mock-test" className="btn btn-secondary">
+            <Link href="/mock-test" className="btn btn-ghost-light">
               ← {s.mockTest}
             </Link>
           </>
@@ -161,10 +161,10 @@ export default function MockTestResultsPage() {
               <Link href="/practice" className="dash-cta">
                 {CONTINUE[lang]}
               </Link>
-              <Link href="/mock-test" className="btn btn-secondary">
+              <Link href="/mock-test" className="btn btn-ghost-light">
                 {NEW_TEST[lang]}
               </Link>
-              <Link href="/dashboard" className="btn btn-secondary">
+              <Link href="/dashboard" className="btn btn-ghost-light">
                 {s.dashboard}
               </Link>
             </div>

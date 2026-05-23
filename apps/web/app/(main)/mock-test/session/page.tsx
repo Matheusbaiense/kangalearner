@@ -190,7 +190,7 @@ export default function MockTestSessionPage() {
         <div className="mock-setup-card">
           <h1>{s.mockTest}</h1>
           <p className="mock-meta">No mock config found.</p>
-          <Link href="/mock-test" className="btn btn-secondary">
+          <Link href="/mock-test" className="btn btn-ghost-light">
             ← {s.mockTest}
           </Link>
         </div>
@@ -218,7 +218,7 @@ export default function MockTestSessionPage() {
         <div className="mock-setup-card">
           <h1>Session error</h1>
           <p className="mock-meta">We couldn&apos;t load the next question.</p>
-          <Link href="/mock-test" className="btn btn-secondary">
+          <Link href="/mock-test" className="btn btn-ghost-light">
             ← {s.mockTest}
           </Link>
         </div>
@@ -350,7 +350,7 @@ export default function MockTestSessionPage() {
         )}
 
         <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
-          <Link href="/mock-test" className="btn btn-secondary">
+          <Link href="/mock-test" className="btn btn-ghost-light">
             {s.exitLabel}
           </Link>
           <button

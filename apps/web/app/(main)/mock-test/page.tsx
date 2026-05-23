@@ -90,7 +90,7 @@ export default function MockTestSetupPage() {
               <a href="/auth/signup?redirect=/mock-test/session" className="btn btn-primary">
                 {s.mockGuestBannerCta}
               </a>
-              <a href="/auth/login?redirect=/mock-test/session" className="btn btn-secondary">
+              <a href="/auth/login?redirect=/mock-test/session" className="btn btn-ghost-light">
                 {s.mockGuestSignIn}
               </a>
               <button

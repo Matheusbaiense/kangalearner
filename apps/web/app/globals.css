@@ -2329,6 +2329,33 @@ a:focus-visible,
   border-color: rgba(255, 255, 255, 0.3);
 }
 
+/* Neutral outline button — works on light and dark card backgrounds */
+.btn-ghost-light {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--border);
+}
+.btn-ghost-light:hover {
+  background: var(--paper2);
+  border-color: var(--muted);
+}
+.btn-ghost-light:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Text-only ghost — borderless, subdued */
+.btn-ghost {
+  background: transparent;
+  color: var(--muted2);
+  border-color: transparent;
+}
+.btn-ghost:hover {
+  background: var(--paper2);
+  color: var(--ink);
+  border-color: transparent;
+}
+
 .btn-sm {
   min-height: 38px;
   padding: 0 14px;
@@ -2903,7 +2930,7 @@ a:focus-visible,
 .mock-setup-card {
   max-width: 680px;
   margin: 0 auto;
-  background: white;
+  background: var(--paper);
   border: 1px solid var(--border);
   border-radius: var(--radius-md);
   padding: 22px 20px;
@@ -2950,7 +2977,7 @@ a:focus-visible,
   padding: 14px 14px;
   border-radius: 14px;
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--paper);
   margin-top: 10px;
   cursor: pointer;
   transition:
@@ -2961,7 +2988,7 @@ a:focus-visible,
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .mock-mode-option {
-    background: rgba(255, 255, 255, 0.7);
+    background: var(--glass-bg);
     border-color: var(--glass-border);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
@@ -2996,6 +3023,23 @@ a:focus-visible,
   border-color: rgba(46, 125, 91, 0.55);
   background: rgba(46, 125, 91, 0.06);
 }
+
+.mock-opt-correct {
+  background: var(--green3) !important;
+  border-color: rgba(46, 125, 91, 0.5) !important;
+}
+.mock-opt-correct strong {
+  color: var(--green) !important;
+}
+
+.mock-opt-wrong {
+  background: #fef2f2 !important;
+  border-color: rgba(239, 68, 68, 0.4) !important;
+}
+.mock-opt-wrong strong {
+  color: #b91c1c !important;
+}
+
 
 .mode-icon {
   display: flex;
@@ -3058,8 +3102,8 @@ a:focus-visible,
   z-index: 9999;
   width: 340px;
   max-width: calc(100vw - 32px);
-  background: var(--surface, #fff);
-  border: 1px solid var(--border, rgba(0,0,0,0.08));
+  background: var(--paper);
+  border: 1px solid var(--border);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.16), 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 24px;
@@ -3096,9 +3140,9 @@ a:focus-visible,
 .ob-option {
   width: 100%;
   padding: 14px 16px;
-  border: 2px solid var(--color-border);
+  border: 2px solid var(--border);
   border-radius: var(--radius-sm);
-  background: white;
+  background: var(--paper);
   text-align: left;
   font-size: 0.95rem;
   font-weight: 600;
@@ -4393,7 +4437,7 @@ a:focus-visible,
 }
 
 .guest-prompt-card {
-  background: var(--surface);
+  background: var(--paper);
   border-radius: var(--radius-lg);
   padding: 2rem;
   max-width: 420px;
@@ -4494,6 +4538,13 @@ a:focus-visible,
     --text-primary: #f1f5f9;
     --text-secondary: #cbd5e1;
     --text-muted: #94a3b8;
+    --glass-bg: rgba(30, 41, 59, 0.82);
+    --glass-bg-strong: rgba(30, 41, 59, 0.94);
+    --glass-bg-soft: rgba(30, 41, 59, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-strong: rgba(255, 255, 255, 0.18);
+    --glass-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    --glass-shadow-soft: 0 12px 32px rgba(0, 0, 0, 0.32);
     color-scheme: dark;
   }
 }
