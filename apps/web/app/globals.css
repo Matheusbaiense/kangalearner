@@ -5412,6 +5412,25 @@ a:focus-visible,
   color: var(--green);
 }
 
+/* The checklist panel always sits on a light mint background (--green3),
+   so its text/controls must use dark tokens regardless of theme — otherwise
+   dark-mode inherits a light --ink and renders white-on-light (unreadable). */
+.resource-checklist,
+.resource-checklist h2,
+.resource-checklist .checklist-list li,
+.resource-checklist .checklist-list span {
+  color: var(--navy-900);
+}
+.resource-checklist .btn-ghost-light {
+  color: var(--green);
+  border-color: var(--green2);
+  background: rgba(255, 255, 255, 0.6);
+}
+.resource-checklist .btn-ghost-light:hover {
+  background: #fff;
+  border-color: var(--green);
+}
+
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .resources-page {
     --res-blue-soft: rgba(37, 99, 235, 0.16);
