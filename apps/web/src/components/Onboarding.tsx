@@ -3,10 +3,18 @@ import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { SK } from "@/lib/storageKeys";
 import { useLang } from "@/contexts/LangContext";
-import type { Lang } from "@/lib/i18n";
+import type { Lang, UiLang } from "@/lib/i18n";
+import { getUiLang } from "@/lib/i18n";
 import { AU_STATE_OPTIONS } from "@kanga/core";
+import { PERSONAS, PERSONA_LABEL, persistPersona, type Persona } from "@/lib/persona";
 
 const KEY = "kl-onboarding-v1";
+
+const PERSONA_PROMPT: Record<UiLang, string> = {
+  en: "What do you need today?",
+  pt: "O que você precisa hoje?",
+  es: "¿Qué necesitas hoy?"
+};
 
 const SUPPRESS_PATHS = [
   "/auth/",
@@ -45,8 +53,10 @@ export function Onboarding() {
   const [visible, setVisible] = useState(false);
   const [state, setState] = useState("WA");
   const [lang, setLang] = useState<Lang>("en");
+  const [persona, setPersona] = useState<Persona | null>(null);
 
   const isAuthRoute = SUPPRESS_PATHS.some((p) => pathname.startsWith(p));
+  const uiLang: UiLang = getUiLang(lang);
 
   useEffect(() => {
     if (isAuthRoute) return;
@@ -57,6 +67,7 @@ export function Onboarding() {
     localStorage.setItem(KEY, "1");
     localStorage.setItem(SK.stateV2, state);
     localStorage.setItem(SK.lang, lang);
+    if (persona) persistPersona(persona);
     applyLang(lang);
     setVisible(false);
   }
@@ -76,6 +87,20 @@ export function Onboarding() {
         </div>
 
         <div className="ob-banner-controls">
+          <div className="ob-option-row ob-persona-row" aria-label={PERSONA_PROMPT[uiLang]}>
+            {PERSONAS.map((p) => (
+              <button
+                key={p}
+                className={`ob-option ob-persona${persona === p ? " ob-selected" : ""}`}
+                onClick={() => setPersona(p)}
+                type="button"
+                title={PERSONA_LABEL[p][uiLang]}
+              >
+                {PERSONA_LABEL[p][uiLang]}
+              </button>
+            ))}
+          </div>
+
           <div className="ob-option-row">
             {STATES.map((s) => (
               <button

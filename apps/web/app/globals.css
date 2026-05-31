@@ -3324,6 +3324,60 @@ a:focus-visible,
   opacity: 0.4;
   cursor: not-allowed;
 }
+.ob-persona-row {
+  flex-basis: 100%;
+}
+.ob-persona {
+  white-space: normal;
+}
+
+/* ── Trust layer: "last verified with DoT" badge ── */
+.verified-badge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  padding: 8px 12px;
+  border: 1px solid var(--green2, rgba(46, 125, 91, 0.3));
+  background: var(--green3, rgba(46, 125, 91, 0.08));
+  border-radius: 10px;
+  font-size: 0.78rem;
+  color: var(--ink);
+}
+.verified-badge__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--green, #2e7d5b);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+.verified-badge__text {
+  color: var(--muted);
+}
+.verified-badge__text strong {
+  color: var(--ink);
+}
+.verified-badge__link,
+.verified-badge__report {
+  font-weight: 700;
+  color: var(--green, #2e7d5b);
+  text-decoration: none;
+}
+.verified-badge__report {
+  margin-left: auto;
+  color: var(--muted);
+  text-decoration: underline;
+}
+.verified-badge__link:hover,
+.verified-badge__report:hover {
+  color: var(--green, #2e7d5b);
+}
 
 .resources-list {
   display: flex;
