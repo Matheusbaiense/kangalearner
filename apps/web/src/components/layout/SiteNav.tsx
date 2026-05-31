@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
+import { X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
@@ -468,6 +469,18 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
           />
           {/* Drawer */}
           <nav id="mobile-nav-drawer" className="mobile-nav-drawer" aria-label="Mobile navigation">
+            <div className="mobile-nav-header">
+              <span className="mobile-nav-title">KangaLearner</span>
+              <button
+                className="mobile-nav-close"
+                type="button"
+                onClick={() => setMobileNavOpen(false)}
+                aria-label="Close menu"
+              >
+                <X size={22} strokeWidth={2} aria-hidden="true" />
+              </button>
+            </div>
+
             {/* User identity block — shown when logged in */}
             {!authLoading && user && (
               <div className="mobile-nav-user">
@@ -548,7 +561,31 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                 </li>
               )}
             </ul>
+
+            <div className="mobile-nav-language" aria-label={s.language}>
+              <span className="mobile-nav-section-label">{s.language}</span>
+              <div className="mobile-lang-options">
+                {LANGUAGES.map((l) => (
+                  <button
+                    key={l.code}
+                    className={`mobile-lang-option${lang === l.code ? " active" : ""}`}
+                    type="button"
+                    aria-pressed={lang === l.code}
+                    onClick={() => {
+                      setLang(l.code);
+                      setMobileNavOpen(false);
+                    }}
+                  >
+                    <FlagImg country={l.country} size={20} />
+                    <span>{l.triggerLabel}</span>
+                    {l.bilingual && <span className="lang-bilingual-badge">EN</span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+
             <div className="mobile-nav-state">
+              <span className="mobile-nav-section-label">State</span>
               <label className="state-control" aria-label="Select state">
                 <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
                 <select
