@@ -3379,6 +3379,36 @@ a:focus-visible,
   color: var(--green, #2e7d5b);
 }
 
+/* ── Overseas licence hub: country picker cards ── */
+.overseas-country-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--paper);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    border-color 0.16s,
+    box-shadow 0.16s,
+    transform 0.16s;
+}
+.overseas-country-card:hover {
+  border-color: var(--green2, rgba(46, 125, 91, 0.4));
+  box-shadow: var(--shadow-soft, 0 4px 16px rgba(0, 0, 0, 0.06));
+  transform: translateY(-1px);
+}
+.overseas-country-card strong {
+  font-weight: 800;
+}
+.overseas-country-arrow {
+  margin-left: auto;
+  color: var(--green, #2e7d5b);
+  font-weight: 800;
+}
+
 .resources-list {
   display: flex;
   flex-direction: column;
