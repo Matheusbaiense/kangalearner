@@ -4261,7 +4261,7 @@ a:focus-visible,
 .slide-pass-badge {
   position: absolute;
   left: 48px;
-  top: 48px;
+  top: 84px;
   transform: translate(-50%, -50%);
   display: inline-flex;
   align-items: center;
