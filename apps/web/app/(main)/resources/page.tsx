@@ -248,11 +248,47 @@ export default function ResourcesPage() {
           <ul className="resource-link-list">
             <li>
               <a
-                href="https://www.facebook.com/groups/brasileirosemperth"
+                href="https://www.facebook.com/groups/BrasileirosPerth/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Brasileiros em Perth (Facebook)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/groups/1383929495239967"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Brasileiros em Perth — Comunidade (Facebook)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/groups/27661762887"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Argentinos en Perth (Facebook)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/groups/574316907535309/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Chilenos en Perth (Facebook)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/groups/colombianos.perth/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Colombianos en Perth (Facebook)
               </a>
             </li>
             <li>
@@ -266,11 +302,11 @@ export default function ResourcesPage() {
             </li>
             <li>
               <a
-                href="https://www.facebook.com/groups/filipinosinWA"
+                href="https://www.facebook.com/groups/italianiaperth/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Filipinos in Western Australia (Facebook)
+                Italianos em Perth (Facebook)
               </a>
             </li>
             <li>
@@ -280,6 +316,15 @@ export default function ResourcesPage() {
                 rel="noopener noreferrer"
               >
                 Indians in Perth (Facebook)
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/groups/700868157622703/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Hey Perth — Notícias / News (Facebook)
               </a>
             </li>
           </ul>
