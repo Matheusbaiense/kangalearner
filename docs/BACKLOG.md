@@ -43,3 +43,18 @@ Itens pendentes ou melhorias. Prioridade: **P0** crítico, **P1** alto, **P2** m
 ## Documentação / IA
 
 - [x] Política padrão: `docs/MAINTENANCE-POLICY-IA.md`, `AGENTS.md`, regra local opcional `.cursor/rules/docs-maintenance.mdc` (não versionada se `.cursor/` ignorada).
+
+## P1 - Mobile (`apps/mobile`)
+
+- [x] **Senior mobile decision**: v1 in Expo + React Native + TypeScript, reusing `@kanga/core`; Flutter stays outside this repo unless a future Dart team or strong product need appears.
+- [x] **Mobile roadmap/codemap**: `docs/MOBILE-APP-ROADMAP.md` and `docs/CODEMAPS/mobile-expo-app.md`.
+- [x] **Expo SDK baseline**: SDK 56 aligned with `expo-doctor` 21/21 and `pnpm --filter @kanga/mobile run lint` green.
+- [x] **Mobile unit tests (base)**: vitest in `@kanga/mobile` (`pnpm --filter @kanga/mobile run test`, also picked up by `pnpm test`). Covers pass threshold 24/30, attempt dedupe key, offline sync queue (upsert/remove), and mock-of-30 selection. Pure logic extracted to `src/lib/sync-logic.ts`.
+- [x] **Mobile sync RLS (static)**: confirmed `question_attempts`/`mock_sessions` block cross-user writes via `WITH CHECK (auth.uid() = user_id)` (migrations 004/005/013/020); sync hardcodes `user_id` of the signed-in user.
+- [ ] **Offline v1**: Learn, Practice, Mock Test, preferences, saved/wrong/unanswered, and local persistence.
+- [ ] **Auth + sync**: native Supabase Auth and local queue implemented; still needs real Supabase redirect/OAuth verification on device before release.
+- [ ] **Mobile QA hardening**: iOS simulator, Android emulator, performance, memory, and accessibility.
+- [ ] **EAS project (BLOCKED — external)**: create/link a real Expo/EAS project and replace `extra.eas.projectId` placeholder (`configure-in-expo-dashboard`) in `apps/mobile/app.json`. Needs `eas login` with the team Expo account.
+- [ ] **EAS builds (BLOCKED — external)**: Android internal + iOS TestFlight builds. Needs Apple Developer Program + Google Play Console enrollment and EAS build credits/credentials.
+- [ ] **Supabase mobile auth (BLOCKED — external)**: confirm redirect `kangalearner://auth/callback` and Google OAuth (iOS+Android) in the Supabase dashboard; set `EXPO_PUBLIC_SUPABASE_URL` / `EXPO_PUBLIC_SUPABASE_ANON_KEY` for mobile; live RLS re-confirmation via Supabase MCP.
+- [ ] **Store legal**: confirm Privacy/Terms cover mobile-collected data (email, optional name, progress, mock sessions, minimal device/app metadata); v1 requests no camera/location/contacts/notifications (none declared in `app.json`).

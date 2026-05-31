@@ -5,6 +5,22 @@
     "scheme": "kangalearner",
     "version": "1.0.0",
     "orientation": "portrait",
-    "userInterfaceStyle": "automatic"
+    "userInterfaceStyle": "automatic",
+    "ios": {
+      "bundleIdentifier": "com.kangalearner.app",
+      "supportsTablet": false
+    },
+    "android": {
+      "package": "com.kangalearner.app",
+      "adaptiveIcon": {
+        "backgroundColor": "#071A2C"
+      }
+    },
+    "plugins": ["expo-router", "expo-secure-store", "expo-sqlite"],
+    "extra": {
+      "eas": {
+        "projectId": "configure-in-expo-dashboard"
+      }
+    }
   }
 }

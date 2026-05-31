@@ -12,7 +12,11 @@
 pnpm install
 pnpm dev                    # turbo — apps/web em http://localhost:3000
 pnpm --filter @kanga/web run build
-pnpm test                   # vitest (core + web)
+pnpm --filter @kanga/mobile run dev      # Expo mobile
+pnpm --filter @kanga/mobile run lint     # TypeScript mobile
+pnpm --filter @kanga/mobile run doctor   # Expo doctor
+pnpm --filter @kanga/mobile run test     # vitest mobile (sync-logic + questions)
+pnpm test                   # vitest (core + web + mobile)
 pnpm test:e2e               # Playwright smoke (build antes se CI=true)
 pnpm --filter @kanga/web run test:e2e:install   # 1ª vez: browser Chromium
 ```
@@ -40,6 +44,7 @@ Questões JSON: `pnpm run gen:questions-json` (gera `apps/web/public/data/questi
 | Path | Descrição |
 |------|-----------|
 | `apps/web/` | Next.js 15 App Router — produto principal |
+| `apps/mobile/` | Expo + React Native (Android/iPhone) — guest-first, offline-first |
 | `packages/core/` | Questões, `WA_PASS_THRESHOLD`, `fisherYatesSlice`, estados AU |
 | `supabase/migrations/` | Schema Postgres versionado |
 | `scripts/gen-questions-json.ts` | Export JSON para a web app |

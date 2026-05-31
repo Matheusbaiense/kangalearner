@@ -5,18 +5,42 @@
   "main": "expo-router/entry",
   "scripts": {
     "dev": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
     "build": "echo \"Use EAS build for production\"",
-    "lint": "tsc --noEmit -p tsconfig.json"
+    "doctor": "expo-doctor",
+    "lint": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run"
   },
   "dependencies": {
+    "@expo/metro-runtime": "^56.0.13",
     "@kanga/core": "workspace:*",
-    "expo": "^51.0.28",
-    "expo-router": "^3.5.23",
-    "react": "^18.3.1",
-    "react-native": "^0.74.5"
+    "@react-native-async-storage/async-storage": "^2.2.0",
+    "@supabase/supabase-js": "^2.106.2",
+    "expo": "^56.0.8",
+    "expo-constants": "^56.0.16",
+    "expo-crypto": "^56.0.4",
+    "expo-haptics": "^56.0.3",
+    "expo-linking": "^56.0.13",
+    "expo-router": "^56.2.8",
+    "expo-secure-store": "^56.0.4",
+    "expo-sqlite": "^56.0.4",
+    "lucide-react-native": "^1.17.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "react-native": "^0.85.3",
+    "react-native-gesture-handler": "^2.31.2",
+    "react-native-reanimated": "^4.3.1",
+    "react-native-safe-area-context": "^5.7.0",
+    "react-native-screens": "^4.25.2",
+    "react-native-svg": "^15.15.4",
+    "react-native-url-polyfill": "^3.0.0",
+    "react-native-worklets": "^0.8.3"
   },
   "devDependencies": {
-    "@types/react": "^18.3.11",
-    "typescript": "^5.6.2"
+    "@types/react": "^19.0.0",
+    "expo-doctor": "^1.19.8",
+    "typescript": "^6.0.3",
+    "vitest": "^3.2.4"
   }
 }
