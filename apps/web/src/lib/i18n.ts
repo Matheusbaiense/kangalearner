@@ -173,10 +173,10 @@ export const t = {
     submitAnyway: "Submit test",
 
     // ── Resources ─────────────────────────────────────────
-    resourcesKicker: "Official sources",
-    resourcesTitle: "Study resources for the WA learner test",
+    resourcesKicker: "Licence companion",
+    resourcesTitle: "WA licence resources and next steps",
     resourcesSub:
-      "These links open official Western Australia government websites. Use them alongside your KangaLearner practice for the best results.",
+      "A plain-language hub for the learner theory test, driving hours, HPT, PDA and trusted community links. Use it alongside official Transport WA sources.",
     resourcesWaOnly: "WA resources only — other states coming soon.",
     resourcesStudyGuide: "Study guide",
     resourcesPracticeNow: "Practise questions",
@@ -537,10 +537,10 @@ export const t = {
     submitAnyway: "Enviar prova",
 
     // ── Resources ─────────────────────────────────────────
-    resourcesKicker: "Fontes oficiais",
-    resourcesTitle: "Recursos de estudo para a prova de learner de WA",
+    resourcesKicker: "Companion da carteira",
+    resourcesTitle: "Recursos e proximos passos para a carteira em WA",
     resourcesSub:
-      "Esses links abrem sites oficiais do governo da Austrália Ocidental. Use-os junto com a prática no KangaLearner para melhores resultados.",
+      "Um hub em linguagem simples para prova teórica, horas de direção, HPT, PDA e links confiáveis da comunidade. Use junto com as fontes oficiais do Transport WA.",
     resourcesWaOnly: "Recursos de WA — outros estados em breve.",
     resourcesStudyGuide: "Guia de estudo",
     resourcesPracticeNow: "Praticar perguntas",
@@ -902,10 +902,10 @@ export const t = {
     submitAnyway: "Enviar examen",
 
     // ── Resources ─────────────────────────────────────────
-    resourcesKicker: "Fuentes oficiales",
-    resourcesTitle: "Recursos de estudio para el examen learner de WA",
+    resourcesKicker: "Companion de licencia",
+    resourcesTitle: "Recursos y proximos pasos para la licencia en WA",
     resourcesSub:
-      "Estos enlaces abren sitios oficiales del gobierno de Australia Occidental. Úsalos junto con la práctica en KangaLearner para mejores resultados.",
+      "Un hub en lenguaje simple para el examen teórico, horas de conducción, HPT, PDA y enlaces confiables de comunidad. Úsalo junto con las fuentes oficiales de Transport WA.",
     resourcesWaOnly: "Recursos de WA — otros estados próximamente.",
     resourcesStudyGuide: "Guía de estudio",
     resourcesPracticeNow: "Practicar preguntas",
