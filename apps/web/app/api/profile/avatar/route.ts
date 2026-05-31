@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { requireSupabaseEnv } from "@/lib/supabase/env";
 import { rateLimit } from "@/lib/rateLimit";
 
 const MAX_SIZE_BYTES = 2 * 1024 * 1024; // 2 MB
@@ -37,11 +38,10 @@ function matchesMagicBytes(buf: Buffer, mime: string, signatures: number[][]): b
 /** POST /api/profile/avatar — upload or replace user avatar */
 export async function POST(req: NextRequest) {
   const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
-  );
+  const { url, anonKey } = requireSupabaseEnv();
+  const supabase = createServerClient(url, anonKey, {
+    cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} }
+  });
 
   const {
     data: { user },
@@ -114,11 +114,10 @@ export async function POST(req: NextRequest) {
 /** DELETE /api/profile/avatar — remove user avatar */
 export async function DELETE() {
   const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
-  );
+  const { url, anonKey } = requireSupabaseEnv();
+  const supabase = createServerClient(url, anonKey, {
+    cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} }
+  });
 
   const {
     data: { user },

@@ -59,6 +59,16 @@
   --color-border: var(--border);
   --color-muted: var(--muted2);
 
+  /* --kl-color-* aliases consumed by the legal/marketing pages. Mapped to the
+     theme tokens above so dark mode (which overrides those tokens) works too. */
+  --kl-color-surface-alt: var(--paper2);
+  --kl-color-text: var(--ink);
+  --kl-color-text-muted: var(--muted2);
+  --kl-color-border: var(--border);
+  --kl-color-primary: var(--liquid-blue);
+  --kl-color-success: var(--green);
+  --kl-color-error: var(--red);
+
   /* Liquid Glass theme */
   --surface-page: #eef6fb;
   --surface-page-alt: #f7fbff;

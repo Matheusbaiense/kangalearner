@@ -110,7 +110,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("attempts/bulk: upsert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 400 });
+    return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true, accepted: rows.length }, { headers: response.headers });

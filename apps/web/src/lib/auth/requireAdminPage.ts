@@ -2,15 +2,15 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { requireSupabaseEnv } from "@/lib/supabase/env";
 
 /** Server Component gate — same source of truth as assertAdminRole (service role). */
 export async function requireAdminPage(): Promise<{ userId: string; role: string }> {
   const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
-  );
+  const { url, anonKey } = requireSupabaseEnv();
+  const supabase = createServerClient(url, anonKey, {
+    cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} }
+  });
 
   const {
     data: { user }

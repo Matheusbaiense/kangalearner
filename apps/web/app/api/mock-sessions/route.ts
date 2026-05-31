@@ -91,7 +91,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("mock-sessions: insert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 400 });
+    return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true }, { headers: response.headers });
 }

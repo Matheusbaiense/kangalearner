@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { requireSupabaseEnv } from "@/lib/supabase/env";
 import { rateLimit } from "@/lib/rateLimit";
 
 /**
@@ -13,11 +14,10 @@ import { rateLimit } from "@/lib/rateLimit";
  */
 export async function DELETE() {
   const cookieStore = await cookies();
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    { cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} } }
-  );
+  const { url, anonKey } = requireSupabaseEnv();
+  const supabase = createServerClient(url, anonKey, {
+    cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} }
+  });
 
   const {
     data: { user }
@@ -84,6 +84,22 @@ export async function DELETE() {
     }
 
     return NextResponse.json({ error: "auth_delete_failed" }, { status: 500 });
+  }
+
+  // Best-effort cleanup of orphaned avatar objects. The account is already gone
+  // at this point, so a storage failure must not fail the request — just log it.
+  const { data: avatarFiles, error: listError } = await supabaseAdmin.storage
+    .from("avatars")
+    .list(user.id);
+
+  if (listError) {
+    console.error("[account/delete] avatar list failed:", listError.message);
+  } else if (avatarFiles && avatarFiles.length > 0) {
+    const paths = avatarFiles.map((f) => `${user.id}/${f.name}`);
+    const { error: removeError } = await supabaseAdmin.storage.from("avatars").remove(paths);
+    if (removeError) {
+      console.error("[account/delete] avatar remove failed:", removeError.message);
+    }
   }
 
   return NextResponse.json({ ok: true });

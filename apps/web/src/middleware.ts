@@ -151,9 +151,9 @@ export async function middleware(request: NextRequest) {
 
   const search = request.nextUrl.search;
 
-  if (pathname.startsWith("/api/admin/") && !user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  // Note: /api/* (including /api/admin/*) is fully handled by the CORS branch
+  // above and never reaches here. Admin authorization is enforced per-handler
+  // via assertAdminRole(), not in middleware.
 
   const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
   if (isProtected && !user) {
