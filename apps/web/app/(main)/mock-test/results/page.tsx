@@ -106,6 +106,7 @@ export default function MockTestResultsPage() {
           state: session.cfg.state,
           score: scored.score,
           total: scored.total,
+          mode: session.cfg.mode,
           source: "web"
         }),
         signal: ctrl ? ctrl.signal : undefined

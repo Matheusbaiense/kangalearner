@@ -1,0 +1,14 @@
+-- ══════════════════════════════════════════════════════════════
+-- 023: Drop legacy "profiles: update own" policy
+-- ══════════════════════════════════════════════════════════════
+-- Migration 002 created a permissive UPDATE policy named
+-- "profiles: update own" (colon + space). The security-hardening
+-- migrations (013, 022) introduced a stricter "profiles_update_own"
+-- (underscores) that adds `deleted_at IS NULL`, but they never dropped
+-- the original. Postgres OR's permissive policies together, so the
+-- legacy policy still grants UPDATE to soft-deleted accounts and
+-- bypasses the hardened check.
+--
+-- Drop the legacy policy so only the hardened "profiles_update_own"
+-- governs UPDATE access.
+DROP POLICY IF EXISTS "profiles: update own" ON profiles;

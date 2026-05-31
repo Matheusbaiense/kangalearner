@@ -92,7 +92,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("attempts: insert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 400 });
+    return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
 
   if (payload.category) {
@@ -113,8 +113,11 @@ export async function POST(request: NextRequest) {
       .then(({ error: statErr }) => {
         if (statErr) console.error("upsert_category_stat:", statErr.message);
       })
-      .catch(() => {});
+      .catch((err: unknown) => {
+        const msg = err instanceof Error ? err.message : String(err);
+        console.error("upsert_category_stat threw:", msg);
+      });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true }, { headers: response.headers });
 }

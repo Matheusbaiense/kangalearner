@@ -19,13 +19,17 @@ interface AttemptRow {
   is_correct: boolean;
   answered_at: string;
 }
-interface SessionRow {
+// Raw shape returned by the mock_sessions SELECT. `percent` is NOT a real column
+// (the DB has a generated `pct`), so it is derived in JS instead of selected.
+interface MockSessionDbRow {
   id: number | string;
   state: string;
   score: number;
   total: number;
-  percent: number;
   completed_at: string;
+}
+interface SessionRow extends MockSessionDbRow {
+  percent: number;
 }
 interface UserSettingsRow {
   daily_goal: number;
@@ -34,7 +38,9 @@ type DashboardSearchParams = {
   state?: string | string[];
 };
 
-const UTC_MINUS_8_OFFSET_MS = -8 * 60 * 60 * 1000;
+// Perth / Western Australia is UTC+8 (no DST). Streak day boundaries must use
+// the user's local WA day, so shift UTC forward by 8h before truncating to a date.
+const PERTH_OFFSET_MS = 8 * 60 * 60 * 1000;
 
 function errCode(e: unknown): string {
   if (e && typeof e === "object") {
@@ -48,10 +54,10 @@ function pct(correct: number, total: number) {
   return total > 0 ? Math.round((correct / total) * 100) : 0;
 }
 
-function dayKeyUtcMinus8(value: string | Date): string | null {
+function perthDayKey(value: string | Date): string | null {
   const date = value instanceof Date ? value : new Date(value);
   if (Number.isNaN(date.getTime())) return null;
-  return new Date(date.getTime() + UTC_MINUS_8_OFFSET_MS).toISOString().slice(0, 10);
+  return new Date(date.getTime() + PERTH_OFFSET_MS).toISOString().slice(0, 10);
 }
 
 function shiftDayKey(dayKey: string, deltaDays: number): string {
@@ -79,11 +85,11 @@ function weekLabel(dayKey: string): string {
 function streakForAttempts(attempts: Pick<AttemptRow, "answered_at">[]): number {
   const activeDays = new Set(
     attempts
-      .map((attempt) => dayKeyUtcMinus8(attempt.answered_at))
+      .map((attempt) => perthDayKey(attempt.answered_at))
       .filter((dayKey): dayKey is string => Boolean(dayKey))
   );
 
-  let day = dayKeyUtcMinus8(new Date());
+  let day = perthDayKey(new Date());
   let streak = 0;
   while (day && activeDays.has(day)) {
     streak++;
@@ -217,7 +223,7 @@ export default async function DashboardPage({
       .eq("is_correct", true),
     supabase!
       .from("mock_sessions")
-      .select("id, state, score, total, percent, completed_at")
+      .select("id, state, score, total, completed_at")
       .eq("user_id", user.id)
       .order("completed_at", { ascending: false })
       .limit(50),
@@ -256,7 +262,7 @@ export default async function DashboardPage({
       error: unknown;
     };
   const { data: sessions, error: sessionsError } = sessionsResult as {
-    data: SessionRow[] | null;
+    data: MockSessionDbRow[] | null;
     error: unknown;
   };
   const { data: settings, error: settingsError } = settingsResult as {
@@ -291,12 +297,12 @@ export default async function DashboardPage({
   const totalCorrect = attemptsCorrectCount ?? 0;
   const overallPct = pct(totalCorrect, totalAnswered);
   const dailyGoal = Math.max(1, settings?.daily_goal ?? 10);
-  const todayKey = dayKeyUtcMinus8(new Date());
+  const todayKey = perthDayKey(new Date());
 
   // Temporal analytics — last 90 days of question_attempts
   const temporalData = temporalAttempts ?? [];
   const answeredToday = todayKey
-    ? temporalData.filter((attempt) => dayKeyUtcMinus8(attempt.answered_at) === todayKey).length
+    ? temporalData.filter((attempt) => perthDayKey(attempt.answered_at) === todayKey).length
     : 0;
   const dailyGoalPct = Math.min(100, pct(answeredToday, dailyGoal));
   const streakDays = streakForAttempts(temporalData);
@@ -304,14 +310,14 @@ export default async function DashboardPage({
   // Weekly bar chart — built from temporal data (last 90 days covers 8+ weeks)
   const WEEKS = 8;
   const weekBuckets: { label: string; total: number; correct: number }[] = [];
-  const thisWeekStart = startOfWeekDayKey(todayKey ?? dayKeyUtcMinus8(new Date()) ?? "1970-01-01");
+  const thisWeekStart = startOfWeekDayKey(todayKey ?? perthDayKey(new Date()) ?? "1970-01-01");
 
   for (let i = WEEKS - 1; i >= 0; i--) {
     const weekStart = shiftDayKey(thisWeekStart, -i * 7);
     const weekEnd = shiftDayKey(weekStart, 7);
     const label = weekLabel(weekStart);
     const bucket = temporalData.filter((a) => {
-      const dayKey = dayKeyUtcMinus8(a.answered_at);
+      const dayKey = perthDayKey(a.answered_at);
       return Boolean(dayKey && dayKey >= weekStart && dayKey < weekEnd);
     });
     weekBuckets.push({
@@ -355,7 +361,10 @@ export default async function DashboardPage({
     .sort((a, b) => b[1].total - a[1].total)
     .slice(0, 10);
 
-  const allSessions = sessions ?? [];
+  const allSessions: SessionRow[] = (sessions ?? []).map((s) => ({
+    ...s,
+    percent: pct(s.score, s.total)
+  }));
   const bestSession =
     allSessions.length > 0
       ? allSessions.reduce((best, s) => (s.percent > best.percent ? s : best))

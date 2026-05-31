@@ -72,9 +72,11 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   const [authLoading, setAuthLoading] = useState(!initialNavUser);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
-  const [stateCode, setStateCode] = useState<string>(() =>
-    typeof window === "undefined" ? "WA" : readStoredState()
-  );
+  // Deterministic SSR value ("WA"); the persisted state is hydrated by the effect
+  // below. Reading localStorage in the initializer diverges the first client render
+  // from the server HTML → React hydration error #418 (aborts hydration, breaks
+  // every nav handler — logout, user menu, lang dropdown).
+  const [stateCode, setStateCode] = useState<string>("WA");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -215,11 +217,14 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   }, []);
 
   async function handleSignOut() {
-    const supabase = createClient();
-    await supabase.auth.signOut();
     setUserMenuOpen(false);
-    router.push("/");
-    router.refresh();
+    try {
+      const supabase = createClient();
+      await supabase.auth.signOut();
+    } catch {
+      /* ignore — force navigation below regardless */
+    }
+    window.location.assign("/");
   }
 
   const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
@@ -288,7 +293,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                     localStorage.setItem(SK.stateLegacy, code);
                   } catch {}
                   setStateCode(code);
-                  window.dispatchEvent(new CustomEvent("kanga:state-changed"));
+                  window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
                   router.refresh();
                 }}
               >
@@ -554,7 +559,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                       /* noop */
                     }
                     setStateCode(code);
-                    window.dispatchEvent(new CustomEvent("kanga:state-changed"));
+                    window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
                     router.refresh();
                     setMobileNavOpen(false);
                   }}

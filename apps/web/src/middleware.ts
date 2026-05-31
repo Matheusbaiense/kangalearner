@@ -11,7 +11,7 @@ function generateNonce(): string {
   return btoa(String.fromCharCode(...Array.from(bytes)));
 }
 
-/** Monta o CSP de produção com o nonce fornecido. */
+/** Monta o CSP com o nonce fornecido. Estrito em produção; relaxado em dev. */
 function buildCsp(nonce: string): string {
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL ?? "";
   let supabaseHost = "";
@@ -23,10 +23,28 @@ function buildCsp(nonce: string): string {
   const supabaseWss = supabaseHost ? `wss://${supabaseHost}` : "wss://*.supabase.co";
   const supabaseImgSrc = supabaseHost ? `https://${supabaseHost}` : "";
 
+  // Next.js dev mode (React Fast Refresh + eval source maps) needs 'unsafe-eval',
+  // and HMR opens a localhost websocket that must be allowed in connect-src. Also
+  // skip upgrade-insecure-requests so ws://localhost isn't forced to wss. None of
+  // this applies to the production bundle, which stays strict + nonce-only.
+  const isDev = process.env.NODE_ENV !== "production";
+  const scriptSrc = isDev
+    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com`
+    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com`;
+  const connectSrc = [
+    "connect-src 'self'",
+    supabaseUrl,
+    "https://api.stripe.com",
+    supabaseWss,
+    isDev ? "ws://localhost:* http://localhost:*" : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return [
     "default-src 'self'",
-    `script-src 'self' 'nonce-${nonce}' https://js.stripe.com`,
-    `connect-src 'self' ${supabaseUrl} https://api.stripe.com ${supabaseWss}`.trim(),
+    scriptSrc,
+    connectSrc,
     "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
     "font-src 'self' https://fonts.gstatic.com",
     [
@@ -44,7 +62,7 @@ function buildCsp(nonce: string): string {
     "object-src 'none'",
     "base-uri 'self'",
     "form-action 'self'",
-    "upgrade-insecure-requests"
+    ...(isDev ? [] : ["upgrade-insecure-requests"])
   ].join("; ");
 }
 
@@ -116,16 +134,24 @@ export async function middleware(request: NextRequest) {
 
   // --- Standard auth middleware for page routes ---
 
-  // Per-request nonce — forwarded to server components via x-nonce request header
+  // Per-request nonce — forwarded to server components via x-nonce request header.
+  // The CSP must also be set on the REQUEST headers so Next.js reads the nonce and
+  // stamps it onto its own inline hydration scripts (self.__next_f.push). Setting it
+  // only on the response leaves those scripts unnonce'd → blocked by the CSP →
+  // hydration never runs → the whole app becomes non-interactive (clicks do nothing).
   const nonce = generateNonce();
+  const csp = buildCsp(nonce);
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-nonce", nonce);
+  requestHeaders.set("Content-Security-Policy", csp);
 
   const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
   if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.next({ request: { headers: requestHeaders } });
+    const fallback = NextResponse.next({ request: { headers: requestHeaders } });
+    fallback.headers.set("Content-Security-Policy", csp);
+    return fallback;
   }
 
   let supabaseResponse = NextResponse.next({ request: { headers: requestHeaders } });
@@ -151,9 +177,9 @@ export async function middleware(request: NextRequest) {
 
   const search = request.nextUrl.search;
 
-  if (pathname.startsWith("/api/admin/") && !user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
+  // Note: /api/* (including /api/admin/*) is fully handled by the CORS branch
+  // above and never reaches here. Admin authorization is enforced per-handler
+  // via assertAdminRole(), not in middleware.
 
   const isProtected = PROTECTED_ROUTES.some((route) => pathname.startsWith(route));
   if (isProtected && !user) {
@@ -168,8 +194,8 @@ export async function middleware(request: NextRequest) {
     return NextResponse.redirect(new URL("/", request.url));
   }
 
-  // Attach nonce-based CSP to the final page response
-  supabaseResponse.headers.set("Content-Security-Policy", buildCsp(nonce));
+  // Attach the same nonce-based CSP to the final page response (browser enforcement)
+  supabaseResponse.headers.set("Content-Security-Policy", csp);
   return supabaseResponse;
 }
 

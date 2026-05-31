@@ -1,6 +1,9 @@
-// Auto-generated via Supabase MCP — project: kangalearner-prod (olgogtaeifyxwzencilo)
-// Last regenerated: 2026-05-22 (Sprint 11 — welcome_sent_at on profiles; full schema retained)
-// Regenerate: npx supabase gen types typescript --project-id olgogtaeifyxwzencilo --schema public
+// Auto-generated from the Supabase schema (public) — represents the intended/designed
+// schema (migrations 004/006/007), which the app code is built against.
+// NOTE: production currently lags these migrations (question_attempts.attempt_id and
+// user_category_stats are not yet applied in prod — see BACKLOG "Drift de schema").
+// Regenerate (project id from env, never hardcoded — see SEC-1):
+//   npx supabase gen types typescript --project-id "$SUPABASE_PROJECT_ID" --schema public
 
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 

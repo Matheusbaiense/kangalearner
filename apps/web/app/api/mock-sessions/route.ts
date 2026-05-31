@@ -73,6 +73,9 @@ export async function POST(request: NextRequest) {
   const total = payload.total;
   const score = payload.score;
   const passed = total > 0 && score / total >= WA_PASS_THRESHOLD;
+  // Populate `percent` at insert time so dashboard/history don't have to derive it
+  // (ARQ-2: column existed but was never written, leaving best-session/badges blank).
+  const percent = total > 0 ? Math.round((score / total) * 100) : 0;
 
   const { error } = await supabase.from("mock_sessions").insert({
     user_id: user.id,
@@ -82,6 +85,7 @@ export async function POST(request: NextRequest) {
     score,
     total,
     passed,
+    percent,
     time_seconds: null,
     answers: {},
     weak_categories: null,
@@ -91,7 +95,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("mock-sessions: insert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 400 });
+    return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true }, { headers: response.headers });
 }

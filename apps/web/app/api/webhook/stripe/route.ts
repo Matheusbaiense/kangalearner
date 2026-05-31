@@ -90,7 +90,7 @@ export async function POST(request: NextRequest) {
     .from("profiles")
     .select("role")
     .eq("stripe_customer_id", customerId)
-    .single();
+    .maybeSingle();
 
   if (profile?.role === "admin" || profile?.role === "super_admin") {
     console.warn("webhook/stripe: skipping role change for privileged user", customerId);
@@ -104,6 +104,16 @@ export async function POST(request: NextRequest) {
 
   if (updateError) {
     console.error("webhook/stripe: profile update failed:", updateError.code, updateError.message);
+    // Release the idempotency ledger so Stripe's retry can reprocess this event.
+    // Without this, the orphaned ledger row makes the retry short-circuit on the
+    // 23505 path and the subscription change is silently lost.
+    const { error: ledgerCleanupError } = await supabaseAdmin
+      .from("stripe_webhook_events")
+      .delete()
+      .eq("event_id", event.id);
+    if (ledgerCleanupError) {
+      console.error("webhook/stripe: ledger cleanup failed:", ledgerCleanupError.code);
+    }
     return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
 

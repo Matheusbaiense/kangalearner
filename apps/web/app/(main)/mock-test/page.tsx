@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
@@ -41,16 +41,20 @@ export default function MockTestSetupPage() {
   const router = useRouter();
   const { uiLang: lang, s } = useLang();
 
-  const [selectedState, setSelectedState] = useState<StateCode>(() => {
-    if (typeof window === "undefined") return "WA";
+  // Deterministic SSR value ("WA"); the real persisted state is hydrated in the
+  // effect below. Reading localStorage in the initializer would make the first
+  // client render diverge from the server HTML → React hydration error #418,
+  // which aborts hydration and leaves onClick handlers (handleStart) unattached.
+  const [selectedState, setSelectedState] = useState<StateCode>("WA");
+
+  useEffect(() => {
     try {
       const raw = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy);
-      if (raw && STATE_CODES.includes(raw as StateCode)) return raw as StateCode;
+      if (raw && STATE_CODES.includes(raw as StateCode)) setSelectedState(raw as StateCode);
     } catch {
       // localStorage unavailable
     }
-    return "WA";
-  });
+  }, []);
 
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 

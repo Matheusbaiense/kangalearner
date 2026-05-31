@@ -67,6 +67,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ ok: true, inserted: 0 });
   }
 
+  // P2-04: never trust a client-supplied future timestamp (would let a client
+  // pre-claim "today" toward streaks/goals). We still honour legitimate PAST
+  // timestamps so an offline guest's real answer history survives the migration.
+  const nowIso = new Date().toISOString();
+  function safeAnsweredAt(value: string | undefined): string {
+    if (!value) return nowIso;
+    const ms = Date.parse(value);
+    if (Number.isNaN(ms) || ms > Date.now()) return nowIso;
+    return new Date(ms).toISOString();
+  }
+
   const MAX_BULK = 500;
   if (attempts.length > MAX_BULK) {
     return NextResponse.json({ error: "too_many_attempts", max: MAX_BULK }, { status: 400 });
@@ -96,7 +107,7 @@ export async function POST(request: NextRequest) {
       is_correct: a.is_correct,
       chosen: a.chosen ?? null,
       source: normalizeAttemptSource(a.source),
-      answered_at: a.answered_at ?? new Date().toISOString()
+      answered_at: safeAnsweredAt(a.answered_at)
     }));
 
   if (rows.length === 0) {
@@ -110,7 +121,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("attempts/bulk: upsert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 400 });
+    return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
 
   return NextResponse.json({ ok: true, accepted: rows.length }, { headers: response.headers });
