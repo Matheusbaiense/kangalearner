@@ -319,7 +319,11 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const searchParams = useSearchParams();
   const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
-  const [selectedState, setSelectedState] = useState<StateCode>(() => readStoredState());
+  // Deterministic SSR value ("WA"); hydrated from localStorage in the mount effect
+  // below. Reading localStorage in the initializer diverges the first client render
+  // from the server HTML → React hydration error #418, aborting hydration and
+  // leaving answer-option onClick handlers unattached.
+  const [selectedState, setSelectedState] = useState<StateCode>("WA");
   const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : (initialMode ?? "all"));
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
@@ -332,8 +336,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
 
-  /* ── Load answered + saved from localStorage ── */
+  /* ── Load persisted state + answered + saved from localStorage ── */
   useEffect(() => {
+    setSelectedState(readStoredState());
     try {
       const raw = localStorage.getItem(SK.answered);
       if (raw) setAnswered(JSON.parse(raw));
@@ -467,7 +472,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         }, 900);
       }
     },
-    [answered, simQueue, selectedState, syncAttempt]
+    [QS, answered, simQueue, selectedState, syncAttempt]
   );
 
   /* ── Toggle save ── */
@@ -517,7 +522,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
             className="btn btn-primary"
             onClick={() => window.location.reload()}
           >
-            Retry
+            {s.retry}
           </button>
         </div>
       </div>
@@ -538,7 +543,8 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         <div className="page-header">
           <h1 className="page-title">{s.practice}</h1>
           <p className="page-sub">
-            {QS.length} questions · {CATEGORIES.length} topics · {selectedState} road rules
+            {QS.length} {s.questionsWord} · {CATEGORIES.length} {s.topicsWord} · {selectedState}{" "}
+            {s.roadRulesWord}
           </p>
         </div>
 

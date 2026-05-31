@@ -284,7 +284,7 @@ export default function MockTestSessionPage() {
               </span>
             )}
             <span aria-live="polite">
-              {Math.min(answeredCount + 1, total)} / {total}
+              {activeIndex + 1} / {total}
             </span>
           </div>
         </div>
