@@ -184,30 +184,34 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
     // blocking Supabase), unblock the nav after 4 s instead of staying frozen.
     const fallbackTimer = setTimeout(() => setAuthLoading(false), 4000);
 
-    const { data: listener } = supabase.auth.onAuthStateChange(async (event, session) => {
-      if (session?.user) {
-        await buildNavUser(session.user);
-        clearTimeout(fallbackTimer);
-        setAuthLoading(false);
-      } else if (event === "SIGNED_OUT") {
-        // Explicit sign-out — always clear regardless of initial state.
-        setUser(null);
-        clearTimeout(fallbackTimer);
-        setAuthLoading(false);
-      } else {
-        // INITIAL_SESSION or TOKEN_REFRESHED fired with no session. This can happen when the
-        // browser client reads stale / mismatched cookies. Try getSession() as recovery first.
-        const { data: recovered } = await supabase!.auth.getSession();
-        if (recovered.session?.user) {
-          await buildNavUser(recovered.session.user);
-        } else if (!initialNavUser) {
-          // Only clear if the server layout also had no user — don't override a server-confirmed
-          // logged-in state with a potentially buggy client-side event.
+    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
+      // IMPORTANT: Supabase invokes this callback while holding the GoTrue auth lock
+      // (Web Locks API, "lock:sb-<ref>-auth-token"). Calling any other auth/data method
+      // (getSession, .from(), getUser) synchronously inside the callback re-acquires the
+      // same exclusive lock and deadlocks — the lock is never released, freezing every
+      // subsequent auth call across the entire app. Defer all async work to a macrotask so
+      // the lock is released before we touch Supabase again.
+      setTimeout(async () => {
+        if (session?.user) {
+          await buildNavUser(session.user);
+        } else if (event === "SIGNED_OUT") {
+          // Explicit sign-out — always clear regardless of initial state.
           setUser(null);
+        } else {
+          // INITIAL_SESSION or TOKEN_REFRESHED fired with no session. This can happen when the
+          // browser client reads stale / mismatched cookies. Try getSession() as recovery first.
+          const { data: recovered } = await supabase!.auth.getSession();
+          if (recovered.session?.user) {
+            await buildNavUser(recovered.session.user);
+          } else if (!initialNavUser) {
+            // Only clear if the server layout also had no user — don't override a server-confirmed
+            // logged-in state with a potentially buggy client-side event.
+            setUser(null);
+          }
         }
         clearTimeout(fallbackTimer);
         setAuthLoading(false);
-      }
+      }, 0);
     });
 
     return () => {
