@@ -72,159 +72,161 @@ const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
 );
 
 /* ── QuizCard ── */
-const QuizCard = memo(function QuizCard({
-  q,
-  lang,
-  isBilingual,
-  answered,
-  onPick,
-  answerLabel,
-  isSaved,
-  onToggleSave,
-  saveLabel,
-  unsaveLabel
-}: {
-  q: Question;
-  lang: UiLang;
-  isBilingual: boolean;
-  answered: Answered;
-  onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
-  answerLabel: string;
-  isSaved?: boolean;
-  onToggleSave?: (qid: string) => void;
-  saveLabel?: string;
-  unsaveLabel?: string;
-}) {
-  const bilingual = isBilingual;
-  const state = answered[q.id];
-  const catData = CATEGORY_BY_KEY.get(q.cat);
-  const CatIco = categoryLucideIcon(q.cat);
-  const expText = tx(q.exp, lang);
-  const expTextEn = bilingual ? tx(q.exp, "en") : null;
-  const tipText = q.tip ? tx(q.tip, lang) : "";
+const QuizCard = memo(
+  function QuizCard({
+    q,
+    lang,
+    isBilingual,
+    answered,
+    onPick,
+    answerLabel,
+    isSaved,
+    onToggleSave,
+    saveLabel,
+    unsaveLabel
+  }: {
+    q: Question;
+    lang: UiLang;
+    isBilingual: boolean;
+    answered: Answered;
+    onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
+    answerLabel: string;
+    isSaved?: boolean;
+    onToggleSave?: (qid: string) => void;
+    saveLabel?: string;
+    unsaveLabel?: string;
+  }) {
+    const bilingual = isBilingual;
+    const state = answered[q.id];
+    const catData = CATEGORY_BY_KEY.get(q.cat);
+    const CatIco = categoryLucideIcon(q.cat);
+    const expText = tx(q.exp, lang);
+    const expTextEn = bilingual ? tx(q.exp, "en") : null;
+    const tipText = q.tip ? tx(q.tip, lang) : "";
 
-  return (
-    <div className="qcard" id={q.id}>
-      <div className="qmeta">
-        <span className="qnum">{q.id}</span>
-        <span className="qcat-badge">
-          <CatIco className="qcat-ico" aria-hidden />
-          {catData?.label?.[lang] ?? q.cat}
-        </span>
-        {onToggleSave && (
-          <button
-            onClick={() => onToggleSave(q.id)}
-            title={isSaved ? unsaveLabel : saveLabel}
-            aria-label={isSaved ? unsaveLabel : saveLabel}
-            style={{
-              marginLeft: "auto",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "1.1rem",
-              lineHeight: 1,
-              padding: "0 2px",
-              color: isSaved ? "var(--green)" : "var(--muted)",
-              flexShrink: 0
-            }}
-          >
-            {isSaved ? "★" : "☆"}
-          </button>
-        )}
-      </div>
-
-      <p className="qtext">{tx(q.q, lang)}</p>
-      {bilingual && q.q.en && <p className="qtext-en">{q.q.en}</p>}
-
-      {(() => {
-        const legacySign = q.sign?.match(/^assets\/icons\/signs\/(.+)$/);
-        const signSrc = q.sign?.startsWith("/")
-          ? q.sign
-          : legacySign
-            ? `/icons/signs/${legacySign[1]}`
-            : null;
-        const capLabel =
-          q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
-        if (!signSrc && !capLabel) return null;
-        return (
-          <div className="sign-box">
-            {signSrc ? (
-              <img
-                src={signSrc}
-                alt={capLabel ?? "Road sign"}
-                loading="lazy"
-                decoding="async"
-                style={{ maxWidth: "100%", height: "auto" }}
-              />
-            ) : null}
-            {capLabel ? <div className="img-cap">{capLabel}</div> : null}
-          </div>
-        );
-      })()}
-
-      <div className="opts">
-        {q.opts.map((o) => {
-          const isChosen = state?.chosen === o.l;
-          const isCorrect = Boolean(o.ok);
-          let cls = "opt";
-          if (state) {
-            if (isCorrect) cls += state.correct ? " correct" : " missed";
-            else if (isChosen && !state.correct) cls += " wrong";
-          }
-          return (
+    return (
+      <div className="qcard" id={q.id}>
+        <div className="qmeta">
+          <span className="qnum">{q.id}</span>
+          <span className="qcat-badge">
+            <CatIco className="qcat-ico" aria-hidden />
+            {catData?.label?.[lang] ?? q.cat}
+          </span>
+          {onToggleSave && (
             <button
-              key={o.l}
-              className={cls}
-              data-done={state ? "1" : undefined}
-              onClick={(ev) => !state && onPick(q.id, o.l, ev)}
+              onClick={() => onToggleSave(q.id)}
+              title={isSaved ? unsaveLabel : saveLabel}
+              aria-label={isSaved ? unsaveLabel : saveLabel}
+              style={{
+                marginLeft: "auto",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "1.1rem",
+                lineHeight: 1,
+                padding: "0 2px",
+                color: isSaved ? "var(--green)" : "var(--muted)",
+                flexShrink: 0
+              }}
             >
-              <span className="oletter">{o.l}</span>
-              <span className="otext">
-                {tx(o.t, lang)}
-                {bilingual && o.t.en && <span className="otext-en">{o.t.en}</span>}
-              </span>
+              {isSaved ? "★" : "☆"}
             </button>
-          );
-        })}
-      </div>
-
-      {state && expText && (
-        <div className="answer show">
-          <div className="alabel">
-            <Icons.success className="alabel-ico" aria-hidden />
-            {answerLabel}
-          </div>
-          <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
-          {bilingual && expTextEn && (
-            <div
-              className="atext atext-en"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(expTextEn) }}
-            />
-          )}
-          {tipText && (
-            <div className="atip">
-              <Icons.lightbulb className="atip-ico" aria-hidden />
-              <span>{tipText}</span>
-            </div>
           )}
         </div>
-      )}
-    </div>
-  );
-},
-// Re-render a card only when ITS OWN answer state (or display inputs) change.
-// answered[q.id] keeps its reference for untouched questions (shallow spread in
-// pick). onPick/onToggleSave are stable (pick reads answered via a ref;
-// toggleSave is a functional setState), so omitting them is safe.
-(prev, next) =>
-  prev.q === next.q &&
-  prev.lang === next.lang &&
-  prev.isBilingual === next.isBilingual &&
-  prev.answered[prev.q.id] === next.answered[next.q.id] &&
-  prev.isSaved === next.isSaved &&
-  prev.answerLabel === next.answerLabel &&
-  prev.saveLabel === next.saveLabel &&
-  prev.unsaveLabel === next.unsaveLabel);
+
+        <p className="qtext">{tx(q.q, lang)}</p>
+        {bilingual && q.q.en && <p className="qtext-en">{q.q.en}</p>}
+
+        {(() => {
+          const legacySign = q.sign?.match(/^assets\/icons\/signs\/(.+)$/);
+          const signSrc = q.sign?.startsWith("/")
+            ? q.sign
+            : legacySign
+              ? `/icons/signs/${legacySign[1]}`
+              : null;
+          const capLabel =
+            q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
+          if (!signSrc && !capLabel) return null;
+          return (
+            <div className="sign-box">
+              {signSrc ? (
+                <img
+                  src={signSrc}
+                  alt={capLabel ?? "Road sign"}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              ) : null}
+              {capLabel ? <div className="img-cap">{capLabel}</div> : null}
+            </div>
+          );
+        })()}
+
+        <div className="opts">
+          {q.opts.map((o) => {
+            const isChosen = state?.chosen === o.l;
+            const isCorrect = Boolean(o.ok);
+            let cls = "opt";
+            if (state) {
+              if (isCorrect) cls += state.correct ? " correct" : " missed";
+              else if (isChosen && !state.correct) cls += " wrong";
+            }
+            return (
+              <button
+                key={o.l}
+                className={cls}
+                data-done={state ? "1" : undefined}
+                onClick={(ev) => !state && onPick(q.id, o.l, ev)}
+              >
+                <span className="oletter">{o.l}</span>
+                <span className="otext">
+                  {tx(o.t, lang)}
+                  {bilingual && o.t.en && <span className="otext-en">{o.t.en}</span>}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {state && expText && (
+          <div className="answer show">
+            <div className="alabel">
+              <Icons.success className="alabel-ico" aria-hidden />
+              {answerLabel}
+            </div>
+            <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
+            {bilingual && expTextEn && (
+              <div
+                className="atext atext-en"
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(expTextEn) }}
+              />
+            )}
+            {tipText && (
+              <div className="atip">
+                <Icons.lightbulb className="atip-ico" aria-hidden />
+                <span>{tipText}</span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  },
+  // Re-render a card only when ITS OWN answer state (or display inputs) change.
+  // answered[q.id] keeps its reference for untouched questions (shallow spread in
+  // pick). onPick/onToggleSave are stable (pick reads answered via a ref;
+  // toggleSave is a functional setState), so omitting them is safe.
+  (prev, next) =>
+    prev.q === next.q &&
+    prev.lang === next.lang &&
+    prev.isBilingual === next.isBilingual &&
+    prev.answered[prev.q.id] === next.answered[next.q.id] &&
+    prev.isSaved === next.isSaved &&
+    prev.answerLabel === next.answerLabel &&
+    prev.saveLabel === next.saveLabel &&
+    prev.unsaveLabel === next.unsaveLabel
+);
 
 /* ── ScoreSidebar ── */
 function ScoreSidebar({
