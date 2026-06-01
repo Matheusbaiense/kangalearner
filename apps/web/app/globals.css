@@ -3473,6 +3473,68 @@ a:focus-visible,
   margin: 0;
 }
 
+/* ── Gamification (guest-first): streak / XP / daily goal ── */
+.game-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--paper);
+  padding: 14px 16px;
+}
+.game-card__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.game-card__streak {
+  font-weight: 800;
+  color: var(--orange, #f5a300);
+}
+.game-card__level {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.game-card__goal-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.game-card__track {
+  height: 8px;
+  border-radius: 99px;
+  background: var(--border);
+  overflow: hidden;
+}
+.game-card__fill {
+  height: 100%;
+  border-radius: 99px;
+  background: var(--green, #2e7d5b);
+  transition: width 0.3s ease;
+}
+.game-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  border: 1px solid var(--border);
+  background: var(--paper);
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+.game-chip__sep {
+  color: var(--muted);
+}
+.game-chip__xp {
+  color: var(--muted);
+  font-weight: 700;
+}
+
 /* ── Supervisor checklist ── */
 .supervisor-check {
   display: flex;

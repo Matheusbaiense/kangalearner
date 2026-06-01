@@ -7,6 +7,9 @@ import { useQuestions } from "@/hooks/useQuestions";
 import { useLang } from "@/contexts/LangContext";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { tx, type UiLang } from "@/lib/i18n";
+import { useGameProgress } from "@/hooks/useGameProgress";
+import { DailyProgress } from "@/components/gamification/DailyProgress";
+import { XP_PER_CORRECT } from "@/lib/gamification/progress";
 
 /**
  * Tourist / Newcomer Quick Quiz — stolen from DriverKnowledgeTests' tourist quiz.
@@ -108,6 +111,7 @@ type Phase = "intro" | "quiz" | "result";
 export default function QuickQuizPage() {
   const { questions: QS, loading, error } = useQuestions();
   const { uiLang: lang, isBilingual, s } = useLang();
+  const { progress, award } = useGameProgress();
   const c = COPY[lang];
 
   const [phase, setPhase] = useState<Phase>("intro");
@@ -140,7 +144,10 @@ export default function QuickQuizPage() {
     const q = quiz[idx];
     const opt = q.opts.find((o) => o.l === letter);
     setPicked(letter);
-    if (opt?.ok) setScore((n) => n + 1);
+    if (opt?.ok) {
+      setScore((n) => n + 1);
+      award(XP_PER_CORRECT);
+    }
   }
 
   function next() {
@@ -216,12 +223,12 @@ export default function QuickQuizPage() {
         )}
 
         {phase === "result" && (
-          <ResultView
-            score={score}
-            total={quiz.length}
-            c={c}
-            onRetry={retry}
-          />
+          <>
+            <ResultView score={score} total={quiz.length} c={c} onRetry={retry} />
+            <div style={{ marginTop: 20 }}>
+              <DailyProgress progress={progress} lang={lang} />
+            </div>
+          </>
         )}
       </div>
     </main>
@@ -305,10 +312,7 @@ function QuizStep({
         {picked && expText && (
           <div className="answer show">
             <div className="alabel">{answerLabel}</div>
-            <div
-              className="atext"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }}
-            />
+            <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
           </div>
         )}
       </div>

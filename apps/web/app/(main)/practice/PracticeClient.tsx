@@ -12,6 +12,13 @@ import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { useLang } from "@/contexts/LangContext";
 import { tx, type UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
+import { useGameProgress } from "@/hooks/useGameProgress";
+import { DailyProgress } from "@/components/gamification/DailyProgress";
+import {
+  XP_PER_CORRECT,
+  XP_PER_MOCK_PASS,
+  XP_PER_MOCK_COMPLETE
+} from "@/lib/gamification/progress";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -319,6 +326,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const searchParams = useSearchParams();
   const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
+  const { progress, award } = useGameProgress();
   // Deterministic SSR value ("WA"); hydrated from localStorage in the mount effect
   // below. Reading localStorage in the initializer diverges the first client render
   // from the server HTML → React hydration error #418, aborting hydration and
@@ -440,6 +448,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       if (correct) {
         const rect = (ev.target as HTMLElement).getBoundingClientRect();
         spawnConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        award(XP_PER_CORRECT);
       }
 
       syncAttempt(qid, q.cat, correct, letter);
@@ -454,6 +463,11 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               simResultRef.current = result;
               setSimResult(result);
               setSimDone(true);
+              award(
+                score / simQueue.length >= WA_PASS_THRESHOLD
+                  ? XP_PER_MOCK_PASS
+                  : XP_PER_MOCK_COMPLETE
+              );
               fetch("/api/mock-sessions", {
                 method: "POST",
                 headers: { "content-type": "application/json" },
@@ -472,7 +486,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         }, 900);
       }
     },
-    [QS, answered, simQueue, selectedState, syncAttempt]
+    [QS, answered, simQueue, selectedState, syncAttempt, award]
   );
 
   /* ── Toggle save ── */
@@ -541,7 +555,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     <div className="app-page">
       <div className="app-container app-section">
         <div className="page-header">
-          <h1 className="page-title">{s.practice}</h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <h1 className="page-title" style={{ margin: 0 }}>
+              {s.practice}
+            </h1>
+            {progress.totalXp > 0 && <DailyProgress progress={progress} lang={lang} compact />}
+          </div>
           <p className="page-sub">
             {QS.length} {s.questionsWord} · {CATEGORIES.length} {s.topicsWord} · {selectedState}{" "}
             {s.roadRulesWord}
