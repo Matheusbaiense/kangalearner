@@ -1,0 +1,59 @@
+name: Database Backup
+
+# Backup semanal cifrado do Postgres (Supabase) para storage externo.
+# Independe do plano Supabase. NÃO substitui o PITR do plano Pro — é a 2ª camada.
+#
+# Secrets necessários no repositório (Settings → Secrets and variables → Actions):
+#   SUPABASE_DB_URL        connection string direta (postgresql://...:5432/postgres)
+#   BACKUP_ENCRYPTION_KEY  passphrase forte para cifrar o dump (AES-256)
+#   BACKUP_BUCKET          nome do bucket S3/R2/B2
+#   BACKUP_S3_ENDPOINT     endpoint do provider (ex.: https://<acct>.r2.cloudflarestorage.com)
+#   BACKUP_AWS_KEY         access key id
+#   BACKUP_AWS_SECRET      secret access key
+
+on:
+  schedule:
+    - cron: "0 16 * * 0" # domingo 16:00 UTC ≈ 02:00 AEDT (Sydney) — fora de pico
+  workflow_dispatch: {}
+
+concurrency:
+  group: db-backup
+  cancel-in-progress: false
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Install PostgreSQL 17 client
+        run: |
+          sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+          curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /usr/share/keyrings/pgdg.gpg
+          sudo sed -i 's|deb |deb [signed-by=/usr/share/keyrings/pgdg.gpg] |' /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update && sudo apt-get install -y postgresql-client-17
+
+      - name: Dump, encrypt and upload
+        env:
+          PGCONNECT_TIMEOUT: "15"
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+          BACKUP_BUCKET: ${{ secrets.BACKUP_BUCKET }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.BACKUP_AWS_KEY }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_AWS_SECRET }}
+          AWS_DEFAULT_REGION: auto
+        run: |
+          set -euo pipefail
+          FILE="kanga-$(date -u +%Y%m%d-%H%M%S).sql.gz.enc"
+          pg_dump --no-owner --no-privileges "$SUPABASE_DB_URL" \
+            | gzip -9 \
+            | openssl enc -aes-256-cbc -pbkdf2 -salt -pass env:BACKUP_ENCRYPTION_KEY \
+            > "$FILE"
+          test -s "$FILE" # falha se o backup estiver vazio
+          aws s3 cp "$FILE" "s3://$BACKUP_BUCKET/kangalearner/$FILE" \
+            --endpoint-url "${{ secrets.BACKUP_S3_ENDPOINT }}"
+          echo "Backup enviado: $FILE ($(du -h "$FILE" | cut -f1))"
+
+      # Restore (documentação):
+      #   openssl enc -d -aes-256-cbc -pbkdf2 -pass env:BACKUP_ENCRYPTION_KEY -in FILE \
+      #     | gunzip | psql "$STAGING_DB_URL"
+      # Testar restauração em um projeto Supabase de staging ao menos 1x/mês.

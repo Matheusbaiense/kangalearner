@@ -6,13 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 import { useLang } from "@/contexts/LangContext";
-
-function getAppOrigin(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
-  if (fromEnv) return fromEnv;
-  if (typeof window !== "undefined") return window.location.origin;
-  return "";
-}
+import { getAppOrigin } from "@/lib/auth/getAppOrigin";
 
 function LoginForm() {
   const searchParams = useSearchParams();

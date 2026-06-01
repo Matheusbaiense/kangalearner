@@ -295,9 +295,15 @@ export default function AccountPage() {
     setUploadingAvatar(true);
     setAvatarMsg(null);
     try {
-      await fetch("/api/profile/avatar", { method: "DELETE" });
+      const res = await fetch("/api/profile/avatar", { method: "DELETE" });
+      if (!res.ok) {
+        const json = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(json.error ?? s.accountUploadFailed);
+      }
       setAvatarUrl(null);
       setAvatarMsg({ text: s.accountAvatarRemoved, ok: true });
+    } catch (err) {
+      setAvatarMsg({ text: (err as Error).message, ok: false });
     } finally {
       setUploadingAvatar(false);
     }

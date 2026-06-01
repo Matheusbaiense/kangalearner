@@ -4,13 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
-
-function getAppOrigin(): string {
-  const fromEnv = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "");
-  if (fromEnv) return fromEnv;
-  if (typeof window !== "undefined") return window.location.origin;
-  return "";
-}
+import { getAppOrigin } from "@/lib/auth/getAppOrigin";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");

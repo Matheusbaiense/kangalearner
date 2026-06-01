@@ -12,6 +12,7 @@ import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { useLang } from "@/contexts/LangContext";
 import { tx, type UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
+import { pct } from "@/lib/percent";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -51,10 +52,6 @@ function persistState(code: StateCode): void {
 type Answered = Record<string, { chosen: string; correct: boolean }>;
 
 /* ── helpers ── */
-function pct(correct: number, total: number) {
-  return total > 0 ? Math.round((correct / total) * 100) : 0;
-}
-
 function spawnConfetti(x: number, y: number) {
   const colors = ["#F4A900", "#30D158", "#FFBE33", "#fff", "#52B788"];
   for (let i = 0; i < 20; i++) {

@@ -5,6 +5,7 @@ import { Flame, Target } from "lucide-react";
 import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
+import { pct } from "@/lib/percent";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
 import { StateProgressSelector } from "./StateProgressSelector";
 import type { AuStateCode } from "./state-options";
@@ -38,10 +39,6 @@ export type DashboardClientProps = {
   weakTopics: CategoryStat[];
   sessions: DashboardMockSession[];
 };
-
-function pct(correct: number, total: number) {
-  return total > 0 ? Math.round((correct / total) * 100) : 0;
-}
 
 export function DashboardClient({
   displayName,

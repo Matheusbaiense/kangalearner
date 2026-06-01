@@ -8,6 +8,7 @@ import { useQuestions } from "@/hooks/useQuestions";
 import { SK } from "@/lib/storageKeys";
 import { AuthNudge } from "@/components/ui/AuthNudge";
 import { createClient } from "@/lib/supabase/client";
+import { pct } from "@/lib/percent";
 
 /* ── Types ── */
 type AnswerRecord = Record<string, { chosen: string; correct: boolean }>;
@@ -20,10 +21,6 @@ interface CatStat {
 }
 
 /* ── Helpers ── */
-function pct(correct: number, total: number) {
-  return total > 0 ? Math.round((correct / total) * 100) : 0;
-}
-
 function accuracyColor(acc: number, total: number) {
   if (total === 0) return "var(--muted)";
   if (acc >= WA_PASS_THRESHOLD * 100) return "var(--green)";

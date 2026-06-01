@@ -164,16 +164,21 @@ export default function AdminPage() {
 
   const loadUsers = useCallback(async () => {
     setUsersLoading(true);
+    setError(null);
     const params = new URLSearchParams({ page: String(page), limit: "50" });
     if (search) params.set("search", search);
     if (roleFilter) params.set("role", roleFilter);
-    const res = await fetch(`/api/admin/users?${params}`);
-    if (res.ok) {
+    try {
+      const res = await fetch(`/api/admin/users?${params}`);
+      if (!res.ok) throw new Error("Failed to load users");
       const data = await res.json();
       setUsers(data.users);
       setUsersTotal(data.total);
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setUsersLoading(false);
     }
-    setUsersLoading(false);
   }, [page, search, roleFilter]);
 
   useEffect(() => {
@@ -185,13 +190,23 @@ export default function AdminPage() {
 
   async function changeRole(userId: string, newRole: string) {
     setUpdatingRole(userId);
-    await fetch("/api/admin/users", {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, role: newRole })
-    });
-    await loadUsers();
-    setUpdatingRole(null);
+    setError(null);
+    try {
+      const res = await fetch("/api/admin/users", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId, role: newRole })
+      });
+      if (!res.ok) {
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(body.error ?? "Failed to update role");
+      }
+      await loadUsers();
+    } catch (e) {
+      setError((e as Error).message);
+    } finally {
+      setUpdatingRole(null);
+    }
   }
 
   return (
