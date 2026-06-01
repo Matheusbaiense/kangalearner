@@ -99,6 +99,16 @@ const NEWCOMER_LINKS: {
   desc: Record<UiLang, string>;
 }[] = [
   {
+    href: "/today",
+    icon: "📅",
+    label: { en: "Today", pt: "Hoje", es: "Hoy" },
+    desc: {
+      en: "Your progress + next action",
+      pt: "Seu progresso + próxima ação",
+      es: "Tu progreso + próxima acción"
+    }
+  },
+  {
     href: "/journey",
     icon: "🗺️",
     label: { en: "Licence journey", pt: "Jornada da licença", es: "Recorrido de licencia" },

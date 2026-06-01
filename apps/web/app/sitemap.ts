@@ -12,6 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/practice`, lastModified: now, changeFrequency: "weekly", priority: 0.8 },
     { url: `${base}/mock-test`, lastModified: now, changeFrequency: "weekly", priority: 0.9 },
     { url: `${base}/quick-quiz`, lastModified: now, changeFrequency: "monthly", priority: 0.8 },
+    { url: `${base}/today`, lastModified: now, changeFrequency: "weekly", priority: 0.6 },
     {
       url: `${base}/overseas-licence`,
       lastModified: now,
