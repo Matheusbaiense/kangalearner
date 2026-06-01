@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { createServerClient } from "@supabase/ssr";
+import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
@@ -23,25 +23,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
 
-  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-  const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!supabaseUrl || !supabaseAnonKey) {
-    return NextResponse.json({ error: "missing_env" }, { status: 500 });
-  }
-
-  const response = NextResponse.next();
-  const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
-    cookies: {
-      getAll() {
-        return request.cookies.getAll();
-      },
-      setAll(cookiesToSet) {
-        cookiesToSet.forEach(({ name, value, options }) =>
-          response.cookies.set(name, value, options)
-        );
-      }
-    }
-  });
+  const { supabase, cookieResponse } = createRouteHandlerClient(request);
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
@@ -97,5 +79,5 @@ export async function POST(request: NextRequest) {
     console.error("mock-sessions: insert failed", error.code);
     return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
-  return NextResponse.json({ ok: true }, { headers: response.headers });
+  return NextResponse.json({ ok: true }, { headers: cookieResponse.headers });
 }

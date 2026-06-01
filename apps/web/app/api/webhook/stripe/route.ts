@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import Stripe from "stripe";
+import * as Sentry from "@sentry/nextjs";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { log, mask } from "@/lib/log";
 
@@ -38,7 +39,8 @@ export async function POST(request: NextRequest) {
     event = getStripe().webhooks.constructEvent(rawBody, signature, webhookSecret);
   } catch (err) {
     const msg = err instanceof Error ? err.message : "signature_verification_failed";
-    console.error("webhook/stripe: signature error:", msg);
+    log("error", "stripe.webhook.signature_error", { msg });
+    Sentry.captureException(err, { tags: { area: "stripe_webhook", step: "signature" } });
     return NextResponse.json({ error: "invalid_signature" }, { status: 400 });
   }
 
@@ -104,7 +106,14 @@ export async function POST(request: NextRequest) {
     .eq("stripe_customer_id", customerId);
 
   if (updateError) {
-    console.error("webhook/stripe: profile update failed:", updateError.code, updateError.message);
+    log("error", "stripe.webhook.profile_update_failed", { code: updateError.code });
+    Sentry.captureException(
+      new Error(`stripe webhook profile update failed: ${updateError.code}`),
+      {
+        tags: { area: "stripe_webhook", step: "profile_update" },
+        extra: { eventId: event.id }
+      }
+    );
     // Release the idempotency ledger so Stripe's retry can reprocess this event.
     // Without this, the orphaned ledger row makes the retry short-circuit on the
     // 23505 path and the subscription change is silently lost.
