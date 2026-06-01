@@ -2206,10 +2206,16 @@ a:focus-visible,
   }
 }
 
-/* ── Show hamburger, hide main-nav on mobile ── */
-@media (max-width: 640px) {
+/* ── Show hamburger, hide main-nav once the full desktop nav no longer fits ──
+   The brand + 7 links + 4 right-controls need ~1095px; below that the desktop
+   nav overflowed horizontally (visible strip on the right). Collapse the link
+   list into the hamburger drawer from 1100px down; the right controls stay. */
+@media (max-width: 1100px) {
   .nav-hamburger {
     display: flex;
+  }
+  .site-header .main-nav {
+    display: none;
   }
 }
 
