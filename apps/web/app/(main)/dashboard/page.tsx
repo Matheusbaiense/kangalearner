@@ -4,6 +4,7 @@ import { createClient } from "@/lib/supabase/server";
 import { MigrateLocalProgress } from "@/components/MigrateLocalProgress";
 import { DashboardClient } from "./DashboardClient";
 import { AU_STATE_OPTIONS, normalizeAuState, type AuStateCode } from "./state-options";
+import { pct } from "@/lib/percent";
 
 export const metadata = { title: "Dashboard — KangaLearner" };
 
@@ -48,10 +49,6 @@ function errCode(e: unknown): string {
     if ("message" in e) return String((e as { message: unknown }).message);
   }
   return String(e);
-}
-
-function pct(correct: number, total: number) {
-  return total > 0 ? Math.round((correct / total) * 100) : 0;
 }
 
 function perthDayKey(value: string | Date): string | null {

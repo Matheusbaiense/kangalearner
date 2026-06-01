@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import Stripe from "stripe";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { log, mask } from "@/lib/log";
 
 // Stripe SDK — lazy init para evitar erro em build sem env vars
 let _stripe: Stripe | null = null;
@@ -93,7 +94,7 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
 
   if (profile?.role === "admin" || profile?.role === "super_admin") {
-    console.warn("webhook/stripe: skipping role change for privileged user", customerId);
+    log("warn", "stripe.webhook.skip_privileged_user", { customerId: mask(customerId) });
     return NextResponse.json({ received: true });
   }
 

@@ -30,7 +30,18 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   outputFileTracingRoot: require("node:path").join(__dirname, "../../"),
   images: {
-    remotePatterns: imageRemotePatterns
+    remotePatterns: imageRemotePatterns,
+    formats: ["image/avif", "image/webp"]
+  },
+  async redirects() {
+    // Canonical auth paths live under /auth/* (INFRA-8). These replace the
+    // legacy one-line redirect pages under app/{login,signup,...}/page.tsx.
+    return [
+      { source: "/login", destination: "/auth/login", permanent: true },
+      { source: "/signup", destination: "/auth/signup", permanent: true },
+      { source: "/forgot-password", destination: "/auth/forgot-password", permanent: true },
+      { source: "/reset-password", destination: "/auth/reset-password", permanent: true }
+    ];
   },
   async headers() {
     return [
