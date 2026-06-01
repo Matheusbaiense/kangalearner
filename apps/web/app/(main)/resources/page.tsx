@@ -92,6 +92,92 @@ const RESOURCES: Resource[] = [
   }
 ];
 
+const NEWCOMER_LINKS: {
+  href: string;
+  icon: string;
+  label: Record<UiLang, string>;
+  desc: Record<UiLang, string>;
+}[] = [
+  {
+    href: "/journey",
+    icon: "🗺️",
+    label: { en: "Licence journey", pt: "Jornada da licença", es: "Recorrido de licencia" },
+    desc: {
+      en: "Learner → P1 → P2 → full",
+      pt: "Learner → P1 → P2 → completa",
+      es: "Learner → P1 → P2 → completa"
+    }
+  },
+  {
+    href: "/overseas-licence",
+    icon: "🌏",
+    label: {
+      en: "Overseas licence",
+      pt: "Licença estrangeira",
+      es: "Licencia extranjera"
+    },
+    desc: {
+      en: "Drive in WA with a foreign licence",
+      pt: "Dirigir em WA com licença de fora",
+      es: "Conducir en WA con licencia de fuera"
+    }
+  },
+  {
+    href: "/quick-quiz",
+    icon: "⚡",
+    label: { en: "Quick quiz", pt: "Quiz rápido", es: "Quiz rápido" },
+    desc: {
+      en: "10 questions, no account",
+      pt: "10 questões, sem conta",
+      es: "10 preguntas, sin cuenta"
+    }
+  },
+  {
+    href: "/hpt",
+    icon: "👁️",
+    label: { en: "HPT prep", pt: "Preparação HPT", es: "Preparación HPT" },
+    desc: {
+      en: "Hazard Perception Test",
+      pt: "Teste de Percepção de Risco",
+      es: "Test de Percepción de Peligros"
+    }
+  },
+  {
+    href: "/pda",
+    icon: "🚗",
+    label: { en: "PDA prep", pt: "Preparação PDA", es: "Preparación PDA" },
+    desc: {
+      en: "Practical Driving Assessment",
+      pt: "Avaliação Prática de Direção",
+      es: "Evaluación Práctica de Conducción"
+    }
+  },
+  {
+    href: "/supervisor",
+    icon: "🧑‍🏫",
+    label: {
+      en: "Supervisor companion",
+      pt: "Companheiro do supervisor",
+      es: "Compañero del supervisor"
+    },
+    desc: {
+      en: "Coaching a learner",
+      pt: "Ensinando um learner",
+      es: "Enseñando a un learner"
+    }
+  },
+  {
+    href: "/eyesight-test",
+    icon: "🔤",
+    label: { en: "Eyesight check", pt: "Teste de visão", es: "Test de visión" },
+    desc: {
+      en: "Quick Snellen self-check",
+      pt: "Autoteste Snellen rápido",
+      es: "Autotest Snellen rápido"
+    }
+  }
+];
+
 const CATEGORY_BADGE: Record<
   Resource["category"],
   { label: Record<UiLang, string>; color: string; bg: string }
@@ -143,6 +229,46 @@ export default function ResourcesPage() {
           <h1 className="page-title">{s.resourcesTitle}</h1>
           <p className="page-sub">{s.resourcesSub}</p>
         </div>
+
+        {/* Newcomer journey hub — surfaces the new guided surfaces */}
+        <section style={{ marginTop: 28 }}>
+          <h2 style={{ fontSize: "1.1rem", fontWeight: 850, marginBottom: 4 }}>
+            {lang === "pt"
+              ? "Sua jornada em WA"
+              : lang === "es"
+                ? "Tu recorrido en WA"
+                : "Your WA journey"}
+          </h2>
+          <p style={{ fontSize: ".88rem", color: "var(--muted)", marginBottom: 14 }}>
+            {lang === "pt"
+              ? "Guias passo a passo para quem está começando a dirigir em Western Australia."
+              : lang === "es"
+                ? "Guías paso a paso para quien empieza a conducir en Western Australia."
+                : "Step-by-step guides for getting on the road in Western Australia."}
+          </p>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gap: 12
+            }}
+          >
+            {NEWCOMER_LINKS.map((n) => (
+              <Link key={n.href} href={n.href} className="overseas-country-card">
+                <span style={{ fontSize: "1.3rem" }} aria-hidden>
+                  {n.icon}
+                </span>
+                <span style={{ display: "flex", flexDirection: "column" }}>
+                  <strong>{n.label[lang]}</strong>
+                  <span style={{ fontSize: ".8rem", color: "var(--muted)" }}>{n.desc[lang]}</span>
+                </span>
+                <span className="overseas-country-arrow" aria-hidden>
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         {/* Resource cards grid */}
         <div
