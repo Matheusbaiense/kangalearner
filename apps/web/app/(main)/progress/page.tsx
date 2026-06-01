@@ -77,11 +77,11 @@ export default function ProgressPage() {
     const totalCorrect = entries.filter(([, v]) => v.correct).length;
     const overallAcc = pct(totalCorrect, totalAnswered);
 
-    /* Category breakdown using QUESTIONS to get category names */
+    /* Category breakdown using QUESTIONS to get category names (O(1) lookup) */
+    const byId = new Map(QUESTIONS.map((x) => [x.id, x]));
     const catMap: Record<string, { correct: number; total: number }> = {};
     entries.forEach(([qid, v]) => {
-      const q = QUESTIONS.find((x) => x.id === qid);
-      const cat = q?.cat ?? "Other";
+      const cat = byId.get(qid)?.cat ?? "Other";
       if (!catMap[cat]) catMap[cat] = { correct: 0, total: 0 };
       catMap[cat].total++;
       if (v.correct) catMap[cat].correct++;

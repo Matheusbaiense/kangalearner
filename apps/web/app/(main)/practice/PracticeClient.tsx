@@ -66,6 +66,11 @@ function spawnConfetti(x: number, y: number) {
   }
 }
 
+/* Static category lookup — built once (CATEGORIES is a static import). */
+const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
+  CATEGORIES.map((c) => [c.key, c])
+);
+
 /* ── QuizCard ── */
 function QuizCard({
   q,
@@ -92,7 +97,7 @@ function QuizCard({
 }) {
   const bilingual = isBilingual;
   const state = answered[q.id];
-  const catData = CATEGORIES.find((c) => c.key === q.cat);
+  const catData = CATEGORY_BY_KEY.get(q.cat);
   const CatIco = categoryLucideIcon(q.cat);
   const expText = tx(q.exp, lang);
   const expTextEn = bilingual ? tx(q.exp, "en") : null;
@@ -233,9 +238,10 @@ function ScoreSidebar({
   const p = pct(correct, total);
 
   const catStats = useMemo(() => {
+    const byId = new Map(questions.map((x) => [x.id, x]));
     const map: Record<string, { total: number; correct: number }> = {};
     Object.entries(answered).forEach(([qid, a]) => {
-      const q = questions.find((x) => x.id === qid);
+      const q = byId.get(qid);
       if (!q) return;
       if (!map[q.cat]) map[q.cat] = { total: 0, correct: 0 };
       map[q.cat].total++;
