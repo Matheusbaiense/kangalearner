@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES, fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
@@ -72,7 +72,7 @@ const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
 );
 
 /* ── QuizCard ── */
-function QuizCard({
+const QuizCard = memo(function QuizCard({
   q,
   lang,
   isBilingual,
@@ -211,7 +211,20 @@ function QuizCard({
       )}
     </div>
   );
-}
+},
+// Re-render a card only when ITS OWN answer state (or display inputs) change.
+// answered[q.id] keeps its reference for untouched questions (shallow spread in
+// pick). onPick/onToggleSave are stable (pick reads answered via a ref;
+// toggleSave is a functional setState), so omitting them is safe.
+(prev, next) =>
+  prev.q === next.q &&
+  prev.lang === next.lang &&
+  prev.isBilingual === next.isBilingual &&
+  prev.answered[prev.q.id] === next.answered[next.q.id] &&
+  prev.isSaved === next.isSaved &&
+  prev.answerLabel === next.answerLabel &&
+  prev.saveLabel === next.saveLabel &&
+  prev.unsaveLabel === next.unsaveLabel);
 
 /* ── ScoreSidebar ── */
 function ScoreSidebar({
@@ -339,6 +352,14 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
 
+  // Mirror `answered` into a ref so `pick` can read the latest value without
+  // depending on `answered` — keeps `pick` referentially stable so memoized
+  // QuizCards never hold a stale closure that would wipe answers.
+  const answeredRef = useRef<Answered>(answered);
+  useEffect(() => {
+    answeredRef.current = answered;
+  }, [answered]);
+
   /* ── Load persisted state + answered + saved from localStorage ── */
   useEffect(() => {
     setSelectedState(readStoredState());
@@ -427,15 +448,17 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Pick an answer ── */
   const pick = useCallback(
     (qid: string, letter: string, ev: React.MouseEvent, isSim = false) => {
-      if (answered[qid]) return;
+      const current = answeredRef.current;
+      if (current[qid]) return;
       const q = QS.find((x) => x.id === qid);
       if (!q) return;
       const opt = q.opts.find((o) => o.l === letter);
       if (!opt) return;
       const correct = Boolean(opt.ok);
 
-      const next: Answered = { ...answered, [qid]: { chosen: letter, correct } };
+      const next: Answered = { ...current, [qid]: { chosen: letter, correct } };
       setAnswered(next);
+      answeredRef.current = next;
       try {
         localStorage.setItem(SK.answered, JSON.stringify(next));
       } catch {}
@@ -475,11 +498,11 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         }, 900);
       }
     },
-    [QS, answered, simQueue, selectedState, syncAttempt]
+    [QS, simQueue, selectedState, syncAttempt]
   );
 
   /* ── Toggle save ── */
-  function toggleSave(qid: string) {
+  const toggleSave = useCallback((qid: string) => {
     setSaved((prev) => {
       const next = new Set(prev);
       if (next.has(qid)) next.delete(qid);
@@ -489,11 +512,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       } catch {}
       return next;
     });
-  }
+  }, []);
 
   /* ── Reset ── */
   function resetAll() {
     setAnswered({});
+    answeredRef.current = {};
     try {
       localStorage.removeItem(SK.answered);
     } catch {}
