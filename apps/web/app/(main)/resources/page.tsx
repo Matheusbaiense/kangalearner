@@ -175,6 +175,16 @@ const NEWCOMER_LINKS: {
       pt: "Autoteste Snellen rápido",
       es: "Autotest Snellen rápido"
     }
+  },
+  {
+    href: "/confidence",
+    icon: "💪",
+    label: { en: "Driving confidence", pt: "Confiança ao volante", es: "Confianza al volante" },
+    desc: {
+      en: "Calm tips for nervous moments",
+      pt: "Dicas calmas para o nervosismo",
+      es: "Consejos calmados para los nervios"
+    }
   }
 ];
 

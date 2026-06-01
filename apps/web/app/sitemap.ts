@@ -22,6 +22,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/hpt`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/pda`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/supervisor`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
+    { url: `${base}/confidence`, lastModified: now, changeFrequency: "monthly", priority: 0.6 },
     { url: `${base}/eyesight-test`, lastModified: now, changeFrequency: "yearly", priority: 0.5 },
     { url: `${base}/resources`, lastModified: now, changeFrequency: "monthly", priority: 0.7 },
     { url: `${base}/about`, lastModified: now, changeFrequency: "yearly", priority: 0.4 },

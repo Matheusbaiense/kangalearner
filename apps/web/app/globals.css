@@ -3535,6 +3535,42 @@ a:focus-visible,
   font-weight: 700;
 }
 
+/* ── Confidence track: self-rating scale ── */
+.confidence-scale {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.confidence-scale__end {
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+.confidence-dot {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border);
+  background: var(--paper);
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition:
+    border-color 0.15s,
+    background 0.15s,
+    color 0.15s;
+}
+.confidence-dot:hover {
+  border-color: var(--green, #2e7d5b);
+}
+.confidence-dot.on {
+  border-color: var(--green, #2e7d5b);
+  background: var(--green, #2e7d5b);
+  color: #fff;
+}
+
 /* ── Supervisor checklist ── */
 .supervisor-check {
   display: flex;
