@@ -41,6 +41,6 @@
     "@types/react": "^19.0.0",
     "expo-doctor": "^1.19.8",
     "typescript": "^6.0.3",
-    "vitest": "^3.2.4"
+    "vitest": "^4.1.7"
   }
 }
