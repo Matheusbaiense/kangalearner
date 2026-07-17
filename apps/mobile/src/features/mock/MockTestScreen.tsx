@@ -14,8 +14,17 @@ import {
 } from "../../lib/questions";
 import { enqueueSync, loadMockSessions, saveMockSessions } from "../../lib/local-store";
 import { isBilingual } from "../../lib/i18n";
-import { Card, PillButton, PrimaryButton, ProgressBar, Screen, Stat, useThemeColors } from "../../ui/kit";
+import {
+  Card,
+  PillButton,
+  PrimaryButton,
+  ProgressBar,
+  Screen,
+  Stat,
+  useThemeColors
+} from "../../ui/kit";
 import { colors, spacing } from "../../theme";
+import { AdSlot } from "../ads";
 import { usePreferences } from "../preferences/PreferencesContext";
 
 const EXAM_SECONDS = 45 * 60;
@@ -23,7 +32,9 @@ const EXAM_SECONDS = 45 * 60;
 type MockMode = "practice" | "exam";
 
 function formatTime(seconds: number): string {
-  const m = Math.floor(seconds / 60).toString().padStart(2, "0");
+  const m = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
   const s = (seconds % 60).toString().padStart(2, "0");
   return `${m}:${s}`;
 }
@@ -144,7 +155,9 @@ export function MockTestScreen() {
             <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>Recent results</Text>
             {history.slice(0, 3).map((item) => (
               <View key={item.id} style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text style={{ color: c.muted }}>{new Date(item.completedAt).toLocaleDateString()}</Text>
+                <Text style={{ color: c.muted }}>
+                  {new Date(item.completedAt).toLocaleDateString()}
+                </Text>
                 <Text style={{ color: c.ink, fontWeight: "900" }}>
                   {item.score}/{item.total}
                 </Text>
@@ -168,6 +181,7 @@ export function MockTestScreen() {
           <PrimaryButton onPress={() => startSession()}>{copy.startMock}</PrimaryButton>
           <PillButton onPress={() => setQids([])}>{copy.finish}</PillButton>
         </Card>
+        <AdSlot slotId="mock_result" />
       </Screen>
     );
   }
@@ -210,7 +224,11 @@ export function MockTestScreen() {
                   borderRadius: 16,
                   borderWidth: 1,
                   borderColor:
-                    reveal && isCorrect ? colors.success : reveal && picked ? colors.danger : c.border,
+                    reveal && isCorrect
+                      ? colors.success
+                      : reveal && picked
+                        ? colors.danger
+                        : c.border,
                   backgroundColor:
                     reveal && isCorrect ? "#EAF7F1" : reveal && picked ? "#FDECEC" : c.card,
                   opacity: pressed ? 0.75 : 1

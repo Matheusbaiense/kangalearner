@@ -1,9 +1,11 @@
 import { Link } from "expo-router";
+import { Fragment } from "react";
 import { Text, View } from "react-native";
 import { CATEGORIES, questionsForState, categoryLabel } from "../../lib/questions";
 import { Card, PillButton, Screen, useThemeColors } from "../../ui/kit";
 import { spacing } from "../../theme";
 import { iconForCategory } from "../../ui/category-icon";
+import { AdSlot } from "../ads";
 import { usePreferences } from "../preferences/PreferencesContext";
 
 export function LearnScreen() {
@@ -16,40 +18,42 @@ export function LearnScreen() {
       title={copy.learn}
       subtitle="Short topic cards tuned for mobile reading. Start with weak topics, then jump into practice."
     >
-      {CATEGORIES.map((category) => {
+      {CATEGORIES.map((category, index) => {
         const Icon = iconForCategory(category.key);
         const count = questions.filter((q) => q.cat === category.key).length;
         return (
-          <Card key={category.key}>
-            <View style={{ flexDirection: "row", alignItems: "center", gap: spacing.md }}>
-              <View
-                style={{
-                  width: 52,
-                  height: 52,
-                  borderRadius: 18,
-                  alignItems: "center",
-                  justifyContent: "center",
-                  backgroundColor: "#EAF7F1"
-                }}
-              >
-                <Icon color={c.teal} size={26} />
+          <Fragment key={category.key}>
+            <Card>
+              <View style={{ flexDirection: "row", alignItems: "center", gap: spacing.md }}>
+                <View
+                  style={{
+                    width: 52,
+                    height: 52,
+                    borderRadius: 18,
+                    alignItems: "center",
+                    justifyContent: "center",
+                    backgroundColor: "#EAF7F1"
+                  }}
+                >
+                  <Icon color={c.teal} size={26} />
+                </View>
+                <View style={{ flex: 1, gap: 4 }}>
+                  <Text selectable style={{ color: c.ink, fontWeight: "900", fontSize: 20 }}>
+                    {categoryLabel(category.key, uiLang)}
+                  </Text>
+                  <Text selectable style={{ color: c.muted, lineHeight: 22 }}>
+                    {count} practice questions. Review the rule, then answer examples in context.
+                  </Text>
+                </View>
               </View>
-              <View style={{ flex: 1, gap: 4 }}>
-                <Text selectable style={{ color: c.ink, fontWeight: "900", fontSize: 20 }}>
-                  {categoryLabel(category.key, uiLang)}
-                </Text>
-                <Text selectable style={{ color: c.muted, lineHeight: 22 }}>
-                  {count} practice questions. Review the rule, then answer examples in context.
-                </Text>
-              </View>
-            </View>
-            <Link href={{ pathname: "/practice", params: { cat: category.key } }} asChild>
-              <PillButton>{copy.startPractice}</PillButton>
-            </Link>
-          </Card>
+              <Link href={{ pathname: "/practice", params: { cat: category.key } }} asChild>
+                <PillButton>{copy.startPractice}</PillButton>
+              </Link>
+            </Card>
+            {index === 1 ? <AdSlot slotId="learn_inline" /> : null}
+          </Fragment>
         );
       })}
     </Screen>
   );
 }
-

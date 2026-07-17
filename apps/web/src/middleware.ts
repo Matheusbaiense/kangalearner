@@ -115,7 +115,7 @@ export async function middleware(request: NextRequest) {
     }
 
     let apiResponse = NextResponse.next({ request });
-    createServerClient(supabaseUrl, supabaseAnonKey, {
+    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll: () => request.cookies.getAll(),
         setAll: (cookiesToSet) => {
@@ -127,6 +127,17 @@ export async function middleware(request: NextRequest) {
         }
       }
     });
+
+    if (pathname.startsWith("/api/admin/")) {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
+      if (!user) {
+        const err = NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        if (matchedOrigin) addCorsHeaders(err, matchedOrigin);
+        return err;
+      }
+    }
 
     if (matchedOrigin) addCorsHeaders(apiResponse, matchedOrigin);
     return apiResponse;

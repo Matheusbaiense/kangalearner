@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
@@ -17,6 +18,11 @@ type PageSearchParams = Promise<{ mode?: string }>;
 export default async function PracticePage({ searchParams }: { searchParams: PageSearchParams }) {
   const { mode: rawMode } = await searchParams;
   const initialMode = toMode(rawMode);
+
+  if (initialMode === "sim") {
+    redirect("/mock-test");
+  }
+
   return (
     <Suspense fallback={<div className="app-page" aria-busy="true" />}>
       <PracticeClient initialMode={initialMode} />

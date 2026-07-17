@@ -18,8 +18,16 @@
 - `src/lib/i18n.ts` contains the mobile string subset for English and Portuguese.
 - `src/lib/local-store.ts` stores preferences, attempts, saved questions, mock sessions, and a sync queue using AsyncStorage for the current implementation baseline.
 - `src/lib/sync-logic.ts` holds the pure, dependency-free sync helpers (attempt dedupe key, attempt/mock row builders, pass-threshold check, and offline queue upsert/remove). It imports no RN/AsyncStorage/Supabase code so it is unit-testable under vitest (node).
-- `src/lib/sync.ts` orchestrates the upload: it loads local state and the queue, calls the `sync-logic` builders, and upserts queued attempts and mock sessions through the native Supabase client with deterministic attempt IDs and queued retry semantics.
+- `src/lib/sync.ts` orchestrates the upload: it loads local state and the queue, calls the `sync-logic` builders, and upserts queued attempts, mock sessions, and saved questions through the native Supabase client with deterministic retry semantics. Unsaved question toggles are queued as deletes against `saved_questions`.
 - `src/lib/tutor-plugin.ts` defines the future AI tutor boundary without enabling model calls in v1.
+
+## Ads And Monetization
+
+- `src/features/ads/ads-config.ts` is the pure, RN-free ads configuration layer. It defines slot IDs, direct sponsor campaign selection, feature flags, GAM-first Google unit resolution, and AdMob fallback.
+- `src/features/ads/AdSlot.tsx` is the placement boundary used by product screens. It renders a direct `SponsorCard` first, otherwise falls back to `GoogleBannerSlot`.
+- `src/features/ads/google-mobile-ads.ts` lazily requires `react-native-google-mobile-ads`, gathers UMP consent, sets non-child-directed request configuration, and initializes the SDK once. Missing native support renders no ad instead of crashing the learning flow.
+- `src/features/ads/GoogleBannerSlot.tsx` supports Google Ad Manager banners and AdMob banners. Real production unit IDs come from `EXPO_PUBLIC_GAM_*` or `EXPO_PUBLIC_ADMOB_*`; development can use Google test IDs.
+- Current slots: Home after hero, Learn after the second topic card, Practice after the fifth visible question card, and Mock Test result only. No ad is rendered during an active mock-test session.
 
 ## Auth And Sync
 
@@ -39,5 +47,7 @@
 - Mobile lint baseline: `pnpm --filter @kanga/mobile run lint`.
 - Expo health check: `pnpm --filter @kanga/mobile run doctor`.
 - Mobile unit tests: `pnpm --filter @kanga/mobile run test` (also runs under root `pnpm test`).
+- Ads config tests: `src/features/ads/ads-config.test.ts` covers direct sponsor development gating and GAM-over-AdMob fallback order.
+- Saved-question sync tests in `src/lib/sync-logic.test.ts` cover remote row shape and last-toggle-wins queue behavior.
 - iOS QA should cover small and large iPhone simulators, cold start, Practice, Mock Test, Profile, and accessibility labels.
 - Android QA should cover small and medium emulators, startup, list jank, offline persistence, and TalkBack navigation.

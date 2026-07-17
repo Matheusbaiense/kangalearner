@@ -2,6 +2,7 @@
 
 | Data | ID | Tema | Paths principais |
 |------|-----|------|------------------|
+| 2026-06-01 | OPS-1 | Dívida operacional pré-divulgação — Vercel env audit, backup workflow, Sentry integration, branch protection; Supabase Auth/staging/secrets seguem externos | `.github/workflows/backup.yml`, `apps/web/instrumentation*.ts`, `apps/web/sentry.*.config.ts`, `apps/web/app/global-error.tsx`, `docs/BACKLOG.md`, `docs/CODEMAPS/web-next-auth-supabase.md`, `docs/QA-EXECUTION-LOG.md` |
 | 2026-05-23 | S13 | Security audit remediation — migration 022 + app hardening | `supabase/migrations/022_security_hardening.sql` (prod aplicada), `apps/web/src/lib/rateLimit.ts`, `apps/web/app/api/**`, `apps/web/src/lib/stripe.ts`, `apps/web/next.config.ts` |
 | 2026-05-23 | S12c | Testes automatizados — Vitest + Playwright CI | `packages/core/**/*.test.ts`, `apps/web/vitest.config.ts`, `apps/web/e2e/smoke.spec.ts`, `apps/web/playwright.config.ts`, `.github/workflows/build.yml` |
 | 2026-05-23 | S12b | Pós-inspeção — P0/P1 code + prod DB | `apps/web/app/api/**`, `supabase/migrations/018–021`, `.github/workflows/build.yml`, `PracticeClient.tsx`, `questions.ts` |

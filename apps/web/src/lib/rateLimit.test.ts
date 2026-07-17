@@ -13,9 +13,9 @@ describe("rateLimit", () => {
   });
 
   it("allows requests in development without Upstash", async () => {
-    process.env.NODE_ENV = "development";
-    delete process.env.UPSTASH_REDIS_REST_URL;
-    delete process.env.UPSTASH_REDIS_REST_TOKEN;
+    vi.stubEnv("NODE_ENV", "development");
+    vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
+    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
 
     const { rateLimit } = await import("./rateLimit");
     expect(await rateLimit("test:dev:1", 2, 60_000)).toBe(true);
@@ -24,9 +24,9 @@ describe("rateLimit", () => {
   });
 
   it("denies requests in production without Upstash (fail closed)", async () => {
-    process.env.NODE_ENV = "production";
-    delete process.env.UPSTASH_REDIS_REST_URL;
-    delete process.env.UPSTASH_REDIS_REST_TOKEN;
+    vi.stubEnv("NODE_ENV", "production");
+    vi.stubEnv("UPSTASH_REDIS_REST_URL", "");
+    vi.stubEnv("UPSTASH_REDIS_REST_TOKEN", "");
 
     const { rateLimit } = await import("./rateLimit");
     expect(await rateLimit("test:prod:1", 100, 60_000)).toBe(false);

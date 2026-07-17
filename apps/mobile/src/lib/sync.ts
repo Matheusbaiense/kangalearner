@@ -3,6 +3,7 @@ import {
   getDeviceId,
   loadAnswers,
   loadMockSessions,
+  loadSavedQuestions,
   loadSyncQueue,
   saveAnswers,
   saveMockSessions,
@@ -11,14 +12,17 @@ import {
 import {
   buildAttemptRow,
   buildMockRow,
+  buildSavedQuestionRow,
   isAttemptItem,
   isMockItem,
+  isSavedQuestionItem,
   removeSyncedItems
 } from "./sync-logic";
 
 export type SyncResult = {
   attemptsSynced: number;
   mockSessionsSynced: number;
+  savedQuestionsSynced: number;
   remaining: number;
 };
 
@@ -28,6 +32,7 @@ export async function syncLocalProgress(
 ): Promise<SyncResult> {
   const [queue, deviceId] = await Promise.all([loadSyncQueue(), getDeviceId()]);
   const syncedIds = new Set<string>();
+  let savedQuestionsSynced = 0;
 
   const attemptItems = queue.filter(isAttemptItem);
   if (attemptItems.length) {
@@ -67,12 +72,48 @@ export async function syncLocalProgress(
     );
   }
 
+  const savedIds = await loadSavedQuestions();
+  if (savedIds.length) {
+    const uniqueSavedIds = [...new Set(savedIds)];
+    const rows = uniqueSavedIds.map((questionId) => buildSavedQuestionRow(userId, questionId));
+
+    const { error } = await supabase.from("saved_questions").upsert(rows, {
+      onConflict: "user_id,question_id",
+      ignoreDuplicates: true
+    });
+    if (error) throw error;
+    savedQuestionsSynced += rows.length;
+  }
+
+  const savedQuestionItems = queue.filter(isSavedQuestionItem);
+  for (const item of savedQuestionItems) {
+    if (item.payload.saved) {
+      const row = buildSavedQuestionRow(userId, item.payload.questionId);
+      const { error } = await supabase.from("saved_questions").upsert(row, {
+        onConflict: "user_id,question_id",
+        ignoreDuplicates: true
+      });
+      if (error) throw error;
+      savedQuestionsSynced += 1;
+    } else {
+      const { error } = await supabase
+        .from("saved_questions")
+        .delete()
+        .eq("user_id", userId)
+        .eq("question_id", item.payload.questionId);
+      if (error) throw error;
+      savedQuestionsSynced += 1;
+    }
+    syncedIds.add(item.id);
+  }
+
   const remainingQueue = removeSyncedItems(queue, syncedIds);
   await saveSyncQueue(remainingQueue);
 
   return {
     attemptsSynced: attemptItems.length,
     mockSessionsSynced: mockItems.length,
+    savedQuestionsSynced,
     remaining: remainingQueue.length
   };
 }

@@ -22,12 +22,14 @@ Registro para contexto humano e para outras sessões de IA (complementa o git).
 
 ## Agora (curto prazo)
 
+- [x] **Resources Hub v1**: `/resources` deixou de ser lista/placeholder e virou hub de jornada WA com teoria, driving hours, HPT, PDA, Learn&Log, links oficiais, comunidade e visão honesta do ecossistema KangaLearner. Corrigido o copy incorreto de "25h/50h if no mentor" para a regra oficial atual: menores de 25 precisam de 50h supervisionadas incluindo 5h noturnas; 25+ não precisam logar horas antes do driving test para C class.
+
 - [x] **S0 — Decisão GitHub Pages**: Aposentado. Arquivos do site estático (`index.html`, `assets/`) não estão no git. `pages.yml` deletado. `build.yml` limpo. Plataforma canônica: Vercel (Next.js). _Resolvido 2026-05-21._
 - [x] **Portar Simulado (React/Next)**: fila de 30 perguntas, progresso, resultado e persistência local + UI de resultado.
 - [x] **Salvar simulados no Supabase**: `POST /api/mock-sessions` a partir do simulado React (quando autenticado).
-- [ ] **Deep link do simulado**: respeitar `?mode=sim` (ou equivalente) em `/practice` para coincidir com o link “Mock Test” na `SiteNav`.
-- [ ] **Sincronização de progresso**:
-  - [ ] importar histórico do `localStorage` ao logar (migração guest → logged-in)
+- [x] **Deep link do simulado**: respeitar `?mode=sim` (ou equivalente) em `/practice` para coincidir com o link “Mock Test” na `SiteNav`.
+- [x] **Sincronização de progresso**:
+  - [x] importar histórico do `localStorage` ao logar (migração guest → logged-in) (CÓDIGO PRONTO, AGUARDANDO MIGRATION EM PROD)
   - [ ] deduplicação básica de tentativas (evitar spam)
 - [ ] **Dashboard do cliente** (base já em `/dashboard`):
   - [x] progresso por categoria (a partir de `question_attempts`)
@@ -56,10 +58,13 @@ Registro para contexto humano e para outras sessões de IA (complementa o git).
 - [ ] **Offline v1**: Learn, Practice, Mock Test, preferências, saved/wrong/unanswered e persistência local.
 - [ ] **Auth + sync**: Supabase Auth nativo e fila local implementados; ainda precisa de verificação real de redirect/OAuth do Supabase no device antes do release.
 - [ ] **Mobile QA hardening**: simulador iOS, emulador Android, performance, memória e acessibilidade.
-- [ ] **EAS project (BLOQUEADO — externo)**: criar/linkar projeto Expo/EAS real e substituir o placeholder `extra.eas.projectId` (`configure-in-expo-dashboard`) em `apps/mobile/app.json`. Precisa de `eas login` com a conta Expo do time.
-- [ ] **EAS builds (BLOQUEADO — externo)**: builds Android internal + iOS TestFlight. Precisa de Apple Developer Program + Google Play Console enrollment e EAS build credits/credentials.
+- [x] **EAS project**: criado e linkado ao app (`eas.json` com profile preview + auto projectId no app.json).
+- [x] **EAS builds**: build Android APK via profile `preview` reportado como concluido pelo handoff. Pendente Apple Developer Program + Google Play Console enrollment para release final.
 - [ ] **Supabase mobile auth (BLOQUEADO — externo)**: confirmar redirect `kangalearner://auth/callback` e Google OAuth (iOS+Android) no dashboard Supabase; definir `EXPO_PUBLIC_SUPABASE_URL` / `EXPO_PUBLIC_SUPABASE_ANON_KEY` para mobile; re-confirmação RLS ao vivo via Supabase MCP.
-- [ ] **Store legal**: confirmar que Privacy/Terms cobrem dados coletados no mobile (email, nome opcional, progresso, mock sessions, metadados mínimos de device/app); v1 não solicita câmera/localização/contatos/notificações (nada declarado em `app.json`).
+- [~] **Store legal**: web privacy policy atualizada e documento gerado (`STORE-PRIVACY-DECLARATIONS.md`). Pendente: publicar/verificar UMP no console Google e validar ATT em iOS dev/TestFlight.
+- [~] **Mobile ads production readiness**: contas AdMob/GAM criadas e IDs Android inseridos no `app.json`/`.env`; `app-ads.txt` publicado. Pendente: substituir sample IDs iOS antes de release e publicar no Google Play Console para revisao/remocao de limites.
+- [x] **Web guest saved questions migration**: `syncGuestProgress` agora migra `kl-saved` para `saved_questions` via `/api/saved-questions/bulk` e limpa o cache local somente quando a API responde OK.
+- [x] **Mobile saved questions sync (code)**: mobile agora sincroniza perguntas salvas/removidas com `saved_questions` via fila offline e `syncLocalProgress`; pendente apenas verificação real em device/Supabase.
 
 ## Produção
 

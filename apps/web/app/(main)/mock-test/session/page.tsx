@@ -117,11 +117,12 @@ export default function MockTestSessionPage() {
     if (!session) return;
     const firstUnanswered = session.qids.findIndex((id) => !session.answers[id]);
     setActiveIndex(firstUnanswered === -1 ? 0 : firstUnanswered);
-  }, [sessionRaw]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [session]);
 
   /* ── Countdown timer (exam mode only) ── */
+  const examActive = cfg?.mode === "exam" && !!session && !session.completedAtIso;
   useEffect(() => {
-    if (!cfg || cfg.mode !== "exam" || !session || session.completedAtIso) return;
+    if (!examActive) return;
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -135,7 +136,7 @@ export default function MockTestSessionPage() {
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [cfg?.mode, !!session, !!session?.completedAtIso]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [examActive]);
 
   /* Auto-submit when time expires */
   useEffect(() => {

@@ -5,6 +5,8 @@
 ```
 apps/web/
 ├── middleware.ts              → reexporta ./src/middleware.ts (exigência Next: ficheiro ao lado de app/)
+├── instrumentation*.ts        → Sentry client/server/edge instrumentation (inert until DSN env vars exist)
+├── sentry.*.config.ts         → Sentry server/edge SDK init
 ├── app/
 │   ├── auth/
 │   │   ├── layout.tsx         → import ../../src/app/auth/auth.css; wrapper .auth-route
@@ -18,7 +20,7 @@ apps/web/
 │   ├── practice/page.tsx      → prática por categorias (server)
 │   ├── mock-test/             → setup + session/results (placeholders)
 │   ├── learn/                 → hub + [slug] (placeholders)
-│   ├── resources/page.tsx     → links oficiais (placeholder)
+│   ├── resources/page.tsx     → hub de jornada WA: teoria, horas, HPT, PDA, recursos oficiais, comunidade e visão de ecossistema
 │   ├── terms/page.tsx         → placeholder legal (signup link)
 │   ├── privacy/page.tsx       → idem
 │   └── api/                   → REST handlers (attempts, mock-sessions, health, …)
@@ -26,7 +28,7 @@ apps/web/
     ├── middleware.ts          → createServerClient; PROTECTED_ROUTES; AUTH_ROUTES
     ├── app/auth/auth.css      → estilos INFRA-9 (prefixo .auth-route)
     ├── components/
-    │   ├── layout/SiteNav.tsx  → navegação global (presentational)
+    │   ├── layout/SiteNav.tsx  → navegação global; drawer mobile inclui links, auth, idioma e estado
     │   └── Onboarding.tsx      → onboarding client (localStorage)
     └── lib/
         ├── supabase/
@@ -64,17 +66,33 @@ apps/web/
 ## Layout raiz
 
 - `app/layout.tsx`: renderiza `SiteNav` global + `Onboarding` (client). `export const viewport` com `themeColor` (Next 15+); `metadata` sem `themeColor`.
+- `src/components/layout/SiteNav.tsx`: header desktop mantem seletor de estado/idioma; em mobile (`<=640px`) esses controles saem do header e entram no drawer para evitar overflow horizontal. O drawer tem botao interno de fechar porque o backdrop fica acima do header.
+- `SiteNav` defere o trabalho async de `onAuthStateChange` com `setTimeout(0)` para evitar deadlock do GoTrue auth lock. Depois de confirmar sessao, chama `src/lib/syncGuestProgress.ts`, que migra `SK.answered` via `/api/attempts/bulk` e `SK.saved` via `/api/saved-questions/bulk`, limpando cada cache local somente apos sucesso da respectiva API.
 
 ## Variáveis de ambiente (web)
 
-| Variável                        | Uso                                                                     |
-| ------------------------------- | ----------------------------------------------------------------------- |
-| `NEXT_PUBLIC_SUPABASE_URL`      | Client + server + admin                                                 |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client + server                                                         |
-| `SUPABASE_SERVICE_ROLE_KEY`     | `admin.ts`, callback                                                    |
-| `STRIPE_SECRET_KEY`             | `stripe.ts` (import dinâmico no callback se ausente evita crash em dev) |
-| `NEXT_PUBLIC_APP_URL`           | OAuth `redirectTo` / `emailRedirectTo` nas páginas `/auth/*`; links em templates email |
+| Variável                        | Uso                                                                                                              |
+| ------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Client + server + admin                                                                                          |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Client + server                                                                                                  |
+| `SUPABASE_SERVICE_ROLE_KEY`     | `admin.ts`, callback                                                                                             |
+| `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` | Browser-side Stripe publishable key, when billing UI is enabled                                             |
+| `STRIPE_SECRET_KEY`             | `stripe.ts` (import dinâmico no callback se ausente evita crash em dev)                                          |
+| `STRIPE_WEBHOOK_SECRET`         | `/api/webhook/stripe` signature verification                                                                     |
+| `NEXT_PUBLIC_APP_URL`           | OAuth `redirectTo` / `emailRedirectTo` nas páginas `/auth/*`; links em templates email                           |
 | `RESEND_API_KEY`                | `src/lib/resend.ts` — transacional (welcome, newsletter confirm); `FROM_ADDRESS` = `noreply@kangalearner.com.au` |
+| `UPSTASH_REDIS_REST_URL`        | Production rate-limit Redis REST endpoint; missing prod config makes limited endpoints fail closed               |
+| `UPSTASH_REDIS_REST_TOKEN`      | Production rate-limit Redis REST token                                                                           |
+| `CRON_SECRET`                   | `/api/ping` authorization guard for scheduled/cron checks                                                        |
+| `SENTRY_DSN`                    | Server/edge Sentry DSN; runtime capture starts when set                                                          |
+| `NEXT_PUBLIC_SENTRY_DSN`        | Browser Sentry DSN                                                                                               |
+| `SENTRY_TRACES_SAMPLE_RATE`     | Optional server/edge tracing sample rate (default in code: `0.1`)                                                |
+| `NEXT_PUBLIC_SENTRY_TRACES_SAMPLE_RATE` | Optional browser tracing sample rate (default in code: `0.1`)                                            |
+| `SENTRY_AUTH_TOKEN`             | Optional source-map upload auth token; keep secret                                                               |
+| `SENTRY_ORG`                    | Optional source-map upload org slug                                                                              |
+| `SENTRY_PROJECT`                | Optional source-map upload project slug                                                                          |
+
+Sentry runtime capture is intentionally inert until DSN env vars are configured. Source-map upload is enabled only when `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` are all present.
 
 ## Schema SQL (referência)
 
@@ -82,4 +100,4 @@ Migrações em `supabase/migrations/` — tabelas `public` esperadas alinhadas c
 
 ---
 
-_Última revisão: 2026-05-04 (higiene: viewport, legal, mobile lint, política docs)._
+_Última revisão: 2026-06-01 (production env audit + resources hub + drawer mobile SiteNav)._
