@@ -5,6 +5,7 @@ import {
   buildAttemptId,
   buildAttemptRow,
   buildMockRow,
+  buildSavedQuestionRow,
   isMockPassed,
   removeSyncedItems,
   upsertQueueItem,
@@ -115,6 +116,31 @@ describe("sync queue (offline-first)", () => {
     const queue: SyncQueueItem[] = [attemptItem("a"), attemptItem("b"), attemptItem("c")];
     const remaining = removeSyncedItems(queue, new Set(["a", "c"]));
     expect(remaining.map((i) => i.id)).toEqual(["b"]);
+  });
+
+  it("keeps only the latest saved-question operation per question", () => {
+    const saved: SyncQueueItem = {
+      type: "saved_question",
+      id: "saved:q-001",
+      payload: { questionId: "q-001", saved: true }
+    };
+    const unsaved: SyncQueueItem = {
+      type: "saved_question",
+      id: "saved:q-001",
+      payload: { questionId: "q-001", saved: false }
+    };
+    const queue = upsertQueueItem(upsertQueueItem([], saved), unsaved);
+    expect(queue).toEqual([unsaved]);
+  });
+});
+
+describe("saved questions sync", () => {
+  it("builds a saved question row scoped to AU", () => {
+    expect(buildSavedQuestionRow("user-1", "q-001")).toEqual({
+      user_id: "user-1",
+      question_id: "q-001",
+      country: "AU"
+    });
   });
 });
 

@@ -195,6 +195,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       setTimeout(async () => {
         if (session?.user) {
           await buildNavUser(session.user);
+          import("@/lib/syncGuestProgress").then((m) => m.syncGuestProgress());
         } else if (event === "SIGNED_OUT") {
           // Explicit sign-out — always clear regardless of initial state.
           setUser(null);
@@ -204,6 +205,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
           const { data: recovered } = await supabase!.auth.getSession();
           if (recovered.session?.user) {
             await buildNavUser(recovered.session.user);
+            import("@/lib/syncGuestProgress").then((m) => m.syncGuestProgress());
           } else if (!initialNavUser) {
             // Only clear if the server layout also had no user — don't override a server-confirmed
             // logged-in state with a potentially buggy client-side event.
@@ -219,7 +221,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       clearTimeout(fallbackTimer);
       listener.subscription.unsubscribe();
     };
-  }, []);
+  }, [initialNavUser]);
 
   async function handleSignOut() {
     setUserMenuOpen(false);

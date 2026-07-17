@@ -6,13 +6,19 @@ import type { AnswerRecord, MockSessionRecord } from "./questions";
 
 export type SyncQueueItem =
   | { type: "attempt"; id: string; payload: AnswerRecord }
-  | { type: "mock_session"; id: string; payload: MockSessionRecord };
+  | { type: "mock_session"; id: string; payload: MockSessionRecord }
+  | { type: "saved_question"; id: string; payload: SavedQuestionSyncPayload };
 
 export type AttemptItem = Extract<SyncQueueItem, { type: "attempt" }>;
 export type MockItem = Extract<SyncQueueItem, { type: "mock_session" }>;
+export type SavedQuestionItem = Extract<SyncQueueItem, { type: "saved_question" }>;
 
-const UUID_RE =
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
+export type SavedQuestionSyncPayload = {
+  questionId: string;
+  saved: boolean;
+};
+
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
 
 export function isUuid(value: string): boolean {
   return UUID_RE.test(value);
@@ -97,12 +103,30 @@ export function buildMockRow(userId: string, item: MockItem): MockRow {
   };
 }
 
+export type SavedQuestionRow = {
+  user_id: string;
+  question_id: string;
+  country: typeof SUPPORTED_COUNTRY;
+};
+
+export function buildSavedQuestionRow(userId: string, questionId: string): SavedQuestionRow {
+  return {
+    user_id: userId,
+    question_id: questionId,
+    country: SUPPORTED_COUNTRY
+  };
+}
+
 export function isAttemptItem(item: SyncQueueItem): item is AttemptItem {
   return item.type === "attempt";
 }
 
 export function isMockItem(item: SyncQueueItem): item is MockItem {
   return item.type === "mock_session";
+}
+
+export function isSavedQuestionItem(item: SyncQueueItem): item is SavedQuestionItem {
+  return item.type === "saved_question";
 }
 
 // Append-or-replace by id so the offline queue never accumulates duplicate work.

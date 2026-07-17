@@ -5,8 +5,8 @@
   "main": "expo-router/entry",
   "scripts": {
     "dev": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "android": "expo run:android",
+    "ios": "expo run:ios",
     "build": "echo \"Use EAS build for production\"",
     "doctor": "expo-doctor",
     "lint": "tsc --noEmit -p tsconfig.json",
@@ -18,6 +18,7 @@
     "@react-native-async-storage/async-storage": "^2.2.0",
     "@supabase/supabase-js": "^2.106.2",
     "expo": "^56.0.8",
+    "expo-build-properties": "~56.0.16",
     "expo-constants": "^56.0.16",
     "expo-crypto": "^56.0.4",
     "expo-haptics": "^56.0.3",
@@ -30,6 +31,7 @@
     "react-dom": "^19.2.3",
     "react-native": "^0.85.3",
     "react-native-gesture-handler": "^2.31.2",
+    "react-native-google-mobile-ads": "^16.3.3",
     "react-native-reanimated": "^4.3.1",
     "react-native-safe-area-context": "^5.7.0",
     "react-native-screens": "^4.25.2",
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "@types/react": "^19.0.0",
+    "babel-preset-expo": "^56.0.14",
     "expo-doctor": "^1.19.8",
     "typescript": "^6.0.3",
     "vitest": "^3.2.4"

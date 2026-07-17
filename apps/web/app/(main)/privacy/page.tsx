@@ -65,13 +65,24 @@ export default function PrivacyPage() {
           <strong>Upstash</strong> (rate limiting via Redis) — temporary request counters only, no
           personal data stored.
         </li>
+        <li>
+          <strong>Google AdMob & Ad Manager</strong> (mobile app ads) — to serve relevant ads in the
+          mobile app. Google uses device identifiers for personalized advertising.
+        </li>
       </ul>
 
-      <h2>4. Cookies and Local Storage</h2>
+      <h2>4. Cookies, Local Storage, and Device Identifiers</h2>
       <p>
-        We use cookies and browser localStorage for: session authentication, language preference,
-        state preference, and anonymous practice progress (before sign-in). We do not use
-        advertising cookies.
+        <strong>Web:</strong> We use cookies and browser localStorage for session authentication,
+        language preference, state preference, and anonymous practice progress (before sign-in). We
+        do not use advertising cookies on the web.
+      </p>
+      <p>
+        <strong>Mobile App:</strong> The mobile app uses device identifiers (like Apple&apos;s
+        Identifier for Advertisers or Google Advertising ID) to serve ads. Users in the
+        EEA/UK/Switzerland will be prompted for consent via Google&apos;s User Messaging Platform
+        (UMP), and iOS users will be asked via App Tracking Transparency (ATT). You can manage or
+        opt-out of personalized ads in your device settings.
       </p>
 
       <h2>5. Data Retention</h2>

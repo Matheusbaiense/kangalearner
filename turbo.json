@@ -17,7 +17,14 @@
         "RESEND_API_KEY",
         "UPSTASH_REDIS_REST_URL",
         "UPSTASH_REDIS_REST_TOKEN",
-        "CRON_SECRET"
+        "CRON_SECRET",
+        "SENTRY_DSN",
+        "NEXT_PUBLIC_SENTRY_DSN",
+        "SENTRY_TRACES_SAMPLE_RATE",
+        "NEXT_PUBLIC_SENTRY_TRACES_SAMPLE_RATE",
+        "SENTRY_AUTH_TOKEN",
+        "SENTRY_ORG",
+        "SENTRY_PROJECT"
       ]
     },
     "dev": {

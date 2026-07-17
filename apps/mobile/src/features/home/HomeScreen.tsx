@@ -5,6 +5,7 @@ import { AU_STATE_OPTIONS, CATEGORIES, QUESTIONS } from "../../lib/questions";
 import { LANG_OPTIONS } from "../../lib/i18n";
 import { Card, PillButton, PrimaryButton, Screen, Stat, useThemeColors } from "../../ui/kit";
 import { colors, spacing } from "../../theme";
+import { AdSlot } from "../ads";
 import { usePreferences } from "../preferences/PreferencesContext";
 
 export function HomeScreen() {
@@ -40,6 +41,8 @@ export function HomeScreen() {
         </Link>
       </Card>
 
+      <AdSlot slotId="home_top" />
+
       <Card>
         <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>{copy.state}</Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
@@ -64,7 +67,11 @@ export function HomeScreen() {
         <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>{copy.language}</Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           {LANG_OPTIONS.map((option) => (
-            <PillButton key={option.code} active={lang === option.code} onPress={() => setLang(option.code)}>
+            <PillButton
+              key={option.code}
+              active={lang === option.code}
+              onPress={() => setLang(option.code)}
+            >
               {option.short}
             </PillButton>
           ))}
@@ -101,4 +108,3 @@ export function HomeScreen() {
     </Screen>
   );
 }
-
