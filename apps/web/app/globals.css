@@ -3260,8 +3260,10 @@ a:focus-visible,
 }
 
 .onboarding-banner {
-  /* Static on purpose: sticky stole ~90px of every viewport on every page. */
+  /* Static on purpose: sticky stole ~90px of every viewport on every page.
+     The margin clears the fixed site header (the old sticky top did that). */
   position: static;
+  margin-top: var(--header-height);
   z-index: 999;
   width: 100%;
   background: var(--paper);
