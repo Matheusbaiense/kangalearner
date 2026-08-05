@@ -349,11 +349,7 @@ export function DashboardClient({
           <Link href="/practice" className="dash-cta">
             {s.dashContinuePractice}
           </Link>
-          <Link
-            href="/practice?mode=sim"
-            className="btn-outline"
-            style={{ textDecoration: "none" }}
-          >
+          <Link href="/mock-test" className="btn-outline" style={{ textDecoration: "none" }}>
             {s.dashTakeMockTest}
           </Link>
         </div>
