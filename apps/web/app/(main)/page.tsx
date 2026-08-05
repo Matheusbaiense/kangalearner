@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { LandingClient } from "./LandingClient";
 
 export const metadata: Metadata = {
-  title: "KangaLearner — Pass your WA learner test | Free practice in EN/PT/ES",
+  title: { absolute: "KangaLearner — Pass your WA learner test | Free practice in EN/PT/ES" },
   description:
     "Practice real Western Australia road-rule questions in English, Portuguese or Spanish. Growing question bank with 30-question mock tests and instant feedback. Free forever.",
   keywords:

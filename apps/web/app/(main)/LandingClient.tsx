@@ -195,9 +195,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "mx",
     quote: {
-      en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the questions are almost identical to the official exam!",
-      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — as questões são quase idênticas à prova oficial!",
-      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!"
+      en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the format felt exactly like what I'd practised!",
+      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — o formato era exatamente como eu tinha praticado!",
+      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% — el formato era exactamente como lo había practicado!"
     }
   },
   {

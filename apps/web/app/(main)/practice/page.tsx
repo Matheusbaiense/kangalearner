@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
-  title: "Practice — KangaLearner"
+  title: "Practice WA Road Rules"
 };
 
 const VALID_MODES = ["all", "wrong", "unanswered", "saved", "sim"] as const;

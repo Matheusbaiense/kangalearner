@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Terms of Use — KangaLearner",
+  title: "Terms of Use",
   description: "KangaLearner terms of use for the WA learner test practice platform."
 };
 
