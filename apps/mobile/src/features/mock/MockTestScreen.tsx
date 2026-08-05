@@ -47,26 +47,12 @@ export function MockTestScreen() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [idx, setIdx] = useState(0);
   const [timeLeft, setTimeLeft] = useState(EXAM_SECONDS);
+  const [expired, setExpired] = useState(false);
   const [history, setHistory] = useState<MockSessionRecord[]>([]);
 
   useEffect(() => {
     void loadMockSessions().then(setHistory);
   }, []);
-
-  useEffect(() => {
-    if (!qids.length || mode !== "exam") return;
-    const timer = setInterval(() => {
-      setTimeLeft((current) => {
-        if (current <= 1) {
-          clearInterval(timer);
-          void finishSession();
-          return 0;
-        }
-        return current - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [qids.length, mode]);
 
   const activeQuestion = useMemo(() => {
     if (!qids.length) return null;
@@ -74,9 +60,27 @@ export function MockTestScreen() {
   }, [qids, idx]);
 
   const score = scoreAnswers(qids, answers);
-  const complete = qids.length > 0 && Object.keys(answers).length >= qids.length;
+  const complete = expired || (qids.length > 0 && Object.keys(answers).length >= qids.length);
   const passed = score >= WA_PASS_MIN_CORRECT;
   const progress = qids.length ? Math.round((Object.keys(answers).length / qids.length) * 100) : 0;
+
+  useEffect(() => {
+    // Stop ticking once the session is complete so a screen kept mounted by the
+    // tab navigator never fires a second, ghost finishSession later.
+    if (!qids.length || mode !== "exam" || complete) return;
+    const timer = setInterval(() => {
+      setTimeLeft((current) => (current > 0 ? current - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [qids.length, mode, complete]);
+
+  useEffect(() => {
+    // Runs on the render where the clock hits zero, so finishSession sees the
+    // fresh answers instead of the stale closure the old interval captured.
+    if (timeLeft > 0 || mode !== "exam" || !qids.length || complete) return;
+    setExpired(true);
+    void finishSession();
+  }, [timeLeft, mode, qids.length, complete]);
 
   function startSession(nextMode = mode) {
     setMode(nextMode);
@@ -84,6 +88,7 @@ export function MockTestScreen() {
     setAnswers({});
     setIdx(0);
     setTimeLeft(EXAM_SECONDS);
+    setExpired(false);
     void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   }
 

@@ -8,7 +8,11 @@ import {
   isGoogleAdsEnabled,
   resolveGoogleAdUnit
 } from "./ads-config";
-import { getGoogleMobileAdsModule, prepareGoogleMobileAds } from "./google-mobile-ads";
+import {
+  getGoogleMobileAdsModule,
+  prepareGoogleMobileAds,
+  shouldRequestNonPersonalizedAdsOnly
+} from "./google-mobile-ads";
 
 type GoogleAdsModule = NonNullable<ReturnType<typeof getGoogleMobileAdsModule>>;
 
@@ -75,14 +79,14 @@ export function GoogleBannerSlot({ slotId }: { slotId: AdSlotId }) {
         <module.GAMBannerAd
           unitId={unit.unitId}
           sizes={[module.GAMBannerAdSize.ANCHORED_ADAPTIVE_BANNER]}
-          requestOptions={{ requestNonPersonalizedAdsOnly: false }}
+          requestOptions={{ requestNonPersonalizedAdsOnly: shouldRequestNonPersonalizedAdsOnly() }}
           onAdFailedToLoad={() => setFailed(true)}
         />
       ) : (
         <module.BannerAd
           unitId={unit.unitId}
           size={module.BannerAdSize.ANCHORED_ADAPTIVE_BANNER}
-          requestOptions={{ requestNonPersonalizedAdsOnly: false }}
+          requestOptions={{ requestNonPersonalizedAdsOnly: shouldRequestNonPersonalizedAdsOnly() }}
           onAdFailedToLoad={() => setFailed(true)}
         />
       )}

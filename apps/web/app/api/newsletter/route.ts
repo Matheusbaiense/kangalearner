@@ -27,6 +27,12 @@ export async function POST(req: NextRequest) {
 
     const email = parseResult.data.email.toLowerCase();
 
+    // Per-address limit: rotating-IP replays must not re-trigger emails to a
+    // victim inbox. Opaque ok response (matches the already-subscribed path).
+    if (!(await rateLimit(`newsletter:email:${email}`, 1, 3_600_000))) {
+      return NextResponse.json({ ok: true });
+    }
+
     const { error } = await supabaseAdmin
       .from("newsletter_subscribers")
       .insert({ email, subscribed_at: new Date().toISOString(), source: "footer" });

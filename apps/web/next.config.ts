@@ -77,6 +77,9 @@ export default hasSentryUploadConfig
       org: process.env.SENTRY_ORG,
       project: process.env.SENTRY_PROJECT,
       silent: !process.env.CI,
-      widenClientFileUpload: true
+      widenClientFileUpload: true,
+      // Proxy browser events through /monitoring so connect-src 'self' covers
+      // them — without this the CSP blocks every client-side Sentry event.
+      tunnelRoute: "/monitoring"
     })
   : nextConfig;

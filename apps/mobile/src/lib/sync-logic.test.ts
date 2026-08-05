@@ -118,6 +118,16 @@ describe("sync queue (offline-first)", () => {
     expect(remaining.map((i) => i.id)).toEqual(["b"]);
   });
 
+  it("keeps an item enqueued during a sync when pruning the fresh queue (lost-update guard)", () => {
+    // Sync starts with [A, B] and uploads both.
+    const snapshotAtSyncStart: SyncQueueItem[] = [attemptItem("A"), attemptItem("B")];
+    // While the upload is in flight, C is enqueued into storage.
+    const freshQueue = upsertQueueItem(snapshotAtSyncStart, attemptItem("C"));
+    // Pruning the FRESH queue by synced ids must leave C intact.
+    const remaining = removeSyncedItems(freshQueue, new Set(["A", "B"]));
+    expect(remaining.map((i) => i.id)).toEqual(["C"]);
+  });
+
   it("keeps only the latest saved-question operation per question", () => {
     const saved: SyncQueueItem = {
       type: "saved_question",

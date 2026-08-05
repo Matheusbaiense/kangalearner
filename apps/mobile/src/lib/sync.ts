@@ -107,7 +107,10 @@ export async function syncLocalProgress(
     syncedIds.add(item.id);
   }
 
-  const remainingQueue = removeSyncedItems(queue, syncedIds);
+  // Re-read the queue before saving: items enqueued while the network calls
+  // above were in flight must survive the sync (lost-update guard).
+  const freshQueue = await loadSyncQueue();
+  const remainingQueue = removeSyncedItems(freshQueue, syncedIds);
   await saveSyncQueue(remainingQueue);
 
   return {

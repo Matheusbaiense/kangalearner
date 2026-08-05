@@ -54,6 +54,7 @@ export default function RootLayout() {
               tabBarIcon: ({ color, size }) => <UserRound color={color} size={size} />
             }}
           />
+          <Tabs.Screen name="auth/callback" options={{ href: null, headerShown: false }} />
         </Tabs>
       </PreferencesProvider>
     </GestureHandlerRootView>
