@@ -304,7 +304,7 @@ export const t = {
     accountUploadFailed: "Upload failed",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Pass your Australian learner test — in English, Portuguese or Spanish.",
+    footerTagline: "Pass your WA learner test — in English, Portuguese or Spanish.",
     footerProductTitle: "Product",
     footerCompanyTitle: "Company",
     footerLegalTitle: "Legal",
@@ -669,7 +669,7 @@ export const t = {
     accountUploadFailed: "Falha no envio",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Passe na prova de learner australiana — em inglês, português ou espanhol.",
+    footerTagline: "Passe na prova de learner de WA — em inglês, português ou espanhol.",
     footerProductTitle: "Produto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
@@ -1034,7 +1034,7 @@ export const t = {
     accountUploadFailed: "Error al subir",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Aprueba el examen learner australiano — en inglés, portugués o español.",
+    footerTagline: "Aprueba el examen learner de WA — en inglés, portugués o español.",
     footerProductTitle: "Producto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",

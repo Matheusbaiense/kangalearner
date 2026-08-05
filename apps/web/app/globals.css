@@ -592,6 +592,12 @@ a:focus-visible,
   gap: 16px;
   align-items: start;
 }
+.app-shell > * {
+  /* Grid children default to min-width:auto — wide content (topic chips,
+     question cards) blows the track out past the viewport on small screens,
+     which is what pushed the page header against the left edge on mobile. */
+  min-width: 0;
+}
 
 /* Mode + category sidebar */
 .mode-bar {
@@ -1184,8 +1190,33 @@ a:focus-visible,
   .app-section {
     padding: 24px 0 40px;
   }
+  /* Filters collapse into two horizontal chip rows so the first question is
+     visible without scrolling past ~2.5 screens of stacked buttons. */
   .mode-bar {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mode-bar .fmode {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-height: none;
+    gap: 8px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar .fcat {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
   }
 }
 
@@ -1654,6 +1685,8 @@ a:focus-visible,
   font-weight: 700;
   color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
+  /* "Mock Test" was the only item wrapping to two lines. */
+  white-space: nowrap;
   border: 1px solid transparent;
   min-height: 44px;
   display: flex;
@@ -3227,8 +3260,9 @@ a:focus-visible,
 }
 
 .onboarding-banner {
-  position: sticky;
-  top: var(--header-height);
+  /* Static on purpose: sticky stole ~90px of every viewport on every page.
+     The site header is sticky (in-flow), so no top offset is needed here. */
+  position: static;
   z-index: 999;
   width: 100%;
   background: var(--paper);
@@ -3301,6 +3335,11 @@ a:focus-visible,
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+.ob-banner-cta {
+  /* btn-auth-primary is a full-width form button; inside the banner the CTA
+     must size to its label, not stretch across the row. */
+  width: auto;
 }
 .ob-option {
   display: inline-flex;
