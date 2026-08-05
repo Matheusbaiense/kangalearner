@@ -2,8 +2,7 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { CATEGORIES, fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
+import { CATEGORIES, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
@@ -16,7 +15,7 @@ import { pct } from "@/lib/percent";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
-type Mode = "all" | "wrong" | "unanswered" | "saved" | "sim";
+type Mode = "all" | "wrong" | "unanswered" | "saved";
 
 interface Opt {
   l: string;
@@ -334,25 +333,16 @@ function ScoreSidebar({
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const { questions: QS, loading: questionsLoading, error: questionsError } = useQuestions();
-  const searchParams = useSearchParams();
-  const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
   // Deterministic SSR value ("WA"); hydrated from localStorage in the mount effect
   // below. Reading localStorage in the initializer diverges the first client render
   // from the server HTML → React hydration error #418, aborting hydration and
   // leaving answer-option onClick handlers unattached.
   const [selectedState, setSelectedState] = useState<StateCode>("WA");
-  const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : (initialMode ?? "all"));
+  const [mode, setMode] = useState<Mode>(initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
-
-  /* Sim state */
-  const [simQueue, setSimQueue] = useState<Question[]>([]);
-  const [simIdx, setSimIdx] = useState(0);
-  const [simDone, setSimDone] = useState(false);
-  const [simResult, setSimResult] = useState({ score: 0, total: 0 });
-  const simResultRef = useRef({ score: 0, total: 0 });
 
   // Mirror `answered` into a ref so `pick` can read the latest value without
   // depending on `answered` — keeps `pick` referentially stable so memoized
@@ -388,24 +378,10 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
   }, []);
 
-  /* ── Allow /practice?mode=sim to start the mock test flow ── */
+  /* ── Keep mode in sync with the URL on client-side navigations ── */
   useEffect(() => {
-    if (requestedMode === "sim") {
-      setMode("sim");
-      return;
-    }
     setMode(initialMode ?? "all");
-  }, [requestedMode, initialMode]);
-
-  /* ── Start sim when mode switches ── */
-  useEffect(() => {
-    if (mode !== "sim") return;
-    const stateQs = QS.filter((q) => !q.states || q.states.includes(selectedState));
-    const shuffled = fisherYatesSlice(stateQs, 30);
-    setSimQueue(shuffled);
-    setSimIdx(0);
-    setSimDone(false);
-  }, [mode, selectedState, QS]);
+  }, [initialMode]);
 
   /* ── Filtered questions for study modes ── */
   const filtered = useMemo(() => {
@@ -449,7 +425,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
   /* ── Pick an answer ── */
   const pick = useCallback(
-    (qid: string, letter: string, ev: React.MouseEvent, isSim = false) => {
+    (qid: string, letter: string, ev: React.MouseEvent) => {
       const current = answeredRef.current;
       if (current[qid]) return;
       const q = QS.find((x) => x.id === qid);
@@ -471,36 +447,8 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       }
 
       syncAttempt(qid, q.cat, correct, letter);
-
-      if (isSim) {
-        setTimeout(() => {
-          setSimIdx((prev) => {
-            const nextIdx = prev + 1;
-            if (nextIdx >= simQueue.length) {
-              const score = simQueue.filter((sq) => next[sq.id]?.correct).length;
-              const result = { score, total: simQueue.length };
-              simResultRef.current = result;
-              setSimResult(result);
-              setSimDone(true);
-              fetch("/api/mock-sessions", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify({
-                  state: selectedState,
-                  score,
-                  total: simQueue.length,
-                  mode: "practice",
-                  source: "web"
-                }),
-                keepalive: true
-              }).catch((err) => console.error("[practice] mock session save failed:", err));
-            }
-            return nextIdx;
-          });
-        }, 900);
-      }
     },
-    [QS, simQueue, selectedState, syncAttempt]
+    [QS, selectedState, syncAttempt]
   );
 
   /* ── Toggle save ── */
@@ -528,7 +476,6 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Change mode ── */
   function changeMode(m: Mode) {
     setMode(m);
-    if (m !== "sim") setSimDone(false);
   }
 
   /* ──────────────── RENDER ──────────────── */
@@ -562,8 +509,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     { key: "all", label: s.allQuestions },
     { key: "wrong", label: s.wrongAnswers },
     { key: "unanswered", label: s.unanswered },
-    { key: "saved", label: `${s.savedMode}${saved.size > 0 ? ` (${saved.size})` : ""}` },
-    { key: "sim", label: s.mockTestMode }
+    { key: "saved", label: `${s.savedMode}${saved.size > 0 ? ` (${saved.size})` : ""}` }
   ];
 
   return (
@@ -594,67 +540,49 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               ))}
             </div>
 
-            {mode !== "sim" && (
-              <div className="filter-wrap">
-                <p className="filter-label">{s.filterByTopic}</p>
-                <div className="filter-bar">
-                  <button
-                    className={`fcat${cat === "all" ? " active" : ""}`}
-                    onClick={() => setCat("all")}
-                  >
-                    {s.allTopics}
-                  </button>
-                  {CATEGORIES.map((c) => {
-                    const CI = categoryLucideIcon(c.key);
-                    return (
-                      <button
-                        key={c.key}
-                        className={`fcat${cat === c.key ? " active" : ""}`}
-                        onClick={() => setCat(c.key)}
-                        type="button"
-                      >
-                        <CI className="fcat-ico" aria-hidden />
-                        {c.label[lang] ?? c.label.en}
-                      </button>
-                    );
-                  })}
-                </div>
+            <div className="filter-wrap">
+              <p className="filter-label">{s.filterByTopic}</p>
+              <div className="filter-bar">
+                <button
+                  className={`fcat${cat === "all" ? " active" : ""}`}
+                  onClick={() => setCat("all")}
+                >
+                  {s.allTopics}
+                </button>
+                {CATEGORIES.map((c) => {
+                  const CI = categoryLucideIcon(c.key);
+                  return (
+                    <button
+                      key={c.key}
+                      className={`fcat${cat === c.key ? " active" : ""}`}
+                      onClick={() => setCat(c.key)}
+                      type="button"
+                    >
+                      <CI className="fcat-ico" aria-hidden />
+                      {c.label[lang] ?? c.label.en}
+                    </button>
+                  );
+                })}
               </div>
-            )}
+            </div>
           </aside>
 
-          {/* ── CENTER: QUIZ or SIM ── */}
+          {/* ── CENTER: QUIZ ── */}
           <section className="panel quiz-panel">
-            {mode === "sim" ? (
-              <SimView
-                queue={simQueue}
-                idx={simIdx}
-                done={simDone}
-                result={simResult}
-                lang={lang}
-                isBilingual={isBilingual}
-                answered={answered}
-                onPick={(qid, letter, ev) => pick(qid, letter, ev, true)}
-                onRestart={() => changeMode("sim")}
-                onStudy={() => changeMode("all")}
-                s={s}
-              />
-            ) : (
-              <StudyView
-                grouped={grouped}
-                lang={lang}
-                isBilingual={isBilingual}
-                answered={answered}
-                onPick={(qid, letter, ev) => pick(qid, letter, ev, false)}
-                noQuestionsTitle={mode === "saved" ? s.noSavedTitle : s.noQuestionsTitle}
-                noQuestionsSub={mode === "saved" ? s.noSavedSub : s.noQuestionsSub}
-                answerLabel={s.answer}
-                saved={saved}
-                onToggleSave={toggleSave}
-                saveLabel={s.saveQuestion}
-                unsaveLabel={s.unsaveQuestion}
-              />
-            )}
+            <StudyView
+              grouped={grouped}
+              lang={lang}
+              isBilingual={isBilingual}
+              answered={answered}
+              onPick={(qid, letter, ev) => pick(qid, letter, ev)}
+              noQuestionsTitle={mode === "saved" ? s.noSavedTitle : s.noQuestionsTitle}
+              noQuestionsSub={mode === "saved" ? s.noSavedSub : s.noQuestionsSub}
+              answerLabel={s.answer}
+              saved={saved}
+              onToggleSave={toggleSave}
+              saveLabel={s.saveQuestion}
+              unsaveLabel={s.unsaveQuestion}
+            />
           </section>
 
           {/* ── RIGHT SIDEBAR ── */}
@@ -745,130 +673,6 @@ function StudyView({
           </div>
         );
       })}
-    </>
-  );
-}
-
-/* ── Sim view (mock test) ── */
-function SimView({
-  queue,
-  idx,
-  done,
-  result,
-  lang,
-  isBilingual,
-  answered,
-  onPick,
-  onRestart,
-  onStudy,
-  s
-}: {
-  queue: Question[];
-  idx: number;
-  done: boolean;
-  result: { score: number; total: number };
-  lang: UiLang;
-  isBilingual: boolean;
-  answered: Answered;
-  onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
-  onRestart: () => void;
-  onStudy: () => void;
-  s: Record<string, string>;
-}) {
-  if (queue.length === 0) {
-    return (
-      <div className="empty-state">
-        <div className="empty-icon">
-          <IconBadge
-            icon={Icons.loader}
-            tone="muted"
-            size="lg"
-            iconClassName="icon-badge__icon--spin"
-          />
-        </div>
-        <div className="empty-title">{s.loading}</div>
-      </div>
-    );
-  }
-
-  if (done) {
-    const p = pct(result.score, result.total);
-    const pass = p >= WA_PASS_THRESHOLD * 100;
-    return (
-      <div className="sim-result">
-        <div className="sim-result-emoji">
-          <IconBadge
-            icon={pass ? Icons.trophy : Icons.book}
-            tone={pass ? "success" : "muted"}
-            size="lg"
-            label={pass ? s.pass : s.fail}
-          />
-        </div>
-        <div className="sim-result-score">
-          {result.score}/{result.total}
-        </div>
-        <div className="sim-result-pct" style={{ color: pass ? "var(--green)" : "var(--red)" }}>
-          {p}%
-        </div>
-        <div className="sim-result-msg">
-          {pass
-            ? lang === "en"
-              ? "Well done! You passed the mock test."
-              : lang === "pt"
-                ? "Parabéns! Você passou no simulado."
-                : "¡Felicidades! Pasaste el simulacro."
-            : lang === "en"
-              ? "Keep practising — you need 80% to pass. Review wrong answers in study mode."
-              : lang === "pt"
-                ? "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas no modo de estudo."
-                : "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas en el modo de estudio."}
-        </div>
-        <div className="sim-result-actions">
-          <button className="btn-green" onClick={onRestart}>
-            {lang === "en" ? "Try again" : lang === "pt" ? "Tentar de novo" : "Intentar de nuevo"}
-          </button>
-          <button className="btn-outline" onClick={onStudy}>
-            {lang === "en"
-              ? "Back to study"
-              : lang === "pt"
-                ? "Voltar ao estudo"
-                : "Volver al estudio"}
-          </button>
-          <Link href="/dashboard" className="btn-outline">
-            {lang === "en" ? "View dashboard" : lang === "pt" ? "Ver painel" : "Ver panel"}
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  const current = queue[idx];
-  if (!current) return null;
-  const progress = Math.round((idx / queue.length) * 100);
-
-  return (
-    <>
-      <div className="sim-header">
-        <div className="sim-meta">
-          <span className="sim-label">{s.mockTest}</span>
-          <span className="sim-progress-text">
-            {idx + 1} / {queue.length}
-          </span>
-        </div>
-        <div className="pbar-track">
-          <div className="pbar-fill" style={{ width: `${progress}%` }} />
-        </div>
-      </div>
-
-      <QuizCard
-        key={current.id}
-        q={current}
-        lang={lang}
-        isBilingual={isBilingual}
-        answered={answered}
-        onPick={onPick}
-        answerLabel={s.answer}
-      />
     </>
   );
 }
