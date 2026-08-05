@@ -101,8 +101,8 @@ export function PracticeScreen() {
   }
 
   function resetProgress() {
-    Alert.alert(copy.reset, "This clears local practice answers on this device.", [
-      { text: "Cancel", style: "cancel" },
+    Alert.alert(copy.reset, copy.resetPracticeBody, [
+      { text: copy.cancel, style: "cancel" },
       {
         text: copy.reset,
         style: "destructive",
@@ -117,7 +117,7 @@ export function PracticeScreen() {
   return (
     <Screen
       title={copy.practice}
-      subtitle={`${allQuestions.length} questions - ${CATEGORIES.length} topics - ${state}`}
+      subtitle={`${allQuestions.length} ${copy.questionsLabel.toLowerCase()} - ${CATEGORIES.length} ${copy.topicsLabel.toLowerCase()} - ${state}`}
       action={
         <Pressable
           accessibilityRole="button"
@@ -131,15 +131,15 @@ export function PracticeScreen() {
     >
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.md }}>
         <Card style={{ flex: 1, minWidth: 145 }}>
-          <Stat label="Answered" value={String(answeredCount)} />
+          <Stat label={copy.answered} value={String(answeredCount)} />
         </Card>
         <Card style={{ flex: 1, minWidth: 145 }}>
-          <Stat label="Accuracy" value={`${accuracy}%`} />
+          <Stat label={copy.accuracy} value={`${accuracy}%`} />
         </Card>
       </View>
 
       <Card>
-        <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>Study mode</Text>
+        <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>{copy.studyMode}</Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.sm }}>
           {[
             ["all", copy.all],
@@ -189,7 +189,7 @@ export function PracticeScreen() {
                   <Text style={{ color: c.green, fontWeight: "900", flex: 1 }}>{q.id}</Text>
                   <Pressable
                     accessibilityRole="button"
-                    accessibilityLabel={saved.has(q.id) ? "Unsave question" : "Save question"}
+                    accessibilityLabel={saved.has(q.id) ? copy.unsaveQuestion : copy.saveQuestion}
                     onPress={() => void toggleSaved(q.id)}
                     style={{
                       minHeight: 44,
@@ -266,7 +266,7 @@ export function PracticeScreen() {
                         fontWeight: "900"
                       }}
                     >
-                      {answer.correct ? "Correct" : "Not quite"}
+                      {answer.correct ? copy.correct : copy.notQuite}
                     </Text>
                     <Text selectable style={{ color: c.muted, lineHeight: 23 }}>
                       {tx(q.exp, uiLang).replace(/<[^>]*>/g, "")}

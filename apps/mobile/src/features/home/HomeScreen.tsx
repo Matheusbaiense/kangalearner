@@ -17,14 +17,13 @@ export function HomeScreen() {
     <Screen>
       <Card tone="brand" style={{ paddingTop: 30 }}>
         <Text selectable style={{ color: "#B6F1D1", fontSize: 13, fontWeight: "900" }}>
-          FOR IMMIGRANTS IN WESTERN AUSTRALIA
+          {copy.heroEyebrow}
         </Text>
         <Text selectable style={{ color: "#fff", fontSize: 38, fontWeight: "900", lineHeight: 44 }}>
-          Pass your WA learner test in your language.
+          {copy.heroTitle}
         </Text>
         <Text selectable style={{ color: "#D4E3EF", fontSize: 17, lineHeight: 26 }}>
-          Practice official-style questions offline, switch language anytime, and sync progress when
-          you sign in.
+          {copy.heroSubtitle}
         </Text>
         <View style={{ flexDirection: "row", gap: spacing.sm, flexWrap: "wrap" }}>
           <View style={{ flexDirection: "row", gap: spacing.xs, alignItems: "center" }}>
@@ -58,8 +57,10 @@ export function HomeScreen() {
           ))}
         </View>
         <Text style={{ color: c.muted }}>
-          WA is available now. {available.filter((item) => item !== "WA").join(", ")} are prepared
-          for future content.
+          {copy.stateAvailability.replace(
+            "{states}",
+            available.filter((item) => item !== "WA").join(", ")
+          )}
         </Text>
       </Card>
 
@@ -80,10 +81,10 @@ export function HomeScreen() {
 
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.md }}>
         <Card style={{ flex: 1, minWidth: 150 }}>
-          <Stat label="Questions" value={String(QUESTIONS.length)} />
+          <Stat label={copy.questionsLabel} value={String(QUESTIONS.length)} />
         </Card>
         <Card style={{ flex: 1, minWidth: 150 }}>
-          <Stat label="Topics" value={String(CATEGORIES.length)} />
+          <Stat label={copy.topicsLabel} value={String(CATEGORIES.length)} />
         </Card>
       </View>
 

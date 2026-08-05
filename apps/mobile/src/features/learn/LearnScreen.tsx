@@ -14,10 +14,7 @@ export function LearnScreen() {
   const questions = questionsForState(state);
 
   return (
-    <Screen
-      title={copy.learn}
-      subtitle="Short topic cards tuned for mobile reading. Start with weak topics, then jump into practice."
-    >
+    <Screen title={copy.learn} subtitle={copy.learnSubtitle}>
       {CATEGORIES.map((category, index) => {
         const Icon = iconForCategory(category.key);
         const count = questions.filter((q) => q.cat === category.key).length;
@@ -42,7 +39,7 @@ export function LearnScreen() {
                     {categoryLabel(category.key, uiLang)}
                   </Text>
                   <Text selectable style={{ color: c.muted, lineHeight: 22 }}>
-                    {count} practice questions. Review the rule, then answer examples in context.
+                    {copy.learnTopicCount.replace("{count}", String(count))}
                   </Text>
                 </View>
               </View>
