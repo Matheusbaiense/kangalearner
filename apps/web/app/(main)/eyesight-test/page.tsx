@@ -185,9 +185,7 @@ export default function EyesightTestPage() {
               marginTop: 16,
               padding: "14px 16px",
               borderRadius: 12,
-              background: passed
-                ? "var(--green3, rgba(46,125,91,0.08))"
-                : "rgba(245,166,0,0.10)",
+              background: passed ? "var(--green3, rgba(46,125,91,0.08))" : "rgba(245,166,0,0.10)",
               border: `1px solid ${passed ? "var(--green2, rgba(46,125,91,0.3))" : "rgba(245,166,0,0.4)"}`,
               lineHeight: 1.55
             }}

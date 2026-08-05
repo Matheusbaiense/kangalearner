@@ -9,29 +9,27 @@ import type { UiLang } from "@/lib/i18n";
  * needs no API/migration yet (a future `content_reports` endpoint can replace it).
  */
 
-const COPY: Record<
-  UiLang,
-  { verified: string; source: string; report: string; subject: string }
-> = {
-  en: {
-    verified: "Last verified with Transport WA",
-    source: "Official source",
-    report: "Report outdated info",
-    subject: "Outdated info on KangaLearner"
-  },
-  pt: {
-    verified: "Última verificação com o Transport WA",
-    source: "Fonte oficial",
-    report: "Reportar info desatualizada",
-    subject: "Informação desatualizada no KangaLearner"
-  },
-  es: {
-    verified: "Última verificación con Transport WA",
-    source: "Fuente oficial",
-    report: "Reportar info desactualizada",
-    subject: "Información desactualizada en KangaLearner"
-  }
-};
+const COPY: Record<UiLang, { verified: string; source: string; report: string; subject: string }> =
+  {
+    en: {
+      verified: "Last verified with Transport WA",
+      source: "Official source",
+      report: "Report outdated info",
+      subject: "Outdated info on KangaLearner"
+    },
+    pt: {
+      verified: "Última verificação com o Transport WA",
+      source: "Fonte oficial",
+      report: "Reportar info desatualizada",
+      subject: "Informação desatualizada no KangaLearner"
+    },
+    es: {
+      verified: "Última verificación con Transport WA",
+      source: "Fuente oficial",
+      report: "Reportar info desactualizada",
+      subject: "Información desactualizada en KangaLearner"
+    }
+  };
 
 const REPORT_TO = "hello@kangalearner.com.au";
 
@@ -57,9 +55,7 @@ export function VerifiedBadge({
   reportContext?: string;
 }) {
   const c = COPY[lang];
-  const subject = encodeURIComponent(
-    reportContext ? `${c.subject} — ${reportContext}` : c.subject
-  );
+  const subject = encodeURIComponent(reportContext ? `${c.subject} — ${reportContext}` : c.subject);
   const mailto = `mailto:${REPORT_TO}?subject=${subject}`;
 
   return (
