@@ -22,6 +22,7 @@ import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { StatesWaitlist } from "@/components/StatesWaitlist";
 
 /* ── Data ── */
 const FEATURES: {
@@ -100,14 +101,6 @@ const TRUST_ITEMS = [
     hasFlags: false
   }
 ] as const;
-
-// Show WA (active) + 3 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
-const AU_STATES = [
-  { code: "WA", available: true },
-  { code: "NSW", available: false },
-  { code: "VIC", available: false },
-  { code: "QLD", available: false }
-];
 
 const TESTIMONIALS = [
   {
@@ -723,27 +716,7 @@ export function LandingClient() {
 
       {/* ── States strip ─────────────────────────────── */}
       <section className="states-section">
-        <div className="states-inner">
-          <div className="states-grid">
-            {AU_STATES.map((st) => (
-              <div
-                key={st.code}
-                className={`state-card${st.available ? " active" : " coming-soon"}`}
-              >
-                <span className="state-code">{st.code}</span>
-                <span className="state-badge">
-                  {st.available ? s.stateAvailable : s.comingSoon}
-                </span>
-              </div>
-            ))}
-          </div>
-          <p className="states-more-note">
-            {s.statesMoreNote ?? "More states coming soon —"}{" "}
-            <Link href="/auth/signup" className="states-more-link">
-              {s.statesMoreLink ?? "sign up to be notified"}
-            </Link>
-          </p>
-        </div>
+        <StatesWaitlist />
       </section>
 
       {/* ── Testimonials ─────────────────────────────── */}

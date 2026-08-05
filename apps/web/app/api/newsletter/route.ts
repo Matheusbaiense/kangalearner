@@ -4,12 +4,7 @@ import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { newsletterConfirmHtml, newsletterConfirmSubject } from "@/lib/emails/newsletter-confirm";
-
-import { z } from "zod";
-
-const newsletterSchema = z.object({
-  email: z.string().email()
-});
+import { newsletterSchema } from "@/lib/api/newsletterValidation";
 
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req);
@@ -26,6 +21,7 @@ export async function POST(req: NextRequest) {
     }
 
     const email = parseResult.data.email.toLowerCase();
+    const source = parseResult.data.source;
 
     // Per-address limit: rotating-IP replays must not re-trigger emails to a
     // victim inbox. Opaque ok response (matches the already-subscribed path).
@@ -35,7 +31,7 @@ export async function POST(req: NextRequest) {
 
     const { error } = await supabaseAdmin
       .from("newsletter_subscribers")
-      .insert({ email, subscribed_at: new Date().toISOString(), source: "footer" });
+      .insert({ email, subscribed_at: new Date().toISOString(), source });
 
     if (error) {
       // Unique constraint violation — already subscribed, treat as success

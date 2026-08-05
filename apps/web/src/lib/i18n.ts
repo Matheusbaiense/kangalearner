@@ -112,8 +112,13 @@ export const t = {
     // States
     stateAvailable: "Available now",
     comingSoon: "Coming soon",
-    statesMoreNote: "More states coming soon —",
-    statesMoreLink: "sign up to be notified",
+    statesMoreNote: "More states coming soon — be the first to know:",
+    waitlistStateLabel: "State",
+    waitlistEmailPlaceholder: "Your email",
+    waitlistCta: "Notify me",
+    waitlistCardAria: "Join the waitlist",
+    waitlistSuccess: "You're on the list — we'll email you when your state launches.",
+    waitlistError: "Something went wrong. Please try again.",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "What learners say",
     faqTitle: "Frequently asked questions",
@@ -475,8 +480,13 @@ export const t = {
     // States
     stateAvailable: "Disponível agora",
     comingSoon: "Em breve",
-    statesMoreNote: "Mais estados em breve —",
-    statesMoreLink: "cadastre-se para ser notificado",
+    statesMoreNote: "Mais estados em breve — seja o primeiro a saber:",
+    waitlistStateLabel: "Estado",
+    waitlistEmailPlaceholder: "Seu e-mail",
+    waitlistCta: "Avise-me",
+    waitlistCardAria: "Entrar na lista de espera",
+    waitlistSuccess: "Você está na lista — enviaremos um e-mail quando seu estado for lançado.",
+    waitlistError: "Algo deu errado. Tente novamente.",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "O que os alunos dizem",
     faqTitle: "Perguntas frequentes",
@@ -840,8 +850,14 @@ export const t = {
     // States
     stateAvailable: "Disponible ahora",
     comingSoon: "Próximamente",
-    statesMoreNote: "Más estados próximamente —",
-    statesMoreLink: "regístrate para ser notificado",
+    statesMoreNote: "Más estados próximamente — sé el primero en enterarte:",
+    waitlistStateLabel: "Estado",
+    waitlistEmailPlaceholder: "Tu correo electrónico",
+    waitlistCta: "Avísame",
+    waitlistCardAria: "Unirme a la lista de espera",
+    waitlistSuccess:
+      "Estás en la lista — te enviaremos un correo cuando tu estado esté disponible.",
+    waitlistError: "Algo salió mal. Inténtalo de nuevo.",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "Lo que dicen los estudiantes",
     faqTitle: "Preguntas frecuentes",
