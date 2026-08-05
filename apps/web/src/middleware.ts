@@ -57,6 +57,8 @@ function buildCsp(nonce: string): string {
     ]
       .filter(Boolean)
       .join(" "),
+    // Sentry Session Replay runs its compression worker from a blob: URL.
+    "worker-src 'self' blob:",
     "frame-src https://js.stripe.com https://hooks.stripe.com",
     "frame-ancestors 'none'",
     "object-src 'none'",

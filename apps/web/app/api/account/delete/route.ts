@@ -1,8 +1,6 @@
-import { NextResponse } from "next/server";
-import { cookies } from "next/headers";
-import { createServerClient } from "@supabase/ssr";
+import { NextResponse, type NextRequest } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
-import { requireSupabaseEnv } from "@/lib/supabase/env";
+import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { rateLimit } from "@/lib/rateLimit";
 
 /**
@@ -12,12 +10,14 @@ import { rateLimit } from "@/lib/rateLimit";
  *    sign in again.
  * On auth deletion failure, rolls back the soft-delete to keep account consistent.
  */
-export async function DELETE() {
-  const cookieStore = await cookies();
-  const { url, anonKey } = requireSupabaseEnv();
-  const supabase = createServerClient(url, anonKey, {
-    cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} }
-  });
+export async function DELETE(request: NextRequest) {
+  let supabase;
+  let response;
+  try {
+    ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
+  } catch {
+    return NextResponse.json({ error: "missing_env" }, { status: 500 });
+  }
 
   const {
     data: { user }
@@ -102,5 +102,5 @@ export async function DELETE() {
     }
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true }, { headers: response.headers });
 }

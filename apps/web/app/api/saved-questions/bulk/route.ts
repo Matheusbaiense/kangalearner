@@ -4,9 +4,12 @@ import { isValidQuestionId } from "@/lib/api/attemptValidation";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
+import { SUPPORTED_COUNTRY } from "@kanga/core";
 
+// max(501) caps schema-validation work; the post-dedupe MAX_BULK check below
+// still owns the specific error. 50 matches the varchar(50) column.
 const payloadSchema = z.object({
-  questionIds: z.array(z.string().min(1).max(64)).optional()
+  questionIds: z.array(z.string().min(1).max(50)).max(501).optional()
 });
 
 export async function POST(request: NextRequest) {
@@ -56,7 +59,7 @@ export async function POST(request: NextRequest) {
   const rows = ids.map((questionId) => ({
     user_id: user.id,
     question_id: questionId,
-    country: "AU"
+    country: SUPPORTED_COUNTRY
   }));
 
   const { error } = await supabase.from("saved_questions").upsert(rows, {

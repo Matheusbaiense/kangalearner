@@ -73,6 +73,10 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   const [authLoading, setAuthLoading] = useState(!initialNavUser);
   const [userMenuOpen, setUserMenuOpen] = useState(false);
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  // Latest-ref for the auth effect: a fresh initialNavUser object identity on
+  // every server render must not tear down and recreate the auth listener.
+  const initialNavUserRef = useRef(initialNavUser);
+  initialNavUserRef.current = initialNavUser;
   // Deterministic SSR value ("WA"); the persisted state is hydrated by the effect
   // below. Reading localStorage in the initializer diverges the first client render
   // from the server HTML → React hydration error #418 (aborts hydration, breaks
@@ -195,7 +199,9 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       setTimeout(async () => {
         if (session?.user) {
           await buildNavUser(session.user);
-          import("@/lib/syncGuestProgress").then((m) => m.syncGuestProgress());
+          import("@/lib/syncGuestProgress")
+            .then((m) => m.syncGuestProgress())
+            .catch((err) => console.error("[SiteNav] guest progress sync failed:", err));
         } else if (event === "SIGNED_OUT") {
           // Explicit sign-out — always clear regardless of initial state.
           setUser(null);
@@ -205,8 +211,10 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
           const { data: recovered } = await supabase!.auth.getSession();
           if (recovered.session?.user) {
             await buildNavUser(recovered.session.user);
-            import("@/lib/syncGuestProgress").then((m) => m.syncGuestProgress());
-          } else if (!initialNavUser) {
+            import("@/lib/syncGuestProgress")
+              .then((m) => m.syncGuestProgress())
+              .catch((err) => console.error("[SiteNav] guest progress sync failed:", err));
+          } else if (!initialNavUserRef.current) {
             // Only clear if the server layout also had no user — don't override a server-confirmed
             // logged-in state with a potentially buggy client-side event.
             setUser(null);
@@ -221,7 +229,9 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       clearTimeout(fallbackTimer);
       listener.subscription.unsubscribe();
     };
-  }, [initialNavUser]);
+    // Mount-once by design: initialNavUser is read via initialNavUserRef above,
+    // so the subscription survives client-side navigations.
+  }, []);
 
   async function handleSignOut() {
     setUserMenuOpen(false);

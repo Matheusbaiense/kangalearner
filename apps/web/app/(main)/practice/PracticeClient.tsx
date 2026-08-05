@@ -442,7 +442,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
           source: "web"
         }),
         keepalive: true
-      }).catch(() => {});
+      }).catch((err) => console.error("[practice] attempt sync failed:", err));
     },
     [selectedState]
   );
@@ -493,7 +493,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                   source: "web"
                 }),
                 keepalive: true
-              }).catch(() => {});
+              }).catch((err) => console.error("[practice] mock session save failed:", err));
             }
             return nextIdx;
           });

@@ -2,7 +2,9 @@ import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 const ATTEMPT_SOURCES = new Set(["web", "practice", "mock", "migration", "bulk"]);
-const QUESTION_ID_RE = /^[a-zA-Z0-9_-]{1,64}$/;
+// 50 matches the varchar(50) columns (question_attempts/saved_questions) — a
+// 51-64 char id would pass validation and then fail the whole batch upsert.
+const QUESTION_ID_RE = /^[a-zA-Z0-9_-]{1,50}$/;
 const CATEGORY_RE = /^[a-zA-Z0-9_-]{1,50}$/;
 
 export function isValidAttemptState(state: unknown): state is string {
