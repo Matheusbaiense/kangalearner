@@ -13,8 +13,13 @@ ChatGPT Image*.png
 apps/web/.next/
 .expo/
 apps/mobile/.expo/
+apps/mobile/android/
+apps/mobile/ios/
 .cursor/
 .claude/
+.superpowers/
+# Crew de agentes de outro projeto (Woofed/Grifo) — uso local apenas
+agents/
 
 # OpenWolf — estado local (não versionar)
 .wolf/

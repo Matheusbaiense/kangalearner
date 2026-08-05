@@ -6,6 +6,7 @@ import {
   clearLocalProgress,
   loadAnswers,
   loadMockSessions,
+  loadSavedQuestions,
   loadSyncQueue
 } from "../../lib/local-store";
 import { getMobileSupabase, getRedirectUrl } from "../../lib/supabase";
@@ -45,11 +46,17 @@ export function ProfileScreen() {
 
   async function signIn() {
     if (!supabase) {
-      Alert.alert("Supabase not configured", "Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY.");
+      Alert.alert(
+        "Supabase not configured",
+        "Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY."
+      );
       return;
     }
     setLoading(true);
-    const { data, error } = await supabase.auth.signInWithPassword({ email: email.trim(), password });
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password
+    });
     setLoading(false);
     if (error) Alert.alert(copy.signIn, error.message);
     else if (data.session) void syncNow(data.session);
@@ -57,7 +64,10 @@ export function ProfileScreen() {
 
   async function signUp() {
     if (!supabase) {
-      Alert.alert("Supabase not configured", "Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY.");
+      Alert.alert(
+        "Supabase not configured",
+        "Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY."
+      );
       return;
     }
     setLoading(true);
@@ -76,12 +86,15 @@ export function ProfileScreen() {
   }
 
   async function syncNow(currentSession = session) {
-    const queue = await loadSyncQueue();
     if (!currentSession || !supabase) {
       Alert.alert(copy.syncPending, "Sign in to sync local progress.");
       return;
     }
-    if (!queue.length) {
+    const queue = await loadSyncQueue();
+    // Saved questions are full-pushed by syncLocalProgress even with an empty
+    // queue (migration path for users who saved before sync existed).
+    const savedCount = (await loadSavedQuestions()).length;
+    if (!queue.length && savedCount === 0) {
       Alert.alert(copy.synced, "There is no pending local progress.");
       return;
     }
@@ -138,8 +151,19 @@ export function ProfileScreen() {
 
       {!session ? (
         <Card>
-          <Field label={copy.email} value={email} onChangeText={setEmail} autoCapitalize="none" keyboardType="email-address" />
-          <Field label={copy.password} value={password} onChangeText={setPassword} secureTextEntry />
+          <Field
+            label={copy.email}
+            value={email}
+            onChangeText={setEmail}
+            autoCapitalize="none"
+            keyboardType="email-address"
+          />
+          <Field
+            label={copy.password}
+            value={password}
+            onChangeText={setPassword}
+            secureTextEntry
+          />
           <PrimaryButton loading={loading} onPress={signIn}>
             {copy.signIn}
           </PrimaryButton>

@@ -8,6 +8,7 @@ import { useQuestions } from "@/hooks/useQuestions";
 import { SK } from "@/lib/storageKeys";
 import { AuthNudge } from "@/components/ui/AuthNudge";
 import { createClient } from "@/lib/supabase/client";
+import { pct } from "@/lib/percent";
 
 /* ── Types ── */
 type AnswerRecord = Record<string, { chosen: string; correct: boolean }>;
@@ -20,10 +21,6 @@ interface CatStat {
 }
 
 /* ── Helpers ── */
-function pct(correct: number, total: number) {
-  return total > 0 ? Math.round((correct / total) * 100) : 0;
-}
-
 function accuracyColor(acc: number, total: number) {
   if (total === 0) return "var(--muted)";
   if (acc >= WA_PASS_THRESHOLD * 100) return "var(--green)";
@@ -80,11 +77,11 @@ export default function ProgressPage() {
     const totalCorrect = entries.filter(([, v]) => v.correct).length;
     const overallAcc = pct(totalCorrect, totalAnswered);
 
-    /* Category breakdown using QUESTIONS to get category names */
+    /* Category breakdown using QUESTIONS to get category names (O(1) lookup) */
+    const byId = new Map(QUESTIONS.map((x) => [x.id, x]));
     const catMap: Record<string, { correct: number; total: number }> = {};
     entries.forEach(([qid, v]) => {
-      const q = QUESTIONS.find((x) => x.id === qid);
-      const cat = q?.cat ?? "Other";
+      const cat = byId.get(qid)?.cat ?? "Other";
       if (!catMap[cat]) catMap[cat] = { correct: 0, total: 0 };
       catMap[cat].total++;
       if (v.correct) catMap[cat].correct++;

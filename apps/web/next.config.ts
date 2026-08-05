@@ -1,3 +1,4 @@
+import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
@@ -30,7 +31,18 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   outputFileTracingRoot: require("node:path").join(__dirname, "../../"),
   images: {
-    remotePatterns: imageRemotePatterns
+    remotePatterns: imageRemotePatterns,
+    formats: ["image/avif", "image/webp"]
+  },
+  async redirects() {
+    // Canonical auth paths live under /auth/* (INFRA-8). These replace the
+    // legacy one-line redirect pages under app/{login,signup,...}/page.tsx.
+    return [
+      { source: "/login", destination: "/auth/login", permanent: true },
+      { source: "/signup", destination: "/auth/signup", permanent: true },
+      { source: "/forgot-password", destination: "/auth/forgot-password", permanent: true },
+      { source: "/reset-password", destination: "/auth/reset-password", permanent: true }
+    ];
   },
   async headers() {
     return [
@@ -55,4 +67,19 @@ const nextConfig: NextConfig = {
   }
 };
 
-export default nextConfig;
+const hasSentryUploadConfig = Boolean(
+  process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ORG && process.env.SENTRY_PROJECT
+);
+
+export default hasSentryUploadConfig
+  ? withSentryConfig(nextConfig, {
+      authToken: process.env.SENTRY_AUTH_TOKEN,
+      org: process.env.SENTRY_ORG,
+      project: process.env.SENTRY_PROJECT,
+      silent: !process.env.CI,
+      widenClientFileUpload: true,
+      // Proxy browser events through /monitoring so connect-src 'self' covers
+      // them — without this the CSP blocks every client-side Sentry event.
+      tunnelRoute: "/monitoring"
+    })
+  : nextConfig;

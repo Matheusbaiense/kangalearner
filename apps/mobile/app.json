@@ -5,7 +5,13 @@
     "scheme": "kangalearner",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
     "userInterfaceStyle": "automatic",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#071A2C"
+    },
     "ios": {
       "bundleIdentifier": "com.kangalearner.app",
       "supportsTablet": false
@@ -13,13 +19,35 @@
     "android": {
       "package": "com.kangalearner.app",
       "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#071A2C"
       }
     },
-    "plugins": ["expo-router", "expo-secure-store", "expo-sqlite"],
+    "plugins": [
+      "expo-router",
+      "expo-secure-store",
+      "expo-sqlite",
+      [
+        "react-native-google-mobile-ads",
+        {
+          "androidAppId": "ca-app-pub-3963318372744631~4583429212",
+          "iosAppId": "ca-app-pub-3940256099942544~1458002511",
+          "userTrackingUsageDescription": "KangaLearner may use this identifier to measure and deliver relevant ads."
+        }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "extraProguardRules": "-keep class com.google.android.gms.internal.consent_sdk.** { *; }"
+          }
+        }
+      ]
+    ],
     "extra": {
+      "router": {},
       "eas": {
-        "projectId": "configure-in-expo-dashboard"
+        "projectId": "07695f23-258c-4e72-92c3-4e0ceff025ca"
       }
     }
   }

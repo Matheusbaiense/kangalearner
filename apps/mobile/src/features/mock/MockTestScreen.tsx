@@ -14,8 +14,17 @@ import {
 } from "../../lib/questions";
 import { enqueueSync, loadMockSessions, saveMockSessions } from "../../lib/local-store";
 import { isBilingual } from "../../lib/i18n";
-import { Card, PillButton, PrimaryButton, ProgressBar, Screen, Stat, useThemeColors } from "../../ui/kit";
+import {
+  Card,
+  PillButton,
+  PrimaryButton,
+  ProgressBar,
+  Screen,
+  Stat,
+  useThemeColors
+} from "../../ui/kit";
 import { colors, spacing } from "../../theme";
+import { AdSlot } from "../ads";
 import { usePreferences } from "../preferences/PreferencesContext";
 
 const EXAM_SECONDS = 45 * 60;
@@ -23,7 +32,9 @@ const EXAM_SECONDS = 45 * 60;
 type MockMode = "practice" | "exam";
 
 function formatTime(seconds: number): string {
-  const m = Math.floor(seconds / 60).toString().padStart(2, "0");
+  const m = Math.floor(seconds / 60)
+    .toString()
+    .padStart(2, "0");
   const s = (seconds % 60).toString().padStart(2, "0");
   return `${m}:${s}`;
 }
@@ -36,26 +47,12 @@ export function MockTestScreen() {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [idx, setIdx] = useState(0);
   const [timeLeft, setTimeLeft] = useState(EXAM_SECONDS);
+  const [expired, setExpired] = useState(false);
   const [history, setHistory] = useState<MockSessionRecord[]>([]);
 
   useEffect(() => {
     void loadMockSessions().then(setHistory);
   }, []);
-
-  useEffect(() => {
-    if (!qids.length || mode !== "exam") return;
-    const timer = setInterval(() => {
-      setTimeLeft((current) => {
-        if (current <= 1) {
-          clearInterval(timer);
-          void finishSession();
-          return 0;
-        }
-        return current - 1;
-      });
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [qids.length, mode]);
 
   const activeQuestion = useMemo(() => {
     if (!qids.length) return null;
@@ -63,9 +60,27 @@ export function MockTestScreen() {
   }, [qids, idx]);
 
   const score = scoreAnswers(qids, answers);
-  const complete = qids.length > 0 && Object.keys(answers).length >= qids.length;
+  const complete = expired || (qids.length > 0 && Object.keys(answers).length >= qids.length);
   const passed = score >= WA_PASS_MIN_CORRECT;
   const progress = qids.length ? Math.round((Object.keys(answers).length / qids.length) * 100) : 0;
+
+  useEffect(() => {
+    // Stop ticking once the session is complete so a screen kept mounted by the
+    // tab navigator never fires a second, ghost finishSession later.
+    if (!qids.length || mode !== "exam" || complete) return;
+    const timer = setInterval(() => {
+      setTimeLeft((current) => (current > 0 ? current - 1 : 0));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [qids.length, mode, complete]);
+
+  useEffect(() => {
+    // Runs on the render where the clock hits zero, so finishSession sees the
+    // fresh answers instead of the stale closure the old interval captured.
+    if (timeLeft > 0 || mode !== "exam" || !qids.length || complete) return;
+    setExpired(true);
+    void finishSession();
+  }, [timeLeft, mode, qids.length, complete]);
 
   function startSession(nextMode = mode) {
     setMode(nextMode);
@@ -73,6 +88,7 @@ export function MockTestScreen() {
     setAnswers({});
     setIdx(0);
     setTimeLeft(EXAM_SECONDS);
+    setExpired(false);
     void Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
   }
 
@@ -144,7 +160,9 @@ export function MockTestScreen() {
             <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>Recent results</Text>
             {history.slice(0, 3).map((item) => (
               <View key={item.id} style={{ flexDirection: "row", justifyContent: "space-between" }}>
-                <Text style={{ color: c.muted }}>{new Date(item.completedAt).toLocaleDateString()}</Text>
+                <Text style={{ color: c.muted }}>
+                  {new Date(item.completedAt).toLocaleDateString()}
+                </Text>
                 <Text style={{ color: c.ink, fontWeight: "900" }}>
                   {item.score}/{item.total}
                 </Text>
@@ -168,6 +186,7 @@ export function MockTestScreen() {
           <PrimaryButton onPress={() => startSession()}>{copy.startMock}</PrimaryButton>
           <PillButton onPress={() => setQids([])}>{copy.finish}</PillButton>
         </Card>
+        <AdSlot slotId="mock_result" />
       </Screen>
     );
   }
@@ -210,7 +229,11 @@ export function MockTestScreen() {
                   borderRadius: 16,
                   borderWidth: 1,
                   borderColor:
-                    reveal && isCorrect ? colors.success : reveal && picked ? colors.danger : c.border,
+                    reveal && isCorrect
+                      ? colors.success
+                      : reveal && picked
+                        ? colors.danger
+                        : c.border,
                   backgroundColor:
                     reveal && isCorrect ? "#EAF7F1" : reveal && picked ? "#FDECEC" : c.card,
                   opacity: pressed ? 0.75 : 1

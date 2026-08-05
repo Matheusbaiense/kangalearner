@@ -57,6 +57,8 @@ function buildCsp(nonce: string): string {
     ]
       .filter(Boolean)
       .join(" "),
+    // Sentry Session Replay runs its compression worker from a blob: URL.
+    "worker-src 'self' blob:",
     "frame-src https://js.stripe.com https://hooks.stripe.com",
     "frame-ancestors 'none'",
     "object-src 'none'",
@@ -115,7 +117,7 @@ export async function middleware(request: NextRequest) {
     }
 
     let apiResponse = NextResponse.next({ request });
-    createServerClient(supabaseUrl, supabaseAnonKey, {
+    const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll: () => request.cookies.getAll(),
         setAll: (cookiesToSet) => {
@@ -127,6 +129,17 @@ export async function middleware(request: NextRequest) {
         }
       }
     });
+
+    if (pathname.startsWith("/api/admin/")) {
+      const {
+        data: { user }
+      } = await supabase.auth.getUser();
+      if (!user) {
+        const err = NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+        if (matchedOrigin) addCorsHeaders(err, matchedOrigin);
+        return err;
+      }
+    }
 
     if (matchedOrigin) addCorsHeaders(apiResponse, matchedOrigin);
     return apiResponse;

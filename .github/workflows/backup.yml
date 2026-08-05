@@ -1,0 +1,87 @@
+name: Backup
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 18 * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: supabase-backup
+  cancel-in-progress: false
+
+jobs:
+  supabase-postgres:
+    name: Supabase Postgres backup
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+      BACKUP_ENCRYPTION_KEY: ${{ secrets.BACKUP_ENCRYPTION_KEY }}
+      BACKUP_BUCKET: ${{ secrets.BACKUP_BUCKET }}
+      BACKUP_S3_ENDPOINT: ${{ secrets.BACKUP_S3_ENDPOINT }}
+      AWS_ACCESS_KEY_ID: ${{ secrets.BACKUP_AWS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.BACKUP_AWS_SECRET }}
+      AWS_DEFAULT_REGION: auto
+
+    steps:
+      - name: Validate backup configuration
+        run: |
+          missing=0
+          for name in SUPABASE_DB_URL BACKUP_ENCRYPTION_KEY BACKUP_BUCKET BACKUP_S3_ENDPOINT AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
+            if [ -z "${!name}" ]; then
+              echo "::error::$name is not configured"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then
+            exit 1
+          fi
+
+      - name: Install backup tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends postgresql-client gnupg awscli
+
+      - name: Dump database
+        run: |
+          mkdir -p backups
+          ts="$(date -u +'%Y%m%dT%H%M%SZ')"
+          dump="backups/kangalearner-supabase-${ts}.dump"
+          pg_dump \
+            --dbname "$SUPABASE_DB_URL" \
+            --format=custom \
+            --no-owner \
+            --no-acl \
+            --file "$dump"
+          echo "DUMP_FILE=$dump" >> "$GITHUB_ENV"
+          echo "ENCRYPTED_FILE=${dump}.gpg" >> "$GITHUB_ENV"
+
+      - name: Encrypt dump
+        run: |
+          gpg \
+            --batch \
+            --yes \
+            --pinentry-mode loopback \
+            --passphrase "$BACKUP_ENCRYPTION_KEY" \
+            --symmetric \
+            --cipher-algo AES256 \
+            --output "$ENCRYPTED_FILE" \
+            "$DUMP_FILE"
+          rm -f "$DUMP_FILE"
+
+      - name: Upload encrypted backup
+        run: |
+          aws s3 cp \
+            "$ENCRYPTED_FILE" \
+            "s3://${BACKUP_BUCKET}/supabase/$(basename "$ENCRYPTED_FILE")" \
+            --endpoint-url "$BACKUP_S3_ENDPOINT" \
+            --only-show-errors
+
+      - name: Verify uploaded backup is listed
+        run: |
+          aws s3 ls \
+            "s3://${BACKUP_BUCKET}/supabase/$(basename "$ENCRYPTED_FILE")" \
+            --endpoint-url "$BACKUP_S3_ENDPOINT"

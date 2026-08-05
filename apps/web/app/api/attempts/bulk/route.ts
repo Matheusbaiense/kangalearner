@@ -13,7 +13,7 @@ import { z } from "zod";
 
 const bulkAttemptSchema = z.object({
   attempt_id: z.string().min(1).max(64),
-  question_id: z.string().min(1).max(64),
+  question_id: z.string().min(1).max(50),
   state: z.string().min(1).max(10),
   category: z.string().max(50).nullable().optional(),
   is_correct: z.boolean(),

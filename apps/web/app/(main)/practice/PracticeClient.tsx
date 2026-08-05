@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { CATEGORIES, fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
@@ -19,6 +19,7 @@ import {
   XP_PER_MOCK_PASS,
   XP_PER_MOCK_COMPLETE
 } from "@/lib/gamification/progress";
+import { pct } from "@/lib/percent";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -58,10 +59,6 @@ function persistState(code: StateCode): void {
 type Answered = Record<string, { chosen: string; correct: boolean }>;
 
 /* ── helpers ── */
-function pct(correct: number, total: number) {
-  return total > 0 ? Math.round((correct / total) * 100) : 0;
-}
-
 function spawnConfetti(x: number, y: number) {
   const colors = ["#F4A900", "#30D158", "#FFBE33", "#fff", "#52B788"];
   for (let i = 0; i < 20; i++) {
@@ -76,147 +73,167 @@ function spawnConfetti(x: number, y: number) {
   }
 }
 
+/* Static category lookup — built once (CATEGORIES is a static import). */
+const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
+  CATEGORIES.map((c) => [c.key, c])
+);
+
 /* ── QuizCard ── */
-function QuizCard({
-  q,
-  lang,
-  isBilingual,
-  answered,
-  onPick,
-  answerLabel,
-  isSaved,
-  onToggleSave,
-  saveLabel,
-  unsaveLabel
-}: {
-  q: Question;
-  lang: UiLang;
-  isBilingual: boolean;
-  answered: Answered;
-  onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
-  answerLabel: string;
-  isSaved?: boolean;
-  onToggleSave?: (qid: string) => void;
-  saveLabel?: string;
-  unsaveLabel?: string;
-}) {
-  const bilingual = isBilingual;
-  const state = answered[q.id];
-  const catData = CATEGORIES.find((c) => c.key === q.cat);
-  const CatIco = categoryLucideIcon(q.cat);
-  const expText = tx(q.exp, lang);
-  const expTextEn = bilingual ? tx(q.exp, "en") : null;
-  const tipText = q.tip ? tx(q.tip, lang) : "";
+const QuizCard = memo(
+  function QuizCard({
+    q,
+    lang,
+    isBilingual,
+    answered,
+    onPick,
+    answerLabel,
+    isSaved,
+    onToggleSave,
+    saveLabel,
+    unsaveLabel
+  }: {
+    q: Question;
+    lang: UiLang;
+    isBilingual: boolean;
+    answered: Answered;
+    onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
+    answerLabel: string;
+    isSaved?: boolean;
+    onToggleSave?: (qid: string) => void;
+    saveLabel?: string;
+    unsaveLabel?: string;
+  }) {
+    const bilingual = isBilingual;
+    const state = answered[q.id];
+    const catData = CATEGORY_BY_KEY.get(q.cat);
+    const CatIco = categoryLucideIcon(q.cat);
+    const expText = tx(q.exp, lang);
+    const expTextEn = bilingual ? tx(q.exp, "en") : null;
+    const tipText = q.tip ? tx(q.tip, lang) : "";
 
-  return (
-    <div className="qcard" id={q.id}>
-      <div className="qmeta">
-        <span className="qnum">{q.id}</span>
-        <span className="qcat-badge">
-          <CatIco className="qcat-ico" aria-hidden />
-          {catData?.label?.[lang] ?? q.cat}
-        </span>
-        {onToggleSave && (
-          <button
-            onClick={() => onToggleSave(q.id)}
-            title={isSaved ? unsaveLabel : saveLabel}
-            aria-label={isSaved ? unsaveLabel : saveLabel}
-            style={{
-              marginLeft: "auto",
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              fontSize: "1.1rem",
-              lineHeight: 1,
-              padding: "0 2px",
-              color: isSaved ? "var(--green)" : "var(--muted)",
-              flexShrink: 0
-            }}
-          >
-            {isSaved ? "★" : "☆"}
-          </button>
-        )}
-      </div>
-
-      <p className="qtext">{tx(q.q, lang)}</p>
-      {bilingual && q.q.en && <p className="qtext-en">{q.q.en}</p>}
-
-      {(() => {
-        const legacySign = q.sign?.match(/^assets\/icons\/signs\/(.+)$/);
-        const signSrc = q.sign?.startsWith("/")
-          ? q.sign
-          : legacySign
-            ? `/icons/signs/${legacySign[1]}`
-            : null;
-        const capLabel =
-          q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
-        if (!signSrc && !capLabel) return null;
-        return (
-          <div className="sign-box">
-            {signSrc ? (
-              <img
-                src={signSrc}
-                alt={capLabel ?? "Road sign"}
-                loading="lazy"
-                decoding="async"
-                style={{ maxWidth: "100%", height: "auto" }}
-              />
-            ) : null}
-            {capLabel ? <div className="img-cap">{capLabel}</div> : null}
-          </div>
-        );
-      })()}
-
-      <div className="opts">
-        {q.opts.map((o) => {
-          const isChosen = state?.chosen === o.l;
-          const isCorrect = Boolean(o.ok);
-          let cls = "opt";
-          if (state) {
-            if (isCorrect) cls += state.correct ? " correct" : " missed";
-            else if (isChosen && !state.correct) cls += " wrong";
-          }
-          return (
+    return (
+      <div className="qcard" id={q.id}>
+        <div className="qmeta">
+          <span className="qnum">{q.id}</span>
+          <span className="qcat-badge">
+            <CatIco className="qcat-ico" aria-hidden />
+            {catData?.label?.[lang] ?? q.cat}
+          </span>
+          {onToggleSave && (
             <button
-              key={o.l}
-              className={cls}
-              data-done={state ? "1" : undefined}
-              onClick={(ev) => !state && onPick(q.id, o.l, ev)}
+              onClick={() => onToggleSave(q.id)}
+              title={isSaved ? unsaveLabel : saveLabel}
+              aria-label={isSaved ? unsaveLabel : saveLabel}
+              style={{
+                marginLeft: "auto",
+                background: "none",
+                border: "none",
+                cursor: "pointer",
+                fontSize: "1.1rem",
+                lineHeight: 1,
+                padding: "0 2px",
+                color: isSaved ? "var(--green)" : "var(--muted)",
+                flexShrink: 0
+              }}
             >
-              <span className="oletter">{o.l}</span>
-              <span className="otext">
-                {tx(o.t, lang)}
-                {bilingual && o.t.en && <span className="otext-en">{o.t.en}</span>}
-              </span>
+              {isSaved ? "★" : "☆"}
             </button>
-          );
-        })}
-      </div>
-
-      {state && expText && (
-        <div className="answer show">
-          <div className="alabel">
-            <Icons.success className="alabel-ico" aria-hidden />
-            {answerLabel}
-          </div>
-          <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
-          {bilingual && expTextEn && (
-            <div
-              className="atext atext-en"
-              dangerouslySetInnerHTML={{ __html: sanitizeHtml(expTextEn) }}
-            />
-          )}
-          {tipText && (
-            <div className="atip">
-              <Icons.lightbulb className="atip-ico" aria-hidden />
-              <span>{tipText}</span>
-            </div>
           )}
         </div>
-      )}
-    </div>
-  );
-}
+
+        <p className="qtext">{tx(q.q, lang)}</p>
+        {bilingual && q.q.en && <p className="qtext-en">{q.q.en}</p>}
+
+        {(() => {
+          const legacySign = q.sign?.match(/^assets\/icons\/signs\/(.+)$/);
+          const signSrc = q.sign?.startsWith("/")
+            ? q.sign
+            : legacySign
+              ? `/icons/signs/${legacySign[1]}`
+              : null;
+          const capLabel =
+            q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
+          if (!signSrc && !capLabel) return null;
+          return (
+            <div className="sign-box">
+              {signSrc ? (
+                <img
+                  src={signSrc}
+                  alt={capLabel ?? "Road sign"}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              ) : null}
+              {capLabel ? <div className="img-cap">{capLabel}</div> : null}
+            </div>
+          );
+        })()}
+
+        <div className="opts">
+          {q.opts.map((o) => {
+            const isChosen = state?.chosen === o.l;
+            const isCorrect = Boolean(o.ok);
+            let cls = "opt";
+            if (state) {
+              if (isCorrect) cls += state.correct ? " correct" : " missed";
+              else if (isChosen && !state.correct) cls += " wrong";
+            }
+            return (
+              <button
+                key={o.l}
+                className={cls}
+                data-done={state ? "1" : undefined}
+                onClick={(ev) => !state && onPick(q.id, o.l, ev)}
+              >
+                <span className="oletter">{o.l}</span>
+                <span className="otext">
+                  {tx(o.t, lang)}
+                  {bilingual && o.t.en && <span className="otext-en">{o.t.en}</span>}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+
+        {state && expText && (
+          <div className="answer show">
+            <div className="alabel">
+              <Icons.success className="alabel-ico" aria-hidden />
+              {answerLabel}
+            </div>
+            <div className="atext" dangerouslySetInnerHTML={{ __html: sanitizeHtml(expText) }} />
+            {bilingual && expTextEn && (
+              <div
+                className="atext atext-en"
+                dangerouslySetInnerHTML={{ __html: sanitizeHtml(expTextEn) }}
+              />
+            )}
+            {tipText && (
+              <div className="atip">
+                <Icons.lightbulb className="atip-ico" aria-hidden />
+                <span>{tipText}</span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+    );
+  },
+  // Re-render a card only when ITS OWN answer state (or display inputs) change.
+  // answered[q.id] keeps its reference for untouched questions (shallow spread in
+  // pick). onPick/onToggleSave are stable (pick reads answered via a ref;
+  // toggleSave is a functional setState), so omitting them is safe.
+  (prev, next) =>
+    prev.q === next.q &&
+    prev.lang === next.lang &&
+    prev.isBilingual === next.isBilingual &&
+    prev.answered[prev.q.id] === next.answered[next.q.id] &&
+    prev.isSaved === next.isSaved &&
+    prev.answerLabel === next.answerLabel &&
+    prev.saveLabel === next.saveLabel &&
+    prev.unsaveLabel === next.unsaveLabel
+);
 
 /* ── ScoreSidebar ── */
 function ScoreSidebar({
@@ -243,9 +260,10 @@ function ScoreSidebar({
   const p = pct(correct, total);
 
   const catStats = useMemo(() => {
+    const byId = new Map(questions.map((x) => [x.id, x]));
     const map: Record<string, { total: number; correct: number }> = {};
     Object.entries(answered).forEach(([qid, a]) => {
-      const q = questions.find((x) => x.id === qid);
+      const q = byId.get(qid);
       if (!q) return;
       if (!map[q.cat]) map[q.cat] = { total: 0, correct: 0 };
       map[q.cat].total++;
@@ -344,6 +362,14 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [simResult, setSimResult] = useState({ score: 0, total: 0 });
   const simResultRef = useRef({ score: 0, total: 0 });
 
+  // Mirror `answered` into a ref so `pick` can read the latest value without
+  // depending on `answered` — keeps `pick` referentially stable so memoized
+  // QuizCards never hold a stale closure that would wipe answers.
+  const answeredRef = useRef<Answered>(answered);
+  useEffect(() => {
+    answeredRef.current = answered;
+  }, [answered]);
+
   /* ── Load persisted state + answered + saved from localStorage ── */
   useEffect(() => {
     setSelectedState(readStoredState());
@@ -424,7 +450,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
           source: "web"
         }),
         keepalive: true
-      }).catch(() => {});
+      }).catch((err) => console.error("[practice] attempt sync failed:", err));
     },
     [selectedState]
   );
@@ -432,15 +458,17 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Pick an answer ── */
   const pick = useCallback(
     (qid: string, letter: string, ev: React.MouseEvent, isSim = false) => {
-      if (answered[qid]) return;
+      const current = answeredRef.current;
+      if (current[qid]) return;
       const q = QS.find((x) => x.id === qid);
       if (!q) return;
       const opt = q.opts.find((o) => o.l === letter);
       if (!opt) return;
       const correct = Boolean(opt.ok);
 
-      const next: Answered = { ...answered, [qid]: { chosen: letter, correct } };
+      const next: Answered = { ...current, [qid]: { chosen: letter, correct } };
       setAnswered(next);
+      answeredRef.current = next;
       try {
         localStorage.setItem(SK.answered, JSON.stringify(next));
       } catch {}
@@ -479,18 +507,18 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                   source: "web"
                 }),
                 keepalive: true
-              }).catch(() => {});
+              }).catch((err) => console.error("[practice] mock session save failed:", err));
             }
             return nextIdx;
           });
         }, 900);
       }
     },
-    [QS, answered, simQueue, selectedState, syncAttempt, award]
+    [QS, simQueue, selectedState, syncAttempt, award]
   );
 
   /* ── Toggle save ── */
-  function toggleSave(qid: string) {
+  const toggleSave = useCallback((qid: string) => {
     setSaved((prev) => {
       const next = new Set(prev);
       if (next.has(qid)) next.delete(qid);
@@ -500,11 +528,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       } catch {}
       return next;
     });
-  }
+  }, []);
 
   /* ── Reset ── */
   function resetAll() {
     setAnswered({});
+    answeredRef.current = {};
     try {
       localStorage.removeItem(SK.answered);
     } catch {}
