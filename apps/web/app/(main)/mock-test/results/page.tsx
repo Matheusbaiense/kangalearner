@@ -3,15 +3,19 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
-import { WA_PASS_THRESHOLD } from "@kanga/core";
+import { computeReadiness, WA_PASS_THRESHOLD } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import { AuthNudge } from "@/components/ui/AuthNudge";
+import { ReadinessCard } from "@/components/ReadinessCard";
 import { createClient } from "@/lib/supabase/client";
+import { SK } from "@/lib/storageKeys";
 import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
+
+type LocalAnswerRecord = Record<string, { chosen: string; correct: boolean }>;
 
 function safeParseJson<T>(raw: string | null): T | null {
   if (!raw) return null;
@@ -86,6 +90,38 @@ export default function MockTestResultsPage() {
     const pass = total > 0 ? score / total >= WA_PASS_THRESHOLD : false;
     return { rows, total, score, pct, pass };
   }, [session, QUESTIONS, questionsLoading]);
+
+  /* Readiness recomputed with the mock just taken + local practice history.
+     ponytail: local data only — signed-in users get the full picture on the dashboard. */
+  const readiness = useMemo(() => {
+    if (!session || !scored || QUESTIONS.length === 0) return null;
+    let local: LocalAnswerRecord = {};
+    try {
+      local = safeParseJson<LocalAnswerRecord>(localStorage.getItem(SK.answered)) ?? {};
+    } catch {
+      local = {};
+    }
+    const byId = new Map(QUESTIONS.map((q) => [q.id, q]));
+    const catMap = new Map<string, { correct: number; total: number }>();
+    const bump = (cat: string, ok: boolean) => {
+      const entry = catMap.get(cat) ?? { correct: 0, total: 0 };
+      catMap.set(cat, { correct: entry.correct + (ok ? 1 : 0), total: entry.total + 1 });
+    };
+    for (const [qid, v] of Object.entries(local)) bump(byId.get(qid)?.cat ?? "Other", v.correct);
+    for (const r of scored.rows) bump(r.q?.cat ?? "Other", r.ok);
+    const answeredUnique = new Set([...Object.keys(local), ...session.qids]).size;
+
+    return computeReadiness({
+      categories: [...catMap.entries()].map(([category, stat]) => ({
+        category,
+        correct: stat.correct,
+        total: stat.total
+      })),
+      recentMocks: [{ score: scored.score, total: scored.total }],
+      questionBankSize: QUESTIONS.length,
+      answeredUnique
+    });
+  }, [session, scored, QUESTIONS]);
 
   /* Save to Supabase (once) — authenticated users only */
   useEffect(() => {
@@ -206,6 +242,8 @@ export default function MockTestResultsPage() {
                 {s.dashboard}
               </Link>
             </div>
+
+            {readiness && <ReadinessCard readiness={readiness} compact />}
 
             <AuthNudge />
 

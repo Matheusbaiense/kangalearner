@@ -384,7 +384,23 @@ export const t = {
     mockNoResults: "No results found for this session.",
     mockConfigNotFound: "No mock config found.",
     mockSessionError: "Session error",
-    mockLoadNextQuestion: "We couldn't load the next question."
+    mockLoadNextQuestion: "We couldn't load the next question.",
+
+    // ── Readiness score ───────────────────────────────────
+    "readiness.title": "Am I ready for the test?",
+    "readiness.hint": "Based on question coverage, accuracy by topic and your recent mock tests.",
+    "readiness.level.not_ready": "Not ready yet",
+    "readiness.level.getting_there": "Getting there",
+    "readiness.level.almost": "Almost ready",
+    "readiness.level.ready": "Ready",
+    "readiness.noMocks": "Take a mock test — readiness needs at least 2 passing mocks.",
+    "readiness.lowMockScores": "Your recent mock scores are below 24/30 — try another mock test.",
+    "readiness.needMorePassingMocks":
+      "Pass one more mock test (24/30 or better) to confirm you're ready.",
+    "readiness.weakCategories": "Some topics are below 70% — practise your weakest topic.",
+    "readiness.lowCoverage":
+      "You haven't seen most of the question bank yet — keep practising new questions.",
+    "readiness.viewDashboard": "See full readiness on your dashboard"
   },
 
   pt: {
@@ -750,7 +766,26 @@ export const t = {
     mockNoResults: "Nenhum resultado encontrado para esta sessão.",
     mockConfigNotFound: "Configuração do simulado não encontrada.",
     mockSessionError: "Erro de sessão",
-    mockLoadNextQuestion: "Não foi possível carregar a próxima questão."
+    mockLoadNextQuestion: "Não foi possível carregar a próxima questão.",
+
+    // ── Readiness score ───────────────────────────────────
+    "readiness.title": "Estou pronto para a prova?",
+    "readiness.hint":
+      "Com base na cobertura das questões, na precisão por tópico e nos seus simulados recentes.",
+    "readiness.level.not_ready": "Ainda não",
+    "readiness.level.getting_there": "No caminho",
+    "readiness.level.almost": "Quase lá",
+    "readiness.level.ready": "Pronto",
+    "readiness.noMocks": "Faça um simulado — a prontidão exige pelo menos 2 simulados aprovados.",
+    "readiness.lowMockScores":
+      "Seus simulados recentes estão abaixo de 24/30 — tente outro simulado.",
+    "readiness.needMorePassingMocks":
+      "Passe em mais um simulado (24/30 ou mais) para confirmar que está pronto.",
+    "readiness.weakCategories":
+      "Alguns tópicos estão abaixo de 70% — pratique seu tópico mais fraco.",
+    "readiness.lowCoverage":
+      "Você ainda não viu a maior parte do banco de questões — continue praticando questões novas.",
+    "readiness.viewDashboard": "Veja a prontidão completa no seu painel"
   },
 
   es: {
@@ -1115,7 +1150,26 @@ export const t = {
     mockNoResults: "No se encontraron resultados para esta sesión.",
     mockConfigNotFound: "No se encontró la configuración del simulacro.",
     mockSessionError: "Error de sesión",
-    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta."
+    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta.",
+
+    // ── Readiness score ───────────────────────────────────
+    "readiness.title": "¿Estoy listo para el examen?",
+    "readiness.hint":
+      "Basado en la cobertura de preguntas, la precisión por tema y tus simulacros recientes.",
+    "readiness.level.not_ready": "Aún no",
+    "readiness.level.getting_there": "En camino",
+    "readiness.level.almost": "Casi listo",
+    "readiness.level.ready": "Listo",
+    "readiness.noMocks": "Haz un simulacro — necesitas al menos 2 simulacros aprobados.",
+    "readiness.lowMockScores":
+      "Tus simulacros recientes están por debajo de 24/30 — intenta otro simulacro.",
+    "readiness.needMorePassingMocks":
+      "Aprueba un simulacro más (24/30 o mejor) para confirmar que estás listo.",
+    "readiness.weakCategories":
+      "Algunos temas están por debajo del 70% — practica tu tema más débil.",
+    "readiness.lowCoverage":
+      "Aún no has visto la mayor parte del banco de preguntas — sigue practicando preguntas nuevas.",
+    "readiness.viewDashboard": "Ve tu preparación completa en tu panel"
   }
 } as const satisfies Record<UiLang, Record<string, string>>;
 

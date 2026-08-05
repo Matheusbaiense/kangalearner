@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { Flame, Target } from "lucide-react";
-import { WA_PASS_THRESHOLD } from "@kanga/core";
+import { WA_PASS_THRESHOLD, type ReadinessResult } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { pct } from "@/lib/percent";
+import { ReadinessCard } from "@/components/ReadinessCard";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
 import { StateProgressSelector } from "./StateProgressSelector";
 import type { AuStateCode } from "./state-options";
@@ -14,6 +15,8 @@ type CategoryStat = [string, { total: number; correct: number }];
 type WeekBucket = { label: string; total: number; correct: number };
 
 export type DashboardClientProps = {
+  readiness: ReadinessResult;
+  weakestCategory: string | null;
   displayName: string;
   userEmail: string | undefined;
   totalAnswered: number;
@@ -41,6 +44,8 @@ export type DashboardClientProps = {
 };
 
 export function DashboardClient({
+  readiness,
+  weakestCategory,
   displayName,
   userEmail,
   totalAnswered,
@@ -103,7 +108,9 @@ export function DashboardClient({
           </Link>
         </div>
 
-        <div className="stat-grid">
+        <ReadinessCard readiness={readiness} weakestCategory={weakestCategory} />
+
+        <div className="stat-grid" style={{ marginTop: 22 }}>
           <div className="stat-card">
             <div className="stat-card-label">{s.dashQuestionsAnswered}</div>
             <div className="stat-card-value">{totalAnswered}</div>
