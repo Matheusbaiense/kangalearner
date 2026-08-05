@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Seatbelt fastened icon">
-  <circle cx="48" cy="34" r="14" fill="#111318"/>
-  <path d="M40 46 C40 70 46 84 60 96 C74 84 80 70 80 46" stroke="#111318" stroke-width="10" fill="none" stroke-linecap="round"/>
-  <rect x="50" y="60" width="24" height="18" rx="4" fill="#22c55e" stroke="#111318" stroke-width="3"/>
+  <circle cx="60" cy="60" r="52" fill="#16a34a"/>
+  <circle cx="60" cy="38" r="13" fill="#ffffff"/>
+  <path d="M60 52 c-16 0 -26 12 -26 30 v18 h52 v-18 c0 -18 -10 -30 -26 -30 z" fill="#ffffff"/>
+  <path d="M34 40 L78 96" stroke="#16a34a" stroke-width="9" stroke-linecap="round"/>
+  <rect x="49" y="60" width="22" height="16" rx="3" fill="#16a34a"/>
 </svg>

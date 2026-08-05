@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Pedestrian crossing ahead warning sign">
   <rect x="60" y="6" width="76" height="76" rx="6" fill="#ffc72c" stroke="#111318" stroke-width="5" transform="rotate(45 60 60)"/>
-  <circle cx="60" cy="38" r="8" fill="#111318"/>
-  <path d="M60 48 v22 M60 55 l-12 14 M60 55 l14 12 M60 70 l-10 20 M60 70 l12 18" stroke="#111318" stroke-width="6" stroke-linecap="round" fill="none"/>
+  <g fill="#111318">
+    <circle cx="60" cy="35" r="7"/>
+    <path d="M52 46 h16 a4 4 0 0 1 4 4 v8 l10 5 -4 8 -10 -5 v6 l6 24 h-8 l-4 -18 -4 18 h-8 l5 -25 v-9 l-9 4 -4 -8 11 -5 v-3 a4 4 0 0 1 4 -4 z"/>
+  </g>
 </svg>

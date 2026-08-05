@@ -1,7 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Accessible parking sign">
   <rect x="8" y="8" width="104" height="104" rx="8" fill="#1e5fd9"/>
   <g fill="#ffffff">
-    <circle cx="60" cy="38" r="8"/>
-    <path d="M52 52 h16 v10 l14 6 -4 10 -18 -8 h-16 a10 10 0 1 0 0 14 h-2 a20 20 0 1 1 10 -32 z"/>
+    <circle cx="65" cy="30" r="9"/>
+    <path d="M60 44 h11 v13 h13 a6 6 0 0 1 0 12 h-16 l-16 26 a6 6 0 0 1 -11 -6 l13 -22 h-4 a22 22 0 1 0 21 -1 z"/>
+    <circle cx="47" cy="83" r="16" fill="none" stroke="#ffffff" stroke-width="7"/>
   </g>
 </svg>
