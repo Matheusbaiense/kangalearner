@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Blind spot diagram: motorcycle hidden behind and to the side of the car">
+  <path d="M78 40 L150 70 L150 150 L78 150 Z" fill="#f59e0b" opacity="0.28"/>
+  <rect x="55" y="40" width="46" height="90" rx="12" fill="#1e5fd9"/>
+  <rect x="62" y="50" width="32" height="22" rx="4" fill="#dbe9ff"/>
+  <circle cx="62" cy="122" r="7" fill="#111318"/>
+  <circle cx="94" cy="122" r="7" fill="#111318"/>
+  <g transform="translate(112,96)">
+    <circle cx="0" cy="14" r="7" fill="#111318"/>
+    <circle cx="26" cy="14" r="7" fill="#111318"/>
+    <path d="M0 14 L14 -4 H26 L20 14" stroke="#111318" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Children's crossing warning sign">
+  <rect x="60" y="6" width="76" height="76" rx="6" fill="#ffc72c" stroke="#111318" stroke-width="5" transform="rotate(45 60 60)"/>
+  <g stroke="#111318" stroke-width="5" stroke-linecap="round" fill="none">
+    <circle cx="46" cy="38" r="6" fill="#111318" stroke="none"/>
+    <path d="M46 46 v14 M46 51 l-8 10 M46 51 l9 8 M46 60 l-6 12 M46 60 l8 11"/>
+    <circle cx="74" cy="44" r="6" fill="#111318" stroke="none"/>
+    <path d="M74 52 v12 M74 56 l-7 8 M74 56 l8 7 M74 64 l-5 10 M74 64 l7 9"/>
+  </g>
+</svg>

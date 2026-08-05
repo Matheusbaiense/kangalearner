@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" role="img" aria-label="Uncontrolled four-way intersection: X gives way to Y on the right">
+  <rect x="0" y="65" width="160" height="30" fill="#3a3f4a"/>
+  <rect x="65" y="0" width="30" height="160" fill="#3a3f4a"/>
+  <path d="M65 65 H95 V95 H65 Z" fill="#4b515e"/>
+  <rect x="46" y="72" width="26" height="16" rx="3" fill="#22c55e"/>
+  <text x="59" y="84" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#ffffff">X</text>
+  <rect x="88" y="46" width="16" height="26" rx="3" fill="#f59e0b"/>
+  <text x="96" y="63" text-anchor="middle" font-family="Arial, sans-serif" font-weight="800" font-size="12" fill="#111318">Y</text>
+  <path d="M72 79 h10" stroke="#111318" stroke-width="3" marker-end="url(#arrow)" />
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M0 0 L8 4 L0 8 Z" fill="#111318"/>
+    </marker>
+  </defs>
+</svg>

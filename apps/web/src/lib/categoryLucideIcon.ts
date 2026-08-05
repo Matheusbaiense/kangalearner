@@ -10,7 +10,17 @@ import {
   Signal,
   TrafficCone,
   Wrench,
-  FileText
+  FileText,
+  RefreshCw,
+  ArrowLeftRight,
+  CloudRain,
+  ShieldAlert,
+  Award,
+  PhoneOff,
+  BedDouble,
+  School,
+  Footprints,
+  Truck
 } from "lucide-react";
 
 /** Maps `CATEGORIES[].key` from `@kanga/core` to Lucide icons (replaces emoji `icon` field in UI only). */
@@ -24,7 +34,17 @@ const CATEGORY_LUCIDE: Record<string, LucideIcon> = {
   "Road Safety": ShieldCheck,
   "Blind Spot & Overtaking": Eye,
   "Road Markings": Map,
-  Emergencies: Wrench
+  Emergencies: Wrench,
+  Roundabouts: RefreshCw,
+  "Lane Changing": ArrowLeftRight,
+  "Weather Conditions": CloudRain,
+  Seatbelts: ShieldAlert,
+  "Demerit Points": Award,
+  "Mobile Phones": PhoneOff,
+  Fatigue: BedDouble,
+  "School Zones": School,
+  "Shared Zones": Footprints,
+  Towing: Truck
 };
 
 export function categoryLucideIcon(categoryKey: string): LucideIcon {
