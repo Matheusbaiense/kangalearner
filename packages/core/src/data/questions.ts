@@ -16246,6 +16246,5083 @@ export const QUESTIONS = [
     tip: null,
     states: ["WA"]
   }
+,
+  {
+    id: "QA-01",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Whilst learning to ride, you must:",
+      pt: "Enquanto estiver aprendendo a pilotar, você deve:",
+      es: "Mientras estás aprendiendo a conducir una moto, debes:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Display 'L' plates at all times",
+          pt: "Exibir placas 'L' o tempo todo",
+          es: "Exhibir placas 'L' en todo momento"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Display 'P' plates",
+          pt: "Exibir placas 'P'",
+          es: "Exhibir placas 'P'"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Wear a fluorescent vest",
+          pt: "Usar um colete fluorescente",
+          es: "Usar un chaleco fluorescente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states that while learning to ride you must <strong>display L plates at all times</strong>, along with being accompanied by an approved supervisor and observing zero BAC.",
+      pt: "O manual Drive Safe determina que, enquanto estiver aprendendo a pilotar, você deve <strong>exibir placas 'L' o tempo todo</strong>, além de estar acompanhado por um supervisor aprovado e manter BAC zero.",
+      es: "El manual Drive Safe establece que, mientras aprendes a conducir una moto, debes <strong>exhibir placas 'L' en todo momento</strong>, además de estar acompañado por un supervisor autorizado y mantener un nivel de alcohol en sangre (BAC) de cero."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-02",
+    cat: "Road Safety",
+    q: {
+      en: "If your vehicle is impounded under anti-hoon legislation, all associated costs are the responsibility of:",
+      pt: "Se seu veículo for apreendido sob a legislação \"anti-hoon\" (contra pilotagem perigosa), todos os custos associados são de responsabilidade de:",
+      es: "Si tu vehículo es incautado bajo la legislación \"anti-hoon\" (contra conducción temeraria), todos los costos asociados son responsabilidad de:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The Police",
+          pt: "A Polícia",
+          es: "La Policía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The Insurance Commission of Western Australia",
+          pt: "A Insurance Commission of Western Australia",
+          es: "La Insurance Commission of Western Australia"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The driver",
+          pt: "O condutor",
+          es: "El conductor"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states that under WA's Anti-Hoon legislation, <strong>all costs associated with the impoundment are the responsibility of the driver</strong>, not the police or the Insurance Commission.",
+      pt: "O manual Drive Safe estabelece que, sob a legislação anti-hoon da WA, <strong>todos os custos associados à apreensão do veículo são de responsabilidade do condutor</strong>, e não da polícia ou da Insurance Commission.",
+      es: "El manual Drive Safe establece que, bajo la legislación anti-hoon de WA, <strong>todos los costos asociados con la incautación del vehículo son responsabilidad del conductor</strong>, no de la policía ni de la Insurance Commission."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-03",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What must you wear if you are a passenger being carried in a sidecar?",
+      pt: "O que você deve usar se for passageiro transportado em um sidecar?",
+      es: "¿Qué debe usar si es pasajero transportado en un sidecar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Something warm",
+          pt: "Algo quente",
+          es: "Algo abrigado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A correctly fitted and securely fastened approved motorcycle helmet",
+          pt: "Um capacete de motocicleta aprovado, corretamente ajustado e bem afivelado",
+          es: "Un casco de motocicleta aprobado, correctamente ajustado y bien abrochado"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reflective clothing",
+          pt: "Roupa refletiva",
+          es: "Ropa reflectante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook requires sidecar passengers to wear <strong>a correctly fitted and securely fastened approved motorcycle helmet</strong> and remain safely seated, just like the rider.",
+      pt: "O manual exige que o passageiro do sidecar use <strong>um capacete de motocicleta aprovado, corretamente ajustado e bem afivelado</strong>, além de permanecer sentado com segurança, assim como o condutor.",
+      es: "El manual exige que el pasajero del sidecar use <strong>un casco de motocicleta aprobado, correctamente ajustado y bien abrochado</strong>, y que permanezca sentado de forma segura, igual que el conductor."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-04",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which of these are legal requirements for pillion passengers?",
+      pt: "Quais são os requisitos legais para passageiros na garupa (pillion)?",
+      es: "¿Cuáles son los requisitos legales para los pasajeros de parrilla (pillion)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At least 12 years of age and able to touch the ground with their feet when seated",
+          pt: "Pelo menos 12 anos de idade e conseguir tocar o chão com os pés quando sentado",
+          es: "Al menos 12 años de edad y poder tocar el suelo con los pies estando sentado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Any age as long as they can put their arms around the rider's waist",
+          pt: "Qualquer idade, desde que consiga colocar os braços ao redor da cintura do condutor",
+          es: "Cualquier edad, siempre que pueda rodear la cintura del conductor con los brazos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 8 years of age and be able to keep both feet on the footrests",
+          pt: "Pelo menos 8 anos de idade e conseguir manter os dois pés nos apoios (footrests)",
+          es: "Al menos 8 años de edad y poder mantener ambos pies en los estribos (footrests)"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In WA, a pillion passenger must be <strong>at least 8 years of age</strong> and able to keep both feet on the footrests while facing forward.",
+      pt: "Na Austrália Ocidental, o passageiro na garupa deve ter <strong>pelo menos 8 anos de idade</strong> e conseguir manter os dois pés nos apoios, voltado para frente.",
+      es: "En Australia Occidental, el pasajero de parrilla debe tener <strong>al menos 8 años de edad</strong> y poder mantener ambos pies en los estribos, mirando hacia adelante."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-05",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What type of footwear offers the most protection whilst riding a motorcycle?",
+      pt: "Que tipo de calçado oferece mais proteção ao andar de moto?",
+      es: "¿Qué tipo de calzado ofrece más protección al andar en motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sandals",
+          pt: "Sandálias",
+          es: "Sandalias"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Lace up shoes",
+          pt: "Sapatos com cadarço",
+          es: "Zapatos con cordones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Boots",
+          pt: "Botas",
+          es: "Botas"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>Motorcycle boots</strong> provide the most protection, with ankle and shin protection, a strengthened instep, and an overlap with the pants — sandals and open footwear are explicitly unsafe for riding.",
+      pt: "As <strong>botas de motociclista</strong> oferecem a maior proteção, com proteção no tornozelo e na canela, reforço no peito do pé e sobreposição com a calça — sandálias e calçados abertos são explicitamente inseguros para pilotar.",
+      es: "Las <strong>botas de motociclista</strong> ofrecen la mayor protección, con protección en el tobillo y la espinilla, refuerzo en el empeine y superposición con el pantalón — las sandalias y el calzado abierto son explícitamente inseguros para andar en moto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-06",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When riding in very heavy rain, a film of water can build between the tyres and the road which is known as \"aquaplaning\" which can result in lack of control. How can you avoid this happening?",
+      pt: "Ao andar de moto em chuva muito forte, pode se formar uma película de água entre os pneus e a pista, fenômeno conhecido como \"aquaplanagem\" (hidroplanagem), que pode causar perda de controle. Como você pode evitar que isso aconteça?",
+      es: "Al conducir una moto bajo lluvia muy intensa, puede formarse una película de agua entre los neumáticos y la calzada, fenómeno conocido como \"aquaplaning\" (hidroplanaje), que puede provocar pérdida de control. ¿Cómo puede evitar que esto ocurra?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Keep your speed down",
+          pt: "Reduza a velocidade",
+          es: "Reduzca la velocidad"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Increase your tyre pressures",
+          pt: "Aumente a pressão dos pneus",
+          es: "Aumente la presión de los neumáticos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Decrease your tyre pressures",
+          pt: "Diminua a pressão dos pneus",
+          es: "Disminuya la presión de los neumáticos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook is explicit: <strong>to avoid aquaplaning, keep your speed down</strong>. Tyre pressure adjustments are not the recommended way to prevent it.",
+      pt: "O manual é claro: <strong>para evitar a aquaplanagem, reduza a velocidade</strong>. Ajustar a pressão dos pneus não é a forma recomendada de evitá-la.",
+      es: "El manual es claro: <strong>para evitar el aquaplaning, reduzca la velocidad</strong>. Ajustar la presión de los neumáticos no es la forma recomendada de evitarlo."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-07",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When should you consider increasing the tyre pressures on your motorcycle?",
+      pt: "Quando você deve considerar aumentar a pressão dos pneus da sua motocicleta?",
+      es: "¿Cuándo debería considerar aumentar la presión de los neumáticos de su motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "For riding on a wet road",
+          pt: "Para andar em uma estrada molhada",
+          es: "Para circular por una carretera mojada"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "For carrying a pillion passenger",
+          pt: "Para levar um passageiro (garupa)",
+          es: "Para llevar un pasajero (parrillero)"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "For travelling on an uneven road surface",
+          pt: "Para viajar em uma superfície irregular",
+          es: "Para viajar por una superficie irregular"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook states you may need to <strong>increase tyre pressure when carrying a pillion passenger or a load of gear</strong>, since the extra weight changes the bike's handling requirements.",
+      pt: "O manual Ride Safe indica que talvez seja necessário <strong>aumentar a pressão dos pneus ao levar um passageiro (garupa) ou uma carga extra</strong>, já que o peso adicional altera a forma como a moto se comporta.",
+      es: "El manual Ride Safe indica que puede ser necesario <strong>aumentar la presión de los neumáticos al llevar un pasajero (parrillero) o carga adicional</strong>, ya que el peso extra cambia el manejo de la moto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-08",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is a likely effect when riding a motorcycle in the cold?",
+      pt: "Qual é um efeito provável de pilotar uma motocicleta no frio?",
+      es: "¿Cuál es un efecto probable de andar en motocicleta con frío?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You become more alert",
+          pt: "Você fica mais alerta",
+          es: "Te vuelves más alerta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You become more relaxed",
+          pt: "Você fica mais relaxado",
+          es: "Te vuelves más relajado"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You can lose concentration",
+          pt: "Você pode perder a concentração",
+          es: "Puedes perder la concentración"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Cold is a physical discomfort that, like other environmental factors, <strong>reduces a rider's concentration</strong>, leading to slower reaction times and poorer hazard awareness.",
+      pt: "O frio é um desconforto físico que, assim como outros fatores ambientais, <strong>reduz a concentração do motociclista</strong>, deixando o tempo de reação mais lento e a percepção de perigos pior.",
+      es: "El frío es una molestia física que, al igual que otros factores ambientales, <strong>reduce la concentración del motociclista</strong>, haciendo más lento el tiempo de reacción y peor la percepción de peligros."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-09",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is recommended to help manage fatigue when riding, even if you are not tired?",
+      pt: "O que é recomendado para ajudar a controlar a fadiga ao pilotar, mesmo que você não esteja cansado?",
+      es: "¿Qué se recomienda para ayudar a controlar la fatiga al conducir una moto, incluso si no está cansado?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop every 4 hours or 300 kilometres, whichever is first",
+          pt: "Parar a cada 4 horas ou 300 quilômetros, o que ocorrer primeiro",
+          es: "Detenerse cada 4 horas o 300 kilómetros, lo que ocurra primero"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop about every 1½ hours or 150 kilometres, whichever is first",
+          pt: "Parar a cada 1h30 ou 150 quilômetros, o que ocorrer primeiro",
+          es: "Detenerse cada 1½ horas o 150 kilómetros, lo que ocurra primero"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop every ½ hour",
+          pt: "Parar a cada meia hora",
+          es: "Detenerse cada media hora"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook advises riders to <strong>stop at least every one and a half hours or 150 kilometres, even if you are not tired</strong>, since fatigue can build up gradually and impair concentration before you notice you're tired.",
+      pt: "O manual Ride Safe recomenda que os motociclistas <strong>parem pelo menos a cada uma hora e meia ou 150 quilômetros, mesmo sem sentir cansaço</strong>, pois a fadiga pode se acumular gradualmente e prejudicar a concentração antes que você perceba que está cansado.",
+      es: "El manual Ride Safe recomienda que los motociclistas <strong>se detengan al menos cada hora y media o 150 kilómetros, incluso sin sentirse cansados</strong>, ya que la fatiga puede acumularse gradualmente y afectar la concentración antes de que uno note que está cansado."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-10",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which of these increases your stopping distance?",
+      pt: "Qual destas condições aumenta a sua distância de frenagem?",
+      es: "¿Cuál de estas condiciones aumenta tu distancia de frenado?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Riding in the rain",
+          pt: "Andar de moto na chuva",
+          es: "Conducir la moto bajo la lluvia"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Riding in fog",
+          pt: "Andar de moto no nevoeiro",
+          es: "Conducir la moto con niebla"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Riding at night",
+          pt: "Andar de moto à noite",
+          es: "Conducir la moto de noche"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook warns that after a dry spell, rain makes roads <strong>very slippery, significantly lengthening stopping distances</strong> — riders must slow down and ride carefully. Fog and night riding mainly reduce visibility and require lower speed, but are not identified as directly increasing stopping distance.",
+      pt: "O manual Ride Safe adverte que, após um período seco, a chuva deixa as estradas <strong>muito escorregadias, aumentando significativamente as distâncias de frenagem</strong> — o motociclista deve reduzir a velocidade e pilotar com cuidado. Nevoeiro e pilotagem noturna reduzem principalmente a visibilidade, mas não são apontados como fatores que aumentam diretamente a distância de frenagem.",
+      es: "El manual Ride Safe advierte que, tras un período seco, la lluvia deja las carreteras <strong>muy resbaladizas, aumentando significativamente las distancias de frenado</strong> — el motociclista debe reducir la velocidad y conducir con cuidado. La niebla y conducir de noche reducen principalmente la visibilidad, pero no se señalan como factores que aumenten directamente la distancia de frenado."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-11",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "In relation to riding at night, riders need to be able to:",
+      pt: "Em relação a pilotar à noite, os motociclistas precisam ser capazes de:",
+      es: "En relación con conducir de noche, los motociclistas deben ser capaces de:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "See through tinted lenses",
+          pt: "Enxergar através de lentes escuras (tintadas)",
+          es: "Ver a través de lentes oscuros (tintados)"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Ride without a visor or goggles",
+          pt: "Pilotar sem viseira ou óculos de proteção",
+          es: "Conducir sin visera ni gafas protectoras"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Be able to stop within the distance they can see ahead",
+          pt: "Conseguir parar dentro da distância que conseguem enxergar à frente",
+          es: "Poder detenerse dentro de la distancia que pueden ver por delante"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At night, headlights don't reveal the road as clearly as daylight does, so <strong>riders need to be able to stop within the distance they can see ahead</strong>, meaning slower speeds and more following distance. Tinted or scratched visors reduce visibility and are advised against, not adopted.",
+      pt: "À noite, os faróis não revelam a pista com a mesma clareza da luz do dia, por isso <strong>o motociclista precisa conseguir parar dentro da distância que consegue enxergar à frente</strong>, o que significa reduzir a velocidade e aumentar a distância de segurança. Viseiras escuras ou riscadas reduzem a visibilidade e devem ser evitadas, não usadas.",
+      es: "De noche, los faros no revelan la vía con la misma claridad que la luz del día, por lo que <strong>el motociclista debe ser capaz de detenerse dentro de la distancia que puede ver por delante</strong>, lo que implica reducir la velocidad y aumentar la distancia de seguimiento. Las viseras oscuras o rayadas reducen la visibilidad y deben evitarse, no usarse."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-12",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main purpose of wearing reflective clothing whilst riding?",
+      pt: "Qual é o principal objetivo de usar roupas refletivas ao pilotar uma motocicleta?",
+      es: "¿Cuál es el propósito principal de usar ropa reflectante al conducir una motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "For protection from direct sunlight",
+          pt: "Para proteção contra a luz solar direta",
+          es: "Para protegerse de la luz solar directa"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "To be seen better during daylight",
+          pt: "Para ser visto melhor durante o dia",
+          es: "Para ser visto mejor durante el día"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To be seen better at night",
+          pt: "Para ser visto melhor à noite",
+          es: "Para ser visto mejor de noche"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook's night riding guidance specifically states riders should <strong>wear a reflective vest when riding at night</strong> to be seen by other road users; daytime visibility is instead addressed by riding with the headlight on low beam.",
+      pt: "O manual Ride Safe recomenda especificamente que o motociclista <strong>use um colete refletivo ao pilotar à noite</strong> para ser visto pelos outros usuários da via; a visibilidade durante o dia é tratada separadamente, com o farol dianteiro em baixo facho aceso.",
+      es: "El manual Ride Safe indica específicamente que el motociclista debe <strong>usar un chaleco reflectante al conducir de noche</strong> para ser visto por los demás usuarios de la vía; la visibilidad diurna se aborda por separado, circulando con la luz baja encendida."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-13",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main reason for wearing sturdy clothing, including boots and helmet?",
+      pt: "Qual é o principal motivo para usar roupas resistentes, incluindo botas e capacete?",
+      es: "¿Cuál es la principal razón para usar ropa resistente, incluidas botas y casco?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It looks good",
+          pt: "Porque fica com boa aparência",
+          es: "Porque se ve bien"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "It keeps out the wind",
+          pt: "Porque protege do vento",
+          es: "Porque protege del viento"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It helps protect you in a crash or fall",
+          pt: "Porque ajuda a proteger você em caso de acidente ou queda",
+          es: "Porque ayuda a protegerte en caso de accidente o caída"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Protective riding gear such as boots and a helmet is worn to <strong>reduce the severity of injury if you crash or fall</strong>, not primarily for appearance or warmth.",
+      pt: "Equipamentos de proteção, como botas e capacete, existem para <strong>reduzir a gravidade das lesões em caso de acidente ou queda</strong>, e não principalmente por aparência ou para se proteger do frio.",
+      es: "El equipo de protección, como las botas y el casco, se usa para <strong>reducir la gravedad de las lesiones en caso de accidente o caída</strong>, y no principalmente por apariencia o para protegerse del frío."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-15",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Before riding off on a green traffic light what should you do?",
+      pt: "Antes de partir com o sinal verde, o que você deve fazer?",
+      es: "Antes de arrancar con el semáforo en verde, ¿qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Check traffic behind",
+          pt: "Verificar o trânsito atrás",
+          es: "Revisar el tráfico detrás"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Check traffic ahead",
+          pt: "Verificar o trânsito à frente",
+          es: "Revisar el tráfico adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Check in all directions to make sure that all traffic that crosses your path has stopped",
+          pt: "Verificar em todas as direções para se certificar de que todo o trânsito que cruza seu caminho parou",
+          es: "Mirar en todas las direcciones para asegurarse de que todo el tráfico que cruza su camino se haya detenido"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Before moving off from a green light, <strong>check in all directions to make sure traffic that would otherwise cross your path has stopped</strong>, since other vehicles or pedestrians may still be clearing the intersection or disobeying signals.",
+      pt: "Antes de partir com o sinal verde, <strong>verifique em todas as direções para se certificar de que o trânsito que cruzaria seu caminho já parou</strong>, pois outros veículos ou pedestres podem ainda estar cruzando o cruzamento ou desrespeitando o sinal.",
+      es: "Antes de arrancar con el semáforo en verde, <strong>revise en todas las direcciones para asegurarse de que el tráfico que cruzaría su camino ya se haya detenido</strong>, ya que otros vehículos o peatones podrían seguir cruzando la intersección o desobedeciendo la señal."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-16",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which pair of factors should you take into account when determining crash avoidance space",
+      pt: "Qual par de fatores deve ser considerado ao determinar o espaço de prevenção de colisões?",
+      es: "¿Qué par de factores se debe tener en cuenta al determinar el espacio de prevención de choques?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed and time elapsed",
+          pt: "Velocidade e tempo decorrido",
+          es: "Velocidad y tiempo transcurrido"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Motorcycle age and model",
+          pt: "Idade e modelo da motocicleta",
+          es: "Antigüedad y modelo de la motocicleta"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reaction time and response time",
+          pt: "Tempo de reação e tempo de resposta",
+          es: "Tiempo de reacción y tiempo de respuesta"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe Handbook devotes a dedicated section to this, explaining that riders need about 1.5 seconds to react and another 1.5 seconds to respond, so <strong>reaction time and response time</strong> together determine the recommended three-second crash avoidance space.",
+      pt: "O manual dedica uma seção específica a isso, explicando que o motociclista precisa de cerca de 1,5 segundo para reagir e mais 1,5 segundo para responder, de modo que o <strong>tempo de reação e o tempo de resposta</strong> juntos definem o espaço de prevenção de colisões de três segundos recomendado.",
+      es: "El manual dedica una sección específica a este tema, explicando que el motociclista necesita cerca de 1,5 segundos para reaccionar y otros 1,5 segundos para responder, de modo que el <strong>tiempo de reacción y el tiempo de respuesta</strong> en conjunto determinan el espacio de prevención de choques de tres segundos recomendado."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-17",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "How long will it take an average rider who is fit, concentrating, alert and not affected by alcohol, drugs, fatigue or a distraction, to respond to a sudden and unexpected change in traffic conditions?",
+      pt: "Quanto tempo um motociclista médio, que está em boa forma física, concentrado, alerta e não afetado por álcool, drogas, fadiga ou distração, leva para reagir a uma mudança repentina e inesperada nas condições de trânsito?",
+      es: "¿Cuánto tiempo tardará un motociclista promedio que está en buena forma física, concentrado, alerta y no afectado por el alcohol, las drogas, la fatiga o una distracción, en reaccionar ante un cambio repentino e inesperado en las condiciones del tráfico?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1 second",
+          pt: "1 segundo",
+          es: "1 segundo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 seconds",
+          pt: "1,5 segundo",
+          es: "1,5 segundos"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "2 seconds",
+          pt: "2 segundos",
+          es: "2 segundos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A rider who is fit, alert and unaffected by alcohol, drugs, fatigue or distraction needs about <strong>1.5 seconds</strong> to react to a sudden and unexpected change in traffic conditions, and a further 1.5 seconds to respond to it.",
+      pt: "Um motociclista em boa forma física, alerta e não afetado por álcool, drogas, fadiga ou distração precisa de cerca de <strong>1,5 segundo</strong> para reagir a uma mudança repentina e inesperada nas condições de trânsito, e de mais 1,5 segundo para responder a ela.",
+      es: "Un motociclista en buena forma física, alerta y no afectado por el alcohol, las drogas, la fatiga o una distracción necesita aproximadamente <strong>1,5 segundos</strong> para reaccionar ante un cambio repentino e inesperado en las condiciones del tráfico, y otros 1,5 segundos para responder a él."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-17",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "How long will it take an average rider who is fit, concentrating, alert and not affected by alcohol, drugs, fatigue or a distraction, to respond to a sudden and unexpected change in traffic conditions?",
+      pt: "Quanto tempo um motociclista médio, que está em boa forma física, concentrado, alerta e não afetado por álcool, drogas, fadiga ou distração, leva para reagir a uma mudança repentina e inesperada nas condições de trânsito?",
+      es: "¿Cuánto tiempo tardará un motociclista promedio que está en buena forma física, concentrado, alerta y no afectado por el alcohol, las drogas, la fatiga o una distracción, en reaccionar ante un cambio repentino e inesperado en las condiciones del tráfico?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1 second",
+          pt: "1 segundo",
+          es: "1 segundo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 seconds",
+          pt: "1,5 segundo",
+          es: "1,5 segundos"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "2 seconds",
+          pt: "2 segundos",
+          es: "2 segundos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A rider who is fit, alert and unaffected by alcohol, drugs, fatigue or distraction needs about <strong>1.5 seconds</strong> to react to a sudden and unexpected change in traffic conditions, and a further 1.5 seconds to respond to it.",
+      pt: "Um motociclista em boa forma física, alerta e não afetado por álcool, drogas, fadiga ou distração precisa de cerca de <strong>1,5 segundo</strong> para reagir a uma mudança repentina e inesperada nas condições de trânsito, e de mais 1,5 segundo para responder a ela.",
+      es: "Un motociclista en buena forma física, alerta y no afectado por el alcohol, las drogas, la fatiga o una distracción necesita aproximadamente <strong>1,5 segundos</strong> para reaccionar ante un cambio repentino e inesperado en las condiciones del tráfico, y otros 1,5 segundos para responder a él."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-18",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When is it safest to apply your brakes?",
+      pt: "Quando é mais seguro aplicar os freios?",
+      es: "¿Cuándo es más seguro aplicar los frenos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When the motorcycle is upright and moving in a straight line",
+          pt: "Quando a moto está na vertical e se movendo em linha reta",
+          es: "Cuando la moto está en posición vertical y se mueve en línea recta"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "When the motorcycle is being turned or ridden through a bend",
+          pt: "Quando a moto está fazendo uma curva ou sendo guiada por uma curva",
+          es: "Cuando la moto está en una curva o siendo conducida a través de una curva"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When the motorcycle is at top speed",
+          pt: "Quando a moto está na velocidade máxima",
+          es: "Cuando la moto está a máxima velocidad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook states that <strong>brakes should be applied when the motorcycle is upright and moving in a straight line</strong>; when approaching turns, braking should be done before the turn, not during it.",
+      pt: "O manual afirma que <strong>os freios devem ser aplicados quando a moto está na vertical e em linha reta</strong>; ao se aproximar de curvas, a frenagem deve ser feita antes da curva, não durante ela.",
+      es: "El manual indica que <strong>los frenos deben aplicarse cuando la moto está en posición vertical y en línea recta</strong>; al acercarse a una curva, el frenado debe hacerse antes de entrar en ella, no durante."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-19",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What can cause your motorcycle tyres to skid and lose their grip on the road surface?",
+      pt: "O que pode fazer os pneus da sua motocicleta derraparem e perderem a aderência à superfície da estrada?",
+      es: "¿Qué puede hacer que los neumáticos de tu motocicleta patinen y pierdan agarre en la superficie de la vía?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Riding one-handed",
+          pt: "Andar com uma mão só no guidão",
+          es: "Conducir con una sola mano en el manillar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Looking over your shoulder",
+          pt: "Olhar por cima do ombro",
+          es: "Mirar por encima del hombro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Heavy braking",
+          pt: "Frenagem brusca",
+          es: "Frenado brusco"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Harsh or excessive braking can make a motorcycle's tyres lose grip and skid, especially on wet, gravel, or oily surfaces. <strong>Smooth, progressive braking</strong> reduces this risk.",
+      pt: "A frenagem brusca ou excessiva pode fazer os pneus da moto perderem a aderência e derraparem, principalmente em pistas molhadas, com cascalho ou óleo. Uma <strong>frenagem suave e progressiva</strong> reduz esse risco.",
+      es: "El frenado brusco o excesivo puede hacer que los neumáticos de la moto pierdan agarre y patinen, especialmente en superficies mojadas, con grava o aceite. Un <strong>frenado suave y progresivo</strong> reduce ese riesgo."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-20",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do to move off safely from a parked position?",
+      pt: "O que você deve fazer para sair com segurança de uma vaga de estacionamento?",
+      es: "¿Qué debes hacer para salir de forma segura de un lugar de estacionamiento?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Signal if other drivers need to slow down",
+          pt: "Sinalizar caso outros motoristas precisem reduzir a velocidade",
+          es: "Señalizar si otros conductores necesitan reducir la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give a hand signal as well as using your indicators",
+          pt: "Fazer sinal com a mão além de usar os piscas",
+          es: "Hacer una señal con la mano además de usar los intermitentes"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Look over your shoulder for a final check",
+          pt: "Olhar por cima do ombro para uma checagem final",
+          es: "Mirar por encima del hombro para hacer una comprobación final"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Before moving off, mirrors alone cannot show everything beside and behind you, so you must <strong>look over your shoulder for a final blind-spot check</strong>, on top of checking your mirrors and indicating for at least 5 seconds.",
+      pt: "Antes de sair da vaga, os espelhos sozinhos não mostram tudo ao seu redor, por isso você deve <strong>olhar por cima do ombro para uma checagem final dos pontos cegos</strong>, além de verificar os espelhos e sinalizar por pelo menos 5 segundos.",
+      es: "Antes de salir del lugar de estacionamiento, los espejos por sí solos no muestran todo lo que hay a tu alrededor, por eso debes <strong>mirar por encima del hombro para hacer una comprobación final del punto ciego</strong>, además de revisar los espejos y señalizar durante al menos 5 segundos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-21",
+    cat: "Road Safety",
+    q: {
+      en: "What should you normally do before stopping?",
+      pt: "O que você normalmente deve fazer antes de parar?",
+      es: "¿Qué debe hacer normalmente antes de detenerse?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Put both feet down",
+          pt: "Colocar os dois pés no chão",
+          es: "Poner ambos pies en el suelo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Select second gear",
+          pt: "Engatar a segunda marcha",
+          es: "Poner segunda marcha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Use your mirrors",
+          pt: "Verificar seus espelhos",
+          es: "Revisar sus espejos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The handbook says you should <strong>check your mirrors to see the road conditions behind you before using your brakes</strong> — this lets you know if it's safe to slow down and warns you of following traffic.",
+      pt: "O manual orienta a <strong>verificar os espelhos para avaliar as condições da via atrás de você antes de usar os freios</strong> — isso permite saber se é seguro reduzir a velocidade e alerta sobre veículos atrás.",
+      es: "El manual indica que debe <strong>revisar los espejos para ver las condiciones del tráfico detrás de usted antes de usar los frenos</strong> — esto le permite saber si es seguro reducir la velocidad y le advierte sobre el tráfico que viene detrás."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-22",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What does the diagram represent?",
+      pt: "O que o diagrama representa?",
+      es: "¿Qué representa el diagrama?"
+    },
+    sign: "/icons/signs/five-second-vision-curve-motorcycle.png",
+    cap: {
+      en: "Motorcyclist rounding a bend, illustrating the five-second vision check used to judge whether your speed matches your sight distance around a curve.",
+      pt: "Motociclista fazendo uma curva, ilustrando a verificação de visão de cinco segundos usada para avaliar se a velocidade é compatível com a distância de visão na curva.",
+      es: "Motociclista tomando una curva, que ilustra la comprobación de visión de cinco segundos usada para evaluar si la velocidad es adecuada para la distancia de visión en la curva."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "If you take a shortcut you will reduce your journey time by five seconds.",
+          pt: "Se você pegar um atalho, reduzirá o tempo de viagem em cinco segundos.",
+          es: "Si tomas un atajo, reducirás el tiempo de viaje en cinco segundos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down in curves and bends if you cannot see five seconds ahead.",
+          pt: "Reduza a velocidade em curvas e contornos se não conseguir enxergar cinco segundos à frente.",
+          es: "Reduce la velocidad en curvas y contornos si no puedes ver cinco segundos por delante."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "To maintain vision of five seconds, you will need to cut corners or bends.",
+          pt: "Para manter uma visão de cinco segundos, você precisará cortar as curvas.",
+          es: "Para mantener una visión de cinco segundos, tendrás que cortar las curvas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook advises you to <strong>slow down in curves and bends if you cannot see at least five seconds ahead</strong>. To check this, pick a fixed point in the oncoming lane and count \"one thousand and one... one thousand and five\" — if you reach that point before five seconds, you're riding too fast for the available vision.",
+      pt: "O manual orienta a <strong>reduzir a velocidade em curvas e contornos se você não conseguir enxergar pelo menos cinco segundos à frente</strong>. Para verificar isso, escolha um ponto fixo na pista contrária e conte até cinco — se você chegar ao ponto antes de terminar a contagem, está andando rápido demais para a visão disponível.",
+      es: "El manual recomienda <strong>reducir la velocidad en curvas si no puedes ver al menos cinco segundos por delante</strong>. Para comprobarlo, elige un punto fijo en el carril contrario y cuenta hasta cinco; si llegas a ese punto antes de terminar la cuenta, vas demasiado rápido para la visibilidad disponible."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-23",
+    cat: "Give Way Rules",
+    q: {
+      en: "What two things should you do when travelling behind a bus that pulls up at a bus stop?",
+      pt: "Quais duas coisas você deve fazer ao seguir atrás de um ônibus que para em um ponto de ônibus?",
+      es: "¿Qué dos cosas debes hacer cuando circulas detrás de un autobús que se detiene en una parada?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Accelerate past the bus and sound your horn",
+          pt: "Acelerar para ultrapassar o ônibus e buzinar",
+          es: "Acelerar para adelantar al autobús y tocar la bocina"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Watch carefully for pedestrians and be ready to give way to the bus",
+          pt: "Observar atentamente os pedestres e estar pronto para dar passagem ao ônibus",
+          es: "Vigilar atentamente a los peatones y estar listo para ceder el paso al autobús"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Accelerate past the bus whilst flashing you light/s",
+          pt: "Acelerar para ultrapassar o ônibus piscando os faróis",
+          es: "Acelerar para adelantar al autobús destellando las luces"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A bus stopped at a bus stop can hide pedestrians crossing the road, and once it signals to pull back out you <strong>must give way to it</strong> — so watch for people and be ready to let the bus re-enter traffic.",
+      pt: "Um ônibus parado num ponto pode esconder pedestres atravessando a rua, e quando ele sinalizar para voltar ao tráfego você <strong>deve dar passagem a ele</strong> — por isso observe as pessoas e esteja pronto para deixá-lo seguir.",
+      es: "Un autobús detenido en una parada puede ocultar a peatones que cruzan la calle, y cuando indique que va a reincorporarse al tráfico debes <strong>cederle el paso</strong> — por eso hay que vigilar a las personas y estar listo para dejarlo salir."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-24",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, who should you give way to?",
+      pt: "No diagrama, a quem você deve dar a preferência?",
+      es: "En el diagrama, ¿a quién debes ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-fourway-intersection-car-a-right.png",
+    cap: {
+      en: "Uncontrolled four-way intersection: the rider (YOU) must give way to Car A, which is approaching from the right; Car B, on the rider's left, must give way to the rider.",
+      pt: "Cruzamento não sinalizado de quatro vias: o motociclista (VOCÊ) deve dar a preferência ao Carro A, que se aproxima pela direita; o Carro B, à esquerda do motociclista, deve dar a preferência a ele.",
+      es: "Intersección de cuatro vías sin señalización: el motociclista (TÚ) debe ceder el paso al Auto A, que se aproxima por la derecha; el Auto B, a la izquierda del motociclista, debe cederle el paso a él."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both Car A and Car B",
+          pt: "Ao Carro A e ao Carro B",
+          es: "A ambos, el Auto A y el Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car A only",
+          pt: "Somente ao Carro A",
+          es: "Solo al Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither Car A or Car B",
+          pt: "Nem ao Carro A nem ao Carro B",
+          es: "Ni al Auto A ni al Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection, you must give way to the vehicle approaching from your right, whether you are turning or going straight ahead. In this diagram <strong>Car A is approaching from your right</strong>, so you must give way to it; Car B is on your left and must give way to you instead.",
+      pt: "Em um cruzamento não sinalizado de quatro vias, você deve dar a preferência ao veículo que se aproxima pela sua direita, esteja você virando ou seguindo em frente. Neste diagrama, <strong>o Carro A se aproxima pela sua direita</strong>, então você deve dar a preferência a ele; o Carro B está à sua esquerda e é ele quem deve dar a preferência a você.",
+      es: "En una intersección de cuatro vías sin señalización, debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que gires o sigas de frente. En este diagrama, <strong>el Auto A se aproxima por tu derecha</strong>, así que debes cederle el paso; el Auto B está a tu izquierda y es él quien debe cederte el paso a ti."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-27",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, who should you give way to?",
+      pt: "No diagrama, a quem você deve dar a preferência?",
+      es: "En el diagrama, ¿a quién debes ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-fourway-intersection-car-a-right.png",
+    cap: {
+      en: "Uncontrolled four-way intersection: the rider (YOU) must give way to Car A, which is approaching from the right; Car B, on the rider's left, must give way to the rider.",
+      pt: "Cruzamento não sinalizado de quatro vias: o motociclista (VOCÊ) deve dar a preferência ao Carro A, que se aproxima pela direita; o Carro B, à esquerda do motociclista, deve dar a preferência a ele.",
+      es: "Intersección de cuatro vías sin señalización: el motociclista (TÚ) debe ceder el paso al Auto A, que se aproxima por la derecha; el Auto B, a la izquierda del motociclista, debe cederle el paso a él."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both Car A and Car B",
+          pt: "Ao Carro A e ao Carro B",
+          es: "A ambos, el Auto A y el Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car A only",
+          pt: "Somente ao Carro A",
+          es: "Solo al Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither Car A or Car B",
+          pt: "Nem ao Carro A nem ao Carro B",
+          es: "Ni al Auto A ni al Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection, you must give way to the vehicle approaching from your right, whether you are turning or going straight ahead. In this diagram <strong>Car A is approaching from your right</strong>, so you must give way to it; Car B is on your left and must give way to you instead.",
+      pt: "Em um cruzamento não sinalizado de quatro vias, você deve dar a preferência ao veículo que se aproxima pela sua direita, esteja você virando ou seguindo em frente. Neste diagrama, <strong>o Carro A se aproxima pela sua direita</strong>, então você deve dar a preferência a ele; o Carro B está à sua esquerda e é ele quem deve dar a preferência a você.",
+      es: "En una intersección de cuatro vías sin señalización, debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que gires o sigas de frente. En este diagrama, <strong>el Auto A se aproxima por tu derecha</strong>, así que debes cederle el paso; el Auto B está a tu izquierda y es él quien debe cederte el paso a ti."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-24",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, who should you give way to?",
+      pt: "No diagrama, a quem você deve dar a preferência?",
+      es: "En el diagrama, ¿a quién debes ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-fourway-intersection-car-a-right.png",
+    cap: {
+      en: "Uncontrolled four-way intersection: the rider (YOU) must give way to Car A, which is approaching from the right; Car B, on the rider's left, must give way to the rider.",
+      pt: "Cruzamento não sinalizado de quatro vias: o motociclista (VOCÊ) deve dar a preferência ao Carro A, que se aproxima pela direita; o Carro B, à esquerda do motociclista, deve dar a preferência a ele.",
+      es: "Intersección de cuatro vías sin señalización: el motociclista (TÚ) debe ceder el paso al Auto A, que se aproxima por la derecha; el Auto B, a la izquierda del motociclista, debe cederle el paso a él."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both Car A and Car B",
+          pt: "Ao Carro A e ao Carro B",
+          es: "A ambos, el Auto A y el Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car A only",
+          pt: "Somente ao Carro A",
+          es: "Solo al Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither Car A or Car B",
+          pt: "Nem ao Carro A nem ao Carro B",
+          es: "Ni al Auto A ni al Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection, you must give way to the vehicle approaching from your right, whether you are turning or going straight ahead. In this diagram <strong>Car A is approaching from your right</strong>, so you must give way to it; Car B is on your left and must give way to you instead.",
+      pt: "Em um cruzamento não sinalizado de quatro vias, você deve dar a preferência ao veículo que se aproxima pela sua direita, esteja você virando ou seguindo em frente. Neste diagrama, <strong>o Carro A se aproxima pela sua direita</strong>, então você deve dar a preferência a ele; o Carro B está à sua esquerda e é ele quem deve dar a preferência a você.",
+      es: "En una intersección de cuatro vías sin señalización, debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que gires o sigas de frente. En este diagrama, <strong>el Auto A se aproxima por tu derecha</strong>, así que debes cederle el paso; el Auto B está a tu izquierda y es él quien debe cederte el paso a ti."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-24",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, who should you give way to?",
+      pt: "No diagrama, a quem você deve dar a preferência?",
+      es: "En el diagrama, ¿a quién debes ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-fourway-intersection-car-a-right.png",
+    cap: {
+      en: "Uncontrolled four-way intersection: the rider (YOU) must give way to Car A, which is approaching from the right; Car B, on the rider's left, must give way to the rider.",
+      pt: "Cruzamento não sinalizado de quatro vias: o motociclista (VOCÊ) deve dar a preferência ao Carro A, que se aproxima pela direita; o Carro B, à esquerda do motociclista, deve dar a preferência a ele.",
+      es: "Intersección de cuatro vías sin señalización: el motociclista (TÚ) debe ceder el paso al Auto A, que se aproxima por la derecha; el Auto B, a la izquierda del motociclista, debe cederle el paso a él."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both Car A and Car B",
+          pt: "Ao Carro A e ao Carro B",
+          es: "A ambos, el Auto A y el Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car A only",
+          pt: "Somente ao Carro A",
+          es: "Solo al Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither Car A or Car B",
+          pt: "Nem ao Carro A nem ao Carro B",
+          es: "Ni al Auto A ni al Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection, you must give way to the vehicle approaching from your right, whether you are turning or going straight ahead. In this diagram <strong>Car A is approaching from your right</strong>, so you must give way to it; Car B is on your left and must give way to you instead.",
+      pt: "Em um cruzamento não sinalizado de quatro vias, você deve dar a preferência ao veículo que se aproxima pela sua direita, esteja você virando ou seguindo em frente. Neste diagrama, <strong>o Carro A se aproxima pela sua direita</strong>, então você deve dar a preferência a ele; o Carro B está à sua esquerda e é ele quem deve dar a preferência a você.",
+      es: "En una intersección de cuatro vías sin señalización, debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que gires o sigas de frente. En este diagrama, <strong>el Auto A se aproxima por tu derecha</strong>, así que debes cederle el paso; el Auto B está a tu izquierda y es él quien debe cederte el paso a ti."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-25",
+    cat: "Give Way Rules",
+    q: {
+      en: "If you are approaching a Stop Sign with no line marking on the road, where should you stop?",
+      pt: "Se você está se aproximando de uma placa de Pare sem marcação de linha na via, onde você deve parar?",
+      es: "Si te estás acercando a una señal de Pare sin línea marcada en la vía, ¿dónde debes detenerte?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At the sign",
+          pt: "Na placa",
+          es: "En la señal"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Before the sign",
+          pt: "Antes da placa",
+          es: "Antes de la señal"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "As close to the intersection as practicable, but before entering it",
+          pt: "O mais próximo possível do cruzamento que for praticável, mas antes de entrar nele",
+          es: "Lo más cerca posible de la intersección según sea practicable, pero antes de entrar en ella"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If there is no line marked on the road at a STOP sign, you must <strong>stop as close to the intersection as practicable before entering it</strong>, then give way to all traffic coming from the left or right.",
+      pt: "Se não houver linha marcada na via em uma placa de Pare, você deve <strong>parar o mais próximo possível do cruzamento, sem entrar nele</strong>, e depois dar a preferência a todo o tráfego vindo da esquerda ou da direita.",
+      es: "Si no hay línea marcada en la vía en una señal de Pare, debes <strong>detenerte lo más cerca posible de la intersección, sin entrar en ella</strong>, y luego ceder el paso a todo el tráfico que venga de la izquierda o de la derecha."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-26",
+    cat: "Give Way Rules",
+    q: {
+      en: "If you are turning left into a street where a pedestrian is about to cross at the intersection, who has right of way?",
+      pt: "Se você está virando à esquerda para entrar em uma rua onde um pedestre está prestes a atravessar no cruzamento, quem tem a preferência?",
+      es: "Si estás girando a la izquierda para entrar en una calle donde un peatón está a punto de cruzar en la intersección, ¿quién tiene el derecho de paso?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You",
+          pt: "Você",
+          es: "Tú"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The pedestrian",
+          pt: "O pedestre",
+          es: "El peatón"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Whoever was there first",
+          pt: "Quem chegou primeiro",
+          es: "Quien haya llegado primero"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When turning left or right, you must <strong>give way to any pedestrian crossing the road you are turning into</strong> — the pedestrian always has right of way over a turning vehicle.",
+      pt: "Ao virar à esquerda ou à direita, você deve <strong>dar preferência a qualquer pedestre que esteja atravessando a rua para a qual você está virando</strong> — o pedestre sempre tem prioridade sobre o veículo que está virando.",
+      es: "Al girar a la izquierda o a la derecha, debes <strong>ceder el paso a cualquier peatón que esté cruzando la calle hacia la que estás girando</strong> — el peatón siempre tiene prioridad sobre el vehículo que gira."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-28",
+    cat: "Road Markings",
+    q: {
+      en: "From the diagram, you are riding in a lane with a left turn arrow only and have reached the area where the line markings are continuous. Can you change lanes or drive straight ahead?",
+      pt: "De acordo com o diagrama, você está andando de moto numa faixa com seta de conversão à esquerda apenas e chegou ao ponto onde as marcações da faixa se tornam contínuas. Você pode mudar de faixa ou seguir em frente?",
+      es: "Según el diagrama, usted circula en moto por un carril con una flecha de giro a la izquierda únicamente y ha llegado al punto donde las líneas de marcación son continuas. ¿Puede cambiar de carril o seguir de frente?"
+    },
+    sign: "/icons/signs/left-turn-lane-continuous-line-arrow.png",
+    cap: {
+      en: "Motorcyclist in a left-turn-only lane at an intersection where the lane line becomes a continuous (solid) line, with a straight-through lane and a right lane beside it.",
+      pt: "Motociclista numa faixa exclusiva de conversão à esquerda num cruzamento, onde a linha da faixa se torna contínua, com uma faixa reta e outra à direita ao lado.",
+      es: "Motociclista en un carril exclusivo de giro a la izquierda en una intersección, donde la línea del carril se vuelve continua, con un carril recto y otro a la derecha al lado."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No as the line markings are continuous and you must follow the arrow",
+          pt: "Não, pois as marcações são contínuas e você deve seguir a seta",
+          es: "No, porque las líneas son continuas y debe seguir la flecha"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes if it is safe to do so",
+          pt: "Sim, se for seguro fazer isso",
+          es: "Sí, si es seguro hacerlo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, the arrows are only advisory markings and the lane is clear",
+          pt: "Sim, as setas são apenas indicativas e a faixa está livre",
+          es: "Sí, las flechas son solo indicativas y el carril está despejado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A continuous (unbroken) lane line means <strong>you must not cross it to change lanes</strong>, and once in a lane marked with an arrow you must travel in that arrow's direction — so in this left-turn-only lane you must turn left, not go straight or merge right.",
+      pt: "Uma linha de faixa contínua significa que <strong>você não pode cruzá-la para mudar de faixa</strong>, e ao estar numa faixa marcada com uma seta você deve seguir a direção dela — ou seja, nesta faixa exclusiva de conversão à esquerda você precisa virar à esquerda, sem seguir em frente nem mudar para a faixa da direita.",
+      es: "Una línea de carril continua significa que <strong>no se puede cruzar para cambiar de carril</strong>, y al estar en un carril marcado con una flecha se debe circular en esa dirección — por lo tanto, en este carril exclusivo de giro a la izquierda debe girar a la izquierda, sin seguir de frente ni cambiarse al carril derecho."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-29",
+    cat: "Road Safety",
+    q: {
+      en: "How early should you indicate your intention to turn?",
+      pt: "Com que antecedência você deve sinalizar sua intenção de virar?",
+      es: "¿Con cuánta anticipación debe indicar su intención de girar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To give sufficient warning to other road users so they can take appropriate safety precautions.",
+          pt: "O suficiente para avisar os demais usuários da via, para que possam tomar as precauções de segurança adequadas.",
+          es: "Lo suficiente para advertir a los demás usuarios de la vía, para que puedan tomar las precauciones de seguridad adecuadas."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "30 metres",
+          pt: "30 metros",
+          es: "30 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "50 metres",
+          pt: "50 metros",
+          es: "50 metros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook sets no fixed distance for indicating — you must give <strong>sufficient warning</strong> so other road users can take appropriate safety precautions, with the exact timing depending on road speed and traffic conditions.",
+      pt: "O manual Drive Safe da Austrália Ocidental não define uma distância fixa para sinalizar — você deve dar <strong>aviso suficiente</strong> para que os demais usuários da via possam tomar as precauções de segurança adequadas, sendo que o tempo exato depende da velocidade da via e das condições do trânsito.",
+      es: "El manual Drive Safe de Australia Occidental no establece una distancia fija para señalizar — debe dar <strong>aviso suficiente</strong> para que los demás usuarios de la vía puedan tomar las precauciones de seguridad adecuadas, y el momento exacto depende de la velocidad de la vía y las condiciones del tráfico."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-32",
+    cat: "Give Way Rules",
+    q: {
+      en: "Why should you never wave people across at pedestrian crossings?",
+      pt: "Por que você nunca deve fazer sinal para as pessoas atravessarem em faixas de pedestres?",
+      es: "¿Por qué nunca debe hacerle señas a los peatones para que crucen en un paso de peatones?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "There may be another vehicle coming",
+          pt: "Pode haver outro veículo se aproximando",
+          es: "Puede haber otro vehículo acercándose"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "They may not be looking",
+          pt: "Elas podem não estar prestando atenção",
+          es: "Es posible que no estén prestando atención"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "They may not be ready to cross",
+          pt: "Elas podem não estar prontas para atravessar",
+          es: "Es posible que no estén listos para cruzar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should never wave pedestrians across because <strong>there may be another vehicle approaching that you have not noticed</strong>, and waving them on could send them into its path.",
+      pt: "Você nunca deve fazer sinal para os pedestres atravessarem porque <strong>pode haver outro veículo se aproximando que você não percebeu</strong>, e o sinal pode colocá-los no caminho desse veículo.",
+      es: "Nunca debe hacerle señas a los peatones para que crucen porque <strong>puede haber otro vehículo acercándose que usted no ha notado</strong>, y la señal podría ponerlos en su trayectoria."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-33",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "You intend to leave a 3 lane major arterial road at the next exit on the left. Before you reach the exit, you should normally position your motorcycle:",
+      pt: "Você pretende sair de uma via arterial principal de 3 faixas na próxima saída à esquerda. Antes de chegar à saída, você normalmente deve posicionar sua motocicleta:",
+      es: "Tienes intención de salir de una vía arterial principal de 3 carriles por la próxima salida a la izquierda. Antes de llegar a la salida, normalmente deberías posicionar tu motocicleta:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "In the middle lane",
+          pt: "Na faixa do meio",
+          es: "En el carril central"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In the left-hand lane",
+          pt: "Na faixa da esquerda",
+          es: "En el carril izquierdo"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "In any lane",
+          pt: "Em qualquer faixa",
+          es: "En cualquier carril"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "To leave a road via an exit on the left, you should move into the <strong>left-hand lane</strong> well before reaching the exit, giving yourself time to signal and turn off safely.",
+      pt: "Para sair de uma via pela saída à esquerda, você deve se posicionar na <strong>faixa da esquerda</strong> bem antes de chegar à saída, dando tempo para sinalizar e fazer a manobra com segurança.",
+      es: "Para salir de una vía por una salida a la izquierda, debes situarte en el <strong>carril izquierdo</strong> con suficiente antelación para señalizar y maniobrar con seguridad."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-34",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do when following a long and large vehicle that is approaching a roundabout and the driver signals left but moves to the right?",
+      pt: "O que você deve fazer ao seguir um veículo longo e grande que está se aproximando de uma rotatória e o motorista sinaliza para a esquerda, mas se desloca para a direita?",
+      es: "¿Qué debe hacer si va detrás de un vehículo largo y grande que se aproxima a una rotonda y el conductor señala hacia la izquierda pero se desplaza hacia la derecha?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn",
+          pt: "Buzinar",
+          es: "Tocar la bocina"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Overtake on the left",
+          pt: "Ultrapassar pela esquerda",
+          es: "Adelantar por la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep well back and do not overtake",
+          pt: "Manter distância segura e não ultrapassar",
+          es: "Mantenerse bien atrás y no adelantar"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Long vehicles need extra space to negotiate roundabouts and often swing wide to the right before turning left. <strong>Keep well back and do not attempt to overtake</strong> until the vehicle has completed its turn.",
+      pt: "Veículos longos precisam de mais espaço para fazer a manobra na rotatória e costumam se deslocar para a direita antes de virar à esquerda. <strong>Mantenha distância segura e não tente ultrapassar</strong> até que o veículo termine a manobra.",
+      es: "Los vehículos largos necesitan más espacio para maniobrar en la rotonda y suelen desplazarse hacia la derecha antes de girar a la izquierda. <strong>Mantén una distancia segura y no intentes adelantar</strong> hasta que el vehículo termine el giro."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-35",
+    cat: "Emergencies",
+    q: {
+      en: "Why shouldn't you remove an injured motorcyclist's helmet if they are lying on the road?",
+      pt: "Por que você não deve remover o capacete de um motociclista ferido se ele estiver caído na estrada?",
+      es: "¿Por qué no debes quitarle el casco a un motociclista herido si está tendido en la carretera?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Because they could catch a chill",
+          pt: "Porque ele pode pegar um resfriado",
+          es: "Porque podría resfriarse"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Because you may damage their helmet in the process",
+          pt: "Porque você pode danificar o capacete no processo",
+          es: "Porque podrías dañar el casco en el proceso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Because you may risk neck injuries to the casualty",
+          pt: "Porque você pode causar lesões no pescoço da vítima",
+          es: "Porque podrías causar lesiones en el cuello de la víctima"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Do not remove an injured motorcyclist's helmet because <strong>you may risk causing neck injuries</strong> to the casualty; only move or remove the helmet if there is immediate danger, such as fire.",
+      pt: "Não remova o capacete de um motociclista ferido porque <strong>você pode causar lesões no pescoço</strong> da vítima; só mova ou remova o capacete se houver perigo imediato, como fogo.",
+      es: "No le quites el casco a un motociclista herido porque <strong>podrías causar lesiones en el cuello</strong> de la víctima; solo mueve o retira el casco si hay peligro inmediato, como un incendio."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-02",
+    cat: "Road Safety",
+    q: {
+      en: "What demerit point limit applies if you have held your licence between 1 and 2 years under the Novice Driver Graduated Demerit Point System?",
+      pt: "Qual é o limite de pontos de demérito aplicável se você possui a habilitação entre 1 e 2 anos, sob o Sistema Gradual de Pontos de Demérito para Motoristas Novatos?",
+      es: "¿Qué límite de puntos de demérito se aplica si tienes la licencia entre 1 y 2 años, bajo el Sistema Gradual de Puntos de Demérito para Conductores Novatos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "4 points",
+          pt: "4 pontos",
+          es: "4 puntos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "6 points",
+          pt: "6 pontos",
+          es: "6 puntos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "8 points",
+          pt: "8 pontos",
+          es: "8 puntos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A <strong>Novice Driver Type 2</strong> (licence held for at least 1 year but less than 2 years) is disqualified for a minimum of 3 months if they accrue <strong>8 or more demerit points</strong>.",
+      pt: "Um <strong>Motorista Novato Tipo 2</strong> (habilitação entre 1 e 2 anos) é desqualificado por no mínimo 3 meses se acumular <strong>8 ou mais pontos de demérito</strong>.",
+      es: "Un <strong>Conductor Novato Tipo 2</strong> (licencia de entre 1 y 2 años) queda descalificado por un mínimo de 3 meses si acumula <strong>8 o más puntos de demérito</strong>."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-03",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "How many pillion passengers are permitted on a motorcycle that is designed to transport pillion passengers?",
+      pt: "Quantos passageiros de garupa são permitidos em uma motocicleta projetada para transportar passageiros de garupa?",
+      es: "¿Cuántos pasajeros de parrilla (asiento trasero) están permitidos en una motocicleta diseñada para transportar pasajeros de parrilla?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "One",
+          pt: "Um",
+          es: "Uno"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Provided they can fit comfortably",
+          pt: "Desde que caibam confortavelmente",
+          es: "Siempre que quepan cómodamente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "As many as possible",
+          pt: "O máximo possível",
+          es: "Tantos como sea posible"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A motorcycle equipped for pillion seating may carry <strong>only one pillion passenger</strong> — the number of passengers carried can never exceed the number of seats designed to carry them.",
+      pt: "Uma motocicleta equipada com assento de garupa pode transportar <strong>apenas um passageiro de garupa</strong> — o número de passageiros nunca pode ultrapassar o número de assentos projetados para isso.",
+      es: "Una motocicleta equipada con asiento de parrilla solo puede llevar <strong>un pasajero de parrilla</strong> — el número de pasajeros nunca puede superar el número de asientos diseñados para transportarlos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-04",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should a pillion passenger do when cornering?",
+      pt: "O que um passageiro (garupa) deve fazer ao entrar em uma curva?",
+      es: "¿Qué debe hacer un pasajero (parrillero) al tomar una curva?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Follow your lead when leaning",
+          pt: "Acompanhar a inclinação do condutor",
+          es: "Seguir la inclinación del conductor"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Counterbalance and lean the opposite way",
+          pt: "Contrabalançar e inclinar-se para o lado oposto",
+          es: "Contrapesar e inclinarse hacia el lado opuesto"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stay in an upright position",
+          pt: "Permanecer na posição vertical",
+          es: "Permanecer en posición vertical"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook advises that a pillion passenger should <strong>follow the rider's lead when leaning</strong> into a corner, rather than counterbalancing or staying rigidly upright, since fighting the rider's lean can destabilise the motorcycle.",
+      pt: "O manual orienta que o passageiro (garupa) deve <strong>acompanhar a inclinação do condutor</strong> nas curvas, em vez de contrabalançar ou ficar rígido na vertical, pois isso pode desestabilizar a moto.",
+      es: "El manual indica que el pasajero (parrillero) debe <strong>seguir la inclinación del conductor</strong> al tomar una curva, en lugar de contrapesar o mantenerse rígidamente erguido, ya que hacerlo puede desestabilizar la moto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-05",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Why is it important to maintain correct tyre pressures for your motorcycle?",
+      pt: "Por que é importante manter a pressão correta dos pneus da sua motocicleta?",
+      es: "¿Por qué es importante mantener la presión correcta de los neumáticos de tu motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You will sit higher and people will be able to see you better on the road",
+          pt: "Você vai ficar mais alto e as pessoas vão conseguir te ver melhor na estrada",
+          es: "Te sentarás más alto y la gente podrá verte mejor en la carretera"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "So you can go faster",
+          pt: "Para você poder andar mais rápido",
+          es: "Para que puedas ir más rápido"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To ensure maximum safety while riding your motorcycle",
+          pt: "Para garantir a máxima segurança ao pilotar sua motocicleta",
+          es: "Para garantizar la máxima seguridad al conducir tu motocicleta"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Tyre pressure is <strong>critical to a motorcycle's handling</strong> — under-inflated tyres significantly increase the risk of crashing, so correct pressure is essential for maximum safety while riding.",
+      pt: "A pressão dos pneus é <strong>fundamental para a estabilidade da motocicleta</strong> — pneus com pressão baixa aumentam muito o risco de acidente, por isso a pressão correta é essencial para a máxima segurança ao pilotar.",
+      es: "La presión de los neumáticos es <strong>fundamental para el manejo de la motocicleta</strong> — los neumáticos con presión baja aumentan mucho el riesgo de accidente, por lo que la presión correcta es esencial para la máxima seguridad al conducir."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-06",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When is it recommended that safety attire be worn when riding a motorcycle?",
+      pt: "Quando é recomendado usar vestuário de segurança ao pilotar uma motocicleta?",
+      es: "¿Cuándo se recomienda usar ropa de seguridad al conducir una motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At all times",
+          pt: "Em todos os momentos",
+          es: "En todo momento"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only on faster open roads",
+          pt: "Apenas em estradas rápidas e abertas",
+          es: "Solo en carreteras rápidas y abiertas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only during bad weather",
+          pt: "Apenas durante mau tempo",
+          es: "Solo durante mal tiempo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook states you should <strong>always wear protective clothing</strong> when riding a motorcycle, regardless of the road type or weather conditions, as it significantly reduces injury in a crash.",
+      pt: "O manual afirma que você deve <strong>sempre usar vestuário de proteção</strong> ao pilotar uma motocicleta, independentemente do tipo de via ou das condições climáticas, pois isso reduz significativamente o risco de ferimentos em caso de acidente.",
+      es: "El manual indica que debes <strong>usar siempre ropa de protección</strong> al conducir una motocicleta, sin importar el tipo de carretera o las condiciones climáticas, ya que esto reduce significativamente el riesgo de lesiones en caso de accidente."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-07",
+    cat: "Road Safety",
+    q: {
+      en: "What road surface could you expect with rain that follows a long period of dry weather?",
+      pt: "Que superfície de estrada você poderia esperar com chuva que segue um longo período de tempo seco?",
+      es: "¿Qué superficie de carretera podrías esperar con lluvia que sigue a un largo período de tiempo seco?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Loose",
+          pt: "Solta",
+          es: "Suelta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sticky",
+          pt: "Pegajosa",
+          es: "Pegajosa"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slippery",
+          pt: "Escorregadia",
+          es: "Resbaladiza"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "After a long dry spell, oil and dust build up on the road surface; when rain finally falls it mixes with this residue and makes the road <strong>very slippery</strong>, significantly increasing stopping distances.",
+      pt: "Depois de um longo período seco, óleo e poeira se acumulam na superfície da estrada; quando a chuva finalmente cai, ela se mistura a esses resíduos e deixa a pista <strong>muito escorregadia</strong>, aumentando bastante a distância de frenagem.",
+      es: "Después de un largo período seco, el aceite y el polvo se acumulan en la superficie de la carretera; cuando finalmente llueve, se mezcla con esos residuos y hace que la vía quede <strong>muy resbaladiza</strong>, aumentando considerablemente la distancia de frenado."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-08",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Why should you allow extra room when overtaking another motorcyclist on a windy day?",
+      pt: "Por que você deve manter uma distância extra ao ultrapassar outro motociclista em um dia de vento forte?",
+      es: "¿Por qué debes dejar espacio adicional al adelantar a otro motociclista en un día ventoso?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The rider may turn off suddenly to get out of the wind",
+          pt: "O motociclista pode virar bruscamente para sair do vento",
+          es: "El motociclista puede girar bruscamente para salir del viento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The wind may cause the rider to be buffeted around in front of you and veer off course.",
+          pt: "O vento pode jogar o motociclista de um lado para o outro à sua frente e fazê-lo sair da trajetória.",
+          es: "El viento puede zarandear al motociclista frente a ti y hacer que se salga de su trayectoria."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "The rider may stop suddenly",
+          pt: "O motociclista pode parar de repente",
+          es: "El motociclista puede detenerse de repente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Strong winds can buffet a motorcycle and cause the rider to <strong>veer off course</strong> unexpectedly, so extra room when overtaking gives you space to react safely.",
+      pt: "Ventos fortes podem sacudir a moto e fazer o motociclista <strong>sair da trajetória</strong> de forma inesperada, por isso é preciso manter distância extra ao ultrapassar para ter espaço de reação.",
+      es: "Los vientos fuertes pueden zarandear la moto y hacer que el motociclista <strong>se salga de su trayectoria</strong> de forma inesperada, por lo que debes dejar espacio adicional al adelantar para tener margen de reacción."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-09",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the most important reason for regularly maintaining a motorcycle?",
+      pt: "Qual é o motivo mais importante para fazer a manutenção regular de uma motocicleta?",
+      es: "¿Cuál es la razón más importante para realizar el mantenimiento regular de una motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To accelerate faster than other traffic",
+          pt: "Para acelerar mais rápido que os outros veículos",
+          es: "Para acelerar más rápido que los demás vehículos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "To keep the vehicle roadworthy",
+          pt: "Para manter o veículo em condições seguras de circulação",
+          es: "Para mantener el vehículo en condiciones seguras de circulación"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "To ensure the motorcycle can carry a passenger",
+          pt: "Para garantir que a motocicleta possa levar um passageiro",
+          es: "Para asegurar que la motocicleta pueda llevar un pasajero"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Regular maintenance <strong>keeps a motorcycle roadworthy</strong> — safe to ride and compliant with legal standards — and it also helps lower exhaust emissions.",
+      pt: "A <strong>manutenção regular mantém a motocicleta em condições seguras de circulação (roadworthy)</strong> — segura para pilotar e dentro dos padrões exigidos por lei — além de ajudar a reduzir a emissão de gases do escapamento.",
+      es: "El <strong>mantenimiento regular mantiene la motocicleta en condiciones seguras de circulación (roadworthy)</strong> —apta y segura para conducir según los estándares legales— y además ayuda a reducir las emisiones del escape."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-10",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When riding in very heavy rain, a film of water can build between the tyres and the road which is known as \"aquaplaning\" which can result in lack of control. What should you do if your motorcycle starts to aquaplane?",
+      pt: "Ao andar de moto com chuva muito forte, pode se formar uma película de água entre os pneus e a pista, fenômeno conhecido como \"aquaplanagem\", que pode causar perda de controle. O que você deve fazer se sua moto começar a aquaplanar?",
+      es: "Al circular en moto bajo lluvia muy intensa, puede formarse una película de agua entre los neumáticos y la calzada, fenómeno conocido como \"aquaplaning\" (hidroplaneo), que puede provocar pérdida de control. ¿Qué debe hacer si su motocicleta comienza a hidroplanear?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Apply your brakes gently.",
+          pt: "Frear suavemente.",
+          es: "Frenar suavemente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Steer to the centre of the road.",
+          pt: "Dirigir para o centro da via.",
+          es: "Dirigirse hacia el centro de la calzada."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Ease off the throttle smoothly",
+          pt: "Soltar o acelerador suavemente.",
+          es: "Soltar el acelerador suavemente."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook states that if your motorcycle starts to aquaplane, you should <strong>ease the throttle off smoothly</strong> — braking or steering abruptly during aquaplaning can cause you to lose control since the tyres have lost grip on the road.",
+      pt: "O manual Ride Safe orienta que, se sua moto começar a aquaplanar, você deve <strong>soltar o acelerador suavemente</strong> — frear ou virar bruscamente durante a aquaplanagem pode causar perda de controle, já que os pneus perderam aderência com a pista.",
+      es: "El manual Ride Safe indica que, si su motocicleta comienza a hidroplanear, debe <strong>soltar el acelerador suavemente</strong> — frenar o girar bruscamente durante el hidroplaneo puede causar pérdida de control, ya que los neumáticos han perdido adherencia con la calzada."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-11",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should you do when riding in windy conditions?",
+      pt: "O que você deve fazer ao pilotar em condições de vento forte?",
+      es: "¿Qué debes hacer al conducir en condiciones de viento fuerte?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stay close to large vehicles to shelter from the wind",
+          pt: "Fique perto de veículos grandes para se proteger do vento",
+          es: "Mantente cerca de vehículos grandes para protegerte del viento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep your speed up",
+          pt: "Mantenha a velocidade alta",
+          es: "Mantén la velocidad alta"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep your speed down",
+          pt: "Reduza a velocidade",
+          es: "Reduce la velocidad"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook advises riders to <strong>keep their speed down</strong> in windy conditions, because wind buffeting can affect the handling and stability of the motorcycle.",
+      pt: "O manual Ride Safe recomenda <strong>reduzir a velocidade</strong> em condições de vento, pois as rajadas podem afetar o controle e a estabilidade da motocicleta.",
+      es: "El manual Ride Safe recomienda <strong>reducir la velocidad</strong> en condiciones de viento, ya que las ráfagas pueden afectar el manejo y la estabilidad de la motocicleta."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-12",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Why is it a good idea to avoid painted arrows and other painted markings on the road when riding in heavy rain?",
+      pt: "Por que é uma boa ideia evitar setas pintadas e outras marcações pintadas na pista ao pilotar sob chuva forte?",
+      es: "¿Por qué es una buena idea evitar las flechas pintadas y otras marcas pintadas en la calzada al conducir una motocicleta bajo lluvia intensa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It is illegal to ride over them",
+          pt: "É ilegal passar por cima delas",
+          es: "Es ilegal circular sobre ellas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The painted arrows and markings may be slippery",
+          pt: "As setas e marcações pintadas podem ficar escorregadias",
+          es: "Las flechas y marcas pintadas pueden estar resbaladizas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "So that other motorists can see them",
+          pt: "Para que outros motoristas consigam vê-las",
+          es: "Para que otros conductores puedan verlas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook warns that when riding in rain, you should <strong>avoid painted arrows and road markings as they are usually very slippery</strong>, which can cause loss of traction and control.",
+      pt: "O manual Ride Safe orienta que, ao pilotar na chuva, deve-se <strong>evitar setas e marcações pintadas na pista, pois costumam ficar muito escorregadias</strong>, podendo causar perda de aderência e controle.",
+      es: "El manual Ride Safe advierte que, al conducir una motocicleta bajo lluvia, se debe <strong>evitar las flechas y marcas pintadas en la calzada, ya que suelen quedar muy resbaladizas</strong>, lo que puede provocar pérdida de tracción y control."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-13",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When is the best time to check tyre pressures?",
+      pt: "Qual é o melhor momento para verificar a pressão dos pneus?",
+      es: "¿Cuál es el mejor momento para revisar la presión de los neumáticos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Before you ride",
+          pt: "Antes de sair para pilotar",
+          es: "Antes de salir a conducir la moto"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "After a short ride",
+          pt: "Depois de um passeio curto",
+          es: "Después de un trayecto corto"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "During the ride",
+          pt: "Durante o passeio",
+          es: "Durante el trayecto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Tyre pressure should be checked with a gauge while the tyres are cold, <strong>before you ride</strong> — checking during or after a ride gives an inaccurate reading because the tyres have warmed up.",
+      pt: "A pressão dos pneus deve ser verificada com um manômetro enquanto os pneus estão frios, <strong>antes de pilotar</strong> — verificar durante ou depois do passeio dá uma leitura imprecisa, pois os pneus já esquentaram.",
+      es: "La presión de los neumáticos debe revisarse con un manómetro mientras están fríos, <strong>antes de conducir</strong> — revisarla durante o después del trayecto da una lectura inexacta porque los neumáticos ya se calentaron."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-14",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the meaning of the diagram?",
+      pt: "Qual é o significado do diagrama?",
+      es: "¿Cuál es el significado del diagrama?"
+    },
+    sign: "/icons/signs/moto-exit-wide-bend-crash.png",
+    cap: {
+      en: "Motorcycle path drifting wide on a right-hand bend, crossing into the oncoming car's lane where the X marks the head-on crash risk.",
+      pt: "Trajeto da moto saindo muito aberta em uma curva à direita, invadindo a faixa do carro em sentido contrário, onde o X marca o risco de colisão frontal.",
+      es: "Trayectoria de la moto saliendo demasiado abierta en una curva a la derecha, invadiendo el carril del auto en sentido contrario, donde la X marca el riesgo de colisión frontal."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You should start braking where the cross is",
+          pt: "Você deve começar a frear onde está o X",
+          es: "Debes empezar a frenar donde está la cruz"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Beware because there is a puddle of water next to the car",
+          pt: "Cuidado, pois há uma poça de água ao lado do carro",
+          es: "Ten cuidado, hay un charco de agua junto al coche"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Exiting wide from a bend or turn can result in a crash",
+          pt: "Sair muito aberto ao fazer uma curva pode causar um acidente",
+          es: "Tomar la curva demasiado abierta puede provocar un accidente"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>Exiting a bend too wide</strong> pushes the motorcycle toward the oncoming lane, especially on right-hand curves, greatly increasing the risk of a head-on crash — as the diagram shows with the rider's path drifting into the car's lane.",
+      pt: "<strong>Sair muito aberto de uma curva</strong> empurra a moto em direção à faixa contrária, especialmente em curvas à direita, aumentando muito o risco de colisão frontal — como mostra o diagrama, com o trajeto do motociclista invadindo a faixa do carro.",
+      es: "<strong>Salir demasiado abierto de una curva</strong> empuja la moto hacia el carril contrario, especialmente en curvas a la derecha, lo que aumenta mucho el riesgo de colisión frontal, tal como muestra el diagrama con la trayectoria del motociclista invadiendo el carril del auto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-15",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When stopping behind another vehicle, what is the recommended clearance distance between your motorcycle and the vehicle in front in case they roll back or you need to ride around them?",
+      pt: "Ao parar atrás de outro veículo, qual é a distância de segurança recomendada entre sua motocicleta e o veículo à frente, caso ele role para trás ou você precise contorná-lo?",
+      es: "Al detenerte detrás de otro vehículo, ¿cuál es la distancia de separación recomendada entre tu motocicleta y el vehículo de adelante, por si retrocede o necesitas rodearlo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1 metre",
+          pt: "1 metro",
+          es: "1 metro"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1 car length",
+          pt: "1 comprimento de carro",
+          es: "1 largo de auto"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "3 car lengths",
+          pt: "3 comprimentos de carro",
+          es: "3 largos de auto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook advises leaving <strong>at least one car length</strong> between your front wheel and the vehicle in front when stopped, giving you room if it rolls back or if you need to ride around it.",
+      pt: "O manual Ride Safe recomenda deixar <strong>pelo menos um comprimento de carro</strong> entre a roda dianteira da moto e o veículo à frente ao parar, dando espaço caso ele role para trás ou você precise contorná-lo.",
+      es: "El manual Ride Safe recomienda dejar <strong>al menos un largo de auto</strong> entre la rueda delantera de la moto y el vehículo de adelante al detenerte, dando espacio por si retrocede o si necesitas rodearlo."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-16",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "How long will it take an average rider who is fit, concentrating, alert and not affected by alcohol, drugs, fatigue or a distraction, to react to a sudden and unexpected change in traffic conditions?",
+      pt: "Quanto tempo leva para um motociclista médio, que esteja em boas condições físicas, concentrado, alerta e não afetado por álcool, drogas, fadiga ou distração, reagir a uma mudança repentina e inesperada nas condições do trânsito?",
+      es: "¿Cuánto tiempo tarda un motociclista promedio, que esté en buena forma física, concentrado, alerta y no afectado por alcohol, drogas, fatiga o alguna distracción, en reaccionar ante un cambio repentino e inesperado en las condiciones del tráfico?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1 second",
+          pt: "1 segundo",
+          es: "1 segundo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 seconds",
+          pt: "1,5 segundo",
+          es: "1,5 segundos"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "3 seconds",
+          pt: "3 segundos",
+          es: "3 segundos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Fit, alert riders need about <strong>1.5 seconds</strong> to react to a sudden, unexpected change in traffic conditions, plus another 1.5 seconds to respond — which is why motorcyclists are advised to keep a 3-second crash avoidance space.",
+      pt: "Motociclistas em boas condições físicas e alerta precisam de cerca de <strong>1,5 segundo</strong> para reagir a uma mudança repentina e inesperada no trânsito, mais outro 1,5 segundo para responder a ela — por isso recomenda-se manter um espaço de segurança de 3 segundos.",
+      es: "Los motociclistas en buena forma física y alerta necesitan alrededor de <strong>1,5 segundos</strong> para reaccionar ante un cambio repentino e inesperado en el tráfico, más otros 1,5 segundos para responder — por eso se recomienda mantener un espacio de seguridad de 3 segundos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-17",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the best way to react if whilst riding a driver pulls out of a side road in front of you causing you to brake suddenly?",
+      pt: "Qual é a melhor forma de reagir se, enquanto você pilota, um motorista sai de uma via lateral na sua frente, obrigando você a frear bruscamente?",
+      es: "¿Cuál es la mejor manera de reaccionar si, mientras conduces tu moto, un conductor sale de una calle lateral delante de ti, obligándote a frenar bruscamente?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Ignore the error and stay calm",
+          pt: "Ignorar o erro e manter a calma",
+          es: "Ignorar el error y mantener la calma"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Flash your lights to show your annoyance",
+          pt: "Piscar os faróis para mostrar sua irritação",
+          es: "Destellar las luces para mostrar tu enojo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Apply your horn to show your annoyance",
+          pt: "Buzinar para mostrar sua irritação",
+          es: "Tocar la bocina para mostrar tu enojo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe/Ride Safe handbook's own review question on this exact scenario gives <strong>\"Remain calm and not react\"</strong> as the correct response to another road user upsetting you — reacting with your horn or lights is treated as aggressive driving behaviour, not a safe response.",
+      pt: "O próprio manual (na questão de revisão sobre este cenário) indica <strong>\"manter a calma e não reagir\"</strong> como a resposta correta quando outro condutor o irrita — usar a buzina ou os faróis para mostrar irritação é tratado como comportamento agressivo no trânsito, não uma resposta segura.",
+      es: "El propio manual (en la pregunta de repaso sobre este mismo escenario) indica <strong>\"mantener la calma y no reaccionar\"</strong> como la respuesta correcta cuando otro conductor te molesta — usar la bocina o las luces para mostrar enojo se considera comportamiento agresivo al conducir, no una respuesta segura."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-18",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You should always check blind spots before:",
+      pt: "Você deve sempre verificar os pontos cegos antes de:",
+      es: "Siempre debes revisar los puntos ciegos antes de:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Giving a signal",
+          pt: "Dar sinal (pisca)",
+          es: "Dar la señal (intermitente)"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Applying the brakes",
+          pt: "Frear",
+          es: "Frenar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Changing direction",
+          pt: "Mudar de direção",
+          es: "Cambiar de dirección"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Mirrors alone don't show everything beside and behind your vehicle, so you must always <strong>check your blind spots before changing direction</strong> — such as changing lanes, turning, or merging.",
+      pt: "Os espelhos sozinhos não mostram tudo ao lado e atrás do veículo, por isso você deve sempre <strong>verificar os pontos cegos antes de mudar de direção</strong> — como ao trocar de faixa, virar ou se fundir ao tráfego.",
+      es: "Los espejos por sí solos no muestran todo lo que hay al lado y detrás del vehículo, por eso siempre debes <strong>revisar los puntos ciegos antes de cambiar de dirección</strong>, como al cambiar de carril, girar o incorporarte al tráfico."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-19",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main purpose of having mirrors fitted to both sides of your motorcycle?",
+      pt: "Qual é a principal finalidade de ter espelhos retrovisores instalados nos dois lados da sua motocicleta?",
+      es: "¿Cuál es el propósito principal de tener espejos retrovisores instalados en ambos lados de tu motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To judge the gap when filtering in traffic",
+          pt: "Para avaliar o espaço ao fazer a filtragem entre os veículos no trânsito",
+          es: "Para calcular el espacio al filtrarse entre el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "To make your motorcycle appear larger than other vehicles",
+          pt: "Para fazer sua motocicleta parecer maior do que os outros veículos",
+          es: "Para hacer que tu motocicleta parezca más grande que otros vehículos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To give you the best view of the road behind",
+          pt: "Para lhe dar a melhor visão da via atrás de você",
+          es: "Para darte la mejor vista de la vía detrás de ti"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Mirrors exist mainly to give you the <strong>best view of the road behind you</strong>, so you always know what traffic is following before you change speed, position, or lanes.",
+      pt: "A principal finalidade dos espelhos é lhe dar a <strong>melhor visão da via atrás de você</strong>, para que você sempre saiba o que está acontecendo atrás antes de mudar de velocidade, posição ou faixa.",
+      es: "El propósito principal de los espejos es darte la <strong>mejor vista de la vía detrás de ti</strong>, para que siempre sepas qué tráfico viene detrás antes de cambiar de velocidad, posición o carril."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-21",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You should always check blind spots before:",
+      pt: "Você deve sempre verificar os pontos cegos antes de:",
+      es: "Siempre debes revisar los puntos ciegos antes de:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Moving off",
+          pt: "Sair do lugar",
+          es: "Arrancar (ponerte en marcha)"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slowing down",
+          pt: "Reduzir a velocidade",
+          es: "Reducir la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Giving a signal",
+          pt: "Dar sinal (indicador)",
+          es: "Dar una señal (indicador)"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must always check your blind spots — by glancing over your shoulder — <strong>before moving off</strong>, since other vehicles, cyclists, or pedestrians can be hidden in the area beside you that your mirrors cannot show.",
+      pt: "Você deve sempre verificar os pontos cegos — olhando por cima do ombro — <strong>antes de sair do lugar</strong>, pois outros veículos, ciclistas ou pedestres podem estar escondidos na área ao seu lado que os retrovisores não mostram.",
+      es: "Siempre debes revisar tus puntos ciegos —mirando por encima del hombro— <strong>antes de arrancar</strong>, ya que otros vehículos, ciclistas o peatones pueden estar ocultos en el área junto a ti que los espejos no muestran."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-23",
+    cat: "Road Safety",
+    q: {
+      en: "\"Tailgating\" means following another vehicle too closely, why is this considered dangerous?",
+      pt: "\"Tailgating\" (andar colado) significa seguir outro veículo muito de perto. Por que isso é considerado perigoso?",
+      es: "\"Tailgating\" (circular demasiado cerca) significa seguir a otro vehículo muy de cerca. ¿Por qué se considera esto peligroso?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The motorcycle becomes harder to control",
+          pt: "A moto fica mais difícil de controlar",
+          es: "La moto se vuelve más difícil de controlar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "It is not considered dangerous",
+          pt: "Não é considerado perigoso",
+          es: "No se considera peligroso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You have reduced time to react and respond which consequently could cause a crash.",
+          pt: "Você tem menos tempo para reagir e responder, o que pode causar uma colisão.",
+          es: "Tienes menos tiempo para reaccionar y responder, lo que puede provocar una colisión."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Following too closely leaves you <strong>less time and space to react and brake safely</strong>, which is why most rear-end collisions are caused by drivers tailgating the vehicle in front.",
+      pt: "Seguir muito perto deixa você com <strong>menos tempo e espaço para reagir e frear com segurança</strong> — por isso a maioria das colisões traseiras é causada por condutores que andam colados no veículo da frente.",
+      es: "Seguir demasiado cerca te deja con <strong>menos tiempo y espacio para reaccionar y frenar con seguridad</strong>, por lo que la mayoría de las colisiones por alcance ocurren cuando el conductor circula demasiado cerca del vehículo de delante."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-25",
+    cat: "Give Way Rules",
+    q: {
+      en: "What must you do when approaching an uncontrolled four way intersection?",
+      pt: "O que você deve fazer ao se aproximar de um cruzamento não sinalizado de quatro vias?",
+      es: "¿Qué debes hacer al acercarte a una intersección de cuatro vías sin señalizar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to vehicles on your right whether you are turning or going straight ahead",
+          pt: "Dar preferência aos veículos à sua direita, seja convertendo ou seguindo em frente",
+          es: "Ceder el paso a los vehículos que están a tu derecha, ya sea que gires o sigas recto"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to all traffic",
+          pt: "Dar preferência a todo o tráfego",
+          es: "Ceder el paso a todo el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Give way to vehicles on your left whether you are turning or going straight ahead",
+          pt: "Dar preferência aos veículos à sua esquerda, seja convertendo ou seguindo em frente",
+          es: "Ceder el paso a los vehículos que están a tu izquierda, ya sea que gires o sigas recto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection (no signals, signs, or roundabout), you must <strong>give way to the vehicle on your right</strong>, whether you are turning or going straight ahead.",
+      pt: "Em um cruzamento não sinalizado de quatro vias (sem semáforos, placas ou rotatória), você deve <strong>dar preferência ao veículo à sua direita</strong>, seja convertendo ou seguindo em frente.",
+      es: "En una intersección de cuatro vías sin control (sin semáforos, señales ni rotonda), debes <strong>ceder el paso al vehículo que está a tu derecha</strong>, ya sea que gires o sigas recto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-26",
+    cat: "Traffic Lights",
+    q: {
+      en: "Can you make a 'U' turn at a set of traffic lights?",
+      pt: "Você pode fazer um retorno em \"U\" em um cruzamento com semáforo?",
+      es: "¿Se puede hacer un giro en \"U\" en una intersección con semáforo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, only if it can be done safely",
+          pt: "Sim, apenas se puder ser feito com segurança",
+          es: "Sí, solo si se puede hacer de forma segura"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, only if there is a 'U TURN PERMITTED' sign",
+          pt: "Sim, apenas se houver uma placa de 'RETORNO PERMITIDO'",
+          es: "Sí, solo si hay una señal de 'GIRO EN U PERMITIDO'"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, not under any circumstances",
+          pt: "Não, em nenhuma circunstância",
+          es: "No, bajo ninguna circunstancia"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not make a U turn at an intersection controlled by traffic lights <strong>unless there is a 'U TURN PERMITTED' sign</strong> — safety alone is not enough at signalised intersections.",
+      pt: "Você não pode fazer um retorno em um cruzamento controlado por semáforo, <strong>a menos que haja uma placa de 'RETORNO PERMITIDO'</strong> — apenas ser seguro não é suficiente nesse tipo de cruzamento.",
+      es: "No se puede hacer un giro en U en una intersección controlada por semáforo, <strong>a menos que haya una señal de 'GIRO EN U PERMITIDO'</strong> — que sea seguro no basta en este tipo de intersección."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-27",
+    cat: "Road Markings",
+    q: {
+      en: "From the diagram, when can you cross a single continuous (unbroken) white line in the centre of a carriageway?",
+      pt: "De acordo com o diagrama, quando você pode cruzar uma linha branca contínua (sem interrupções) no centro da via?",
+      es: "Según el diagrama, ¿cuándo se puede cruzar una línea blanca continua (sin interrupciones) en el centro de la calzada?"
+    },
+    sign: "/icons/signs/continuous-centre-line-no-overtake.png",
+    cap: {
+      en: "Solid centre line separating a car (YOU) and a motorcycle sharing the left lane from an empty right lane — crossing it to overtake is not permitted.",
+      pt: "Linha central contínua separando um carro (VOCÊ) e uma moto na mesma faixa esquerda de uma faixa direita vazia — cruzá-la para ultrapassar não é permitido.",
+      es: "Línea central continua que separa un auto (USTED) y una moto que comparten el carril izquierdo de un carril derecho vacío — no está permitido cruzarla para adelantar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To overtake, provided it is safe to do so",
+          pt: "Para ultrapassar, desde que seja seguro fazer isso",
+          es: "Para adelantar, siempre que sea seguro hacerlo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Never under any circumstances",
+          pt: "Nunca, em nenhuma circunstância",
+          es: "Nunca, bajo ninguna circunstancia"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At an intersection when turning, to enter or leave a road, or to make a legal U-turn",
+          pt: "Em um cruzamento ao virar, para entrar ou sair de uma via, ou para fazer um retorno (conversão em U) permitido",
+          es: "En una intersección al girar, para entrar o salir de una vía, o para hacer un giro en U permitido"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A single continuous (unbroken) white centre line must not be crossed to overtake or change lanes. You may only cross it <strong>to enter or leave the road, turn at an intersection, or make a legal U-turn</strong>.",
+      pt: "Uma linha branca contínua (sem interrupções) no centro da via não pode ser cruzada para ultrapassar ou mudar de faixa. Você só pode cruzá-la <strong>para entrar ou sair da via, virar em um cruzamento, ou fazer um retorno permitido</strong>.",
+      es: "Una línea blanca continua (sin interrupciones) en el centro de la vía no se debe cruzar para adelantar o cambiar de carril. Solo se puede cruzar <strong>para entrar o salir de la vía, girar en una intersección, o hacer un giro en U permitido</strong>."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-28",
+    cat: "Give Way Rules",
+    q: {
+      en: "From the diagram, when two lanes merge, who has right of way?",
+      pt: "De acordo com o diagrama, quando duas faixas se fundem, quem tem a prioridade de passagem?",
+      es: "Según el diagrama, cuando dos carriles se fusionan, ¿quién tiene el derecho de paso?"
+    },
+    sign: "/icons/signs/merging-lanes-motorcycle-ahead-car.png",
+    cap: {
+      en: "Two lanes merging into one: the motorcycle, riding slightly ahead, has right of way over the car.",
+      pt: "Duas faixas se fundindo em uma: a motocicleta, um pouco à frente, tem prioridade sobre o carro.",
+      es: "Dos carriles fusionándose en uno: la motocicleta, un poco por delante, tiene prioridad sobre el auto."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The car as it is larger",
+          pt: "O carro, por ser maior",
+          es: "El auto, por ser más grande"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle",
+          pt: "Nenhum dos dois veículos",
+          es: "Ninguno de los dos vehículos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The motorcycle as it is the vehicle with any portion ahead at the merge point",
+          pt: "A motocicleta, por ser o veículo com qualquer parte à frente no ponto de fusão",
+          es: "La motocicleta, por ser el vehículo con cualquier parte por delante en el punto de fusión"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When two lanes merge into one, the vehicle with <strong>any portion ahead at the merge point</strong> has right of way — here that is the motorcycle, which is riding slightly ahead of the car.",
+      pt: "Quando duas faixas se fundem em uma só, tem prioridade o veículo que estiver com <strong>qualquer parte à frente no ponto de fusão</strong> — nesse caso, a motocicleta, que está um pouco à frente do carro.",
+      es: "Cuando dos carriles se fusionan en uno solo, tiene prioridad el vehículo que tenga <strong>cualquier parte por delante en el punto de fusión</strong> — en este caso, la motocicleta, que va un poco por delante del auto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "When travelling straight at a single lane roundabout, the correct signals to be applied are:",
+      pt: "Ao seguir em frente em uma rotatória de faixa única, os sinais corretos a aplicar são:",
+      es: "Al ir de frente en una rotonda de un solo carril, las señales correctas que se deben aplicar son:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Right signal to enter but not to exit",
+          pt: "Sinal de direita para entrar, mas não para sair",
+          es: "Señal de derecha para entrar, pero no para salir"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "None to enter the roundabout but a left signal to be applied just after the exit before the one you wish to use",
+          pt: "Nenhum sinal para entrar na rotatória, mas um sinal de esquerda deve ser aplicado logo após passar a saída anterior à que você deseja usar",
+          es: "Ninguna señal para entrar en la rotonda, pero se debe aplicar una señal de izquierda justo después de pasar la salida anterior a la que se desea usar"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Right signal to enter and also left signal to exit",
+          pt: "Sinal de direita para entrar e também sinal de esquerda para sair",
+          es: "Señal de derecha para entrar y también señal de izquierda para salir"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You do not need to signal when entering a roundabout if going straight ahead. As you pass the exit before the one you wish to use, <strong>indicate/signal left</strong>, then exit in the same lane you entered.",
+      pt: "Não é necessário sinalizar ao entrar na rotatória quando você vai seguir em frente. Ao passar pela saída anterior à que deseja usar, <strong>sinalize à esquerda</strong> e saia na mesma faixa em que entrou.",
+      es: "No es necesario señalizar al entrar en la rotonda cuando se va a seguir de frente. Al pasar la salida anterior a la que se desea usar, <strong>señalice hacia la izquierda</strong> y salga por el mismo carril en que entró."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-30",
+    cat: "Speed Limits",
+    q: {
+      en: "What speed applies when riding in a built up area without speed restriction signs?",
+      pt: "Qual velocidade se aplica ao dirigir em área urbana (built up area) sem placas de limite de velocidade?",
+      es: "¿Qué velocidad se aplica al conducir en una zona urbana sin señales de límite de velocidad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "40 kph",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "50 kph",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "60 kph",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In a built-up area with no speed limit signs, the default maximum speed permitted is <strong>50 km/h</strong>.",
+      pt: "Em uma área urbana sem placas de limite de velocidade, a velocidade máxima padrão permitida é <strong>50 km/h</strong>.",
+      es: "En una zona urbana sin señales de límite de velocidad, la velocidad máxima permitida por defecto es <strong>50 km/h</strong>."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-31",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the minimum speed for riding on a freeway when there is no heavy traffic and the speed zone is 100 kph?",
+      pt: "Qual é a velocidade mínima permitida ao dirigir em uma freeway quando não há tráfego intenso e a zona de velocidade é de 100 km/h?",
+      es: "¿Cuál es la velocidad mínima permitida al circular por una autopista (freeway) cuando no hay tráfico intenso y la zona de velocidad es de 100 km/h?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Any speed you wish",
+          pt: "Qualquer velocidade que você desejar",
+          es: "Cualquier velocidad que desee"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "60 kph",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "80 kph",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "On a freeway with a 100 km/h speed zone, the <strong>minimum speed permitted is 80 km/h</strong> when there is no heavy traffic or abnormal weather conditions.",
+      pt: "Em uma freeway com zona de velocidade de 100 km/h, a <strong>velocidade mínima permitida é de 80 km/h</strong> quando não há tráfego intenso nem condições climáticas anormais.",
+      es: "En una autopista (freeway) con zona de velocidad de 100 km/h, la <strong>velocidad mínima permitida es de 80 km/h</strong> cuando no hay tráfico intenso ni condiciones climáticas anormales."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-32",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "In the diagram you have right of way but what action could you take to be cautious?",
+      pt: "No diagrama você tem a preferência de passagem, mas que atitude você poderia tomar para ser cauteloso?",
+      es: "En el diagrama usted tiene el derecho de paso, pero ¿qué medida podría tomar para ser precavido?"
+    },
+    sign: "/icons/signs/intersection-priority-cars-waiting-give-way.png",
+    cap: {
+      en: "Crossroads: you (rider) have right of way on the through road while car A waits on the left side street and car B waits/turns on the road below.",
+      pt: "Cruzamento: você (motociclista) tem a preferência na via principal enquanto o carro A aguarda na rua à esquerda e o carro B aguarda/vira na rua abaixo.",
+      es: "Cruce: usted (motociclista) tiene el derecho de paso en la vía principal mientras el auto A espera en la calle de la izquierda y el auto B espera/gira en la calle de abajo."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up to pass the intersection.",
+          pt: "Acelerar para passar pelo cruzamento.",
+          es: "Acelerar para cruzar la intersección."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Move towards the centre of the road to ensure both cars see you.",
+          pt: "Mover-se em direção ao centro da via para garantir que os dois carros o vejam.",
+          es: "Moverse hacia el centro de la vía para asegurarse de que ambos autos lo vean."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down and/or cover your brakes in case neither car has seen you",
+          pt: "Desacelerar e/ou manter os dedos sobre os freios, caso nenhum dos carros tenha visto você.",
+          es: "Reducir la velocidad y/o mantener los dedos sobre los frenos, por si ninguno de los autos lo ha visto."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Having right of way does not guarantee the other drivers have actually seen you. The handbook advises <strong>slowing down and covering your brakes</strong> when a vehicle at an intersection could pull out or turn into your path.",
+      pt: "Ter a preferência de passagem não garante que os outros motoristas realmente o tenham visto. O manual recomenda <strong>desacelerar e manter os freios prontos</strong> quando um veículo no cruzamento pode avançar ou entrar no seu caminho.",
+      es: "Tener el derecho de paso no garantiza que los demás conductores realmente lo hayan visto. El manual recomienda <strong>reducir la velocidad y mantener los frenos listos</strong> cuando un vehículo en la intersección podría avanzar o cruzarse en su camino."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-33",
+    cat: "Give Way Rules",
+    q: {
+      en: "From the diagram, what must you do when joining a freeway?",
+      pt: "De acordo com o diagrama, o que você deve fazer ao entrar em uma via expressa (freeway)?",
+      es: "Según el diagrama, ¿qué debes hacer al incorporarte a una autopista (freeway)?"
+    },
+    sign: "/icons/signs/freeway-merge-give-way-motorcycle.png",
+    cap: {
+      en: "Motorcyclist (\"YOU\") merging from the freeway entry ramp into traffic, giving way to the car and rider already on the road.",
+      pt: "Motociclista (\"YOU\") se fundindo da rampa de entrada da via expressa ao tráfego, dando preferência ao carro e ao motociclista que já estão na via.",
+      es: "Motociclista (\"YOU\") incorporándose desde la rampa de entrada de la autopista al tráfico, cediendo el paso al coche y al motociclista que ya circulan por la vía."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop at the end of the slip lane",
+          pt: "Parar no final da faixa de aceleração",
+          es: "Detenerte al final del carril de aceleración"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Ride onto the hard shoulder until a gap appears",
+          pt: "Andar pelo acostamento até surgir uma brecha",
+          es: "Circular por el arcén hasta que aparezca un hueco"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Give way to the vehicle in front when merging",
+          pt: "Dar preferência ao veículo à frente ao se fundir ao tráfego",
+          es: "Ceder el paso al vehículo que va delante al incorporarte al tráfico"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When merging onto a freeway you must <strong>give way to another vehicle if any part of it is ahead of yours</strong>, moving into the lane smoothly and only when it is safe to do so.",
+      pt: "Ao se fundir a uma via expressa, você deve <strong>dar preferência ao veículo que já está na faixa se qualquer parte dele estiver à frente do seu</strong>, entrando na via de forma suave e somente quando for seguro.",
+      es: "Al incorporarte a una autopista debes <strong>ceder el paso al vehículo que ya circula por el carril si cualquier parte de él va por delante del tuyo</strong>, uniéndote al tráfico de forma suave y solo cuando sea seguro."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-34",
+    cat: "Traffic Lights",
+    q: {
+      en: "If the traffic lights at a four way intersection are not working and the amber lights are flashing, what should you do?",
+      pt: "Se os semáforos em um cruzamento de quatro vias não estiverem funcionando e as luzes âmbar estiverem piscando, o que você deve fazer?",
+      es: "Si los semáforos de una intersección de cuatro vías no funcionan y las luces ámbar están parpadeando, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to your left",
+          pt: "Dar a preferência para o seu lado esquerdo",
+          es: "Ceder el paso a tu izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to your right",
+          pt: "Dar a preferência para o seu lado direito",
+          es: "Ceder el paso a tu derecha"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop and wait for the lights to resume",
+          pt: "Parar e esperar os semáforos voltarem a funcionar",
+          es: "Detenerte y esperar a que el semáforo vuelva a funcionar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A flashing yellow (amber) light means the signals have failed, so you must <strong>treat the intersection as uncontrolled and give way to the right</strong>, just as you would at an intersection with no signals at all.",
+      pt: "Uma luz âmbar piscando significa que os semáforos falharam, então você deve <strong>tratar o cruzamento como não sinalizado e dar a preferência para o seu lado direito</strong>, exatamente como faria em um cruzamento sem semáforos.",
+      es: "Una luz ámbar parpadeante significa que el semáforo falló, por lo que debes <strong>tratar la intersección como no controlada y ceder el paso a tu derecha</strong>, igual que en una intersección sin semáforos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-35",
+    cat: "Emergencies",
+    q: {
+      en: "What is the first thing you must do if you are involved in a crash?",
+      pt: "Qual é a primeira coisa que você deve fazer se estiver envolvido em um acidente?",
+      es: "¿Cuál es lo primero que debes hacer si te ves involucrado en un accidente?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Report it to the Insurance Commission of Western Australia",
+          pt: "Relatar o acidente à Insurance Commission of Western Australia",
+          es: "Reportar el accidente a la Insurance Commission of Western Australia"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop immediately",
+          pt: "Parar imediatamente",
+          es: "Detenerse de inmediato"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Exchange names and addresses",
+          pt: "Trocar nomes e endereços",
+          es: "Intercambiar nombres y direcciones"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states that if you are involved in a crash you must <strong>stop immediately</strong> — this comes before helping the injured, calling emergency services, or exchanging details.",
+      pt: "O Drive Safe Handbook afirma que, se você estiver envolvido em um acidente, deve <strong>parar imediatamente</strong> — isso vem antes de ajudar os feridos, chamar os serviços de emergência ou trocar dados.",
+      es: "El Drive Safe Handbook indica que, si te ves involucrado en un accidente, debes <strong>detenerte de inmediato</strong> — esto va antes de ayudar a los heridos, llamar a los servicios de emergencia o intercambiar datos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-01",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which of the following statements is correct when learning to ride?",
+      pt: "Qual das seguintes afirmações está correta em relação a aprender a pilotar?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta sobre el aprendizaje para conducir motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Whilst learning, you must be accompanied by an instructor or qualified supervisor at all times",
+          pt: "Enquanto está aprendendo, você deve estar sempre acompanhado por um instrutor ou supervisor qualificado",
+          es: "Mientras aprendes, debes estar siempre acompañado por un instructor o supervisor calificado"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "It is OK to practice on your own if you cannot find an instructor as long as you use quiet streets",
+          pt: "Tudo bem praticar sozinho se você não encontrar um instrutor, desde que use ruas tranquilas",
+          es: "Está bien practicar solo si no encuentras un instructor, siempre que uses calles tranquilas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Your instructor or qualified supervisor must have held the equivalent class for at least one year",
+          pt: "Seu instrutor ou supervisor qualificado deve ter a habilitação equivalente há pelo menos um ano",
+          es: "Tu instructor o supervisor calificado debe haber tenido la licencia equivalente durante al menos un año"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under WA law, a learner rider must <strong>be accompanied at all times by an approved supervisor</strong> while learning to ride — practising alone is never permitted. The supervisor's minimum experience is also at least 2 years (moped) or 4 years (other R class), not one year.",
+      pt: "Segundo a lei de WA, o aprendiz de moto deve <strong>estar sempre acompanhado por um supervisor aprovado</strong> enquanto aprende a pilotar — praticar sozinho nunca é permitido. A experiência mínima exigida do supervisor também é de pelo menos 2 anos (ciclomotor) ou 4 anos (demais categorias R), e não um ano.",
+      es: "Según la ley de WA, el aprendiz debe <strong>estar siempre acompañado por un supervisor autorizado</strong> mientras aprende a conducir motocicleta — practicar solo nunca está permitido. La experiencia mínima exigida al supervisor también es de al menos 2 años (ciclomotor) o 4 años (otras categorías R), no un año."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-02",
+    cat: "Road Safety",
+    q: {
+      en: "Match the following question with the correct answer. A Western Australian driver's licence is:",
+      pt: "Combine a pergunta com a resposta correta. Uma carteira de motorista da Austrália Ocidental é:",
+      es: "Relaciona la siguiente pregunta con la respuesta correcta. Una licencia de conducir de Australia Occidental es:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Available without a photo",
+          pt: "Disponível sem foto",
+          es: "Disponible sin foto"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A right to any tax payer",
+          pt: "Um direito de qualquer contribuinte",
+          es: "Un derecho de todo contribuyente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "A privilege and not a right",
+          pt: "Um privilégio, não um direito",
+          es: "Un privilegio, no un derecho"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A driver's licence must show a photo and is <strong>not an automatic entitlement</strong> — the handbook explicitly states it is a privilege granted to you, which can be reviewed or lost if you commit traffic offences.",
+      pt: "A carteira de motorista precisa de foto e <strong>não é um direito garantido</strong> — o manual afirma explicitamente que é um privilégio concedido, que pode ser revisto ou perdido caso o condutor cometa infrações de trânsito.",
+      es: "La licencia de conducir requiere foto y <strong>no es un derecho automático</strong> — el manual establece explícitamente que es un privilegio otorgado, que puede revisarse o perderse si el conductor comete infracciones de tránsito."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-03",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Can an animal be carried between a rider and the handlebars?",
+      pt: "Um animal pode ser transportado entre o piloto e o guidão?",
+      es: "¿Se puede transportar un animal entre el conductor y el manillar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only if the animal is well trained enough not to move around",
+          pt: "Somente se o animal for bem treinado a ponto de não se mexer",
+          es: "Solo si el animal está lo suficientemente bien entrenado para no moverse"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, as long as the rider has permission from the authorities",
+          pt: "Sim, desde que o piloto tenha autorização das autoridades",
+          es: "Sí, siempre que el conductor tenga autorización de las autoridades"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only if carrying the animal for not more than 500 metres on a road for the purpose of a farming activity, providing it is safe to do so.",
+          pt: "Somente se o animal for transportado por no máximo 500 metros em uma via, para fins de atividade agrícola, desde que seja seguro fazê-lo.",
+          es: "Solo si se transporta el animal por no más de 500 metros en una vía, con fines de actividad agrícola, siempre que sea seguro hacerlo."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe Handbook states animals <strong>must not be carried between the rider and the handlebars</strong>, except when travelling no more than 500 metres on a road for a farming activity, provided safety is not compromised.",
+      pt: "O manual Ride Safe estabelece que animais <strong>não podem ser transportados entre o piloto e o guidão</strong>, exceto quando o trajeto for de no máximo 500 metros em uma via, para uma atividade agrícola, desde que a segurança não seja comprometida.",
+      es: "El manual Ride Safe establece que los animales <strong>no deben transportarse entre el conductor y el manillar</strong>, salvo cuando el trayecto sea de no más de 500 metros en una vía, con fines de actividad agrícola, siempre que no se comprometa la seguridad."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-04",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the penalty for not wearing an approved safety helmet?",
+      pt: "Qual é a penalidade por não usar um capacete de segurança aprovado?",
+      es: "¿Cuál es la sanción por no usar un casco de seguridad aprobado?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A fine",
+          pt: "Uma multa",
+          es: "Una multa"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Demerit points",
+          pt: "Pontos de penalidade",
+          es: "Puntos de demérito"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both a fine and demerit points",
+          pt: "Multa e pontos de penalidade",
+          es: "Multa y puntos de demérito"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In Western Australia, riding without an approved safety helmet results in <strong>both a fine and demerit points</strong> — not just one of the two.",
+      pt: "Na Austrália Ocidental, andar de moto sem um capacete de segurança aprovado resulta tanto em <strong>multa quanto em pontos de penalidade</strong> — não apenas um dos dois.",
+      es: "En Australia Occidental, conducir una motocicleta sin un casco de seguridad aprobado conlleva <strong>tanto una multa como puntos de demérito</strong>, no solo uno de los dos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-05",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the benefit of always maintaining clean and clear eye protection?",
+      pt: "Qual é o benefício de manter sempre a proteção ocular limpa e sem riscos?",
+      es: "¿Cuál es el beneficio de mantener siempre la protección ocular limpia y sin rayones?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "People will be able to see where you are looking at all times",
+          pt: "As pessoas conseguirão ver para onde você está olhando o tempo todo",
+          es: "Las personas podrán ver hacia dónde estás mirando en todo momento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "They look good",
+          pt: "Elas ficam com boa aparência",
+          es: "Se ven bien"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You will have a clear view of the road and your surroundings which will help increase your safety.",
+          pt: "Você terá uma visão clara da estrada e do seu entorno, o que ajudará a aumentar a sua segurança.",
+          es: "Tendrás una visión clara de la carretera y de tu entorno, lo que ayudará a aumentar tu seguridad."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Keeping your visor or goggles <strong>clean and without scratches</strong> gives you a clear view of the road and surroundings, which directly improves your safety while riding.",
+      pt: "Manter o viseira ou os óculos de proteção <strong>limpos e sem riscos</strong> garante uma visão clara da estrada e do ambiente ao redor, o que aumenta diretamente a sua segurança ao pilotar.",
+      es: "Mantener la visera o las gafas de protección <strong>limpias y sin rayones</strong> te da una visión clara de la carretera y del entorno, lo que aumenta directamente tu seguridad al conducir la moto."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-06",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is recommended if you experience rider fatigue whilst riding e.g. not seeing a sign, day dreaming, dry mouth etc?",
+      pt: "O que é recomendado se você sentir fadiga do motociclista enquanto pilota, por exemplo, não ver uma placa, devanear, boca seca etc.?",
+      es: "¿Qué se recomienda si experimentas fatiga del motociclista mientras conduces, por ejemplo, no ver una señal, quedarte distraído (soñar despierto), boca seca, etc.?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Ride slower in case it gets worse",
+          pt: "Pilotar mais devagar, caso piore",
+          es: "Conducir más despacio por si empeora"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pull over if the symptoms get worse",
+          pt: "Parar no acostamento se os sintomas piorarem",
+          es: "Detenerse en el arcén si los síntomas empeoran"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop immediately and rest",
+          pt: "Parar imediatamente e descansar",
+          es: "Detenerse inmediatamente y descansar"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The handbook lists not seeing a sign, day dreaming and dry mouth as rider fatigue indicators, and instructs that if you notice any signs of fatigue you must <strong>stop immediately and rest</strong>, rather than waiting for symptoms to worsen.",
+      pt: "O manual lista não ver uma placa, devanear e boca seca como indicadores de fadiga do motociclista, e orienta que, ao notar qualquer sinal de fadiga, você deve <strong>parar imediatamente e descansar</strong>, em vez de esperar que os sintomas piorem.",
+      es: "El manual indica que no ver una señal, quedarse distraído (soñar despierto) y tener la boca seca son indicadores de fatiga del motociclista, y establece que ante cualquier señal de fatiga debes <strong>detenerte inmediatamente y descansar</strong>, en lugar de esperar a que los síntomas empeoren."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-07",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "How can alcohol affect your riding?",
+      pt: "Como o álcool pode afetar a sua condução de moto?",
+      es: "¿Cómo puede el alcohol afectar tu conducción de moto?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It can make you more alert",
+          pt: "Pode deixá-lo mais alerta",
+          es: "Puede hacerte estar más alerta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "It can slow your reflexes and affect your coordination, depth perception and risk taking behaviour",
+          pt: "Pode diminuir seus reflexos e afetar a coordenação, a percepção de profundidade e o comportamento de tomada de risco",
+          es: "Puede reducir tus reflejos y afectar la coordinación, la percepción de profundidad y la conducta de asunción de riesgos"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It can relax you into taking less risks",
+          pt: "Pode relaxá-lo, fazendo-o assumir menos riscos",
+          es: "Puede relajarte y hacer que asumas menos riesgos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Alcohol has the opposite effect of options 0 and 2 — studies confirm it <strong>impairs reflexes, coordination, depth perception and increases risk-taking behaviour</strong>, making it a leading cause of single and multi-vehicle crashes.",
+      pt: "O álcool tem o efeito contrário das opções 0 e 2 — estudos confirmam que ele <strong>prejudica os reflexos, a coordenação, a percepção de profundidade e aumenta o comportamento de risco</strong>, sendo uma das principais causas de acidentes envolvendo um ou vários veículos.",
+      es: "El alcohol tiene el efecto contrario a las opciones 0 y 2 — los estudios confirman que <strong>deteriora los reflejos, la coordinación, la percepción de profundidad y aumenta la conducta de riesgo</strong>, siendo una de las principales causas de choques de uno o varios vehículos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-08",
+    cat: "Road Safety",
+    q: {
+      en: "What is the minimum permitted tread depth on any tyre before it is considered illegal?",
+      pt: "Qual é a profundidade mínima permitida da banda de rodagem em qualquer pneu antes de ser considerado ilegal?",
+      es: "¿Cuál es la profundidad mínima permitida de la banda de rodadura en cualquier neumático antes de que se considere ilegal?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1.0mm",
+          pt: "1,0mm",
+          es: "1,0mm"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5mm",
+          pt: "1,5mm",
+          es: "1,5mm"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "1.7mm",
+          pt: "1,7mm",
+          es: "1,7mm"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Tyre tread must be <strong>at least 1.5 mm deep</strong> across the whole surface that contacts the road — about the thickness of a match head. Tyres worn below this are illegal and unsafe, especially in wet conditions.",
+      pt: "A banda de rodagem do pneu deve ter <strong>pelo menos 1,5 mm de profundidade</strong> em toda a superfície que entra em contato com a via — aproximadamente a espessura da cabeça de um fósforo. Pneus abaixo desse limite são ilegais e perigosos, especialmente em pista molhada.",
+      es: "La banda de rodadura del neumático debe tener <strong>al menos 1,5 mm de profundidad</strong> en toda la superficie que entra en contacto con la calzada, aproximadamente el grosor de la cabeza de un fósforo. Los neumáticos por debajo de ese límite son ilegales y peligrosos, especialmente en condiciones de lluvia."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-09",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which of these can help reduce fatigue whilst riding?",
+      pt: "Qual destas opções pode ajudar a reduzir a fadiga durante a condução de motocicleta?",
+      es: "¿Cuál de estas opciones puede ayudar a reducir la fatiga mientras se conduce una motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Leather gloves",
+          pt: "Luvas de couro",
+          es: "Guantes de cuero"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A comfortable seat",
+          pt: "Um banco confortável",
+          es: "Un asiento cómodo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Correct riding position",
+          pt: "Postura de condução correta",
+          es: "Postura de conducción correcta"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook states that <strong>correct riding posture reduces fatigue and improves control</strong> of the motorcycle, making it a key fatigue-management factor for riders.",
+      pt: "O manual Ride Safe afirma que a <strong>postura de condução correta reduz a fadiga e melhora o controle</strong> da motocicleta, sendo um fator essencial no manejo da fadiga para motociclistas.",
+      es: "El manual Ride Safe indica que la <strong>postura de conducción correcta reduce la fatiga y mejora el control</strong> de la motocicleta, siendo un factor clave para el manejo de la fatiga en los motociclistas."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-10",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when following a vehicle on the road in wet conditions where the spray from the vehicle makes it difficult to see?",
+      pt: "O que você deve fazer ao seguir um veículo na estrada, em condições de chuva, quando a água jogada por ele dificulta a visibilidade?",
+      es: "¿Qué debes hacer al seguir a un vehículo en la carretera, en condiciones de lluvia, cuando el agua que salpica dificulta la visibilidad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drop back until you can see better",
+          pt: "Afastar-se do veículo da frente até conseguir ver melhor",
+          es: "Alejarte del vehículo de adelante hasta poder ver mejor"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Put your headlight on high beam",
+          pt: "Ligar o farol alto",
+          es: "Poner las luces altas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up and overtake quickly",
+          pt: "Acelerar e ultrapassar rapidamente",
+          es: "Acelerar y adelantar rápidamente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In wet conditions, if spray from the vehicle ahead makes it hard to see, you should <strong>drop back until you can see clearly</strong> rather than following closely or trying to overtake through reduced visibility.",
+      pt: "Em condições de chuva, se a água jogada pelo veículo da frente dificultar sua visão, você deve <strong>se afastar até conseguir enxergar com clareza</strong>, em vez de seguir de perto ou tentar ultrapassar com visibilidade reduzida.",
+      es: "En condiciones de lluvia, si el agua que salpica el vehículo de adelante dificulta tu visión, debes <strong>alejarte hasta poder ver con claridad</strong>, en lugar de seguir de cerca o intentar adelantar con visibilidad reducida."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-11",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When riding at night you should not:",
+      pt: "Ao pilotar à noite, você não deve:",
+      es: "Al conducir de noche, no debes:"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Overtake slower vehicles in front",
+          pt: "Ultrapassar veículos mais lentos à frente",
+          es: "Adelantar a vehículos más lentos que circulan delante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Use low beam headlight/s",
+          pt: "Usar o farol baixo",
+          es: "Usar la luz baja del faro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Use eye protection (glasses, lenses or visors) that is tinted.",
+          pt: "Usar proteção ocular (óculos, lentes ou viseiras) escurecida",
+          es: "Usar protección ocular (gafas, lentes o viseras) tintada u oscurecida"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Tinted eye protection further reduces what little visibility you already have at night, so it should be avoided when riding after dark. <strong>The Ride Safe handbook advises riders to avoid dark tinted or scratched visors or glasses at night</strong>, since low beam headlights and careful overtaking remain normal, appropriate night-riding practices.",
+      pt: "Usar proteção ocular escurecida piora ainda mais a visibilidade já reduzida durante a noite, por isso deve ser evitada ao pilotar após o anoitecer. <strong>O manual Ride Safe orienta os motociclistas a evitar viseiras ou óculos escuros ou riscados à noite</strong>, já que usar o farol baixo e ultrapassar com cuidado são práticas normais e adequadas para pilotagem noturna.",
+      es: "Usar protección ocular oscura empeora aún más la escasa visibilidad que ya se tiene de noche, por lo que debe evitarse al conducir después del anochecer. <strong>El manual Ride Safe recomienda a los motociclistas evitar viseras o gafas oscuras o rayadas de noche</strong>, ya que usar la luz baja del faro y adelantar con cuidado siguen siendo prácticas normales y adecuadas al conducir de noche."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-12",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main purpose of wearing bright coloured or reflective clothing whilst riding?",
+      pt: "Qual é o principal objetivo de usar roupas de cores vivas ou refletivas ao pilotar?",
+      es: "¿Cuál es el principal objetivo de usar ropa de colores brillantes o reflectantes al conducir una motocicleta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It dazzles other motorists on the road",
+          pt: "Ofusca outros motoristas na via",
+          es: "Deslumbra a otros conductores en la vía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "It enables other motorists to see you more easily",
+          pt: "Permite que outros motoristas o vejam com mais facilidade",
+          es: "Permite que otros conductores lo vean con más facilidad"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It enables you to ride on unlit roads",
+          pt: "Permite que você pilote em vias sem iluminação",
+          es: "Le permite conducir en vías sin iluminación"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Bright or reflective riding gear makes a motorcyclist more visible to other road users, which is why the handbook <strong>recommends fluorescent vests and reflective protective gear, particularly at night</strong>, to help others see you.",
+      pt: "Roupas claras ou refletivas tornam o motociclista mais visível para os outros usuários da via. Por isso, o manual <strong>recomenda o uso de coletes fluorescentes e equipamentos refletivos, especialmente à noite</strong>, para ajudar os demais a enxergá-lo.",
+      es: "La ropa clara o reflectante hace que el motociclista sea más visible para los demás usuarios de la vía. Por eso, el manual <strong>recomienda el uso de chalecos fluorescentes y equipo de protección reflectante, especialmente de noche</strong>, para ayudar a que otros lo vean."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-13",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main reason for riding with the headlight on during the day?",
+      pt: "Qual é o principal motivo para andar de moto com o farol aceso durante o dia?",
+      es: "¿Cuál es la principal razón para conducir la moto con el faro encendido durante el día?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "So you can see other traffic better",
+          pt: "Para você enxergar melhor o outro tráfego",
+          es: "Para que usted vea mejor al resto del tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "So other traffic can see you better",
+          pt: "Para que o outro tráfego consiga te ver melhor",
+          es: "Para que el resto del tráfico lo vea mejor a usted"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It stops your motorcycle's battery from overcharging",
+          pt: "Para evitar que a bateria da moto sobrecarregue",
+          es: "Para evitar que se sobrecargue la batería de la moto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook recommends motorcyclists ride with the headlight on low beam during the day, in all weather, specifically <strong>to help other road users see them</strong> — motorcycles are smaller and easier to miss than cars.",
+      pt: "O manual recomenda que motociclistas andem com o farol baixo aceso durante o dia, em qualquer condição de tempo, especificamente <strong>para ajudar outros usuários da via a enxergá-los</strong> — motos são menores e mais fáceis de passar despercebidas do que carros.",
+      es: "El manual recomienda que los motociclistas conduzcan con la luz baja encendida durante el día, sin importar el clima, específicamente <strong>para ayudar a que otros usuarios de la vía los vean</strong> — las motos son más pequeñas y más fáciles de pasar por alto que los autos."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-15",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When is it vital to check your blind spots?",
+      pt: "Quando é fundamental verificar seus pontos cegos?",
+      es: "¿Cuándo es fundamental revisar tus puntos ciegos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When giving signals in general",
+          pt: "Ao dar sinais em geral",
+          es: "Al dar señales en general"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "When slowing down",
+          pt: "Ao reduzir a velocidade",
+          es: "Al reducir la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When changing road position",
+          pt: "Ao mudar de posição na via",
+          es: "Al cambiar de posición en la vía"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must check your blind spots whenever you are about to <strong>change your road position</strong> — for example turning, changing lanes, exiting a roundabout, or moving off — since mirrors alone cannot show what is directly beside you.",
+      pt: "Você deve verificar os pontos cegos sempre que estiver prestes a <strong>mudar de posição na via</strong> — por exemplo, ao virar, trocar de faixa, sair de uma rotatória ou sair da guia — pois os espelhos sozinhos não mostram o que está bem ao seu lado.",
+      es: "Debes revisar tus puntos ciegos siempre que estés a punto de <strong>cambiar de posición en la vía</strong> — por ejemplo al girar, cambiar de carril, salir de una rotonda o incorporarte al tráfico — ya que los espejos por sí solos no muestran lo que hay justo a tu lado."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-16",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Complete the sentence: In convex mirrors objects may appear further back than they actually are so...?",
+      pt: "Complete a frase: Nos espelhos convexos, os objetos podem parecer mais distantes do que realmente estão, portanto...?",
+      es: "Completa la frase: En los espejos convexos, los objetos pueden parecer más lejos de lo que realmente están, por lo que...?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give more room to other vehicles.",
+          pt: "Dê mais espaço aos outros veículos.",
+          es: "Da más espacio a los demás vehículos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Don't use them.",
+          pt: "Não os utilize.",
+          es: "No los uses."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Ensure you check blind spots.",
+          pt: "Certifique-se de verificar os pontos cegos.",
+          es: "Asegúrate de revisar los puntos ciegos."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Convex (curved) mirrors on motorcycles give a wider field of view, but they make objects appear <strong>farther away than they actually are</strong>, so a head check of your blind spots is essential before changing position.",
+      pt: "Os espelhos convexos (curvos) das motocicletas oferecem um campo de visão mais amplo, mas fazem os objetos parecerem <strong>mais distantes do que realmente estão</strong>, por isso é essencial fazer uma verificação de pontos cegos (head check) antes de mudar de posição na via.",
+      es: "Los espejos convexos (curvos) de las motocicletas ofrecen un campo de visión más amplio, pero hacen que los objetos parezcan <strong>más lejos de lo que realmente están</strong>, por lo que es esencial verificar los puntos ciegos girando la cabeza antes de cambiar de posición."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-18",
+    cat: "Road Signs",
+    q: {
+      en: "What should you do if you see a road sign showing a sharp bend ahead?",
+      pt: "O que você deve fazer ao ver uma placa indicando uma curva acentuada à frente?",
+      es: "¿Qué debes hacer si ves una señal de tránsito que indica una curva cerrada más adelante?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down whilst going around the bend",
+          pt: "Diminuir a velocidade enquanto faz a curva",
+          es: "Reducir la velocidad mientras tomas la curva"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down as you come out of the bend",
+          pt: "Diminuir a velocidade ao sair da curva",
+          es: "Reducir la velocidad al salir de la curva"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down before the bend",
+          pt: "Diminuir a velocidade antes da curva",
+          es: "Reducir la velocidad antes de la curva"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You should slow down <strong>before</strong> you reach the bend, so you have full control and traction while turning. Braking mid-bend or after it is too late and increases the risk of losing control.",
+      pt: "Você deve reduzir a velocidade <strong>antes</strong> de chegar à curva, para manter controle e tração total durante a manobra. Frear durante ou depois da curva já é tarde demais e aumenta o risco de perda de controle.",
+      es: "Debes reducir la velocidad <strong>antes</strong> de llegar a la curva, para mantener el control y la tracción durante la maniobra. Frenar durante o después de la curva ya es demasiado tarde y aumenta el riesgo de perder el control."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-19",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the safest way to stop on a wet road?",
+      pt: "Qual é a forma mais segura de parar em uma pista molhada?",
+      es: "¿Cuál es la forma más segura de detenerse en una carretera mojada?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Use the back brake only",
+          pt: "Usar apenas o freio traseiro",
+          es: "Usar solo el freno trasero"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Use the front brake only",
+          pt: "Usar apenas o freio dianteiro",
+          es: "Usar solo el freno delantero"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Use both brakes",
+          pt: "Usar os dois freios",
+          es: "Usar ambos frenos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Ride Safe handbook states that <strong>the safest way to stop on a wet road is usually to use both brakes</strong> — squeezing the front brake and pressing the rear brake together, gently but firmly, gives more controlled and stable stopping than relying on only one brake.",
+      pt: "O manual Ride Safe afirma que <strong>a forma mais segura de parar em uma pista molhada geralmente é usar os dois freios</strong> — apertar o freio dianteiro e pressionar o freio traseiro ao mesmo tempo, com suavidade mas firmeza, proporciona uma frenagem mais controlada e estável do que usar apenas um freio.",
+      es: "El manual Ride Safe indica que <strong>la forma más segura de detenerse en una carretera mojada suele ser usar ambos frenos</strong> — apretar el freno delantero y presionar el freno trasero al mismo tiempo, con suavidad pero con firmeza, permite un frenado más controlado y estable que usar solo un freno."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-21",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Having already checked your mirrors, why should you look over your shoulder when wanting to change lanes?",
+      pt: "Já tendo verificado os retrovisores, por que você deve olhar por cima do ombro ao querer mudar de faixa?",
+      es: "Habiendo revisado ya los espejos, ¿por qué debe mirar por encima del hombro al querer cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Mirrors may not cover blind spots",
+          pt: "Os retrovisores podem não cobrir os pontos cegos",
+          es: "Los espejos pueden no cubrir los puntos ciegos"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "To avoid having to give a signal",
+          pt: "Para evitar ter que sinalizar",
+          es: "Para evitar tener que dar una señal"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "So traffic ahead will make room for you",
+          pt: "Para que o tráfego à frente abra espaço para você",
+          es: "Para que el tráfico de adelante le haga espacio"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Mirrors do not show everything — vehicles, especially motorcycles and bicycles, can be <strong>completely hidden in your blind spots</strong>. Glancing over your shoulder is the only reliable way to confirm it's clear before changing lanes.",
+      pt: "Os retrovisores não mostram tudo — veículos, principalmente motocicletas e bicicletas, podem ficar <strong>completamente escondidos nos pontos cegos</strong>. Olhar por cima do ombro é a única forma confiável de confirmar que está livre antes de mudar de faixa.",
+      es: "Los espejos no muestran todo — los vehículos, especialmente motocicletas y bicicletas, pueden quedar <strong>completamente ocultos en los puntos ciegos</strong>. Mirar por encima del hombro es la única forma confiable de confirmar que está despejado antes de cambiar de carril."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-22",
+    cat: "Road Safety",
+    q: {
+      en: "Why should you check your mirrors when you see traffic ahead?",
+      pt: "Por que você deve verificar os espelhos ao avistar trânsito à frente?",
+      es: "¿Por qué debe revisar los espejos al ver tráfico más adelante?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To assess how your actions will affect traffic behind you.",
+          pt: "Para avaliar como suas ações vão afetar o trânsito atrás de você.",
+          es: "Para evaluar cómo sus acciones afectarán al tráfico detrás de usted."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Because you will need to brake sharply to a stop",
+          pt: "Porque você vai precisar frear bruscamente até parar",
+          es: "Porque tendrá que frenar bruscamente hasta detenerse"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To check what is happening on the road ahead.",
+          pt: "Para verificar o que está acontecendo na estrada à frente.",
+          es: "Para comprobar qué está sucediendo en la carretera más adelante."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Checking your mirrors when you spot traffic ahead lets you <strong>assess how your actions (like braking) could affect the traffic behind you</strong>, helping you avoid being rear-ended.",
+      pt: "Verificar os espelhos ao ver trânsito à frente ajuda você a <strong>avaliar como suas ações (como frear) podem afetar o trânsito atrás de você</strong>, evitando ser atingido por trás.",
+      es: "Revisar los espejos al ver tráfico más adelante le ayuda a <strong>evaluar cómo sus acciones (como frenar) podrían afectar al tráfico detrás de usted</strong>, evitando así ser golpeado por detrás."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-23",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "\"Roadcraft\" provides ways of approaching and negotiating hazards that is methodical, safe and leaves nothing to chance. What is the best way to improve your Roadcraft?",
+      pt: "\"Roadcraft\" oferece maneiras de abordar e superar perigos de forma metódica, segura e sem deixar nada ao acaso. Qual é a melhor forma de melhorar seu Roadcraft?",
+      es: "\"Roadcraft\" ofrece formas de abordar y superar peligros de manera metódica, segura y sin dejar nada al azar. ¿Cuál es la mejor forma de mejorar tu Roadcraft?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Develop your training and riding experience progressively by riding \"low risk\"",
+          pt: "Desenvolver progressivamente seu treinamento e experiência de pilotagem, andando de forma \"de baixo risco\"",
+          es: "Desarrollar progresivamente tu formación y experiencia de conducción, conduciendo de manera \"de bajo riesgo\""
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Carry the Ride Safe handbook with you while riding",
+          pt: "Levar o manual Ride Safe com você enquanto pilota",
+          es: "Llevar el manual Ride Safe contigo mientras conduces"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Test your skills by riding fast with friends",
+          pt: "Testar suas habilidades pilotando rápido com amigos",
+          es: "Poner a prueba tus habilidades conduciendo rápido con amigos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook states that <strong>your roadcraft will progressively improve as you gain training and riding experience</strong>, achieved by riding in a \"low risk\" manner — not by carrying the handbook or testing your limits at speed.",
+      pt: "O manual afirma que <strong>seu roadcraft vai melhorar progressivamente à medida que você ganha treinamento e experiência de pilotagem</strong>, adotando uma pilotagem de \"baixo risco\" — e não carregando o manual ou testando os limites em alta velocidade.",
+      es: "El manual indica que <strong>tu roadcraft mejorará progresivamente a medida que ganes formación y experiencia de conducción</strong>, adoptando una conducción de \"bajo riesgo\", y no llevando el manual contigo ni poniendo a prueba tus límites a alta velocidad."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-25",
+    cat: "Road Signs",
+    q: {
+      en: "What should you do when you see this sign?",
+      pt: "O que você deve fazer ao ver esta placa?",
+      es: "¿Qué debes hacer cuando ves esta señal?"
+    },
+    sign: "/icons/signs/warning-sign-roundabout-ahead.png",
+    cap: {
+      en: "Warning sign for an upcoming roundabout (yellow diamond with circular arrows).",
+      pt: "Placa de advertência de rotatória à frente (losango amarelo com setas circulares).",
+      es: "Señal de advertencia de rotonda próxima (rombo amarillo con flechas circulares)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to stop",
+          pt: "Reduza a velocidade e esteja pronto para parar",
+          es: "Reduce la velocidad y prepárate para detenerte"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Speed up to get through the intersection",
+          pt: "Acelere para passar pelo cruzamento mais rápido",
+          es: "Acelera para cruzar la intersección más rápido"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn around as you are going the wrong way",
+          pt: "Dê meia-volta, pois você está na contramão",
+          es: "Da la vuelta porque vas en dirección contraria"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This yellow diamond sign with circular arrows is the warning sign for an upcoming roundabout. <strong>Warning signs mean you should slow down and be prepared to stop</strong> for the hazard ahead.",
+      pt: "Esta placa amarela em formato de losango com setas circulares é o aviso de rotatória à frente. <strong>Placas de advertência significam que você deve reduzir a velocidade e estar pronto para parar</strong> diante do perigo adiante.",
+      es: "Esta señal amarilla en forma de rombo con flechas circulares es el aviso de una rotonda próxima. <strong>Las señales de advertencia significan que debes reducir la velocidad y estar preparado para detenerte</strong> ante el peligro que se aproxima."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-27",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram which vehicle would proceed last?",
+      pt: "No diagrama, qual veículo passaria por último?",
+      es: "En el diagrama, ¿qué vehículo pasaría al final?"
+    },
+    sign: "/icons/signs/giveway-crossroads-car-b-last.png",
+    cap: {
+      en: "Controlled crossroads: you give way to Car A and Car C, while Car B must give way to everyone and proceeds last.",
+      pt: "Cruzamento controlado: você dá preferência ao Carro A e ao Carro C, enquanto o Carro B deve dar preferência a todos e passa por último.",
+      es: "Cruce controlado: usted cede el paso al Coche A y al Coche C, mientras que el Coche B debe ceder el paso a todos y pasa al final."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You on the motorcycle",
+          pt: "Você na moto",
+          es: "Usted en la moto"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car C",
+          pt: "Carro C",
+          es: "Coche C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car B",
+          pt: "Carro B",
+          es: "Coche B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At this controlled intersection <strong>Car B must give way to you, Car A, and Car C</strong>, so Car B is the last to proceed.",
+      pt: "Neste cruzamento controlado, o <strong>Carro B deve dar preferência a você, ao Carro A e ao Carro C</strong>, por isso o Carro B é o último a seguir.",
+      es: "En esta intersección controlada, el <strong>Coche B debe ceder el paso a usted, al Coche A y al Coche C</strong>, por lo que el Coche B es el último en avanzar."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-28",
+    cat: "Road Markings",
+    q: {
+      en: "From the diagram, when can you cross the continuous (unbroken) white line in the centre of a carriageway?",
+      pt: "De acordo com o diagrama, quando você pode cruzar a linha branca contínua (sem interrupções) no centro da pista?",
+      es: "Según el diagrama, ¿cuándo se puede cruzar la línea blanca continua (sin interrupciones) en el centro de la calzada?"
+    },
+    sign: "/icons/signs/continuous-centre-line-motorcycle-following-car.png",
+    cap: {
+      en: "Motorcyclist (labelled YOU) riding behind a car in a lane, with a continuous white line marking the centre of the carriageway.",
+      pt: "Motociclista (identificado como VOCÊ) andando atrás de um carro em uma faixa, com uma linha branca contínua marcando o centro da pista.",
+      es: "Motociclista (identificado como TÚ) circulando detrás de un auto en un carril, con una línea blanca continua marcando el centro de la calzada."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Never under any circumstance",
+          pt: "Nunca, em nenhuma circunstância",
+          es: "Nunca, bajo ninguna circunstancia"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "At an intersection when turning, to enter or leave a road, or to make a legal 'U-turn",
+          pt: "Em um cruzamento ao virar, para entrar ou sair de uma via, ou para fazer um retorno ('U-turn') legal",
+          es: "En una intersección al girar, para entrar o salir de una vía, o para hacer un giro en U legal"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "To overtake, provided it is safe to do so",
+          pt: "Para ultrapassar, desde que seja seguro fazer isso",
+          es: "Para adelantar, siempre que sea seguro hacerlo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A single continuous (unbroken) centre dividing line <strong>must not be crossed to overtake</strong> — you may only cross it at an intersection to turn, to enter or leave a road, or to make a legal U-turn.",
+      pt: "Uma linha contínua única (sem interrupções) no centro da pista <strong>não pode ser cruzada para ultrapassar</strong> — só é permitido cruzá-la em um cruzamento para virar, para entrar ou sair de uma via, ou para fazer um retorno legal.",
+      es: "Una línea continua única (sin interrupciones) en el centro de la calzada <strong>no debe cruzarse para adelantar</strong> — solo se puede cruzar en una intersección para girar, para entrar o salir de una vía, o para hacer un giro en U legal."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-29",
+    cat: "Speed Limits",
+    q: {
+      en: "Unless traffic, weather or visibility conditions prevent you from doing otherwise, what are the rules in relation to speed limits when travelling on a freeway?",
+      pt: "A menos que as condições de trânsito, clima ou visibilidade impeçam, quais são as regras relativas aos limites de velocidade ao trafegar em uma rodovia (freeway)?",
+      es: "A menos que las condiciones de tráfico, clima o visibilidad lo impidan, ¿cuáles son las reglas relacionadas con los límites de velocidad al circular por una autopista (freeway)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must travel at the posted speed limit",
+          pt: "Você deve trafegar exatamente no limite de velocidade indicado",
+          es: "Debes circular exactamente al límite de velocidad señalizado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You cannot travel more than 10 km/h below the posted speed limit",
+          pt: "Você não pode trafegar mais de 10 km/h abaixo do limite de velocidade indicado",
+          es: "No puedes circular más de 10 km/h por debajo del límite de velocidad señalizado"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You cannot travel more than 20 km/h below the posted speed limit",
+          pt: "Você não pode trafegar mais de 20 km/h abaixo do limite de velocidade indicado",
+          es: "No puedes circular más de 20 km/h por debajo del límite de velocidad señalizado"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "On a freeway you must travel at a speed that is <strong>no more than 20 km/h below the posted speed limit</strong>, unless traffic, weather or visibility conditions prevent you from doing so — travelling too slowly can itself be dangerous.",
+      pt: "Em uma rodovia (freeway), você deve trafegar no máximo <strong>20 km/h abaixo do limite de velocidade indicado</strong>, a menos que condições de trânsito, clima ou visibilidade impeçam — trafegar devagar demais também pode ser perigoso.",
+      es: "En una autopista debes circular como máximo <strong>20 km/h por debajo del límite de velocidad señalizado</strong>, salvo que las condiciones de tráfico, clima o visibilidad lo impidan — circular demasiado lento también puede ser peligroso."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-30",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which statement is correct?",
+      pt: "Qual afirmação está correta?",
+      es: "¿Cuál afirmación es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cyclists have the same equal rights to use the road as other vehicles",
+          pt: "Os ciclistas têm os mesmos direitos de uso da via que os demais veículos",
+          es: "Los ciclistas tienen los mismos derechos de uso de la vía que los demás vehículos"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Cyclists are not permitted to use roads unless they are marked with cycle lanes",
+          pt: "Os ciclistas só podem circular em vias com faixas exclusivas para bicicletas",
+          es: "Los ciclistas solo pueden circular en vías con carriles marcados para bicicletas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cyclists have to give way to all other traffic",
+          pt: "Os ciclistas têm que dar preferência a todo o restante do tráfego",
+          es: "Los ciclistas tienen que ceder el paso a todo el resto del tráfico"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states cyclists have <strong>an equal right to use the road as other vehicles</strong>, and may legally use the whole lane and ride two abreast.",
+      pt: "O manual Drive Safe afirma que os ciclistas têm <strong>direitos iguais aos dos demais veículos para usar a via</strong>, podendo ocupar toda a faixa e pedalar lado a lado.",
+      es: "El manual Drive Safe indica que los ciclistas tienen <strong>los mismos derechos que los demás vehículos para usar la vía</strong>, pudiendo ocupar todo el carril y circular en paralelo (dos abreast)."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-31",
+    cat: "Give Way Rules",
+    q: {
+      en: "What should you do when riding towards a pedestrian crossing where there are pedestrians waiting to cross?",
+      pt: "O que você deve fazer ao se aproximar de uma faixa de pedestres onde há pedestres esperando para atravessar?",
+      es: "¿Qué debes hacer al acercarte a un paso de peatones donde hay peatones esperando para cruzar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and prepare to stop",
+          pt: "Reduzir a velocidade e se preparar para parar",
+          es: "Reducir la velocidad y prepararte para detenerte"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Flash your headlight/s to indicate they can cross",
+          pt: "Piscar o farol para indicar que eles podem atravessar",
+          es: "Hacer destellos con las luces para indicarles que pueden cruzar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Wave at them to cross the road",
+          pt: "Acenar para eles atravessarem a rua",
+          es: "Hacerles señas con la mano para que crucen la calle"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook is explicit: if pedestrians are waiting to cross, you must <strong>slow down and prepare to stop</strong>. Never wave people across (other vehicles may not have seen them) and never rely on a headlight flash as a \"go ahead\" signal, since other road users should never assume a flash means it's safe to proceed.",
+      pt: "O manual é claro: se há pedestres esperando para atravessar, você deve <strong>reduzir a velocidade e se preparar para parar</strong>. Nunca acene para as pessoas atravessarem (outros veículos podem não tê-las visto) e nunca use o farol como sinal de \"pode atravessar\", já que ninguém deve presumir que um pisca de farol significa via livre.",
+      es: "El manual es claro: si hay peatones esperando para cruzar, debes <strong>reducir la velocidad y prepararte para detenerte</strong>. Nunca les hagas señas con la mano para que crucen (otros vehículos podrían no haberlos visto) y nunca uses las luces como señal de \"puedes cruzar\", ya que nadie debe asumir que un destello de luces significa vía libre."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-32",
+    cat: "Give Way Rules",
+    q: {
+      en: "From the diagram, what should you do when joining a freeway from a slip road?",
+      pt: "De acordo com o diagrama, o que você deve fazer ao entrar em uma freeway (via expressa) por uma rampa de acesso?",
+      es: "Según el diagrama, ¿qué debes hacer al incorporarte a una autopista (freeway) desde un carril de acceso?"
+    },
+    sign: "/icons/signs/freeway-slip-road-merge-you.png",
+    cap: {
+      en: "Rider (\"YOU\") on the freeway entry slip road merging alongside a lane of cars and another motorcycle already on the freeway.",
+      pt: "Motociclista (\"YOU\") na rampa de acesso da freeway se fundindo ao lado de uma faixa com carros e outra moto já na via.",
+      es: "Motociclista (\"YOU\") en la rampa de acceso a la autopista incorporándose junto a un carril con autos y otra moto que ya circulan por la vía."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Adjust your speed to the speed of the traffic on the freeway.",
+          pt: "Ajustar sua velocidade à velocidade do tráfego na freeway.",
+          es: "Ajustar tu velocidad a la velocidad del tráfico de la autopista."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Accelerate as quickly as you can and ride straight out",
+          pt: "Acelerar o mais rápido possível e entrar direto.",
+          es: "Acelerar lo más rápido posible e incorporarte de golpe."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Expect drivers on the freeway to give way to you.",
+          pt: "Esperar que os motoristas na freeway deem passagem a você.",
+          es: "Esperar que los conductores de la autopista te cedan el paso a ti."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should <strong>adjust your speed along the entry ramp to match the freeway traffic</strong> and merge smoothly — you must give way to traffic already in the lane you are moving into, not the other way around.",
+      pt: "Você deve <strong>ajustar sua velocidade na rampa de acesso para igualar o tráfego da freeway</strong> e se fundir suavemente — é você quem deve dar passagem ao tráfego já na faixa, e não o contrário.",
+      es: "Debes <strong>ajustar tu velocidad en la rampa de acceso para igualar el tráfico de la autopista</strong> y fusionarte suavemente — eres tú quien debe ceder el paso al tráfico que ya circula por el carril, no al revés."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-33",
+    cat: "Road Safety",
+    q: {
+      en: "Before pulling out from a parked position, how long must you indicate/signal your intention for?",
+      pt: "Antes de sair de uma vaga de estacionamento, por quanto tempo você deve sinalizar sua intenção?",
+      es: "Antes de salir de un lugar de estacionamiento, ¿durante cuánto tiempo debes indicar tu intención?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "3 seconds",
+          pt: "3 segundos",
+          es: "3 segundos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "4 seconds",
+          pt: "4 segundos",
+          es: "4 segundos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "5 seconds",
+          pt: "5 segundos",
+          es: "5 segundos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Before pulling out from a parking spot or a stationary position at the kerb, you must <strong>indicate/signal for at least 5 seconds</strong> before moving off, giving other traffic sufficient warning.",
+      pt: "Antes de sair de uma vaga de estacionamento ou de uma posição parada no meio-fio, você deve <strong>sinalizar por pelo menos 5 segundos</strong> antes de partir, dando aviso suficiente ao trânsito.",
+      es: "Antes de salir de un lugar de estacionamiento o de una posición detenida junto al bordillo, debes <strong>indicar durante al menos 5 segundos</strong> antes de arrancar, dando aviso suficiente al resto del tráfico."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-34",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "In which of these situations should you avoid overtaking?",
+      pt: "Em qual destas situações você deve evitar ultrapassar?",
+      es: "¿En cuál de estas situaciones debe evitar adelantar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Just after a bend",
+          pt: "Logo após uma curva",
+          es: "Justo después de una curva"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In a one-way street",
+          pt: "Em uma rua de mão única",
+          es: "En una calle de sentido único"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Approaching the crest of a hill",
+          pt: "Ao se aproximar do topo de uma subida",
+          es: "Al acercarse a la cima de una cuesta"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states you must not overtake when you are <strong>nearing the crest of a hill</strong> (or a blind bend), because you cannot get a clear view of the road ahead to overtake safely.",
+      pt: "O Drive Safe Handbook diz que você não deve ultrapassar quando estiver <strong>se aproximando do topo de uma subida</strong> (ou de uma curva sem visibilidade), pois nesse caso não é possível ter uma visão clara da via à frente para ultrapassar com segurança.",
+      es: "El Drive Safe Handbook indica que no se debe adelantar cuando se está <strong>acercando a la cima de una cuesta</strong> (o a una curva sin visibilidad), porque no se tiene una vista clara del camino por delante para adelantar con seguridad."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-35",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should you do if your throttle sticks in traffic?",
+      pt: "O que você deve fazer se o acelerador da moto travar no trânsito?",
+      es: "¿Qué debes hacer si el acelerador de la moto se traba en medio del tráfico?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Increase the revs",
+          pt: "Aumentar as rotações",
+          es: "Aumentar las revoluciones"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pull the clutch lever in immediately and apply the cut-out switch",
+          pt: "Puxar a alavanca da embreagem imediatamente e acionar o interruptor de corte (cut-out switch)",
+          es: "Tirar de la palanca del embrague de inmediato y activar el interruptor de corte (cut-out switch)"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Brake hard",
+          pt: "Frear bruscamente",
+          es: "Frenar bruscamente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If your throttle sticks in traffic, you should <strong>immediately pull the clutch lever in and apply the cut-out switch</strong> to disengage the engine from the rear wheel and stop it from driving the bike forward.",
+      pt: "Se o acelerador travar no trânsito, você deve <strong>puxar a alavanca da embreagem imediatamente e acionar o interruptor de corte</strong>, desconectando o motor da roda traseira e impedindo que a moto continue acelerando.",
+      es: "Si el acelerador se traba en el tráfico, debes <strong>tirar de la palanca del embrague de inmediato y activar el interruptor de corte</strong>, desconectando el motor de la rueda trasera para que la moto deje de acelerar."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-14",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "In the diagram which motorcycles are in the cars blind spots?",
+      pt: "No diagrama, quais motocicletas estão nos pontos cegos do carro?",
+      es: "En el diagrama, ¿qué motocicletas están en los puntos ciegos del auto?"
+    },
+    sign: "/icons/signs/car-blind-spots-motorcycles-beside.png",
+    cap: {
+      en: "A rides ahead in plain view; B and C sit beside the car, right in its blind spots.",
+      pt: "A segue à frente, bem visível; B e C ficam ao lado do carro, exatamente nos pontos cegos.",
+      es: "A circula al frente, bien visible; B y C van al lado del auto, justo en los puntos ciegos."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A and B",
+          pt: "A e B",
+          es: "A y B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A and C",
+          pt: "A e C",
+          es: "A y C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "B and C",
+          pt: "B e C",
+          es: "B y C"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Motorcycle A is riding ahead of the car, in full view through the windscreen — that is not a blind spot at all. Motorcycles B and C are riding level with the car, one on each side, roughly beside its doors — exactly the zone beside and just behind the vehicle that door mirrors and the rear-view mirror fail to cover. That is why B and C are the ones hidden from the driver, and the car driver must physically check over each shoulder before changing lanes.",
+      pt: "A motocicleta A está à frente do carro, totalmente visível pelo para-brisa — isso não é um ponto cego. As motos B e C estão emparelhadas com o carro, uma de cada lado, praticamente na altura das portas — exatamente a área ao lado e um pouco atrás do veículo que os espelhos não cobrem. Por isso B e C são as que ficam escondidas do motorista, que precisa olhar por cima do ombro antes de mudar de faixa.",
+      es: "La moto A circula por delante del auto, totalmente visible a través del parabrisas, así que no está en ningún punto ciego. Las motos B y C van a la par del auto, una a cada lado, casi a la altura de las puertas: justo la zona al lado y un poco por detrás del vehículo que los espejos no cubren. Por eso B y C son las que quedan ocultas para el conductor, que debe mirar por encima del hombro antes de cambiar de carril."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-30",
+    cat: "Traffic Lights",
+    q: {
+      en: "What should you do when approaching a 4 way intersection where the traffic lights are not working?",
+      pt: "O que você deve fazer ao se aproximar de um cruzamento de 4 vias onde os semáforos não estão funcionando?",
+      es: "¿Qué debe hacer al acercarse a una intersección de 4 vías donde los semáforos no funcionan?"
+    },
+    sign: "",
+    cap: {
+      en: "Lights out at a 4-way intersection: treat it as uncontrolled and give way to the right.",
+      pt: "Semáforo apagado em cruzamento de 4 vias: trate como não sinalizado e dê preferência à direita.",
+      es: "Semáforo apagado en una intersección de 4 vías: trátela como no controlada y ceda el paso a la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop and wait till the power comes back on",
+          pt: "Parar e esperar a energia voltar",
+          es: "Detenerse y esperar a que vuelva la energía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to the right",
+          pt: "Dar preferência para quem vem da direita",
+          es: "Ceder el paso a la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Brake sharply and stop before looking",
+          pt: "Frear bruscamente e parar antes de olhar",
+          es: "Frenar bruscamente y detenerse antes de mirar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When traffic lights at an intersection stop working (flashing yellow, or completely dark), WA road rules require you to treat it as an uncontrolled intersection. At a four-way intersection this means you must give way to any traffic approaching from your right, whether you are going straight ahead or turning. Waiting indefinitely for power to return, or braking sharply before even assessing the intersection, are not the correct procedure and can cause a rear-end collision.",
+      pt: "Quando os semáforos de um cruzamento param de funcionar (piscando amarelo, ou totalmente apagados), as regras de trânsito da Austrália Ocidental exigem que você trate o cruzamento como não sinalizado (sem controle). Em um cruzamento de 4 vias, isso significa dar preferência a qualquer veículo que se aproxime pela sua direita, seguindo em frente ou virando. Esperar indefinidamente a energia voltar, ou frear bruscamente antes mesmo de avaliar o cruzamento, não é o procedimento correto e pode causar uma colisão traseira.",
+      es: "Cuando los semáforos de una intersección dejan de funcionar (parpadeando en amarillo o completamente apagados), las normas de tránsito de Australia Occidental exigen tratar la intersección como no controlada. En una intersección de 4 vías, esto significa ceder el paso a cualquier vehículo que se aproxime por su derecha, ya sea siguiendo recto o girando. Esperar indefinidamente a que vuelva la energía, o frenar bruscamente antes incluso de evaluar la intersección, no es el procedimiento correcto y puede provocar una colisión por alcance."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QA-31",
+    cat: "Traffic Lights",
+    q: {
+      en: "What should you do if you have stopped at a pelican crossing where a person is crossing slowly in front of you and the lights change to green?",
+      pt: "O que você deve fazer se tiver parado numa faixa de pedestres com semáforo (pelican crossing) onde uma pessoa está atravessando lentamente à sua frente e o sinal muda para verde?",
+      es: "¿Qué debes hacer si te has detenido en un cruce peatonal semaforizado (pelican crossing) donde una persona está cruzando lentamente delante de ti y el semáforo cambia a verde?"
+    },
+    sign: "",
+    cap: {
+      en: "Even on green, wait for the pedestrian to finish crossing before moving off.",
+      pt: "Mesmo com o sinal verde, espere o pedestre terminar de atravessar antes de seguir.",
+      es: "Aunque el semáforo esté en verde, espera a que el peatón termine de cruzar antes de avanzar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Ride behind the person",
+          pt: "Andar logo atrás da pessoa",
+          es: "Circular justo detrás de la persona"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Be patient and allow the person to cross",
+          pt: "Ter paciência e deixar a pessoa atravessar",
+          es: "Tener paciencia y dejar que la persona cruce"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn and edge forward slowly",
+          pt: "Buzinar e avançar devagar",
+          es: "Tocar la bocina y avanzar despacio"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light only means you may proceed IF it is safe to do so — it never overrides a pedestrian who is still in the crossing. The WA Ride Safe handbook's own section on light signals says this explicitly for the green phase: after telling you green means you may cross the intersection provided it is safe, it immediately adds \"watch out for pedestrians who may still be crossing the road, be patient and allow them to cross.\" Riding up behind them or nudging forward while sounding the horn would pressure or endanger a pedestrian who has right of way until clear of the crossing — both are unsafe and against this instruction.",
+      pt: "O sinal verde só permite seguir SE for seguro fazê-lo — ele não anula o direito de um pedestre que ainda está atravessando. A seção sobre sinais luminosos do manual Ride Safe (WA) trata exatamente da fase verde: depois de dizer que o verde permite cruzar o cruzamento desde que seja seguro, ela acrescenta \"fique atento a pedestres que ainda possam estar atravessando a via, tenha paciência e permita que atravessem\". Aproximar-se por trás da pessoa ou avançar buzinando pressionaria ou colocaria em risco um pedestre que ainda tem prioridade até terminar de atravessar — ambas as opções são inseguras e contrariam essa orientação.",
+      es: "La luz verde solo permite avanzar SI es seguro hacerlo — no anula el derecho de un peatón que todavía está cruzando. La sección sobre señales luminosas del manual Ride Safe (WA) trata justamente la fase verde: tras decir que el verde permite cruzar la intersección siempre que sea seguro, añade \"esté atento a los peatones que aún puedan estar cruzando la calzada, tenga paciencia y permita que crucen\". Acercarse por detrás de la persona o avanzar tocando la bocina presionaría o pondría en riesgo a un peatón que conserva la prioridad hasta terminar de cruzar — ambas opciones son inseguras y contradicen esta indicación."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-20",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should you do just before you make a 'U' turn on the road?",
+      pt: "O que você deve fazer pouco antes de fazer um retorno ('U turn') na via?",
+      es: "¿Qué debes hacer justo antes de hacer un giro en U en la vía?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give a hand signal as well as using your indicators",
+          pt: "Dar sinal com a mão além de usar os indicadores",
+          es: "Dar señal con la mano además de usar los indicadores"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Signal so that other drivers can slow down and give way to you",
+          pt: "Sinalizar para que outros condutores desacelerem e dêem passagem",
+          es: "Señalizar para que otros conductores frenen y cedan el paso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Look over your shoulder for a final check",
+          pt: "Olhar por cima do ombro para uma checagem final",
+          es: "Mirar por encima del hombro para una comprobación final"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The official U-turn procedure is: check your mirror, indicate your intention, then <strong>glance over your shoulder for a final check</strong> of following traffic, and only then turn if it is safe. The shoulder check is the last safety step immediately before committing to the turn.",
+      pt: "O procedimento oficial para o retorno é: checar o espelho, sinalizar a intenção e, então, <strong>olhar por cima do ombro para uma checagem final</strong> do tráfego que vem atrás, só então virar se for seguro. A checagem por cima do ombro é o último passo de segurança antes de executar a manobra.",
+      es: "El procedimiento oficial para el giro en U es: revisar el espejo, señalizar la intención y luego <strong>mirar por encima del hombro para una comprobación final</strong> del tráfico que viene detrás, y solo entonces girar si es seguro. Esa mirada final es el último paso de seguridad antes de ejecutar la maniobra."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QB-22",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should you do whilst riding in wet weather if you see diesel fuel or oil on the road in front of you?",
+      pt: "O que você deve fazer, ao pilotar em tempo chuvoso, se vir combustível diesel ou óleo na via à sua frente?",
+      es: "Si vas conduciendo con lluvia y ves combustible diésel o aceite en la vía delante de ti, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Swerve quickly to avoid the area",
+          pt: "Desviar rapidamente para evitar a área",
+          es: "Esquivar rápidamente para evitar la zona"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Brake sharply to a stop",
+          pt: "Frear bruscamente até parar",
+          es: "Frenar bruscamente hasta detenerte"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slowly reposition the motorcycle to avoid the area and/or slow down in good time",
+          pt: "Reposicionar a moto lentamente para evitar a área e/ou reduzir a velocidade com antecedência",
+          es: "Reposicionar la moto lentamente para evitar la zona y/o reducir la velocidad con anticipación"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook's section on Swerving specifically names oil spills as a hazard to swerve around: <strong>you need to be prepared to swerve quickly around unexpected obstacles, such as potholes, any objects left on the road or oil spills</strong>. Harsh braking, by contrast, is explicitly warned against as it can cause skidding, especially on a wet road.",
+      pt: "A seção do manual sobre desvios (Swerving) cita explicitamente derramamento de óleo como um obstáculo a ser desviado: <strong>você precisa estar preparado para desviar rapidamente de obstáculos inesperados, como buracos, objetos deixados na via ou derramamento de óleo</strong>. Já frear bruscamente é explicitamente desaconselhado, pois pode causar derrapagem, principalmente em via molhada.",
+      es: "La sección del manual sobre esquivar obstáculos (Swerving) menciona explícitamente los derrames de aceite como un obstáculo para esquivar: <strong>debes estar preparado para esquivar rápidamente obstáculos inesperados, como baches, objetos dejados en la vía o derrames de aceite</strong>. En cambio, frenar bruscamente está explícitamente desaconsejado porque puede causar derrape, sobre todo en vía mojada."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-14",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, who should you give way to?",
+      pt: "No diagrama, a quem você deve dar passagem?",
+      es: "En el diagrama, ¿a quién debes ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroads-car-on-your-right-motorcycle.png",
+    cap: {
+      en: "Uncontrolled crossroads: YOU (on the motorcycle) must give way to Car A approaching from the right, while simply continuing straight past oncoming Car B on the same road.",
+      pt: "Cruzamento não sinalizado: VOCÊ (na moto) deve dar passagem ao Carro A, que vem pela direita, enquanto apenas segue reto ao cruzar com o Carro B, que vem em sentido contrário na mesma via.",
+      es: "Cruce no controlado: TÚ (en la moto) debes ceder el paso al Auto A, que llega por tu derecha, mientras simplemente sigues recto al cruzarte con el Auto B, que viene en sentido contrario por la misma vía."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car B",
+          pt: "Carro B",
+          es: "Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both Car A and Car B",
+          pt: "Ambos os carros, A e B",
+          es: "Ambos autos, A y B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled four-way crossroads, not a T-intersection — the road is paved straight through on both sides of the junction. At an uncontrolled four-way intersection, you must give way to <strong>the vehicle approaching from your right</strong>, whether you are turning or going straight ahead. Car A is approaching from your right, so you must give way to Car A. Car B is oncoming on your own road, also going straight — since you are not turning, there is no conflict with Car B and you do not need to give way to it.",
+      pt: "Este é um cruzamento de quatro vias não sinalizado, não um cruzamento em T — a pista está pavimentada dos dois lados do cruzamento. Em um cruzamento de quatro vias não sinalizado, você deve dar passagem ao <strong>veículo que se aproxima pela sua direita</strong>, esteja você virando ou seguindo em frente. O Carro A está se aproximando pela sua direita, então você deve dar passagem a ele. O Carro B vem em sentido contrário na sua própria via, também seguindo em frente — como você não está virando, não há conflito com o Carro B e não é necessário dar passagem a ele.",
+      es: "Esta es una intersección de cuatro vías no controlada, no una intersección en T — la calzada está pavimentada de frente a ambos lados del cruce. En una intersección de cuatro vías no controlada, debes ceder el paso al <strong>vehículo que se aproxima por tu derecha</strong>, ya sea que gires o sigas de frente. El Auto A se aproxima por tu derecha, así que debes cederle el paso. El Auto B viene en sentido contrario por tu misma vía, también siguiendo de frente — como tú no estás girando, no hay conflicto con el Auto B y no necesitas cederle el paso."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-20",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What action should you take before changing your road position on the approach to a right hand turn?",
+      pt: "Que ação você deve tomar antes de mudar sua posição na pista ao se aproximar de uma curva à direita?",
+      es: "¿Qué acción debes tomar antes de cambiar tu posición en la calzada al acercarte a un giro a la derecha?"
+    },
+    sign: "",
+    cap: {
+      en: "Always shoulder-check your blind spot before shifting road position for a right turn.",
+      pt: "Sempre olhe por cima do ombro para checar o ângulo morto antes de mudar de posição para virar à direita.",
+      es: "Mira siempre por encima del hombro para revisar tu ángulo muerto antes de cambiar de posición para girar a la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Change gear",
+          pt: "Trocar de marcha",
+          es: "Cambiar de marcha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Perform a head check over your shoulder",
+          pt: "Fazer uma verificação por cima do ombro (head check)",
+          es: "Realizar una comprobación por encima del hombro (head check)"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Check your left mirror only",
+          pt: "Verificar apenas o espelho esquerdo",
+          es: "Comprobar solo el espejo izquierdo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Re-verified against the WA Ride Safe (motorcycle) handbook, section 7.3.1 \"Observation\": before changing road position — including on the approach to a right turn — you must perform a head check over your shoulder, because mirrors (especially the convex mirrors fitted to many motorcycles) cannot show what is in your blind spot, and a following vehicle may not have seen your indicator and could be overtaking you at that moment. Changing gear has nothing to do with checking for hazards beside/behind you. Checking only the left mirror is both the wrong side for a right turn and still fails to cover the blind spot a head check is specifically designed to catch — mirrors alone are explicitly called insufficient by the handbook.",
+      pt: "Reverificado no manual Ride Safe (motociclistas) da WA, seção 7.3.1 \"Observation\": antes de mudar de posição na pista — inclusive ao se aproximar de uma curva à direita — é preciso fazer um head check (olhar por cima do ombro), pois os espelhos (especialmente os espelhos convexos de muitas motos) não mostram o que está no seu ângulo morto, e um veículo atrás pode não ter visto sua seta e estar ultrapassando você. Trocar de marcha não tem relação com verificar perigos ao lado/atrás. Verificar só o espelho esquerdo é o lado errado para uma curva à direita e ainda não cobre o ângulo morto, que é exatamente o que o head check resolve — o manual afirma explicitamente que os espelhos sozinhos não são suficientes.",
+      es: "Reverificado en el manual Ride Safe (motociclistas) de WA, sección 7.3.1 \"Observation\": antes de cambiar de posición en la calzada —incluso al acercarte a un giro a la derecha— debes hacer un head check (mirar por encima del hombro), porque los espejos (especialmente los espejos convexos de muchas motos) no muestran lo que hay en tu ángulo muerto, y un vehículo detrás podría no haber visto tu intermitente y estar adelantándote. Cambiar de marcha no tiene relación con detectar peligros al lado/detrás. Comprobar solo el espejo izquierdo es el lado equivocado para un giro a la derecha y sigue sin cubrir el ángulo muerto, que es justo lo que resuelve el head check — el manual indica explícitamente que los espejos solos no son suficientes."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  },
+  {
+    id: "QC-26",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Who gives way in the following diagram?",
+      pt: "Quem tem a preferência no diagrama a seguir?",
+      es: "¿Quién tiene el paso en el siguiente diagrama?"
+    },
+    sign: "/icons/signs/merge-motorcycle-gives-way-car-ahead.png",
+    cap: {
+      en: "Y-shaped lane merge: Car A has a portion of its vehicle ahead at the merge point, so the motorcycle must give way.",
+      pt: "Faixas se unindo em Y: o carro A tem parte do veículo à frente no ponto de junção, então a moto deve dar passagem.",
+      es: "Fusión de carriles en Y: el auto A tiene parte del vehículo por delante en el punto de fusión, por lo que la moto debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A must give way to the motorcycle",
+          pt: "O carro A deve dar passagem para a moto",
+          es: "El auto A debe ceder el paso a la moto"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither has right of way",
+          pt: "Nenhum dos dois tem preferência",
+          es: "Ninguno de los dos tiene prioridad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The motorcycle must give way to Car A",
+          pt: "A moto deve dar passagem para o carro A",
+          es: "La moto debe ceder el paso al auto A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This diagram shows two lanes merging into one (a Y-shaped merge, not a right-angle intersection). At a lane merge, <strong>you must give way to another vehicle if any portion of it is ahead of your vehicle</strong>. Car A is positioned further along, closer to the merge point, so <strong>the motorcycle must give way to Car A</strong>.",
+      pt: "Este diagrama mostra duas faixas se unindo em uma só (um \"merge\" em Y, não um cruzamento em ângulo reto). Em uma junção de faixas, <strong>você deve dar passagem a outro veículo se qualquer parte dele estiver à frente do seu</strong>. O carro A está posicionado mais à frente, mais próximo do ponto de junção, então <strong>a moto deve dar passagem ao carro A</strong>.",
+      es: "Este diagrama muestra dos carriles que se unen en uno solo (una fusión en Y, no una intersección en ángulo recto). En una fusión de carriles, <strong>debes ceder el paso a otro vehículo si cualquier parte de él está por delante del tuyo</strong>. El auto A está posicionado más adelante, más cerca del punto de fusión, por lo que <strong>la moto debe ceder el paso al auto A</strong>."
+    },
+    tip: null,
+    states: ["WA"],
+    licenceType: "motorcycle"
+  }
 ] as const;
 
 export const CATEGORIES = [
@@ -16337,6 +21414,15 @@ export const CATEGORIES = [
       en: "Emergencies",
       pt: "Emergências",
       es: "Emergencias"
+    }
+  },
+  {
+    key: "Motorcycle Safety",
+    icon: "🏍️",
+    label: {
+      en: "Motorcycle Safety",
+      pt: "Segurança de Moto",
+      es: "Seguridad de Moto"
     }
   }
 ] as const;

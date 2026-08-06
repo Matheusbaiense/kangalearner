@@ -19,6 +19,8 @@ export type Question = {
   sign?: string;
   cap?: string | null;
   tip?: LocalizedText | null;
+  /** Absent or "car" = car learner content (default). "motorcycle" = motorcycle-only content. */
+  licenceType?: "car" | "motorcycle";
 };
 
 export type Category = {

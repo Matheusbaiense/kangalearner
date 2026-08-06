@@ -72,7 +72,8 @@ export default function MockTestSessionPage() {
     const questions = Number.isFinite(parsed.questions)
       ? Math.max(1, Math.min(50, parsed.questions))
       : 30;
-    return { state, mode, questions };
+    const licenceType = parsed.licenceType === "motorcycle" ? "motorcycle" : "car";
+    return { state, mode, questions, licenceType };
   }, [raw]);
 
   const session = useMemo<MockSession | null>(
@@ -83,9 +84,15 @@ export default function MockTestSessionPage() {
   const questionPool = useMemo(() => {
     if (!cfg) return [];
     const state = cfg.state;
-    return state === "AU"
-      ? QUESTIONS.slice()
-      : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
+    const byState =
+      state === "AU"
+        ? QUESTIONS.slice()
+        : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
+    return byState.filter((q) =>
+      cfg.licenceType === "motorcycle"
+        ? q.licenceType === "motorcycle"
+        : q.licenceType !== "motorcycle"
+    );
   }, [cfg, QUESTIONS]);
 
   const activeQuestion = useMemo(() => {
@@ -235,8 +242,8 @@ export default function MockTestSessionPage() {
         <div className="mock-setup-card">
           <h1>{s.loading}</h1>
           <p className="mock-meta">
-            {cfg.state} · {cfg.questions} questions ·{" "}
-            {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
+            {cfg.questions} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </p>
         </div>
       </main>
@@ -277,7 +284,8 @@ export default function MockTestSessionPage() {
           }}
         >
           <span>
-            {cfg.state} · {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
+            {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </span>
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             {cfg.mode === "exam" && (
