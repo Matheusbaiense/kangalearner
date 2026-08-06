@@ -12,6 +12,15 @@ import type { MockConfig, MockSession } from "@/types/mock";
 
 const EXAM_SECONDS = 45 * 60; // 45 minutes
 
+type Cap = Record<string, string>;
+
+function signSrcFor(sign: string | undefined): string | null {
+  if (!sign) return null;
+  if (sign.startsWith("/")) return sign;
+  const legacySign = sign.match(/^assets\/icons\/signs\/(.+)$/);
+  return legacySign ? `/icons/signs/${legacySign[1]}` : null;
+}
+
 function formatTime(secs: number) {
   const m = Math.floor(secs / 60)
     .toString()
@@ -322,6 +331,27 @@ export default function MockTestSessionPage() {
             {q.q.en}
           </p>
         )}
+
+        {(() => {
+          const signSrc = signSrcFor(q.sign);
+          const capLabel =
+            q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
+          if (!signSrc && !capLabel) return null;
+          return (
+            <div className="sign-box">
+              {signSrc ? (
+                <img
+                  src={signSrc}
+                  alt={capLabel ?? "Road sign"}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              ) : null}
+              {capLabel ? <div className="img-cap">{capLabel}</div> : null}
+            </div>
+          );
+        })()}
 
         {/* Options */}
         <div style={{ display: "grid", gap: 10, marginTop: 4 }}>

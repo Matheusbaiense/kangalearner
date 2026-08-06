@@ -577,8 +577,12 @@ export const QUESTIONS = [
       pt: "Cruzamento de crianças — o que fazer quando o atendente estende a bandeira?",
       es: "En un cruce de niños — ¿qué hace cuando el agente extiende la bandera?"
     },
-    sign: "",
-    cap: null,
+    sign: "/icons/signs/childrens-crossing-flag.png",
+    cap: {
+      en: "Crossing attendant's flag",
+      pt: "Bandeira do agente de travessia",
+      es: "Bandera del agente de cruce"
+    },
     opts: [
       {
         l: "A",
@@ -1235,7 +1239,7 @@ export const QUESTIONS = [
       pt: "Semáforo verde com SETA VERDE — o que significa?",
       es: "Semáforo verde con FLECHA VERDE — ¿qué significa?"
     },
-    sign: "",
+    sign: "/icons/signs/traffic-light-green-arrow.png",
     cap: {
       en: "Green + green arrow",
       pt: "Verde + seta verde",
@@ -1286,7 +1290,7 @@ export const QUESTIONS = [
       pt: "Semáforo VERMELHO com SETA VERDE — o que significa?",
       es: "Semáforo ROJO con FLECHA VERDE — ¿qué significa?"
     },
-    sign: "",
+    sign: "/icons/signs/traffic-light-red-with-green-arrow.png",
     cap: {
       en: "Red + green arrow",
       pt: "Vermelho + seta verde",
@@ -1435,8 +1439,12 @@ export const QUESTIONS = [
       pt: "Virando à DIREITA com semáforo VERDE — o que fazer?",
       es: "Girando a la DERECHA con semáforo en VERDE — ¿qué debe hacer?"
     },
-    sign: "",
-    cap: null,
+    sign: "/icons/signs/traffic-light-green-turning-right.png",
+    cap: {
+      en: "Green light, turning right",
+      pt: "Sinal verde, virando à direita",
+      es: "Luz verde, girando a la derecha"
+    },
     opts: [
       {
         l: "A",
@@ -1576,7 +1584,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal?",
       es: "¿Cuál es el significado de esta señal?"
     },
-    sign: "",
+    sign: "/icons/signs/speed-limit-60.png",
     cap: {
       en: "Advisory speed sign",
       pt: "Sinal de velocidade recomendada",
@@ -1627,7 +1635,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal?",
       es: "¿Cuál es el significado de esta señal?"
     },
-    sign: "",
+    sign: "/icons/signs/give-way-sign.png",
     cap: {
       en: "GIVE WAY sign",
       pt: "Sinal GIVE WAY",
@@ -1678,7 +1686,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal?",
       es: "¿Cuál es el significado de esta señal?"
     },
-    sign: "",
+    sign: "/icons/signs/no-entry.png",
     cap: {
       en: "NO ENTRY sign",
       pt: "Sinal NO ENTRY",
@@ -1729,7 +1737,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal? (losango amarelo com cruz +)",
       es: "¿Cuál es el significado de esta señal? (rombo amarillo con cruz +)"
     },
-    sign: "",
+    sign: "/icons/signs/crossroad-warning.png",
     cap: {
       en: "Crossroad warning",
       pt: "Aviso de cruzamento",
@@ -1780,7 +1788,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal? (círculo amarelo com figura caminhando)",
       es: "¿Cuál es el significado de esta señal? (círculo amarillo con figura caminando)"
     },
-    sign: "",
+    sign: "/icons/signs/pedestrian-crossing-ahead.png",
     cap: {
       en: "Pedestrian crossing warning",
       pt: "Aviso de faixa de pedestre",
@@ -1831,7 +1839,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal? (círculo amarelo com crianças)",
       es: "¿Cuál es el significado de esta señal? (círculo amarillo con niños)"
     },
-    sign: "",
+    sign: "/icons/signs/childrens-crossing-warning.png",
     cap: {
       en: "Children's crossing warning",
       pt: "Aviso de cruzamento de crianças",
@@ -1882,7 +1890,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal de estacionamento?",
       es: "¿Cuál es el significado de esta señal de estacionamiento?"
     },
-    sign: "",
+    sign: "/icons/signs/acrod-parking.png",
     cap: {
       en: "ACROD disability parking",
       pt: "Estacionamento para deficientes ACROD",
@@ -1933,7 +1941,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal?",
       es: "¿Cuál es el significado de esta señal?"
     },
-    sign: "",
+    sign: "/icons/signs/one-way.png",
     cap: {
       en: "ONE WAY sign",
       pt: "Sinal ONE WAY",
@@ -1984,7 +1992,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal?",
       es: "¿Cuál es el significado de esta señal?"
     },
-    sign: "",
+    sign: "/icons/signs/keep-left.png",
     cap: {
       en: "KEEP LEFT sign",
       pt: "Sinal KEEP LEFT",
@@ -2035,7 +2043,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal? (losango amarelo com formato T)",
       es: "¿Cuál es el significado de esta señal? (rombo amarillo con forma de T)"
     },
-    sign: "",
+    sign: "/icons/signs/t-junction-ahead.png",
     cap: {
       en: "T-junction warning",
       pt: "Aviso de cruzamento em T",
@@ -2086,7 +2094,7 @@ export const QUESTIONS = [
       pt: "O que significa este sinal? (losango amarelo com seta curva em S)",
       es: "¿Cuál es el significado de esta señal? (rombo amarillo con flecha curva en S)"
     },
-    sign: "",
+    sign: "/icons/signs/winding-road.png",
     cap: {
       en: "Winding road warning",
       pt: "Aviso de curvas",
@@ -2654,7 +2662,7 @@ export const QUESTIONS = [
       pt: "Qual moto está no ponto cego do motorista do carro?",
       es: "¿Qué moto está en el ángulo muerto del conductor?"
     },
-    sign: "",
+    sign: "/icons/signs/motorcycle-blind-spot.png",
     cap: {
       en: "Blind spot diagram",
       pt: "Diagrama do ponto cego",
@@ -3034,8 +3042,12 @@ export const QUESTIONS = [
       pt: "Pode cruzar linha branca dupla CONTÍNUA?",
       es: "¿Puede cruzar una doble línea blanca CONTINUA?"
     },
-    sign: "",
-    cap: null,
+    sign: "/icons/signs/double-unbroken-line.png",
+    cap: {
+      en: "Double unbroken white line",
+      pt: "Linha dupla contínua branca",
+      es: "Línea blanca doble continua"
+    },
     opts: [
       {
         l: "A",
@@ -3081,8 +3093,12 @@ export const QUESTIONS = [
       pt: "O que significa linha branca contínua dividindo faixas?",
       es: "¿Qué significa una línea blanca continua entre carriles?"
     },
-    sign: "",
-    cap: null,
+    sign: "/icons/signs/continuous-white-line.png",
+    cap: {
+      en: "Continuous white line between lanes",
+      pt: "Linha branca contínua entre faixas",
+      es: "Línea blanca continua entre carriles"
+    },
     opts: [
       {
         l: "A",
@@ -3304,6 +3320,12928 @@ export const QUESTIONS = [
       en: "If your vehicle catches fire, stop safely, turn off the ignition and move people away from the vehicle. Call emergency services if needed.",
       pt: "Se o veículo pegar fogo, pare em segurança, desligue o motor e afaste as pessoas do veículo. Chame os serviços de emergência se necessário.",
       es: "Si el vehículo se incendia, deténgase con seguridad, apague el motor y aleje a las personas del vehículo. Llame a emergencias si es necesario."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-03",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-t-junction-median-strip.png",
+    cap: {
+      en: "T-junction: Vehicle Y enters from the terminating Strip Road and must give way to Vehicle X travelling through on the continuing Median Road.",
+      pt: "Interseção em T: o Veículo Y entra pela via que termina (Strip Road) e deve dar a preferência ao Veículo X, que segue pela via que continua (Median Road).",
+      es: "Intersección en T: el Vehículo Y ingresa desde la vía que termina (Strip Road) y debe ceder el paso al Vehículo X, que circula por la vía que continúa (Median Road)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a three-way (T-junction) intersection: Median Road is the continuing road and Strip Road terminates into it. <strong>Vehicle Y is joining from the terminating road and must give way to Vehicle X</strong>, which is travelling straight along the continuing road.",
+      pt: "Esta é uma interseção em T (três vias): a Median Road é a via que continua e a Strip Road termina nela. <strong>O Veículo Y está entrando pela via que termina e deve dar a preferência ao Veículo X</strong>, que segue em frente pela via que continua.",
+      es: "Esta es una intersección en T (de tres vías): Median Road es la vía que continúa y Strip Road termina en ella. <strong>El Vehículo Y ingresa desde la vía que termina y debe ceder el paso al Vehículo X</strong>, que circula recto por la vía que continúa."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-05",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-t-junction-median-strip.png",
+    cap: {
+      en: "T-junction: Vehicle Y enters from the terminating Strip Road and must give way to Vehicle X travelling through on the continuing Median Road.",
+      pt: "Interseção em T: o Veículo Y entra pela via que termina (Strip Road) e deve dar a preferência ao Veículo X, que segue pela via que continua (Median Road).",
+      es: "Intersección en T: el Vehículo Y ingresa desde la vía que termina (Strip Road) y debe ceder el paso al Vehículo X, que circula por la vía que continúa (Median Road)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a three-way (T-junction) intersection: Median Road is the continuing road and Strip Road terminates into it. <strong>Vehicle Y is joining from the terminating road and must give way to Vehicle X</strong>, which is travelling straight along the continuing road.",
+      pt: "Esta é uma interseção em T (três vias): a Median Road é a via que continua e a Strip Road termina nela. <strong>O Veículo Y está entrando pela via que termina e deve dar a preferência ao Veículo X</strong>, que segue em frente pela via que continua.",
+      es: "Esta es una intersección en T (de tres vías): Median Road es la vía que continúa y Strip Road termina en ella. <strong>El Vehículo Y ingresa desde la vía que termina y debe ceder el paso al Vehículo X</strong>, que circula recto por la vía que continúa."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-14",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Is vehicle X allowed to overtake vehicle Y?",
+      pt: "O veículo X pode ultrapassar o veículo Y?",
+      es: "¿El vehículo X puede adelantar al vehículo Y?"
+    },
+    sign: "/icons/signs/overtake-broken-centre-line-same-direction.png",
+    cap: {
+      en: "Two-lane road with a broken white centre line: X and Y travel the same direction, so X may overtake Y where it is safe.",
+      pt: "Estrada de duas faixas com linha central tracejada branca: X e Y seguem na mesma direção, então X pode ultrapassar Y quando for seguro.",
+      es: "Carretera de dos carriles con línea central discontinua blanca: X e Y circulan en la misma dirección, por lo que X puede adelantar a Y cuando sea seguro."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if it is safe to do so.",
+          pt: "Sim, se for seguro fazer isso.",
+          es: "Sí, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It depends on the time of day",
+          pt: "Depende da hora do dia.",
+          es: "Depende de la hora del día."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The centre line is a broken (dashed) white line, and both vehicles are travelling in the same direction, so <strong>vehicle X may cross the line to overtake vehicle Y provided the road ahead is clear and it is safe to do so</strong>.",
+      pt: "A linha central é tracejada (branca e descontínua), e os dois veículos seguem na mesma direção, então <strong>o veículo X pode cruzar a linha para ultrapassar o veículo Y, desde que a via à frente esteja livre e seja seguro fazer isso</strong>.",
+      es: "La línea central es discontinua (blanca y segmentada), y ambos vehículos circulan en la misma dirección, así que <strong>el vehículo X puede cruzar la línea para adelantar al vehículo Y, siempre que la vía esté despejada y sea seguro hacerlo</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-11",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Is vehicle X allowed to overtake vehicle Y?",
+      pt: "O veículo X pode ultrapassar o veículo Y?",
+      es: "¿El vehículo X puede adelantar al vehículo Y?"
+    },
+    sign: "/icons/signs/overtake-broken-centre-line-same-direction.png",
+    cap: {
+      en: "Two-lane road with a broken white centre line: X and Y travel the same direction, so X may overtake Y where it is safe.",
+      pt: "Estrada de duas faixas com linha central tracejada branca: X e Y seguem na mesma direção, então X pode ultrapassar Y quando for seguro.",
+      es: "Carretera de dos carriles con línea central discontinua blanca: X e Y circulan en la misma dirección, por lo que X puede adelantar a Y cuando sea seguro."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if it is safe to do so.",
+          pt: "Sim, se for seguro fazer isso.",
+          es: "Sí, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It depends on the time of day",
+          pt: "Depende da hora do dia.",
+          es: "Depende de la hora del día."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The centre line is a broken (dashed) white line, and both vehicles are travelling in the same direction, so <strong>vehicle X may cross the line to overtake vehicle Y provided the road ahead is clear and it is safe to do so</strong>.",
+      pt: "A linha central é tracejada (branca e descontínua), e os dois veículos seguem na mesma direção, então <strong>o veículo X pode cruzar a linha para ultrapassar o veículo Y, desde que a via à frente esteja livre e seja seguro fazer isso</strong>.",
+      es: "La línea central es discontinua (blanca y segmentada), y ambos vehículos circulan en la misma dirección, así que <strong>el vehículo X puede cruzar la línea para adelantar al vehículo Y, siempre que la vía esté despejada y sea seguro hacerlo</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-18",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-terminating-road-t-junction.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X on the terminating road must give way to Vehicle Y on the continuing road.",
+      pt: "Cruzamento em T sem sinalização: X (via terminante) dá a preferência a Y (via contínua).",
+      es: "Cruce en T sin señalización: X (vía que termina) cede el paso a Y (vía continua)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At this uncontrolled T-junction, <strong>Vehicle X is on the terminating road and must give way to Vehicle Y</strong>, which is travelling on the continuing (through) road.",
+      pt: "Neste cruzamento em T sem sinalização, o <strong>Veículo X está na via que termina (via terminante) e deve dar a preferência ao Veículo Y</strong>, que trafega pela via principal (contínua).",
+      es: "En este cruce en T sin señalización, el <strong>Vehículo X está en la vía que termina y debe ceder el paso al Vehículo Y</strong>, que circula por la vía continua (principal)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-07",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-terminating-road-t-junction.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X on the terminating road must give way to Vehicle Y on the continuing road.",
+      pt: "Cruzamento em T sem sinalização: X (via terminante) dá a preferência a Y (via contínua).",
+      es: "Cruce en T sin señalización: X (vía que termina) cede el paso a Y (vía continua)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At this uncontrolled T-junction, <strong>Vehicle X is on the terminating road and must give way to Vehicle Y</strong>, which is travelling on the continuing (through) road.",
+      pt: "Neste cruzamento em T sem sinalização, o <strong>Veículo X está na via que termina (via terminante) e deve dar a preferência ao Veículo Y</strong>, que trafega pela via principal (contínua).",
+      es: "En este cruce en T sin señalización, el <strong>Vehículo X está en la vía que termina y debe ceder el paso al Vehículo Y</strong>, que circula por la vía continua (principal)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-21",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-terminating-road-t-junction.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X on the terminating road must give way to Vehicle Y on the continuing road.",
+      pt: "Cruzamento em T sem sinalização: X (via terminante) dá a preferência a Y (via contínua).",
+      es: "Cruce en T sin señalización: X (vía que termina) cede el paso a Y (vía continua)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At this uncontrolled T-junction, <strong>Vehicle X is on the terminating road and must give way to Vehicle Y</strong>, which is travelling on the continuing (through) road.",
+      pt: "Neste cruzamento em T sem sinalização, o <strong>Veículo X está na via que termina (via terminante) e deve dar a preferência ao Veículo Y</strong>, que trafega pela via principal (contínua).",
+      es: "En este cruce en T sin señalización, el <strong>Vehículo X está en la vía que termina y debe ceder el paso al Vehículo Y</strong>, que circula por la vía continua (principal)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-07",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-terminating-road-t-junction.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X on the terminating road must give way to Vehicle Y on the continuing road.",
+      pt: "Cruzamento em T sem sinalização: X (via terminante) dá a preferência a Y (via contínua).",
+      es: "Cruce en T sin señalización: X (vía que termina) cede el paso a Y (vía continua)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At this uncontrolled T-junction, <strong>Vehicle X is on the terminating road and must give way to Vehicle Y</strong>, which is travelling on the continuing (through) road.",
+      pt: "Neste cruzamento em T sem sinalização, o <strong>Veículo X está na via que termina (via terminante) e deve dar a preferência ao Veículo Y</strong>, que trafega pela via principal (contínua).",
+      es: "En este cruce en T sin señalización, el <strong>Vehículo X está en la vía que termina y debe ceder el paso al Vehículo Y</strong>, que circula por la vía continua (principal)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-19",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X turns in from the terminating side road while Vehicle Y continues straight on the through road — X must give way.",
+      pt: "Cruzamento em T não sinalizado: o Veículo X entra vindo da via secundária enquanto o Veículo Y segue reto pela via principal — X deve dar a preferência.",
+      es: "Intersección en T sin señalizar: el Vehículo X se incorpora desde la vía secundaria mientras el Vehículo Y continúa recto por la vía principal — X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar a preferência.",
+          es: "Ningún vehículo tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is travelling straight along the continuing road, while Vehicle X is turning in from the terminating (side) road. <strong>Vehicle X must give way</strong> to all traffic on the continuing road, including Y.",
+      pt: "Este é um cruzamento em T não sinalizado: o Veículo Y segue em frente pela via contínua, enquanto o Veículo X está entrando vindo da via secundária (que termina no cruzamento). <strong>O Veículo X deve dar a preferência</strong> a todo o tráfego da via contínua, incluindo Y.",
+      es: "Se trata de una intersección en T sin señalizar: el Vehículo Y circula de frente por la vía continua, mientras que el Vehículo X está incorporándose desde la vía secundaria (que termina en el cruce). <strong>El Vehículo X debe ceder el paso</strong> a todo el tráfico de la vía continua, incluido Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-18",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X turns in from the terminating side road while Vehicle Y continues straight on the through road — X must give way.",
+      pt: "Cruzamento em T não sinalizado: o Veículo X entra vindo da via secundária enquanto o Veículo Y segue reto pela via principal — X deve dar a preferência.",
+      es: "Intersección en T sin señalizar: el Vehículo X se incorpora desde la vía secundaria mientras el Vehículo Y continúa recto por la vía principal — X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar a preferência.",
+          es: "Ningún vehículo tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is travelling straight along the continuing road, while Vehicle X is turning in from the terminating (side) road. <strong>Vehicle X must give way</strong> to all traffic on the continuing road, including Y.",
+      pt: "Este é um cruzamento em T não sinalizado: o Veículo Y segue em frente pela via contínua, enquanto o Veículo X está entrando vindo da via secundária (que termina no cruzamento). <strong>O Veículo X deve dar a preferência</strong> a todo o tráfego da via contínua, incluindo Y.",
+      es: "Se trata de una intersección en T sin señalizar: el Vehículo Y circula de frente por la vía continua, mientras que el Vehículo X está incorporándose desde la vía secundaria (que termina en el cruce). <strong>El Vehículo X debe ceder el paso</strong> a todo el tráfico de la vía continua, incluido Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-19",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X turns in from the terminating side road while Vehicle Y continues straight on the through road — X must give way.",
+      pt: "Cruzamento em T não sinalizado: o Veículo X entra vindo da via secundária enquanto o Veículo Y segue reto pela via principal — X deve dar a preferência.",
+      es: "Intersección en T sin señalizar: el Vehículo X se incorpora desde la vía secundaria mientras el Vehículo Y continúa recto por la vía principal — X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar a preferência.",
+          es: "Ningún vehículo tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is travelling straight along the continuing road, while Vehicle X is turning in from the terminating (side) road. <strong>Vehicle X must give way</strong> to all traffic on the continuing road, including Y.",
+      pt: "Este é um cruzamento em T não sinalizado: o Veículo Y segue em frente pela via contínua, enquanto o Veículo X está entrando vindo da via secundária (que termina no cruzamento). <strong>O Veículo X deve dar a preferência</strong> a todo o tráfego da via contínua, incluindo Y.",
+      es: "Se trata de una intersección en T sin señalizar: el Vehículo Y circula de frente por la vía continua, mientras que el Vehículo X está incorporándose desde la vía secundaria (que termina en el cruce). <strong>El Vehículo X debe ceder el paso</strong> a todo el tráfico de la vía continua, incluido Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-30",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X turns in from the terminating side road while Vehicle Y continues straight on the through road — X must give way.",
+      pt: "Cruzamento em T não sinalizado: o Veículo X entra vindo da via secundária enquanto o Veículo Y segue reto pela via principal — X deve dar a preferência.",
+      es: "Intersección en T sin señalizar: el Vehículo X se incorpora desde la vía secundaria mientras el Vehículo Y continúa recto por la vía principal — X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar a preferência.",
+          es: "Ningún vehículo tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is travelling straight along the continuing road, while Vehicle X is turning in from the terminating (side) road. <strong>Vehicle X must give way</strong> to all traffic on the continuing road, including Y.",
+      pt: "Este é um cruzamento em T não sinalizado: o Veículo Y segue em frente pela via contínua, enquanto o Veículo X está entrando vindo da via secundária (que termina no cruzamento). <strong>O Veículo X deve dar a preferência</strong> a todo o tráfego da via contínua, incluindo Y.",
+      es: "Se trata de una intersección en T sin señalizar: el Vehículo Y circula de frente por la vía continua, mientras que el Vehículo X está incorporándose desde la vía secundaria (que termina en el cruce). <strong>El Vehículo X debe ceder el paso</strong> a todo el tráfico de la vía continua, incluido Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-21",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-crossroads-x-right-turn-yz.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X turns right and must give way to oncoming Vehicle Y and to Vehicle Z approaching from the right.",
+      pt: "Cruzamento sem sinalização: o veículo X vira à direita e deve dar passagem ao veículo Y, que vem em sentido contrário, e ao veículo Z, que se aproxima pela direita.",
+      es: "Cruce sin señalización: el vehículo X gira a la derecha y debe ceder el paso al vehículo Y, que viene de frente, y al vehículo Z, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem para Y e Z.",
+          es: "El vehículo X cede el paso a Y y a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem para X e Z.",
+          es: "El vehículo Y cede el paso a X y a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem para X e Y.",
+          es: "El vehículo Z cede el paso a X y a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection you must give way to the vehicle on your right, and if you are turning right you must also give way to oncoming traffic. Vehicle X is turning right from the south approach: Vehicle Z is on its right, and Vehicle Y is oncoming, so <strong>Vehicle X must give way to both Y and Z</strong>.",
+      pt: "Em um cruzamento sem sinalização, você deve dar passagem ao veículo à sua direita e, se estiver virando à direita, também deve dar passagem ao tráfego que vem em sentido contrário. O veículo X está virando à direita vindo do sul: o veículo Z está à sua direita e o veículo Y vem em sentido contrário, por isso <strong>o veículo X deve dar passagem a Y e a Z</strong>.",
+      es: "En una intersección no controlada debes ceder el paso al vehículo que está a tu derecha, y si vas a girar a la derecha también debes ceder el paso al tráfico que viene de frente. El vehículo X está girando a la derecha desde el sur: el vehículo Z está a su derecha y el vehículo Y viene de frente, por lo que <strong>el vehículo X debe ceder el paso a Y y a Z</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-27",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-crossroads-x-right-turn-yz.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X turns right and must give way to oncoming Vehicle Y and to Vehicle Z approaching from the right.",
+      pt: "Cruzamento sem sinalização: o veículo X vira à direita e deve dar passagem ao veículo Y, que vem em sentido contrário, e ao veículo Z, que se aproxima pela direita.",
+      es: "Cruce sin señalización: el vehículo X gira a la derecha y debe ceder el paso al vehículo Y, que viene de frente, y al vehículo Z, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem para Y e Z.",
+          es: "El vehículo X cede el paso a Y y a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem para X e Z.",
+          es: "El vehículo Y cede el paso a X y a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem para X e Y.",
+          es: "El vehículo Z cede el paso a X y a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection you must give way to the vehicle on your right, and if you are turning right you must also give way to oncoming traffic. Vehicle X is turning right from the south approach: Vehicle Z is on its right, and Vehicle Y is oncoming, so <strong>Vehicle X must give way to both Y and Z</strong>.",
+      pt: "Em um cruzamento sem sinalização, você deve dar passagem ao veículo à sua direita e, se estiver virando à direita, também deve dar passagem ao tráfego que vem em sentido contrário. O veículo X está virando à direita vindo do sul: o veículo Z está à sua direita e o veículo Y vem em sentido contrário, por isso <strong>o veículo X deve dar passagem a Y e a Z</strong>.",
+      es: "En una intersección no controlada debes ceder el paso al vehículo que está a tu derecha, y si vas a girar a la derecha también debes ceder el paso al tráfico que viene de frente. El vehículo X está girando a la derecha desde el sur: el vehículo Z está a su derecha y el vehículo Y viene de frente, por lo que <strong>el vehículo X debe ceder el paso a Y y a Z</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-05",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-crossroads-x-right-turn-yz.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X turns right and must give way to oncoming Vehicle Y and to Vehicle Z approaching from the right.",
+      pt: "Cruzamento sem sinalização: o veículo X vira à direita e deve dar passagem ao veículo Y, que vem em sentido contrário, e ao veículo Z, que se aproxima pela direita.",
+      es: "Cruce sin señalización: el vehículo X gira a la derecha y debe ceder el paso al vehículo Y, que viene de frente, y al vehículo Z, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem para Y e Z.",
+          es: "El vehículo X cede el paso a Y y a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem para X e Z.",
+          es: "El vehículo Y cede el paso a X y a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem para X e Y.",
+          es: "El vehículo Z cede el paso a X y a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection you must give way to the vehicle on your right, and if you are turning right you must also give way to oncoming traffic. Vehicle X is turning right from the south approach: Vehicle Z is on its right, and Vehicle Y is oncoming, so <strong>Vehicle X must give way to both Y and Z</strong>.",
+      pt: "Em um cruzamento sem sinalização, você deve dar passagem ao veículo à sua direita e, se estiver virando à direita, também deve dar passagem ao tráfego que vem em sentido contrário. O veículo X está virando à direita vindo do sul: o veículo Z está à sua direita e o veículo Y vem em sentido contrário, por isso <strong>o veículo X deve dar passagem a Y e a Z</strong>.",
+      es: "En una intersección no controlada debes ceder el paso al vehículo que está a tu derecha, y si vas a girar a la derecha también debes ceder el paso al tráfico que viene de frente. El vehículo X está girando a la derecha desde el sur: el vehículo Z está a su derecha y el vehículo Y viene de frente, por lo que <strong>el vehículo X debe ceder el paso a Y y a Z</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-13",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-crossroads-x-right-turn-yz.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X turns right and must give way to oncoming Vehicle Y and to Vehicle Z approaching from the right.",
+      pt: "Cruzamento sem sinalização: o veículo X vira à direita e deve dar passagem ao veículo Y, que vem em sentido contrário, e ao veículo Z, que se aproxima pela direita.",
+      es: "Cruce sin señalización: el vehículo X gira a la derecha y debe ceder el paso al vehículo Y, que viene de frente, y al vehículo Z, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem para Y e Z.",
+          es: "El vehículo X cede el paso a Y y a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem para X e Z.",
+          es: "El vehículo Y cede el paso a X y a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem para X e Y.",
+          es: "El vehículo Z cede el paso a X y a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection you must give way to the vehicle on your right, and if you are turning right you must also give way to oncoming traffic. Vehicle X is turning right from the south approach: Vehicle Z is on its right, and Vehicle Y is oncoming, so <strong>Vehicle X must give way to both Y and Z</strong>.",
+      pt: "Em um cruzamento sem sinalização, você deve dar passagem ao veículo à sua direita e, se estiver virando à direita, também deve dar passagem ao tráfego que vem em sentido contrário. O veículo X está virando à direita vindo do sul: o veículo Z está à sua direita e o veículo Y vem em sentido contrário, por isso <strong>o veículo X deve dar passagem a Y e a Z</strong>.",
+      es: "En una intersección no controlada debes ceder el paso al vehículo que está a tu derecha, y si vas a girar a la derecha también debes ceder el paso al tráfico que viene de frente. El vehículo X está girando a la derecha desde el sur: el vehículo Z está a su derecha y el vehículo Y viene de frente, por lo que <strong>el vehículo X debe ceder el paso a Y y a Z</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-22",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroads-right.png",
+    cap: {
+      en: "Uncontrolled four-way crossroads: Vehicle Y must give way to Vehicle X approaching from its right.",
+      pt: "Cruzamento de quatro vias sem sinalização: o Veículo Y deve dar passagem ao Veículo X, que vem pela direita.",
+      es: "Cruce de cuatro vías sin señalización: el Vehículo Y debe ceder el paso al Vehículo X, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled intersection (no signs or lights, shown by the grassy corners). At a four-way uncontrolled intersection you must give way to the vehicle approaching from your right — Vehicle X is on Vehicle Y's right, so <strong>Vehicle Y must give way to Vehicle X</strong>.",
+      pt: "Trata-se de um cruzamento não sinalizado (sem placas ou semáforos, indicado pelos cantos com grama). Em um cruzamento de quatro vias sem sinalização, você deve dar passagem ao veículo que se aproxima pela sua direita — o Veículo X está à direita do Veículo Y, portanto <strong>o Veículo Y deve dar passagem ao Veículo X</strong>.",
+      es: "Se trata de una intersección no controlada (sin señales ni semáforos, como indican las esquinas con césped). En una intersección de cuatro vías sin control, debes ceder el paso al vehículo que se aproxima por tu derecha — el Vehículo X está a la derecha del Vehículo Y, por lo que <strong>el Vehículo Y debe ceder el paso al Vehículo X</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-04",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroads-right.png",
+    cap: {
+      en: "Uncontrolled four-way crossroads: Vehicle Y must give way to Vehicle X approaching from its right.",
+      pt: "Cruzamento de quatro vias sem sinalização: o Veículo Y deve dar passagem ao Veículo X, que vem pela direita.",
+      es: "Cruce de cuatro vías sin señalización: el Vehículo Y debe ceder el paso al Vehículo X, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled intersection (no signs or lights, shown by the grassy corners). At a four-way uncontrolled intersection you must give way to the vehicle approaching from your right — Vehicle X is on Vehicle Y's right, so <strong>Vehicle Y must give way to Vehicle X</strong>.",
+      pt: "Trata-se de um cruzamento não sinalizado (sem placas ou semáforos, indicado pelos cantos com grama). Em um cruzamento de quatro vias sem sinalização, você deve dar passagem ao veículo que se aproxima pela sua direita — o Veículo X está à direita do Veículo Y, portanto <strong>o Veículo Y deve dar passagem ao Veículo X</strong>.",
+      es: "Se trata de una intersección no controlada (sin señales ni semáforos, como indican las esquinas con césped). En una intersección de cuatro vías sin control, debes ceder el paso al vehículo que se aproxima por tu derecha — el Vehículo X está a la derecha del Vehículo Y, por lo que <strong>el Vehículo Y debe ceder el paso al Vehículo X</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-06",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroads-right.png",
+    cap: {
+      en: "Uncontrolled four-way crossroads: Vehicle Y must give way to Vehicle X approaching from its right.",
+      pt: "Cruzamento de quatro vias sem sinalização: o Veículo Y deve dar passagem ao Veículo X, que vem pela direita.",
+      es: "Cruce de cuatro vías sin señalización: el Vehículo Y debe ceder el paso al Vehículo X, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled intersection (no signs or lights, shown by the grassy corners). At a four-way uncontrolled intersection you must give way to the vehicle approaching from your right — Vehicle X is on Vehicle Y's right, so <strong>Vehicle Y must give way to Vehicle X</strong>.",
+      pt: "Trata-se de um cruzamento não sinalizado (sem placas ou semáforos, indicado pelos cantos com grama). Em um cruzamento de quatro vias sem sinalização, você deve dar passagem ao veículo que se aproxima pela sua direita — o Veículo X está à direita do Veículo Y, portanto <strong>o Veículo Y deve dar passagem ao Veículo X</strong>.",
+      es: "Se trata de una intersección no controlada (sin señales ni semáforos, como indican las esquinas con césped). En una intersección de cuatro vías sin control, debes ceder el paso al vehículo que se aproxima por tu derecha — el Vehículo X está a la derecha del Vehículo Y, por lo que <strong>el Vehículo Y debe ceder el paso al Vehículo X</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-23",
+    cat: "Give Way Rules",
+    q: {
+      en: "What is the meaning of this sign on the back of a bus?",
+      pt: "Qual é o significado deste sinal na traseira de um ônibus?",
+      es: "¿Qué significa esta señal en la parte trasera de un autobús?"
+    },
+    sign: "/icons/signs/giveway-bus-sign-moving-out.png",
+    cap: {
+      en: "Bus rear sign: GIVE WAY — bus pulling out from a stop, car must give way.",
+      pt: "Sinal traseiro do ônibus: GIVE WAY — ônibus saindo do ponto, carro deve dar passagem.",
+      es: "Señal trasera del autobús: GIVE WAY — autobús saliendo de la parada, el auto debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must give way to the bus if there is no other traffic on the road at the time.",
+          pt: "Você deve dar passagem ao ônibus somente se não houver outro tráfego na via no momento.",
+          es: "Debe ceder el paso al autobús solo si no hay otro tráfico en la vía en ese momento."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must give way to the bus if your speed is less than 70km/h.",
+          pt: "Você deve dar passagem ao ônibus se sua velocidade for inferior a 70 km/h.",
+          es: "Debe ceder el paso al autobús si su velocidad es inferior a 70 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must give way to the bus if it is preparing to move out from a bus stop.",
+          pt: "Você deve dar passagem ao ônibus se ele estiver se preparando para sair de um ponto de ônibus.",
+          es: "Debe ceder el paso al autobús si se está preparando para salir de una parada de autobús."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must give way to a bus that is <strong>indicating and moving out from a bus stop</strong> in a built-up area, when it displays a 'GIVE WAY' sign on the back.",
+      pt: "Você deve dar passagem a um ônibus que esteja <strong>sinalizando e saindo de um ponto de ônibus</strong> em área urbanizada, quando ele exibir o sinal 'GIVE WAY' (dar passagem) na traseira.",
+      es: "Debe ceder el paso a un autobús que esté <strong>señalizando y saliendo de una parada</strong> en una zona urbanizada, cuando muestre la señal 'GIVE WAY' (ceder el paso) en la parte trasera."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-27",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which motorcycle is in the car driver's blind spot?",
+      pt: "Qual motocicleta está no ponto cego do motorista do carro?",
+      es: "¿Qué motocicleta está en el punto ciego del conductor del auto?"
+    },
+    sign: "/icons/signs/blindspot-car-three-motorcycles-inline.png",
+    cap: {
+      en: "Single-lane road with three motorcycles in line around a car: X ahead, Y directly behind in the blind spot, Z further back and visible in the mirror.",
+      pt: "Estrada de faixa única com três motos em fila ao redor de um carro: X à frente, Y logo atrás no ponto cego, Z mais distante e visível no retrovisor.",
+      es: "Camino de un solo carril con tres motos en fila alrededor de un auto: X adelante, Y justo detrás en el punto ciego, Z más atrás y visible en el espejo."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Motorcycle X.",
+          pt: "Motocicleta X.",
+          es: "Motocicleta X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Motorcycle Y.",
+          pt: "Motocicleta Y.",
+          es: "Motocicleta Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Motorcycle Z.",
+          pt: "Motocicleta Z.",
+          es: "Motocicleta Z."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Motorcycle Y</strong>, riding close behind and just to the side of the car, sits in the gap that neither the rear-view mirror nor the side mirrors cover — exactly where the handbook warns a motorcycle can be completely hidden from the driver.",
+      pt: "A <strong>Motocicleta Y</strong>, andando logo atrás e ligeiramente ao lado do carro, está na área que nem o espelho retrovisor central nem os espelhos laterais conseguem cobrir — exatamente onde o manual alerta que uma moto pode ficar totalmente escondida do motorista.",
+      es: "La <strong>Motocicleta Y</strong>, que circula justo detrás y ligeramente al costado del auto, se encuentra en la zona que ni el espejo retrovisor central ni los espejos laterales logran cubrir — justo donde el manual advierte que una moto puede quedar completamente oculta para el conductor."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-25",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which motorcycle is in the car driver's blind spot?",
+      pt: "Qual motocicleta está no ponto cego do motorista do carro?",
+      es: "¿Qué motocicleta está en el punto ciego del conductor del auto?"
+    },
+    sign: "/icons/signs/blindspot-car-three-motorcycles-inline.png",
+    cap: {
+      en: "Single-lane road with three motorcycles in line around a car: X ahead, Y directly behind in the blind spot, Z further back and visible in the mirror.",
+      pt: "Estrada de faixa única com três motos em fila ao redor de um carro: X à frente, Y logo atrás no ponto cego, Z mais distante e visível no retrovisor.",
+      es: "Camino de un solo carril con tres motos en fila alrededor de un auto: X adelante, Y justo detrás en el punto ciego, Z más atrás y visible en el espejo."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Motorcycle X.",
+          pt: "Motocicleta X.",
+          es: "Motocicleta X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Motorcycle Y.",
+          pt: "Motocicleta Y.",
+          es: "Motocicleta Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Motorcycle Z.",
+          pt: "Motocicleta Z.",
+          es: "Motocicleta Z."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Motorcycle Y</strong>, riding close behind and just to the side of the car, sits in the gap that neither the rear-view mirror nor the side mirrors cover — exactly where the handbook warns a motorcycle can be completely hidden from the driver.",
+      pt: "A <strong>Motocicleta Y</strong>, andando logo atrás e ligeiramente ao lado do carro, está na área que nem o espelho retrovisor central nem os espelhos laterais conseguem cobrir — exatamente onde o manual alerta que uma moto pode ficar totalmente escondida do motorista.",
+      es: "La <strong>Motocicleta Y</strong>, que circula justo detrás y ligeramente al costado del auto, se encuentra en la zona que ni el espejo retrovisor central ni los espejos laterales logran cubrir — justo donde el manual advierte que una moto puede quedar completamente oculta para el conductor."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-03",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-x-turns-right-y-turns-left.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle X, turning right, must give way to oncoming Vehicle Y, which is turning left.",
+      pt: "Cruzamento não sinalizado: o veículo X, virando à direita, deve dar passagem ao veículo Y, que vem em sentido contrário virando à esquerda.",
+      es: "Cruce sin señalización: el vehículo X, que gira a la derecha, debe ceder el paso al vehículo Y, que viene en sentido contrario girando a la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong> because it is turning right at an uncontrolled intersection, and a driver turning right must give way to oncoming traffic travelling towards them or turning left, such as Vehicle Y.",
+      pt: "<strong>O veículo X deve dar passagem</strong> porque está virando à direita em um cruzamento não sinalizado, e quem vira à direita deve dar passagem ao tráfego que vem em sentido contrário, mesmo que esse tráfego esteja virando à esquerda, como o veículo Y.",
+      es: "<strong>El vehículo X debe ceder el paso</strong> porque está girando a la derecha en una intersección sin señalización, y quien gira a la derecha debe ceder el paso al tráfico que viene en sentido contrario, incluso si ese tráfico está girando a la izquierda, como el vehículo Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-20",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-x-turns-right-y-turns-left.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle X, turning right, must give way to oncoming Vehicle Y, which is turning left.",
+      pt: "Cruzamento não sinalizado: o veículo X, virando à direita, deve dar passagem ao veículo Y, que vem em sentido contrário virando à esquerda.",
+      es: "Cruce sin señalización: el vehículo X, que gira a la derecha, debe ceder el paso al vehículo Y, que viene en sentido contrario girando a la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong> because it is turning right at an uncontrolled intersection, and a driver turning right must give way to oncoming traffic travelling towards them or turning left, such as Vehicle Y.",
+      pt: "<strong>O veículo X deve dar passagem</strong> porque está virando à direita em um cruzamento não sinalizado, e quem vira à direita deve dar passagem ao tráfego que vem em sentido contrário, mesmo que esse tráfego esteja virando à esquerda, como o veículo Y.",
+      es: "<strong>El vehículo X debe ceder el paso</strong> porque está girando a la derecha en una intersección sin señalización, y quien gira a la derecha debe ceder el paso al tráfico que viene en sentido contrario, incluso si ese tráfico está girando a la izquierda, como el vehículo Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-14",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-x-turns-right-y-turns-left.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle X, turning right, must give way to oncoming Vehicle Y, which is turning left.",
+      pt: "Cruzamento não sinalizado: o veículo X, virando à direita, deve dar passagem ao veículo Y, que vem em sentido contrário virando à esquerda.",
+      es: "Cruce sin señalización: el vehículo X, que gira a la derecha, debe ceder el paso al vehículo Y, que viene en sentido contrario girando a la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong> because it is turning right at an uncontrolled intersection, and a driver turning right must give way to oncoming traffic travelling towards them or turning left, such as Vehicle Y.",
+      pt: "<strong>O veículo X deve dar passagem</strong> porque está virando à direita em um cruzamento não sinalizado, e quem vira à direita deve dar passagem ao tráfego que vem em sentido contrário, mesmo que esse tráfego esteja virando à esquerda, como o veículo Y.",
+      es: "<strong>El vehículo X debe ceder el paso</strong> porque está girando a la derecha en una intersección sin señalización, y quien gira a la derecha debe ceder el paso al tráfico que viene en sentido contrario, incluso si ese tráfico está girando a la izquierda, como el vehículo Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-17",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-x-turns-right-y-turns-left.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle X, turning right, must give way to oncoming Vehicle Y, which is turning left.",
+      pt: "Cruzamento não sinalizado: o veículo X, virando à direita, deve dar passagem ao veículo Y, que vem em sentido contrário virando à esquerda.",
+      es: "Cruce sin señalización: el vehículo X, que gira a la derecha, debe ceder el paso al vehículo Y, que viene en sentido contrario girando a la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong> because it is turning right at an uncontrolled intersection, and a driver turning right must give way to oncoming traffic travelling towards them or turning left, such as Vehicle Y.",
+      pt: "<strong>O veículo X deve dar passagem</strong> porque está virando à direita em um cruzamento não sinalizado, e quem vira à direita deve dar passagem ao tráfego que vem em sentido contrário, mesmo que esse tráfego esteja virando à esquerda, como o veículo Y.",
+      es: "<strong>El vehículo X debe ceder el paso</strong> porque está girando a la derecha en una intersección sin señalización, y quien gira a la derecha debe ceder el paso al tráfico que viene en sentido contrario, incluso si ese tráfico está girando a la izquierda, como el vehículo Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-06",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/img-012-giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X, on the terminating road, must give way to Vehicle Y, on the continuing road.",
+      pt: "Cruzamento em T não controlado: o Veículo X, na via que termina, deve dar passagem ao Veículo Y, na via contínua.",
+      es: "Intersección en T no controlada: el Vehículo X, en la vía que termina, debe ceder el paso al Vehículo Y, en la vía continua."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong>, because it is on the terminating road (the road that ends at the junction), while Vehicle Y is travelling on the continuing (through) road at this uncontrolled T-junction.",
+      pt: "O <strong>Veículo X deve dar passagem</strong>, pois está na via que termina no cruzamento (via secundária), enquanto o Veículo Y trafega pela via contínua (principal) neste cruzamento em T não controlado.",
+      es: "El <strong>Vehículo X debe ceder el paso</strong>, ya que se encuentra en la vía que termina en la intersección (vía secundaria), mientras que el Vehículo Y circula por la vía continua (principal) en esta intersección en T no controlada."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/img-012-giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X, on the terminating road, must give way to Vehicle Y, on the continuing road.",
+      pt: "Cruzamento em T não controlado: o Veículo X, na via que termina, deve dar passagem ao Veículo Y, na via contínua.",
+      es: "Intersección en T no controlada: el Vehículo X, en la vía que termina, debe ceder el paso al Vehículo Y, en la vía continua."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong>, because it is on the terminating road (the road that ends at the junction), while Vehicle Y is travelling on the continuing (through) road at this uncontrolled T-junction.",
+      pt: "O <strong>Veículo X deve dar passagem</strong>, pois está na via que termina no cruzamento (via secundária), enquanto o Veículo Y trafega pela via contínua (principal) neste cruzamento em T não controlado.",
+      es: "El <strong>Vehículo X debe ceder el paso</strong>, ya que se encuentra en la vía que termina en la intersección (vía secundaria), mientras que el Vehículo Y circula por la vía continua (principal) en esta intersección en T no controlada."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-17",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/img-012-giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle X, on the terminating road, must give way to Vehicle Y, on the continuing road.",
+      pt: "Cruzamento em T não controlado: o Veículo X, na via que termina, deve dar passagem ao Veículo Y, na via contínua.",
+      es: "Intersección en T no controlada: el Vehículo X, en la vía que termina, debe ceder el paso al Vehículo Y, en la vía continua."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle X must give way</strong>, because it is on the terminating road (the road that ends at the junction), while Vehicle Y is travelling on the continuing (through) road at this uncontrolled T-junction.",
+      pt: "O <strong>Veículo X deve dar passagem</strong>, pois está na via que termina no cruzamento (via secundária), enquanto o Veículo Y trafega pela via contínua (principal) neste cruzamento em T não controlado.",
+      es: "El <strong>Vehículo X debe ceder el paso</strong>, ya que se encuentra en la vía que termina en la intersección (vía secundaria), mientras que el Vehículo Y circula por la vía continua (principal) en esta intersección en T no controlada."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-08",
+    cat: "Traffic Lights",
+    q: {
+      en: "What do red flashing lights mean at a railway crossing (as shown in the diagram)?",
+      pt: "O que significam as luzes vermelhas piscando em um cruzamento ferroviário (como mostrado no diagrama)?",
+      es: "¿Qué significan las luces rojas intermitentes en un cruce ferroviario (como se muestra en el diagrama)?"
+    },
+    sign: "/icons/signs/railway-crossing-stop-on-red-signal.png",
+    cap: {
+      en: 'Railway crossing sign with two tracks, reading "Stop on Red Signal".',
+      pt: 'Placa de cruzamento ferroviário com duas linhas, com o aviso "Pare no Sinal Vermelho".',
+      es: 'Señal de cruce ferroviario con dos vías, indicando "Deténgase con la señal roja".'
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop, only if you see a train approaching.",
+          pt: "Pare, somente se você vir um trem se aproximando.",
+          es: "Deténgase, solo si ve un tren acercándose."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop before the crossing and remain stationary until the lights stop flashing.",
+          pt: "Pare antes do cruzamento e permaneça parado até que as luzes parem de piscar.",
+          es: "Deténgase antes del cruce y permanezca detenido hasta que las luces dejen de parpadear."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down and proceed with caution.",
+          pt: "Reduza a velocidade e prossiga com cautela.",
+          es: "Reduzca la velocidad y continúe con precaución."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Flashing red lights at a railway crossing mean you <strong>must stop before the crossing and remain stopped until the lights stop flashing</strong> — not just when a train happens to be visible, and slowing down is not enough.",
+      pt: "Luzes vermelhas piscando em um cruzamento ferroviário significam que você <strong>deve parar antes do cruzamento e permanecer parado até que as luzes parem de piscar</strong> — não apenas quando avistar um trem, e apenas reduzir a velocidade não é suficiente.",
+      es: "Las luces rojas intermitentes en un cruce ferroviario significan que <strong>debe detenerse antes del cruce y permanecer detenido hasta que las luces dejen de parpadear</strong> — no solo cuando vea un tren acercarse, y reducir la velocidad no es suficiente."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-14",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve ceder passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-right-turn.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle Y turns right across oncoming Vehicle X, which is going straight ahead.",
+      pt: "Cruzamento sem sinalização: o veículo Y converte à direita cruzando o caminho do veículo X, que segue em frente.",
+      es: "Cruce sin señalización: el vehículo Y gira a la derecha cruzando el camino del vehículo X, que sigue de frente."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa ceder passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is turning right across the path of oncoming Vehicle X, which is travelling straight through the intersection. <strong>At an uncontrolled intersection, a vehicle turning right must give way to oncoming traffic that is going straight ahead or turning left.</strong>",
+      pt: "O veículo Y está convertendo à direita, cruzando a trajetória do veículo X, que vem em sentido contrário seguindo em frente. <strong>Em um cruzamento sem sinalização, o veículo que converte à direita deve ceder passagem ao tráfego que vem em sentido contrário seguindo em frente ou convertendo à esquerda.</strong>",
+      es: "El vehículo Y está girando a la derecha, cruzando la trayectoria del vehículo X, que circula de frente en sentido contrario. <strong>En una intersección sin señalización, el vehículo que gira a la derecha debe ceder el paso al tráfico que viene de frente en sentido contrario o que gira a la izquierda.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-19",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve ceder passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-right-turn.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle Y turns right across oncoming Vehicle X, which is going straight ahead.",
+      pt: "Cruzamento sem sinalização: o veículo Y converte à direita cruzando o caminho do veículo X, que segue em frente.",
+      es: "Cruce sin señalización: el vehículo Y gira a la derecha cruzando el camino del vehículo X, que sigue de frente."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa ceder passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is turning right across the path of oncoming Vehicle X, which is travelling straight through the intersection. <strong>At an uncontrolled intersection, a vehicle turning right must give way to oncoming traffic that is going straight ahead or turning left.</strong>",
+      pt: "O veículo Y está convertendo à direita, cruzando a trajetória do veículo X, que vem em sentido contrário seguindo em frente. <strong>Em um cruzamento sem sinalização, o veículo que converte à direita deve ceder passagem ao tráfego que vem em sentido contrário seguindo em frente ou convertendo à esquerda.</strong>",
+      es: "El vehículo Y está girando a la derecha, cruzando la trayectoria del vehículo X, que circula de frente en sentido contrario. <strong>En una intersección sin señalización, el vehículo que gira a la derecha debe ceder el paso al tráfico que viene de frente en sentido contrario o que gira a la izquierda.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-03",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve ceder passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroad-right-turn.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle Y turns right across oncoming Vehicle X, which is going straight ahead.",
+      pt: "Cruzamento sem sinalização: o veículo Y converte à direita cruzando o caminho do veículo X, que segue em frente.",
+      es: "Cruce sin señalización: el vehículo Y gira a la derecha cruzando el camino del vehículo X, que sigue de frente."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa ceder passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is turning right across the path of oncoming Vehicle X, which is travelling straight through the intersection. <strong>At an uncontrolled intersection, a vehicle turning right must give way to oncoming traffic that is going straight ahead or turning left.</strong>",
+      pt: "O veículo Y está convertendo à direita, cruzando a trajetória do veículo X, que vem em sentido contrário seguindo em frente. <strong>Em um cruzamento sem sinalização, o veículo que converte à direita deve ceder passagem ao tráfego que vem em sentido contrário seguindo em frente ou convertendo à esquerda.</strong>",
+      es: "El vehículo Y está girando a la derecha, cruzando la trayectoria del vehículo X, que circula de frente en sentido contrario. <strong>En una intersección sin señalización, el vehículo que gira a la derecha debe ceder el paso al tráfico que viene de frente en sentido contrario o que gira a la izquierda.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-21",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/img-016-giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle Y on the terminating road must give way to Vehicle X on the continuing road.",
+      pt: "Interseção em T não sinalizada: o Veículo Y, na via que termina, deve dar passagem ao Veículo X, na via que continua.",
+      es: "Intersección en T no controlada: el Vehículo Y, en la vía que termina, debe ceder el paso al Vehículo X, en la vía que continúa."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is on the terminating road (the road that ends) and Vehicle X is on the continuing road. <strong>Vehicle Y must give way to Vehicle X</strong>, since traffic on a terminating road always gives way to traffic on the continuing road.",
+      pt: "Trata-se de uma interseção em T não sinalizada: o Veículo Y está na via que termina, e o Veículo X está na via que continua. <strong>O Veículo Y deve dar passagem ao Veículo X</strong>, pois o trânsito da via que termina sempre cede passagem ao trânsito da via que continua.",
+      es: "Se trata de una intersección en T no controlada: el Vehículo Y está en la vía que termina, y el Vehículo X está en la vía que continúa. <strong>El Vehículo Y debe ceder el paso al Vehículo X</strong>, ya que el tránsito de la vía que termina siempre cede el paso al de la vía que continúa."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-17",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/img-016-giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle Y on the terminating road must give way to Vehicle X on the continuing road.",
+      pt: "Interseção em T não sinalizada: o Veículo Y, na via que termina, deve dar passagem ao Veículo X, na via que continua.",
+      es: "Intersección en T no controlada: el Vehículo Y, en la vía que termina, debe ceder el paso al Vehículo X, en la vía que continúa."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is on the terminating road (the road that ends) and Vehicle X is on the continuing road. <strong>Vehicle Y must give way to Vehicle X</strong>, since traffic on a terminating road always gives way to traffic on the continuing road.",
+      pt: "Trata-se de uma interseção em T não sinalizada: o Veículo Y está na via que termina, e o Veículo X está na via que continua. <strong>O Veículo Y deve dar passagem ao Veículo X</strong>, pois o trânsito da via que termina sempre cede passagem ao trânsito da via que continua.",
+      es: "Se trata de una intersección en T no controlada: el Vehículo Y está en la vía que termina, y el Vehículo X está en la vía que continúa. <strong>El Vehículo Y debe ceder el paso al Vehículo X</strong>, ya que el tránsito de la vía que termina siempre cede el paso al de la vía que continúa."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-02",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/img-016-giveway-t-junction-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-junction: Vehicle Y on the terminating road must give way to Vehicle X on the continuing road.",
+      pt: "Interseção em T não sinalizada: o Veículo Y, na via que termina, deve dar passagem ao Veículo X, na via que continua.",
+      es: "Intersección en T no controlada: el Vehículo Y, en la vía que termina, debe ceder el paso al Vehículo X, en la vía que continúa."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-junction: Vehicle Y is on the terminating road (the road that ends) and Vehicle X is on the continuing road. <strong>Vehicle Y must give way to Vehicle X</strong>, since traffic on a terminating road always gives way to traffic on the continuing road.",
+      pt: "Trata-se de uma interseção em T não sinalizada: o Veículo Y está na via que termina, e o Veículo X está na via que continua. <strong>O Veículo Y deve dar passagem ao Veículo X</strong>, pois o trânsito da via que termina sempre cede passagem ao trânsito da via que continua.",
+      es: "Se trata de una intersección en T no controlada: el Vehículo Y está en la vía que termina, y el Vehículo X está en la vía que continúa. <strong>El Vehículo Y debe ceder el paso al Vehículo X</strong>, ya que el tránsito de la vía que termina siempre cede el paso al de la vía que continúa."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-22",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-t-intersection-y-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-intersection: Y, on the terminating side road, must give way to X and Z on the continuing through road.",
+      pt: "Cruzamento em T sem sinalização: Y, na via secundária que termina ali, deve dar passagem a X e Z, que estão na via principal.",
+      es: "Intersección en T sin señalizar: Y, en la vía secundaria que termina allí, debe ceder el paso a X y Z, que circulan por la vía principal."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X gives way to both Y and Z",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection: the north-south road (used by X and Z) continues through, while Y's road is the terminating side road that ends at the junction. <strong>Y must give way to both X and Z</strong>, since they are travelling on the continuing road, no matter who is going straight or turning.",
+      pt: "Este é um cruzamento em T sem sinalização: a via norte-sul (usada por X e Z) é a via principal que continua, enquanto a via de Y é a via secundária que termina no cruzamento. <strong>Y deve dar passagem tanto a X quanto a Z</strong>, pois eles estão na via que continua, independentemente de quem segue em frente ou vira.",
+      es: "Se trata de una intersección en T sin señalizar: la vía norte-sur (usada por X y Z) es la vía principal que continúa, mientras que la vía de Y es la vía secundaria que termina en el cruce. <strong>Y debe ceder el paso tanto a X como a Z</strong>, ya que ellos circulan por la vía que continúa, sin importar quién va derecho o gira."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-05",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-t-intersection-y-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-intersection: Y, on the terminating side road, must give way to X and Z on the continuing through road.",
+      pt: "Cruzamento em T sem sinalização: Y, na via secundária que termina ali, deve dar passagem a X e Z, que estão na via principal.",
+      es: "Intersección en T sin señalizar: Y, en la vía secundaria que termina allí, debe ceder el paso a X y Z, que circulan por la vía principal."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X gives way to both Y and Z",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection: the north-south road (used by X and Z) continues through, while Y's road is the terminating side road that ends at the junction. <strong>Y must give way to both X and Z</strong>, since they are travelling on the continuing road, no matter who is going straight or turning.",
+      pt: "Este é um cruzamento em T sem sinalização: a via norte-sul (usada por X e Z) é a via principal que continua, enquanto a via de Y é a via secundária que termina no cruzamento. <strong>Y deve dar passagem tanto a X quanto a Z</strong>, pois eles estão na via que continua, independentemente de quem segue em frente ou vira.",
+      es: "Se trata de una intersección en T sin señalizar: la vía norte-sur (usada por X y Z) es la vía principal que continúa, mientras que la vía de Y es la vía secundaria que termina en el cruce. <strong>Y debe ceder el paso tanto a X como a Z</strong>, ya que ellos circulan por la vía que continúa, sin importar quién va derecho o gira."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-t-intersection-y-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-intersection: Y, on the terminating side road, must give way to X and Z on the continuing through road.",
+      pt: "Cruzamento em T sem sinalização: Y, na via secundária que termina ali, deve dar passagem a X e Z, que estão na via principal.",
+      es: "Intersección en T sin señalizar: Y, en la vía secundaria que termina allí, debe ceder el paso a X y Z, que circulan por la vía principal."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X gives way to both Y and Z",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection: the north-south road (used by X and Z) continues through, while Y's road is the terminating side road that ends at the junction. <strong>Y must give way to both X and Z</strong>, since they are travelling on the continuing road, no matter who is going straight or turning.",
+      pt: "Este é um cruzamento em T sem sinalização: a via norte-sul (usada por X e Z) é a via principal que continua, enquanto a via de Y é a via secundária que termina no cruzamento. <strong>Y deve dar passagem tanto a X quanto a Z</strong>, pois eles estão na via que continua, independentemente de quem segue em frente ou vira.",
+      es: "Se trata de una intersección en T sin señalizar: la vía norte-sur (usada por X y Z) es la vía principal que continúa, mientras que la vía de Y es la vía secundaria que termina en el cruce. <strong>Y debe ceder el paso tanto a X como a Z</strong>, ya que ellos circulan por la vía que continúa, sin importar quién va derecho o gira."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-06",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/giveway-t-intersection-y-terminating-road.png",
+    cap: {
+      en: "Uncontrolled T-intersection: Y, on the terminating side road, must give way to X and Z on the continuing through road.",
+      pt: "Cruzamento em T sem sinalização: Y, na via secundária que termina ali, deve dar passagem a X e Z, que estão na via principal.",
+      es: "Intersección en T sin señalizar: Y, en la vía secundaria que termina allí, debe ceder el paso a X y Z, que circulan por la vía principal."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X gives way to both Y and Z",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection: the north-south road (used by X and Z) continues through, while Y's road is the terminating side road that ends at the junction. <strong>Y must give way to both X and Z</strong>, since they are travelling on the continuing road, no matter who is going straight or turning.",
+      pt: "Este é um cruzamento em T sem sinalização: a via norte-sul (usada por X e Z) é a via principal que continua, enquanto a via de Y é a via secundária que termina no cruzamento. <strong>Y deve dar passagem tanto a X quanto a Z</strong>, pois eles estão na via que continua, independentemente de quem segue em frente ou vira.",
+      es: "Se trata de una intersección en T sin señalizar: la vía norte-sur (usada por X y Z) es la vía principal que continúa, mientras que la vía de Y es la vía secundaria que termina en el cruce. <strong>Y debe ceder el paso tanto a X como a Z</strong>, ya que ellos circulan por la vía que continúa, sin importar quién va derecho o gira."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-23",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroads-turning-vehicle-right.png",
+    cap: {
+      en: "Uncontrolled crossroads with no signs: Y is turning left from the west arm while X comes straight from the south, on Y's right, so Y must give way.",
+      pt: "Cruzamento sem sinalização: Y está virando à esquerda vindo do braço oeste enquanto X segue reto vindo do sul, pela direita de Y — por isso Y deve dar passagem.",
+      es: "Cruce sin señalizar: Y gira a la izquierda desde el brazo oeste mientras X avanza recto desde el sur, por la derecha de Y, por lo que Y debe cederle el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled crossroads with no signs or signals, so the give-way-to-the-right rule applies to every vehicle, whether turning or going straight. <strong>Vehicle X is approaching from Vehicle Y's right</strong>, so Y (turning left from the west) must give way to X.",
+      pt: "Este é um cruzamento sem sinalização (sem placas nem semáforos), então vale a regra de dar passagem para quem vem da direita, seja você quem for e esteja indo reto ou virando. <strong>O veículo X se aproxima pela direita do veículo Y</strong>, então Y (virando à esquerda vindo do oeste) deve dar passagem a X.",
+      es: "Se trata de un cruce sin señalización (sin señales ni semáforos), por lo que se aplica la regla de ceder el paso al vehículo que viene por la derecha, ya sea que vayas recto o estés girando. <strong>El vehículo X se aproxima por la derecha del vehículo Y</strong>, así que Y (que gira a la izquierda viniendo del oeste) debe cederle el paso a X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-13",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroads-turning-vehicle-right.png",
+    cap: {
+      en: "Uncontrolled crossroads with no signs: Y is turning left from the west arm while X comes straight from the south, on Y's right, so Y must give way.",
+      pt: "Cruzamento sem sinalização: Y está virando à esquerda vindo do braço oeste enquanto X segue reto vindo do sul, pela direita de Y — por isso Y deve dar passagem.",
+      es: "Cruce sin señalizar: Y gira a la izquierda desde el brazo oeste mientras X avanza recto desde el sur, por la derecha de Y, por lo que Y debe cederle el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled crossroads with no signs or signals, so the give-way-to-the-right rule applies to every vehicle, whether turning or going straight. <strong>Vehicle X is approaching from Vehicle Y's right</strong>, so Y (turning left from the west) must give way to X.",
+      pt: "Este é um cruzamento sem sinalização (sem placas nem semáforos), então vale a regra de dar passagem para quem vem da direita, seja você quem for e esteja indo reto ou virando. <strong>O veículo X se aproxima pela direita do veículo Y</strong>, então Y (virando à esquerda vindo do oeste) deve dar passagem a X.",
+      es: "Se trata de un cruce sin señalización (sin señales ni semáforos), por lo que se aplica la regla de ceder el paso al vehículo que viene por la derecha, ya sea que vayas recto o estés girando. <strong>El vehículo X se aproxima por la derecha del vehículo Y</strong>, así que Y (que gira a la izquierda viniendo del oeste) debe cederle el paso a X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-14",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroads-turning-vehicle-right.png",
+    cap: {
+      en: "Uncontrolled crossroads with no signs: Y is turning left from the west arm while X comes straight from the south, on Y's right, so Y must give way.",
+      pt: "Cruzamento sem sinalização: Y está virando à esquerda vindo do braço oeste enquanto X segue reto vindo do sul, pela direita de Y — por isso Y deve dar passagem.",
+      es: "Cruce sin señalizar: Y gira a la izquierda desde el brazo oeste mientras X avanza recto desde el sur, por la derecha de Y, por lo que Y debe cederle el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled crossroads with no signs or signals, so the give-way-to-the-right rule applies to every vehicle, whether turning or going straight. <strong>Vehicle X is approaching from Vehicle Y's right</strong>, so Y (turning left from the west) must give way to X.",
+      pt: "Este é um cruzamento sem sinalização (sem placas nem semáforos), então vale a regra de dar passagem para quem vem da direita, seja você quem for e esteja indo reto ou virando. <strong>O veículo X se aproxima pela direita do veículo Y</strong>, então Y (virando à esquerda vindo do oeste) deve dar passagem a X.",
+      es: "Se trata de un cruce sin señalización (sin señales ni semáforos), por lo que se aplica la regla de ceder el paso al vehículo que viene por la derecha, ya sea que vayas recto o estés girando. <strong>El vehículo X se aproxima por la derecha del vehículo Y</strong>, así que Y (que gira a la izquierda viniendo del oeste) debe cederle el paso a X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-04",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroad-right-turn.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X approaches from Vehicle Y's right and is turning right, so Vehicle Y must give way to X.",
+      pt: "Cruzamento sem sinalização: o veículo X vem pela direita do veículo Y e está virando à direita, então Y deve dar a preferência a X.",
+      es: "Cruce sin señalización: el vehículo X se aproxima por la derecha del vehículo Y y está girando a la derecha, por lo que Y debe cederle el paso a X."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "O veículo X.",
+          es: "El vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection you must give way to the car on your right, whether you or that car are turning or going straight ahead. <strong>Vehicle X is approaching from Vehicle Y's right, so Y must give way to X</strong>, even though X is the one turning right.",
+      pt: "Em um cruzamento não sinalizado (sem placas ou semáforos), você deve dar a preferência ao veículo que vem pela sua direita, esteja ele convertendo ou seguindo em frente. <strong>O veículo X se aproxima pela direita do veículo Y, então Y deve dar a preferência a X</strong>, mesmo sendo X quem está virando à direita.",
+      es: "En una intersección de cuatro vías no controlada (sin señales ni semáforos), debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que esté girando o siga recto. <strong>El vehículo X se aproxima por la derecha del vehículo Y, por lo que Y debe cederle el paso a X</strong>, aunque sea X quien está girando a la derecha."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-23",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroad-right-turn.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X approaches from Vehicle Y's right and is turning right, so Vehicle Y must give way to X.",
+      pt: "Cruzamento sem sinalização: o veículo X vem pela direita do veículo Y e está virando à direita, então Y deve dar a preferência a X.",
+      es: "Cruce sin señalización: el vehículo X se aproxima por la derecha del vehículo Y y está girando a la derecha, por lo que Y debe cederle el paso a X."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "O veículo X.",
+          es: "El vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection you must give way to the car on your right, whether you or that car are turning or going straight ahead. <strong>Vehicle X is approaching from Vehicle Y's right, so Y must give way to X</strong>, even though X is the one turning right.",
+      pt: "Em um cruzamento não sinalizado (sem placas ou semáforos), você deve dar a preferência ao veículo que vem pela sua direita, esteja ele convertendo ou seguindo em frente. <strong>O veículo X se aproxima pela direita do veículo Y, então Y deve dar a preferência a X</strong>, mesmo sendo X quem está virando à direita.",
+      es: "En una intersección de cuatro vías no controlada (sin señales ni semáforos), debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que esté girando o siga recto. <strong>El vehículo X se aproxima por la derecha del vehículo Y, por lo que Y debe cederle el paso a X</strong>, aunque sea X quien está girando a la derecha."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar a preferência?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroad-right-turn.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X approaches from Vehicle Y's right and is turning right, so Vehicle Y must give way to X.",
+      pt: "Cruzamento sem sinalização: o veículo X vem pela direita do veículo Y e está virando à direita, então Y deve dar a preferência a X.",
+      es: "Cruce sin señalización: el vehículo X se aproxima por la derecha del vehículo Y y está girando a la derecha, por lo que Y debe cederle el paso a X."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar a preferência.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "O veículo X.",
+          es: "El vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection you must give way to the car on your right, whether you or that car are turning or going straight ahead. <strong>Vehicle X is approaching from Vehicle Y's right, so Y must give way to X</strong>, even though X is the one turning right.",
+      pt: "Em um cruzamento não sinalizado (sem placas ou semáforos), você deve dar a preferência ao veículo que vem pela sua direita, esteja ele convertendo ou seguindo em frente. <strong>O veículo X se aproxima pela direita do veículo Y, então Y deve dar a preferência a X</strong>, mesmo sendo X quem está virando à direita.",
+      es: "En una intersección de cuatro vías no controlada (sin señales ni semáforos), debes ceder el paso al vehículo que se aproxima por tu derecha, ya sea que esté girando o siga recto. <strong>El vehículo X se aproxima por la derecha del vehículo Y, por lo que Y debe cederle el paso a X</strong>, aunque sea X quien está girando a la derecha."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-10",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-intersection-right.png",
+    cap: {
+      en: "Uncontrolled 4-way intersection: Vehicle X (heading north) must give way to Vehicle Y, approaching from its right (heading west).",
+      pt: "Cruzamento não sinalizado de 4 vias: o veículo X (seguindo para o norte) deve dar passagem ao veículo Y, que se aproxima pela direita (seguindo para o oeste).",
+      es: "Intersección no controlada de 4 vías: el vehículo X (que va hacia el norte) debe ceder el paso al vehículo Y, que se acerca por su derecha (yendo hacia el oeste)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection (no signs, signals, or roundabout), you must give way to any vehicle approaching from your right. <strong>Vehicle Y is approaching from Vehicle X's right, so X must give way to Y.</strong>",
+      pt: "Em um cruzamento não sinalizado (sem placas, semáforos ou rotatória), você deve dar passagem a qualquer veículo que se aproxime pela sua direita. <strong>O veículo Y está se aproximando pela direita do veículo X, então X deve dar passagem a Y.</strong>",
+      es: "En una intersección no controlada (sin señales, semáforos ni rotonda), debes ceder el paso a cualquier vehículo que se acerque por tu derecha. <strong>El vehículo Y se acerca por la derecha del vehículo X, por lo que X debe ceder el paso a Y.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-09",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-intersection-right.png",
+    cap: {
+      en: "Uncontrolled 4-way intersection: Vehicle X (heading north) must give way to Vehicle Y, approaching from its right (heading west).",
+      pt: "Cruzamento não sinalizado de 4 vias: o veículo X (seguindo para o norte) deve dar passagem ao veículo Y, que se aproxima pela direita (seguindo para o oeste).",
+      es: "Intersección no controlada de 4 vías: el vehículo X (que va hacia el norte) debe ceder el paso al vehículo Y, que se acerca por su derecha (yendo hacia el oeste)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection (no signs, signals, or roundabout), you must give way to any vehicle approaching from your right. <strong>Vehicle Y is approaching from Vehicle X's right, so X must give way to Y.</strong>",
+      pt: "Em um cruzamento não sinalizado (sem placas, semáforos ou rotatória), você deve dar passagem a qualquer veículo que se aproxime pela sua direita. <strong>O veículo Y está se aproximando pela direita do veículo X, então X deve dar passagem a Y.</strong>",
+      es: "En una intersección no controlada (sin señales, semáforos ni rotonda), debes ceder el paso a cualquier vehículo que se acerque por tu derecha. <strong>El vehículo Y se acerca por la derecha del vehículo X, por lo que X debe ceder el paso a Y.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-16",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-intersection-right.png",
+    cap: {
+      en: "Uncontrolled 4-way intersection: Vehicle X (heading north) must give way to Vehicle Y, approaching from its right (heading west).",
+      pt: "Cruzamento não sinalizado de 4 vias: o veículo X (seguindo para o norte) deve dar passagem ao veículo Y, que se aproxima pela direita (seguindo para o oeste).",
+      es: "Intersección no controlada de 4 vías: el vehículo X (que va hacia el norte) debe ceder el paso al vehículo Y, que se acerca por su derecha (yendo hacia el oeste)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled intersection (no signs, signals, or roundabout), you must give way to any vehicle approaching from your right. <strong>Vehicle Y is approaching from Vehicle X's right, so X must give way to Y.</strong>",
+      pt: "Em um cruzamento não sinalizado (sem placas, semáforos ou rotatória), você deve dar passagem a qualquer veículo que se aproxime pela sua direita. <strong>O veículo Y está se aproximando pela direita do veículo X, então X deve dar passagem a Y.</strong>",
+      es: "En una intersección no controlada (sin señales, semáforos ni rotonda), debes ceder el paso a cualquier vehículo que se acerque por tu derecha. <strong>El vehículo Y se acerca por la derecha del vehículo X, por lo que X debe ceder el paso a Y.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-11",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-left-vehicle-turning-right.png",
+    cap: {
+      en: "Multi-lane road with marked lanes: X continues straight in the left lane while Y signals and turns right ahead — X may overtake Y on the left.",
+      pt: "Via com faixas demarcadas: X segue reto pela faixa da esquerda enquanto Y sinaliza e converte à direita mais adiante — X pode ultrapassar Y pela esquerda.",
+      es: "Vía con carriles demarcados: X sigue recto por el carril izquierdo mientras Y señaliza y gira a la derecha más adelante — X puede adelantar a Y por la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X só pode ultrapassar Y em uma área de 60 km/h.",
+          es: "El vehículo X solo puede adelantar a Y en una zona de 60 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar Y.",
+          es: "El vehículo X no puede adelantar a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "X may overtake Y on the left because they are on a multi-lane road and <strong>Y is indicating/turning right</strong> ahead — the handbook permits overtaking on the left in exactly this situation.",
+      pt: "X pode ultrapassar Y pela esquerda porque estão em uma via de múltiplas faixas e <strong>Y está sinalizando/convertendo à direita</strong> logo à frente — o manual permite ultrapassar pela esquerda exatamente nessa situação.",
+      es: "X puede adelantar a Y por la izquierda porque circulan por una vía de varios carriles y <strong>Y está señalizando/girando a la derecha</strong> más adelante — el manual permite adelantar por la izquierda precisamente en esta situación."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-27",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-left-vehicle-turning-right.png",
+    cap: {
+      en: "Multi-lane road with marked lanes: X continues straight in the left lane while Y signals and turns right ahead — X may overtake Y on the left.",
+      pt: "Via com faixas demarcadas: X segue reto pela faixa da esquerda enquanto Y sinaliza e converte à direita mais adiante — X pode ultrapassar Y pela esquerda.",
+      es: "Vía con carriles demarcados: X sigue recto por el carril izquierdo mientras Y señaliza y gira a la derecha más adelante — X puede adelantar a Y por la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X só pode ultrapassar Y em uma área de 60 km/h.",
+          es: "El vehículo X solo puede adelantar a Y en una zona de 60 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar Y.",
+          es: "El vehículo X no puede adelantar a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "X may overtake Y on the left because they are on a multi-lane road and <strong>Y is indicating/turning right</strong> ahead — the handbook permits overtaking on the left in exactly this situation.",
+      pt: "X pode ultrapassar Y pela esquerda porque estão em uma via de múltiplas faixas e <strong>Y está sinalizando/convertendo à direita</strong> logo à frente — o manual permite ultrapassar pela esquerda exatamente nessa situação.",
+      es: "X puede adelantar a Y por la izquierda porque circulan por una vía de varios carriles y <strong>Y está señalizando/girando a la derecha</strong> más adelante — el manual permite adelantar por la izquierda precisamente en esta situación."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-17",
+    cat: "Give Way Rules",
+    q: {
+      en: "In which order should the vehicles proceed?",
+      pt: "Em que ordem os veículos devem prosseguir?",
+      es: "¿En qué orden deben avanzar los vehículos?"
+    },
+    sign: "/icons/signs/roundabout-cyclist-priority-order.png",
+    cap: {
+      en: "Roundabout give-way order: cyclist Z is already circulating and has priority over cars X and Y, who are both waiting to enter.",
+      pt: "Ordem de prioridade na rotatória: o ciclista Z já está circulando e tem prioridade sobre os carros X e Y, que ainda vão entrar.",
+      es: "Orden de prioridad en la rotonda: el ciclista Z ya está circulando y tiene prioridad sobre los autos X e Y, que aún esperan para entrar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X, then Y, then Z.",
+          pt: "Veículo X, depois Y, depois Z.",
+          es: "Vehículo X, luego Y, luego Z."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Z, then Y, then X.",
+          pt: "Veículo Z, depois Y, depois X.",
+          es: "Vehículo Z, luego Y, luego X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X, then Z, then Y.",
+          pt: "Veículo X, depois Z, depois Y.",
+          es: "Vehículo X, luego Z, luego Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle Z (the cyclist) is already on the roundabout</strong>, so it has priority — roundabouts are always travelled clockwise and entering traffic must give way to anyone already circulating. Of the two cars still waiting to enter, X must give way to Y, who is on X's right.",
+      pt: "<strong>O veículo Z (o ciclista) já está na rotatória</strong>, por isso tem prioridade — a rotatória é sempre percorrida no sentido horário e quem vai entrar deve dar passagem a quem já está circulando. Entre os dois carros que ainda vão entrar, X deve dar passagem a Y, que está à direita de X.",
+      es: "<strong>El vehículo Z (el ciclista) ya está circulando en la rotonda</strong>, por lo que tiene prioridad: la rotonda siempre se recorre en sentido horario y quien va a entrar debe ceder el paso a quien ya está circulando. Entre los dos autos que aún esperan para entrar, X debe ceder el paso a Y, que está a la derecha de X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "In which order should the vehicles proceed?",
+      pt: "Em que ordem os veículos devem prosseguir?",
+      es: "¿En qué orden deben avanzar los vehículos?"
+    },
+    sign: "/icons/signs/roundabout-cyclist-priority-order.png",
+    cap: {
+      en: "Roundabout give-way order: cyclist Z is already circulating and has priority over cars X and Y, who are both waiting to enter.",
+      pt: "Ordem de prioridade na rotatória: o ciclista Z já está circulando e tem prioridade sobre os carros X e Y, que ainda vão entrar.",
+      es: "Orden de prioridad en la rotonda: el ciclista Z ya está circulando y tiene prioridad sobre los autos X e Y, que aún esperan para entrar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X, then Y, then Z.",
+          pt: "Veículo X, depois Y, depois Z.",
+          es: "Vehículo X, luego Y, luego Z."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Z, then Y, then X.",
+          pt: "Veículo Z, depois Y, depois X.",
+          es: "Vehículo Z, luego Y, luego X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X, then Z, then Y.",
+          pt: "Veículo X, depois Z, depois Y.",
+          es: "Vehículo X, luego Z, luego Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle Z (the cyclist) is already on the roundabout</strong>, so it has priority — roundabouts are always travelled clockwise and entering traffic must give way to anyone already circulating. Of the two cars still waiting to enter, X must give way to Y, who is on X's right.",
+      pt: "<strong>O veículo Z (o ciclista) já está na rotatória</strong>, por isso tem prioridade — a rotatória é sempre percorrida no sentido horário e quem vai entrar deve dar passagem a quem já está circulando. Entre os dois carros que ainda vão entrar, X deve dar passagem a Y, que está à direita de X.",
+      es: "<strong>El vehículo Z (el ciclista) ya está circulando en la rotonda</strong>, por lo que tiene prioridad: la rotonda siempre se recorre en sentido horario y quien va a entrar debe ceder el paso a quien ya está circulando. Entre los dos autos que aún esperan para entrar, X debe ceder el paso a Y, que está a la derecha de X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-12",
+    cat: "Give Way Rules",
+    q: {
+      en: "In which order should the vehicles proceed?",
+      pt: "Em que ordem os veículos devem prosseguir?",
+      es: "¿En qué orden deben avanzar los vehículos?"
+    },
+    sign: "/icons/signs/roundabout-cyclist-priority-order.png",
+    cap: {
+      en: "Roundabout give-way order: cyclist Z is already circulating and has priority over cars X and Y, who are both waiting to enter.",
+      pt: "Ordem de prioridade na rotatória: o ciclista Z já está circulando e tem prioridade sobre os carros X e Y, que ainda vão entrar.",
+      es: "Orden de prioridad en la rotonda: el ciclista Z ya está circulando y tiene prioridad sobre los autos X e Y, que aún esperan para entrar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X, then Y, then Z.",
+          pt: "Veículo X, depois Y, depois Z.",
+          es: "Vehículo X, luego Y, luego Z."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Z, then Y, then X.",
+          pt: "Veículo Z, depois Y, depois X.",
+          es: "Vehículo Z, luego Y, luego X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X, then Z, then Y.",
+          pt: "Veículo X, depois Z, depois Y.",
+          es: "Vehículo X, luego Z, luego Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle Z (the cyclist) is already on the roundabout</strong>, so it has priority — roundabouts are always travelled clockwise and entering traffic must give way to anyone already circulating. Of the two cars still waiting to enter, X must give way to Y, who is on X's right.",
+      pt: "<strong>O veículo Z (o ciclista) já está na rotatória</strong>, por isso tem prioridade — a rotatória é sempre percorrida no sentido horário e quem vai entrar deve dar passagem a quem já está circulando. Entre os dois carros que ainda vão entrar, X deve dar passagem a Y, que está à direita de X.",
+      es: "<strong>El vehículo Z (el ciclista) ya está circulando en la rotonda</strong>, por lo que tiene prioridad: la rotonda siempre se recorre en sentido horario y quien va a entrar debe ceder el paso a quien ya está circulando. Entre los dos autos que aún esperan para entrar, X debe ceder el paso a Y, que está a la derecha de X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-19",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-broken-lane-line-same-direction.png",
+    cap: {
+      en: "X and Y travel in the same direction in lanes divided by a broken line — X may overtake Y.",
+      pt: "X e Y seguem na mesma direção em faixas separadas por uma linha tracejada — X pode ultrapassar Y.",
+      es: "X e Y circulan en la misma dirección en carriles separados por una línea discontinua — X puede adelantar a Y."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X pode ultrapassar Y, somente em uma área de 60 km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 60 km/h."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The lane line between X and Y is broken (dashed) and both vehicles travel in the same direction — <strong>the handbook allows crossing a broken line to overtake or change lanes when it is safe to do so</strong>, so X may overtake Y.",
+      pt: "A linha entre as faixas de X e Y é tracejada (descontínua) e ambos seguem na mesma direção — <strong>o manual permite cruzar uma linha tracejada para ultrapassar ou mudar de faixa quando for seguro fazê-lo</strong>, portanto X pode ultrapassar Y.",
+      es: "La línea entre los carriles de X e Y es discontinua y ambos circulan en la misma dirección — <strong>el manual permite cruzar una línea discontinua para adelantar o cambiar de carril cuando sea seguro hacerlo</strong>, por lo que X puede adelantar a Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-28",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-two-way-road-unmarked-lanes.png",
+    cap: {
+      en: "Two-way road, lanes not marked: Vehicle X follows Vehicle Y, both travelling in the same direction.",
+      pt: "Via de mão dupla, sem faixas demarcadas: o veículo X segue atrás do veículo Y, ambos na mesma direção.",
+      es: "Vía de doble sentido, sin carriles marcados: el vehículo X circula detrás del vehículo Y, ambos en la misma dirección."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar o veículo Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar o veículo Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X pode ultrapassar o veículo Y, apenas em uma área de 60km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 60km/h."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a two-way road with no lane markings, you may overtake a vehicle travelling in the same direction on the right, provided it is safe and legal. <strong>Nothing here — no sign, no stopped vehicle, no blind bend, no continuous line — stops Vehicle X from overtaking Y.</strong>",
+      pt: "Em uma via de mão dupla sem faixas demarcadas, é permitido ultrapassar pela direita um veículo que segue na mesma direção, desde que seja seguro e legal. <strong>Não há nada na cena — placa, veículo parado, curva sem visibilidade ou linha contínua — que impeça o veículo X de ultrapassar Y.</strong>",
+      es: "En una vía de doble sentido sin carriles señalizados, se puede adelantar por la derecha a un vehículo que circula en la misma dirección, siempre que sea seguro y legal. <strong>No hay nada en la escena — señal, vehículo detenido, curva sin visibilidad o línea continua — que impida que el vehículo X adelante a Y.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-20",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-two-way-road-unmarked-lanes.png",
+    cap: {
+      en: "Two-way road, lanes not marked: Vehicle X follows Vehicle Y, both travelling in the same direction.",
+      pt: "Via de mão dupla, sem faixas demarcadas: o veículo X segue atrás do veículo Y, ambos na mesma direção.",
+      es: "Vía de doble sentido, sin carriles marcados: el vehículo X circula detrás del vehículo Y, ambos en la misma dirección."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar o veículo Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar o veículo Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X pode ultrapassar o veículo Y, apenas em uma área de 60km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 60km/h."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a two-way road with no lane markings, you may overtake a vehicle travelling in the same direction on the right, provided it is safe and legal. <strong>Nothing here — no sign, no stopped vehicle, no blind bend, no continuous line — stops Vehicle X from overtaking Y.</strong>",
+      pt: "Em uma via de mão dupla sem faixas demarcadas, é permitido ultrapassar pela direita um veículo que segue na mesma direção, desde que seja seguro e legal. <strong>Não há nada na cena — placa, veículo parado, curva sem visibilidade ou linha contínua — que impeça o veículo X de ultrapassar Y.</strong>",
+      es: "En una vía de doble sentido sin carriles señalizados, se puede adelantar por la derecha a un vehículo que circula en la misma dirección, siempre que sea seguro y legal. <strong>No hay nada en la escena — señal, vehículo detenido, curva sin visibilidad o línea continua — que impida que el vehículo X adelante a Y.</strong>"
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-01",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/no-overtake-left-turning-vehicle-x-y.png",
+    cap: {
+      en: "Unmarked two-way road: Y is turning left ahead of X, so X must not attempt to overtake.",
+      pt: "Via de mão dupla sem faixas demarcadas: Y está virando à esquerda à frente de X, então X não deve tentar ultrapassar.",
+      es: "Carretera de doble sentido sin carriles marcados: Y está girando a la izquierda delante de X, por lo que X no debe intentar adelantar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não deve ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 50km/h area.",
+          pt: "O veículo X pode ultrapassar Y, somente em uma área de 50 km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 50 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is signalling and turning left ahead of X. Drivers may only overtake on the left when the vehicle ahead is indicating a <strong>right</strong> turn, never a left one, since a left-turning vehicle can cut directly across the overtaking path. So <strong>X must not overtake Y</strong>.",
+      pt: "O veículo Y está sinalizando e virando à esquerda à frente de X. Só é permitido ultrapassar pela esquerda quando o veículo da frente sinaliza uma curva à <strong>direita</strong>, nunca à esquerda, pois um veículo virando à esquerda pode cruzar diretamente a trajetória da ultrapassagem. Por isso, <strong>X não deve ultrapassar Y</strong>.",
+      es: "El vehículo Y está señalizando y girando a la izquierda delante de X. Solo se puede adelantar por la izquierda cuando el vehículo de adelante indica un giro a la <strong>derecha</strong>, nunca a la izquierda, porque un vehículo que gira a la izquierda puede cruzarse directamente en la trayectoria del adelantamiento. Por eso, <strong>X no debe adelantar a Y</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-14",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/no-overtake-left-turning-vehicle-x-y.png",
+    cap: {
+      en: "Unmarked two-way road: Y is turning left ahead of X, so X must not attempt to overtake.",
+      pt: "Via de mão dupla sem faixas demarcadas: Y está virando à esquerda à frente de X, então X não deve tentar ultrapassar.",
+      es: "Carretera de doble sentido sin carriles marcados: Y está girando a la izquierda delante de X, por lo que X no debe intentar adelantar."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não deve ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 50km/h area.",
+          pt: "O veículo X pode ultrapassar Y, somente em uma área de 50 km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 50 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is signalling and turning left ahead of X. Drivers may only overtake on the left when the vehicle ahead is indicating a <strong>right</strong> turn, never a left one, since a left-turning vehicle can cut directly across the overtaking path. So <strong>X must not overtake Y</strong>.",
+      pt: "O veículo Y está sinalizando e virando à esquerda à frente de X. Só é permitido ultrapassar pela esquerda quando o veículo da frente sinaliza uma curva à <strong>direita</strong>, nunca à esquerda, pois um veículo virando à esquerda pode cruzar diretamente a trajetória da ultrapassagem. Por isso, <strong>X não deve ultrapassar Y</strong>.",
+      es: "El vehículo Y está señalizando y girando a la izquierda delante de X. Solo se puede adelantar por la izquierda cuando el vehículo de adelante indica un giro a la <strong>derecha</strong>, nunca a la izquierda, porque un vehículo que gira a la izquierda puede cruzarse directamente en la trayectoria del adelantamiento. Por eso, <strong>X no debe adelantar a Y</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-08",
+    cat: "Parking Rules",
+    q: {
+      en: "Are you allowed to park a vehicle on a pedestrian crossing?",
+      pt: "É permitido estacionar um veículo em uma faixa de pedestres?",
+      es: "¿Está permitido estacionar un vehículo sobre un paso de peatones?"
+    },
+    sign: "/icons/signs/pedestrian-crossing-no-parking.png",
+    cap: {
+      en: "A zebra-striped pedestrian crossing spans the road — stopping or parking on it is prohibited.",
+      pt: "Uma faixa de pedestres (zebra) atravessa a via — parar ou estacionar sobre ela é proibido.",
+      es: "Un paso de peatones tipo cebra cruza la calzada — detenerse o estacionar sobre él está prohibido."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if no pedestrians are using it.",
+          pt: "Sim, se não houver pedestres usando a faixa.",
+          es: "Sí, si no hay peatones usándolo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if it is a passenger vehicle.",
+          pt: "Sim, se for um veículo de passageiros.",
+          es: "Sí, si es un vehículo de pasajeros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>No</strong> — parking on a pedestrian crossing is never allowed. The road rules prohibit stopping within 20 metres of the approach side and 10 metres of the leaving side of any pedestrian crossing, and drivers must always give way to pedestrians using it.",
+      pt: "<strong>Não</strong> — estacionar em uma faixa de pedestres nunca é permitido. As regras de trânsito proíbem parar a até 20 metros antes e 10 metros depois de qualquer faixa de pedestres, e o motorista deve sempre dar preferência aos pedestres que a estão usando.",
+      es: "<strong>No</strong> — nunca está permitido estacionar sobre un paso de peatones. Las normas de tránsito prohíben detenerse hasta 20 metros antes y 10 metros después de cualquier paso de peatones, y el conductor siempre debe ceder el paso a los peatones que lo están usando."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-07",
+    cat: "Parking Rules",
+    q: {
+      en: "Are you allowed to park a vehicle on a pedestrian crossing?",
+      pt: "É permitido estacionar um veículo em uma faixa de pedestres?",
+      es: "¿Está permitido estacionar un vehículo sobre un paso de peatones?"
+    },
+    sign: "/icons/signs/pedestrian-crossing-no-parking.png",
+    cap: {
+      en: "A zebra-striped pedestrian crossing spans the road — stopping or parking on it is prohibited.",
+      pt: "Uma faixa de pedestres (zebra) atravessa a via — parar ou estacionar sobre ela é proibido.",
+      es: "Un paso de peatones tipo cebra cruza la calzada — detenerse o estacionar sobre él está prohibido."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if no pedestrians are using it.",
+          pt: "Sim, se não houver pedestres usando a faixa.",
+          es: "Sí, si no hay peatones usándolo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if it is a passenger vehicle.",
+          pt: "Sim, se for um veículo de passageiros.",
+          es: "Sí, si es un vehículo de pasajeros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>No</strong> — parking on a pedestrian crossing is never allowed. The road rules prohibit stopping within 20 metres of the approach side and 10 metres of the leaving side of any pedestrian crossing, and drivers must always give way to pedestrians using it.",
+      pt: "<strong>Não</strong> — estacionar em uma faixa de pedestres nunca é permitido. As regras de trânsito proíbem parar a até 20 metros antes e 10 metros depois de qualquer faixa de pedestres, e o motorista deve sempre dar preferência aos pedestres que a estão usando.",
+      es: "<strong>No</strong> — nunca está permitido estacionar sobre un paso de peatones. Las normas de tránsito prohíben detenerse hasta 20 metros antes y 10 metros después de cualquier paso de peatones, y el conductor siempre debe ceder el paso a los peatones que lo están usando."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-10",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroads-right-rule.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X (heading straight through) must give way to Vehicle Y, approaching from its right.",
+      pt: "Cruzamento não sinalizado: o veículo X (seguindo em frente) deve dar passagem ao veículo Y, que vem pela sua direita.",
+      es: "Cruce sin señalización: el vehículo X (que sigue de frente) debe ceder el paso al vehículo Y, que se aproxima por su derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection (no signs, signals or roundabout), you must give way to a vehicle approaching from your right. Y is approaching from X's right, so <strong>Vehicle X must give way to Vehicle Y</strong>.",
+      pt: "Em um cruzamento de quatro vias não sinalizado (sem placas, semáforos ou rotatória), você deve dar passagem ao veículo que se aproxima pela sua direita. O veículo Y se aproxima pela direita do veículo X, então <strong>o veículo X deve dar passagem ao veículo Y</strong>.",
+      es: "En una intersección de cuatro vías sin control (sin señales, semáforos ni rotonda), debes ceder el paso al vehículo que se aproxima por tu derecha. El vehículo Y se aproxima por la derecha del vehículo X, así que <strong>el vehículo X debe ceder el paso al vehículo Y</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-06",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroads-right-rule.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X (heading straight through) must give way to Vehicle Y, approaching from its right.",
+      pt: "Cruzamento não sinalizado: o veículo X (seguindo em frente) deve dar passagem ao veículo Y, que vem pela sua direita.",
+      es: "Cruce sin señalización: el vehículo X (que sigue de frente) debe ceder el paso al vehículo Y, que se aproxima por su derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection (no signs, signals or roundabout), you must give way to a vehicle approaching from your right. Y is approaching from X's right, so <strong>Vehicle X must give way to Vehicle Y</strong>.",
+      pt: "Em um cruzamento de quatro vias não sinalizado (sem placas, semáforos ou rotatória), você deve dar passagem ao veículo que se aproxima pela sua direita. O veículo Y se aproxima pela direita do veículo X, então <strong>o veículo X deve dar passagem ao veículo Y</strong>.",
+      es: "En una intersección de cuatro vías sin control (sin señales, semáforos ni rotonda), debes ceder el paso al vehículo que se aproxima por tu derecha. El vehículo Y se aproxima por la derecha del vehículo X, así que <strong>el vehículo X debe ceder el paso al vehículo Y</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-10",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-uncontrolled-crossroads-right-rule.png",
+    cap: {
+      en: "Uncontrolled crossroads: Vehicle X (heading straight through) must give way to Vehicle Y, approaching from its right.",
+      pt: "Cruzamento não sinalizado: o veículo X (seguindo em frente) deve dar passagem ao veículo Y, que vem pela sua direita.",
+      es: "Cruce sin señalización: el vehículo X (que sigue de frente) debe ceder el paso al vehículo Y, que se aproxima por su derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At an uncontrolled four-way intersection (no signs, signals or roundabout), you must give way to a vehicle approaching from your right. Y is approaching from X's right, so <strong>Vehicle X must give way to Vehicle Y</strong>.",
+      pt: "Em um cruzamento de quatro vias não sinalizado (sem placas, semáforos ou rotatória), você deve dar passagem ao veículo que se aproxima pela sua direita. O veículo Y se aproxima pela direita do veículo X, então <strong>o veículo X deve dar passagem ao veículo Y</strong>.",
+      es: "En una intersección de cuatro vías sin control (sin señales, semáforos ni rotonda), debes ceder el paso al vehículo que se aproxima por tu derecha. El vehículo Y se aproxima por la derecha del vehículo X, así que <strong>el vehículo X debe ceder el paso al vehículo Y</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-17",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-roundabout-x-yields-to-y.png",
+    cap: {
+      en: "Roundabout: Vehicle Y is already on the roundabout while Vehicle X approaches from the side road, so X must give way.",
+      pt: "Rotatória: o veículo Y já está na rotatória enquanto o veículo X se aproxima pela via lateral, então X deve dar passagem.",
+      es: "Rotonda: el vehículo Y ya está en la rotonda mientras el vehículo X se aproxima por la vía lateral, así que X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At a roundabout you must give way to all traffic already on the roundabout. <strong>Vehicle Y is already on the roundabout</strong>, so Vehicle X must give way before entering.",
+      pt: "Em uma rotatória, você deve dar passagem a todo o tráfego que já está circulando nela. <strong>O veículo Y já está na rotatória</strong>, então o veículo X deve dar passagem antes de entrar.",
+      es: "En una rotonda, debes ceder el paso a todo el tráfico que ya está circulando en ella. <strong>El vehículo Y ya está en la rotonda</strong>, así que el vehículo X debe ceder el paso antes de entrar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-09",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-roundabout-x-yields-to-y.png",
+    cap: {
+      en: "Roundabout: Vehicle Y is already on the roundabout while Vehicle X approaches from the side road, so X must give way.",
+      pt: "Rotatória: o veículo Y já está na rotatória enquanto o veículo X se aproxima pela via lateral, então X deve dar passagem.",
+      es: "Rotonda: el vehículo Y ya está en la rotonda mientras el vehículo X se aproxima por la vía lateral, así que X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At a roundabout you must give way to all traffic already on the roundabout. <strong>Vehicle Y is already on the roundabout</strong>, so Vehicle X must give way before entering.",
+      pt: "Em uma rotatória, você deve dar passagem a todo o tráfego que já está circulando nela. <strong>O veículo Y já está na rotatória</strong>, então o veículo X deve dar passagem antes de entrar.",
+      es: "En una rotonda, debes ceder el paso a todo el tráfico que ya está circulando en ella. <strong>El vehículo Y ya está en la rotonda</strong>, así que el vehículo X debe ceder el paso antes de entrar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-roundabout-x-yields-to-y.png",
+    cap: {
+      en: "Roundabout: Vehicle Y is already on the roundabout while Vehicle X approaches from the side road, so X must give way.",
+      pt: "Rotatória: o veículo Y já está na rotatória enquanto o veículo X se aproxima pela via lateral, então X deve dar passagem.",
+      es: "Rotonda: el vehículo Y ya está en la rotonda mientras el vehículo X se aproxima por la vía lateral, así que X debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At a roundabout you must give way to all traffic already on the roundabout. <strong>Vehicle Y is already on the roundabout</strong>, so Vehicle X must give way before entering.",
+      pt: "Em uma rotatória, você deve dar passagem a todo o tráfego que já está circulando nela. <strong>O veículo Y já está na rotatória</strong>, então o veículo X deve dar passagem antes de entrar.",
+      es: "En una rotonda, debes ceder el paso a todo el tráfico que ya está circulando en ella. <strong>El vehículo Y ya está en la rotonda</strong>, así que el vehículo X debe ceder el paso antes de entrar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-19",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve ceder a passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroad-vehicle-on-right.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle Y, approaching from the west, must give way to Vehicle X coming from its right.",
+      pt: "Cruzamento não sinalizado: o veículo Y, vindo do oeste, deve ceder a passagem ao veículo X, que se aproxima pela sua direita.",
+      es: "Cruce no controlado: el vehículo Y, que viene del oeste, debe ceder el paso al vehículo X, que se acerca por su derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa ceder a passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled crossroad with no signs or lights. Vehicle X is approaching from Vehicle Y's right, so <strong>Vehicle Y must give way to Vehicle X</strong>, since at an uncontrolled intersection you always give way to traffic on your right.",
+      pt: "Este é um cruzamento sem sinalização (sem placas de PARE ou DÊ A PREFERÊNCIA, nem semáforo). O veículo X se aproxima pela direita do veículo Y, então <strong>o veículo Y deve ceder a passagem ao veículo X</strong>, pois em cruzamentos não sinalizados sempre se cede a passagem ao trânsito que vem da direita.",
+      es: "Se trata de un cruce sin señalización (sin señales de PARE ni CEDA EL PASO, ni semáforo). El vehículo X se acerca por la derecha del vehículo Y, por lo que <strong>el vehículo Y debe ceder el paso al vehículo X</strong>, ya que en un cruce no controlado siempre se cede el paso al tránsito que viene por la derecha."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-02",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve ceder a passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroad-vehicle-on-right.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle Y, approaching from the west, must give way to Vehicle X coming from its right.",
+      pt: "Cruzamento não sinalizado: o veículo Y, vindo do oeste, deve ceder a passagem ao veículo X, que se aproxima pela sua direita.",
+      es: "Cruce no controlado: el vehículo Y, que viene del oeste, debe ceder el paso al vehículo X, que se acerca por su derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa ceder a passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled crossroad with no signs or lights. Vehicle X is approaching from Vehicle Y's right, so <strong>Vehicle Y must give way to Vehicle X</strong>, since at an uncontrolled intersection you always give way to traffic on your right.",
+      pt: "Este é um cruzamento sem sinalização (sem placas de PARE ou DÊ A PREFERÊNCIA, nem semáforo). O veículo X se aproxima pela direita do veículo Y, então <strong>o veículo Y deve ceder a passagem ao veículo X</strong>, pois em cruzamentos não sinalizados sempre se cede a passagem ao trânsito que vem da direita.",
+      es: "Se trata de un cruce sin señalización (sin señales de PARE ni CEDA EL PASO, ni semáforo). El vehículo X se acerca por la derecha del vehículo Y, por lo que <strong>el vehículo Y debe ceder el paso al vehículo X</strong>, ya que en un cruce no controlado siempre se cede el paso al tránsito que viene por la derecha."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-25",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve ceder a passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroad-vehicle-on-right.png",
+    cap: {
+      en: "Uncontrolled crossroad: Vehicle Y, approaching from the west, must give way to Vehicle X coming from its right.",
+      pt: "Cruzamento não sinalizado: o veículo Y, vindo do oeste, deve ceder a passagem ao veículo X, que se aproxima pela sua direita.",
+      es: "Cruce no controlado: el vehículo Y, que viene del oeste, debe ceder el paso al vehículo X, que se acerca por su derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa ceder a passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled crossroad with no signs or lights. Vehicle X is approaching from Vehicle Y's right, so <strong>Vehicle Y must give way to Vehicle X</strong>, since at an uncontrolled intersection you always give way to traffic on your right.",
+      pt: "Este é um cruzamento sem sinalização (sem placas de PARE ou DÊ A PREFERÊNCIA, nem semáforo). O veículo X se aproxima pela direita do veículo Y, então <strong>o veículo Y deve ceder a passagem ao veículo X</strong>, pois em cruzamentos não sinalizados sempre se cede a passagem ao trânsito que vem da direita.",
+      es: "Se trata de un cruce sin señalización (sin señales de PARE ni CEDA EL PASO, ni semáforo). El vehículo X se acerca por la derecha del vehículo Y, por lo que <strong>el vehículo Y debe ceder el paso al vehículo X</strong>, ya que en un cruce no controlado siempre se cede el paso al tránsito que viene por la derecha."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-30",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-right-turning-vehicle-unmarked-lanes.png",
+    cap: {
+      en: "Two-way road, unmarked lanes: vehicle Y signals a right turn, so X may overtake on the left.",
+      pt: "Via de mão dupla, faixas não demarcadas: o veículo Y sinaliza conversão à direita, então X pode ultrapassar pela esquerda.",
+      es: "Vía de doble sentido, carriles no demarcados: el vehículo Y señala un giro a la derecha, por lo que X puede adelantar por la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 50km/h area.",
+          pt: "O veículo X pode ultrapassar Y, somente em uma área de 50km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 50 km/h."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is <strong>signalling a right turn</strong>, so X may legally overtake it on the left, even on this unmarked two-way road — this is one of the specific situations where overtaking on the left is permitted.",
+      pt: "O veículo Y está <strong>sinalizando conversão à direita</strong>, então X pode ultrapassá-lo legalmente pela esquerda, mesmo nesta via de mão dupla sem faixas demarcadas — esta é uma das situações específicas em que ultrapassar pela esquerda é permitido.",
+      es: "El vehículo Y está <strong>señalizando un giro a la derecha</strong>, por lo que X puede adelantarlo legalmente por la izquierda, incluso en esta vía de doble sentido sin carriles demarcados — esta es una de las situaciones específicas en las que se permite adelantar por la izquierda."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-04",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-right-turning-vehicle-unmarked-lanes.png",
+    cap: {
+      en: "Two-way road, unmarked lanes: vehicle Y signals a right turn, so X may overtake on the left.",
+      pt: "Via de mão dupla, faixas não demarcadas: o veículo Y sinaliza conversão à direita, então X pode ultrapassar pela esquerda.",
+      es: "Vía de doble sentido, carriles no demarcados: el vehículo Y señala un giro a la derecha, por lo que X puede adelantar por la izquierda."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não pode ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 50km/h area.",
+          pt: "O veículo X pode ultrapassar Y, somente em uma área de 50km/h.",
+          es: "El vehículo X puede adelantar a Y, solo en una zona de 50 km/h."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle Y is <strong>signalling a right turn</strong>, so X may legally overtake it on the left, even on this unmarked two-way road — this is one of the specific situations where overtaking on the left is permitted.",
+      pt: "O veículo Y está <strong>sinalizando conversão à direita</strong>, então X pode ultrapassá-lo legalmente pela esquerda, mesmo nesta via de mão dupla sem faixas demarcadas — esta é uma das situações específicas em que ultrapassar pela esquerda é permitido.",
+      es: "El vehículo Y está <strong>señalizando un giro a la derecha</strong>, por lo que X puede adelantarlo legalmente por la izquierda, incluso en esta vía de doble sentido sin carriles demarcados — esta es una de las situaciones específicas en las que se permite adelantar por la izquierda."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-21",
+    cat: "Road Signs",
+    q: {
+      en: "If there is no traffic in sight, can you disregard this sign?",
+      pt: "Se não houver trânsito à vista, você pode desconsiderar esta placa?",
+      es: "Si no hay tránsito a la vista, ¿puede usted ignorar esta señal?"
+    },
+    sign: "/icons/signs/no-u-turn-sign.png",
+    cap: {
+      en: "No U Turn sign — a regulatory sign that must be obeyed at all times.",
+      pt: "Placa de Proibido Retornar — uma placa regulamentadora que deve ser obedecida em qualquer situação.",
+      es: "Señal de Prohibido Girar en U — una señal reglamentaria que debe respetarse en todo momento."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if the road is wide enough.",
+          pt: "Sim, se a via for larga o suficiente.",
+          es: "Sí, si la calle es lo suficientemente ancha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: '<strong>No</strong> — a "No U Turn" sign is a regulatory sign and must always be obeyed, whether or not traffic is present.',
+      pt: '<strong>Não</strong> — uma placa de "Proibido Retornar" é uma placa regulamentadora e deve ser sempre obedecida, haja ou não trânsito.',
+      es: '<strong>No</strong> — una señal de "Prohibido Girar en U" es una señal reglamentaria que debe respetarse siempre, haya o no tránsito.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-07",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve ceder passagem?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-turning-vehicle-pedestrian-intersection.png",
+    cap: {
+      en: "Vehicle X, turning at the intersection, must give way to pedestrian Y crossing the road it is turning into.",
+      pt: "O veículo X, ao converter no cruzamento, deve ceder passagem ao pedestre Y que atravessa a via para a qual ele está virando.",
+      es: "El vehículo X, al girar en la intersección, debe ceder el paso al peatón Y que cruza la calle hacia la que está girando."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrian Y.",
+          pt: "O pedestre Y.",
+          es: "El peatón Y."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "O veículo X.",
+          es: "El vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither has to give way.",
+          pt: "Nenhum dos dois precisa ceder passagem.",
+          es: "Ninguno de los dos tiene que ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle X is turning at the intersection into the road that pedestrian Y is crossing. <strong>A driver turning at an intersection must give way to a pedestrian crossing in front of the turning vehicle</strong>, so X must give way to Y.",
+      pt: "O veículo X está convertendo no cruzamento, entrando na via que o pedestre Y está atravessando. <strong>O motorista que converte em um cruzamento deve ceder passagem ao pedestre que atravessa à frente do veículo em conversão</strong>, portanto X deve ceder passagem a Y.",
+      es: "El vehículo X está girando en la intersección hacia la calle que el peatón Y está cruzando. <strong>El conductor que gira en una intersección debe ceder el paso al peatón que cruza delante del vehículo que gira</strong>, por lo que X debe ceder el paso a Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-28",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar a preferência?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    sign: "/icons/signs/turning-vehicle-give-way-pedestrian-crossing.png",
+    cap: {
+      en: "Vehicle Y turns at the intersection while pedestrian X crosses the road it is turning into — Y must give way.",
+      pt: "O veículo Y faz a conversão no cruzamento enquanto o pedestre X atravessa a via para a qual ele está virando — Y deve dar a preferência.",
+      es: "El vehículo Y gira en la intersección mientras el peatón X cruza la calle hacia la que está girando — Y debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrian X.",
+          pt: "O pedestre X.",
+          es: "El peatón X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither has to give way.",
+          pt: "Nenhum dos dois precisa dar a preferência.",
+          es: "Ninguno de los dos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle Y must give way.</strong> A turning vehicle must always give way to a pedestrian crossing the road it is turning into, even without traffic lights or a marked crossing at that point.",
+      pt: "O <strong>Veículo Y deve dar a preferência</strong>. Um veículo que está fazendo a conversão deve sempre dar preferência ao pedestre que está atravessando a via para a qual ele está virando, mesmo sem semáforo ou faixa de pedestres marcada naquele ponto.",
+      es: "El <strong>Vehículo Y debe ceder el paso</strong>. Un vehículo que está girando siempre debe ceder el paso al peatón que cruza la calle hacia la que está girando, incluso sin semáforo ni paso peatonal marcado en ese punto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-24",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar a preferência?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    sign: "/icons/signs/turning-vehicle-give-way-pedestrian-crossing.png",
+    cap: {
+      en: "Vehicle Y turns at the intersection while pedestrian X crosses the road it is turning into — Y must give way.",
+      pt: "O veículo Y faz a conversão no cruzamento enquanto o pedestre X atravessa a via para a qual ele está virando — Y deve dar a preferência.",
+      es: "El vehículo Y gira en la intersección mientras el peatón X cruza la calle hacia la que está girando — Y debe ceder el paso."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrian X.",
+          pt: "O pedestre X.",
+          es: "El peatón X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither has to give way.",
+          pt: "Nenhum dos dois precisa dar a preferência.",
+          es: "Ninguno de los dos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Vehicle Y must give way.</strong> A turning vehicle must always give way to a pedestrian crossing the road it is turning into, even without traffic lights or a marked crossing at that point.",
+      pt: "O <strong>Veículo Y deve dar a preferência</strong>. Um veículo que está fazendo a conversão deve sempre dar preferência ao pedestre que está atravessando a via para a qual ele está virando, mesmo sem semáforo ou faixa de pedestres marcada naquele ponto.",
+      es: "El <strong>Vehículo Y debe ceder el paso</strong>. Un vehículo que está girando siempre debe ceder el paso al peatón que cruza la calle hacia la que está girando, incluso sin semáforo ni paso peatonal marcado en ese punto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-30",
+    cat: "Road Safety",
+    q: {
+      en: "Which is the correct path for the vehicle to take when turning into a two lane road?",
+      pt: "Qual é o trajeto correto para o veículo fazer ao entrar em uma via de duas faixas?",
+      es: "¿Cuál es la trayectoria correcta que debe seguir el vehículo al girar hacia una vía de dos carriles?"
+    },
+    sign: "/icons/signs/right-turn-two-lane-road-either-lane.png",
+    cap: {
+      en: "Right turn into a two-lane road: with no turning lanes marked, the driver may swing into either the near (Y) or far (X) lane.",
+      pt: "Conversão à direita para uma via de duas faixas: sem faixas de conversão demarcadas, o motorista pode entrar tanto na faixa mais próxima (Y) quanto na mais distante (X).",
+      es: "Giro a la derecha hacia una vía de dos carriles: sin carriles de giro señalizados, el conductor puede entrar tanto en el carril más cercano (Y) como en el más lejano (X)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "X is the correct path.",
+          pt: "O trajeto X é o correto.",
+          es: "La trayectoria X es la correcta."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Y is the correct path.",
+          pt: "O trajeto Y é o correto.",
+          es: "La trayectoria Y es la correcta."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both paths are correct.",
+          pt: "Os dois trajetos estão corretos.",
+          es: "Ambas trayectorias son correctas."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When turning right into a multi-lane road where no turning lanes are marked, <strong>you may enter any lane to the left of the centre of that road</strong>, provided it can be done without interfering with other traffic — so both the wider (X) and tighter (Y) paths shown are acceptable.",
+      pt: "Ao virar à direita para uma via com várias faixas sem faixas de conversão demarcadas, <strong>você pode entrar em qualquer faixa à esquerda do centro dessa via</strong>, desde que isso não interfira no tráfego — por isso tanto o trajeto mais aberto (X) quanto o mais fechado (Y) são aceitáveis.",
+      es: "Al girar a la derecha hacia una vía de varios carriles sin carriles de giro señalizados, <strong>puedes entrar en cualquier carril que esté a la izquierda del centro de esa vía</strong>, siempre que no interfieras con otro tráfico — por eso tanto la trayectoria más amplia (X) como la más ajustada (Y) son correctas."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-08",
+    cat: "Road Safety",
+    q: {
+      en: "Which is the correct path for the vehicle to take when turning into a two lane road?",
+      pt: "Qual é o trajeto correto para o veículo fazer ao entrar em uma via de duas faixas?",
+      es: "¿Cuál es la trayectoria correcta que debe seguir el vehículo al girar hacia una vía de dos carriles?"
+    },
+    sign: "/icons/signs/right-turn-two-lane-road-either-lane.png",
+    cap: {
+      en: "Right turn into a two-lane road: with no turning lanes marked, the driver may swing into either the near (Y) or far (X) lane.",
+      pt: "Conversão à direita para uma via de duas faixas: sem faixas de conversão demarcadas, o motorista pode entrar tanto na faixa mais próxima (Y) quanto na mais distante (X).",
+      es: "Giro a la derecha hacia una vía de dos carriles: sin carriles de giro señalizados, el conductor puede entrar tanto en el carril más cercano (Y) como en el más lejano (X)."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "X is the correct path.",
+          pt: "O trajeto X é o correto.",
+          es: "La trayectoria X es la correcta."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Y is the correct path.",
+          pt: "O trajeto Y é o correto.",
+          es: "La trayectoria Y es la correcta."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both paths are correct.",
+          pt: "Os dois trajetos estão corretos.",
+          es: "Ambas trayectorias son correctas."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When turning right into a multi-lane road where no turning lanes are marked, <strong>you may enter any lane to the left of the centre of that road</strong>, provided it can be done without interfering with other traffic — so both the wider (X) and tighter (Y) paths shown are acceptable.",
+      pt: "Ao virar à direita para uma via com várias faixas sem faixas de conversão demarcadas, <strong>você pode entrar em qualquer faixa à esquerda do centro dessa via</strong>, desde que isso não interfira no tráfego — por isso tanto o trajeto mais aberto (X) quanto o mais fechado (Y) são aceitáveis.",
+      es: "Al girar a la derecha hacia una vía de varios carriles sin carriles de giro señalizados, <strong>puedes entrar en cualquier carril que esté a la izquierda del centro de esa vía</strong>, siempre que no interfieras con otro tráfico — por eso tanto la trayectoria más amplia (X) como la más ajustada (Y) son correctas."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-01",
+    cat: "Road Signs",
+    q: {
+      en: "What should you do when you see this sign?",
+      pt: "O que você deve fazer ao ver esta placa?",
+      es: "¿Qué debes hacer al ver esta señal?"
+    },
+    sign: "/icons/signs/workmen-ahead-warning-sign.png",
+    cap: {
+      en: 'Yellow warning sign reading "WORKMEN AHEAD", alerting drivers to roadworks ahead.',
+      pt: 'Placa amarela de advertência com o texto "WORKMEN AHEAD" (trabalhadores à frente), alertando sobre obras na via.',
+      es: 'Señal de advertencia amarilla con el texto "WORKMEN AHEAD" (trabajadores adelante), que alerta sobre obras viales.'
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Be prepared to speed up to avoid workmen on the road.",
+          pt: "Estar preparado para acelerar para evitar os trabalhadores na via.",
+          es: "Estar preparado para acelerar para evitar a los trabajadores en la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Close your windows to avoid damage from flying objects.",
+          pt: "Fechar os vidros do carro para evitar danos de objetos arremessados.",
+          es: "Cerrar las ventanillas para evitar daños por objetos que puedan salir despedidos."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a yellow warning sign, and the handbook states you must <strong>slow down when you see a warning sign</strong>; near roadworks you should also approach with caution and be prepared to stop if directed.",
+      pt: "Esta é uma placa de advertência amarela, e o manual afirma que você deve <strong>reduzir a velocidade ao ver uma placa de advertência</strong>; perto de obras na via, também deve se aproximar com cautela e estar pronto para parar se for sinalizado.",
+      es: "Esta es una señal de advertencia amarilla, y el manual indica que debes <strong>reducir la velocidad al ver una señal de advertencia</strong>; cerca de obras viales también debes aproximarte con precaución y estar preparado para detenerte si te lo indican."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-24",
+    cat: "Traffic Lights",
+    q: {
+      en: "When approaching traffic lights, what does a red light with a green arrow (as shown in the diagram) mean?",
+      pt: "Ao se aproximar de um semáforo, o que significa uma luz vermelha com uma seta verde (como mostrado no diagrama)?",
+      es: "Al acercarse a un semáforo, ¿qué significa una luz roja con una flecha verde (como se muestra en el diagrama)?"
+    },
+    sign: "/icons/signs/red-light-green-arrow-right-turn.png",
+    cap: {
+      en: "Traffic signal showing a red circular light with a green right-turn arrow lit below it.",
+      pt: "Semáforo mostrando luz vermelha circular acesa com uma seta verde de conversão à direita acesa abaixo.",
+      es: "Semáforo con la luz roja circular encendida y una flecha verde de giro a la derecha encendida debajo."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop, until all lights show green.",
+          pt: "Pare, até que todas as luzes fiquem verdes.",
+          es: "Deténgase, hasta que todas las luces estén en verde."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You may proceed in the direction of the arrow.",
+          pt: "Você pode seguir na direção indicada pela seta.",
+          es: "Puede avanzar en la dirección indicada por la flecha."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Proceed in any direction.",
+          pt: "Pode seguir em qualquer direção.",
+          es: "Puede avanzar en cualquier dirección."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A red light with a green arrow means <strong>you may not go straight ahead, but you may turn in the direction of the arrow if it is safe to do so</strong> — you must still give way to any pedestrians crossing at the intersection.",
+      pt: "Uma luz vermelha com seta verde significa que <strong>você não pode seguir em frente, mas pode virar na direção indicada pela seta, se for seguro fazer isso</strong> — mesmo assim, deve dar preferência a qualquer pedestre atravessando na interseção.",
+      es: "Una luz roja con flecha verde significa que <strong>no puede avanzar de frente, pero puede girar en la dirección de la flecha si es seguro hacerlo</strong> — de todos modos debe ceder el paso a los peatones que crucen en la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-06",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sudden braking can cause your vehicle to skid.",
+          pt: "Uma frenagem brusca pode fazer seu veículo derrapar.",
+          es: "Frenar bruscamente puede hacer que tu vehículo derrape."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Braking severely will always stop your vehicle the fastest.",
+          pt: "Frear com força vai sempre parar seu veículo mais rápido.",
+          es: "Frenar con fuerza siempre detendrá tu vehículo más rápido."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "If you have good tyres your vehicle will not skid.",
+          pt: "Se você tiver pneus em bom estado, seu veículo não vai derrapar.",
+          es: "Si tienes buenos neumáticos, tu vehículo no derrapará."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists <strong>sudden or excessive braking</strong> as one of the main causes of a skid, since it can lock the wheels and cause loss of steering control.",
+      pt: "O Drive Safe Handbook lista a <strong>frenagem súbita ou excessiva</strong> como uma das principais causas de derrapagem, pois pode travar as rodas e fazer o motorista perder o controle da direção.",
+      es: "El Drive Safe Handbook indica que el <strong>frenado súbito o excesivo</strong> es una de las principales causas de derrape, ya que puede bloquear las ruedas y hacer que el conductor pierda el control de la dirección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-08",
+    cat: "Give Way Rules",
+    q: {
+      en: "When you want to cross an intersection, but you can see that the traffic ahead of you is banked up on the other side of the intersection, what must you do?",
+      pt: "Quando você quer atravessar um cruzamento, mas percebe que o trânsito à frente está congestionado do outro lado do cruzamento, o que você deve fazer?",
+      es: "Cuando quieres cruzar una intersección, pero ves que el tráfico más adelante está congestionado del otro lado de la intersección, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn and move slowly forward.",
+          pt: "Buzinar e avançar devagar.",
+          es: "Tocar la bocina y avanzar lentamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop before entering and make sure that you will not block the intersection if you join the queue.",
+          pt: "Parar antes de entrar e garantir que você não vai bloquear o cruzamento se entrar na fila.",
+          es: "Detenerte antes de entrar y asegurarte de que no bloquearás la intersección si te unes a la fila."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Join the queue of traffic.",
+          pt: "Entrar na fila de trânsito.",
+          es: "Unirte a la fila de tráfico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must <strong>never enter an intersection if a queue of traffic on the other side would prevent you from fully exiting it</strong> — stop before the intersection so you don't block crossing traffic, even if you would otherwise have right of way.",
+      pt: "Você <strong>nunca deve entrar em um cruzamento se uma fila de trânsito do outro lado impedir que você o atravesse completamente</strong> — pare antes do cruzamento para não bloquear o trânsito que cruza, mesmo que você tivesse preferência de passagem.",
+      es: "Nunca debes <strong>entrar en una intersección si una fila de tráfico del otro lado te impediría salir completamente de ella</strong> — detente antes de la intersección para no bloquear el tráfico que cruza, aunque en otro caso tuvieras el derecho de paso."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-04",
+    cat: "Give Way Rules",
+    q: {
+      en: "When you want to cross an intersection, but you can see that the traffic ahead of you is banked up on the other side of the intersection, what must you do?",
+      pt: "Quando você quer atravessar um cruzamento, mas percebe que o trânsito à frente está congestionado do outro lado do cruzamento, o que você deve fazer?",
+      es: "Cuando quieres cruzar una intersección, pero ves que el tráfico más adelante está congestionado del otro lado de la intersección, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn and move slowly forward.",
+          pt: "Buzinar e avançar devagar.",
+          es: "Tocar la bocina y avanzar lentamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop before entering and make sure that you will not block the intersection if you join the queue.",
+          pt: "Parar antes de entrar e garantir que você não vai bloquear o cruzamento se entrar na fila.",
+          es: "Detenerte antes de entrar y asegurarte de que no bloquearás la intersección si te unes a la fila."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Join the queue of traffic.",
+          pt: "Entrar na fila de trânsito.",
+          es: "Unirte a la fila de tráfico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must <strong>never enter an intersection if a queue of traffic on the other side would prevent you from fully exiting it</strong> — stop before the intersection so you don't block crossing traffic, even if you would otherwise have right of way.",
+      pt: "Você <strong>nunca deve entrar em um cruzamento se uma fila de trânsito do outro lado impedir que você o atravesse completamente</strong> — pare antes do cruzamento para não bloquear o trânsito que cruza, mesmo que você tivesse preferência de passagem.",
+      es: "Nunca debes <strong>entrar en una intersección si una fila de tráfico del otro lado te impediría salir completamente de ella</strong> — detente antes de la intersección para no bloquear el tráfico que cruza, aunque en otro caso tuvieras el derecho de paso."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-22",
+    cat: "Give Way Rules",
+    q: {
+      en: "When you want to cross an intersection, but you can see that the traffic ahead of you is banked up on the other side of the intersection, what must you do?",
+      pt: "Quando você quer atravessar um cruzamento, mas percebe que o trânsito à frente está congestionado do outro lado do cruzamento, o que você deve fazer?",
+      es: "Cuando quieres cruzar una intersección, pero ves que el tráfico más adelante está congestionado del otro lado de la intersección, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn and move slowly forward.",
+          pt: "Buzinar e avançar devagar.",
+          es: "Tocar la bocina y avanzar lentamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop before entering and make sure that you will not block the intersection if you join the queue.",
+          pt: "Parar antes de entrar e garantir que você não vai bloquear o cruzamento se entrar na fila.",
+          es: "Detenerte antes de entrar y asegurarte de que no bloquearás la intersección si te unes a la fila."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Join the queue of traffic.",
+          pt: "Entrar na fila de trânsito.",
+          es: "Unirte a la fila de tráfico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must <strong>never enter an intersection if a queue of traffic on the other side would prevent you from fully exiting it</strong> — stop before the intersection so you don't block crossing traffic, even if you would otherwise have right of way.",
+      pt: "Você <strong>nunca deve entrar em um cruzamento se uma fila de trânsito do outro lado impedir que você o atravesse completamente</strong> — pare antes do cruzamento para não bloquear o trânsito que cruza, mesmo que você tivesse preferência de passagem.",
+      es: "Nunca debes <strong>entrar en una intersección si una fila de tráfico del otro lado te impediría salir completamente de ella</strong> — detente antes de la intersección para no bloquear el tráfico que cruza, aunque en otro caso tuvieras el derecho de paso."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-10",
+    cat: "Road Markings",
+    q: {
+      en: "If you are travelling in a lane that has a left-turn arrow marked on the road, can you drive straight ahead?",
+      pt: "Se você está numa pista que tem uma seta de conversão à esquerda pintada na via, você pode seguir em frente?",
+      es: "Si circulas por un carril que tiene una flecha de giro a la izquierda pintada en la calzada, ¿puedes seguir recto?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if no other traffic is approaching.",
+          pt: "Sim, se não houver outro veículo se aproximando.",
+          es: "Sí, si no se aproxima otro tráfico."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "No — road markings with a <strong>left-turn arrow</strong> require you to drive in that direction; you may only go straight ahead if you change into another lane that allows it before the intersection.",
+      pt: "Não — as marcações com <strong>seta de conversão à esquerda</strong> obrigam você a seguir nessa direção; só é permitido seguir em frente se você mudar para outra faixa que permita isso antes do cruzamento.",
+      es: "No — las marcas viales con una <strong>flecha de giro a la izquierda</strong> te obligan a circular en esa dirección; solo puedes seguir recto si cambias a otro carril que lo permita antes de la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-03",
+    cat: "Road Markings",
+    q: {
+      en: "If you are travelling in a lane that has a left-turn arrow marked on the road, can you drive straight ahead?",
+      pt: "Se você está numa pista que tem uma seta de conversão à esquerda pintada na via, você pode seguir em frente?",
+      es: "Si circulas por un carril que tiene una flecha de giro a la izquierda pintada en la calzada, ¿puedes seguir recto?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if no other traffic is approaching.",
+          pt: "Sim, se não houver outro veículo se aproximando.",
+          es: "Sí, si no se aproxima otro tráfico."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "No — road markings with a <strong>left-turn arrow</strong> require you to drive in that direction; you may only go straight ahead if you change into another lane that allows it before the intersection.",
+      pt: "Não — as marcações com <strong>seta de conversão à esquerda</strong> obrigam você a seguir nessa direção; só é permitido seguir em frente se você mudar para outra faixa que permita isso antes do cruzamento.",
+      es: "No — las marcas viales con una <strong>flecha de giro a la izquierda</strong> te obligan a circular en esa dirección; solo puedes seguir recto si cambias a otro carril que lo permita antes de la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-13",
+    cat: "Road Safety",
+    q: {
+      en: "What is the safest way to approach an intersection?",
+      pt: "Qual é a forma mais segura de se aproximar de um cruzamento?",
+      es: "¿Cuál es la forma más segura de acercarse a una intersección?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Travelling at the speed limit for the area.",
+          pt: "Trafegar no limite de velocidade da área.",
+          es: "Circular al límite de velocidad de la zona."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Travelling at a speed that will allow you to stop if required.",
+          pt: "Trafegar a uma velocidade que permita parar se necessário.",
+          es: "Circular a una velocidad que le permita detenerse si es necesario."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Looking steadily to the right.",
+          pt: "Olhar fixamente para a direita.",
+          es: "Mirar fijamente hacia la derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A safe approach speed is one that lets you <strong>stop if required</strong>, not just whatever the posted limit allows — the handbook stresses the speed limit is only a maximum for ideal conditions, so drivers must be ready to stop safely as an intersection changes ahead of them (e.g. a light turning yellow or red).",
+      pt: "Uma velocidade de aproximação segura é aquela que permite <strong>parar se for necessário</strong>, não simplesmente a velocidade do limite da via — o manual deixa claro que o limite de velocidade é apenas o máximo permitido em condições ideais, então o condutor precisa estar pronto para parar com segurança caso a situação no cruzamento mude (por exemplo, o sinal ficando amarelo ou vermelho).",
+      es: "Una velocidad de aproximación segura es aquella que le permite <strong>detenerse si es necesario</strong>, no simplemente circular al límite señalizado — el manual aclara que el límite de velocidad es solo el máximo permitido en condiciones ideales, por lo que el conductor debe estar preparado para detenerse con seguridad si la situación en la intersección cambia (por ejemplo, si el semáforo pasa a amarillo o rojo)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-22",
+    cat: "Road Safety",
+    q: {
+      en: "What is the safest way to approach an intersection?",
+      pt: "Qual é a forma mais segura de se aproximar de um cruzamento?",
+      es: "¿Cuál es la forma más segura de acercarse a una intersección?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Travelling at the speed limit for the area.",
+          pt: "Trafegar no limite de velocidade da área.",
+          es: "Circular al límite de velocidad de la zona."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Travelling at a speed that will allow you to stop if required.",
+          pt: "Trafegar a uma velocidade que permita parar se necessário.",
+          es: "Circular a una velocidad que le permita detenerse si es necesario."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Looking steadily to the right.",
+          pt: "Olhar fixamente para a direita.",
+          es: "Mirar fijamente hacia la derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A safe approach speed is one that lets you <strong>stop if required</strong>, not just whatever the posted limit allows — the handbook stresses the speed limit is only a maximum for ideal conditions, so drivers must be ready to stop safely as an intersection changes ahead of them (e.g. a light turning yellow or red).",
+      pt: "Uma velocidade de aproximação segura é aquela que permite <strong>parar se for necessário</strong>, não simplesmente a velocidade do limite da via — o manual deixa claro que o limite de velocidade é apenas o máximo permitido em condições ideais, então o condutor precisa estar pronto para parar com segurança caso a situação no cruzamento mude (por exemplo, o sinal ficando amarelo ou vermelho).",
+      es: "Una velocidad de aproximación segura es aquella que le permite <strong>detenerse si es necesario</strong>, no simplemente circular al límite señalizado — el manual aclara que el límite de velocidad es solo el máximo permitido en condiciones ideales, por lo que el conductor debe estar preparado para detenerse con seguridad si la situación en la intersección cambia (por ejemplo, si el semáforo pasa a amarillo o rojo)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-22",
+    cat: "Road Safety",
+    q: {
+      en: "What is the safest way to approach an intersection?",
+      pt: "Qual é a forma mais segura de se aproximar de um cruzamento?",
+      es: "¿Cuál es la forma más segura de acercarse a una intersección?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Travelling at the speed limit for the area.",
+          pt: "Trafegar no limite de velocidade da área.",
+          es: "Circular al límite de velocidad de la zona."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Travelling at a speed that will allow you to stop if required.",
+          pt: "Trafegar a uma velocidade que permita parar se necessário.",
+          es: "Circular a una velocidad que le permita detenerse si es necesario."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Looking steadily to the right.",
+          pt: "Olhar fixamente para a direita.",
+          es: "Mirar fijamente hacia la derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A safe approach speed is one that lets you <strong>stop if required</strong>, not just whatever the posted limit allows — the handbook stresses the speed limit is only a maximum for ideal conditions, so drivers must be ready to stop safely as an intersection changes ahead of them (e.g. a light turning yellow or red).",
+      pt: "Uma velocidade de aproximação segura é aquela que permite <strong>parar se for necessário</strong>, não simplesmente a velocidade do limite da via — o manual deixa claro que o limite de velocidade é apenas o máximo permitido em condições ideais, então o condutor precisa estar pronto para parar com segurança caso a situação no cruzamento mude (por exemplo, o sinal ficando amarelo ou vermelho).",
+      es: "Una velocidad de aproximación segura es aquella que le permite <strong>detenerse si es necesario</strong>, no simplemente circular al límite señalizado — el manual aclara que el límite de velocidad es solo el máximo permitido en condiciones ideales, por lo que el conductor debe estar preparado para detenerse con seguridad si la situación en la intersección cambia (por ejemplo, si el semáforo pasa a amarillo o rojo)."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-16",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Alcohol has no effect on your driving ability.",
+          pt: "O álcool não tem nenhum efeito na sua capacidade de dirigir.",
+          es: "El alcohol no tiene ningún efecto en tu capacidad de conducir."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Alcohol makes you react faster to hazards.",
+          pt: "O álcool faz você reagir mais rápido aos perigos na via.",
+          es: "El alcohol hace que reacciones más rápido ante los peligros de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Alcohol makes you react more slowly to hazards.",
+          pt: "O álcool faz você reagir mais lentamente aos perigos na via.",
+          es: "El alcohol hace que reacciones más lentamente ante los peligros de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Alcohol is a depressant that <strong>slows down your reaction time to road hazards</strong>, even at low doses — it does not sharpen your responses or leave your driving unaffected.",
+      pt: "O álcool é um depressor que <strong>torna sua reação aos perigos da via mais lenta</strong>, mesmo em doses baixas — ele não deixa seus reflexos mais rápidos nem sua condução inalterada.",
+      es: "El alcohol es un depresor que <strong>hace más lenta tu reacción ante los peligros de la vía</strong>, incluso en dosis bajas — no agiliza tus reflejos ni deja tu conducción sin efecto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-06",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Alcohol has no effect on your driving ability.",
+          pt: "O álcool não tem nenhum efeito na sua capacidade de dirigir.",
+          es: "El alcohol no tiene ningún efecto en tu capacidad de conducir."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Alcohol makes you react faster to hazards.",
+          pt: "O álcool faz você reagir mais rápido aos perigos na via.",
+          es: "El alcohol hace que reacciones más rápido ante los peligros de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Alcohol makes you react more slowly to hazards.",
+          pt: "O álcool faz você reagir mais lentamente aos perigos na via.",
+          es: "El alcohol hace que reacciones más lentamente ante los peligros de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Alcohol is a depressant that <strong>slows down your reaction time to road hazards</strong>, even at low doses — it does not sharpen your responses or leave your driving unaffected.",
+      pt: "O álcool é um depressor que <strong>torna sua reação aos perigos da via mais lenta</strong>, mesmo em doses baixas — ele não deixa seus reflexos mais rápidos nem sua condução inalterada.",
+      es: "El alcohol es un depresor que <strong>hace más lenta tu reacción ante los peligros de la vía</strong>, incluso en dosis bajas — no agiliza tus reflejos ni deja tu conducción sin efecto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-05",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Alcohol has no effect on your driving ability.",
+          pt: "O álcool não tem nenhum efeito na sua capacidade de dirigir.",
+          es: "El alcohol no tiene ningún efecto en tu capacidad de conducir."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Alcohol makes you react faster to hazards.",
+          pt: "O álcool faz você reagir mais rápido aos perigos na via.",
+          es: "El alcohol hace que reacciones más rápido ante los peligros de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Alcohol makes you react more slowly to hazards.",
+          pt: "O álcool faz você reagir mais lentamente aos perigos na via.",
+          es: "El alcohol hace que reacciones más lentamente ante los peligros de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Alcohol is a depressant that <strong>slows down your reaction time to road hazards</strong>, even at low doses — it does not sharpen your responses or leave your driving unaffected.",
+      pt: "O álcool é um depressor que <strong>torna sua reação aos perigos da via mais lenta</strong>, mesmo em doses baixas — ele não deixa seus reflexos mais rápidos nem sua condução inalterada.",
+      es: "El alcohol es un depresor que <strong>hace más lenta tu reacción ante los peligros de la vía</strong>, incluso en dosis bajas — no agiliza tus reflejos ni deja tu conducción sin efecto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-19",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Alcohol has no effect on your driving ability.",
+          pt: "O álcool não tem nenhum efeito na sua capacidade de dirigir.",
+          es: "El alcohol no tiene ningún efecto en tu capacidad de conducir."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Alcohol makes you react faster to hazards.",
+          pt: "O álcool faz você reagir mais rápido aos perigos na via.",
+          es: "El alcohol hace que reacciones más rápido ante los peligros de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Alcohol makes you react more slowly to hazards.",
+          pt: "O álcool faz você reagir mais lentamente aos perigos na via.",
+          es: "El alcohol hace que reacciones más lentamente ante los peligros de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Alcohol is a depressant that <strong>slows down your reaction time to road hazards</strong>, even at low doses — it does not sharpen your responses or leave your driving unaffected.",
+      pt: "O álcool é um depressor que <strong>torna sua reação aos perigos da via mais lenta</strong>, mesmo em doses baixas — ele não deixa seus reflexos mais rápidos nem sua condução inalterada.",
+      es: "El alcohol es un depresor que <strong>hace más lenta tu reacción ante los peligros de la vía</strong>, incluso en dosis bajas — no agiliza tus reflejos ni deja tu conducción sin efecto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-26",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What area is known as a vehicle driver's blind spot?",
+      pt: "Que área é conhecida como o ponto cego de um motorista?",
+      es: "¿Qué área se conoce como el punto ciego de un conductor?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The area beside the vehicle that the driver is not looking at.",
+          pt: "A área ao lado do veículo que o motorista não está olhando no momento.",
+          es: "El área al lado del vehículo que el conductor no está mirando en ese momento."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "An area behind or to the side of the vehicle that cannot be seen in the side or rear-view mirrors.",
+          pt: "Uma área atrás ou ao lado do veículo que não pode ser vista pelos espelhos laterais ou retrovisor.",
+          es: "Un área detrás o al costado del vehículo que no se puede ver en los espejos laterales ni en el retrovisor."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "An area which can only be seen in the side or rear-view mirrors.",
+          pt: "Uma área que só pode ser vista pelos espelhos laterais ou retrovisor.",
+          es: "Un área que solo se puede ver en los espejos laterales o en el retrovisor."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A blind spot is the area behind or to the side of your vehicle that is <strong>not visible in your side or rear-view mirrors</strong> — you must glance over your shoulder to check it before changing lanes, merging, or turning.",
+      pt: "O ponto cego é a área atrás ou ao lado do veículo que <strong>não é visível pelos espelhos laterais ou retrovisor</strong> — por isso é preciso olhar por cima do ombro antes de mudar de faixa, convergir ou virar.",
+      es: "El punto ciego es el área detrás o al costado del vehículo que <strong>no se puede ver en los espejos laterales ni en el retrovisor</strong>; por eso hay que mirar por encima del hombro antes de cambiar de carril, incorporarse o girar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-18",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What area is known as a vehicle driver's blind spot?",
+      pt: "Que área é conhecida como o ponto cego de um motorista?",
+      es: "¿Qué área se conoce como el punto ciego de un conductor?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The area beside the vehicle that the driver is not looking at.",
+          pt: "A área ao lado do veículo que o motorista não está olhando no momento.",
+          es: "El área al lado del vehículo que el conductor no está mirando en ese momento."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "An area behind or to the side of the vehicle that cannot be seen in the side or rear-view mirrors.",
+          pt: "Uma área atrás ou ao lado do veículo que não pode ser vista pelos espelhos laterais ou retrovisor.",
+          es: "Un área detrás o al costado del vehículo que no se puede ver en los espejos laterales ni en el retrovisor."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "An area which can only be seen in the side or rear-view mirrors.",
+          pt: "Uma área que só pode ser vista pelos espelhos laterais ou retrovisor.",
+          es: "Un área que solo se puede ver en los espejos laterales o en el retrovisor."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A blind spot is the area behind or to the side of your vehicle that is <strong>not visible in your side or rear-view mirrors</strong> — you must glance over your shoulder to check it before changing lanes, merging, or turning.",
+      pt: "O ponto cego é a área atrás ou ao lado do veículo que <strong>não é visível pelos espelhos laterais ou retrovisor</strong> — por isso é preciso olhar por cima do ombro antes de mudar de faixa, convergir ou virar.",
+      es: "El punto ciego es el área detrás o al costado del vehículo que <strong>no se puede ver en los espejos laterales ni en el retrovisor</strong>; por eso hay que mirar por encima del hombro antes de cambiar de carril, incorporarse o girar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-15",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do when a driver is indicating to overtake you?",
+      pt: "O que você deve fazer quando um motorista sinaliza que vai ultrapassar você?",
+      es: "¿Qué debes hacer cuando un conductor te indica que va a adelantarte?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up if you are travelling under the speed limit.",
+          pt: "Acelerar se você estiver abaixo do limite de velocidade.",
+          es: "Acelerar si vas por debajo del límite de velocidad."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Move as far to the left as possible and do not increase your speed.",
+          pt: "Manter-se o mais à esquerda possível e não aumentar a velocidade.",
+          es: "Mantenerte lo más a la izquierda posible y no aumentar la velocidad."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Signal the driver to remain behind you if you think he or she is travelling too fast.",
+          pt: "Sinalizar para o motorista permanecer atrás de você se achar que ele está muito rápido.",
+          es: "Indicarle al conductor que se quede detrás de ti si crees que va demasiado rápido."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states that when another driver is overtaking you, you should <strong>move to the left and must not increase your speed</strong> until the overtaking vehicle has completely passed you.",
+      pt: "O Drive Safe Handbook diz que, quando outro motorista está ultrapassando você, você deve <strong>manter-se à esquerda e não pode aumentar a velocidade</strong> até que o veículo tenha ultrapassado completamente.",
+      es: "El Drive Safe Handbook indica que, cuando otro conductor te está adelantando, debes <strong>mantenerte a la izquierda y no puedes aumentar la velocidad</strong> hasta que el vehículo te haya adelantado por completo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-23",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do when a driver is indicating to overtake you?",
+      pt: "O que você deve fazer quando um motorista sinaliza que vai ultrapassar você?",
+      es: "¿Qué debes hacer cuando un conductor te indica que va a adelantarte?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up if you are travelling under the speed limit.",
+          pt: "Acelerar se você estiver abaixo do limite de velocidade.",
+          es: "Acelerar si vas por debajo del límite de velocidad."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Move as far to the left as possible and do not increase your speed.",
+          pt: "Manter-se o mais à esquerda possível e não aumentar a velocidade.",
+          es: "Mantenerte lo más a la izquierda posible y no aumentar la velocidad."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Signal the driver to remain behind you if you think he or she is travelling too fast.",
+          pt: "Sinalizar para o motorista permanecer atrás de você se achar que ele está muito rápido.",
+          es: "Indicarle al conductor que se quede detrás de ti si crees que va demasiado rápido."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states that when another driver is overtaking you, you should <strong>move to the left and must not increase your speed</strong> until the overtaking vehicle has completely passed you.",
+      pt: "O Drive Safe Handbook diz que, quando outro motorista está ultrapassando você, você deve <strong>manter-se à esquerda e não pode aumentar a velocidade</strong> até que o veículo tenha ultrapassado completamente.",
+      es: "El Drive Safe Handbook indica que, cuando otro conductor te está adelantando, debes <strong>mantenerte a la izquierda y no puedes aumentar la velocidad</strong> hasta que el vehículo te haya adelantado por completo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-02",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do when a driver is indicating to overtake you?",
+      pt: "O que você deve fazer quando um motorista sinaliza que vai ultrapassar você?",
+      es: "¿Qué debes hacer cuando un conductor te indica que va a adelantarte?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up if you are travelling under the speed limit.",
+          pt: "Acelerar se você estiver abaixo do limite de velocidade.",
+          es: "Acelerar si vas por debajo del límite de velocidad."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Move as far to the left as possible and do not increase your speed.",
+          pt: "Manter-se o mais à esquerda possível e não aumentar a velocidade.",
+          es: "Mantenerte lo más a la izquierda posible y no aumentar la velocidad."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Signal the driver to remain behind you if you think he or she is travelling too fast.",
+          pt: "Sinalizar para o motorista permanecer atrás de você se achar que ele está muito rápido.",
+          es: "Indicarle al conductor que se quede detrás de ti si crees que va demasiado rápido."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states that when another driver is overtaking you, you should <strong>move to the left and must not increase your speed</strong> until the overtaking vehicle has completely passed you.",
+      pt: "O Drive Safe Handbook diz que, quando outro motorista está ultrapassando você, você deve <strong>manter-se à esquerda e não pode aumentar a velocidade</strong> até que o veículo tenha ultrapassado completamente.",
+      es: "El Drive Safe Handbook indica que, cuando otro conductor te está adelantando, debes <strong>mantenerte a la izquierda y no puedes aumentar la velocidad</strong> hasta que el vehículo te haya adelantado por completo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-17",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "If a vehicle is overtaking you and there is not enough distance for it to complete the manoeuvre safely, what should you do?",
+      pt: "Se um veículo está ultrapassando você e não há distância suficiente para ele concluir a manobra com segurança, o que você deve fazer?",
+      es: "Si un vehículo te está adelantando y no hay suficiente distancia para que complete la maniobra de forma segura, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn to warn of approaching danger.",
+          pt: "Buzinar para avisar do perigo iminente.",
+          es: "Tocar la bocina para advertir del peligro."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down to let the vehicle move in front of you.",
+          pt: "Reduzir a velocidade para deixar o veículo entrar na sua frente.",
+          es: "Reducir la velocidad para dejar que el vehículo se ponga delante de ti."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Increase your speed to make the passing vehicle fall back behind you.",
+          pt: "Aumentar a velocidade para fazer o veículo que está ultrapassando ficar para trás.",
+          es: "Aumentar la velocidad para que el vehículo que te adelanta se quede atrás."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If there isn't enough room for the overtaking driver to finish safely, <strong>slow down and move left to give them space to pull in front of you</strong>. The handbook explicitly forbids speeding up or otherwise blocking the vehicle that is passing you.",
+      pt: "Se não houver espaço suficiente para o outro motorista concluir a ultrapassagem com segurança, <strong>reduza a velocidade e mova-se para a esquerda para dar espaço</strong> ao veículo entrar na sua frente. O manual proíbe explicitamente acelerar ou bloquear o veículo que está ultrapassando.",
+      es: "Si no hay espacio suficiente para que el otro conductor termine de adelantarte con seguridad, <strong>reduce la velocidad y muévete a la izquierda para darle espacio</strong> a que se ponga delante de ti. El manual prohíbe explícitamente acelerar o bloquear al vehículo que te está adelantando."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-18",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "If a vehicle is overtaking you and there is not enough distance for it to complete the manoeuvre safely, what should you do?",
+      pt: "Se um veículo está ultrapassando você e não há distância suficiente para ele concluir a manobra com segurança, o que você deve fazer?",
+      es: "Si un vehículo te está adelantando y no hay suficiente distancia para que complete la maniobra de forma segura, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn to warn of approaching danger.",
+          pt: "Buzinar para avisar do perigo iminente.",
+          es: "Tocar la bocina para advertir del peligro."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down to let the vehicle move in front of you.",
+          pt: "Reduzir a velocidade para deixar o veículo entrar na sua frente.",
+          es: "Reducir la velocidad para dejar que el vehículo se ponga delante de ti."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Increase your speed to make the passing vehicle fall back behind you.",
+          pt: "Aumentar a velocidade para fazer o veículo que está ultrapassando ficar para trás.",
+          es: "Aumentar la velocidad para que el vehículo que te adelanta se quede atrás."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If there isn't enough room for the overtaking driver to finish safely, <strong>slow down and move left to give them space to pull in front of you</strong>. The handbook explicitly forbids speeding up or otherwise blocking the vehicle that is passing you.",
+      pt: "Se não houver espaço suficiente para o outro motorista concluir a ultrapassagem com segurança, <strong>reduza a velocidade e mova-se para a esquerda para dar espaço</strong> ao veículo entrar na sua frente. O manual proíbe explicitamente acelerar ou bloquear o veículo que está ultrapassando.",
+      es: "Si no hay espacio suficiente para que el otro conductor termine de adelantarte con seguridad, <strong>reduce la velocidad y muévete a la izquierda para darle espacio</strong> a que se ponga delante de ti. El manual prohíbe explícitamente acelerar o bloquear al vehículo que te está adelantando."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-20",
+    cat: "Road Safety",
+    q: {
+      en: "Do you need to indicate if you are turning from a one-way street into another one-way street?",
+      pt: "É necessário sinalizar (usar a seta) ao virar de uma rua de mão única para outra rua de mão única?",
+      es: "¿Necesitas indicar (usar el intermitente) si giras de una calle de sentido único hacia otra calle de sentido único?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, only if there is a vehicle behind you.",
+          pt: "Sim, apenas se houver um veículo atrás de você.",
+          es: "Sí, solo si hay un vehículo detrás de ti."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must always indicate/signal before turning left or right, even when turning from one one-way street into another. <strong>The handbook lists no exception for one-way to one-way turns</strong> — signalling still warns pedestrians and other road users of your intention.",
+      pt: "Você deve sempre sinalizar (usar a seta) antes de virar à esquerda ou à direita, mesmo ao virar de uma rua de mão única para outra. <strong>O manual não lista nenhuma exceção para viradas entre ruas de mão única</strong> — sinalizar continua avisando pedestres e outros condutores da sua intenção.",
+      es: "Siempre debes indicar/señalizar antes de girar a la izquierda o a la derecha, incluso al girar de una calle de sentido único a otra. <strong>El manual no menciona ninguna excepción para giros entre calles de sentido único</strong> — indicar sigue avisando a los peatones y otros conductores de tu intención."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-05",
+    cat: "Road Safety",
+    q: {
+      en: "Do you need to indicate if you are turning from a one-way street into another one-way street?",
+      pt: "É necessário sinalizar (usar a seta) ao virar de uma rua de mão única para outra rua de mão única?",
+      es: "¿Necesitas indicar (usar el intermitente) si giras de una calle de sentido único hacia otra calle de sentido único?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, only if there is a vehicle behind you.",
+          pt: "Sim, apenas se houver um veículo atrás de você.",
+          es: "Sí, solo si hay un vehículo detrás de ti."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must always indicate/signal before turning left or right, even when turning from one one-way street into another. <strong>The handbook lists no exception for one-way to one-way turns</strong> — signalling still warns pedestrians and other road users of your intention.",
+      pt: "Você deve sempre sinalizar (usar a seta) antes de virar à esquerda ou à direita, mesmo ao virar de uma rua de mão única para outra. <strong>O manual não lista nenhuma exceção para viradas entre ruas de mão única</strong> — sinalizar continua avisando pedestres e outros condutores da sua intenção.",
+      es: "Siempre debes indicar/señalizar antes de girar a la izquierda o a la derecha, incluso al girar de una calle de sentido único a otra. <strong>El manual no menciona ninguna excepción para giros entre calles de sentido único</strong> — indicar sigue avisando a los peatones y otros conductores de tu intención."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-24",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Does drinking alcohol and driving increase the risk of having a crash?",
+      pt: "A ingestão de álcool antes de dirigir aumenta o risco de acidente?",
+      es: "¿Beber alcohol antes de conducir aumenta el riesgo de tener un accidente?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, providing you drink coffee before you drive.",
+          pt: "Não, desde que você tome café antes de dirigir.",
+          es: "No, siempre que tomes café antes de conducir."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Yes. <strong>Alcohol impairs judgement, reaction time, coordination and vision</strong>, all of which are essential for safe driving, so drinking and driving significantly increases crash risk. Drinking coffee does not counteract this — only time allows the body to break down alcohol.",
+      pt: "Sim. <strong>O álcool prejudica o julgamento, o tempo de reação, a coordenação e a visão</strong>, habilidades essenciais para dirigir com segurança, por isso beber e dirigir aumenta significativamente o risco de acidente. Tomar café não resolve isso — apenas o tempo permite que o corpo elimine o álcool.",
+      es: "Sí. <strong>El alcohol afecta el juicio, el tiempo de reacción, la coordinación y la visión</strong>, habilidades esenciales para conducir con seguridad, por lo que beber y conducir aumenta significativamente el riesgo de accidente. Tomar café no contrarresta este efecto — solo el paso del tiempo permite que el cuerpo elimine el alcohol."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-14",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Does drinking alcohol and driving increase the risk of having a crash?",
+      pt: "A ingestão de álcool antes de dirigir aumenta o risco de acidente?",
+      es: "¿Beber alcohol antes de conducir aumenta el riesgo de tener un accidente?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, providing you drink coffee before you drive.",
+          pt: "Não, desde que você tome café antes de dirigir.",
+          es: "No, siempre que tomes café antes de conducir."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Yes. <strong>Alcohol impairs judgement, reaction time, coordination and vision</strong>, all of which are essential for safe driving, so drinking and driving significantly increases crash risk. Drinking coffee does not counteract this — only time allows the body to break down alcohol.",
+      pt: "Sim. <strong>O álcool prejudica o julgamento, o tempo de reação, a coordenação e a visão</strong>, habilidades essenciais para dirigir com segurança, por isso beber e dirigir aumenta significativamente o risco de acidente. Tomar café não resolve isso — apenas o tempo permite que o corpo elimine o álcool.",
+      es: "Sí. <strong>El alcohol afecta el juicio, el tiempo de reacción, la coordinación y la visión</strong>, habilidades esenciales para conducir con seguridad, por lo que beber y conducir aumenta significativamente el riesgo de accidente. Tomar café no contrarresta este efecto — solo el paso del tiempo permite que el cuerpo elimine el alcohol."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-04",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Does drinking alcohol and driving increase the risk of having a crash?",
+      pt: "A ingestão de álcool antes de dirigir aumenta o risco de acidente?",
+      es: "¿Beber alcohol antes de conducir aumenta el riesgo de tener un accidente?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, providing you drink coffee before you drive.",
+          pt: "Não, desde que você tome café antes de dirigir.",
+          es: "No, siempre que tomes café antes de conducir."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Yes. <strong>Alcohol impairs judgement, reaction time, coordination and vision</strong>, all of which are essential for safe driving, so drinking and driving significantly increases crash risk. Drinking coffee does not counteract this — only time allows the body to break down alcohol.",
+      pt: "Sim. <strong>O álcool prejudica o julgamento, o tempo de reação, a coordenação e a visão</strong>, habilidades essenciais para dirigir com segurança, por isso beber e dirigir aumenta significativamente o risco de acidente. Tomar café não resolve isso — apenas o tempo permite que o corpo elimine o álcool.",
+      es: "Sí. <strong>El alcohol afecta el juicio, el tiempo de reacción, la coordinación y la visión</strong>, habilidades esenciales para conducir con seguridad, por lo que beber y conducir aumenta significativamente el riesgo de accidente. Tomar café no contrarresta este efecto — solo el paso del tiempo permite que el cuerpo elimine el alcohol."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-25",
+    cat: "Parking Rules",
+    q: {
+      en: "How should you park a vehicle on a two-way street when there are no marked parking bays?",
+      pt: "Como você deve estacionar um veículo em uma via de mão dupla quando não há vagas demarcadas?",
+      es: "¿Cómo debe estacionar un vehículo en una calle de doble sentido cuando no hay bahías de estacionamiento demarcadas?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "With the left-hand wheels touching the kerb.",
+          pt: "Com as rodas do lado esquerdo encostadas no meio-fio.",
+          es: "Con las ruedas del lado izquierdo tocando el cordón."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Parallel and close to the left-hand kerb.",
+          pt: "Paralelo e próximo ao meio-fio do lado esquerdo.",
+          es: "En paralelo y cerca del cordón del lado izquierdo."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 1 metre from the kerb.",
+          pt: "A pelo menos 1 metro do meio-fio.",
+          es: "A por lo menos 1 metro del cordón."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a two-way street, you must park <strong>close to, and parallel with, the left-hand kerb</strong> — not with wheels touching it and not a metre away from it.",
+      pt: "Em uma via de mão dupla, você deve estacionar <strong>próximo e paralelo ao meio-fio do lado esquerdo</strong> — não com as rodas encostadas nele nem a um metro de distância.",
+      es: "En una calle de doble sentido, debe estacionar <strong>en paralelo y cerca del cordón del lado izquierdo</strong>, no con las ruedas tocándolo ni a un metro de distancia."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-27",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Do you need to indicate if you overtake a vehicle on an unmarked two-way road?",
+      pt: "Você precisa usar a seta ao ultrapassar um veículo em uma via de mão dupla sem marcação de faixas?",
+      es: "¿Necesitas señalizar (usar el intermitente) al adelantar a un vehículo en una carretera de doble sentido sin marcas viales?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, only if there is a vehicle behind you.",
+          pt: "Sim, somente se houver um veículo atrás de você.",
+          es: "Sí, solo si hay un vehículo detrás de ti."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must <strong>always indicate before pulling out to overtake</strong>, no matter whether the road has lane markings or whether another vehicle is behind you.",
+      pt: "Você deve <strong>sempre sinalizar antes de ultrapassar</strong>, mesmo em uma via sem marcação de faixas — indicar é obrigatório independentemente de haver um veículo atrás de você.",
+      es: "Siempre debes <strong>señalizar antes de adelantar</strong>, incluso en una carretera sin marcas viales — indicar es obligatorio sin importar si hay un vehículo detrás de ti."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-26",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Do you need to indicate if you overtake a vehicle on an unmarked two-way road?",
+      pt: "Você precisa usar a seta ao ultrapassar um veículo em uma via de mão dupla sem marcação de faixas?",
+      es: "¿Necesitas señalizar (usar el intermitente) al adelantar a un vehículo en una carretera de doble sentido sin marcas viales?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, only if there is a vehicle behind you.",
+          pt: "Sim, somente se houver um veículo atrás de você.",
+          es: "Sí, solo si hay un vehículo detrás de ti."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must <strong>always indicate before pulling out to overtake</strong>, no matter whether the road has lane markings or whether another vehicle is behind you.",
+      pt: "Você deve <strong>sempre sinalizar antes de ultrapassar</strong>, mesmo em uma via sem marcação de faixas — indicar é obrigatório independentemente de haver um veículo atrás de você.",
+      es: "Siempre debes <strong>señalizar antes de adelantar</strong>, incluso en una carretera sin marcas viales — indicar es obligatorio sin importar si hay un vehículo detrás de ti."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-28",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Tyres with no tread are just as safe as tyres with tread as long as the tyre pressure is correct.",
+          pt: "Pneus sem sulco são tão seguros quanto pneus com sulco, desde que a pressão esteja correta.",
+          es: "Los neumáticos sin dibujo son tan seguros como los que tienen dibujo, siempre que la presión sea correcta."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Tyre pressure should be checked when the tyres are hot.",
+          pt: "A pressão dos pneus deve ser verificada quando os pneus estão quentes.",
+          es: "La presión de los neumáticos debe revisarse cuando están calientes."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Tyre tread must be at least 1.5mm deep over all parts of the tyre that normally come in contact with the road.",
+          pt: "O sulco do pneu deve ter pelo menos 1,5 mm de profundidade em todas as partes da banda de rodagem que normalmente entram em contato com a estrada.",
+          es: "El dibujo del neumático debe tener al menos 1,5 mm de profundidad en todas las zonas de la banda de rodadura que normalmente entran en contacto con la carretera."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The handbook requires tyre tread to be <strong>at least 1.5mm deep</strong> across all road-contact areas; smooth tyres are dangerous in wet conditions, and pressure should be checked when tyres are cold, not hot.",
+      pt: "O manual exige que o sulco do pneu tenha <strong>pelo menos 1,5 mm de profundidade</strong> em toda a área de contato com a estrada; pneus lisos são perigosos em condições de chuva, e a pressão deve ser verificada com os pneus frios, não quentes.",
+      es: "El manual exige que el dibujo del neumático tenga <strong>al menos 1,5 mm de profundidad</strong> en toda el área de contacto con la carretera; los neumáticos lisos son peligrosos en condiciones de lluvia, y la presión debe revisarse con los neumáticos fríos, no calientes."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-27",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Tyres with no tread are just as safe as tyres with tread as long as the tyre pressure is correct.",
+          pt: "Pneus sem sulco são tão seguros quanto pneus com sulco, desde que a pressão esteja correta.",
+          es: "Los neumáticos sin dibujo son tan seguros como los que tienen dibujo, siempre que la presión sea correcta."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Tyre pressure should be checked when the tyres are hot.",
+          pt: "A pressão dos pneus deve ser verificada quando os pneus estão quentes.",
+          es: "La presión de los neumáticos debe revisarse cuando están calientes."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Tyre tread must be at least 1.5mm deep over all parts of the tyre that normally come in contact with the road.",
+          pt: "O sulco do pneu deve ter pelo menos 1,5 mm de profundidade em todas as partes da banda de rodagem que normalmente entram em contato com a estrada.",
+          es: "El dibujo del neumático debe tener al menos 1,5 mm de profundidad en todas las zonas de la banda de rodadura que normalmente entran en contacto con la carretera."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The handbook requires tyre tread to be <strong>at least 1.5mm deep</strong> across all road-contact areas; smooth tyres are dangerous in wet conditions, and pressure should be checked when tyres are cold, not hot.",
+      pt: "O manual exige que o sulco do pneu tenha <strong>pelo menos 1,5 mm de profundidade</strong> em toda a área de contato com a estrada; pneus lisos são perigosos em condições de chuva, e a pressão deve ser verificada com os pneus frios, não quentes.",
+      es: "El manual exige que el dibujo del neumático tenga <strong>al menos 1,5 mm de profundidad</strong> en toda el área de contacto con la carretera; los neumáticos lisos son peligrosos en condiciones de lluvia, y la presión debe revisarse con los neumáticos fríos, no calientes."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-30",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do if you see animals on the road ahead?",
+      pt: "O que você deve fazer se avistar animais na estrada à frente?",
+      es: "¿Qué debes hacer si ves animales en la carretera más adelante?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduza a velocidade e esteja pronto para parar.",
+          es: "Reduce la velocidad y prepárate para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzine.",
+          es: "Toca la bocina."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up to get past them quickly.",
+          pt: "Acelere para passar por eles rapidamente.",
+          es: "Acelera para pasarlos rápidamente."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook advises drivers to <strong>slow down and be prepared to stop</strong> when they see animals on the road ahead — sounding the horn or speeding up can startle animals and cause a collision.",
+      pt: "O manual Drive Safe orienta que o motorista deve <strong>reduzir a velocidade e estar pronto para parar</strong> ao ver animais na estrada à frente — buzinar ou acelerar pode assustar o animal e causar uma colisão.",
+      es: "El manual Drive Safe indica que el conductor debe <strong>reducir la velocidad y estar preparado para detenerse</strong> al ver animales en la carretera más adelante — tocar la bocina o acelerar puede asustar al animal y causar una colisión."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-02",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Can medication used for colds or travel sickness affect your driving?",
+      pt: "Medicamentos usados para resfriado ou enjoo de viagem podem afetar a sua condução?",
+      es: "¿Los medicamentos para el resfriado o el mareo por viaje pueden afectar tu manera de conducir?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, unless it has been prescribed by a doctor.",
+          pt: "Não, a menos que tenha sido prescrito por um médico.",
+          es: "No, a menos que haya sido recetado por un médico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Yes.</strong> Medications for the common cold or travel sickness can seriously affect your driving ability, causing drowsiness and slower reaction times, similar to sedatives.",
+      pt: "<strong>Sim.</strong> Medicamentos para resfriado comum ou enjoo de viagem podem afetar seriamente sua capacidade de dirigir, causando sonolência e reduzindo o tempo de reação, de forma semelhante aos sedativos.",
+      es: "<strong>Sí.</strong> Los medicamentos para el resfriado común o el mareo por viaje pueden afectar seriamente tu capacidad de conducir, causando somnolencia y reduciendo el tiempo de reacción, de forma similar a los sedantes."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-20",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Can medication used for colds or travel sickness affect your driving?",
+      pt: "Medicamentos usados para resfriado ou enjoo de viagem podem afetar a sua condução?",
+      es: "¿Los medicamentos para el resfriado o el mareo por viaje pueden afectar tu manera de conducir?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, unless it has been prescribed by a doctor.",
+          pt: "Não, a menos que tenha sido prescrito por um médico.",
+          es: "No, a menos que haya sido recetado por un médico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Yes.</strong> Medications for the common cold or travel sickness can seriously affect your driving ability, causing drowsiness and slower reaction times, similar to sedatives.",
+      pt: "<strong>Sim.</strong> Medicamentos para resfriado comum ou enjoo de viagem podem afetar seriamente sua capacidade de dirigir, causando sonolência e reduzindo o tempo de reação, de forma semelhante aos sedativos.",
+      es: "<strong>Sí.</strong> Los medicamentos para el resfriado común o el mareo por viaje pueden afectar seriamente tu capacidad de conducir, causando somnolencia y reduciendo el tiempo de reacción, de forma similar a los sedantes."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-11",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Can medication used for colds or travel sickness affect your driving?",
+      pt: "Medicamentos usados para resfriado ou enjoo de viagem podem afetar a sua condução?",
+      es: "¿Los medicamentos para el resfriado o el mareo por viaje pueden afectar tu manera de conducir?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, unless it has been prescribed by a doctor.",
+          pt: "Não, a menos que tenha sido prescrito por um médico.",
+          es: "No, a menos que haya sido recetado por un médico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Yes.</strong> Medications for the common cold or travel sickness can seriously affect your driving ability, causing drowsiness and slower reaction times, similar to sedatives.",
+      pt: "<strong>Sim.</strong> Medicamentos para resfriado comum ou enjoo de viagem podem afetar seriamente sua capacidade de dirigir, causando sonolência e reduzindo o tempo de reação, de forma semelhante aos sedativos.",
+      es: "<strong>Sí.</strong> Los medicamentos para el resfriado común o el mareo por viaje pueden afectar seriamente tu capacidad de conducir, causando somnolencia y reduciendo el tiempo de reacción, de forma similar a los sedantes."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-03",
+    cat: "Road Safety",
+    q: {
+      en: "When are you allowed to sound your vehicle's horn?",
+      pt: "Quando você pode buzinar o veículo?",
+      es: "¿Cuándo puedes tocar la bocina de tu vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when you are travelling outside built-up areas.",
+          pt: "Somente quando estiver dirigindo fora de áreas urbanizadas.",
+          es: "Solo cuando circulas fuera de zonas urbanizadas."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when it is used as a warning device.",
+          pt: "Somente como dispositivo de aviso/alerta.",
+          es: "Solo como dispositivo de advertencia."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "At any time.",
+          pt: "A qualquer momento.",
+          es: "En cualquier momento."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook states you must <strong>only use your horn to warn other road users of danger</strong> — using it for any other purpose is an offence.",
+      pt: "O manual afirma que você deve <strong>usar a buzina apenas para avisar outros usuários da via sobre um perigo</strong> — usá-la para qualquer outro fim é uma infração.",
+      es: "El manual indica que debes <strong>usar la bocina únicamente para advertir a otros usuarios de la vía sobre un peligro</strong>; usarla con cualquier otro fin es una infracción."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-15",
+    cat: "Road Safety",
+    q: {
+      en: "When are you allowed to sound your vehicle's horn?",
+      pt: "Quando você pode buzinar o veículo?",
+      es: "¿Cuándo puedes tocar la bocina de tu vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when you are travelling outside built-up areas.",
+          pt: "Somente quando estiver dirigindo fora de áreas urbanizadas.",
+          es: "Solo cuando circulas fuera de zonas urbanizadas."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when it is used as a warning device.",
+          pt: "Somente como dispositivo de aviso/alerta.",
+          es: "Solo como dispositivo de advertencia."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "At any time.",
+          pt: "A qualquer momento.",
+          es: "En cualquier momento."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook states you must <strong>only use your horn to warn other road users of danger</strong> — using it for any other purpose is an offence.",
+      pt: "O manual afirma que você deve <strong>usar a buzina apenas para avisar outros usuários da via sobre um perigo</strong> — usá-la para qualquer outro fim é uma infração.",
+      es: "El manual indica que debes <strong>usar la bocina únicamente para advertir a otros usuarios de la vía sobre un peligro</strong>; usarla con cualquier otro fin es una infracción."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-09",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do if you are travelling slowly on a two-way road and there is a queue of vehicles behind you?",
+      pt: "O que você deve fazer se estiver dirigindo devagar em uma via de mão dupla e houver uma fila de veículos atrás de você?",
+      es: "¿Qué debe hacer si circula lentamente por una vía de doble sentido y hay una fila de vehículos detrás de usted?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Pull well over to the left and allow the vehicles to overtake you.",
+          pt: "Encoste bem à esquerda e permita que os veículos o ultrapassem.",
+          es: "Manténgase bien a la izquierda y permita que los vehículos lo adelanten."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep to the middle of the road to prevent dangerous overtaking.",
+          pt: "Mantenha-se no meio da via para impedir ultrapassagens perigosas.",
+          es: "Manténgase en el medio de la vía para impedir adelantamientos peligrosos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep well to the right so the queue of vehicles can overtake on the left.",
+          pt: "Mantenha-se bem à direita para que a fila de veículos possa ultrapassar pela esquerda.",
+          es: "Manténgase bien a la derecha para que la fila de vehículos pueda adelantar por la izquierda."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are driving slower than the traffic behind you on a two-way road, you must <strong>pull well over to the left to allow following vehicles to overtake</strong> — this is a legal requirement in WA, not just courtesy.",
+      pt: "Se você estiver dirigindo mais devagar que o trânsito atrás de você em uma via de mão dupla, deve <strong>encostar bem à esquerda para permitir que os veículos atrás ultrapassem</strong> — isso é uma exigência legal em WA, não apenas cortesia.",
+      es: "Si conduce más lento que el tránsito detrás de usted en una vía de doble sentido, debe <strong>mantenerse bien a la izquierda para permitir que los vehículos que lo siguen lo adelanten</strong> — esto es un requisito legal en WA, no solo cortesía."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-30",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What should you do if you are travelling slowly on a two-way road and there is a queue of vehicles behind you?",
+      pt: "O que você deve fazer se estiver dirigindo devagar em uma via de mão dupla e houver uma fila de veículos atrás de você?",
+      es: "¿Qué debe hacer si circula lentamente por una vía de doble sentido y hay una fila de vehículos detrás de usted?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Pull well over to the left and allow the vehicles to overtake you.",
+          pt: "Encoste bem à esquerda e permita que os veículos o ultrapassem.",
+          es: "Manténgase bien a la izquierda y permita que los vehículos lo adelanten."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep to the middle of the road to prevent dangerous overtaking.",
+          pt: "Mantenha-se no meio da via para impedir ultrapassagens perigosas.",
+          es: "Manténgase en el medio de la vía para impedir adelantamientos peligrosos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep well to the right so the queue of vehicles can overtake on the left.",
+          pt: "Mantenha-se bem à direita para que a fila de veículos possa ultrapassar pela esquerda.",
+          es: "Manténgase bien a la derecha para que la fila de vehículos pueda adelantar por la izquierda."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are driving slower than the traffic behind you on a two-way road, you must <strong>pull well over to the left to allow following vehicles to overtake</strong> — this is a legal requirement in WA, not just courtesy.",
+      pt: "Se você estiver dirigindo mais devagar que o trânsito atrás de você em uma via de mão dupla, deve <strong>encostar bem à esquerda para permitir que os veículos atrás ultrapassem</strong> — isso é uma exigência legal em WA, não apenas cortesia.",
+      es: "Si conduce más lento que el tránsito detrás de usted en una vía de doble sentido, debe <strong>mantenerse bien a la izquierda para permitir que los vehículos que lo siguen lo adelanten</strong> — esto es un requisito legal en WA, no solo cortesía."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-14",
+    cat: "Road Safety",
+    q: {
+      en: "When is a driver allowed to drive without a seat belt?",
+      pt: "Quando é permitido a um condutor dirigir sem cinto de segurança?",
+      es: "¿Cuándo se permite a un conductor manejar sin cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When reversing a vehicle.",
+          pt: "Ao dar marcha à ré no veículo.",
+          es: "Cuando conduce el vehículo en reversa."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "When aged 65 years and over.",
+          pt: "Quando tiver 65 anos de idade ou mais.",
+          es: "Cuando tiene 65 años de edad o más."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When the driver is pregnant.",
+          pt: "Quando a condutora estiver grávida.",
+          es: "Cuando la conductora está embarazada."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists <strong>the driver of a vehicle travelling in reverse</strong> as one of the few legal seat belt exemptions. There is no age-based exemption, and pregnant drivers must wear a seat belt unless they hold a current medical certificate exempting them.",
+      pt: "O Drive Safe Handbook lista <strong>o condutor de um veículo dando marcha à ré</strong> como uma das poucas isenções legais do uso do cinto. Não existe isenção por idade, e condutoras grávidas devem usar cinto, a menos que possuam um atestado médico válido que as isente.",
+      es: "El Drive Safe Handbook indica que <strong>el conductor de un vehículo que va en reversa</strong> es una de las pocas excepciones legales al uso del cinturón. No existe excepción por edad, y las conductoras embarazadas deben usar cinturón salvo que tengan un certificado médico vigente que las exima."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-17",
+    cat: "Road Safety",
+    q: {
+      en: "When is a driver allowed to drive without a seat belt?",
+      pt: "Quando é permitido a um condutor dirigir sem cinto de segurança?",
+      es: "¿Cuándo se permite a un conductor manejar sin cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When reversing a vehicle.",
+          pt: "Ao dar marcha à ré no veículo.",
+          es: "Cuando conduce el vehículo en reversa."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "When aged 65 years and over.",
+          pt: "Quando tiver 65 anos de idade ou mais.",
+          es: "Cuando tiene 65 años de edad o más."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When the driver is pregnant.",
+          pt: "Quando a condutora estiver grávida.",
+          es: "Cuando la conductora está embarazada."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists <strong>the driver of a vehicle travelling in reverse</strong> as one of the few legal seat belt exemptions. There is no age-based exemption, and pregnant drivers must wear a seat belt unless they hold a current medical certificate exempting them.",
+      pt: "O Drive Safe Handbook lista <strong>o condutor de um veículo dando marcha à ré</strong> como uma das poucas isenções legais do uso do cinto. Não existe isenção por idade, e condutoras grávidas devem usar cinto, a menos que possuam um atestado médico válido que as isente.",
+      es: "El Drive Safe Handbook indica que <strong>el conductor de un vehículo que va en reversa</strong> es una de las pocas excepciones legales al uso del cinturón. No existe excepción por edad, y las conductoras embarazadas deben usar cinturón salvo que tengan un certificado médico vigente que las exima."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-03",
+    cat: "Road Safety",
+    q: {
+      en: "When is a driver allowed to drive without a seat belt?",
+      pt: "Quando é permitido a um condutor dirigir sem cinto de segurança?",
+      es: "¿Cuándo se permite a un conductor manejar sin cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When reversing a vehicle.",
+          pt: "Ao dar marcha à ré no veículo.",
+          es: "Cuando conduce el vehículo en reversa."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "When aged 65 years and over.",
+          pt: "Quando tiver 65 anos de idade ou mais.",
+          es: "Cuando tiene 65 años de edad o más."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When the driver is pregnant.",
+          pt: "Quando a condutora estiver grávida.",
+          es: "Cuando la conductora está embarazada."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists <strong>the driver of a vehicle travelling in reverse</strong> as one of the few legal seat belt exemptions. There is no age-based exemption, and pregnant drivers must wear a seat belt unless they hold a current medical certificate exempting them.",
+      pt: "O Drive Safe Handbook lista <strong>o condutor de um veículo dando marcha à ré</strong> como uma das poucas isenções legais do uso do cinto. Não existe isenção por idade, e condutoras grávidas devem usar cinto, a menos que possuam um atestado médico válido que as isente.",
+      es: "El Drive Safe Handbook indica que <strong>el conductor de un vehículo que va en reversa</strong> es una de las pocas excepciones legales al uso del cinturón. No existe excepción por edad, y las conductoras embarazadas deben usar cinturón salvo que tengan un certificado médico vigente que las exima."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-15",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All passengers must wear available seat belts or suitable child restraints.",
+          pt: "Todos os passageiros devem usar o cinto de segurança disponível ou uma cadeirinha adequada.",
+          es: "Todos los pasajeros deben usar el cinturón de seguridad disponible o un sistema de retención infantil adecuado."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only passengers over the age of 8 years must wear a seat belt.",
+          pt: "Somente os passageiros com mais de 8 anos de idade devem usar cinto de segurança.",
+          es: "Solo los pasajeros mayores de 8 años deben usar cinturón de seguridad."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Passengers over the age of 65 do not have to wear seat belts.",
+          pt: "Passageiros com mais de 65 anos não precisam usar cinto de segurança.",
+          es: "Los pasajeros mayores de 65 años no están obligados a usar cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>All passengers must wear an available seat belt or suitable child restraint</strong> — the handbook states the driver and each passenger must be appropriately restrained, and only passengers in a seat fitted with a seat belt or child restraint can be carried. There is no exemption based on being over 8 or over 65 years old.",
+      pt: "<strong>Todos os passageiros devem usar o cinto de segurança disponível ou uma cadeirinha adequada</strong> — o manual determina que o motorista e cada passageiro devem estar devidamente contidos, e só podem ser transportados passageiros em bancos equipados com cinto de segurança ou cadeirinha. Não existe isenção por ter mais de 8 ou mais de 65 anos.",
+      es: "<strong>Todos los pasajeros deben usar el cinturón de seguridad disponible o un sistema de retención infantil adecuado</strong> — el manual establece que el conductor y cada pasajero deben estar debidamente sujetos, y solo pueden viajar pasajeros en asientos equipados con cinturón de seguridad o sistema de retención infantil. No existe ninguna exención por tener más de 8 o más de 65 años."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-15",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All passengers must wear available seat belts or suitable child restraints.",
+          pt: "Todos os passageiros devem usar o cinto de segurança disponível ou uma cadeirinha adequada.",
+          es: "Todos los pasajeros deben usar el cinturón de seguridad disponible o un sistema de retención infantil adecuado."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only passengers over the age of 8 years must wear a seat belt.",
+          pt: "Somente os passageiros com mais de 8 anos de idade devem usar cinto de segurança.",
+          es: "Solo los pasajeros mayores de 8 años deben usar cinturón de seguridad."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Passengers over the age of 65 do not have to wear seat belts.",
+          pt: "Passageiros com mais de 65 anos não precisam usar cinto de segurança.",
+          es: "Los pasajeros mayores de 65 años no están obligados a usar cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>All passengers must wear an available seat belt or suitable child restraint</strong> — the handbook states the driver and each passenger must be appropriately restrained, and only passengers in a seat fitted with a seat belt or child restraint can be carried. There is no exemption based on being over 8 or over 65 years old.",
+      pt: "<strong>Todos os passageiros devem usar o cinto de segurança disponível ou uma cadeirinha adequada</strong> — o manual determina que o motorista e cada passageiro devem estar devidamente contidos, e só podem ser transportados passageiros em bancos equipados com cinto de segurança ou cadeirinha. Não existe isenção por ter mais de 8 ou mais de 65 anos.",
+      es: "<strong>Todos los pasajeros deben usar el cinturón de seguridad disponible o un sistema de retención infantil adecuado</strong> — el manual establece que el conductor y cada pasajero deben estar debidamente sujetos, y solo pueden viajar pasajeros en asientos equipados con cinturón de seguridad o sistema de retención infantil. No existe ninguna exención por tener más de 8 o más de 65 años."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-12",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All passengers must wear available seat belts or suitable child restraints.",
+          pt: "Todos os passageiros devem usar o cinto de segurança disponível ou uma cadeirinha adequada.",
+          es: "Todos los pasajeros deben usar el cinturón de seguridad disponible o un sistema de retención infantil adecuado."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only passengers over the age of 8 years must wear a seat belt.",
+          pt: "Somente os passageiros com mais de 8 anos de idade devem usar cinto de segurança.",
+          es: "Solo los pasajeros mayores de 8 años deben usar cinturón de seguridad."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Passengers over the age of 65 do not have to wear seat belts.",
+          pt: "Passageiros com mais de 65 anos não precisam usar cinto de segurança.",
+          es: "Los pasajeros mayores de 65 años no están obligados a usar cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>All passengers must wear an available seat belt or suitable child restraint</strong> — the handbook states the driver and each passenger must be appropriately restrained, and only passengers in a seat fitted with a seat belt or child restraint can be carried. There is no exemption based on being over 8 or over 65 years old.",
+      pt: "<strong>Todos os passageiros devem usar o cinto de segurança disponível ou uma cadeirinha adequada</strong> — o manual determina que o motorista e cada passageiro devem estar devidamente contidos, e só podem ser transportados passageiros em bancos equipados com cinto de segurança ou cadeirinha. Não existe isenção por ter mais de 8 ou mais de 65 anos.",
+      es: "<strong>Todos los pasajeros deben usar el cinturón de seguridad disponible o un sistema de retención infantil adecuado</strong> — el manual establece que el conductor y cada pasajero deben estar debidamente sujetos, y solo pueden viajar pasajeros en asientos equipados con cinturón de seguridad o sistema de retención infantil. No existe ninguna exención por tener más de 8 o más de 65 años."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-18",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You should not drive if you are tired.",
+          pt: "Você não deve dirigir se estiver cansado.",
+          es: "No debes conducir si estás cansado."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your level of fatigue will be increased if you make stops on long trips.",
+          pt: "Seu nível de fadiga vai aumentar se você fizer paradas em viagens longas.",
+          es: "Tu nivel de fatiga aumentará si haces paradas en viajes largos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You are more likely to become fatigued on short curving roads.",
+          pt: "Você tem mais chance de ficar fatigado em estradas curtas e sinuosas.",
+          es: "Es más probable que te fatigues en carreteras cortas y con curvas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook is clear that driving while tired is a major road safety hazard, so <strong>you should never drive when fatigued</strong>. In fact, the opposite of option 1 is true — regular breaks every two hours on long trips help reduce fatigue, not increase it.",
+      pt: "O manual é claro: dirigir cansado é um grande risco à segurança viária, então <strong>você nunca deve dirigir quando estiver fatigado</strong>. Na verdade, o oposto da opção 1 é verdadeiro — fazer paradas regulares a cada duas horas em viagens longas ajuda a reduzir a fadiga, não a aumentar.",
+      es: "El manual es claro: conducir cansado es un gran riesgo para la seguridad vial, así que <strong>nunca debes conducir cuando estés fatigado</strong>. De hecho, lo contrario de la opción 1 es verdadero — hacer paradas regulares cada dos horas en viajes largos ayuda a reducir la fatiga, no a aumentarla."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-24",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You should not drive if you are tired.",
+          pt: "Você não deve dirigir se estiver cansado.",
+          es: "No debes conducir si estás cansado."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your level of fatigue will be increased if you make stops on long trips.",
+          pt: "Seu nível de fadiga vai aumentar se você fizer paradas em viagens longas.",
+          es: "Tu nivel de fatiga aumentará si haces paradas en viajes largos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You are more likely to become fatigued on short curving roads.",
+          pt: "Você tem mais chance de ficar fatigado em estradas curtas e sinuosas.",
+          es: "Es más probable que te fatigues en carreteras cortas y con curvas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook is clear that driving while tired is a major road safety hazard, so <strong>you should never drive when fatigued</strong>. In fact, the opposite of option 1 is true — regular breaks every two hours on long trips help reduce fatigue, not increase it.",
+      pt: "O manual é claro: dirigir cansado é um grande risco à segurança viária, então <strong>você nunca deve dirigir quando estiver fatigado</strong>. Na verdade, o oposto da opção 1 é verdadeiro — fazer paradas regulares a cada duas horas em viagens longas ajuda a reduzir a fadiga, não a aumentar.",
+      es: "El manual es claro: conducir cansado es un gran riesgo para la seguridad vial, así que <strong>nunca debes conducir cuando estés fatigado</strong>. De hecho, lo contrario de la opción 1 es verdadero — hacer paradas regulares cada dos horas en viajes largos ayuda a reducir la fatiga, no a aumentarla."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-15",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You should not drive if you are tired.",
+          pt: "Você não deve dirigir se estiver cansado.",
+          es: "No debes conducir si estás cansado."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your level of fatigue will be increased if you make stops on long trips.",
+          pt: "Seu nível de fadiga vai aumentar se você fizer paradas em viagens longas.",
+          es: "Tu nivel de fatiga aumentará si haces paradas en viajes largos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You are more likely to become fatigued on short curving roads.",
+          pt: "Você tem mais chance de ficar fatigado em estradas curtas e sinuosas.",
+          es: "Es más probable que te fatigues en carreteras cortas y con curvas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The handbook is clear that driving while tired is a major road safety hazard, so <strong>you should never drive when fatigued</strong>. In fact, the opposite of option 1 is true — regular breaks every two hours on long trips help reduce fatigue, not increase it.",
+      pt: "O manual é claro: dirigir cansado é um grande risco à segurança viária, então <strong>você nunca deve dirigir quando estiver fatigado</strong>. Na verdade, o oposto da opção 1 é verdadeiro — fazer paradas regulares a cada duas horas em viagens longas ajuda a reduzir a fadiga, não a aumentar.",
+      es: "El manual es claro: conducir cansado es un gran riesgo para la seguridad vial, así que <strong>nunca debes conducir cuando estés fatigado</strong>. De hecho, lo contrario de la opción 1 es verdadero — hacer paradas regulares cada dos horas en viajes largos ayuda a reducir la fatiga, no a aumentarla."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-29",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What is the rule regarding overtaking at a pedestrian crossing?",
+      pt: "Qual é a regra sobre ultrapassagem em uma faixa de pedestres?",
+      es: "¿Cuál es la norma sobre adelantamiento en un paso de peatones?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must not overtake a vehicle that has stopped at a pedestrian crossing.",
+          pt: "Você não deve ultrapassar um veículo que parou em uma faixa de pedestres.",
+          es: "No debes adelantar a un vehículo que se ha detenido en un paso de peatones."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to pedestrians on your right.",
+          pt: "Dê passagem aos pedestres à sua direita.",
+          es: "Cede el paso a los peatones que están a tu derecha."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Give way to pedestrians on your left.",
+          pt: "Dê passagem aos pedestres à sua esquerda.",
+          es: "Cede el paso a los peatones que están a tu izquierda."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook states you <strong>must not overtake another vehicle when it has slowed down or stopped at a railway, pedestrian or children's crossing</strong>, since the vehicle may be stopping to give way to pedestrians you cannot see.",
+      pt: "O Drive Safe Handbook afirma que você <strong>não deve ultrapassar outro veículo quando ele tiver reduzido a velocidade ou parado numa passagem de nível, faixa de pedestres ou travessia escolar</strong>, pois o veículo pode estar parando para dar passagem a pedestres que você não consegue ver.",
+      es: "El Drive Safe Handbook indica que <strong>no debes adelantar a otro vehículo cuando este haya reducido la velocidad o se haya detenido en un cruce ferroviario, un paso de peatones o un cruce escolar</strong>, ya que ese vehículo puede estar deteniéndose para ceder el paso a peatones que tú no puedes ver."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-14",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Passengers in vehicles are less likely to be injured in a crash if they are wearing seat belts.",
+          pt: "Os passageiros de um veículo têm menos probabilidade de se ferir em uma colisão se estiverem usando cinto de segurança.",
+          es: "Los pasajeros de un vehículo tienen menos probabilidades de resultar heridos en un choque si llevan puesto el cinturón de seguridad."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The nature of injuries in motor vehicle crashes is not related to the wearing of seat belts.",
+          pt: "A natureza das lesões em acidentes de trânsito não está relacionada ao uso do cinto de segurança.",
+          es: "La naturaleza de las lesiones en los accidentes de tránsito no está relacionada con el uso del cinturón de seguridad."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Passengers in rear seats of a vehicle are not required to wear seat belts.",
+          pt: "Os passageiros dos bancos traseiros de um veículo não são obrigados a usar cinto de segurança.",
+          es: "Los pasajeros de los asientos traseros de un vehículo no están obligados a usar el cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'Wearing a seat belt <strong>reduces the risk of injury</strong> by preventing the "human collision" — being thrown against the car\'s interior, other occupants, or out of the vehicle. This protection applies to every seat, including the back seat, which is why the belt requirement is not limited to front-seat passengers.',
+      pt: 'Usar o cinto de segurança <strong>reduz o risco de ferimentos</strong> ao evitar a "colisão humana" — ser arremessado contra o interior do carro, contra outros ocupantes ou para fora do veículo. Essa proteção vale para todos os bancos, inclusive o traseiro, por isso o cinto é obrigatório também lá.',
+      es: 'Usar el cinturón de seguridad <strong>reduce el riesgo de lesiones</strong> al evitar la "colisión humana", es decir, ser lanzado contra el interior del auto, contra otros ocupantes o fuera del vehículo. Esta protección se aplica a todos los asientos, incluido el trasero, por lo que el cinturón también es obligatorio ahí.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-25",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Passengers in vehicles are less likely to be injured in a crash if they are wearing seat belts.",
+          pt: "Os passageiros de um veículo têm menos probabilidade de se ferir em uma colisão se estiverem usando cinto de segurança.",
+          es: "Los pasajeros de un vehículo tienen menos probabilidades de resultar heridos en un choque si llevan puesto el cinturón de seguridad."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The nature of injuries in motor vehicle crashes is not related to the wearing of seat belts.",
+          pt: "A natureza das lesões em acidentes de trânsito não está relacionada ao uso do cinto de segurança.",
+          es: "La naturaleza de las lesiones en los accidentes de tránsito no está relacionada con el uso del cinturón de seguridad."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Passengers in rear seats of a vehicle are not required to wear seat belts.",
+          pt: "Os passageiros dos bancos traseiros de um veículo não são obrigados a usar cinto de segurança.",
+          es: "Los pasajeros de los asientos traseros de un vehículo no están obligados a usar el cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'Wearing a seat belt <strong>reduces the risk of injury</strong> by preventing the "human collision" — being thrown against the car\'s interior, other occupants, or out of the vehicle. This protection applies to every seat, including the back seat, which is why the belt requirement is not limited to front-seat passengers.',
+      pt: 'Usar o cinto de segurança <strong>reduz o risco de ferimentos</strong> ao evitar a "colisão humana" — ser arremessado contra o interior do carro, contra outros ocupantes ou para fora do veículo. Essa proteção vale para todos os bancos, inclusive o traseiro, por isso o cinto é obrigatório também lá.',
+      es: 'Usar el cinturón de seguridad <strong>reduce el riesgo de lesiones</strong> al evitar la "colisión humana", es decir, ser lanzado contra el interior del auto, contra otros ocupantes o fuera del vehículo. Esta protección se aplica a todos los asientos, incluido el trasero, por lo que el cinturón también es obligatorio ahí.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-17",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Passengers in vehicles are less likely to be injured in a crash if they are wearing seat belts.",
+          pt: "Os passageiros de um veículo têm menos probabilidade de se ferir em uma colisão se estiverem usando cinto de segurança.",
+          es: "Los pasajeros de un vehículo tienen menos probabilidades de resultar heridos en un choque si llevan puesto el cinturón de seguridad."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The nature of injuries in motor vehicle crashes is not related to the wearing of seat belts.",
+          pt: "A natureza das lesões em acidentes de trânsito não está relacionada ao uso do cinto de segurança.",
+          es: "La naturaleza de las lesiones en los accidentes de tránsito no está relacionada con el uso del cinturón de seguridad."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Passengers in rear seats of a vehicle are not required to wear seat belts.",
+          pt: "Os passageiros dos bancos traseiros de um veículo não são obrigados a usar cinto de segurança.",
+          es: "Los pasajeros de los asientos traseros de un vehículo no están obligados a usar el cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'Wearing a seat belt <strong>reduces the risk of injury</strong> by preventing the "human collision" — being thrown against the car\'s interior, other occupants, or out of the vehicle. This protection applies to every seat, including the back seat, which is why the belt requirement is not limited to front-seat passengers.',
+      pt: 'Usar o cinto de segurança <strong>reduz o risco de ferimentos</strong> ao evitar a "colisão humana" — ser arremessado contra o interior do carro, contra outros ocupantes ou para fora do veículo. Essa proteção vale para todos os bancos, inclusive o traseiro, por isso o cinto é obrigatório também lá.',
+      es: 'Usar el cinturón de seguridad <strong>reduce el riesgo de lesiones</strong> al evitar la "colisión humana", es decir, ser lanzado contra el interior del auto, contra otros ocupantes o fuera del vehículo. Esta protección se aplica a todos los asientos, incluido el trasero, por lo que el cinturón también es obligatorio ahí.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-20",
+    cat: "Parking Rules",
+    q: {
+      en: "What is the minimum distance a vehicle is allowed to park from an intersection without traffic lights?",
+      pt: "Qual é a distância mínima que um veículo pode ficar estacionado de um cruzamento sem semáforo?",
+      es: "¿Cuál es la distancia mínima a la que un vehículo puede estacionar de una intersección sin semáforos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "3 metres.",
+          pt: "3 metros.",
+          es: "3 metros."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "10 metres.",
+          pt: "10 metros.",
+          es: "10 metros."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "1 metre.",
+          pt: "1 metro.",
+          es: "1 metro."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not stop or park within <strong>10 metres</strong> of an intersection (unless a sign specifically permits it), to keep sightlines and turning space clear for other road users.",
+      pt: "Você não pode parar ou estacionar a menos de <strong>10 metros</strong> de um cruzamento (a não ser que uma placa permita), para manter a visibilidade e o espaço de manobra livres para outros condutores.",
+      es: "No se puede detener ni estacionar a menos de <strong>10 metros</strong> de una intersección (salvo que una señal lo permita expresamente), para mantener despejada la visibilidad y el espacio de giro para los demás usuarios de la vía."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-03",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "For how long must you indicate before you overtake a vehicle?",
+      pt: "Por quanto tempo você deve usar o pisca antes de ultrapassar um veículo?",
+      es: "¿Durante cuánto tiempo debe indicar (usar el intermitente) antes de adelantar a un vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Long enough to give other road users sufficient warning of your intention.",
+          pt: "Tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção.",
+          es: "El tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "At least 10 metres.",
+          pt: "Pelo menos 10 metros.",
+          es: "Al menos 10 metros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 100 metres.",
+          pt: "Pelo menos 100 metros.",
+          es: "Al menos 100 metros."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook sets no fixed distance or time for this — you must <strong>indicate for long enough to give other road users sufficient warning of your intention</strong> before pulling out to overtake.",
+      pt: "O Drive Safe Handbook não define uma distância ou tempo fixo para isso — você deve <strong>sinalizar por tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção</strong> antes de sair da faixa para ultrapassar.",
+      es: "El Drive Safe Handbook no establece una distancia o tiempo fijo para esto — debe <strong>indicar durante el tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención</strong> antes de salir de su carril para adelantar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-21",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "For how long must you indicate before you overtake a vehicle?",
+      pt: "Por quanto tempo você deve usar o pisca antes de ultrapassar um veículo?",
+      es: "¿Durante cuánto tiempo debe indicar (usar el intermitente) antes de adelantar a un vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Long enough to give other road users sufficient warning of your intention.",
+          pt: "Tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção.",
+          es: "El tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "At least 10 metres.",
+          pt: "Pelo menos 10 metros.",
+          es: "Al menos 10 metros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 100 metres.",
+          pt: "Pelo menos 100 metros.",
+          es: "Al menos 100 metros."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook sets no fixed distance or time for this — you must <strong>indicate for long enough to give other road users sufficient warning of your intention</strong> before pulling out to overtake.",
+      pt: "O Drive Safe Handbook não define uma distância ou tempo fixo para isso — você deve <strong>sinalizar por tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção</strong> antes de sair da faixa para ultrapassar.",
+      es: "El Drive Safe Handbook no establece una distancia o tiempo fijo para esto — debe <strong>indicar durante el tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención</strong> antes de salir de su carril para adelantar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-24",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "For how long must you indicate before you overtake a vehicle?",
+      pt: "Por quanto tempo você deve usar o pisca antes de ultrapassar um veículo?",
+      es: "¿Durante cuánto tiempo debe indicar (usar el intermitente) antes de adelantar a un vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Long enough to give other road users sufficient warning of your intention.",
+          pt: "Tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção.",
+          es: "El tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "At least 10 metres.",
+          pt: "Pelo menos 10 metros.",
+          es: "Al menos 10 metros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 100 metres.",
+          pt: "Pelo menos 100 metros.",
+          es: "Al menos 100 metros."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook sets no fixed distance or time for this — you must <strong>indicate for long enough to give other road users sufficient warning of your intention</strong> before pulling out to overtake.",
+      pt: "O Drive Safe Handbook não define uma distância ou tempo fixo para isso — você deve <strong>sinalizar por tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção</strong> antes de sair da faixa para ultrapassar.",
+      es: "El Drive Safe Handbook no establece una distancia o tiempo fijo para esto — debe <strong>indicar durante el tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención</strong> antes de salir de su carril para adelantar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-24",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "For how long must you indicate before you overtake a vehicle?",
+      pt: "Por quanto tempo você deve usar o pisca antes de ultrapassar um veículo?",
+      es: "¿Durante cuánto tiempo debe indicar (usar el intermitente) antes de adelantar a un vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Long enough to give other road users sufficient warning of your intention.",
+          pt: "Tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção.",
+          es: "El tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "At least 10 metres.",
+          pt: "Pelo menos 10 metros.",
+          es: "Al menos 10 metros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 100 metres.",
+          pt: "Pelo menos 100 metros.",
+          es: "Al menos 100 metros."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook sets no fixed distance or time for this — you must <strong>indicate for long enough to give other road users sufficient warning of your intention</strong> before pulling out to overtake.",
+      pt: "O Drive Safe Handbook não define uma distância ou tempo fixo para isso — você deve <strong>sinalizar por tempo suficiente para avisar claramente os outros usuários da via sobre sua intenção</strong> antes de sair da faixa para ultrapassar.",
+      es: "El Drive Safe Handbook no establece una distancia o tiempo fijo para esto — debe <strong>indicar durante el tiempo suficiente para advertir claramente a los demás usuarios de la vía sobre su intención</strong> antes de salir de su carril para adelantar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-10",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when approaching a railway crossing?",
+      pt: "O que você deve fazer ao se aproximar de uma passagem de nível (cruzamento ferroviário)?",
+      es: "¿Qué debes hacer al acercarte a un paso a nivel (cruce ferroviario)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up to clear the crossing quickly.",
+          pt: "Acelerar para atravessar rapidamente.",
+          es: "Acelerar para cruzar rápidamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should <strong>slow down, look and listen for approaching trains, and be prepared to stop</strong> when nearing a railway crossing — never speed up, since trains cannot stop quickly or swerve to avoid you.",
+      pt: "Você deve <strong>reduzir a velocidade, olhar e ouvir se há trens se aproximando, e estar pronto para parar</strong> ao se aproximar de uma passagem de nível — nunca acelere, pois os trens não conseguem parar rapidamente nem desviar para evitar uma colisão.",
+      es: "Debes <strong>reducir la velocidad, mirar y escuchar si se acerca un tren, y estar preparado para detenerte</strong> al acercarte a un paso a nivel — nunca aceleres, ya que los trenes no pueden detenerse rápidamente ni desviarse para evitar una colisión."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-06",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when approaching a railway crossing?",
+      pt: "O que você deve fazer ao se aproximar de uma passagem de nível (cruzamento ferroviário)?",
+      es: "¿Qué debes hacer al acercarte a un paso a nivel (cruce ferroviario)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up to clear the crossing quickly.",
+          pt: "Acelerar para atravessar rapidamente.",
+          es: "Acelerar para cruzar rápidamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should <strong>slow down, look and listen for approaching trains, and be prepared to stop</strong> when nearing a railway crossing — never speed up, since trains cannot stop quickly or swerve to avoid you.",
+      pt: "Você deve <strong>reduzir a velocidade, olhar e ouvir se há trens se aproximando, e estar pronto para parar</strong> ao se aproximar de uma passagem de nível — nunca acelere, pois os trens não conseguem parar rapidamente nem desviar para evitar uma colisão.",
+      es: "Debes <strong>reducir la velocidad, mirar y escuchar si se acerca un tren, y estar preparado para detenerte</strong> al acercarte a un paso a nivel — nunca aceleres, ya que los trenes no pueden detenerse rápidamente ni desviarse para evitar una colisión."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-10",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when approaching a railway crossing?",
+      pt: "O que você deve fazer ao se aproximar de uma passagem de nível (cruzamento ferroviário)?",
+      es: "¿Qué debes hacer al acercarte a un paso a nivel (cruce ferroviario)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up to clear the crossing quickly.",
+          pt: "Acelerar para atravessar rapidamente.",
+          es: "Acelerar para cruzar rápidamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should <strong>slow down, look and listen for approaching trains, and be prepared to stop</strong> when nearing a railway crossing — never speed up, since trains cannot stop quickly or swerve to avoid you.",
+      pt: "Você deve <strong>reduzir a velocidade, olhar e ouvir se há trens se aproximando, e estar pronto para parar</strong> ao se aproximar de uma passagem de nível — nunca acelere, pois os trens não conseguem parar rapidamente nem desviar para evitar uma colisão.",
+      es: "Debes <strong>reducir la velocidad, mirar y escuchar si se acerca un tren, y estar preparado para detenerte</strong> al acercarte a un paso a nivel — nunca aceleres, ya que los trenes no pueden detenerse rápidamente ni desviarse para evitar una colisión."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-28",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when approaching a railway crossing?",
+      pt: "O que você deve fazer ao se aproximar de uma passagem de nível (cruzamento ferroviário)?",
+      es: "¿Qué debes hacer al acercarte a un paso a nivel (cruce ferroviario)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up to clear the crossing quickly.",
+          pt: "Acelerar para atravessar rapidamente.",
+          es: "Acelerar para cruzar rápidamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should <strong>slow down, look and listen for approaching trains, and be prepared to stop</strong> when nearing a railway crossing — never speed up, since trains cannot stop quickly or swerve to avoid you.",
+      pt: "Você deve <strong>reduzir a velocidade, olhar e ouvir se há trens se aproximando, e estar pronto para parar</strong> ao se aproximar de uma passagem de nível — nunca acelere, pois os trens não conseguem parar rapidamente nem desviar para evitar uma colisão.",
+      es: "Debes <strong>reducir la velocidad, mirar y escuchar si se acerca un tren, y estar preparado para detenerte</strong> al acercarte a un paso a nivel — nunca aceleres, ya que los trenes no pueden detenerse rápidamente ni desviarse para evitar una colisión."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-27",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when approaching a railway crossing?",
+      pt: "O que você deve fazer ao se aproximar de uma passagem de nível (cruzamento ferroviário)?",
+      es: "¿Qué debes hacer al acercarte a un paso a nivel (cruce ferroviario)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up to clear the crossing quickly.",
+          pt: "Acelerar para atravessar rapidamente.",
+          es: "Acelerar para cruzar rápidamente."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should <strong>slow down, look and listen for approaching trains, and be prepared to stop</strong> when nearing a railway crossing — never speed up, since trains cannot stop quickly or swerve to avoid you.",
+      pt: "Você deve <strong>reduzir a velocidade, olhar e ouvir se há trens se aproximando, e estar pronto para parar</strong> ao se aproximar de uma passagem de nível — nunca acelere, pois os trens não conseguem parar rapidamente nem desviar para evitar uma colisão.",
+      es: "Debes <strong>reducir la velocidad, mirar y escuchar si se acerca un tren, y estar preparado para detenerte</strong> al acercarte a un paso a nivel — nunca aceleres, ya que los trenes no pueden detenerse rápidamente ni desviarse para evitar una colisión."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-02",
+    cat: "Road Safety",
+    q: {
+      en: "When driving, what should you do if a ball suddenly bounces across the road in front of you?",
+      pt: "Ao dirigir, o que você deve fazer se uma bola atravessar repentinamente a rua na sua frente?",
+      es: "Al conducir, ¿qué debes hacer si una pelota cruza repentinamente la calle frente a ti?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to stop.",
+          pt: "Reduzir a velocidade e estar preparado para parar.",
+          es: "Reducir la velocidad y estar preparado para detenerte."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Speed up and pass the danger area.",
+          pt: "Acelerar e passar rapidamente pela área de perigo.",
+          es: "Acelerar y pasar rápidamente por la zona de peligro."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Steer to avoid hitting the ball.",
+          pt: "Desviar bruscamente para não atingir a bola.",
+          es: "Girar el volante bruscamente para esquivar la pelota."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A ball bouncing into the road is often followed by a child chasing after it, so you should <strong>slow down and be prepared to stop</strong> rather than swerve or speed up, which could put you, the child, or other road users at greater risk.",
+      pt: "Uma bola que entra na rua costuma ser seguida por uma criança correndo atrás dela, por isso você deve <strong>reduzir a velocidade e estar preparado para parar</strong>, em vez de desviar bruscamente ou acelerar, o que colocaria você, a criança ou outros usuários da via em maior risco.",
+      es: "Una pelota que entra a la calle suele ir seguida de un niño corriendo tras ella, por lo que debes <strong>reducir la velocidad y estar preparado para detenerte</strong>, en lugar de girar bruscamente o acelerar, lo que pondría en mayor riesgo a ti, al niño o a otros usuarios de la vía."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-08",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Ornaments hanging from the rear view mirror will stop you becoming fatigued when you are driving.",
+          pt: "Pendurar enfeites no espelho retrovisor evita que você fique cansado ao dirigir.",
+          es: "Colgar adornos del espejo retrovisor evitará que te fatigues mientras conduces."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sunglasses worn at night will reduce the glare from the headlights of on-coming vehicles.",
+          pt: "Usar óculos escuros à noite reduz o brilho dos faróis dos veículos que vêm em sentido contrário.",
+          es: "Usar gafas de sol de noche reduce el resplandor de los faros de los vehículos que vienen en sentido contrario."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You should take extra care looking for cyclists or pedestrians at night.",
+          pt: "Você deve redobrar a atenção com ciclistas ou pedestres durante a noite.",
+          es: "Debes prestar especial atención a los ciclistas o peatones durante la noche."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Reduced visibility after dark means drivers <strong>must take extra care watching for cyclists and pedestrians</strong>, who are harder to see at night. Sunglasses worn at night reduce your vision rather than cutting glare, and mirror ornaments do nothing to prevent fatigue.",
+      pt: "A visibilidade reduzida à noite significa que o motorista <strong>deve redobrar a atenção com ciclistas e pedestres</strong>, que são mais difíceis de enxergar no escuro. Óculos escuros usados à noite pioram a visão em vez de reduzir o brilho dos faróis, e enfeites no retrovisor não previnem a fadiga.",
+      es: "La visibilidad reducida después del anochecer significa que el conductor <strong>debe prestar especial atención a ciclistas y peatones</strong>, que son más difíciles de ver de noche. Las gafas de sol usadas de noche reducen la visión en lugar de disminuir el resplandor de los faros, y los adornos en el espejo retrovisor no previenen la fatiga."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-10",
+    cat: "Road Safety",
+    q: {
+      en: "When passing a row of parked vehicles, what should you do?",
+      pt: "Ao passar por uma fileira de veículos estacionados, o que você deve fazer?",
+      es: "Al pasar junto a una fila de vehículos estacionados, ¿qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Move as close to the centre of the road as possible and speed up.",
+          pt: "Mover-se o mais próximo possível do centro da via e acelerar.",
+          es: "Acercarse lo más posible al centro de la vía y acelerar."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Watch out for pedestrians who might step out suddenly.",
+          pt: "Ficar atento a pedestres que possam sair repentinamente.",
+          es: "Estar atento a los peatones que puedan salir repentinamente."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When passing parked vehicles, <strong>watch out for pedestrians who may step out suddenly</strong> from between the cars, and for doors that could open without warning — slow down and give them plenty of room instead of speeding up.",
+      pt: "Ao passar por veículos estacionados, <strong>fique atento a pedestres que podem sair repentinamente</strong> de entre os carros, e a portas que podem se abrir sem aviso — reduza a velocidade e mantenha bastante espaço, em vez de acelerar.",
+      es: "Al pasar junto a vehículos estacionados, <strong>esté atento a los peatones que puedan salir repentinamente</strong> de entre los autos, y a las puertas que puedan abrirse sin aviso — reduzca la velocidad y deje suficiente espacio, en lugar de acelerar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-12",
+    cat: "Road Safety",
+    q: {
+      en: "About how long does it take an alert driver to react to an emergency?",
+      pt: "Aproximadamente quanto tempo leva para um motorista atento reagir a uma emergência?",
+      es: "¿Aproximadamente cuánto tiempo tarda un conductor atento en reaccionar ante una emergencia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "One tenth of a second.",
+          pt: "Um décimo de segundo.",
+          es: "Una décima de segundo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "10 seconds.",
+          pt: "10 segundos.",
+          es: "10 segundos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 1 second.",
+          pt: "Pelo menos 1 segundo.",
+          es: "Al menos 1 segundo."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "An alert driver takes <strong>at least 1 second</strong> to react to an emergency; this reaction time is one component (along with braking distance) of total stopping distance.",
+      pt: "Um motorista atento leva <strong>pelo menos 1 segundo</strong> para reagir a uma emergência; esse tempo de reação, somado à distância de frenagem, forma a distância total de parada.",
+      es: "Un conductor atento tarda <strong>al menos 1 segundo</strong> en reaccionar ante una emergencia; ese tiempo de reacción, sumado a la distancia de frenado, conforma la distancia total de detención."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-07",
+    cat: "Road Safety",
+    q: {
+      en: "About how long does it take an alert driver to react to an emergency?",
+      pt: "Aproximadamente quanto tempo leva para um motorista atento reagir a uma emergência?",
+      es: "¿Aproximadamente cuánto tiempo tarda un conductor atento en reaccionar ante una emergencia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "One tenth of a second.",
+          pt: "Um décimo de segundo.",
+          es: "Una décima de segundo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "10 seconds.",
+          pt: "10 segundos.",
+          es: "10 segundos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least 1 second.",
+          pt: "Pelo menos 1 segundo.",
+          es: "Al menos 1 segundo."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "An alert driver takes <strong>at least 1 second</strong> to react to an emergency; this reaction time is one component (along with braking distance) of total stopping distance.",
+      pt: "Um motorista atento leva <strong>pelo menos 1 segundo</strong> para reagir a uma emergência; esse tempo de reação, somado à distância de frenagem, forma a distância total de parada.",
+      es: "Un conductor atento tarda <strong>al menos 1 segundo</strong> en reaccionar ante una emergencia; ese tiempo de reacción, sumado a la distancia de frenado, conforma la distancia total de detención."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-24",
+    cat: "Road Safety",
+    q: {
+      en: "On a dry road and in good weather, what is the minimum gap you should allow between your vehicle and the one in front of you?",
+      pt: "Em uma estrada seca e com bom tempo, qual é o intervalo mínimo que você deve manter entre o seu veículo e o da frente?",
+      es: "En una carretera seca y con buen clima, ¿cuál es el intervalo mínimo que debes mantener entre tu vehículo y el que va adelante?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At least 2 seconds.",
+          pt: "Pelo menos 2 segundos.",
+          es: "Al menos 2 segundos."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "At least 5 seconds.",
+          pt: "Pelo menos 5 segundos.",
+          es: "Al menos 5 segundos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "About 3 car lengths.",
+          pt: "Cerca de 3 comprimentos de carro.",
+          es: "Aproximadamente 3 largos de auto."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'The WA Drive Safe Handbook\'s "Two Second Rule" states you should stay <strong>at least two seconds</strong> behind the vehicle ahead in good road, traffic and weather conditions — increasing to four or five seconds when conditions are poor.',
+      pt: 'A "regra dos dois segundos" do Manual de Direção Segura da WA determina que você mantenha <strong>pelo menos dois segundos</strong> de distância do veículo da frente em boas condições de estrada, trânsito e clima — aumentando para quatro ou cinco segundos quando as condições não forem boas.',
+      es: 'La "regla de los dos segundos" del Manual de Conducción Segura de WA indica que debes mantener <strong>al menos dos segundos</strong> de distancia respecto al vehículo de adelante en buenas condiciones de carretera, tráfico y clima — aumentando a cuatro o cinco segundos cuando las condiciones no son buenas.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-25",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when travelling behind a vehicle in wet weather?",
+      pt: "O que você deve fazer ao dirigir atrás de outro veículo em tempo chuvoso?",
+      es: "¿Qué debes hacer al conducir detrás de otro vehículo con lluvia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive the same as you would in dry weather conditions.",
+          pt: "Dirigir da mesma forma que dirigiria em tempo seco.",
+          es: "Conducir de la misma manera que lo harías en condiciones de tiempo seco."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep a greater distance behind the vehicle than normal.",
+          pt: "Manter uma distância maior do que o normal em relação ao veículo da frente.",
+          es: "Mantener una distancia mayor de lo normal respecto al vehículo de delante."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep a closer distance behind the vehicle than normal.",
+          pt: "Manter uma distância menor do que o normal em relação ao veículo da frente.",
+          es: "Mantener una distancia menor de lo normal respecto al vehículo de delante."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a wet road it takes longer to stop, so you should <strong>at least double your following distance</strong> compared to dry conditions to avoid a rear-end collision.",
+      pt: "Numa pista molhada, o carro demora mais para parar, então você deve <strong>pelo menos dobrar a distância de seguimento</strong> em relação às condições secas para evitar uma colisão traseira.",
+      es: "En una carretera mojada el vehículo tarda más en detenerse, por lo que debes <strong>al menos duplicar la distancia de seguimiento</strong> respecto a condiciones secas para evitar una colisión por alcance."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-16",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when travelling behind a vehicle in wet weather?",
+      pt: "O que você deve fazer ao dirigir atrás de outro veículo em tempo chuvoso?",
+      es: "¿Qué debes hacer al conducir detrás de otro vehículo con lluvia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive the same as you would in dry weather conditions.",
+          pt: "Dirigir da mesma forma que dirigiria em tempo seco.",
+          es: "Conducir de la misma manera que lo harías en condiciones de tiempo seco."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep a greater distance behind the vehicle than normal.",
+          pt: "Manter uma distância maior do que o normal em relação ao veículo da frente.",
+          es: "Mantener una distancia mayor de lo normal respecto al vehículo de delante."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep a closer distance behind the vehicle than normal.",
+          pt: "Manter uma distância menor do que o normal em relação ao veículo da frente.",
+          es: "Mantener una distancia menor de lo normal respecto al vehículo de delante."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a wet road it takes longer to stop, so you should <strong>at least double your following distance</strong> compared to dry conditions to avoid a rear-end collision.",
+      pt: "Numa pista molhada, o carro demora mais para parar, então você deve <strong>pelo menos dobrar a distância de seguimento</strong> em relação às condições secas para evitar uma colisão traseira.",
+      es: "En una carretera mojada el vehículo tarda más en detenerse, por lo que debes <strong>al menos duplicar la distancia de seguimiento</strong> respecto a condiciones secas para evitar una colisión por alcance."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-11",
+    cat: "Road Safety",
+    q: {
+      en: "On a two-way road with no lanes marked, what position must your vehicle be before making a right-hand turn?",
+      pt: "Numa via de mão dupla sem faixas demarcadas, qual deve ser a posição do seu veículo antes de fazer uma conversão à direita?",
+      es: "En una vía de doble sentido sin carriles demarcados, ¿qué posición debe tener su vehículo antes de girar a la derecha?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Over the centre of the road.",
+          pt: "No centro da via.",
+          es: "Sobre el centro de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "As close to the left-hand side of the road as possible.",
+          pt: "O mais próximo possível do lado esquerdo da via.",
+          es: "Lo más cerca posible del lado izquierdo de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To the left of, the centre of the road.",
+          pt: "À esquerda do centro da via.",
+          es: "A la izquierda del centro de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When lanes are not marked, you must move as close as possible to <strong>the left of the centre of the road</strong> before turning right, then turn to the right of the centre of the intersection.",
+      pt: "Quando as faixas não estão demarcadas, você deve se posicionar o mais próximo possível <strong>à esquerda do centro da via</strong> antes de fazer a conversão à direita, e então virar à direita do centro do cruzamento.",
+      es: "Cuando los carriles no están demarcados, debe ubicarse lo más cerca posible <strong>a la izquierda del centro de la vía</strong> antes de girar a la derecha, y luego girar a la derecha del centro de la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-10",
+    cat: "Road Safety",
+    q: {
+      en: "On a two-way road with no lanes marked, what position must your vehicle be before making a right-hand turn?",
+      pt: "Numa via de mão dupla sem faixas demarcadas, qual deve ser a posição do seu veículo antes de fazer uma conversão à direita?",
+      es: "En una vía de doble sentido sin carriles demarcados, ¿qué posición debe tener su vehículo antes de girar a la derecha?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Over the centre of the road.",
+          pt: "No centro da via.",
+          es: "Sobre el centro de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "As close to the left-hand side of the road as possible.",
+          pt: "O mais próximo possível do lado esquerdo da via.",
+          es: "Lo más cerca posible del lado izquierdo de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To the left of, the centre of the road.",
+          pt: "À esquerda do centro da via.",
+          es: "A la izquierda del centro de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When lanes are not marked, you must move as close as possible to <strong>the left of the centre of the road</strong> before turning right, then turn to the right of the centre of the intersection.",
+      pt: "Quando as faixas não estão demarcadas, você deve se posicionar o mais próximo possível <strong>à esquerda do centro da via</strong> antes de fazer a conversão à direita, e então virar à direita do centro do cruzamento.",
+      es: "Cuando los carriles no están demarcados, debe ubicarse lo más cerca posible <strong>a la izquierda del centro de la vía</strong> antes de girar a la derecha, y luego girar a la derecha del centro de la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-29",
+    cat: "Road Safety",
+    q: {
+      en: "On a two-way road with no lanes marked, what position must your vehicle be before making a right-hand turn?",
+      pt: "Numa via de mão dupla sem faixas demarcadas, qual deve ser a posição do seu veículo antes de fazer uma conversão à direita?",
+      es: "En una vía de doble sentido sin carriles demarcados, ¿qué posición debe tener su vehículo antes de girar a la derecha?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Over the centre of the road.",
+          pt: "No centro da via.",
+          es: "Sobre el centro de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "As close to the left-hand side of the road as possible.",
+          pt: "O mais próximo possível do lado esquerdo da via.",
+          es: "Lo más cerca posible del lado izquierdo de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To the left of, the centre of the road.",
+          pt: "À esquerda do centro da via.",
+          es: "A la izquierda del centro de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When lanes are not marked, you must move as close as possible to <strong>the left of the centre of the road</strong> before turning right, then turn to the right of the centre of the intersection.",
+      pt: "Quando as faixas não estão demarcadas, você deve se posicionar o mais próximo possível <strong>à esquerda do centro da via</strong> antes de fazer a conversão à direita, e então virar à direita do centro do cruzamento.",
+      es: "Cuando los carriles no están demarcados, debe ubicarse lo más cerca posible <strong>a la izquierda del centro de la vía</strong> antes de girar a la derecha, y luego girar a la derecha del centro de la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-26",
+    cat: "Road Safety",
+    q: {
+      en: "On a two-way road with no lanes marked, what position must your vehicle be before making a right-hand turn?",
+      pt: "Numa via de mão dupla sem faixas demarcadas, qual deve ser a posição do seu veículo antes de fazer uma conversão à direita?",
+      es: "En una vía de doble sentido sin carriles demarcados, ¿qué posición debe tener su vehículo antes de girar a la derecha?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Over the centre of the road.",
+          pt: "No centro da via.",
+          es: "Sobre el centro de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "As close to the left-hand side of the road as possible.",
+          pt: "O mais próximo possível do lado esquerdo da via.",
+          es: "Lo más cerca posible del lado izquierdo de la vía."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To the left of, the centre of the road.",
+          pt: "À esquerda do centro da via.",
+          es: "A la izquierda del centro de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When lanes are not marked, you must move as close as possible to <strong>the left of the centre of the road</strong> before turning right, then turn to the right of the centre of the intersection.",
+      pt: "Quando as faixas não estão demarcadas, você deve se posicionar o mais próximo possível <strong>à esquerda do centro da via</strong> antes de fazer a conversão à direita, e então virar à direita do centro do cruzamento.",
+      es: "Cuando los carriles no están demarcados, debe ubicarse lo más cerca posible <strong>a la izquierda del centro de la vía</strong> antes de girar a la derecha, y luego girar a la derecha del centro de la intersección."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-12",
+    cat: "Road Safety",
+    q: {
+      en: "On an unmarked road, what position must your vehicle be if you are not preparing to turn or overtake?",
+      pt: "Numa estrada sem faixas demarcadas, qual deve ser a posição do seu veículo se você não estiver se preparando para virar ou ultrapassar?",
+      es: "En una carretera sin carriles demarcados, ¿qué posición debe mantener su vehículo si no se está preparando para girar ni adelantar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Any position, providing there is no traffic.",
+          pt: "Qualquer posição, desde que não haja trânsito.",
+          es: "Cualquier posición, siempre que no haya tráfico."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Near the centre of the road.",
+          pt: "Próximo ao centro da via.",
+          es: "Cerca del centro de la calzada."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Close to the left-hand side of the road.",
+          pt: "Próximo ao lado esquerdo da via.",
+          es: "Cerca del lado izquierdo de la calzada."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "On roads without marked lanes, the keep-left rule requires you to <strong>keep as far to the left of the road as practicable</strong> at all times, not just when turning or overtaking.",
+      pt: "Em estradas sem faixas demarcadas, a regra de manter-se à esquerda exige que você <strong>fique o mais próximo possível do lado esquerdo da via</strong> o tempo todo, não apenas ao virar ou ultrapassar.",
+      es: "En carreteras sin carriles demarcados, la regla de mantenerse a la izquierda exige que <strong>se mantenga lo más cerca posible del lado izquierdo de la calzada</strong> en todo momento, no solo al girar o adelantar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-05",
+    cat: "Road Safety",
+    q: {
+      en: "On an unmarked road, what position must your vehicle be if you are not preparing to turn or overtake?",
+      pt: "Numa estrada sem faixas demarcadas, qual deve ser a posição do seu veículo se você não estiver se preparando para virar ou ultrapassar?",
+      es: "En una carretera sin carriles demarcados, ¿qué posición debe mantener su vehículo si no se está preparando para girar ni adelantar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Any position, providing there is no traffic.",
+          pt: "Qualquer posição, desde que não haja trânsito.",
+          es: "Cualquier posición, siempre que no haya tráfico."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Near the centre of the road.",
+          pt: "Próximo ao centro da via.",
+          es: "Cerca del centro de la calzada."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Close to the left-hand side of the road.",
+          pt: "Próximo ao lado esquerdo da via.",
+          es: "Cerca del lado izquierdo de la calzada."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "On roads without marked lanes, the keep-left rule requires you to <strong>keep as far to the left of the road as practicable</strong> at all times, not just when turning or overtaking.",
+      pt: "Em estradas sem faixas demarcadas, a regra de manter-se à esquerda exige que você <strong>fique o mais próximo possível do lado esquerdo da via</strong> o tempo todo, não apenas ao virar ou ultrapassar.",
+      es: "En carreteras sin carriles demarcados, la regla de mantenerse a la izquierda exige que <strong>se mantenga lo más cerca posible del lado izquierdo de la calzada</strong> en todo momento, no solo al girar o adelantar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-13",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following should you do before overtaking a long vehicle?",
+      pt: "Qual das alternativas você deve fazer antes de ultrapassar um veículo longo?",
+      es: "¿Cuál de las siguientes acciones debes realizar antes de adelantar a un vehículo largo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Follow closely behind the vehicle.",
+          pt: "Seguir bem próximo atrás do veículo.",
+          es: "Seguir muy cerca detrás del vehículo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Follow far enough behind the vehicle to have a clear view of the road ahead.",
+          pt: "Manter distância suficiente atrás do veículo para ter uma visão clara da estrada à frente.",
+          es: "Mantener suficiente distancia detrás del vehículo para tener una vista clara del camino por delante."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Staying well back from a long vehicle gives you a <strong>clear view of the road ahead</strong> so you can judge when it's safe to overtake — following too closely puts you in the vehicle's blind spot and blocks your visibility of oncoming traffic.",
+      pt: "Manter distância suficiente de um veículo longo garante uma <strong>visão clara da estrada à frente</strong>, permitindo avaliar quando é seguro ultrapassar — seguir muito próximo coloca você no ponto cego do veículo e bloqueia sua visibilidade do tráfego que vem em sentido contrário.",
+      es: "Mantener suficiente distancia detrás de un vehículo largo te da una <strong>vista clara del camino por delante</strong>, permitiéndote juzgar cuándo es seguro adelantar — seguir demasiado cerca te coloca en el punto ciego del vehículo y bloquea tu visibilidad del tráfico que viene en sentido contrario."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-27",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following should you do before overtaking a long vehicle?",
+      pt: "Qual das alternativas você deve fazer antes de ultrapassar um veículo longo?",
+      es: "¿Cuál de las siguientes acciones debes realizar antes de adelantar a un vehículo largo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Follow closely behind the vehicle.",
+          pt: "Seguir bem próximo atrás do veículo.",
+          es: "Seguir muy cerca detrás del vehículo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Follow far enough behind the vehicle to have a clear view of the road ahead.",
+          pt: "Manter distância suficiente atrás do veículo para ter uma visão clara da estrada à frente.",
+          es: "Mantener suficiente distancia detrás del vehículo para tener una vista clara del camino por delante."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Staying well back from a long vehicle gives you a <strong>clear view of the road ahead</strong> so you can judge when it's safe to overtake — following too closely puts you in the vehicle's blind spot and blocks your visibility of oncoming traffic.",
+      pt: "Manter distância suficiente de um veículo longo garante uma <strong>visão clara da estrada à frente</strong>, permitindo avaliar quando é seguro ultrapassar — seguir muito próximo coloca você no ponto cego do veículo e bloqueia sua visibilidade do tráfego que vem em sentido contrário.",
+      es: "Mantener suficiente distancia detrás de un vehículo largo te da una <strong>vista clara del camino por delante</strong>, permitiéndote juzgar cuándo es seguro adelantar — seguir demasiado cerca te coloca en el punto ciego del vehículo y bloquea tu visibilidad del tráfico que viene en sentido contrario."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-25",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Your stopping distance is not affected by the condition of your brakes and tyres.",
+          pt: "A distância de parada do seu veículo não é afetada pelas condições dos freios e pneus.",
+          es: "La distancia de frenado de tu vehículo no se ve afectada por el estado de los frenos y los neumáticos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your stopping distance is not affected by a loose road surface.",
+          pt: "A distância de parada do seu veículo não é afetada por um piso solto na pista.",
+          es: "La distancia de frenado de tu vehículo no se ve afectada por una superficie de la vía suelta."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Your stopping distance will increase if the road is wet.",
+          pt: "A distância de parada do seu veículo aumentará se a pista estiver molhada.",
+          es: "La distancia de frenado de tu vehículo aumentará si la vía está mojada."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "<strong>A wet road increases your stopping distance</strong> because tyres lose grip and braking takes longer. The handbook lists vehicle speed, the condition of your brakes and tyres, and road/weather conditions as the main factors affecting stopping distance — so the other two statements, which deny that brakes/tyres or loose surfaces matter, are false.",
+      pt: "<strong>A distância de parada aumenta em pista molhada</strong>, pois os pneus perdem aderência e a frenagem demora mais. O manual afirma que a velocidade do veículo, o estado dos freios e pneus, e as condições da via e do tempo são os principais fatores que influenciam a distância de parada — ou seja, freios/pneus e pisos soltos também afetam essa distância, tornando as outras duas afirmações incorretas.",
+      es: "<strong>La distancia de frenado aumenta cuando la vía está mojada</strong>, ya que los neumáticos pierden agarre y frenar toma más tiempo. El manual indica que la velocidad del vehículo, el estado de los frenos y neumáticos, y las condiciones de la vía y el clima son los principales factores que influyen en la distancia de frenado, por lo que las otras dos afirmaciones son incorrectas."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-26",
+    cat: "Road Safety",
+    q: {
+      en: "How should you apply your brakes when driving in wet weather?",
+      pt: "Como você deve usar os freios ao dirigir em tempo chuvoso?",
+      es: "¿Cómo debe frenar cuando conduce con lluvia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Heavily, to dry the brakes out.",
+          pt: "Com força, para secar os freios.",
+          es: "Con fuerza, para secar los frenos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Carefully, to avoid skidding.",
+          pt: "Com cuidado, para evitar derrapagens.",
+          es: "Con cuidado, para evitar derrapes."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sharply, so that you can grip the road.",
+          pt: "Bruscamente, para conseguir aderência na pista.",
+          es: "Bruscamente, para lograr agarre en la calzada."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a wet road you cannot brake as hard as on a dry road, so brakes must be applied <strong>carefully to avoid skidding</strong> — heavy or sharp braking on a wet surface can cause the car to lose traction and skid.",
+      pt: "Em pista molhada não é possível frear com a mesma força que em pista seca, então os freios devem ser aplicados <strong>com cuidado para evitar derrapagens</strong> — frear com força ou bruscamente em piso molhado pode fazer o carro perder aderência e derrapar.",
+      es: "En una calzada mojada no se puede frenar con la misma fuerza que en seco, por lo que hay que frenar <strong>con cuidado para evitar derrapes</strong> — frenar fuerte o bruscamente sobre una superficie mojada puede hacer que el auto pierda tracción y derrape."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-18",
+    cat: "Road Safety",
+    q: {
+      en: "How should you apply your brakes when driving in wet weather?",
+      pt: "Como você deve usar os freios ao dirigir em tempo chuvoso?",
+      es: "¿Cómo debe frenar cuando conduce con lluvia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Heavily, to dry the brakes out.",
+          pt: "Com força, para secar os freios.",
+          es: "Con fuerza, para secar los frenos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Carefully, to avoid skidding.",
+          pt: "Com cuidado, para evitar derrapagens.",
+          es: "Con cuidado, para evitar derrapes."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sharply, so that you can grip the road.",
+          pt: "Bruscamente, para conseguir aderência na pista.",
+          es: "Bruscamente, para lograr agarre en la calzada."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a wet road you cannot brake as hard as on a dry road, so brakes must be applied <strong>carefully to avoid skidding</strong> — heavy or sharp braking on a wet surface can cause the car to lose traction and skid.",
+      pt: "Em pista molhada não é possível frear com a mesma força que em pista seca, então os freios devem ser aplicados <strong>com cuidado para evitar derrapagens</strong> — frear com força ou bruscamente em piso molhado pode fazer o carro perder aderência e derrapar.",
+      es: "En una calzada mojada no se puede frenar con la misma fuerza que en seco, por lo que hay que frenar <strong>con cuidado para evitar derrapes</strong> — frenar fuerte o bruscamente sobre una superficie mojada puede hacer que el auto pierda tracción y derrape."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-29",
+    cat: "Road Safety",
+    q: {
+      en: "If you are dazzled by another vehicle's headlights, what should you do?",
+      pt: "Se você for ofuscado pelos faróis de outro veículo, o que deve fazer?",
+      es: "Si te encandilan los faros de otro vehículo, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Put your lights on high beam.",
+          pt: "Colocar seus faróis no facho alto (luz alta).",
+          es: "Poner tus luces altas (luces largas)."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep left and look over the top of the approaching vehicle.",
+          pt: "Manter-se à esquerda e olhar por cima do veículo que se aproxima.",
+          es: "Mantenerte a la izquierda y mirar por encima del vehículo que se aproxima."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down, look left and if you cannot see, pull over and stop.",
+          pt: "Reduzir a velocidade, olhar para a esquerda e, se não conseguir enxergar, encostar e parar.",
+          es: "Reducir la velocidad, mirar hacia la izquierda y, si no puedes ver, orillarte y detenerte."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If dazzled by an oncoming vehicle's headlights, the handbook says to <strong>slow down, look to the left of the road, and keep left</strong> — if you still cannot see, stop until your vision clears.",
+      pt: "Se você for ofuscado pelos faróis de um veículo que se aproxima, o manual orienta a <strong>reduzir a velocidade, olhar para a esquerda da via e manter-se à esquerda</strong> — se ainda assim não conseguir enxergar, pare até que a visão se normalize.",
+      es: "Si te encandilan los faros de un vehículo que se aproxima, el manual indica <strong>reducir la velocidad, mirar hacia la izquierda de la vía y mantenerte a la izquierda</strong> — si aun así no puedes ver, detente hasta que tu visión se recupere."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-27",
+    cat: "Road Safety",
+    q: {
+      en: "If you are dazzled by another vehicle's headlights, what should you do?",
+      pt: "Se você for ofuscado pelos faróis de outro veículo, o que deve fazer?",
+      es: "Si te encandilan los faros de otro vehículo, ¿qué debes hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Put your lights on high beam.",
+          pt: "Colocar seus faróis no facho alto (luz alta).",
+          es: "Poner tus luces altas (luces largas)."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep left and look over the top of the approaching vehicle.",
+          pt: "Manter-se à esquerda e olhar por cima do veículo que se aproxima.",
+          es: "Mantenerte a la izquierda y mirar por encima del vehículo que se aproxima."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down, look left and if you cannot see, pull over and stop.",
+          pt: "Reduzir a velocidade, olhar para a esquerda e, se não conseguir enxergar, encostar e parar.",
+          es: "Reducir la velocidad, mirar hacia la izquierda y, si no puedes ver, orillarte y detenerte."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If dazzled by an oncoming vehicle's headlights, the handbook says to <strong>slow down, look to the left of the road, and keep left</strong> — if you still cannot see, stop until your vision clears.",
+      pt: "Se você for ofuscado pelos faróis de um veículo que se aproxima, o manual orienta a <strong>reduzir a velocidade, olhar para a esquerda da via e manter-se à esquerda</strong> — se ainda assim não conseguir enxergar, pare até que a visão se normalize.",
+      es: "Si te encandilan los faros de un vehículo que se aproxima, el manual indica <strong>reducir la velocidad, mirar hacia la izquierda de la vía y mantenerte a la izquierda</strong> — si aun así no puedes ver, detente hasta que tu visión se recupere."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-12",
+    cat: "Emergencies",
+    q: {
+      en: "What should you do if an emergency vehicle is using a siren or flashing lights?",
+      pt: "O que você deve fazer se um veículo de emergência estiver usando sirene ou luzes intermitentes?",
+      es: "¿Qué debe hacer si un vehículo de emergencia está usando sirena o luces intermitentes?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Flash your headlights to warn other drivers.",
+          pt: "Piscar os faróis para avisar os outros motoristas.",
+          es: "Destellar las luces altas para avisar a otros conductores."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Accelerate to avoid the emergency vehicle.",
+          pt: "Acelerar para se afastar do veículo de emergência.",
+          es: "Acelerar para alejarse del vehículo de emergencia."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Give way by moving to the left or right, if it is safe to do so.",
+          pt: "Dar passagem, movendo-se para a esquerda ou para a direita, se for seguro fazer isso.",
+          es: "Ceder el paso, moviéndose hacia la izquierda o la derecha, si es seguro hacerlo."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must <strong>give way to an emergency vehicle</strong> — move as far left as you safely can (or right if that's the safe direction), or slow/stop if you can't move over; failing to give way is an offence.",
+      pt: "Você deve <strong>dar passagem a um veículo de emergência</strong> — mova-se o máximo possível para a esquerda com segurança (ou para a direita, se for a direção segura), ou reduza a velocidade/pare se não puder se deslocar; não dar passagem é uma infração.",
+      es: "Debe <strong>ceder el paso a un vehículo de emergencia</strong> — muévase lo más posible hacia la izquierda con seguridad (o hacia la derecha si esa es la dirección segura), o reduzca la velocidad/deténgase si no puede desplazarse; no ceder el paso es una infracción."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-08",
+    cat: "Emergencies",
+    q: {
+      en: "What is the best way to control bleeding from a wound?",
+      pt: "Qual é a melhor forma de controlar o sangramento de um ferimento?",
+      es: "¿Cuál es la mejor manera de controlar el sangrado de una herida?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Apply antiseptic cream to the wound.",
+          pt: "Aplicar creme antisséptico no ferimento.",
+          es: "Aplicar crema antiséptica en la herida."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Apply direct pressure to the wound.",
+          pt: "Aplicar pressão direta no ferimento.",
+          es: "Aplicar presión directa sobre la herida."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cover the wound with a light bandage.",
+          pt: "Cobrir o ferimento com uma bandagem leve.",
+          es: "Cubrir la herida con un vendaje ligero."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "To stop external bleeding, you should <strong>apply direct pressure to the wound</strong> using whatever is available, such as your hands or an item of clothing, and never remove the original dressing once applied.",
+      pt: "Para estancar um sangramento externo, deve-se <strong>aplicar pressão direta no ferimento</strong>, usando o que estiver disponível, como as mãos ou uma peça de roupa, e nunca remover o curativo original já colocado.",
+      es: "Para detener un sangrado externo, se debe <strong>aplicar presión directa sobre la herida</strong>, usando lo que esté disponible, como las manos o una prenda de ropa, y nunca retirar el vendaje original ya colocado."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-24",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What is the correct procedure when changing lanes?",
+      pt: "Qual é o procedimento correto ao mudar de faixa?",
+      es: "¿Cuál es el procedimiento correcto al cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Check your blind spot using the external mirrors, indicate and give way to traffic in the other lane.",
+          pt: "Verifique o ponto cego usando os espelhos externos, sinalize e dê a preferência ao trânsito na outra faixa.",
+          es: "Revise el punto ciego usando los espejos externos, señalice y ceda el paso al tráfico en el otro carril."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Touch your brake pedal to warn any drivers behind you, indicate and give way to traffic in the other lane.",
+          pt: "Toque no pedal do freio para avisar os motoristas atrás de você, sinalize e dê a preferência ao trânsito na outra faixa.",
+          es: "Toque el pedal del freno para avisar a los conductores detrás de usted, señalice y ceda el paso al tráfico en el otro carril."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Check your internal and external mirrors, indicate/signal to change lanes for a sufficient distance to warn other drivers of your intentions before beginning your manoeuvre and glance over your shoulder to check your blind spot.",
+          pt: "Verifique os espelhos internos e externos, sinalize a mudança de faixa por uma distância suficiente para avisar os outros motoristas de sua intenção antes de iniciar a manobra e olhe por cima do ombro para verificar o ponto cego.",
+          es: "Revise los espejos internos y externos, señalice el cambio de carril con suficiente distancia para avisar a los demás conductores de su intención antes de iniciar la maniobra, y mire por encima del hombro para revisar el punto ciego."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists the safe lane-changing procedure as: <strong>check your internal and external mirrors, signal for a sufficient distance to warn other drivers, then glance over your shoulder to check your blind spot</strong> before giving way to traffic already in that lane.",
+      pt: "O Drive Safe Handbook descreve o procedimento seguro para mudar de faixa: <strong>verificar os espelhos internos e externos, sinalizar por uma distância suficiente para avisar os outros motoristas e depois olhar por cima do ombro para checar o ponto cego</strong>, antes de dar a preferência ao trânsito que já está naquela faixa.",
+      es: "El Drive Safe Handbook describe el procedimiento seguro para cambiar de carril: <strong>revisar los espejos internos y externos, señalizar con suficiente distancia para avisar a los demás conductores y luego mirar por encima del hombro para revisar el punto ciego</strong>, antes de ceder el paso al tráfico que ya está en ese carril."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-08",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What is the correct procedure when changing lanes?",
+      pt: "Qual é o procedimento correto ao mudar de faixa?",
+      es: "¿Cuál es el procedimiento correcto al cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Check your blind spot using the external mirrors, indicate and give way to traffic in the other lane.",
+          pt: "Verifique o ponto cego usando os espelhos externos, sinalize e dê a preferência ao trânsito na outra faixa.",
+          es: "Revise el punto ciego usando los espejos externos, señalice y ceda el paso al tráfico en el otro carril."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Touch your brake pedal to warn any drivers behind you, indicate and give way to traffic in the other lane.",
+          pt: "Toque no pedal do freio para avisar os motoristas atrás de você, sinalize e dê a preferência ao trânsito na outra faixa.",
+          es: "Toque el pedal del freno para avisar a los conductores detrás de usted, señalice y ceda el paso al tráfico en el otro carril."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Check your internal and external mirrors, indicate/signal to change lanes for a sufficient distance to warn other drivers of your intentions before beginning your manoeuvre and glance over your shoulder to check your blind spot.",
+          pt: "Verifique os espelhos internos e externos, sinalize a mudança de faixa por uma distância suficiente para avisar os outros motoristas de sua intenção antes de iniciar a manobra e olhe por cima do ombro para verificar o ponto cego.",
+          es: "Revise los espejos internos y externos, señalice el cambio de carril con suficiente distancia para avisar a los demás conductores de su intención antes de iniciar la maniobra, y mire por encima del hombro para revisar el punto ciego."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists the safe lane-changing procedure as: <strong>check your internal and external mirrors, signal for a sufficient distance to warn other drivers, then glance over your shoulder to check your blind spot</strong> before giving way to traffic already in that lane.",
+      pt: "O Drive Safe Handbook descreve o procedimento seguro para mudar de faixa: <strong>verificar os espelhos internos e externos, sinalizar por uma distância suficiente para avisar os outros motoristas e depois olhar por cima do ombro para checar o ponto cego</strong>, antes de dar a preferência ao trânsito que já está naquela faixa.",
+      es: "El Drive Safe Handbook describe el procedimiento seguro para cambiar de carril: <strong>revisar los espejos internos y externos, señalizar con suficiente distancia para avisar a los demás conductores y luego mirar por encima del hombro para revisar el punto ciego</strong>, antes de ceder el paso al tráfico que ya está en ese carril."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-09",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What is the correct procedure when changing lanes?",
+      pt: "Qual é o procedimento correto ao mudar de faixa?",
+      es: "¿Cuál es el procedimiento correcto al cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Check your blind spot using the external mirrors, indicate and give way to traffic in the other lane.",
+          pt: "Verifique o ponto cego usando os espelhos externos, sinalize e dê a preferência ao trânsito na outra faixa.",
+          es: "Revise el punto ciego usando los espejos externos, señalice y ceda el paso al tráfico en el otro carril."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Touch your brake pedal to warn any drivers behind you, indicate and give way to traffic in the other lane.",
+          pt: "Toque no pedal do freio para avisar os motoristas atrás de você, sinalize e dê a preferência ao trânsito na outra faixa.",
+          es: "Toque el pedal del freno para avisar a los conductores detrás de usted, señalice y ceda el paso al tráfico en el otro carril."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Check your internal and external mirrors, indicate/signal to change lanes for a sufficient distance to warn other drivers of your intentions before beginning your manoeuvre and glance over your shoulder to check your blind spot.",
+          pt: "Verifique os espelhos internos e externos, sinalize a mudança de faixa por uma distância suficiente para avisar os outros motoristas de sua intenção antes de iniciar a manobra e olhe por cima do ombro para verificar o ponto cego.",
+          es: "Revise los espejos internos y externos, señalice el cambio de carril con suficiente distancia para avisar a los demás conductores de su intención antes de iniciar la maniobra, y mire por encima del hombro para revisar el punto ciego."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The Drive Safe Handbook lists the safe lane-changing procedure as: <strong>check your internal and external mirrors, signal for a sufficient distance to warn other drivers, then glance over your shoulder to check your blind spot</strong> before giving way to traffic already in that lane.",
+      pt: "O Drive Safe Handbook descreve o procedimento seguro para mudar de faixa: <strong>verificar os espelhos internos e externos, sinalizar por uma distância suficiente para avisar os outros motoristas e depois olhar por cima do ombro para checar o ponto cego</strong>, antes de dar a preferência ao trânsito que já está naquela faixa.",
+      es: "El Drive Safe Handbook describe el procedimiento seguro para cambiar de carril: <strong>revisar los espejos internos y externos, señalizar con suficiente distancia para avisar a los demás conductores y luego mirar por encima del hombro para revisar el punto ciego</strong>, antes de ceder el paso al tráfico que ya está en ese carril."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-18",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do to improve safety when travelling in heavy rain?",
+      pt: "O que você deve fazer para melhorar a segurança ao dirigir com chuva forte?",
+      es: "¿Qué debe hacer para mejorar la seguridad al conducir con lluvia intensa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Use your headlights and watch out for pedestrians’, cyclists and other hazards.",
+          pt: "Use os faróis e fique atento a pedestres, ciclistas e outros perigos.",
+          es: "Use las luces delanteras y esté atento a los peatones, ciclistas y otros peligros."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn on your radio to block out the sound of the rain.",
+          pt: "Ligue o rádio para abafar o som da chuva.",
+          es: "Encienda la radio para tapar el sonido de la lluvia."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive the same as you would in dry weather conditions.",
+          pt: "Dirija da mesma forma que dirigiria em tempo seco.",
+          es: "Conduzca igual que en condiciones de clima seco."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In wet weather you should <strong>turn your headlights on to low beam</strong> and stay especially alert for pedestrians and cyclists, who can be difficult to see in the rain.",
+      pt: "Em tempo chuvoso, você deve <strong>ligar os faróis baixos</strong> e ficar especialmente atento a pedestres e ciclistas, que podem ser difíceis de enxergar na chuva.",
+      es: "Con lluvia, debe <strong>encender las luces bajas</strong> y prestar especial atención a los peatones y ciclistas, que pueden ser difíciles de ver bajo la lluvia."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-11",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do to improve safety when travelling in heavy rain?",
+      pt: "O que você deve fazer para melhorar a segurança ao dirigir com chuva forte?",
+      es: "¿Qué debe hacer para mejorar la seguridad al conducir con lluvia intensa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Use your headlights and watch out for pedestrians’, cyclists and other hazards.",
+          pt: "Use os faróis e fique atento a pedestres, ciclistas e outros perigos.",
+          es: "Use las luces delanteras y esté atento a los peatones, ciclistas y otros peligros."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn on your radio to block out the sound of the rain.",
+          pt: "Ligue o rádio para abafar o som da chuva.",
+          es: "Encienda la radio para tapar el sonido de la lluvia."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive the same as you would in dry weather conditions.",
+          pt: "Dirija da mesma forma que dirigiria em tempo seco.",
+          es: "Conduzca igual que en condiciones de clima seco."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In wet weather you should <strong>turn your headlights on to low beam</strong> and stay especially alert for pedestrians and cyclists, who can be difficult to see in the rain.",
+      pt: "Em tempo chuvoso, você deve <strong>ligar os faróis baixos</strong> e ficar especialmente atento a pedestres e ciclistas, que podem ser difíceis de enxergar na chuva.",
+      es: "Con lluvia, debe <strong>encender las luces bajas</strong> y prestar especial atención a los peatones y ciclistas, que pueden ser difíciles de ver bajo la lluvia."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q1-04",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar passagem?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    sign: "/icons/signs/uncontrolled-intersection-give-way-right-left-turn-cyclist.png",
+    cap: {
+      en: "Vehicle X turns left across the intersection while Cyclist Y rides straight through from the south — X must give way to Y, who is approaching on X's right.",
+      pt: "O veículo X vira à esquerda no cruzamento enquanto o ciclista Y segue reto vindo do sul — X deve dar passagem a Y, que se aproxima pela direita de X.",
+      es: "El vehículo X gira a la izquierda en la intersección mientras el ciclista Y sigue recto desde el sur — X debe ceder el paso a Y, que se aproxima por la derecha de X."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Neither has to give way.",
+          pt: "Nenhum dos dois precisa dar passagem.",
+          es: "Ninguno tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "O veículo X.",
+          es: "El vehículo X."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "The cyclist Y.",
+          pt: "O ciclista Y.",
+          es: "El ciclista Y."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled four-way intersection — no stop or give-way signs, no signals, no roundabout — so the basic give-way-to-the-right rule applies, whether turning or going straight ahead. Vehicle X is turning left from the west approach into the north road. Relative to X's direction of travel (east, before the turn), Cyclist Y — riding straight through from the south to the north — is approaching from X's right. Bicycles must follow the same road rules as other vehicles, so Vehicle X must give way to Cyclist Y.",
+      pt: "Este é um cruzamento de quatro vias não sinalizado — sem placas de pare ou dê a passagem, sem semáforos, sem rotatória — portanto vale a regra básica de dar passagem a quem vem pela direita, seja você virando ou seguindo em frente. O veículo X está virando à esquerda vindo do braço oeste em direção à via norte. Em relação à direção de deslocamento de X (para leste, antes da curva), o ciclista Y — que segue reto do sul para o norte — está se aproximando pela direita de X. As bicicletas devem seguir as mesmas regras de trânsito dos demais veículos, portanto o veículo X deve dar passagem ao ciclista Y.",
+      es: "Esta es una intersección de cuatro vías sin control — sin señales de pare o ceda el paso, sin semáforos, sin rotonda — por lo que se aplica la regla básica de ceder el paso a quien viene por la derecha, ya sea que gire o siga recto. El vehículo X está girando a la izquierda desde el tramo oeste hacia la vía norte. Respecto a la dirección de desplazamiento de X (hacia el este, antes de girar), el ciclista Y —que sigue recto desde el sur hacia el norte— se aproxima por la derecha de X. Las bicicletas deben seguir las mismas normas de tránsito que los demás vehículos, por lo que el vehículo X debe ceder el paso al ciclista Y."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-01",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar passagem?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    sign: "/icons/signs/four-way-intersection-give-way-to-right-cyclist.png",
+    cap: {
+      en: "At this uncontrolled crossroads, Vehicle Y must give way to Cyclist X, who is approaching from Y's right.",
+      pt: "Neste cruzamento não controlado, o veículo Y deve dar passagem ao Ciclista X, que se aproxima pela direita de Y.",
+      es: "En este cruce no controlado, el vehículo Y debe ceder el paso al Ciclista X, que se aproxima por la derecha de Y."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither has to give way.",
+          pt: "Nenhum dos dois precisa dar passagem.",
+          es: "Ninguno tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The cyclist X.",
+          pt: "O ciclista X.",
+          es: "El ciclista X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled four-way intersection (crossroads): there are no STOP or GIVE WAY signs, traffic lights, or roundabout, and grass verges border all four corners with roads continuing in every direction. At an uncontrolled four-way intersection, you must give way to traffic approaching from your right, whether you are going straight ahead or turning. Vehicle Y is travelling east, so Y's right-hand side faces south — exactly where Cyclist X is approaching from. That makes Cyclist X the traffic on Vehicle Y's right, so Vehicle Y must give way to Cyclist X.",
+      pt: "Este é um cruzamento de quatro vias não controlado: não há placas de PARE ou DÊ A PREFERÊNCIA, semáforos ou rotatória, e há grama nos quatro cantos com as vias continuando em todas as direções. Em um cruzamento de quatro vias não controlado, você deve dar passagem ao trânsito que se aproxima pela sua direita, seja seguindo em frente ou fazendo uma conversão. O veículo Y está seguindo para leste, então a direita de Y aponta para o sul — exatamente de onde o Ciclista X está se aproximando. Isso torna o Ciclista X o trânsito à direita do veículo Y, então o veículo Y deve dar passagem ao Ciclista X.",
+      es: "Esta es una intersección de cuatro vías no controlada: no hay señales de PARE o CEDA EL PASO, semáforos ni rotonda, y hay césped en las cuatro esquinas con las vías continuando en todas las direcciones. En una intersección de cuatro vías no controlada, debes ceder el paso al tráfico que se aproxima por tu derecha, ya sea que sigas recto o gires. El vehículo Y viaja hacia el este, por lo que la derecha de Y apunta hacia el sur — justo de donde se aproxima el Ciclista X. Esto convierte al Ciclista X en el tráfico a la derecha del vehículo Y, por lo que el vehículo Y debe ceder el paso al Ciclista X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-13",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar passagem?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    sign: "/icons/signs/four-way-intersection-give-way-to-right-cyclist.png",
+    cap: {
+      en: "At this uncontrolled crossroads, Vehicle Y must give way to Cyclist X, who is approaching from Y's right.",
+      pt: "Neste cruzamento não controlado, o veículo Y deve dar passagem ao Ciclista X, que se aproxima pela direita de Y.",
+      es: "En este cruce no controlado, el vehículo Y debe ceder el paso al Ciclista X, que se aproxima por la derecha de Y."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "O veículo Y.",
+          es: "El vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither has to give way.",
+          pt: "Nenhum dos dois precisa dar passagem.",
+          es: "Ninguno tiene que ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The cyclist X.",
+          pt: "O ciclista X.",
+          es: "El ciclista X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled four-way intersection (crossroads): there are no STOP or GIVE WAY signs, traffic lights, or roundabout, and grass verges border all four corners with roads continuing in every direction. At an uncontrolled four-way intersection, you must give way to traffic approaching from your right, whether you are going straight ahead or turning. Vehicle Y is travelling east, so Y's right-hand side faces south — exactly where Cyclist X is approaching from. That makes Cyclist X the traffic on Vehicle Y's right, so Vehicle Y must give way to Cyclist X.",
+      pt: "Este é um cruzamento de quatro vias não controlado: não há placas de PARE ou DÊ A PREFERÊNCIA, semáforos ou rotatória, e há grama nos quatro cantos com as vias continuando em todas as direções. Em um cruzamento de quatro vias não controlado, você deve dar passagem ao trânsito que se aproxima pela sua direita, seja seguindo em frente ou fazendo uma conversão. O veículo Y está seguindo para leste, então a direita de Y aponta para o sul — exatamente de onde o Ciclista X está se aproximando. Isso torna o Ciclista X o trânsito à direita do veículo Y, então o veículo Y deve dar passagem ao Ciclista X.",
+      es: "Esta es una intersección de cuatro vías no controlada: no hay señales de PARE o CEDA EL PASO, semáforos ni rotonda, y hay césped en las cuatro esquinas con las vías continuando en todas las direcciones. En una intersección de cuatro vías no controlada, debes ceder el paso al tráfico que se aproxima por tu derecha, ya sea que sigas recto o gires. El vehículo Y viaja hacia el este, por lo que la derecha de Y apunta hacia el sur — justo de donde se aproxima el Ciclista X. Esto convierte al Ciclista X en el tráfico a la derecha del vehículo Y, por lo que el vehículo Y debe ceder el paso al Ciclista X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q2-12",
+    cat: "Road Markings",
+    q: {
+      en: "Is vehicle X allowed to overtake vehicle Y?",
+      pt: "O veículo X tem permissão para ultrapassar o veículo Y?",
+      es: "¿Puede el vehículo X adelantar al vehículo Y?"
+    },
+    sign: "/icons/signs/x-overtake-y-broken-continuous-line-combination.png",
+    cap: {
+      en: "X is behind Y in the same lane. The broken line is on their side of the continuous line, so X may cross both lines to overtake Y if it is safe.",
+      pt: "X está atrás de Y na mesma faixa. A linha tracejada está do lado deles em relação à linha contínua, então X pode cruzar as duas linhas para ultrapassar Y se for seguro.",
+      es: "X está detrás de Y en el mismo carril. La línea discontinua está de su lado respecto a la línea continua, así que X puede cruzar ambas líneas para adelantar a Y si es seguro."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if it is safe to do so.",
+          pt: "Sim, se for seguro fazê-lo.",
+          es: "Sí, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It depends on the weather conditions.",
+          pt: "Depende das condições climáticas.",
+          es: "Depende de las condiciones climáticas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'The diagram shows two parallel dividing lines between X and Y\'s lane and the far lane: a broken line nearer to the vehicles and a continuous (solid) line further away. This is a "continuous line and broken line combination." Under WA road rules, when the broken line is on your side of the continuous line, you may cross both lines to overtake if it is safe to do so. Since X and Y are on the broken-line side, X is allowed to cross into the far lane to overtake Y, provided it is safe.',
+      pt: 'O diagrama mostra duas linhas divisórias paralelas entre a faixa de X e Y e a faixa oposta: uma linha tracejada mais próxima dos veículos e uma linha contínua mais distante. Essa é uma "combinação de linha contínua e linha tracejada". Pelas regras de trânsito da Austrália Ocidental, quando a linha tracejada está do seu lado em relação à linha contínua, você pode cruzar as duas linhas para ultrapassar, desde que seja seguro. Como X e Y estão do lado da linha tracejada, X tem permissão para cruzar para a faixa oposta e ultrapassar Y, desde que seja seguro.',
+      es: 'El diagrama muestra dos líneas divisorias paralelas entre el carril de X e Y y el carril opuesto: una línea discontinua más cercana a los vehículos y una línea continua más alejada. Esto es una "combinación de línea continua y línea discontinua". Según las normas de tránsito de Australia Occidental, cuando la línea discontinua está de tu lado respecto a la línea continua, puedes cruzar ambas líneas para adelantar si es seguro hacerlo. Como X e Y están del lado de la línea discontinua, X puede cruzar hacia el carril opuesto para adelantar a Y, siempre que sea seguro.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-15",
+    cat: "Road Markings",
+    q: {
+      en: "Is vehicle X allowed to overtake vehicle Y?",
+      pt: "O veículo X tem permissão para ultrapassar o veículo Y?",
+      es: "¿Puede el vehículo X adelantar al vehículo Y?"
+    },
+    sign: "/icons/signs/x-overtake-y-broken-continuous-line-combination.png",
+    cap: {
+      en: "X is behind Y in the same lane. The broken line is on their side of the continuous line, so X may cross both lines to overtake Y if it is safe.",
+      pt: "X está atrás de Y na mesma faixa. A linha tracejada está do lado deles em relação à linha contínua, então X pode cruzar as duas linhas para ultrapassar Y se for seguro.",
+      es: "X está detrás de Y en el mismo carril. La línea discontinua está de su lado respecto a la línea continua, así que X puede cruzar ambas líneas para adelantar a Y si es seguro."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if it is safe to do so.",
+          pt: "Sim, se for seguro fazê-lo.",
+          es: "Sí, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It depends on the weather conditions.",
+          pt: "Depende das condições climáticas.",
+          es: "Depende de las condiciones climáticas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'The diagram shows two parallel dividing lines between X and Y\'s lane and the far lane: a broken line nearer to the vehicles and a continuous (solid) line further away. This is a "continuous line and broken line combination." Under WA road rules, when the broken line is on your side of the continuous line, you may cross both lines to overtake if it is safe to do so. Since X and Y are on the broken-line side, X is allowed to cross into the far lane to overtake Y, provided it is safe.',
+      pt: 'O diagrama mostra duas linhas divisórias paralelas entre a faixa de X e Y e a faixa oposta: uma linha tracejada mais próxima dos veículos e uma linha contínua mais distante. Essa é uma "combinação de linha contínua e linha tracejada". Pelas regras de trânsito da Austrália Ocidental, quando a linha tracejada está do seu lado em relação à linha contínua, você pode cruzar as duas linhas para ultrapassar, desde que seja seguro. Como X e Y estão do lado da linha tracejada, X tem permissão para cruzar para a faixa oposta e ultrapassar Y, desde que seja seguro.',
+      es: 'El diagrama muestra dos líneas divisorias paralelas entre el carril de X e Y y el carril opuesto: una línea discontinua más cercana a los vehículos y una línea continua más alejada. Esto es una "combinación de línea continua y línea discontinua". Según las normas de tránsito de Australia Occidental, cuando la línea discontinua está de tu lado respecto a la línea continua, puedes cruzar ambas líneas para adelantar si es seguro hacerlo. Como X e Y están del lado de la línea discontinua, X puede cruzar hacia el carril opuesto para adelantar a Y, siempre que sea seguro.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-16",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/give-way-vehicle-y-median-strip-junction.png",
+    cap: {
+      en: "Vehicle Y exits a side road onto the main road, while Vehicle X turns right across the median strip from the continuing road.",
+      pt: "O veículo Y sai de uma via secundária para a via principal, enquanto o veículo X vira à direita atravessando a faixa mediana vindo da via contínua.",
+      es: "El vehículo Y sale de una vía secundaria hacia la vía principal, mientras que el vehículo X gira a la derecha cruzando la franja mediana desde la vía continua."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The horizontal road, marked with lane lines and a median strip running its full length, is the continuing (through) road. Vehicle Y is emerging onto it from a side road/driveway that ends at this junction - the terminating road. Vehicle X's path lies on the continuing road: it starts in the near carriageway and curves right through the median-strip gap, so it is travelling on, or turning from, the continuing road. At a three-way intersection, the vehicle on the terminating road must give way to all traffic travelling on or turning from the continuing road. So Vehicle Y must give way to Vehicle X.",
+      pt: "A via horizontal, com faixas demarcadas e uma faixa mediana em toda a sua extensão, é a via contínua (principal). O veículo Y está saindo para ela a partir de uma via secundária/entrada que termina neste cruzamento - a via que termina. O trajeto do veículo X está sobre a via contínua: ele começa na pista mais próxima e curva à direita pela abertura da faixa mediana, ou seja, está circulando ou virando a partir da via contínua. Em um cruzamento de três vias, o veículo que está na via que termina deve dar passagem a todo o tráfego que circula ou vira a partir da via contínua. Portanto, o veículo Y deve dar passagem ao veículo X.",
+      es: "La vía horizontal, con carriles demarcados y una franja mediana en toda su extensión, es la vía continua (principal). El vehículo Y está incorporándose a ella desde una vía secundaria/entrada que termina en este cruce - la vía que termina. La trayectoria del vehículo X está sobre la vía continua: comienza en el carril cercano y gira a la derecha a través de la abertura de la franja mediana, es decir, circula o gira desde la vía continua. En una intersección de tres vías, el vehículo que está en la vía que termina debe ceder el paso a todo el tráfico que circula o gira desde la vía continua. Por lo tanto, el vehículo Y debe ceder el paso al vehículo X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-26",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/give-way-vehicle-y-median-strip-junction.png",
+    cap: {
+      en: "Vehicle Y exits a side road onto the main road, while Vehicle X turns right across the median strip from the continuing road.",
+      pt: "O veículo Y sai de uma via secundária para a via principal, enquanto o veículo X vira à direita atravessando a faixa mediana vindo da via contínua.",
+      es: "El vehículo Y sale de una vía secundaria hacia la vía principal, mientras que el vehículo X gira a la derecha cruzando la franja mediana desde la vía continua."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The horizontal road, marked with lane lines and a median strip running its full length, is the continuing (through) road. Vehicle Y is emerging onto it from a side road/driveway that ends at this junction - the terminating road. Vehicle X's path lies on the continuing road: it starts in the near carriageway and curves right through the median-strip gap, so it is travelling on, or turning from, the continuing road. At a three-way intersection, the vehicle on the terminating road must give way to all traffic travelling on or turning from the continuing road. So Vehicle Y must give way to Vehicle X.",
+      pt: "A via horizontal, com faixas demarcadas e uma faixa mediana em toda a sua extensão, é a via contínua (principal). O veículo Y está saindo para ela a partir de uma via secundária/entrada que termina neste cruzamento - a via que termina. O trajeto do veículo X está sobre a via contínua: ele começa na pista mais próxima e curva à direita pela abertura da faixa mediana, ou seja, está circulando ou virando a partir da via contínua. Em um cruzamento de três vias, o veículo que está na via que termina deve dar passagem a todo o tráfego que circula ou vira a partir da via contínua. Portanto, o veículo Y deve dar passagem ao veículo X.",
+      es: "La vía horizontal, con carriles demarcados y una franja mediana en toda su extensión, es la vía continua (principal). El vehículo Y está incorporándose a ella desde una vía secundaria/entrada que termina en este cruce - la vía que termina. La trayectoria del vehículo X está sobre la vía continua: comienza en el carril cercano y gira a la derecha a través de la abertura de la franja mediana, es decir, circula o gira desde la vía continua. En una intersección de tres vías, el vehículo que está en la vía que termina debe ceder el paso a todo el tráfico que circula o gira desde la vía continua. Por lo tanto, el vehículo Y debe ceder el paso al vehículo X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-24",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/give-way-vehicle-y-median-strip-junction.png",
+    cap: {
+      en: "Vehicle Y exits a side road onto the main road, while Vehicle X turns right across the median strip from the continuing road.",
+      pt: "O veículo Y sai de uma via secundária para a via principal, enquanto o veículo X vira à direita atravessando a faixa mediana vindo da via contínua.",
+      es: "El vehículo Y sale de una vía secundaria hacia la vía principal, mientras que el vehículo X gira a la derecha cruzando la franja mediana desde la vía continua."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los vehículos debe ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The horizontal road, marked with lane lines and a median strip running its full length, is the continuing (through) road. Vehicle Y is emerging onto it from a side road/driveway that ends at this junction - the terminating road. Vehicle X's path lies on the continuing road: it starts in the near carriageway and curves right through the median-strip gap, so it is travelling on, or turning from, the continuing road. At a three-way intersection, the vehicle on the terminating road must give way to all traffic travelling on or turning from the continuing road. So Vehicle Y must give way to Vehicle X.",
+      pt: "A via horizontal, com faixas demarcadas e uma faixa mediana em toda a sua extensão, é a via contínua (principal). O veículo Y está saindo para ela a partir de uma via secundária/entrada que termina neste cruzamento - a via que termina. O trajeto do veículo X está sobre a via contínua: ele começa na pista mais próxima e curva à direita pela abertura da faixa mediana, ou seja, está circulando ou virando a partir da via contínua. Em um cruzamento de três vias, o veículo que está na via que termina deve dar passagem a todo o tráfego que circula ou vira a partir da via contínua. Portanto, o veículo Y deve dar passagem ao veículo X.",
+      es: "La vía horizontal, con carriles demarcados y una franja mediana en toda su extensión, es la vía continua (principal). El vehículo Y está incorporándose a ella desde una vía secundaria/entrada que termina en este cruce - la vía que termina. La trayectoria del vehículo X está sobre la vía continua: comienza en el carril cercano y gira a la derecha a través de la abertura de la franja mediana, es decir, circula o gira desde la vía continua. En una intersección de tres vías, el vehículo que está en la vía que termina debe ceder el paso a todo el tráfico que circula o gira desde la vía continua. Por lo tanto, el vehículo Y debe ceder el paso al vehículo X."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-23",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/t-intersection-y-gives-way-to-x-and-z.png",
+    cap: {
+      en: "At this uncontrolled T-intersection, X and Z sit on the continuing road while Y's road ends at the junction — so Y, turning right onto the through road, must give way to both.",
+      pt: "Neste cruzamento em T não controlado, X e Z estão na via contínua, enquanto a via de Y termina no cruzamento — por isso Y, ao converter à direita para a via principal, deve dar passagem a ambos.",
+      es: "En esta intersección en T no controlada, X y Z están en la vía continua, mientras que la vía de Y termina en el cruce; por eso Y, al girar a la derecha hacia la vía principal, debe ceder el paso a ambos."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection. The vertical road, carrying Z (from the north) and X (from the south), runs the full length of the intersection without ending — it is the continuing road. Y's road approaches only from the west and ends at the junction, making it the terminating road. Under WA's rule for uncontrolled three-way intersections, the vehicle on the terminating road must give way to all traffic travelling on or turning from the continuing road. Y is also turning right into the through road, so Y must additionally give way to oncoming traffic (X). Therefore Y gives way to both X and Z.",
+      pt: "Este é um cruzamento em T não controlado. A via vertical, por onde passam Z (vindo do norte) e X (vindo do sul), percorre toda a extensão do cruzamento sem terminar — é a via contínua. A via de Y vem apenas do lado oeste e termina no cruzamento, sendo portanto a via que termina. Pela regra da WA para cruzamentos de três vias não controlados, o veículo na via que termina deve dar passagem a todo o tráfego que circula ou converte a partir da via contínua. Y também está convertendo à direita para entrar na via principal, por isso deve dar passagem também ao tráfego em sentido contrário (X). Portanto, Y dá passagem tanto a X quanto a Z.",
+      es: "Se trata de una intersección en T no controlada. La vía vertical, por donde circulan Z (desde el norte) y X (desde el sur), recorre toda la extensión del cruce sin terminar: es la vía continua. La vía de Y llega solo desde el oeste y termina en el cruce, por lo que es la vía que termina. Según la regla de WA para intersecciones de tres vías no controladas, el vehículo en la vía que termina debe ceder el paso a todo el tráfico que circula o gira desde la vía continua. Y también está girando a la derecha para incorporarse a la vía principal, por lo que además debe ceder el paso al tráfico que viene de frente (X). Por lo tanto, Y cede el paso tanto a X como a Z."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-24",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/t-intersection-y-gives-way-to-x-and-z.png",
+    cap: {
+      en: "At this uncontrolled T-intersection, X and Z sit on the continuing road while Y's road ends at the junction — so Y, turning right onto the through road, must give way to both.",
+      pt: "Neste cruzamento em T não controlado, X e Z estão na via contínua, enquanto a via de Y termina no cruzamento — por isso Y, ao converter à direita para a via principal, deve dar passagem a ambos.",
+      es: "En esta intersección en T no controlada, X y Z están en la vía continua, mientras que la vía de Y termina en el cruce; por eso Y, al girar a la derecha hacia la vía principal, debe ceder el paso a ambos."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection. The vertical road, carrying Z (from the north) and X (from the south), runs the full length of the intersection without ending — it is the continuing road. Y's road approaches only from the west and ends at the junction, making it the terminating road. Under WA's rule for uncontrolled three-way intersections, the vehicle on the terminating road must give way to all traffic travelling on or turning from the continuing road. Y is also turning right into the through road, so Y must additionally give way to oncoming traffic (X). Therefore Y gives way to both X and Z.",
+      pt: "Este é um cruzamento em T não controlado. A via vertical, por onde passam Z (vindo do norte) e X (vindo do sul), percorre toda a extensão do cruzamento sem terminar — é a via contínua. A via de Y vem apenas do lado oeste e termina no cruzamento, sendo portanto a via que termina. Pela regra da WA para cruzamentos de três vias não controlados, o veículo na via que termina deve dar passagem a todo o tráfego que circula ou converte a partir da via contínua. Y também está convertendo à direita para entrar na via principal, por isso deve dar passagem também ao tráfego em sentido contrário (X). Portanto, Y dá passagem tanto a X quanto a Z.",
+      es: "Se trata de una intersección en T no controlada. La vía vertical, por donde circulan Z (desde el norte) y X (desde el sur), recorre toda la extensión del cruce sin terminar: es la vía continua. La vía de Y llega solo desde el oeste y termina en el cruce, por lo que es la vía que termina. Según la regla de WA para intersecciones de tres vías no controladas, el vehículo en la vía que termina debe ceder el paso a todo el tráfico que circula o gira desde la vía continua. Y también está girando a la derecha para incorporarse a la vía principal, por lo que además debe ceder el paso al tráfico que viene de frente (X). Por lo tanto, Y cede el paso tanto a X como a Z."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-20",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/t-intersection-y-gives-way-to-x-and-z.png",
+    cap: {
+      en: "At this uncontrolled T-intersection, X and Z sit on the continuing road while Y's road ends at the junction — so Y, turning right onto the through road, must give way to both.",
+      pt: "Neste cruzamento em T não controlado, X e Z estão na via contínua, enquanto a via de Y termina no cruzamento — por isso Y, ao converter à direita para a via principal, deve dar passagem a ambos.",
+      es: "En esta intersección en T no controlada, X y Z están en la vía continua, mientras que la vía de Y termina en el cruce; por eso Y, al girar a la derecha hacia la vía principal, debe ceder el paso a ambos."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X gives way to both Y and Z.",
+          pt: "O veículo X dá passagem tanto a Y quanto a Z.",
+          es: "El vehículo X cede el paso tanto a Y como a Z."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle Z gives way to both X and Y.",
+          pt: "O veículo Z dá passagem tanto a X quanto a Y.",
+          es: "El vehículo Z cede el paso tanto a X como a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle Y gives way to both X and Z.",
+          pt: "O veículo Y dá passagem tanto a X quanto a Z.",
+          es: "El vehículo Y cede el paso tanto a X como a Z."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled T-intersection. The vertical road, carrying Z (from the north) and X (from the south), runs the full length of the intersection without ending — it is the continuing road. Y's road approaches only from the west and ends at the junction, making it the terminating road. Under WA's rule for uncontrolled three-way intersections, the vehicle on the terminating road must give way to all traffic travelling on or turning from the continuing road. Y is also turning right into the through road, so Y must additionally give way to oncoming traffic (X). Therefore Y gives way to both X and Z.",
+      pt: "Este é um cruzamento em T não controlado. A via vertical, por onde passam Z (vindo do norte) e X (vindo do sul), percorre toda a extensão do cruzamento sem terminar — é a via contínua. A via de Y vem apenas do lado oeste e termina no cruzamento, sendo portanto a via que termina. Pela regra da WA para cruzamentos de três vias não controlados, o veículo na via que termina deve dar passagem a todo o tráfego que circula ou converte a partir da via contínua. Y também está convertendo à direita para entrar na via principal, por isso deve dar passagem também ao tráfego em sentido contrário (X). Portanto, Y dá passagem tanto a X quanto a Z.",
+      es: "Se trata de una intersección en T no controlada. La vía vertical, por donde circulan Z (desde el norte) y X (desde el sur), recorre toda la extensión del cruce sin terminar: es la vía continua. La vía de Y llega solo desde el oeste y termina en el cruce, por lo que es la vía que termina. Según la regla de WA para intersecciones de tres vías no controladas, el vehículo en la vía que termina debe ceder el paso a todo el tráfico que circula o gira desde la vía continua. Y también está girando a la derecha para incorporarse a la vía principal, por lo que además debe ceder el paso al tráfico que viene de frente (X). Por lo tanto, Y cede el paso tanto a X como a Z."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-30",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroads-vehicle-x-right.png",
+    cap: {
+      en: "Four-way crossroads: Vehicle Y must give way to Vehicle X, approaching from its right.",
+      pt: "Cruzamento de quatro vias: o veículo Y deve dar passagem ao veículo X, que se aproxima pela direita.",
+      es: "Cruce de cuatro vías: el vehículo Y debe ceder el paso al vehículo X, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled four-way crossroads, not a T-junction — grass fills all four corners, but the road actually continues through in every direction, including Y's road, which runs diagonally across to the far side. At an uncontrolled four-way intersection you must give way to traffic approaching from your right. Vehicle Y is travelling roughly east, so Y's right-hand side faces south — exactly where <strong>Vehicle X</strong> is approaching from, so <strong>Vehicle Y must give way to Vehicle X</strong>.",
+      pt: "Este é um cruzamento de quatro vias não controlado, não um cruzamento em T — há grama nos quatro cantos, mas a via continua em todas as direções, inclusive a de Y, que atravessa na diagonal até o outro lado. Em um cruzamento de quatro vias não controlado, você deve dar passagem ao trânsito que vem pela sua direita. O veículo Y segue aproximadamente para leste, então a direita de Y aponta para o sul — exatamente de onde o <strong>veículo X</strong> está se aproximando, por isso <strong>o veículo Y deve dar passagem ao veículo X</strong>.",
+      es: "Esta es una intersección de cuatro vías no controlada, no un cruce en T — hay césped en las cuatro esquinas, pero la vía continúa en todas las direcciones, incluida la de Y, que cruza en diagonal hacia el otro lado. En una intersección de cuatro vías no controlada, debes ceder el paso al tráfico que se aproxima por tu derecha. El vehículo Y viaja aproximadamente hacia el este, por lo que la derecha de Y apunta hacia el sur — justo de donde se aproxima el <strong>vehículo X</strong>, por lo que <strong>el vehículo Y debe ceder el paso al vehículo X</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-19",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/giveway-crossroads-vehicle-x-right.png",
+    cap: {
+      en: "Four-way crossroads: Vehicle Y must give way to Vehicle X, approaching from its right.",
+      pt: "Cruzamento de quatro vias: o veículo Y deve dar passagem ao veículo X, que se aproxima pela direita.",
+      es: "Cruce de cuatro vías: el vehículo Y debe ceder el paso al vehículo X, que se aproxima por la derecha."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos dois veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos debe ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an uncontrolled four-way crossroads, not a T-junction — grass fills all four corners, but the road actually continues through in every direction, including Y's road, which runs diagonally across to the far side. At an uncontrolled four-way intersection you must give way to traffic approaching from your right. Vehicle Y is travelling roughly east, so Y's right-hand side faces south — exactly where <strong>Vehicle X</strong> is approaching from, so <strong>Vehicle Y must give way to Vehicle X</strong>.",
+      pt: "Este é um cruzamento de quatro vias não controlado, não um cruzamento em T — há grama nos quatro cantos, mas a via continua em todas as direções, inclusive a de Y, que atravessa na diagonal até o outro lado. Em um cruzamento de quatro vias não controlado, você deve dar passagem ao trânsito que vem pela sua direita. O veículo Y segue aproximadamente para leste, então a direita de Y aponta para o sul — exatamente de onde o <strong>veículo X</strong> está se aproximando, por isso <strong>o veículo Y deve dar passagem ao veículo X</strong>.",
+      es: "Esta es una intersección de cuatro vías no controlada, no un cruce en T — hay césped en las cuatro esquinas, pero la vía continúa en todas las direcciones, incluida la de Y, que cruza en diagonal hacia el otro lado. En una intersección de cuatro vías no controlada, debes ceder el paso al tráfico que se aproxima por tu derecha. El vehículo Y viaja aproximadamente hacia el este, por lo que la derecha de Y apunta hacia el sur — justo de donde se aproxima el <strong>vehículo X</strong>, por lo que <strong>el vehículo Y debe ceder el paso al vehículo X</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-13",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-left-y-turning-right-lanes-marked.png",
+    cap: {
+      en: "X continues straight in its lane while Y, ahead, signals a right turn on a multi-lane road — X may pass on Y's left.",
+      pt: "X segue em frente em sua faixa enquanto Y, à frente, sinaliza conversão à direita em via de múltiplas faixas — X pode ultrapassar pela esquerda de Y.",
+      es: "X continúa recto por su carril mientras Y, más adelante, señaliza un giro a la derecha en una vía de varios carriles — X puede adelantar por la izquierda de Y."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X só pode ultrapassar Y em uma área de 60 km/h.",
+          es: "El vehículo X solo puede adelantar a Y en una zona de 60 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não deve ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: 'Y is ahead of X and is indicating/signalling a right turn on a multi-lane road with marked lanes ("Lanes Marked"). The WA Drive Safe Handbook has a specific left-overtake exception for exactly this situation: you may overtake a vehicle on the left when you are on a multi-lane road, it is safe to do so, and the vehicle ahead is indicating a right turn. As Y moves right to make the turn, X can safely continue straight ahead, passing on Y\'s LEFT within its own marked lane. This is not the generic "overtake on the right for same-direction traffic" rule — it is the dedicated left-overtake-past-a-right-turning-vehicle rule, and the passing side is the left, not the right.',
+      pt: 'Y está à frente de X e sinaliza uma conversão à direita em uma via de múltiplas faixas demarcadas ("Lanes Marked"). O Manual de Direção Segura da WA tem uma exceção específica para ultrapassagem pela ESQUERDA exatamente para essa situação: você pode ultrapassar um veículo pela esquerda quando está em uma via de múltiplas faixas, é seguro fazê-lo, e o veículo à frente está sinalizando conversão à direita. Como Y se move para a direita para virar, X pode seguir em frente com segurança, ultrapassando pela ESQUERDA de Y, dentro de sua própria faixa demarcada. Não é a regra genérica de "ultrapassar pela direita para veículos no mesmo sentido" — é a regra específica de ultrapassagem pela esquerda de um veículo que sinaliza conversão à direita, e o lado da ultrapassagem é a esquerda, não a direita.',
+      es: 'Y está delante de X y señaliza un giro a la derecha en una vía de varios carriles marcados ("Lanes Marked"). El Manual de Conducción Segura de WA tiene una excepción específica de adelantamiento por la IZQUIERDA para exactamente esta situación: puedes adelantar a un vehículo por la izquierda cuando estás en una vía de varios carriles, es seguro hacerlo, y el vehículo de adelante señaliza un giro a la derecha. Como Y se mueve hacia la derecha para girar, X puede continuar recto de forma segura, adelantando por la IZQUIERDA de Y, dentro de su propio carril marcado. No es la regla genérica de "adelantar por la derecha para vehículos en el mismo sentido" — es la regla específica de adelantamiento por la izquierda a un vehículo que señaliza un giro a la derecha, y el lado de adelantamiento es la izquierda, no la derecha.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-21",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/overtake-left-y-turning-right-lanes-marked.png",
+    cap: {
+      en: "X continues straight in its lane while Y, ahead, signals a right turn on a multi-lane road — X may pass on Y's left.",
+      pt: "X segue em frente em sua faixa enquanto Y, à frente, sinaliza conversão à direita em via de múltiplas faixas — X pode ultrapassar pela esquerda de Y.",
+      es: "X continúa recto por su carril mientras Y, más adelante, señaliza un giro a la derecha en una vía de varios carriles — X puede adelantar por la izquierda de Y."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X só pode ultrapassar Y em uma área de 60 km/h.",
+          es: "El vehículo X solo puede adelantar a Y en una zona de 60 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não deve ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: 'Y is ahead of X and is indicating/signalling a right turn on a multi-lane road with marked lanes ("Lanes Marked"). The WA Drive Safe Handbook has a specific left-overtake exception for exactly this situation: you may overtake a vehicle on the left when you are on a multi-lane road, it is safe to do so, and the vehicle ahead is indicating a right turn. As Y moves right to make the turn, X can safely continue straight ahead, passing on Y\'s LEFT within its own marked lane. This is not the generic "overtake on the right for same-direction traffic" rule — it is the dedicated left-overtake-past-a-right-turning-vehicle rule, and the passing side is the left, not the right.',
+      pt: 'Y está à frente de X e sinaliza uma conversão à direita em uma via de múltiplas faixas demarcadas ("Lanes Marked"). O Manual de Direção Segura da WA tem uma exceção específica para ultrapassagem pela ESQUERDA exatamente para essa situação: você pode ultrapassar um veículo pela esquerda quando está em uma via de múltiplas faixas, é seguro fazê-lo, e o veículo à frente está sinalizando conversão à direita. Como Y se move para a direita para virar, X pode seguir em frente com segurança, ultrapassando pela ESQUERDA de Y, dentro de sua própria faixa demarcada. Não é a regra genérica de "ultrapassar pela direita para veículos no mesmo sentido" — é a regra específica de ultrapassagem pela esquerda de um veículo que sinaliza conversão à direita, e o lado da ultrapassagem é a esquerda, não a direita.',
+      es: 'Y está delante de X y señaliza un giro a la derecha en una vía de varios carriles marcados ("Lanes Marked"). El Manual de Conducción Segura de WA tiene una excepción específica de adelantamiento por la IZQUIERDA para exactamente esta situación: puedes adelantar a un vehículo por la izquierda cuando estás en una vía de varios carriles, es seguro hacerlo, y el vehículo de adelante señaliza un giro a la derecha. Como Y se mueve hacia la derecha para girar, X puede continuar recto de forma segura, adelantando por la IZQUIERDA de Y, dentro de su propio carril marcado. No es la regla genérica de "adelantar por la derecha para vehículos en el mismo sentido" — es la regla específica de adelantamiento por la izquierda a un vehículo que señaliza un giro a la derecha, y el lado de adelantamiento es la izquierda, no la derecha.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-21",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/x-must-not-overtake-y-turning-intersection.png",
+    cap: {
+      en: "At a marked cross intersection, Y has already turned right onto the westbound lane while X is still mid-turn into the southbound leg — the two vehicles are on crossing paths, not travelling in the same direction.",
+      pt: "Em um cruzamento com faixas marcadas, Y já converteu à direita para a pista sentido oeste, enquanto X ainda está convertendo à direita para o braço sul — os dois veículos seguem trajetos que se cruzam, não na mesma direção.",
+      es: "En una intersección con carriles marcados, Y ya giró a la derecha hacia el carril con dirección oeste, mientras que X todavía está girando hacia el ramal sur; ambos vehículos siguen trayectorias que se cruzan, no la misma dirección."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X só pode ultrapassar Y em uma área de 60 km/h.",
+          es: "El vehículo X solo puede adelantar a Y en una zona de 60 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não deve ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: 'This diagram is not a straight-road lane change — the grass filling all four corners and the curved direction arrows show a cross intersection where both vehicles are turning. Y has just completed a right turn from the north approach and is now heading west; X is still mid-turn, angled across the intersection and heading into the south leg. Overtaking on the right is only permitted when both vehicles are "travelling in the same direction" (Drive Safe Handbook 3.16.1) — but X and Y are on crossing turning paths, not the same direction, so that condition is not met. Cutting across a vehicle that is still turning through an intersection is also unsafe. Vehicle X must not overtake Y.',
+      pt: 'Este diagrama não mostra uma simples mudança de faixa em via reta — a grama nos quatro cantos e as setas curvas indicam um cruzamento onde ambos os veículos estão convertendo. Y acabou de fazer uma conversão à direita vindo do braço norte e agora segue para oeste; X ainda está no meio da conversão, atravessado no cruzamento, seguindo para o braço sul. Ultrapassar pela direita só é permitido quando os dois veículos estão "seguindo na mesma direção" (Drive Safe Handbook 3.16.1) — mas X e Y estão em trajetos que se cruzam, não na mesma direção, então essa condição não é atendida. Cortar a frente de um veículo que ainda está convertendo dentro de um cruzamento também é perigoso. O veículo X não deve ultrapassar Y.',
+      es: 'Este diagrama no muestra un simple cambio de carril en una vía recta: el césped en las cuatro esquinas y las flechas curvas indican una intersección donde ambos vehículos están girando. Y acaba de completar un giro a la derecha desde el ramal norte y ahora se dirige hacia el oeste; X todavía está a mitad de giro, cruzado en la intersección, dirigiéndose hacia el ramal sur. Adelantar por la derecha solo está permitido cuando ambos vehículos "circulan en la misma dirección" (Drive Safe Handbook 3.16.1), pero X e Y están en trayectorias que se cruzan, no en la misma dirección, por lo que esa condición no se cumple. Además, cortar el paso de un vehículo que todavía está girando en una intersección es inseguro. El vehículo X no debe adelantar a Y.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-19",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    sign: "/icons/signs/x-must-not-overtake-y-turning-intersection.png",
+    cap: {
+      en: "At a marked cross intersection, Y has already turned right onto the westbound lane while X is still mid-turn into the southbound leg — the two vehicles are on crossing paths, not travelling in the same direction.",
+      pt: "Em um cruzamento com faixas marcadas, Y já converteu à direita para a pista sentido oeste, enquanto X ainda está convertendo à direita para o braço sul — os dois veículos seguem trajetos que se cruzam, não na mesma direção.",
+      es: "En una intersección con carriles marcados, Y ya giró a la derecha hacia el carril con dirección oeste, mientras que X todavía está girando hacia el ramal sur; ambos vehículos siguen trayectorias que se cruzan, no la misma dirección."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle X may overtake Y, only in a 60km/h area.",
+          pt: "O veículo X só pode ultrapassar Y em uma área de 60 km/h.",
+          es: "El vehículo X solo puede adelantar a Y en una zona de 60 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X may overtake Y.",
+          pt: "O veículo X pode ultrapassar Y.",
+          es: "El vehículo X puede adelantar a Y."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle X must not overtake Y.",
+          pt: "O veículo X não deve ultrapassar Y.",
+          es: "El vehículo X no debe adelantar a Y."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: 'This diagram is not a straight-road lane change — the grass filling all four corners and the curved direction arrows show a cross intersection where both vehicles are turning. Y has just completed a right turn from the north approach and is now heading west; X is still mid-turn, angled across the intersection and heading into the south leg. Overtaking on the right is only permitted when both vehicles are "travelling in the same direction" (Drive Safe Handbook 3.16.1) — but X and Y are on crossing turning paths, not the same direction, so that condition is not met. Cutting across a vehicle that is still turning through an intersection is also unsafe. Vehicle X must not overtake Y.',
+      pt: 'Este diagrama não mostra uma simples mudança de faixa em via reta — a grama nos quatro cantos e as setas curvas indicam um cruzamento onde ambos os veículos estão convertendo. Y acabou de fazer uma conversão à direita vindo do braço norte e agora segue para oeste; X ainda está no meio da conversão, atravessado no cruzamento, seguindo para o braço sul. Ultrapassar pela direita só é permitido quando os dois veículos estão "seguindo na mesma direção" (Drive Safe Handbook 3.16.1) — mas X e Y estão em trajetos que se cruzam, não na mesma direção, então essa condição não é atendida. Cortar a frente de um veículo que ainda está convertendo dentro de um cruzamento também é perigoso. O veículo X não deve ultrapassar Y.',
+      es: 'Este diagrama no muestra un simple cambio de carril en una vía recta: el césped en las cuatro esquinas y las flechas curvas indican una intersección donde ambos vehículos están girando. Y acaba de completar un giro a la derecha desde el ramal norte y ahora se dirige hacia el oeste; X todavía está a mitad de giro, cruzado en la intersección, dirigiéndose hacia el ramal sur. Adelantar por la derecha solo está permitido cuando ambos vehículos "circulan en la misma dirección" (Drive Safe Handbook 3.16.1), pero X e Y están en trayectorias que se cruzan, no en la misma dirección, por lo que esa condición no se cumple. Además, cortar el paso de un vehículo que todavía está girando en una intersección es inseguro. El vehículo X no debe adelantar a Y.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-15",
+    cat: "Road Markings",
+    q: {
+      en: "Which is the correct path for the vehicle to take when turning right at an intersection?",
+      pt: "Qual é o caminho correto para o veículo seguir ao virar à direita em um cruzamento?",
+      es: "¿Cuál es el camino correcto que debe seguir el vehículo al girar a la derecha en una intersección?"
+    },
+    sign: "/icons/signs/right-turn-correct-path-intersection.png",
+    cap: {
+      en: "Path Y hugs the centre line on approach and only swings right after reaching the centre of the intersection — the correct way to turn right. Path X cuts the corner early.",
+      pt: "O caminho Y acompanha de perto a linha central na aproximação e só se desloca para a direita depois de alcançar o centro do cruzamento — a forma correta de virar à direita. O caminho X corta o canto cedo demais.",
+      es: "El camino Y se mantiene pegado a la línea central en la aproximación y solo se desvía a la derecha después de alcanzar el centro de la intersección — la forma correcta de girar a la derecha. El camino X corta la esquina demasiado pronto."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "X is the correct path.",
+          pt: "X é o caminho correto.",
+          es: "X es el camino correcto."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Y is the correct path.",
+          pt: "Y é o caminho correto.",
+          es: "Y es el camino correcto."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both paths are correct.",
+          pt: "Ambos os caminhos estão corretos.",
+          es: "Ambos caminos son correctos."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Path Y is correct. When turning right at an intersection where lanes are not marked, you must approach as close as possible to the left of the centre of the road, and only swing across to the right once you reach the centre of the intersection — turning to the right of that centre point before entering the receiving road. Path Y does exactly this: it tracks tight against the centre line all the way to the middle of the intersection and only curves away there. Path X cuts the corner — it swings right almost immediately after leaving the vehicle's position, well before reaching the centre of the intersection, which is not the correct technique.",
+      pt: "O caminho Y é o correto. Ao virar à direita em um cruzamento sem faixas demarcadas, o condutor deve se manter o mais próximo possível da esquerda do centro da via na aproximação, e só se deslocar para a direita depois de alcançar o centro do cruzamento, virando à direita desse ponto central antes de entrar na via de destino. O caminho Y faz exatamente isso: acompanha de perto a linha central até o meio do cruzamento e só então curva. O caminho X corta o canto — ele já se desloca para a direita logo após sair da posição do veículo, bem antes de alcançar o centro do cruzamento, o que não é a técnica correta.",
+      es: "El camino Y es el correcto. Al girar a la derecha en una intersección sin carriles demarcados, debes aproximarte lo más cerca posible del lado izquierdo del centro de la calzada, y desviarte hacia la derecha solo una vez que alcances el centro de la intersección, girando a la derecha de ese punto central antes de entrar en la vía de destino. El camino Y hace exactamente eso: se mantiene pegado a la línea central hasta el centro de la intersección y recién ahí gira. El camino X corta la esquina: se desvía hacia la derecha casi de inmediato al salir de la posición del vehículo, mucho antes de llegar al centro de la intersección, lo cual no es la técnica correcta."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-30",
+    cat: "Road Markings",
+    q: {
+      en: "Which is the correct path for the vehicle to take when turning right at an intersection?",
+      pt: "Qual é o caminho correto para o veículo seguir ao virar à direita em um cruzamento?",
+      es: "¿Cuál es el camino correcto que debe seguir el vehículo al girar a la derecha en una intersección?"
+    },
+    sign: "/icons/signs/right-turn-correct-path-intersection.png",
+    cap: {
+      en: "Path Y hugs the centre line on approach and only swings right after reaching the centre of the intersection — the correct way to turn right. Path X cuts the corner early.",
+      pt: "O caminho Y acompanha de perto a linha central na aproximação e só se desloca para a direita depois de alcançar o centro do cruzamento — a forma correta de virar à direita. O caminho X corta o canto cedo demais.",
+      es: "El camino Y se mantiene pegado a la línea central en la aproximación y solo se desvía a la derecha después de alcanzar el centro de la intersección — la forma correcta de girar a la derecha. El camino X corta la esquina demasiado pronto."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "X is the correct path.",
+          pt: "X é o caminho correto.",
+          es: "X es el camino correcto."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Y is the correct path.",
+          pt: "Y é o caminho correto.",
+          es: "Y es el camino correcto."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both paths are correct.",
+          pt: "Ambos os caminhos estão corretos.",
+          es: "Ambos caminos son correctos."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Path Y is correct. When turning right at an intersection where lanes are not marked, you must approach as close as possible to the left of the centre of the road, and only swing across to the right once you reach the centre of the intersection — turning to the right of that centre point before entering the receiving road. Path Y does exactly this: it tracks tight against the centre line all the way to the middle of the intersection and only curves away there. Path X cuts the corner — it swings right almost immediately after leaving the vehicle's position, well before reaching the centre of the intersection, which is not the correct technique.",
+      pt: "O caminho Y é o correto. Ao virar à direita em um cruzamento sem faixas demarcadas, o condutor deve se manter o mais próximo possível da esquerda do centro da via na aproximação, e só se deslocar para a direita depois de alcançar o centro do cruzamento, virando à direita desse ponto central antes de entrar na via de destino. O caminho Y faz exatamente isso: acompanha de perto a linha central até o meio do cruzamento e só então curva. O caminho X corta o canto — ele já se desloca para a direita logo após sair da posição do veículo, bem antes de alcançar o centro do cruzamento, o que não é a técnica correta.",
+      es: "El camino Y es el correcto. Al girar a la derecha en una intersección sin carriles demarcados, debes aproximarte lo más cerca posible del lado izquierdo del centro de la calzada, y desviarte hacia la derecha solo una vez que alcances el centro de la intersección, girando a la derecha de ese punto central antes de entrar en la vía de destino. El camino Y hace exactamente eso: se mantiene pegado a la línea central hasta el centro de la intersección y recién ahí gira. El camino X corta la esquina: se desvía hacia la derecha casi de inmediato al salir de la posición del vehículo, mucho antes de llegar al centro de la intersección, lo cual no es la técnica correcta."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-02",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    sign: "/icons/signs/give-way-merging-from-emergency-stopping-lane.png",
+    cap: {
+      en: 'Vehicle Y pulls off the paved shoulder ("the strip") back onto the road, its path curving to merge into the lane where Vehicle X is already travelling beside the median.',
+      pt: 'O Veículo Y sai do acostamento pavimentado ("a faixa") de volta para a via, com sua trajetória se fundindo na faixa onde o Veículo X já trafega ao lado da mediana.',
+      es: 'El Vehículo Y sale del arcén pavimentado ("la franja") de vuelta a la calzada, incorporándose al carril donde el Vehículo X ya circula junto a la mediana.'
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle Y.",
+          pt: "Veículo Y.",
+          es: "Vehículo Y."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle X.",
+          pt: "Veículo X.",
+          es: "Vehículo X."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle has to give way.",
+          pt: "Nenhum dos veículos precisa dar passagem.",
+          es: "Ninguno de los dos vehículos tiene que ceder el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Both vehicles are on the same road, not at a crossroad. Vehicle X is travelling straight ahead in the traffic lane next to the median. Vehicle Y is on the paved shoulder (the \"strip\"/emergency stopping lane) and is moving back onto the road, its path curving to merge into X's lane. Under the WA Drive Safe Handbook's freeway rules, a driver re-entering the traffic flow from the emergency stopping lane or shoulder must give way to all traffic already travelling on the road. So Vehicle Y, which is merging back onto the roadway, must give way to Vehicle X, which is already established in the travel lane.",
+      pt: 'Os dois veículos estão na mesma via, não em um cruzamento. O Veículo X segue em frente na faixa de tráfego, ao lado da mediana. O Veículo Y está no acostamento pavimentado (a "faixa"/pista de parada de emergência) e está voltando para a via, com sua trajetória curvando para se fundir na faixa do Veículo X. Segundo as regras de rodovia do WA Drive Safe Handbook, o condutor que reingressa no fluxo de tráfego a partir da pista de parada de emergência ou do acostamento deve dar passagem a todo o tráfego que já está na via. Portanto, o Veículo Y, que está se fundindo de volta à via, deve dar passagem ao Veículo X, que já está estabelecido na faixa de tráfego.',
+      es: 'Ambos vehículos están en la misma vía, no en un cruce. El Vehículo X circula recto por el carril de tránsito, junto a la mediana. El Vehículo Y está en el arcén pavimentado (la "franja"/carril de parada de emergencia) y está volviendo a la calzada, con su trayectoria curvándose para incorporarse al carril del Vehículo X. Según las reglas de autopista del WA Drive Safe Handbook, el conductor que se reincorpora al flujo de tráfico desde el carril de parada de emergencia o el arcén debe ceder el paso a todo el tráfico que ya circula por la vía. Por lo tanto, el Vehículo Y, que se está incorporando de nuevo a la calzada, debe ceder el paso al Vehículo X, que ya circula establecido en el carril de tránsito.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-13",
+    cat: "Parking Rules",
+    q: {
+      en: "What must you do before pulling out from a parked position at a kerb?",
+      pt: "O que você deve fazer antes de sair de uma posição estacionada junto ao meio-fio?",
+      es: "¿Qué debe hacer antes de salir de una posición estacionada junto a la acera?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn.",
+          pt: "Buzinar.",
+          es: "Tocar la bocina."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Check your mirror, indicate to give other drivers sufficient warning of your intentions, check your blind spot prior to pulling out.",
+          pt: "Verificar o retrovisor, sinalizar para dar aviso suficiente aos outros motoristas sobre suas intenções e verificar o ponto cego antes de sair.",
+          es: "Revisar el espejo, señalizar para dar aviso suficiente a otros conductores de sus intenciones y revisar el punto ciego antes de salir."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Adjust your passenger-side external mirror.",
+          pt: "Ajustar o retrovisor externo do lado do passageiro.",
+          es: "Ajustar el espejo exterior del lado del pasajero."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'The WA Drive Safe Handbook\'s dedicated parking procedure (3.18.2 "How to park") says: "Before pulling out from a parking spot: make sure you are in the correct gear; do not allow the vehicle to roll back; and check for other traffic, indicate/signal for at least 5 seconds and then drive off smoothly into a safe gap in traffic." The general indicator rule (3.11.1) reinforces this, listing "pulling out from a kerb or stationary position" as a required-signal event and requiring you to give other drivers sufficient warning, indicate for at least 5 seconds, and give way to following or overtaking traffic before moving off. "Checking for other traffic" before moving off is done via your mirrors and a blind-spot check (over-the-shoulder glance) — the standard traffic-check method used throughout the handbook — so option 1 correctly captures the required mirror check, indicating, and blind-spot check. Sounding your horn (option 0) plays no role in this procedure — horns are only for warning of danger. Adjusting the passenger-side mirror (option 2) has nothing to do with pulling out safely.',
+      pt: 'O procedimento de estacionamento do manual da WA (3.18.2 "How to park") diz: "Antes de sair de uma vaga: certifique-se de estar na marcha correta; não deixe o veículo recuar; e verifique o trânsito, sinalize por pelo menos 5 segundos e siga suavemente para um espaço seguro no trânsito." A regra geral de sinalização (3.11.1) reforça isso, listando "sair do meio-fio ou de uma posição parada" como situação que exige sinalização, com aviso suficiente aos outros motoristas, sinalização de pelo menos 5 segundos e dar passagem ao trânsito que vem atrás ou está ultrapassando. Verificar o trânsito antes de sair é feito através dos retrovisores e da checagem do ponto cego (olhar por cima do ombro) — o método padrão de verificação de trânsito usado em todo o manual. Por isso a opção 1 está correta. Buzinar (opção 0) não faz parte desse procedimento — a buzina serve apenas para avisar sobre perigo. Ajustar o retrovisor do lado do passageiro (opção 2) não tem relação com sair com segurança.',
+      es: 'El procedimiento de estacionamiento del manual de WA (3.18.2 "How to park") dice: "Antes de salir de un lugar de estacionamiento: asegúrese de estar en la marcha correcta; no permita que el vehículo retroceda; y revise el tráfico, señalice durante al menos 5 segundos y avance suavemente hacia un espacio seguro en el tráfico." La regla general de señalización (3.11.1) refuerza esto, incluyendo "salir de la acera o de una posición detenida" como situación que exige señal, con aviso suficiente a otros conductores, señalización de al menos 5 segundos y ceder el paso al tráfico que viene detrás o adelanta. Revisar el tráfico antes de salir se hace mediante los espejos y la revisión del punto ciego (mirar por encima del hombro), el método estándar de verificación de tráfico usado en todo el manual. Por eso la opción 1 es correcta. Tocar la bocina (opción 0) no forma parte de este procedimiento — la bocina solo sirve para advertir peligro. Ajustar el espejo del lado del pasajero (opción 2) no tiene relación con salir de forma segura.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q3-26",
+    cat: "Road Safety",
+    q: {
+      en: "Is it legal for you to drive a motor vehicle at night with only one headlight working?",
+      pt: "É legal dirigir um veículo motorizado à noite com apenas um farol funcionando?",
+      es: "¿Es legal conducir un vehículo motorizado de noche con solo un faro delantero funcionando?"
+    },
+    sign: "",
+    cap: {
+      en: "Both headlights must work properly — driving at night with only one is illegal in WA.",
+      pt: "Os dois faróis devem funcionar corretamente — dirigir à noite com apenas um é ilegal na WA.",
+      es: "Ambos faros deben funcionar correctamente — conducir de noche con solo uno es ilegal en WA."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if the right-hand headlight is visible.",
+          pt: "Sim, se o farol do lado direito estiver visível.",
+          es: "Sí, si el faro del lado derecho está visible."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'No. Under WA\'s mandatory vehicle equipment rules (Section 5.4, "Regulations for Your Car"), a car must have headlights that are properly adjusted and work correctly. This is a roadworthiness requirement, not just advice — driving at night with only one working headlight means the vehicle fails to meet this equipment requirement, so it is illegal regardless of which side is still working.',
+      pt: 'Não. De acordo com as regras obrigatórias de equipamento veicular da WA (Seção 5.4, "Regulamentos para o seu Carro"), um carro deve ter faróis devidamente ajustados e funcionando corretamente. Essa é uma exigência de aptidão para circulação, não apenas uma recomendação — dirigir à noite com apenas um farol funcionando significa que o veículo não atende a essa exigência de equipamento, sendo ilegal independentemente de qual lado ainda esteja funcionando.',
+      es: 'No. Según las normas obligatorias de equipamiento vehicular de WA (Sección 5.4, "Regulaciones para su Automóvil"), un automóvil debe tener los faros correctamente ajustados y funcionando correctamente. Este es un requisito de aptitud para circular, no solo un consejo — conducir de noche con solo un faro funcionando significa que el vehículo no cumple con este requisito de equipamiento, por lo que es ilegal sin importar qué lado siga funcionando.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-28",
+    cat: "Road Safety",
+    q: {
+      en: "Is it legal for you to drive a motor vehicle at night with only one headlight working?",
+      pt: "É legal dirigir um veículo motorizado à noite com apenas um farol funcionando?",
+      es: "¿Es legal conducir un vehículo motorizado de noche con solo un faro delantero funcionando?"
+    },
+    sign: "",
+    cap: {
+      en: "Both headlights must work properly — driving at night with only one is illegal in WA.",
+      pt: "Os dois faróis devem funcionar corretamente — dirigir à noite com apenas um é ilegal na WA.",
+      es: "Ambos faros deben funcionar correctamente — conducir de noche con solo uno es ilegal en WA."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if the right-hand headlight is visible.",
+          pt: "Sim, se o farol do lado direito estiver visível.",
+          es: "Sí, si el faro del lado derecho está visible."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: 'No. Under WA\'s mandatory vehicle equipment rules (Section 5.4, "Regulations for Your Car"), a car must have headlights that are properly adjusted and work correctly. This is a roadworthiness requirement, not just advice — driving at night with only one working headlight means the vehicle fails to meet this equipment requirement, so it is illegal regardless of which side is still working.',
+      pt: 'Não. De acordo com as regras obrigatórias de equipamento veicular da WA (Seção 5.4, "Regulamentos para o seu Carro"), um carro deve ter faróis devidamente ajustados e funcionando corretamente. Essa é uma exigência de aptidão para circulação, não apenas uma recomendação — dirigir à noite com apenas um farol funcionando significa que o veículo não atende a essa exigência de equipamento, sendo ilegal independentemente de qual lado ainda esteja funcionando.',
+      es: 'No. Según las normas obligatorias de equipamiento vehicular de WA (Sección 5.4, "Regulaciones para su Automóvil"), un automóvil debe tener los faros correctamente ajustados y funcionando correctamente. Este es un requisito de aptitud para circular, no solo un consejo — conducir de noche con solo un faro funcionando significa que el vehículo no cumple con este requisito de equipamiento, por lo que es ilegal sin importar qué lado siga funcionando.'
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-28",
+    cat: "Road Signs",
+    q: {
+      en: "What is the meaning of this sign?",
+      pt: "O que significa este sinal?",
+      es: "¿Cuál es el significado de esta señal?"
+    },
+    sign: "/icons/signs/keep-left.png",
+    cap: {
+      en: "KEEP LEFT sign",
+      pt: "Sinal KEEP LEFT",
+      es: "Señal MANTÉNGASE A LA IZQUIERDA"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn left at the next street",
+          pt: "Vire à esquerda na próxima rua",
+          es: "Gire a la izquierda en la próxima calle"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pass on the left of traffic",
+          pt: "Passe pelo lado esquerdo do tráfego",
+          es: "Pase por la izquierda del tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep to the LEFT of the sign",
+          pt: "Mantenha-se à ESQUERDA do sinal",
+          es: "Manténgase a la IZQUIERDA de la señal"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "KEEP LEFT means you must pass to the left side of the sign. It is not an instruction to turn left at the next street.",
+      pt: "KEEP LEFT significa que você deve passar pelo lado esquerdo da placa. Não é uma instrução para virar à esquerda na próxima rua.",
+      es: "KEEP LEFT significa que debe pasar por el lado izquierdo de la señal. No es una instrucción para girar a la izquierda en la próxima calle."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-27",
+    cat: "Road Signs",
+    q: {
+      en: "What is the meaning of this sign? (yellow diamond with T shape)",
+      pt: "O que significa este sinal? (losango amarelo com formato T)",
+      es: "¿Cuál es el significado de esta señal? (rombo amarillo con forma de T)"
+    },
+    sign: "/icons/signs/t-junction-ahead.png",
+    cap: {
+      en: "T-junction warning",
+      pt: "Aviso de cruzamento em T",
+      es: "Señal de intersección en T"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Caution, approaching a one-way street",
+          pt: "Cuidado, rua de mão única à frente",
+          es: "Atención, calle de sentido único adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Caution, approaching a T junction",
+          pt: "Cuidado, cruzamento em T à frente",
+          es: "Atención, intersección en T adelante"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Caution, no through road",
+          pt: "Cuidado, sem saída",
+          es: "Atención, calle sin salida"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This warning sign means a T-junction is ahead. Slow down and prepare to give way or turn depending on the road layout.",
+      pt: "Esse sinal de advertência indica cruzamento em T à frente. Reduza e prepare-se para dar preferência ou virar conforme a via.",
+      es: "Esta señal de advertencia indica una intersección en T adelante. Reduzca la velocidad y prepárese para ceder el paso o girar según la vía."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-23",
+    cat: "Give Way Rules",
+    q: {
+      en: "At a children's crossing — what do you do when the attendant extends the flag?",
+      pt: "Cruzamento de crianças — o que fazer quando o atendente estende a bandeira?",
+      es: "En un cruce de niños — ¿qué hace cuando el agente extiende la bandera?"
+    },
+    sign: "/icons/signs/childrens-crossing-flag.png",
+    cap: {
+      en: "Crossing attendant's flag",
+      pt: "Bandeira do agente de travessia",
+      es: "Bandera del agente de cruce"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop and wait until the attendant withdraws the sign",
+          pt: "Parar e esperar até o atendente retirar o sinal",
+          es: "Detenerse y esperar hasta que el agente retire la señal"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down",
+          pt: "Reduzir a velocidade",
+          es: "Reducir la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive on carefully if no children are on your side",
+          pt: "Avançar se não houver crianças do seu lado",
+          es: "Seguir con cuidado si no hay niños de su lado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Stop completely. Do not proceed <strong>until the attendant withdraws the sign</strong>.",
+      pt: "Pare completamente. Só avance quando o atendente <strong>retirar o sinal</strong>.",
+      es: "Deténgase. No avance <strong>hasta que el agente retire la señal</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-11",
+    cat: "Traffic Lights",
+    q: {
+      en: "Traffic lights: green light with a GREEN ARROW — what does it mean?",
+      pt: "Semáforo verde com SETA VERDE — o que significa?",
+      es: "Semáforo verde con FLECHA VERDE — ¿qué significa?"
+    },
+    sign: "/icons/signs/traffic-light-green-arrow.png",
+    cap: {
+      en: "Green + green arrow",
+      pt: "Verde + seta verde",
+      es: "Verde + flecha verde"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn in the direction of the arrow only",
+          pt: "Virar apenas na direção da seta",
+          es: "Girar solo en la dirección de la flecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn in direction of arrow OR drive straight ahead",
+          pt: "Virar na direção da seta OU seguir em frente",
+          es: "Girar en dirección de la flecha O seguir recto"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive straight ahead only",
+          pt: "Apenas seguir em frente",
+          es: "Solo seguir recto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light with a green arrow allows you to travel in the direction of the arrow or continue straight ahead if that movement is permitted and safe.",
+      pt: "Um semáforo verde com seta verde permite seguir na direção da seta ou continuar em frente, se esse movimento for permitido e seguro.",
+      es: "Un semáforo verde con flecha verde permite avanzar en la dirección de la flecha o seguir recto, si ese movimiento está permitido y es seguro."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-17",
+    cat: "Traffic Lights",
+    q: {
+      en: "Traffic lights: green light with a GREEN ARROW — what does it mean?",
+      pt: "Semáforo verde com SETA VERDE — o que significa?",
+      es: "Semáforo verde con FLECHA VERDE — ¿qué significa?"
+    },
+    sign: "/icons/signs/traffic-light-green-arrow.png",
+    cap: {
+      en: "Green + green arrow",
+      pt: "Verde + seta verde",
+      es: "Verde + flecha verde"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn in the direction of the arrow only",
+          pt: "Virar apenas na direção da seta",
+          es: "Girar solo en la dirección de la flecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn in direction of arrow OR drive straight ahead",
+          pt: "Virar na direção da seta OU seguir em frente",
+          es: "Girar en dirección de la flecha O seguir recto"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive straight ahead only",
+          pt: "Apenas seguir em frente",
+          es: "Solo seguir recto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light with a green arrow allows you to travel in the direction of the arrow or continue straight ahead if that movement is permitted and safe.",
+      pt: "Um semáforo verde com seta verde permite seguir na direção da seta ou continuar em frente, se esse movimento for permitido e seguro.",
+      es: "Un semáforo verde con flecha verde permite avanzar en la dirección de la flecha o seguir recto, si ese movimiento está permitido y es seguro."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-08",
+    cat: "Traffic Lights",
+    q: {
+      en: "Traffic lights: RED light with a GREEN ARROW — what does it mean?",
+      pt: "Semáforo VERMELHO com SETA VERDE — o que significa?",
+      es: "Semáforo ROJO con FLECHA VERDE — ¿qué significa?"
+    },
+    sign: "/icons/signs/traffic-light-red-with-green-arrow.png",
+    cap: {
+      en: "Red + green arrow",
+      pt: "Vermelho + seta verde",
+      es: "Rojo + flecha verde"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop until all lights show green",
+          pt: "Parar até todos ficarem verdes",
+          es: "Detenerse hasta que todos estén verdes"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Proceed in direction of the arrow ONLY",
+          pt: "Ir apenas na direção da seta",
+          es: "Avanzar solo en la dirección de la flecha"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Proceed in any direction",
+          pt: "Ir em qualquer direção",
+          es: "Avanzar en cualquier dirección"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A red light with a green arrow means you may proceed only in the direction of the green arrow. Other movements are still stopped by the red light.",
+      pt: "Um sinal vermelho com seta verde significa que você pode seguir apenas na direção da seta verde. Outros movimentos continuam proibidos pelo vermelho.",
+      es: "Un semáforo rojo con flecha verde significa que puede avanzar solo en la dirección de la flecha verde. Los demás movimientos siguen detenidos por la luz roja."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-10",
+    cat: "Traffic Lights",
+    q: {
+      en: "Turning RIGHT at traffic lights on GREEN — what should you do?",
+      pt: "Virando à DIREITA com semáforo VERDE — o que fazer?",
+      es: "Girando a la DERECHA con semáforo en VERDE — ¿qué debe hacer?"
+    },
+    sign: "/icons/signs/traffic-light-green-turning-right.png",
+    cap: {
+      en: "Green light, turning right",
+      pt: "Sinal verde, virando à direita",
+      es: "Luz verde, girando a la derecha"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn only if you can do so without interfering with other traffic",
+          pt: "Virar apenas se não atrapalhar o tráfego",
+          es: "Girar solo si puede hacerlo sin interferir con el tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Wait until red, then turn quickly",
+          pt: "Esperar o vermelho e virar rapidamente",
+          es: "Esperar el rojo y girar rápido"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Wait until yellow, then turn",
+          pt: "Esperar o amarelo e virar",
+          es: "Esperar el amarillo y girar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When turning right on a green light, you must give way and turn only when you can do so without interfering with other traffic.",
+      pt: "Ao virar à direita com o semáforo verde, você deve dar preferência e só virar quando puder fazer isso sem atrapalhar o tráfego.",
+      es: "Al girar a la derecha con luz verde, debe ceder el paso y girar solo cuando pueda hacerlo sin interferir con el tráfico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-26",
+    cat: "Traffic Lights",
+    q: {
+      en: "Turning RIGHT at traffic lights on GREEN — what should you do?",
+      pt: "Virando à DIREITA com semáforo VERDE — o que fazer?",
+      es: "Girando a la DERECHA con semáforo en VERDE — ¿qué debe hacer?"
+    },
+    sign: "/icons/signs/traffic-light-green-turning-right.png",
+    cap: {
+      en: "Green light, turning right",
+      pt: "Sinal verde, virando à direita",
+      es: "Luz verde, girando a la derecha"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn only if you can do so without interfering with other traffic",
+          pt: "Virar apenas se não atrapalhar o tráfego",
+          es: "Girar solo si puede hacerlo sin interferir con el tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Wait until red, then turn quickly",
+          pt: "Esperar o vermelho e virar rapidamente",
+          es: "Esperar el rojo y girar rápido"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Wait until yellow, then turn",
+          pt: "Esperar o amarelo e virar",
+          es: "Esperar el amarillo y girar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When turning right on a green light, you must give way and turn only when you can do so without interfering with other traffic.",
+      pt: "Ao virar à direita com o semáforo verde, você deve dar preferência e só virar quando puder fazer isso sem atrapalhar o tráfego.",
+      es: "Al girar a la derecha con luz verde, debe ceder el paso y girar solo cuando pueda hacerlo sin interferir con el tráfico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-01",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which motorcycle is in the car driver's blind spot?",
+      pt: "Qual moto está no ponto cego do motorista do carro?",
+      es: "¿Qué moto está en el ángulo muerto del conductor?"
+    },
+    sign: "/icons/signs/motorcycle-blind-spot.png",
+    cap: {
+      en: "Blind spot diagram",
+      pt: "Diagrama do ponto cego",
+      es: "Diagrama del punto ciego"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Motorcycle X — beside/behind, not visible in mirrors",
+          pt: "Moto X — ao lado/atrás, não visível nos espelhos",
+          es: "Moto X — al lado/detrás, no visible en los espejos"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Motorcycle Y — far behind, visible in mirror",
+          pt: "Moto Y — longe atrás, visível no espelho",
+          es: "Moto Y — lejos detrás, visible en el espejo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Motorcycle Z — in adjacent lane",
+          pt: "Moto Z — na faixa adjacente",
+          es: "Moto Z — en el carril adyacente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The blind spot is <strong>beside and behind</strong> the car — not visible in mirrors. X is in the blind spot.",
+      pt: "O ponto cego é <strong>ao lado e atrás</strong> do carro — não visível nos espelhos. X está no ponto cego.",
+      es: "El ángulo muerto está <strong>al lado y detrás</strong> del coche — no visible en los espejos. X está en el ángulo muerto."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-12",
+    cat: "Road Markings",
+    q: {
+      en: "Is a vehicle allowed to cross over a double UNBROKEN white line?",
+      pt: "Pode cruzar linha branca dupla CONTÍNUA?",
+      es: "¿Puede cruzar una doble línea blanca CONTINUA?"
+    },
+    sign: "/icons/signs/double-unbroken-line.png",
+    cap: {
+      en: "Double unbroken white line",
+      pt: "Linha dupla contínua branca",
+      es: "Línea blanca doble continua"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, to overtake",
+          pt: "Sim, para ultrapassar",
+          es: "Sí, para adelantar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, only for a right-hand turn or U-turn if safe and legal",
+          pt: "Sim, apenas para virar à direita ou fazer retorno se seguro e legal",
+          es: "Sí, solo para girar a la derecha o cambiar de sentido si es seguro y legal"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Double unbroken: <strong>cannot cross to overtake</strong>. May cross only for a right turn or U-turn if safe and legal.",
+      pt: "Linha dupla contínua: <strong>não pode cruzar para ultrapassar</strong>. Pode cruzar apenas para virar à direita ou retorno.",
+      es: "Doble continua: <strong>no puede cruzar para adelantar</strong>. Solo para girar a la derecha o cambiar de sentido."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-11",
+    cat: "Road Markings",
+    q: {
+      en: "What does a continuous white line dividing lanes mean?",
+      pt: "O que significa linha branca contínua dividindo faixas?",
+      es: "¿Qué significa una línea blanca continua entre carriles?"
+    },
+    sign: "/icons/signs/continuous-white-line.png",
+    cap: {
+      en: "Continuous white line between lanes",
+      pt: "Linha branca contínua entre faixas",
+      es: "Línea blanca continua entre carriles"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You may change lanes if turning right",
+          pt: "Pode mudar de faixa virando à direita",
+          es: "Puede cambiar de carril si gira a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You are NOT allowed to change lanes",
+          pt: "NÃO pode mudar de faixa",
+          es: "NO puede cambiar de carril"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You may change lanes if turning left",
+          pt: "Pode mudar de faixa virando à esquerda",
+          es: "Puede cambiar de carril si gira a la izquierda"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A continuous white lane line means you must not change lanes across it. Stay in your lane until the marking allows a lane change.",
+      pt: "Uma linha branca contínua entre faixas significa que você não deve mudar de faixa cruzando-a. Permaneça na faixa até a marcação permitir mudança.",
+      es: "Una línea blanca continua entre carriles significa que no debe cambiar de carril cruzándola. Permanezca en su carril hasta que la marca lo permita."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-05",
+    cat: "Road Markings",
+    q: {
+      en: "What does a BROKEN white line down the centre of a road mean?",
+      pt: "O que significa linha branca TRACEJADA no centro da via?",
+      es: "¿Qué significa una línea blanca DISCONTINUA en el centro de la vía?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must not cross it",
+          pt: "Não pode cruzar",
+          es: "No debe cruzarla"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You may only cross it to turn right",
+          pt: "Pode cruzar apenas para virar à direita",
+          es: "Solo puede cruzarla para girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You may cross it when overtaking or turning right, if safe to do so",
+          pt: "Pode cruzar ao ultrapassar ou virar à direita, se for seguro",
+          es: "Puede cruzarla al adelantar o girar a la derecha, si es seguro"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A broken white centre line may be crossed to overtake or turn right, but only when it is safe and legal to do so.",
+      pt: "Uma linha branca tracejada no centro da via pode ser cruzada para ultrapassar ou virar à direita, mas apenas quando for seguro e legal.",
+      es: "Una línea blanca discontinua en el centro de la vía puede cruzarse para adelantar o girar a la derecha, pero solo cuando sea seguro y legal."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-14",
+    cat: "Road Safety",
+    q: {
+      en: "Are people over 65 required to wear a seat belt?",
+      pt: "Pessoas acima de 65 anos precisam usar cinto de segurança?",
+      es: "¿Las personas mayores de 65 años deben llevar cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if they are passengers",
+          pt: "Não, se forem passageiros",
+          es: "No, si son pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, if they are driving",
+          pt: "Não, se estiverem dirigindo",
+          es: "No, si están conduciendo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Yes. Seat belt rules apply to passengers and drivers of all ages, including people over 65.",
+      pt: "Sim. As regras de cinto de segurança se aplicam a motoristas e passageiros de todas as idades, inclusive pessoas acima de 65 anos.",
+      es: "Sí. Las reglas del cinturón de seguridad aplican a conductores y pasajeros de todas las edades, incluso mayores de 65 años."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-28",
+    cat: "Road Safety",
+    q: {
+      en: "Are people over 65 required to wear a seat belt?",
+      pt: "Pessoas acima de 65 anos precisam usar cinto de segurança?",
+      es: "¿Las personas mayores de 65 años deben llevar cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if they are passengers",
+          pt: "Não, se forem passageiros",
+          es: "No, si son pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, if they are driving",
+          pt: "Não, se estiverem dirigindo",
+          es: "No, si están conduciendo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Yes. Seat belt rules apply to passengers and drivers of all ages, including people over 65.",
+      pt: "Sim. As regras de cinto de segurança se aplicam a motoristas e passageiros de todas as idades, inclusive pessoas acima de 65 anos.",
+      es: "Sí. Las reglas del cinturón de seguridad aplican a conductores y pasajeros de todas las edades, incluso mayores de 65 años."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-06",
+    cat: "Road Safety",
+    q: {
+      en: "Are people over 65 required to wear a seat belt?",
+      pt: "Pessoas acima de 65 anos precisam usar cinto de segurança?",
+      es: "¿Las personas mayores de 65 años deben llevar cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if they are passengers",
+          pt: "Não, se forem passageiros",
+          es: "No, si son pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, if they are driving",
+          pt: "Não, se estiverem dirigindo",
+          es: "No, si están conduciendo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Yes. Seat belt rules apply to passengers and drivers of all ages, including people over 65.",
+      pt: "Sim. As regras de cinto de segurança se aplicam a motoristas e passageiros de todas as idades, inclusive pessoas acima de 65 anos.",
+      es: "Sí. Las reglas del cinturón de seguridad aplican a conductores y pasajeros de todas las edades, incluso mayores de 65 años."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-07",
+    cat: "Give Way Rules",
+    q: {
+      en: "What is the basic rule at uncontrolled four-way intersections?",
+      pt: "Qual é a regra básica em interseções de 4 vias sem sinalização?",
+      es: "¿Cuál es la regla básica en intersecciones de 4 vías sin señalización?"
+    },
+    sign: "",
+    cap: {
+      en: "Uncontrolled 4-way: X gives way to Y",
+      pt: "Interseção sem sinalização: X dá preferência a Y",
+      es: "Intersección sin señalización: X cede el paso a Y"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to vehicles on your left",
+          pt: "Dar preferência a quem vem da esquerda",
+          es: "Ceder el paso a los de la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to vehicles on your right",
+          pt: "Dar preferência a quem vem da direita",
+          es: "Ceder el paso a los de la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Give way to all vehicles",
+          pt: "Dar preferência a todos",
+          es: "Ceder el paso a todos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The <strong>right-hand rule</strong>: give way to vehicles approaching from your right.",
+      pt: "Regra da direita: dê preferência a quem vem da sua <strong>direita</strong>.",
+      es: "Regla de la derecha: ceda el paso a los que vienen por su <strong>derecha</strong>."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-09",
+    cat: "Road Safety",
+    q: {
+      en: "At a railway crossing — can you cross if the train has passed but lights are still flashing?",
+      pt: "Pode cruzar a ferrovia se o trem passou mas as luzes ainda piscam?",
+      es: "¿Puede cruzar las vías si el tren ya pasó pero las luces siguen parpadeando?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, unless there are boom gates",
+          pt: "Sim, a menos que haja cancelas",
+          es: "Sí, a menos que haya barreras"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>No</strong> — stay stopped while lights are flashing, even if the train has passed.",
+      pt: "<strong>Não</strong> — fique parado enquanto as luzes piscarem, mesmo que o trem já tenha passado.",
+      es: "<strong>No</strong> — permanezca detenido mientras parpadeen las luces, aunque el tren ya haya pasado."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-30",
+    cat: "Road Safety",
+    q: {
+      en: "At a railway crossing — can you cross if the train has passed but lights are still flashing?",
+      pt: "Pode cruzar a ferrovia se o trem passou mas as luzes ainda piscam?",
+      es: "¿Puede cruzar las vías si el tren ya pasó pero las luces siguen parpadeando?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, unless there are boom gates",
+          pt: "Sim, a menos que haja cancelas",
+          es: "Sí, a menos que haya barreras"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>No</strong> — stay stopped while lights are flashing, even if the train has passed.",
+      pt: "<strong>Não</strong> — fique parado enquanto as luzes piscarem, mesmo que o trem já tenha passado.",
+      es: "<strong>No</strong> — permanezca detenido mientras parpadeen las luces, aunque el tren ya haya pasado."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-23",
+    cat: "Road Safety",
+    q: {
+      en: "At a railway crossing — can you cross if the train has passed but lights are still flashing?",
+      pt: "Pode cruzar a ferrovia se o trem passou mas as luzes ainda piscam?",
+      es: "¿Puede cruzar las vías si el tren ya pasó pero las luces siguen parpadeando?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, unless there are boom gates",
+          pt: "Sim, a menos que haja cancelas",
+          es: "Sí, a menos que haya barreras"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>No</strong> — stay stopped while lights are flashing, even if the train has passed.",
+      pt: "<strong>Não</strong> — fique parado enquanto as luzes piscarem, mesmo que o trem já tenha passado.",
+      es: "<strong>No</strong> — permanezca detenido mientras parpadeen las luces, aunque el tren ya haya pasado."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-16",
+    cat: "Road Safety",
+    q: {
+      en: "Are passengers allowed in the back of a utility or open load space?",
+      pt: "Passageiros podem viajar na carroceria de ute ou carga aberta?",
+      es: "¿Pueden los pasajeros viajar en la parte trasera de una camioneta o carga abierta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if not exceeding 60 km/h",
+          pt: "Sim, se não exceder 60 km/h",
+          es: "Sí, si no se superan los 60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if seated",
+          pt: "Sim, se sentados",
+          es: "Sí, si están sentados"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Passengers must not travel in the back of a utility or open load space. They must travel in approved seating positions with restraints.",
+      pt: "Passageiros não podem viajar na carroceria de uma ute ou em área de carga aberta. Devem viajar em assentos aprovados com proteção adequada.",
+      es: "Los pasajeros no pueden viajar en la parte trasera de una camioneta o espacio de carga abierto. Deben ir en asientos aprobados con retención adecuada."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-01",
+    cat: "Road Safety",
+    q: {
+      en: "Are passengers allowed in the back of a utility or open load space?",
+      pt: "Passageiros podem viajar na carroceria de ute ou carga aberta?",
+      es: "¿Pueden los pasajeros viajar en la parte trasera de una camioneta o carga abierta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if not exceeding 60 km/h",
+          pt: "Sim, se não exceder 60 km/h",
+          es: "Sí, si no se superan los 60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if seated",
+          pt: "Sim, se sentados",
+          es: "Sí, si están sentados"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Passengers must not travel in the back of a utility or open load space. They must travel in approved seating positions with restraints.",
+      pt: "Passageiros não podem viajar na carroceria de uma ute ou em área de carga aberta. Devem viajar em assentos aprovados com proteção adequada.",
+      es: "Los pasajeros no pueden viajar en la parte trasera de una camioneta o espacio de carga abierto. Deben ir en asientos aprobados con retención adecuada."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-09",
+    cat: "Parking Rules",
+    q: {
+      en: "Are you allowed to park on a footpath?",
+      pt: "Pode estacionar na calçada (footpath)?",
+      es: "¿Puede estacionar en la acera (footpath)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if it is a passenger vehicle",
+          pt: "Sim, se for veículo de passageiros",
+          es: "Sí, si es un vehículo de pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You are not allowed to park on a footpath. Footpaths must remain clear for pedestrians, wheelchairs, prams and mobility aids.",
+      pt: "Você não pode estacionar na calçada. Calçadas precisam ficar livres para pedestres, cadeiras de rodas, carrinhos de bebê e dispositivos de mobilidade.",
+      es: "No está permitido estacionar en la acera. Las aceras deben quedar libres para peatones, sillas de ruedas, cochecitos y ayudas de movilidad."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-02",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the speed limit in built-up areas where there are no speed limit signs?",
+      pt: "Qual é o limite de velocidade em áreas urbanas onde não há placas de sinalização?",
+      es: "¿Cuál es el límite de velocidad en zonas urbanas donde no hay señales?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "60 km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>50 km/h</strong> is the default in WA built-up areas — NOT 60! This is the most commonly missed question.",
+      pt: "<strong>50 km/h</strong> é o padrão em WA — NÃO 60! Esta é a questão mais errada.",
+      es: "<strong>50 km/h</strong> es el límite por defecto en WA — ¡NO 60! Esta es la pregunta más fallada."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-05-06"
+  },
+  {
+    id: "Q7-23",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the speed limit in built-up areas where there are no speed limit signs?",
+      pt: "Qual é o limite de velocidade em áreas urbanas onde não há placas de sinalização?",
+      es: "¿Cuál es el límite de velocidad en zonas urbanas donde no hay señales?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "60 km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>50 km/h</strong> is the default in WA built-up areas — NOT 60! This is the most commonly missed question.",
+      pt: "<strong>50 km/h</strong> é o padrão em WA — NÃO 60! Esta é a questão mais errada.",
+      es: "<strong>50 km/h</strong> es el límite por defecto en WA — ¡NO 60! Esta es la pregunta más fallada."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-05-06"
+  },
+  {
+    id: "Q11-01",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the speed limit in built-up areas where there are no speed limit signs?",
+      pt: "Qual é o limite de velocidade em áreas urbanas onde não há placas de sinalização?",
+      es: "¿Cuál es el límite de velocidad en zonas urbanas donde no hay señales?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "60 km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>50 km/h</strong> is the default in WA built-up areas — NOT 60! This is the most commonly missed question.",
+      pt: "<strong>50 km/h</strong> é o padrão em WA — NÃO 60! Esta é a questão mais errada.",
+      es: "<strong>50 km/h</strong> es el límite por defecto en WA — ¡NO 60! Esta es la pregunta más fallada."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-05-06"
+  },
+  {
+    id: "Q5-13",
+    cat: "Speed Limits",
+    q: {
+      en: "Are you allowed to exceed the speed limit when overtaking another vehicle?",
+      pt: "Pode ultrapassar o limite de velocidade ao ultrapassar outro veículo?",
+      es: "¿Puede superar el límite de velocidad al adelantar otro vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não — nunca",
+          es: "No — jamás"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if the driver in front signals you",
+          pt: "Sim, se o motorista da frente sinalizar",
+          es: "Sí, si el conductor delante le hace señas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must never exceed the speed limit, even when overtaking. Overtake only when it is safe and legal without going over the limit.",
+      pt: "Você nunca pode ultrapassar o limite de velocidade, nem durante uma ultrapassagem. Só ultrapasse quando for seguro e legal sem exceder o limite.",
+      es: "Nunca debe superar el límite de velocidad, ni siquiera al adelantar. Adelante solo cuando sea seguro y legal sin exceder el límite."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-20",
+    cat: "Speed Limits",
+    q: {
+      en: "Are you allowed to exceed the speed limit when overtaking another vehicle?",
+      pt: "Pode ultrapassar o limite de velocidade ao ultrapassar outro veículo?",
+      es: "¿Puede superar el límite de velocidad al adelantar otro vehículo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não — nunca",
+          es: "No — jamás"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if the driver in front signals you",
+          pt: "Sim, se o motorista da frente sinalizar",
+          es: "Sí, si el conductor delante le hace señas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must never exceed the speed limit, even when overtaking. Overtake only when it is safe and legal without going over the limit.",
+      pt: "Você nunca pode ultrapassar o limite de velocidade, nem durante uma ultrapassagem. Só ultrapasse quando for seguro e legal sem exceder o limite.",
+      es: "Nunca debe superar el límite de velocidad, ni siquiera al adelantar. Adelante solo cuando sea seguro y legal sin exceder el límite."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-01",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Is it an offence to refuse a breath test for alcohol?",
+      pt: "É infração recusar o bafômetro?",
+      es: "¿Es una infracción negarse al control de alcoholemia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if you have a doctor's certificate",
+          pt: "Não, se tiver atestado médico",
+          es: "No, si tiene certificado médico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Yes</strong> — always an offence. No exceptions, not even with a doctor's certificate.",
+      pt: "<strong>Sim</strong> — sempre uma infração. Sem exceções, nem com atestado médico.",
+      es: "<strong>Sí</strong> — siempre es una infracción. Sin excepciones, ni con certificado médico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-07",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Is it an offence to refuse a breath test for alcohol?",
+      pt: "É infração recusar o bafômetro?",
+      es: "¿Es una infracción negarse al control de alcoholemia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if you have a doctor's certificate",
+          pt: "Não, se tiver atestado médico",
+          es: "No, si tiene certificado médico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Yes</strong> — always an offence. No exceptions, not even with a doctor's certificate.",
+      pt: "<strong>Sim</strong> — sempre uma infração. Sem exceções, nem com atestado médico.",
+      es: "<strong>Sí</strong> — siempre es una infracción. Sin excepciones, ni con certificado médico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-13",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Is it an offence to refuse a breath test for alcohol?",
+      pt: "É infração recusar o bafômetro?",
+      es: "¿Es una infracción negarse al control de alcoholemia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if you have a doctor's certificate",
+          pt: "Não, se tiver atestado médico",
+          es: "No, si tiene certificado médico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Yes</strong> — always an offence. No exceptions, not even with a doctor's certificate.",
+      pt: "<strong>Sim</strong> — sempre uma infração. Sem exceções, nem com atestado médico.",
+      es: "<strong>Sí</strong> — siempre es una infracción. Sin excepciones, ni con certificado médico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-18",
+    cat: "Road Safety",
+    q: {
+      en: "When should you dip (lower) your headlights?",
+      pt: "Quando deve usar farol baixo?",
+      es: "¿Cuándo debe bajar las luces largas?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Within 50 metres of a vehicle",
+          pt: "A 50 metros de outro veículo",
+          es: "A 50 metros de otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Within 200 metres of a vehicle",
+          pt: "A 200 metros de outro veículo",
+          es: "A 200 metros de otro vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only when dazzled",
+          pt: "Apenas quando encandear",
+          es: "Solo cuando le deslumbren"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Dip headlights when within <strong>200 metres</strong> of another vehicle.",
+      pt: "Usar farol baixo a <strong>200 metros</strong> de outro veículo.",
+      es: "Bajar las luces a <strong>200 metros</strong> de otro vehículo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-09",
+    cat: "Road Safety",
+    q: {
+      en: "When should you switch your headlights on?",
+      pt: "Quando deve acender os faróis?",
+      es: "¿Cuándo debe encender los faros?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 minutes after sunset",
+          pt: "20 minutos após o pôr do sol",
+          es: "20 minutos después del ocaso"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "15 minutes after sunset",
+          pt: "15 minutos após o pôr do sol",
+          es: "15 minutos después del ocaso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At sunset",
+          pt: "Ao pôr do sol (entardecer)",
+          es: "Al atardecer"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Switch your headlights on at sunset and whenever visibility is poor. Being seen is as important as seeing the road.",
+      pt: "Acenda os faróis ao pôr do sol e sempre que a visibilidade estiver ruim. Ser visto é tão importante quanto enxergar a via.",
+      es: "Encienda los faros al atardecer y siempre que la visibilidad sea reducida. Ser visto es tan importante como ver la vía."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-10",
+    cat: "Traffic Lights",
+    q: {
+      en: "Are you allowed to make a U-turn at traffic lights?",
+      pt: "Pode fazer retorno em semáforo?",
+      es: "¿Puede hacer un cambio de sentido en un semáforo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, unless there is a U TURN PERMITTED sign",
+          pt: "Não, a menos que haja placa U TURN PERMITTED",
+          es: "No, a menos que haya señal U TURN PERMITTED"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if the lights are not working",
+          pt: "Sim, se o semáforo não funcionar",
+          es: "Sí, si el semáforo no funciona"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not make a U-turn at traffic lights unless a sign says U TURN PERMITTED. Without that sign, the U-turn is not allowed.",
+      pt: "Você não pode fazer retorno em semáforo, a menos que haja uma placa U TURN PERMITTED. Sem essa placa, o retorno não é permitido.",
+      es: "No puede hacer un cambio de sentido en un semáforo salvo que haya una señal U TURN PERMITTED. Sin esa señal, no está permitido."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-12",
+    cat: "Traffic Lights",
+    q: {
+      en: "Are you allowed to make a U-turn at traffic lights?",
+      pt: "Pode fazer retorno em semáforo?",
+      es: "¿Puede hacer un cambio de sentido en un semáforo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, unless there is a U TURN PERMITTED sign",
+          pt: "Não, a menos que haja placa U TURN PERMITTED",
+          es: "No, a menos que haya señal U TURN PERMITTED"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if the lights are not working",
+          pt: "Sim, se o semáforo não funcionar",
+          es: "Sí, si el semáforo no funciona"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not make a U-turn at traffic lights unless a sign says U TURN PERMITTED. Without that sign, the U-turn is not allowed.",
+      pt: "Você não pode fazer retorno em semáforo, a menos que haja uma placa U TURN PERMITTED. Sem essa placa, o retorno não é permitido.",
+      es: "No puede hacer un cambio de sentido en un semáforo salvo que haya una señal U TURN PERMITTED. Sin esa señal, no está permitido."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-02",
+    cat: "Traffic Lights",
+    q: {
+      en: "Are you allowed to make a U-turn at traffic lights?",
+      pt: "Pode fazer retorno em semáforo?",
+      es: "¿Puede hacer un cambio de sentido en un semáforo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, unless there is a U TURN PERMITTED sign",
+          pt: "Não, a menos que haja placa U TURN PERMITTED",
+          es: "No, a menos que haya señal U TURN PERMITTED"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if the lights are not working",
+          pt: "Sim, se o semáforo não funcionar",
+          es: "Sí, si el semáforo no funciona"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not make a U-turn at traffic lights unless a sign says U TURN PERMITTED. Without that sign, the U-turn is not allowed.",
+      pt: "Você não pode fazer retorno em semáforo, a menos que haja uma placa U TURN PERMITTED. Sem essa placa, o retorno não é permitido.",
+      es: "No puede hacer un cambio de sentido en un semáforo salvo que haya una señal U TURN PERMITTED. Sin esa señal, no está permitido."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-06",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "How do even small amounts of alcohol affect your driving?",
+      pt: "Como pequenas quantidades de álcool afetam a direção?",
+      es: "¿Cómo afectan incluso pequeñas cantidades de alcohol a la conducción?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "By making you think you are driving better than you are",
+          pt: "Fazendo você achar que dirige melhor do que realmente dirige",
+          es: "Haciéndole creer que conduce mejor de lo que realmente conduce"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "By helping your driving ability",
+          pt: "Melhorando sua capacidade de dirigir",
+          es: "Mejorando su capacidad de conducción"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "By helping your speed judgement",
+          pt: "Melhorando seu julgamento de velocidade",
+          es: "Mejorando su juicio de velocidad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Even small amounts of alcohol can affect judgement and confidence. Alcohol may make you think you are driving better than you really are.",
+      pt: "Mesmo pequenas quantidades de álcool podem afetar seu julgamento e sua confiança. O álcool pode fazer você achar que dirige melhor do que realmente dirige.",
+      es: "Incluso pequeñas cantidades de alcohol pueden afectar el juicio y la confianza. El alcohol puede hacerle creer que conduce mejor de lo que realmente conduce."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-17",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "How do even small amounts of alcohol affect your driving?",
+      pt: "Como pequenas quantidades de álcool afetam a direção?",
+      es: "¿Cómo afectan incluso pequeñas cantidades de alcohol a la conducción?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "By making you think you are driving better than you are",
+          pt: "Fazendo você achar que dirige melhor do que realmente dirige",
+          es: "Haciéndole creer que conduce mejor de lo que realmente conduce"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "By helping your driving ability",
+          pt: "Melhorando sua capacidade de dirigir",
+          es: "Mejorando su capacidad de conducción"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "By helping your speed judgement",
+          pt: "Melhorando seu julgamento de velocidade",
+          es: "Mejorando su juicio de velocidad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Even small amounts of alcohol can affect judgement and confidence. Alcohol may make you think you are driving better than you really are.",
+      pt: "Mesmo pequenas quantidades de álcool podem afetar seu julgamento e sua confiança. O álcool pode fazer você achar que dirige melhor do que realmente dirige.",
+      es: "Incluso pequeñas cantidades de alcohol pueden afectar el juicio y la confianza. El alcohol puede hacerle creer que conduce mejor de lo que realmente conduce."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-21",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "How do even small amounts of alcohol affect your driving?",
+      pt: "Como pequenas quantidades de álcool afetam a direção?",
+      es: "¿Cómo afectan incluso pequeñas cantidades de alcohol a la conducción?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "By making you think you are driving better than you are",
+          pt: "Fazendo você achar que dirige melhor do que realmente dirige",
+          es: "Haciéndole creer que conduce mejor de lo que realmente conduce"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "By helping your driving ability",
+          pt: "Melhorando sua capacidade de dirigir",
+          es: "Mejorando su capacidad de conducción"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "By helping your speed judgement",
+          pt: "Melhorando seu julgamento de velocidade",
+          es: "Mejorando su juicio de velocidad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Even small amounts of alcohol can affect judgement and confidence. Alcohol may make you think you are driving better than you really are.",
+      pt: "Mesmo pequenas quantidades de álcool podem afetar seu julgamento e sua confiança. O álcool pode fazer você achar que dirige melhor do que realmente dirige.",
+      es: "Incluso pequeñas cantidades de alcohol pueden afectar el juicio y la confianza. El alcohol puede hacerle creer que conduce mejor de lo que realmente conduce."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-22",
+    cat: "Speed Limits",
+    q: {
+      en: "Which statement about speed is correct?",
+      pt: "Qual afirmação sobre velocidade é correta?",
+      es: "¿Cuál afirmación sobre velocidad es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It is always safe to travel at the speed limit",
+          pt: "É sempre seguro andar no limite de velocidade",
+          es: "Siempre es seguro circular al límite de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your speed should be as close to the limit as possible",
+          pt: "Sua velocidade deve ser o mais próxima possível do limite",
+          es: "Su velocidad debe estar lo más cerca posible del límite"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Travelling at the speed limit is sometimes too fast for conditions",
+          pt: "Andar no limite às vezes é rápido demais para as condições",
+          es: "Circular al límite a veces es demasiado rápido para las condiciones"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The speed limit is the <strong>maximum</strong>, not a target. It may be too fast for rain, traffic, or road works.",
+      pt: "O limite é o <strong>máximo</strong>, não um alvo. Pode ser rápido demais em chuva, obras, ou tráfego.",
+      es: "El límite es el <strong>máximo</strong>, no un objetivo. Puede ser demasiado rápido en lluvia, obras o tráfico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-16",
+    cat: "Speed Limits",
+    q: {
+      en: "Which statement about speed is correct?",
+      pt: "Qual afirmação sobre velocidade é correta?",
+      es: "¿Cuál afirmación sobre velocidad es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It is always safe to travel at the speed limit",
+          pt: "É sempre seguro andar no limite de velocidade",
+          es: "Siempre es seguro circular al límite de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your speed should be as close to the limit as possible",
+          pt: "Sua velocidade deve ser o mais próxima possível do limite",
+          es: "Su velocidad debe estar lo más cerca posible del límite"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Travelling at the speed limit is sometimes too fast for conditions",
+          pt: "Andar no limite às vezes é rápido demais para as condições",
+          es: "Circular al límite a veces es demasiado rápido para las condiciones"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The speed limit is the <strong>maximum</strong>, not a target. It may be too fast for rain, traffic, or road works.",
+      pt: "O limite é o <strong>máximo</strong>, não um alvo. Pode ser rápido demais em chuva, obras, ou tráfego.",
+      es: "El límite es el <strong>máximo</strong>, no un objetivo. Puede ser demasiado rápido en lluvia, obras o tráfico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-26",
+    cat: "Speed Limits",
+    q: {
+      en: "Which statement about speed is correct?",
+      pt: "Qual afirmação sobre velocidade é correta?",
+      es: "¿Cuál afirmación sobre velocidad es correcta?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It is always safe to travel at the speed limit",
+          pt: "É sempre seguro andar no limite de velocidade",
+          es: "Siempre es seguro circular al límite de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your speed should be as close to the limit as possible",
+          pt: "Sua velocidade deve ser o mais próxima possível do limite",
+          es: "Su velocidad debe estar lo más cerca posible del límite"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Travelling at the speed limit is sometimes too fast for conditions",
+          pt: "Andar no limite às vezes é rápido demais para as condições",
+          es: "Circular al límite a veces es demasiado rápido para las condiciones"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The speed limit is the <strong>maximum</strong>, not a target. It may be too fast for rain, traffic, or road works.",
+      pt: "O limite é o <strong>máximo</strong>, não um alvo. Pode ser rápido demais em chuva, obras, ou tráfego.",
+      es: "El límite es el <strong>máximo</strong>, no un objetivo. Puede ser demasiado rápido en lluvia, obras o tráfico."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-16",
+    cat: "Road Safety",
+    q: {
+      en: "Who is fined if a passenger under 16 is not wearing a seat belt?",
+      pt: "Quem é multado se passageiro menor de 16 não usar cinto?",
+      es: "¿Quién recibe la multa si un pasajero menor de 16 no lleva cinturón?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The vehicle owner",
+          pt: "O proprietário do veículo",
+          es: "El propietario del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The passenger",
+          pt: "O passageiro",
+          es: "El pasajero"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The driver",
+          pt: "O motorista",
+          es: "El conductor"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The driver is responsible for passengers under 16 wearing a seat belt or approved restraint. If they are not restrained, the driver can be fined.",
+      pt: "O motorista é responsável por passageiros menores de 16 anos usarem cinto ou dispositivo aprovado. Se não usarem, o motorista pode ser multado.",
+      es: "El conductor es responsable de que los pasajeros menores de 16 años usen cinturón o retención aprobada. Si no lo usan, el conductor puede ser multado."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-26",
+    cat: "Road Safety",
+    q: {
+      en: "Who is fined if a passenger under 16 is not wearing a seat belt?",
+      pt: "Quem é multado se passageiro menor de 16 não usar cinto?",
+      es: "¿Quién recibe la multa si un pasajero menor de 16 no lleva cinturón?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The vehicle owner",
+          pt: "O proprietário do veículo",
+          es: "El propietario del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The passenger",
+          pt: "O passageiro",
+          es: "El pasajero"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The driver",
+          pt: "O motorista",
+          es: "El conductor"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The driver is responsible for passengers under 16 wearing a seat belt or approved restraint. If they are not restrained, the driver can be fined.",
+      pt: "O motorista é responsável por passageiros menores de 16 anos usarem cinto ou dispositivo aprovado. Se não usarem, o motorista pode ser multado.",
+      es: "El conductor es responsable de que los pasajeros menores de 16 años usen cinturón o retención aprobada. Si no lo usan, el conductor puede ser multado."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-03",
+    cat: "Road Safety",
+    q: {
+      en: "At what age must a person wear a seat belt or child restraint?",
+      pt: "A partir de qual idade é obrigatório usar cinto de segurança?",
+      es: "¿A partir de qué edad es obligatorio llevar cinturón o sistema de retención?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All ages",
+          pt: "Todas as idades",
+          es: "Todas las edades"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Age 1 year and over",
+          pt: "1 ano ou mais",
+          es: "1 año en adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Age 8 years and over",
+          pt: "8 anos ou mais",
+          es: "8 años en adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Everyone must use a seat belt or approved child restraint. The rule applies to all ages, not only adults or older children.",
+      pt: "Todas as pessoas devem usar cinto de segurança ou dispositivo infantil aprovado. A regra vale para todas as idades, não só adultos ou crianças maiores.",
+      es: "Todas las personas deben usar cinturón o sistema de retención infantil aprobado. La regla aplica a todas las edades, no solo adultos o niños mayores."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-01",
+    cat: "Road Safety",
+    q: {
+      en: "At what age must a person wear a seat belt or child restraint?",
+      pt: "A partir de qual idade é obrigatório usar cinto de segurança?",
+      es: "¿A partir de qué edad es obligatorio llevar cinturón o sistema de retención?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All ages",
+          pt: "Todas as idades",
+          es: "Todas las edades"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Age 1 year and over",
+          pt: "1 ano ou mais",
+          es: "1 año en adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Age 8 years and over",
+          pt: "8 anos ou mais",
+          es: "8 años en adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Everyone must use a seat belt or approved child restraint. The rule applies to all ages, not only adults or older children.",
+      pt: "Todas as pessoas devem usar cinto de segurança ou dispositivo infantil aprovado. A regra vale para todas as idades, não só adultos ou crianças maiores.",
+      es: "Todas las personas deben usar cinturón o sistema de retención infantil aprobado. La regla aplica a todas las edades, no solo adultos o niños mayores."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-23",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed learner drivers (L-plates) are allowed to travel?",
+      pt: "Qual é a velocidade máxima para motoristas com L-plate (aprendizes)?",
+      es: "¿Cuál es la velocidad máxima para conductores aprendices (L-plate)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers must not exceed 100 km/h, even if the posted speed limit is higher. The L-plate speed limit is a maximum, not a target.",
+      pt: "Motoristas com L-plate não devem exceder 100 km/h, mesmo que a via permita mais. Esse limite é o máximo permitido, não uma meta.",
+      es: "Los conductores con L-plate no deben superar 100 km/h, aunque la vía permita más. Ese límite es el máximo permitido, no un objetivo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-30",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed learner drivers (L-plates) are allowed to travel?",
+      pt: "Qual é a velocidade máxima para motoristas com L-plate (aprendizes)?",
+      es: "¿Cuál es la velocidad máxima para conductores aprendices (L-plate)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers must not exceed 100 km/h, even if the posted speed limit is higher. The L-plate speed limit is a maximum, not a target.",
+      pt: "Motoristas com L-plate não devem exceder 100 km/h, mesmo que a via permita mais. Esse limite é o máximo permitido, não uma meta.",
+      es: "Los conductores con L-plate no deben superar 100 km/h, aunque la vía permita más. Ese límite es el máximo permitido, no un objetivo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-22",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed learner drivers (L-plates) are allowed to travel?",
+      pt: "Qual é a velocidade máxima para motoristas com L-plate (aprendizes)?",
+      es: "¿Cuál es la velocidad máxima para conductores aprendices (L-plate)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers must not exceed 100 km/h, even if the posted speed limit is higher. The L-plate speed limit is a maximum, not a target.",
+      pt: "Motoristas com L-plate não devem exceder 100 km/h, mesmo que a via permita mais. Esse limite é o máximo permitido, não uma meta.",
+      es: "Los conductores con L-plate no deben superar 100 km/h, aunque la vía permita más. Ese límite es el máximo permitido, no un objetivo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-15",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC for novice drivers (L-plate and P-plate)?",
+      pt: "Qual é o BAC legal para motoristas novatos (L e P plate)?",
+      es: "¿Cuál es el BAC legal para conductores novatos (L y P plate)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.00%",
+          pt: "0.00%",
+          es: "0.00%"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "0.02%",
+          pt: "0.02%",
+          es: "0.02%"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "0.05%",
+          pt: "0.05%",
+          es: "0.05%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Novice drivers: <strong>0.00%</strong> — absolute zero tolerance. Any alcohol = offence.",
+      pt: "Motoristas novatos: <strong>0.00%</strong> — tolerância zero absoluta.",
+      es: "Conductores novatos: <strong>0.00%</strong> — tolerancia cero absoluta."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-14",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC for novice drivers (L-plate and P-plate)?",
+      pt: "Qual é o BAC legal para motoristas novatos (L e P plate)?",
+      es: "¿Cuál es el BAC legal para conductores novatos (L y P plate)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.00%",
+          pt: "0.00%",
+          es: "0.00%"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "0.02%",
+          pt: "0.02%",
+          es: "0.02%"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "0.05%",
+          pt: "0.05%",
+          es: "0.05%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Novice drivers: <strong>0.00%</strong> — absolute zero tolerance. Any alcohol = offence.",
+      pt: "Motoristas novatos: <strong>0.00%</strong> — tolerância zero absoluta.",
+      es: "Conductores novatos: <strong>0.00%</strong> — tolerancia cero absoluta."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-20",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC for novice drivers (L-plate and P-plate)?",
+      pt: "Qual é o BAC legal para motoristas novatos (L e P plate)?",
+      es: "¿Cuál es el BAC legal para conductores novatos (L y P plate)?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.00%",
+          pt: "0.00%",
+          es: "0.00%"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "0.02%",
+          pt: "0.02%",
+          es: "0.02%"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "0.05%",
+          pt: "0.05%",
+          es: "0.05%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Novice drivers: <strong>0.00%</strong> — absolute zero tolerance. Any alcohol = offence.",
+      pt: "Motoristas novatos: <strong>0.00%</strong> — tolerância zero absoluta.",
+      es: "Conductores novatos: <strong>0.00%</strong> — tolerancia cero absoluta."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-05",
+    cat: "Traffic Lights",
+    q: {
+      en: "Does a police officer directing traffic over-rule traffic signs and lights?",
+      pt: "Um policial dirigindo o tráfego substitui sinais e semáforos?",
+      es: "¿Un agente de policía dirigiendo el tráfico prevalece sobre señales y semáforos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, only in daylight",
+          pt: "Sim, apenas de dia",
+          es: "Sí, solo de día"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A police officer directing traffic overrules traffic lights and signs. Follow the officer's directions, even if they differ from the signals.",
+      pt: "Um policial controlando o tráfego prevalece sobre semáforos e placas. Siga as instruções do policial, mesmo que sejam diferentes da sinalização.",
+      es: "Un agente de policía dirigiendo el tráfico prevalece sobre semáforos y señales. Siga sus indicaciones aunque sean diferentes de la señalización."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-28",
+    cat: "Traffic Lights",
+    q: {
+      en: "Traffic lights: green light with a RED ARROW — what does it mean?",
+      pt: "Semáforo verde com SETA VERMELHA — o que significa?",
+      es: "Semáforo verde con FLECHA ROJA — ¿qué significa?"
+    },
+    sign: "",
+    cap: {
+      en: "Green + red arrow",
+      pt: "Verde + seta vermelha",
+      es: "Verde + flecha roja"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Go in any direction OTHER than the red arrow",
+          pt: "Ir em qualquer direção EXCETO a seta vermelha",
+          es: "Avanzar en cualquier dirección EXCEPTO la de la flecha roja"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn in direction of arrow if safe",
+          pt: "Ir na direção da seta se for seguro",
+          es: "Girar en dirección de la flecha si es seguro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop — lights not working",
+          pt: "Parar — semáforo com defeito",
+          es: "Detenerse — semáforo averiado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light with a red arrow means you may go where permitted, but you must not travel in the direction of the red arrow.",
+      pt: "Um semáforo verde com seta vermelha permite seguir onde for permitido, mas você não pode ir na direção indicada pela seta vermelha.",
+      es: "Un semáforo verde con flecha roja permite avanzar donde esté permitido, pero no puede ir en la dirección indicada por la flecha roja."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-16",
+    cat: "Traffic Lights",
+    q: {
+      en: "Traffic lights: green light with a RED ARROW — what does it mean?",
+      pt: "Semáforo verde com SETA VERMELHA — o que significa?",
+      es: "Semáforo verde con FLECHA ROJA — ¿qué significa?"
+    },
+    sign: "",
+    cap: {
+      en: "Green + red arrow",
+      pt: "Verde + seta vermelha",
+      es: "Verde + flecha roja"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Go in any direction OTHER than the red arrow",
+          pt: "Ir em qualquer direção EXCETO a seta vermelha",
+          es: "Avanzar en cualquier dirección EXCEPTO la de la flecha roja"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn in direction of arrow if safe",
+          pt: "Ir na direção da seta se for seguro",
+          es: "Girar en dirección de la flecha si es seguro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop — lights not working",
+          pt: "Parar — semáforo com defeito",
+          es: "Detenerse — semáforo averiado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light with a red arrow means you may go where permitted, but you must not travel in the direction of the red arrow.",
+      pt: "Um semáforo verde com seta vermelha permite seguir onde for permitido, mas você não pode ir na direção indicada pela seta vermelha.",
+      es: "Un semáforo verde con flecha roja permite avanzar donde esté permitido, pero no puede ir en la dirección indicada por la flecha roja."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q6-16",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed when towing a caravan or trailer?",
+      pt: "Qual é a velocidade máxima ao rebocar uma caravana ou trailer?",
+      es: "¿Cuál es la velocidad máxima al remolcar una caravana o tráiler?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When towing a caravan or trailer, the maximum speed is 100 km/h. Towing changes braking distance, stability and vehicle control.",
+      pt: "Ao rebocar caravana ou trailer, a velocidade máxima é 100 km/h. Rebocar altera a frenagem, a estabilidade e o controle do veículo.",
+      es: "Al remolcar una caravana o tráiler, la velocidad máxima es 100 km/h. Remolcar cambia la distancia de frenado, la estabilidad y el control del vehículo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-04",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed when towing a caravan or trailer?",
+      pt: "Qual é a velocidade máxima ao rebocar uma caravana ou trailer?",
+      es: "¿Cuál es la velocidad máxima al remolcar una caravana o tráiler?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When towing a caravan or trailer, the maximum speed is 100 km/h. Towing changes braking distance, stability and vehicle control.",
+      pt: "Ao rebocar caravana ou trailer, a velocidade máxima é 100 km/h. Rebocar altera a frenagem, a estabilidade e o controle do veículo.",
+      es: "Al remolcar una caravana o tráiler, la velocidad máxima es 100 km/h. Remolcar cambia la distancia de frenado, la estabilidad y el control del vehículo."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-25",
+    cat: "Parking Rules",
+    q: {
+      en: "Minimum distance to park from an intersection WITH traffic lights?",
+      pt: "Distância mínima de interseção COM semáforo?",
+      es: "¿Distancia mínima de una intersección CON semáforos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "6 metres",
+          pt: "6 metros",
+          es: "6 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "10 metres",
+          pt: "10 metros",
+          es: "10 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "20 metres",
+          pt: "20 metros",
+          es: "20 metros"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At an intersection with traffic lights, you must park at least 20 metres away. This keeps the intersection clear and protects visibility.",
+      pt: "Em interseções com semáforo, você deve estacionar a pelo menos 20 metros. Isso mantém a interseção livre e protege a visibilidade.",
+      es: "En una intersección con semáforos, debe estacionar al menos a 20 metros. Esto mantiene la intersección despejada y protege la visibilidad."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-08",
+    cat: "Parking Rules",
+    q: {
+      en: "Minimum distance to park AFTER a bus stop or pedestrian crossing?",
+      pt: "Distância mínima DEPOIS de ponto de ônibus ou faixa de pedestre?",
+      es: "¿Distancia mínima DESPUÉS de una parada de autobús o paso de peatones?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "3 metres",
+          pt: "3 metros",
+          es: "3 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "6 metres",
+          pt: "6 metros",
+          es: "6 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "10 metres",
+          pt: "10 metros",
+          es: "10 metros"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "After a bus stop or pedestrian crossing, leave at least 10 metres. This helps keep the area visible and clear for other road users.",
+      pt: "Depois de um ponto de ônibus ou faixa de pedestre, deixe pelo menos 10 metros. Isso ajuda a manter a área visível e livre para outros usuários.",
+      es: "Después de una parada de autobús o paso de peatones, deje al menos 10 metros. Esto ayuda a mantener el área visible y despejada."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q5-22",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the speed limit where roads are under construction or repair?",
+      pt: "Qual é o limite de velocidade em obras na estrada?",
+      es: "¿Cuál es el límite de velocidad en obras de carretera?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 km/h",
+          pt: "20 km/h",
+          es: "20 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The speed limit shown on the road works sign",
+          pt: "O limite mostrado na placa de obras",
+          es: "El límite indicado en la señal de obras"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "40 km/h",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At road works, you must follow the temporary speed limit shown on the road works signs. These limits protect workers, drivers and pedestrians.",
+      pt: "Em obras, você deve seguir o limite temporário indicado nas placas de road works. Esses limites protegem trabalhadores, motoristas e pedestres.",
+      es: "En obras, debe obedecer el límite temporal indicado en las señales de obras. Estos límites protegen a trabajadores, conductores y peatones."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-06",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the speed limit where roads are under construction or repair?",
+      pt: "Qual é o limite de velocidade em obras na estrada?",
+      es: "¿Cuál es el límite de velocidad en obras de carretera?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 km/h",
+          pt: "20 km/h",
+          es: "20 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The speed limit shown on the road works sign",
+          pt: "O limite mostrado na placa de obras",
+          es: "El límite indicado en la señal de obras"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "40 km/h",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At road works, you must follow the temporary speed limit shown on the road works signs. These limits protect workers, drivers and pedestrians.",
+      pt: "Em obras, você deve seguir o limite temporário indicado nas placas de road works. Esses limites protegem trabalhadores, motoristas e pedestres.",
+      es: "En obras, debe obedecer el límite temporal indicado en las señales de obras. Estos límites protegen a trabajadores, conductores y peatones."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-03",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the speed limit where roads are under construction or repair?",
+      pt: "Qual é o limite de velocidade em obras na estrada?",
+      es: "¿Cuál es el límite de velocidad en obras de carretera?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 km/h",
+          pt: "20 km/h",
+          es: "20 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The speed limit shown on the road works sign",
+          pt: "O limite mostrado na placa de obras",
+          es: "El límite indicado en la señal de obras"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "40 km/h",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At road works, you must follow the temporary speed limit shown on the road works signs. These limits protect workers, drivers and pedestrians.",
+      pt: "Em obras, você deve seguir o limite temporário indicado nas placas de road works. Esses limites protegem trabalhadores, motoristas e pedestres.",
+      es: "En obras, debe obedecer el límite temporal indicado en las señales de obras. Estos límites protegen a trabajadores, conductores y peatones."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q4-18",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC for drivers with a full licence?",
+      pt: "Qual é o BAC legal para habilitação plena?",
+      es: "¿Cuál es el BAC legal para conductores con licencia completa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Less than 0.02%",
+          pt: "Menos de 0.02%",
+          es: "Menos de 0.02%"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Less than 0.05%",
+          pt: "Menos de 0.05%",
+          es: "Menos de 0.05%"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Less than 0.08%",
+          pt: "Menos de 0.08%",
+          es: "Menos de 0.08%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "For full licence holders, the legal BAC limit is less than 0.05%. This does not apply to novice drivers, who must remain at 0.00%.",
+      pt: "Para motoristas com habilitação plena, o limite legal é menos de 0.05% BAC. Isso não se aplica a motoristas novatos, que devem permanecer em 0.00%.",
+      es: "Para conductores con licencia completa, el límite legal es menos de 0.05% BAC. Esto no aplica a conductores novatos, que deben mantenerse en 0.00%."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-25",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC for drivers with a full licence?",
+      pt: "Qual é o BAC legal para habilitação plena?",
+      es: "¿Cuál es el BAC legal para conductores con licencia completa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Less than 0.02%",
+          pt: "Menos de 0.02%",
+          es: "Menos de 0.02%"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Less than 0.05%",
+          pt: "Menos de 0.05%",
+          es: "Menos de 0.05%"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Less than 0.08%",
+          pt: "Menos de 0.08%",
+          es: "Menos de 0.08%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "For full licence holders, the legal BAC limit is less than 0.05%. This does not apply to novice drivers, who must remain at 0.00%.",
+      pt: "Para motoristas com habilitação plena, o limite legal é menos de 0.05% BAC. Isso não se aplica a motoristas novatos, que devem permanecer em 0.00%.",
+      es: "Para conductores con licencia completa, el límite legal es menos de 0.05% BAC. Esto no aplica a conductores novatos, que deben mantenerse en 0.00%."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-28",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC for drivers with a full licence?",
+      pt: "Qual é o BAC legal para habilitação plena?",
+      es: "¿Cuál es el BAC legal para conductores con licencia completa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Less than 0.02%",
+          pt: "Menos de 0.02%",
+          es: "Menos de 0.02%"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Less than 0.05%",
+          pt: "Menos de 0.05%",
+          es: "Menos de 0.05%"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Less than 0.08%",
+          pt: "Menos de 0.08%",
+          es: "Menos de 0.08%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "For full licence holders, the legal BAC limit is less than 0.05%. This does not apply to novice drivers, who must remain at 0.00%.",
+      pt: "Para motoristas com habilitação plena, o limite legal é menos de 0.05% BAC. Isso não se aplica a motoristas novatos, que devem permanecer em 0.00%.",
+      es: "Para conductores con licencia completa, el límite legal es menos de 0.05% BAC. Esto no aplica a conductores novatos, que deben mantenerse en 0.00%."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q8-11",
+    cat: "Road Safety",
+    q: {
+      en: "Are you allowed to use a hand-held mobile phone while driving?",
+      pt: "Pode usar celular na mão enquanto dirige?",
+      es: "¿Puede usar el teléfono en mano mientras conduce?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if you don't lose concentration",
+          pt: "Sim, se não perder concentração",
+          es: "Sí, si no pierde la concentración"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Hand-held mobile phone use while driving is not allowed. Looking away or holding the phone increases reaction time and crash risk.",
+      pt: "O uso de celular na mão enquanto dirige não é permitido. Olhar para o aparelho ou segurá-lo aumenta o tempo de reação e o risco de acidente.",
+      es: "No está permitido usar un teléfono en mano mientras conduce. Mirar o sostener el teléfono aumenta el tiempo de reacción y el riesgo de accidente."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-09",
+    cat: "Parking Rules",
+    q: {
+      en: "Minimum distance to park BEFORE a bus stop or pedestrian crossing?",
+      pt: "Distância mínima ANTES de ponto de ônibus ou faixa de pedestre?",
+      es: "¿Distancia mínima ANTES de una parada de autobús o paso de peatones?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 metres",
+          pt: "20 metros",
+          es: "20 metros"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "6 metres",
+          pt: "6 metros",
+          es: "6 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "10 metres",
+          pt: "10 metros",
+          es: "10 metros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Before a bus stop or pedestrian crossing, leave at least 20 metres. Drivers need enough time and space to see people crossing or buses stopping.",
+      pt: "Antes de um ponto de ônibus ou faixa de pedestre, deixe pelo menos 20 metros. Motoristas precisam de tempo e espaço para ver pedestres ou ônibus parando.",
+      es: "Antes de una parada de autobús o paso de peatones, deje al menos 20 metros. Los conductores necesitan tiempo y espacio para ver peatones o autobuses."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q7-21",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the minimum penalty for a novice driver with a BAC over 0.00%?",
+      pt: "Penalidade mínima para motorista novato com BAC acima de 0.00%?",
+      es: "¿Cuál es la penalización mínima para conductor novato con BAC sobre 0.00%?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A fine",
+          pt: "Uma multa",
+          es: "Una multa"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A fine and demerit points",
+          pt: "Multa e pontos de penalidade",
+          es: "Multa y puntos de penalización"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "A fine AND loss of licence",
+          pt: "Multa E perda da carteira",
+          es: "Multa Y pérdida del carnet"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Minimum penalty: a fine <strong>AND loss of licence</strong> — both, not just one.",
+      pt: "Penalidade mínima: multa <strong>E perda da carteira</strong> — as duas juntas.",
+      es: "Penalización mínima: multa <strong>Y pérdida del carnet</strong> — ambas, no solo una."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-10",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the minimum penalty for a novice driver with a BAC over 0.00%?",
+      pt: "Penalidade mínima para motorista novato com BAC acima de 0.00%?",
+      es: "¿Cuál es la penalización mínima para conductor novato con BAC sobre 0.00%?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A fine",
+          pt: "Uma multa",
+          es: "Una multa"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A fine and demerit points",
+          pt: "Multa e pontos de penalidade",
+          es: "Multa y puntos de penalización"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "A fine AND loss of licence",
+          pt: "Multa E perda da carteira",
+          es: "Multa Y pérdida del carnet"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Minimum penalty: a fine <strong>AND loss of licence</strong> — both, not just one.",
+      pt: "Penalidade mínima: multa <strong>E perda da carteira</strong> — as duas juntas.",
+      es: "Penalización mínima: multa <strong>Y pérdida del carnet</strong> — ambas, no solo una."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-19",
+    cat: "Road Safety",
+    q: {
+      en: "Should you use high beam or low beam when driving in fog or smoke?",
+      pt: "Usar farol alto ou baixo em neblina ou fumaça?",
+      es: "¿Debe usar luces largas o cortas con niebla o humo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "High beam",
+          pt: "Farol alto (longa distância)",
+          es: "Luces largas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Makes no difference",
+          pt: "Não faz diferença",
+          es: "No importa"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Low beam",
+          pt: "Farol baixo",
+          es: "Luces cortas"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Use low beam in fog or smoke. High beam reflects back and can make visibility worse.",
+      pt: "Use farol baixo em neblina ou fumaça. O farol alto reflete de volta e pode piorar a visibilidade.",
+      es: "Use luces cortas con niebla o humo. Las luces largas se reflejan y pueden empeorar la visibilidad."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q9-23",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following is GREATER — braking, stopping, or reaction distance?",
+      pt: "Qual é MAIOR — distância de frenagem, parada ou reação?",
+      es: "¿Cuál es MAYOR — distancia de frenado, parada o reacción?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Braking distance",
+          pt: "Distância de frenagem",
+          es: "Distancia de frenado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stopping distance",
+          pt: "Distância de parada",
+          es: "Distancia de parada"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reaction distance",
+          pt: "Distância de reação",
+          es: "Distancia de reacción"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "<strong>Stopping distance</strong> = reaction distance + braking distance. It is the greatest of the three.",
+      pt: "<strong>Distância de parada</strong> = distância de reação + distância de frenagem. É a maior.",
+      es: "<strong>Distancia de parada</strong> = distancia de reacción + distancia de frenado. Es la mayor."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q10-22",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the reduced speed limit around schools during certain times of the day?",
+      pt: "Qual é o limite de velocidade reduzido ao redor de escolas?",
+      es: "¿Cuál es el límite de velocidad reducido en zonas escolares?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "40 km/h",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "60 km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "School zones usually reduce the speed limit to 40 km/h during the signed times. Always check the school zone signs because times and days may vary.",
+      pt: "Zonas escolares geralmente reduzem o limite para 40 km/h nos horários indicados nas placas. Sempre confira a sinalização, pois horários e dias podem variar.",
+      es: "Las zonas escolares normalmente reducen el límite a 40 km/h durante los horarios señalizados. Revise siempre las señales, porque los horarios y días pueden variar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-04",
+    cat: "Give Way Rules",
+    q: {
+      en: "Where must you stop at a STOP sign with no line on the road?",
+      pt: "Onde parar se o sinal STOP não tem linha no chão?",
+      es: "¿Dónde detenerse ante un STOP sin línea en el suelo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Next to the STOP sign",
+          pt: "Ao lado do sinal STOP",
+          es: "Junto a la señal de STOP"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "As close to the crossroad as possible without entering it",
+          pt: "O mais próximo possível da interseção sem entrar nela",
+          es: "Lo más cerca posible de la intersección sin entrar en ella"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Before the STOP sign",
+          pt: "Antes do sinal STOP",
+          es: "Antes de la señal de STOP"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If there is no stop line, stop as close as possible to the intersection without entering it. You must still have a clear view before proceeding.",
+      pt: "Se não houver linha de parada, pare o mais próximo possível da interseção sem entrar nela. Você ainda precisa ter visão clara antes de seguir.",
+      es: "Si no hay línea de detención, deténgase lo más cerca posible de la intersección sin entrar en ella. Aun así debe tener buena visibilidad antes de avanzar."
+    },
+    tip: null,
+    states: ["WA"]
+  },
+  {
+    id: "Q11-14",
+    cat: "Traffic Lights",
+    q: {
+      en: "Turning at traffic lights with pedestrians crossing — what must you do?",
+      pt: "Virando no semáforo com pedestres atravessando?",
+      es: "Girando en semáforo con peatones cruzando — ¿qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to pedestrians crossing the road",
+          pt: "Dar preferência a pedestres",
+          es: "Ceder el paso a los peatones"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Go if turning with a green arrow",
+          pt: "Avançar se tiver seta verde",
+          es: "Avanzar si gira con flecha verde"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Ease carefully through the pedestrians",
+          pt: "Avançar com cuidado",
+          es: "Pasar con cuidado entre los peatones"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When turning at traffic lights, you must give way to pedestrians crossing the road you are entering. Do not push through pedestrians.",
+      pt: "Ao virar no semáforo, você deve dar preferência aos pedestres que atravessam a via em que você está entrando. Não avance entre pedestres.",
+      es: "Al girar en un semáforo, debe ceder el paso a los peatones que cruzan la vía a la que entra. No avance entre peatones."
     },
     tip: null,
     states: ["WA"]
