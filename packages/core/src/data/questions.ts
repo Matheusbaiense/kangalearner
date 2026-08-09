@@ -40042,6 +40042,96 @@ export const QUESTIONS = [
     },
     tip: null,
     states: ["NSW"]
+  },
+  {
+    id: "NSW-SAFE-88",
+    cat: "Road Safety",
+    q: {
+      en: "Where must you display your L or P plates on the vehicle you're driving?",
+      pt: "Onde você deve exibir suas placas L ou P no veículo que está dirigindo?",
+      es: "¿Dónde debes exhibir tus placas L o P en el vehículo que conduces?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Anywhere inside the windows, as long as they're visible",
+          pt: "Em qualquer lugar dentro dos vidros, desde que fiquem visíveis",
+          es: "En cualquier lugar dentro de las ventanillas, siempre que sean visibles"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "On the front and back, or roof, of the exterior of the vehicle",
+          pt: "Na frente e atrás, ou no teto, da parte externa do veículo",
+          es: "En la parte delantera y trasera, o en el techo, del exterior del vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Anywhere in the vehicle, including the dashboard",
+          pt: "Em qualquer lugar do veículo, incluindo o painel",
+          es: "En cualquier lugar del vehículo, incluido el tablero"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The NSW Road User Handbook states you must clearly display L or P plates on the front and back, or roof, of the exterior of the vehicle — the whole letter must be visible.",
+      pt: "O Road User Handbook de NSW estabelece que você deve exibir claramente as placas L ou P na frente e atrás, ou no teto, da parte externa do veículo — a letra inteira deve estar visível.",
+      es: "El Road User Handbook de NSW establece que debes exhibir claramente las placas L o P en la parte delantera y trasera, o en el techo, del exterior del vehículo — la letra completa debe ser visible."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSW-SAFE-89",
+    cat: "Road Safety",
+    q: {
+      en: "When you need to reverse your vehicle, what should you do?",
+      pt: "Quando você precisa dar ré com o veículo, o que deve fazer?",
+      es: "Cuando necesitas dar marcha atrás con tu vehículo, ¿qué debes hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only reverse for the distance that's necessary",
+          pt: "Dar ré apenas pela distância necessária",
+          es: "Dar marcha atrás solo la distancia necesaria"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Reverse as quickly as possible to minimise the time spent looking backwards",
+          pt: "Dar ré o mais rápido possível para minimizar o tempo olhando para trás",
+          es: "Dar marcha atrás lo más rápido posible para minimizar el tiempo mirando hacia atrás"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reversing distance doesn't matter as long as you check your mirrors",
+          pt: "A distância da ré não importa, desde que você olhe os espelhos",
+          es: "La distancia de la marcha atrás no importa, siempre que mires los espejos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The NSW Road User Handbook warns that pedestrians, particularly children, are at greater risk when vehicles are reversing because the driver cannot see them as well. Take extra care, especially entering or leaving a driveway, and only reverse for the distance that's necessary.",
+      pt: "O Road User Handbook de NSW alerta que pedestres, especialmente crianças, correm mais risco quando veículos estão dando ré, porque o motorista não consegue vê-los tão bem. Tenha cuidado extra, principalmente ao entrar ou sair de uma garagem, e dê ré apenas pela distância necessária.",
+      es: "El Road User Handbook de NSW advierte que los peatones, especialmente los niños, corren mayor riesgo cuando los vehículos están dando marcha atrás, porque el conductor no puede verlos tan bien. Ten cuidado extra, especialmente al entrar o salir de una entrada de vehículos, y da marcha atrás solo la distancia necesaria."
+    },
+    tip: null,
+    states: ["NSW"]
   }
 ] as const;
 
