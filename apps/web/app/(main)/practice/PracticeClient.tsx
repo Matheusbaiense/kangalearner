@@ -482,8 +482,24 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
   if (questionsLoading) {
     return (
-      <div className="page-loading">
-        <div className="spinner" />
+      <div className="app-page">
+        <div className="app-container app-section" aria-busy="true">
+          <div className="page-header">
+            <div className="sk-line sk-title" />
+            <div className="sk-line sk-sub" />
+          </div>
+          <div className="quiz-skeletons">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="qcard qcard-skeleton">
+                <div className="sk-line sk-w30" />
+                <div className="sk-line sk-w90" />
+                <div className="sk-line sk-w70" />
+                <div className="sk-block" />
+                <div className="sk-block" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

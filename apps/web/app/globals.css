@@ -27,6 +27,14 @@
   --orange: #f59e0b;
   --blue: #38bdf8;
 
+  /* Color roles: green = action/success · orange (amber) = energy/highlight
+     (step numbers, streaks, PASS) · blue = information. Pick by role, not taste. */
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
   /* Shadows */
   --shadow-soft: 0 16px 40px rgba(7, 26, 44, 0.12);
   --shadow-card: 0 22px 70px rgba(7, 26, 44, 0.16);
@@ -1217,6 +1225,12 @@ a:focus-visible,
     flex: 0 0 auto;
     width: auto;
     white-space: nowrap;
+  }
+  /* Right-edge fade hints that the chip rows scroll sideways. */
+  .mode-bar,
+  .filter-bar {
+    -webkit-mask-image: linear-gradient(90deg, #000 91%, transparent);
+    mask-image: linear-gradient(90deg, #000 91%, transparent);
   }
 }
 
@@ -3503,12 +3517,41 @@ a:focus-visible,
   max-width: 960px;
   margin: 0 auto;
 }
+.section-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green2);
+  margin: 0 0 10px;
+}
+.section-eyebrow::before,
+.section-eyebrow::after {
+  content: "";
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--green2);
+  opacity: 0.55;
+}
 .section-title {
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
   color: var(--ink);
   margin-bottom: 32px;
   text-align: center;
+}
+.section-head .section-title {
+  margin-bottom: 0;
 }
 .testimonial-carousel {
   display: grid;
@@ -3679,16 +3722,20 @@ a:focus-visible,
 /* ── Trust section ──────────────────────────────────── */
 .trust-section {
   padding: 64px 28px;
-  background: var(--paper2);
+  /* Subtle atmosphere so flat sections aren't dead-flat in either theme. */
+  background: radial-gradient(1100px 380px at 50% -8%, rgba(82, 183, 136, 0.06), transparent 70%)
+    var(--paper2);
   border-top: 1px solid var(--border);
 }
 .trust-inner {
   max-width: var(--container);
   margin: 0 auto;
 }
+/* 2-col on purpose: the lead card takes the full first row, the two
+   supporting cards split the second — no orphan cell. */
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-top: 32px;
 }
@@ -3712,6 +3759,20 @@ a:focus-visible,
   box-shadow: var(--shadow-md);
   border-color: var(--green2);
   background: rgba(47, 158, 103, 0.01);
+}
+/* Lead card: one deliberate emphasis breaks the uniform 3-up rhythm. */
+.trust-item--lead {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(82, 183, 136, 0.09), transparent 62%);
+  border-color: rgba(82, 183, 136, 0.35);
+}
+.trust-item--lead strong {
+  font-size: 1.15rem;
+}
+@media (max-width: 768px) {
+  .trust-item--lead {
+    grid-column: auto;
+  }
 }
 .trust-icon {
   font-size: 1.6rem;
@@ -3738,7 +3799,8 @@ a:focus-visible,
 /* ── Topics section ─────────────────────────────────── */
 .topics-section {
   padding: 64px 28px;
-  background: var(--paper);
+  background: radial-gradient(1100px 380px at 50% -8%, rgba(56, 189, 248, 0.05), transparent 70%)
+    var(--paper);
   border-top: 1px solid var(--border);
 }
 .topics-inner {
@@ -4045,18 +4107,41 @@ a:focus-visible,
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease;
 }
-.slide-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Real crossfade: incoming slide fades in while the outgoing one (ghost
+   layer) fades out on top — the card is never visibly empty. */
+.slide-enter {
+  animation: slideEnter var(--duration-normal) var(--ease-out) both;
 }
-.slide-hidden {
-  opacity: 0;
-  transform: translateY(6px);
+@keyframes slideEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-slide-ghost {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(4, 18, 32, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   pointer-events: none;
+  animation: slideGhostOut 320ms var(--ease-out) both;
+}
+@keyframes slideGhostOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Slide header */
@@ -4987,33 +5072,34 @@ a:focus-visible,
   gap: 1.5rem;
   margin-top: 2rem;
 }
+/* Flat steps with big amber numerals — deliberately NOT another card grid. */
 .how-step-card {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.5rem;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--kl-radius-lg, 1rem);
+  padding: 0.5rem 0.25rem;
+  background: transparent;
+  border: 0;
   text-decoration: none;
   color: inherit;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-.how-step-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
 }
 .how-step-num {
-  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  font-weight: 800;
   line-height: 1;
+  color: var(--orange);
+  letter-spacing: -0.03em;
 }
 .how-step-title {
   font-family: var(--kl-font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.12rem;
+  font-weight: 800;
   margin: 0;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.how-step-card:hover .how-step-title {
+  color: var(--green2);
 }
 .how-step-desc {
   font-size: 0.875rem;
@@ -5498,4 +5584,77 @@ a:focus-visible,
   font-size: 0.8rem;
   color: var(--kl-color-text-muted, #64748b);
   margin-bottom: 2rem;
+}
+
+/* ══════════════════════════════════════════
+   LOADING SKELETONS (practice)
+══════════════════════════════════════════ */
+
+.quiz-skeletons {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+}
+.qcard-skeleton {
+  display: grid;
+  gap: 12px;
+}
+.sk-line,
+.sk-block {
+  border-radius: var(--radius-xs);
+  background: linear-gradient(
+    90deg,
+    rgba(122, 138, 154, 0.14) 25%,
+    rgba(122, 138, 154, 0.26) 50%,
+    rgba(122, 138, 154, 0.14) 75%
+  );
+  background-size: 200% 100%;
+  animation: skShimmer 1.4s ease-in-out infinite;
+}
+.sk-line {
+  height: 14px;
+}
+.sk-block {
+  height: 46px;
+  border-radius: var(--radius-sm);
+}
+.sk-title {
+  height: 26px;
+  width: 180px;
+  margin-bottom: 8px;
+}
+.sk-sub {
+  width: 260px;
+}
+.sk-w30 {
+  width: 30%;
+}
+.sk-w70 {
+  width: 70%;
+}
+.sk-w90 {
+  width: 90%;
+}
+@keyframes skShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ══════════════════════════════════════════
+   REDUCED MOTION — one global guarantee
+══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
