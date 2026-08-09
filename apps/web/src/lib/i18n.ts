@@ -76,7 +76,7 @@ export const t = {
     heroBadge1: "Free forever",
     heroBadge2: "WA road rules only",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
+    heroProof: "WA and NSW available now. VIC, QLD and more coming soon.",
     // Features
     feat1Title: "Learn",
     feat1Sub: "Study road rules by topic with clear explanations.",
@@ -442,7 +442,7 @@ export const t = {
     heroBadge1: "Gratuito para sempre",
     heroBadge2: "Regras de WA",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
+    heroProof: "WA e NSW disponíveis agora. VIC, QLD e mais em breve.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estude as regras de trânsito por tema com explicações claras.",
@@ -810,7 +810,7 @@ export const t = {
     heroBadge1: "Gratis para siempre",
     heroBadge2: "Reglas de tránsito WA",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
+    heroProof: "WA y NSW disponibles ahora. VIC, QLD y más próximamente.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estudia las reglas de tránsito por tema con explicaciones claras.",
