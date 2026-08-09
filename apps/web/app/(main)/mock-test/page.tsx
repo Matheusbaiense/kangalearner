@@ -7,9 +7,14 @@ import { useLang } from "@/contexts/LangContext";
 import { WA_PASS_MIN_CORRECT } from "@kanga/core";
 import { createClient } from "@/lib/supabase/client";
 import { SK } from "@/lib/storageKeys";
+import {
+  readStoredLicenceType,
+  persistLicenceType,
+  LICENCE_CHANGED_EVENT,
+  type LicenceType
+} from "@/lib/licenceType";
 
 type MockMode = "practice" | "exam";
-type LicenceType = "car" | "motorcycle";
 
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
 
@@ -54,22 +59,24 @@ export default function MockTestSetupPage() {
     try {
       const raw = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy);
       if (raw && STATE_CODES.includes(raw as StateCode)) setSelectedState(raw as StateCode);
-      const raw2 = localStorage.getItem(SK.licenceType);
-      if (raw2 === "car" || raw2 === "motorcycle") setLicenceType(raw2);
     } catch {
       // localStorage unavailable
     }
+    setLicenceType(readStoredLicenceType());
+  }, []);
+
+  // Stay in sync if licence type changes elsewhere (nav selector, onboarding) while this page is open.
+  useEffect(() => {
+    const onLicenceChanged = () => setLicenceType(readStoredLicenceType());
+    window.addEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
+    return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
   }, []);
 
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 
   function handleLicenceTypeChange(next: LicenceType) {
     setLicenceType(next);
-    try {
-      localStorage.setItem(SK.licenceType, next);
-    } catch {
-      // localStorage unavailable
-    }
+    persistLicenceType(next);
   }
 
   async function handleStart() {
