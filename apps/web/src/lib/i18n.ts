@@ -128,6 +128,9 @@ export const t = {
     howStep3Desc: "Simulate the official 30-question WA learner test",
     // How it works section (M2.2)
     howItWorksTitle: "How it works",
+    sectionEyebrowHow: "Get started",
+    sectionEyebrowTrust: "Why KangaLearner",
+    sectionEyebrowTopics: "What you'll master",
     howStep1Title: "Study by topic",
     howStep1DescCard: "19 road rule topics — signs, speed limits, give way, alcohol laws and more.",
     howStep2Title: "Take a mock test",
@@ -490,6 +493,9 @@ export const t = {
     howStep3Label: "Simulado",
     howStep3Desc: "Simule a prova oficial de 30 questões do learner de WA",
     howItWorksTitle: "Como funciona",
+    sectionEyebrowHow: "Comece aqui",
+    sectionEyebrowTrust: "Por que o KangaLearner",
+    sectionEyebrowTopics: "O que você vai dominar",
     howStep1Title: "Estude por tópico",
     howStep1DescCard:
       "19 tópicos das regras de trânsito — placas, velocidade, preferência, álcool e mais.",
@@ -855,6 +861,9 @@ export const t = {
     howStep3Label: "Simulacro",
     howStep3Desc: "Simula el examen oficial de 30 preguntas del learner de WA",
     howItWorksTitle: "Cómo funciona",
+    sectionEyebrowHow: "Empieza aquí",
+    sectionEyebrowTrust: "Por qué KangaLearner",
+    sectionEyebrowTopics: "Lo que vas a dominar",
     howStep1Title: "Estudia por tema",
     howStep1DescCard:
       "19 temas de normas de tránsito — señales, velocidades, ceder el paso, alcohol y más.",
