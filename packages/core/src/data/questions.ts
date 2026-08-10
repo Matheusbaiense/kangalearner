@@ -40132,6 +40132,2054 @@ export const QUESTIONS = [
     },
     tip: null,
     states: ["NSW"]
+  },
+  {
+    id: "NSWQ-01",
+    sign: "/icons/signs/nsw-parking-methods-mno-diagram.png",
+    cat: "Parking Rules",
+    q: {
+      en: "If there are no signs or markings to advise you, can you choose any of these methods of parking?",
+      pt: "Se não houver placas ou sinalizações indicando o contrário, você pode escolher qualquer um destes métodos de estacionamento?",
+      es: "Si no hay señales ni marcas que lo indiquen, ¿puede elegir cualquiera de estos métodos de estacionamiento?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, only N is correct.",
+          pt: "Não, apenas N está correto.",
+          es: "No, solo N es correcto."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes.  M, N and O are all legal.",
+          pt: "Sim. M, N e O são todos permitidos.",
+          es: "Sí. M, N y O son todos válidos."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, N is best but M and O are quite legal.",
+          pt: "Sim, N é a melhor opção, mas M e O também são válidos.",
+          es: "Sí, N es la mejor opción, pero M y O también son válidos."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In NSW, unless a sign or road marking states otherwise, the default parking rule applies: a vehicle must be parked parallel to the kerb, facing the same direction as the traffic on that side of the road, and close to (within about 1 metre of) the kerb or edge of the roadway. Of the three methods shown, only N meets these standard requirements, so it is the only legal way to park in that situation. The other two methods do not comply with the general parking rules and would only be legal if a sign specifically permitted them.",
+      pt: "Na NSW, quando não há placa ou marcação viária indicando outra forma, aplica-se a regra padrão de estacionamento: o veículo deve ser estacionado paralelo ao meio-fio, voltado no mesmo sentido do tráfego daquele lado da via, e próximo (a cerca de 1 metro) do meio-fio ou da borda da pista. Dos três métodos mostrados, apenas o N atende a essas exigências padrão, por isso é a única forma legal de estacionar nessa situação. Os outros dois métodos não respeitam as regras gerais de estacionamento e só seriam legais se houvesse uma placa autorizando-os especificamente.",
+      es: "En NSW, cuando no hay señal ni marca vial que indique lo contrario, se aplica la regla estándar de estacionamiento: el vehículo debe estacionarse en paralelo al cordón/bordillo, orientado en el mismo sentido del tráfico de ese lado de la vía, y cerca (a no más de 1 metro aproximadamente) del cordón o del borde de la calzada. De los tres métodos mostrados, solo el N cumple con estos requisitos estándar, por lo que es la única forma legal de estacionar en esa situación. Los otros dos métodos no respetan las reglas generales de estacionamiento y solo serían legales si una señal los autorizara específicamente."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-02",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving on a freeway and realise you forgot something at home. You want to go back for it. Can you do a U-turn on this road?",
+      pt: "Você está dirigindo em uma rodovia (via expressa) e percebe que esqueceu algo em casa. Você quer voltar para pegá-lo. É permitido fazer o retorno (conversão em U) nessa via?",
+      es: "Estás conduciendo por una autopista y te das cuenta de que olvidaste algo en casa. Quieres regresar a buscarlo. ¿Puedes hacer un cambio de sentido (vuelta en U) en esta vía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, not at any time.",
+          pt: "Não, em nenhuma hipótese.",
+          es: "No, en ningún momento."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, any time.",
+          pt: "Sim, a qualquer momento.",
+          es: "Sí, en cualquier momento."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, providing you use the gravel joining roads.",
+          pt: "Sim, desde que você use as vias de cascalho que conectam as pistas.",
+          es: "Sí, siempre que uses los caminos de grava que conectan las calzadas."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under the NSW Road Rules, U-turns are prohibited on freeways at all times, with no exceptions for convenience. Freeways are high-speed, controlled-access roads, and the gravel or unsealed crossovers sometimes seen in the median are reserved for police, emergency services, and road authority vehicles only — not for everyday drivers to turn around. If you forget something at home or miss your exit, you must keep driving to the next exit and find another route back; turning around on a freeway is both illegal and extremely dangerous given the surrounding traffic speed.",
+      pt: "De acordo com as normas de trânsito de NSW, fazer o retorno (conversão em U) é proibido em rodovias/vias expressas (freeways) em qualquer situação, sem exceções por conveniência. Essas vias têm tráfego de alta velocidade e acesso controlado, e as passagens de cascalho às vezes existentes no canteiro central são reservadas exclusivamente para veículos da polícia, serviços de emergência e das autoridades viárias — não para motoristas comuns fazerem o retorno. Se você esquecer algo em casa ou perder a saída, deve continuar dirigindo até a próxima saída e procurar outro caminho de volta; fazer o retorno em uma rodovia é ilegal e extremamente perigoso, dada a velocidade do tráfego ao redor.",
+      es: "Según las normas de tránsito de NSW, hacer un cambio de sentido (vuelta en U) está prohibido en las autopistas en cualquier momento, sin excepciones por conveniencia. Las autopistas son vías de alta velocidad y acceso controlado, y los cruces de grava que a veces aparecen en el cantero central están reservados exclusivamente para vehículos de la policía, servicios de emergencia y autoridades viales, no para que los conductores comunes den la vuelta. Si olvidaste algo en casa o te pasaste la salida, debes seguir conduciendo hasta la siguiente salida y buscar otro camino de regreso; dar la vuelta en una autopista es ilegal y extremadamente peligroso dada la velocidad del tráfico circundante."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-03",
+    sign: "/icons/signs/nsw-lane-ends-left-roadworks-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "If you are driving through a road work zone in the left hand lane and you see this sign you should -",
+      pt: "Se você estiver dirigindo por uma zona de obras na faixa da esquerda e vir esta placa, você deve:",
+      es: "Si estás conduciendo por una zona de obras viales en el carril izquierdo y ves esta señal, debes:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Merge to the right and give way to other traffic.",
+          pt: "Convergir para a direita e dar preferência aos demais veículos.",
+          es: "Incorporarte al carril derecho y ceder el paso al resto del tráfico."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Speed up to get in front of any cars travelling in the right hand lane.",
+          pt: "Acelerar para passar à frente dos carros que trafegam na faixa da direita.",
+          es: "Acelerar para adelantarte a los autos que circulan por el carril derecho."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop and wait for directions.",
+          pt: "Parar e aguardar instruções.",
+          es: "Detenerte y esperar instrucciones."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign marks a left-lane closure ahead due to road works, meaning traffic in the left lane must merge into the right lane. Under NSW road rules, a driver merging into another lane must give way to vehicles already established in that lane — being in the lane that is closing does not grant priority. Speeding up to cut in front of traffic in the right lane (option 1) is dangerous and violates this give-way requirement, and nothing about a merge sign instructs drivers to stop and wait (option 2). Merging right and giving way to other traffic is therefore the correct response.",
+      pt: "Essa placa indica que a faixa da esquerda será fechada mais à frente por causa de obras na via, então o tráfego dessa faixa precisa convergir para a faixa da direita. Pelas normas de trânsito de NSW, o motorista que converge para outra faixa deve dar preferência aos veículos que já estão circulando nela — estar na faixa que está sendo fechada não dá prioridade a ninguém. Acelerar para passar à frente dos carros da faixa da direita (opção 1) é perigoso e contraria essa regra de dar preferência, e nada nessa placa de convergência manda o motorista parar e esperar (opção 2). Por isso, convergir para a direita e dar preferência aos demais veículos é a resposta correta.",
+      es: "Esta señal indica que el carril izquierdo se cerrará más adelante por obras viales, por lo que el tráfico de ese carril debe incorporarse al carril derecho. Según las normas de tránsito de NSW, el conductor que se incorpora a otro carril debe ceder el paso a los vehículos que ya circulan por él — estar en el carril que se está cerrando no otorga prioridad. Acelerar para adelantarse a los autos del carril derecho (opción 1) es peligroso y va en contra de esta regla de ceder el paso, y nada en esta señal de incorporación indica que el conductor deba detenerse y esperar (opción 2). Por eso, incorporarse al carril derecho y ceder el paso al resto del tráfico es la respuesta correcta."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-04",
+    sign: "/icons/signs/nsw-loose-gravel-corner-photo.png",
+    cat: "Road Safety",
+    q: {
+      en: "You drive up to a corner where you see some loose gravel on the road. You should -",
+      pt: "Você se aproxima de uma curva e percebe que há cascalho solto na pista. Você deve:",
+      es: "Te acercas a una curva y ves grava suelta en la carretera. Debes:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Check the mirrors and change lanes.",
+          pt: "Verificar os retrovisores e mudar de faixa.",
+          es: "Revisar los espejos y cambiar de carril."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down.",
+          pt: "Reduzir a velocidade.",
+          es: "Reducir la velocidad."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up and drive over the gravel as quickly as possible.",
+          pt: "Acelerar e passar pelo cascalho o mais rápido possível.",
+          es: "Acelerar y pasar sobre la grava lo más rápido posible."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Loose gravel significantly reduces tyre grip, especially while cornering. Slowing down before and through the corner keeps your speed matched to the lower available traction, giving you better steering control and stopping ability and reducing the risk of skidding. Speeding up over the gravel, or simply changing lanes without reducing speed, would increase the chance of losing control of the vehicle.",
+      pt: "Cascalho solto reduz bastante a aderência dos pneus, principalmente numa curva. Reduzir a velocidade antes e durante a curva mantém a velocidade compatível com essa aderência menor, dando mais controle de direção e capacidade de frenagem, além de diminuir o risco de derrapagem. Acelerar sobre o cascalho, ou apenas mudar de faixa sem reduzir a velocidade, aumentaria a chance de perder o controle do veículo.",
+      es: "La grava suelta reduce considerablemente la adherencia de los neumáticos, sobre todo al tomar una curva. Reducir la velocidad antes y durante la curva mantiene la velocidad acorde a esa menor adherencia, brindando mejor control de dirección y capacidad de frenado, y disminuyendo el riesgo de derrape. Acelerar sobre la grava, o simplemente cambiar de carril sin reducir la velocidad, aumentaría la probabilidad de perder el control del vehículo."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-05",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "What must you do if you miss your exit on a freeway?",
+      pt: "O que você deve fazer se perder a saída em uma rodovia (freeway)?",
+      es: "¿Qué debe hacer si se pasa de la salida en una autopista (freeway)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Continue until you reach the next appropriate exit.",
+          pt: "Continuar até chegar à próxima saída apropriada.",
+          es: "Continuar hasta llegar a la próxima salida adecuada."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop, and reverse back along the freeway to the exit you missed.",
+          pt: "Parar e dar ré pela rodovia até a saída que perdeu.",
+          es: "Detenerse y retroceder por la autopista hasta la salida que se pasó."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop immediately and turn around.",
+          pt: "Parar imediatamente e fazer o retorno.",
+          es: "Detenerse inmediatamente y dar la vuelta."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Reversing or stopping unnecessarily on a freeway is extremely dangerous and prohibited under NSW road rules, because vehicles behind are travelling at high speed and have little time to react. If you miss your exit, the safe and legal response is simply to keep driving to the next available exit and rejoin your route from there, rather than trying to correct the mistake on the spot.",
+      pt: "Dar ré ou parar desnecessariamente em uma rodovia é extremamente perigoso e proibido pelas normas de trânsito de NSW, pois os veículos atrás estão em alta velocidade e têm pouco tempo para reagir. Se você perder a saída, a atitude segura e legal é simplesmente continuar dirigindo até a próxima saída disponível e retomar o trajeto a partir dali, em vez de tentar corrigir o erro na hora.",
+      es: "Retroceder o detenerse innecesariamente en una autopista es extremadamente peligroso y está prohibido por las normas de tránsito de NSW, ya que los vehículos que vienen detrás circulan a alta velocidad y tienen poco tiempo para reaccionar. Si se pasa de la salida, la respuesta segura y legal es simplemente seguir conduciendo hasta la próxima salida disponible y retomar la ruta desde allí, en lugar de intentar corregir el error en el momento."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-06",
+    cat: "Road Safety",
+    q: {
+      en: "Are you allowed to use a hand-held mobile phone while driving a car?",
+      pt: "Você pode usar um celular na mão enquanto dirige um carro?",
+      es: "¿Está permitido usar un teléfono celular de mano mientras se conduce un auto?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, but only when you stop at intersections.",
+          pt: "Sim, mas somente quando parar em cruzamentos.",
+          es: "Sí, pero solo cuando se detenga en las intersecciones."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No.",
+          pt: "Não.",
+          es: "No."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, but you must hold the steering wheel with at least one hand.",
+          pt: "Sim, mas você deve segurar o volante com pelo menos uma mão.",
+          es: "Sí, pero debe sujetar el volante con al menos una mano."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In NSW, it is illegal for a driver to hold or use a mobile phone in their hand at any time while the vehicle is moving or stopped in traffic (e.g. at a red light or intersection) — only using it hands-free via a properly secured cradle (for calls, GPS, or music, touched briefly to operate) is allowed, and touching or holding the handset itself is never permitted, no matter how it is held or which hand is on the wheel. The only time a hand-held phone can legally be used is when the vehicle is stationary and parked out of the line of traffic. So the correct answer is simply \"No.\"",
+      pt: "Em NSW, é ilegal o motorista segurar ou usar o celular na mão a qualquer momento enquanto o carro está em movimento ou parado no trânsito (por exemplo, num farol vermelho ou cruzamento) — só é permitido usar o telefone em modo mãos-livres, fixado num suporte apropriado (para chamadas, GPS ou música, com toques breves para operar), mas segurar o aparelho na mão nunca é permitido, independente de como ele é segurado ou de qual mão está no volante. A única situação em que se pode usar o celular na mão é quando o veículo está totalmente parado e estacionado fora do fluxo do trânsito. Por isso a resposta correta é simplesmente \"Não.\"",
+      es: "En NSW, es ilegal que el conductor sostenga o use el teléfono celular con la mano en cualquier momento mientras el vehículo esté en movimiento o detenido en el tránsito (por ejemplo, en un semáforo en rojo o en una intersección) — solo se permite usarlo en modo manos libres, sujeto en un soporte adecuado (para llamadas, GPS o música, tocándolo brevemente para operarlo), pero sostener el aparato en la mano nunca está permitido, sin importar cómo se sujete ni qué mano esté en el volante. La única situación en la que se puede usar el celular de mano legalmente es cuando el vehículo está completamente detenido y estacionado fuera del flujo del tránsito. Por eso la respuesta correcta es simplemente \"No.\""
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-07",
+    sign: "/icons/signs/nsw-ambulance-siren-behind-photo.png",
+    cat: "Emergencies",
+    q: {
+      en: "You hear the siren of an ambulance approaching you from behind. You should -",
+      pt: "Você ouve a sirene de uma ambulância se aproximando por trás. Você deve:",
+      es: "Escuchas la sirena de una ambulancia que se acerca por detrás. Debes:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Continue at the same speed.",
+          pt: "Continuar na mesma velocidade.",
+          es: "Continuar a la misma velocidad."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down to the speed of other traffic.",
+          pt: "Reduzir a velocidade até ficar na mesma velocidade do restante do trânsito.",
+          es: "Reducir la velocidad hasta igualar la velocidad del resto del tráfico."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Move into the left lane.",
+          pt: "Mudar para a faixa da esquerda.",
+          es: "Cambiarte al carril izquierdo."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In NSW, drivers must give way to an approaching emergency vehicle showing flashing lights and/or sounding a siren, as required by Rule 78 of the Australian Road Rules. Since NSW traffic drives on the left, moving into the left lane (and toward the edge of the road if needed) clears the right-hand lane so the ambulance can overtake safely and quickly, without being forced into oncoming traffic.",
+      pt: "Na NSW, os motoristas devem dar passagem a um veículo de emergência que se aproxima com luzes piscando e/ou sirene ligada, conforme exige a Regra 78 das Normas de Trânsito Australianas (Australian Road Rules). Como o trânsito na NSW segue pela esquerda, mudar para a faixa da esquerda (e se aproximar da borda da via, se necessário) libera a faixa da direita para que a ambulância ultrapasse com segurança e rapidez, sem precisar invadir a faixa contrária.",
+      es: "En NSW, los conductores deben ceder el paso a un vehículo de emergencia que se aproxima con luces intermitentes y/o sirena activada, según lo exige la Regla 78 de las Normas de Tránsito Australianas (Australian Road Rules). Como el tránsito en NSW circula por la izquierda, cambiarse al carril izquierdo (y acercarse al borde de la vía si es necesario) despeja el carril derecho para que la ambulancia pueda adelantar de forma segura y rápida, sin tener que invadir el carril contrario."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-08",
+    cat: "Parking Rules",
+    q: {
+      en: "How close can you park to another vehicle when parked parallel to the kerb?",
+      pt: "A que distância você pode estacionar de outro veículo quando estacionado em paralelo ao meio-fio?",
+      es: "¿A qué distancia puedes estacionar de otro vehículo cuando estás estacionado en paralelo al bordillo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must leave at least 1 metre front and back.",
+          pt: "Você deve deixar pelo menos 1 metro na frente e atrás.",
+          es: "Debes dejar al menos 1 metro adelante y atrás."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must leave at least 2 metres from the front only.",
+          pt: "Você deve deixar pelo menos 2 metros apenas na frente.",
+          es: "Debes dejar al menos 2 metros solo adelante."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must leave at least 3 metres front and back.",
+          pt: "Você deve deixar pelo menos 3 metros na frente e atrás.",
+          es: "Debes dejar al menos 3 metros adelante y atrás."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When parking parallel to the kerb in NSW, you must leave enough space between your vehicle and the ones parked in front and behind so that every vehicle can safely enter and exit its space. NSW road rules and driving-test guidance set this minimum clearance at 1 metre front and back — enough room to manoeuvre in or out without needing to move another car. Leaving less makes it difficult or unsafe to pull out, while requiring 2 or 3 metres goes well beyond what is needed or practical in an ordinary kerbside space, so option 0 is correct.",
+      pt: "Ao estacionar em paralelo ao meio-fio em NSW, você deve deixar espaço suficiente entre o seu veículo e os carros estacionados à frente e atrás, para que todos consigam entrar e sair da vaga com segurança. As regras de trânsito de NSW e as orientações para o teste de direção definem essa distância mínima em 1 metro na frente e atrás — espaço suficiente para manobrar sem precisar mover outro veículo. Deixar menos que isso dificulta (ou torna inseguro) sair da vaga, enquanto exigir 2 ou 3 metros vai muito além do necessário ou do praticável em uma vaga comum de rua, por isso a opção 0 está correta.",
+      es: "Al estacionar en paralelo al bordillo en NSW, debes dejar espacio suficiente entre tu vehículo y los autos estacionados adelante y atrás, para que todos puedan entrar y salir del lugar de forma segura. Las normas de tránsito de NSW y las guías para el examen de conducir fijan esta distancia mínima en 1 metro adelante y atrás — espacio suficiente para maniobrar sin necesidad de mover otro vehículo. Dejar menos que eso dificulta (o vuelve inseguro) salir del lugar, mientras que exigir 2 o 3 metros va mucho más allá de lo necesario o práctico en un espacio común junto a la acera, por lo que la opción 0 es correcta."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-09",
+    sign: "/icons/signs/nsw-intersection-building-blocks-view-photo.png",
+    cat: "Give Way Rules",
+    q: {
+      en: "You should be particularly careful at this intersection because -",
+      pt: "Você deve ter cuidado especial neste cruzamento porque -",
+      es: "Debes tener especial cuidado en esta intersección porque -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It looks a bit tricky.",
+          pt: "Ele parece um pouco complicado.",
+          es: "Parece un poco complicada."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The building blocks a good view of the side street.",
+          pt: "O prédio bloqueia uma boa visão da rua lateral.",
+          es: "El edificio bloquea una buena vista de la calle lateral."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Intersections cause crashes.",
+          pt: "Cruzamentos causam acidentes.",
+          es: "Las intersecciones causan accidentes."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At intersections, buildings, fences, parked vehicles or other structures near the corner can obstruct your view of a side street, hiding approaching vehicles, cyclists or pedestrians until you are very close to the intersection. The NSW Road User Handbook advises drivers to slow down and be prepared to stop when visibility is reduced by such obstructions, because traffic emerging from the side street may not be visible in time to react safely. This is why \"the building blocks a good view of the side street\" is the correct reason for extra caution here, rather than a vague sense that the intersection \"looks tricky\" or the general claim that intersections cause crashes.",
+      pt: "Em cruzamentos, construções, cercas, veículos estacionados ou outras estruturas próximas à esquina podem bloquear a visão da rua lateral, escondendo veículos, ciclistas ou pedestres que se aproximam até que você esteja bem perto do cruzamento. O Manual do Usuário da Via de NSW orienta os motoristas a reduzir a velocidade e estarem prontos para parar quando a visibilidade estiver reduzida por esse tipo de obstrução, pois o tráfego vindo da rua lateral pode não ser visível a tempo de reagir com segurança. Por isso \"o prédio bloqueia uma boa visão da rua lateral\" é o motivo correto para o cuidado extra nesse cruzamento, e não uma sensação vaga de que ele \"parece complicado\" ou a afirmação genérica de que cruzamentos causam acidentes.",
+      es: "En las intersecciones, los edificios, cercas, vehículos estacionados u otras estructuras cercanas a la esquina pueden bloquear la vista de la calle lateral, ocultando vehículos, ciclistas o peatones que se aproximan hasta que estás muy cerca de la intersección. El Manual del Usuario de la Vía de NSW aconseja a los conductores reducir la velocidad y estar preparados para detenerse cuando la visibilidad se ve reducida por este tipo de obstrucción, ya que el tráfico que viene de la calle lateral puede no ser visible a tiempo para reaccionar con seguridad. Por eso \"el edificio bloquea una buena vista de la calle lateral\" es el motivo correcto para tener especial cuidado en esta intersección, y no una sensación vaga de que \"parece complicada\" o la afirmación genérica de que las intersecciones causan accidentes."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-10",
+    sign: "/icons/signs/nsw-freeway-begins-sign.png",
+    cat: "Parking Rules",
+    q: {
+      en: "You have just passed this sign. Can you park on this road?",
+      pt: "Você acabou de passar por esta placa. É permitido estacionar nesta via?",
+      es: "Acabas de pasar esta señal. ¿Se puede estacionar en esta vía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, not at any time.",
+          pt: "Não, em nenhum horário.",
+          es: "No, en ningún horario."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes.",
+          pt: "Sim.",
+          es: "Sí."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, but only in daylight hours.",
+          pt: "Sim, mas somente durante o dia.",
+          es: "Sí, pero solo durante el día."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The correct answer is \"No, not at any time.\" In NSW, parking-control signs that prohibit parking without showing any attached time or day restriction apply continuously — the prohibition holds at every hour of every day, not just at night or during peak periods. A driver must look for an added plate specifying particular hours or days before assuming any exception exists; if no such limited period is shown, the rule is that parking is banned permanently, which is why \"yes\" and \"only in daylight hours\" are both incorrect here.",
+      pt: "A resposta correta é \"Não, em nenhum horário.\" Em NSW, placas de controle de estacionamento que proíbem estacionar sem apresentar nenhuma restrição de horário ou dia anexada valem de forma contínua — a proibição vale em todas as horas de todos os dias, e não apenas à noite ou em horários de pico. O motorista deve procurar uma placa complementar que especifique horários ou dias particulares antes de supor que existe alguma exceção; se esse período limitado não aparecer, a regra é que o estacionamento fica proibido permanentemente, por isso as opções \"sim\" e \"somente durante o dia\" estão incorretas.",
+      es: "La respuesta correcta es \"No, en ningún horario.\" En NSW, las señales de control de estacionamiento que prohíben estacionar sin mostrar ninguna restricción de horario o día adicional aplican de manera continua — la prohibición rige a toda hora de todos los días, no solo de noche o en horas pico. El conductor debe buscar un cartel complementario que especifique horarios o días particulares antes de suponer que existe alguna excepción; si ese período limitado no aparece, la regla es que el estacionamiento queda prohibido de forma permanente, por lo que las opciones \"sí\" y \"solo durante el día\" son incorrectas."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-11",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Before driving on a freeway, which of the following should you do?",
+      pt: "Antes de dirigir em uma rodovia (freeway), o que você deve fazer?",
+      es: "Antes de conducir por una autopista (freeway), ¿qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Make sure your vehicle has enough fuel, oil, water and the correct tyre pressure.",
+          pt: "Verificar se o veículo tem combustível, óleo e água suficientes, além da pressão correta dos pneus.",
+          es: "Asegurarse de que el vehículo tenga suficiente combustible, aceite y agua, y la presión correcta de los neumáticos."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Take your street directory in case you get lost.",
+          pt: "Levar o guia de ruas (mapa) caso você se perca.",
+          es: "Llevar su guía de calles (mapa) por si se pierde."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Take something to calm your nerves before driving.",
+          pt: "Tomar algo para acalmar os nervos antes de dirigir.",
+          es: "Tomar algo para calmar los nervios antes de conducir."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Freeways carry fast, dense traffic with limited stopping opportunities and often no hard shoulder for long stretches, so a breakdown from low fuel, low oil/water, or an under-inflated tyre is far more dangerous there than on a local street. The NSW Road User Handbook advises drivers to complete basic vehicle checks before any trip, and this is especially critical before freeway driving where you cannot simply pull over safely if something goes wrong. Carrying a street directory is unnecessary risk (reading a map while driving is a distraction) and taking anything to \"calm your nerves\" is unsafe, since any substance that affects alertness or reaction time should never be used before driving.",
+      pt: "Rodovias (freeways) têm tráfego rápido e denso, com poucas oportunidades de parar com segurança e, muitas vezes, sem acostamento por longos trechos. Por isso, uma pane por falta de combustível, óleo, água ou pneu mal calibrado é muito mais perigosa ali do que em uma rua comum. O manual oficial de trânsito de NSW recomenda fazer verificações básicas do veículo antes de qualquer viagem, e isso é ainda mais importante antes de entrar em uma rodovia, onde não dá para simplesmente encostar com segurança se algo der errado. Levar um guia de ruas é desnecessário e arriscado (ler um mapa enquanto dirige distrai o motorista), e tomar qualquer coisa para \"acalmar os nervos\" é perigoso, já que nenhuma substância que afete o estado de alerta ou os reflexos deve ser usada antes de dirigir.",
+      es: "Las autopistas (freeways) tienen tráfico rápido y denso, con pocas oportunidades para detenerse con seguridad y, a menudo, sin banquina en tramos largos. Por eso, una avería por falta de combustible, aceite, agua o un neumático mal inflado es mucho más peligrosa allí que en una calle común. El manual oficial de tránsito de NSW recomienda hacer verificaciones básicas del vehículo antes de cualquier viaje, y esto es aún más importante antes de entrar a una autopista, donde no es posible simplemente orillarse con seguridad si algo falla. Llevar una guía de calles es innecesario y riesgoso (leer un mapa mientras se conduce distrae al conductor), y tomar algo para \"calmar los nervios\" es peligroso, ya que ninguna sustancia que afecte el estado de alerta o los reflejos debe usarse antes de conducir."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-12",
+    cat: "Road Safety",
+    q: {
+      en: "A friend lends you a van that has seats for ten passengers. What type of licence do you need to drive this type of vehicle?",
+      pt: "Um amigo empresta a você uma van com assentos para dez passageiros. Que tipo de licença você precisa para dirigir esse tipo de veículo?",
+      es: "Un amigo te presta una van con asientos para diez pasajeros. ¿Qué tipo de licencia necesitas para conducir este tipo de vehículo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A small bus licence.",
+          pt: "Uma licença para micro-ônibus.",
+          es: "Una licencia para autobús pequeño."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A car licence.",
+          pt: "Uma licença de carro.",
+          es: "Una licencia de auto."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "A heavy rigid vehicle licence.",
+          pt: "Uma licença para veículo pesado rígido.",
+          es: "Una licencia para vehículo pesado rígido."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In NSW, a standard car (Class C) driver licence covers vehicles built to carry no more than 12 adults, including the driver, and with a gross vehicle mass (GVM) of up to 4.5 tonnes. A van with seating for ten passengers (11 people total, including the driver) is within this seating limit, so a car licence is all that's required — a small bus licence or a heavy rigid vehicle licence is only needed for larger vehicles that exceed these limits.",
+      pt: "Na NSW, a licença padrão de carro (Classe C) permite conduzir veículos projetados para transportar no máximo 12 adultos, incluindo o motorista, e com massa bruta do veículo (GVM) de até 4,5 toneladas. Uma van com assentos para dez passageiros (11 pessoas ao todo, contando o motorista) está dentro desse limite de lotação, então basta uma licença de carro — uma licença para micro-ônibus ou para veículo pesado rígido só é exigida para veículos maiores, que ultrapassem esses limites.",
+      es: "En NSW, la licencia estándar de auto (Clase C) permite conducir vehículos diseñados para transportar un máximo de 12 adultos, incluido el conductor, y con una masa bruta vehicular (GVM) de hasta 4,5 toneladas. Una van con asientos para diez pasajeros (11 personas en total, contando al conductor) está dentro de ese límite de asientos, por lo que basta con una licencia de auto — una licencia para autobús pequeño o para vehículo pesado rígido solo se necesita para vehículos más grandes que superen esos límites."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-13",
+    sign: "/icons/signs/nsw-stop-sign-pedestrian-crossing-diagram.png",
+    cat: "Give Way Rules",
+    q: {
+      en: "The diagram shows a marked pedestrian crossing at an intersection. There is also a STOP sign at the intersection. You have already stopped for a pedestrian. Must you stop again at the STOP line?",
+      pt: "O diagrama mostra uma faixa de pedestres sinalizada em um cruzamento. Há também uma placa de PARE nesse cruzamento. Você já parou para um pedestre. É preciso parar novamente na linha de PARE?",
+      es: "El diagrama muestra un paso peatonal señalizado en una intersección. También hay una señal de PARE en esa intersección. Usted ya se detuvo por un peatón. ¿Debe detenerse nuevamente en la línea de PARE?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, if the intersection is clear.",
+          pt: "Não, se o cruzamento estiver livre.",
+          es: "No, si la intersección está despejada."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, at all times.",
+          pt: "Sim, sempre.",
+          es: "Sí, siempre."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if there is traffic on your right only.",
+          pt: "Sim, somente se houver trânsito à sua direita.",
+          es: "Sí, solo si hay tráfico a su derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A STOP sign creates a separate, mandatory stopping requirement at the stop line, independent of any other stop already made (such as stopping for a pedestrian at the marked crossing). Under NSW road rules, every driver approaching a STOP sign must come to a complete stop at the stop line — or as close as practicable to it before entering the intersection — and give way, regardless of whether the intersection looks clear or traffic is present only on one side. Having already stopped for a pedestrian does not satisfy this separate obligation, so the driver must stop again at the STOP line at all times.",
+      pt: "A placa de PARE gera uma exigência separada e obrigatória de parar na linha de PARE, independentemente de qualquer outra parada já feita (como parar para um pedestre na faixa sinalizada). Pelas normas de trânsito de NSW, todo motorista que se aproxima de uma placa de PARE deve parar completamente na linha de PARE — ou o mais próximo possível dela antes de entrar no cruzamento — e dar preferência, mesmo que o cruzamento pareça livre ou haja trânsito apenas de um lado. Ter parado antes para um pedestre não substitui essa exigência; por isso, o motorista deve parar novamente na linha de PARE sempre.",
+      es: "La señal de PARE genera una exigencia independiente y obligatoria de detenerse en la línea de PARE, sin importar si ya se detuvo antes por otro motivo (como detenerse por un peatón en el paso peatonal señalizado). Según las normas de tránsito de NSW, todo conductor que se aproxima a una señal de PARE debe detenerse por completo en la línea de PARE —o lo más cerca posible de ella antes de entrar a la intersección— y ceder el paso, sin importar si la intersección parece despejada o si hay tráfico solo de un lado. Haberse detenido antes por un peatón no reemplaza esta exigencia; por eso el conductor debe detenerse nuevamente en la línea de PARE siempre."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-14",
+    sign: "/icons/signs/nsw-roundabout-right-turn-lane-diagram.png",
+    cat: "Give Way Rules",
+    q: {
+      en: "The red car wants to turn right and exit the roundabout in the street indicated by an arrow. Is the car positioned in the correct lane to do this?",
+      pt: "O carro vermelho quer virar à direita e sair da rotatória pela rua indicada por uma seta. O carro está posicionado na faixa correta para fazer essa manobra?",
+      es: "El auto rojo quiere girar a la derecha y salir de la rotonda por la calle indicada con una flecha. ¿Está el auto ubicado en el carril correcto para hacer esto?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, the car should enter the roundabout only from the right hand lane.",
+          pt: "Não, o carro deve entrar na rotatória somente pela faixa da direita.",
+          es: "No, el auto debe entrar a la rotonda solamente por el carril derecho."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, the car can make the turn from either the left hand or the right hand lane.",
+          pt: "Sim, o carro pode fazer a conversão tanto pela faixa da esquerda quanto pela da direita.",
+          es: "Sí, el auto puede hacer el giro desde el carril izquierdo o desde el carril derecho."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, the car can make the turn only from this lane.",
+          pt: "Sim, o carro só pode fazer essa conversão por esta faixa.",
+          es: "Sí, el auto solo puede hacer el giro desde este carril."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under NSW road rules, a right turn at a roundabout must be entered from the right-hand lane (unless signs or line markings say otherwise). Entering from the right lane lets the driver signal right on entry, travel around the far side of the roundabout, and only move toward the left lane when approaching the exit (signalling left at that point). Entering from the left lane to make a right turn would force the driver to cut across the path of vehicles in the right lane and of traffic going straight ahead, which is unsafe and breaks correct lane discipline. That is why the car in this scenario, positioned to turn right, is in the wrong lane — it should have entered only from the right-hand lane.",
+      pt: "Segundo as regras de trânsito de NSW, a conversão à direita numa rotatória deve ser feita entrando pela faixa da direita (salvo indicação diferente por placas ou marcações no pavimento). Entrar pela faixa da direita permite ao motorista sinalizar a intenção de virar à direita já na entrada, percorrer o lado mais distante da rotatória e só se deslocar para a faixa da esquerda ao se aproximar da saída (sinalizando à esquerda nesse momento). Entrar pela faixa da esquerda para virar à direita obrigaria o motorista a cruzar a trajetória de veículos na faixa da direita e de quem segue em frente, o que é perigoso e contraria a disciplina correta de faixas. Por isso o carro do cenário, que pretende virar à direita, está na faixa errada — ele deveria ter entrado somente pela faixa da direita.",
+      es: "Según las normas de tránsito de NSW, un giro a la derecha en una rotonda debe hacerse entrando por el carril derecho (salvo que las señales o el marcado del pavimento indiquen otra cosa). Entrar por el carril derecho permite al conductor señalizar la intención de girar a la derecha desde la entrada, recorrer el lado más alejado de la rotonda y recién moverse hacia el carril izquierdo al aproximarse a la salida (señalizando a la izquierda en ese momento). Entrar por el carril izquierdo con intención de girar a la derecha obligaría al conductor a cruzarse con vehículos del carril derecho y con el tránsito que sigue de frente, lo cual es inseguro y rompe la disciplina de carriles. Por eso el auto de este escenario, que quiere girar a la derecha, está en el carril equivocado: debió haber entrado solamente por el carril derecho."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-15",
+    sign: "/icons/signs/nsw-vehicle-stopped-pedestrian-crossing-diagram.png",
+    cat: "Give Way Rules",
+    q: {
+      en: "A vehicle ahead of you has stopped at a pedestrian crossing. You -",
+      pt: "Um veículo à sua frente parou em uma faixa de pedestres. Você:",
+      es: "Un vehículo delante de usted se ha detenido en un paso de peatones. Usted:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Must not overtake the stopped vehicle.",
+          pt: "Não deve ultrapassar o veículo parado.",
+          es: "No debe adelantar al vehículo detenido."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "May overtake the vehicle provided no cars are coming the other way.",
+          pt: "Pode ultrapassar o veículo, desde que não haja carros vindo em sentido contrário.",
+          es: "Puede adelantar al vehículo siempre que no vengan autos en sentido contrario."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "May overtake the vehicle if there are no pedestrians on the crossing.",
+          pt: "Pode ultrapassar o veículo se não houver pedestres na faixa.",
+          es: "Puede adelantar al vehículo si no hay peatones en el paso."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under NSW Road Rule 78, drivers must not overtake a vehicle that has stopped at a pedestrian (or children's) crossing. The stopped vehicle can hide pedestrians who are still crossing or about to step onto the crossing, so overtaking creates a serious risk of hitting someone you cannot see. This applies regardless of oncoming traffic (option 1) or whether the crossing looks clear (option 2) — precisely because a vehicle blocking your view means you cannot safely judge that. That is why you must not overtake the stopped vehicle.",
+      pt: "Na regulamentação de trânsito de NSW (Regra 78), é proibido ultrapassar um veículo parado em uma faixa de pedestres. O veículo parado pode estar bloqueando sua visão de pedestres que ainda estão atravessando ou prestes a entrar na faixa, o que torna a ultrapassagem extremamente perigosa. Essa proibição vale independentemente de haver carros vindo em sentido contrário (opção 1) ou de a faixa parecer livre (opção 2) — justamente porque o veículo à sua frente impede que você avalie isso com segurança. Por isso a resposta correta é não ultrapassar o veículo parado.",
+      es: "Según la Regla de Tránsito 78 de Nueva Gales del Sur (NSW), está prohibido adelantar a un vehículo detenido en un paso de peatones. El vehículo detenido puede estar ocultando a peatones que todavía están cruzando o a punto de entrar al paso, por lo que adelantar resulta muy peligroso. Esta prohibición aplica sin importar si vienen o no autos en sentido contrario (opción 1) ni si el paso parece estar despejado (opción 2), precisamente porque el vehículo delante le impide comprobarlo con seguridad. Por eso la respuesta correcta es no adelantar al vehículo detenido."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-16",
+    sign: "/icons/signs/nsw-school-crossing-supervisor-sign.png",
+    cat: "Give Way Rules",
+    q: {
+      en: "If you see a School Crossing Supervisor holding a sign like this, you must wait until the children -",
+      pt: "Se você vir um Agente de Travessia Escolar segurando uma placa como esta, você deve esperar até que as crianças:",
+      es: "Si ve a un Supervisor de Cruce Escolar sosteniendo una señal como esta, debe esperar hasta que los niños:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Are off the crossing and the hand held sign is taken away.",
+          pt: "Tenham saído da faixa de travessia e a placa que ele segura na mão seja retirada.",
+          es: "Hayan salido del cruce y se retire la señal que sostiene en la mano."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Reach the right-hand side of the crossing.",
+          pt: "Cheguem ao lado direito da faixa de travessia.",
+          es: "Lleguen al lado derecho del cruce."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Are out of sight.",
+          pt: "Estejam fora de vista.",
+          es: "Estén fuera de vista."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under NSW road rules, the raised sign held by a School Crossing Supervisor is an instruction for traffic to remain stopped. The supervisor only lowers and puts the sign away once all children have safely finished crossing and cleared the crossing area — that is the legal cue that it is safe to proceed. Drivers must not move off simply because children have reached the far side or have momentarily gone out of view, since children (or others) may still be entering or crossing behind them; only the sign being taken away confirms the supervisor has judged the crossing fully clear.",
+      pt: "Segundo as regras de trânsito de NSW, a placa erguida pelo Agente de Travessia Escolar é uma instrução para que o tráfego permaneça parado. O agente só abaixa e guarda a placa depois que todas as crianças tiverem atravessado com segurança e deixado a área de travessia — esse é o sinal legal de que é seguro seguir em frente. O motorista não deve arrancar apenas porque as crianças chegaram ao outro lado ou saíram de vista momentaneamente, pois outras crianças (ou pedestres) ainda podem estar entrando na faixa; somente a retirada da placa confirma que o agente considerou a travessia totalmente livre.",
+      es: "Según las normas de tránsito de NSW, la señal levantada por el Supervisor de Cruce Escolar es una instrucción para que el tráfico permanezca detenido. El supervisor solo baja y guarda la señal una vez que todos los niños han terminado de cruzar con seguridad y han dejado el área del cruce — esa es la señal legal de que es seguro avanzar. El conductor no debe arrancar solo porque los niños llegaron al otro lado o desaparecieron momentáneamente de la vista, ya que otros niños (u otras personas) podrían seguir entrando al cruce; solo el retiro de la señal confirma que el supervisor consideró el cruce completamente despejado."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-17",
+    cat: "Road Safety",
+    q: {
+      en: "The most effective device for protecting passengers when in an accident is -",
+      pt: "O dispositivo mais eficaz para proteger os passageiros em caso de acidente é -",
+      es: "El dispositivo más eficaz para proteger a los pasajeros en caso de accidente es -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Seat belts.",
+          pt: "Cintos de segurança.",
+          es: "Los cinturones de seguridad."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Safety door latches.",
+          pt: "Trincos de segurança das portas.",
+          es: "Los pestillos de seguridad de las puertas."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Padded instrument panels.",
+          pt: "Painéis de instrumentos acolchoados.",
+          es: "Los paneles de instrumentos acolchados."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Seat belts are the most effective safety device for protecting vehicle occupants in a crash. They restrain the body, preventing occupants from being thrown forward, sideways, or ejected from the vehicle, and they spread crash forces across the stronger parts of the body (pelvis and chest). The NSW Road User Handbook makes wearing a seat belt a legal requirement for drivers and all passengers, precisely because seat belts are proven to substantially reduce the risk of death and serious injury in a collision. Door latches and padded instrument panels can offer secondary protection, but neither restrains an occupant's body during a crash the way a seat belt does.",
+      pt: "Os cintos de segurança são o dispositivo de segurança mais eficaz para proteger os ocupantes de um veículo em caso de acidente. Eles prendem o corpo, evitando que o ocupante seja projetado para frente, para os lados ou ejetado do veículo, distribuindo a força do impacto pelas partes mais resistentes do corpo (bacia e tórax). O Road User Handbook de NSW exige por lei o uso do cinto de segurança por motoristas e passageiros justamente porque está comprovado que ele reduz significativamente o risco de morte e ferimentos graves em uma colisão. Trincos de portas e painéis acolchoados podem oferecer proteção secundária, mas nenhum deles prende o corpo do ocupante durante o impacto como o cinto de segurança faz.",
+      es: "Los cinturones de seguridad son el dispositivo más eficaz para proteger a los ocupantes de un vehículo en caso de accidente. Sujetan el cuerpo, evitando que el ocupante sea lanzado hacia adelante, hacia los lados o expulsado del vehículo, y distribuyen la fuerza del impacto sobre las partes más resistentes del cuerpo (pelvis y tórax). El Road User Handbook de NSW exige por ley el uso del cinturón de seguridad tanto para el conductor como para los pasajeros, precisamente porque está comprobado que reduce de forma significativa el riesgo de muerte y lesiones graves en una colisión. Los pestillos de las puertas y los paneles acolchados pueden ofrecer protección secundaria, pero ninguno de los dos sujeta el cuerpo del ocupante durante el impacto como lo hace el cinturón de seguridad."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-18",
+    cat: "Road Safety",
+    q: {
+      en: "You are driving a vehicle that only has a seat belt for the driver. To reduce the danger of being in a vehicle without a seat belt, where is the best place for passengers to sit?",
+      pt: "Você está dirigindo um veículo que possui cinto de segurança apenas para o motorista. Para reduzir o risco de estar em um veículo sem cinto de segurança, qual é o melhor lugar para os passageiros se sentarem?",
+      es: "Estás conduciendo un vehículo que solo tiene cinturón de seguridad para el conductor. Para reducir el riesgo de viajar en un vehículo sin cinturón de seguridad, ¿cuál es el mejor lugar para que se sienten los pasajeros?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "In the front seat.",
+          pt: "No banco da frente.",
+          es: "En el asiento delantero."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In the back seat.",
+          pt: "No banco de trás.",
+          es: "En el asiento trasero."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "In the front seat sharing your seat belt.",
+          pt: "No banco da frente, compartilhando seu cinto de segurança.",
+          es: "En el asiento delantero, compartiendo tu cinturón de seguridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A seat belt is designed to restrain one person only. Sharing a belt between two occupants (option 2) is dangerous because it cannot properly restrain either person in a crash and can cause serious internal injuries from the buckle or webbing, or from one occupant being crushed by the other. Riding unrestrained in the front seat (option 0) is also more hazardous than the back seat, since front occupants sit closer to the windscreen, dashboard and engine bay and are more exposed in a frontal collision. The back seat, while still unrestrained, keeps passengers further from the point of impact in most crashes, reducing (though not eliminating) the risk of being thrown into hard surfaces at the front of the vehicle. This is why NSW road safety guidance treats the back seat as the least dangerous option when a proper individual seat belt is not available for every passenger, while stressing that everyone should always use their own properly fitted seat belt whenever one is available.",
+      pt: "Um cinto de segurança é projetado para reter apenas uma pessoa. Compartilhar o cinto entre dois ocupantes (opção 2) é perigoso porque não consegue reter adequadamente nenhum dos dois em uma colisão, podendo causar ferimentos internos graves pela fivela ou pela faixa do cinto, ou pelo esmagamento de um ocupante sobre o outro. Viajar sem cinto no banco da frente (opção 0) também é mais arriscado do que no banco de trás, pois os ocupantes da frente ficam mais próximos do para-brisa, do painel e do compartimento do motor, ficando mais expostos em uma colisão frontal. O banco de trás, mesmo sem cinto, mantém os passageiros mais afastados do ponto de impacto na maioria das colisões, reduzindo (sem eliminar) o risco de serem arremessados contra superfícies rígidas na frente do veículo. Por isso, as diretrizes de segurança viária de NSW tratam o banco de trás como a opção menos perigosa quando não há um cinto individual disponível para cada passageiro, reforçando sempre que todos devem usar seu próprio cinto corretamente ajustado sempre que houver um disponível.",
+      es: "Un cinturón de seguridad está diseñado para sujetar a una sola persona. Compartirlo entre dos ocupantes (opción 2) es peligroso porque no puede sujetar adecuadamente a ninguno de los dos en caso de choque, y puede causar lesiones internas graves por la hebilla o la cinta del cinturón, o porque un ocupante aplaste al otro. Viajar sin cinturón en el asiento delantero (opción 0) también es más riesgoso que en el asiento trasero, ya que los ocupantes delanteros están más cerca del parabrisas, el tablero y el compartimento del motor, quedando más expuestos en una colisión frontal. El asiento trasero, aunque sigue sin cinturón, mantiene a los pasajeros más alejados del punto de impacto en la mayoría de los choques, reduciendo (sin eliminar) el riesgo de ser lanzados contra superficies duras en la parte delantera del vehículo. Por eso las pautas de seguridad vial de NSW consideran el asiento trasero como la opción menos peligrosa cuando no hay un cinturón individual disponible para cada pasajero, insistiendo siempre en que todos deben usar su propio cinturón correctamente ajustado cuando esté disponible."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-19",
+    cat: "Road Safety",
+    q: {
+      en: "You give a friend and her 12 year old son a lift. Your friend sits in the front and her son gets in the back. The boy does not put his seat belt on. By law, who has to make sure the child wears his seat belt?",
+      pt: "Você dá uma carona para uma amiga e o filho dela, de 12 anos. Sua amiga senta na frente e o filho dela senta atrás. O menino não coloca o cinto de segurança. Por lei, quem deve garantir que a criança use o cinto de segurança?",
+      es: "Llevas a una amiga y a su hijo de 12 años en tu auto. Tu amiga se sienta adelante y su hijo se sienta atrás. El niño no se pone el cinturón de seguridad. Según la ley, ¿quién debe asegurarse de que el niño use el cinturón de seguridad?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You do, because you are the driver.",
+          pt: "Você, porque é o motorista.",
+          es: "Tú, porque eres el conductor."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Your friend does because she is the parent.",
+          pt: "Sua amiga, porque ela é a mãe.",
+          es: "Tu amiga, porque ella es la madre."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The child does because it is always the passenger's responsibility.",
+          pt: "A criança, porque é sempre responsabilidade do passageiro.",
+          es: "El niño, porque siempre es responsabilidad del pasajero."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under NSW road rules, the driver is legally responsible for ensuring that every passenger under 16 years of age is properly restrained with a correctly fitted seatbelt or approved child restraint before the vehicle moves. Since the boy is 12, this duty falls on the driver by law — not on the parent riding as a passenger, and not on the child himself.",
+      pt: "Segundo as normas de trânsito de NSW, o motorista é legalmente responsável por garantir que todo passageiro menor de 16 anos esteja devidamente preso com um cinto de segurança ajustado corretamente ou um dispositivo de retenção infantil aprovado antes de o veículo se movimentar. Como o menino tem 12 anos, essa obrigação é do motorista por lei — não da mãe, que está como passageira, nem da própria criança.",
+      es: "Según las normas de tránsito de NSW, el conductor es legalmente responsable de asegurarse de que todo pasajero menor de 16 años esté correctamente sujeto con un cinturón de seguridad bien ajustado o un sistema de retención infantil aprobado antes de que el vehículo se ponga en marcha. Como el niño tiene 12 años, esa obligación recae por ley en el conductor, no en la madre que viaja como pasajera ni en el propio niño."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-20",
+    sign: "/icons/signs/nsw-speed-limit-50-sign.png",
+    cat: "Speed Limits",
+    q: {
+      en: "Speed limit signs (such as the one shown) tell drivers:",
+      pt: "As placas de limite de velocidade (como a mostrada) informam aos motoristas:",
+      es: "Las señales de límite de velocidad (como la que se muestra) indican a los conductores:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The minimum speed they are allowed to drive.",
+          pt: "A velocidade mínima permitida para dirigir.",
+          es: "La velocidad mínima permitida para conducir."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The maximum speed they are allowed to drive.",
+          pt: "A velocidade máxima permitida para dirigir.",
+          es: "La velocidad máxima permitida para conducir."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "The recommended speed they should drive.",
+          pt: "A velocidade recomendada para dirigir.",
+          es: "La velocidad recomendada para conducir."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Speed limit signs show the highest speed a driver is legally allowed to travel on that section of road under normal conditions. Drivers must never exceed this speed, though they may still need to drive slower depending on conditions like weather, traffic, or visibility.",
+      pt: "As placas de limite de velocidade indicam a velocidade máxima que um motorista pode legalmente atingir naquele trecho de via em condições normais. Esse limite nunca deve ser ultrapassado, mas pode ser necessário dirigir mais devagar dependendo das condições, como clima, tráfego ou visibilidade.",
+      es: "Las señales de límite de velocidad indican la velocidad máxima que un conductor puede alcanzar legalmente en ese tramo de la vía en condiciones normales. Ese límite nunca debe superarse, aunque puede ser necesario conducir más despacio según las condiciones, como el clima, el tráfico o la visibilidad."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-21",
+    sign: "/icons/signs/nsw-shared-zone-10kmh-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "This sign means you must -",
+      pt: "Esta placa significa que você deve -",
+      es: "Esta señal significa que usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Share this road with other people and vehicles and not exceed 10 km/h.",
+          pt: "Compartilhar esta via com outras pessoas e veículos e não ultrapassar 10 km/h.",
+          es: "Compartir esta vía con otras personas y vehículos y no superar los 10 km/h."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive at 10 km/h if there are pedestrians around.",
+          pt: "Dirigir a 10 km/h se houver pedestres por perto.",
+          es: "Conducir a 10 km/h si hay peatones cerca."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reduce your speed to what you think is safe but never below 10 km/h.",
+          pt: "Reduzir sua velocidade para o que você considerar seguro, mas nunca abaixo de 10 km/h.",
+          es: "Reducir su velocidad a lo que usted considere seguro, pero nunca por debajo de 10 km/h."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign marks a \"Shared Zone\" — an area (common in NSW car parks, laneways and busy precincts) where pedestrians, cyclists and vehicles all use the same space. A 10 km/h shared zone sign requires drivers to share the road with pedestrians and other road users and never exceed 10 km/h, since pedestrians have priority and may move unpredictably. Options 1 and 2 are wrong because the 10 km/h limit is a fixed maximum that applies at all times in the zone, not just when pedestrians happen to be visible, and it is not a speed drivers judge for themselves.",
+      pt: "Esta placa indica uma \"Zona Compartilhada\" (Shared Zone) — uma área comum em estacionamentos, vielas e áreas comerciais movimentadas de NSW, onde pedestres, ciclistas e veículos dividem o mesmo espaço. A sinalização de 10 km/h em uma zona compartilhada exige que o motorista compartilhe a via com pedestres e outros usuários e nunca ultrapasse 10 km/h, já que os pedestres têm prioridade e podem se mover de forma imprevisível. As opções 1 e 2 estão erradas porque o limite de 10 km/h é um máximo fixo, válido o tempo todo dentro da zona, e não apenas quando há pedestres visíveis, e não é uma velocidade que o motorista decide por conta própria.",
+      es: "Esta señal indica una \"Zona Compartida\" (Shared Zone) — un área común en estacionamientos, callejones y zonas comerciales concurridas de NSW, donde peatones, ciclistas y vehículos comparten el mismo espacio. La señalización de 10 km/h en una zona compartida exige que el conductor comparta la vía con los peatones y otros usuarios y nunca supere los 10 km/h, ya que los peatones tienen prioridad y pueden moverse de forma impredecible. Las opciones 1 y 2 son incorrectas porque el límite de 10 km/h es un máximo fijo que rige todo el tiempo dentro de la zona, no solo cuando hay peatones visibles, y no es una velocidad que el conductor decide por su cuenta."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-22",
+    sign: "/icons/signs/nsw-intersection-green-light-truck-photo.png",
+    cat: "Traffic Lights",
+    q: {
+      en: "You are waiting at an intersection and the lights are red. The traffic lights change to green. You should -",
+      pt: "Você está esperando em um cruzamento e o sinal está vermelho. O semáforo muda para verde. Você deve -",
+      es: "Usted está esperando en una intersección y el semáforo está en rojo. El semáforo cambia a verde. Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Wait until the traffic behind you makes you move.",
+          pt: "Esperar até que o trânsito atrás de você o obrigue a se mover.",
+          es: "Esperar hasta que el tráfico detrás de usted lo obligue a avanzar."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Check both sides of the intersection and then proceed.",
+          pt: "Verificar os dois lados do cruzamento e depois seguir em frente.",
+          es: "Revisar ambos lados de la intersección y luego avanzar."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cross the intersection as quickly as possible.",
+          pt: "Atravessar o cruzamento o mais rápido possível.",
+          es: "Cruzar la intersección lo más rápido posible."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light gives you right of way, but it does not guarantee the intersection is clear. Vehicles or pedestrians that entered on the tail end of the previous light phase may still be finishing crossing, and other drivers may run a red light. NSW road safety guidance requires checking both sides of the intersection are clear before moving off, even when your light is green, rather than pulling away automatically because of traffic behind you or rushing across as fast as possible.",
+      pt: "Um sinal verde dá a você a preferência de passagem, mas não garante que o cruzamento esteja livre. Veículos ou pedestres que entraram no final da fase anterior do semáforo podem ainda estar terminando de atravessar, e outros motoristas podem avançar o sinal vermelho. As diretrizes de segurança viária de NSW exigem verificar os dois lados do cruzamento antes de seguir, mesmo com o sinal verde, em vez de sair automaticamente por causa do trânsito atrás ou atravessar às pressas.",
+      es: "Una luz verde le da el derecho de paso, pero no garantiza que la intersección esté despejada. Vehículos o peatones que ingresaron al final de la fase anterior del semáforo pueden seguir terminando de cruzar, y otros conductores pueden pasarse un semáforo en rojo. Las directrices de seguridad vial de NSW exigen revisar ambos lados de la intersección antes de avanzar, incluso con luz verde, en lugar de arrancar automáticamente por el tráfico detrás o cruzar lo más rápido posible."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-23",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "How should you merge with traffic when entering a freeway?",
+      pt: "Como você deve se incorporar ao tráfego ao entrar em uma via expressa (freeway)?",
+      es: "¿Cómo debes incorporarte al tráfico al entrar a una autopista (freeway)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop, then enter the traffic quickly.",
+          pt: "Pare e depois entre rapidamente no tráfego.",
+          es: "Detente y luego entra rápidamente al tráfico."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Watch for a gap and merge with the traffic at the speed it is travelling.",
+          pt: "Observe uma brecha e incorpore-se ao tráfego na mesma velocidade em que ele está se movendo.",
+          es: "Busca un espacio e incorpórate al tráfico a la velocidad a la que este circula."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up and force your way into the traffic.",
+          pt: "Acelere e force a entrada no tráfego.",
+          es: "Acelera y fuerza tu entrada al tráfico."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Merging safely onto a freeway means matching the flow of traffic, not stopping or forcing your way in. Under NSW road rules, a driver entering a road via a merge/acceleration lane must give way to traffic already on the road (unless signs say otherwise), doing so by using the acceleration lane to build up speed, watching for a suitable gap, and blending into the traffic stream at a matching speed. Stopping in the merge lane (option 0) is dangerous because it removes any chance of matching speed and risks a rear-end collision from vehicles behind. Accelerating and forcing entry (option 2) disregards the right of way of traffic already on the freeway, since merging traffic must give way rather than impose priority. Watching for a gap and merging at the traffic's speed (option 1) is the only method that keeps traffic flowing safely and complies with the give-way rule for merging vehicles.",
+      pt: "Entrar com segurança em uma via expressa significa ajustar-se ao fluxo do tráfego, e não parar ou forçar a entrada. Segundo as regras de trânsito de NSW, o condutor que entra na via por uma faixa de aceleração/incorporação deve ceder passagem ao tráfego que já está na via (salvo indicação contrária por placa), usando essa faixa para ganhar velocidade, observando uma brecha adequada e se incorporando ao fluxo na mesma velocidade dos demais veículos. Parar na faixa de entrada (opção 0) é perigoso, pois elimina a chance de igualar a velocidade e pode causar uma colisão traseira. Acelerar e forçar a entrada (opção 2) desrespeita a prioridade de quem já está na via, já que quem se incorpora deve ceder passagem, não impor prioridade. Observar uma brecha e se incorporar na velocidade do tráfego (opção 1) é o único método que mantém o fluxo seguro e cumpre a regra de ceder passagem ao se incorporar.",
+      es: "Incorporarse de forma segura a una autopista significa ajustarse al flujo del tráfico, no detenerse ni forzar la entrada. Según las normas de tránsito de NSW, el conductor que se incorpora a la vía por un carril de aceleración debe ceder el paso al tráfico que ya circula por ella (salvo que una señal indique lo contrario), usando ese carril para tomar velocidad, buscando un hueco adecuado y uniéndose al flujo a la misma velocidad que los demás vehículos. Detenerse en el carril de incorporación (opción 0) es peligroso, porque elimina la posibilidad de igualar la velocidad y puede provocar una colisión por alcance. Acelerar y forzar la entrada (opción 2) ignora la prioridad de quienes ya circulan por la autopista, ya que quien se incorpora debe ceder el paso, no imponer prioridad. Buscar un espacio e incorporarse a la velocidad del tráfico (opción 1) es el único método que mantiene el flujo seguro y cumple la regla de ceder el paso al incorporarse."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-24",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "After drinking alcohol you could -",
+      pt: "Depois de beber álcool, você pode -",
+      es: "Después de beber alcohol, usted podría -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Misjudge speed (your own and others).",
+          pt: "Julgar mal a velocidade (a sua e a dos outros).",
+          es: "Calcular mal la velocidad (la suya y la de los demás)."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Be able to drive the same as you normally can.",
+          pt: "Conseguir dirigir da mesma forma que dirige normalmente.",
+          es: "Poder conducir de la misma manera en que lo hace normalmente."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Be able to pay close attention to details in the traffic.",
+          pt: "Conseguir prestar bastante atenção aos detalhes do trânsito.",
+          es: "Poder prestar mucha atención a los detalles del tránsito."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Alcohol affects the central nervous system and slows how the brain processes visual and spatial information, making it harder to accurately judge how fast you and other vehicles are travelling. This is why drivers who have been drinking commonly misjudge speed, gaps and distances — an effect that appears well before someone feels \"drunk\". This directly rules out the other two options: alcohol does not let you drive the same as normal, and it reduces (rather than sharpens) your ability to pay close attention to traffic details, since it slows reaction time and concentration. The NSW Road User's Handbook lists impaired judgement of speed and distance among the key effects of alcohol on driving ability.",
+      pt: "O álcool afeta o sistema nervoso central e reduz a velocidade com que o cérebro processa informações visuais e espaciais, dificultando avaliar corretamente a própria velocidade e a dos outros veículos. Por isso, motoristas que beberam costumam julgar mal a velocidade, os espaços entre carros e as distâncias — efeito que aparece mesmo antes de a pessoa se sentir \"bêbada\". Isso descarta diretamente as outras duas opções: o álcool não permite dirigir normalmente, e reduz (em vez de melhorar) a capacidade de prestar atenção aos detalhes do trânsito, já que diminui o tempo de reação e a concentração. O Manual do Motorista de NSW (Road User's Handbook) lista o julgamento prejudicado de velocidade e distância entre os principais efeitos do álcool na direção.",
+      es: "El alcohol afecta el sistema nervioso central y ralentiza la forma en que el cerebro procesa la información visual y espacial, dificultando calcular con precisión la propia velocidad y la de los demás vehículos. Por eso los conductores que han bebido suelen calcular mal la velocidad, los espacios entre autos y las distancias, un efecto que aparece incluso antes de que la persona se sienta \"ebria\". Esto descarta directamente las otras dos opciones: el alcohol no permite conducir de forma normal, y reduce (en vez de mejorar) la capacidad de prestar mucha atención a los detalles del tránsito, ya que disminuye el tiempo de reacción y la concentración. El Manual del Conductor de NSW (Road User's Handbook) incluye el juicio deficiente de la velocidad y la distancia entre los principales efectos del alcohol en la conducción."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-25",
+    sign: "/icons/signs/nsw-stop-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "When you see this sign you must -",
+      pt: "Quando você vir esta placa, você deve -",
+      es: "Cuando vea esta señal, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to stop only if there is any danger of a collision with another vehicle or pedestrian.",
+          pt: "Reduzir a velocidade e estar pronto para parar somente se houver risco de colisão com outro veículo ou pedestre.",
+          es: "Reducir la velocidad y estar preparado para detenerse solo si existe riesgo de colisión con otro vehículo o peatón."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop at the stop line and give way to all traffic.",
+          pt: "Parar na linha de parada e dar passagem a todo o tráfego.",
+          es: "Detenerse en la línea de parada y ceder el paso a todo el tráfico."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop at the stop line and give way to all traffic on your right only.",
+          pt: "Parar na linha de parada e dar passagem apenas ao tráfego à sua direita.",
+          es: "Detenerse en la línea de parada y ceder el paso únicamente al tráfico que viene por su derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign is a STOP sign. Under NSW road rules, when approaching a stop sign a driver must come to a complete stop at the stop line (or as close as possible to it if there is no line), even if the road looks clear. The driver must then give way to all other vehicles and pedestrians at the intersection — not just traffic from one direction — before proceeding. This is stricter than a Give Way sign, where you only need to slow down and stop if there is a real danger of collision.",
+      pt: "Esta placa é uma placa de PARE. Segundo as regras de trânsito de NSW, ao se aproximar de uma placa de PARE o motorista deve parar completamente na linha de parada (ou o mais próximo possível dela, caso não haja linha), mesmo que a via pareça livre. Em seguida, deve dar passagem a todos os outros veículos e pedestres no cruzamento — e não apenas ao tráfego vindo de um lado — antes de seguir em frente. Isso é mais rígido do que a placa \"Dê a Preferência\", em que basta reduzir a velocidade e parar somente se houver risco real de colisão.",
+      es: "Esta señal es una señal de PARE (STOP). Según las normas de tránsito de NSW, al acercarse a una señal de PARE el conductor debe detenerse por completo en la línea de parada (o lo más cerca posible de ella si no hay línea marcada), incluso si la vía parece despejada. Luego debe ceder el paso a todos los demás vehículos y peatones en la intersección — no solo al tráfico que viene de un lado — antes de continuar. Esto es más estricto que la señal de \"Ceda el Paso\", donde solo es necesario reducir la velocidad y detenerse si existe un riesgo real de colisión."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-26",
+    sign: "/icons/signs/nsw-no-right-turn-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must give way to traffic on your right.",
+          pt: "Você deve dar preferência ao trânsito que vem pela sua direita.",
+          es: "Debe ceder el paso al tránsito que circula por su derecha."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must not turn to the right.",
+          pt: "É proibido virar à direita.",
+          es: "No debe girar a la derecha."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You may turn to the right.",
+          pt: "Você pode virar à direita.",
+          es: "Puede girar a la derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a regulatory \"No Right Turn\" sign. It tells drivers that turning right at this point is not permitted, so they must continue straight ahead, turn left, or use a different route to reach their destination. Regulatory signs like this are mandatory under NSW road rules, not just advisory — disregarding them is an offence. That is why \"You must not turn to the right\" is the correct meaning; interpreting the sign as a give-way rule or as permission to turn right would contradict its actual purpose of prohibiting that turn at this location.",
+      pt: "Esta é uma placa regulamentadora de \"Proibido virar à direita\". Ela informa aos motoristas que virar à direita naquele ponto não é permitido, sendo necessário seguir em frente, virar à esquerda ou usar outra rota para chegar ao destino. Placas regulamentadoras como essa são de cumprimento obrigatório segundo as normas de trânsito de NSW, não apenas uma sugestão — ignorá-las é uma infração. Por isso a opção correta é \"É proibido virar à direita\"; interpretar a placa como uma regra de dar preferência ou como permissão para virar à direita contrariaria o real propósito dela, que é proibir essa conversão naquele local.",
+      es: "Esta es una señal reglamentaria de \"Prohibido girar a la derecha\". Indica a los conductores que no está permitido girar a la derecha en ese punto, por lo que deben seguir recto, girar a la izquierda o tomar otra ruta para llegar a su destino. Las señales reglamentarias como esta son de cumplimiento obligatorio según las normas de tránsito de NSW, no una simple sugerencia; ignorarlas constituye una infracción. Por eso la opción correcta es \"No debe girar a la derecha\"; interpretar la señal como una regla de ceder el paso o como un permiso para girar a la derecha contradiría su verdadero propósito, que es prohibir ese giro en ese lugar."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-27",
+    sign: "/icons/signs/nsw-give-way-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "When you see this sign you must -",
+      pt: "Ao avistar esta placa, você deve:",
+      es: "Cuando ves esta señal, debes:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to stop and give way to all traffic if there is any danger of a collision.",
+          pt: "Reduzir a velocidade e estar preparado para parar e dar a preferência a todo o tráfego, caso haja risco de colisão.",
+          es: "Reducir la velocidad y estar preparado para detenerte y ceder el paso a todo el tráfico, si existe riesgo de colisión."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and be prepared to give way to traffic on your right only, if there is any danger of a collision.",
+          pt: "Reduzir a velocidade e estar preparado para dar a preferência apenas ao tráfego à sua direita, caso haja risco de colisão.",
+          es: "Reducir la velocidad y estar preparado para ceder el paso solo al tráfico que viene por tu derecha, si existe riesgo de colisión."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop and give way to all traffic even if the intersection is clear.",
+          pt: "Parar e dar a preferência a todo o tráfego, mesmo que o cruzamento esteja livre.",
+          es: "Detenerte y ceder el paso a todo el tráfico, aunque la intersección esté despejada."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This matches the rule for a Give Way sign under the NSW Road Rules: a driver must slow down and be ready to stop, giving way to any vehicle whose path could result in a collision. Unlike a Stop sign, coming to a complete stop is not always mandatory — only when necessary to avoid a collision. Option 1 is wrong because give way applies to all traffic that could conflict with your path, not only vehicles on your right. Option 2 describes the Stop sign rule (a full stop is compulsory even when the way is clear), which is a different sign and does not apply here.",
+      pt: "Isso corresponde à regra da placa \"Dê a Preferência\" segundo as normas de trânsito de NSW: o motorista deve reduzir a velocidade e estar pronto para parar, dando preferência a qualquer veículo cujo trajeto possa causar uma colisão. Diferente da placa de Pare, a parada total nem sempre é obrigatória — apenas quando necessária para evitar uma colisão. A opção 1 está errada porque a preferência deve ser dada a todo o tráfego que possa entrar em conflito com sua trajetória, não somente aos veículos à direita. A opção 2 descreve a regra da placa de Pare (parada obrigatória mesmo com a via livre), que é uma placa diferente e não se aplica aqui.",
+      es: "Esto corresponde a la regla de la señal \"Ceda el Paso\" según las normas de tránsito de NSW: el conductor debe reducir la velocidad y estar listo para detenerse, cediendo el paso a cualquier vehículo cuya trayectoria pueda causar una colisión. A diferencia de la señal de Pare, detenerse por completo no siempre es obligatorio, solo cuando es necesario para evitar una colisión. La opción 1 es incorrecta porque se debe ceder el paso a todo el tráfico que pueda entrar en conflicto con tu trayectoria, no solo a los vehículos de la derecha. La opción 2 describe la regla de la señal de Pare (detención obligatoria incluso con la vía despejada), que es una señal distinta y no aplica aquí."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-28",
+    sign: "/icons/signs/nsw-keep-left-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "This sign means you should -",
+      pt: "Esta placa significa que você deve -",
+      es: "Esta señal significa que usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn left at next street.",
+          pt: "Virar à esquerda na próxima rua.",
+          es: "Girar a la izquierda en la próxima calle."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pass to the left of the sign.",
+          pt: "Passar à esquerda da placa.",
+          es: "Pasar por la izquierda de la señal."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive carefully, roundabout ahead.",
+          pt: "Dirigir com cuidado, rotatória à frente.",
+          es: "Conducir con cuidado, rotonda más adelante."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a \"keep left\" style direction marker sign, commonly used in NSW to mark median strips, traffic islands, or other obstructions positioned within or beside the road. Signs of this type do not indicate a turn you must make or warn of a roundabout ahead — they simply tell you which side of the marked point or object you are required to pass. Here, the sign instructs drivers to keep to the left of it as they continue driving, which is why \"Pass to the left of the sign\" is the correct meaning under NSW road rules for direction/keep-left signage.",
+      pt: "Esta é uma placa do tipo \"mantenha-se à esquerda\", usada em NSW para sinalizar canteiros centrais, ilhas de tráfego ou outros obstáculos posicionados dentro ou ao lado da via. Placas desse tipo não indicam uma conversão obrigatória nem avisam sobre uma rotatória à frente — elas apenas informam de que lado o motorista deve passar em relação ao ponto ou objeto sinalizado. Neste caso, a placa instrui o condutor a passar pela esquerda dela ao continuar dirigindo, por isso \"Passar à esquerda da placa\" é o significado correto segundo as regras de trânsito de NSW para placas de direção/manter-se à esquerda.",
+      es: "Esta es una señal de tipo \"mantenerse a la izquierda\", utilizada en NSW para marcar separadores centrales, islas de tráfico u otros obstáculos ubicados dentro o al costado de la vía. Este tipo de señal no indica un giro obligatorio ni advierte sobre una rotonda más adelante — simplemente indica por qué lado debe pasar el conductor respecto al punto u objeto señalizado. En este caso, la señal indica que el conductor debe pasar por la izquierda de ella al continuar circulando, por lo que \"Pasar por la izquierda de la señal\" es el significado correcto según las normas de tránsito de NSW para señales de dirección/mantenerse a la izquierda."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-29",
+    sign: "/icons/signs/nsw-hump-ahead-warning-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que este sinal significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The road ahead is closed, go back.",
+          pt: "A via mais à frente está fechada, retorne.",
+          es: "El camino más adelante está cerrado, regrese."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "There is a hump (sudden slope up and down) in the road ahead, slow down.",
+          pt: "Há uma elevação brusca na pista (sobe e desce de repente) mais à frente; reduza a velocidade.",
+          es: "Más adelante hay una elevación brusca en el camino (sube y baja de repente); reduzca la velocidad."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "There is a tunnel ahead, turn on your headlights.",
+          pt: "Há um túnel mais à frente; acenda os faróis.",
+          es: "Más adelante hay un túnel; encienda los faros."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This warning sign alerts drivers to a hump or sudden rise-and-dip in the road surface ahead. Under the NSW Road User Handbook, this type of warning sign indicates a change in the road surface that could unsettle the vehicle or reduce visibility of the road ahead if approached at normal speed. Drivers should slow down in advance so they can keep control of the vehicle and avoid losing traction or bottoming out when crossing the hump.",
+      pt: "Esta placa de advertência alerta os motoristas sobre uma elevação repentina na pista à frente, onde a via sobe e desce de forma abrupta. De acordo com o Road User Handbook de NSW, placas de advertência desse tipo indicam uma mudança na superfície da via que pode desestabilizar o veículo ou reduzir a visibilidade da estrada adiante se for percorrida em velocidade normal. Por isso, o motorista deve reduzir a velocidade com antecedência para manter o controle do veículo e evitar perda de tração ou impacto ao cruzar a elevação.",
+      es: "Esta señal de advertencia alerta a los conductores sobre una elevación repentina en el camino más adelante, donde la vía sube y baja de forma abrupta. Según el Road User Handbook de NSW, las señales de advertencia de este tipo indican un cambio en la superficie del camino que puede desestabilizar el vehículo o reducir la visibilidad del camino si se transita a velocidad normal. Por eso, el conductor debe reducir la velocidad con anticipación para mantener el control del vehículo y evitar la pérdida de tracción o un golpe al cruzar la elevación."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-30",
+    sign: "/icons/signs/nsw-railway-level-crossing-warning-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way sign ahead, slow down and be prepared to stop.",
+          pt: "Placa de \"dê a preferência\" mais à frente: reduza a velocidade e esteja pronto para parar.",
+          es: "Señal de \"ceda el paso\" más adelante: reduzca la velocidad y esté preparado para detenerse."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Cattle or sheep crossing the road ahead, drive slowly.",
+          pt: "Travessia de gado ou ovelhas na pista mais à frente: dirija devagar.",
+          es: "Cruce de ganado u ovejas en la vía más adelante: conduzca despacio."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Railway level crossing ahead, slow down and look out for trains, be prepared to stop.",
+          pt: "Cruzamento ferroviário mais à frente: reduza a velocidade, fique atento à passagem de trens e esteja pronto para parar.",
+          es: "Cruce ferroviario más adelante: reduzca la velocidad, esté atento al paso de trenes y esté preparado para detenerse."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This sign warns drivers of a railway level crossing ahead. Under the NSW Road User Handbook, when approaching a level crossing warning sign drivers must slow down, look and listen carefully for approaching trains, and be prepared to stop — whether because a train is coming, or because flashing lights, boom gates, or a stop sign at the crossing require it. Treating the crossing casually or assuming no train is coming is a major cause of level-crossing collisions in NSW.",
+      pt: "Essa placa alerta os motoristas sobre um cruzamento ferroviário (passagem de nível) mais à frente. Segundo o Manual do Condutor de NSW, ao se aproximar dessa sinalização o motorista deve reduzir a velocidade, olhar e ouvir com atenção a possível chegada de um trem e estar pronto para parar — seja porque um trem está se aproximando, seja porque há luzes piscando, cancela ou placa de parada obrigatória na travessia. Atravessar sem essa cautela é uma das principais causas de acidentes em cruzamentos ferroviários.",
+      es: "Esta señal advierte a los conductores sobre un cruce ferroviario (paso a nivel) más adelante. Según el Manual del Conductor de NSW, al acercarse a esta señal de advertencia el conductor debe reducir la velocidad, mirar y escuchar con atención por si se aproxima un tren, y estar preparado para detenerse, ya sea porque un tren se acerca o porque hay luces intermitentes, barreras o una señal de alto en el cruce. No tomar esta precaución es una causa importante de accidentes en cruces ferroviarios."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-31",
+    sign: "/icons/signs/nsw-give-way-ahead-warning-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "You should expect this sign, if -",
+      pt: "Você deve esperar ver esta placa se –",
+      es: "Usted debería esperar ver esta señal si –"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You are approaching a school or playground.",
+          pt: "Você está se aproximando de uma escola ou de um parquinho.",
+          es: "Se está acercando a una escuela o a un patio de juegos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You are approaching an intersection with traffic lights, be prepared to stop.",
+          pt: "Você está se aproximando de um cruzamento com semáforo; esteja preparado para parar.",
+          es: "Se está acercando a una intersección con semáforo; esté preparado para detenerse."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "A give way sign at an intersection is ahead, slow down and be prepared to stop.",
+          pt: "Há uma placa de \"Dê a Preferência\" em um cruzamento mais à frente; reduza a velocidade e esteja preparado para parar.",
+          es: "Más adelante hay una señal de \"Ceda el Paso\" en una intersección; reduzca la velocidad y esté preparado para detenerse."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is an advance warning sign, the kind of diamond-shaped yellow sign NSW uses to alert drivers in advance of a hazard or upcoming change in traffic conditions, giving them time to react before reaching it. A \"Give Way Sign Ahead\" warning sign specifically tells drivers that a Give Way sign controls an intersection further along the road. Seeing it means you should start slowing down now and be ready to give way to other traffic when you reach that intersection, rather than waiting until you are right on top of the Give Way sign itself. That matches option 2. It is not a school zone warning (option 0) or a traffic-light warning (option 1), since NSW uses separate, distinct signs for those situations.",
+      pt: "Trata-se de uma placa de advertência antecipada, do tipo losango amarelo que a NSW usa para alertar os condutores com antecedência sobre um perigo ou uma mudança nas condições do trânsito à frente, dando tempo para reagir antes de chegar até lá. Uma placa de aviso de \"Dê a Preferência à Frente\" indica especificamente que existe uma placa de Dê a Preferência controlando um cruzamento mais adiante na via. Ao vê-la, o condutor deve começar a reduzir a velocidade desde já e estar pronto para dar a preferência a outros veículos ao chegar naquele cruzamento, em vez de esperar até estar bem em cima da própria placa de Dê a Preferência. Isso corresponde à opção 2. Não se trata de aviso de zona escolar (opção 0) nem de semáforo (opção 1), já que a NSW usa placas distintas e específicas para essas situações.",
+      es: "Se trata de una señal de advertencia anticipada, del tipo rombo amarillo que usa NSW para alertar a los conductores con antelación sobre un peligro o un cambio en las condiciones del tránsito más adelante, dándoles tiempo para reaccionar antes de llegar. Una señal de \"Ceda el Paso Más Adelante\" indica específicamente que hay una señal de Ceda el Paso controlando una intersección más adelante en la vía. Al verla, el conductor debe empezar a reducir la velocidad desde ese momento y estar preparado para ceder el paso a otros vehículos al llegar a esa intersección, en lugar de esperar hasta estar justo sobre la propia señal de Ceda el Paso. Esto coincide con la opción 2. No se trata de una advertencia de zona escolar (opción 0) ni de semáforo (opción 1), ya que NSW utiliza señales distintas y específicas para esas situaciones."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-32",
+    sign: "/icons/signs/nsw-stop-sign-ahead-warning-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop sign ahead, slow down and prepare to stop.",
+          pt: "Placa de PARE à frente: reduza a velocidade e prepare-se para parar.",
+          es: "Señal de PARE más adelante: reduzca la velocidad y prepárese para detenerse."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "You are approaching a roundabout, prepare to give way.",
+          pt: "Você está se aproximando de uma rotatória: prepare-se para dar a preferência.",
+          es: "Se está acercando a una rotonda: prepárese para ceder el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "One way traffic ahead.",
+          pt: "Tráfego de mão única à frente.",
+          es: "Tráfico de sentido único más adelante."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is an advance warning sign placed before the actual STOP sign to alert drivers of what's coming. Under NSW road rules, when you see this warning sign you must slow down and prepare to bring your vehicle to a complete stop at the upcoming intersection, where you must give way to all other traffic and pedestrians before proceeding when it is safe to do so.",
+      pt: "Esta é uma placa de advertência antecipada, colocada antes da placa de PARE propriamente dita, para avisar o motorista do que vem a seguir. Segundo as normas de trânsito de NSW, ao ver essa placa o condutor deve reduzir a velocidade e se preparar para parar completamente no cruzamento seguinte, dando a preferência a todo o tráfego e pedestres antes de seguir em frente com segurança.",
+      es: "Esta es una señal de advertencia anticipada, ubicada antes de la señal de PARE propiamente dicha, para avisar al conductor de lo que se aproxima. Según las normas de tránsito de NSW, al ver esta señal el conductor debe reducir la velocidad y prepararse para detenerse por completo en la próxima intersección, cediendo el paso a todo el tráfico y a los peatones antes de continuar con seguridad."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-33",
+    cat: "Road Safety",
+    q: {
+      en: "To progress to a P2 provisional licence, a P1 provisional driver must hold a P1 licence for a minimum period of -",
+      pt: "Para avançar para uma licença provisória P2, um motorista com licença provisória P1 deve manter a licença P1 por um período mínimo de:",
+      es: "Para avanzar a una licencia provisional P2, un conductor con licencia provisional P1 debe mantener la licencia P1 durante un período mínimo de:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "18 months.",
+          pt: "18 meses.",
+          es: "18 meses."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "24 months.",
+          pt: "24 meses.",
+          es: "24 meses."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "12 months.",
+          pt: "12 meses.",
+          es: "12 meses."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In NSW's graduated licensing scheme, a P1 provisional licence must be held for a minimum of 12 months before a driver becomes eligible to progress to a P2 provisional licence (provided there are no licence sanctions or offences that extend this period). This 12-month minimum ensures new drivers spend supervised time under P1 conditions before moving to the less restrictive P2 stage.",
+      pt: "No sistema de licenciamento gradual de NSW, a licença provisória P1 deve ser mantida por um período mínimo de 12 meses antes que o motorista se torne elegível para avançar para a licença provisória P2 (desde que não haja sanções ou infrações que estendam esse período). Esse mínimo de 12 meses garante que o motorista iniciante passe um tempo supervisionado sob as condições da P1 antes de avançar para o estágio P2, menos restritivo.",
+      es: "En el sistema de licencias graduales de NSW, la licencia provisional P1 debe mantenerse durante un período mínimo de 12 meses antes de que el conductor sea elegible para avanzar a la licencia provisional P2 (siempre que no existan sanciones o infracciones que extiendan ese período). Este mínimo de 12 meses garantiza que el conductor novato pase un tiempo supervisado bajo las condiciones de la P1 antes de pasar a la etapa P2, menos restrictiva."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-34",
+    cat: "Parking Rules",
+    q: {
+      en: "Where there is parallel kerbside parking, are you allowed to double-park alongside a parked vehicle?",
+      pt: "Onde há estacionamento paralelo junto ao meio-fio, é permitido estacionar em fila dupla ao lado de um veículo já estacionado?",
+      es: "Donde hay estacionamiento en paralelo junto al bordillo, ¿está permitido estacionar en doble fila junto a un vehículo ya estacionado?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if not obstructing traffic.",
+          pt: "Sim, se não obstruir o trânsito.",
+          es: "Sí, si no obstruye el tránsito."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, not at any time.",
+          pt: "Não, em nenhuma hipótese.",
+          es: "No, en ningún momento."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if delivering goods.",
+          pt: "Sim, se estiver fazendo entrega de mercadorias.",
+          es: "Sí, si está entregando mercancía."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Double-parking (stopping alongside a vehicle already parked at the kerb) is prohibited at all times under NSW road rules. It blocks part of the traffic lane, forces other vehicles to swerve around you — often into oncoming traffic or a bike lane — reduces visibility for other drivers and cyclists, and creates a serious safety hazard regardless of how briefly you stop or the reason, including making deliveries. There is no exception for \"not obstructing traffic\" or for delivery purposes; the only lawful way to stop is in a legitimate parking space.",
+      pt: "Estacionar em fila dupla (parar ao lado de um veículo já estacionado junto ao meio-fio) é proibido em qualquer situação pelas regras de trânsito de NSW. Essa prática bloqueia parte da faixa de rolamento, obriga os demais veículos a desviar — muitas vezes invadindo a contramão ou a ciclovia —, reduz a visibilidade para outros motoristas e ciclistas e cria um risco sério de acidente, independentemente do tempo de parada ou do motivo, inclusive para fazer entregas. Não existe exceção por \"não obstruir o trânsito\" nem para entregas; a única forma permitida de parar é em uma vaga de estacionamento legítima.",
+      es: "Estacionarse en doble fila (detenerse junto a un vehículo que ya está estacionado junto al bordillo) está prohibido en todo momento según las normas de tránsito de NSW. Esta práctica bloquea parte del carril de circulación, obliga a los demás vehículos a esquivar —muchas veces invadiendo el carril contrario o la ciclovía—, reduce la visibilidad para otros conductores y ciclistas, y genera un riesgo serio de accidente sin importar cuánto dure la parada ni el motivo, incluso para hacer entregas. No existe excepción por \"no obstruir el tránsito\" ni para entregas; la única forma permitida de detenerse es en un lugar de estacionamiento legítimo."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-35",
+    cat: "Road Safety",
+    q: {
+      en: "At night you should -",
+      pt: "À noite, você deve -",
+      es: "De noche, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Use your hazard warning lights when overtaking another vehicle.",
+          pt: "Usar o pisca-alerta ao ultrapassar outro veículo.",
+          es: "Usar las luces intermitentes de emergencia al adelantar a otro vehículo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive closer to the vehicle in front so they can see you better.",
+          pt: "Dirigir mais perto do veículo da frente para que ele possa vê-lo melhor.",
+          es: "Conducir más cerca del vehículo de adelante para que lo vea mejor."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Leave a longer gap behind the vehicle in front.",
+          pt: "Deixar uma distância maior atrás do veículo da frente.",
+          es: "Dejar una distancia mayor detrás del vehículo de adelante."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At night, visibility, depth perception and reaction time are all reduced, so a following distance that feels safe in daylight can be too short after dark. NSW road safety guidance recommends leaving a longer gap behind the vehicle in front at night, giving you more time and space to react safely if that vehicle brakes or stops suddenly.",
+      pt: "À noite, a visibilidade, a percepção de profundidade e o tempo de reação ficam reduzidos, e a distância que parece segura durante o dia pode não ser suficiente no escuro. As orientações de segurança viária de NSW recomendam deixar uma distância maior atrás do veículo da frente à noite, dando mais tempo e espaço para reagir com segurança caso esse veículo freie ou pare de repente.",
+      es: "De noche, la visibilidad, la percepción de profundidad y el tiempo de reacción se reducen, y la distancia que parece segura de día puede resultar insuficiente en la oscuridad. Las pautas de seguridad vial de NSW recomiendan dejar una distancia mayor detrás del vehículo de adelante durante la noche, para tener más tiempo y espacio de reacción si ese vehículo frena o se detiene de repente."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-36",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following attitudes is most likely to make you a safer driver?",
+      pt: "Qual das seguintes atitudes tem mais probabilidade de fazer de você um motorista mais seguro?",
+      es: "¿Cuál de las siguientes actitudes tiene más probabilidades de convertirlo en un conductor más seguro?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It is up to other drivers to avoid crashing into me.",
+          pt: "Cabe aos outros motoristas evitar bater em mim.",
+          es: "Depende de los demás conductores evitar chocar contra mí."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Crashing or not crashing is a matter of luck.",
+          pt: "Bater ou não bater é uma questão de sorte.",
+          es: "Chocar o no chocar es una cuestión de suerte."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When I drive, I have the main responsibility for my safety and the safety of other road users.",
+          pt: "Quando dirijo, eu tenho a principal responsabilidade pela minha segurança e pela segurança dos outros usuários da via.",
+          es: "Cuando conduzco, tengo la principal responsabilidad por mi seguridad y la seguridad de los demás usuarios de la vía."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Option 2 reflects the defensive driving mindset taught in the NSW Road User Handbook: every driver holds the main responsibility for their own safety and for the safety of other road users, rather than assuming that other drivers will always compensate for my own mistakes, or that safety is simply a matter of luck. Believing that avoiding a crash is entirely up to other drivers (option 0) or down to chance (option 1) removes personal accountability and discourages the anticipation, hazard awareness, and careful decision-making that actually reduce crash risk. Taking ownership of my own safe driving behaviour is the attitude most consistent with safe driving practice.",
+      pt: "A opção 2 reflete a mentalidade de direção defensiva ensinada no Road User Handbook de NSW: cada motorista tem a principal responsabilidade pela própria segurança e pela segurança dos demais usuários da via, em vez de presumir que os outros motoristas sempre vão compensar os meus próprios erros, ou que a segurança é simplesmente uma questão de sorte. Acreditar que evitar uma batida depende inteiramente dos outros motoristas (opção 0) ou do acaso (opção 1) tira a responsabilidade pessoal e desestimula a antecipação, a percepção de riscos e as decisões cuidadosas que realmente reduzem o risco de acidentes. Assumir a responsabilidade pelo próprio comportamento de direção segura é a atitude mais consistente com uma condução segura.",
+      es: "La opción 2 refleja la mentalidad de manejo defensivo que enseña el Road User Handbook de NSW: cada conductor tiene la principal responsabilidad de su propia seguridad y de la seguridad de los demás usuarios de la vía, en lugar de suponer que los demás conductores siempre van a compensar mis propios errores, o que la seguridad es simplemente una cuestión de suerte. Creer que evitar un choque depende por completo de los demás conductores (opción 0) o de la suerte (opción 1) elimina la responsabilidad personal y desalienta la anticipación, la percepción de riesgos y las decisiones cuidadosas que realmente reducen el riesgo de accidentes. Asumir la responsabilidad del propio comportamiento de manejo seguro es la actitud más coherente con una conducción segura."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-37",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "If you are convicted of driving with a blood alcohol level that is over the limit for your licence, you could lose your driver's licence. You may also -",
+      pt: "Se você for condenado por dirigir com um nível de álcool no sangue acima do limite permitido para sua categoria de habilitação, você poderia perder sua carteira de motorista. Você também poderia -",
+      es: "Si es declarado culpable de conducir con un nivel de alcohol en la sangre superior al límite permitido para su tipo de licencia, podría perder su licencia de conducir. También podría -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Have a personal speed limit imposed on you.",
+          pt: "Ter um limite de velocidade pessoal imposto a você.",
+          es: "Tener un límite de velocidad personal impuesto."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Be sent to prison.",
+          pt: "Ser enviado à prisão.",
+          es: "Ser enviado a prisión."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Be restricted to driving an automatic vehicle.",
+          pt: "Ficar restrito a dirigir somente um veículo automático.",
+          es: "Quedar restringido a conducir solo un vehículo automático."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In New South Wales, driving with a blood alcohol concentration over the legal limit for your licence type is a criminal offence under road transport law, not just an administrative matter. Beyond losing your licence, penalties for drink-driving convictions - especially high-range PCA (prescribed concentration of alcohol) or repeat offences - can also include fines and imprisonment. So being sent to prison is a genuine, legally grounded consequence of a drink-driving conviction, alongside licence loss.",
+      pt: "Na Nova Gales do Sul (NSW), dirigir com uma concentração de álcool no sangue acima do limite permitido para sua categoria de habilitação é uma infração criminal prevista na legislação de trânsito, e não apenas uma questão administrativa. Além de perder a carteira, as penalidades para condenações por dirigir alcoolizado - especialmente em casos de alta concentração de álcool ou reincidência - também podem incluir multas e prisão. Por isso, ser enviado à prisão é uma consequência real e prevista em lei de uma condenação por dirigir alcoolizado, além da perda da carteira.",
+      es: "En Nueva Gales del Sur (NSW), conducir con una concentración de alcohol en la sangre superior al límite permitido para su tipo de licencia es un delito penal según la legislación de tránsito, no solo una infracción administrativa. Además de perder la licencia, las penas por condenas de conducir bajo los efectos del alcohol -especialmente en casos de concentración alta o reincidencia- también pueden incluir multas y prisión. Por eso, ser enviado a prisión es una consecuencia real y prevista por la ley de una condena por conducir alcoholizado, además de la pérdida de la licencia."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-38",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are approaching a hill or a curve. You must not cross the centre line to overtake -",
+      pt: "Você está se aproximando de um morro ou de uma curva. Você não deve cruzar a linha central para ultrapassar -",
+      es: "Te estás acercando a una cuesta o una curva. No debes cruzar la línea central para adelantar -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "If you cannot see clear road ahead for 100 metres.",
+          pt: "Se você não conseguir ver a via livre à frente por 100 metros.",
+          es: "Si no puedes ver la vía despejada por delante durante 100 metros."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "If you cannot see clear road ahead for 75 metres.",
+          pt: "Se você não conseguir ver a via livre à frente por 75 metros.",
+          es: "Si no puedes ver la vía despejada por delante durante 75 metros."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "If you do not have a clear view of any approaching traffic.",
+          pt: "Se você não tiver uma visão clara de qualquer tráfego que esteja se aproximando.",
+          es: "Si no tienes una vista clara de cualquier tráfico que se aproxima."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In NSW, you must not overtake by crossing the centre line unless you have a clear, unobstructed view of the road ahead and can see that no traffic is approaching from the opposite direction. Near a hill or a curve your sightline is limited, so the rule is tied to whether you can clearly see approaching traffic, not to a fixed distance figure — which is why option 2 is the correct answer.",
+      pt: "Na NSW (Austrália), você não deve ultrapassar cruzando a linha central a menos que tenha uma visão clara e desobstruída da via à frente e possa ver que nenhum veículo está se aproximando em sentido contrário. Perto de um morro ou de uma curva a visibilidade fica limitada, por isso a regra depende de você conseguir enxergar claramente o tráfego que se aproxima, e não de uma distância fixa em metros — por isso a opção 2 é a resposta correta.",
+      es: "En NSW (Australia), no debes adelantar cruzando la línea central a menos que tengas una vista clara y sin obstrucciones del camino por delante y puedas ver que ningún vehículo se aproxima en sentido contrario. Cerca de una cuesta o una curva la visibilidad es limitada, por lo que la regla depende de que puedas ver con claridad el tráfico que se aproxima, y no de una distancia fija en metros — por eso la opción 2 es la respuesta correcta."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-39",
+    cat: "Road Safety",
+    q: {
+      en: "Having a radar detector or jammer in your car is against the law -",
+      pt: "Ter um detector de radar ou um bloqueador de radar no carro é contra a lei -",
+      es: "Tener un detector de radar o un inhibidor de radar en tu auto es ilegal -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No matter what your reason is.",
+          pt: "Não importa qual seja o seu motivo.",
+          es: "Sin importar cuál sea tu motivo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "If you purchased it after 1998.",
+          pt: "Se você o comprou depois de 1998.",
+          es: "Si lo compraste después de 1998."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only if it is turned on.",
+          pt: "Somente se estiver ligado.",
+          es: "Solo si está encendido."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under NSW road rules, it is illegal to have a radar detector or radar jamming device in your vehicle regardless of your reason for having it — the ban applies even if the device is switched off, and it does not depend on when it was purchased. That is why the correct answer states the prohibition applies no matter the reason, rather than being conditional on the purchase date or on whether the device is turned on.",
+      pt: "Segundo as normas de trânsito de NSW, é proibido possuir um detector ou bloqueador de radar dentro do veículo, seja qual for o motivo — a proibição vale mesmo que o aparelho esteja desligado, e não depende de quando foi comprado. Por isso a alternativa correta afirma que a proibição vale independentemente do motivo, e não é uma condição baseada na data de compra ou no aparelho estar ligado.",
+      es: "Según las normas de tránsito de NSW, está prohibido tener un detector o inhibidor de radar dentro del vehículo, sin importar el motivo — la prohibición aplica incluso si el aparato está apagado, y no depende de cuándo se compró. Por eso la alternativa correcta indica que la prohibición aplica sin importar el motivo, y no es una condición basada en la fecha de compra o en si el aparato está encendido."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-40",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Before driving a motor vehicle or riding a motor cycle it is safest -",
+      pt: "Antes de dirigir um veículo motorizado ou pilotar uma motocicleta, o mais seguro é -",
+      es: "Antes de conducir un vehículo motorizado o una motocicleta, lo más seguro es -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Not to drink any alcohol.",
+          pt: "Não beber nenhuma bebida alcoólica.",
+          es: "No beber ninguna bebida alcohólica."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drink 1 nip of spirits (30 ml or 1 oz).",
+          pt: "Beber 1 dose de destilado (30 ml ou 1 oz).",
+          es: "Beber 1 trago de licor (30 ml o 1 oz)."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drink 1 middy (285 ml) of light (low alcohol) beer.",
+          pt: "Beber 1 copo médio (285 ml) de cerveja leve (baixo teor alcoólico).",
+          es: "Beber 1 vaso mediano (285 ml) de cerveza liviana (bajo contenido de alcohol)."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The safest approach before driving or riding is to avoid alcohol entirely. Even small amounts, such as one nip of spirits or one middy of light beer, impair judgment, reaction time, and coordination, all of which are needed to drive safely. NSW road rules set legal blood alcohol limits, but \"safest\" is not the same as \"legal\": zero alcohol removes the risk altogether, so not drinking any alcohol is the correct answer.",
+      pt: "A opção mais segura antes de dirigir ou pilotar é não consumir nenhuma quantidade de álcool. Mesmo pequenas doses, como uma dose de destilado ou um copo de cerveja leve, já prejudicam o julgamento, o tempo de reação e a coordenação motora, habilidades essenciais para dirigir com segurança. As leis de NSW definem limites legais de alcoolemia, mas \"mais seguro\" não é o mesmo que \"dentro do limite legal\": zero álcool elimina o risco por completo, por isso não beber nada é a resposta correta.",
+      es: "La opción más segura antes de conducir es no consumir alcohol en absoluto. Incluso pequeñas cantidades, como un trago de licor o un vaso de cerveza liviana, afectan el juicio, el tiempo de reacción y la coordinación, habilidades esenciales para conducir con seguridad. Las leyes de NSW establecen límites legales de alcohol en sangre, pero \"más seguro\" no es lo mismo que \"dentro del límite legal\": no tener nada de alcohol elimina el riesgo por completo, por lo que no beber ninguna bebida alcohólica es la respuesta correcta."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-41",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Alcohol is a depressant. This means -",
+      pt: "O álcool é uma substância depressora. Isso significa que -",
+      es: "El alcohol es una sustancia depresora. Esto significa que -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It slows down how quickly your brain works.",
+          pt: "Ele deixa o funcionamento do seu cérebro mais lento.",
+          es: "Hace que tu cerebro funcione más lento."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "It speeds your brain up so you can work better.",
+          pt: "Ele acelera o seu cérebro para você trabalhar melhor.",
+          es: "Acelera tu cerebro para que puedas trabajar mejor."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It makes you calm down and think more clearly.",
+          pt: "Ele te acalma e faz você pensar com mais clareza.",
+          es: "Te calma y te hace pensar con más claridad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Alcohol is classified as a depressant because it slows down the central nervous system and brain processing speed. Option 0 is correct because it directly describes this effect: the brain works more slowly, which is why alcohol causes slower reaction times, impaired judgement, and reduced coordination behind the wheel — effects the NSW Road User Handbook warns drivers about. Options 1 and 2 are incorrect because alcohol does not speed up brain function or sharpen thinking; it does the opposite of both.",
+      pt: "O álcool é classificado como uma substância depressora porque desacelera o sistema nervoso central e a velocidade de processamento do cérebro. A opção 0 está correta porque descreve exatamente esse efeito: o cérebro passa a funcionar mais devagar, o que explica por que o álcool causa tempo de reação mais lento, julgamento prejudicado e coordenação reduzida ao volante — efeitos sobre os quais o Road User Handbook de NSW alerta os motoristas. As opções 1 e 2 estão erradas porque o álcool não acelera o funcionamento do cérebro nem melhora a clareza de pensamento; ele faz exatamente o contrário.",
+      es: "El alcohol se clasifica como una sustancia depresora porque ralentiza el sistema nervioso central y la velocidad de procesamiento del cerebro. La opción 0 es correcta porque describe exactamente ese efecto: el cerebro funciona más lento, lo que explica por qué el alcohol provoca tiempos de reacción más lentos, juicio deteriorado y menor coordinación al conducir — efectos sobre los que advierte el Road User Handbook de NSW. Las opciones 1 y 2 son incorrectas porque el alcohol no acelera el funcionamiento del cerebro ni mejora la claridad mental; hace justo lo contrario."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-42",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "If you are taking any sort of medicine, you should -",
+      pt: "Se você estiver tomando algum tipo de remédio, você deve -",
+      es: "Si estás tomando algún tipo de medicamento, deberías -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Find out from your doctor or chemist whether the medicine or drug will affect your driving and act accordingly.",
+          pt: "Descobrir com seu médico ou farmacêutico se o remédio ou droga vai afetar sua direção, e agir de acordo com isso.",
+          es: "Averiguar con tu médico o farmacéutico si el medicamento o droga afectará tu conducción, y actuar en consecuencia."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only drive during the day after taking the medicine or drug.",
+          pt: "Dirigir somente durante o dia depois de tomar o remédio ou droga.",
+          es: "Conducir solo durante el día después de tomar el medicamento o droga."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only drive a motor car not a heavy vehicle.",
+          pt: "Dirigir somente um carro de passeio, não um veículo pesado.",
+          es: "Conducir solo un automóvil, no un vehículo pesado."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Option 0 is correct because NSW road rules place the responsibility on the driver to check with a doctor or pharmacist whether any medicine or drug (prescription, over-the-counter, or otherwise) could impair driving ability - through drowsiness, slowed reaction time, or other side effects - and then to act accordingly, which may mean not driving at all. Restricting driving to daytime only, or to a car rather than a heavy vehicle, does not address the real risk, since impairing side effects can occur regardless of the time of day or the type of vehicle being driven.",
+      pt: "A opção 0 está correta porque as normas de trânsito de NSW colocam no motorista a responsabilidade de verificar com um médico ou farmacêutico se algum remédio ou droga (com receita, de venda livre ou de outro tipo) pode afetar sua capacidade de dirigir - causando sonolência, reflexos mais lentos ou outros efeitos colaterais - e então agir de acordo com isso, o que pode significar não dirigir. Limitar a direção apenas ao período diurno, ou a um carro em vez de um veículo pesado, não resolve o risco real, já que os efeitos que prejudicam a direção podem ocorrer independentemente do horário ou do tipo de veículo.",
+      es: "La opción 0 es correcta porque las normas de tránsito de NSW ponen en el conductor la responsabilidad de consultar con su médico o farmacéutico si algún medicamento o droga (con receta, de venta libre u otro tipo) puede afectar su conducción - causando somnolencia, reflejos más lentos u otros efectos secundarios - y luego actuar en consecuencia, lo que puede significar no conducir. Limitar la conducción solo a las horas diurnas, o a un automóvil en lugar de un vehículo pesado, no aborda el riesgo real, ya que los efectos que perjudican la conducción pueden presentarse sin importar la hora del día o el tipo de vehículo."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-43",
+    sign: "/icons/signs/nsw-roundabout-ahead-warning-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down, be ready to stop and give way to all vehicles already on the roundabout if there is a danger of a collision.",
+          pt: "Diminua a velocidade, esteja pronto para parar e dê passagem a todos os veículos que já estão na rotatória, caso haja risco de colisão.",
+          es: "Reduce la velocidad, prepárate para detenerte y cede el paso a todos los vehículos que ya están en la rotonda si existe riesgo de colisión."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "All traffic must turn back at the roundabout.",
+          pt: "Todo o tráfego deve fazer o retorno na rotatória.",
+          es: "Todo el tráfico debe girar en U en la rotonda."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop at all times and give way to all traffic on your right.",
+          pt: "Pare sempre e dê passagem a todo o tráfego à sua direita.",
+          es: "Debes detenerte siempre y ceder el paso a todo el tráfico que viene por tu derecha."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Option 0 is correct. When approaching a roundabout, drivers must slow down and be ready to stop, because the basic roundabout rule is to give way to any vehicle already travelling on the roundabout whenever there is a danger of a collision. This matches the general NSW road rules set out in the Road User Handbook, which instruct drivers to slow down on the approach to a roundabout and give way to traffic already circulating before entering. The sign is a warning that a roundabout is ahead — it does not require an absolute stop, and it does not mean traffic must turn back, or that only traffic on your right has priority.",
+      pt: "A opção correta é a 0. Ao se aproximar de uma rotatória, o motorista deve reduzir a velocidade e estar preparado para parar, pois a regra básica da rotatória é dar passagem a qualquer veículo que já esteja circulando nela sempre que houver risco de colisão. Isso está de acordo com as normas gerais de trânsito de Nova Gales do Sul (NSW), descritas no Road User Handbook, que orientam os condutores a reduzir a velocidade na aproximação de uma rotatória e a dar passagem ao tráfego que já está circulando antes de entrar. A placa apenas alerta sobre uma rotatória à frente — ela não exige parada obrigatória, nem significa que o tráfego deve fazer retorno ou que apenas os veículos à direita têm prioridade.",
+      es: "La opción correcta es la 0. Al acercarte a una rotonda, debes reducir la velocidad y estar listo para detenerte, ya que la regla básica de las rotondas es ceder el paso a todo vehículo que ya esté circulando dentro de ella cuando exista riesgo de colisión. Esto concuerda con las normas generales de tránsito de Nueva Gales del Sur (NSW), descritas en el Road User Handbook, que indican a los conductores reducir la velocidad al aproximarse a una rotonda y ceder el paso al tráfico que ya circula por ella antes de ingresar. La señal solo advierte que hay una rotonda más adelante: no exige una detención obligatoria, ni significa que el tráfico deba dar la vuelta, ni que solo los vehículos a tu derecha tengan prioridad."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-44",
+    sign: "/icons/signs/nsw-slippery-when-wet-sign.png",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que significa esta placa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Road under repair, drive carefully.",
+          pt: "Estrada em obras, dirija com cuidado.",
+          es: "Camino en reparación, conduzca con cuidado."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Road may be slippery when wet, slow down and drive carefully.",
+          pt: "A pista pode ficar escorregadia quando molhada, reduza a velocidade e dirija com cuidado.",
+          es: "El camino puede volverse resbaladizo cuando está mojado, reduzca la velocidad y conduzca con cuidado."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sharp turns in the road ahead.",
+          pt: "Curvas acentuadas na estrada à frente.",
+          es: "Curvas pronunciadas en el camino más adelante."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign warns that the road surface ahead may become slippery in wet conditions, due to reduced skid resistance, oil residue, or a change in the road surface material. Drivers should slow down and increase their following distance, since braking traction and steering control can be reduced on a wet road, especially during the first rain after a dry spell.",
+      pt: "Esta placa avisa que o pavimento à frente pode ficar escorregadio em condições de chuva, devido à perda de aderência, resíduos de óleo ou mudança no tipo de revestimento da via. O motorista deve reduzir a velocidade e aumentar a distância de segurança, pois a frenagem e a tração dos pneus podem ficar comprometidas em pista molhada, principalmente na primeira chuva após um período seco.",
+      es: "Esta señal advierte que la superficie del camino más adelante puede volverse resbaladiza en condiciones de lluvia, debido a la pérdida de adherencia, residuos de aceite o un cambio en el tipo de pavimento. El conductor debe reducir la velocidad y aumentar la distancia de seguimiento, ya que el frenado y la tracción de los neumáticos pueden verse afectados en pista mojada, especialmente durante la primera lluvia después de un período seco."
+    },
+    tip: null,
+    states: ["NSW"]
+  },
+  {
+    id: "NSWQ-45",
+    cat: "Road Markings",
+    q: {
+      en: "You should use your right-hand indicator when -",
+      pt: "Você deve usar a seta direita quando –",
+      es: "Debes usar el direccional derecho cuando –"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You intend to move to the right, at any time.",
+          pt: "Você pretende se mover para a direita, a qualquer momento.",
+          es: "Tienes la intención de moverte hacia la derecha, en cualquier momento."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "You are about to stop.",
+          pt: "Você está prestes a parar.",
+          es: "Estás a punto de detenerte."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You intend to slow down.",
+          pt: "Você pretende reduzir a velocidade.",
+          es: "Tienes la intención de reducir la velocidad."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under NSW road rules, you must use your right indicator any time you intend to move further to the right — turning right at an intersection or driveway, changing lanes to the right, pulling out into traffic on your right, or merging to the right. That covers \"at any time,\" not just when turning. Slowing down or stopping don't call for an indicator (brake lights signal those), so only this option matches the general rule.",
+      pt: "Nas regras de trânsito de NSW, você deve usar a seta direita sempre que pretender se mover para a direita — virar à direita em um cruzamento ou entrada de garagem, mudar de faixa para a direita, sair do acostamento para o trânsito à direita ou entrar no trânsito pela direita (convergir para a direita). Isso vale \"a qualquer momento\", não só ao virar. Parar ou reduzir a velocidade não exigem o uso da seta (as luzes de freio sinalizam isso), então apenas essa opção corresponde à regra geral.",
+      es: "Según las normas de tránsito de NSW, debes usar el direccional derecho siempre que tengas la intención de moverte hacia la derecha: girar a la derecha en una intersección o entrada de una propiedad, cambiar de carril hacia la derecha, incorporarte desde el costado del camino hacia el tráfico a la derecha o incorporarte al tráfico hacia la derecha (converger hacia la derecha). Esto aplica \"en cualquier momento\", no solo al girar. Detenerte o reducir la velocidad no requieren el uso del direccional (las luces de freno indican eso), así que solo esta opción coincide con la regla general."
+    },
+    tip: null,
+    states: ["NSW"]
   }
 ] as const;
 
