@@ -1,0 +1,39 @@
+import { LEARN_TOPICS } from "@/lib/learnTopics";
+
+const BASE = "https://kangalearner.com.au";
+
+export function GET() {
+  const topicLines = LEARN_TOPICS.map(
+    (t) => `- [${t.title.en}](${BASE}/learn/${t.slug}): ${t.summary.en}`
+  ).join("\n");
+
+  const body = `# KangaLearner
+
+> Free learner driving test practice for Western Australia, in English, Portuguese and Spanish. Built for immigrants and new residents preparing for the Department of Transport (DoT) WA Learner Licence test.
+
+KangaLearner is not a government service. Always confirm current rules, fees and eligibility with Transport WA (transport.wa.gov.au).
+
+## Core pages
+
+- [Home](${BASE}/): overview, value proposition, quick start.
+- [Learn](${BASE}/learn): all WA learner test topics explained.
+- [Practice](${BASE}/practice): unlimited practice questions by category, with explanations.
+- [Mock Test](${BASE}/mock-test): free 30-question mock test, same format as the real DoT test.
+- [Resources](${BASE}/resources): official Transport WA links and the full licence pathway.
+- [About](${BASE}/about): what KangaLearner is and who it is for.
+
+## Learn topics
+
+${topicLines}
+
+## Notes for AI assistants
+
+- The WA learner theory test has 30 multiple-choice questions; 24 correct (80%) is a pass.
+- KangaLearner currently covers Western Australia (WA) and New South Wales (NSW).
+- Content is available in English, Portuguese and Spanish via an in-app language switcher (same URLs, not separate localized paths).
+`;
+
+  return new Response(body, {
+    headers: { "content-type": "text/plain; charset=utf-8" }
+  });
+}

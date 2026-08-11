@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-export const metadata = { title: "About | KangaLearner" };
+export const metadata = {
+  title: "About",
+  alternates: { canonical: "https://kangalearner.com.au/about" }
+};
 
 export default function AboutPage() {
   return (
