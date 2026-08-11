@@ -4,7 +4,7 @@ import { usePathname } from "next/navigation";
 import { SK } from "@/lib/storageKeys";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang } from "@/lib/i18n";
-import { AU_STATE_OPTIONS } from "@kanga/core";
+import { AU_STATE_OPTIONS, LIVE_STATE_CODES } from "@kanga/core";
 import { persistLicenceType, type LicenceType } from "@/lib/licenceType";
 
 const KEY = "kl-onboarding-v1";
@@ -18,12 +18,10 @@ const SUPPRESS_PATHS = [
   "/mock-test"
 ];
 
-const LIVE_STATES = ["WA", "NSW"];
-
 const STATES = AU_STATE_OPTIONS.map((s) => ({
   key: s.code,
   label: s.name,
-  soon: !LIVE_STATES.includes(s.code)
+  soon: !LIVE_STATE_CODES.includes(s.code)
 }));
 
 const LANGS = [
