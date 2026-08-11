@@ -340,6 +340,14 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
+  // Rendering every question at once produces thousands of DOM nodes (300+ questions,
+  // ~20 nodes each) and makes initial hydration noticeably slow. Cap what's mounted
+  // and reveal more on demand instead.
+  const PAGE_SIZE = 40;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [mode, cat, licenceType, selectedState]);
 
   // Mirror `answered` into a ref so `pick` can read the latest value without
   // depending on `answered`, keeps `pick` referentially stable so memoized
@@ -419,15 +427,15 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return qs;
   }, [mode, cat, answered, saved, licenceQS]);
 
-  /* Group study questions by category */
+  /* Group study questions by category (only the currently revealed slice — see PAGE_SIZE) */
   const grouped = useMemo(() => {
     const m: Record<string, Question[]> = {};
-    filtered.forEach((q) => {
+    filtered.slice(0, visibleCount).forEach((q) => {
       if (!m[q.cat]) m[q.cat] = [];
       m[q.cat].push(q);
     });
     return m;
-  }, [filtered]);
+  }, [filtered, visibleCount]);
 
   /* ── Sync attempt to Supabase (silent, 401 ok for guests) ── */
   const syncAttempt = useCallback(
@@ -624,6 +632,9 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               onToggleSave={toggleSave}
               saveLabel={s.saveQuestion}
               unsaveLabel={s.unsaveQuestion}
+              hasMore={visibleCount < filtered.length}
+              onLoadMore={() => setVisibleCount((c) => c + PAGE_SIZE)}
+              loadMoreLabel={s.loadMoreQuestions}
             />
           </section>
 
@@ -657,7 +668,10 @@ function StudyView({
   saved,
   onToggleSave,
   saveLabel,
-  unsaveLabel
+  unsaveLabel,
+  hasMore,
+  onLoadMore,
+  loadMoreLabel
 }: {
   grouped: Record<string, Question[]>;
   lang: UiLang;
@@ -671,6 +685,9 @@ function StudyView({
   onToggleSave: (qid: string) => void;
   saveLabel: string;
   unsaveLabel: string;
+  hasMore: boolean;
+  onLoadMore: () => void;
+  loadMoreLabel: string;
 }) {
   const entries = Object.entries(grouped);
 
@@ -715,6 +732,11 @@ function StudyView({
           </div>
         );
       })}
+      {hasMore && (
+        <button type="button" className="load-more-btn" onClick={onLoadMore}>
+          {loadMoreLabel}
+        </button>
+      )}
     </>
   );
 }
