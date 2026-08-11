@@ -10,6 +10,13 @@ import { FlagImg } from "@/components/ui/FlagImg";
 import { SK } from "@/lib/storageKeys";
 import { AU_STATE_OPTIONS } from "@kanga/core";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
+import { Icons } from "@/components/icons";
+import {
+  readStoredLicenceType,
+  persistLicenceType,
+  LICENCE_CHANGED_EVENT,
+  type LicenceType
+} from "@/lib/licenceType";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
@@ -82,6 +89,8 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   // from the server HTML → React hydration error #418 (aborts hydration, breaks
   // every nav handler — logout, user menu, lang dropdown).
   const [stateCode, setStateCode] = useState<string>("WA");
+  // Same SSR-safe pattern as stateCode above — hydrated from localStorage in the effect below.
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -95,6 +104,18 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
     window.addEventListener("kanga:state-changed", handler);
     return () => window.removeEventListener("kanga:state-changed", handler);
   }, []);
+
+  useEffect(() => {
+    setLicenceType(readStoredLicenceType());
+    const handler = () => setLicenceType(readStoredLicenceType());
+    window.addEventListener(LICENCE_CHANGED_EVENT, handler);
+    return () => window.removeEventListener(LICENCE_CHANGED_EVENT, handler);
+  }, []);
+
+  function changeLicenceType(next: LicenceType) {
+    persistLicenceType(next);
+    setLicenceType(next);
+  }
 
   // Close lang dropdown on outside click (mouse + touch)
   useEffect(() => {
@@ -319,6 +340,26 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                     {s.code}
                   </option>
                 ))}
+              </select>
+            </label>
+
+            {/* Licence type selector */}
+            <label className="state-control" aria-label={s.vehicleType}>
+              {licenceType === "motorcycle" ? (
+                <Icons.motorcycle size={16} aria-hidden="true" />
+              ) : (
+                <Icons.car size={16} aria-hidden="true" />
+              )}
+              <select
+                className="state-select"
+                value={licenceType}
+                onChange={(e) => {
+                  changeLicenceType(e.target.value as LicenceType);
+                  router.refresh();
+                }}
+              >
+                <option value="car">{s.carLicence}</option>
+                <option value="motorcycle">{s.motorcycleLicence}</option>
               </select>
             </label>
 
@@ -591,6 +632,32 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                     <FlagImg country={l.country} size={20} />
                     <span>{l.triggerLabel}</span>
                     {l.bilingual && <span className="lang-bilingual-badge">EN</span>}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="mobile-nav-vehicle">
+              <span className="mobile-nav-section-label">{s.vehicleType}</span>
+              <div className="mobile-lang-options">
+                {(["car", "motorcycle"] as const).map((v) => (
+                  <button
+                    key={v}
+                    className={`mobile-lang-option${licenceType === v ? " active" : ""}`}
+                    type="button"
+                    aria-pressed={licenceType === v}
+                    onClick={() => {
+                      changeLicenceType(v);
+                      router.refresh();
+                      setMobileNavOpen(false);
+                    }}
+                  >
+                    {v === "motorcycle" ? (
+                      <Icons.motorcycle size={20} aria-hidden="true" />
+                    ) : (
+                      <Icons.car size={20} aria-hidden="true" />
+                    )}
+                    <span>{v === "car" ? s.carLicence : s.motorcycleLicence}</span>
                   </button>
                 ))}
               </div>

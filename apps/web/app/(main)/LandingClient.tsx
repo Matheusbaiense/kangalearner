@@ -101,7 +101,7 @@ const TRUST_ITEMS = [
   }
 ] as const;
 
-// Show WA + NSW (active) and 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
+// Show WA + NSW (active) + 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
 const AU_STATES = [
   { code: "WA", available: true },
   { code: "NSW", available: true },

@@ -7,6 +7,12 @@ import { useLang } from "@/contexts/LangContext";
 import { WA_PASS_MIN_CORRECT } from "@kanga/core";
 import { createClient } from "@/lib/supabase/client";
 import { SK } from "@/lib/storageKeys";
+import {
+  readStoredLicenceType,
+  persistLicenceType,
+  LICENCE_CHANGED_EVENT,
+  type LicenceType
+} from "@/lib/licenceType";
 
 type MockMode = "practice" | "exam";
 
@@ -47,6 +53,8 @@ export function MockTestClient() {
   // which aborts hydration and leaves onClick handlers (handleStart) unattached.
   const [selectedState, setSelectedState] = useState<StateCode>("WA");
 
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
+
   useEffect(() => {
     try {
       const raw = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy);
@@ -54,12 +62,25 @@ export function MockTestClient() {
     } catch {
       // localStorage unavailable
     }
+    setLicenceType(readStoredLicenceType());
+  }, []);
+
+  // Stay in sync if licence type changes elsewhere (nav selector, onboarding) while this page is open.
+  useEffect(() => {
+    const onLicenceChanged = () => setLicenceType(readStoredLicenceType());
+    window.addEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
+    return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
   }, []);
 
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 
+  function handleLicenceTypeChange(next: LicenceType) {
+    setLicenceType(next);
+    persistLicenceType(next);
+  }
+
   async function handleStart() {
-    const config = { state: selectedState, mode, questions: 30 };
+    const config = { state: selectedState, mode, questions: 30, licenceType };
 
     // Always write to sessionStorage (same-tab flow, authenticated users)
     sessionStorage.setItem("mock-config", JSON.stringify(config));
@@ -126,6 +147,36 @@ export function MockTestClient() {
         <p className="mock-meta">
           {STATE_NAMES[selectedState]} · 30 questions · Pass mark: {WA_PASS_MIN_CORRECT}/30 (80%)
         </p>
+
+        <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>
+          {s.vehicleType}
+        </h2>
+
+        <div style={{ display: "flex", gap: 10, marginBottom: 20 }}>
+          <button
+            className={`mock-mode-option ${licenceType === "car" ? "active" : ""}`}
+            onClick={() => handleLicenceTypeChange("car")}
+            type="button"
+            style={{ flex: 1 }}
+          >
+            <IconBadge icon={Icons.car} tone="brand" size="md" />
+            <div>
+              <strong>{s.carLicence}</strong>
+            </div>
+          </button>
+
+          <button
+            className={`mock-mode-option ${licenceType === "motorcycle" ? "active" : ""}`}
+            onClick={() => handleLicenceTypeChange("motorcycle")}
+            type="button"
+            style={{ flex: 1 }}
+          >
+            <IconBadge icon={Icons.motorcycle} tone="brand" size="md" />
+            <div>
+              <strong>{s.motorcycleLicence}</strong>
+            </div>
+          </button>
+        </div>
 
         <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>
           {s.studyMode}

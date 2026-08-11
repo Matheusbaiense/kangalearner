@@ -166,6 +166,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Start Mock Test",
+    vehicleType: "Licence Type",
+    carLicence: "Car",
+    motorcycleLicence: "Motorcycle",
     practiceMode: "Practice Mock",
     examMode: "Exam Mode",
     loading: "Loading…",
@@ -534,6 +537,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulado",
+    vehicleType: "Tipo de Carteira",
+    carLicence: "Carro",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Prática",
     examMode: "Modo Exame",
     loading: "Carregando…",
@@ -903,6 +909,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulacro",
+    vehicleType: "Tipo de Licencia",
+    carLicence: "Auto",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Práctica",
     examMode: "Modo Examen",
     loading: "Cargando…",
