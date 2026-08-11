@@ -58,9 +58,9 @@ export const metadata: Metadata = {
     apple: "/icon-192.png"
   },
   openGraph: {
-    title: "KangaLearner | Pass Your WA Learner Test",
+    title: "KangaLearner | Pass Your Australian Learner Test",
     description:
-      "Practice all WA learner test topics in English, Portuguese or Spanish. Free mock test, same format as the real DoT test.",
+      "Practice learner test topics in English, Portuguese or Spanish. Free mock test, same format as the real test.",
     type: "website",
     url: "https://kangalearner.com.au",
     siteName: "KangaLearner",
@@ -68,8 +68,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "KangaLearner | WA Learner Test Practice",
-    description: "Free WA learner test in 3 languages. Pass first time."
+    title: "KangaLearner | Australian Learner Test Practice",
+    description: "Free learner test practice in 3 languages. Pass first time."
   },
   verification: {
     google: "VWJLwG7qyIDqJQqIS5mjS4y2qk_IHETiRbzcsgjpuSc"

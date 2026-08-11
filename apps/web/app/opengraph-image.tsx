@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "KangaLearner | Pass Your WA Learner Test";
+export const alt = "KangaLearner | Pass Your Australian Learner Test";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -89,7 +89,7 @@ export default function OgImage() {
             lineHeight: 1.08
           }}
         >
-          Pass Your WA Learner Test
+          Pass Your Australian Learner Test
         </span>
 
         {/* Sub-headline */}
@@ -137,7 +137,7 @@ export default function OgImage() {
           style={{ width: 6, height: 6, borderRadius: 100, background: "#52B788", display: "flex" }}
         />
         <span style={{ color: "rgba(148,163,184,0.7)", fontSize: 18 }}>
-          kangalearner.com.au · Western Australia · DoT Learner Licence
+          kangalearner.com.au · Australia · Free Learner Test Practice
         </span>
         <div
           style={{ width: 6, height: 6, borderRadius: 100, background: "#52B788", display: "flex" }}
