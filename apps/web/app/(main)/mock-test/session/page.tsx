@@ -348,13 +348,7 @@ export default function MockTestSessionPage() {
           return (
             <div className="sign-box">
               {signSrc ? (
-                <img
-                  src={signSrc}
-                  alt={capLabel ?? "Road sign"}
-                  loading="lazy"
-                  decoding="async"
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
+                <img src={signSrc} alt={capLabel ?? "Road sign"} loading="lazy" decoding="async" />
               ) : null}
               {capLabel ? <div className="img-cap">{capLabel}</div> : null}
             </div>
