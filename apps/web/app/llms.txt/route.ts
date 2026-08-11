@@ -14,9 +14,9 @@ export function GET() {
 
   const body = `# KangaLearner
 
-> Free learner driving test practice for Western Australia, in English, Portuguese and Spanish. Built for immigrants and new residents preparing for the Department of Transport (DoT) WA Learner Licence test.
+> Free learner driving test practice for Australia, currently covering Western Australia and New South Wales, in English, Portuguese and Spanish. Built for immigrants and new residents preparing for their state's learner licence test.
 
-KangaLearner is not a government service. Always confirm current rules, fees and eligibility with Transport WA (transport.wa.gov.au).
+KangaLearner is not a government service. Always confirm current rules, fees and eligibility with your state's transport department (e.g. transport.wa.gov.au, service.nsw.gov.au).
 
 ## Core pages
 

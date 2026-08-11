@@ -12,6 +12,15 @@ import type { MockConfig, MockSession } from "@/types/mock";
 
 const EXAM_SECONDS = 45 * 60; // 45 minutes
 
+type Cap = Record<string, string>;
+
+function signSrcFor(sign: string | undefined): string | null {
+  if (!sign) return null;
+  if (sign.startsWith("/")) return sign;
+  const legacySign = sign.match(/^assets\/icons\/signs\/(.+)$/);
+  return legacySign ? `/icons/signs/${legacySign[1]}` : null;
+}
+
 function formatTime(secs: number) {
   const m = Math.floor(secs / 60)
     .toString()
@@ -63,7 +72,8 @@ export default function MockTestSessionPage() {
     const questions = Number.isFinite(parsed.questions)
       ? Math.max(1, Math.min(50, parsed.questions))
       : 30;
-    return { state, mode, questions };
+    const licenceType = parsed.licenceType === "motorcycle" ? "motorcycle" : "car";
+    return { state, mode, questions, licenceType };
   }, [raw]);
 
   const session = useMemo<MockSession | null>(
@@ -74,9 +84,15 @@ export default function MockTestSessionPage() {
   const questionPool = useMemo(() => {
     if (!cfg) return [];
     const state = cfg.state;
-    return state === "AU"
-      ? QUESTIONS.slice()
-      : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
+    const byState =
+      state === "AU"
+        ? QUESTIONS.slice()
+        : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
+    return byState.filter((q) =>
+      cfg.licenceType === "motorcycle"
+        ? q.licenceType === "motorcycle"
+        : q.licenceType !== "motorcycle"
+    );
   }, [cfg, QUESTIONS]);
 
   const activeQuestion = useMemo(() => {
@@ -226,8 +242,8 @@ export default function MockTestSessionPage() {
         <div className="mock-setup-card">
           <h1>{s.loading}</h1>
           <p className="mock-meta">
-            {cfg.state} · {cfg.questions} questions ·{" "}
-            {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
+            {cfg.questions} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </p>
         </div>
       </main>
@@ -268,7 +284,8 @@ export default function MockTestSessionPage() {
           }}
         >
           <span>
-            {cfg.state} · {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
+            {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </span>
           <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
             {cfg.mode === "exam" && (
@@ -322,6 +339,27 @@ export default function MockTestSessionPage() {
             {q.q.en}
           </p>
         )}
+
+        {(() => {
+          const signSrc = signSrcFor(q.sign);
+          const capLabel =
+            q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
+          if (!signSrc && !capLabel) return null;
+          return (
+            <div className="sign-box">
+              {signSrc ? (
+                <img
+                  src={signSrc}
+                  alt={capLabel ?? "Road sign"}
+                  loading="lazy"
+                  decoding="async"
+                  style={{ maxWidth: "100%", height: "auto" }}
+                />
+              ) : null}
+              {capLabel ? <div className="img-cap">{capLabel}</div> : null}
+            </div>
+          );
+        })()}
 
         {/* Options */}
         <div style={{ display: "grid", gap: 10, marginTop: 4 }}>

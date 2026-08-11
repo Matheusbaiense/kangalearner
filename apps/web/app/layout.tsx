@@ -24,23 +24,22 @@ export const viewport: Viewport = { themeColor: "#071A2C" };
 export const metadata: Metadata = {
   metadataBase: new URL("https://kangalearner.com.au"),
   title: {
-    default: "KangaLearner | WA Learner Test Practice",
+    default: "KangaLearner | Australian Learner Test Practice",
     template: "%s | KangaLearner"
   },
   description:
-    "Free WA learner licence test practice in English, Portuguese and Spanish. " +
+    "Free learner licence test practice in English, Portuguese and Spanish. " +
     "Covers all road rule topics: signs, speed limits, give way, alcohol laws and more. " +
-    "Used by immigrants in Perth preparing for the DoT learner test.",
+    "Used by immigrants across Australia preparing for their state learner test, currently WA and NSW.",
   keywords: [
+    "learner test practice Australia",
     "WA learner test",
-    "Western Australia driving test",
-    "Perth learner licence",
-    "learner test practice WA",
-    "driving test WA",
-    "learner licence WA",
-    "prova de habilitação WA",
-    "examen de manejo WA",
-    "practice learner test Perth",
+    "NSW learner test",
+    "driving test practice",
+    "learner licence Australia",
+    "driver knowledge test",
+    "prova de habilitação Austrália",
+    "examen de manejo Australia",
     "immigrant driving test Australia"
   ],
   authors: [{ name: "KangaLearner" }],
@@ -60,7 +59,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "KangaLearner | Pass Your Australian Learner Test",
     description:
-      "Practice learner test topics in English, Portuguese or Spanish. Free mock test, same format as the real test.",
+      "Practice learner test topics in English, Portuguese or Spanish. Free mock test, same format as the real test. Available now for WA and NSW.",
     type: "website",
     url: "https://kangalearner.com.au",
     siteName: "KangaLearner",
@@ -106,8 +105,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               name: "KangaLearner",
               url: "https://kangalearner.com.au",
               description:
-                "WA learner driving test practice in English, Portuguese and Spanish. " +
-                "Covers all road rule topics aligned with the DoT WA Learner Licence test.",
+                "Australian learner driving test practice in English, Portuguese and Spanish, " +
+                "currently covering WA and NSW.",
               applicationCategory: "EducationApplication",
               operatingSystem: "Web",
               offers: {
@@ -118,13 +117,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               },
               inLanguage: ["en", "pt", "es"],
               areaServed: {
-                "@type": "AdministrativeArea",
-                name: "Western Australia",
-                containedInPlace: { "@type": "Country", name: "Australia" }
+                "@type": "Country",
+                name: "Australia"
               },
               audience: {
                 "@type": "Audience",
-                audienceType: "Immigrants and new residents in Western Australia"
+                audienceType: "Immigrants and new residents in Australia"
               }
             })
           }}

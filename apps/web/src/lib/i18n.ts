@@ -78,8 +78,8 @@ export const t = {
     blogRelatedPractice: "Start free practice →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "For immigrants in Western Australia",
-    heroTitle: "Pass your WA learner test, in your language.",
+    heroEyebrow: "For immigrants across Australia",
+    heroTitle: "Pass your Australian learner test, in your language.",
     heroDesc:
       "Real exam-style questions in English, Portuguese or Spanish. " +
       "Study, practise and walk into your DoT test feeling ready.",
@@ -89,14 +89,14 @@ export const t = {
     heroBadge1: "Free forever",
     heroBadge2: "300+ exam-style questions",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
+    heroProof: "WA and NSW available now. VIC, QLD and more coming soon.",
     // Features
     feat1Title: "Learn",
     feat1Sub: "Study road rules by topic with clear explanations.",
     feat2Title: "Practice",
     feat2Sub: "Answer questions filtered by category and difficulty.",
     feat3Title: "Mock Test",
-    feat3Sub: "Simulate the official 30-question WA learner test.",
+    feat3Sub: "Simulate the official 30-question learner test.",
     feat4Title: "Progress",
     feat4Sub: "See your accuracy by category and review mistakes.",
     // Trust
@@ -107,7 +107,7 @@ export const t = {
     trustSaveBody: "Your progress is saved automatically in the browser.",
     trustOfficialTitle: "Based on official rules",
     trustOfficialBody:
-      "Content structured from WA public sources. Always confirm with the Department of Transport.",
+      "Content structured from official state sources. Always confirm with your state's Department of Transport.",
     // Topics
     topicsTitle: "Study the key topics",
     topicSpeed: "Speed Limits",
@@ -138,7 +138,7 @@ export const t = {
     howStep2Label: "Practice",
     howStep2Desc: "Answer exam-style questions filtered by category",
     howStep3Label: "Mock Test",
-    howStep3Desc: "Simulate the official 30-question WA learner test",
+    howStep3Desc: "Simulate the official 30-question learner test",
     // How it works section (M2.2)
     howItWorksTitle: "How it works",
     sectionEyebrowHow: "Get started",
@@ -147,7 +147,7 @@ export const t = {
     howStep1Title: "Study by topic",
     howStep1DescCard: "19 road rule topics, signs, speed limits, give way, alcohol laws and more.",
     howStep2Title: "Take a mock test",
-    howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT WA learner test.",
+    howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT learner test.",
     howStep3Title: "Track your progress",
     howStep3DescCard: "See which topics need more practice. Sign up free to save your results.",
     testimonialBetaLabel: "Stories from our early community",
@@ -178,6 +178,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Start Mock Test",
+    vehicleType: "Licence Type",
+    carLicence: "Car",
+    motorcycleLicence: "Motorcycle",
     practiceMode: "Practice Mock",
     examMode: "Exam Mode",
     loading: "Loading…",
@@ -193,7 +196,7 @@ export const t = {
     resourcesTitle: "WA licence resources and next steps",
     resourcesSub:
       "A plain-language hub for the learner theory test, driving hours, HPT, PDA and trusted community links. Use it alongside official Transport WA sources.",
-    resourcesWaOnly: "WA resources only, other states coming soon.",
+    resourcesWaOnly: "WA resources for now, other states coming soon.",
     resourcesStudyGuide: "Study guide",
     resourcesPracticeNow: "Practise questions",
 
@@ -320,19 +323,19 @@ export const t = {
     accountUploadFailed: "Upload failed",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Pass your WA learner test, in English, Portuguese or Spanish.",
+    footerTagline: "Pass your Australian learner test, in English, Portuguese or Spanish.",
     footerProductTitle: "Product",
     footerCompanyTitle: "Company",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Get weekly WA driving tips",
+    footerNewsletterTitle: "Get weekly driving tips",
     footerNewsletterDesc: "In English, Portuguese or Spanish. Unsubscribe anytime.",
     footerNewsletterPlaceholder: "your@email.com",
     footerNewsletterCta: "Subscribe",
     footerNewsletterSuccess: "You're in! Check your inbox.",
     footerNewsletterError: "Something went wrong. Please try again.",
-    resCommunityTitle: "Perth Immigrant Communities",
+    resCommunityTitle: "Immigrant Communities",
     resCommunityDesc:
-      "Connect with other immigrants in Perth who are also getting their WA licence.",
+      "Connect with other immigrants across Australia who are also getting their licence.",
     resStudyTitle: "Free Study Guides",
     resStudyDesc: "Official DoT resources, free to download.",
     resJourneyTitle: "Your Road to a Full Licence",
@@ -457,8 +460,8 @@ export const t = {
     blogRelatedPractice: "Começar a praticar grátis →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Para imigrantes na Western Australia",
-    heroTitle: "Passe na prova de learner de WA, no seu idioma.",
+    heroEyebrow: "Para imigrantes em toda a Austrália",
+    heroTitle: "Passe na prova de learner australiana, no seu idioma.",
     heroDesc:
       "Questões no estilo da prova real, em inglês, português ou espanhol. " +
       "Estude, pratique e chegue no teste do DoT se sentindo pronto.",
@@ -468,14 +471,14 @@ export const t = {
     heroBadge1: "Gratuito para sempre",
     heroBadge2: "300+ questões estilo prova",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
+    heroProof: "WA e NSW disponíveis agora. VIC, QLD e mais em breve.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estude as regras de trânsito por tema com explicações claras.",
     feat2Title: "Praticar",
     feat2Sub: "Responda perguntas filtradas por categoria e dificuldade.",
     feat3Title: "Simulado",
-    feat3Sub: "Simule a prova oficial de learner de WA com 30 questões.",
+    feat3Sub: "Simule a prova oficial de learner com 30 questões.",
     feat4Title: "Progresso",
     feat4Sub: "Veja sua taxa de acerto por categoria e revise os erros.",
     // Trust
@@ -486,7 +489,7 @@ export const t = {
     trustSaveBody: "Seu progresso é salvo automaticamente no navegador.",
     trustOfficialTitle: "Baseado em regras oficiais",
     trustOfficialBody:
-      "Conteúdo baseado em fontes públicas de WA. Confirme sempre com o Departamento de Transportes.",
+      "Conteúdo baseado em fontes oficiais estaduais. Confirme sempre com o Departamento de Transportes do seu estado.",
     // Topics
     topicsTitle: "Estude os principais tópicos",
     topicSpeed: "Velocidade",
@@ -517,7 +520,7 @@ export const t = {
     howStep2Label: "Praticar",
     howStep2Desc: "Responda perguntas no formato do exame filtradas por categoria",
     howStep3Label: "Simulado",
-    howStep3Desc: "Simule a prova oficial de 30 questões do learner de WA",
+    howStep3Desc: "Simule a prova oficial de 30 questões do learner",
     howItWorksTitle: "Como funciona",
     sectionEyebrowHow: "Comece aqui",
     sectionEyebrowTrust: "Por que o KangaLearner",
@@ -526,7 +529,7 @@ export const t = {
     howStep1DescCard:
       "19 tópicos das regras de trânsito, placas, velocidade, preferência, álcool e mais.",
     howStep2Title: "Faça um simulado",
-    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT WA.",
+    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT.",
     howStep3Title: "Acompanhe seu progresso",
     howStep3DescCard:
       "Veja quais tópicos precisam mais prática. Crie conta grátis para salvar resultados.",
@@ -558,6 +561,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulado",
+    vehicleType: "Tipo de Carteira",
+    carLicence: "Carro",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Prática",
     examMode: "Modo Exame",
     loading: "Carregando…",
@@ -570,10 +576,10 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Companion da carteira",
-    resourcesTitle: "Recursos e proximos passos para a carteira em WA",
+    resourcesTitle: "Recursos e próximos passos para a carteira em WA",
     resourcesSub:
       "Um hub em linguagem simples para prova teórica, horas de direção, HPT, PDA e links confiáveis da comunidade. Use junto com as fontes oficiais do Transport WA.",
-    resourcesWaOnly: "Recursos de WA, outros estados em breve.",
+    resourcesWaOnly: "Recursos de WA por enquanto, outros estados em breve.",
     resourcesStudyGuide: "Guia de estudo",
     resourcesPracticeNow: "Praticar perguntas",
 
@@ -701,19 +707,19 @@ export const t = {
     accountUploadFailed: "Falha no envio",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Passe na prova de learner de WA, em inglês, português ou espanhol.",
+    footerTagline: "Passe na prova de learner australiana, em inglês, português ou espanhol.",
     footerProductTitle: "Produto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Dicas semanais de direção em WA",
+    footerNewsletterTitle: "Dicas semanais de direção",
     footerNewsletterDesc: "Em inglês, português ou espanhol. Cancele quando quiser.",
     footerNewsletterPlaceholder: "seu@email.com",
     footerNewsletterCta: "Inscrever-se",
     footerNewsletterSuccess: "Inscrito! Verifique sua caixa de entrada.",
     footerNewsletterError: "Algo deu errado. Tente novamente.",
-    resCommunityTitle: "Comunidades de Imigrantes em Perth",
+    resCommunityTitle: "Comunidades de Imigrantes",
     resCommunityDesc:
-      "Conecte-se com outros imigrantes em Perth que também estão tirando carteira em WA.",
+      "Conecte-se com outros imigrantes em toda a Austrália que também estão tirando a carteira.",
     resStudyTitle: "Guias de Estudo Gratuitos",
     resStudyDesc: "Recursos oficiais do DoT, gratuitos para download.",
     resJourneyTitle: "Seu Caminho para a Carteira Completa",
@@ -838,8 +844,8 @@ export const t = {
     blogRelatedPractice: "Empezar a practicar gratis →",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Para inmigrantes en Western Australia",
-    heroTitle: "Aprueba el examen learner de WA, en tu idioma.",
+    heroEyebrow: "Para inmigrantes en toda Australia",
+    heroTitle: "Aprueba el examen learner australiano, en tu idioma.",
     heroDesc:
       "Preguntas al estilo del examen real, en inglés, portugués o español. " +
       "Estudia, practica y llega al examen del DoT sintiéndote listo.",
@@ -849,14 +855,14 @@ export const t = {
     heroBadge1: "Gratis para siempre",
     heroBadge2: "300+ preguntas estilo examen",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
+    heroProof: "WA y NSW disponibles ahora. VIC, QLD y más próximamente.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estudia las reglas de tránsito por tema con explicaciones claras.",
     feat2Title: "Practicar",
     feat2Sub: "Responde preguntas filtradas por categoría y dificultad.",
     feat3Title: "Simulacro",
-    feat3Sub: "Simula el examen oficial learner de WA con 30 preguntas.",
+    feat3Sub: "Simula el examen oficial learner con 30 preguntas.",
     feat4Title: "Progreso",
     feat4Sub: "Ve tu tasa de aciertos por categoría y revisa los errores.",
     // Trust
@@ -867,7 +873,7 @@ export const t = {
     trustSaveBody: "Tu progreso se guarda automáticamente en el navegador.",
     trustOfficialTitle: "Basado en reglas oficiales",
     trustOfficialBody:
-      "Contenido basado en fuentes públicas de WA. Confirma siempre con el Departamento de Transportes.",
+      "Contenido basado en fuentes oficiales estatales. Confirma siempre con el Departamento de Transportes de tu estado.",
     // Topics
     topicsTitle: "Estudia los temas clave",
     topicSpeed: "Velocidad",
@@ -898,7 +904,7 @@ export const t = {
     howStep2Label: "Practicar",
     howStep2Desc: "Responde preguntas estilo examen filtradas por categoría",
     howStep3Label: "Simulacro",
-    howStep3Desc: "Simula el examen oficial de 30 preguntas del learner de WA",
+    howStep3Desc: "Simula el examen oficial de 30 preguntas del learner",
     howItWorksTitle: "Cómo funciona",
     sectionEyebrowHow: "Empieza aquí",
     sectionEyebrowTrust: "Por qué KangaLearner",
@@ -907,7 +913,7 @@ export const t = {
     howStep1DescCard:
       "19 temas de normas de tránsito, señales, velocidades, ceder el paso, alcohol y más.",
     howStep2Title: "Haz un simulacro",
-    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT WA.",
+    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT.",
     howStep3Title: "Sigue tu progreso",
     howStep3DescCard:
       "Ve qué temas necesitan más práctica. Regístrate gratis para guardar tus resultados.",
@@ -939,6 +945,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulacro",
+    vehicleType: "Tipo de Licencia",
+    carLicence: "Auto",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Práctica",
     examMode: "Modo Examen",
     loading: "Cargando…",
@@ -951,10 +960,10 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Companion de licencia",
-    resourcesTitle: "Recursos y proximos pasos para la licencia en WA",
+    resourcesTitle: "Recursos y próximos pasos para la licencia en WA",
     resourcesSub:
       "Un hub en lenguaje simple para el examen teórico, horas de conducción, HPT, PDA y enlaces confiables de comunidad. Úsalo junto con las fuentes oficiales de Transport WA.",
-    resourcesWaOnly: "Recursos de WA, otros estados próximamente.",
+    resourcesWaOnly: "Recursos de WA por ahora, otros estados próximamente.",
     resourcesStudyGuide: "Guía de estudio",
     resourcesPracticeNow: "Practicar preguntas",
 
@@ -1082,19 +1091,19 @@ export const t = {
     accountUploadFailed: "Error al subir",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Aprueba el examen learner de WA, en inglés, portugués o español.",
+    footerTagline: "Aprueba el examen learner australiano, en inglés, portugués o español.",
     footerProductTitle: "Producto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Consejos semanales sobre el manejo en WA",
+    footerNewsletterTitle: "Consejos semanales sobre el manejo",
     footerNewsletterDesc: "En inglés, portugués o español. Cancela cuando quieras.",
     footerNewsletterPlaceholder: "tu@email.com",
     footerNewsletterCta: "Suscribirme",
     footerNewsletterSuccess: "¡Ya estás! Revisa tu bandeja de entrada.",
     footerNewsletterError: "Algo salió mal. Inténtalo de nuevo.",
-    resCommunityTitle: "Comunidades de Inmigrantes en Perth",
+    resCommunityTitle: "Comunidades de Inmigrantes",
     resCommunityDesc:
-      "Conéctate con otros inmigrantes en Perth que también están sacando su licencia en WA.",
+      "Conéctate con otros inmigrantes en toda Australia que también están sacando su licencia.",
     resStudyTitle: "Guías de Estudio Gratuitas",
     resStudyDesc: "Recursos oficiales del DoT, gratuitos para descargar.",
     resJourneyTitle: "Tu Camino hacia la Licencia Completa",
