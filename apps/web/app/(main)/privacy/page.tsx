@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Privacy Policy",
-  description: "KangaLearner privacy policy, what data we collect and how we use it."
+  description: "KangaLearner privacy policy, what data we collect and how we use it.",
+  alternates: { canonical: "https://kangalearner.com.au/privacy" }
 };
 
 export default function PrivacyPage() {

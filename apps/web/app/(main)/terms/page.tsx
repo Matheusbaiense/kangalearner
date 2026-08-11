@@ -2,7 +2,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Terms of Use",
-  description: "KangaLearner terms of use for the WA learner test practice platform."
+  description: "KangaLearner terms of use for the WA learner test practice platform.",
+  alternates: { canonical: "https://kangalearner.com.au/terms" }
 };
 
 export default function TermsPage() {

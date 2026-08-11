@@ -3,7 +3,8 @@ import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
-  title: "Practice"
+  title: "Practice",
+  alternates: { canonical: "https://kangalearner.com.au/practice" }
 };
 
 // "sim" is intentionally NOT a practice mode, the mock test lives at
