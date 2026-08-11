@@ -1672,7 +1672,12 @@ a:focus-visible,
   padding: 0 28px;
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(210px, auto) 1fr auto;
+  /* minmax(0, 1fr), not a bare 1fr: a bare 1fr track refuses to shrink below
+     its content's min-content size, so nowrap nav links could push the
+     right-hand controls (incl. account/sign-in) past the viewport edge.
+     minmax(0, 1fr) lets this track actually shrink; overflow: hidden below
+     clips its own overflowing links instead of spilling into nav-controls. */
+  grid-template-columns: minmax(210px, auto) minmax(0, 1fr) auto;
   align-items: center;
   gap: 32px;
 }
@@ -1704,6 +1709,9 @@ a:focus-visible,
   list-style: none;
   margin: 0;
   padding: 0;
+  /* Contain overflow within this track (see nav-shell grid comment above)
+     instead of letting unshrinkable nowrap links push nav-controls off-screen. */
+  overflow: hidden;
 }
 
 .site-header .nav-link {
@@ -2453,12 +2461,14 @@ a:focus-visible,
   }
 }
 
-/* ── Show hamburger, hide main-nav + extra pills on mobile/tablet ──
-   Main-nav (7 links) plus every pill (state, licence, lang, theme, auth) no
-   longer fits between 641-960px once the licence-type control was added, so
-   the drawer takes over at the same 960px breakpoint the grid already used
-   instead of leaving a gap where nothing has collapsed yet. */
-@media (max-width: 960px) {
+/* ── Show hamburger, hide main-nav + extra pills below desktop width ──
+   Main-nav (8 links, longer in pt/es) plus every pill (state, licence,
+   lang, theme, auth incl. name) needs real room. Below 1400px that combo
+   can outgrow nav-shell's own 1320px max-width and get clipped by the
+   overflow-x: clip safety net, hiding the account/sign-in control entirely
+   instead of just scrolling to it. The drawer guarantees everything stays
+   reachable regardless of viewport width, locale, or browser zoom. */
+@media (max-width: 1400px) {
   .nav-hamburger {
     display: flex;
   }
