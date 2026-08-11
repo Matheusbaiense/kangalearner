@@ -26,6 +26,7 @@ import {
   Mail,
   Map,
   MapPinned,
+  Motorbike,
   ParkingCircle,
   PartyPopper,
   RotateCcw,
@@ -45,6 +46,7 @@ import {
 export const Icons = {
   book: BookOpen,
   car: Car,
+  motorcycle: Motorbike,
   map: Map,
   mapPinned: MapPinned,
   speed: Gauge,

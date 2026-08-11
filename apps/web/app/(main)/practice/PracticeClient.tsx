@@ -12,6 +12,7 @@ import { useLang } from "@/contexts/LangContext";
 import { tx, type UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
 import { pct } from "@/lib/percent";
+import { readStoredLicenceType, LICENCE_CHANGED_EVENT, type LicenceType } from "@/lib/licenceType";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -339,6 +340,8 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   // from the server HTML → React hydration error #418, aborting hydration and
   // leaving answer-option onClick handlers unattached.
   const [selectedState, setSelectedState] = useState<StateCode>("WA");
+  // Same SSR-safe deferred-hydration pattern as selectedState above.
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
   const [mode, setMode] = useState<Mode>(initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
@@ -355,6 +358,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Load persisted state + answered + saved from localStorage ── */
   useEffect(() => {
     setSelectedState(readStoredState());
+    setLicenceType(readStoredLicenceType());
     try {
       const raw = localStorage.getItem(SK.answered);
       if (raw) setAnswered(JSON.parse(raw));
@@ -363,6 +367,13 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       const savedRaw = localStorage.getItem(SK.saved);
       if (savedRaw) setSaved(new Set(JSON.parse(savedRaw)));
     } catch {}
+  }, []);
+
+  /* ── Sync licence type from nav selector or onboarding (same tab) ── */
+  useEffect(() => {
+    const onLicenceChanged = () => setLicenceType(readStoredLicenceType());
+    window.addEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
+    return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
   }, []);
 
   /* ── Sync state from nav selector (same tab or after navigation) ── */
@@ -383,15 +394,36 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     setMode(initialMode ?? "all");
   }, [initialMode]);
 
+  /* ── Question pool for the selected licence type (state-filtered) ── */
+  const licenceQS = useMemo(() => {
+    const byLicence =
+      licenceType === "motorcycle"
+        ? QS.filter((q) => q.licenceType === "motorcycle")
+        : QS.filter((q) => q.licenceType !== "motorcycle");
+    return byLicence.filter((q) => !q.states || q.states.includes(selectedState));
+  }, [QS, licenceType, selectedState]);
+
+  /* Only show topics that actually have questions for the current licence type
+     (e.g. "Motorcycle Safety" never appears for car students, and vice versa). */
+  const visibleCategories = useMemo(() => {
+    const catsInPool = new Set(licenceQS.map((q) => q.cat));
+    return CATEGORIES.filter((c) => catsInPool.has(c.key));
+  }, [licenceQS]);
+
+  /* Reset an out-of-range topic filter when switching licence type. */
+  useEffect(() => {
+    if (cat !== "all" && !visibleCategories.some((c) => c.key === cat)) setCat("all");
+  }, [visibleCategories, cat]);
+
   /* ── Filtered questions for study modes ── */
   const filtered = useMemo(() => {
-    let qs = QS.filter((q) => !q.states || q.states.includes(selectedState));
+    let qs = licenceQS;
     if (cat !== "all") qs = qs.filter((q) => q.cat === cat);
     if (mode === "wrong") qs = qs.filter((q) => answered[q.id] && !answered[q.id].correct);
     if (mode === "unanswered") qs = qs.filter((q) => !answered[q.id]);
     if (mode === "saved") qs = qs.filter((q) => saved.has(q.id));
     return qs;
-  }, [mode, cat, answered, selectedState, saved, QS]);
+  }, [mode, cat, answered, saved, licenceQS]);
 
   /* Group study questions by category */
   const grouped = useMemo(() => {
@@ -534,8 +566,8 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         <div className="page-header">
           <h1 className="page-title">{s.practice}</h1>
           <p className="page-sub">
-            {QS.length} {s.questionsWord} · {CATEGORIES.length} {s.topicsWord} · {selectedState}{" "}
-            {s.roadRulesWord}
+            {licenceQS.length} {s.questionsWord} · {visibleCategories.length} {s.topicsWord} ·{" "}
+            {selectedState} {s.roadRulesWord}
           </p>
         </div>
 
@@ -565,7 +597,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                 >
                   {s.allTopics}
                 </button>
-                {CATEGORIES.map((c) => {
+                {visibleCategories.map((c) => {
                   const CI = categoryLucideIcon(c.key);
                   return (
                     <button

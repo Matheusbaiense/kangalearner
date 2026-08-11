@@ -77,7 +77,7 @@ export const t = {
     heroBadge1: "Free forever",
     heroBadge2: "300+ exam-style questions",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
+    heroProof: "WA and NSW available now. VIC, QLD and more coming soon.",
     // Features
     feat1Title: "Learn",
     feat1Sub: "Study road rules by topic with clear explanations.",
@@ -166,6 +166,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Start Mock Test",
+    vehicleType: "Licence Type",
+    carLicence: "Car",
+    motorcycleLicence: "Motorcycle",
     practiceMode: "Practice Mock",
     examMode: "Exam Mode",
     loading: "Loading…",
@@ -444,7 +447,7 @@ export const t = {
     heroBadge1: "Gratuito para sempre",
     heroBadge2: "300+ questões estilo prova",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
+    heroProof: "WA e NSW disponíveis agora. VIC, QLD e mais em breve.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estude as regras de trânsito por tema com explicações claras.",
@@ -534,6 +537,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulado",
+    vehicleType: "Tipo de Carteira",
+    carLicence: "Carro",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Prática",
     examMode: "Modo Exame",
     loading: "Carregando…",
@@ -813,7 +819,7 @@ export const t = {
     heroBadge1: "Gratis para siempre",
     heroBadge2: "300+ preguntas estilo examen",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
+    heroProof: "WA y NSW disponibles ahora. VIC, QLD y más próximamente.",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estudia las reglas de tránsito por tema con explicaciones claras.",
@@ -903,6 +909,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulacro",
+    vehicleType: "Tipo de Licencia",
+    carLicence: "Auto",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Práctica",
     examMode: "Modo Examen",
     loading: "Cargando…",
