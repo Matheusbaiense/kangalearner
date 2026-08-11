@@ -2,6 +2,8 @@ import Link from "next/link";
 
 export const metadata = {
   title: "About",
+  description:
+    "KangaLearner helps learner drivers in Australia prepare for their official learner test with practice questions, mock exams and multilingual support.",
   alternates: { canonical: "https://kangalearner.com.au/about" }
 };
 

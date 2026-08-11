@@ -2,6 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Contact",
+  description: "Get in touch with KangaLearner to report a question error, ask something, or suggest a feature.",
   alternates: { canonical: "https://kangalearner.com.au/contact" }
 };
 
