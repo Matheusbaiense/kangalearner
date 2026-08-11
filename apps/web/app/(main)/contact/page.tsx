@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Contact | KangaLearner" };
+export const metadata = { title: "Contact" };
 
 export default function ContactPage() {
   return (

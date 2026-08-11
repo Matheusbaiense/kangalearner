@@ -1,47 +1,20 @@
-"use client";
-import Link from "next/link";
-import { IconBadge } from "@/components/ui/IconBadge";
-import { Icons } from "@/components/icons";
-import { useLang } from "@/contexts/LangContext";
-import { LEARN_TOPICS } from "@/lib/learnTopics";
-import type { UiLang } from "@/lib/i18n";
-import { tx } from "@/lib/i18n";
+import type { Metadata } from "next";
+import { LearnPageClient } from "./LearnPageClient";
+
+export const metadata: Metadata = {
+  title: "Learn WA Road Rules — Signs, Speed Limits & More",
+  description:
+    "Browse 20 WA learner test topics: road signs, speed limits, give way rules, roundabouts, " +
+    "alcohol laws and more. Explanations in English, Portuguese and Spanish.",
+  alternates: { canonical: "https://kangalearner.com.au/learn" },
+  openGraph: {
+    title: "Learn WA Road Rules — KangaLearner",
+    description:
+      "Every WA learner test topic explained in plain language, in English, Portuguese and Spanish.",
+    url: "https://kangalearner.com.au/learn"
+  }
+};
 
 export default function LearnPage() {
-  const { uiLang: lang, s } = useLang();
-  const special = LEARN_TOPICS.find((t) => t.isSpecial);
-  const topics = LEARN_TOPICS.filter((t) => !t.isSpecial);
-
-  return (
-    <main className="container section-pad">
-      <h1>{s.learnTitle}</h1>
-      <p className="page-sub">{s.learnSub}</p>
-
-      {/* Featured "About the Test" card */}
-      {special && (
-        <Link href={`/learn/${special.slug}`} className="topic-card topic-card--featured">
-          <IconBadge icon={Icons[special.icon]} tone="brand" className="topic-icon" />
-          <div>
-            <strong>{tx(special.title, lang)}</strong>
-            <span style={{ display: "block", marginTop: 4, fontSize: ".875rem" }}>
-              {tx(special.summary, lang).slice(0, 120)}…
-            </span>
-          </div>
-        </Link>
-      )}
-
-      {/* Topic grid */}
-      <div className="topics-grid" style={{ marginTop: 24 }}>
-        {topics.map((topic) => (
-          <Link key={topic.slug} href={`/learn/${topic.slug}`} className="topic-card">
-            <IconBadge icon={Icons[topic.icon]} tone="brand" className="topic-icon" />
-            <strong>{tx(topic.title, lang)}</strong>
-            <span style={{ fontSize: ".8rem", lineHeight: 1.35 }}>
-              {tx(topic.summary, lang).slice(0, 80)}…
-            </span>
-          </Link>
-        ))}
-      </div>
-    </main>
-  );
+  return <LearnPageClient />;
 }
