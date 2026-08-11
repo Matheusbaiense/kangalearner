@@ -135,9 +135,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "au",
     quote: {
-      en: "The mock test mode is brilliant — I did it 3 times until I consistently got over 90%. Passed first go!",
-      pt: "O modo simulado é ótimo — fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
-      es: "El modo simulacro es brillante — lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
+      en: "The mock test mode is brilliant, I did it 3 times until I consistently got over 90%. Passed first go!",
+      pt: "O modo simulado é ótimo, fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
+      es: "El modo simulacro es brillante, lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
     }
   },
   {
@@ -165,9 +165,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "it",
     quote: {
-      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising — that's the difference.",
-      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar — essa é a diferença.",
-      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas — esa es la diferencia."
+      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising, that's the difference.",
+      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar, essa é a diferença.",
+      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas, esa es la diferencia."
     }
   },
   {
@@ -195,9 +195,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "mx",
     quote: {
-      en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the questions are almost identical to the official exam!",
-      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — as questões são quase idênticas à prova oficial!",
-      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!"
+      en: "Did 5 mock tests before the real one. Scored 100% on the actual test, the questions are almost identical to the official exam!",
+      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade, as questões são quase idênticas à prova oficial!",
+      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad, las preguntas son casi idénticas al oficial!"
     }
   },
   {
@@ -232,9 +232,9 @@ const FAQS = [
       es: "¿KangaLearner es gratuito?"
     },
     a: {
-      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress — no sign-up required to start.",
-      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso — não é necessário se cadastrar para começar.",
-      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso — no necesitas registrarte para empezar."
+      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress, no sign-up required to start.",
+      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso, não é necessário se cadastrar para começar.",
+      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso, no necesitas registrarte para empezar."
     }
   },
   {
@@ -497,15 +497,23 @@ function SlideProgress({ lang }: { lang: UiLang }) {
 
 function HeroSlideshow({ lang }: { lang: UiLang }) {
   const [slideIdx, setSlideIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
+  // Previous slide kept mounted briefly so slides CROSSFADE, the old
+  // hide→swap→show approach left the card visibly empty for 280ms.
+  const [prevIdx, setPrevIdx] = useState<number | null>(null);
 
   const goTo = useCallback((idx: number) => {
-    setVisible(false);
-    setTimeout(() => {
-      setSlideIdx(idx);
-      setVisible(true);
-    }, 280);
+    setSlideIdx((current) => {
+      if (idx === current) return current;
+      setPrevIdx(current);
+      return idx;
+    });
   }, []);
+
+  useEffect(() => {
+    if (prevIdx === null) return;
+    const t = setTimeout(() => setPrevIdx(null), 340);
+    return () => clearTimeout(t);
+  }, [prevIdx, slideIdx]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -516,13 +524,19 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
 
   const slides = [SlideLearn, SlidePractice, SlideMock, SlideProgress];
   const SlideComponent = slides[slideIdx];
+  const PrevComponent = prevIdx !== null ? slides[prevIdx] : null;
 
   return (
     <div className="hero-slideshow" aria-live="polite" aria-atomic="true">
       <div className="hero-slide-card">
-        <div className={`hero-slide-content${visible ? " slide-visible" : " slide-hidden"}`}>
+        <div key={slideIdx} className="hero-slide-content slide-enter">
           <SlideComponent lang={lang} />
         </div>
+        {PrevComponent && (
+          <div key={`ghost-${prevIdx}`} className="hero-slide-ghost" aria-hidden="true">
+            <PrevComponent lang={lang} />
+          </div>
+        )}
       </div>
       <div className="slide-dots" role="tablist" aria-label="Product preview slides">
         {Array.from({ length: SLIDE_COUNT }, (_, i) => (
@@ -540,22 +554,34 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
   );
 }
 
+/* ── Section header (eyebrow + display title, one voice for every section) ── */
+function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="section-head">
+      <p className="section-eyebrow">{eyebrow}</p>
+      <h2 className="section-title">{title}</h2>
+    </div>
+  );
+}
+
 /* ── How It Works (M2.2) ── */
 function HowItWorks() {
   const { s } = useLang();
   const steps = [
-    { num: "①", title: s.howStep1Title, desc: s.howStep1DescCard, href: "/learn" },
-    { num: "②", title: s.howStep2Title, desc: s.howStep2DescCard, href: "/mock-test" },
-    { num: "③", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" }
+    { num: "01", title: s.howStep1Title, desc: s.howStep1DescCard, href: "/learn" },
+    { num: "02", title: s.howStep2Title, desc: s.howStep2DescCard, href: "/mock-test" },
+    { num: "03", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" }
   ];
   return (
     <section className="how-it-works section-pad">
       <div className="container">
-        <h2 className="section-title">{s.howItWorksTitle}</h2>
+        <SectionHead eyebrow={s.sectionEyebrowHow} title={s.howItWorksTitle} />
         <div className="how-steps">
           {steps.map((step) => (
             <Link key={step.num} href={step.href} className="how-step-card">
-              <span className="how-step-num">{step.num}</span>
+              <span className="how-step-num" aria-hidden="true">
+                {step.num}
+              </span>
               <h3 className="how-step-title">{step.title}</h3>
               <p className="how-step-desc">{step.desc}</p>
             </Link>
@@ -646,6 +672,7 @@ export function LandingClient() {
                 {s.heroCta2}
               </Link>
             </div>
+            <p className="hero-cta-note">{s.heroCtaNote}</p>
             <div className="hero-proof">
               <span className="hero-proof-dot" />
               {s.heroProof}
@@ -681,10 +708,10 @@ export function LandingClient() {
       {/* ── Trust section ────────────────────────────── */}
       <section className="trust-section">
         <div className="trust-inner">
-          <h2 className="section-title">{s.trustTitle}</h2>
+          <SectionHead eyebrow={s.sectionEyebrowTrust} title={s.trustTitle} />
           <div className="trust-grid">
-            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }) => (
-              <div key={titleKey} className="trust-item">
+            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }, i) => (
+              <div key={titleKey} className={`trust-item${i === 0 ? " trust-item--lead" : ""}`}>
                 <div className="trust-icon-wrap" aria-hidden="true">
                   <Icon size={24} strokeWidth={2} />
                 </div>
@@ -706,7 +733,7 @@ export function LandingClient() {
       {/* ── Topics grid ──────────────────────────────── */}
       <section className="topics-section">
         <div className="topics-inner">
-          <h2 className="section-title">{s.topicsTitle}</h2>
+          <SectionHead eyebrow={s.sectionEyebrowTopics} title={s.topicsTitle} />
           <div className="topics-grid">
             {TOPICS.map((topic) => (
               <Link key={topic.key} href={`/practice?cat=${topic.cat}`} className="topic-card">
@@ -738,7 +765,7 @@ export function LandingClient() {
             ))}
           </div>
           <p className="states-more-note">
-            {s.statesMoreNote ?? "More states coming soon —"}{" "}
+            {s.statesMoreNote ?? "More states coming soon:"}{" "}
             <Link href="/auth/signup" className="states-more-link">
               {s.statesMoreLink ?? "sign up to be notified"}
             </Link>

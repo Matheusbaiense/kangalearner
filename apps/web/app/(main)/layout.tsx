@@ -42,7 +42,7 @@ export default async function MainLayout({ children }: { children: ReactNode }) 
       };
     }
   } catch {
-    // Env vars not configured — dev without .env.local
+    // Env vars not configured, dev without .env.local
   }
 
   return (

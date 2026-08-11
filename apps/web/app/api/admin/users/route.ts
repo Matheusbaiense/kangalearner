@@ -68,7 +68,7 @@ export async function GET(req: NextRequest) {
   return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
 }
 
-/** PATCH /api/admin/users — update a user's role */
+/** PATCH /api/admin/users, update a user's role */
 export async function PATCH(req: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });

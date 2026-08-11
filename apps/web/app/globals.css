@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════
-   KANGALEARNER — GLOBAL STYLES
+   KANGALEARNER, GLOBAL STYLES
    Design tokens + base reset + auth layout
 ══════════════════════════════════════════ */
 
@@ -26,6 +26,14 @@
   --red: #ef4444;
   --orange: #f59e0b;
   --blue: #38bdf8;
+
+  /* Color roles: green = action/success · orange (amber) = energy/highlight
+     (step numbers, streaks, PASS) · blue = information. Pick by role, not taste. */
+
+  /* Motion */
+  --duration-fast: 150ms;
+  --duration-normal: 300ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   /* Shadows */
   --shadow-soft: 0 16px 40px rgba(7, 26, 44, 0.12);
@@ -524,7 +532,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   SITE NAV (legacy — kept for reference; currently unused)
+   SITE NAV (legacy, kept for reference; currently unused)
 ══════════════════════════════════════════ */
 
 .site-nav {
@@ -591,6 +599,12 @@ a:focus-visible,
   grid-template-columns: 230px minmax(0, 1fr) 220px;
   gap: 16px;
   align-items: start;
+}
+.app-shell > * {
+  /* Grid children default to min-width:auto, wide content (topic chips,
+     question cards) blows the track out past the viewport on small screens,
+     which is what pushed the page header against the left edge on mobile. */
+  min-width: 0;
 }
 
 /* Mode + category sidebar */
@@ -1184,8 +1198,39 @@ a:focus-visible,
   .app-section {
     padding: 24px 0 40px;
   }
+  /* Filters collapse into two horizontal chip rows so the first question is
+     visible without scrolling past ~2.5 screens of stacked buttons. */
   .mode-bar {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    gap: 8px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .mode-bar .fmode {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+  }
+  .filter-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    max-height: none;
+    gap: 8px;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+  }
+  .filter-bar .fcat {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+  }
+  /* Right-edge fade hints that the chip rows scroll sideways. */
+  .mode-bar,
+  .filter-bar {
+    -webkit-mask-image: linear-gradient(90deg, #000 91%, transparent);
+    mask-image: linear-gradient(90deg, #000 91%, transparent);
   }
 }
 
@@ -1654,6 +1699,8 @@ a:focus-visible,
   font-weight: 700;
   color: rgba(255, 255, 255, 0.78);
   text-decoration: none;
+  /* "Mock Test" was the only item wrapping to two lines. */
+  white-space: nowrap;
   border: 1px solid transparent;
   min-height: 44px;
   display: flex;
@@ -2093,7 +2140,7 @@ a:focus-visible,
   font-weight: 700;
 }
 
-/* Mobile nav — user identity block */
+/* Mobile nav, user identity block */
 .mobile-nav-user {
   display: flex;
   flex-direction: column;
@@ -2148,7 +2195,7 @@ a:focus-visible,
   background: var(--danger, #ef4444);
   color: #fff;
 }
-/* Sign-in link in mobile drawer — highlighted */
+/* Sign-in link in mobile drawer, highlighted */
 .mobile-nav-link.mobile-nav-signin {
   color: var(--accent, #2563eb);
   font-weight: 600;
@@ -2276,7 +2323,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   HOME — HERO + FEATURES
+   HOME, HERO + FEATURES
 ══════════════════════════════════════════ */
 
 /* Hero: dark navy section */
@@ -2318,14 +2365,8 @@ a:focus-visible,
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-.hero-eyebrow::before {
-  content: "";
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: rgba(68, 194, 255, 0.92);
-  flex-shrink: 0;
-}
+/* No decorative dash before the eyebrow: the owner wants zero dash marks
+   anywhere on the site (they read as AI-generated filler). */
 
 .hero-title {
   font-family: var(--font-display);
@@ -2369,7 +2410,23 @@ a:focus-visible,
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
+}
+/* Warm glow makes the primary action unmistakably THE action on the page. */
+.hero-actions .btn-primary {
+  box-shadow:
+    0 10px 34px rgba(82, 183, 136, 0.35),
+    0 2px 8px rgba(7, 26, 44, 0.3);
+}
+.hero-actions .btn-primary:hover {
+  box-shadow:
+    0 14px 44px rgba(82, 183, 136, 0.5),
+    0 2px 8px rgba(7, 26, 44, 0.3);
+}
+.hero-cta-note {
+  font-size: 0.8rem;
+  color: rgba(203, 213, 225, 0.75);
+  margin: 0 0 22px 4px;
 }
 
 .hero-proof {
@@ -2461,7 +2518,7 @@ a:focus-visible,
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Neutral outline button — works on light and dark card backgrounds */
+/* Neutral outline button, works on light and dark card backgrounds */
 .btn-ghost-light {
   background: transparent;
   color: var(--ink);
@@ -2476,7 +2533,7 @@ a:focus-visible,
   cursor: not-allowed;
 }
 
-/* Text-only ghost — borderless, subdued */
+/* Text-only ghost, borderless, subdued */
 .btn-ghost {
   background: transparent;
   color: var(--muted2);
@@ -3046,7 +3103,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   MOCK TEST — SETUP + PLACEHOLDERS
+   MOCK TEST, SETUP + PLACEHOLDERS
 ══════════════════════════════════════════ */
 
 .container {
@@ -3227,8 +3284,9 @@ a:focus-visible,
 }
 
 .onboarding-banner {
-  position: sticky;
-  top: var(--header-height);
+  /* Static on purpose: sticky stole ~90px of every viewport on every page.
+     The site header is sticky (in-flow), so no top offset is needed here. */
+  position: static;
   z-index: 999;
   width: 100%;
   background: var(--paper);
@@ -3301,6 +3359,11 @@ a:focus-visible,
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
+}
+.ob-banner-cta {
+  /* btn-auth-primary is a full-width form button; inside the banner the CTA
+     must size to its label, not stretch across the row. */
+  width: auto;
 }
 .ob-option {
   display: inline-flex;
@@ -3395,67 +3458,6 @@ a:focus-visible,
   text-align: center;
 }
 
-/* ── How it works strip ── */
-.how-strip {
-  background: var(--surface-page, #f8fafb);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 22px 28px;
-}
-.how-strip-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.how-step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  min-width: 200px;
-  max-width: 240px;
-}
-.how-step-num {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--green, #2e7d5b);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-.how-step-body {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.how-step-label {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #0f1a2e;
-  line-height: 1.2;
-}
-.how-step-desc {
-  font-size: 0.72rem;
-  color: #64748b;
-  line-height: 1.35;
-}
-.how-arrow {
-  font-size: 1.1rem;
-  color: var(--border, #cbd5e1);
-  flex-shrink: 0;
-  padding: 0 4px;
-}
-
 .testimonials-section {
   padding: 64px 28px;
   background: var(--paper);
@@ -3464,12 +3466,33 @@ a:focus-visible,
   max-width: 960px;
   margin: 0 auto;
 }
+.section-head {
+  text-align: center;
+  margin-bottom: 36px;
+}
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green2);
+  margin: 0 0 10px;
+}
+/* No decorative dashes around the eyebrow (site-wide no-dash rule). */
 .section-title {
-  font-size: 1.4rem;
-  font-weight: 900;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  letter-spacing: -0.035em;
   color: var(--ink);
   margin-bottom: 32px;
   text-align: center;
+}
+.section-head .section-title {
+  margin-bottom: 0;
 }
 .testimonial-carousel {
   display: grid;
@@ -3640,16 +3663,20 @@ a:focus-visible,
 /* ── Trust section ──────────────────────────────────── */
 .trust-section {
   padding: 64px 28px;
-  background: var(--paper2);
+  /* Subtle atmosphere so flat sections aren't dead-flat in either theme. */
+  background: radial-gradient(1100px 380px at 50% -8%, rgba(82, 183, 136, 0.06), transparent 70%)
+    var(--paper2);
   border-top: 1px solid var(--border);
 }
 .trust-inner {
   max-width: var(--container);
   margin: 0 auto;
 }
+/* 2-col on purpose: the lead card takes the full first row, the two
+   supporting cards split the second, no orphan cell. */
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 24px;
   margin-top: 32px;
 }
@@ -3673,6 +3700,20 @@ a:focus-visible,
   box-shadow: var(--shadow-md);
   border-color: var(--green2);
   background: rgba(47, 158, 103, 0.01);
+}
+/* Lead card: one deliberate emphasis breaks the uniform 3-up rhythm. */
+.trust-item--lead {
+  grid-column: span 2;
+  background: linear-gradient(135deg, rgba(82, 183, 136, 0.09), transparent 62%);
+  border-color: rgba(82, 183, 136, 0.35);
+}
+.trust-item--lead strong {
+  font-size: 1.15rem;
+}
+@media (max-width: 768px) {
+  .trust-item--lead {
+    grid-column: auto;
+  }
 }
 .trust-icon {
   font-size: 1.6rem;
@@ -3699,7 +3740,8 @@ a:focus-visible,
 /* ── Topics section ─────────────────────────────────── */
 .topics-section {
   padding: 64px 28px;
-  background: var(--paper);
+  background: radial-gradient(1100px 380px at 50% -8%, rgba(56, 189, 248, 0.05), transparent 70%)
+    var(--paper);
   border-top: 1px solid var(--border);
 }
 .topics-inner {
@@ -4006,18 +4048,41 @@ a:focus-visible,
   flex-direction: column;
   justify-content: center;
   flex: 1;
-  transition:
-    opacity 0.28s ease,
-    transform 0.28s ease;
 }
-.slide-visible {
-  opacity: 1;
-  transform: translateY(0);
+/* Real crossfade: incoming slide fades in while the outgoing one (ghost
+   layer) fades out on top, the card is never visibly empty. */
+.slide-enter {
+  animation: slideEnter var(--duration-normal) var(--ease-out) both;
 }
-.slide-hidden {
-  opacity: 0;
-  transform: translateY(6px);
+@keyframes slideEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-slide-ghost {
+  position: absolute;
+  inset: 0;
+  padding: 28px;
+  border-radius: var(--radius-lg);
+  background: rgba(4, 18, 32, 0.92);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   pointer-events: none;
+  animation: slideGhostOut 320ms var(--ease-out) both;
+}
+@keyframes slideGhostOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 }
 
 /* Slide header */
@@ -4320,7 +4385,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   TOPIC ICON (Lucide — replaces emoji)
+   TOPIC ICON (Lucide, replaces emoji)
 ══════════════════════════════════════════ */
 
 .topic-icon {
@@ -4342,7 +4407,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   TRUST ICON (Lucide — replaces emoji)
+   TRUST ICON (Lucide, replaces emoji)
 ══════════════════════════════════════════ */
 
 .trust-icon-wrap {
@@ -4371,7 +4436,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   PROOF BAR — 4th item highlight
+   PROOF BAR, 4th item highlight
 ══════════════════════════════════════════ */
 
 @media (max-width: 600px) {
@@ -4381,15 +4446,6 @@ a:focus-visible,
   }
   .slide-cat-track {
     width: 64px;
-  }
-  .how-arrow {
-    display: none;
-  }
-  .how-strip-inner {
-    gap: 16px;
-  }
-  .how-step {
-    min-width: 160px;
   }
 }
 @media (max-width: 900px) {
@@ -4948,33 +5004,34 @@ a:focus-visible,
   gap: 1.5rem;
   margin-top: 2rem;
 }
+/* Flat steps with big amber numerals, deliberately NOT another card grid. */
 .how-step-card {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  padding: 1.5rem;
-  background: var(--paper);
-  border: 1px solid var(--border);
-  border-radius: var(--kl-radius-lg, 1rem);
+  padding: 0.5rem 0.25rem;
+  background: transparent;
+  border: 0;
   text-decoration: none;
   color: inherit;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-.how-step-card:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  transform: translateY(-2px);
 }
 .how-step-num {
-  font-size: 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 4vw, 2.8rem);
+  font-weight: 800;
   line-height: 1;
+  color: var(--orange);
+  letter-spacing: -0.03em;
 }
 .how-step-title {
   font-family: var(--kl-font-heading);
-  font-size: 1.05rem;
-  font-weight: 700;
+  font-size: 1.12rem;
+  font-weight: 800;
   margin: 0;
+  transition: color var(--duration-fast) var(--ease-out);
+}
+.how-step-card:hover .how-step-title {
+  color: var(--green2);
 }
 .how-step-desc {
   font-size: 0.875rem;
@@ -5350,7 +5407,7 @@ a:focus-visible,
 }
 
 /* The checklist panel always sits on a light mint background (--green3),
-   so its text/controls must use dark tokens regardless of theme — otherwise
+   so its text/controls must use dark tokens regardless of theme, otherwise
    dark-mode inherits a light --ink and renders white-on-light (unreadable). */
 .resource-checklist,
 .resource-checklist h2,
@@ -5459,4 +5516,77 @@ a:focus-visible,
   font-size: 0.8rem;
   color: var(--kl-color-text-muted, #64748b);
   margin-bottom: 2rem;
+}
+
+/* ══════════════════════════════════════════
+   LOADING SKELETONS (practice)
+══════════════════════════════════════════ */
+
+.quiz-skeletons {
+  display: grid;
+  gap: 16px;
+  max-width: 760px;
+}
+.qcard-skeleton {
+  display: grid;
+  gap: 12px;
+}
+.sk-line,
+.sk-block {
+  border-radius: var(--radius-xs);
+  background: linear-gradient(
+    90deg,
+    rgba(122, 138, 154, 0.14) 25%,
+    rgba(122, 138, 154, 0.26) 50%,
+    rgba(122, 138, 154, 0.14) 75%
+  );
+  background-size: 200% 100%;
+  animation: skShimmer 1.4s ease-in-out infinite;
+}
+.sk-line {
+  height: 14px;
+}
+.sk-block {
+  height: 46px;
+  border-radius: var(--radius-sm);
+}
+.sk-title {
+  height: 26px;
+  width: 180px;
+  margin-bottom: 8px;
+}
+.sk-sub {
+  width: 260px;
+}
+.sk-w30 {
+  width: 30%;
+}
+.sk-w70 {
+  width: 70%;
+}
+.sk-w90 {
+  width: 90%;
+}
+@keyframes skShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ══════════════════════════════════════════
+   REDUCED MOTION, one global guarantee
+══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

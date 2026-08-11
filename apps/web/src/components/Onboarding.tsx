@@ -34,12 +34,13 @@ const LANGS = [
   { key: "es-en", label: "Español + EN" }
 ];
 
+// CTA says what it does (saves the choices), not just "go".
 const GO_LABEL: Record<string, string> = {
-  en: "Let's go!",
-  pt: "Vamos!",
-  es: "¡Vamos!",
-  "pt-en": "Vamos!",
-  "es-en": "¡Vamos!"
+  en: "Save & start",
+  pt: "Salvar e começar",
+  es: "Guardar y empezar",
+  "pt-en": "Salvar e começar",
+  "es-en": "Guardar y empezar"
 };
 
 const VEHICLE_LABEL: Record<string, { car: string; moto: string }> = {
@@ -62,7 +63,10 @@ export function Onboarding() {
 
   useEffect(() => {
     if (isAuthRoute) return;
-    if (!localStorage.getItem(KEY)) setVisible(true);
+    // Only for a genuinely fresh visitor: anyone who already picked a language
+    // or state (nav selector, previous session, signup) must never see it again.
+    const hasPrefs = localStorage.getItem(SK.lang) || localStorage.getItem(SK.stateV2);
+    if (!localStorage.getItem(KEY) && !hasPrefs) setVisible(true);
   }, [isAuthRoute]);
 
   function done() {

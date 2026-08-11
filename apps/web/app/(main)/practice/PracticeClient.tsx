@@ -66,7 +66,7 @@ function spawnConfetti(x: number, y: number) {
   }
 }
 
-/* Static category lookup — built once (CATEGORIES is a static import). */
+/* Static category lookup, built once (CATEGORIES is a static import). */
 const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
   CATEGORIES.map((c) => [c.key, c])
 );
@@ -348,7 +348,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [saved, setSaved] = useState<Set<string>>(new Set());
 
   // Mirror `answered` into a ref so `pick` can read the latest value without
-  // depending on `answered` — keeps `pick` referentially stable so memoized
+  // depending on `answered`, keeps `pick` referentially stable so memoized
   // QuizCards never hold a stale closure that would wipe answers.
   const answeredRef = useRef<Answered>(answered);
   useEffect(() => {
@@ -435,7 +435,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return m;
   }, [filtered]);
 
-  /* ── Sync attempt to Supabase (silent — 401 ok for guests) ── */
+  /* ── Sync attempt to Supabase (silent, 401 ok for guests) ── */
   const syncAttempt = useCallback(
     (qid: string, cat: string, isCorrect: boolean, chosen: string) => {
       fetch("/api/attempts", {
@@ -514,8 +514,24 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
   if (questionsLoading) {
     return (
-      <div className="page-loading">
-        <div className="spinner" />
+      <div className="app-page">
+        <div className="app-container app-section" aria-busy="true">
+          <div className="page-header">
+            <div className="sk-line sk-title" />
+            <div className="sk-line sk-sub" />
+          </div>
+          <div className="quiz-skeletons">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="qcard qcard-skeleton">
+                <div className="sk-line sk-w30" />
+                <div className="sk-line sk-w90" />
+                <div className="sk-line sk-w70" />
+                <div className="sk-block" />
+                <div className="sk-block" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }

@@ -33,7 +33,7 @@ function matchesMagicBytes(buf: Buffer, mime: string, signatures: number[][]): b
   return signatures.some((sig) => sig.every((byte, i) => buf[i] === byte));
 }
 
-/** POST /api/profile/avatar — upload or replace user avatar */
+/** POST /api/profile/avatar, upload or replace user avatar */
 export async function POST(req: NextRequest) {
   const { supabase } = createRouteHandlerClient(req);
 
@@ -105,7 +105,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ url: avatarUrl });
 }
 
-/** DELETE /api/profile/avatar — remove user avatar */
+/** DELETE /api/profile/avatar, remove user avatar */
 export async function DELETE(req: NextRequest) {
   const { supabase } = createRouteHandlerClient(req);
 
