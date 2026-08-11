@@ -17,10 +17,13 @@ export type Question = {
   opts: QuestionOption[];
   states: string[];
   sign?: string;
-  cap?: string | null;
+  /** Some legacy WA records store a trilingual caption instead of plain text — consumers must check typeof before rendering. */
+  cap?: string | LocalizedText | null;
   tip?: LocalizedText | null;
   /** Absent or "car" = car learner content (default). "motorcycle" = motorcycle-only content. */
   licenceType?: "car" | "motorcycle";
+  /** ISO date of the last manual fact-check pass, present on some audited legacy records. */
+  lastVerified?: string;
 };
 
 export type Category = {
