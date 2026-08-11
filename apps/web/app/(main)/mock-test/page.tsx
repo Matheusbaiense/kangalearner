@@ -61,7 +61,7 @@ export default function MockTestSetupPage() {
   async function handleStart() {
     const config = { state: selectedState, mode, questions: 30 };
 
-    // Always write to sessionStorage (same-tab flow — authenticated users)
+    // Always write to sessionStorage (same-tab flow, authenticated users)
     sessionStorage.setItem("mock-config", JSON.stringify(config));
 
     const supabase = createClient();

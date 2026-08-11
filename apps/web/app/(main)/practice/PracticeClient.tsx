@@ -65,7 +65,7 @@ function spawnConfetti(x: number, y: number) {
   }
 }
 
-/* Static category lookup — built once (CATEGORIES is a static import). */
+/* Static category lookup, built once (CATEGORIES is a static import). */
 const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
   CATEGORIES.map((c) => [c.key, c])
 );
@@ -345,7 +345,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const [saved, setSaved] = useState<Set<string>>(new Set());
 
   // Mirror `answered` into a ref so `pick` can read the latest value without
-  // depending on `answered` — keeps `pick` referentially stable so memoized
+  // depending on `answered`, keeps `pick` referentially stable so memoized
   // QuizCards never hold a stale closure that would wipe answers.
   const answeredRef = useRef<Answered>(answered);
   useEffect(() => {
@@ -403,7 +403,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return m;
   }, [filtered]);
 
-  /* ── Sync attempt to Supabase (silent — 401 ok for guests) ── */
+  /* ── Sync attempt to Supabase (silent, 401 ok for guests) ── */
   const syncAttempt = useCallback(
     (qid: string, cat: string, isCorrect: boolean, chosen: string) => {
       fetch("/api/attempts", {

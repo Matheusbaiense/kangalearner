@@ -87,7 +87,7 @@ export async function DELETE(request: NextRequest) {
   }
 
   // Best-effort cleanup of orphaned avatar objects. The account is already gone
-  // at this point, so a storage failure must not fail the request — just log it.
+  // at this point, so a storage failure must not fail the request, just log it.
   const { data: avatarFiles, error: listError } = await supabaseAdmin.storage
     .from("avatars")
     .list(user.id);

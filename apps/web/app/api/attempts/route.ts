@@ -23,7 +23,7 @@ const attemptSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  // IP guard — defence against unauthenticated flood (loose: accounts for shared NAT)
+  // IP guard, defence against unauthenticated flood (loose: accounts for shared NAT)
   const ip = getClientIp(request);
   if (!(await rateLimit(`attempts:ip:${ip}`, 120, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
@@ -41,7 +41,7 @@ export async function POST(request: NextRequest) {
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
-  // Per-user rate limit — each authenticated user gets their own bucket
+  // Per-user rate limit, each authenticated user gets their own bucket
   if (!(await rateLimit(`attempts:user:${user.id}`, 60, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
   }
 
   // user_category_stats is maintained by the AFTER INSERT trigger on
-  // question_attempts (migration 028) — covers this route, /bulk and mobile.
+  // question_attempts (migration 028), covers this route, /bulk and mobile.
 
   return NextResponse.json({ ok: true }, { headers: response.headers });
 }

@@ -27,7 +27,7 @@ const bulkAttemptsPayloadSchema = z.object({
 });
 
 export async function POST(request: NextRequest) {
-  // IP guard — defence against unauthenticated flood
+  // IP guard, defence against unauthenticated flood
   const ip = getClientIp(request);
   if (!(await rateLimit(`attempts-bulk:ip:${ip}`, 20, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
@@ -45,7 +45,7 @@ export async function POST(request: NextRequest) {
   const user = userData.user;
   if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
 
-  // Per-user rate limit — bulk migration is a one-time event; 5 per minute is ample
+  // Per-user rate limit, bulk migration is a one-time event; 5 per minute is ample
   if (!(await rateLimit(`attempts-bulk:user:${user.id}`, 5, 60_000))) {
     return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
   }

@@ -67,14 +67,15 @@ export const t = {
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "For immigrants in Western Australia",
-    heroTitle: "Pass your WA learner test — in your language.",
+    heroTitle: "Pass your WA learner test, in your language.",
     heroDesc:
-      "Practice every road rule topic tested by the DoT WA learner licence exam. " +
-      "English, Portuguese or Spanish. Free mock test included.",
+      "Real exam-style questions in English, Portuguese or Spanish. " +
+      "Study, practise and walk into your DoT test feeling ready.",
     heroCta1: "Start free practice",
+    heroCtaNote: "Free. No sign-up needed.",
     heroCta2: "Try mock test",
     heroBadge1: "Free forever",
-    heroBadge2: "WA road rules only",
+    heroBadge2: "300+ exam-style questions",
     heroBadge3: "English · Português · Español",
     heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
     // Features
@@ -89,7 +90,7 @@ export const t = {
     // Trust
     trustTitle: "Why KangaLearner",
     trustMultiTitle: "Multilingual support",
-    trustMultiBody: "Study in English, Portuguese or Spanish — more languages coming soon.",
+    trustMultiBody: "Study in English, Portuguese or Spanish, more languages coming soon.",
     trustSaveTitle: "Progress saved",
     trustSaveBody: "Your progress is saved automatically in the browser.",
     trustOfficialTitle: "Based on official rules",
@@ -112,7 +113,7 @@ export const t = {
     // States
     stateAvailable: "Available now",
     comingSoon: "Coming soon",
-    statesMoreNote: "More states coming soon —",
+    statesMoreNote: "More states coming soon:",
     statesMoreLink: "sign up to be notified",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "What learners say",
@@ -132,7 +133,7 @@ export const t = {
     sectionEyebrowTrust: "Why KangaLearner",
     sectionEyebrowTopics: "What you'll master",
     howStep1Title: "Study by topic",
-    howStep1DescCard: "19 road rule topics — signs, speed limits, give way, alcohol laws and more.",
+    howStep1DescCard: "19 road rule topics, signs, speed limits, give way, alcohol laws and more.",
     howStep2Title: "Take a mock test",
     howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT WA learner test.",
     howStep3Title: "Track your progress",
@@ -180,7 +181,7 @@ export const t = {
     resourcesTitle: "WA licence resources and next steps",
     resourcesSub:
       "A plain-language hub for the learner theory test, driving hours, HPT, PDA and trusted community links. Use it alongside official Transport WA sources.",
-    resourcesWaOnly: "WA resources only — other states coming soon.",
+    resourcesWaOnly: "WA resources only, other states coming soon.",
     resourcesStudyGuide: "Study guide",
     resourcesPracticeNow: "Practise questions",
 
@@ -194,7 +195,7 @@ export const t = {
     nextStepTitle: "Recommended next step",
     nextStepReviewWrong: "Review your wrong answers",
     nextStepFinishUnanswered: "Answer unanswered questions",
-    nextStepTakeMock: "You're ready — take the mock test!",
+    nextStepTakeMock: "You're ready, take the mock test!",
     nextStepEmpty: "Start practising to get a recommendation.",
     resetConfirm: "Reset all progress? This cannot be undone.",
     progressCloudNote:
@@ -229,7 +230,7 @@ export const t = {
     dashNoAttemptsForStatePrefix: "No attempts found for",
     dashNoAttemptsForStateSuffix: "Practice questions from this state to see progress here.",
     dashWeeklyActivity: "Weekly activity",
-    dashNoWeeklyActivity: "No activity yet — start practising to see your trend.",
+    dashNoWeeklyActivity: "No activity yet, start practising to see your trend.",
     dashChartNoActivity: "No activity",
     dashContinuePractice: "Continue practice →",
     dashTakeMockTest: "Take mock test",
@@ -237,10 +238,10 @@ export const t = {
     dashMoreQuestionsRecommendations: "Answer more questions to get personalised recommendations.",
     dashPractiseArrow: "Practise →",
     dashProgressByTopic: "Progress by topic",
-    dashNoTopicData: "No data yet — answer some questions in Practice mode.",
+    dashNoTopicData: "No data yet, answer some questions in Practice mode.",
     dashPractise: "Practise",
     dashMockTestHistory: "Mock test history",
-    dashNoMockTestsTryPrefix: "No mock tests yet — try the",
+    dashNoMockTestsTryPrefix: "No mock tests yet, try the",
     dashMockTestMode: "Mock Test mode",
     dashSignedInAs: "Signed in as",
     dashSignOutFromNav: "sign out from nav",
@@ -291,7 +292,7 @@ export const t = {
     accountPasswordMinLength: "New password must be at least 8 characters.",
     accountPasswordMismatch: "Passwords don't match.",
     accountPasswordChanged: "Password changed successfully.",
-    accountDangerSub: "Irreversible actions — proceed with caution.",
+    accountDangerSub: "Irreversible actions, proceed with caution.",
     accountDeleteTitle: "Delete account",
     accountDeleteDesc:
       "This will permanently delete your account and all progress data. This action cannot be undone.",
@@ -307,7 +308,7 @@ export const t = {
     accountUploadFailed: "Upload failed",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Pass your WA learner test — in English, Portuguese or Spanish.",
+    footerTagline: "Pass your WA learner test, in English, Portuguese or Spanish.",
     footerProductTitle: "Product",
     footerCompanyTitle: "Company",
     footerLegalTitle: "Legal",
@@ -321,7 +322,7 @@ export const t = {
     resCommunityDesc:
       "Connect with other immigrants in Perth who are also getting their WA licence.",
     resStudyTitle: "Free Study Guides",
-    resStudyDesc: "Official DoT resources — free to download.",
+    resStudyDesc: "Official DoT resources, free to download.",
     resJourneyTitle: "Your Road to a Full Licence",
     resChecklistTitle: "Test Day Checklist",
     footerCopyright: "© 2026 KangaLearner. All rights reserved.",
@@ -433,14 +434,15 @@ export const t = {
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Para imigrantes na Western Australia",
-    heroTitle: "Passe na prova de learner de WA — no seu idioma.",
+    heroTitle: "Passe na prova de learner de WA, no seu idioma.",
     heroDesc:
-      "Pratique todos os tópicos cobrados na prova de learner licence do DoT WA. " +
-      "Inglês, Português ou Espanhol. Simulado gratuito incluído.",
+      "Questões no estilo da prova real, em inglês, português ou espanhol. " +
+      "Estude, pratique e chegue no teste do DoT se sentindo pronto.",
     heroCta1: "Começar a praticar",
+    heroCtaNote: "Grátis. Sem precisar de cadastro.",
     heroCta2: "Tentar o simulado",
     heroBadge1: "Gratuito para sempre",
-    heroBadge2: "Regras de WA",
+    heroBadge2: "300+ questões estilo prova",
     heroBadge3: "English · Português · Español",
     heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
     // Features
@@ -455,7 +457,7 @@ export const t = {
     // Trust
     trustTitle: "Por que KangaLearner",
     trustMultiTitle: "Suporte multilíngue",
-    trustMultiBody: "Estude em inglês, português e espanhol — mais idiomas em breve.",
+    trustMultiBody: "Estude em inglês, português e espanhol, mais idiomas em breve.",
     trustSaveTitle: "Progresso salvo",
     trustSaveBody: "Seu progresso é salvo automaticamente no navegador.",
     trustOfficialTitle: "Baseado em regras oficiais",
@@ -478,7 +480,7 @@ export const t = {
     // States
     stateAvailable: "Disponível agora",
     comingSoon: "Em breve",
-    statesMoreNote: "Mais estados em breve —",
+    statesMoreNote: "Mais estados em breve:",
     statesMoreLink: "cadastre-se para ser notificado",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "O que os alunos dizem",
@@ -498,7 +500,7 @@ export const t = {
     sectionEyebrowTopics: "O que você vai dominar",
     howStep1Title: "Estude por tópico",
     howStep1DescCard:
-      "19 tópicos das regras de trânsito — placas, velocidade, preferência, álcool e mais.",
+      "19 tópicos das regras de trânsito, placas, velocidade, preferência, álcool e mais.",
     howStep2Title: "Faça um simulado",
     howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT WA.",
     howStep3Title: "Acompanhe seu progresso",
@@ -547,7 +549,7 @@ export const t = {
     resourcesTitle: "Recursos e proximos passos para a carteira em WA",
     resourcesSub:
       "Um hub em linguagem simples para prova teórica, horas de direção, HPT, PDA e links confiáveis da comunidade. Use junto com as fontes oficiais do Transport WA.",
-    resourcesWaOnly: "Recursos de WA — outros estados em breve.",
+    resourcesWaOnly: "Recursos de WA, outros estados em breve.",
     resourcesStudyGuide: "Guia de estudo",
     resourcesPracticeNow: "Praticar perguntas",
 
@@ -561,7 +563,7 @@ export const t = {
     nextStepTitle: "Próximo passo recomendado",
     nextStepReviewWrong: "Revise suas respostas erradas",
     nextStepFinishUnanswered: "Responda as perguntas não respondidas",
-    nextStepTakeMock: "Você está pronto — faça o simulado!",
+    nextStepTakeMock: "Você está pronto, faça o simulado!",
     nextStepEmpty: "Comece a praticar para receber uma recomendação.",
     resetConfirm: "Reiniciar todo o progresso? Esta ação não pode ser desfeita.",
     progressCloudNote:
@@ -596,7 +598,7 @@ export const t = {
     dashNoAttemptsForStatePrefix: "Nenhuma tentativa encontrada para",
     dashNoAttemptsForStateSuffix: "Pratique perguntas deste estado para ver o progresso aqui.",
     dashWeeklyActivity: "Atividade semanal",
-    dashNoWeeklyActivity: "Nenhuma atividade ainda — comece a praticar para ver sua tendência.",
+    dashNoWeeklyActivity: "Nenhuma atividade ainda, comece a praticar para ver sua tendência.",
     dashChartNoActivity: "Sem atividade",
     dashContinuePractice: "Continuar prática →",
     dashTakeMockTest: "Fazer simulado",
@@ -605,10 +607,10 @@ export const t = {
       "Responda mais perguntas para receber recomendações personalizadas.",
     dashPractiseArrow: "Praticar →",
     dashProgressByTopic: "Progresso por tópico",
-    dashNoTopicData: "Sem dados ainda — responda perguntas no modo Prática.",
+    dashNoTopicData: "Sem dados ainda, responda perguntas no modo Prática.",
     dashPractise: "Praticar",
     dashMockTestHistory: "Histórico de simulados",
-    dashNoMockTestsTryPrefix: "Nenhum simulado ainda — experimente o",
+    dashNoMockTestsTryPrefix: "Nenhum simulado ainda, experimente o",
     dashMockTestMode: "modo Simulado",
     dashSignedInAs: "Conectado como",
     dashSignOutFromNav: "sair pelo menu",
@@ -659,7 +661,7 @@ export const t = {
     accountPasswordMinLength: "A nova senha deve ter pelo menos 8 caracteres.",
     accountPasswordMismatch: "As senhas não coincidem.",
     accountPasswordChanged: "Senha alterada com sucesso.",
-    accountDangerSub: "Ações irreversíveis — proceda com cautela.",
+    accountDangerSub: "Ações irreversíveis, proceda com cautela.",
     accountDeleteTitle: "Excluir conta",
     accountDeleteDesc:
       "Isso excluirá permanentemente sua conta e todos os dados de progresso. Esta ação não pode ser desfeita.",
@@ -675,7 +677,7 @@ export const t = {
     accountUploadFailed: "Falha no envio",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Passe na prova de learner de WA — em inglês, português ou espanhol.",
+    footerTagline: "Passe na prova de learner de WA, em inglês, português ou espanhol.",
     footerProductTitle: "Produto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
@@ -689,7 +691,7 @@ export const t = {
     resCommunityDesc:
       "Conecte-se com outros imigrantes em Perth que também estão tirando carteira em WA.",
     resStudyTitle: "Guias de Estudo Gratuitos",
-    resStudyDesc: "Recursos oficiais do DoT — gratuitos para download.",
+    resStudyDesc: "Recursos oficiais do DoT, gratuitos para download.",
     resJourneyTitle: "Seu Caminho para a Carteira Completa",
     resChecklistTitle: "Checklist do Dia da Prova",
     footerCopyright: "© 2026 KangaLearner. Todos os direitos reservados.",
@@ -801,14 +803,15 @@ export const t = {
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Para inmigrantes en Western Australia",
-    heroTitle: "Aprueba el examen learner de WA — en tu idioma.",
+    heroTitle: "Aprueba el examen learner de WA, en tu idioma.",
     heroDesc:
-      "Practica todos los temas evaluados en el examen learner licence del DoT WA. " +
-      "Inglés, Portugués o Español. Simulacro gratis incluido.",
+      "Preguntas al estilo del examen real, en inglés, portugués o español. " +
+      "Estudia, practica y llega al examen del DoT sintiéndote listo.",
     heroCta1: "Empezar a practicar",
+    heroCtaNote: "Gratis. Sin necesidad de registro.",
     heroCta2: "Probar el simulacro",
     heroBadge1: "Gratis para siempre",
-    heroBadge2: "Reglas de tránsito WA",
+    heroBadge2: "300+ preguntas estilo examen",
     heroBadge3: "English · Português · Español",
     heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
     // Features
@@ -823,7 +826,7 @@ export const t = {
     // Trust
     trustTitle: "¿Por qué KangaLearner?",
     trustMultiTitle: "Soporte multilingüe",
-    trustMultiBody: "Estudia en inglés, portugués o español — más idiomas próximamente.",
+    trustMultiBody: "Estudia en inglés, portugués o español, más idiomas próximamente.",
     trustSaveTitle: "Progreso guardado",
     trustSaveBody: "Tu progreso se guarda automáticamente en el navegador.",
     trustOfficialTitle: "Basado en reglas oficiales",
@@ -846,7 +849,7 @@ export const t = {
     // States
     stateAvailable: "Disponible ahora",
     comingSoon: "Próximamente",
-    statesMoreNote: "Más estados próximamente —",
+    statesMoreNote: "Más estados próximamente:",
     statesMoreLink: "regístrate para ser notificado",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "Lo que dicen los estudiantes",
@@ -866,7 +869,7 @@ export const t = {
     sectionEyebrowTopics: "Lo que vas a dominar",
     howStep1Title: "Estudia por tema",
     howStep1DescCard:
-      "19 temas de normas de tránsito — señales, velocidades, ceder el paso, alcohol y más.",
+      "19 temas de normas de tránsito, señales, velocidades, ceder el paso, alcohol y más.",
     howStep2Title: "Haz un simulacro",
     howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT WA.",
     howStep3Title: "Sigue tu progreso",
@@ -915,7 +918,7 @@ export const t = {
     resourcesTitle: "Recursos y proximos pasos para la licencia en WA",
     resourcesSub:
       "Un hub en lenguaje simple para el examen teórico, horas de conducción, HPT, PDA y enlaces confiables de comunidad. Úsalo junto con las fuentes oficiales de Transport WA.",
-    resourcesWaOnly: "Recursos de WA — otros estados próximamente.",
+    resourcesWaOnly: "Recursos de WA, otros estados próximamente.",
     resourcesStudyGuide: "Guía de estudio",
     resourcesPracticeNow: "Practicar preguntas",
 
@@ -929,7 +932,7 @@ export const t = {
     nextStepTitle: "Próximo paso recomendado",
     nextStepReviewWrong: "Revisa tus respuestas incorrectas",
     nextStepFinishUnanswered: "Responde las preguntas sin responder",
-    nextStepTakeMock: "Estás listo — ¡haz el simulacro!",
+    nextStepTakeMock: "Estás listo, ¡haz el simulacro!",
     nextStepEmpty: "Empieza a practicar para recibir una recomendación.",
     resetConfirm: "¿Reiniciar todo el progreso? Esta acción no se puede deshacer.",
     progressCloudNote:
@@ -964,7 +967,7 @@ export const t = {
     dashNoAttemptsForStatePrefix: "No se encontraron intentos para",
     dashNoAttemptsForStateSuffix: "Practica preguntas de este estado para ver el progreso aquí.",
     dashWeeklyActivity: "Actividad semanal",
-    dashNoWeeklyActivity: "Sin actividad aún — empieza a practicar para ver tu tendencia.",
+    dashNoWeeklyActivity: "Sin actividad aún, empieza a practicar para ver tu tendencia.",
     dashChartNoActivity: "Sin actividad",
     dashContinuePractice: "Continuar práctica →",
     dashTakeMockTest: "Hacer simulacro",
@@ -973,10 +976,10 @@ export const t = {
       "Responde más preguntas para obtener recomendaciones personalizadas.",
     dashPractiseArrow: "Practicar →",
     dashProgressByTopic: "Progreso por tema",
-    dashNoTopicData: "Sin datos aún — responde preguntas en el modo Práctica.",
+    dashNoTopicData: "Sin datos aún, responde preguntas en el modo Práctica.",
     dashPractise: "Practicar",
     dashMockTestHistory: "Historial de simulacros",
-    dashNoMockTestsTryPrefix: "Sin simulacros aún — prueba el",
+    dashNoMockTestsTryPrefix: "Sin simulacros aún, prueba el",
     dashMockTestMode: "modo Simulacro",
     dashSignedInAs: "Sesión iniciada como",
     dashSignOutFromNav: "cerrar sesión desde el menú",
@@ -1027,7 +1030,7 @@ export const t = {
     accountPasswordMinLength: "La nueva contraseña debe tener al menos 8 caracteres.",
     accountPasswordMismatch: "Las contraseñas no coinciden.",
     accountPasswordChanged: "Contraseña cambiada correctamente.",
-    accountDangerSub: "Acciones irreversibles — procede con precaución.",
+    accountDangerSub: "Acciones irreversibles, procede con precaución.",
     accountDeleteTitle: "Eliminar cuenta",
     accountDeleteDesc:
       "Esto eliminará permanentemente tu cuenta y todos los datos de progreso. Esta acción no se puede deshacer.",
@@ -1043,7 +1046,7 @@ export const t = {
     accountUploadFailed: "Error al subir",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Aprueba el examen learner de WA — en inglés, portugués o español.",
+    footerTagline: "Aprueba el examen learner de WA, en inglés, portugués o español.",
     footerProductTitle: "Producto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
@@ -1057,7 +1060,7 @@ export const t = {
     resCommunityDesc:
       "Conéctate con otros inmigrantes en Perth que también están sacando su licencia en WA.",
     resStudyTitle: "Guías de Estudio Gratuitas",
-    resStudyDesc: "Recursos oficiales del DoT — gratuitos para descargar.",
+    resStudyDesc: "Recursos oficiales del DoT, gratuitos para descargar.",
     resJourneyTitle: "Tu Camino hacia la Licencia Completa",
     resChecklistTitle: "Lista de Verificación para el Día del Examen",
     footerCopyright: "© 2026 KangaLearner. Todos los derechos reservados.",
