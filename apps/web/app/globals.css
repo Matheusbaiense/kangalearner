@@ -687,6 +687,22 @@ a:focus-visible,
   padding: 16px;
   min-height: 500px;
 }
+.load-more-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--paper);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.load-more-btn:hover {
+  background: var(--green3);
+  border-color: rgba(46, 125, 91, 0.4);
+}
 
 /* Section divider between categories */
 .sec-head {
