@@ -4,7 +4,7 @@ import Link from "next/link";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
-import { BLOG_POSTS, getBlogStates } from "@/lib/blogPosts";
+import { PUBLISHED_BLOG_POSTS, getBlogStates } from "@/lib/blogPosts";
 import { tx } from "@/lib/i18n";
 import { AU_STATE_OPTIONS, type AuStateCode } from "@kanga/core";
 
@@ -19,7 +19,7 @@ export function BlogPageClient() {
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return BLOG_POSTS.filter((post) => {
+    return PUBLISHED_BLOG_POSTS.filter((post) => {
       if (stateFilter !== "all" && post.state !== stateFilter) return false;
       if (!q) return true;
       const haystack = `${tx(post.title, lang)} ${tx(post.excerpt, lang)}`.toLowerCase();
