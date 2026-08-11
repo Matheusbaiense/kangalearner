@@ -18,7 +18,7 @@ export default function AboutPage() {
       </p>
       <p style={{ color: "var(--muted2, #536778)", marginBottom: "1.25rem" }}>
         Content is structured from public state government sources. Always confirm rules with your
-        state's Department of Transport before your test.
+        state&apos;s Department of Transport before your test.
       </p>
       <p>
         <Link href="/" style={{ color: "var(--green)", fontWeight: 700 }}>
