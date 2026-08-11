@@ -45,6 +45,7 @@ export const t = {
     mockGuestBannerCta: "Sign up free",
     progress: "Progress",
     resources: "Resources",
+    blog: "Blog",
     dashboard: "Dashboard",
     signIn: "Sign in",
     account: "Account",
@@ -64,6 +65,17 @@ export const t = {
     learnBack: "← All topics",
     learnPractice: "Practise this topic →",
     learnAllTopics: "All practice questions →",
+
+    // ── Blog ──────────────────────────────────────────────
+    blogTitle: "Blog",
+    blogSub: "Guides for newcomers learning to drive in Australia.",
+    blogBack: "← All posts",
+    blogReadMore: "Read more →",
+    blogPublished: "Published",
+    blogSource: "Official source",
+    blogRelatedTitle: "Keep studying",
+    blogRelatedLearn: "Browse all learn topics →",
+    blogRelatedPractice: "Start free practice →",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "For immigrants across Australia",
@@ -415,6 +427,7 @@ export const t = {
     mockGuestBannerCta: "Criar conta grátis",
     progress: "Progresso",
     resources: "Recursos",
+    blog: "Blog",
     dashboard: "Painel",
     signIn: "Entrar",
     account: "Conta",
@@ -434,6 +447,17 @@ export const t = {
     learnBack: "← Todos os tópicos",
     learnPractice: "Praticar este tópico →",
     learnAllTopics: "Todas as perguntas →",
+
+    // ── Blog ──────────────────────────────────────────────
+    blogTitle: "Blog",
+    blogSub: "Guias para quem chegou agora e está aprendendo a dirigir na Austrália.",
+    blogBack: "← Todos os posts",
+    blogReadMore: "Ler mais →",
+    blogPublished: "Publicado em",
+    blogSource: "Fonte oficial",
+    blogRelatedTitle: "Continue estudando",
+    blogRelatedLearn: "Ver todos os tópicos de aprendizado →",
+    blogRelatedPractice: "Começar a praticar grátis →",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Para imigrantes em toda a Austrália",
@@ -787,6 +811,7 @@ export const t = {
     mockGuestBannerCta: "Crear cuenta gratis",
     progress: "Progreso",
     resources: "Recursos",
+    blog: "Blog",
     dashboard: "Panel",
     signIn: "Ingresar",
     account: "Cuenta",
@@ -806,6 +831,17 @@ export const t = {
     learnBack: "← Todos los temas",
     learnPractice: "Practicar este tema →",
     learnAllTopics: "Todas las preguntas →",
+
+    // ── Blog ──────────────────────────────────────────────
+    blogTitle: "Blog",
+    blogSub: "Guías para quienes recién llegaron y están aprendiendo a conducir en Australia.",
+    blogBack: "← Todas las publicaciones",
+    blogReadMore: "Leer más →",
+    blogPublished: "Publicado el",
+    blogSource: "Fuente oficial",
+    blogRelatedTitle: "Sigue estudiando",
+    blogRelatedLearn: "Ver todos los temas de aprendizaje →",
+    blogRelatedPractice: "Empezar a practicar gratis →",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Para inmigrantes en toda Australia",
