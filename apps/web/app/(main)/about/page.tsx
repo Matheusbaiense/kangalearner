@@ -16,11 +16,11 @@ export default function AboutPage() {
       <p style={{ color: "var(--muted2, #536778)", marginBottom: "1.25rem" }}>
         KangaLearner helps learner drivers in Australia prepare for their official learner test with
         practice questions, mock exams and multilingual support. Currently available for Western
-        Australia (WA). More states coming soon.
+        Australia (WA) and New South Wales (NSW). More states coming soon.
       </p>
       <p style={{ color: "var(--muted2, #536778)", marginBottom: "1.25rem" }}>
-        Content is structured from public WA government sources. Always confirm rules with the
-        Department of Transport before your test.
+        Content is structured from public state government sources. Always confirm rules with your
+        state&apos;s Department of Transport before your test.
       </p>
       <p>
         <Link href="/" style={{ color: "var(--green)", fontWeight: 700 }}>

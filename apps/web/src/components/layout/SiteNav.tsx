@@ -686,7 +686,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
                 >
                   {AU_STATE_OPTIONS.map((st) => (
                     <option key={st.code} value={st.code}>
-                      {st.code} — {st.name}
+                      {st.code} ({st.name})
                     </option>
                   ))}
                 </select>

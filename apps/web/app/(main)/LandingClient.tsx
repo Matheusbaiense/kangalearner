@@ -268,9 +268,9 @@ const FAQS = [
       es: "¿Cuándo estarán disponibles otros estados australianos?"
     },
     a: {
-      en: "WA and NSW are available now. We're working on VIC and QLD next — sign up to be notified when they launch.",
-      pt: "WA e NSW já estão disponíveis. Estamos trabalhando em VIC e QLD a seguir — cadastre-se para ser notificado quando lançarmos.",
-      es: "WA y NSW ya están disponibles. Estamos trabajando en VIC y QLD a continuación — regístrate para ser notificado cuando se lancen."
+      en: "WA and NSW are available now. We're working on VIC and QLD next, sign up to be notified when they launch.",
+      pt: "WA e NSW já estão disponíveis. Estamos trabalhando em VIC e QLD a seguir, cadastre-se para ser notificado quando lançarmos.",
+      es: "WA y NSW ya están disponibles. Estamos trabajando en VIC y QLD a continuación, regístrate para ser notificado cuando se lancen."
     }
   }
 ];
@@ -295,9 +295,9 @@ function SlideLearn({ lang }: { lang: UiLang }) {
     { Icon: ShieldCheck, label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" } }
   ];
   const hint = {
-    en: "19 topics · growing WA question bank",
-    pt: "19 tópicos · banco de perguntas WA em expansão",
-    es: "19 temas · banco de preguntas WA en expansión"
+    en: "19 topics · growing question bank across states",
+    pt: "19 tópicos · banco de perguntas em expansão por estado",
+    es: "19 temas · banco de preguntas en expansión por estado"
   };
   return (
     <>
