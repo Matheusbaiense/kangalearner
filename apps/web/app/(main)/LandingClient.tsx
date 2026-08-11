@@ -22,6 +22,7 @@ import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { LIVE_STATE_CODES } from "@kanga/core";
 
 /* ── Data ── */
 const FEATURES: {
@@ -101,13 +102,11 @@ const TRUST_ITEMS = [
   }
 ] as const;
 
-// Show WA + NSW (active) + 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
-const AU_STATES = [
-  { code: "WA", available: true },
-  { code: "NSW", available: true },
-  { code: "VIC", available: false },
-  { code: "QLD", available: false }
-];
+// Show live states + 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
+const AU_STATES = (["WA", "NSW", "VIC", "QLD"] as const).map((code) => ({
+  code,
+  available: (LIVE_STATE_CODES as readonly string[]).includes(code)
+}));
 
 const TESTIMONIALS = [
   {
