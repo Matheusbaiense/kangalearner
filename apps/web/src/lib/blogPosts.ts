@@ -1775,7 +1775,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Transport Victoria, Roundabouts",
       es: "Transport Victoria, Roundabouts"
     },
-    sourceUrl: "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/roundabouts",
+    sourceUrl:
+      "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/roundabouts",
     body: [
       {
         type: "paragraph",
@@ -1946,7 +1947,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Transport Victoria, School zones",
       es: "Transport Victoria, School zones"
     },
-    sourceUrl: "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/school-zones",
+    sourceUrl:
+      "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/school-zones",
     body: [
       {
         type: "paragraph",
@@ -2137,7 +2139,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Transport Victoria, Mobile phones and devices",
       es: "Transport Victoria, Mobile phones and devices"
     },
-    sourceUrl: "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/mobile-phones-and-devices",
+    sourceUrl:
+      "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/mobile-phones-and-devices",
     body: [
       {
         type: "paragraph",
@@ -2349,7 +2352,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Transport Victoria, Alcohol, drugs and driving",
       es: "Transport Victoria, Alcohol, drugs and driving"
     },
-    sourceUrl: "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/alcohol-drugs-and-driving",
+    sourceUrl:
+      "https://transport.vic.gov.au/road-and-active-transport/road-rules-and-safety/alcohol-drugs-and-driving",
     body: [
       {
         type: "paragraph",
@@ -3712,7 +3716,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Queensland Government, School zone speed limits and signs",
       es: "Queensland Government, School zone speed limits and signs"
     },
-    sourceUrl: "https://www.qld.gov.au/transport/safety/rules/schools/school-zone-speed-limits-and-signs",
+    sourceUrl:
+      "https://www.qld.gov.au/transport/safety/rules/schools/school-zone-speed-limits-and-signs",
     body: [
       {
         type: "paragraph",
@@ -5747,9 +5752,9 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "paragraph",
         text: {
-          en: "South Australia has run a 25 km/h \"when children present\" school zone system for years, and it has not gone away. Since 29 September 2025, the state has been adding a second, separate 40 km/h time based school speed limit on busier roads near schools that previously carried a limit of 50 km/h or more. The Department for Infrastructure and Transport is explicit that the new 40 km/h limit does not replace the 25 km/h zones. Both can apply on the same stretch of road, and they are triggered differently, so it is worth understanding each one on its own.",
-          pt: "A South Australia já opera há anos um sistema de zona escolar de 25 km/h \"quando há crianças presentes\", e ele continua valendo. Desde 29 de setembro de 2025, o estado vem acrescentando um segundo sistema, separado, de limite de velocidade escolar de 40 km/h por horário, em vias mais movimentadas perto de escolas que antes tinham limite de 50 km/h ou mais. O Department for Infrastructure and Transport deixa claro que o novo limite de 40 km/h não substitui as zonas de 25 km/h. Os dois podem valer no mesmo trecho de via, e são acionados de formas diferentes, então vale a pena entender cada um separadamente.",
-          es: "South Australia lleva años operando un sistema de zona escolar de 25 km/h \"cuando hay niños presentes\", y ese sistema sigue vigente. Desde el 29 de septiembre de 2025, el estado viene sumando un segundo sistema, separado, de límite de velocidad escolar de 40 km/h por horario, en vías más transitadas cerca de escuelas que antes tenían un límite de 50 km/h o más. El Department for Infrastructure and Transport aclara que el nuevo límite de 40 km/h no reemplaza las zonas de 25 km/h. Los dos pueden aplicar en el mismo tramo de vía, y se activan de formas distintas, así que vale la pena entender cada uno por separado."
+          en: 'South Australia has run a 25 km/h "when children present" school zone system for years, and it has not gone away. Since 29 September 2025, the state has been adding a second, separate 40 km/h time based school speed limit on busier roads near schools that previously carried a limit of 50 km/h or more. The Department for Infrastructure and Transport is explicit that the new 40 km/h limit does not replace the 25 km/h zones. Both can apply on the same stretch of road, and they are triggered differently, so it is worth understanding each one on its own.',
+          pt: 'A South Australia já opera há anos um sistema de zona escolar de 25 km/h "quando há crianças presentes", e ele continua valendo. Desde 29 de setembro de 2025, o estado vem acrescentando um segundo sistema, separado, de limite de velocidade escolar de 40 km/h por horário, em vias mais movimentadas perto de escolas que antes tinham limite de 50 km/h ou mais. O Department for Infrastructure and Transport deixa claro que o novo limite de 40 km/h não substitui as zonas de 25 km/h. Os dois podem valer no mesmo trecho de via, e são acionados de formas diferentes, então vale a pena entender cada um separadamente.',
+          es: 'South Australia lleva años operando un sistema de zona escolar de 25 km/h "cuando hay niños presentes", y ese sistema sigue vigente. Desde el 29 de septiembre de 2025, el estado viene sumando un segundo sistema, separado, de límite de velocidad escolar de 40 km/h por horario, en vías más transitadas cerca de escuelas que antes tenían un límite de 50 km/h o más. El Department for Infrastructure and Transport aclara que el nuevo límite de 40 km/h no reemplaza las zonas de 25 km/h. Los dos pueden aplicar en el mismo tramo de vía, y se activan de formas distintas, así que vale la pena entender cada uno por separado.'
         }
       },
       {
@@ -5859,7 +5864,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "My Licence South Australia, The Driver's Handbook, Mobile Phones While Driving",
       es: "My Licence South Australia, The Driver's Handbook, Mobile Phones While Driving"
     },
-    sourceUrl: "https://mylicence.sa.gov.au/roadrules/the-drivers-handbook/mobile_phones_while_driving",
+    sourceUrl:
+      "https://mylicence.sa.gov.au/roadrules/the-drivers-handbook/mobile_phones_while_driving",
     body: [
       {
         type: "paragraph",
