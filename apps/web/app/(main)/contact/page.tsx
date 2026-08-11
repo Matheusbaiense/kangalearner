@@ -1,6 +1,9 @@
 import Link from "next/link";
 
-export const metadata = { title: "Contact" };
+export const metadata = {
+  title: "Contact",
+  alternates: { canonical: "https://kangalearner.com.au/contact" }
+};
 
 export default function ContactPage() {
   return (
