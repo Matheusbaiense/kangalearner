@@ -76,6 +76,13 @@ export const t = {
     blogRelatedTitle: "Keep studying",
     blogRelatedLearn: "Browse all learn topics →",
     blogRelatedPractice: "Start free practice →",
+    blogSearchPlaceholder: "Search posts...",
+    blogFilterAll: "All states",
+    blogNoResults: "No posts match your search.",
+    blogHelpfulQuestion: "Was this post helpful?",
+    blogHelpfulYes: "Yes",
+    blogHelpfulNo: "No",
+    blogHelpfulThanks: "Thanks for the feedback!",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "For immigrants across Australia",
@@ -458,6 +465,13 @@ export const t = {
     blogRelatedTitle: "Continue estudando",
     blogRelatedLearn: "Ver todos os tópicos de aprendizado →",
     blogRelatedPractice: "Começar a praticar grátis →",
+    blogSearchPlaceholder: "Buscar posts...",
+    blogFilterAll: "Todos os estados",
+    blogNoResults: "Nenhum post encontrado.",
+    blogHelpfulQuestion: "Este post foi útil?",
+    blogHelpfulYes: "Sim",
+    blogHelpfulNo: "Não",
+    blogHelpfulThanks: "Obrigado pelo feedback!",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Para imigrantes em toda a Austrália",
@@ -842,6 +856,13 @@ export const t = {
     blogRelatedTitle: "Sigue estudiando",
     blogRelatedLearn: "Ver todos los temas de aprendizaje →",
     blogRelatedPractice: "Empezar a practicar gratis →",
+    blogSearchPlaceholder: "Buscar publicaciones...",
+    blogFilterAll: "Todos los estados",
+    blogNoResults: "No se encontraron publicaciones.",
+    blogHelpfulQuestion: "¿Te sirvió este post?",
+    blogHelpfulYes: "Sí",
+    blogHelpfulNo: "No",
+    blogHelpfulThanks: "¡Gracias por tu opinión!",
 
     // ── Landing ───────────────────────────────────────────
     heroEyebrow: "Para inmigrantes en toda Australia",

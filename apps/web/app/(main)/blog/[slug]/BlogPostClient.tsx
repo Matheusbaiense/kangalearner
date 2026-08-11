@@ -5,6 +5,7 @@ import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import type { BlogPost } from "@/lib/blogPosts";
 import { tx } from "@/lib/i18n";
+import { ReactionButtons } from "./ReactionButtons";
 
 interface BlogPostClientProps {
   post: BlogPost;
@@ -73,6 +74,8 @@ export function BlogPostClient({ post }: BlogPostClientProps) {
             {tx(post.sourceLabel, lang)}
           </a>
         </p>
+
+        <ReactionButtons slug={post.slug} />
 
         <section
           style={{
