@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
-  title: "Practice | KangaLearner"
+  title: "Practice"
 };
 
 // "sim" is intentionally NOT a practice mode, the mock test lives at
