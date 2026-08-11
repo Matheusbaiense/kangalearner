@@ -3,7 +3,10 @@ import { LEARN_TOPICS } from "@/lib/learnTopics";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://kangalearner.com.au";
-  const now = new Date();
+  // ponytail: static content-revision date, not new Date() per request — a
+  // lastModified that changes on every crawl is a meaningless freshness
+  // signal to Google. Bump this when page content actually changes.
+  const now = new Date("2026-08-11T00:00:00Z");
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: base, lastModified: now, changeFrequency: "weekly", priority: 1.0 },
