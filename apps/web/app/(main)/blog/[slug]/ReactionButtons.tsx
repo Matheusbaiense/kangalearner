@@ -35,9 +35,11 @@ export function ReactionButtons({ slug }: { slug: string }) {
     setState((prev) =>
       prev
         ? {
-            helpful: prev.helpful + (reaction === "helpful" && prev.yourReaction !== "helpful" ? 1 : 0),
+            helpful:
+              prev.helpful + (reaction === "helpful" && prev.yourReaction !== "helpful" ? 1 : 0),
             notHelpful:
-              prev.notHelpful + (reaction === "not_helpful" && prev.yourReaction !== "not_helpful" ? 1 : 0),
+              prev.notHelpful +
+              (reaction === "not_helpful" && prev.yourReaction !== "not_helpful" ? 1 : 0),
             yourReaction: reaction
           }
         : prev

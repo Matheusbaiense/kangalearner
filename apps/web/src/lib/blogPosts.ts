@@ -222,7 +222,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Transport WA, Take your theory test",
       es: "Transport WA, Take your theory test"
     },
-    sourceUrl: "https://www.transport.wa.gov.au/licensing/drivers-licence/get-a-licence/car/take-theory-test",
+    sourceUrl:
+      "https://www.transport.wa.gov.au/licensing/drivers-licence/get-a-licence/car/take-theory-test",
     body: [
       {
         type: "paragraph",
@@ -363,7 +364,8 @@ export const BLOG_POSTS: BlogPost[] = [
       pt: "Transport WA, Moving from overseas",
       es: "Transport WA, Moving from overseas"
     },
-    sourceUrl: "https://www.transport.wa.gov.au/licensing/drivers-licence/visit-move-wa/moving-from-overseas",
+    sourceUrl:
+      "https://www.transport.wa.gov.au/licensing/drivers-licence/visit-move-wa/moving-from-overseas",
     body: [
       {
         type: "paragraph",
