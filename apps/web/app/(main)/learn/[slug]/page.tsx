@@ -19,13 +19,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const summary = topic.summary.en;
 
   return {
-    title: `${title} — WA Learner Test`,
+    title: `${title}, WA Learner Test`,
     description: `${summary.slice(0, 155)}`,
     alternates: {
       canonical: `https://kangalearner.com.au/learn/${slug}`
     },
     openGraph: {
-      title: `${title} — WA Learner Test Guide`,
+      title: `${title}, WA Learner Test Guide`,
       description: `${summary.slice(0, 155)}`,
       url: `https://kangalearner.com.au/learn/${slug}`
     }

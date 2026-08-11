@@ -1,5 +1,5 @@
 /* ══════════════════════════════════════════
-   KANGALEARNER — GLOBAL STYLES
+   KANGALEARNER, GLOBAL STYLES
    Design tokens + base reset + auth layout
 ══════════════════════════════════════════ */
 
@@ -532,7 +532,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   SITE NAV (legacy — kept for reference; currently unused)
+   SITE NAV (legacy, kept for reference; currently unused)
 ══════════════════════════════════════════ */
 
 .site-nav {
@@ -601,7 +601,7 @@ a:focus-visible,
   align-items: start;
 }
 .app-shell > * {
-  /* Grid children default to min-width:auto — wide content (topic chips,
+  /* Grid children default to min-width:auto, wide content (topic chips,
      question cards) blows the track out past the viewport on small screens,
      which is what pushed the page header against the left edge on mobile. */
   min-width: 0;
@@ -2140,7 +2140,7 @@ a:focus-visible,
   font-weight: 700;
 }
 
-/* Mobile nav — user identity block */
+/* Mobile nav, user identity block */
 .mobile-nav-user {
   display: flex;
   flex-direction: column;
@@ -2195,7 +2195,7 @@ a:focus-visible,
   background: var(--danger, #ef4444);
   color: #fff;
 }
-/* Sign-in link in mobile drawer — highlighted */
+/* Sign-in link in mobile drawer, highlighted */
 .mobile-nav-link.mobile-nav-signin {
   color: var(--accent, #2563eb);
   font-weight: 600;
@@ -2323,7 +2323,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   HOME — HERO + FEATURES
+   HOME, HERO + FEATURES
 ══════════════════════════════════════════ */
 
 /* Hero: dark navy section */
@@ -2365,14 +2365,8 @@ a:focus-visible,
   text-transform: uppercase;
   letter-spacing: 0.1em;
 }
-.hero-eyebrow::before {
-  content: "";
-  display: block;
-  width: 22px;
-  height: 2px;
-  background: rgba(68, 194, 255, 0.92);
-  flex-shrink: 0;
-}
+/* No decorative dash before the eyebrow: the owner wants zero dash marks
+   anywhere on the site (they read as AI-generated filler). */
 
 .hero-title {
   font-family: var(--font-display);
@@ -2416,7 +2410,23 @@ a:focus-visible,
   align-items: center;
   gap: 16px;
   flex-wrap: wrap;
-  margin-bottom: 28px;
+  margin-bottom: 10px;
+}
+/* Warm glow makes the primary action unmistakably THE action on the page. */
+.hero-actions .btn-primary {
+  box-shadow:
+    0 10px 34px rgba(82, 183, 136, 0.35),
+    0 2px 8px rgba(7, 26, 44, 0.3);
+}
+.hero-actions .btn-primary:hover {
+  box-shadow:
+    0 14px 44px rgba(82, 183, 136, 0.5),
+    0 2px 8px rgba(7, 26, 44, 0.3);
+}
+.hero-cta-note {
+  font-size: 0.8rem;
+  color: rgba(203, 213, 225, 0.75);
+  margin: 0 0 22px 4px;
 }
 
 .hero-proof {
@@ -2508,7 +2518,7 @@ a:focus-visible,
   border-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Neutral outline button — works on light and dark card backgrounds */
+/* Neutral outline button, works on light and dark card backgrounds */
 .btn-ghost-light {
   background: transparent;
   color: var(--ink);
@@ -2523,7 +2533,7 @@ a:focus-visible,
   cursor: not-allowed;
 }
 
-/* Text-only ghost — borderless, subdued */
+/* Text-only ghost, borderless, subdued */
 .btn-ghost {
   background: transparent;
   color: var(--muted2);
@@ -3093,7 +3103,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   MOCK TEST — SETUP + PLACEHOLDERS
+   MOCK TEST, SETUP + PLACEHOLDERS
 ══════════════════════════════════════════ */
 
 .container {
@@ -3448,67 +3458,6 @@ a:focus-visible,
   text-align: center;
 }
 
-/* ── How it works strip ── */
-.how-strip {
-  background: var(--surface-page, #f8fafb);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
-  padding: 22px 28px;
-}
-.how-strip-inner {
-  max-width: 860px;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-.how-step {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  min-width: 200px;
-  max-width: 240px;
-}
-.how-step-num {
-  width: 32px;
-  height: 32px;
-  flex-shrink: 0;
-  border-radius: 50%;
-  background: var(--green, #2e7d5b);
-  color: white;
-  font-size: 0.85rem;
-  font-weight: 800;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  line-height: 1;
-}
-.how-step-body {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-.how-step-label {
-  font-size: 0.85rem;
-  font-weight: 800;
-  color: #0f1a2e;
-  line-height: 1.2;
-}
-.how-step-desc {
-  font-size: 0.72rem;
-  color: #64748b;
-  line-height: 1.35;
-}
-.how-arrow {
-  font-size: 1.1rem;
-  color: var(--border, #cbd5e1);
-  flex-shrink: 0;
-  padding: 0 4px;
-}
-
 .testimonials-section {
   padding: 64px 28px;
   background: var(--paper);
@@ -3532,15 +3481,7 @@ a:focus-visible,
   color: var(--green2);
   margin: 0 0 10px;
 }
-.section-eyebrow::before,
-.section-eyebrow::after {
-  content: "";
-  width: 22px;
-  height: 2px;
-  border-radius: 2px;
-  background: var(--green2);
-  opacity: 0.55;
-}
+/* No decorative dashes around the eyebrow (site-wide no-dash rule). */
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 3vw, 2.2rem);
@@ -3732,7 +3673,7 @@ a:focus-visible,
   margin: 0 auto;
 }
 /* 2-col on purpose: the lead card takes the full first row, the two
-   supporting cards split the second — no orphan cell. */
+   supporting cards split the second, no orphan cell. */
 .trust-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -4109,7 +4050,7 @@ a:focus-visible,
   flex: 1;
 }
 /* Real crossfade: incoming slide fades in while the outgoing one (ghost
-   layer) fades out on top — the card is never visibly empty. */
+   layer) fades out on top, the card is never visibly empty. */
 .slide-enter {
   animation: slideEnter var(--duration-normal) var(--ease-out) both;
 }
@@ -4444,7 +4385,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   TOPIC ICON (Lucide — replaces emoji)
+   TOPIC ICON (Lucide, replaces emoji)
 ══════════════════════════════════════════ */
 
 .topic-icon {
@@ -4466,7 +4407,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   TRUST ICON (Lucide — replaces emoji)
+   TRUST ICON (Lucide, replaces emoji)
 ══════════════════════════════════════════ */
 
 .trust-icon-wrap {
@@ -4495,7 +4436,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   PROOF BAR — 4th item highlight
+   PROOF BAR, 4th item highlight
 ══════════════════════════════════════════ */
 
 @media (max-width: 600px) {
@@ -4505,15 +4446,6 @@ a:focus-visible,
   }
   .slide-cat-track {
     width: 64px;
-  }
-  .how-arrow {
-    display: none;
-  }
-  .how-strip-inner {
-    gap: 16px;
-  }
-  .how-step {
-    min-width: 160px;
   }
 }
 @media (max-width: 900px) {
@@ -5072,7 +5004,7 @@ a:focus-visible,
   gap: 1.5rem;
   margin-top: 2rem;
 }
-/* Flat steps with big amber numerals — deliberately NOT another card grid. */
+/* Flat steps with big amber numerals, deliberately NOT another card grid. */
 .how-step-card {
   display: flex;
   flex-direction: column;
@@ -5475,7 +5407,7 @@ a:focus-visible,
 }
 
 /* The checklist panel always sits on a light mint background (--green3),
-   so its text/controls must use dark tokens regardless of theme — otherwise
+   so its text/controls must use dark tokens regardless of theme, otherwise
    dark-mode inherits a light --ink and renders white-on-light (unreadable). */
 .resource-checklist,
 .resource-checklist h2,
@@ -5645,7 +5577,7 @@ a:focus-visible,
 }
 
 /* ══════════════════════════════════════════
-   REDUCED MOTION — one global guarantee
+   REDUCED MOTION, one global guarantee
 ══════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {

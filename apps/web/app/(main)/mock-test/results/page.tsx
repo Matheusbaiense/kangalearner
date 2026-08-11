@@ -29,9 +29,9 @@ const RESULT_MSG = {
     es: "¡Felicidades! Pasaste el simulacro."
   },
   fail: {
-    en: "Keep practising — you need 80% to pass. Review wrong answers below.",
-    pt: "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas abaixo.",
-    es: "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas abajo."
+    en: "Keep practising, you need 80% to pass. Review wrong answers below.",
+    pt: "Continue praticando, você precisa de 80% para passar. Revise as respostas erradas abaixo.",
+    es: "Sigue practicando, necesitas 80% para aprobar. Revisa las respuestas incorrectas abajo."
   }
 };
 
@@ -51,9 +51,9 @@ const REVIEW = {
   es: "Revisar respuestas incorrectas"
 };
 const PERFECT = {
-  en: "Perfect score — no mistakes to review.",
-  pt: "Pontuação perfeita — sem erros para revisar.",
-  es: "Puntuación perfecta — sin errores para revisar."
+  en: "Perfect score, no mistakes to review.",
+  pt: "Pontuação perfeita, sem erros para revisar.",
+  es: "Puntuación perfecta, sin errores para revisar."
 };
 
 export default function MockTestResultsPage() {
@@ -87,7 +87,7 @@ export default function MockTestResultsPage() {
     return { rows, total, score, pct, pass };
   }, [session, QUESTIONS, questionsLoading]);
 
-  /* Save to Supabase (once) — authenticated users only */
+  /* Save to Supabase (once), authenticated users only */
   useEffect(() => {
     if (!session || !scored) return;
     if (!session.completedAtIso) return;
@@ -169,7 +169,7 @@ export default function MockTestResultsPage() {
             </div>
 
             <h1 style={{ marginTop: 10 }}>
-              {scored.pass ? s.pass : s.fail} — {scored.score}/{scored.total}
+              {scored.pass ? s.pass : s.fail}, {scored.score}/{scored.total}
             </h1>
 
             <p
