@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Terms of Use",
-  description: "KangaLearner terms of use for the WA learner test practice platform.",
+  description: "KangaLearner terms of use for the Australian learner test practice platform.",
   alternates: { canonical: "https://kangalearner.com.au/terms" }
 };
 
@@ -15,9 +15,9 @@ export default function TermsPage() {
       <h2>1. About KangaLearner</h2>
       <p>
         KangaLearner (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an educational platform to
-        help learner drivers in Western Australia prepare for the Department of Transport (DoT)
-        learner licence theory test. We are not affiliated with or endorsed by the Western
-        Australian government or the Department of Transport.
+        help learner drivers in Australia (currently Western Australia and New South Wales)
+        prepare for their state&apos;s learner licence theory test. We are not affiliated with or
+        endorsed by any state government or transport department.
       </p>
 
       <h2>2. Acceptance of Terms</h2>

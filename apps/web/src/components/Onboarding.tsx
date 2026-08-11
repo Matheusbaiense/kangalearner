@@ -17,10 +17,12 @@ const SUPPRESS_PATHS = [
   "/mock-test"
 ];
 
+const AVAILABLE_STATES = new Set(["WA", "NSW"]);
+
 const STATES = AU_STATE_OPTIONS.map((s) => ({
   key: s.code,
   label: s.name,
-  soon: s.code !== "WA"
+  soon: !AVAILABLE_STATES.has(s.code)
 }));
 
 const LANGS = [
