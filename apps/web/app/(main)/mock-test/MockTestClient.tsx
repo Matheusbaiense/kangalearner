@@ -31,6 +31,8 @@ const STATE_NAMES: Record<StateCode, string> = {
 
 const STATE_CODES = Object.keys(STATE_NAMES) as StateCode[];
 
+const STATE_CHANGED_EVENT = "kanga:state-changed";
+
 const PRACTICE_DESC = {
   en: "Explanation shown after each answer. Best for learning.",
   pt: "Explicação exibida após cada resposta. Melhor para aprender.",
@@ -70,6 +72,17 @@ export function MockTestClient() {
     const onLicenceChanged = () => setLicenceType(readStoredLicenceType());
     window.addEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
     return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
+  }, []);
+
+  // Stay in sync if state changes elsewhere (nav selector) while this page is open.
+  useEffect(() => {
+    const onStateChanged = (event: Event) => {
+      const code = (event as CustomEvent<string>).detail;
+      if (!code || !STATE_CODES.includes(code as StateCode)) return;
+      setSelectedState(code as StateCode);
+    };
+    window.addEventListener(STATE_CHANGED_EVENT, onStateChanged);
+    return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
   }, []);
 
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
