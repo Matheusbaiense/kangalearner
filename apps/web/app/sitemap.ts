@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { LEARN_TOPICS } from "@/lib/learnTopics";
-import { BLOG_POSTS } from "@/lib/blogPosts";
+import { PUBLISHED_BLOG_POSTS } from "@/lib/blogPosts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://kangalearner.com.au";
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((p) => ({
+  const blogRoutes: MetadataRoute.Sitemap = PUBLISHED_BLOG_POSTS.map((p) => ({
     url: `${base}/blog/${p.slug}`,
     lastModified: new Date(p.publishedAt),
     changeFrequency: "monthly" as const,

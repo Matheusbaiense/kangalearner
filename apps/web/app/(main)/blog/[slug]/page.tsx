@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import { headers } from "next/headers";
 import type { Metadata } from "next";
-import { findBlogPost, BLOG_POSTS } from "@/lib/blogPosts";
+import { findBlogPost, PUBLISHED_BLOG_POSTS } from "@/lib/blogPosts";
 import { BlogPostClient } from "./BlogPostClient";
 
 interface Props {
@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export function generateStaticParams() {
-  return BLOG_POSTS.map((p) => ({ slug: p.slug }));
+  return PUBLISHED_BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
 
 export default async function BlogPostPage({ params }: Props) {

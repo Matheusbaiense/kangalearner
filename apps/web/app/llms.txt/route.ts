@@ -1,5 +1,5 @@
 import { LEARN_TOPICS } from "@/lib/learnTopics";
-import { BLOG_POSTS } from "@/lib/blogPosts";
+import { PUBLISHED_BLOG_POSTS } from "@/lib/blogPosts";
 
 const BASE = "https://kangalearner.com.au";
 
@@ -8,7 +8,7 @@ export function GET() {
     (t) => `- [${t.title.en}](${BASE}/learn/${t.slug}): ${t.summary.en}`
   ).join("\n");
 
-  const blogLines = BLOG_POSTS.map(
+  const blogLines = PUBLISHED_BLOG_POSTS.map(
     (p) => `- [${p.title.en}](${BASE}/blog/${p.slug}): ${p.excerpt.en}`
   ).join("\n");
 
