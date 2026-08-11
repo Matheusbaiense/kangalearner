@@ -135,9 +135,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "au",
     quote: {
-      en: "The mock test mode is brilliant — I did it 3 times until I consistently got over 90%. Passed first go!",
-      pt: "O modo simulado é ótimo — fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
-      es: "El modo simulacro es brillante — lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
+      en: "The mock test mode is brilliant, I did it 3 times until I consistently got over 90%. Passed first go!",
+      pt: "O modo simulado é ótimo, fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
+      es: "El modo simulacro es brillante, lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
     }
   },
   {
@@ -165,9 +165,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "it",
     quote: {
-      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising — that's the difference.",
-      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar — essa é a diferença.",
-      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas — esa es la diferencia."
+      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising, that's the difference.",
+      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar, essa é a diferença.",
+      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas, esa es la diferencia."
     }
   },
   {
@@ -195,9 +195,9 @@ const TESTIMONIALS = [
     state: "WA",
     country: "mx",
     quote: {
-      en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the questions are almost identical to the official exam!",
-      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — as questões são quase idênticas à prova oficial!",
-      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!"
+      en: "Did 5 mock tests before the real one. Scored 100% on the actual test, the questions are almost identical to the official exam!",
+      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade, as questões são quase idênticas à prova oficial!",
+      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad, las preguntas son casi idénticas al oficial!"
     }
   },
   {
@@ -232,9 +232,9 @@ const FAQS = [
       es: "¿KangaLearner es gratuito?"
     },
     a: {
-      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress — no sign-up required to start.",
-      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso — não é necessário se cadastrar para começar.",
-      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso — no necesitas registrarte para empezar."
+      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress, no sign-up required to start.",
+      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso, não é necessário se cadastrar para começar.",
+      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso, no necesitas registrarte para empezar."
     }
   },
   {
@@ -268,9 +268,9 @@ const FAQS = [
       es: "¿Cuándo estarán disponibles otros estados australianos?"
     },
     a: {
-      en: "We're working on NSW, VIC, and QLD — sign up to be notified when they launch.",
-      pt: "Estamos trabalhando em NSW, VIC e QLD — cadastre-se para ser notificado quando lançarmos.",
-      es: "Estamos trabajando en NSW, VIC y QLD — regístrate para ser notificado cuando se lancen."
+      en: "We're working on NSW, VIC, and QLD, sign up to be notified when they launch.",
+      pt: "Estamos trabalhando em NSW, VIC e QLD, cadastre-se para ser notificado quando lançarmos.",
+      es: "Estamos trabajando en NSW, VIC y QLD, regístrate para ser notificado cuando se lancen."
     }
   }
 ];
@@ -497,7 +497,7 @@ function SlideProgress({ lang }: { lang: UiLang }) {
 
 function HeroSlideshow({ lang }: { lang: UiLang }) {
   const [slideIdx, setSlideIdx] = useState(0);
-  // Previous slide kept mounted briefly so slides CROSSFADE — the old
+  // Previous slide kept mounted briefly so slides CROSSFADE, the old
   // hide→swap→show approach left the card visibly empty for 280ms.
   const [prevIdx, setPrevIdx] = useState<number | null>(null);
 
@@ -554,7 +554,7 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
   );
 }
 
-/* ── Section header (eyebrow + display title — one voice for every section) ── */
+/* ── Section header (eyebrow + display title, one voice for every section) ── */
 function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
   return (
     <div className="section-head">
@@ -672,6 +672,7 @@ export function LandingClient() {
                 {s.heroCta2}
               </Link>
             </div>
+            <p className="hero-cta-note">{s.heroCtaNote}</p>
             <div className="hero-proof">
               <span className="hero-proof-dot" />
               {s.heroProof}
@@ -764,7 +765,7 @@ export function LandingClient() {
             ))}
           </div>
           <p className="states-more-note">
-            {s.statesMoreNote ?? "More states coming soon —"}{" "}
+            {s.statesMoreNote ?? "More states coming soon:"}{" "}
             <Link href="/auth/signup" className="states-more-link">
               {s.statesMoreLink ?? "sign up to be notified"}
             </Link>
