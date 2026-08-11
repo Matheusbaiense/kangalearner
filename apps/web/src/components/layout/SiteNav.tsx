@@ -18,7 +18,8 @@ const NAV_LINKS = [
   { href: "/mock-test", key: "mockTest" },
   { href: "/progress", key: "progress", requiresAuth: true },
   { href: "/dashboard", key: "dashboard", requiresAuth: true },
-  { href: "/resources", key: "resources" }
+  { href: "/resources", key: "resources" },
+  { href: "/blog", key: "blog" }
 ] as const;
 
 const LANGUAGES = [
