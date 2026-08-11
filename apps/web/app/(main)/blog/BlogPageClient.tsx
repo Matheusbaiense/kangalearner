@@ -19,9 +19,7 @@ export function BlogPageClient() {
           <Link key={post.slug} href={`/blog/${post.slug}`} className="topic-card">
             <IconBadge icon={Icons[post.icon]} tone="brand" className="topic-icon" />
             <strong>{tx(post.title, lang)}</strong>
-            <span style={{ fontSize: ".8rem", lineHeight: 1.35 }}>
-              {tx(post.excerpt, lang)}
-            </span>
+            <span style={{ fontSize: ".8rem", lineHeight: 1.35 }}>{tx(post.excerpt, lang)}</span>
           </Link>
         ))}
       </div>
