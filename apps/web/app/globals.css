@@ -3441,6 +3441,106 @@ a:focus-visible,
   margin-top: 14px;
 }
 
+/* ── Exam focus mode ── */
+html.exam-focus .site-header,
+html.exam-focus .site-footer {
+  display: none;
+}
+
+.exam-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.exam-topbar img {
+  display: block;
+  height: 26px;
+  width: auto;
+}
+.exam-topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.exam-exit {
+  min-height: 38px;
+  padding: 0 14px;
+  font-size: 0.84rem;
+}
+
+.exam-timer {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.exam-timer-time {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+.exam-timer-ring {
+  transform: rotate(-90deg);
+}
+.exam-timer-ring circle {
+  fill: none;
+}
+.exam-timer-ring .ring-bg {
+  stroke: var(--paper3);
+}
+.exam-timer-ring .ring-fg {
+  stroke: var(--green2);
+  transition: stroke-dashoffset 1s linear;
+}
+.exam-timer.warn .exam-timer-time,
+.exam-timer.warn .ring-fg {
+  color: var(--orange);
+  stroke: var(--orange);
+}
+.exam-timer.danger .exam-timer-time,
+.exam-timer.danger .ring-fg {
+  color: var(--red);
+  stroke: var(--red);
+}
+.exam-timer.danger {
+  animation: examPulse 1s ease-in-out infinite;
+}
+@keyframes examPulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.55;
+  }
+}
+
+.exam-pbar {
+  height: 4px;
+  margin: 0 0 14px;
+}
+.exam-pbar .pbar-fill {
+  background: var(--green2);
+}
+
+.mock-mode-option:disabled {
+  cursor: default;
+}
+.mock-mode-option:disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
 /* ══════════════════════════════════════════
    LEARN + RESOURCES + ONBOARDING
 ══════════════════════════════════════════ */
