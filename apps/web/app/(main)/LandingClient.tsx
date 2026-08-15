@@ -22,6 +22,7 @@ import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { LIVE_STATE_CODES } from "@kanga/core";
 
 /* ── Data ── */
 const FEATURES: {
@@ -101,13 +102,11 @@ const TRUST_ITEMS = [
   }
 ] as const;
 
-// Show WA + NSW (active) + 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
-const AU_STATES = [
-  { code: "WA", available: true },
-  { code: "NSW", available: true },
-  { code: "VIC", available: false },
-  { code: "QLD", available: false }
-];
+// Show live states + 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
+const AU_STATES = (["WA", "NSW", "VIC", "QLD"] as const).map((code) => ({
+  code,
+  available: (LIVE_STATE_CODES as readonly string[]).includes(code)
+}));
 
 const TESTIMONIALS = [
   {
@@ -295,9 +294,9 @@ function SlideLearn({ lang }: { lang: UiLang }) {
     { Icon: ShieldCheck, label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" } }
   ];
   const hint = {
-    en: "19 topics · growing WA question bank",
-    pt: "19 tópicos · banco de perguntas WA em expansão",
-    es: "19 temas · banco de preguntas WA en expansión"
+    en: "19 topics · growing question bank across states",
+    pt: "19 tópicos · banco de perguntas em expansão por estado",
+    es: "19 temas · banco de preguntas en expansión por estado"
   };
   return (
     <>

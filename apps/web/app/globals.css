@@ -157,6 +157,12 @@ html {
   scroll-padding-top: var(--header-height);
 }
 
+html {
+  /* Site-wide safety net: no page should ever grow a horizontal scrollbar.
+     `clip` (not `hidden`) so it doesn't force overflow-y into a scroll
+     container and break the sticky header, same choice as .page-root below. */
+  overflow-x: clip;
+}
 body {
   font-family: var(--font-body);
   background:
@@ -168,6 +174,7 @@ body {
   line-height: var(--type-leading-body);
   font-size: 15px;
   min-height: 100vh;
+  overflow-x: clip;
 }
 
 /* Decorative background orbs */
@@ -680,6 +687,22 @@ a:focus-visible,
   padding: 16px;
   min-height: 500px;
 }
+.load-more-btn {
+  width: 100%;
+  margin-top: 8px;
+  padding: 12px;
+  background: var(--paper);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--green);
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.load-more-btn:hover {
+  background: var(--green3);
+  border-color: rgba(46, 125, 91, 0.4);
+}
 
 /* Section divider between categories */
 .sec-head {
@@ -773,12 +796,20 @@ a:focus-visible,
   font-style: italic;
 }
 .sign-box {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   background: var(--paper2);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   padding: 10px;
   margin-bottom: 12px;
+}
+.sign-box img {
+  max-width: 100%;
+  max-height: 240px;
+  width: auto;
+  height: auto;
 }
 .img-cap {
   font-size: 0.7rem;
@@ -1657,7 +1688,12 @@ a:focus-visible,
   padding: 0 28px;
   height: 100%;
   display: grid;
-  grid-template-columns: minmax(210px, auto) 1fr auto;
+  /* minmax(0, 1fr), not a bare 1fr: a bare 1fr track refuses to shrink below
+     its content's min-content size, so nowrap nav links could push the
+     right-hand controls (incl. account/sign-in) past the viewport edge.
+     minmax(0, 1fr) lets this track actually shrink; overflow: hidden below
+     clips its own overflowing links instead of spilling into nav-controls. */
+  grid-template-columns: minmax(210px, auto) minmax(0, 1fr) auto;
   align-items: center;
   gap: 32px;
 }
@@ -1689,6 +1725,9 @@ a:focus-visible,
   list-style: none;
   margin: 0;
   padding: 0;
+  /* Contain overflow within this track (see nav-shell grid comment above)
+     instead of letting unshrinkable nowrap links push nav-controls off-screen. */
+  overflow: hidden;
 }
 
 .site-header .nav-link {
@@ -1731,8 +1770,11 @@ a:focus-visible,
   gap: 12px;
 }
 
-/* State selector */
+/* State selector (custom dropdown, mirrors .lang-control) */
 .state-control {
+  position: relative;
+}
+.state-trigger {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1743,41 +1785,172 @@ a:focus-visible,
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.94);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
   transition:
     background 0.16s ease,
-    border-color 0.16s ease,
-    outline 0.15s ease;
-  cursor: pointer;
+    border-color 0.16s ease;
 }
-.state-control:hover {
+.state-trigger:hover {
   background: rgba(255, 255, 255, 0.105);
-}
-.state-control:focus-visible {
-  outline: 3px solid rgba(82, 183, 136, 0.6);
-  outline-offset: 2px;
   border-color: rgba(255, 255, 255, 0.24);
 }
-.state-control svg {
+.state-trigger:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.6);
+  outline-offset: 2px;
+}
+.state-trigger svg {
   width: 16px;
   height: 16px;
   flex-shrink: 0;
   opacity: 0.7;
 }
+.state-control.open .lang-arrow {
+  transform: rotate(180deg);
+}
+.state-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 260px;
+  background: var(--paper);
+  border-radius: 14px;
+  box-shadow:
+    0 22px 70px rgba(7, 26, 44, 0.16),
+    0 0 0 1px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-4px);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0s linear 0.15s;
+}
+.state-control.open .state-panel {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition:
+    opacity 0.15s ease,
+    transform 0.15s ease,
+    visibility 0s linear 0s;
+}
+.state-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background 0.12s;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+}
+.state-option:hover {
+  background: var(--surface-page);
+}
+.state-option.active {
+  background: var(--surface-page);
+  color: var(--liquid-green);
+}
+.state-option-code {
+  font-weight: 800;
+  min-width: 34px;
+}
+.state-option-name {
+  flex: 1;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+.state-option.active .state-option-name {
+  color: inherit;
+}
+.state-option-badge {
+  font-size: 0.6rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text-tertiary, var(--text-secondary));
+  background: var(--surface-page);
+  border-radius: var(--radius-xs);
+  padding: 2px 6px;
+  white-space: nowrap;
+}
+.state-option--soon {
+  cursor: not-allowed;
+}
+.state-option--soon:hover {
+  background: none;
+}
+.state-option--soon .state-option-code,
+.state-option--soon .state-option-name {
+  opacity: 0.45;
+}
+
+/* Licence type toggle (car / motorcycle segmented control) */
+.licence-toggle {
+  display: flex;
+  align-items: center;
+  height: 44px;
+  padding: 3px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.075);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+.licence-toggle-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 100%;
+  border-radius: 11px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition:
+    background 0.16s ease,
+    color 0.16s ease;
+}
+.licence-toggle-btn:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+.licence-toggle-btn.active {
+  background: rgba(255, 255, 255, 0.16);
+  color: white;
+}
+.licence-toggle-btn:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.6);
+  outline-offset: 2px;
+}
+
+/* Generic state <select> (e.g. dashboard progress filter), plain page
+   context rather than the dark nav pill, so it gets its own light styling. */
 .state-select {
   appearance: none;
-  background: transparent;
-  border: none;
-  color: inherit;
+  background: var(--paper)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23536778' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E")
+    no-repeat right 14px center;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 10px 36px 10px 12px;
+  color: var(--text-primary);
   font: inherit;
-  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
-  outline: none;
-  padding-right: 4px;
 }
-.state-select option {
-  background: #071a2c;
-  color: white;
+.state-select:focus-visible {
+  outline: 3px solid rgba(82, 183, 136, 0.6);
+  outline-offset: 2px;
 }
 
 /* Language selector */
@@ -2243,20 +2416,48 @@ a:focus-visible,
   background: var(--green3);
   color: var(--green);
 }
-.mobile-nav-state .state-control {
+.mobile-state-options {
   display: flex;
-  width: 100%;
-  background: var(--paper);
-  border-color: var(--border);
-  color: var(--ink);
-  box-shadow: none;
+  flex-direction: column;
+  gap: 0.4rem;
 }
-.mobile-nav-state .state-select {
-  width: 100%;
-}
-.mobile-nav-state .state-select option {
+.mobile-state-option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 12px;
   background: var(--paper);
   color: var(--ink);
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-align: left;
+}
+.mobile-state-option.active {
+  border-color: var(--green2);
+  background: var(--green3);
+  color: var(--green);
+}
+.mobile-state-option-code {
+  font-weight: 850;
+  min-width: 34px;
+}
+.mobile-state-option-name {
+  flex: 1;
+  font-weight: 600;
+  color: var(--muted);
+}
+.mobile-state-option.active .mobile-state-option-name {
+  color: inherit;
+}
+.mobile-state-option--soon {
+  cursor: not-allowed;
+}
+.mobile-state-option--soon .mobile-state-option-code,
+.mobile-state-option--soon .mobile-state-option-name {
+  opacity: 0.45;
 }
 
 @keyframes fade-in {
@@ -2276,20 +2477,17 @@ a:focus-visible,
   }
 }
 
-/* ── Show hamburger, hide main-nav on mobile ── */
-@media (max-width: 640px) {
+/* ── Show hamburger, hide main-nav + extra pills below desktop width ──
+   Main-nav (8 links, longer in pt/es) plus every pill (state, licence,
+   lang, theme, auth incl. name) needs real room. Below 1400px that combo
+   can outgrow nav-shell's own 1320px max-width and get clipped by the
+   overflow-x: clip safety net, hiding the account/sign-in control entirely
+   instead of just scrolling to it. The drawer guarantees everything stays
+   reachable regardless of viewport width, locale, or browser zoom. */
+@media (max-width: 1400px) {
   .nav-hamburger {
     display: flex;
   }
-}
-
-/* Responsive nav */
-@media (max-width: 960px) {
-  .site-header .nav-shell {
-    grid-template-columns: auto 1fr auto;
-  }
-}
-@media (max-width: 640px) {
   .site-header .main-nav {
     display: none;
   }
@@ -2299,7 +2497,8 @@ a:focus-visible,
     gap: 12px;
   }
   .site-header .nav-controls > .state-control,
-  .site-header .nav-controls > .lang-control {
+  .site-header .nav-controls > .lang-control,
+  .site-header .nav-controls > .licence-toggle {
     display: none;
   }
   /* On small screens hide user first-name in avatar button */

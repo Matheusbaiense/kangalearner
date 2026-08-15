@@ -23,7 +23,7 @@ export function welcomeEmailHtml({ name }: WelcomeEmailProps = {}): string {
           <tr>
             <td style="background-color:#071A2C;padding:32px 40px;text-align:center;">
               <h1 style="margin:0;color:#F5A623;font-size:24px;font-weight:700;letter-spacing:-0.5px;">KangaLearner</h1>
-              <p style="margin:8px 0 0;color:#94a3b8;font-size:13px;">Western Australia Learner Test Practice</p>
+              <p style="margin:8px 0 0;color:#94a3b8;font-size:13px;">Australian Learner Test Practice</p>
             </td>
           </tr>
           <!-- Body -->
@@ -31,13 +31,13 @@ export function welcomeEmailHtml({ name }: WelcomeEmailProps = {}): string {
             <td style="padding:40px 40px 32px;">
               <h2 style="margin:0 0 16px;color:#071A2C;font-size:20px;font-weight:700;">${greeting}! 🦘</h2>
               <p style="margin:0 0 16px;color:#334155;font-size:15px;line-height:1.6;">
-                Your KangaLearner account is ready. Start practising for your WA learner licence test — free, in English, Portuguese, or Spanish.
+                Your KangaLearner account is ready. Start practising for your learner licence test, free, in English, Portuguese, or Spanish.
               </p>
               <p style="margin:0 0 24px;color:#334155;font-size:15px;line-height:1.6;">
                 Here's what you can do right now:
               </p>
               <ul style="margin:0 0 24px;padding-left:20px;color:#334155;font-size:15px;line-height:1.8;">
-                <li>📚 Study all <strong>14 WA road rule topics</strong></li>
+                <li>📚 Study all <strong>road rule topics</strong></li>
                 <li>✅ Take a <strong>mock test</strong> with the same format as the real DoT exam</li>
                 <li>📊 Track your <strong>progress by topic</strong> from your dashboard</li>
               </ul>
@@ -74,5 +74,5 @@ export function welcomeEmailHtml({ name }: WelcomeEmailProps = {}): string {
 }
 
 export function welcomeEmailSubject(): string {
-  return "Welcome to KangaLearner — your WA learner test practice starts here";
+  return "Welcome to KangaLearner, your learner test practice starts here";
 }

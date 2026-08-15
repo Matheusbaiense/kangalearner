@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { SK } from "@/lib/storageKeys";
-import { AU_STATE_OPTIONS } from "@kanga/core";
+import { AU_STATE_OPTIONS, LIVE_STATE_CODES } from "@kanga/core";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Icons } from "@/components/icons";
 import {
@@ -25,7 +25,8 @@ const NAV_LINKS = [
   { href: "/mock-test", key: "mockTest" },
   { href: "/progress", key: "progress", requiresAuth: true },
   { href: "/dashboard", key: "dashboard", requiresAuth: true },
-  { href: "/resources", key: "resources" }
+  { href: "/resources", key: "resources" },
+  { href: "/blog", key: "blog" }
 ] as const;
 
 const LANGUAGES = [
@@ -74,7 +75,9 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   const { lang, setLang, s } = useLang();
   const [scrolled, setScrolled] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [stateOpen, setStateOpen] = useState(false);
   const langRef = useRef<HTMLDivElement>(null);
+  const stateRef = useRef<HTMLDivElement>(null);
   const userMenuRef = useRef<HTMLDivElement>(null);
   const [user, setUser] = useState<NavUser | null>(initialNavUser ?? null);
   const [authLoading, setAuthLoading] = useState(!initialNavUser);
@@ -117,6 +120,18 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
     setLicenceType(next);
   }
 
+  function changeState(code: string) {
+    try {
+      localStorage.setItem(SK.stateV2, code);
+      localStorage.setItem(SK.stateLegacy, code);
+    } catch {
+      /* noop */
+    }
+    setStateCode(code);
+    window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
+    router.refresh();
+  }
+
   // Close lang dropdown on outside click (mouse + touch)
   useEffect(() => {
     if (!langOpen) return;
@@ -132,6 +147,22 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       document.removeEventListener("touchstart", handler);
     };
   }, [langOpen]);
+
+  // Close state dropdown on outside click (mouse + touch)
+  useEffect(() => {
+    if (!stateOpen) return;
+    const handler = (e: Event) => {
+      if (stateRef.current && !stateRef.current.contains(e.target as Node)) {
+        setStateOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    document.addEventListener("touchstart", handler, { passive: true });
+    return () => {
+      document.removeEventListener("mousedown", handler);
+      document.removeEventListener("touchstart", handler);
+    };
+  }, [stateOpen]);
 
   // Close user menu on outside click (mouse + touch)
   useEffect(() => {
@@ -266,6 +297,7 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   }
 
   const currentLang = LANGUAGES.find((l) => l.code === lang) ?? LANGUAGES[0];
+  const currentState = AU_STATE_OPTIONS.find((st) => st.code === stateCode) ?? AU_STATE_OPTIONS[0];
 
   return (
     <>
@@ -319,29 +351,72 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
           {/* Right controls */}
           <div className="nav-controls">
             {/* State selector */}
-            <label className="state-control" aria-label="Select state">
-              <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
-              <select
-                className="state-select"
-                value={stateCode}
-                onChange={(e) => {
-                  const code = e.target.value;
-                  try {
-                    localStorage.setItem(SK.stateV2, code);
-                    localStorage.setItem(SK.stateLegacy, code);
-                  } catch {}
-                  setStateCode(code);
-                  window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
+            <div className={`state-control${stateOpen ? " open" : ""}`} ref={stateRef}>
+              <button
+                className="state-trigger"
+                onClick={() => setStateOpen((o) => !o)}
+                aria-expanded={stateOpen}
+                aria-haspopup="listbox"
+                aria-label="Select state"
+              >
+                <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
+                <span>{currentState.code}</span>
+                <span className="lang-arrow" aria-hidden="true">
+                  ▼
+                </span>
+              </button>
+              <div className="state-panel" role="listbox" aria-label="Select state">
+                {AU_STATE_OPTIONS.map((st) => {
+                  const isLive = LIVE_STATE_CODES.includes(st.code);
+                  return (
+                    <button
+                      key={st.code}
+                      className={`state-option${stateCode === st.code ? " active" : ""}${isLive ? "" : " state-option--soon"}`}
+                      role="option"
+                      aria-selected={stateCode === st.code}
+                      aria-disabled={!isLive}
+                      onClick={() => {
+                        if (!isLive) return;
+                        changeState(st.code);
+                        setStateOpen(false);
+                      }}
+                    >
+                      <span className="state-option-code">{st.code}</span>
+                      <span className="state-option-name">{st.name}</span>
+                      {!isLive && <span className="state-option-badge">{s.comingSoon}</span>}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Licence type toggle */}
+            <div className="licence-toggle" role="group" aria-label={s.vehicleType}>
+              <button
+                className={`licence-toggle-btn${licenceType === "car" ? " active" : ""}`}
+                type="button"
+                aria-pressed={licenceType === "car"}
+                onClick={() => {
+                  changeLicenceType("car");
                   router.refresh();
                 }}
+                title={s.carLicence}
               >
-                {AU_STATE_OPTIONS.map((s) => (
-                  <option key={s.code} value={s.code}>
-                    {s.code}
-                  </option>
-                ))}
-              </select>
-            </label>
+                <Icons.car size={16} aria-hidden="true" />
+              </button>
+              <button
+                className={`licence-toggle-btn${licenceType === "motorcycle" ? " active" : ""}`}
+                type="button"
+                aria-pressed={licenceType === "motorcycle"}
+                onClick={() => {
+                  changeLicenceType("motorcycle");
+                  router.refresh();
+                }}
+                title={s.motorcycleLicence}
+              >
+                <Icons.motorcycle size={16} aria-hidden="true" />
+              </button>
+            </div>
 
             {/* Licence type selector */}
             <label className="state-control" aria-label={s.vehicleType}>
@@ -665,32 +740,29 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
 
             <div className="mobile-nav-state">
               <span className="mobile-nav-section-label">State</span>
-              <label className="state-control" aria-label="Select state">
-                <Image src="/icons/map.svg" alt="" width={16} height={16} aria-hidden="true" />
-                <select
-                  className="state-select"
-                  value={stateCode}
-                  onChange={(e) => {
-                    const code = e.target.value;
-                    try {
-                      localStorage.setItem(SK.stateV2, code);
-                      localStorage.setItem(SK.stateLegacy, code);
-                    } catch {
-                      /* noop */
-                    }
-                    setStateCode(code);
-                    window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
-                    router.refresh();
-                    setMobileNavOpen(false);
-                  }}
-                >
-                  {AU_STATE_OPTIONS.map((st) => (
-                    <option key={st.code} value={st.code}>
-                      {st.code} — {st.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
+              <div className="mobile-state-options">
+                {AU_STATE_OPTIONS.map((st) => {
+                  const isLive = LIVE_STATE_CODES.includes(st.code);
+                  return (
+                    <button
+                      key={st.code}
+                      className={`mobile-state-option${stateCode === st.code ? " active" : ""}${isLive ? "" : " mobile-state-option--soon"}`}
+                      type="button"
+                      aria-pressed={stateCode === st.code}
+                      aria-disabled={!isLive}
+                      onClick={() => {
+                        if (!isLive) return;
+                        changeState(st.code);
+                        setMobileNavOpen(false);
+                      }}
+                    >
+                      <span className="mobile-state-option-code">{st.code}</span>
+                      <span className="mobile-state-option-name">{st.name}</span>
+                      {!isLive && <span className="state-option-badge">{s.comingSoon}</span>}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </nav>
         </>
