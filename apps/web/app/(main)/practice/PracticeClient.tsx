@@ -6,7 +6,7 @@ import { CATEGORIES, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
-import { IconBadge } from "@/components/ui/IconBadge";
+import { Kanga } from "@/components/brand/Kanga";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { useLang } from "@/contexts/LangContext";
 import { tx, type UiLang } from "@/lib/i18n";
@@ -695,7 +695,7 @@ function StudyView({
     return (
       <div className="empty-state">
         <div className="empty-icon">
-          <IconBadge icon={Icons.party} tone="success" size="lg" />
+          <Kanga pose="search" size={72} />
         </div>
         <div className="empty-title">{noQuestionsTitle}</div>
         <div className="empty-sub">{noQuestionsSub}</div>

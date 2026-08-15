@@ -1,37 +1,31 @@
-import Link from "next/link";
-import Image from "next/image";
+"use client";
 
-// Static server component on purpose: the 404 must render even when client
-// providers fail, so copy is inline in the three supported languages.
+import Link from "next/link";
+import { Kanga } from "@/components/brand/Kanga";
+import { useLang } from "@/contexts/LangContext";
+
 export default function NotFound() {
+  const { s } = useLang();
+
   return (
     <main
+      className="container section-pad"
       style={{
-        minHeight: "70vh",
+        minHeight: "70dvh",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
-        gap: 14,
-        padding: "48px 24px",
-        textAlign: "center"
+        textAlign: "center",
+        gap: 14
       }}
     >
-      <Image src="/brand/logo-mark.svg" alt="KangaLearner" width={72} height={72} />
-      <h1 style={{ fontFamily: "var(--font-display, sans-serif)", fontSize: "1.6rem", margin: 0 }}>
-        Page not found · Página não encontrada · Página no encontrada
-      </h1>
-      <p style={{ color: "var(--muted2, #536778)", maxWidth: 480, margin: 0 }}>
-        The page you are looking for hopped away. Try one of these instead:
-      </p>
-      <div style={{ display: "flex", gap: 12, flexWrap: "wrap", justifyContent: "center" }}>
-        <Link href="/" className="btn btn-secondary" style={{ textDecoration: "none" }}>
-          Home
-        </Link>
-        <Link href="/practice" className="btn btn-primary" style={{ textDecoration: "none" }}>
-          Practice · Praticar · Practicar
-        </Link>
-      </div>
+      <Kanga pose="search" size={140} />
+      <h1 style={{ margin: 0 }}>{s.notFoundTitle}</h1>
+      <p style={{ margin: 0, opacity: 0.7 }}>{s.notFoundSub}</p>
+      <Link href="/" className="dash-cta" style={{ marginTop: 8 }}>
+        {s.notFoundCta}
+      </Link>
     </main>
   );
 }
