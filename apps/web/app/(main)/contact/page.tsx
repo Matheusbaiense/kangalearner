@@ -18,8 +18,14 @@ export default function ContactPage() {
         to hear from you.
       </p>
       <p style={{ color: "var(--muted2, #536778)", marginBottom: "1.25rem" }}>
-        Contact options and a support form are coming soon. In the meantime, reach out via the
-        newsletter form in the footer and we&apos;ll get back to you.
+        Email us at{" "}
+        <a
+          href="mailto:hello@kangalearner.com.au"
+          style={{ color: "var(--green)", fontWeight: 700 }}
+        >
+          hello@kangalearner.com.au
+        </a>
+        . We usually reply within two business days, in English, Portuguese or Spanish.
       </p>
       <p>
         <Link href="/" style={{ color: "var(--green)", fontWeight: 700 }}>

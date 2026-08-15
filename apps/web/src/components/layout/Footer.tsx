@@ -105,6 +105,12 @@ export function Footer() {
       {/* ── Bottom bar ── */}
       <div className="footer-bottom">
         <span className="footer-copyright">{s.footerCopyright}</span>
+        <span className="footer-copyright">
+          Perth, WA ·{" "}
+          <a href="mailto:hello@kangalearner.com.au" style={{ color: "inherit" }}>
+            hello@kangalearner.com.au
+          </a>
+        </span>
       </div>
     </footer>
   );
