@@ -202,7 +202,7 @@ export default async function OgImage() {
               color: "#071A2C"
             }}
           >
-            You've got this.
+            {"You've got this."}
           </span>
 
           {/* Subheadline */}
