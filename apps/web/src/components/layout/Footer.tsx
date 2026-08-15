@@ -22,11 +22,7 @@ const LEGAL_LINKS = [
   }
 ] as const;
 
-interface FooterProps {
-  isLoggedIn?: boolean;
-}
-
-export function Footer({ isLoggedIn = false }: FooterProps) {
+export function Footer() {
   const { uiLang, s } = useLang();
 
   function pick(link: { en: string; pt: string; es: string }, lang: UiLang): string {
@@ -62,11 +58,9 @@ export function Footer({ isLoggedIn = false }: FooterProps) {
             <li>
               <Link href="/mock-test">{s.mockTest}</Link>
             </li>
-            {isLoggedIn && (
-              <li>
-                <Link href="/progress">{s.progress}</Link>
-              </li>
-            )}
+            <li>
+              <Link href="/progress">{s.progress}</Link>
+            </li>
             <li>
               <Link href="/resources">{s.resources}</Link>
             </li>
