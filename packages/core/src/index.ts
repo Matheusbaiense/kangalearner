@@ -38,7 +38,7 @@ export const AU_STATE_OPTIONS = [
 export type AuStateCode = (typeof AU_STATE_OPTIONS)[number]["code"];
 
 /** States with a real question bank live today. Everything else in AU_STATE_OPTIONS is "coming soon". */
-export const LIVE_STATE_CODES: AuStateCode[] = ["WA", "NSW"];
+export const LIVE_STATE_CODES: AuStateCode[] = ["WA", "NSW", "QLD"];
 
 const _VALID_STATE_CODES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
