@@ -17,7 +17,8 @@ async function loadGoogleFont(family: string, weight: number): Promise<ArrayBuff
       await fetch(`https://fonts.googleapis.com/css2?family=${family}:wght@${weight}`, {
         headers: {
           // Old-Firefox UA forces the API to return legacy TTF links instead of WOFF2, which Satori requires.
-          "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0"
+          "User-Agent":
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:97.0) Gecko/20100101 Firefox/97.0"
         }
       })
     ).text();
@@ -39,221 +40,238 @@ export default async function OgImage() {
   ]);
 
   const fonts = [
-    soraExtraBold && { name: "Sora", data: soraExtraBold, weight: 800 as const, style: "normal" as const },
+    soraExtraBold && {
+      name: "Sora",
+      data: soraExtraBold,
+      weight: 800 as const,
+      style: "normal" as const
+    },
     soraBold && { name: "Sora", data: soraBold, weight: 700 as const, style: "normal" as const },
-    nunitoSemiBold && { name: "Nunito", data: nunitoSemiBold, weight: 600 as const, style: "normal" as const },
-    nunitoBold && { name: "Nunito", data: nunitoBold, weight: 700 as const, style: "normal" as const }
+    nunitoSemiBold && {
+      name: "Nunito",
+      data: nunitoSemiBold,
+      weight: 600 as const,
+      style: "normal" as const
+    },
+    nunitoBold && {
+      name: "Nunito",
+      data: nunitoBold,
+      weight: 700 as const,
+      style: "normal" as const
+    }
   ].filter((f): f is NonNullable<typeof f> => Boolean(f));
 
   const headingFont = fonts.some((f) => f.name === "Sora") ? "Sora" : "Arial";
   const bodyFont = fonts.some((f) => f.name === "Nunito") ? "Nunito" : "Arial";
 
   return new ImageResponse(
-    (
+    <div
+      style={{
+        background: "linear-gradient(135deg, #FFFBF2 0%, #FFEEDA 45%, #FFDDB3 100%)",
+        width: "100%",
+        height: "100%",
+        display: "flex",
+        position: "relative",
+        fontFamily: bodyFont
+      }}
+    >
+      {/* Warm glow behind the kangaroo, built from stacked flat-opacity circles (no radial-gradient) */}
       <div
         style={{
-          background: "linear-gradient(135deg, #FFFBF2 0%, #FFEEDA 45%, #FFDDB3 100%)",
-          width: "100%",
-          height: "100%",
+          position: "absolute",
+          width: 620,
+          height: 620,
+          left: 700,
+          top: -30,
+          borderRadius: 310,
+          background: "#6BBF3D",
+          opacity: 0.1,
+          display: "flex"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          width: 420,
+          height: 420,
+          left: 800,
+          top: 70,
+          borderRadius: 210,
+          background: "#52B788",
+          opacity: 0.18,
+          display: "flex"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          width: 250,
+          height: 250,
+          left: 880,
+          top: 150,
+          borderRadius: 125,
+          background: "#52B788",
+          opacity: 0.28,
+          display: "flex"
+        }}
+      />
+
+      {/* Motion-dash trail behind the kangaroo's leap */}
+      <div
+        style={{
+          position: "absolute",
+          width: 140,
+          height: 14,
+          left: 700,
+          top: 470,
+          borderRadius: 999,
+          background: "#6BBF3D",
+          opacity: 0.5,
+          transform: "rotate(-18deg)",
+          display: "flex"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          width: 108,
+          height: 14,
+          left: 660,
+          top: 500,
+          borderRadius: 999,
+          background: "#6BBF3D",
+          opacity: 0.35,
+          transform: "rotate(-18deg)",
+          display: "flex"
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          width: 82,
+          height: 14,
+          left: 630,
+          top: 528,
+          borderRadius: 999,
+          background: "#6BBF3D",
+          opacity: 0.2,
+          transform: "rotate(-18deg)",
+          display: "flex"
+        }}
+      />
+
+      {/* Hero kangaroo, mid-leap, full opacity — the emotional payoff of the card */}
+      <div
+        style={{
+          position: "absolute",
+          left: 700,
+          top: 95,
           display: "flex",
-          position: "relative",
-          fontFamily: bodyFont
+          transform: "rotate(-4deg)"
         }}
       >
-        {/* Warm glow behind the kangaroo, built from stacked flat-opacity circles (no radial-gradient) */}
-        <div
-          style={{
-            position: "absolute",
-            width: 620,
-            height: 620,
-            left: 700,
-            top: -30,
-            borderRadius: 310,
-            background: "#6BBF3D",
-            opacity: 0.1,
-            display: "flex"
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 420,
-            height: 420,
-            left: 800,
-            top: 70,
-            borderRadius: 210,
-            background: "#52B788",
-            opacity: 0.18,
-            display: "flex"
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 250,
-            height: 250,
-            left: 880,
-            top: 150,
-            borderRadius: 125,
-            background: "#52B788",
-            opacity: 0.28,
-            display: "flex"
-          }}
-        />
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src={KANGAROO_HERO_DATA_URI} width={430} height={430} alt="" />
+      </div>
 
-        {/* Motion-dash trail behind the kangaroo's leap */}
-        <div
-          style={{
-            position: "absolute",
-            width: 140,
-            height: 14,
-            left: 700,
-            top: 470,
-            borderRadius: 999,
-            background: "#6BBF3D",
-            opacity: 0.5,
-            transform: "rotate(-18deg)",
-            display: "flex"
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 108,
-            height: 14,
-            left: 660,
-            top: 500,
-            borderRadius: 999,
-            background: "#6BBF3D",
-            opacity: 0.35,
-            transform: "rotate(-18deg)",
-            display: "flex"
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            width: 82,
-            height: 14,
-            left: 630,
-            top: 528,
-            borderRadius: 999,
-            background: "#6BBF3D",
-            opacity: 0.2,
-            transform: "rotate(-18deg)",
-            display: "flex"
-          }}
-        />
-
-        {/* Hero kangaroo, mid-leap, full opacity — the emotional payoff of the card */}
-        <div
-          style={{
-            position: "absolute",
-            left: 700,
-            top: 95,
-            display: "flex",
-            transform: "rotate(-4deg)"
-          }}
-        >
+      {/* Content column */}
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          padding: "64px 0 64px 90px",
+          maxWidth: 660
+        }}
+      >
+        {/* Brand lockup */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={KANGAROO_HERO_DATA_URI} width={430} height={430} alt="" />
+          <img src={KANGAROO_BADGE_DATA_URI} width={48} height={48} alt="" />
+          <span
+            style={{ fontFamily: headingFont, fontSize: 26, fontWeight: 700, color: "#071A2C" }}
+          >
+            KangaLearner
+          </span>
         </div>
 
-        {/* Content column */}
+        {/* Kicker */}
+        <span
+          style={{
+            marginTop: 56,
+            fontFamily: headingFont,
+            fontSize: 32,
+            fontWeight: 700,
+            color: "rgba(7,26,44,0.72)"
+          }}
+        >
+          Worried about the test?
+        </span>
+
+        {/* Hero line */}
+        <span
+          style={{
+            marginTop: 10,
+            fontFamily: headingFont,
+            fontSize: 68,
+            fontWeight: 800,
+            letterSpacing: -2,
+            lineHeight: 1.05,
+            color: "#071A2C"
+          }}
+        >
+          {"You've got this."}
+        </span>
+
+        {/* Subheadline */}
+        <span
+          style={{
+            marginTop: 22,
+            fontFamily: bodyFont,
+            fontSize: 27,
+            fontWeight: 600,
+            lineHeight: 1.4,
+            color: "rgba(7,26,44,0.58)",
+            maxWidth: 560
+          }}
+        >
+          Free practice in English, Português and Español.
+        </span>
+
+        {/* Trust seal */}
         <div
           style={{
+            marginTop: 38,
+            width: 130,
+            height: 130,
+            borderRadius: 65,
+            background: "#2E8F5C",
+            boxShadow: "0 10px 24px rgba(7,26,44,0.25)",
+            transform: "rotate(-7deg)",
             display: "flex",
             flexDirection: "column",
-            padding: "64px 0 64px 90px",
-            maxWidth: 660
+            alignItems: "center",
+            justifyContent: "center"
           }}
         >
-          {/* Brand lockup */}
-          <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src={KANGAROO_BADGE_DATA_URI} width={48} height={48} alt="" />
-            <span style={{ fontFamily: headingFont, fontSize: 26, fontWeight: 700, color: "#071A2C" }}>
-              KangaLearner
-            </span>
-          </div>
-
-          {/* Kicker */}
           <span
-            style={{
-              marginTop: 56,
-              fontFamily: headingFont,
-              fontSize: 32,
-              fontWeight: 700,
-              color: "rgba(7,26,44,0.72)"
-            }}
+            style={{ fontFamily: headingFont, fontSize: 30, fontWeight: 800, color: "#ffffff" }}
           >
-            Worried about the test?
+            100%
           </span>
-
-          {/* Hero line */}
           <span
             style={{
-              marginTop: 10,
-              fontFamily: headingFont,
-              fontSize: 68,
-              fontWeight: 800,
-              letterSpacing: -2,
-              lineHeight: 1.05,
-              color: "#071A2C"
-            }}
-          >
-            {"You've got this."}
-          </span>
-
-          {/* Subheadline */}
-          <span
-            style={{
-              marginTop: 22,
               fontFamily: bodyFont,
-              fontSize: 27,
-              fontWeight: 600,
-              lineHeight: 1.4,
-              color: "rgba(7,26,44,0.58)",
-              maxWidth: 560
+              fontSize: 18,
+              fontWeight: 700,
+              letterSpacing: 2,
+              color: "#ffffff"
             }}
           >
-            Free practice in English, Português and Español.
+            FREE
           </span>
-
-          {/* Trust seal */}
-          <div
-            style={{
-              marginTop: 38,
-              width: 130,
-              height: 130,
-              borderRadius: 65,
-              background: "#2E8F5C",
-              boxShadow: "0 10px 24px rgba(7,26,44,0.25)",
-              transform: "rotate(-7deg)",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            <span style={{ fontFamily: headingFont, fontSize: 30, fontWeight: 800, color: "#ffffff" }}>
-              100%
-            </span>
-            <span
-              style={{
-                fontFamily: bodyFont,
-                fontSize: 18,
-                fontWeight: 700,
-                letterSpacing: 2,
-                color: "#ffffff"
-              }}
-            >
-              FREE
-            </span>
-          </div>
         </div>
       </div>
-    ),
+    </div>,
     { ...size, fonts: fonts.length > 0 ? fonts : undefined }
   );
 }
