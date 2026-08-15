@@ -38142,8 +38142,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     tip: null,
     states: ["NSW"],
     licenceType: "motorcycle"
-  }
-,
+  },
   {
     id: "QLD-1",
     sign: "/icons/signs/qld-image-10a.jpg",
@@ -38179,7 +38178,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. Los vehículos A y B están uno frente al otro en una intersección de cruce no controlada. En una intersección no controlada, el conductor que gira a la derecha debe ceder el paso a cualquier vehículo que continúe recto a través de la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-2",
@@ -38216,7 +38215,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B está frente a una señal de PARE; cuando un conductor está frente a una señal de PARE en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-3",
@@ -38253,7 +38252,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B pasa primero, luego el vehículo A. El vehículo A está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U). El vehículo A debe ceder el paso al vehículo B."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-4",
@@ -38290,7 +38289,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos A y B están uno frente al otro en señales de PARE; cuando dos conductores se encuentran uno frente al otro en señales de PARE en una intersección, primero deben detenerse y ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. El vehículo A debe entonces ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-5",
@@ -38327,7 +38326,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. Un conductor que entra a una vía desde un carril de incorporación debe ceder el paso a todos los vehículos (excepto los que están haciendo un giro en U) en la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-6",
@@ -38364,7 +38363,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. Un conductor que gira a la derecha desde la vía que continúa en una intersección en T debe ceder el paso a cualquier vehículo que circule en dirección contraria a través de la intersección por la vía que continúa."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-7",
@@ -38401,7 +38400,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo debe ceder el paso al peatón. Un conductor que está girando en una intersección debe ceder el paso a cualquier peatón que esté cruzando la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-8",
@@ -38438,7 +38437,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos A y B están frente a señales de PARE y de Ceda el Paso; cuando dos conductores se encuentran uno frente al otro en señales de PARE o de Ceda el Paso en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. El vehículo A debe entonces ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-9",
@@ -38493,7 +38492,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos D y C. Los vehículos A y B están uno frente al otro en señales de Ceda el Paso; cuando dos conductores se encuentran uno frente al otro en señales de Ceda el Paso en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos A y B primero ceden el paso a los vehículos C y D. El vehículo B debe entonces ceder el paso al vehículo A, ya que está cruzando el camino del vehículo A."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-10",
@@ -38539,7 +38538,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. El vehículo C está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U). El vehículo C debe ceder el paso a los vehículos A y B. El vehículo A debe entonces ceder el paso al vehículo B, ya que un conductor que gira a la derecha desde la vía que continúa en una intersección en T debe ceder el paso a cualquier vehículo que circule en dirección contraria y esté girando a la izquierda en la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-11",
@@ -38576,7 +38575,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B está girando a la derecha en una intersección con semáforo; un conductor que gira a la derecha en una intersección con semáforo debe ceder el paso a cualquier vehículo que circule en dirección contraria y siga recto a través de la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-12",
@@ -38613,7 +38612,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. El vehículo A está girando a la derecha en una intersección con semáforo; un conductor que gira a la derecha en una intersección con semáforo debe ceder el paso a cualquier vehículo que circule en dirección contraria y esté girando a la izquierda en la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-13",
@@ -38650,7 +38649,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. Un conductor que entra a una vía desde un carril de incorporación debe ceder el paso a todos los vehículos (excepto los que están haciendo un giro en U) en la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-14",
@@ -38705,7 +38704,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y D. Los vehículos A y C están uno frente al otro en señales de PARE; cuando dos conductores se encuentran uno frente al otro en señales de PARE en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos A y C primero ceden el paso a los vehículos B y D. El vehículo C debe entonces ceder el paso al vehículo A, ya que está cruzando el camino del vehículo A."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-15",
@@ -38760,7 +38759,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos C y D están uno frente al otro en señales de Ceda el Paso; cuando dos conductores se encuentran uno frente al otro en señales de Ceda el Paso en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos C y D deben ceder el paso a los vehículos A y B. El vehículo A debe ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-16",
@@ -38797,7 +38796,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. Los vehículos están en una intersección de cruce no controlada. En una intersección no controlada, el conductor que sigue recto debe ceder el paso a cualquier vehículo que se aproxime por la derecha."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-17",
@@ -38843,7 +38842,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. El vehículo A está girando a la derecha en una intersección con semáforo; un conductor que gira a la derecha en una intersección con semáforo debe ceder el paso a cualquier vehículo que circule en dirección contraria, ya sea girando a la izquierda o siguiendo recto a través de la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-18",
@@ -38898,7 +38897,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Un conductor que gira en una intersección semaforizada debe ceder el paso a cualquier peatón o ciclista en un cruce de la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-19",
@@ -38953,7 +38952,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. El vehículo A está frente a una señal de Ceda el Paso; cuando un conductor está frente a una señal de Ceda el Paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-20",
@@ -39008,7 +39007,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. El vehículo A está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U). El vehículo A debe ceder el paso a los vehículos B y C, ya que circulan por la vía que continúa."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-21",
@@ -39054,7 +39053,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. Un conductor que entra a una vía desde una propiedad privada debe ceder el paso a los vehículos de la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-22",
@@ -39091,7 +39090,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso. El vehículo A está frente a una señal de Ceda el Paso. Cuando un conductor está frente a una señal de Ceda el Paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-23",
@@ -39128,7 +39127,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. El vehículo A está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U)."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-24",
@@ -39183,7 +39182,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B pasaría primero, el vehículo C en segundo lugar y el vehículo A al final. Los vehículos A y C están uno frente al otro en señales de PARE; cuando dos conductores se encuentran uno frente al otro en señales de PARE en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos A y C primero ceden el paso al vehículo B. El vehículo A debe entonces ceder el paso al vehículo C, ya que está cruzando el camino del vehículo C."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-25",
@@ -39220,7 +39219,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B pasa primero. El vehículo A debe ceder el paso al vehículo B, ya que un conductor que gira a la derecha desde la vía que continúa en una intersección en T debe ceder el paso a cualquier vehículo que circule en dirección contraria, ya sea girando a la izquierda en la intersección o continuando recto."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-26",
@@ -39275,7 +39274,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los vehículos A y B deben ceder el paso a los peatones. En un paso de peatones escolar, los conductores deben detenerse y ceder el paso a cualquier peatón o ciclista que esté en el paso o entrando en él."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-27",
@@ -39330,7 +39329,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A solo debe adelantar al ciclista cuando pueda hacerlo con seguridad, respetando la distancia mínima de adelantamiento exigida. El vehículo A debe dejar que el ciclista cruce la intersección y luego girar a la izquierda."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-28",
@@ -39385,7 +39384,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si la línea discontinua está de su lado, puede cruzarla para entrar a una entrada de vehículos u otra vía, adelantar a otro vehículo, hacer un giro en U, o adelantar a un ciclista o usuario de un dispositivo personal de movilidad. Si la línea continua está de su lado, puede cruzarla para entrar a una entrada de vehículos u otra vía, o para adelantar a un ciclista o usuario de un dispositivo personal de movilidad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-29",
@@ -39431,7 +39430,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si se detuvo en un paso de peatones escolar señalizado con banderas naranjas, debe permanecer detenido hasta que todos los peatones, ciclistas y usuarios de dispositivos personales de movilidad hayan dejado el paso de peatones y no haya nadie a punto de entrar en él."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-30",
@@ -39486,7 +39485,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. Si el carril por el que circula el conductor termina, y el conductor tiene que cruzar una línea de carril para incorporarse, debe ceder el paso al tráfico que ya circula por el carril al que se está incorporando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-31",
@@ -39541,7 +39540,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "No se permite cruzar líneas dobles continuas, excepto para pasar con seguridad a un ciclista o a un usuario de un dispositivo personal de movilidad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-32",
@@ -39596,7 +39595,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si se encuentra frente a un oficial de policía haciendo las señales manuales mostradas en el diagrama, debe detenerse, ya que las indicaciones de la policía tienen prioridad sobre los semáforos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-33",
@@ -39651,7 +39650,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. Los vehículos A y D están frente a señales de ceda el paso; cuando dos conductores se encuentran frente a frente ante señales de ceda el paso en una intersección, deben ceder el paso a todos los demás vehículos que entran o se acercan a la intersección, y luego aplicar las normas de prioridad entre ellos. Los vehículos A y D ceden primero el paso a los vehículos B y C, ya que estos van derecho por la vía principal. Luego, los vehículos A y D pueden avanzar, ya que ambos están girando y no interferirán entre sí."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-34",
@@ -39688,7 +39687,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo debe ceder el paso al peatón. Un conductor que gira en una intersección debe ceder el paso a cualquier peatón que cruce la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-35",
@@ -39743,7 +39742,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Puede cruzar una línea única continua para entrar en una entrada de vehículos o en una vía, o para pasar con seguridad a un ciclista o a un usuario de un dispositivo personal de movilidad. No puede cruzar una línea central única continua para adelantar a otro vehículo motorizado."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-36",
@@ -39798,7 +39797,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Un conductor en una vía de varios carriles donde el límite de velocidad es superior a 80 km/h no debe conducir por el carril derecho, salvo para adelantar a otro vehículo, prepararse para girar a la derecha, evitar un obstáculo, o cuando el tráfico esté congestionado en todos los carriles."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-37",
@@ -39844,7 +39843,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. Cuando las filas de tráfico se fusionan en un lugar donde no hay líneas de carril que cruzar, un conductor debe ceder el paso a cualquier vehículo que vaya delante de él."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-38",
@@ -39899,7 +39898,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si desea salir del borde de la vía, debe indicar durante al menos 5 segundos antes de moverse desde la posición estacionada. También debe ceder el paso a cualquier vehículo, bicicleta o dispositivo personal de movilidad que circule por la vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-39",
@@ -39954,7 +39953,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si se está acercando a un paso de peatones escolar y el vehículo que va delante de usted se ha detenido en el paso, no debe adelantar al vehículo detenido en el paso."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-40",
@@ -40000,7 +39999,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo C pasaría primero, el vehículo A en segundo lugar, el vehículo B en tercer lugar y el vehículo D en último lugar. Los vehículos B y D están frente a una señal de ceda el paso; cuando un conductor está frente a una señal de ceda el paso en una intersección, debe ceder el paso a todos los demás vehículos que entran o se acercan a la intersección. Los vehículos B y D deben ceder el paso a los vehículos A y C. El vehículo A circula por la vía terminal de una intersección en T (la vía principal, marcada con líneas blancas discontinuas, rodea la curva); un conductor que circula por la vía terminal de una intersección en T debe ceder el paso a todos los vehículos de la vía principal (excepto los que están haciendo un giro en U). El vehículo A debe ceder el paso al vehículo C."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-41",
@@ -40055,7 +40054,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe girar a la izquierda. En un carril marcado con flechas, debe conducir únicamente en la dirección de las flechas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-42",
@@ -40110,7 +40109,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe girar a la derecha. En un carril marcado con flechas, debe conducir únicamente en la dirección de las flechas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-43",
@@ -40165,7 +40164,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los vehículos A y B no pueden avanzar porque hay un semáforo en rojo. El vehículo C puede girar a la derecha porque hay una flecha verde a la derecha."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-44",
@@ -40220,7 +40219,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Puede conducir por cualquier carril de una vía de varios carriles si el límite de velocidad es de 80 km/h o menos y no hay señales de mantenerse a la izquierda salvo para adelantar."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-45",
@@ -40275,7 +40274,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si se encuentra frente a un oficial de policía haciendo las señales manuales mostradas en el diagrama, debe avanzar en la dirección indicada por el oficial, ya que las indicaciones de la policía tienen prioridad sobre los semáforos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-46",
@@ -40330,7 +40329,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo C no puede girar a la derecha porque hay una flecha roja a la derecha. Los vehículos A y B pueden seguir rectos porque hay un semáforo en verde."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-47",
@@ -40385,7 +40384,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al cambiar de carril, debe dar una señal de cambio de dirección y ceder el paso a cualquier vehículo, bicicleta o dispositivo personal de movilidad que esté en el carril hacia el que se está moviendo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-48",
@@ -40440,7 +40439,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si conduce un automóvil con una licencia de aprendiz, debe exhibir las placas L de forma que la letra L se pueda ver claramente desde la parte delantera y trasera del vehículo a una distancia de 20 metros."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-49",
@@ -40486,7 +40485,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "En un paso de peatones escolar sin supervisión que muestra banderas de cruce de niños, debe detenerse en la línea de parada si hay algún peatón, ciclista o usuario de un dispositivo personal de movilidad en el paso o entrando en él. No debe avanzar sobre el paso hasta que todos los peatones, ciclistas y usuarios de dispositivos personales de movilidad hayan llegado a la acera."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-50",
@@ -40541,7 +40540,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo C debe ceder el paso al vehículo A. Un conductor que entra en una rotonda debe ceder el paso a cualquier vehículo que ya esté en la rotonda; el vehículo A ya está en la rotonda y circula delante del vehículo C. El vehículo B no afecta ni al vehículo A ni al C."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-51",
@@ -40596,7 +40595,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Debe ceder el paso a un autobús que sale de la acera o de una zona de autobuses, siempre que el límite de velocidad sea de 70 km/h o menos, el autobús esté señalizando para incorporarse al tráfico y haya una señal de ceda el paso en la parte trasera del autobús."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-52",
@@ -40651,7 +40650,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que la velocidad máxima recomendada para la curva de más adelante es de 40 km/h en buenas condiciones."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-53",
@@ -40706,7 +40705,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que la vía está cambiando de una vía sin dividir a una vía dividida."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-54",
@@ -40761,7 +40760,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que se está acercando a una vía sinuosa."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-55",
@@ -40816,7 +40815,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que se está acercando a una curva cerrada (también llamada curva en horquilla)."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-56",
@@ -40871,7 +40870,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que se está acercando a un cruce de caminos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-57",
@@ -40926,7 +40925,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que la vía de más adelante puede estar resbaladiza."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-58",
@@ -40972,7 +40971,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que se está acercando a una rotonda."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-59",
@@ -41027,7 +41026,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que se está acercando a una señal de pare."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-60",
@@ -41073,7 +41072,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal indica que se está acercando a un descenso pronunciado."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-61",
@@ -41110,7 +41109,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B se encuentra frente a una señal de ceda el paso; cuando un conductor está frente a una señal de ceda el paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-62",
@@ -41156,7 +41155,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal le avisa que se está aproximando a una zona de asignación de carriles, un tramo de la carretera que tiene un carril adicional para el tráfico que circula en dirección opuesta. Las flechas indican las direcciones del tráfico."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-63",
@@ -41202,7 +41201,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal le avisa que se está aproximando a una zona donde los camiones pueden estar cruzando o entrando en la vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-64",
@@ -41248,7 +41247,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal le avisa que la vía dividida está terminando y se convertirá en una vía no dividida."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-65",
@@ -41294,7 +41293,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal le avisa que el camino más adelante es angosto."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-66",
@@ -41349,7 +41348,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que debe conducir a la izquierda de la señal."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-67",
@@ -41404,7 +41403,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que está en una vía de doble sentido y los vehículos circulan en ambas direcciones."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-68",
@@ -41459,7 +41458,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que no tiene permitido girar a la derecha hacia la vía o el lugar indicado."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-69",
@@ -41514,7 +41513,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que no tiene permitido girar a la izquierda hacia la vía o el lugar indicado."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-70",
@@ -41569,7 +41568,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa tránsito de un solo sentido, únicamente en la dirección de la flecha."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-71",
@@ -41624,7 +41623,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que no tiene permitido detenerse en el área indicada por la señal, por ningún motivo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-72",
@@ -41661,7 +41660,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B se encuentra frente a una señal de ceda el paso; cuando un conductor está frente a una señal de ceda el paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-73",
@@ -41716,7 +41715,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que debe ceder el paso a los vehículos, bicicletas o usuarios de dispositivos personales de movilidad que se encuentren en la rotonda."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-74",
@@ -41762,7 +41761,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que, si no hay una línea de detención pintada en la vía, debe detenerse antes de entrar a la intersección en un punto donde tenga una vista despejada del tráfico que se aproxima y ceder el paso al tráfico según las reglas de ceder el paso."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-75",
@@ -41817,7 +41816,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que debe reducir la velocidad o detenerse y estar preparado para ceder el paso, según las reglas de ceder el paso, a los vehículos que se aproximan o están entrando a la intersección. También debe ceder el paso a cualquier peatón, ciclista o usuario de dispositivo personal de movilidad que esté cruzando la vía a la que está girando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-76",
@@ -41863,7 +41862,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que debe detenerse y permanecer detenido hasta que el guardia haya regresado a la acera."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-77",
@@ -41918,7 +41917,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que no puede estacionar en esta área en ningún momento, pero puede detenerse por un máximo de 2 minutos para recoger o dejar pasajeros o mercancías."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-78",
@@ -41973,7 +41972,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que ningún vehículo tiene permitido pasar de la señal."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-79",
@@ -42028,7 +42027,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que los vehículos no tienen permitido detenerse en este tramo de la vía durante los horarios y días indicados en la señal; sin embargo, los autobuses y taxis tienen permitido recoger y dejar pasajeros."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-80",
@@ -42074,7 +42073,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "En una zona compartida, siempre debe ceder el paso a los peatones, bicicletas y usuarios de dispositivos personales de movilidad, y no debe exceder el límite de velocidad indicado en el círculo rojo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-81",
@@ -42129,7 +42128,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Las zonas escolares están vigentes durante los días escolares. Esto significa que, en los días escolares, no debe exceder la velocidad indicada en el círculo rojo durante los horarios especificados."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-82",
@@ -42175,7 +42174,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "No debe continuar hasta que las barreras estén levantadas y las luces rojas hayan dejado de parpadear."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-83",
@@ -42221,7 +42220,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso a los vehículos B y C. Los vehículos A y B están frente a señales de pare; cuando dos conductores se encuentran frente a señales de pare en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de ceder el paso entre sí. Los vehículos A y B ceden el paso primero al vehículo C, ya que este continúa recto por la vía principal. Luego, el vehículo A debe ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-84",
@@ -42267,7 +42266,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de marcador de obstáculo y significa que puede pasar por cualquiera de los lados del obstáculo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-85",
@@ -42322,7 +42321,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de límite de velocidad combinada con una señal de obras en la vía. Un conductor no debe exceder el límite de velocidad indicado por el número en la señal."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-86",
@@ -42368,7 +42367,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal se aplica a un puente angosto o a un tramo angosto de la vía. No debe permitir que su vehículo circule al lado de otro vehículo, sin importar la dirección en la que este se desplace, durante la distancia especificada."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-87",
@@ -42423,7 +42422,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que, si el camión está girando, no debe adelantarlo a menos que sea seguro hacerlo; por lo tanto, debe dejar que el camión complete su giro antes de que usted gire."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-88",
@@ -42469,7 +42468,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que solo los vehículos que transporten a personas con discapacidad pueden estacionar en el área indicada. La persona debe tener un permiso de estacionamiento para discapacitados vigente y exhibirlo en el vehículo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-89",
@@ -42524,7 +42523,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los titulares de licencia de aprendiz de Queensland tienen permitido conducir al límite de velocidad legal. Por lo tanto, un conductor aprendiz puede conducir a 110km/h en una vía controlada por esta señal, si es seguro hacerlo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-90",
@@ -42579,7 +42578,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que no debe circular a más de 60km/h."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-91",
@@ -42634,7 +42633,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta señal significa que no puede realizar un giro en U en la intersección o lugar indicado."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-92",
@@ -42689,7 +42688,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos están enfrentados en una intersección de cruce no controlada. En una intersección de cruce no controlada, un conductor que sigue de frente debe ceder el paso a cualquier vehículo que se aproxime por la derecha, y un conductor que gira a la derecha debe ceder el paso a cualquier vehículo que se aproxime por la derecha o que cruce la intersección en línea recta. El vehículo A debe ceder el paso al vehículo B, el vehículo D debe ceder el paso a los vehículos A y B, y el vehículo C no cede el paso ni afecta a los vehículos A, B o D."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-93",
@@ -42743,7 +42742,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "A menos que haya una señal oficial que lo permita, no debe estacionar ni detenerse en una vía con línea amarilla continua en el borde."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-94",
@@ -42797,7 +42796,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si un vehículo de emergencia se aproxima por detrás mostrando una luz azul o roja intermitente o sonando una alarma, usted debe salir del camino del vehículo de emergencia tan pronto como pueda hacerlo con seguridad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-95",
@@ -42842,7 +42841,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Dos ciclistas pueden circular legalmente uno al lado del otro siempre que no estén a más de 1,5 metros de distancia entre sí."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-96",
@@ -42896,7 +42895,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Como conductor, usted tiene la responsabilidad legal de garantizar que toda la carga transportada por su vehículo esté firmemente asegurada."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-97",
@@ -42941,7 +42940,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Solo puede conducir sobre las vías del tranvía en una vía de tranvía en una intersección o al evitar una obstrucción."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-98",
@@ -42986,7 +42985,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Puede conducir con las luces altas encendidas en una zona urbana, pero debe bajarlas cuando esté a menos de 200 metros de otro vehículo, o para evitar deslumbrar a otros usuarios de la vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-99",
@@ -43040,7 +43039,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El conductor de un vehículo equipado con cinturones de seguridad debe usar el cinturón de seguridad cuando el vehículo esté en movimiento o detenido, pero no estacionado; sin embargo, el conductor no está obligado a usar el cinturón de seguridad al dar marcha atrás."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-100",
@@ -43085,7 +43084,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los ciclistas y motociclistas tienen más probabilidades de resultar heridos en un choque porque no están protegidos por la carrocería de un automóvil y sus vehículos son más pequeños y menos estables."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-101",
@@ -43139,7 +43138,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al conducir un vehículo, los agentes de policía pueden detenerlo y exigirle que se someta a una prueba de alcoholemia aleatoria."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-102",
@@ -43184,7 +43183,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los ciclistas tienen los mismos derechos y responsabilidades que los conductores de vehículos. Deben obedecer las normas de tránsito y reciben las mismas multas por infringirlas que los conductores de vehículos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-103",
@@ -43238,7 +43237,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Las indicaciones dadas por los agentes de policía prevalecen sobre las señales de pare y ceda el paso."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-104",
@@ -43292,7 +43291,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "A menos que haya una señal oficial que lo permita, no debe estacionar ni detenerse a menos de 20 metros antes y 10 metros después de un paso de peatones (cebra)."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-105",
@@ -43346,7 +43345,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "A menos que haya una señal oficial que lo permita, no debe estacionar ni detenerse a menos de 10 metros de una intersección sin semáforos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-106",
@@ -43400,7 +43399,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si va a estacionar en una calle de doble sentido donde no hay señales ni marcas viales que indiquen cómo estacionar, debe estacionar en paralelo al costado de la vía y lo más cerca posible del lado izquierdo, con seguridad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-107",
@@ -43454,7 +43453,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Un conductor involucrado en un choque en el que nadie resulta herido y los daños materiales son menores debe detenerse e intercambiar los datos del conductor y del vehículo con el conductor del otro vehículo. Esto debe hacerse lo antes posible y dentro de las 24 horas posteriores al choque."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-108",
@@ -43508,7 +43507,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Un conductor involucrado en un choque que causa daños materiales menores debe detenerse e intercambiar los datos del conductor y del vehículo con el conductor del otro vehículo. Esto debe hacerse lo antes posible y dentro de las 24 horas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-109",
@@ -43562,7 +43561,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al girar en una intersección, debe ceder el paso a cualquier peatón, o a cualquier ciclista o usuario de un dispositivo personal de movilidad que esté cruzando la vía a la que está entrando."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-110",
@@ -43616,7 +43615,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si posee una licencia provisional P1 y tiene menos de 25 años, solo tiene permitido tener un pasajero menor de 21 años entre las 23:00 y las 5:00. Esta restricción no se aplica a los familiares directos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-111",
@@ -43661,7 +43660,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si se está acercando a un autobús escolar que muestra luces amarillas intermitentes, debe reducir la velocidad y estar atento a los niños."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-112",
@@ -43715,7 +43714,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "En un vehículo equipado con cinturones de seguridad, un cinturón de seguridad o un dispositivo de retención aprobado debe ser usado por todos los ocupantes cuando el vehículo esté en movimiento o detenido en el tránsito. Esta regla no se aplica cuando el vehículo está estacionado. Sin embargo, el conductor no está obligado a usar el cinturón de seguridad al dar marcha atrás."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-113",
@@ -43769,7 +43768,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El conductor de un vehículo es responsable de la sujeción segura de todos los pasajeros."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-114",
@@ -43823,7 +43822,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Se ha comprobado que conducir a exceso de velocidad es peligroso debido al aumento de las distancias de frenado, al aumento de la gravedad de los choques y a la escasa estabilidad en las curvas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-115",
@@ -43868,7 +43867,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Puede conducir en un carril para bicicletas hasta 50 metros y en todos los demás carriles de uso especial, incluidos los carriles de autobús, hasta 100 metros, para entrar o salir de una vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-116",
@@ -43923,7 +43922,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Esta es una señal de advertencia. La señal le advierte que el carril izquierdo más adelante está cerrado, lo que significa que, si está circulando por ese carril, debe incorporarse al carril derecho."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-117",
@@ -43977,7 +43976,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Todos los titulares de licencia de aprendiz o provisional deben tener una CAS de cero al conducir."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-118",
@@ -44031,7 +44030,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El límite de velocidad predeterminado en una vía dentro de una zona urbana es de 50 km/h. Esto significa que puede conducir a una velocidad máxima de 50 km/h en una zona urbana, a menos que haya una señal que indique un límite de velocidad diferente."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-119",
@@ -44085,7 +44084,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El límite máximo de velocidad en una vía fuera de una zona urbana es de 100 km/h, a menos que haya una señalización diferente."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-120",
@@ -44130,7 +44129,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "No debe detenerse ni estacionar a menos de 20 metros antes y 10 metros después de una parada de autobús, a menos que haya una señal oficial que lo permita."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-121",
@@ -44184,7 +44183,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "No debe bloquear ni bloquear parcialmente una intersección. Por lo tanto, no debe entrar en la intersección hasta que pueda cruzar con seguridad hasta el otro lado con la luz verde. Sin embargo, si está girando a la derecha en una intersección, puede entrar en la intersección y esperar hasta que sea seguro completar el giro."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-122",
@@ -44238,7 +44237,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Un semáforo o flecha amarilla intermitente es una advertencia para tener precaución. Si se encuentra con un semáforo o flecha amarilla intermitente, puede entrar en la intersección con precaución, aplicando las reglas de ceda el paso de una intersección no controlada."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-123",
@@ -44292,7 +44291,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "No debe tocar la bocina a menos que la esté usando como dispositivo de advertencia."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-124",
@@ -44337,7 +44336,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Si está haciendo un cambio de sentido, debe ceder el paso a todos los vehículos, peatones, ciclistas y usuarios de dispositivos personales de movilidad. Esto incluye vehículos, bicicletas y dispositivos personales de movilidad en señales de pare y ceda el paso."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-125",
@@ -44391,7 +44390,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al conducir con las luces altas encendidas, debe bajarlas si está a menos de 200 m de un vehículo que se aproxima en sentido contrario o a menos de 200 m de un vehículo al que está siguiendo, o para evitar deslumbrar a otros usuarios de la vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-126",
@@ -44436,7 +44435,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al entrar en una autopista, debe ajustar su velocidad para poder incorporarse al tráfico de la autopista, pero debe ceder el paso al tráfico de la autopista si es necesario."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-127",
@@ -44490,7 +44489,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Un conductor debe dejar al menos un intervalo de 2 segundos entre su vehículo y el vehículo de adelante, en condiciones ideales. Se recomienda un intervalo mayor si las condiciones climáticas y de la vía provocan visibilidad reducida, calzadas mojadas o superficies resbaladizas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-128",
@@ -44535,7 +44534,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al salir de un área de estacionamiento central, debe salir conduciendo únicamente hacia adelante, a menos que las señales indiquen lo contrario."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-129",
@@ -44580,7 +44579,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Debe ceder el paso a todos los vehículos, bicicletas, usuarios de dispositivos personales de movilidad y peatones al salir de una propiedad privada para entrar en una vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-130",
@@ -44634,7 +44633,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Debe dejar un mínimo de 1 metro al adelantar a un ciclista o a un usuario de dispositivo personal de movilidad (como un patinete eléctrico) en una vía con un límite de velocidad de 60 km/h o menos, o 1,5 metros en una vía con un límite de velocidad superior a 60 km/h."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-131",
@@ -44688,7 +44687,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Debe dejar un mínimo de 1 metro al adelantar a un ciclista o a un usuario de dispositivo personal de movilidad (como un patinete eléctrico) en una vía con un límite de velocidad de 60 km/h o menos, o 1,5 metros en una vía con un límite de velocidad superior a 60 km/h."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-132",
@@ -44742,7 +44741,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al acercarse a un semáforo que cambia de verde a amarillo, debe detenerse si puede hacerlo con seguridad antes de llegar a la línea de parada."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-133",
@@ -44796,7 +44795,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Siempre que esté a punto de salir de una rotonda, debe indicar hacia la izquierda, si es posible."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-134",
@@ -44850,7 +44849,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al conducir un automóvil, puede adelantar a otro vehículo por la izquierda si el vehículo de adelante está indicando su intención de girar a la derecha, o está detenido, o cuando está conduciendo en una vía de múltiples carriles."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-135",
@@ -44904,7 +44903,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Cuando conduce por una vía donde no hay marcas viales, debe conducir lo más cerca posible del lado izquierdo de la vía."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-136",
@@ -44958,7 +44957,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Beber alcohol perjudica su capacidad de conducir con seguridad. El riesgo de causar un accidente aumenta a medida que aumenta su concentración de alcohol en sangre."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-137",
@@ -45012,7 +45011,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Al cambiar de carril, debe indicar y debe cambiar de carril con seguridad, cediendo el paso a cualquier vehículo, bicicleta o dispositivo personal de movilidad en el otro carril. Cuando usted pretende cambiar de carril, los vehículos, bicicletas o dispositivos personales de movilidad en el otro carril no están obligados a cederle el paso."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-138",
@@ -45057,7 +45056,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los ciclistas tienen los mismos derechos y responsabilidades que los conductores de vehículos. Deben obedecer las normas de tránsito y reciben las mismas multas por infringirlas que los conductores de vehículos."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-139",
@@ -45102,7 +45101,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Es importante que obtenga la mayor experiencia de conducción supervisada en carretera posible durante el período de aprendizaje."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-140",
@@ -45156,7 +45155,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "El límite de velocidad es la velocidad máxima permitida, pero en ciertas situaciones y condiciones puede ser peligroso conducir al límite de velocidad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-141",
@@ -45210,7 +45209,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "La distancia de frenado de un vehículo puede aumentar debido a factores como las condiciones climáticas y de la vía, que provocan calzadas mojadas y superficies resbaladizas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-142",
@@ -45264,7 +45263,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Cuando no hay señales que indiquen lo contrario, una ciclovía puede ser utilizada por una persona en silla de ruedas, empujando una silla de ruedas, en patines y por usuarios de dispositivos personales de movilidad (como un patinete eléctrico)."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-143",
@@ -45318,7 +45317,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "En semáforos que muestran una luz roja circular y una flecha verde apuntando hacia la derecha, puede girar a la derecha."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-144",
@@ -45372,7 +45371,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Los ciclistas son usuarios de la vía, con los mismos derechos y responsabilidades que los vehículos más grandes. Al llegar a una intersección en cruz no controlada, debe ceder el paso a los vehículos que se aproximan por su derecha, lo que incluye a los ciclistas."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-145",
@@ -45426,7 +45425,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Cuando vaya a seguir recto en una rotonda de múltiples carriles, puede entrar y salir por cualquiera de los dos carriles (siempre que no haya flechas que indiquen que no puede seguir recto desde ese carril)."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-146",
@@ -45480,7 +45479,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "En una rotonda, si tiene la intención de salir después de haber recorrido más de la mitad, debe indicar hacia la derecha al aproximarse a la rotonda y luego indicar hacia la izquierda justo antes de salir de ella."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-147",
@@ -45525,7 +45524,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Debe dejar un mínimo de 1 metro al adelantar a un ciclista o a un usuario de dispositivo personal de movilidad (como un patinete eléctrico) en una vía con un límite de velocidad de 60 km/h o menos, o 1,5 metros en una vía con un límite de velocidad superior a 60 km/h. No debe adelantar a un ciclista o a un usuario de dispositivo personal de movilidad a menos que tenga una vista clara de cualquier tráfico que se aproxime y pueda adelantar con seguridad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-148",
@@ -45570,7 +45569,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Para los vehículos de emergencia que muestran una luz azul o roja intermitente o hacen sonar una alarma, debe ceder el paso. Tampoco debe entrar en la trayectoria de un vehículo de emergencia que se aproxima y debe salir de su trayectoria tan pronto como pueda hacerlo con seguridad."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-149",
@@ -45624,7 +45623,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "No se le permite hacer un cambio de sentido en un semáforo, a menos que haya una señal que indique que puede hacerlo."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLD-150",
@@ -45678,7 +45677,7 @@ export const QUESTIONS: readonly QuestionType[] = [
       es: "Es ilegal usar o tocar un teléfono móvil mientras conduce, incluso cuando está detenido en un semáforo, incluido el uso de redes sociales como Facebook o Twitter. Esto incluye sostener el teléfono en la mano o apoyarlo en cualquier parte del cuerpo, como el regazo. Un teléfono móvil solo puede ser utilizado por el conductor cuando el vehículo está estacionado."
     },
     tip: null,
-    states: ["QLD"],
+    states: ["QLD"]
   },
   {
     id: "QLDM-1",
@@ -45724,7 +45723,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-2",
@@ -45770,7 +45769,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-3",
@@ -45816,7 +45815,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-4",
@@ -45862,7 +45861,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-5",
@@ -45909,7 +45908,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-6",
@@ -45955,7 +45954,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-7",
@@ -46001,7 +46000,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-8",
@@ -46047,7 +46046,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-9",
@@ -46093,7 +46092,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-10",
@@ -46139,7 +46138,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-11",
@@ -46185,7 +46184,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-12",
@@ -46231,7 +46230,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-13",
@@ -46286,7 +46285,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-14",
@@ -46333,7 +46332,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-15",
@@ -46389,7 +46388,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-16",
@@ -46427,7 +46426,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-17",
@@ -46473,7 +46472,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-18",
@@ -46519,7 +46518,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-19",
@@ -46574,7 +46573,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-20",
@@ -46620,7 +46619,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-21",
@@ -46675,7 +46674,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-22",
@@ -46730,7 +46729,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-23",
@@ -46776,7 +46775,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-24",
@@ -46831,7 +46830,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-25",
@@ -46886,7 +46885,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-26",
@@ -46933,7 +46932,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-27",
@@ -46988,7 +46987,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-28",
@@ -47043,7 +47042,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-29",
@@ -47089,7 +47088,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-30",
@@ -47135,7 +47134,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-31",
@@ -47181,7 +47180,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-32",
@@ -47227,7 +47226,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-33",
@@ -47273,7 +47272,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-34",
@@ -47319,7 +47318,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-35",
@@ -47374,7 +47373,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-36",
@@ -47420,7 +47419,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-37",
@@ -47466,7 +47465,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-38",
@@ -47513,7 +47512,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-39",
@@ -47559,7 +47558,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-40",
@@ -47614,7 +47613,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-41",
@@ -47660,7 +47659,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-42",
@@ -47706,7 +47705,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-43",
@@ -47761,7 +47760,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-44",
@@ -47807,7 +47806,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-45",
@@ -47862,7 +47861,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-46",
@@ -47917,7 +47916,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-47",
@@ -47963,7 +47962,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-48",
@@ -48009,7 +48008,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-49",
@@ -48055,7 +48054,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-50",
@@ -48101,7 +48100,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-51",
@@ -48156,7 +48155,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-52",
@@ -48202,7 +48201,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-53",
@@ -48248,7 +48247,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-54",
@@ -48294,7 +48293,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-55",
@@ -48340,7 +48339,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-56",
@@ -48387,7 +48386,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-57",
@@ -48434,7 +48433,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-58",
@@ -48481,7 +48480,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-59",
@@ -48528,7 +48527,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-60",
@@ -48575,7 +48574,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   },
   {
     id: "QLDM-61",
@@ -48621,7 +48620,7 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["QLD"],
-    licenceType: "motorcycle",
+    licenceType: "motorcycle"
   }
 ] as const;
 
