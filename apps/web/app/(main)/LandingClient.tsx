@@ -268,9 +268,9 @@ const FAQS = [
       es: "¿Cuándo estarán disponibles otros estados australianos?"
     },
     a: {
-      en: "WA and NSW are available now. We're working on VIC and QLD next — sign up to be notified when they launch.",
-      pt: "WA e NSW já estão disponíveis. Estamos trabalhando em VIC e QLD a seguir — cadastre-se para ser notificado quando lançarmos.",
-      es: "WA y NSW ya están disponibles. Estamos trabajando en VIC y QLD a continuación — regístrate para ser notificado cuando se lancen."
+      en: "WA, NSW and QLD are available now. We're working on VIC next — sign up to be notified when it launches.",
+      pt: "WA, NSW e QLD já estão disponíveis. Estamos trabalhando em VIC a seguir — cadastre-se para ser notificado quando lançarmos.",
+      es: "WA, NSW y QLD ya están disponibles. Estamos trabajando en VIC a continuación — regístrate para ser notificado cuando se lance."
     }
   }
 ];

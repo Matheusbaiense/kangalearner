@@ -38143,6 +38143,10486 @@ export const QUESTIONS: readonly QuestionType[] = [
     states: ["NSW"],
     licenceType: "motorcycle"
   }
+,
+  {
+    id: "QLD-1",
+    sign: "/icons/signs/qld-image-10a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. Vehicles A and B are facing each other at an uncontrolled crossroad intersection. At an uncontrolled intersection a driver turning right must give way to any vehicle travelling straight through the intersection.",
+      pt: "O veículo B deve dar passagem ao veículo A. Os veículos A e B estão um de frente para o outro em um cruzamento não controlado. Em um cruzamento não controlado, o motorista que está virando à direita deve dar passagem a qualquer veículo que esteja seguindo em frente pelo cruzamento.",
+      es: "El vehículo B debe ceder el paso al vehículo A. Los vehículos A y B están uno frente al otro en una intersección de cruce no controlada. En una intersección no controlada, el conductor que gira a la derecha debe ceder el paso a cualquier vehículo que continúe recto a través de la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-2",
+    sign: "/icons/signs/qld-image-11a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. Vehicle B is facing a stop sign; when a driver faces a stop sign at an intersection they must give way to all other vehicles entering or approaching the intersection.",
+      pt: "O veículo B deve dar passagem ao veículo A. O veículo B está de frente para uma placa de PARE; quando um motorista está de frente para uma placa de PARE em um cruzamento, ele deve dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento.",
+      es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B está frente a una señal de PARE; cuando un conductor está frente a una señal de PARE en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-3",
+    sign: "/icons/signs/qld-image-12a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In what order do the vehicles go?",
+      pt: "Em que ordem os veículos devem passar?",
+      es: "¿En qué orden deben pasar los vehículos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A then B",
+          pt: "Veículo A e depois B",
+          es: "Vehículo A y luego B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B then A",
+          pt: "Veículo B e depois A",
+          es: "Vehículo B y luego A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B goes first then vehicle A. Vehicles A is turning right from the terminating road at a T-intersection; a driver turning from the terminating road at a T-intersection must give way to all vehicles on the continuing road (except those performing a U-turn). Vehicle A must give way to vehicle B.",
+      pt: "O veículo B passa primeiro, depois o veículo A. O veículo A está virando à direita a partir da via que termina em um cruzamento em T; um motorista que vira a partir da via que termina em um cruzamento em T deve dar passagem a todos os veículos na via que continua (exceto os que estão fazendo retorno). O veículo A deve dar passagem ao veículo B.",
+      es: "El vehículo B pasa primero, luego el vehículo A. El vehículo A está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U). El vehículo A debe ceder el paso al vehículo B."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-4",
+    sign: "/icons/signs/qld-image-13a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. Vehicles A and B are facing stop signs; when two drivers face each other at stop signs at an intersection they must first stop and give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other.  Vehicle A must then give way to vehicle B, as it is turning across vehicle B's path.",
+      pt: "O veículo A deve dar passagem ao veículo B. Os veículos A e B estão de frente um para o outro em placas de PARE; quando dois motoristas ficam de frente um para o outro em placas de PARE em um cruzamento, eles devem primeiro parar e dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento, e depois aplicar as regras de prioridade entre si. O veículo A deve então dar passagem ao veículo B, pois está cruzando o caminho do veículo B.",
+      es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos A y B están uno frente al otro en señales de PARE; cuando dos conductores se encuentran uno frente al otro en señales de PARE en una intersección, primero deben detenerse y ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. El vehículo A debe entonces ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-5",
+    sign: "/icons/signs/qld-image-14a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. A driver entering a road from a slip lane must give way to all vehicles (except those performing a U turn) on the road they are entering.",
+      pt: "O veículo B deve dar passagem ao veículo A. Um motorista que entra em uma via a partir de uma faixa de acesso (slip lane) deve dar passagem a todos os veículos (exceto os que estão fazendo retorno) na via em que está entrando.",
+      es: "El vehículo B debe ceder el paso al vehículo A. Un conductor que entra a una vía desde un carril de incorporación debe ceder el paso a todos los vehículos (excepto los que están haciendo un giro en U) en la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-6",
+    sign: "/icons/signs/qld-image-15a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. A driver turning right from the continuing road at a T-intersection must give way to any vehicle travelling in the opposite direction through the intersection on the continuing road.",
+      pt: "O veículo B deve dar passagem ao veículo A. Um motorista que vira à direita a partir da via que continua em um cruzamento em T deve dar passagem a qualquer veículo que esteja seguindo em sentido contrário pelo cruzamento na via que continua.",
+      es: "El vehículo B debe ceder el paso al vehículo A. Un conductor que gira a la derecha desde la vía que continúa en una intersección en T debe ceder el paso a cualquier vehículo que circule en dirección contraria a través de la intersección por la vía que continúa."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-7",
+    sign: "/icons/signs/qld-image-16a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar passagem?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrian",
+          pt: "O pedestre",
+          es: "El peatón"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The vehicle",
+          pt: "O veículo",
+          es: "El vehículo"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The vehicle must give way to the pedestrian. A driver turning at an intersection must give way to any pedestrian crossing the road they are entering.",
+      pt: "O veículo deve dar passagem ao pedestre. Um motorista que está virando em um cruzamento deve dar passagem a qualquer pedestre que esteja atravessando a via em que está entrando.",
+      es: "El vehículo debe ceder el paso al peatón. Un conductor que está girando en una intersección debe ceder el paso a cualquier peatón que esté cruzando la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-8",
+    sign: "/icons/signs/qld-image-17a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. Vehicles A and B are facing stop and give way signs; when two drivers face each other at stop or give way signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicle A must then give way to vehicle B, as it is turning across vehicle B's path.",
+      pt: "O veículo A deve dar passagem ao veículo B. Os veículos A e B estão de frente para placas de PARE e Dê a Preferência; quando dois motoristas ficam de frente um para o outro em placas de PARE ou Dê a Preferência em um cruzamento, eles devem dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento, e depois aplicar as regras de prioridade entre si. O veículo A deve então dar passagem ao veículo B, pois está cruzando o caminho do veículo B.",
+      es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos A y B están frente a señales de PARE y de Ceda el Paso; cuando dos conductores se encuentran uno frente al otro en señales de PARE o de Ceda el Paso en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. El vehículo A debe entonces ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-9",
+    sign: "/icons/signs/qld-image-18a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Ambos os veículos B e C",
+          es: "Ambos vehículos B y C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B, C and D",
+          pt: "Veículos B, C e D",
+          es: "Vehículos B, C y D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle C and D",
+          pt: "Ambos os veículos C e D",
+          es: "Ambos vehículos C y D"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Both vehicle B and D",
+          pt: "Ambos os veículos B e D",
+          es: "Ambos vehículos B y D"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles D and C. Vehicles A and B are facing give way signs; when two drivers face each other at give way signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles A and B first give way to vehicles C and D. Vehicle B must then give way to vehicle A, as it is turning across vehicle A's path.",
+      pt: "O veículo A deve dar passagem aos veículos D e C. Os veículos A e B estão de frente um para o outro em placas de Dê a Preferência; quando dois motoristas ficam de frente um para o outro em placas de Dê a Preferência em um cruzamento, eles devem dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento, e depois aplicar as regras de prioridade entre si. Os veículos A e B primeiro dão passagem aos veículos C e D. O veículo B deve então dar passagem ao veículo A, pois está cruzando o caminho do veículo A.",
+      es: "El vehículo A debe ceder el paso a los vehículos D y C. Los vehículos A y B están uno frente al otro en señales de Ceda el Paso; cuando dos conductores se encuentran uno frente al otro en señales de Ceda el Paso en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos A y B primero ceden el paso a los vehículos C y D. El vehículo B debe entonces ceder el paso al vehículo A, ya que está cruzando el camino del vehículo A."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-10",
+    sign: "/icons/signs/qld-image-19a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente ao veículo C",
+          es: "Solo al vehículo C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Ambos os veículos B e C",
+          es: "Ambos vehículos B y C"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. Vehicle C is turning right from the terminating road at a T-intersection; a driver turning from the terminating road at a T-intersection must give way to all vehicles on the continuing road (except those performing a U-turn). Vehicle C must give way to vehicles A and B. Vehicle A must then give way to vehicle B as a driver turning right from the continuing road at a T-intersection must give way to any vehicle travelling in the opposite direction turning left at the intersection.",
+      pt: "O veículo A deve dar passagem ao veículo B. O veículo C está virando à direita a partir da via que termina em um cruzamento em T; um motorista que vira a partir da via que termina em um cruzamento em T deve dar passagem a todos os veículos na via que continua (exceto os que estão fazendo retorno). O veículo C deve dar passagem aos veículos A e B. O veículo A deve então dar passagem ao veículo B, pois um motorista que vira à direita a partir da via que continua em um cruzamento em T deve dar passagem a qualquer veículo que esteja seguindo em sentido contrário e virando à esquerda no cruzamento.",
+      es: "El vehículo A debe ceder el paso al vehículo B. El vehículo C está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U). El vehículo C debe ceder el paso a los vehículos A y B. El vehículo A debe entonces ceder el paso al vehículo B, ya que un conductor que gira a la derecha desde la vía que continúa en una intersección en T debe ceder el paso a cualquier vehículo que circule en dirección contraria y esté girando a la izquierda en la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-11",
+    sign: "/icons/signs/qld-image-1a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. Vehicle B is turning right at an intersection with traffic lights; a driver turning right at an intersection with traffic lights must give way to any vehicle travelling in the opposite direction going straight through the intersection.",
+      pt: "O veículo B deve dar passagem ao veículo A. O veículo B está virando à direita em um cruzamento com semáforo; um motorista que vira à direita em um cruzamento com semáforo deve dar passagem a qualquer veículo que esteja seguindo em sentido contrário e siga em frente pelo cruzamento.",
+      es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B está girando a la derecha en una intersección con semáforo; un conductor que gira a la derecha en una intersección con semáforo debe ceder el paso a cualquier vehículo que circule en dirección contraria y siga recto a través de la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-12",
+    sign: "/icons/signs/qld-image-20a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. Vehicle A is turning right at an intersection with traffic lights; a driver turning right at an intersection with traffic lights must give way to any vehicle travelling in the opposite direction turning left at the intersection.",
+      pt: "O veículo A deve dar passagem ao veículo B. O veículo A está virando à direita em um cruzamento com semáforo; um motorista que vira à direita em um cruzamento com semáforo deve dar passagem a qualquer veículo que esteja seguindo em sentido contrário e virando à esquerda no cruzamento.",
+      es: "El vehículo A debe ceder el paso al vehículo B. El vehículo A está girando a la derecha en una intersección con semáforo; un conductor que gira a la derecha en una intersección con semáforo debe ceder el paso a cualquier vehículo que circule en dirección contraria y esté girando a la izquierda en la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-13",
+    sign: "/icons/signs/qld-image-21a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. A driver entering a road from a slip lane must give way to all vehicles (except those performing a U turn) on the road they are entering.",
+      pt: "O veículo B deve dar passagem ao veículo A. Um motorista que entra em uma via a partir de uma faixa de acesso (slip lane) deve dar passagem a todos os veículos (exceto os que estão fazendo retorno) na via em que está entrando.",
+      es: "El vehículo B debe ceder el paso al vehículo A. Un conductor que entra a una vía desde un carril de incorporación debe ceder el paso a todos los vehículos (excepto los que están haciendo un giro en U) en la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-14",
+    sign: "/icons/signs/qld-image-22a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B, C and D",
+          pt: "Veículos B, C e D",
+          es: "Vehículos B, C y D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle C and B",
+          pt: "Ambos os veículos C e B",
+          es: "Ambos vehículos C y B"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Both vehicle B and D",
+          pt: "Ambos os veículos B e D",
+          es: "Ambos vehículos B y D"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and D. Vehicles A and C are facing stop signs; when two drivers face each other at stop signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles A and C first give way to vehicles B and D. Vehicle C must then give way to vehicle A, as it is turning across vehicle A's path.",
+      pt: "O veículo A deve dar passagem aos veículos B e D. Os veículos A e C estão de frente um para o outro em placas de PARE; quando dois motoristas ficam de frente um para o outro em placas de PARE em um cruzamento, eles devem dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento, e depois aplicar as regras de prioridade entre si. Os veículos A e C primeiro dão passagem aos veículos B e D. O veículo C deve então dar passagem ao veículo A, pois está cruzando o caminho do veículo A.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y D. Los vehículos A y C están uno frente al otro en señales de PARE; cuando dos conductores se encuentran uno frente al otro en señales de PARE en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos A y C primero ceden el paso a los vehículos B y D. El vehículo C debe entonces ceder el paso al vehículo A, ya que está cruzando el camino del vehículo A."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-15",
+    sign: "/icons/signs/qld-image-23a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle C",
+          pt: "Veículo C",
+          es: "Vehículo C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle D",
+          pt: "Veículo D",
+          es: "Vehículo D"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No one, the other vehicles must give way to you",
+          pt: "Ninguém, os outros veículos devem dar passagem a você",
+          es: "A nadie, los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. Vehicles C and D are facing give way signs; when two drivers face each other at give way signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles C and D must give way to vehicles A and B. Vehicle A must give way to vehicle B, as it is turning across vehicle B's path.",
+      pt: "O veículo A deve dar passagem ao veículo B. Os veículos C e D estão de frente um para o outro em placas de Dê a Preferência; quando dois motoristas ficam de frente um para o outro em placas de Dê a Preferência em um cruzamento, eles devem dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento, e depois aplicar as regras de prioridade entre si. Os veículos C e D devem dar passagem aos veículos A e B. O veículo A deve dar passagem ao veículo B, pois está cruzando o caminho do veículo B.",
+      es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos C y D están uno frente al otro en señales de Ceda el Paso; cuando dos conductores se encuentran uno frente al otro en señales de Ceda el Paso en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos C y D deben ceder el paso a los vehículos A y B. El vehículo A debe ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-16",
+    sign: "/icons/signs/qld-image-24a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. The vehicles are at an uncontrolled crossroad intersection. At an uncontrolled crossroad intersection a driver going straight ahead must give way to any vehicle approaching from the right.",
+      pt: "O veículo B deve dar passagem ao veículo A. Os veículos estão em um cruzamento não controlado. Em um cruzamento não controlado, o motorista que segue em frente deve dar passagem a qualquer veículo que esteja se aproximando pela direita.",
+      es: "El vehículo B debe ceder el paso al vehículo A. Los vehículos están en una intersección de cruce no controlada. En una intersección no controlada, el conductor que sigue recto debe ceder el paso a cualquier vehículo que se aproxime por la derecha."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-17",
+    sign: "/icons/signs/qld-image-25a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente ao veículo C",
+          es: "Solo al vehículo C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Ambos os veículos B e C",
+          es: "Ambos vehículos B y C"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. Vehicle A is turning right at an intersection with traffic lights; a driver turning right at an intersection with traffic lights must give way to any vehicle travelling in the opposite direction turning left or going straight through the intersection.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. O veículo A está virando à direita em um cruzamento com semáforo; um motorista que vira à direita em um cruzamento com semáforo deve dar passagem a qualquer veículo que esteja seguindo em sentido contrário, seja virando à esquerda ou seguindo em frente pelo cruzamento.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. El vehículo A está girando a la derecha en una intersección con semáforo; un conductor que gira a la derecha en una intersección con semáforo debe ceder el paso a cualquier vehículo que circule en dirección contraria, ya sea girando a la izquierda o siguiendo recto a través de la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-18",
+    sign: "/icons/signs/qld-image-26.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Vehicle A wants to turn right at an intersection with green traffic lights. It should indicate and -",
+      pt: "O veículo A quer virar à direita em um cruzamento com semáforo verde. Ele deve sinalizar e -",
+      es: "El vehículo A quiere girar a la derecha en una intersección con semáforo en verde. Debe indicar y -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Wait for the yellow light, oncoming traffic must stop and give way",
+          pt: "Esperar pelo sinal amarelo, o tráfego em sentido contrário deve parar e dar passagem",
+          es: "Esperar la luz amarilla, el tráfico que viene en sentido contrario debe detenerse y ceder el paso"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to oncoming traffic, and to pedestrians and cyclists crossing the road it is turning into",
+          pt: "Dar passagem ao tráfego em sentido contrário, e aos pedestres e ciclistas atravessando a via para a qual está virando",
+          es: "Ceder el paso al tráfico en sentido contrario, y a los peatones y ciclistas que cruzan la vía a la que está girando"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn quickly, oncoming traffic must give way",
+          pt: "Virar rapidamente, o tráfego em sentido contrário deve dar passagem",
+          es: "Girar rápidamente, el tráfico en sentido contrario debe ceder el paso"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Wait for 5 seconds then turn quickly",
+          pt: "Esperar 5 segundos e depois virar rapidamente",
+          es: "Esperar 5 segundos y luego girar rápidamente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver turning at a signalised intersection must give way to any pedestrian or cyclist on a crossing on the road they are entering.",
+      pt: "Um motorista que está virando em um cruzamento sinalizado deve dar passagem a qualquer pedestre ou ciclista em uma faixa de travessia na via em que está entrando.",
+      es: "Un conductor que gira en una intersección semaforizada debe ceder el paso a cualquier peatón o ciclista en un cruce de la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-19",
+    sign: "/icons/signs/qld-image-27a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No one, the other vehicles must give way to you",
+          pt: "Ninguém, os outros veículos devem dar passagem a você",
+          es: "A nadie, los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente ao veículo C",
+          es: "Solo al vehículo C"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Ambos os veículos B e C",
+          es: "Ambos vehículos B y C"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. Vehicle A is facing a give way sign; when a driver faces a give way sign at an intersection they must give way to all other vehicles entering or approaching the intersection.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. O veículo A está de frente para uma placa de Dê a Preferência; quando um motorista está de frente para uma placa de Dê a Preferência em um cruzamento, ele deve dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. El vehículo A está frente a una señal de Ceda el Paso; cuando un conductor está frente a una señal de Ceda el Paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-20",
+    sign: "/icons/signs/qld-image-28a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No one, the other vehicles must give way to you",
+          pt: "Ninguém, os outros veículos devem dar passagem a você",
+          es: "A nadie, los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Ambos os veículos B e C",
+          es: "Ambos vehículos B y C"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente ao veículo C",
+          es: "Solo al vehículo C"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. Vehicle A is turning right from the terminating road at a T-intersection; a driver turning from the terminating road at a T-intersection must give way to all vehicles on the continuing road (except those performing a U-turn). Vehicle A must give way to vehicles B and C as they are travelling on the continuing road.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. O veículo A está virando à direita a partir da via que termina em um cruzamento em T; um motorista que vira a partir da via que termina em um cruzamento em T deve dar passagem a todos os veículos na via que continua (exceto os que estão fazendo retorno). O veículo A deve dar passagem aos veículos B e C, pois eles estão trafegando na via que continua.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. El vehículo A está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U). El vehículo A debe ceder el paso a los vehículos B y C, ya que circulan por la vía que continúa."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-21",
+    sign: "/icons/signs/qld-image-29.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A from private property. You must give way to -",
+      pt: "Você está dirigindo o veículo A saindo de uma propriedade privada. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A desde una propiedad privada. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Ambos os veículos B e C",
+          es: "Ambos vehículos B y C"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No one, the other vehicles must give way to you",
+          pt: "Ninguém, os outros veículos devem dar passagem a você",
+          es: "A nadie, los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. A driver entering a road from private property must give way to vehicles on the road they are entering.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. Um motorista que entra em uma via a partir de uma propriedade privada deve dar passagem aos veículos na via em que está entrando.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. Un conductor que entra a una vía desde una propiedad privada debe ceder el paso a los vehículos de la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-22",
+    sign: "/icons/signs/qld-image-2a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way. Vehicle A is facing a give way sign. When a driver faces a give way sign at an intersection they must give way to all other vehicles entering or approaching the intersection.",
+      pt: "O veículo A deve dar passagem. O veículo A está de frente para uma placa de Dê a Preferência. Quando um motorista está de frente para uma placa de Dê a Preferência em um cruzamento, ele deve dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento.",
+      es: "El vehículo A debe ceder el paso. El vehículo A está frente a una señal de Ceda el Paso. Cuando un conductor está frente a una señal de Ceda el Paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-23",
+    sign: "/icons/signs/qld-image-30a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. Vehicle A is turning right from the terminating road at a T-intersection; a driver turning from the terminating road at a T-intersection must give way to all vehicles on the continuing road (except those performing a U-turn)",
+      pt: "O veículo A deve dar passagem ao veículo B. O veículo A está virando à direita a partir da via que termina em um cruzamento em T; um motorista que vira a partir da via que termina em um cruzamento em T deve dar passagem a todos os veículos na via que continua (exceto os que estão fazendo retorno).",
+      es: "El vehículo A debe ceder el paso al vehículo B. El vehículo A está girando a la derecha desde la vía que termina en una intersección en T; un conductor que gira desde la vía que termina en una intersección en T debe ceder el paso a todos los vehículos de la vía que continúa (excepto los que están haciendo un giro en U)."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-24",
+    sign: "/icons/signs/qld-image-31a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In what order should the vehicles go through the intersection?",
+      pt: "Em que ordem os veículos devem passar pelo cruzamento?",
+      es: "¿En qué orden deben pasar los vehículos por la intersección?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B, A, then C",
+          pt: "Veículo B, A, e depois C",
+          es: "Vehículo B, A, y luego C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle C, B, then A",
+          pt: "Veículo C, B, e depois A",
+          es: "Vehículo C, B, y luego A"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle A, B, then C",
+          pt: "Veículo A, B, e depois C",
+          es: "Vehículo A, B, y luego C"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Vehicle B, C, then A",
+          pt: "Veículo B, C, e depois A",
+          es: "Vehículo B, C, y luego A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B would go first, vehicle C second and vehicle A last. Vehicles A and C are facing stop signs; when two drivers face each other at stop signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles A and C first give way to vehicle B. Vehicle A must then give way to vehicle C, as it is turning across vehicle C's path.",
+      pt: "O veículo B passaria primeiro, o veículo C em segundo e o veículo A por último. Os veículos A e C estão de frente um para o outro em placas de PARE; quando dois motoristas ficam de frente um para o outro em placas de PARE em um cruzamento, eles devem dar passagem a todos os outros veículos que estejam entrando ou se aproximando do cruzamento, e depois aplicar as regras de prioridade entre si. Os veículos A e C primeiro dão passagem ao veículo B. O veículo A deve então dar passagem ao veículo C, pois está cruzando o caminho do veículo C.",
+      es: "El vehículo B pasaría primero, el vehículo C en segundo lugar y el vehículo A al final. Los vehículos A y C están uno frente al otro en señales de PARE; cuando dos conductores se encuentran uno frente al otro en señales de PARE en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de prioridad entre ellos. Los vehículos A y C primero ceden el paso al vehículo B. El vehículo A debe entonces ceder el paso al vehículo C, ya que está cruzando el camino del vehículo C."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-25",
+    sign: "/icons/signs/qld-image-32a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle goes first?",
+      pt: "Qual veículo passa primeiro?",
+      es: "¿Qué vehículo pasa primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B goes first. Vehicle A must give way to vehicle B as a driver turning right from the continuing road at a T-intersection must give way to any vehicle travelling in the opposite direction whether turning left at the intersection or continuing straight ahead.",
+      pt: "O veículo B passa primeiro. O veículo A deve dar passagem ao veículo B, pois um motorista que vira à direita a partir da via que continua em um cruzamento em T deve dar passagem a qualquer veículo que esteja seguindo em sentido contrário, seja virando à esquerda no cruzamento ou seguindo em frente.",
+      es: "El vehículo B pasa primero. El vehículo A debe ceder el paso al vehículo B, ya que un conductor que gira a la derecha desde la vía que continúa en una intersección en T debe ceder el paso a cualquier vehículo que circule en dirección contraria, ya sea girando a la izquierda en la intersección o continuando recto."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-26",
+    sign: "/icons/signs/qld-image-33.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way at a children's crossing?",
+      pt: "Quem deve dar passagem em uma faixa de travessia escolar?",
+      es: "¿Quién debe ceder el paso en un paso de peatones escolar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only vehicle A, which is travelling on the same side of the road as the pedestrians",
+          pt: "Somente o veículo A, que está trafegando no mesmo lado da via que os pedestres",
+          es: "Solo el vehículo A, que circula por el mismo lado de la vía que los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A and B must stop and give way to any pedestrian on or entering the crossing",
+          pt: "Os veículos A e B devem parar e dar passagem a qualquer pedestre que esteja na faixa ou entrando nela",
+          es: "Los vehículos A y B deben detenerse y ceder el paso a cualquier peatón que esté en el paso de peatones o entrando en él"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither vehicle A or B must give way, unless the pedestrians are in the middle of the road",
+          pt: "Nem o veículo A nem o B precisam dar passagem, a menos que os pedestres estejam no meio da via",
+          es: "Ni el vehículo A ni el B deben ceder el paso, a menos que los peatones estén en el medio de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "The pedestrians must give way to all traffic",
+          pt: "Os pedestres devem dar passagem a todo o tráfego",
+          es: "Los peatones deben ceder el paso a todo el tráfico"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicles A and B must give way to the pedestrians. At a children's crossing drivers must stop and give way to any pedestrian or cyclist on or entering the crossing.",
+      pt: "Os veículos A e B devem dar passagem aos pedestres. Em uma faixa de travessia escolar, os motoristas devem parar e dar passagem a qualquer pedestre ou ciclista que esteja na faixa ou entrando nela.",
+      es: "Los vehículos A y B deben ceder el paso a los peatones. En un paso de peatones escolar, los conductores deben detenerse y ceder el paso a cualquier peatón o ciclista que esté en el paso o entrando en él."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-27",
+    sign: "/icons/signs/qld-image-34.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving vehicle A. You are approaching an uncontrolled intersection and want to turn left. There is a cyclist in front of you. You must -",
+      pt: "Você está dirigindo o veículo A. Você está se aproximando de um cruzamento não controlado e quer virar à esquerda. Há um ciclista à sua frente. Você deve -",
+      es: "Usted está conduciendo el vehículo A. Se está aproximando a una intersección no controlada y quiere girar a la izquierda. Hay un ciclista delante de usted. Debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Allow the cyclist to go through the intersection then turn left",
+          pt: "Deixar o ciclista atravessar o cruzamento e depois virar à esquerda",
+          es: "Dejar que el ciclista cruce la intersección y luego girar a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sound your horn to warn the cyclist that you are behind",
+          pt: "Buzinar para avisar o ciclista de que você está atrás dele",
+          es: "Tocar la bocina para avisar al ciclista que usted va detrás"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Accelerate and pass the cyclist then turn left in front of the cyclist",
+          pt: "Acelerar e ultrapassar o ciclista e depois virar à esquerda na frente dele",
+          es: "Acelerar y adelantar al ciclista y luego girar a la izquierda delante de él"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Accelerate, indicate and sound your horn to warn the cyclist then turn left in front of the cyclist",
+          pt: "Acelerar, sinalizar e buzinar para avisar o ciclista e depois virar à esquerda na frente dele",
+          es: "Acelerar, indicar y tocar la bocina para avisar al ciclista y luego girar a la izquierda delante de él"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must only pass the cyclist when they can do so safely allowing the required minimum passing distance. Vehicle A must allow the cyclist to go through the intersection then turn left.",
+      pt: "O veículo A só deve ultrapassar o ciclista quando puder fazê-lo com segurança, respeitando a distância mínima obrigatória de ultrapassagem. O veículo A deve deixar o ciclista atravessar o cruzamento e só então virar à esquerda.",
+      es: "El vehículo A solo debe adelantar al ciclista cuando pueda hacerlo con seguridad, respetando la distancia mínima de adelantamiento exigida. El vehículo A debe dejar que el ciclista cruce la intersección y luego girar a la izquierda."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-28",
+    sign: "/icons/signs/qld-image-35.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "Which statement is wrong?",
+      pt: "Qual afirmação está errada?",
+      es: "¿Qué afirmación es incorrecta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You can turn into a driveway when the solid line is on your side",
+          pt: "Você pode entrar em uma garagem quando a linha contínua estiver do seu lado",
+          es: "Puede entrar a una entrada de vehículos cuando la línea continua esté de su lado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You cannot cross the centre lines at any time",
+          pt: "Você não pode cruzar as linhas centrais em nenhuma hipótese",
+          es: "No puede cruzar las líneas centrales en ningún momento"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You can overtake another vehicle when the broken line is on your side",
+          pt: "Você pode ultrapassar outro veículo quando a linha tracejada estiver do seu lado",
+          es: "Puede adelantar a otro vehículo cuando la línea discontinua esté de su lado"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You can turn into a road when the broken line is on your side",
+          pt: "Você pode entrar em uma via quando a linha tracejada estiver do seu lado",
+          es: "Puede entrar a una vía cuando la línea discontinua esté de su lado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If the broken line is on your side you can cross it to turn into a driveway or another road, overtake another vehicle, perform a U-turn, or pass a bicycle or personal mobility device rider. If the continuous line is on your side you can cross it to turn into a driveway or another road, or pass a bicycle or personal mobility device rider.",
+      pt: "Se a linha tracejada estiver do seu lado, você pode cruzá-la para entrar em uma garagem ou outra via, ultrapassar outro veículo, fazer um retorno ou ultrapassar um ciclista ou usuário de dispositivo pessoal de mobilidade. Se a linha contínua estiver do seu lado, você pode cruzá-la para entrar em uma garagem ou outra via, ou para ultrapassar um ciclista ou usuário de dispositivo pessoal de mobilidade.",
+      es: "Si la línea discontinua está de su lado, puede cruzarla para entrar a una entrada de vehículos u otra vía, adelantar a otro vehículo, hacer un giro en U, o adelantar a un ciclista o usuario de un dispositivo personal de movilidad. Si la línea continua está de su lado, puede cruzarla para entrar a una entrada de vehículos u otra vía, o para adelantar a un ciclista o usuario de un dispositivo personal de movilidad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-29",
+    sign: "/icons/signs/qld-image-36.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You are stopped at a children's crossing displaying orange flags. You can drive on when -",
+      pt: "Você está dirigindo o veículo A. Você está parado em uma faixa de travessia escolar sinalizada com bandeiras laranjas. Você pode seguir em frente quando -",
+      es: "Usted está conduciendo el vehículo A. Está detenido en un paso de peatones escolar señalizado con banderas naranjas. Puede continuar cuando -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrians or bicycle riders are not in your vehicle's path",
+          pt: "Os pedestres ou ciclistas não estiverem no caminho do seu veículo",
+          es: "Los peatones o ciclistas no estén en el camino de su vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The pedestrians or bicycle riders are about to enter the crossing",
+          pt: "Os pedestres ou ciclistas estiverem prestes a entrar na faixa",
+          es: "Los peatones o ciclistas estén a punto de entrar al paso de peatones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The pedestrians and bicycle riders have left the crossing and there is no one about to enter the crossing",
+          pt: "Os pedestres e ciclistas tiverem deixado a faixa e não houver mais ninguém prestes a entrar nela",
+          es: "Los peatones y ciclistas hayan dejado el paso de peatones y no haya nadie a punto de entrar en él"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If you have stopped at a children's crossing displaying orange flags, you must remain stopped until all pedestrians , bicycle and personal mobility device riders have left the crossing and no one is about to enter the crossing.",
+      pt: "Se você parou em uma faixa de travessia escolar sinalizada com bandeiras laranjas, deve permanecer parado até que todos os pedestres, ciclistas e usuários de dispositivos pessoais de mobilidade tenham deixado a faixa e não haja mais ninguém prestes a entrar nela.",
+      es: "Si se detuvo en un paso de peatones escolar señalizado con banderas naranjas, debe permanecer detenido hasta que todos los peatones, ciclistas y usuarios de dispositivos personales de movilidad hayan dejado el paso de peatones y no haya nadie a punto de entrar en él."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-30",
+    sign: "/icons/signs/qld-image-37.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. Your lane ends and you need to merge lanes (there are lane markings) -",
+      pt: "Você está dirigindo o veículo A. Sua faixa termina e você precisa se fundir a outra faixa (há marcações de faixa) -",
+      es: "Usted está conduciendo el vehículo A. Su carril termina y necesita incorporarse a otro carril (hay marcas viales) -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle C has to give way to you as you are travelling ahead of it",
+          pt: "O veículo C tem que dar passagem a você, pois você está à frente dele",
+          es: "El vehículo C tiene que cederle el paso a usted, ya que usted circula delante de él"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You have to give way to vehicle B and C as you are moving into their lane",
+          pt: "Você tem que dar passagem aos veículos B e C, pois está entrando na faixa deles",
+          es: "Usted tiene que ceder el paso a los vehículos B y C, ya que se está incorporando a su carril"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle B and C have to give way to you as they are in the right lane",
+          pt: "Os veículos B e C têm que dar passagem a você, pois estão na faixa da direita",
+          es: "Los vehículos B y C tienen que cederle el paso a usted, ya que están en el carril derecho"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You only have to give way to vehicle B",
+          pt: "Você só precisa dar passagem ao veículo B",
+          es: "Solo tiene que ceder el paso al vehículo B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B and C. If the lane the driver is travelling in comes to an end, and the driver has to cross a lane line to merge, the driver must give way to traffic already in the lane they are moving to.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. Se a faixa em que o motorista está trafegando termina, e ele precisa cruzar uma linha de faixa para se fundir, o motorista deve dar passagem ao tráfego que já está na faixa para a qual está se movendo.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. Si el carril por el que circula el conductor termina, y el conductor tiene que cruzar una línea de carril para incorporarse, debe ceder el paso al tráfico que ya circula por el carril al que se está incorporando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-31",
+    sign: "/icons/signs/qld-image-38.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "Can Vehicle A cross the double lines?",
+      pt: "O veículo A pode cruzar as linhas duplas?",
+      es: "¿Puede el vehículo A cruzar las líneas dobles?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes - to do a U-turn",
+          pt: "Sim - para fazer um retorno (conversão em U)",
+          es: "Sí, para hacer un giro en U"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes - to overtake another motor vehicle",
+          pt: "Sim - para ultrapassar outro veículo motorizado",
+          es: "Sí, para adelantar a otro vehículo motorizado"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes - to turn into a driveway",
+          pt: "Sim - para entrar em uma garagem/entrada",
+          es: "Sí, para entrar en una entrada de vehículos"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No - except to safely pass a bicycle rider",
+          pt: "Não - exceto para ultrapassar com segurança um ciclista",
+          es: "No, excepto para pasar con seguridad a un ciclista"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You are not allowed to cross double continuous lines unless you are safely passing a bicycle or personal mobility device rider.",
+      pt: "Você não pode cruzar linhas duplas contínuas, exceto para ultrapassar com segurança um ciclista ou usuário de dispositivo pessoal de mobilidade.",
+      es: "No se permite cruzar líneas dobles continuas, excepto para pasar con seguridad a un ciclista o a un usuario de un dispositivo personal de movilidad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-32",
+    sign: "/icons/signs/qld-image-39.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "You are approaching an intersection with traffic lights. A Police Officer controlling traffic has one arm raised as shown. Do you -",
+      pt: "Você está se aproximando de um cruzamento com semáforos. Um policial que está controlando o trânsito tem um braço levantado como mostrado. Você deve -",
+      es: "Se está acercando a una intersección con semáforos. Un oficial de policía que controla el tráfico tiene un brazo levantado como se muestra. ¿Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and continue through the intersection",
+          pt: "Diminuir a velocidade e continuar pelo cruzamento",
+          es: "Reducir la velocidad y continuar a través de la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn right",
+          pt: "Virar à direita",
+          es: "Girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop at the intersection",
+          pt: "Parar no cruzamento",
+          es: "Detenerse en la intersección"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Obey the traffic lights",
+          pt: "Obedecer aos semáforos",
+          es: "Obedecer los semáforos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are facing a Police Officer giving the hand signals shown in the diagram, you must stop as Police directions overrule the traffic lights.",
+      pt: "Se você estiver diante de um policial fazendo os sinais manuais mostrados no diagrama, você deve parar, pois as instruções da polícia têm prioridade sobre os semáforos.",
+      es: "Si se encuentra frente a un oficial de policía haciendo las señales manuales mostradas en el diagrama, debe detenerse, ya que las indicaciones de la policía tienen prioridad sobre los semáforos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-33",
+    sign: "/icons/signs/qld-image-3a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle D only",
+          pt: "Somente ao veículo D",
+          es: "Solo al vehículo D"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Both vehicle B and C",
+          pt: "Aos veículos B e C",
+          es: "A los vehículos B y C"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle B and D",
+          pt: "Aos veículos B e D",
+          es: "A los vehículos B y D"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. Vehicles A and D are facing give way signs; when two drivers face each other at give way signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles A and D first give way to vehicles B and C, as vehicles B and C are going straight ahead on the through road. Vehicles A and D may then both go as they are both turning and will not affect each other.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. Os veículos A e D estão diante de placas de dê a preferência; quando dois motoristas se encontram diante de placas de dê a preferência em um cruzamento, eles devem dar passagem a todos os outros veículos que estão entrando ou se aproximando do cruzamento, e então aplicar as regras de prioridade entre si. Os veículos A e D primeiro dão passagem aos veículos B e C, pois os veículos B e C estão seguindo em frente na via principal. Os veículos A e D podem então seguir, pois ambos estão convertendo e não vão interferir um com o outro.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. Los vehículos A y D están frente a señales de ceda el paso; cuando dos conductores se encuentran frente a frente ante señales de ceda el paso en una intersección, deben ceder el paso a todos los demás vehículos que entran o se acercan a la intersección, y luego aplicar las normas de prioridad entre ellos. Los vehículos A y D ceden primero el paso a los vehículos B y C, ya que estos van derecho por la vía principal. Luego, los vehículos A y D pueden avanzar, ya que ambos están girando y no interferirán entre sí."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-34",
+    sign: "/icons/signs/qld-image-4.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar passagem?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrian",
+          pt: "O pedestre",
+          es: "El peatón"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The vehicle",
+          pt: "O veículo",
+          es: "El vehículo"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The vehicle must give way to the pedestrian. A driver turning at an intersection must give way to any pedestrian crossing the road they are entering.",
+      pt: "O veículo deve dar passagem ao pedestre. Um motorista que está convertendo em um cruzamento deve dar passagem a qualquer pedestre atravessando a via em que está entrando.",
+      es: "El vehículo debe ceder el paso al peatón. Un conductor que gira en una intersección debe ceder el paso a cualquier peatón que cruce la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-35",
+    sign: "/icons/signs/qld-image-40.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving vehicle A. When can't you cross the single continuous line?",
+      pt: "Você está dirigindo o veículo A. Quando você não pode cruzar a linha única contínua?",
+      es: "Usted está conduciendo el vehículo A. ¿Cuándo no puede cruzar la línea única continua?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To turn into a road",
+          pt: "Para entrar em uma via",
+          es: "Para entrar en una vía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "To pass a bicycle rider",
+          pt: "Para ultrapassar um ciclista",
+          es: "Para pasar a un ciclista"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To overtake another motor vehicle",
+          pt: "Para ultrapassar outro veículo motorizado",
+          es: "Para adelantar a otro vehículo motorizado"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "To turn into a driveway",
+          pt: "Para entrar em uma garagem/entrada",
+          es: "Para entrar en una entrada de vehículos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You may cross a single continuous line to turn into a driveway or a road, or to safely pass a bicycle or personal mobility device rider. You may not cross a single continuous centre line to overtake another motor vehicle.",
+      pt: "Você pode cruzar uma linha única contínua para entrar em uma entrada/garagem ou em uma via, ou para ultrapassar com segurança um ciclista ou usuário de dispositivo pessoal de mobilidade. Você não pode cruzar uma linha central única contínua para ultrapassar outro veículo motorizado.",
+      es: "Puede cruzar una línea única continua para entrar en una entrada de vehículos o en una vía, o para pasar con seguridad a un ciclista o a un usuario de un dispositivo personal de movilidad. No puede cruzar una línea central única continua para adelantar a otro vehículo motorizado."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-36",
+    sign: "/icons/signs/qld-image-41.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving vehicle A and the speed limit is more than 80km/h, which of the following statements is wrong?",
+      pt: "Você está dirigindo o veículo A e o limite de velocidade é superior a 80km/h. Qual das afirmações a seguir está errada?",
+      es: "Usted está conduciendo el vehículo A y el límite de velocidad es superior a 80 km/h. ¿Cuál de las siguientes afirmaciones es incorrecta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You can drive in the right lane at any time",
+          pt: "Você pode dirigir na faixa da direita a qualquer momento",
+          es: "Puede conducir por el carril derecho en cualquier momento"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must drive in the left hand lane unless you are turning right",
+          pt: "Você deve dirigir na faixa da esquerda, exceto quando estiver virando à direita",
+          es: "Debe conducir por el carril izquierdo, a menos que esté girando a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must drive in the left hand lane unless you are overtaking a vehicle in the left hand lane",
+          pt: "Você deve dirigir na faixa da esquerda, exceto quando estiver ultrapassando um veículo na faixa da esquerda",
+          es: "Debe conducir por el carril izquierdo, a menos que esté adelantando a un vehículo en el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You must drive in the left hand lane unless you are avoiding an obstruction",
+          pt: "Você deve dirigir na faixa da esquerda, exceto quando estiver desviando de um obstáculo",
+          es: "Debe conducir por el carril izquierdo, a menos que esté evitando una obstrucción"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver on a multi-lane road where the speed limit is above 80km/h must not drive in the right lane unless overtaking another vehicle, preparing for a right turn, or avoiding an obstacle, or the traffic in every lane is congested.",
+      pt: "Um motorista em uma via de múltiplas faixas onde o limite de velocidade é superior a 80km/h não deve dirigir na faixa da direita, exceto para ultrapassar outro veículo, se preparar para uma conversão à direita, desviar de um obstáculo, ou quando o trânsito estiver congestionado em todas as faixas.",
+      es: "Un conductor en una vía de varios carriles donde el límite de velocidad es superior a 80 km/h no debe conducir por el carril derecho, salvo para adelantar a otro vehículo, prepararse para girar a la derecha, evitar un obstáculo, o cuando el tráfico esté congestionado en todos los carriles."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-37",
+    sign: "/icons/signs/qld-image-42.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A on a multi-lane road. The road changes from multi-lane to single lane and you need to merge with other traffic. There are no lane markings.",
+      pt: "Você está dirigindo o veículo A em uma via de múltiplas faixas. A via muda de múltiplas faixas para uma única faixa e você precisa se fundir com outro tráfego. Não há marcações de faixa.",
+      es: "Usted está conduciendo el vehículo A en una vía de varios carriles. La vía cambia de varios carriles a un solo carril y usted necesita fusionarse con el otro tráfico. No hay marcas de carril."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You should give way to vehicle B because it is travelling ahead of you and vehicle C should give way to you because you are travelling ahead of it",
+          pt: "Você deve dar passagem ao veículo B porque ele está viajando à sua frente, e o veículo C deve dar passagem a você porque você está viajando à frente dele",
+          es: "Debe ceder el paso al vehículo B porque va delante de usted, y el vehículo C debe cederle el paso a usted porque usted va delante de él"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Both vehicle B and C have to give way to you",
+          pt: "Tanto o veículo B quanto o C devem dar passagem a você",
+          es: "Tanto el vehículo B como el C deben cederle el paso a usted"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You have to give way to both vehicle B and C because they are on your right",
+          pt: "Você deve dar passagem tanto ao veículo B quanto ao C porque eles estão à sua direita",
+          es: "Usted debe ceder el paso tanto al vehículo B como al C porque están a su derecha"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. When lines of traffic merge where there are no lane lines to be crossed, a driver must give way to any vehicle ahead of them.",
+      pt: "O veículo A deve dar passagem ao veículo B. Quando filas de tráfego se fundem em um local onde não há linhas de faixa a serem cruzadas, um motorista deve dar passagem a qualquer veículo que esteja à sua frente.",
+      es: "El vehículo A debe ceder el paso al vehículo B. Cuando las filas de tráfico se fusionan en un lugar donde no hay líneas de carril que cruzar, un conductor debe ceder el paso a cualquier vehículo que vaya delante de él."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-38",
+    sign: "/icons/signs/qld-image-43.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "You are the driver of vehicle A which is parked. You want to move from the side of the road into traffic, you must indicate -",
+      pt: "Você é o motorista do veículo A, que está estacionado. Você quer sair da lateral da via para o tráfego. Você deve sinalizar -",
+      es: "Usted es el conductor del vehículo A, que está estacionado. Quiere salir del borde de la vía hacia el tráfico. Debe indicar -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only if there is traffic coming",
+          pt: "Somente se houver tráfego vindo",
+          es: "Solo si hay tráfico viniendo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "For 5 seconds and give way to all traffic",
+          pt: "Por 5 segundos e dar passagem a todo o tráfego",
+          es: "Durante 5 segundos y ceder el paso a todo el tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "For 3 seconds and give way to all traffic",
+          pt: "Por 3 segundos e dar passagem a todo o tráfego",
+          es: "Durante 3 segundos y ceder el paso a todo el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "For one second and give way to all traffic",
+          pt: "Por um segundo e dar passagem a todo o tráfego",
+          es: "Durante un segundo y ceder el paso a todo el tráfico"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you want to move off from the side of the road, you must signal for at least 5 seconds before moving from a parked position. You must also give way to any vehicles, bicycles or personal mobility devices travelling on the road.",
+      pt: "Se você quiser sair da lateral da via, deve sinalizar por pelo menos 5 segundos antes de se mover da posição estacionada. Você também deve dar passagem a quaisquer veículos, bicicletas ou dispositivos pessoais de mobilidade que estejam circulando na via.",
+      es: "Si desea salir del borde de la vía, debe indicar durante al menos 5 segundos antes de moverse desde la posición estacionada. También debe ceder el paso a cualquier vehículo, bicicleta o dispositivo personal de movilidad que circule por la vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-39",
+    sign: "/icons/signs/qld-image-44.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving vehicle A. Vehicle B in front of you has stopped at a children's crossing, you must -",
+      pt: "Você está dirigindo o veículo A. O veículo B à sua frente parou em uma faixa de travessia escolar. Você deve -",
+      es: "Usted está conduciendo el vehículo A. El vehículo B que va delante de usted se ha detenido en un paso de peatones escolar. Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Indicate and sound your horn to warn vehicle B and any pedestrians that you are overtaking",
+          pt: "Sinalizar e buzinar para avisar o veículo B e quaisquer pedestres que você está ultrapassando",
+          es: "Indicar y tocar la bocina para avisar al vehículo B y a cualquier peatón que está usted adelantando"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop behind vehicle B",
+          pt: "Parar atrás do veículo B",
+          es: "Detenerse detrás del vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Overtake vehicle B",
+          pt: "Ultrapassar o veículo B",
+          es: "Adelantar al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Overtake vehicle B with care if you are satisfied there is no pedestrian on the crossing",
+          pt: "Ultrapassar o veículo B com cuidado, se você tiver certeza de que não há pedestres na faixa",
+          es: "Adelantar al vehículo B con cuidado, si está seguro de que no hay peatones en el paso"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are approaching a children's crossing and the vehicle ahead of you has stopped at the crossing, you must not overtake the vehicle stopped at the crossing.",
+      pt: "Se você estiver se aproximando de uma faixa de travessia escolar e o veículo à sua frente tiver parado na faixa, você não pode ultrapassar o veículo parado na faixa.",
+      es: "Si se está acercando a un paso de peatones escolar y el vehículo que va delante de usted se ha detenido en el paso, no debe adelantar al vehículo detenido en el paso."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-40",
+    sign: "/icons/signs/qld-image-45a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In what order do the vehicles go?",
+      pt: "Em que ordem os veículos devem passar?",
+      es: "¿En qué orden deben pasar los vehículos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle C, A, B and then D",
+          pt: "Veículo C, A, B e depois D",
+          es: "Vehículo C, A, B y luego D"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B, A, C and then D",
+          pt: "Veículo B, A, C e depois D",
+          es: "Vehículo B, A, C y luego D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle C, B, A and then D",
+          pt: "Veículo C, B, A e depois D",
+          es: "Vehículo C, B, A y luego D"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle C would go first, vehicle A second, vehicle B third, and vehicle D last. Vehicles B and D are facing a give way sign; when a driver faces a give way sign at an intersection they must give way to all other vehicles entering or approaching the intersection. Vehicles B and D must give way to vehicles A and C.  Vehicle A is travelling on the terminating road at a T-intersection (the continuing road marked with broken white lines goes around the corner);a driver travelling on the terminating road at a T-intersection must give way to all vehicles on the continuing road (except those performing a U-turn). Vehicle A must give way to vehicle C.",
+      pt: "O veículo C passaria primeiro, o veículo A em segundo, o veículo B em terceiro e o veículo D por último. Os veículos B e D estão diante de uma placa de dê a preferência; quando um motorista está diante de uma placa de dê a preferência em um cruzamento, ele deve dar passagem a todos os outros veículos que estão entrando ou se aproximando do cruzamento. Os veículos B e D devem dar passagem aos veículos A e C. O veículo A está viajando na via terminal de um cruzamento em T (a via principal, marcada com linhas brancas tracejadas, contorna a curva); um motorista viajando na via terminal de um cruzamento em T deve dar passagem a todos os veículos na via principal (exceto aqueles fazendo um retorno). O veículo A deve dar passagem ao veículo C.",
+      es: "El vehículo C pasaría primero, el vehículo A en segundo lugar, el vehículo B en tercer lugar y el vehículo D en último lugar. Los vehículos B y D están frente a una señal de ceda el paso; cuando un conductor está frente a una señal de ceda el paso en una intersección, debe ceder el paso a todos los demás vehículos que entran o se acercan a la intersección. Los vehículos B y D deben ceder el paso a los vehículos A y C. El vehículo A circula por la vía terminal de una intersección en T (la vía principal, marcada con líneas blancas discontinuas, rodea la curva); un conductor que circula por la vía terminal de una intersección en T debe ceder el paso a todos los vehículos de la vía principal (excepto los que están haciendo un giro en U). El vehículo A debe ceder el paso al vehículo C."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-41",
+    sign: "/icons/signs/qld-image-47.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving vehicle A. In what direction must you travel?",
+      pt: "Você está dirigindo o veículo A. Em que direção você deve seguir?",
+      es: "Usted está conduciendo el vehículo A. ¿En qué dirección debe circular?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Go straight ahead",
+          pt: "Seguir em frente",
+          es: "Seguir recto"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn left only",
+          pt: "Virar somente à esquerda",
+          es: "Girar solo a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn left or go straight ahead",
+          pt: "Virar à esquerda ou seguir em frente",
+          es: "Girar a la izquierda o seguir recto"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Turn left only when there is traffic in the other lane",
+          pt: "Virar à esquerda somente quando houver tráfego na outra faixa",
+          es: "Girar a la izquierda solo cuando haya tráfico en el otro carril"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must turn left. In a lane marked with arrows, you must drive only in the direction of the arrows.",
+      pt: "O veículo A deve virar à esquerda. Em uma faixa marcada com setas, você deve dirigir somente na direção das setas.",
+      es: "El vehículo A debe girar a la izquierda. En un carril marcado con flechas, debe conducir únicamente en la dirección de las flechas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-42",
+    sign: "/icons/signs/qld-image-48.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving vehicle A. In what direction must you travel?",
+      pt: "Você está dirigindo o veículo A. Em que direção você deve seguir?",
+      es: "Usted está conduciendo el vehículo A. ¿En qué dirección debe circular?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Straight ahead or make a right turn",
+          pt: "Seguir em frente ou virar à direita",
+          es: "Seguir recto o girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn left only",
+          pt: "Virar somente à esquerda",
+          es: "Girar solo a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn right only",
+          pt: "Virar somente à direita",
+          es: "Girar solo a la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Straight ahead only",
+          pt: "Somente seguir em frente",
+          es: "Solo seguir recto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must turn right. In a lane marked with arrows, you must drive only in the direction of the arrows.",
+      pt: "O veículo A deve virar à direita. Em uma faixa marcada com setas, você deve dirigir somente na direção das setas.",
+      es: "El vehículo A debe girar a la derecha. En un carril marcado con flechas, debe conducir únicamente en la dirección de las flechas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-43",
+    sign: "/icons/signs/qld-image-49.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "There are red traffic lights and a green right arrow. Vehicles A and B are going straight ahead, vehicle C is turning right. Which vehicle(s) may go?",
+      pt: "Há um semáforo vermelho e uma seta verde à direita. Os veículos A e B estão seguindo em frente, o veículo C está virando à direita. Qual(is) veículo(s) pode(m) seguir?",
+      es: "Hay un semáforo rojo y una flecha verde hacia la derecha. Los vehículos A y B van rectos, el vehículo C está girando a la derecha. ¿Qué vehículo(s) puede(n) avanzar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A and C",
+          pt: "Veículos A e C",
+          es: "Vehículos A y C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A and B",
+          pt: "Veículos A e B",
+          es: "Vehículos A y B"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente o veículo C",
+          es: "Solo el vehículo C"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Vehicle A only",
+          pt: "Somente o veículo A",
+          es: "Solo el vehículo A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicles A and B are not allowed to go because there is a red light. Vehicle C may turn right because there is a green right arrow.",
+      pt: "Os veículos A e B não podem seguir porque há um sinal vermelho. O veículo C pode virar à direita porque há uma seta verde à direita.",
+      es: "Los vehículos A y B no pueden avanzar porque hay un semáforo en rojo. El vehículo C puede girar a la derecha porque hay una flecha verde a la derecha."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-44",
+    sign: "/icons/signs/qld-image-50.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving vehicle A along a multi-lane road and the speed limit is 80 km/h or less, which lane or lanes can you travel in?",
+      pt: "Você está dirigindo o veículo A em uma via de múltiplas faixas e o limite de velocidade é de 80km/h ou menos. Em qual(is) faixa(s) você pode circular?",
+      es: "Usted está conduciendo el vehículo A por una vía de varios carriles y el límite de velocidad es de 80 km/h o menos. ¿En qué carril o carriles puede circular?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "In the left-hand lane unless overtaking another vehicle in the left lane",
+          pt: "Na faixa da esquerda, exceto quando estiver ultrapassando outro veículo na faixa da esquerda",
+          es: "En el carril izquierdo, salvo cuando esté adelantando a otro vehículo en el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In the left -hand lane unless you are turning right",
+          pt: "Na faixa da esquerda, exceto quando estiver virando à direita",
+          es: "En el carril izquierdo, salvo cuando esté girando a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must travel in the left-hand lane",
+          pt: "Você deve circular na faixa da esquerda",
+          es: "Debe circular por el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "In either lane",
+          pt: "Em qualquer faixa",
+          es: "En cualquier carril"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You may drive in either lane of a multi lane road if the speed limit is 80km/h or less and there are no Keep Left Unless Overtaking signs.",
+      pt: "Você pode dirigir em qualquer faixa de uma via de múltiplas faixas se o limite de velocidade for de 80km/h ou menos e não houver placas de mantenha-se à esquerda, exceto para ultrapassar.",
+      es: "Puede conducir por cualquier carril de una vía de varios carriles si el límite de velocidad es de 80 km/h o menos y no hay señales de mantenerse a la izquierda salvo para adelantar."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-45",
+    sign: "/icons/signs/qld-image-55.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "You are approaching an intersection with red traffic lights. A Police Officer controlling traffic has one arm extended forward and across as shown. Do you -",
+      pt: "Você está se aproximando de um cruzamento com semáforo vermelho. Um policial que está controlando o trânsito tem um braço estendido para frente e cruzado, como mostrado. Você deve -",
+      es: "Se está acercando a una intersección con semáforo en rojo. Un oficial de policía que controla el tráfico tiene un brazo extendido hacia adelante y cruzado, como se muestra. ¿Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Proceed in the direction shown by the Police Officer",
+          pt: "Seguir na direção indicada pelo policial",
+          es: "Avanzar en la dirección indicada por el oficial de policía"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop at the intersection",
+          pt: "Parar no cruzamento",
+          es: "Detenerse en la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Obey the traffic lights",
+          pt: "Obedecer aos semáforos",
+          es: "Obedecer los semáforos"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Do a U-turn",
+          pt: "Fazer um retorno",
+          es: "Hacer un giro en U"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are facing a Police Officer giving the hand signals shown in the diagram, you must proceed in the direction shown by the Police Officer as Police directions overrule the traffic lights.",
+      pt: "Se você estiver diante de um policial fazendo os sinais manuais mostrados no diagrama, você deve seguir na direção indicada pelo policial, pois as instruções da polícia têm prioridade sobre os semáforos.",
+      es: "Si se encuentra frente a un oficial de policía haciendo las señales manuales mostradas en el diagrama, debe avanzar en la dirección indicada por el oficial, ya que las indicaciones de la policía tienen prioridad sobre los semáforos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-46",
+    sign: "/icons/signs/qld-image-56.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "The traffic lights are green and there is a red right arrow. Vehicles A and B are going straight ahead, vehicle C is turning right. Which vehicle(s) may go?",
+      pt: "O semáforo está verde e há uma seta vermelha à direita. Os veículos A e B estão seguindo em frente, o veículo C está virando à direita. Qual(is) veículo(s) pode(m) seguir?",
+      es: "El semáforo está en verde y hay una flecha roja hacia la derecha. Los vehículos A y B van rectos, el vehículo C está girando a la derecha. ¿Qué vehículo(s) puede(n) avanzar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente o veículo C",
+          es: "Solo el vehículo C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A and C",
+          pt: "Veículos A e C",
+          es: "Vehículos A y C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle A and B",
+          pt: "Veículos A e B",
+          es: "Vehículos A y B"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Vehicle B and C",
+          pt: "Veículos B e C",
+          es: "Vehículos B y C"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle C is not allowed to turn right because there is a red right arrow. Vehicles A and B may go straight ahead because there is a green light.",
+      pt: "O veículo C não pode virar à direita porque há uma seta vermelha à direita. Os veículos A e B podem seguir em frente porque há um sinal verde.",
+      es: "El vehículo C no puede girar a la derecha porque hay una flecha roja a la derecha. Los vehículos A y B pueden seguir rectos porque hay un semáforo en verde."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-47",
+    sign: "/icons/signs/qld-image-57.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You want to move to the right hand lane. You must -",
+      pt: "Você está dirigindo o veículo A. Você quer mudar para a faixa da direita. Você deve -",
+      es: "Usted está conduciendo el vehículo A. Quiere cambiarse al carril derecho. Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to traffic in the right hand lane and move without indicating",
+          pt: "Dar passagem ao tráfego na faixa da direita e se mover sem sinalizar",
+          es: "Ceder el paso al tráfico en el carril derecho y moverse sin indicar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Indicate to the right and give way to traffic in the right hand lane",
+          pt: "Sinalizar à direita e dar passagem ao tráfego na faixa da direita",
+          es: "Indicar hacia la derecha y ceder el paso al tráfico en el carril derecho"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Indicate to the right. Vehicles in the lane will give way to you",
+          pt: "Sinalizar à direita. Os veículos na faixa vão dar passagem a você",
+          es: "Indicar hacia la derecha. Los vehículos en el carril le cederán el paso a usted"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Indicate to the left",
+          pt: "Sinalizar à esquerda",
+          es: "Indicar hacia la izquierda"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When changing lanes you must give a change of direction signal and give way to any vehicle, bicycle or personal mobility device in the lane you are moving into.",
+      pt: "Ao mudar de faixa, você deve dar um sinal de mudança de direção e dar passagem a qualquer veículo, bicicleta ou dispositivo pessoal de mobilidade na faixa para a qual está se movendo.",
+      es: "Al cambiar de carril, debe dar una señal de cambio de dirección y ceder el paso a cualquier vehículo, bicicleta o dispositivo personal de movilidad que esté en el carril hacia el que se está moviendo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-48",
+    sign: "/icons/signs/qld-image-58.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "If you are driving a car on a learner licence you -",
+      pt: "Se você está dirigindo um carro com uma licença de aprendiz, você -",
+      es: "Si conduce un automóvil con una licencia de aprendiz, usted -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Are not required to display L-plates when accompanied by a supervising driver",
+          pt: "Não precisa exibir as placas L quando acompanhado de um motorista supervisor",
+          es: "No necesita exhibir las placas L cuando esté acompañado por un conductor supervisor"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Must display L plates so the letter L can be clearly seen from the front and the rear of the vehicle",
+          pt: "Deve exibir as placas L de forma que a letra L possa ser claramente vista tanto da frente quanto de trás do veículo",
+          es: "Debe exhibir las placas L de forma que la letra L se pueda ver claramente tanto desde la parte delantera como trasera del vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Must only display one L plate so the letter L can be clearly seen from the rear of the vehicle",
+          pt: "Deve exibir apenas uma placa L de forma que a letra L possa ser claramente vista de trás do veículo",
+          es: "Debe exhibir solo una placa L de forma que la letra L se pueda ver claramente desde la parte trasera del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Must only display one L plate so the letter L can be clearly seen from the front of the vehicle",
+          pt: "Deve exibir apenas uma placa L de forma que a letra L possa ser claramente vista da frente do veículo",
+          es: "Debe exhibir solo una placa L de forma que la letra L se pueda ver claramente desde la parte delantera del vehículo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are driving a car on a learner licence you must display L plates so the letter L can be seen clearly from the front and the rear of the vehicle from 20 metres away.",
+      pt: "Se você está dirigindo um carro com uma licença de aprendiz, deve exibir as placas L de forma que a letra L possa ser vista claramente da frente e de trás do veículo a uma distância de 20 metros.",
+      es: "Si conduce un automóvil con una licencia de aprendiz, debe exhibir las placas L de forma que la letra L se pueda ver claramente desde la parte delantera y trasera del vehículo a una distancia de 20 metros."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-49",
+    sign: "/icons/signs/qld-image-59.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "On approaching this sign at an unsupervised children's crossing you must -",
+      pt: "Ao se aproximar desta placa em uma faixa de travessia escolar sem supervisão, você deve -",
+      es: "Al acercarse a esta señal en un paso de peatones escolar sin supervisión, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop and remain stopped for children only",
+          pt: "Parar e permanecer parado apenas para crianças",
+          es: "Detenerse y permanecer detenido solo para niños"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down until pedestrians and bicycle riders are clear of your vehicle",
+          pt: "Diminuir a velocidade até que os pedestres e ciclistas estejam livres do seu veículo",
+          es: "Reducir la velocidad hasta que los peatones y ciclistas estén libres de su vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop and remain stopped while any pedestrian or bicycle rider is on or entering the crossing",
+          pt: "Parar e permanecer parado enquanto qualquer pedestre ou ciclista estiver na faixa ou entrando nela",
+          es: "Detenerse y permanecer detenido mientras cualquier peatón o ciclista esté en el paso o entrando en él"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At an unsupervised children's crossing displaying Children Crossing flags you must stop at the stop line if there are any pedestrians, bicycles or personal mobility device riders on or entering the crossing. You must not move onto the crossing until all pedestrians, bicycles and personal mobility device riders have reached the footpath.",
+      pt: "Em uma faixa de travessia escolar sem supervisão que exibe bandeiras de travessia de crianças, você deve parar na linha de parada se houver qualquer pedestre, ciclista ou usuário de dispositivo pessoal de mobilidade na faixa ou entrando nela. Você não deve avançar sobre a faixa até que todos os pedestres, ciclistas e usuários de dispositivos pessoais de mobilidade tenham alcançado a calçada.",
+      es: "En un paso de peatones escolar sin supervisión que muestra banderas de cruce de niños, debe detenerse en la línea de parada si hay algún peatón, ciclista o usuario de un dispositivo personal de movilidad en el paso o entrando en él. No debe avanzar sobre el paso hasta que todos los peatones, ciclistas y usuarios de dispositivos personales de movilidad hayan llegado a la acera."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-50",
+    sign: "/icons/signs/qld-image-5a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle C. You must give way to -",
+      pt: "Você está dirigindo o veículo C. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo C. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A only",
+          pt: "Somente ao veículo A",
+          es: "Solo al vehículo A"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both vehicle A and B",
+          pt: "Aos veículos A e B",
+          es: "A los vehículos A y B"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Neither vehicle A or B",
+          pt: "Nem ao veículo A nem ao B",
+          es: "Ni al vehículo A ni al B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle C must give way to vehicle A. A driver entering a roundabout must give way to any vehicle already on a roundabout; vehicle A is already on the roundabout and travelling in front of vehicle C. Vehicle B does not affect either vehicle A or C.",
+      pt: "O veículo C deve dar passagem ao veículo A. Um motorista que entra em uma rotatória deve dar passagem a qualquer veículo que já esteja na rotatória; o veículo A já está na rotatória e viajando à frente do veículo C. O veículo B não afeta nem o veículo A nem o C.",
+      es: "El vehículo C debe ceder el paso al vehículo A. Un conductor que entra en una rotonda debe ceder el paso a cualquier vehículo que ya esté en la rotonda; el vehículo A ya está en la rotonda y circula delante del vehículo C. El vehículo B no afecta ni al vehículo A ni al C."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-51",
+    sign: "/icons/signs/qld-image-60.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving on a road with a 60km/h speed limit. A bus is stopped at a bus stop just ahead of you and has this sign displayed. The bus is signalling right. What must you do?",
+      pt: "Você está dirigindo em uma via com limite de velocidade de 60km/h. Um ônibus está parado em um ponto de ônibus logo à sua frente e exibe esta placa. O ônibus está sinalizando à direita. O que você deve fazer?",
+      es: "Usted está conduciendo por una vía con un límite de velocidad de 60 km/h. Un autobús está detenido en una parada justo delante de usted y exhibe esta señal. El autobús está indicando hacia la derecha. ¿Qué debe hacer usted?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow to 40km/h and give way to pedestrians only",
+          pt: "Reduzir para 40km/h e dar passagem apenas aos pedestres",
+          es: "Reducir a 40 km/h y ceder el paso solo a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow to 50km/h and only stop to give way to pedestrians",
+          pt: "Reduzir para 50km/h e parar apenas para dar passagem aos pedestres",
+          es: "Reducir a 50 km/h y detenerse solo para ceder el paso a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Continue ahead at the speed limit, providing it is safe",
+          pt: "Continuar em frente na velocidade permitida, desde que seja seguro",
+          es: "Continuar a la velocidad permitida, siempre que sea seguro"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Give way to the bus allowing it to move off in front of you",
+          pt: "Dar passagem ao ônibus, permitindo que ele saia à sua frente",
+          es: "Ceder el paso al autobús, permitiéndole incorporarse delante de usted"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must give way to a bus which is leaving the kerb or a bus zone provided the speed limit is 70km/h or less, the bus is signalling to enter the traffic and there is a Give Way sign on the rear of the bus.",
+      pt: "Você deve dar passagem a um ônibus que está saindo do meio-fio ou de uma zona de ônibus, desde que o limite de velocidade seja de 70km/h ou menos, o ônibus esteja sinalizando para entrar no tráfego e haja uma placa de dê a preferência na traseira do ônibus.",
+      es: "Debe ceder el paso a un autobús que sale de la acera o de una zona de autobuses, siempre que el límite de velocidad sea de 70 km/h o menos, el autobús esté señalizando para incorporarse al tráfico y haya una señal de ceda el paso en la parte trasera del autobús."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-52",
+    sign: "/icons/signs/qld-image-61.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Winding road for next 40 kilometres",
+          pt: "Via sinuosa pelos próximos 40 quilômetros",
+          es: "Vía sinuosa durante los próximos 40 kilómetros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "40km/h is the advised maximum speed for the curve ahead under good driving conditions",
+          pt: "40km/h é a velocidade máxima recomendada para a curva à frente, em boas condições de condução",
+          es: "40 km/h es la velocidad máxima recomendada para la curva de más adelante, en buenas condiciones de conducción"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You can only turn right for the next 40 kilometres",
+          pt: "Você só pode virar à direita pelos próximos 40 quilômetros",
+          es: "Solo puede girar a la derecha durante los próximos 40 kilómetros"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "40km/h is the legal maximum speed limit for the curve ahead when the road is wet",
+          pt: "40km/h é a velocidade máxima legal para a curva à frente quando a via está molhada",
+          es: "40 km/h es el límite de velocidad máximo legal para la curva de más adelante cuando la vía está mojada"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that the recommended maximum speed for the curve ahead is 40km/h in good conditions.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que a velocidade máxima recomendada para a curva à frente é de 40km/h em boas condições.",
+      es: "Esta es una señal de advertencia. La señal indica que la velocidad máxima recomendada para la curva de más adelante es de 40 km/h en buenas condiciones."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-53",
+    sign: "/icons/signs/qld-image-62.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Road incomplete",
+          pt: "Via incompleta",
+          es: "Vía incompleta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Divided road ahead",
+          pt: "Via dividida à frente",
+          es: "Vía dividida más adelante"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Incomplete roundabout ahead",
+          pt: "Rotatória incompleta à frente",
+          es: "Rotonda incompleta más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Modified T intersection ahead",
+          pt: "Cruzamento em T modificado à frente",
+          es: "Intersección en T modificada más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that the road is changing from an undivided road to a divided road.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que a via está mudando de uma via não dividida para uma via dividida.",
+      es: "Esta es una señal de advertencia. La señal indica que la vía está cambiando de una vía sin dividir a una vía dividida."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-54",
+    sign: "/icons/signs/qld-image-63.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Steep hill ahead",
+          pt: "Morro íngreme à frente",
+          es: "Cuesta pronunciada más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Winding road ahead",
+          pt: "Via sinuosa à frente",
+          es: "Vía sinuosa más adelante"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slippery road ahead",
+          pt: "Via escorregadia à frente",
+          es: "Vía resbaladiza más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Gravel road ahead",
+          pt: "Via de cascalho à frente",
+          es: "Vía de grava más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching a winding road.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que você está se aproximando de uma via sinuosa.",
+      es: "Esta es una señal de advertencia. La señal indica que se está acercando a una vía sinuosa."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-55",
+    sign: "/icons/signs/qld-image-64.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Road ends - turn around",
+          pt: "Fim da via - faça o retorno",
+          es: "La vía termina - dé la vuelta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "U turns allowed",
+          pt: "Retornos permitidos",
+          es: "Se permiten giros en U"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must turn right",
+          pt: "Você deve virar à direita",
+          es: "Debe girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Sharp bend to the right",
+          pt: "Curva fechada à direita",
+          es: "Curva cerrada a la derecha"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching a sharp bend (also called a hairpin bend).",
+      pt: "Esta é uma placa de advertência. A placa está avisando que você está se aproximando de uma curva fechada (também chamada de curva em grampo).",
+      es: "Esta es una señal de advertencia. La señal indica que se está acercando a una curva cerrada (también llamada curva en horquilla)."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-56",
+    sign: "/icons/signs/qld-image-65.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Ambulance station ahead",
+          pt: "Posto de ambulância à frente",
+          es: "Estación de ambulancias más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A crossroad intersection ahead",
+          pt: "Cruzamento à frente",
+          es: "Cruce de caminos más adelante"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Hospital emergency entrance ahead",
+          pt: "Entrada de emergência de hospital à frente",
+          es: "Entrada de urgencias de hospital más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Helicopter landing pad ahead",
+          pt: "Heliponto à frente",
+          es: "Helipuerto más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching a crossroad intersection.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que você está se aproximando de um cruzamento.",
+      es: "Esta es una señal de advertencia. La señal indica que se está acercando a un cruce de caminos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-57",
+    sign: "/icons/signs/qld-image-66.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Road slopes ahead",
+          pt: "Via em declive à frente",
+          es: "Vía en pendiente más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Road may be slippery",
+          pt: "A via pode estar escorregadia",
+          es: "La vía puede estar resbaladiza"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Steep winding road ahead",
+          pt: "Via sinuosa e íngreme à frente",
+          es: "Vía sinuosa y empinada más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Road bends ahead",
+          pt: "Curvas à frente",
+          es: "Curvas más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that the road ahead may be slippery.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que a via à frente pode estar escorregadia.",
+      es: "Esta es una señal de advertencia. La señal indica que la vía de más adelante puede estar resbaladiza."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-58",
+    sign: "/icons/signs/qld-image-67.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sharp turn to the right",
+          pt: "Curva fechada à direita",
+          es: "Curva cerrada a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No through road",
+          pt: "Sem saída",
+          es: "Sin salida"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Roundabout ahead",
+          pt: "Rotatória à frente",
+          es: "Rotonda más adelante"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching a roundabout.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que você está se aproximando de uma rotatória.",
+      es: "Esta es una señal de advertencia. La señal indica que se está acercando a una rotonda."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-59",
+    sign: "/icons/signs/qld-image-68.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "One way street ahead",
+          pt: "Rua de mão única à frente",
+          es: "Calle de sentido único más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Property road ahead",
+          pt: "Via de propriedade privada à frente",
+          es: "Vía de propiedad privada más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop sign ahead",
+          pt: "Placa de pare à frente",
+          es: "Señal de pare más adelante"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Pedestrian crossing ahead",
+          pt: "Faixa de pedestres à frente",
+          es: "Paso de peatones más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching a stop sign.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que você está se aproximando de uma placa de pare.",
+      es: "Esta es una señal de advertencia. La señal indica que se está acercando a una señal de pare."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-60",
+    sign: "/icons/signs/qld-image-69.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Apply park brake",
+          pt: "Acione o freio de estacionamento",
+          es: "Aplique el freno de estacionamiento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Steep descent",
+          pt: "Descida íngreme",
+          es: "Descenso pronunciado"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicles only on this road",
+          pt: "Somente veículos nesta via",
+          es: "Solo vehículos en esta vía"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching a steep descent.",
+      pt: "Esta é uma placa de advertência. A placa está avisando que você está se aproximando de uma descida íngreme.",
+      es: "Esta es una señal de advertencia. La señal indica que se está acercando a un descenso pronunciado."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-61",
+    sign: "/icons/signs/qld-image-6a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. Vehicle B is facing a give way sign; when a driver faces a give way sign at an intersection they must give way to all other vehicles entering or approaching the intersection.",
+      pt: "O veículo B deve dar passagem ao veículo A. O veículo B está diante de uma placa de dê a passagem; quando um motorista está diante de uma placa de dê a passagem em um cruzamento, ele deve dar passagem a todos os outros veículos que estão entrando ou se aproximando do cruzamento.",
+      es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B se encuentra frente a una señal de ceda el paso; cuando un conductor está frente a una señal de ceda el paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-62",
+    sign: "/icons/signs/qld-image-70.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Heavy traffic approaching",
+          pt: "Tráfego intenso se aproximando",
+          es: "Tráfico intenso aproximándose"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Lane allocation ahead",
+          pt: "Alocação de faixas à frente",
+          es: "Asignación de carriles más adelante"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No overtaking",
+          pt: "Proibido ultrapassar",
+          es: "Prohibido adelantar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching lane allocation, a section of road that has an extra lane for traffic travelling in the opposite direction. The arrows indicate the directions of traffic.",
+      pt: "Esta é uma placa de advertência. A placa avisa que você está se aproximando de uma área de alocação de faixas, um trecho da estrada que tem uma faixa extra para o tráfego que vem na direção oposta. As setas indicam as direções do tráfego.",
+      es: "Esta es una señal de advertencia. La señal le avisa que se está aproximando a una zona de asignación de carriles, un tramo de la carretera que tiene un carril adicional para el tráfico que circula en dirección opuesta. Las flechas indican las direcciones del tráfico."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-63",
+    sign: "/icons/signs/qld-image-71.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Trucks may be crossing/entering",
+          pt: "Caminhões podem estar cruzando/entrando na via",
+          es: "Los camiones pueden estar cruzando/entrando en la vía"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to trucks",
+          pt: "Dê passagem a caminhões",
+          es: "Ceda el paso a los camiones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Light trucks only permitted",
+          pt: "Permitido somente caminhões leves",
+          es: "Solo se permiten camiones ligeros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that you are approaching an area where trucks may be crossing or entering the road.",
+      pt: "Esta é uma placa de advertência. A placa avisa que você está se aproximando de uma área onde caminhões podem estar cruzando ou entrando na via.",
+      es: "Esta es una señal de advertencia. La señal le avisa que se está aproximando a una zona donde los camiones pueden estar cruzando o entrando en la vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-64",
+    sign: "/icons/signs/qld-image-72.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "End of divided road",
+          pt: "Fim da via dividida",
+          es: "Fin de la vía dividida"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Buildings ahead",
+          pt: "Construções à frente",
+          es: "Edificaciones más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Road ends ahead",
+          pt: "Fim da estrada à frente",
+          es: "Fin del camino más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that the divided road is ending and will become an undivided road.",
+      pt: "Esta é uma placa de advertência. A placa avisa que a via dividida está terminando e passará a ser uma via não dividida.",
+      es: "Esta es una señal de advertencia. La señal le avisa que la vía dividida está terminando y se convertirá en una vía no dividida."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-65",
+    sign: "/icons/signs/qld-image-73.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Narrow bridge ahead",
+          pt: "Ponte estreita à frente",
+          es: "Puente angosto más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Road narrows ahead",
+          pt: "Estreitamento da via à frente",
+          es: "Estrechamiento de la vía más adelante"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Railway crossing ahead",
+          pt: "Passagem de nível à frente",
+          es: "Cruce ferroviario más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that the road ahead is narrow.",
+      pt: "Esta é uma placa de advertência. A placa avisa que a via à frente é estreita.",
+      es: "Esta es una señal de advertencia. La señal le avisa que el camino más adelante es angosto."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-66",
+    sign: "/icons/signs/qld-image-74.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Keep to the left of the sign",
+          pt: "Mantenha-se à esquerda da placa",
+          es: "Manténgase a la izquierda de la señal"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No right turn",
+          pt: "Proibido virar à direita",
+          es: "Prohibido girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Left turn only sign",
+          pt: "Placa de virar somente à esquerda",
+          es: "Señal de giro solo a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "One way traffic",
+          pt: "Trânsito em mão única",
+          es: "Tránsito en un solo sentido"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you must drive to the left of the sign.",
+      pt: "Esta placa significa que você deve dirigir à esquerda da placa.",
+      es: "Esta señal significa que debe conducir a la izquierda de la señal."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-67",
+    sign: "/icons/signs/qld-image-75.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No right or left turns",
+          pt: "Proibido virar à direita ou à esquerda",
+          es: "Prohibido girar a la derecha o a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicles travel in both directions on this road",
+          pt: "Os veículos trafegam nos dois sentidos nesta via",
+          es: "Los vehículos circulan en ambos sentidos en esta vía"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No parking",
+          pt: "Proibido estacionar",
+          es: "Prohibido estacionar"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No U-turns allowed",
+          pt: "Proibido fazer retorno",
+          es: "Prohibido dar la vuelta en U"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you are on a two-way road and vehicles travel in both directions.",
+      pt: "Esta placa significa que você está em uma via de mão dupla e os veículos trafegam nos dois sentidos.",
+      es: "Esta señal significa que está en una vía de doble sentido y los vehículos circulan en ambas direcciones."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-68",
+    sign: "/icons/signs/qld-image-76.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must not turn right",
+          pt: "Você não pode virar à direita",
+          es: "No puede girar a la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Speed zone ends",
+          pt: "Fim da zona de velocidade",
+          es: "Fin de la zona de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No sharp right hand bends ahead",
+          pt: "Nenhuma curva acentuada à direita à frente",
+          es: "No hay curvas cerradas a la derecha más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Danger, road bends sharply right",
+          pt: "Perigo, a via faz uma curva acentuada à direita",
+          es: "Peligro, la vía hace una curva cerrada a la derecha"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you are not allowed to turn right into the road or place indicated.",
+      pt: "Esta placa significa que você não tem permissão para virar à direita na via ou local indicado.",
+      es: "Esta señal significa que no tiene permitido girar a la derecha hacia la vía o el lugar indicado."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-69",
+    sign: "/icons/signs/qld-image-77.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed zone ends",
+          pt: "Fim da zona de velocidade",
+          es: "Fin de la zona de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must not turn left",
+          pt: "Você não pode virar à esquerda",
+          es: "No puede girar a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Danger, road bends sharply left",
+          pt: "Perigo, a via faz uma curva acentuada à esquerda",
+          es: "Peligro, la vía hace una curva cerrada a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No sharp left hand bends ahead",
+          pt: "Nenhuma curva acentuada à esquerda à frente",
+          es: "No hay curvas cerradas a la izquierda más adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you are not allowed to turn left into the road or place indicated.",
+      pt: "Esta placa significa que você não tem permissão para virar à esquerda na via ou local indicado.",
+      es: "Esta señal significa que no tiene permitido girar a la izquierda hacia la vía o el lugar indicado."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-70",
+    sign: "/icons/signs/qld-image-78.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Left turn at anytime with care",
+          pt: "Pode virar à esquerda a qualquer momento com cuidado",
+          es: "Puede girar a la izquierda en cualquier momento con precaución"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Traffic can travel along the road in either direction",
+          pt: "O tráfego pode circular pela via em qualquer direção",
+          es: "El tráfico puede circular por la vía en cualquier dirección"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Right turn at anytime with care",
+          pt: "Pode virar à direita a qualquer momento com cuidado",
+          es: "Puede girar a la derecha en cualquier momento con precaución"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You must travel only in the direction of the arrow",
+          pt: "Você deve seguir somente na direção indicada pela seta",
+          es: "Debe circular únicamente en la dirección indicada por la flecha"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This sign means one way traffic only in the direction of the arrow.",
+      pt: "Esta placa significa mão única, com o tráfego seguindo somente na direção da seta.",
+      es: "Esta señal significa tránsito de un solo sentido, únicamente en la dirección de la flecha."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-71",
+    sign: "/icons/signs/qld-image-79.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Do not speed",
+          pt: "Não exceda a velocidade",
+          es: "No exceda la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You can park for a short time",
+          pt: "Você pode estacionar por um curto período",
+          es: "Puede estacionar por un tiempo corto"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not stop between 8.30am to 4.30pm",
+          pt: "Proibido parar entre 8h30 e 16h30",
+          es: "Prohibido detenerse entre las 8:30 y las 16:30"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Do not stop in the area indicated by the sign",
+          pt: "Proibido parar na área indicada pela placa",
+          es: "Prohibido detenerse en el área indicada por la señal"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This sign means you are not allowed to stop in the area indicated by the sign for any reason.",
+      pt: "Esta placa significa que você não tem permissão para parar na área indicada pela placa, por nenhum motivo.",
+      es: "Esta señal significa que no tiene permitido detenerse en el área indicada por la señal, por ningún motivo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-72",
+    sign: "/icons/signs/qld-image-7a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle must give way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle A",
+          pt: "Veículo A",
+          es: "Vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B",
+          pt: "Veículo B",
+          es: "Vehículo B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle B must give way to vehicle A. Vehicle B is facing a give way sign; when a driver faces a give way sign at an intersection they must give way to all other vehicles entering or approaching the intersection.",
+      pt: "O veículo B deve dar passagem ao veículo A. O veículo B está diante de uma placa de dê a passagem; quando um motorista está diante de uma placa de dê a passagem em um cruzamento, ele deve dar passagem a todos os outros veículos que estão entrando ou se aproximando do cruzamento.",
+      es: "El vehículo B debe ceder el paso al vehículo A. El vehículo B se encuentra frente a una señal de ceda el paso; cuando un conductor está frente a una señal de ceda el paso en una intersección, debe ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-73",
+    sign: "/icons/signs/qld-image-80.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to vehicles on the roundabout",
+          pt: "Dê passagem aos veículos na rotatória",
+          es: "Ceda el paso a los vehículos en la rotonda"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "U-turns allowed",
+          pt: "Retornos permitidos",
+          es: "Se permiten vueltas en U"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turning area for heavy vehicles - give way",
+          pt: "Área de manobra para veículos pesados - dê passagem",
+          es: "Área de maniobra para vehículos pesados - ceda el paso"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No right turn",
+          pt: "Proibido virar à direita",
+          es: "Prohibido girar a la derecha"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you must give way to vehicles, bicycles or personal mobility device riders on the roundabout.",
+      pt: "Esta placa significa que você deve dar passagem aos veículos, bicicletas ou usuários de dispositivos pessoais de mobilidade que estejam na rotatória.",
+      es: "Esta señal significa que debe ceder el paso a los vehículos, bicicletas o usuarios de dispositivos personales de movilidad que se encuentren en la rotonda."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-74",
+    sign: "/icons/signs/qld-image-81.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "What does this sign mean when there is no stop line painted on the road at the intersection?",
+      pt: "O que esta placa significa quando não há uma linha de parada pintada na via no cruzamento?",
+      es: "¿Qué significa esta señal cuando no hay una línea de detención pintada en la vía en la intersección?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop before entering the intersection where there is a clear view of approaching traffic and give way to traffic",
+          pt: "Pare antes de entrar no cruzamento em um ponto onde tenha visão desimpedida do tráfego que se aproxima e dê passagem ao tráfego",
+          es: "Deténgase antes de entrar a la intersección en un punto donde tenga una vista despejada del tráfico que se aproxima y ceda el paso al tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop only if traffic is coming from the right",
+          pt: "Pare somente se houver tráfego vindo da direita",
+          es: "Deténgase solo si hay tráfico proveniente de la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop at the sign and give way to the right",
+          pt: "Pare na placa e dê passagem para a direita",
+          es: "Deténgase en la señal y ceda el paso hacia la derecha"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means that if there is no stop line painted on the road, you must stop before entering the intersection where you have a clear view of approaching traffic and give way to traffic according to the give way rules.",
+      pt: "Esta placa significa que, se não houver uma linha de parada pintada na via, você deve parar antes de entrar no cruzamento em um ponto onde tenha visão desimpedida do tráfego que se aproxima e dar passagem ao tráfego de acordo com as regras de dar passagem.",
+      es: "Esta señal significa que, si no hay una línea de detención pintada en la vía, debe detenerse antes de entrar a la intersección en un punto donde tenga una vista despejada del tráfico que se aproxima y ceder el paso al tráfico según las reglas de ceder el paso."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-75",
+    sign: "/icons/signs/qld-image-82.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "When turning right at an intersection and facing this sign, you should?",
+      pt: "Ao virar à direita em um cruzamento e se deparar com esta placa, você deve:",
+      es: "Al girar a la derecha en una intersección y encontrarse con esta señal, debe:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Come to a complete stop and then give way to all vehicles and pedestrians",
+          pt: "Parar completamente e então dar passagem a todos os veículos e pedestres",
+          es: "Detenerse por completo y luego ceder el paso a todos los vehículos y peatones"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way only to pedestrians",
+          pt: "Dar passagem somente aos pedestres",
+          es: "Ceder el paso solo a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down and be prepared to give way to traffic crossing your path and pedestrians crossing the road you are turning into",
+          pt: "Reduzir a velocidade e estar preparado para dar passagem ao tráfego que cruza seu caminho e aos pedestres que atravessam a via para a qual você está virando",
+          es: "Reducir la velocidad y estar preparado para ceder el paso al tráfico que cruza su camino y a los peatones que cruzan la vía a la que está girando"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Give way only to traffic on your right",
+          pt: "Dar passagem somente ao tráfego à sua direita",
+          es: "Ceder el paso solo al tráfico a su derecha"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you must slow down or stop and be prepared to give way according to the give way rules to vehicles approaching or entering the intersection. You must also give way to any pedestrian, bicycle or personal mobility device rider crossing the road you are turning into.",
+      pt: "Esta placa significa que você deve reduzir a velocidade ou parar e estar preparado para dar passagem, de acordo com as regras de dar passagem, aos veículos que se aproximam ou estão entrando no cruzamento. Você também deve dar passagem a qualquer pedestre, ciclista ou usuário de dispositivo pessoal de mobilidade que esteja atravessando a via para a qual você está virando.",
+      es: "Esta señal significa que debe reducir la velocidad o detenerse y estar preparado para ceder el paso, según las reglas de ceder el paso, a los vehículos que se aproximan o están entrando a la intersección. También debe ceder el paso a cualquier peatón, ciclista o usuario de dispositivo personal de movilidad que esté cruzando la vía a la que está girando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-76",
+    sign: "/icons/signs/qld-image-83.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "You may be faced with this sign, held by a school crossing supervisor when approaching a children's crossing. What should you do?",
+      pt: "Você pode se deparar com esta placa, segurada por um agente de travessia escolar ao se aproximar de uma travessia de crianças. O que você deve fazer?",
+      es: "Puede encontrarse con esta señal, sostenida por un guardia de cruce escolar al aproximarse a un cruce de niños. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop and remain stopped until the supervisor has returned to the footpath",
+          pt: "Parar e permanecer parado até que o agente tenha retornado à calçada",
+          es: "Detenerse y permanecer detenido hasta que el guardia haya regresado a la acera"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and remain stopped for children only",
+          pt: "Parar e permanecer parado somente para crianças",
+          es: "Detenerse y permanecer detenido solo para los niños"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down until all pedestrians are clear of your vehicle",
+          pt: "Reduzir a velocidade até que todos os pedestres estejam livres do seu veículo",
+          es: "Reducir la velocidad hasta que todos los peatones estén libres de su vehículo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you must stop and remain stopped until the supervisor has returned to the footpath.",
+      pt: "Esta placa significa que você deve parar e permanecer parado até que o agente tenha retornado à calçada.",
+      es: "Esta señal significa que debe detenerse y permanecer detenido hasta que el guardia haya regresado a la acera."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-77",
+    sign: "/icons/signs/qld-image-84.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Parking for buses only",
+          pt: "Estacionamento somente para ônibus",
+          es: "Estacionamiento solo para autobuses"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No parking unless you are stopping for a maximum of 2 minutes to pick up or drop off passengers or goods",
+          pt: "Proibido estacionar, a menos que você pare por no máximo 2 minutos para embarcar ou desembarcar passageiros ou mercadorias",
+          es: "Prohibido estacionar, a menos que se detenga por un máximo de 2 minutos para recoger o dejar pasajeros o mercancías"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Parking permitted during non-peak hours",
+          pt: "Estacionamento permitido fora do horário de pico",
+          es: "Estacionamiento permitido fuera de las horas pico"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No parking any time",
+          pt: "Proibido estacionar a qualquer momento",
+          es: "Prohibido estacionar en todo momento"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you cannot park in this area at any time but you may stop for a maximum of 2 minutes to pick up or set down passengers or goods.",
+      pt: "Esta placa significa que você não pode estacionar nesta área em nenhum momento, mas pode parar por no máximo 2 minutos para embarcar ou desembarcar passageiros ou mercadorias.",
+      es: "Esta señal significa que no puede estacionar en esta área en ningún momento, pero puede detenerse por un máximo de 2 minutos para recoger o dejar pasajeros o mercancías."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-78",
+    sign: "/icons/signs/qld-image-85.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Allowed to enter",
+          pt: "Permitido entrar",
+          es: "Permitido entrar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and give way to all traffic and pedestrians",
+          pt: "Pare e dê passagem a todo o tráfego e pedestres",
+          es: "Deténgase y ceda el paso a todo el tráfico y a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not pass another vehicle",
+          pt: "Proibido ultrapassar outro veículo",
+          es: "Prohibido pasar a otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Do not drive past this sign",
+          pt: "Proibido seguir além desta placa",
+          es: "Prohibido continuar más allá de esta señal"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This sign means that no vehicle is allowed past the sign.",
+      pt: "Esta placa significa que nenhum veículo tem permissão para passar da placa.",
+      es: "Esta señal significa que ningún vehículo tiene permitido pasar de la señal."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-79",
+    sign: "/icons/signs/qld-image-86.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drivers must not stop for more than five minutes to pick up or drop off passengers",
+          pt: "Os motoristas não podem parar por mais de cinco minutos para embarcar ou desembarcar passageiros",
+          es: "Los conductores no pueden detenerse por más de cinco minutos para recoger o dejar pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drivers may only stop during the times and days stated",
+          pt: "Os motoristas só podem parar nos horários e dias indicados",
+          es: "Los conductores solo pueden detenerse en los horarios y días indicados"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drivers must not stop during the times and days stated",
+          pt: "Os motoristas não podem parar nos horários e dias indicados",
+          es: "Los conductores no pueden detenerse en los horarios y días indicados"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Drivers must not stop at anytime",
+          pt: "Os motoristas não podem parar em nenhum momento",
+          es: "Los conductores no pueden detenerse en ningún momento"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means that vehicles are not allowed to stop on this section of road during the times and days indicated on the sign, however, buses and taxis are permitted to pick up and set down passengers.",
+      pt: "Esta placa significa que os veículos não têm permissão para parar neste trecho da via durante os horários e dias indicados na placa; no entanto, ônibus e táxis têm permissão para embarcar e desembarcar passageiros.",
+      es: "Esta señal significa que los vehículos no tienen permitido detenerse en este tramo de la vía durante los horarios y días indicados en la señal; sin embargo, los autobuses y taxis tienen permitido recoger y dejar pasajeros."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-80",
+    sign: "/icons/signs/qld-image-87.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In a shared zone, when must vehicles give way to pedestrians?",
+      pt: "Em uma zona compartilhada, quando os veículos devem dar passagem aos pedestres?",
+      es: "En una zona compartida, ¿cuándo deben los vehículos ceder el paso a los peatones?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All the time, except when driving a utility vehicle",
+          pt: "O tempo todo, exceto ao dirigir um veículo utilitário",
+          es: "Todo el tiempo, excepto al conducir un vehículo utilitario"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when the vehicle is travelling at less than 20km/h",
+          pt: "Somente quando o veículo estiver a menos de 20km/h",
+          es: "Solo cuando el vehículo circule a menos de 20km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "All the time",
+          pt: "O tempo todo",
+          es: "Todo el tiempo"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In a shared zone, you must always give way to pedestrians, bicycles and personal mobility device riders and you must not exceed the speed limit displayed in the red circle.",
+      pt: "Em uma zona compartilhada, você deve sempre dar passagem aos pedestres, bicicletas e usuários de dispositivos pessoais de mobilidade, e não deve exceder o limite de velocidade indicado no círculo vermelho.",
+      es: "En una zona compartida, siempre debe ceder el paso a los peatones, bicicletas y usuarios de dispositivos personales de movilidad, y no debe exceder el límite de velocidad indicado en el círculo rojo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-81",
+    sign: "/icons/signs/qld-image-88.jpg",
+    cat: "Speed Limits",
+    q: {
+      en: "Which ONE of the following statements is true?",
+      pt: "Qual das afirmações a seguir é verdadeira?",
+      es: "¿Cuál de las siguientes afirmaciones es verdadera?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The speed limit in school zones does not apply if there are no children around",
+          pt: "O limite de velocidade nas zonas escolares não se aplica se não houver crianças por perto",
+          es: "El límite de velocidad en las zonas escolares no se aplica si no hay niños alrededor"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The speed limit in school zones only applies to drivers with children attending the school within the school zone",
+          pt: "O limite de velocidade nas zonas escolares se aplica somente a motoristas com filhos que frequentam a escola dentro da zona escolar",
+          es: "El límite de velocidad en las zonas escolares se aplica solo a conductores con hijos que asisten a la escuela dentro de la zona escolar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The speed limit applies on weekends only",
+          pt: "O limite de velocidade se aplica somente aos fins de semana",
+          es: "El límite de velocidad se aplica solo los fines de semana"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "The speed limit in school zones applies on official school days during the times shown",
+          pt: "O limite de velocidade nas zonas escolares se aplica nos dias letivos oficiais, durante os horários indicados",
+          es: "El límite de velocidad en las zonas escolares se aplica en los días escolares oficiales, durante los horarios indicados"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "School zones are in effect during school days. This means that on school days, you must not exceed the speed indicated in the red circle during the times specified.",
+      pt: "As zonas escolares estão em vigor durante os dias letivos. Isso significa que, nos dias letivos, você não pode exceder a velocidade indicada no círculo vermelho durante os horários especificados.",
+      es: "Las zonas escolares están vigentes durante los días escolares. Esto significa que, en los días escolares, no debe exceder la velocidad indicada en el círculo rojo durante los horarios especificados."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-82",
+    sign: "/icons/signs/qld-image-89.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "At a railway crossing with the boom gates down and red lights flashing, you must -",
+      pt: "Em uma passagem de nível com as cancelas abaixadas e as luzes vermelhas piscando, você deve:",
+      es: "En un cruce ferroviario con las barreras bajadas y las luces rojas parpadeando, debe:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Wait until the red lights stop flashing before driving on",
+          pt: "Esperar até que as luzes vermelhas parem de piscar antes de seguir",
+          es: "Esperar hasta que las luces rojas dejen de parpadear antes de continuar"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive on once the boom gates begin to rise",
+          pt: "Seguir assim que as cancelas começarem a subir",
+          es: "Continuar en cuanto las barreras comiencen a subir"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive around the boom gates once the train has passed",
+          pt: "Contornar as cancelas assim que o trem tiver passado",
+          es: "Rodear las barreras en cuanto el tren haya pasado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not move off until the boom gates are raised and the red lights have stopped flashing.",
+      pt: "Você não deve seguir até que as cancelas estejam levantadas e as luzes vermelhas tenham parado de piscar.",
+      es: "No debe continuar hasta que las barreras estén levantadas y las luces rojas hayan dejado de parpadear."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-83",
+    sign: "/icons/signs/qld-image-8a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a:",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Both vehicle C and B",
+          pt: "Ambos os veículos C e B",
+          es: "Ambos vehículos, C y B"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle C only",
+          pt: "Somente o veículo C",
+          es: "Solo el vehículo C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente o veículo B",
+          es: "Solo el vehículo B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. Vehicles A and B are facing stop signs; when two drivers face each other at stop signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles A and B first give way to vehicle C as it is going straight ahead on the through road. Vehicle A must then give way to vehicle B, as it is turning across vehicle B's path.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. Os veículos A e B estão diante de placas de pare; quando dois motoristas se encontram diante de placas de pare em um cruzamento, eles devem dar passagem a todos os outros veículos que estão entrando ou se aproximando do cruzamento, e depois aplicar as regras de dar passagem entre si. Os veículos A e B primeiro dão passagem ao veículo C, pois este segue em frente pela via principal. Em seguida, o veículo A deve dar passagem ao veículo B, pois está cruzando o caminho do veículo B.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. Los vehículos A y B están frente a señales de pare; cuando dos conductores se encuentran frente a señales de pare en una intersección, deben ceder el paso a todos los demás vehículos que estén entrando o aproximándose a la intersección, y luego aplicar las reglas de ceder el paso entre sí. Los vehículos A y B ceden el paso primero al vehículo C, ya que este continúa recto por la vía principal. Luego, el vehículo A debe ceder el paso al vehículo B, ya que está cruzando el camino del vehículo B."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-84",
+    sign: "/icons/signs/qld-image-90.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Do not proceed beyond this sign",
+          pt: "Não prossiga além desta placa",
+          es: "No continúe más allá de esta señal"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Workmen ahead",
+          pt: "Trabalhadores à frente",
+          es: "Trabajadores más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive either side of the hazard",
+          pt: "Pode passar por qualquer lado do obstáculo",
+          es: "Puede pasar por cualquier lado del obstáculo"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is a hazard marker sign and means that you may drive either side of the hazard.",
+      pt: "Esta é uma placa de marcador de obstáculo e significa que você pode passar por qualquer um dos lados do obstáculo.",
+      es: "Esta es una señal de marcador de obstáculo y significa que puede pasar por cualquiera de los lados del obstáculo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-85",
+    sign: "/icons/signs/qld-image-91.jpg",
+    cat: "Speed Limits",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You can travel at any speed if you are driving to or from your work",
+          pt: "Você pode trafegar em qualquer velocidade se estiver indo ou voltando do trabalho",
+          es: "Puede circular a cualquier velocidad si va o viene de su trabajo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You can travel at the speed that normally applies to the road, as it is a warning sign suggesting that you slow down",
+          pt: "Você pode trafegar na velocidade normalmente aplicável à via, pois é uma placa de advertência sugerindo que você reduza a velocidade",
+          es: "Puede circular a la velocidad que normalmente se aplica a la vía, ya que es una señal de advertencia que sugiere reducir la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You can travel at any speed as it only applies to road construction vehicles",
+          pt: "Você pode trafegar em qualquer velocidade, pois se aplica somente a veículos de construção de estradas",
+          es: "Puede circular a cualquier velocidad, ya que solo se aplica a los vehículos de construcción vial"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You must not travel at more than 80km/h",
+          pt: "Você não deve trafegar a mais de 80km/h",
+          es: "No debe circular a más de 80km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is a speed limit sign combined with a road work sign. A driver must not exceed the speed limit indicated by the number on the sign.",
+      pt: "Esta é uma placa de limite de velocidade combinada com uma placa de obras na via. Um motorista não deve exceder o limite de velocidade indicado pelo número na placa.",
+      es: "Esta es una señal de límite de velocidad combinada con una señal de obras en la vía. Un conductor no debe exceder el límite de velocidad indicado por el número en la señal."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-86",
+    sign: "/icons/signs/qld-image-92.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Do not drive beyond this sign",
+          pt: "Não dirija além desta placa",
+          es: "No conduzca más allá de esta señal"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Do not allow your vehicle to be side by side with another vehicle regardless of its direction of travel for the distance specified",
+          pt: "Não permita que seu veículo fique lado a lado com outro veículo, independentemente da direção em que ele esteja se deslocando, pela distância especificada",
+          es: "No permita que su vehículo circule al lado de otro vehículo, sin importar la dirección en la que se desplace, durante la distancia especificada"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not allow your vehicle to be side by side with another vehicle going in the same direction",
+          pt: "Não permita que seu veículo fique lado a lado com outro veículo que esteja seguindo na mesma direção",
+          es: "No permita que su vehículo circule al lado de otro vehículo que vaya en la misma dirección"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign applies to a narrow bridge or a narrow length of road. You must not allow your vehicle to be side by side with another vehicle regardless of the direction the other vehicle is travelling for the distance specified.",
+      pt: "Esta placa se aplica a uma ponte estreita ou a um trecho estreito da via. Você não deve permitir que seu veículo fique lado a lado com outro veículo, independentemente da direção em que este esteja se deslocando, pela distância especificada.",
+      es: "Esta señal se aplica a un puente angosto o a un tramo angosto de la vía. No debe permitir que su vehículo circule al lado de otro vehículo, sin importar la dirección en la que este se desplace, durante la distancia especificada."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-87",
+    sign: "/icons/signs/qld-image-93.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are behind a truck that is signalling and starting to turn left. The truck is displaying a 'Do not overtake turning vehicle' sign and is in the second lane from the left side of the road. You also want to turn left. What must you do?",
+      pt: "Você está atrás de um caminhão que está sinalizando e começando a virar à esquerda. O caminhão exibe uma placa de 'Não ultrapasse veículo em conversão' e está na segunda faixa a partir da esquerda da via. Você também quer virar à esquerda. O que você deve fazer?",
+      es: "Usted va detrás de un camión que está señalizando y comenzando a girar a la izquierda. El camión exhibe una señal de 'No adelante a vehículo girando' y está en el segundo carril desde el lado izquierdo de la vía. Usted también quiere girar a la izquierda. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn and quickly pass the truck on the left before the truck turns",
+          pt: "Buzinar e ultrapassar rapidamente o caminhão pela esquerda antes que ele vire",
+          es: "Tocar la bocina y adelantar rápidamente al camión por la izquierda antes de que gire"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Indicate and quickly pass the truck on the right hand side before the truck turns",
+          pt: "Sinalizar e ultrapassar rapidamente o caminhão pelo lado direito antes que ele vire",
+          es: "Señalizar y adelantar rápidamente al camión por el lado derecho antes de que gire"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "If it is unsafe to overtake, allow the truck to complete its turn before you turn left",
+          pt: "Se não for seguro ultrapassar, deixar o caminhão completar a conversão antes de você virar à esquerda",
+          es: "Si no es seguro adelantar, dejar que el camión complete su giro antes de que usted gire a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Use the far left lane to pass the truck and turn left",
+          pt: "Usar a faixa mais à esquerda para ultrapassar o caminhão e virar à esquerda",
+          es: "Usar el carril más a la izquierda para adelantar al camión y girar a la izquierda"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means that if the truck is turning you must not overtake or pass the vehicle unless it is safe to do so, therefore, you should allow the truck to complete its turn before you turn.",
+      pt: "Esta placa significa que, se o caminhão estiver virando, você não deve ultrapassá-lo a menos que seja seguro fazê-lo; portanto, você deve deixar o caminhão completar a conversão antes de você virar.",
+      es: "Esta señal significa que, si el camión está girando, no debe adelantarlo a menos que sea seguro hacerlo; por lo tanto, debe dejar que el camión complete su giro antes de que usted gire."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-88",
+    sign: "/icons/signs/qld-image-94.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Anyone may stop but only for a maximum of 2 minutes to pick up or drop off passengers",
+          pt: "Qualquer pessoa pode parar, mas somente por no máximo 2 minutos, para embarcar ou desembarcar passageiros",
+          es: "Cualquier persona puede detenerse, pero solo por un máximo de 2 minutos, para recoger o dejar pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Parking only permitted for people with disabilities who have a current disability parking permit",
+          pt: "Estacionamento permitido somente para pessoas com deficiência que possuam uma licença de estacionamento para deficientes válida",
+          es: "Estacionamiento permitido solo para personas con discapacidad que tengan un permiso de estacionamiento para discapacitados vigente"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Parking only permitted for people in wheelchairs",
+          pt: "Estacionamento permitido somente para pessoas em cadeira de rodas",
+          es: "Estacionamiento permitido solo para personas en silla de ruedas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means that only vehicles carrying people with disabilities may park in the area indicated. The person must be the holder of a current disability parking permit and display this on the vehicle.",
+      pt: "Esta placa significa que somente veículos transportando pessoas com deficiência podem estacionar na área indicada. A pessoa deve possuir uma licença de estacionamento para deficientes válida e exibi-la no veículo.",
+      es: "Esta señal significa que solo los vehículos que transporten a personas con discapacidad pueden estacionar en el área indicada. La persona debe tener un permiso de estacionamiento para discapacitados vigente y exhibirlo en el vehículo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-89",
+    sign: "/icons/signs/qld-image-95.jpg",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed a learner driver can drive in a 110km/h speed zone?",
+      pt: "Qual é a velocidade máxima que um motorista aprendiz pode dirigir em uma zona de velocidade de 110km/h?",
+      es: "¿Cuál es la velocidad máxima a la que puede conducir un conductor aprendiz en una zona de velocidad de 110km/h?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90km/h",
+          pt: "90km/h",
+          es: "90km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "100km/h",
+          pt: "100km/h",
+          es: "100km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "80km/h",
+          pt: "80km/h",
+          es: "80km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "110km/h",
+          pt: "110km/h",
+          es: "110km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Queensland learner licence holders are permitted to drive at the legal speed limit. Therefore a learner driver may drive at 110km/h on a road controlled by this sign, if it is safe to do so.",
+      pt: "Os titulares de licença de aprendiz de Queensland têm permissão para dirigir no limite de velocidade legal. Portanto, um motorista aprendiz pode dirigir a 110km/h em uma via controlada por esta placa, se for seguro fazê-lo.",
+      es: "Los titulares de licencia de aprendiz de Queensland tienen permitido conducir al límite de velocidad legal. Por lo tanto, un conductor aprendiz puede conducir a 110km/h en una vía controlada por esta señal, si es seguro hacerlo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-90",
+    sign: "/icons/signs/qld-image-96.jpg",
+    cat: "Speed Limits",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Children's crossing, slow down",
+          pt: "Travessia de crianças, reduza a velocidade",
+          es: "Cruce de niños, reduzca la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must travel at more than 60km/h",
+          pt: "Você deve trafegar a mais de 60km/h",
+          es: "Debe circular a más de 60km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must not travel at more than 60km/h",
+          pt: "Você não deve trafegar a mais de 60km/h",
+          es: "No debe circular a más de 60km/h"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "You are on Highway number 60",
+          pt: "Você está na Rodovia número 60",
+          es: "Está en la Autopista número 60"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign means you must not travel at more than 60km/h.",
+      pt: "Esta placa significa que você não deve trafegar a mais de 60km/h.",
+      es: "Esta señal significa que no debe circular a más de 60km/h."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-91",
+    sign: "/icons/signs/qld-image-97.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esse sinal significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed zone ends",
+          pt: "Fim da zona de velocidade",
+          es: "Fin de la zona de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must not turn right",
+          pt: "Você não deve virar à direita",
+          es: "No debe girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Danger, road ends",
+          pt: "Perigo, a via termina",
+          es: "Peligro, la vía termina"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No U-turn allowed",
+          pt: "Proibido fazer retorno (conversão em U)",
+          es: "Prohibido dar vuelta en U"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This sign means you are not allowed to perform a U-turn at the intersection or place indicated.",
+      pt: "Esse sinal significa que você não pode fazer um retorno (conversão em U) na interseção ou local indicado.",
+      es: "Esta señal significa que no puede realizar un giro en U en la intersección o lugar indicado."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-92",
+    sign: "/icons/signs/qld-image-9a.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving vehicle A. You must give way to -",
+      pt: "Você está dirigindo o veículo A. Você deve dar passagem a -",
+      es: "Usted está conduciendo el vehículo A. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicle D only",
+          pt: "Somente ao veículo D",
+          es: "Solo al vehículo D"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicle B, C and D",
+          pt: "Aos veículos B, C e D",
+          es: "A los vehículos B, C y D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicle B only",
+          pt: "Somente ao veículo B",
+          es: "Solo al vehículo B"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "No one, the other vehicles must give way to you",
+          pt: "A ninguém, os outros veículos devem dar passagem a você",
+          es: "A nadie, los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. The vehicles are facing each other at an uncontrolled crossroad intersection. At an uncontrolled crossroad intersection a driver going straight ahead must give way to any vehicle approaching from the right and a driver turning right must give way to any vehicle approaching from the right or travelling straight through the intersection. Vehicle A must give way to vehicle B, vehicle D must give way to vehicles A and B, and vehicle C does not give way to, or affect, vehicles A, B or D.",
+      pt: "O veículo A deve dar passagem ao veículo B. Os veículos estão de frente um para o outro em uma interseção de cruzamento não controlada. Em uma interseção de cruzamento não controlada, um condutor que segue em frente deve dar passagem a qualquer veículo que se aproxime pela direita, e um condutor que vira à direita deve dar passagem a qualquer veículo que se aproxime pela direita ou que atravesse a interseção em linha reta. O veículo A deve dar passagem ao veículo B, o veículo D deve dar passagem aos veículos A e B, e o veículo C não dá passagem nem afeta os veículos A, B ou D.",
+      es: "El vehículo A debe ceder el paso al vehículo B. Los vehículos están enfrentados en una intersección de cruce no controlada. En una intersección de cruce no controlada, un conductor que sigue de frente debe ceder el paso a cualquier vehículo que se aproxime por la derecha, y un conductor que gira a la derecha debe ceder el paso a cualquier vehículo que se aproxime por la derecha o que cruce la intersección en línea recta. El vehículo A debe ceder el paso al vehículo B, el vehículo D debe ceder el paso a los vehículos A y B, y el vehículo C no cede el paso ni afecta a los vehículos A, B o D."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-93",
+    cat: "Road Markings",
+    q: {
+      en: "A continuous yellow edge line along the side of the road means -",
+      pt: "Uma linha amarela contínua na lateral da via significa -",
+      es: "Una línea amarilla continua en el borde de la vía significa -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Parking for taxis only",
+          pt: "Estacionamento somente para táxis",
+          es: "Estacionamiento solo para taxis"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No stopping or parking at any time",
+          pt: "Proibido parar ou estacionar a qualquer momento",
+          es: "Prohibido detenerse o estacionar en cualquier momento"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicles may stop to drop off or pick up passengers",
+          pt: "Os veículos podem parar para deixar ou pegar passageiros",
+          es: "Los vehículos pueden detenerse para dejar o recoger pasajeros"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Fire hydrant indicator",
+          pt: "Indicador de hidrante",
+          es: "Indicador de hidrante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Unless there is an official sign saying you can, you must not park or stop on a road with a continuous yellow edge line.",
+      pt: "A menos que haja um sinal oficial permitindo, você não deve estacionar ou parar em uma via com linha amarela contínua na lateral.",
+      es: "A menos que haya una señal oficial que lo permita, no debe estacionar ni detenerse en una vía con línea amarilla continua en el borde."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-94",
+    cat: "Emergencies",
+    q: {
+      en: "An emergency vehicle is sounding its alarm and quickly approaching your vehicle from behind. You must -",
+      pt: "Um veículo de emergência está com a sirene ligada e se aproximando rapidamente do seu veículo por trás. Você deve -",
+      es: "Un vehículo de emergencia está sonando su alarma y se acerca rápidamente a su vehículo por detrás. Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Immediately speed up",
+          pt: "Acelerar imediatamente",
+          es: "Acelerar de inmediato"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Immediately sound your horn to warn other vehicles of the approaching emergency vehicle",
+          pt: "Buzinar imediatamente para avisar outros veículos sobre o veículo de emergência que se aproxima",
+          es: "Tocar la bocina de inmediato para advertir a otros vehículos sobre el vehículo de emergencia que se aproxima"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Move out of the path of the emergency vehicle as soon as you can do so safely",
+          pt: "Sair do caminho do veículo de emergência assim que puder fazer isso com segurança",
+          es: "Salir del camino del vehículo de emergencia tan pronto como pueda hacerlo con seguridad"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Immediately turn on your vehicles hazard lights",
+          pt: "Ligar imediatamente o pisca-alerta do seu veículo",
+          es: "Encender de inmediato las luces de emergencia (intermitentes) de su vehículo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If an emergency vehicle is approaching you from behind displaying a flashing blue or red light or sounding an alarm  you must move out of the path of the emergency vehicle as soon as you can do so safely.",
+      pt: "Se um veículo de emergência estiver se aproximando por trás exibindo luz azul ou vermelha piscante ou soando um alarme, você deve sair do caminho do veículo de emergência assim que puder fazer isso com segurança.",
+      es: "Si un vehículo de emergencia se aproxima por detrás mostrando una luz azul o roja intermitente o sonando una alarma, usted debe salir del camino del vehículo de emergencia tan pronto como pueda hacerlo con seguridad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-95",
+    cat: "Road Safety",
+    q: {
+      en: "Are two bicycle riders allowed to ride side by side on the road?",
+      pt: "Dois ciclistas podem andar lado a lado na via?",
+      es: "¿Se permite que dos ciclistas circulen uno al lado del otro en la vía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, as long as they are more than 2 metres apart",
+          pt: "Sim, desde que estejam a mais de 2 metros de distância um do outro",
+          es: "Sí, siempre que estén a más de 2 metros de distancia entre sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, as long as they are not more than 1.5 metres apart",
+          pt: "Sim, desde que não estejam a mais de 1,5 metro de distância um do outro",
+          es: "Sí, siempre que no estén a más de 1,5 metros de distancia entre sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Two bicycle riders may legally ride side by side as long as they are not more than 1.5m apart.",
+      pt: "Dois ciclistas podem legalmente andar lado a lado desde que não estejam a mais de 1,5 metro de distância um do outro.",
+      es: "Dos ciclistas pueden circular legalmente uno al lado del otro siempre que no estén a más de 1,5 metros de distancia entre sí."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-96",
+    cat: "Road Safety",
+    q: {
+      en: "Are you permitted to drive a vehicle with an unsecured load?",
+      pt: "Você tem permissão para dirigir um veículo com uma carga não fixada com segurança?",
+      es: "¿Está permitido conducir un vehículo con una carga sin asegurar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only if you travel at less than 40km/h",
+          pt: "Somente se você viajar a menos de 40 km/h",
+          es: "Solo si conduce a menos de 40 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only if you travel with your hazard lights on",
+          pt: "Somente se você viajar com o pisca-alerta ligado",
+          es: "Solo si conduce con las luces de emergencia encendidas"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only if you display a warning sign",
+          pt: "Somente se você exibir uma placa de aviso",
+          es: "Solo si exhibe una señal de advertencia"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "As a driver, you have a legal responsibility to ensure all loads carried by your vehicle are securely restrained.",
+      pt: "Como condutor, você tem a responsabilidade legal de garantir que toda a carga transportada pelo seu veículo esteja firmemente fixada.",
+      es: "Como conductor, usted tiene la responsabilidad legal de garantizar que toda la carga transportada por su vehículo esté firmemente asegurada."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-97",
+    cat: "Road Safety",
+    q: {
+      en: "Are you permitted to drive on or over tram tracks on a tramway?",
+      pt: "Você tem permissão para dirigir sobre os trilhos de bonde em uma via de bonde?",
+      es: "¿Está permitido conducir sobre las vías del tranvía en una vía de tranvía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, not at any time",
+          pt: "Não, em nenhum momento",
+          es: "No, en ningún momento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, at any time as long as there are no trams in sight",
+          pt: "Sim, a qualquer momento, desde que não haja bondes à vista",
+          es: "Sí, en cualquier momento siempre que no haya tranvías a la vista"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, but only at an intersection or when avoiding an obstruction",
+          pt: "Sim, mas somente em uma interseção ou ao desviar de um obstáculo",
+          es: "Sí, pero solo en una intersección o al evitar una obstrucción"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You can only drive on or over tram tracks on a tramway at an intersection or when avoiding an obstruction.",
+      pt: "Você só pode dirigir sobre os trilhos de bonde em uma via de bonde em uma interseção ou ao desviar de um obstáculo.",
+      es: "Solo puede conducir sobre las vías del tranvía en una vía de tranvía en una intersección o al evitar una obstrucción."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-98",
+    cat: "Road Safety",
+    q: {
+      en: "Are you permitted to drive with your lights on high beam in a built-up area (like a town or a city)?",
+      pt: "Você tem permissão para dirigir com os faróis em farol alto em uma área urbana (como uma cidade)?",
+      es: "¿Está permitido conducir con las luces altas encendidas en una zona urbana (como un pueblo o ciudad)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, but not within 200 metres of another vehicle",
+          pt: "Sim, mas não a menos de 200 metros de outro veículo",
+          es: "Sí, pero no a menos de 200 metros de otro vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, but not within 100 metres of another vehicle",
+          pt: "Sim, mas não a menos de 100 metros de outro veículo",
+          es: "Sí, pero no a menos de 100 metros de otro vehículo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You may drive with your headlights on high beam in a built up area, but you must dip them when you are within 200m of another vehicle, or to prevent dazzling other road users",
+      pt: "Você pode dirigir com os faróis em farol alto em uma área urbana, mas deve baixá-los quando estiver a menos de 200 metros de outro veículo, ou para evitar ofuscar outros usuários da via.",
+      es: "Puede conducir con las luces altas encendidas en una zona urbana, pero debe bajarlas cuando esté a menos de 200 metros de otro vehículo, o para evitar deslumbrar a otros usuarios de la vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-99",
+    cat: "Road Safety",
+    q: {
+      en: "As a driver, you must wear a seatbelt -",
+      pt: "Como condutor, você deve usar o cinto de segurança -",
+      es: "Como conductor, usted debe usar el cinturón de seguridad -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When the vehicle is parked",
+          pt: "Quando o veículo estiver estacionado",
+          es: "Cuando el vehículo esté estacionado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "When convenient",
+          pt: "Quando for conveniente",
+          es: "Cuando sea conveniente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When travelling over 60km/h",
+          pt: "Quando estiver viajando a mais de 60 km/h",
+          es: "Cuando circule a más de 60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "When the vehicle is moving or stopped in traffic, unless reversing",
+          pt: "Quando o veículo estiver em movimento ou parado no trânsito, exceto ao dar ré",
+          es: "Cuando el vehículo esté en movimiento o detenido en el tránsito, excepto al dar marcha atrás"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The driver of a vehicle fitted with seatbelts must wear a seatbelt when the vehicle is moving or stopped but not parked, however, a driver is not required to wear a seatbelt while reversing.",
+      pt: "O condutor de um veículo equipado com cintos de segurança deve usar o cinto de segurança quando o veículo estiver em movimento ou parado, mas não estacionado; no entanto, o condutor não é obrigado a usar o cinto de segurança ao dar ré.",
+      es: "El conductor de un vehículo equipado con cinturones de seguridad debe usar el cinturón de seguridad cuando el vehículo esté en movimiento o detenido, pero no estacionado; sin embargo, el conductor no está obligado a usar el cinturón de seguridad al dar marcha atrás."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-100",
+    cat: "Road Safety",
+    q: {
+      en: "Bicycle and motorcycle riders have the same rights to use the road as other road users. They are however, more at risk on the road because -",
+      pt: "Ciclistas e motociclistas têm os mesmos direitos de usar a via que os outros usuários da via. No entanto, eles correm mais risco na via porque -",
+      es: "Los ciclistas y motociclistas tienen los mismos derechos para usar la vía que los demás usuarios de la vía. Sin embargo, corren más riesgo en la vía porque -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "They are harder to see and do not have the same protection as car drivers",
+          pt: "São mais difíceis de ver e não têm a mesma proteção que os condutores de carros",
+          es: "Son más difíciles de ver y no tienen la misma protección que los conductores de automóviles"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "They are careless and do not obey road rules",
+          pt: "São descuidados e não obedecem às regras de trânsito",
+          es: "Son descuidados y no obedecen las normas de tránsito"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "They ride too fast and do not turn their lights on",
+          pt: "Andam muito rápido e não ligam as luzes",
+          es: "Circulan demasiado rápido y no encienden sus luces"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Bicycle and motorcycle riders are more likely to be injured in a crash because they are not protected by the body of the car and their vehicles are smaller and less stable.",
+      pt: "Ciclistas e motociclistas têm mais probabilidade de se ferir em uma colisão porque não são protegidos pela carroceria de um carro e seus veículos são menores e menos estáveis.",
+      es: "Los ciclistas y motociclistas tienen más probabilidades de resultar heridos en un choque porque no están protegidos por la carrocería de un automóvil y sus vehículos son más pequeños y menos estables."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-101",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Can a Police Officer stop you and require you to undergo a random breath test for alcohol when you are driving?",
+      pt: "Um policial pode pará-lo e exigir que você se submeta a um teste de bafômetro aleatório para álcool enquanto estiver dirigindo?",
+      es: "¿Puede un agente de policía detenerlo y exigirle que se someta a una prueba de alcoholemia aleatoria mientras conduce?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when the driver can not walk in a straight line",
+          pt: "Somente quando o condutor não conseguir andar em linha reta",
+          es: "Solo cuando el conductor no pueda caminar en línea recta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only after a crash",
+          pt: "Somente após uma colisão",
+          es: "Solo después de un choque"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you are driving a vehicle, police officers are able to stop you and require you to undergo a random breath test.",
+      pt: "Ao dirigir um veículo, os policiais podem pará-lo e exigir que você se submeta a um teste de bafômetro aleatório.",
+      es: "Al conducir un vehículo, los agentes de policía pueden detenerlo y exigirle que se someta a una prueba de alcoholemia aleatoria."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-102",
+    cat: "Road Safety",
+    q: {
+      en: "Do bicycle riders have the same rights and responsibilities as vehicle drivers?",
+      pt: "Os ciclistas têm os mesmos direitos e responsabilidades que os condutores de veículos?",
+      es: "¿Tienen los ciclistas los mismos derechos y responsabilidades que los conductores de vehículos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, they must always ride on the footpath",
+          pt: "Não, eles devem sempre andar na calçada",
+          es: "No, siempre deben circular por la acera"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, they must give way to vehicles at all times when riding on the road",
+          pt: "Não, eles devem sempre dar passagem aos veículos ao andar na via",
+          es: "No, siempre deben ceder el paso a los vehículos al circular por la vía"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Bicycle riders have equal rights and responsibilities to vehicle drivers. They must obey the road rules and they receive the same fines for breaking them as vehicle drivers.",
+      pt: "Os ciclistas têm direitos e responsabilidades iguais aos dos condutores de veículos. Eles devem obedecer às regras de trânsito e recebem as mesmas multas por infringi-las que os condutores de veículos.",
+      es: "Los ciclistas tienen los mismos derechos y responsabilidades que los conductores de vehículos. Deben obedecer las normas de tránsito y reciben las mismas multas por infringirlas que los conductores de vehículos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-103",
+    cat: "Give Way Rules",
+    q: {
+      en: "Does a Police Officer's direction overrule stop and give way signs?",
+      pt: "A orientação de um policial prevalece sobre as placas de pare e dê a preferência?",
+      es: "¿La indicación de un agente de policía prevalece sobre las señales de pare y ceda el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, only at give way signs",
+          pt: "Sim, somente em placas de dê a preferência",
+          es: "Sí, solo en señales de ceda el paso"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Yes, only at stop signs",
+          pt: "Sim, somente em placas de pare",
+          es: "Sí, solo en señales de pare"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Directions given by Police Officers overrule stop signs and give way signs.",
+      pt: "As orientações dadas pelos policiais prevalecem sobre as placas de pare e dê a preferência.",
+      es: "Las indicaciones dadas por los agentes de policía prevalecen sobre las señales de pare y ceda el paso."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-104",
+    cat: "Parking Rules",
+    q: {
+      en: "How close to a pedestrian (zebra) crossing can you legally park?",
+      pt: "A que distância de uma faixa de pedestres você pode estacionar legalmente?",
+      es: "¿A qué distancia de un paso de peatones (cebra) puede estacionar legalmente?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 metres before and 10 metres after the crossing",
+          pt: "20 metros antes e 10 metros depois da faixa",
+          es: "20 metros antes y 10 metros después del paso"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "5 metres on either side",
+          pt: "5 metros de cada lado",
+          es: "5 metros a cada lado"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "15 metres on either side",
+          pt: "15 metros de cada lado",
+          es: "15 metros a cada lado"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "3 metres before and 5 metres after the crossing",
+          pt: "3 metros antes e 5 metros depois da faixa",
+          es: "3 metros antes y 5 metros después del paso"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Unless there is an official sign saying you can, you must not park or stop less than 20m before and 10m after a pedestrian (zebra) crossing.",
+      pt: "A menos que haja um sinal oficial permitindo, você não deve estacionar ou parar a menos de 20 metros antes e 10 metros depois de uma faixa de pedestres.",
+      es: "A menos que haya una señal oficial que lo permita, no debe estacionar ni detenerse a menos de 20 metros antes y 10 metros después de un paso de peatones (cebra)."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-105",
+    cat: "Parking Rules",
+    q: {
+      en: "How close to an intersection without traffic lights can you legally park?",
+      pt: "A que distância de uma interseção sem semáforo você pode estacionar legalmente?",
+      es: "¿A qué distancia de una intersección sin semáforos puede estacionar legalmente?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "9 metres",
+          pt: "9 metros",
+          es: "9 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "3 metres",
+          pt: "3 metros",
+          es: "3 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "15 metres",
+          pt: "15 metros",
+          es: "15 metros"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "10 metres",
+          pt: "10 metros",
+          es: "10 metros"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Unless there is an official sign saying you can, you must not park or stop less than 10m from an intersection without traffic lights.",
+      pt: "A menos que haja um sinal oficial permitindo, você não deve estacionar ou parar a menos de 10 metros de uma interseção sem semáforo.",
+      es: "A menos que haya una señal oficial que lo permita, no debe estacionar ni detenerse a menos de 10 metros de una intersección sin semáforos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-106",
+    cat: "Parking Rules",
+    q: {
+      en: "How must you park in a two-way street that has no parking restrictions?",
+      pt: "Como você deve estacionar em uma rua de mão dupla que não tem restrições de estacionamento?",
+      es: "¿Cómo debe estacionar en una calle de doble sentido que no tiene restricciones de estacionamiento?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must park as close as practical to the centre of the road",
+          pt: "Você deve estacionar o mais próximo possível do centro da via",
+          es: "Debe estacionar lo más cerca posible del centro de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must park at an angle and as close as practical to the left-hand kerb",
+          pt: "Você deve estacionar em ângulo e o mais próximo possível do meio-fio do lado esquerdo",
+          es: "Debe estacionar en ángulo y lo más cerca posible del bordillo izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must park parallel and as close as practical to the left-hand kerb",
+          pt: "Você deve estacionar em paralelo e o mais próximo possível do meio-fio do lado esquerdo",
+          es: "Debe estacionar en paralelo y lo más cerca posible del bordillo izquierdo"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "You must park parallel and as close as practical to the right-hand kerb",
+          pt: "Você deve estacionar em paralelo e o mais próximo possível do meio-fio do lado direito",
+          es: "Debe estacionar en paralelo y lo más cerca posible del bordillo derecho"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are parking in a two-way street where there are no signs or line markings telling you how to park, you must park parallel to the side of the road and as close to the left as you can safely.",
+      pt: "Se você estiver estacionando em uma rua de mão dupla onde não há sinais ou marcações indicando como estacionar, você deve estacionar em paralelo à lateral da via e o mais próximo possível da esquerda, com segurança.",
+      es: "Si va a estacionar en una calle de doble sentido donde no hay señales ni marcas viales que indiquen cómo estacionar, debe estacionar en paralelo al costado de la vía y lo más cerca posible del lado izquierdo, con seguridad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-107",
+    cat: "Emergencies",
+    q: {
+      en: "If you are involved in a crash causing minor damage to the vehicles but no one is injured, you must -",
+      pt: "Se você estiver envolvido em uma colisão que cause danos leves aos veículos, mas ninguém se machucar, você deve -",
+      es: "Si se ve involucrado en un choque que cause daños menores a los vehículos pero nadie resulta herido, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop and give your details to the driver of the other vehicle only if you caused the crash",
+          pt: "Parar e fornecer seus dados ao condutor do outro veículo somente se você causou a colisão",
+          es: "Detenerse y dar sus datos al conductor del otro vehículo solo si usted causó el choque"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Continue driving as no one had been injured",
+          pt: "Continuar dirigindo, já que ninguém se machucou",
+          es: "Continuar conduciendo ya que nadie resultó herido"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop at the crash and exchange driver and vehicle details with the driver of the other vehicle",
+          pt: "Parar no local da colisão e trocar os dados do condutor e do veículo com o condutor do outro veículo",
+          es: "Detenerse en el lugar del choque e intercambiar los datos del conductor y del vehículo con el conductor del otro vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Stop only during daylight hours",
+          pt: "Parar somente durante o dia",
+          es: "Detenerse solo durante las horas diurnas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver involved in a crash where no one is injured and the property damage is minor must stop and exchange driver and vehicle details with the driver of the other vehicle. This should be done as soon as possible and within 24 hours of the crash.",
+      pt: "Um condutor envolvido em uma colisão em que ninguém se machuca e os danos materiais são leves deve parar e trocar os dados do condutor e do veículo com o condutor do outro veículo. Isso deve ser feito o mais rápido possível e dentro de 24 horas após a colisão.",
+      es: "Un conductor involucrado en un choque en el que nadie resulta herido y los daños materiales son menores debe detenerse e intercambiar los datos del conductor y del vehículo con el conductor del otro vehículo. Esto debe hacerse lo antes posible y dentro de las 24 horas posteriores al choque."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-108",
+    cat: "Emergencies",
+    q: {
+      en: "If you are involved in a crash causing minor damage to the vehicles, you must -",
+      pt: "Se você estiver envolvido em uma colisão que cause danos leves aos veículos, você deve -",
+      es: "Si se ve involucrado en un choque que cause daños menores a los vehículos, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop your vehicle and exchange driver and vehicle details with the driver of the other vehicle.",
+          pt: "Parar seu veículo e trocar os dados do condutor e do veículo com o condutor do outro veículo.",
+          es: "Detener su vehículo e intercambiar los datos del conductor y del vehículo con el conductor del otro vehículo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Look for a witness to the accident",
+          pt: "Procurar uma testemunha do acidente",
+          es: "Buscar un testigo del accidente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive on, you are not injured",
+          pt: "Continuar dirigindo, já que você não se machucou",
+          es: "Continuar conduciendo, ya que usted no resultó herido"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Drive to the nearest Police Station",
+          pt: "Dirigir até a delegacia de polícia mais próxima",
+          es: "Conducir hasta la comisaría de policía más cercana"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver involved in a crash causing minor property damage must stop and exchange driver and vehicle details with the driver of the other vehicle. This should be done as soon as possible and within 24 hours.",
+      pt: "Um condutor envolvido em uma colisão que causa danos materiais leves deve parar e trocar os dados do condutor e do veículo com o condutor do outro veículo. Isso deve ser feito o mais rápido possível e dentro de 24 horas.",
+      es: "Un conductor involucrado en un choque que causa daños materiales menores debe detenerse e intercambiar los datos del conductor y del vehículo con el conductor del otro vehículo. Esto debe hacerse lo antes posible y dentro de las 24 horas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-109",
+    cat: "Give Way Rules",
+    q: {
+      en: "If you are turning at an intersection do you have to give way to pedestrians crossing the road you are turning into?",
+      pt: "Se você estiver virando em uma interseção, você precisa dar passagem aos pedestres que estão atravessando a via para a qual você está virando?",
+      es: "Si va a girar en una intersección, ¿debe ceder el paso a los peatones que cruzan la vía hacia la que está girando?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only if the pedestrians are under the age of 16 years",
+          pt: "Somente se os pedestres tiverem menos de 16 anos",
+          es: "Solo si los peatones tienen menos de 16 años"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only if the pedestrians are over the age of 16 years",
+          pt: "Somente se os pedestres tiverem mais de 16 anos",
+          es: "Solo si los peatones tienen más de 16 años"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you turn at an intersection, you must give way to any pedestrian, or any rider of a bicycle or personal mobility device crossing the road you are entering.",
+      pt: "Ao virar em uma interseção, você deve dar passagem a qualquer pedestre, ou a qualquer ciclista ou usuário de dispositivo pessoal de mobilidade que esteja atravessando a via que você está entrando.",
+      es: "Al girar en una intersección, debe ceder el paso a cualquier peatón, o a cualquier ciclista o usuario de un dispositivo personal de movilidad que esté cruzando la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-110",
+    cat: "Road Safety",
+    q: {
+      en: "If you are under 25 years of age and on a P1 provisional licence, how many people under 21 years of age (that are not immediate family members) may be a passenger in your car between 11:00pm and 5:00am.",
+      pt: "Se você tem menos de 25 anos e possui uma licença provisória P1, quantas pessoas com menos de 21 anos (que não sejam familiares diretos) podem ser passageiras no seu carro entre 23h e 5h?",
+      es: "Si tiene menos de 25 años y posee una licencia provisional P1, ¿cuántas personas menores de 21 años (que no sean familiares directos) pueden ser pasajeras en su automóvil entre las 23:00 y las 5:00?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "3",
+          pt: "3",
+          es: "3"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1",
+          pt: "1",
+          es: "1"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "0",
+          pt: "0",
+          es: "0"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "2",
+          pt: "2",
+          es: "2"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you hold a P1 provisional licence and are under 25 years of age you are only permitted to have one passenger under 21 years of age between 11:00pm and 5:00am. This restriction does not apply to members of your immediate family.",
+      pt: "Se você possui uma licença provisória P1 e tem menos de 25 anos, só tem permissão para ter um passageiro com menos de 21 anos entre 23h e 5h. Essa restrição não se aplica a familiares diretos.",
+      es: "Si posee una licencia provisional P1 y tiene menos de 25 años, solo tiene permitido tener un pasajero menor de 21 años entre las 23:00 y las 5:00. Esta restricción no se aplica a los familiares directos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-111",
+    cat: "Road Safety",
+    q: {
+      en: "If you pass a school bus which is displaying flashing yellow lights you should -",
+      pt: "Se você ultrapassar um ônibus escolar que estiver com as luzes amarelas piscando, você deve -",
+      es: "Si adelanta a un autobús escolar que está mostrando luces amarillas intermitentes, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Take no special action",
+          pt: "Não tomar nenhuma ação especial",
+          es: "No tomar ninguna acción especial"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop",
+          pt: "Parar",
+          es: "Detenerse"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down and look out for children",
+          pt: "Reduzir a velocidade e ficar atento a crianças",
+          es: "Reducir la velocidad y estar atento a los niños"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If you are approaching a school bus displaying yellow flashing lights, you should slow down and watch out for children.",
+      pt: "Se você estiver se aproximando de um ônibus escolar com as luzes amarelas piscando, você deve reduzir a velocidade e ficar atento a crianças.",
+      es: "Si se está acercando a un autobús escolar que muestra luces amarillas intermitentes, debe reducir la velocidad y estar atento a los niños."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-112",
+    cat: "Road Safety",
+    q: {
+      en: "In a car that is not parked, a seatbelt or an approved restraint -",
+      pt: "Em um carro que não está estacionado, um cinto de segurança ou um dispositivo de retenção aprovado -",
+      es: "En un automóvil que no está estacionado, un cinturón de seguridad o un dispositivo de retención aprobado -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Must be worn by all passengers",
+          pt: "Deve ser usado por todos os passageiros",
+          es: "Debe ser usado por todos los pasajeros"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Does not need to be worn by passengers over the age of 16",
+          pt: "Não precisa ser usado por passageiros com mais de 16 anos",
+          es: "No necesita ser usado por pasajeros mayores de 16 años"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Does not need to be worn by passengers under the age of 12",
+          pt: "Não precisa ser usado por passageiros com menos de 12 anos",
+          es: "No necesita ser usado por pasajeros menores de 12 años"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only needs to be worn when travelling over 50 km/h",
+          pt: "Só precisa ser usado ao viajar a mais de 50 km/h",
+          es: "Solo necesita usarse cuando se circula a más de 50 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In a vehicle fitted with seatbelts, a seatbelt or an approved restraint must be worn by everyone in the vehicle when the vehicle is moving, or stopped in traffic. This rule does not apply when the vehicle is parked. However, a driver is not required to wear a seatbelt while reversing.",
+      pt: "Em um veículo equipado com cintos de segurança, um cinto de segurança ou um dispositivo de retenção aprovado deve ser usado por todos no veículo quando ele estiver em movimento ou parado no trânsito. Essa regra não se aplica quando o veículo está estacionado. No entanto, o condutor não é obrigado a usar o cinto de segurança ao dar ré.",
+      es: "En un vehículo equipado con cinturones de seguridad, un cinturón de seguridad o un dispositivo de retención aprobado debe ser usado por todos los ocupantes cuando el vehículo esté en movimiento o detenido en el tránsito. Esta regla no se aplica cuando el vehículo está estacionado. Sin embargo, el conductor no está obligado a usar el cinturón de seguridad al dar marcha atrás."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-113",
+    cat: "Road Safety",
+    q: {
+      en: "Is the driver of a car responsible for the safe restraint of children under 16 years?",
+      pt: "O condutor de um carro é responsável pela contenção segura de crianças com menos de 16 anos?",
+      es: "¿Es el conductor de un automóvil responsable de la sujeción segura de los niños menores de 16 años?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when travelling long distances",
+          pt: "Somente em viagens longas",
+          es: "Solo en viajes largos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only when travelling over 50km/h",
+          pt: "Somente ao viajar a mais de 50 km/h",
+          es: "Solo al circular a más de 50 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The driver of a vehicle is responsible for the safe restraint of all passengers.",
+      pt: "O condutor de um veículo é responsável pela contenção segura de todos os passageiros.",
+      es: "El conductor de un vehículo es responsable de la sujeción segura de todos los pasajeros."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-114",
+    cat: "Speed Limits",
+    q: {
+      en: "Speeding is dangerous because -",
+      pt: "Dirigir acima da velocidade é perigoso porque -",
+      es: "Conducir a exceso de velocidad es peligroso porque -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Driving too fast around a corner can affect the vehicle's stability",
+          pt: "Dirigir rápido demais em uma curva pode afetar a estabilidade do veículo",
+          es: "Conducir demasiado rápido en una curva puede afectar la estabilidad del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The faster you drive, the more time and space you need to stop",
+          pt: "Quanto mais rápido você dirige, mais tempo e espaço você precisa para parar",
+          es: "Cuanto más rápido conduce, más tiempo y espacio necesita para detenerse"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Increasing speed also increases the severity of crashes",
+          pt: "Aumentar a velocidade também aumenta a gravidade das colisões",
+          es: "Aumentar la velocidad también aumenta la gravedad de los choques"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "All of the above",
+          pt: "Todas as anteriores",
+          es: "Todas las anteriores"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Speeding has proved to be dangerous because of increased stopping distances, increased severity of crashes and poor stability in cornering.",
+      pt: "Comprovou-se que dirigir acima da velocidade é perigoso devido ao aumento das distâncias de frenagem, ao aumento da gravidade das colisões e à baixa estabilidade nas curvas.",
+      es: "Se ha comprobado que conducir a exceso de velocidad es peligroso debido al aumento de las distancias de frenado, al aumento de la gravedad de los choques y a la escasa estabilidad en las curvas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-115",
+    cat: "Road Safety",
+    q: {
+      en: "What distance are you allowed to drive in a bus lane when entering or leaving a road?",
+      pt: "Qual é a distância permitida para dirigir em uma faixa de ônibus ao entrar ou sair de uma via?",
+      es: "¿Qué distancia se le permite conducir en un carril de autobús al entrar o salir de una vía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Not at all",
+          pt: "Nenhuma",
+          es: "Ninguna"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "100 metres",
+          pt: "100 metros",
+          es: "100 metros"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "50 metres",
+          pt: "50 metros",
+          es: "50 metros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You may drive in a bicycle lane for up to 50m and all other special purpose lanes, including bus lanes, for up to 100m to enter or leave a road.",
+      pt: "Você pode dirigir em uma ciclofaixa por até 50 metros e em todas as outras faixas de uso especial, incluindo faixas de ônibus, por até 100 metros, para entrar ou sair de uma via.",
+      es: "Puede conducir en un carril para bicicletas hasta 50 metros y en todos los demás carriles de uso especial, incluidos los carriles de autobús, hasta 100 metros, para entrar o salir de una vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-116",
+    sign: "/icons/signs/qld-t2-6-1l.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que esse sinal significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Left lane closed, right lane open",
+          pt: "Faixa esquerda fechada, faixa direita aberta",
+          es: "Carril izquierdo cerrado, carril derecho abierto"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Trucks must use right lane",
+          pt: "Caminhões devem usar a faixa direita",
+          es: "Los camiones deben usar el carril derecho"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "T intersection ahead",
+          pt: "Interseção em T à frente",
+          es: "Intersección en T más adelante"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Left lane open, right lane closed",
+          pt: "Faixa esquerda aberta, faixa direita fechada",
+          es: "Carril izquierdo abierto, carril derecho cerrado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This is a warning sign. The sign is warning you that the left lane ahead is closed meaning that if you are driving in that lane, you must merge to the right lane.",
+      pt: "Este é um sinal de advertência. O sinal está avisando que a faixa esquerda à frente está fechada, o que significa que, se você estiver dirigindo nessa faixa, deve se deslocar para a faixa direita.",
+      es: "Esta es una señal de advertencia. La señal le advierte que el carril izquierdo más adelante está cerrado, lo que significa que, si está circulando por ese carril, debe incorporarse al carril derecho."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-117",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC (breath/blood alcohol concentration) for a learner or provisional licence holder?",
+      pt: "Qual é o CAS (concentração de álcool no sangue/ar expirado) legal para o titular de uma licença de aprendiz ou provisória?",
+      es: "¿Cuál es la CAS (concentración de alcohol en sangre/aire espirado) legal para el titular de una licencia de aprendiz o provisional?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.00 BAC",
+          pt: "CAS 0,00",
+          es: "CAS 0,00"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "0.02 BAC",
+          pt: "CAS 0,02",
+          es: "CAS 0,02"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "0.08 BAC",
+          pt: "CAS 0,08",
+          es: "CAS 0,08"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "0.05 BAC",
+          pt: "CAS 0,05",
+          es: "CAS 0,05"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "All learner and provisional licence holders must have a zero BAC when driving.",
+      pt: "Todos os titulares de licença de aprendiz ou provisória devem ter CAS zero ao dirigir.",
+      es: "Todos los titulares de licencia de aprendiz o provisional deben tener una CAS de cero al conducir."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-118",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed limit (unless signposted otherwise) for vehicles in a built-up area (like a town or a city)?",
+      pt: "Qual é o limite máximo de velocidade (a menos que sinalizado de outra forma) para veículos em uma área urbana (como uma cidade)?",
+      es: "¿Cuál es el límite máximo de velocidad (a menos que se indique lo contrario mediante señalización) para los vehículos en una zona urbana (como un pueblo o una ciudad)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "80km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "70km/h",
+          pt: "70 km/h",
+          es: "70 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "50km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "60km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The default speed limit on a road in a built-up area is 50km/h. This means you may drive at a maximum speed of 50km/h in a built-up area, unless there is a sign showing a different speed limit.",
+      pt: "O limite de velocidade padrão em uma via em área urbana é de 50 km/h. Isso significa que você pode dirigir a uma velocidade máxima de 50 km/h em área urbana, a menos que haja uma placa indicando um limite de velocidade diferente.",
+      es: "El límite de velocidad predeterminado en una vía dentro de una zona urbana es de 50 km/h. Esto significa que puede conducir a una velocidad máxima de 50 km/h en una zona urbana, a menos que haya una señal que indique un límite de velocidad diferente."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-119",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed limit, unless otherwise signposted, for vehicles travelling outside a built-up area (like a town or a city)?",
+      pt: "Qual é o limite máximo de velocidade, a menos que sinalizado de outra forma, para veículos que trafegam fora de uma área urbana (como uma cidade)?",
+      es: "¿Cuál es el límite máximo de velocidad, a menos que se indique lo contrario mediante señalización, para los vehículos que circulan fuera de una zona urbana (como un pueblo o una ciudad)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "90km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "110km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "100km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "80km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The maximum speed limit on a road outside a built-up area is 100km/h unless otherwise signed.",
+      pt: "O limite máximo de velocidade em uma via fora de área urbana é de 100 km/h, a menos que haja sinalização diferente.",
+      es: "El límite máximo de velocidad en una vía fuera de una zona urbana es de 100 km/h, a menos que haya una señalización diferente."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-120",
+    cat: "Parking Rules",
+    q: {
+      en: "What is the minimum stopping distance before and after a bus stop?",
+      pt: "Qual é a distância mínima para parar antes e depois de um ponto de ônibus?",
+      es: "¿Cuál es la distancia mínima para detenerse antes y después de una parada de autobús?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "10 metres before, 25 metres after",
+          pt: "10 metros antes, 25 metros depois",
+          es: "10 metros antes, 25 metros después"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "20 metres before, 10 metres after",
+          pt: "20 metros antes, 10 metros depois",
+          es: "20 metros antes, 10 metros después"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "50 metres before, 10 metres after",
+          pt: "50 metros antes, 10 metros depois",
+          es: "50 metros antes, 10 metros después"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not stop or park less than 20 metres before and 10 metres after a bus stop, unless there is an official sign saying you can.",
+      pt: "Você não deve parar ou estacionar a menos de 20 metros antes e 10 metros depois de um ponto de ônibus, a menos que haja um sinal oficial permitindo.",
+      es: "No debe detenerse ni estacionar a menos de 20 metros antes y 10 metros después de una parada de autobús, a menos que haya una señal oficial que lo permita."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-121",
+    cat: "Traffic Lights",
+    q: {
+      en: "What must you do at an intersection controlled by traffic lights, which is blocked by other vehicles?",
+      pt: "O que você deve fazer em uma interseção controlada por semáforos, que está bloqueada por outros veículos?",
+      es: "¿Qué debe hacer en una intersección controlada por semáforos que está bloqueada por otros vehículos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Enter the intersection",
+          pt: "Entrar na interseção",
+          es: "Entrar en la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Enter the intersection if you think the traffic will clear before the traffic lights change to red",
+          pt: "Entrar na interseção se você achar que o trânsito vai desobstruir antes que o semáforo mude para vermelho",
+          es: "Entrar en la intersección si cree que el tráfico se despejará antes de que el semáforo cambie a rojo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not enter the intersection until the traffic has cleared and you can safely drive through to the other side on the green traffic light",
+          pt: "Não entrar na interseção até que o trânsito tenha desobstruído e você possa atravessar com segurança até o outro lado com o semáforo verde",
+          es: "No entrar en la intersección hasta que el tráfico se haya despejado y pueda cruzar con seguridad hasta el otro lado con el semáforo en verde"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Do not enter the intersection unless the lights change to red",
+          pt: "Não entrar na interseção a menos que o semáforo mude para vermelho",
+          es: "No entrar en la intersección a menos que el semáforo cambie a rojo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not block or partly block an intersection. Therefore you must not enter the intersection until you can drive safely through to the other side on the green light. However, if you are turning right at an intersection you may enter the intersection and wait until it is safe to complete your turn.",
+      pt: "Você não deve bloquear ou bloquear parcialmente uma interseção. Portanto, você não deve entrar na interseção até que possa atravessar com segurança até o outro lado com o sinal verde. No entanto, se estiver virando à direita em uma interseção, você pode entrar na interseção e esperar até que seja seguro completar a conversão.",
+      es: "No debe bloquear ni bloquear parcialmente una intersección. Por lo tanto, no debe entrar en la intersección hasta que pueda cruzar con seguridad hasta el otro lado con la luz verde. Sin embargo, si está girando a la derecha en una intersección, puede entrar en la intersección y esperar hasta que sea seguro completar el giro."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-122",
+    cat: "Traffic Lights",
+    q: {
+      en: "When approaching an intersection with a flashing yellow traffic light you must -",
+      pt: "Ao se aproximar de uma interseção com um semáforo amarelo piscando, você deve -",
+      es: "Al acercarse a una intersección con un semáforo amarillo intermitente, debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to give way. Treat the intersection as if there were no lights or signs or lines on it",
+          pt: "Reduzir a velocidade e estar preparado para dar passagem. Tratar a interseção como se não houvesse semáforos, placas ou linhas nela",
+          es: "Reducir la velocidad y estar preparado para ceder el paso. Tratar la intersección como si no tuviera semáforos, señales ni líneas"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and give way to all traffic approaching from the left and right",
+          pt: "Parar e dar passagem a todo o trânsito que se aproxima pela esquerda e pela direita",
+          es: "Detenerse y ceder el paso a todo el tráfico que se aproxima desde la izquierda y la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop and wait for another driver to wave you through the intersection",
+          pt: "Parar e esperar que outro motorista sinalize para você passar pela interseção",
+          es: "Detenerse y esperar a que otro conductor le indique con la mano que puede pasar por la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Slow down and sound your horn",
+          pt: "Reduzir a velocidade e buzinar",
+          es: "Reducir la velocidad y tocar la bocina"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A flashing yellow traffic light or arrow is a warning to use caution. If you face a flashing yellow traffic light or arrow, you may enter the intersection with caution, applying the give way rules for an uncontrolled intersection.",
+      pt: "Um semáforo ou seta amarela piscando é um aviso para ter cautela. Se você se deparar com um semáforo ou seta amarela piscando, pode entrar na interseção com cautela, aplicando as regras de prioridade de uma interseção não controlada.",
+      es: "Un semáforo o flecha amarilla intermitente es una advertencia para tener precaución. Si se encuentra con un semáforo o flecha amarilla intermitente, puede entrar en la intersección con precaución, aplicando las reglas de ceda el paso de una intersección no controlada."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-123",
+    cat: "Road Safety",
+    q: {
+      en: "When are you allowed to sound your horn?",
+      pt: "Quando você pode buzinar?",
+      es: "¿Cuándo se le permite tocar la bocina?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when it is used as a warning device",
+          pt: "Somente quando usada como dispositivo de aviso",
+          es: "Solo cuando se usa como dispositivo de advertencia"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only in a built-up area",
+          pt: "Somente em área urbana",
+          es: "Solo en una zona urbana"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At anytime",
+          pt: "A qualquer momento",
+          es: "En cualquier momento"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "To say good-bye to friends",
+          pt: "Para se despedir de amigos",
+          es: "Para despedirse de amigos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not sound your horn unless you are using it as a warning device.",
+      pt: "Você não deve buzinar, a menos que esteja usando a buzina como dispositivo de aviso.",
+      es: "No debe tocar la bocina a menos que la esté usando como dispositivo de advertencia."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-124",
+    cat: "Give Way Rules",
+    q: {
+      en: "When doing a U-turn who must you give way to?",
+      pt: "Ao fazer um retorno (conversão em U), a quem você deve dar passagem?",
+      es: "Al hacer un cambio de sentido (giro en U), ¿a quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Pedestrians and bicycle riders only",
+          pt: "Somente a pedestres e ciclistas",
+          es: "Solo a peatones y ciclistas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "All vehicles, pedestrians and bicycle riders",
+          pt: "A todos os veículos, pedestres e ciclistas",
+          es: "A todos los vehículos, peatones y ciclistas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Oncoming vehicles only",
+          pt: "Somente a veículos que vêm em sentido contrário",
+          es: "Solo a los vehículos que vienen en sentido contrario"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you are doing a U-turn you must give way to all vehicles, pedestrians, bicycle and personal mobility device riders. This includes vehicles, bicycles and personal mobility devices at stop and give way signs.",
+      pt: "Se você estiver fazendo um retorno, deve dar passagem a todos os veículos, pedestres, ciclistas e condutores de dispositivos pessoais de mobilidade. Isso inclui veículos, bicicletas e dispositivos pessoais de mobilidade em placas de pare e dê a preferência.",
+      es: "Si está haciendo un cambio de sentido, debe ceder el paso a todos los vehículos, peatones, ciclistas y usuarios de dispositivos personales de movilidad. Esto incluye vehículos, bicicletas y dispositivos personales de movilidad en señales de pare y ceda el paso."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-125",
+    cat: "Road Safety",
+    q: {
+      en: "When driving at night with your headlights on high beam, you must dip your headlights -",
+      pt: "Ao dirigir à noite com os faróis em farol alto, você deve baixar os faróis -",
+      es: "Al conducir de noche con las luces altas encendidas, debe bajar las luces -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Never, you don't ever need to dip your headlights",
+          pt: "Nunca, você nunca precisa baixar os faróis",
+          es: "Nunca, no es necesario bajar las luces en ningún momento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when another vehicle is approaching you from the opposite direction and is within 50 metres",
+          pt: "Somente quando outro veículo estiver se aproximando em sentido contrário e estiver a menos de 50 metros",
+          es: "Solo cuando otro vehículo se aproxima en sentido contrario y está a menos de 50 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Within 3 metres of approaching another vehicle from either the opposite direction or from behind",
+          pt: "A até 3 metros de se aproximar de outro veículo, seja em sentido contrário ou por trás",
+          es: "A menos de 3 metros de acercarse a otro vehículo, ya sea en sentido contrario o por detrás"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Within 200 metres of another vehicle either approaching you or travelling away from you",
+          pt: "A até 200 metros de outro veículo, seja se aproximando de você ou se afastando de você",
+          es: "A menos de 200 metros de otro vehículo, ya sea que se acerque a usted o se aleje de usted"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When driving with your headlights on high beam you must dip your headlights if you are within 200m of a vehicle approaching from the opposite direction or if you are within 200m of a vehicle you are following, or to prevent dazzling other road users.",
+      pt: "Ao dirigir com os faróis em farol alto, você deve baixá-los quando estiver a menos de 200 m de um veículo que se aproxima em sentido contrário ou a menos de 200 m de um veículo que está seguindo, ou para evitar ofuscar outros usuários da via.",
+      es: "Al conducir con las luces altas encendidas, debe bajarlas si está a menos de 200 m de un vehículo que se aproxima en sentido contrario o a menos de 200 m de un vehículo al que está siguiendo, o para evitar deslumbrar a otros usuarios de la vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-126",
+    cat: "Give Way Rules",
+    q: {
+      en: "When entering a freeway using an on-ramp you must -",
+      pt: "Ao entrar em uma via expressa (freeway) usando uma rampa de acesso, você deve -",
+      es: "Al entrar en una autopista (freeway) usando una rampa de acceso, debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to vehicles on the freeway and adjust your speed as necessary",
+          pt: "Dar passagem aos veículos na via expressa e ajustar sua velocidade conforme necessário",
+          es: "Ceder el paso a los vehículos en la autopista y ajustar su velocidad según sea necesario"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and wait for a gap",
+          pt: "Parar e esperar por um espaço livre",
+          es: "Detenerse y esperar un espacio libre"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Continue at your current speed, vehicles on the freeway should give way to you",
+          pt: "Continuar na sua velocidade atual, os veículos na via expressa devem dar passagem a você",
+          es: "Continuar a su velocidad actual, los vehículos en la autopista deben cederle el paso a usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you are entering a freeway you should adjust your speed to enable you to merge with traffic on the freeway but you must give way to traffic on the freeway if necessary.",
+      pt: "Ao entrar em uma via expressa, você deve ajustar sua velocidade para conseguir se incorporar ao trânsito da via expressa, mas deve dar passagem ao trânsito da via expressa se necessário.",
+      es: "Al entrar en una autopista, debe ajustar su velocidad para poder incorporarse al tráfico de la autopista, pero debe ceder el paso al tráfico de la autopista si es necesario."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-127",
+    cat: "Road Safety",
+    q: {
+      en: "When following directly behind another vehicle, what is a useful guide to estimate the minimum safe following distance for dry road conditions?",
+      pt: "Ao seguir diretamente atrás de outro veículo, qual é um guia útil para estimar a distância mínima segura de seguimento em condições de pista seca?",
+      es: "Al circular directamente detrás de otro vehículo, ¿cuál es una guía útil para estimar la distancia mínima segura de seguimiento en condiciones de calzada seca?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Leave a 3-minute time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 3 minutos entre você e o outro veículo",
+          es: "Deje un intervalo de 3 minutos entre usted y el otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Leave a 7-second time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 7 segundos entre você e o outro veículo",
+          es: "Deje un intervalo de 7 segundos entre usted y el otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Leave a 2-second time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 2 segundos entre você e o outro veículo",
+          es: "Deje un intervalo de 2 segundos entre usted y el otro vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Leave a 1-minute time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 1 minuto entre você e o outro veículo",
+          es: "Deje un intervalo de 1 minuto entre usted y el otro vehículo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver should leave at least a 2 second time gap between their vehicle and the vehicle in front, in ideal conditions. A larger gap is recommended if weather and road conditions cause reduced visibility, wet roads or slippery road surfaces.",
+      pt: "Um motorista deve deixar pelo menos um intervalo de 2 segundos entre seu veículo e o veículo da frente, em condições ideais. Um intervalo maior é recomendado se as condições climáticas e da via causarem visibilidade reduzida, pistas molhadas ou superfícies escorregadias.",
+      es: "Un conductor debe dejar al menos un intervalo de 2 segundos entre su vehículo y el vehículo de adelante, en condiciones ideales. Se recomienda un intervalo mayor si las condiciones climáticas y de la vía provocan visibilidad reducida, calzadas mojadas o superficies resbaladizas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-128",
+    cat: "Parking Rules",
+    q: {
+      en: "When leaving a central parking area in the centre of the road, are you allowed to reverse out?",
+      pt: "Ao sair de uma área de estacionamento central no meio da via, você tem permissão para sair dando marcha à ré?",
+      es: "Al salir de un área de estacionamiento central en el medio de la vía, ¿se le permite salir marcha atrás?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, unless signs indicate you are allowed to",
+          pt: "Não, a menos que placas indiquem que você tem permissão",
+          es: "No, a menos que las señales indiquen que se le permite"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only with caution",
+          pt: "Somente com cautela",
+          es: "Solo con precaución"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When leaving a central parking area, you must leave the parking area by driving forward only unless signs indicate otherwise.",
+      pt: "Ao sair de uma área de estacionamento central, você deve sair apenas dirigindo para a frente, a menos que placas indiquem o contrário.",
+      es: "Al salir de un área de estacionamiento central, debe salir conduciendo únicamente hacia adelante, a menos que las señales indiquen lo contrario."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-129",
+    cat: "Give Way Rules",
+    q: {
+      en: "When leaving private property you are required to give way to -",
+      pt: "Ao sair de uma propriedade particular, você é obrigado a dar passagem a -",
+      es: "Al salir de una propiedad privada, está obligado a ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicles approaching from the right only and pedestrians and bicycle riders",
+          pt: "Somente veículos que se aproximam pela direita, além de pedestres e ciclistas",
+          es: "Solo a los vehículos que se aproximan por la derecha, además de peatones y ciclistas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "All vehicles, pedestrians and bicycle riders",
+          pt: "Todos os veículos, pedestres e ciclistas",
+          es: "Todos los vehículos, peatones y ciclistas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Vehicles entering that property only and pedestrians",
+          pt: "Somente veículos que entram naquela propriedade e pedestres",
+          es: "Solo a los vehículos que entran a esa propiedad y a los peatones"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must give way to all vehicles, bicycles, personal mobility device riders and pedestrians when leaving private property to enter a road.",
+      pt: "Você deve dar passagem a todos os veículos, bicicletas, condutores de dispositivos pessoais de mobilidade e pedestres ao sair de uma propriedade particular para entrar em uma via.",
+      es: "Debe ceder el paso a todos los vehículos, bicicletas, usuarios de dispositivos personales de movilidad y peatones al salir de una propiedad privada para entrar en una vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-130",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When passing a bicycle rider on a road with a speed limit of 60km/h or less, you must leave a gap of at least -",
+      pt: "Ao ultrapassar um ciclista em uma via com limite de velocidade de 60 km/h ou menos, você deve deixar um espaço de pelo menos -",
+      es: "Al adelantar a un ciclista en una vía con un límite de velocidad de 60 km/h o menos, debe dejar un espacio de al menos -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.5 metres",
+          pt: "0,5 metro",
+          es: "0,5 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1 metre",
+          pt: "1 metro",
+          es: "1 metro"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "1.5 metres",
+          pt: "1,5 metro",
+          es: "1,5 metros"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "3 metres",
+          pt: "3 metros",
+          es: "3 metros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must give a minimum of 1 metre when passing a bicycle or personal mobility device (such as an e-scooter) rider on a road with a speed limit of 60km/h or less, or 1.5 metres on a road with a speed limit of more than 60km/h.",
+      pt: "Você deve deixar no mínimo 1 metro ao ultrapassar um ciclista ou condutor de dispositivo pessoal de mobilidade (como uma patinete elétrica) em uma via com limite de velocidade de 60 km/h ou menos, ou 1,5 metro em uma via com limite de velocidade superior a 60 km/h.",
+      es: "Debe dejar un mínimo de 1 metro al adelantar a un ciclista o a un usuario de dispositivo personal de movilidad (como un patinete eléctrico) en una vía con un límite de velocidad de 60 km/h o menos, o 1,5 metros en una vía con un límite de velocidad superior a 60 km/h."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-131",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When passing a bicycle rider on a road with a speed limit of more than 60km/h, you must leave a gap of at least -",
+      pt: "Ao ultrapassar um ciclista em uma via com limite de velocidade superior a 60 km/h, você deve deixar um espaço de pelo menos -",
+      es: "Al adelantar a un ciclista en una vía con un límite de velocidad superior a 60 km/h, debe dejar un espacio de al menos -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.5 metres",
+          pt: "0,5 metro",
+          es: "0,5 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1 metre",
+          pt: "1 metro",
+          es: "1 metro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "3 metres",
+          pt: "3 metros",
+          es: "3 metros"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "1.5 metres",
+          pt: "1,5 metro",
+          es: "1,5 metros"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must give a minimum of 1 metre when passing a bicycle or personal mobility device (such as an e-scooter) rider on a road with a speed limit of 60km/h or less, or 1.5 metres on a road with a speed limit of more than 60km/h.",
+      pt: "Você deve deixar no mínimo 1 metro ao ultrapassar um ciclista ou condutor de dispositivo pessoal de mobilidade (como uma patinete elétrica) em uma via com limite de velocidade de 60 km/h ou menos, ou 1,5 metro em uma via com limite de velocidade superior a 60 km/h.",
+      es: "Debe dejar un mínimo de 1 metro al adelantar a un ciclista o a un usuario de dispositivo personal de movilidad (como un patinete eléctrico) en una vía con un límite de velocidad de 60 km/h o menos, o 1,5 metros en una vía con un límite de velocidad superior a 60 km/h."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-132",
+    cat: "Traffic Lights",
+    q: {
+      en: "When traffic lights turn from green to yellow you should -",
+      pt: "Quando o semáforo mudar de verde para amarelo, você deve -",
+      es: "Cuando el semáforo cambia de verde a amarillo, debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop, if you can do so safely before reaching the stop line",
+          pt: "Parar, se conseguir fazê-lo com segurança antes de chegar à linha de parada",
+          es: "Detenerse, si puede hacerlo con seguridad antes de llegar a la línea de parada"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop, even if you must stop on the intersection and then reverse back to the stop line",
+          pt: "Parar, mesmo que precise parar dentro da interseção e depois dar marcha à ré até a linha de parada",
+          es: "Detenerse, incluso si debe detenerse dentro de la intersección y luego retroceder hasta la línea de parada"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop, even if you are in the intersection",
+          pt: "Parar, mesmo que já esteja dentro da interseção",
+          es: "Detenerse, incluso si ya está dentro de la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Speed up and go through the lights before they turn red",
+          pt: "Acelerar e passar pelo semáforo antes que ele fique vermelho",
+          es: "Acelerar y pasar el semáforo antes de que se ponga en rojo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you are approaching traffic lights that change from green to yellow you must stop if you can do so safely before reaching the stop line.",
+      pt: "Ao se aproximar de um semáforo que muda de verde para amarelo, você deve parar se conseguir fazê-lo com segurança antes de chegar à linha de parada.",
+      es: "Al acercarse a un semáforo que cambia de verde a amarillo, debe detenerse si puede hacerlo con seguridad antes de llegar a la línea de parada."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-133",
+    cat: "Road Safety",
+    q: {
+      en: "When you are about to exit a roundabout, you should give a left signal -",
+      pt: "Quando você está prestes a sair de uma rotatória, deve indicar a saída para a esquerda -",
+      es: "Cuando está a punto de salir de una rotonda, debe indicar hacia la izquierda -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only after a left turn",
+          pt: "Somente após uma conversão à esquerda",
+          es: "Solo después de un giro a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Any time you are exiting a roundabout",
+          pt: "Toda vez que estiver saindo de uma rotatória",
+          es: "Cada vez que sale de una rotonda"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only after a right turn",
+          pt: "Somente após uma conversão à direita",
+          es: "Solo después de un giro a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only when going straight ahead",
+          pt: "Somente quando for seguir em frente",
+          es: "Solo cuando sigue derecho"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Whenever you are about to exit a roundabout, you should give a left signal if practical.",
+      pt: "Sempre que estiver prestes a sair de uma rotatória, você deve indicar para a esquerda, se for viável.",
+      es: "Siempre que esté a punto de salir de una rotonda, debe indicar hacia la izquierda, si es posible."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-134",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When you are driving a car, you are permitted to overtake on the left of another vehicle -",
+      pt: "Ao dirigir um carro, você tem permissão para ultrapassar pela esquerda de outro veículo -",
+      es: "Al conducir un automóvil, se le permite adelantar por la izquierda a otro vehículo -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when the vehicle ahead is signalling its intention to turn right",
+          pt: "Somente quando o veículo à frente estiver sinalizando a intenção de virar à direita",
+          es: "Solo cuando el vehículo de adelante está indicando su intención de girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "When the vehicle ahead signals its intention to turn right, or the vehicle ahead is stopped, or you are travelling on a multi-lane road and it is safe to do so",
+          pt: "Quando o veículo à frente sinalizar a intenção de virar à direita, ou o veículo à frente estiver parado, ou você estiver trafegando em uma via com múltiplas faixas e for seguro fazê-lo",
+          es: "Cuando el vehículo de adelante indica su intención de girar a la derecha, o el vehículo de adelante está detenido, o usted circula por una vía de múltiples carriles y es seguro hacerlo"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "When there is sufficient room on the road shoulder",
+          pt: "Quando houver espaço suficiente no acostamento",
+          es: "Cuando hay suficiente espacio en el arcén"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only on multi-lane roads",
+          pt: "Somente em vias com múltiplas faixas",
+          es: "Solo en vías de múltiples carriles"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When driving a car, you can overtake another vehicle on the left if the vehicle ahead is signalling its intention to turn right, or is stopped or when you are driving on a multi-lane road.",
+      pt: "Ao dirigir um carro, você pode ultrapassar outro veículo pela esquerda se o veículo à frente estiver sinalizando a intenção de virar à direita, ou estiver parado, ou quando estiver dirigindo em uma via com múltiplas faixas.",
+      es: "Al conducir un automóvil, puede adelantar a otro vehículo por la izquierda si el vehículo de adelante está indicando su intención de girar a la derecha, o está detenido, o cuando está conduciendo en una vía de múltiples carriles."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-135",
+    cat: "Road Markings",
+    q: {
+      en: "Where there are no line markings on the road, where should you drive?",
+      pt: "Onde não há marcações de faixa na via, onde você deve dirigir?",
+      es: "Cuando no hay marcas viales en la calzada, ¿por dónde debe conducir?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "As close as practical to the left side of the road",
+          pt: "O mais próximo possível do lado esquerdo da via",
+          es: "Lo más cerca posible del lado izquierdo de la vía"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "On any part of the road",
+          pt: "Em qualquer parte da via",
+          es: "Por cualquier parte de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "In the centre of the road",
+          pt: "No centro da via",
+          es: "Por el centro de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Within four metres of the left side of the road",
+          pt: "A até quatro metros do lado esquerdo da via",
+          es: "A menos de cuatro metros del lado izquierdo de la vía"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you drive on a road where there are no line markings, you must drive as near as practical to the left side of the road.",
+      pt: "Quando você dirige em uma via onde não há marcações de faixa, deve dirigir o mais próximo possível do lado esquerdo da via.",
+      es: "Cuando conduce por una vía donde no hay marcas viales, debe conducir lo más cerca posible del lado izquierdo de la vía."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-136",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Driving with a BAC (breath/blood alcohol concentration) over 0.05 is legal",
+          pt: "Dirigir com uma concentração de álcool no sangue (BAC/teste do bafômetro) acima de 0,05 é legal",
+          es: "Conducir con una concentración de alcohol en sangre (BAC) superior a 0,05 es legal"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The risk of causing a crash increases as your blood alcohol concentration rises",
+          pt: "O risco de causar um acidente aumenta à medida que sua concentração de álcool no sangue aumenta",
+          es: "El riesgo de causar un accidente aumenta a medida que aumenta su concentración de alcohol en sangre"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You can only drink and drive while you have a learner licence",
+          pt: "Você só pode beber e dirigir enquanto tiver uma licença de aprendiz",
+          es: "Solo puede beber y conducir mientras tenga una licencia de aprendiz"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Drinking alcohol increases your concentration when driving",
+          pt: "Beber álcool aumenta sua concentração ao dirigir",
+          es: "Beber alcohol aumenta su concentración al conducir"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Drinking alcohol impairs your ability to drive safely. The risk of causing a crash increases as your blood alcohol concentration rises.",
+      pt: "Beber álcool prejudica sua capacidade de dirigir com segurança. O risco de causar um acidente aumenta à medida que sua concentração de álcool no sangue aumenta.",
+      es: "Beber alcohol perjudica su capacidad de conducir con seguridad. El riesgo de causar un accidente aumenta a medida que aumenta su concentración de alcohol en sangre."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-137",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "Which of the following statements is correct? On a multi-lane road (with two or more lanes travelling in the same direction) you may -",
+      pt: "Qual das seguintes afirmações está correta? Em uma via com múltiplas faixas (com duas ou mais faixas seguindo na mesma direção), você pode -",
+      es: "¿Cuál de las siguientes afirmaciones es correcta? En una vía de múltiples carriles (con dos o más carriles que circulan en la misma dirección), usted puede -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Change lanes without looking",
+          pt: "Mudar de faixa sem olhar",
+          es: "Cambiar de carril sin mirar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Change lanes at anytime, as other drivers must show courtesy and give way to you",
+          pt: "Mudar de faixa a qualquer momento, pois os outros motoristas devem ter cortesia e dar passagem a você",
+          es: "Cambiar de carril en cualquier momento, ya que los demás conductores deben mostrar cortesía y cederle el paso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Change lanes without indicating",
+          pt: "Mudar de faixa sem sinalizar",
+          es: "Cambiar de carril sin indicar"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Change lanes when it is safe to do so after indicating",
+          pt: "Mudar de faixa quando for seguro fazê-lo, depois de sinalizar",
+          es: "Cambiar de carril cuando sea seguro hacerlo, después de indicar"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When changing lanes you must indicate and you must change lanes safely by giving way to any vehicles, bicycles or personal mobility devices in the other lane. When you intend to change lanes, vehicles, bicycles or personal mobility devices in the other lane are not required to give way to you.",
+      pt: "Ao mudar de faixa, você deve sinalizar e deve mudar de faixa com segurança, dando passagem a quaisquer veículos, bicicletas ou dispositivos pessoais de mobilidade na outra faixa. Quando você pretende mudar de faixa, os veículos, bicicletas ou dispositivos pessoais de mobilidade na outra faixa não são obrigados a dar passagem a você.",
+      es: "Al cambiar de carril, debe indicar y debe cambiar de carril con seguridad, cediendo el paso a cualquier vehículo, bicicleta o dispositivo personal de movilidad en el otro carril. Cuando usted pretende cambiar de carril, los vehículos, bicicletas o dispositivos personales de movilidad en el otro carril no están obligados a cederle el paso."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-138",
+    cat: "Road Safety",
+    q: {
+      en: "Which one of the following statements about bicycle riders is correct?",
+      pt: "Qual das seguintes afirmações sobre ciclistas está correta?",
+      es: "¿Cuál de las siguientes afirmaciones sobre los ciclistas es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "They must only ride in bicycle lanes",
+          pt: "Eles só podem andar em ciclovias",
+          es: "Solo pueden circular por ciclovías"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "They must obey the road rules",
+          pt: "Eles devem obedecer às regras de trânsito",
+          es: "Deben obedecer las normas de tránsito"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "They must ride against the flow of traffic so they can be seen",
+          pt: "Eles devem andar contra o fluxo do trânsito para poderem ser vistos",
+          es: "Deben circular en sentido contrario al tráfico para poder ser vistos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Bicycle riders have equal rights and responsibilities to vehicle drivers. They must obey the road rules and they receive the same fines for breaking them as vehicle drivers.",
+      pt: "Os ciclistas têm direitos e responsabilidades iguais aos dos motoristas de veículos. Eles devem obedecer às regras de trânsito e recebem as mesmas multas por infringi-las que os motoristas de veículos.",
+      es: "Los ciclistas tienen los mismos derechos y responsabilidades que los conductores de vehículos. Deben obedecer las normas de tránsito y reciben las mismas multas por infringirlas que los conductores de vehículos."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-139",
+    cat: "Road Safety",
+    q: {
+      en: "Which one of the following statements for a learner driver is correct?",
+      pt: "Qual das seguintes afirmações para um motorista aprendiz está correta?",
+      es: "¿Cuál de las siguientes afirmaciones para un conductor aprendiz es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must drive only during daylight hours",
+          pt: "Você só pode dirigir durante o dia",
+          es: "Solo puede conducir durante el día"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must not exceed 70km/h when driving",
+          pt: "Você não pode exceder 70 km/h ao dirigir",
+          es: "No puede superar los 70 km/h al conducir"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You need to have lots of supervised driving experience in a variety of road conditions",
+          pt: "Você precisa ter bastante experiência de condução supervisionada em diversas condições de via",
+          es: "Necesita tener mucha experiencia de conducción supervisada en diversas condiciones de la vía"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "It is important for you to get as much supervised on-road driving experience during the learning period as possible.",
+      pt: "É importante que você obtenha o máximo de experiência de condução supervisionada em via pública possível durante o período de aprendizagem.",
+      es: "Es importante que obtenga la mayor experiencia de conducción supervisada en carretera posible durante el período de aprendizaje."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-140",
+    cat: "Speed Limits",
+    q: {
+      en: "Which one of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed limits can be exceeded if you have a good excuse",
+          pt: "Os limites de velocidade podem ser excedidos se você tiver uma boa desculpa",
+          es: "Los límites de velocidad se pueden superar si tiene una buena excusa"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Speed limits can be exceeded by up to 10km/h if the road and weather conditions are good",
+          pt: "Os limites de velocidade podem ser excedidos em até 10 km/h se as condições da via e do clima forem boas",
+          es: "Los límites de velocidad se pueden superar hasta en 10 km/h si las condiciones de la vía y del clima son buenas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Provided you do not exceed the speed limit you are always driving safely",
+          pt: "Desde que você não exceda o limite de velocidade, está sempre dirigindo com segurança",
+          es: "Siempre que no supere el límite de velocidad, siempre está conduciendo con seguridad"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "In certain situations and conditions driving at the speed limit may be dangerous",
+          pt: "Em certas situações e condições, dirigir no limite de velocidade pode ser perigoso",
+          es: "En ciertas situaciones y condiciones, conducir al límite de velocidad puede ser peligroso"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The speed limit is the maximum speed permitted, but in certain situations and conditions it may be dangerous to drive at the speed limit.",
+      pt: "O limite de velocidade é a velocidade máxima permitida, mas em certas situações e condições pode ser perigoso dirigir no limite de velocidade.",
+      es: "El límite de velocidad es la velocidad máxima permitida, pero en ciertas situaciones y condiciones puede ser peligroso conducir al límite de velocidad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-141",
+    cat: "Road Safety",
+    q: {
+      en: "Which statement is correct?",
+      pt: "Qual afirmação está correta?",
+      es: "¿Cuál afirmación es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Factors like road and weather conditions can affect a vehicle's stopping distance",
+          pt: "Fatores como condições da via e do clima podem afetar a distância de frenagem de um veículo",
+          es: "Factores como las condiciones de la vía y del clima pueden afectar la distancia de frenado de un vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "When it is raining you need to reduce your following distance",
+          pt: "Quando está chovendo, você precisa reduzir a distância de seguimento",
+          es: "Cuando llueve, debe reducir la distancia de seguimiento"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It is legal to travel up to 10km/h over the speed limit",
+          pt: "É legal trafegar até 10 km/h acima do limite de velocidade",
+          es: "Es legal circular hasta 10 km/h por encima del límite de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Speeding never causes crashes",
+          pt: "Excesso de velocidade nunca causa acidentes",
+          es: "El exceso de velocidad nunca causa accidentes"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A vehicle's stopping distance may be increased by factors like weather and road conditions, causing wet roads and slippery road surfaces.",
+      pt: "A distância de frenagem de um veículo pode ser aumentada por fatores como condições climáticas e da via, causando pistas molhadas e superfícies escorregadias.",
+      es: "La distancia de frenado de un vehículo puede aumentar debido a factores como las condiciones climáticas y de la vía, que provocan calzadas mojadas y superficies resbaladizas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-142",
+    cat: "Road Safety",
+    q: {
+      en: "Who, apart from bicycle riders, can use a bicycle path?",
+      pt: "Quem, além de ciclistas, pode usar uma ciclovia?",
+      es: "¿Quién, además de los ciclistas, puede usar una ciclovía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "If signs don't say otherwise, a person who is in a wheelchair, pushing a wheelchair or using roller blades and roller skates or a Segway",
+          pt: "Se as placas não indicarem o contrário, uma pessoa em cadeira de rodas, empurrando uma cadeira de rodas ou usando patins ou uma Segway",
+          es: "Si las señales no indican lo contrario, una persona en silla de ruedas, empujando una silla de ruedas o usando patines en línea o una Segway"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Any vehicle",
+          pt: "Qualquer veículo",
+          es: "Cualquier vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Courier vans",
+          pt: "Furgões de entrega",
+          es: "Furgonetas de reparto"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Motorcyclists",
+          pt: "Motociclistas",
+          es: "Motociclistas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Where there are no signs stating otherwise, a bicycle path may be used by a person in a wheelchair, pushing a wheelchair, on roller blades or roller skates and by personal mobility device riders (such as an e-scooter).",
+      pt: "Onde não há placas indicando o contrário, uma ciclovia pode ser usada por uma pessoa em cadeira de rodas, empurrando uma cadeira de rodas, em patins e por condutores de dispositivos pessoais de mobilidade (como uma patinete elétrica).",
+      es: "Cuando no hay señales que indiquen lo contrario, una ciclovía puede ser utilizada por una persona en silla de ruedas, empujando una silla de ruedas, en patines y por usuarios de dispositivos personales de movilidad (como un patinete eléctrico)."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-143",
+    cat: "Traffic Lights",
+    q: {
+      en: "You are approaching an intersection controlled by traffic lights. There is a red circular light and a green arrow pointing to the right. Can you turn right?",
+      pt: "Você está se aproximando de uma interseção controlada por semáforos. Há uma luz vermelha circular e uma seta verde apontando para a direita. Você pode virar à direita?",
+      es: "Se está acercando a una intersección controlada por semáforos. Hay una luz roja circular y una flecha verde apuntando hacia la derecha. ¿Puede girar a la derecha?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, not at anytime",
+          pt: "Não, em nenhum momento",
+          es: "No, en ningún momento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, but you can go straight ahead",
+          pt: "Não, mas você pode seguir em frente",
+          es: "No, pero puede seguir derecho"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No, only when both lights are green",
+          pt: "Não, somente quando ambas as luzes estiverem verdes",
+          es: "No, solo cuando ambas luces estén en verde"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At traffic lights showing a red circular light and a green arrow pointing right, you may turn right.",
+      pt: "Em semáforos que mostram uma luz vermelha circular e uma seta verde apontando para a direita, você pode virar à direita.",
+      es: "En semáforos que muestran una luz roja circular y una flecha verde apuntando hacia la derecha, puede girar a la derecha."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-144",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are at a cross intersection without signs, road markings or traffic lights. A bicycle rider is approaching from your right -",
+      pt: "Você está em uma interseção em cruz sem placas, marcações de via ou semáforos. Um ciclista está se aproximando pela sua direita -",
+      es: "Se encuentra en una intersección en cruz sin señales, marcas viales ni semáforos. Un ciclista se aproxima por su derecha -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "If you wave the bicycle rider on you should wait for them to pass otherwise the bicycle rider should wait for you",
+          pt: "Se você acenar para o ciclista passar, deve esperar que ele passe, caso contrário o ciclista deve esperar por você",
+          es: "Si le hace señas al ciclista para que pase, debe esperar a que pase; de lo contrario, el ciclista debe esperar por usted"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The bicycle rider must slow down so that you can continue",
+          pt: "O ciclista deve reduzir a velocidade para que você possa continuar",
+          es: "El ciclista debe reducir la velocidad para que usted pueda continuar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must give way to the bicycle rider",
+          pt: "Você deve dar passagem ao ciclista",
+          es: "Debe ceder el paso al ciclista"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "The bicycle rider must stop for you",
+          pt: "O ciclista deve parar para você",
+          es: "El ciclista debe detenerse por usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Bicycle riders are road users, with the same rights and responsibilities as larger vehicles. When you come to an uncontrolled crossroad intersection you must give way to vehicles on your right, which includes bicycle riders.",
+      pt: "Ciclistas são usuários da via, com os mesmos direitos e responsabilidades que veículos maiores. Ao chegar a uma interseção em cruz não controlada, você deve dar passagem aos veículos à sua direita, o que inclui ciclistas.",
+      es: "Los ciclistas son usuarios de la vía, con los mismos derechos y responsabilidades que los vehículos más grandes. Al llegar a una intersección en cruz no controlada, debe ceder el paso a los vehículos que se aproximan por su derecha, lo que incluye a los ciclistas."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-145",
+    cat: "Road Safety",
+    q: {
+      en: "You are driving towards a marked multi-lane roundabout. You want to travel straight through the roundabout to the road opposite. What lane must you take?",
+      pt: "Você está dirigindo em direção a uma rotatória de múltiplas faixas sinalizada. Você quer atravessar a rotatória em linha reta até a via oposta. Qual faixa você deve usar?",
+      es: "Se dirige hacia una rotonda de múltiples carriles señalizada. Quiere atravesar la rotonda en línea recta hasta la vía opuesta. ¿Qué carril debe tomar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Move to the left lane before the roundabout then leave by the right lane",
+          pt: "Mova-se para a faixa da esquerda antes da rotatória e depois saia pela faixa da direita",
+          es: "Muévase al carril izquierdo antes de la rotonda y luego salga por el carril derecho"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You may enter and leave the roundabout in either lane",
+          pt: "Você pode entrar e sair da rotatória em qualquer uma das faixas",
+          es: "Puede entrar y salir de la rotonda por cualquiera de los dos carriles"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must enter and leave the roundabout in the left lane",
+          pt: "Você deve entrar e sair da rotatória pela faixa da esquerda",
+          es: "Debe entrar y salir de la rotonda por el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You must enter and leave the roundabout in the right lane",
+          pt: "Você deve entrar e sair da rotatória pela faixa da direita",
+          es: "Debe entrar y salir de la rotonda por el carril derecho"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you are going to drive straight ahead at a multi-lane roundabout, you may enter and exit from either lane (provided there are no arrows indicating that you cannot go straight ahead from that lane).",
+      pt: "Quando você for seguir em frente em uma rotatória de múltiplas faixas, pode entrar e sair por qualquer uma das faixas (desde que não haja setas indicando que você não pode seguir em frente a partir daquela faixa).",
+      es: "Cuando vaya a seguir recto en una rotonda de múltiples carriles, puede entrar y salir por cualquiera de los dos carriles (siempre que no haya flechas que indiquen que no puede seguir recto desde ese carril)."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-146",
+    cat: "Road Safety",
+    q: {
+      en: "You are driving towards a multi-lane roundabout. At the roundabout, you intend to exit more than halfway around the roundabout. What signals must you give?",
+      pt: "Você está dirigindo em direção a uma rotatória de múltiplas faixas. Na rotatória, você pretende sair depois de percorrer mais da metade dela. Quais sinalizações você deve fazer?",
+      es: "Se dirige hacia una rotonda de múltiples carriles. En la rotonda, tiene la intención de salir después de haber recorrido más de la mitad. ¿Qué señales debe dar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "On approaching the roundabout give a right signal and just before you exit the roundabout, give a left signal",
+          pt: "Ao se aproximar da rotatória, sinalize para a direita e, pouco antes de sair da rotatória, sinalize para a esquerda",
+          es: "Al aproximarse a la rotonda, indique hacia la derecha y, justo antes de salir de la rotonda, indique hacia la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only give a right signal on the approach to the roundabout, no other signal is required",
+          pt: "Sinalize apenas para a direita ao se aproximar da rotatória, nenhuma outra sinalização é necessária",
+          es: "Indique solo hacia la derecha al aproximarse a la rotonda, no se requiere ninguna otra señal"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Providing it is safe, a signal is not required at all",
+          pt: "Desde que seja seguro, nenhuma sinalização é necessária",
+          es: "Siempre que sea seguro, no se requiere ninguna señal en absoluto"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "On approaching the roundabout, give a left signal and then a right signal when exiting the roundabout",
+          pt: "Ao se aproximar da rotatória, sinalize para a esquerda e depois sinalize para a direita ao sair da rotatória",
+          es: "Al aproximarse a la rotonda, indique hacia la izquierda y luego indique hacia la derecha al salir de la rotonda"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At a roundabout, if you are intending to exit more than half way round, you must signal right as you approach the roundabout then signal left just before you exit the roundabout.",
+      pt: "Em uma rotatória, se você pretende sair depois de percorrer mais da metade dela, deve sinalizar para a direita ao se aproximar da rotatória e depois sinalizar para a esquerda pouco antes de sair dela.",
+      es: "En una rotonda, si tiene la intención de salir después de haber recorrido más de la mitad, debe indicar hacia la derecha al aproximarse a la rotonda y luego indicar hacia la izquierda justo antes de salir de ella."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-147",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are in busy traffic and slow down for a bicycle rider. A driver behind you sounds their horn wanting you to pass the rider. What should you do?",
+      pt: "Você está em um trânsito movimentado e reduz a velocidade por causa de um ciclista. Um motorista atrás de você buzina querendo que você ultrapasse o ciclista. O que você deve fazer?",
+      es: "Está en tráfico intenso y reduce la velocidad por un ciclista. Un conductor detrás de usted toca la bocina queriendo que adelante al ciclista. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Go slower, because the slower you go the safer you are",
+          pt: "Ir mais devagar, porque quanto mais devagar você for, mais seguro estará",
+          es: "Ir más despacio, porque cuanto más despacio vaya, más seguro estará"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stay calm and pass the bicycle rider leaving the minimum required passing distance when it is safe to do so",
+          pt: "Manter a calma e ultrapassar o ciclista deixando a distância mínima exigida quando for seguro fazê-lo",
+          es: "Mantener la calma y adelantar al ciclista dejando la distancia mínima requerida cuando sea seguro hacerlo"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Pass the bicycle rider quickly and speed up to stop the other driver becoming aggressive",
+          pt: "Ultrapassar o ciclista rapidamente e acelerar para impedir que o outro motorista se torne agressivo",
+          es: "Adelantar al ciclista rápidamente y acelerar para evitar que el otro conductor se ponga agresivo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must give a minimum of 1 metre when passing a bicycle or personal mobility device (such as an e-scooter) rider on a road with a speed limit of 60km/h or less, or 1.5 metres on a road with a speed limit of more than 60km/h. You should not pass a bicycle or personal mobility device rider unless you have a clear view of any approaching traffic and can pass safely.",
+      pt: "Você deve deixar no mínimo 1 metro ao ultrapassar um ciclista ou condutor de dispositivo pessoal de mobilidade (como uma patinete elétrica) em uma via com limite de velocidade de 60 km/h ou menos, ou 1,5 metro em uma via com limite de velocidade superior a 60 km/h. Você não deve ultrapassar um ciclista ou condutor de dispositivo pessoal de mobilidade a menos que tenha uma visão clara de qualquer trânsito que se aproxime e possa ultrapassar com segurança.",
+      es: "Debe dejar un mínimo de 1 metro al adelantar a un ciclista o a un usuario de dispositivo personal de movilidad (como un patinete eléctrico) en una vía con un límite de velocidad de 60 km/h o menos, o 1,5 metros en una vía con un límite de velocidad superior a 60 km/h. No debe adelantar a un ciclista o a un usuario de dispositivo personal de movilidad a menos que tenga una vista clara de cualquier tráfico que se aproxime y pueda adelantar con seguridad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-148",
+    cat: "Emergencies",
+    q: {
+      en: "You are required to give way to an emergency vehicle that is displaying a flashing blue or red light or sounding an alarm. What else must you do?",
+      pt: "Você é obrigado a dar passagem a um veículo de emergência que exibe uma luz azul ou vermelha piscando ou está soando um alarme. O que mais você deve fazer?",
+      es: "Está obligado a ceder el paso a un vehículo de emergencia que muestra una luz azul o roja intermitente o que hace sonar una alarma. ¿Qué más debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Continue on your original path",
+          pt: "Continuar em sua trajetória original",
+          es: "Continuar en su trayectoria original"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Move out of the path of the emergency vehicle as soon as you can do so safely",
+          pt: "Sair do caminho do veículo de emergência assim que puder fazê-lo com segurança",
+          es: "Salir del paso del vehículo de emergencia tan pronto como pueda hacerlo con seguridad"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Wave the emergency vehicle on",
+          pt: "Acenar para o veículo de emergência passar",
+          es: "Hacerle señas al vehículo de emergencia para que pase"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "For emergency vehicles that are displaying a flashing blue or red light or sounding an alarm you must give way. You also must not move into the path of an approaching emergency vehicle and you must move out of the path of the vehicle as soon as you can do so safely.",
+      pt: "Para veículos de emergência que exibem uma luz azul ou vermelha piscando ou soam um alarme, você deve dar passagem. Você também não deve entrar no caminho de um veículo de emergência que se aproxima e deve sair do caminho do veículo assim que puder fazê-lo com segurança.",
+      es: "Para los vehículos de emergencia que muestran una luz azul o roja intermitente o hacen sonar una alarma, debe ceder el paso. Tampoco debe entrar en la trayectoria de un vehículo de emergencia que se aproxima y debe salir de su trayectoria tan pronto como pueda hacerlo con seguridad."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-149",
+    cat: "Traffic Lights",
+    q: {
+      en: "You can do a U-turn at an intersection with traffic lights -",
+      pt: "Você pode fazer um retorno (conversão em U) em uma interseção com semáforos -",
+      es: "Puede hacer un cambio de sentido (giro en U) en una intersección con semáforos -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when there is a U-turn permitted sign",
+          pt: "Somente quando houver uma placa permitindo o retorno",
+          es: "Solo cuando haya una señal que permita el cambio de sentido"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Between 9pm and 6am",
+          pt: "Entre 21h e 6h",
+          es: "Entre las 21h y las 6h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "If there is no danger of causing a crash",
+          pt: "Se não houver risco de causar um acidente",
+          es: "Si no hay riesgo de causar un accidente"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "If there is no oncoming traffic",
+          pt: "Se não houver trânsito vindo em sentido contrário",
+          es: "Si no hay tráfico en sentido contrario"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You are not permitted to make a U-turn at traffic lights unless there is a sign that says you can.",
+      pt: "Você não tem permissão para fazer um retorno em um semáforo, a menos que haja uma placa que indique que você pode.",
+      es: "No se le permite hacer un cambio de sentido en un semáforo, a menos que haya una señal que indique que puede hacerlo."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLD-150",
+    cat: "Road Safety",
+    q: {
+      en: "You can use a mobile telephone that is held in your hand when sitting in the driver's seat -",
+      pt: "Você pode usar um telefone celular segurando-o na mão enquanto está sentado no banco do motorista -",
+      es: "Puede usar un teléfono móvil sostenido en la mano mientras está sentado en el asiento del conductor -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When you are stopped at traffic lights or stopped in traffic",
+          pt: "Quando estiver parado em um semáforo ou parado no trânsito",
+          es: "Cuando está detenido en un semáforo o detenido en el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "At any time, when you are driving an automatic vehicle",
+          pt: "A qualquer momento, quando estiver dirigindo um veículo automático",
+          es: "En cualquier momento, cuando conduce un vehículo automático"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At any time, when the phone call is less than 5 minutes long",
+          pt: "A qualquer momento, quando a ligação durar menos de 5 minutos",
+          es: "En cualquier momento, cuando la llamada dura menos de 5 minutos"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only when your vehicle is parked",
+          pt: "Somente quando seu veículo estiver estacionado",
+          es: "Solo cuando su vehículo está estacionado"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "It is illegal to use or touch a mobile phone when driving, even when you are stopped at traffic lights, including to use social media such as Facebook or Twitter. This includes holding the phone in your hand or resting it on any part of your body, such as your lap. A mobile phone may only be used by a driver when the vehicle is parked.",
+      pt: "É ilegal usar ou tocar em um telefone celular enquanto dirige, mesmo quando estiver parado em um semáforo, inclusive para usar redes sociais como Facebook ou Twitter. Isso inclui segurar o telefone na mão ou apoiá-lo em qualquer parte do corpo, como o colo. Um telefone celular só pode ser usado pelo motorista quando o veículo estiver estacionado.",
+      es: "Es ilegal usar o tocar un teléfono móvil mientras conduce, incluso cuando está detenido en un semáforo, incluido el uso de redes sociales como Facebook o Twitter. Esto incluye sostener el teléfono en la mano o apoyarlo en cualquier parte del cuerpo, como el regazo. Un teléfono móvil solo puede ser utilizado por el conductor cuando el vehículo está estacionado."
+    },
+    tip: null,
+    states: ["QLD"],
+  },
+  {
+    id: "QLDM-1",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Are 2 riders permitted to ride side by side in a marked lane?",
+      pt: "É permitido que 2 motociclistas andem lado a lado numa faixa demarcada?",
+      es: "¿Se permite que 2 motociclistas circulen uno al lado del otro en un carril señalizado?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "yes, provided they are more than 2.5 metres apart",
+          pt: "sim, desde que estejam a mais de 2,5 metros de distância",
+          es: "sí, siempre que estén a más de 2,5 metros de distancia"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "no, they must ride in single file",
+          pt: "não, devem andar em fila única",
+          es: "no, deben circular en fila única"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "yes, provided they are not more than 1.5 metres apart",
+          pt: "sim, desde que não estejam a mais de 1,5 metros de distância",
+          es: "sí, siempre que no estén a más de 1,5 metros de distancia"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Two motorcycle riders may ride side by side in a marked lane as long as they are not more than 1.5 metres apart.",
+      pt: "Dois motociclistas podem andar lado a lado numa faixa demarcada, desde que não estejam a mais de 1,5 metros de distância um do outro.",
+      es: "Dos motociclistas pueden circular uno al lado del otro en un carril señalizado, siempre que no estén a más de 1,5 metros de distancia entre sí."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-2",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Before going through a bend, it is best to -",
+      pt: "Antes de entrar numa curva, o melhor é -",
+      es: "Antes de entrar en una curva, lo mejor es -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "straighten the turn",
+          pt: "endireitar a curva",
+          es: "enderezar la curva"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "slow down",
+          pt: "reduzir a velocidade",
+          es: "reducir la velocidad"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "speed up",
+          pt: "acelerar",
+          es: "acelerar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The greater the lean on your motorcycle, the greater the chance your wheels will lose traction when the brakes are applied. Reducing your speed before entering a bend could avoid a risky situation.",
+      pt: "Quanto maior a inclinação da moto, maior a chance de as rodas perderem aderência ao acionar os freios. Reduzir a velocidade antes de entrar numa curva pode evitar uma situação de risco.",
+      es: "Cuanto mayor sea la inclinación de la moto, mayor será la probabilidad de que las ruedas pierdan tracción al frenar. Reducir la velocidad antes de entrar en una curva puede evitar una situación de riesgo."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-3",
+    cat: "Traffic Lights",
+    q: {
+      en: "Before riding off at a green traffic light, you should -",
+      pt: "Antes de partir num sinal verde, você deve -",
+      es: "Antes de arrancar en un semáforo en verde, debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "check traffic behind you",
+          pt: "verificar o trânsito atrás de você",
+          es: "revisar el tráfico detrás de usted"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "sound your horn",
+          pt: "buzinar",
+          es: "tocar la bocina"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "check in all directions to make sure all traffic has cleared and there is no danger from approaching traffic",
+          pt: "verificar em todas as direções para garantir que o trânsito esteja livre e não haja perigo de veículos se aproximando",
+          es: "mirar en todas las direcciones para asegurarse de que el tráfico esté despejado y no haya peligro de vehículos aproximándose"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Having a green light doesn't mean it is safe to go. Before moving off at a green traffic light check that traffic in your path has cleared and that traffic approaching from other directions does not pose a crash risk.",
+      pt: "Ter um sinal verde não significa que é seguro seguir em frente. Antes de partir num sinal verde, verifique se o trânsito no seu caminho está livre e se o trânsito que se aproxima de outras direções não representa risco de colisão.",
+      es: "Tener el semáforo en verde no significa que sea seguro avanzar. Antes de arrancar en un semáforo en verde, verifique que el tráfico en su camino esté despejado y que el tráfico que se aproxima desde otras direcciones no represente riesgo de choque."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-4",
+    cat: "Traffic Lights",
+    q: {
+      en: "Can you make a U turn at a set of traffic lights?",
+      pt: "É possível fazer conversão em U (retorno) num sinal de trânsito?",
+      es: "¿Se puede hacer un giro en U en un semáforo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "yes, if it can be done safely",
+          pt: "sim, se puder ser feito com segurança",
+          es: "sí, si se puede hacer con seguridad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "no, not under any circumstances",
+          pt: "não, em nenhuma circunstância",
+          es: "no, bajo ninguna circunstancia"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "yes, if there is a 'U TURN PERMITTED' sign",
+          pt: "sim, se houver uma placa de 'RETORNO PERMITIDO'",
+          es: "sí, si hay una señal de 'GIRO EN U PERMITIDO'"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must not make a U turn at traffic lights unless there is a 'U TURN PERMITTED' sign.",
+      pt: "Você não deve fazer conversão em U (retorno) num sinal de trânsito, a menos que haja uma placa de 'RETORNO PERMITIDO'.",
+      es: "No debe hacer un giro en U en un semáforo a menos que haya una señal de 'GIRO EN U PERMITIDO'."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-5",
+    sign: "/icons/signs/qld-motorbikeimage28.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "How far from the approach side of a bus stop or a railway crossing are you allowed to stop or park your vehicle?",
+      pt: "A que distância do lado de aproximação de um ponto de ônibus ou passagem de nível você pode parar ou estacionar seu veículo?",
+      es: "¿A qué distancia del lado de aproximación de una parada de autobús o un cruce ferroviario se permite detener o estacionar su vehículo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "at least 50 metres",
+          pt: "pelo menos 50 metros",
+          es: "al menos 50 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "at least 20 metres",
+          pt: "pelo menos 20 metros",
+          es: "al menos 20 metros"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "at least 5 metres",
+          pt: "pelo menos 5 metros",
+          es: "al menos 5 metros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not stop or park less than 20 metres before a bus stop or a railway crossing, unless there is an official sign saying you can.",
+      pt: "Você não deve parar ou estacionar a menos de 20 metros antes de um ponto de ônibus ou de uma passagem de nível, a menos que haja uma placa oficial permitindo isso.",
+      es: "No debe detenerse ni estacionar a menos de 20 metros antes de una parada de autobús o un cruce ferroviario, a menos que haya una señal oficial que lo permita."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-6",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "If the rear tyre goes flat, what is the first thing you will notice?",
+      pt: "Se o pneu traseiro furar, qual será a primeira coisa que você perceberá?",
+      es: "Si el neumático trasero se pincha, ¿cuál será lo primero que notará?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "the brakes will not work",
+          pt: "os freios não vão funcionar",
+          es: "los frenos no funcionarán"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "the steering will feel heavy",
+          pt: "a direção vai ficar pesada",
+          es: "la dirección se sentirá pesada"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "the rear of the motorcycle will tend to slide from side to side",
+          pt: "a traseira da moto vai tender a deslizar de um lado para o outro",
+          es: "la parte trasera de la moto tenderá a deslizarse de un lado a otro"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You can't always hear a tyre blow, but you should be able to detect a flat tyre from the way the motorcycle reacts. If the front tyre goes flat, the steering will feel heavy. If the rear tyre goes flat, the rear of the motorcycle will tend to slide from side to side.",
+      pt: "Nem sempre é possível ouvir um pneu furar, mas você deve conseguir perceber pela forma como a moto reage. Se o pneu dianteiro furar, a direção ficará pesada. Se o pneu traseiro furar, a traseira da moto tenderá a deslizar de um lado para o outro.",
+      es: "No siempre se puede oír cuando un neumático se pincha, pero debería poder detectarlo por la forma en que reacciona la moto. Si el neumático delantero se pincha, la dirección se sentirá pesada. Si el neumático trasero se pincha, la parte trasera de la moto tenderá a deslizarse de un lado a otro."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-7",
+    cat: "Road Markings",
+    q: {
+      en: "If you are approaching a 'stop' sign with no stop line marking on the road, where should you stop?",
+      pt: "Se você está se aproximando de uma placa de 'pare' sem uma linha de parada marcada na via, onde você deve parar?",
+      es: "Si se está acercando a una señal de 'pare' sin una línea de parada marcada en la vía, ¿dónde debe detenerse?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "5 metres before the intersection",
+          pt: "5 metros antes do cruzamento",
+          es: "5 metros antes de la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "as close to the intersection as practicable, but before entering it",
+          pt: "o mais próximo possível do cruzamento, mas antes de entrar nele",
+          es: "lo más cerca posible de la intersección, pero antes de entrar en ella"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "before the 'stop' sign",
+          pt: "antes da placa de 'pare'",
+          es: "antes de la señal de 'pare'"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If there is no stop line, you should stop as close as practicable to the intersection before entering it where you have a clear view of approaching traffic.",
+      pt: "Se não houver linha de parada, você deve parar o mais próximo possível do cruzamento antes de entrar nele, onde tenha uma visão clara do trânsito que se aproxima.",
+      es: "Si no hay línea de parada, debe detenerse lo más cerca posible de la intersección antes de entrar en ella, donde tenga una vista clara del tráfico que se aproxima."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-8",
+    cat: "Emergencies",
+    q: {
+      en: "If you are involved in a crash where your vehicle needs to be towed and the police do not attend the crash scene, you -",
+      pt: "Se você se envolver num acidente em que seu veículo precise ser rebocado e a polícia não comparecer ao local do acidente, você -",
+      es: "Si se ve involucrado en un choque en el que su vehículo necesita ser remolcado y la policía no acude a la escena del accidente, usted -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "do not need to report the crash to the police",
+          pt: "não precisa relatar o acidente à polícia",
+          es: "no necesita informar el accidente a la policía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "must report the crash to the police as soon as possible and within 24 hours",
+          pt: "deve relatar o acidente à polícia o mais rápido possível e dentro de 24 horas",
+          es: "debe informar el accidente a la policía lo antes posible y dentro de las 24 horas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "only need to report the crash to the police if someone was injured",
+          pt: "só precisa relatar o acidente à polícia se alguém tiver se ferido",
+          es: "solo necesita informar el accidente a la policía si alguien resultó herido"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must report a crash to the police as soon as possible, but within 24 hours, if:a vehicle involved needs to be towed awayany driver involved in the crash does not give their details to any other driver involved in the crasha person involved is killed or injured",
+      pt: "Você deve relatar um acidente à polícia o mais rápido possível, mas dentro de 24 horas, se: um veículo envolvido precisar ser rebocado; algum motorista envolvido no acidente não fornecer seus dados a outro motorista envolvido no acidente; uma pessoa envolvida for morta ou ferida.",
+      es: "Debe informar un accidente a la policía lo antes posible, pero dentro de las 24 horas, si: un vehículo involucrado necesita ser remolcado; algún conductor involucrado en el accidente no proporciona sus datos a otro conductor involucrado en el accidente; una persona involucrada resulta muerta o herida."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-9",
+    cat: "Road Signs",
+    q: {
+      en: "If you are riding towards a road works zone and a traffic controller displays a 'stop' sign, you must -",
+      pt: "Se você estiver se aproximando de uma zona de obras na via e um controlador de tráfego exibir uma placa de 'pare', você deve -",
+      es: "Si se está aproximando a una zona de obras viales y un controlador de tráfico muestra una señal de 'pare', usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "slow down and continue through the road works zone",
+          pt: "reduzir a velocidade e continuar através da zona de obras",
+          es: "reducir la velocidad y continuar a través de la zona de obras"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "stop and then proceed if you think it is safe",
+          pt: "parar e depois seguir se achar que é seguro",
+          es: "detenerse y luego seguir si cree que es seguro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "stop and follow the directions of the traffic controller",
+          pt: "parar e seguir as instruções do controlador de tráfego",
+          es: "detenerse y seguir las instrucciones del controlador de tráfico"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A traffic controller may direct traffic at or through a worksite. You must obey a lawful direction or signal given by a traffic controller within a designated worksite.",
+      pt: "Um controlador de tráfego pode dirigir o trânsito num canteiro de obras ou através dele. Você deve obedecer a uma instrução ou sinal legal dado por um controlador de tráfego dentro de um canteiro de obras designado.",
+      es: "Un controlador de tráfico puede dirigir el tránsito en o a través de una obra vial. Debe obedecer una instrucción o señal legal dada por un controlador de tráfico dentro de una zona de obras designada."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-10",
+    cat: "Road Safety",
+    q: {
+      en: "If you experience fatigue when riding (daydreaming, yawning, stiff joints), you should -",
+      pt: "Se você sentir fadiga ao pilotar (devaneios, bocejos, articulações rígidas), você deve -",
+      es: "Si experimenta fatiga al conducir la moto (distracciones, bostezos, articulaciones rígidas), usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "ride slower in case it gets worse",
+          pt: "pilotar mais devagar caso piore",
+          es: "conducir más despacio por si empeora"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "pull over if the symptoms get worse",
+          pt: "parar no acostamento se os sintomas piorarem",
+          es: "detenerse en el arcén si los síntomas empeoran"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "stop as soon as it is safe and rest",
+          pt: "parar assim que for seguro e descansar",
+          es: "detenerse tan pronto como sea seguro y descansar"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If you have any signs of fatigue stop as soon as it is safe and rest.",
+      pt: "Se você tiver quaisquer sinais de fadiga, pare assim que for seguro e descanse.",
+      es: "Si tiene cualquier signo de fatiga, deténgase tan pronto como sea seguro y descanse."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-11",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "If you have used illegal drugs you -",
+      pt: "Se você usou drogas ilegais, você -",
+      es: "Si ha consumido drogas ilegales, usted -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "should only ride in light traffic",
+          pt: "deve pilotar apenas em trânsito leve",
+          es: "solo debe conducir en tráfico ligero"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "should drink coffee before you ride",
+          pt: "deve tomar café antes de pilotar",
+          es: "debe tomar café antes de conducir"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "must not ride",
+          pt: "não deve pilotar",
+          es: "no debe conducir"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "It is illegal to ride with any level of illicit drugs present in your system; riders may be randomly tested for drugs.",
+      pt: "É ilegal pilotar com qualquer nível de drogas ilícitas presente no seu organismo; os motociclistas podem ser testados aleatoriamente para detecção de drogas.",
+      es: "Es ilegal conducir con cualquier nivel de drogas ilícitas presente en su organismo; los motociclistas pueden ser sometidos a pruebas de detección de drogas de forma aleatoria."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-12",
+    cat: "Road Signs",
+    q: {
+      en: "If you hold a P1 or P2 licence, do you need to display a 'P' plate when riding a motorcycle?",
+      pt: "Se você tem uma licença P1 ou P2, precisa exibir uma placa 'P' ao pilotar uma moto?",
+      es: "Si tiene una licencia P1 o P2, ¿necesita exhibir una placa 'P' al conducir una motocicleta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "yes",
+          pt: "sim",
+          es: "sí"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "no",
+          pt: "não",
+          es: "no"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "yes, but only at night",
+          pt: "sim, mas apenas à noite",
+          es: "sí, pero solo de noche"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "All P1 and P2 licence holders must display a P plate (red or green depending on their licence) so that the letter P can be clearly seen from the rear of the motorcycle 20 metres away.",
+      pt: "Todos os titulares de licença P1 e P2 devem exibir uma placa P (vermelha ou verde, dependendo da licença) para que a letra P possa ser claramente vista a partir da traseira da moto a 20 metros de distância.",
+      es: "Todos los titulares de licencia P1 y P2 deben exhibir una placa P (roja o verde, según su licencia) para que la letra P pueda verse claramente desde la parte trasera de la motocicleta a 20 metros de distancia."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-13",
+    cat: "Road Safety",
+    q: {
+      en: "If you see an animal near the road, you should -",
+      pt: "Se você vir um animal perto da via, você deve -",
+      es: "Si ve un animal cerca de la vía, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "flash your lights",
+          pt: "piscar os faróis",
+          es: "hacer destellos con las luces"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "sound your horn",
+          pt: "buzinar",
+          es: "tocar la bocina"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "slow down and stay alert",
+          pt: "reduzir a velocidade e ficar alerta",
+          es: "reducir la velocidad y mantenerse alerta"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "speed up to quickly pass the animal",
+          pt: "acelerar para ultrapassar o animal rapidamente",
+          es: "acelerar para pasar rápidamente al animal"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The most effective way to keep the local wildlife and yourself safe is to reduce your speed and be aware of the unpredictable nature of animals.",
+      pt: "A maneira mais eficaz de manter a fauna local e você mesmo em segurança é reduzir a velocidade e estar ciente da natureza imprevisível dos animais.",
+      es: "La forma más eficaz de mantener seguros a la fauna local y a usted mismo es reducir la velocidad y ser consciente de la naturaleza impredecible de los animales."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-14",
+    sign: "/icons/signs/qld-motorbikeimage12.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "In the diagram, which motorcycles are in the car's blind spots?",
+      pt: "No diagrama, quais motos estão nos pontos cegos do carro?",
+      es: "En el diagrama, ¿qué motocicletas están en los puntos ciegos del coche?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A and B",
+          pt: "A e B",
+          es: "A y B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A and C",
+          pt: "A e C",
+          es: "A y C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "B and C",
+          pt: "B e C",
+          es: "B y C"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Vehicle A is in clear view of the driver. Vehicles B and C are in the car's blind spots as they are in the area next to the car that the driver is unable to see in the mirrors.",
+      pt: "O veículo A está em visão clara do motorista. Os veículos B e C estão nos pontos cegos do carro, pois estão na área ao lado do carro que o motorista não consegue ver pelos espelhos.",
+      es: "El vehículo A está claramente visible para el conductor. Los vehículos B y C están en los puntos ciegos del coche, ya que se encuentran en el área junto al coche que el conductor no puede ver por los espejos."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-15",
+    sign: "/icons/signs/qld-motorbikeimage06.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, which vehicle would go last?",
+      pt: "No diagrama, qual veículo seguiria por último?",
+      es: "En el diagrama, ¿qué vehículo pasaría en último lugar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "vehicle C",
+          pt: "veículo C",
+          es: "vehículo C"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "vehicle D",
+          pt: "veículo D",
+          es: "vehículo D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "vehicle A",
+          pt: "veículo A",
+          es: "vehículo A"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "vehicle B",
+          pt: "veículo B",
+          es: "vehículo B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle C would go last. Vehicles A and C are facing stop signs; when two drivers face each other at stop signs at an intersection they must give way to all other vehicles entering or approaching the intersection then apply the give way rules to each other. Vehicles A and C first give way to vehicles B and D, as vehicles B and D are going straight ahead on the through road. Vehicle C must then give way to vehicle A as it is turning across vehicle A's path.",
+      pt: "O veículo C seguiria por último. Os veículos A e C estão diante de placas de pare; quando dois motoristas ficam frente a frente em placas de pare num cruzamento, eles devem dar passagem a todos os outros veículos que entram ou se aproximam do cruzamento, e depois aplicar as regras de prioridade entre si. Os veículos A e C primeiro dão passagem aos veículos B e D, já que B e D seguem em frente pela via principal. O veículo C deve então dar passagem ao veículo A, pois está cruzando o caminho do veículo A.",
+      es: "El vehículo C pasaría en último lugar. Los vehículos A y C están frente a señales de pare; cuando dos conductores se encuentran frente a frente en señales de pare en una intersección, deben ceder el paso a todos los demás vehículos que entran o se aproximan a la intersección, y luego aplicar las reglas de prioridad entre sí. Los vehículos A y C primero ceden el paso a los vehículos B y D, ya que B y D siguen recto por la vía principal. El vehículo C debe entonces ceder el paso al vehículo A, ya que está cruzando el camino del vehículo A."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-16",
+    sign: "/icons/signs/qld-motorbikeimage20.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In the diagram, who must give way?",
+      pt: "No diagrama, quem deve dar passagem?",
+      es: "En el diagrama, ¿quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "the pedestrian",
+          pt: "o pedestre",
+          es: "el peatón"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "vehicle A",
+          pt: "o veículo A",
+          es: "el vehículo A"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The vehicle must give way to the pedestrian. A rider turning at an intersection must give way to any pedestrian crossing the road they are entering.",
+      pt: "O veículo deve dar passagem ao pedestre. Um motociclista que está fazendo uma conversão num cruzamento deve dar passagem a qualquer pedestre que esteja atravessando a via para a qual está entrando.",
+      es: "El vehículo debe ceder el paso al peatón. Un motociclista que gira en una intersección debe ceder el paso a cualquier peatón que esté cruzando la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-17",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "In what part of the lane should you ride when being passed by on-coming vehicles?",
+      pt: "Em que parte da faixa você deve pilotar ao ser ultrapassado por veículos que vêm em sentido contrário?",
+      es: "¿En qué parte del carril debe conducir cuando lo adelantan vehículos que vienen en sentido contrario?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "as close to the centre line as possible",
+          pt: "o mais próximo possível da linha central",
+          es: "lo más cerca posible de la línea central"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "no special part of your lane",
+          pt: "não há parte específica da sua faixa",
+          es: "ninguna parte específica de su carril"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "the centre or left of your lane",
+          pt: "o centro ou a esquerda da sua faixa",
+          es: "el centro o la izquierda de su carril"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "To create a buffer from an oncoming vehicle the best road position may be the left side of the lane. However, if there are vehicles passing on your left and right the best road position to maximise your space buffer will be the centre of the lane.",
+      pt: "Para criar um espaço de segurança em relação a um veículo que vem em sentido contrário, a melhor posição na via pode ser o lado esquerdo da faixa. No entanto, se houver veículos passando à sua esquerda e à sua direita, a melhor posição na via para maximizar seu espaço de segurança será o centro da faixa.",
+      es: "Para crear un espacio de seguridad respecto a un vehículo que viene en sentido contrario, la mejor posición en la vía puede ser el lado izquierdo del carril. Sin embargo, si hay vehículos pasando por su izquierda y su derecha, la mejor posición en la vía para maximizar su espacio de seguridad será el centro del carril."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-18",
+    cat: "Road Safety",
+    q: {
+      en: "Riding while angry or stressed -",
+      pt: "Pilotar com raiva ou estresse -",
+      es: "Conducir con enojo o estrés -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "increases your crash risk",
+          pt: "aumenta o risco de acidente",
+          es: "aumenta el riesgo de accidente"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "is no different to riding while happy and relaxed",
+          pt: "não é diferente de pilotar feliz e relaxado",
+          es: "no es diferente de conducir feliz y relajado"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "helps you make better decisions",
+          pt: "ajuda a tomar melhores decisões",
+          es: "ayuda a tomar mejores decisiones"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Riding while angry or stressed may affect your concentration and your ability to judge a situation and make good riding decisions. To minimise your crash risk do not ride when you are angry, stressed or unhappy.",
+      pt: "Pilotar com raiva ou estresse pode afetar sua concentração e sua capacidade de avaliar uma situação e tomar boas decisões ao pilotar. Para minimizar o risco de acidente, não pilote quando estiver com raiva, estressado ou infeliz.",
+      es: "Conducir con enojo o estrés puede afectar su concentración y su capacidad de evaluar una situación y tomar buenas decisiones al conducir. Para minimizar el riesgo de accidente, no conduzca cuando esté enojado, estresado o infeliz."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-19",
+    cat: "Road Safety",
+    q: {
+      en: "What can cause skidding?",
+      pt: "O que pode causar derrapagem?",
+      es: "¿Qué puede causar un derrape?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "painted or metal surfaces",
+          pt: "superfícies pintadas ou metálicas",
+          es: "superficies pintadas o metálicas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "water or oil on the road",
+          pt: "água ou óleo na via",
+          es: "agua o aceite en la vía"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "sand or loose gravel on the road",
+          pt: "areia ou cascalho solto na via",
+          es: "arena o grava suelta en la vía"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "all of the above",
+          pt: "todas as alternativas acima",
+          es: "todas las anteriores"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Harsh or excessive braking pressure may cause skidding and a loss of control, particularly on wet or gravel roads. Painted road markings, potholes, metal plates, gravel, oil, sand, ice, mud and water can cause loss of traction, skidding and consequently loss of control.",
+      pt: "Frenagem brusca ou excessiva pode causar derrapagem e perda de controle, especialmente em vias molhadas ou com cascalho. Marcações pintadas na via, buracos, placas metálicas, cascalho, óleo, areia, gelo, lama e água podem causar perda de aderência, derrapagem e, consequentemente, perda de controle.",
+      es: "Una frenada brusca o excesiva puede causar derrape y pérdida de control, especialmente en vías mojadas o con grava. Las marcas pintadas en la vía, baches, placas metálicas, grava, aceite, arena, hielo, barro y agua pueden causar pérdida de tracción, derrape y, en consecuencia, pérdida de control."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-20",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the benefit of always maintaining clean and clear eye protection?",
+      pt: "Qual é o benefício de sempre manter a proteção ocular limpa e transparente?",
+      es: "¿Cuál es el beneficio de mantener siempre limpia y transparente la protección ocular?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "you will have a clear view of the road and your surroundings",
+          pt: "você terá uma visão clara da via e do seu entorno",
+          es: "tendrá una visión clara de la vía y su entorno"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "people will be able to see where you are looking at all times",
+          pt: "as pessoas poderão ver para onde você está olhando o tempo todo",
+          es: "las personas podrán ver hacia dónde está mirando en todo momento"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "it looks good",
+          pt: "fica com boa aparência",
+          es: "se ve bien"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Visors and goggles should be clean and not scratched. Maintaining clean and clear eye protection is important to ensure your view of the road and surroundings is not impaired. Scratches on eye protection can blur and distort light at night.",
+      pt: "Viseiras e óculos de proteção devem estar limpos e sem riscos. Manter a proteção ocular limpa e transparente é importante para garantir que sua visão da via e do entorno não seja prejudicada. Riscos na proteção ocular podem embaçar e distorcer a luz à noite.",
+      es: "Las viseras y gafas protectoras deben estar limpias y sin rayones. Mantener la protección ocular limpia y transparente es importante para garantizar que su visión de la vía y el entorno no se vea afectada. Los rayones en la protección ocular pueden difuminar y distorsionar la luz por la noche."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-21",
+    cat: "Road Safety",
+    q: {
+      en: "What is the danger in not turning off your indicator after you have completed your turn?",
+      pt: "Qual é o perigo de não desligar o pisca-alerta depois de concluir a conversão?",
+      es: "¿Cuál es el peligro de no apagar el intermitente después de completar el giro?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "it might confuse other drivers",
+          pt: "pode confundir outros motoristas",
+          es: "puede confundir a otros conductores"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "it could damage the electrical system",
+          pt: "pode danificar o sistema elétrico",
+          es: "podría dañar el sistema eléctrico"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "there is no danger",
+          pt: "não há perigo",
+          es: "no hay peligro"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "it might keep other drivers from seeing your brake light",
+          pt: "pode impedir que outros motoristas vejam sua luz de freio",
+          es: "podría impedir que otros conductores vean su luz de freno"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Leaving your indicator on after you've made the turn gives other drivers the wrong message about your intended actions, which could be dangerous.",
+      pt: "Deixar o pisca ligado depois de fazer a conversão passa uma mensagem errada aos outros motoristas sobre suas intenções, o que pode ser perigoso.",
+      es: "Dejar el intermitente encendido después de haber girado da a otros conductores un mensaje equivocado sobre sus intenciones, lo cual puede ser peligroso."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-22",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the legal BAC (Blood/Breath Alcohol Concentration) for a learner rider?",
+      pt: "Qual é o BAC (Concentração de Álcool no Sangue/Respiração) legal para um motociclista aprendiz?",
+      es: "¿Cuál es el BAC (Concentración de Alcohol en Sangre/Aliento) legal para un motociclista principiante?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "0.00 BAC",
+          pt: "0,00 BAC",
+          es: "0,00 BAC"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "0.05 BAC",
+          pt: "0,05 BAC",
+          es: "0,05 BAC"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "0.02 BAC",
+          pt: "0,02 BAC",
+          es: "0,02 BAC"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "0.15 BAC",
+          pt: "0,15 BAC",
+          es: "0,15 BAC"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A learner rider (class RE and R) must have a zero BAC.",
+      pt: "Um motociclista aprendiz (categorias RE e R) deve ter BAC zero.",
+      es: "Un motociclista principiante (categorías RE y R) debe tener un BAC de cero."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-23",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main purpose of having mirrors fitted to both sides of your motorcycle?",
+      pt: "Qual é o principal objetivo de ter espelhos retrovisores instalados em ambos os lados da sua moto?",
+      es: "¿Cuál es el propósito principal de tener espejos retrovisores instalados en ambos lados de su motocicleta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "to give you the best view of the road behind and to the sides",
+          pt: "dar a você a melhor visão da via atrás e dos lados",
+          es: "darle la mejor vista de la vía detrás y a los lados"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "to judge the gap when filtering in traffic",
+          pt: "avaliar o espaço ao filtrar entre o trânsito",
+          es: "calcular el espacio al filtrarse entre el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "to make your motorcycle appear larger",
+          pt: "fazer sua moto parecer maior",
+          es: "hacer que su motocicleta parezca más grande"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The main purpose of having mirrors is to give you a better view of road conditions behind and to the side of you. Checking mirrors will help you assess how your actions could affect traffic behind you.",
+      pt: "O principal objetivo dos espelhos retrovisores é dar a você uma melhor visão das condições da via atrás e ao lado. Verificar os espelhos ajudará você a avaliar como suas ações podem afetar o trânsito atrás de você.",
+      es: "El propósito principal de los espejos retrovisores es darle una mejor vista de las condiciones de la vía detrás y a los lados. Revisar los espejos le ayudará a evaluar cómo sus acciones podrían afectar al tráfico detrás de usted."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-24",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the main purpose of wearing bright coloured or reflective clothing while riding?",
+      pt: "Qual é o principal objetivo de usar roupas de cores vivas ou reflexivas ao pilotar?",
+      es: "¿Cuál es el propósito principal de usar ropa de colores brillantes o reflectante al conducir?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "to match your motorcycle",
+          pt: "combinar com a sua moto",
+          es: "combinar con su motocicleta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "to enable you to ride on unlit roads",
+          pt: "permitir que você pilote em vias sem iluminação",
+          es: "permitirle conducir en vías sin iluminación"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "to enable other motorists to see you more easily",
+          pt: "permitir que outros motoristas te vejam com mais facilidade",
+          es: "permitir que otros conductores lo vean más fácilmente"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "to dazzle other motorists",
+          pt: "ofuscar outros motoristas",
+          es: "deslumbrar a otros conductores"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Increasing your visibility to other road users can greatly reduce your chances of being involved in a crash. Dress to be seen by choosing gear that maximises your visibility. If other road users can see you, even in poor light or bad weather, they can avoid you.",
+      pt: "Aumentar sua visibilidade para outros usuários da via pode reduzir muito as chances de você se envolver num acidente. Vista-se para ser visto, escolhendo equipamentos que maximizem sua visibilidade. Se outros usuários da via conseguirem te ver, mesmo com pouca luz ou mau tempo, eles poderão evitar você.",
+      es: "Aumentar su visibilidad ante otros usuarios de la vía puede reducir considerablemente las posibilidades de verse involucrado en un accidente. Vístase para ser visto, eligiendo equipo que maximice su visibilidad. Si otros usuarios de la vía pueden verlo, incluso con poca luz o mal tiempo, podrán evitarlo."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-25",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum legal speed limit (unless signposted otherwise) in a built-up area?",
+      pt: "Qual é o limite máximo de velocidade legal (salvo sinalização em contrário) numa área urbanizada?",
+      es: "¿Cuál es el límite máximo de velocidad legal (salvo señalización en contrario) en una zona urbanizada?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "70 kilometres per hour",
+          pt: "70 quilômetros por hora",
+          es: "70 kilómetros por hora"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "40 kilometres per hour",
+          pt: "40 quilômetros por hora",
+          es: "40 kilómetros por hora"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "60 kilometres per hour",
+          pt: "60 quilômetros por hora",
+          es: "60 kilómetros por hora"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "50 kilometres per hour",
+          pt: "50 quilômetros por hora",
+          es: "50 kilómetros por hora"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The default speed limit on a road in a built-up area is 50km/hour. Riders may travel at a maximum speed of 50km/hour in a built-up area unless there is a sign showing a different speed.",
+      pt: "O limite de velocidade padrão numa via em área urbanizada é de 50 km/h. Os motociclistas podem trafegar a uma velocidade máxima de 50 km/h numa área urbanizada, a menos que haja uma placa indicando uma velocidade diferente.",
+      es: "El límite de velocidad predeterminado en una vía dentro de una zona urbanizada es de 50 km/h. Los motociclistas pueden circular a una velocidad máxima de 50 km/h en una zona urbanizada, a menos que haya una señal que indique una velocidad diferente."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-26",
+    sign: "/icons/signs/qld-motorbikeimage07.jpg",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the meaning of the diagram?",
+      pt: "Qual é o significado do diagrama?",
+      es: "¿Cuál es el significado del diagrama?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "exiting wide from a curve or bend can result in a crash",
+          pt: "sair muito aberto de uma curva pode resultar num acidente",
+          es: "salir muy abierto de una curva puede provocar un accidente"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "you should start braking where the cross is",
+          pt: "você deve começar a frear onde está o X",
+          es: "debe empezar a frenar donde está la cruz"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "beware because there is a puddle of water next to the car",
+          pt: "cuidado, pois há uma poça de água ao lado do carro",
+          es: "tenga cuidado, hay un charco de agua junto al coche"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Many riders try to straighten turns resulting in the motorcycle exiting the bend out wide. Exiting wide from a bend is dangerous as it allows no room for error and increases the risk of a crash. If the bend 'tightens' or changes direction you will need additional effort to complete the turn.",
+      pt: "Muitos motociclistas tentam endireitar as curvas, o que faz a moto sair muito aberta da curva. Sair muito aberto de uma curva é perigoso, pois não deixa margem para erro e aumenta o risco de acidente. Se a curva 'fechar' ou mudar de direção, será necessário esforço adicional para completar a curva.",
+      es: "Muchos motociclistas intentan enderezar las curvas, lo que hace que la moto salga muy abierta de la curva. Salir muy abierto de una curva es peligroso, ya que no deja margen de error y aumenta el riesgo de accidente. Si la curva se 'cierra' o cambia de dirección, se necesitará un esfuerzo adicional para completar el giro."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-27",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the minimum age for a pillion passenger?",
+      pt: "Qual é a idade mínima para um passageiro (garupa)?",
+      es: "¿Cuál es la edad mínima para un pasajero (parrillero)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "12 years of age",
+          pt: "12 anos de idade",
+          es: "12 años de edad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "no minimum age",
+          pt: "sem idade mínima",
+          es: "sin edad mínima"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "8 years of age",
+          pt: "8 anos de idade",
+          es: "8 años de edad"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "5 years of age",
+          pt: "5 anos de idade",
+          es: "5 años de edad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A pillion passenger must be eight years of age or older.",
+      pt: "Um passageiro de garupa deve ter oito anos de idade ou mais.",
+      es: "Un pasajero parrillero debe tener ocho años de edad o más."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-28",
+    cat: "Road Safety",
+    q: {
+      en: "What is the minimum tread depth on a tyre before it is considered illegal?",
+      pt: "Qual é a profundidade mínima da banda de rodagem de um pneu antes de ser considerado ilegal?",
+      es: "¿Cuál es la profundidad mínima de la banda de rodadura de un neumático antes de considerarse ilegal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1.2mm",
+          pt: "1,2mm",
+          es: "1,2mm"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.3mm",
+          pt: "1,3mm",
+          es: "1,3mm"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "1.5mm",
+          pt: "1,5mm",
+          es: "1,5mm"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "1.7mm",
+          pt: "1,7mm",
+          es: "1,7mm"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Your tyres must have a tread depth of at least 1.5mm across the full width of the tyre.",
+      pt: "Seus pneus devem ter uma profundidade de banda de rodagem de pelo menos 1,5mm em toda a largura do pneu.",
+      es: "Sus neumáticos deben tener una profundidad de banda de rodadura de al menos 1,5mm en todo el ancho del neumático."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-29",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What is the most important reason for regularly maintaining your motorcycle?",
+      pt: "Qual é o motivo mais importante para fazer a manutenção regular da sua moto?",
+      es: "¿Cuál es el motivo más importante para realizar el mantenimiento regular de su motocicleta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "to accelerate faster than other traffic",
+          pt: "para acelerar mais rápido que o resto do trânsito",
+          es: "para acelerar más rápido que el resto del tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "to ensure the motorcycle can carry a passenger",
+          pt: "para garantir que a moto possa levar um passageiro",
+          es: "para garantizar que la motocicleta pueda llevar un pasajero"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "to keep the motorcycle roadworthy",
+          pt: "para manter a moto em condições de rodar com segurança",
+          es: "para mantener la motocicleta en condiciones seguras de circulación"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Regularly maintaining your motorcycle is important to keep it roadworthy and safe.",
+      pt: "Fazer a manutenção regular da sua moto é importante para mantê-la em condições seguras de uso.",
+      es: "Realizar el mantenimiento regular de su motocicleta es importante para mantenerla en condiciones seguras y aptas para circular."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-30",
+    cat: "Parking Rules",
+    q: {
+      en: "What must you do when you move off from a parked position on the side of the road?",
+      pt: "O que você deve fazer ao sair de uma posição estacionada na lateral da via?",
+      es: "¿Qué debe hacer al salir de una posición estacionada al costado de la vía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "give a hand signal",
+          pt: "fazer um sinal manual",
+          es: "hacer una señal manual"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "ride out of the park slowly",
+          pt: "sair devagar do local estacionado",
+          es: "salir despacio del lugar estacionado"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "indicate for 5 seconds before pulling out",
+          pt: "sinalizar por 5 segundos antes de sair",
+          es: "señalizar durante 5 segundos antes de salir"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must indicate for at least five seconds before moving off from a parked position on the side of the road.",
+      pt: "Você deve sinalizar por pelo menos cinco segundos antes de sair de uma posição estacionada na lateral da via.",
+      es: "Debe señalizar durante al menos cinco segundos antes de salir de una posición estacionada al costado de la vía."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-31",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should a pillion passenger do when cornering?",
+      pt: "O que um passageiro de garupa deve fazer ao fazer uma curva?",
+      es: "¿Qué debe hacer un pasajero parrillero al tomar una curva?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "stay in an upright position",
+          pt: "permanecer na posição ereta",
+          es: "permanecer en posición erguida"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "counterbalance and lean the opposite way to the rider",
+          pt: "contrabalançar e se inclinar para o lado oposto ao do motociclista",
+          es: "contrapesar e inclinarse hacia el lado opuesto al del conductor"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "lean at the same angle as the rider",
+          pt: "se inclinar no mesmo ângulo que o motociclista",
+          es: "inclinarse en el mismo ángulo que el conductor"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If a pillion passenger leans at the same angle as the rider, the motorcycle will retain its stability. If a pillion passenger leans in a different direction to the rider, the motorcycle can become unstable.",
+      pt: "Se o passageiro de garupa se inclinar no mesmo ângulo que o motociclista, a moto manterá sua estabilidade. Se o passageiro se inclinar numa direção diferente da do motociclista, a moto pode ficar instável.",
+      es: "Si el pasajero parrillero se inclina en el mismo ángulo que el conductor, la motocicleta mantendrá su estabilidad. Si el pasajero se inclina en una dirección diferente a la del conductor, la motocicleta puede volverse inestable."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-32",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do if you have difficulty concentrating when riding?",
+      pt: "O que você deve fazer se tiver dificuldade de se concentrar enquanto pilota?",
+      es: "¿Qué debe hacer si tiene dificultad para concentrarse mientras conduce la motocicleta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "constantly change your speed up and down to keep you alert",
+          pt: "mudar constantemente sua velocidade, para cima e para baixo, para se manter alerta",
+          es: "cambiar constantemente su velocidad, acelerando y desacelerando, para mantenerse alerta"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "stop as soon as it is safe and rest",
+          pt: "parar assim que for seguro e descansar",
+          es: "detenerse tan pronto como sea seguro y descansar"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "ride without gloves and in a short sleeved shirt so the wind on your body keeps you alert",
+          pt: "pilotar sem luvas e com camisa de manga curta para que o vento no corpo o mantenha alerta",
+          es: "conducir sin guantes y con una camisa de manga corta para que el viento en el cuerpo lo mantenga alerta"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Concentration is vital. Don't ride if you can't concentrate fully.  Many people think that fatigue involves going to sleep but for motorcycle riders the real problem is a lapse in concentration, even momentarily. If you are having difficulty concentrating stop as soon as it is safe and rest.",
+      pt: "A concentração é vital. Não pilote se não conseguir se concentrar totalmente. Muitas pessoas pensam que a fadiga envolve adormecer, mas para os motociclistas o verdadeiro problema é uma falha de concentração, mesmo que momentânea. Se você estiver com dificuldade de se concentrar, pare assim que for seguro e descanse.",
+      es: "La concentración es vital. No conduzca si no puede concentrarse por completo. Muchas personas piensan que la fatiga implica quedarse dormido, pero para los motociclistas el verdadero problema es un lapso de concentración, incluso momentáneo. Si tiene dificultad para concentrarse, deténgase tan pronto como sea seguro y descanse."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-33",
+    cat: "Road Signs",
+    q: {
+      en: "What should you do if you see a road sign showing a sharp bend ahead?",
+      pt: "O que você deve fazer se vir uma placa indicando uma curva acentuada à frente?",
+      es: "¿Qué debe hacer si ve una señal de tránsito que indica una curva cerrada más adelante?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "slow down before the bend",
+          pt: "reduzir a velocidade antes da curva",
+          es: "reducir la velocidad antes de la curva"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "slow down as you ride out of the bend",
+          pt: "reduzir a velocidade ao sair da curva",
+          es: "reducir la velocidad al salir de la curva"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "slow down while riding around the bend",
+          pt: "reduzir a velocidade enquanto faz a curva",
+          es: "reducir la velocidad mientras toma la curva"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The greater the lean on your motorcycle, the greater the chance your wheels will lose traction when the brakes are applied. Reducing your speed before entering a bend could avoid a risky situation.",
+      pt: "Quanto maior a inclinação da moto, maior a chance de as rodas perderem tração ao acionar os freios. Reduzir a velocidade antes de entrar em uma curva pode evitar uma situação de risco.",
+      es: "Cuanto mayor sea la inclinación de la motocicleta, mayor será la posibilidad de que las ruedas pierdan tracción al frenar. Reducir la velocidad antes de entrar en una curva puede evitar una situación de riesgo."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-34",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should you do if your throttle sticks open?",
+      pt: "O que você deve fazer se o acelerador travar aberto?",
+      es: "¿Qué debe hacer si el acelerador se atasca abierto?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "pull the clutch lever in and apply the cut-out switch",
+          pt: "puxar a alavanca da embreagem e acionar o interruptor de corte (kill switch)",
+          es: "apretar la palanca del embrague y accionar el interruptor de corte (kill switch)"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "increase the revs",
+          pt: "aumentar as rotações",
+          es: "aumentar las revoluciones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "brake hard",
+          pt: "frear com força",
+          es: "frenar con fuerza"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If your throttle sticks open you should immediately pull the clutch lever in and activate the cut-out switch. Pulling in the clutch will disengage the gears and prevent the motorcycle from suddenly and rapidly accelerating. Operating the cut-out switch will then force the motor to shut off, preventing over revving and reducing possible damage to the motor.",
+      pt: "Se o acelerador travar aberto, você deve imediatamente puxar a alavanca da embreagem e acionar o interruptor de corte. Puxar a embreagem desengata as marchas e evita que a moto acelere de forma súbita e rápida. Acionar o interruptor de corte então força o motor a desligar, evitando excesso de rotações e reduzindo possíveis danos ao motor.",
+      es: "Si el acelerador se atasca abierto, debe apretar inmediatamente la palanca del embrague y accionar el interruptor de corte. Apretar el embrague desengrana la marcha y evita que la motocicleta acelere de forma repentina y rápida. Accionar el interruptor de corte obliga entonces al motor a apagarse, evitando el exceso de revoluciones y reduciendo posibles daños al motor."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-35",
+    cat: "Traffic Lights",
+    q: {
+      en: "What should you do when approaching a 4 way intersection where the traffic lights are flashing yellow?",
+      pt: "O que você deve fazer ao se aproximar de um cruzamento de 4 vias onde os semáforos estão piscando amarelo?",
+      es: "¿Qué debe hacer al acercarse a una intersección de 4 vías donde los semáforos están parpadeando en amarillo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "stop and wait until the lights are operating properly",
+          pt: "parar e esperar até que os semáforos voltem a funcionar normalmente",
+          es: "detenerse y esperar hasta que los semáforos funcionen correctamente"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "stop and wait for a police officer to arrive and direct traffic",
+          pt: "parar e esperar um policial chegar para dirigir o trânsito",
+          es: "detenerse y esperar a que llegue un policía para dirigir el tránsito"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "stop and wait for another driver to wave you through",
+          pt: "parar e esperar que outro motorista sinalize para você passar",
+          es: "detenerse y esperar a que otro conductor le indique que pase"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "observe the give way rules",
+          pt: "observar as regras de dar passagem",
+          es: "respetar las reglas de ceder el paso"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A flashing yellow traffic light or arrow is a warning to use caution. If you face a flashing yellow traffic light or arrow you may enter the intersection with caution, applying the give way rules for an uncontrolled cross road.",
+      pt: "Um semáforo ou seta amarela piscando é um aviso para ter cautela. Se você se deparar com um semáforo ou seta amarela piscando, pode entrar no cruzamento com cautela, aplicando as regras de dar passagem como em um cruzamento não sinalizado.",
+      es: "Un semáforo o flecha amarilla intermitente es una advertencia para tener precaución. Si se encuentra con un semáforo o flecha amarilla intermitente, puede ingresar a la intersección con precaución, aplicando las reglas de ceder el paso como en un cruce no controlado."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-36",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What should you do when riding in windy conditions?",
+      pt: "O que você deve fazer ao pilotar em condições de vento forte?",
+      es: "¿Qué debe hacer al conducir en condiciones de viento?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "keep your speed down",
+          pt: "manter a velocidade baixa",
+          es: "mantener la velocidad baja"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "keep your speed up",
+          pt: "manter a velocidade alta",
+          es: "mantener la velocidad alta"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "stay close to large vehicles to shelter from the wind",
+          pt: "ficar próximo a veículos grandes para se abrigar do vento",
+          es: "mantenerse cerca de vehículos grandes para resguardarse del viento"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When riding in windy conditions you should keep your speed down as wind buffeting can affect the handling of your motorcycle.",
+      pt: "Ao pilotar em condições de vento, você deve manter a velocidade baixa, pois rajadas de vento podem afetar o manuseio da moto.",
+      es: "Al conducir con viento, debe mantener la velocidad baja, ya que las ráfagas de viento pueden afectar el manejo de la motocicleta."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-37",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when travelling behind a school bus that has stopped at a bus stop?",
+      pt: "O que você deve fazer ao trafegar atrás de um ônibus escolar parado em um ponto de ônibus?",
+      es: "¿Qué debe hacer al circular detrás de un autobús escolar que se ha detenido en una parada?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "accelerate past the bus while flashing your lights",
+          pt: "acelerar para ultrapassar o ônibus piscando os faróis",
+          es: "acelerar para adelantar al autobús mientras hace destellos con las luces"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "watch carefully for pedestrians",
+          pt: "observar atentamente se há pedestres",
+          es: "estar atento a los peatones"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "accelerate past the bus and sound your horn",
+          pt: "acelerar para ultrapassar o ônibus e buzinar",
+          es: "acelerar para adelantar al autobús y tocar la bocina"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Watching carefully for pedestrians, especially children who may run across the road from in front of or behind the bus, will minimise the risk of a crash.",
+      pt: "Observar atentamente se há pedestres, especialmente crianças que podem atravessar correndo a rua pela frente ou por trás do ônibus, reduz o risco de colisão.",
+      es: "Estar atento a los peatones, especialmente a los niños que puedan cruzar corriendo la calle por delante o por detrás del autobús, minimizará el riesgo de un accidente."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-38",
+    sign: "/icons/signs/qld-motorbikeimage26.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What should you do when you see a 'roundabout ahead' sign?",
+      pt: "O que você deve fazer ao ver uma placa de 'rotatória à frente'?",
+      es: "¿Qué debe hacer al ver una señal de 'rotonda más adelante'?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "speed up to get through the roundabout",
+          pt: "acelerar para atravessar a rotatória",
+          es: "acelerar para pasar la rotonda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "check your mirrors, slow down and be prepared to stop",
+          pt: "verificar os retrovisores, reduzir a velocidade e se preparar para parar",
+          es: "revisar los espejos, reducir la velocidad y estar preparado para detenerse"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "turn around as you are going the wrong way",
+          pt: "dar meia-volta, pois está indo na direção errada",
+          es: "dar la vuelta, ya que va en la dirección equivocada"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When approaching a roundabout riders must slow down and be prepared to stop and give way to all vehicles on the roundabout.",
+      pt: "Ao se aproximar de uma rotatória, os motociclistas devem reduzir a velocidade e estar preparados para parar e dar passagem a todos os veículos que já estão na rotatória.",
+      es: "Al acercarse a una rotonda, los motociclistas deben reducir la velocidad y estar preparados para detenerse y ceder el paso a todos los vehículos que ya están en la rotonda."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-39",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What type of footwear offers the most protection while riding?",
+      pt: "Que tipo de calçado oferece a maior proteção ao pilotar?",
+      es: "¿Qué tipo de calzado ofrece la mayor protección al conducir la motocicleta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "sandals",
+          pt: "sandálias",
+          es: "sandalias"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "boots",
+          pt: "botas",
+          es: "botas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "lace up shoes",
+          pt: "sapatos com cadarço",
+          es: "zapatos con cordones"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Motorcycle boots are the best footwear to wear when riding. Other boots made of leather or strong synthetic material that cover your ankles also offer protection however, avoid steel-capped boots as they can cause friction burns or cut into your toes in a crash. Don't ride in running shoes, or worse, in sandals or bare feet, and avoid shoes with rings or laces that could catch on the motorcycle.",
+      pt: "Botas de motociclista são o melhor calçado para usar ao pilotar. Outras botas feitas de couro ou material sintético resistente que cobrem os tornozelos também oferecem proteção, porém evite botas com biqueira de aço, pois podem causar queimaduras por atrito ou cortar os dedos em caso de acidente. Não pilote com tênis de corrida, ou pior, com sandálias ou descalço, e evite sapatos com fivelas ou cadarços que possam prender na moto.",
+      es: "Las botas de motociclista son el mejor calzado para usar al conducir. Otras botas hechas de cuero o material sintético resistente que cubran los tobillos también ofrecen protección; sin embargo, evite las botas con punta de acero, ya que pueden causar quemaduras por fricción o cortar los dedos en un accidente. No conduzca con zapatillas para correr, o peor aún, con sandalias o descalzo, y evite zapatos con hebillas o cordones que puedan engancharse en la motocicleta."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-40",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "What type of motorcycle can be ridden on a class RE licence?",
+      pt: "Que tipo de motocicleta pode ser conduzida com uma habilitação de classe RE?",
+      es: "¿Qué tipo de motocicleta se puede conducir con una licencia de clase RE?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "a learner approved motorcycle",
+          pt: "uma motocicleta aprovada para aprendizes",
+          es: "una motocicleta aprobada para aprendices"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "a motorcycle with an engine capacity of more than 660mL",
+          pt: "uma motocicleta com cilindrada superior a 660mL",
+          es: "una motocicleta con una cilindrada superior a 660 mL"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "a motorcycle with a power-to-weight ratio of more than 150kW per tonne",
+          pt: "uma motocicleta com relação potência-peso superior a 150kW por tonelada",
+          es: "una motocicleta con una relación potencia-peso superior a 150 kW por tonelada"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "any motorcycle",
+          pt: "qualquer motocicleta",
+          es: "cualquier motocicleta"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A class RE licence holder must only ride learner approved motorcycles. These motorcycles have a maximum power-to-weight ratio of 150kW/tonne and an upper engine capacity of 660mL. To help you identify what you can legally ride on a class RE licence, a list of learner approved motorcycles is available on the department's website.",
+      pt: "O titular de uma habilitação classe RE só pode pilotar motocicletas aprovadas para aprendizes. Essas motocicletas têm uma relação potência-peso máxima de 150kW/tonelada e cilindrada máxima de 660mL. Para ajudar a identificar o que você pode legalmente pilotar com uma habilitação classe RE, uma lista de motocicletas aprovadas para aprendizes está disponível no site do departamento.",
+      es: "El titular de una licencia clase RE solo puede conducir motocicletas aprobadas para aprendices. Estas motocicletas tienen una relación potencia-peso máxima de 150 kW/tonelada y una cilindrada máxima de 660 mL. Para ayudarle a identificar lo que puede conducir legalmente con una licencia clase RE, hay disponible en el sitio web del departamento una lista de motocicletas aprobadas para aprendices."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-41",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When coming to a normal stop, you should use -",
+      pt: "Ao fazer uma parada normal, você deve usar -",
+      es: "Al realizar una parada normal, debe usar -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "both brakes at the same time",
+          pt: "os dois freios ao mesmo tempo",
+          es: "ambos frenos al mismo tiempo"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "the front brake only",
+          pt: "somente o freio dianteiro",
+          es: "solo el freno delantero"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "the rear brake only",
+          pt: "somente o freio traseiro",
+          es: "solo el freno trasero"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Using front and rear brakes together reduces your stopping distance and maximises the motorcycle's stability. Developing good braking habits when stopping normally will ensure you are able to stop quickly and stably in emergency situations",
+      pt: "Usar os freios dianteiro e traseiro juntos reduz a distância de frenagem e maximiza a estabilidade da moto. Desenvolver bons hábitos de frenagem em paradas normais garantirá que você consiga parar de forma rápida e estável em situações de emergência.",
+      es: "Usar los frenos delantero y trasero juntos reduce la distancia de frenado y maximiza la estabilidad de la motocicleta. Desarrollar buenos hábitos de frenado al detenerse normalmente garantizará que pueda detenerse de forma rápida y estable en situaciones de emergencia."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-42",
+    cat: "Road Safety",
+    q: {
+      en: "When riding at night, you need to be able to -",
+      pt: "Ao pilotar à noite, você precisa ser capaz de -",
+      es: "Al conducir de noche, usted necesita poder -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "see through tinted lenses",
+          pt: "enxergar através de lentes escuras",
+          es: "ver a través de lentes oscuros (tintados)"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "ride without a visor or goggles",
+          pt: "pilotar sem viseira ou óculos de proteção",
+          es: "conducir sin visera ni gafas protectoras"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "stop within the distance you can see ahead",
+          pt: "parar dentro da distância que consegue enxergar à frente",
+          es: "detenerse dentro de la distancia que puede ver hacia adelante"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "While riding at night you should ride at a speed that will enable you to stop within the distance you can see in your headlight beam.",
+      pt: "Ao pilotar à noite, você deve andar em uma velocidade que permita parar dentro da distância que consegue enxergar sob o facho do farol.",
+      es: "Al conducir de noche, debe circular a una velocidad que le permita detenerse dentro de la distancia que puede ver con el alcance de su faro delantero."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-43",
+    cat: "Road Safety",
+    q: {
+      en: "When riding in heavy rain, a film of water can build between the tyres and the road, which can result in loss of control. This is known as 'aquaplaning'. How can you avoid this?",
+      pt: "Ao pilotar sob chuva forte, uma película de água pode se formar entre os pneus e a estrada, o que pode resultar em perda de controle. Isso é conhecido como 'aquaplanagem'. Como você pode evitar isso?",
+      es: "Al conducir bajo lluvia intensa, se puede formar una película de agua entre los neumáticos y la carretera, lo que puede provocar una pérdida de control. Esto se conoce como 'hidroplaneo' (aquaplaning). ¿Cómo puede evitarlo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "slow down",
+          pt: "reduzindo a velocidade",
+          es: "reduciendo la velocidad"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "speed up",
+          pt: "aumentando a velocidade",
+          es: "aumentando la velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "decrease your tyre pressure",
+          pt: "diminuindo a pressão dos pneus",
+          es: "disminuyendo la presión de los neumáticos"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "increase your tyre pressure",
+          pt: "aumentando a pressão dos pneus",
+          es: "aumentando la presión de los neumáticos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The faster you travel in wet conditions the less traction your tyres have; aquaplaning occurs where the tyres lose all traction. Slowing down increases the grip your tyres have on the road and decreases your risk of aquaplaning. If you do begin to aquaplane, ease the throttle off smoothly to slow down.",
+      pt: "Quanto mais rápido você viaja em condições molhadas, menos tração seus pneus têm; a aquaplanagem ocorre quando os pneus perdem toda a tração. Reduzir a velocidade aumenta a aderência dos pneus na estrada e diminui o risco de aquaplanagem. Se você começar a aquaplanar, alivie o acelerador suavemente para reduzir a velocidade.",
+      es: "Cuanto más rápido viaje en condiciones de humedad, menos tracción tendrán sus neumáticos; el hidroplaneo ocurre cuando los neumáticos pierden toda la tracción. Reducir la velocidad aumenta el agarre de los neumáticos en la carretera y disminuye el riesgo de hidroplaneo. Si comienza a hidroplanear, suelte el acelerador suavemente para reducir la velocidad."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-44",
+    cat: "Road Safety",
+    q: {
+      en: "When riding on a wet road, what is usually the most slippery part?",
+      pt: "Ao pilotar em uma estrada molhada, qual costuma ser a parte mais escorregadia?",
+      es: "Al conducir en una carretera mojada, ¿cuál suele ser la parte más resbaladiza?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "the left wheel track",
+          pt: "a faixa de rodagem da roda esquerda",
+          es: "el rodera de la rueda izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "the right wheel track",
+          pt: "a faixa de rodagem da roda direita",
+          es: "el rodera de la rueda derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "the centre of the lane",
+          pt: "o centro da faixa",
+          es: "el centro del carril"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The centre of the lane is where oil leaks from vehicles. Where vehicles stop at intersections is usually where the biggest build up of oil occurs. Over time, enough oil can leak onto the road to make it slippery for motorcycles ridden across that area, particularly when the road is wet.",
+      pt: "O centro da faixa é onde vaza óleo dos veículos. Onde os veículos param em cruzamentos costuma ser onde ocorre o maior acúmulo de óleo. Com o tempo, óleo suficiente pode vazar na estrada a ponto de deixá-la escorregadia para as motos que passam por essa área, especialmente quando a estrada está molhada.",
+      es: "El centro del carril es donde gotea el aceite de los vehículos. El lugar donde los vehículos se detienen en las intersecciones suele ser donde se produce la mayor acumulación de aceite. Con el tiempo, puede filtrarse suficiente aceite en la carretera como para volverla resbaladiza para las motocicletas que circulan por esa zona, especialmente cuando la carretera está mojada."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-45",
+    cat: "Give Way Rules",
+    q: {
+      en: "When riding, if you are turning left at an intersection where a pedestrian has begun crossing the road you are turning into, who gives way?",
+      pt: "Ao pilotar, se você estiver virando à esquerda em um cruzamento onde um pedestre já começou a atravessar a rua para a qual você está virando, quem deve dar passagem?",
+      es: "Al conducir, si usted está girando a la izquierda en una intersección donde un peatón ya ha comenzado a cruzar la calle hacia la que está girando, ¿quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "whoever was there last",
+          pt: "quem chegou por último",
+          es: "quien llegó último"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "whoever was there first",
+          pt: "quem chegou primeiro",
+          es: "quien llegó primero"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "you",
+          pt: "você",
+          es: "usted"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "the pedestrian",
+          pt: "o pedestre",
+          es: "el peatón"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A rider turning at an intersection must give way to any pedestrian crossing the road they are entering.",
+      pt: "Um motociclista que está virando em um cruzamento deve dar passagem a qualquer pedestre que esteja atravessando a rua para a qual está entrando.",
+      es: "Un motociclista que está girando en una intersección debe ceder el paso a cualquier peatón que esté cruzando la calle hacia la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-46",
+    cat: "Road Safety",
+    q: {
+      en: "When should you indicate your intention to turn?",
+      pt: "Quando você deve sinalizar sua intenção de virar?",
+      es: "¿Cuándo debe indicar su intención de girar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "30 metres before the turn",
+          pt: "30 metros antes da curva",
+          es: "30 metros antes del giro"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "50 metres before the turn",
+          pt: "50 metros antes da curva",
+          es: "50 metros antes del giro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "early enough to give sufficient warning to other road users",
+          pt: "com antecedência suficiente para avisar adequadamente os outros usuários da via",
+          es: "con suficiente antelación para advertir adecuadamente a los demás usuarios de la vía"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "40 metres before the turn",
+          pt: "40 metros antes da curva",
+          es: "40 metros antes del giro"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When changing direction you should indicate for long enough to give sufficient warning to other motorists and pedestrians. This time may vary depending on the road and traffic conditions; ensure you ride for the conditions.",
+      pt: "Ao mudar de direção, você deve sinalizar por tempo suficiente para dar aviso adequado a outros motoristas e pedestres. Esse tempo pode variar dependendo da via e das condições do trânsito; certifique-se de pilotar conforme as condições.",
+      es: "Al cambiar de dirección, debe indicar durante el tiempo suficiente para dar una advertencia adecuada a otros conductores y peatones. Este tiempo puede variar según la vía y las condiciones del tránsito; asegúrese de conducir según las condiciones."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-47",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "When stopping behind another vehicle, what is the recommended clearance distance between your motorcycle and the vehicle in front of you?",
+      pt: "Ao parar atrás de outro veículo, qual é a distância de segurança recomendada entre sua motocicleta e o veículo à sua frente?",
+      es: "Al detenerse detrás de otro vehículo, ¿cuál es la distancia de separación recomendada entre su motocicleta y el vehículo que tiene delante?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "1 metre",
+          pt: "1 metro",
+          es: "1 metro"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 motorcycle lengths",
+          pt: "1,5 comprimento de motocicleta",
+          es: "1,5 largos de motocicleta"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "3 motorcycle lengths",
+          pt: "3 comprimentos de motocicleta",
+          es: "3 largos de motocicleta"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When you stop behind another vehicle leave at least one and a half motorcycle lengths between your front wheel and the back of the vehicle in front of you. This will give you options to avoid the vehicle in front if it rolls back or reverses.",
+      pt: "Ao parar atrás de outro veículo, deixe pelo menos um comprimento e meio de motocicleta entre sua roda dianteira e a traseira do veículo à sua frente. Isso lhe dará opções para evitar o veículo da frente caso ele role para trás ou dê marcha à ré.",
+      es: "Al detenerse detrás de otro vehículo, deje al menos un largo y medio de motocicleta entre su rueda delantera y la parte trasera del vehículo que tiene delante. Esto le dará opciones para evitar el vehículo de adelante si retrocede o da marcha atrás."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-48",
+    cat: "Road Safety",
+    q: {
+      en: "When you are passing parked vehicles, what things do you need to look for?",
+      pt: "Ao passar por veículos estacionados, quais coisas você precisa observar?",
+      es: "Al pasar junto a vehículos estacionados, ¿qué cosas debe observar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "vehicle doors opening",
+          pt: "portas de veículos se abrindo",
+          es: "puertas de vehículos que se abren"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "pedestrians walking out from behind parked vehicles",
+          pt: "pedestres saindo de trás de veículos estacionados",
+          es: "peatones que salen de detrás de vehículos estacionados"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "both of the above",
+          pt: "ambas as opções acima",
+          es: "ambas opciones anteriores"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When passing parked cars you should look for potential hazards that may affect your riding or make you take evasive action. The most likely hazards around parked vehicles are doors opening, vehicles pulling out without indicating and people stepping out from behind vehicles.",
+      pt: "Ao passar por carros estacionados, você deve observar possíveis perigos que possam afetar sua pilotagem ou exigir uma manobra evasiva. Os perigos mais prováveis perto de veículos estacionados são portas se abrindo, veículos saindo sem sinalizar e pessoas saindo de trás de veículos.",
+      es: "Al pasar junto a autos estacionados, debe observar posibles peligros que puedan afectar su conducción o requerir una maniobra evasiva. Los peligros más probables cerca de vehículos estacionados son puertas que se abren, vehículos que salen sin señalizar y personas que salen de detrás de los vehículos."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-49",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Where should a rider's feet be placed while riding at normal road speeds?",
+      pt: "Onde os pés do piloto devem estar posicionados ao pilotar em velocidades normais de estrada?",
+      es: "¿Dónde deben colocarse los pies del conductor al circular a velocidades normales de carretera?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "only on the footrests provided for the rider",
+          pt: "somente nos apoios de pé destinados ao piloto",
+          es: "solo en los estribos destinados al conductor"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "any position that is comfortable",
+          pt: "em qualquer posição confortável",
+          es: "en cualquier posición cómoda"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "on the pillion passenger footrests",
+          pt: "nos apoios de pé do passageiro (garupa)",
+          es: "en los estribos del pasajero (parrillero)"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A rider should place their feet on the footrests provided for the rider, except when stopping or moving off.",
+      pt: "O piloto deve manter os pés nos apoios destinados a ele, exceto ao parar ou partir.",
+      es: "El conductor debe mantener los pies en los estribos destinados a él, excepto al detenerse o al arrancar."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-50",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Where should you sit to help you control the motorcycle?",
+      pt: "Onde você deve se sentar para ajudar a controlar a motocicleta?",
+      es: "¿Dónde debe sentarse para ayudarlo a controlar la motocicleta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "to the front of the seat",
+          pt: "na parte da frente do banco",
+          es: "en la parte delantera del asiento"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "on the petrol tank",
+          pt: "no tanque de combustível",
+          es: "sobre el tanque de combustible"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "to the back of the seat",
+          pt: "na parte de trás do banco",
+          es: "en la parte trasera del asiento"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A motorcycle is much easier to control if you are sitting forward on the seat with your knees gripping the tank and your feet on the footrests.",
+      pt: "Uma motocicleta é muito mais fácil de controlar se você estiver sentado à frente do banco, com os joelhos segurando o tanque e os pés nos apoios.",
+      es: "Una motocicleta es mucho más fácil de controlar si se sienta hacia adelante en el asiento, con las rodillas sujetando el tanque y los pies en los estribos."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-51",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which item is a rider required to wear by law?",
+      pt: "Qual item o piloto é obrigado por lei a usar?",
+      es: "¿Qué elemento está obligado por ley a usar un motociclista?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "warm clothing",
+          pt: "roupa quente",
+          es: "ropa de abrigo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "gloves",
+          pt: "luvas",
+          es: "guantes"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "an approved motorcycle helmet",
+          pt: "um capacete de motociclista aprovado",
+          es: "un casco de motociclista aprobado"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "a jacket",
+          pt: "uma jaqueta",
+          es: "una chaqueta"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A rider, and any passenger, must wear an approved motorcycle helmet that is correctly fitted and securely fastened.",
+      pt: "Um piloto, e qualquer passageiro, deve usar um capacete de motociclista aprovado, corretamente ajustado e firmemente afivelado.",
+      es: "Un motociclista, y cualquier pasajero, debe usar un casco de motociclista aprobado, correctamente colocado y bien abrochado."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-52",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "Which of the following statements about learning to ride is wrong?",
+      pt: "Qual das seguintes afirmações sobre aprender a pilotar está incorreta?",
+      es: "¿Cuál de las siguientes afirmaciones sobre aprender a conducir una motocicleta es incorrecta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "your supervisor must have held an open motorcycle licence of the relevant class (class RE or R) for at least 12 months",
+          pt: "seu supervisor deve possuir uma habilitação de motocicleta plena (classe RE ou R) da categoria relevante há pelo menos 12 meses",
+          es: "su supervisor debe haber tenido una licencia de motocicleta plena de la clase correspondiente (clase RE o R) durante al menos 12 meses"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "you can practice on your own if you cannot find a supervisor, as long as you ride in quiet streets",
+          pt: "você pode praticar sozinho se não encontrar um supervisor, desde que pilote em ruas tranquilas",
+          es: "puede practicar solo si no encuentra un supervisor, siempre que conduzca en calles tranquilas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "you must be accompanied by a supervisor at all times",
+          pt: "você deve estar sempre acompanhado por um supervisor",
+          es: "debe estar siempre acompañado por un supervisor"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A learner rider must ride with a supervisor at all times.  A supervisor must hold a valid open class RE or R licence (depending on the class of motorcycle you are learning to ride) and have held that licence for at least 12 months.",
+      pt: "Um piloto aprendiz deve pilotar sempre acompanhado por um supervisor. O supervisor deve possuir uma habilitação plena válida de classe RE ou R (dependendo da classe de motocicleta que você está aprendendo a pilotar) e possuí-la há pelo menos 12 meses.",
+      es: "Un conductor aprendiz debe conducir siempre acompañado por un supervisor. El supervisor debe tener una licencia plena válida de clase RE o R (según la clase de motocicleta que esté aprendiendo a conducir) y haberla tenido durante al menos 12 meses."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-53",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "While riding on a learner licence, you must -",
+      pt: "Ao pilotar com uma habilitação de aprendiz, você deve -",
+      es: "Al conducir con una licencia de aprendiz, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "wear a fluorescent vest",
+          pt: "usar um colete fluorescente",
+          es: "usar un chaleco fluorescente"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "display a 'P' plate at all times",
+          pt: "exibir uma placa 'P' o tempo todo",
+          es: "exhibir una placa 'P' en todo momento"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "display an 'L' plate at all times",
+          pt: "exibir uma placa 'L' o tempo todo",
+          es: "exhibir una placa 'L' en todo momento"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "All learner riders must clearly show a yellow 'L' plate on the rear of their motorcycle or on the back of a vest worn while riding. The 'L' plate must not be hidden or covered.",
+      pt: "Todo piloto aprendiz deve exibir claramente uma placa amarela 'L' na traseira da motocicleta ou nas costas de um colete usado ao pilotar. A placa 'L' não deve estar escondida ou coberta.",
+      es: "Todo conductor aprendiz debe exhibir claramente una placa amarilla 'L' en la parte trasera de la motocicleta o en la espalda de un chaleco usado al conducir. La placa 'L' no debe estar oculta ni cubierta."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-54",
+    cat: "Road Safety",
+    q: {
+      en: "You are riding at a safe distance behind a vehicle. If another vehicle comes up too close behind you and 'tailgates', you should -",
+      pt: "Você está pilotando a uma distância segura atrás de um veículo. Se outro veículo se aproximar demais atrás de você e ficar 'colado' (tailgating), você deve -",
+      es: "Usted está conduciendo a una distancia segura detrás de un vehículo. Si otro vehículo se acerca demasiado por detrás y lo 'sigue muy de cerca' (tailgating), usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "move further left in your lane",
+          pt: "mover-se mais para a esquerda na faixa",
+          es: "moverse más hacia la izquierda en su carril"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "slow down to increase the gap in front of you",
+          pt: "reduzir a velocidade para aumentar o espaço à sua frente",
+          es: "reducir la velocidad para aumentar el espacio frente a usted"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "move closer to the vehicle ahead",
+          pt: "aproximar-se mais do veículo da frente",
+          es: "acercarse más al vehículo de adelante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If a vehicle behind is travelling too closely, slow down slightly to increase the space you have in front of you. This will ensure that if the vehicle in front brakes suddenly, you have enough space to slow down steadily, reducing the risk that the vehicle behind will crash into you.",
+      pt: "Se um veículo atrás estiver seguindo muito perto, reduza um pouco a velocidade para aumentar o espaço à sua frente. Isso garantirá que, se o veículo da frente frear repentinamente, você terá espaço suficiente para desacelerar de forma constante, reduzindo o risco de o veículo de trás colidir com você.",
+      es: "Si un vehículo detrás va demasiado cerca, reduzca ligeramente la velocidad para aumentar el espacio que tiene delante. Esto garantizará que, si el vehículo de adelante frena repentinamente, usted tenga suficiente espacio para desacelerar de manera constante, reduciendo el riesgo de que el vehículo de atrás choque contra usted."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-55",
+    cat: "Road Safety",
+    q: {
+      en: "You are riding on a sealed road when you see sand on the road ahead. What should you do?",
+      pt: "Você está pilotando em uma estrada pavimentada quando vê areia na pista à frente. O que você deve fazer?",
+      es: "Usted está conduciendo en una carretera pavimentada cuando ve arena en la vía más adelante. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "slow down",
+          pt: "reduzir a velocidade",
+          es: "reducir la velocidad"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "change down gears for more power",
+          pt: "reduzir a marcha para ter mais potência",
+          es: "reducir de marcha para tener más potencia"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "speed up",
+          pt: "acelerar",
+          es: "acelerar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Your stopping distance will increase when the road is wet, muddy, slippery, has a loose surface, or if you are travelling down hill. In slippery conditions reduce your speed and ensure you ride for the conditions.",
+      pt: "Sua distância de frenagem aumentará quando a estrada estiver molhada, enlameada, escorregadia, com piso solto ou se você estiver descendo um morro. Em condições escorregadias, reduza a velocidade e certifique-se de pilotar conforme as condições.",
+      es: "Su distancia de frenado aumentará cuando la carretera esté mojada, embarrada, resbaladiza, tenga una superficie suelta o si va cuesta abajo. En condiciones resbaladizas, reduzca la velocidad y asegúrese de conducir según las condiciones."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-56",
+    sign: "/icons/signs/qld-motorbikeimage21.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are riding vehicle A and the speed limit is more than 80km/hour. Which of the following statements is wrong?",
+      pt: "Você está pilotando o veículo A e o limite de velocidade é superior a 80km/h. Qual das seguintes afirmações está incorreta?",
+      es: "Usted conduce el vehículo A y el límite de velocidad es superior a 80 km/h. ¿Cuál de las siguientes afirmaciones es incorrecta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "you must ride in the left lane unless you are overtaking a vehicle in the left lane",
+          pt: "você deve pilotar na faixa da esquerda, a menos que esteja ultrapassando um veículo na faixa da esquerda",
+          es: "debe conducir en el carril izquierdo, a menos que esté adelantando a un vehículo en el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "you must ride in the left lane unless you are turning right",
+          pt: "você deve pilotar na faixa da esquerda, a menos que esteja virando à direita",
+          es: "debe conducir en el carril izquierdo, a menos que esté girando a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "you can ride in either lane any time",
+          pt: "você pode pilotar em qualquer uma das faixas a qualquer momento",
+          es: "puede conducir en cualquiera de los carriles en cualquier momento"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A rider on a multi-lane road where the speed limit is above 80km/hour must not ride in the right lane unless overtaking another vehicle, preparing for a right turn, avoiding an obstacle, or the traffic in every lane is congested.",
+      pt: "Um piloto em uma via de múltiplas faixas onde o limite de velocidade é superior a 80km/h não deve pilotar na faixa da direita, a menos que esteja ultrapassando outro veículo, se preparando para uma curva à direita, desviando de um obstáculo, ou o trânsito em todas as faixas estiver congestionado.",
+      es: "Un conductor en una vía de varios carriles donde el límite de velocidad es superior a 80 km/h no debe conducir en el carril derecho, a menos que esté adelantando a otro vehículo, preparándose para girar a la derecha, evitando un obstáculo, o el tránsito en todos los carriles esté congestionado."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-57",
+    sign: "/icons/signs/qld-motorbikeimage17.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are riding vehicle A from private property. You must give way to -",
+      pt: "Você está pilotando o veículo A saindo de uma propriedade privada. Você deve dar passagem a -",
+      es: "Usted conduce el vehículo A y sale de una propiedad privada. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "both vehicle B and C",
+          pt: "ambos os veículos B e C",
+          es: "ambos vehículos B y C"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "vehicle B only",
+          pt: "somente ao veículo B",
+          es: "solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "no one, the other vehicles must give way to you",
+          pt: "a ninguém, os outros veículos devem dar passagem a você",
+          es: "a nadie, los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicles B and C. A rider entering a road from private property must give way to vehicles on the road they are entering.",
+      pt: "O veículo A deve dar passagem aos veículos B e C. Um piloto que entra em uma via a partir de uma propriedade privada deve dar passagem aos veículos que estão na via em que está entrando.",
+      es: "El vehículo A debe ceder el paso a los vehículos B y C. Un motociclista que ingresa a una vía desde una propiedad privada debe ceder el paso a los vehículos que circulan por la vía a la que está entrando."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-58",
+    sign: "/icons/signs/qld-motorbikeimage10.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are riding vehicle A. What must you do when merging onto a freeway?",
+      pt: "Você está pilotando o veículo A. O que você deve fazer ao se incorporar (entrar) em uma via expressa (freeway)?",
+      es: "Usted conduce el vehículo A. ¿Qué debe hacer al incorporarse a una autopista (freeway)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "give way to the vehicle in the lane you are moving into",
+          pt: "dar passagem ao veículo na faixa para a qual você está se movendo",
+          es: "ceder el paso al vehículo en el carril al que se está incorporando"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "ride onto the hard shoulder until a gap appears",
+          pt: "pilotar até o acostamento e esperar até que surja um espaço",
+          es: "conducir hacia la banquina (arcén) hasta que aparezca un espacio"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "stop at the end of the on-ramp",
+          pt: "parar no final da rampa de acesso",
+          es: "detenerse al final de la rampa de acceso"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle A must give way to vehicle B. If the lane the rider is travelling in comes to an end, and the rider has to cross a lane line to merge, the rider must give way to traffic already in the lane they are moving to.",
+      pt: "O veículo A deve dar passagem ao veículo B. Se a faixa em que o piloto está trafegando terminar, e o piloto precisar cruzar uma linha de faixa para se incorporar, o piloto deve dar passagem ao trânsito que já está na faixa para a qual está se movendo.",
+      es: "El vehículo A debe ceder el paso al vehículo B. Si el carril por el que circula el conductor termina y este debe cruzar una línea de carril para incorporarse, debe ceder el paso al tránsito que ya circula por el carril al que se está incorporando."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-59",
+    sign: "/icons/signs/qld-motorbikeimage16.jpg",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "You are riding vehicle A. Which road position provides the best buffer to other vehicles?",
+      pt: "Você está pilotando o veículo A. Qual posição na via oferece a melhor margem de segurança em relação a outros veículos?",
+      es: "Usted conduce el vehículo A. ¿Qué posición en la vía ofrece el mejor colchón de seguridad respecto a otros vehículos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "right side of the lane",
+          pt: "lado direito da faixa",
+          es: "lado derecho del carril"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "left side of the lane",
+          pt: "lado esquerdo da faixa",
+          es: "lado izquierdo del carril"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "centre of the lane",
+          pt: "centro da faixa",
+          es: "centro del carril"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The centre of the lane provides the best buffer as there is traffic to the left and right of the motorcycle creating multiple hazards. If there is oncoming traffic it is usually best to remain in the centre of the lane to maximise your space buffer. You can significantly reduce the risk of crashing by actively managing your road position, considering your space from hazards, the road surface and sight lines.",
+      pt: "O centro da faixa oferece a melhor margem de segurança, pois há trânsito à esquerda e à direita da motocicleta, criando múltiplos perigos. Se houver trânsito vindo em sentido contrário, geralmente é melhor permanecer no centro da faixa para maximizar sua margem de espaço. Você pode reduzir significativamente o risco de colisão gerenciando ativamente sua posição na via, considerando o espaço em relação aos perigos, a superfície da estrada e as linhas de visão.",
+      es: "El centro del carril ofrece el mejor colchón de seguridad, ya que hay tránsito a la izquierda y a la derecha de la motocicleta, lo que genera múltiples peligros. Si hay tránsito en sentido contrario, generalmente es mejor permanecer en el centro del carril para maximizar su margen de espacio. Puede reducir significativamente el riesgo de un accidente gestionando activamente su posición en la vía, teniendo en cuenta el espacio respecto a los peligros, la superficie de la carretera y las líneas de visión."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-60",
+    sign: "/icons/signs/qld-motorbikeimage01.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are riding vehicle C. You must give way to -",
+      pt: "Você está pilotando o veículo C. Você deve dar passagem a -",
+      es: "Usted conduce el vehículo C. Debe ceder el paso a -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "vehicle B only",
+          pt: "somente ao veículo B",
+          es: "solo al vehículo B"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "neither vehicle A or B",
+          pt: "nem ao veículo A nem ao B",
+          es: "ni al vehículo A ni al B"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "vehicle A only",
+          pt: "somente ao veículo A",
+          es: "solo al vehículo A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicle C does not need to give way to either of the vehicles. Vehicle B must give way to vehicle C as it is turning across vehicle C's path. Vehicle A does not give way to, or affect, either vehicle B or C.",
+      pt: "O veículo C não precisa dar passagem a nenhum dos veículos. O veículo B deve dar passagem ao veículo C, pois está cruzando o caminho do veículo C. O veículo A não dá passagem, nem afeta, o veículo B ou C.",
+      es: "El vehículo C no necesita ceder el paso a ninguno de los vehículos. El vehículo B debe ceder el paso al vehículo C, ya que está cruzando su trayectoria. El vehículo A no cede el paso ni afecta al vehículo B ni al C."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  },
+  {
+    id: "QLDM-61",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You should always check blind spots before -",
+      pt: "Você deve sempre verificar os pontos cegos antes de -",
+      es: "Usted siempre debe revisar los puntos ciegos antes de -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "applying the brakes",
+          pt: "acionar os freios",
+          es: "frenar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "changing direction",
+          pt: "mudar de direção",
+          es: "cambiar de dirección"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "riding around a bend",
+          pt: "fazer uma curva",
+          es: "tomar una curva"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Checking blind spots, with a shoulder check, before changing direction will alert you to any vehicles that may be travelling in the lane or road position you are moving into and minimise the risk of a crash.",
+      pt: "Verificar os pontos cegos, com uma olhada por cima do ombro, antes de mudar de direção alertará você sobre quaisquer veículos que possam estar trafegando na faixa ou posição da via para a qual você está se movendo, minimizando o risco de colisão.",
+      es: "Revisar los puntos ciegos, mirando por encima del hombro, antes de cambiar de dirección le alertará sobre cualquier vehículo que pueda estar circulando en el carril o posición de la vía hacia la que se está moviendo, minimizando el riesgo de un accidente."
+    },
+    tip: null,
+    states: ["QLD"],
+    licenceType: "motorcycle",
+  }
 ] as const;
 
 export const CATEGORIES: readonly CategoryType[] = [

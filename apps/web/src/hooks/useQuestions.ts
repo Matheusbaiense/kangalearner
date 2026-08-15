@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import type { Question } from "@kanga/core";
 
-const QUESTIONS_VERSION = "v10";
+const QUESTIONS_VERSION = "v11";
 const CACHE_KEY = `kl-questions-${QUESTIONS_VERSION}`;
 
 let _inFlight: Promise<Question[]> | null = null;

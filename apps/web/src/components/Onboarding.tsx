@@ -18,7 +18,7 @@ const SUPPRESS_PATHS = [
   "/mock-test"
 ];
 
-const LIVE_STATES = ["WA", "NSW"];
+const LIVE_STATES = ["WA", "NSW", "QLD"];
 
 const STATES = AU_STATE_OPTIONS.map((s) => ({
   key: s.code,
