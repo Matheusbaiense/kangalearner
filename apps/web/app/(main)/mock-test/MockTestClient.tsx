@@ -158,7 +158,8 @@ export function MockTestClient() {
       <div className="mock-setup-card">
         <h1>{s.mockTest}</h1>
         <p className="mock-meta">
-          {STATE_NAMES[selectedState]} · 30 questions · Pass mark: {WA_PASS_MIN_CORRECT}/30 (80%)
+          {STATE_NAMES[selectedState]} · 30 {s.questionsWord} · {s.passMarkWord}:{" "}
+          {WA_PASS_MIN_CORRECT}/30 (80%)
         </p>
 
         <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>

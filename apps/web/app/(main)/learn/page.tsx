@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "alcohol laws and more. Explanations in English, Portuguese and Spanish.",
   alternates: { canonical: "https://kangalearner.com.au/learn" },
   openGraph: {
-    title: "Learn WA Road Rules | KangaLearner",
+    title: "Learn Australian Road Rules",
     description:
       "Every WA learner test topic explained in plain language, in English, Portuguese and Spanish.",
     url: "https://kangalearner.com.au/learn"
