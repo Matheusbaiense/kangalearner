@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Flame, Target } from "lucide-react";
 import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
+import { Kanga } from "@/components/brand/Kanga";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { pct } from "@/lib/percent";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
@@ -263,8 +264,14 @@ export function DashboardClient({
               {s.dashCategoryBreakdown}
             </p>
             {stateCategoryStats.length === 0 ? (
-              <div className="dash-empty">
-                {s.dashNoAttemptsForStatePrefix} {selectedState}. {s.dashNoAttemptsForStateSuffix}
+              <div
+                className="dash-empty"
+                style={{ display: "flex", alignItems: "center", gap: 14 }}
+              >
+                <Kanga pose="search" size={72} style={{ flexShrink: 0 }} />
+                <span>
+                  {s.dashNoAttemptsForStatePrefix} {selectedState}. {s.dashNoAttemptsForStateSuffix}
+                </span>
               </div>
             ) : (
               <div className="cat-list">

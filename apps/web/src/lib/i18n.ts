@@ -54,6 +54,12 @@ export const t = {
     help: "Help",
     signOut: "Sign out",
 
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "Almost!",
+    notFoundTitle: "Page not found",
+    notFoundSub: "The page you are looking for does not exist or has moved.",
+    notFoundCta: "Back to home",
+
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Learn Road Rules",
     learnSub: "Study by topic before taking the practice quiz or mock test.",
@@ -443,6 +449,12 @@ export const t = {
     achievements: "Conquistas",
     help: "Ajuda",
     signOut: "Sair",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "Quase!",
+    notFoundTitle: "Página não encontrada",
+    notFoundSub: "A página que você procura não existe ou mudou de lugar.",
+    notFoundCta: "Voltar ao início",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Aprender as regras de trânsito",
@@ -835,6 +847,12 @@ export const t = {
     achievements: "Logros",
     help: "Ayuda",
     signOut: "Salir",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "¡Casi!",
+    notFoundTitle: "Página no encontrada",
+    notFoundSub: "La página que buscas no existe o cambió de lugar.",
+    notFoundCta: "Volver al inicio",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Aprender las reglas de tránsito",
