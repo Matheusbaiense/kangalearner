@@ -427,7 +427,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return qs;
   }, [mode, cat, answered, saved, licenceQS]);
 
-  /* Group study questions by category (only the currently revealed slice — see PAGE_SIZE) */
+  /* Group study questions by category (only the currently revealed slice, see PAGE_SIZE) */
   const grouped = useMemo(() => {
     const m: Record<string, Question[]> = {};
     filtered.slice(0, visibleCount).forEach((q) => {

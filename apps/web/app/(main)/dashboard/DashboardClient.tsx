@@ -104,6 +104,31 @@ export function DashboardClient({
           </Link>
         </div>
 
+        {totalAnswered === 0 && (
+          <div
+            className="stat-card"
+            style={{
+              marginBottom: 22,
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 16,
+              borderColor: "var(--green2)"
+            }}
+          >
+            <div style={{ maxWidth: 560 }}>
+              <div className="stat-card-label" style={{ marginBottom: 6 }}>
+                {s.dashWelcomeTitle}
+              </div>
+              <div className="stat-card-sub">{s.dashWelcomeSub}</div>
+            </div>
+            <Link href="/practice" className="btn btn-primary" style={{ textDecoration: "none" }}>
+              {s.dashWelcomeCta} →
+            </Link>
+          </div>
+        )}
+
         <div className="stat-grid">
           <div className="stat-card">
             <div className="stat-card-label">{s.dashQuestionsAnswered}</div>

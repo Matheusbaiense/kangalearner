@@ -31,6 +31,7 @@ export const t = {
     practice: "Practice",
     retry: "Retry",
     questionsWord: "questions",
+    passMarkWord: "Pass mark",
     topicsWord: "topics",
     roadRulesWord: "road rules",
     mockTest: "Mock Test",
@@ -231,6 +232,10 @@ export const t = {
       "Your practice history is synced to the cloud. Check your Dashboard for full stats.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Let's get you test-ready",
+    dashWelcomeSub:
+      "Three steps to your learner licence: study the topics, practise real questions, then prove it in a mock test.",
+    dashWelcomeCta: "Answer your first question",
     dashHello: "Hello",
     dashSub: "Your progress across all practice sessions.",
     dashQuestionsAnswered: "Questions answered",
@@ -427,6 +432,7 @@ export const t = {
     practice: "Praticar",
     retry: "Tentar de novo",
     questionsWord: "questões",
+    passMarkWord: "Nota de corte",
     topicsWord: "tópicos",
     roadRulesWord: "regras de trânsito",
     mockTest: "Simulado",
@@ -628,6 +634,10 @@ export const t = {
       "Seu histórico de prática está sincronizado na nuvem. Veja seu Painel para estatísticas completas.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Vamos te deixar pronto para a prova",
+    dashWelcomeSub:
+      "Três passos até a sua licença de learner: estude os tópicos, pratique questões reais e prove no simulado.",
+    dashWelcomeCta: "Responda sua primeira questão",
     dashHello: "Olá",
     dashSub: "Seu progresso em todas as sessões de prática.",
     dashQuestionsAnswered: "Perguntas respondidas",
@@ -826,6 +836,7 @@ export const t = {
     practice: "Practicar",
     retry: "Reintentar",
     questionsWord: "preguntas",
+    passMarkWord: "Puntaje mínimo",
     topicsWord: "temas",
     roadRulesWord: "reglas de tránsito",
     mockTest: "Simulacro",
@@ -1026,6 +1037,10 @@ export const t = {
       "Tu historial de práctica está sincronizado en la nube. Consulta tu Panel para estadísticas completas.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Vamos a dejarte listo para el examen",
+    dashWelcomeSub:
+      "Tres pasos hasta tu licencia de learner: estudia los temas, practica preguntas reales y demuéstralo en el simulacro.",
+    dashWelcomeCta: "Responde tu primera pregunta",
     dashHello: "Hola",
     dashSub: "Tu progreso en todas las sesiones de práctica.",
     dashQuestionsAnswered: "Preguntas respondidas",

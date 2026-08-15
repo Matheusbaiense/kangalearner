@@ -6,7 +6,7 @@ import { DashboardClient } from "./DashboardClient";
 import { AU_STATE_OPTIONS, normalizeAuState, type AuStateCode } from "./state-options";
 import { pct } from "@/lib/percent";
 
-export const metadata = { title: "Dashboard | KangaLearner" };
+export const metadata = { title: "Dashboard" };
 
 type CatStatRow = {
   category: string;
