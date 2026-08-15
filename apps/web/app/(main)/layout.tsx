@@ -13,8 +13,8 @@ function getInitials(name: string, email: string): string {
 }
 
 // Isolated in its own async component (rather than awaited at the top of MainLayout)
-// so the Suspense boundary below can actually stream the rest of the page — including
-// {children}, the page content — while this resolves, instead of blocking the whole
+// so the Suspense boundary below can actually stream the rest of the page, including
+// {children}, the page content, while this resolves, instead of blocking the whole
 // response on a Supabase round-trip before any HTML can be sent.
 async function NavUserSlot() {
   let initialNavUser: InitialNavUser | null = null;

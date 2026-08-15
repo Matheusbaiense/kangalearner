@@ -4,7 +4,7 @@ import { PUBLISHED_BLOG_POSTS } from "@/lib/blogPosts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = "https://kangalearner.com.au";
-  // ponytail: static content-revision date, not new Date() per request — a
+  // ponytail: static content-revision date, not new Date() per request, a
   // lastModified that changes on every crawl is a meaningless freshness
   // signal to Google. Bump this when page content actually changes.
   const now = new Date("2026-08-11T00:00:00Z");

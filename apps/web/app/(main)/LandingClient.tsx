@@ -108,109 +108,6 @@ const AU_STATES = (["WA", "NSW", "VIC", "QLD"] as const).map((code) => ({
   available: (LIVE_STATE_CODES as readonly string[]).includes(code)
 }));
 
-const TESTIMONIALS = [
-  {
-    name: "Carlos M.",
-    state: "WA",
-    country: "br",
-    quote: {
-      en: "Passed first try! The questions in Portuguese made everything so much easier to understand.",
-      pt: "Passei na primeira tentativa! As perguntas em português tornaram tudo muito mais fácil de entender.",
-      es: "¡Pasé en el primer intento! Las preguntas en portugués hicieron que todo fuera más fácil de entender."
-    }
-  },
-  {
-    name: "Ana R.",
-    state: "WA",
-    country: "es",
-    quote: {
-      en: "Perfect for someone who doesn't speak fluent English. I studied in Spanish and passed with no problems.",
-      pt: "Perfeito para quem não fala inglês fluente. Estudei em espanhol e passei sem problemas.",
-      es: "Perfecto para alguien que no habla inglés fluido. Pude estudiar en español y aprobar sin problemas."
-    }
-  },
-  {
-    name: "Michael T.",
-    state: "WA",
-    country: "au",
-    quote: {
-      en: "The mock test mode is brilliant, I did it 3 times until I consistently got over 90%. Passed first go!",
-      pt: "O modo simulado é ótimo, fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
-      es: "El modo simulacro es brillante, lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
-    }
-  },
-  {
-    name: "Linh N.",
-    state: "WA",
-    country: "vn",
-    quote: {
-      en: "I was nervous about studying in a second language, but the clear explanations made everything click. Passed easily!",
-      pt: "Estava nervosa em estudar em um segundo idioma, mas as explicações claras fizeram tudo fazer sentido. Passei com facilidade!",
-      es: "Estaba nerviosa estudiando en un segundo idioma, pero las explicaciones claras lo hicieron todo muy claro. ¡Aprobé fácilmente!"
-    }
-  },
-  {
-    name: "Priya S.",
-    state: "WA",
-    country: "in",
-    quote: {
-      en: "I had failed twice before. After two weeks on KangaLearner the explanations finally made the rules stick. Third time's the charm!",
-      pt: "Havia reprovado duas vezes antes. Após duas semanas no KangaLearner as explicações finalmente fixaram as regras. Terceira é a sorte!",
-      es: "Había reprobado dos veces antes. Después de dos semanas en KangaLearner las explicaciones hicieron que las reglas se quedaran. ¡A la tercera va la vencida!"
-    }
-  },
-  {
-    name: "Marco R.",
-    state: "WA",
-    country: "it",
-    quote: {
-      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising, that's the difference.",
-      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar, essa é a diferença.",
-      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas, esa es la diferencia."
-    }
-  },
-  {
-    name: "Mei L.",
-    state: "WA",
-    country: "cn",
-    quote: {
-      en: "The practice mode shows exactly where you're weak. I focused on road signs and went from 60% to 93% in one week.",
-      pt: "O modo de prática mostra exatamente onde você é fraco. Foquei nos sinais e fui de 60% para 93% em uma semana.",
-      es: "El modo de práctica muestra exactamente dónde estás débil. Me centré en las señales y fui del 60% al 93% en una semana."
-    }
-  },
-  {
-    name: "João S.",
-    state: "WA",
-    country: "br",
-    quote: {
-      en: "As a Brazilian, studying in Portuguese was essential. This is the only app that takes multilingual learners seriously.",
-      pt: "Como brasileiro, estudar em português foi essencial. Esse é o único app que leva a sério os estudantes multilíngues.",
-      es: "Como brasileño, estudiar en portugués fue esencial. Esta es la única app que toma en serio a los estudiantes multilingües."
-    }
-  },
-  {
-    name: "Sofia V.",
-    state: "WA",
-    country: "mx",
-    quote: {
-      en: "Did 5 mock tests before the real one. Scored 100% on the actual test, the questions are almost identical to the official exam!",
-      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade, as questões são quase idênticas à prova oficial!",
-      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad, las preguntas son casi idénticas al oficial!"
-    }
-  },
-  {
-    name: "David C.",
-    state: "WA",
-    country: "au",
-    quote: {
-      en: "Some road rules were really confusing even as an English speaker. This app broke everything down perfectly. First try pass!",
-      pt: "Algumas regras de trânsito eram muito confusas mesmo sendo falante de inglês. Esse app explicou tudo perfeitamente. Passei na primeira!",
-      es: "Algunas normas de tráfico eran muy confusas incluso siendo anglohablante. Esta app lo explicó todo perfectamente. ¡Aprobé al primer intento!"
-    }
-  }
-];
-
 const FAQS = [
   {
     q: {
@@ -231,9 +128,9 @@ const FAQS = [
       es: "¿KangaLearner es gratuito?"
     },
     a: {
-      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress, no sign-up required to start.",
-      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso, não é necessário se cadastrar para começar.",
-      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso, no necesitas registrarte para empezar."
+      en: "Studying is free: practice questions, mock tests and progress tracking, with no card and no sign-up required to start. Optional extras may be offered in the future, but the core study tools stay free.",
+      pt: "Estudar é grátis: perguntas de prática, simulados e acompanhamento de progresso, sem cartão e sem precisar de cadastro para começar. Recursos extras opcionais podem surgir no futuro, mas as ferramentas principais de estudo continuam gratuitas.",
+      es: "Estudiar es gratis: preguntas de práctica, simulacros y seguimiento de progreso, sin tarjeta y sin necesidad de registro para empezar. Podrán ofrecerse extras opcionales en el futuro, pero las herramientas principales de estudio siguen gratis."
     }
   },
   {
@@ -267,9 +164,9 @@ const FAQS = [
       es: "¿Cuándo estarán disponibles otros estados australianos?"
     },
     a: {
-      en: "WA, NSW and QLD are available now. We're working on VIC next — sign up to be notified when it launches.",
-      pt: "WA, NSW e QLD já estão disponíveis. Estamos trabalhando em VIC a seguir — cadastre-se para ser notificado quando lançarmos.",
-      es: "WA, NSW y QLD ya están disponibles. Estamos trabajando en VIC a continuación — regístrate para ser notificado cuando se lance."
+      en: "WA, NSW and QLD are available now. We're working on VIC next, sign up to be notified when it launches.",
+      pt: "WA, NSW e QLD já estão disponíveis. Estamos trabalhando em VIC a seguir, cadastre-se para ser notificado quando lançarmos.",
+      es: "WA, NSW y QLD ya están disponibles. Estamos trabajando en VIC a continuación, regístrate para ser notificado cuando se lance."
     }
   }
 ];
@@ -650,58 +547,6 @@ function HowItWorks() {
   );
 }
 
-/* ── Testimonial Carousel ── */
-function TestimonialCarousel({ lang }: { lang: UiLang }) {
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % TESTIMONIALS.length), 4500);
-    return () => clearInterval(t);
-  }, []);
-
-  const prev = () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
-
-  const visible = [0, 1, 2].map((offset) => TESTIMONIALS[(idx + offset) % TESTIMONIALS.length]);
-
-  return (
-    <div className="testimonial-carousel">
-      <button className="testimonial-nav" onClick={prev} aria-label="Previous testimonial">
-        &#8249;
-      </button>
-      <div className="testimonial-track-wrap">
-        <div key={idx} className="testimonial-track">
-          {visible.map((t) => (
-            <article key={`${idx}-${t.name}`} className="testimonial-card">
-              <p className="testimonial-quote">&ldquo;{tx(t.quote, lang)}&rdquo;</p>
-              <div className="testimonial-author">
-                <FlagImg country={t.country} />
-                <div>
-                  <div className="testimonial-name">{t.name}</div>
-                  <div className="testimonial-state">{t.state}</div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-      <button className="testimonial-nav" onClick={next} aria-label="Next testimonial">
-        &#8250;
-      </button>
-      <div className="testimonial-dots">
-        {TESTIMONIALS.map((_, i) => (
-          <button
-            key={i}
-            className={`testimonial-dot${i === idx ? " active" : ""}`}
-            onClick={() => setIdx(i)}
-            aria-label={`Testimonial ${i + 1}`}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 /* ── Component ── */
 export function LandingClient() {
   const { uiLang: lang, s } = useLang();
@@ -838,15 +683,6 @@ export function LandingClient() {
               {s.statesMoreLink ?? "sign up to be notified"}
             </Link>
           </p>
-        </div>
-      </section>
-
-      {/* ── Testimonials ─────────────────────────────── */}
-      <section className="testimonials-section section-pad">
-        <div className="container testimonials-inner">
-          <h2 className="section-title">{s.testimonialsTitle}</h2>
-          <p className="testimonial-context-label">{s.testimonialBetaLabel}</p>
-          <TestimonialCarousel lang={lang} />
         </div>
       </section>
 

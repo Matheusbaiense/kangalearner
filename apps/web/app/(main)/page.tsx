@@ -4,7 +4,7 @@ import { LandingClient } from "./LandingClient";
 export const metadata: Metadata = {
   title: "Pass your Australian learner test | Free practice in EN/PT/ES",
   description:
-    "Practice real road-rule questions in English, Portuguese or Spanish. Growing question bank with 30-question mock tests and instant feedback, currently WA and NSW. Free forever.",
+    "Practice 800+ real exam-style road-rule questions in English, Portuguese or Spanish. 30-question mock tests with instant feedback, based on the official WA and NSW handbooks. Free to study.",
   keywords:
     "Australian learner test, learner licence practice, road rules practice, learner driver test, driver knowledge test, prova de learner Austrália, examen learner Australia",
   openGraph: {
