@@ -418,26 +418,6 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
               </button>
             </div>
 
-            {/* Licence type selector */}
-            <label className="state-control" aria-label={s.vehicleType}>
-              {licenceType === "motorcycle" ? (
-                <Icons.motorcycle size={16} aria-hidden="true" />
-              ) : (
-                <Icons.car size={16} aria-hidden="true" />
-              )}
-              <select
-                className="state-select"
-                value={licenceType}
-                onChange={(e) => {
-                  changeLicenceType(e.target.value as LicenceType);
-                  router.refresh();
-                }}
-              >
-                <option value="car">{s.carLicence}</option>
-                <option value="motorcycle">{s.motorcycleLicence}</option>
-              </select>
-            </label>
-
             {/* Language selector */}
             <div className={`lang-control${langOpen ? " open" : ""}`} ref={langRef}>
               <button
