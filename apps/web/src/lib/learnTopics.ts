@@ -1352,9 +1352,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Las luces amarillas intermitentes o señales electrónicas indican cuándo la zona de 40 km/h está activa."
       },
       {
-        en: "Doubled demerit points and higher fines apply in school zones. Mobile phone use is an additional offence.",
-        pt: "Pontos de infracção dobrados e multas mais altas em zonas escolares. Uso de celular é infracção adicional.",
-        es: "Puntos de demérito doblados y multas más altas en zonas escolares. El uso del móvil es una infracción adicional."
+        en: "Speeding fines in school zones carry the normal penalty and demerit points. In WA, double demerits apply during declared holiday periods, not in school zones.",
+        pt: "Multas por excesso de velocidade em zonas escolares têm a penalidade e os pontos normais. Em WA, os pontos em dobro valem nos feriados declarados, não em zonas escolares.",
+        es: "Las multas por exceso de velocidad en zonas escolares llevan la sanción y los puntos normales. En WA, los puntos dobles aplican en los feriados declarados, no en zonas escolares."
       }
     ],
     mistakes: [
