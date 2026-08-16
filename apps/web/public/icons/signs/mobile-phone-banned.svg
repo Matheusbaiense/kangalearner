@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Mobile phone use banned">
+  <rect x="45" y="24" width="30" height="56" rx="7" fill="#111318"/>
+  <rect x="49" y="31" width="22" height="38" rx="1" fill="#dbe9ff"/>
+  <rect x="56" y="72" width="8" height="2.4" rx="1.2" fill="#dbe9ff"/>
+  <circle cx="60" cy="60" r="46" fill="none" stroke="#d32f2f" stroke-width="9"/>
+  <line x1="26" y1="94" x2="94" y2="26" stroke="#d32f2f" stroke-width="9"/>
+</svg>
