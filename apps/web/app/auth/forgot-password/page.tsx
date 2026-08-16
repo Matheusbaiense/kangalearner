@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
+import { AuthBrand } from "@/components/auth/AuthBrand";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
 
 export default function ForgotPasswordPage() {
@@ -45,9 +46,7 @@ export default function ForgotPasswordPage() {
   if (sent) {
     return (
       <main className="auth-page">
-        <Link href="/" className="auth-brand" aria-label="KangaLearner home">
-          <span className="auth-logo-name">KangaLearner</span>
-        </Link>
+        <AuthBrand />
         <div className="auth-card">
           <div className="auth-success" role="status">
             <div className="auth-success-icon" aria-hidden="true">
@@ -69,9 +68,7 @@ export default function ForgotPasswordPage() {
 
   return (
     <main className="auth-page">
-      <Link href="/" className="auth-brand" aria-label="KangaLearner home">
-        <span className="auth-logo-name">KangaLearner</span>
-      </Link>
+      <AuthBrand />
 
       <div className="auth-card">
         <div className="auth-header">

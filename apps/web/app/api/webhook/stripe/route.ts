@@ -4,7 +4,7 @@ import * as Sentry from "@sentry/nextjs";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { log, mask } from "@/lib/log";
 
-// Stripe SDK — lazy init para evitar erro em build sem env vars
+// Stripe SDK, lazy init para evitar erro em build sem env vars
 let _stripe: Stripe | null = null;
 function getStripe(): Stripe {
   if (_stripe) return _stripe;

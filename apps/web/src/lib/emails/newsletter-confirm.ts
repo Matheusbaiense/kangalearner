@@ -17,7 +17,7 @@ export function newsletterConfirmHtml(): string {
           <tr>
             <td style="background-color:#071A2C;padding:32px 40px;text-align:center;">
               <h1 style="margin:0;color:#F5A623;font-size:24px;font-weight:700;letter-spacing:-0.5px;">KangaLearner</h1>
-              <p style="margin:8px 0 0;color:#94a3b8;font-size:13px;">Western Australia Learner Test Practice</p>
+              <p style="margin:8px 0 0;color:#94a3b8;font-size:13px;">Australian Learner Test Practice</p>
             </td>
           </tr>
           <!-- Body -->
@@ -25,7 +25,7 @@ export function newsletterConfirmHtml(): string {
             <td style="padding:40px 40px 32px;">
               <h2 style="margin:0 0 16px;color:#071A2C;font-size:20px;font-weight:700;">You're in! 🎉</h2>
               <p style="margin:0 0 16px;color:#334155;font-size:15px;line-height:1.6;">
-                Thanks for subscribing to KangaLearner tips. You'll receive weekly WA driving tips and study reminders in English, Portuguese, or Spanish.
+                Thanks for subscribing to KangaLearner tips. You'll receive weekly driving tips and study reminders in English, Portuguese, or Spanish.
               </p>
               <p style="margin:0 0 24px;color:#334155;font-size:15px;line-height:1.6;">
                 While you wait, why not start studying?

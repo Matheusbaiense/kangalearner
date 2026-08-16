@@ -40,10 +40,23 @@ export function LangProvider({ children }: { children: ReactNode }) {
   const [lang, setLangState] = useState<Lang>("en");
 
   useEffect(() => {
-    // Read saved lang from localStorage on mount
+    // Read saved lang from localStorage on mount; on first visit (nothing
+    // saved) infer from the browser language. Bilingual modes are the default
+    // for PT/ES speakers — the real exam is in English. Only an explicit
+    // choice in the selector is persisted.
     try {
       const saved = localStorage.getItem(SK.lang) as Lang | null;
-      if (saved && VALID_LANGS.includes(saved)) setLangState(saved);
+      if (saved && VALID_LANGS.includes(saved)) {
+        setLangState(saved);
+      } else {
+        // Any pt/es in the browser's language list (not just the primary —
+        // immigrants often run an en-US browser with pt/es as secondary).
+        const langs = (
+          navigator.languages?.length ? navigator.languages : [navigator.language ?? ""]
+        ).map((l) => l.toLowerCase());
+        const spoken = langs.find((l) => l.startsWith("pt") || l.startsWith("es"));
+        if (spoken) setLangState(spoken.startsWith("pt") ? "pt-en" : "es-en");
+      }
     } catch {}
 
     // Listen for same-tab lang changes dispatched by SiteNav

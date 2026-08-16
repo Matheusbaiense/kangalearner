@@ -7,11 +7,13 @@ import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
+import { Kanga } from "@/components/brand/Kanga";
 import { useLang } from "@/contexts/LangContext";
 import { AuthNudge } from "@/components/ui/AuthNudge";
 import { createClient } from "@/lib/supabase/client";
 import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
+import { awardXp, XP_PER_MOCK_PASS, XP_PER_MOCK_COMPLETE } from "@/lib/gamification/progress";
 
 function safeParseJson<T>(raw: string | null): T | null {
   if (!raw) return null;
@@ -29,9 +31,9 @@ const RESULT_MSG = {
     es: "¡Felicidades! Pasaste el simulacro."
   },
   fail: {
-    en: "Keep practising — you need 80% to pass. Review wrong answers below.",
-    pt: "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas abaixo.",
-    es: "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas abajo."
+    en: "Keep practising, you need 80% to pass. Review wrong answers below.",
+    pt: "Continue praticando, você precisa de 80% para passar. Revise as respostas erradas abaixo.",
+    es: "Sigue practicando, necesitas 80% para aprobar. Revisa las respuestas incorrectas abajo."
   }
 };
 
@@ -51,9 +53,9 @@ const REVIEW = {
   es: "Revisar respuestas incorrectas"
 };
 const PERFECT = {
-  en: "Perfect score — no mistakes to review.",
-  pt: "Pontuação perfeita — sem erros para revisar.",
-  es: "Puntuación perfecta — sin errores para revisar."
+  en: "Perfect score, no mistakes to review.",
+  pt: "Pontuação perfeita, sem erros para revisar.",
+  es: "Puntuación perfecta, sin errores para revisar."
 };
 
 export default function MockTestResultsPage() {
@@ -87,7 +89,18 @@ export default function MockTestResultsPage() {
     return { rows, total, score, pct, pass };
   }, [session, QUESTIONS, questionsLoading]);
 
-  /* Save to Supabase (once) — authenticated users only */
+  /* Award guest XP once per completed session (guarded by completedAtIso) */
+  useEffect(() => {
+    if (!session?.completedAtIso || !scored) return;
+    try {
+      const KEY = "kl-mock-xp-awarded";
+      if (localStorage.getItem(KEY) === session.completedAtIso) return;
+      awardXp(scored.pass ? XP_PER_MOCK_PASS : XP_PER_MOCK_COMPLETE);
+      localStorage.setItem(KEY, session.completedAtIso);
+    } catch {}
+  }, [session, scored]);
+
+  /* Save to Supabase (once), authenticated users only */
   useEffect(() => {
     if (!session || !scored) return;
     if (!session.completedAtIso) return;
@@ -168,9 +181,25 @@ export default function MockTestResultsPage() {
               <span>{scored.pct}%</span>
             </div>
 
-            <h1 style={{ marginTop: 10 }}>
-              {scored.pass ? s.pass : s.fail} — {scored.score}/{scored.total}
-            </h1>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 16,
+                flexWrap: "wrap"
+              }}
+            >
+              <h1 style={{ marginTop: 10 }}>
+                {scored.pass ? s.pass : s.fail}, {scored.score}/{scored.total}
+              </h1>
+              <Kanga
+                pose={scored.pass ? "celebrate" : "encourage"}
+                size={112}
+                label={s.kangaAlmost}
+                style={{ flexShrink: 0 }}
+              />
+            </div>
 
             <p
               className="mock-meta"

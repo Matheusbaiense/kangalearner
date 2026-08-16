@@ -1,8 +1,9 @@
 import Link from "next/link";
 
 export const metadata = {
-  title: "Privacy Policy — KangaLearner",
-  description: "KangaLearner privacy policy — what data we collect and how we use it."
+  title: "Privacy Policy",
+  description: "KangaLearner privacy policy, what data we collect and how we use it.",
+  alternates: { canonical: "https://kangalearner.com.au/privacy" }
 };
 
 export default function PrivacyPage() {
@@ -39,7 +40,7 @@ export default function PrivacyPage() {
         <li>To provide and improve the learning platform.</li>
         <li>To save your study progress across devices (when signed in).</li>
         <li>To send you study tips and updates (newsletter subscribers only, with consent).</li>
-        <li>To process payments for premium features (via Stripe — see below).</li>
+        <li>To process payments for premium features (via Stripe, see below).</li>
         <li>We do not sell your personal information to third parties.</li>
       </ul>
 
@@ -47,26 +48,26 @@ export default function PrivacyPage() {
       <p>We use the following third-party services to operate KangaLearner:</p>
       <ul>
         <li>
-          <strong>Supabase</strong> (database and authentication) — servers located in AWS Sydney
+          <strong>Supabase</strong> (database and authentication), servers located in AWS Sydney
           (ap-southeast-2).
         </li>
         <li>
-          <strong>Vercel</strong> (hosting and edge functions) — global CDN with Australian edge
+          <strong>Vercel</strong> (hosting and edge functions), global CDN with Australian edge
           nodes.
         </li>
         <li>
-          <strong>Stripe</strong> (payments, if applicable) — Stripe&apos;s privacy policy:{" "}
+          <strong>Stripe</strong> (payments, if applicable), Stripe&apos;s privacy policy:{" "}
           <a href="https://stripe.com/au/privacy" target="_blank" rel="noopener noreferrer">
             stripe.com/au/privacy
           </a>
           .
         </li>
         <li>
-          <strong>Upstash</strong> (rate limiting via Redis) — temporary request counters only, no
+          <strong>Upstash</strong> (rate limiting via Redis), temporary request counters only, no
           personal data stored.
         </li>
         <li>
-          <strong>Google AdMob & Ad Manager</strong> (mobile app ads) — to serve relevant ads in the
+          <strong>Google AdMob & Ad Manager</strong> (mobile app ads), to serve relevant ads in the
           mobile app. Google uses device identifiers for personalized advertising.
         </li>
       </ul>
@@ -114,7 +115,7 @@ export default function PrivacyPage() {
       <p>
         We use industry-standard security practices including encrypted connections (HTTPS/TLS),
         row-level security on all database tables, and rate limiting to prevent abuse. However, no
-        system is 100% secure — we recommend using a strong, unique password.
+        system is 100% secure, we recommend using a strong, unique password.
       </p>
 
       <h2>8. Children&apos;s Privacy</h2>
