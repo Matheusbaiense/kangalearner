@@ -125,11 +125,8 @@ export default function ProgressPage() {
   if (!mounted) {
     return (
       <main className="app-page">
-        <div
-          className="container section-pad"
-          style={{ display: "flex", justifyContent: "center", paddingTop: 80 }}
-        >
-          <span style={{ color: "var(--muted)", fontSize: ".9rem" }}>{s.loading}</span>
+        <div className="container section-pad prog-loading">
+          <span className="prog-muted">{s.loading}</span>
         </div>
       </main>
     );
@@ -151,32 +148,9 @@ export default function ProgressPage() {
         <AuthNudge />
 
         {isEmpty && isAuthenticated && (
-          <div
-            style={{
-              marginTop: 24,
-              padding: "14px 18px",
-              borderRadius: "var(--radius-md)",
-              background: "var(--green3)",
-              border: "1px solid var(--green2)",
-              display: "flex",
-              alignItems: "center",
-              gap: 12,
-              flexWrap: "wrap"
-            }}
-          >
-            <span style={{ fontSize: ".9rem", color: "var(--ink)", flex: 1 }}>
-              {s.progressCloudNote}
-            </span>
-            <Link
-              href="/dashboard"
-              style={{
-                fontWeight: 800,
-                fontSize: ".85rem",
-                color: "var(--green)",
-                textDecoration: "none",
-                flexShrink: 0
-              }}
-            >
+          <div className="prog-cloud-note">
+            <span className="prog-cloud-note-text">{s.progressCloudNote}</span>
+            <Link href="/dashboard" className="prog-link-green">
               {s.dashboard} →
             </Link>
           </div>
@@ -184,25 +158,10 @@ export default function ProgressPage() {
 
         {isEmpty ? (
           /* Empty state */
-          <div
-            style={{
-              marginTop: 40,
-              padding: "32px 24px",
-              borderRadius: "var(--radius-md)",
-              background: "var(--paper)",
-              border: "1px solid var(--border)",
-              textAlign: "center"
-            }}
-          >
-            <p style={{ fontSize: "2.5rem", marginBottom: 12 }}>📊</p>
-            <p
-              style={{ fontWeight: 700, fontSize: "1.1rem", color: "var(--ink)", marginBottom: 8 }}
-            >
-              {s.noQuestionsTitle}
-            </p>
-            <p style={{ color: "var(--muted)", fontSize: ".9rem", marginBottom: 20 }}>
-              {s.progressEmpty}
-            </p>
+          <div className="prog-empty">
+            <p className="prog-empty-emoji">📊</p>
+            <p className="prog-empty-title">{s.noQuestionsTitle}</p>
+            <p className="prog-empty-sub">{s.progressEmpty}</p>
             <Link href="/practice" className="btn btn-primary">
               {s.practice} →
             </Link>
@@ -210,14 +169,7 @@ export default function ProgressPage() {
         ) : (
           <>
             {/* Stat cards */}
-            <div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))",
-                gap: 14,
-                marginTop: 28
-              }}
-            >
+            <div className="prog-stat-grid">
               <StatCard
                 label={s.attemptedCol}
                 value={String(totalAnswered)}
@@ -233,107 +185,45 @@ export default function ProgressPage() {
             </div>
 
             {/* Category breakdown */}
-            <div style={{ marginTop: 32 }}>
-              <p
-                style={{
-                  fontWeight: 800,
-                  fontSize: ".8rem",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.08em",
-                  color: "var(--muted)",
-                  marginBottom: 12
-                }}
-              >
-                {s.categoryCol}
-              </p>
+            <div className="prog-cats">
+              <p className="dash-section-title">{s.categoryCol}</p>
 
               {catStats.length === 0 ? (
-                <p style={{ color: "var(--muted)", fontSize: ".9rem" }}>{s.progressEmpty}</p>
+                <p className="prog-muted">{s.progressEmpty}</p>
               ) : (
-                <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+                <div className="prog-cat-list">
                   {catStats.map((c) => {
                     const color = accuracyColor(c.accuracy, c.total);
                     return (
-                      <div
-                        key={c.category}
-                        style={{
-                          display: "grid",
-                          gridTemplateColumns: "28px 1fr auto auto auto",
-                          alignItems: "center",
-                          gap: "0 12px",
-                          padding: "12px 16px",
-                          borderRadius: "var(--radius-md)",
-                          background: "var(--paper)",
-                          border: "1px solid var(--border)"
-                        }}
-                      >
+                      <div key={c.category} className="prog-cat-row">
                         {/* Icon */}
-                        <span style={{ fontSize: "1.1rem" }}>{catIcon(c.category)}</span>
+                        <span className="prog-cat-ico">{catIcon(c.category)}</span>
 
                         {/* Name + progress bar */}
-                        <div style={{ minWidth: 0 }}>
-                          <p
-                            style={{
-                              fontWeight: 700,
-                              fontSize: ".9rem",
-                              color: "var(--ink)",
-                              marginBottom: 4,
-                              whiteSpace: "nowrap",
-                              overflow: "hidden",
-                              textOverflow: "ellipsis"
-                            }}
-                          >
-                            {c.category}
-                          </p>
-                          <div
-                            style={{
-                              height: 5,
-                              borderRadius: 99,
-                              background: "var(--border)",
-                              overflow: "hidden"
-                            }}
-                          >
+                        <div className="prog-cat-main">
+                          <p className="prog-cat-name">{c.category}</p>
+                          <div className="prog-cat-track">
                             <div
-                              style={{
-                                height: "100%",
-                                width: `${c.accuracy}%`,
-                                background: color,
-                                borderRadius: 99,
-                                transition: "width 0.4s ease"
-                              }}
+                              className="prog-cat-fill"
+                              style={{ width: `${c.accuracy}%`, background: color }}
                             />
                           </div>
                         </div>
 
                         {/* Fraction */}
-                        <span style={{ fontSize: ".8rem", color: "var(--muted)", flexShrink: 0 }}>
+                        <span className="prog-cat-frac">
                           {c.correct}/{c.total}
                         </span>
 
                         {/* Percentage */}
-                        <span
-                          style={{
-                            fontSize: ".85rem",
-                            fontWeight: 800,
-                            color,
-                            flexShrink: 0,
-                            minWidth: 36,
-                            textAlign: "right"
-                          }}
-                        >
+                        <span className="prog-cat-pct" style={{ color }}>
                           {c.accuracy}%
                         </span>
 
                         {/* Practice link */}
                         <Link
                           href={`/practice?cat=${encodeURIComponent(c.category)}`}
-                          style={{
-                            fontSize: ".78rem",
-                            fontWeight: 700,
-                            color: "var(--green)",
-                            textDecoration: "none",
-                            flexShrink: 0
-                          }}
+                          className="prog-cat-go"
                         >
                           →
                         </Link>
@@ -345,40 +235,13 @@ export default function ProgressPage() {
             </div>
 
             {/* Next-step recommendation */}
-            <div
-              style={{
-                marginTop: 28,
-                padding: "16px 20px",
-                borderRadius: "var(--radius-md)",
-                background: "var(--green3)",
-                border: "1px solid var(--green2)"
-              }}
-            >
-              <p
-                style={{
-                  fontSize: ".75rem",
-                  fontWeight: 800,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                  color: "var(--green)",
-                  marginBottom: 4
-                }}
-              >
-                {s.nextStepTitle}
-              </p>
-              <p style={{ fontWeight: 700, color: "var(--ink)", fontSize: ".95rem" }}>{nextStep}</p>
+            <div className="prog-next">
+              <p className="prog-next-label">{s.nextStepTitle}</p>
+              <p className="prog-next-text">{nextStep}</p>
             </div>
 
             {/* CTA row */}
-            <div
-              style={{
-                marginTop: 24,
-                display: "flex",
-                gap: 10,
-                flexWrap: "wrap",
-                alignItems: "center"
-              }}
-            >
+            <div className="prog-cta-row">
               {stats.hasWrong && (
                 <Link href="/practice?mode=wrong" className="btn btn-primary">
                   {s.wrongAnswers} →
@@ -394,30 +257,10 @@ export default function ProgressPage() {
                   {s.mockTest} →
                 </Link>
               )}
-              <Link
-                href="/practice"
-                style={{
-                  fontSize: ".85rem",
-                  fontWeight: 700,
-                  color: "var(--green)",
-                  textDecoration: "none"
-                }}
-              >
+              <Link href="/practice" className="prog-link-green">
                 {s.practice}
               </Link>
-              <button
-                onClick={handleReset}
-                style={{
-                  marginLeft: "auto",
-                  fontSize: ".8rem",
-                  fontWeight: 700,
-                  color: "var(--muted)",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "6px 0"
-                }}
-              >
+              <button onClick={handleReset} className="prog-reset">
                 {s.resetAll}
               </button>
             </div>
@@ -443,37 +286,15 @@ function StatCard({
   isText?: boolean;
 }) {
   return (
-    <div
-      style={{
-        padding: "16px 18px",
-        borderRadius: "var(--radius-md)",
-        background: "var(--paper)",
-        border: "1px solid var(--border)"
-      }}
-    >
+    <div className="stat-card">
+      <p className="stat-card-label">{label}</p>
       <p
-        style={{
-          fontSize: ".72rem",
-          fontWeight: 800,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: "var(--muted)",
-          marginBottom: 6
-        }}
-      >
-        {label}
-      </p>
-      <p
-        style={{
-          fontSize: isText ? ".85rem" : "1.8rem",
-          fontWeight: 800,
-          color: valueColor ?? "var(--ink)",
-          lineHeight: isText ? 1.4 : 1
-        }}
+        className={`stat-card-value${isText ? " stat-card-value--text" : ""}`}
+        style={valueColor ? { color: valueColor } : undefined}
       >
         {value}
       </p>
-      {sub && <p style={{ fontSize: ".78rem", color: "var(--muted)", marginTop: 4 }}>{sub}</p>}
+      {sub && <p className="stat-card-sub">{sub}</p>}
     </div>
   );
 }
