@@ -454,7 +454,7 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
 /* ── Hero stats (animated count-up on first view) ── */
 const STAT_ANIM_MS = 900;
 const HERO_STATS = [
-  { target: 1000, suffix: "+", labelKey: "heroStat1Label" as const },
+  { target: 2000, suffix: "+", labelKey: "heroStat1Label" as const },
   { target: 8, suffix: "", labelKey: "heroStat2Label" as const },
   { target: 3, suffix: "", labelKey: "heroStat3Label" as const }
 ];
