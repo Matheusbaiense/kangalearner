@@ -69,11 +69,12 @@ export const strings = {
     fail: "Keep practising",
     noQuestions: "No questions available for this filter.",
     tutorLater: "AI tutor plugin reserved for a future release.",
-    heroEyebrow: "FOR IMMIGRANTS IN WESTERN AUSTRALIA",
-    heroTitle: "Pass your WA learner test in your language.",
+    heroEyebrow: "FOR IMMIGRANTS IN AUSTRALIA",
+    heroTitle: "Pass your learner test in your language.",
     heroSubtitle:
       "Practice official-style questions offline, switch language anytime, and sync progress when you sign in.",
-    stateAvailability: "WA is available now. {states} are prepared for future content.",
+    stateAvailability:
+      "Choose your state or territory. The question bank adapts to your selection.",
     questionsLabel: "Questions",
     topicsLabel: "Topics",
     mockTab: "Mock",
@@ -158,11 +159,12 @@ export const strings = {
     fail: "Continue praticando",
     noQuestions: "Nenhuma pergunta disponível para este filtro.",
     tutorLater: "Plugin de AI tutor reservado para uma versão futura.",
-    heroEyebrow: "PARA IMIGRANTES NA AUSTRÁLIA OCIDENTAL",
-    heroTitle: "Passe na prova teórica de WA no seu idioma.",
+    heroEyebrow: "PARA IMIGRANTES NA AUSTRÁLIA",
+    heroTitle: "Passe na prova teórica no seu idioma.",
     heroSubtitle:
       "Pratique perguntas no estilo oficial offline, troque de idioma quando quiser e sincronize o progresso ao entrar.",
-    stateAvailability: "WA já está disponível. {states} estão preparados para conteúdo futuro.",
+    stateAvailability:
+      "Escolha seu estado ou território. O banco de perguntas se adapta à sua seleção.",
     questionsLabel: "Perguntas",
     topicsLabel: "Tópicos",
     mockTab: "Simulado",
@@ -250,11 +252,12 @@ export const strings = {
     fail: "Sigue practicando",
     noQuestions: "No hay preguntas disponibles para este filtro.",
     tutorLater: "Plugin de AI tutor reservado para una versión futura.",
-    heroEyebrow: "PARA INMIGRANTES EN AUSTRALIA OCCIDENTAL",
-    heroTitle: "Aprueba el examen de aprendiz de WA en tu idioma.",
+    heroEyebrow: "PARA INMIGRANTES EN AUSTRALIA",
+    heroTitle: "Aprueba el examen de aprendiz en tu idioma.",
     heroSubtitle:
       "Practica preguntas de estilo oficial sin conexión, cambia de idioma cuando quieras y sincroniza tu progreso al ingresar.",
-    stateAvailability: "WA ya está disponible. {states} están preparados para contenido futuro.",
+    stateAvailability:
+      "Elige tu estado o territorio. El banco de preguntas se adapta a tu selección.",
     questionsLabel: "Preguntas",
     topicsLabel: "Temas",
     mockTab: "Simulacro",

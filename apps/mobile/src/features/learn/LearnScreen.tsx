@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { Fragment } from "react";
 import { Text, View } from "react-native";
-import { CATEGORIES, questionsForState, categoryLabel } from "../../lib/questions";
+import { categoriesForPool, questionsForState, categoryLabel } from "../../lib/questions";
 import { Card, PillButton, Screen, useThemeColors } from "../../ui/kit";
 import { spacing } from "../../theme";
 import { iconForCategory } from "../../ui/category-icon";
@@ -15,7 +15,7 @@ export function LearnScreen() {
 
   return (
     <Screen title={copy.learn} subtitle={copy.learnSubtitle}>
-      {CATEGORIES.map((category, index) => {
+      {categoriesForPool(questions).map((category, index) => {
         const Icon = iconForCategory(category.key);
         const count = questions.filter((q) => q.cat === category.key).length;
         return (

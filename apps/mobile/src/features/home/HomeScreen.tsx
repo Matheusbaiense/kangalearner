@@ -1,7 +1,8 @@
 import { BookOpen, ClipboardCheck, Languages, WifiOff } from "lucide-react-native";
 import { Link } from "expo-router";
 import { Text, View } from "react-native";
-import { AU_STATE_OPTIONS, CATEGORIES, QUESTIONS } from "../../lib/questions";
+import { LIVE_STATE_CODES } from "@kanga/core";
+import { AU_STATE_OPTIONS, categoriesForPool, questionsForState } from "../../lib/questions";
 import { LANG_OPTIONS } from "../../lib/i18n";
 import { Card, PillButton, PrimaryButton, Screen, Stat, useThemeColors } from "../../ui/kit";
 import { colors, spacing } from "../../theme";
@@ -11,7 +12,7 @@ import { usePreferences } from "../preferences/PreferencesContext";
 export function HomeScreen() {
   const c = useThemeColors();
   const { state, lang, setStateCode, setLang, copy } = usePreferences();
-  const available = AU_STATE_OPTIONS.map((item) => item.code);
+  const statePool = questionsForState(state);
 
   return (
     <Screen>
@@ -49,19 +50,14 @@ export function HomeScreen() {
             <PillButton
               key={option.code}
               active={state === option.code}
-              disabled={option.code !== "WA"}
+              disabled={!LIVE_STATE_CODES.includes(option.code)}
               onPress={() => setStateCode(option.code)}
             >
               {option.code}
             </PillButton>
           ))}
         </View>
-        <Text style={{ color: c.muted }}>
-          {copy.stateAvailability.replace(
-            "{states}",
-            available.filter((item) => item !== "WA").join(", ")
-          )}
-        </Text>
+        <Text style={{ color: c.muted }}>{copy.stateAvailability}</Text>
       </Card>
 
       <Card>
@@ -81,10 +77,10 @@ export function HomeScreen() {
 
       <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.md }}>
         <Card style={{ flex: 1, minWidth: 150 }}>
-          <Stat label={copy.questionsLabel} value={String(QUESTIONS.length)} />
+          <Stat label={copy.questionsLabel} value={String(statePool.length)} />
         </Card>
         <Card style={{ flex: 1, minWidth: 150 }}>
-          <Stat label={copy.topicsLabel} value={String(CATEGORIES.length)} />
+          <Stat label={copy.topicsLabel} value={String(categoriesForPool(statePool).length)} />
         </Card>
       </View>
 

@@ -4,7 +4,7 @@ import { Bookmark, CheckCircle2, Circle, RotateCcw, Star } from "lucide-react-na
 import { Fragment, useEffect, useMemo, useState } from "react";
 import { Alert, Pressable, Text, View } from "react-native";
 import {
-  CATEGORIES,
+  categoriesForPool,
   categoryLabel,
   correctLetter,
   questionsForState,
@@ -46,6 +46,7 @@ export function PracticeScreen() {
   }, [params.cat]);
 
   const allQuestions = useMemo(() => questionsForState(state), [state]);
+  const stateCategories = useMemo(() => categoriesForPool(allQuestions), [allQuestions]);
   const filtered = useMemo(() => {
     let next = allQuestions;
     if (category !== "all") next = next.filter((q) => q.cat === category);
@@ -117,7 +118,7 @@ export function PracticeScreen() {
   return (
     <Screen
       title={copy.practice}
-      subtitle={`${allQuestions.length} ${copy.questionsLabel.toLowerCase()} - ${CATEGORIES.length} ${copy.topicsLabel.toLowerCase()} - ${state}`}
+      subtitle={`${allQuestions.length} ${copy.questionsLabel.toLowerCase()} - ${stateCategories.length} ${copy.topicsLabel.toLowerCase()} - ${state}`}
       action={
         <Pressable
           accessibilityRole="button"
@@ -160,7 +161,7 @@ export function PracticeScreen() {
           <PillButton active={category === "all"} onPress={() => setCategory("all")}>
             {copy.allTopics}
           </PillButton>
-          {CATEGORIES.map((cat) => (
+          {stateCategories.map((cat) => (
             <PillButton
               key={cat.key}
               active={category === cat.key}
