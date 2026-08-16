@@ -102,8 +102,7 @@ const TRUST_ITEMS = [
   }
 ] as const;
 
-// Show live states + 2 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
-const AU_STATES = (["WA", "NSW", "VIC", "QLD"] as const).map((code) => ({
+const AU_STATES = (["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as const).map((code) => ({
   code,
   available: (LIVE_STATE_CODES as readonly string[]).includes(code)
 }));
@@ -159,14 +158,14 @@ const FAQS = [
   },
   {
     q: {
-      en: "When will other Australian states be available?",
-      pt: "Quando outros estados australianos estarão disponíveis?",
-      es: "¿Cuándo estarán disponibles otros estados australianos?"
+      en: "Which Australian states and territories are covered?",
+      pt: "Quais estados e territórios australianos são cobertos?",
+      es: "¿Qué estados y territorios australianos están cubiertos?"
     },
     a: {
-      en: "WA, NSW and QLD are available now. We're working on VIC next, sign up to be notified when it launches.",
-      pt: "WA, NSW e QLD já estão disponíveis. Estamos trabalhando em VIC a seguir, cadastre-se para ser notificado quando lançarmos.",
-      es: "WA, NSW y QLD ya están disponibles. Estamos trabajando en VIC a continuación, regístrate para ser notificado cuando se lance."
+      en: "All of them — WA, NSW, QLD, VIC, SA, TAS, ACT and NT are all available now, each with its own real question bank sourced from the official state test.",
+      pt: "Todos — WA, NSW, QLD, VIC, SA, TAS, ACT e NT já estão disponíveis, cada um com seu próprio banco de perguntas reais extraído do teste oficial do estado.",
+      es: "Todos — WA, NSW, QLD, VIC, SA, TAS, ACT y NT ya están disponibles, cada uno con su propio banco de preguntas reales extraído del examen oficial del estado."
     }
   }
 ];
@@ -456,7 +455,7 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
 const STAT_ANIM_MS = 900;
 const HERO_STATS = [
   { target: 1000, suffix: "+", labelKey: "heroStat1Label" as const },
-  { target: 3, suffix: "", labelKey: "heroStat2Label" as const },
+  { target: 8, suffix: "", labelKey: "heroStat2Label" as const },
   { target: 3, suffix: "", labelKey: "heroStat3Label" as const }
 ];
 
@@ -677,12 +676,6 @@ export function LandingClient() {
               </div>
             ))}
           </div>
-          <p className="states-more-note">
-            {s.statesMoreNote ?? "More states coming soon:"}{" "}
-            <Link href="/auth/signup" className="states-more-link">
-              {s.statesMoreLink ?? "sign up to be notified"}
-            </Link>
-          </p>
         </div>
       </section>
 
