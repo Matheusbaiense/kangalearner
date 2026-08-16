@@ -48624,7 +48624,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-1",
-    sign: "/icons/signs/ad004.gif",
+    sign: "",
     cat: "Alcohol & BAC",
     q: {
       en: "To reduce the effect of alcohol before driving or riding you should-",
@@ -48670,7 +48670,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-2",
-    sign: "/icons/signs/ad018.gif",
+    sign: "",
     cat: "Alcohol & BAC",
     q: {
       en: "Is a qualified supervising driver who is instructing a learner driver allowed to be under the influence of a drug, including alcohol?",
@@ -48716,7 +48716,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-3",
-    sign: "/icons/signs/ad025.gif",
+    sign: "",
     cat: "Alcohol & BAC",
     q: {
       en: "Alcohol is a depressant. This means-",
@@ -48762,7 +48762,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-4",
-    sign: "/icons/signs/ad041.gif",
+    sign: "",
     cat: "Alcohol & BAC",
     q: {
       en: "If you hold a learner's permit or provisional licence (P1 or P2) what is the Blood Alcohol Concentration (BAC) limit?",
@@ -48808,7 +48808,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-5",
-    sign: "/icons/signs/ad045.gif",
+    sign: "",
     cat: "Alcohol & BAC",
     q: {
       en: "The highest Blood Alcohol Concentration (B.A.C.) allowed for 'L' plate drivers in South Australia when driving a vehicle is-",
@@ -48854,7 +48854,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-6",
-    sign: "/icons/signs/cg016.gif",
+    sign: "",
     cat: "Parking Rules",
     q: {
       en: "How close can you park to another vehicle when parked parallel to the kerb?",
@@ -48900,7 +48900,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-7",
-    sign: "/icons/signs/cg017.gif",
+    sign: "",
     cat: "Parking Rules",
     q: {
       en: "Where there is parallel kerbside parking, are you allowed to double park alongside a parked vehicle?",
@@ -48946,7 +48946,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-8",
-    sign: "/icons/signs/cg029.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "When driving at sunset or dawn on a dark day, what should you do?",
@@ -48992,7 +48992,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-9",
-    sign: "/icons/signs/cg048.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "You should not drive across a railway level crossing when-",
@@ -49038,7 +49038,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-10",
-    sign: "/icons/signs/cg075.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "You are driving on a freeway and realise you forgot something at home. You want to go back for it. Can you do a U-turn on this road?",
@@ -49176,7 +49176,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-13",
-    sign: "/icons/signs/cg114.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "Are you allowed to use a hand held mobile phone while driving a car?",
@@ -49222,7 +49222,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-14",
-    sign: "/icons/signs/cg116.gif",
+    sign: "",
     cat: "Motorcycle Safety",
     q: {
       en: "Bicycle and motorcycle riders have the same rights to use the road as other motor vehicle drivers. They are however, more at risk in traffic because-",
@@ -49268,7 +49268,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-15",
-    sign: "/icons/signs/cg122.gif",
+    sign: "",
     cat: "Road Markings",
     q: {
       en: "Where must you position your car on a road, which is marked with lane lines, before turning to the left?",
@@ -49314,7 +49314,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-16",
-    sign: "/icons/signs/cg124.gif",
+    sign: "",
     cat: "Emergencies",
     q: {
       en: "What is meant by keeping clear of and giving way to an emergency vehicle which is sounding a siren or displaying flashing blue and/or red lights?",
@@ -49360,7 +49360,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-17",
-    sign: "/icons/signs/cg126.gif",
+    sign: "",
     cat: "Parking Rules",
     q: {
       en: "How close to an intersection, without traffic lights, are you allowed to park?",
@@ -49406,7 +49406,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-18",
-    sign: "/icons/signs/cg132.gif",
+    sign: "",
     cat: "Speed Limits",
     q: {
       en: "When is a driver allowed to go over the speed limit?",
@@ -49452,7 +49452,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-19",
-    sign: "/icons/signs/cg141.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "When is the most likely time to find native animals wandering on Australian roads?",
@@ -49498,7 +49498,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-20",
-    sign: "/icons/signs/cs033.gif",
+    sign: "",
     cat: "Speed Limits",
     q: {
       en: "When do School Zones apply?",
@@ -49544,7 +49544,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-21",
-    sign: "/icons/signs/dr010.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "You want to drive your car but you have a very bad headache. A friend gives you some of their headache tablets to kill the pain. What should you do before you take these tablets?",
@@ -49590,7 +49590,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-22",
-    sign: "/icons/signs/fd004.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "If you get sleepy while driving, it is best to-",
@@ -49636,7 +49636,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-23",
-    sign: "/icons/signs/fd007.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "When driving on a slippery wet road, for example, one covered in early morning dew, your vehicle will-",
@@ -49682,7 +49682,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-24",
-    sign: "/icons/signs/fd047.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "Where should you brake for a sharp bend in the road?",
@@ -50602,7 +50602,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-44",
-    sign: "/icons/signs/in008.gif",
+    sign: "",
     cat: "Road Markings",
     q: {
       en: "Right turns must be made from which lanes when travelling on a laned roadway?",
@@ -50648,7 +50648,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-45",
-    sign: "/icons/signs/in023.gif",
+    sign: "",
     cat: "Road Markings",
     q: {
       en: "When there are no arrows marked on the road, left turns must be made from-",
@@ -50694,7 +50694,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-46",
-    sign: "/icons/signs/in033.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "Turn signals are-",
@@ -50786,7 +50786,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-48",
-    sign: "/icons/signs/in070.gif",
+    sign: "",
     cat: "Road Markings",
     q: {
       en: "You are driving towards an intersection in a lane marked with arrows for turning right. Are you allowed to change lanes before the intersection?",
@@ -50924,7 +50924,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-51",
-    sign: "/icons/signs/ld014.gif",
+    sign: "",
     cat: "Emergencies",
     q: {
       en: "If you hear the siren of an emergency vehicle, you must-",
@@ -51016,7 +51016,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-53",
-    sign: "/icons/signs/ld040.gif",
+    sign: "",
     cat: "Blind Spot & Overtaking",
     q: {
       en: "Overtaking another vehicle requires good concentration and judgement. Which of the following statements is correct?",
@@ -51108,7 +51108,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-55",
-    sign: "/icons/signs/ld055.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "When turning right from a two way unlaned road to another two way unlaned road, you must approach the intersection from-",
@@ -51154,7 +51154,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-56",
-    sign: "/icons/signs/nd004.gif",
+    sign: "",
     cat: "Blind Spot & Overtaking",
     q: {
       en: "You are approaching a hill or a curve. You must not cross the centre line to overtake-",
@@ -51292,7 +51292,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-59",
-    sign: "/icons/signs/nd046.gif",
+    sign: "",
     cat: "Blind Spot & Overtaking",
     q: {
       en: "If safe, you may overtake another vehicle in front, which is not signalling, on an unlaned road-",
@@ -51338,7 +51338,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-60",
-    sign: "/icons/signs/nd050.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "Which one of the following is most likely to cause you to lose control of your vehicle on a bend?",
@@ -51384,7 +51384,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-61",
-    sign: "/icons/signs/nd054.gif",
+    sign: "",
     cat: "Blind Spot & Overtaking",
     q: {
       en: "What is the most common cause for young provisional licence holders being involved in vehicle crashes when changing lanes or diverging?",
@@ -51476,7 +51476,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-63",
-    sign: "/icons/signs/pd009.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "When driving near children playing or walking near the edge of the road, you should-",
@@ -51522,7 +51522,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-64",
-    sign: "/icons/signs/pd013.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "When driving past parked vehicles, which of the following is it most important to do-",
@@ -51844,7 +51844,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-71",
-    sign: "/icons/signs/ra061.gif",
+    sign: "",
     cat: "Give Way Rules",
     q: {
       en: "When you wish to drive straight ahead at a dual lane roundabout you may enter from either the left or right lane. As you continue around you should-",
@@ -51890,7 +51890,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-72",
-    sign: "/icons/signs/ra062.gif",
+    sign: "",
     cat: "Give Way Rules",
     q: {
       en: "When turning left at a dual lane roundabout you should enter and leave the roundabout-",
@@ -51982,7 +51982,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-74",
-    sign: "/icons/signs/sb002.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "A car is carrying a driver and 3 adult passengers. There are seat belts in all seating positions. By law, seat belts must be worn by-",
@@ -52028,7 +52028,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-75",
-    sign: "/icons/signs/sb009.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "If there is a 2 year old child in the car while you are driving and the child is not wearing a seat belt, who is responsible?",
@@ -52074,7 +52074,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-76",
-    sign: "/icons/signs/sb013.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "You are driving a vehicle that only has a seat belt for the driver. To reduce the danger of being injured in a collision in a vehicle without a seat belt, where is the best place for passengers to sit?",
@@ -52120,7 +52120,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-77",
-    sign: "/icons/signs/sb025.gif",
+    sign: "",
     cat: "Road Safety",
     q: {
       en: "You are sitting in a seat that has a seat belt fitted to it. When must you wear it?",
@@ -52626,7 +52626,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-88",
-    sign: "/icons/signs/si066.gif",
+    sign: "",
     cat: "Road Signs",
     q: {
       en: "What must you do at an intersection when faced with a 'Stop' sign without a thick white line painted across part of the road?",
@@ -52810,7 +52810,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "SA-92",
-    sign: "/icons/signs/sl043.gif",
+    sign: "",
     cat: "Speed Limits",
     q: {
       en: "What is the speed limit when passing through a School Zone when children are present?",
@@ -95225,7 +95225,7 @@ export const QUESTIONS: readonly QuestionType[] = [
   },
   {
     id: "ACT-60",
-    sign: "/icons/signs/act-721.gif",
+    sign: "/icons/signs/act-721.jpg",
     cat: "Road Signs",
     q: {
       en: "You would expect this sign -",
