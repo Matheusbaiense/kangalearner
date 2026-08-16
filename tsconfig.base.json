@@ -7,9 +7,8 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "baseUrl": ".",
     "paths": {
-      "@kanga/core/*": ["packages/core/src/*"]
+      "@kanga/core/*": ["./packages/core/src/*"]
     }
   }
 }

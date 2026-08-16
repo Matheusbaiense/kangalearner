@@ -2,21 +2,21 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
-import { CATEGORIES, fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
+import { CATEGORIES, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
-import { IconBadge } from "@/components/ui/IconBadge";
+import { Kanga } from "@/components/brand/Kanga";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { useLang } from "@/contexts/LangContext";
 import { tx, type UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
 import { pct } from "@/lib/percent";
+import { readStoredLicenceType, LICENCE_CHANGED_EVENT, type LicenceType } from "@/lib/licenceType";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
-type Mode = "all" | "wrong" | "unanswered" | "saved" | "sim";
+type Mode = "all" | "wrong" | "unanswered" | "saved";
 
 interface Opt {
   l: string;
@@ -66,7 +66,7 @@ function spawnConfetti(x: number, y: number) {
   }
 }
 
-/* Static category lookup — built once (CATEGORIES is a static import). */
+/* Static category lookup, built once (CATEGORIES is a static import). */
 const CATEGORY_BY_KEY = new Map<string, (typeof CATEGORIES)[number]>(
   CATEGORIES.map((c) => [c.key, c])
 );
@@ -150,13 +150,7 @@ const QuizCard = memo(
           return (
             <div className="sign-box">
               {signSrc ? (
-                <img
-                  src={signSrc}
-                  alt={capLabel ?? "Road sign"}
-                  loading="lazy"
-                  decoding="async"
-                  style={{ maxWidth: "100%", height: "auto" }}
-                />
+                <img src={signSrc} alt={capLabel ?? "Road sign"} loading="lazy" decoding="async" />
               ) : null}
               {capLabel ? <div className="img-cap">{capLabel}</div> : null}
             </div>
@@ -334,28 +328,29 @@ function ScoreSidebar({
 /* ── Main PracticeClient ── */
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const { questions: QS, loading: questionsLoading, error: questionsError } = useQuestions();
-  const searchParams = useSearchParams();
-  const requestedMode = searchParams.get("mode");
   const { uiLang: lang, isBilingual, s } = useLang();
   // Deterministic SSR value ("WA"); hydrated from localStorage in the mount effect
   // below. Reading localStorage in the initializer diverges the first client render
   // from the server HTML → React hydration error #418, aborting hydration and
   // leaving answer-option onClick handlers unattached.
   const [selectedState, setSelectedState] = useState<StateCode>("WA");
-  const [mode, setMode] = useState<Mode>(requestedMode === "sim" ? "sim" : (initialMode ?? "all"));
+  // Same SSR-safe deferred-hydration pattern as selectedState above.
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
+  const [mode, setMode] = useState<Mode>(initialMode ?? "all");
   const [cat, setCat] = useState("all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
-
-  /* Sim state */
-  const [simQueue, setSimQueue] = useState<Question[]>([]);
-  const [simIdx, setSimIdx] = useState(0);
-  const [simDone, setSimDone] = useState(false);
-  const [simResult, setSimResult] = useState({ score: 0, total: 0 });
-  const simResultRef = useRef({ score: 0, total: 0 });
+  // Rendering every question at once produces thousands of DOM nodes (300+ questions,
+  // ~20 nodes each) and makes initial hydration noticeably slow. Cap what's mounted
+  // and reveal more on demand instead.
+  const PAGE_SIZE = 40;
+  const [visibleCount, setVisibleCount] = useState(PAGE_SIZE);
+  useEffect(() => {
+    setVisibleCount(PAGE_SIZE);
+  }, [mode, cat, licenceType, selectedState]);
 
   // Mirror `answered` into a ref so `pick` can read the latest value without
-  // depending on `answered` — keeps `pick` referentially stable so memoized
+  // depending on `answered`, keeps `pick` referentially stable so memoized
   // QuizCards never hold a stale closure that would wipe answers.
   const answeredRef = useRef<Answered>(answered);
   useEffect(() => {
@@ -365,6 +360,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Load persisted state + answered + saved from localStorage ── */
   useEffect(() => {
     setSelectedState(readStoredState());
+    setLicenceType(readStoredLicenceType());
     try {
       const raw = localStorage.getItem(SK.answered);
       if (raw) setAnswered(JSON.parse(raw));
@@ -373,6 +369,13 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       const savedRaw = localStorage.getItem(SK.saved);
       if (savedRaw) setSaved(new Set(JSON.parse(savedRaw)));
     } catch {}
+  }, []);
+
+  /* ── Sync licence type from nav selector or onboarding (same tab) ── */
+  useEffect(() => {
+    const onLicenceChanged = () => setLicenceType(readStoredLicenceType());
+    window.addEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
+    return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
   }, []);
 
   /* ── Sync state from nav selector (same tab or after navigation) ── */
@@ -388,46 +391,53 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
   }, []);
 
-  /* ── Allow /practice?mode=sim to start the mock test flow ── */
+  /* ── Keep mode in sync with the URL on client-side navigations ── */
   useEffect(() => {
-    if (requestedMode === "sim") {
-      setMode("sim");
-      return;
-    }
     setMode(initialMode ?? "all");
-  }, [requestedMode, initialMode]);
+  }, [initialMode]);
 
-  /* ── Start sim when mode switches ── */
+  /* ── Question pool for the selected licence type (state-filtered) ── */
+  const licenceQS = useMemo(() => {
+    const byLicence =
+      licenceType === "motorcycle"
+        ? QS.filter((q) => q.licenceType === "motorcycle")
+        : QS.filter((q) => q.licenceType !== "motorcycle");
+    return byLicence.filter((q) => !q.states || q.states.includes(selectedState));
+  }, [QS, licenceType, selectedState]);
+
+  /* Only show topics that actually have questions for the current licence type
+     (e.g. "Motorcycle Safety" never appears for car students, and vice versa). */
+  const visibleCategories = useMemo(() => {
+    const catsInPool = new Set(licenceQS.map((q) => q.cat));
+    return CATEGORIES.filter((c) => catsInPool.has(c.key));
+  }, [licenceQS]);
+
+  /* Reset an out-of-range topic filter when switching licence type. */
   useEffect(() => {
-    if (mode !== "sim") return;
-    const stateQs = QS.filter((q) => !q.states || q.states.includes(selectedState));
-    const shuffled = fisherYatesSlice(stateQs, 30);
-    setSimQueue(shuffled);
-    setSimIdx(0);
-    setSimDone(false);
-  }, [mode, selectedState, QS]);
+    if (cat !== "all" && !visibleCategories.some((c) => c.key === cat)) setCat("all");
+  }, [visibleCategories, cat]);
 
   /* ── Filtered questions for study modes ── */
   const filtered = useMemo(() => {
-    let qs = QS.filter((q) => !q.states || q.states.includes(selectedState));
+    let qs = licenceQS;
     if (cat !== "all") qs = qs.filter((q) => q.cat === cat);
     if (mode === "wrong") qs = qs.filter((q) => answered[q.id] && !answered[q.id].correct);
     if (mode === "unanswered") qs = qs.filter((q) => !answered[q.id]);
     if (mode === "saved") qs = qs.filter((q) => saved.has(q.id));
     return qs;
-  }, [mode, cat, answered, selectedState, saved, QS]);
+  }, [mode, cat, answered, saved, licenceQS]);
 
-  /* Group study questions by category */
+  /* Group study questions by category (only the currently revealed slice, see PAGE_SIZE) */
   const grouped = useMemo(() => {
     const m: Record<string, Question[]> = {};
-    filtered.forEach((q) => {
+    filtered.slice(0, visibleCount).forEach((q) => {
       if (!m[q.cat]) m[q.cat] = [];
       m[q.cat].push(q);
     });
     return m;
-  }, [filtered]);
+  }, [filtered, visibleCount]);
 
-  /* ── Sync attempt to Supabase (silent — 401 ok for guests) ── */
+  /* ── Sync attempt to Supabase (silent, 401 ok for guests) ── */
   const syncAttempt = useCallback(
     (qid: string, cat: string, isCorrect: boolean, chosen: string) => {
       fetch("/api/attempts", {
@@ -449,7 +459,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
   /* ── Pick an answer ── */
   const pick = useCallback(
-    (qid: string, letter: string, ev: React.MouseEvent, isSim = false) => {
+    (qid: string, letter: string, ev: React.MouseEvent) => {
       const current = answeredRef.current;
       if (current[qid]) return;
       const q = QS.find((x) => x.id === qid);
@@ -471,36 +481,8 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       }
 
       syncAttempt(qid, q.cat, correct, letter);
-
-      if (isSim) {
-        setTimeout(() => {
-          setSimIdx((prev) => {
-            const nextIdx = prev + 1;
-            if (nextIdx >= simQueue.length) {
-              const score = simQueue.filter((sq) => next[sq.id]?.correct).length;
-              const result = { score, total: simQueue.length };
-              simResultRef.current = result;
-              setSimResult(result);
-              setSimDone(true);
-              fetch("/api/mock-sessions", {
-                method: "POST",
-                headers: { "content-type": "application/json" },
-                body: JSON.stringify({
-                  state: selectedState,
-                  score,
-                  total: simQueue.length,
-                  mode: "practice",
-                  source: "web"
-                }),
-                keepalive: true
-              }).catch((err) => console.error("[practice] mock session save failed:", err));
-            }
-            return nextIdx;
-          });
-        }, 900);
-      }
     },
-    [QS, simQueue, selectedState, syncAttempt]
+    [QS, selectedState, syncAttempt]
   );
 
   /* ── Toggle save ── */
@@ -528,15 +510,30 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   /* ── Change mode ── */
   function changeMode(m: Mode) {
     setMode(m);
-    if (m !== "sim") setSimDone(false);
   }
 
   /* ──────────────── RENDER ──────────────── */
 
   if (questionsLoading) {
     return (
-      <div className="page-loading">
-        <div className="spinner" />
+      <div className="app-page">
+        <div className="app-container app-section" aria-busy="true">
+          <div className="page-header">
+            <div className="sk-line sk-title" />
+            <div className="sk-line sk-sub" />
+          </div>
+          <div className="quiz-skeletons">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="qcard qcard-skeleton">
+                <div className="sk-line sk-w30" />
+                <div className="sk-line sk-w90" />
+                <div className="sk-line sk-w70" />
+                <div className="sk-block" />
+                <div className="sk-block" />
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     );
   }
@@ -562,8 +559,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     { key: "all", label: s.allQuestions },
     { key: "wrong", label: s.wrongAnswers },
     { key: "unanswered", label: s.unanswered },
-    { key: "saved", label: `${s.savedMode}${saved.size > 0 ? ` (${saved.size})` : ""}` },
-    { key: "sim", label: s.mockTestMode }
+    { key: "saved", label: `${s.savedMode}${saved.size > 0 ? ` (${saved.size})` : ""}` }
   ];
 
   return (
@@ -572,8 +568,8 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
         <div className="page-header">
           <h1 className="page-title">{s.practice}</h1>
           <p className="page-sub">
-            {QS.length} {s.questionsWord} · {CATEGORIES.length} {s.topicsWord} · {selectedState}{" "}
-            {s.roadRulesWord}
+            {licenceQS.length} {s.questionsWord} · {visibleCategories.length} {s.topicsWord} ·{" "}
+            {selectedState} {s.roadRulesWord}
           </p>
         </div>
 
@@ -594,67 +590,52 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               ))}
             </div>
 
-            {mode !== "sim" && (
-              <div className="filter-wrap">
-                <p className="filter-label">{s.filterByTopic}</p>
-                <div className="filter-bar">
-                  <button
-                    className={`fcat${cat === "all" ? " active" : ""}`}
-                    onClick={() => setCat("all")}
-                  >
-                    {s.allTopics}
-                  </button>
-                  {CATEGORIES.map((c) => {
-                    const CI = categoryLucideIcon(c.key);
-                    return (
-                      <button
-                        key={c.key}
-                        className={`fcat${cat === c.key ? " active" : ""}`}
-                        onClick={() => setCat(c.key)}
-                        type="button"
-                      >
-                        <CI className="fcat-ico" aria-hidden />
-                        {c.label[lang] ?? c.label.en}
-                      </button>
-                    );
-                  })}
-                </div>
+            <div className="filter-wrap">
+              <p className="filter-label">{s.filterByTopic}</p>
+              <div className="filter-bar">
+                <button
+                  className={`fcat${cat === "all" ? " active" : ""}`}
+                  onClick={() => setCat("all")}
+                >
+                  {s.allTopics}
+                </button>
+                {visibleCategories.map((c) => {
+                  const CI = categoryLucideIcon(c.key);
+                  return (
+                    <button
+                      key={c.key}
+                      className={`fcat${cat === c.key ? " active" : ""}`}
+                      onClick={() => setCat(c.key)}
+                      type="button"
+                    >
+                      <CI className="fcat-ico" aria-hidden />
+                      {c.label[lang] ?? c.label.en}
+                    </button>
+                  );
+                })}
               </div>
-            )}
+            </div>
           </aside>
 
-          {/* ── CENTER: QUIZ or SIM ── */}
+          {/* ── CENTER: QUIZ ── */}
           <section className="panel quiz-panel">
-            {mode === "sim" ? (
-              <SimView
-                queue={simQueue}
-                idx={simIdx}
-                done={simDone}
-                result={simResult}
-                lang={lang}
-                isBilingual={isBilingual}
-                answered={answered}
-                onPick={(qid, letter, ev) => pick(qid, letter, ev, true)}
-                onRestart={() => changeMode("sim")}
-                onStudy={() => changeMode("all")}
-                s={s}
-              />
-            ) : (
-              <StudyView
-                grouped={grouped}
-                lang={lang}
-                isBilingual={isBilingual}
-                answered={answered}
-                onPick={(qid, letter, ev) => pick(qid, letter, ev, false)}
-                noQuestionsTitle={mode === "saved" ? s.noSavedTitle : s.noQuestionsTitle}
-                noQuestionsSub={mode === "saved" ? s.noSavedSub : s.noQuestionsSub}
-                answerLabel={s.answer}
-                saved={saved}
-                onToggleSave={toggleSave}
-                saveLabel={s.saveQuestion}
-                unsaveLabel={s.unsaveQuestion}
-              />
-            )}
+            <StudyView
+              grouped={grouped}
+              lang={lang}
+              isBilingual={isBilingual}
+              answered={answered}
+              onPick={(qid, letter, ev) => pick(qid, letter, ev)}
+              noQuestionsTitle={mode === "saved" ? s.noSavedTitle : s.noQuestionsTitle}
+              noQuestionsSub={mode === "saved" ? s.noSavedSub : s.noQuestionsSub}
+              answerLabel={s.answer}
+              saved={saved}
+              onToggleSave={toggleSave}
+              saveLabel={s.saveQuestion}
+              unsaveLabel={s.unsaveQuestion}
+              hasMore={visibleCount < filtered.length}
+              onLoadMore={() => setVisibleCount((c) => c + PAGE_SIZE)}
+              loadMoreLabel={s.loadMoreQuestions}
+            />
           </section>
 
           {/* ── RIGHT SIDEBAR ── */}
@@ -687,7 +668,10 @@ function StudyView({
   saved,
   onToggleSave,
   saveLabel,
-  unsaveLabel
+  unsaveLabel,
+  hasMore,
+  onLoadMore,
+  loadMoreLabel
 }: {
   grouped: Record<string, Question[]>;
   lang: UiLang;
@@ -701,6 +685,9 @@ function StudyView({
   onToggleSave: (qid: string) => void;
   saveLabel: string;
   unsaveLabel: string;
+  hasMore: boolean;
+  onLoadMore: () => void;
+  loadMoreLabel: string;
 }) {
   const entries = Object.entries(grouped);
 
@@ -708,7 +695,7 @@ function StudyView({
     return (
       <div className="empty-state">
         <div className="empty-icon">
-          <IconBadge icon={Icons.party} tone="success" size="lg" />
+          <Kanga pose="search" size={72} />
         </div>
         <div className="empty-title">{noQuestionsTitle}</div>
         <div className="empty-sub">{noQuestionsSub}</div>
@@ -745,130 +732,11 @@ function StudyView({
           </div>
         );
       })}
-    </>
-  );
-}
-
-/* ── Sim view (mock test) ── */
-function SimView({
-  queue,
-  idx,
-  done,
-  result,
-  lang,
-  isBilingual,
-  answered,
-  onPick,
-  onRestart,
-  onStudy,
-  s
-}: {
-  queue: Question[];
-  idx: number;
-  done: boolean;
-  result: { score: number; total: number };
-  lang: UiLang;
-  isBilingual: boolean;
-  answered: Answered;
-  onPick: (qid: string, letter: string, ev: React.MouseEvent) => void;
-  onRestart: () => void;
-  onStudy: () => void;
-  s: Record<string, string>;
-}) {
-  if (queue.length === 0) {
-    return (
-      <div className="empty-state">
-        <div className="empty-icon">
-          <IconBadge
-            icon={Icons.loader}
-            tone="muted"
-            size="lg"
-            iconClassName="icon-badge__icon--spin"
-          />
-        </div>
-        <div className="empty-title">{s.loading}</div>
-      </div>
-    );
-  }
-
-  if (done) {
-    const p = pct(result.score, result.total);
-    const pass = p >= WA_PASS_THRESHOLD * 100;
-    return (
-      <div className="sim-result">
-        <div className="sim-result-emoji">
-          <IconBadge
-            icon={pass ? Icons.trophy : Icons.book}
-            tone={pass ? "success" : "muted"}
-            size="lg"
-            label={pass ? s.pass : s.fail}
-          />
-        </div>
-        <div className="sim-result-score">
-          {result.score}/{result.total}
-        </div>
-        <div className="sim-result-pct" style={{ color: pass ? "var(--green)" : "var(--red)" }}>
-          {p}%
-        </div>
-        <div className="sim-result-msg">
-          {pass
-            ? lang === "en"
-              ? "Well done! You passed the mock test."
-              : lang === "pt"
-                ? "Parabéns! Você passou no simulado."
-                : "¡Felicidades! Pasaste el simulacro."
-            : lang === "en"
-              ? "Keep practising — you need 80% to pass. Review wrong answers in study mode."
-              : lang === "pt"
-                ? "Continue praticando — você precisa de 80% para passar. Revise as respostas erradas no modo de estudo."
-                : "Sigue practicando — necesitas 80% para aprobar. Revisa las respuestas incorrectas en el modo de estudio."}
-        </div>
-        <div className="sim-result-actions">
-          <button className="btn-green" onClick={onRestart}>
-            {lang === "en" ? "Try again" : lang === "pt" ? "Tentar de novo" : "Intentar de nuevo"}
-          </button>
-          <button className="btn-outline" onClick={onStudy}>
-            {lang === "en"
-              ? "Back to study"
-              : lang === "pt"
-                ? "Voltar ao estudo"
-                : "Volver al estudio"}
-          </button>
-          <Link href="/dashboard" className="btn-outline">
-            {lang === "en" ? "View dashboard" : lang === "pt" ? "Ver painel" : "Ver panel"}
-          </Link>
-        </div>
-      </div>
-    );
-  }
-
-  const current = queue[idx];
-  if (!current) return null;
-  const progress = Math.round((idx / queue.length) * 100);
-
-  return (
-    <>
-      <div className="sim-header">
-        <div className="sim-meta">
-          <span className="sim-label">{s.mockTest}</span>
-          <span className="sim-progress-text">
-            {idx + 1} / {queue.length}
-          </span>
-        </div>
-        <div className="pbar-track">
-          <div className="pbar-fill" style={{ width: `${progress}%` }} />
-        </div>
-      </div>
-
-      <QuizCard
-        key={current.id}
-        q={current}
-        lang={lang}
-        isBilingual={isBilingual}
-        answered={answered}
-        onPick={onPick}
-        answerLabel={s.answer}
-      />
+      {hasMore && (
+        <button type="button" className="load-more-btn" onClick={onLoadMore}>
+          {loadMoreLabel}
+        </button>
+      )}
     </>
   );
 }

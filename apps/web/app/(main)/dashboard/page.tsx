@@ -6,7 +6,7 @@ import { DashboardClient } from "./DashboardClient";
 import { AU_STATE_OPTIONS, normalizeAuState, type AuStateCode } from "./state-options";
 import { pct } from "@/lib/percent";
 
-export const metadata = { title: "Dashboard — KangaLearner" };
+export const metadata = { title: "Dashboard" };
 
 type CatStatRow = {
   category: string;
@@ -178,20 +178,20 @@ export default async function DashboardPage({
     settingsResult,
     answeredIdsResult
   ] = await Promise.all([
-    // Category stats — all states aggregated (replaces 500-row attempts query)
+    // Category stats, all states aggregated (replaces 500-row attempts query)
     supabase!
       .from("user_category_stats")
       .select("category, total_attempts, correct_attempts")
       .eq("user_id", user.id)
       .eq("country", SUPPORTED_COUNTRY),
-    // Category stats — state-specific (replaces 500-row state-filtered query)
+    // Category stats, state-specific (replaces 500-row state-filtered query)
     supabase!
       .from("user_category_stats")
       .select("category, total_attempts, correct_attempts")
       .eq("user_id", user.id)
       .eq("country", SUPPORTED_COUNTRY)
       .eq("state", selectedState),
-    // Temporal data — last 90 days only, for streak/weekly chart/today count
+    // Temporal data, last 90 days only, for streak/weekly chart/today count
     supabase!
       .from("question_attempts")
       .select("answered_at, is_correct")
@@ -226,10 +226,16 @@ export default async function DashboardPage({
       .order("completed_at", { ascending: false })
       .limit(50),
     supabase!.from("user_settings").select("daily_goal").eq("user_id", user.id).maybeSingle(),
-    // Readiness coverage — distinct question ids answered (deduped in JS).
-    // ponytail: exact while a user has < 10k attempts; move to an RPC with
-    // count(distinct question_id) if heavy users ever exceed that.
-    supabase!.from("question_attempts").select("question_id").eq("user_id", user.id).limit(10000)
+    // Readiness coverage: distinct question ids answered in the selected state
+    // (deduped in JS). ponytail: exact while a user has < 10k attempts per
+    // state; move to an RPC with count(distinct question_id) if heavy users
+    // ever exceed that.
+    supabase!
+      .from("question_attempts")
+      .select("question_id")
+      .eq("user_id", user.id)
+      .eq("state", selectedState)
+      .limit(10000)
   ]);
 
   const { data: userCatStats, error: catStatsError } = catStatsResult as {
@@ -300,14 +306,14 @@ export default async function DashboardPage({
     console.error("Dashboard answered ids lookup failed", errCode(answeredIdsError));
 
   /* ── Aggregate stats ── */
-  // Counts come from exact COUNT queries — no raw-row fallback needed
+  // Counts come from exact COUNT queries, no raw-row fallback needed
   const totalAnswered = attemptsCount ?? 0;
   const totalCorrect = attemptsCorrectCount ?? 0;
   const overallPct = pct(totalCorrect, totalAnswered);
   const dailyGoal = Math.max(1, settings?.daily_goal ?? 10);
   const todayKey = perthDayKey(new Date());
 
-  // Temporal analytics — last 90 days of question_attempts
+  // Temporal analytics, last 90 days of question_attempts
   const temporalData = temporalAttempts ?? [];
   const answeredToday = todayKey
     ? temporalData.filter((attempt) => perthDayKey(attempt.answered_at) === todayKey).length
@@ -315,7 +321,7 @@ export default async function DashboardPage({
   const dailyGoalPct = Math.min(100, pct(answeredToday, dailyGoal));
   const streakDays = streakForAttempts(temporalData);
 
-  // Weekly bar chart — built from temporal data (last 90 days covers 8+ weeks)
+  // Weekly bar chart, built from temporal data (last 90 days covers 8+ weeks)
   const WEEKS = 8;
   const weekBuckets: { label: string; total: number; correct: number }[] = [];
   const thisWeekStart = startOfWeekDayKey(todayKey ?? perthDayKey(new Date()) ?? "1970-01-01");
@@ -337,7 +343,7 @@ export default async function DashboardPage({
 
   const maxWeekTotal = Math.max(...weekBuckets.map((b) => b.total), 1);
 
-  // Category stats — from pre-aggregated user_category_stats (no row-scan limit)
+  // Category stats, from pre-aggregated user_category_stats (no row-scan limit)
   const catMap = new Map<string, { total: number; correct: number }>();
   for (const row of userCatStats ?? []) {
     const e = catMap.get(row.category) ?? { total: 0, correct: 0 };
@@ -378,19 +384,26 @@ export default async function DashboardPage({
       ? allSessions.reduce((best, s) => (s.percent > best.percent ? s : best))
       : null;
 
-  /* ── Readiness — reuses catMap + allSessions derived above ── */
+  /* ── Readiness, state-specific: the user preps for one state's test ── */
+  // ponytail: bank = the selected state's car pool (the default mock config).
+  // The server does not know the licence type (it lives in localStorage);
+  // record it on question_attempts if motorcycle readiness ever matters.
+  const stateBankSize = QUESTIONS.filter(
+    (q) => q.states.includes(selectedState) && q.licenceType !== "motorcycle"
+  ).length;
   const answeredUnique = new Set((answeredIds ?? []).map((row) => row.question_id)).size;
   const readiness = computeReadiness({
-    categories: [...catMap.entries()].map(([category, stat]) => ({
-      category,
-      correct: stat.correct,
-      total: stat.total
+    categories: (stateUserCatStats ?? []).map((row) => ({
+      category: row.category,
+      correct: row.correct_attempts,
+      total: row.total_attempts
     })),
-    recentMocks: allSessions.map((session) => ({ score: session.score, total: session.total })),
-    questionBankSize: QUESTIONS.length,
+    recentMocks: allSessions
+      .filter((session) => session.state === selectedState)
+      .map((session) => ({ score: session.score, total: session.total })),
+    questionBankSize: stateBankSize,
     answeredUnique
   });
-  const weakestCategory = weakTopics[0]?.[0] ?? null;
 
   /* ── Score colour ── */
   const scoreColor =
@@ -407,7 +420,6 @@ export default async function DashboardPage({
       <MigrateLocalProgress />
       <DashboardClient
         readiness={readiness}
-        weakestCategory={weakestCategory}
         displayName={displayName}
         userEmail={user.email}
         totalAnswered={totalAnswered}

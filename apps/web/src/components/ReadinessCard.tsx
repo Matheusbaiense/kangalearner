@@ -15,21 +15,17 @@ const LEVEL_COLOR: Record<ReadinessLevel, string> = {
 const RING_RADIUS = 34;
 const RING_CIRCUMFERENCE = 2 * Math.PI * RING_RADIUS;
 
-function reasonHref(reason: ReadinessReason, weakestCategory: string | null): string {
-  if (reason === "readiness.weakCategories") {
-    return weakestCategory ? `/practice?cat=${encodeURIComponent(weakestCategory)}` : "/practice";
-  }
-  if (reason === "readiness.lowCoverage") return "/practice";
-  return "/mock-test";
+function reasonHref(reason: ReadinessReason): string {
+  return reason === "readiness.weakCategories" || reason === "readiness.lowCoverage"
+    ? "/practice"
+    : "/mock-test";
 }
 
 export function ReadinessCard({
   readiness,
-  weakestCategory = null,
   compact = false
 }: {
   readiness: ReadinessResult;
-  weakestCategory?: string | null;
   compact?: boolean;
 }) {
   const { s } = useLang();
@@ -55,7 +51,7 @@ export function ReadinessCard({
   }
 
   return (
-    <div className="dash-section readiness-card">
+    <div className="stat-card readiness-card">
       <div className="readiness-head">
         <div className="readiness-ring">
           <svg
@@ -88,9 +84,7 @@ export function ReadinessCard({
           <span className="readiness-ring-score">{readiness.score}</span>
         </div>
         <div>
-          <p className="dash-section-title" style={{ marginBottom: 2 }}>
-            {s["readiness.title"]}
-          </p>
+          <p className="dash-section-title readiness-title">{s["readiness.title"]}</p>
           <p className="readiness-level" style={{ color }}>
             {levelLabel}
           </p>
@@ -102,7 +96,7 @@ export function ReadinessCard({
         <ul className="readiness-reasons">
           {readiness.reasons.map((reason) => (
             <li key={reason}>
-              <Link href={reasonHref(reason, weakestCategory)} className="readiness-reason">
+              <Link href={reasonHref(reason)} className="readiness-reason">
                 {s[reason]} →
               </Link>
             </li>

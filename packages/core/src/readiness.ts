@@ -8,8 +8,9 @@ import { WA_PASS_THRESHOLD } from "./index";
 //    costs WEAK_CATEGORY_PENALTY_PTS points
 //  - mocks: mean of the last 3 mock percentages, full share at >= 80%;
 //    no mocks = 0
-// "ready" additionally requires >= 2 of the last 3 mocks at the WA pass
-// mark (24/30 = 80%) — never declare ready without passing mocks.
+// "ready" additionally requires >= 2 of the last 3 mocks at the pass mark
+// (WA_PASS_THRESHOLD = 80%, the site-wide convention for every state);
+// never declare ready without passing mocks.
 
 export interface ReadinessInput {
   categories: Array<{ category: string; correct: number; total: number }>;

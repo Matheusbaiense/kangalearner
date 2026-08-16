@@ -3,8 +3,7 @@
 // NOTE: production currently lags these migrations (question_attempts.attempt_id and
 // user_category_stats are not yet applied in prod — see BACKLOG "Drift de schema").
 // Regenerate (project id from env, never hardcoded — see SEC-1):
-//   npx supabase gen types typescript --project-id "$SUPABASE_PROJECT_ID" --schema public
-
+//   supabase gen types typescript --project-id "$SUPABASE_PROJECT_ID" > src/lib/supabase/database.types.ts
 export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export type Database = {
@@ -15,12 +14,36 @@ export type Database = {
   };
   public: {
     Tables: {
+      blog_reactions: {
+        Row: {
+          created_at: string;
+          id: string;
+          reaction: string;
+          slug: string;
+          visitor_hash: string;
+        };
+        Insert: {
+          created_at?: string;
+          id?: string;
+          reaction: string;
+          slug: string;
+          visitor_hash: string;
+        };
+        Update: {
+          created_at?: string;
+          id?: string;
+          reaction?: string;
+          slug?: string;
+          visitor_hash?: string;
+        };
+        Relationships: [];
+      };
       mock_sessions: {
         Row: {
           answers: Json;
           completed_at: string;
           country: string;
-          id: string;
+          id: number;
           mode: string;
           passed: boolean;
           percent: number | null;
@@ -90,6 +113,129 @@ export type Database = {
         };
         Relationships: [];
       };
+      profiles: {
+        Row: {
+          avatar_url: string | null;
+          country: string;
+          created_at: string;
+          deleted_at: string | null;
+          display_name: string | null;
+          email: string | null;
+          id: string;
+          lang: string;
+          last_sign_in_at: string | null;
+          name: string | null;
+          onboarding_done: boolean;
+          preferred_lang: string;
+          preferred_state: string;
+          role: string;
+          stripe_customer_id: string | null;
+          updated_at: string;
+          welcome_sent_at: string | null;
+        };
+        Insert: {
+          avatar_url?: string | null;
+          country?: string;
+          created_at?: string;
+          deleted_at?: string | null;
+          display_name?: string | null;
+          email?: string | null;
+          id: string;
+          lang?: string;
+          last_sign_in_at?: string | null;
+          name?: string | null;
+          onboarding_done?: boolean;
+          preferred_lang?: string;
+          preferred_state?: string;
+          role?: string;
+          stripe_customer_id?: string | null;
+          updated_at?: string;
+          welcome_sent_at?: string | null;
+        };
+        Update: {
+          avatar_url?: string | null;
+          country?: string;
+          created_at?: string;
+          deleted_at?: string | null;
+          display_name?: string | null;
+          email?: string | null;
+          id?: string;
+          lang?: string;
+          last_sign_in_at?: string | null;
+          name?: string | null;
+          onboarding_done?: boolean;
+          preferred_lang?: string;
+          preferred_state?: string;
+          role?: string;
+          stripe_customer_id?: string | null;
+          updated_at?: string;
+          welcome_sent_at?: string | null;
+        };
+        Relationships: [];
+      };
+      question_attempts: {
+        Row: {
+          answered_at: string;
+          attempt_id: string;
+          category: string | null;
+          chosen: string | null;
+          id: number;
+          is_correct: boolean;
+          question_id: string;
+          source: string;
+          state: string;
+          user_id: string;
+        };
+        Insert: {
+          answered_at?: string;
+          attempt_id: string;
+          category?: string | null;
+          chosen?: string | null;
+          id?: number;
+          is_correct: boolean;
+          question_id: string;
+          source?: string;
+          state: string;
+          user_id: string;
+        };
+        Update: {
+          answered_at?: string;
+          attempt_id?: string;
+          category?: string | null;
+          chosen?: string | null;
+          id?: number;
+          is_correct?: boolean;
+          question_id?: string;
+          source?: string;
+          state?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
+      saved_questions: {
+        Row: {
+          country: string;
+          created_at: string;
+          id: string;
+          question_id: string;
+          user_id: string;
+        };
+        Insert: {
+          country?: string;
+          created_at?: string;
+          id?: string;
+          question_id: string;
+          user_id: string;
+        };
+        Update: {
+          country?: string;
+          created_at?: string;
+          id?: string;
+          question_id?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       stripe_webhook_events: {
         Row: {
           event_id: string;
@@ -108,402 +254,39 @@ export type Database = {
         };
         Relationships: [];
       };
-      profiles: {
-        Row: {
-          avatar_url: string | null;
-          country: string;
-          created_at: string;
-          deleted_at: string | null;
-          display_name: string | null;
-          email: string | null;
-          id: string;
-          lang: string;
-          name: string | null;
-          onboarding_done: boolean;
-          preferred_lang: string;
-          preferred_state: string;
-          role: string;
-          stripe_customer_id: string | null;
-          updated_at: string;
-          welcome_sent_at: string | null;
-          last_sign_in_at: string | null;
-        };
-        Insert: {
-          avatar_url?: string | null;
-          country?: string;
-          created_at?: string;
-          deleted_at?: string | null;
-          display_name?: string | null;
-          email?: string | null;
-          id: string;
-          lang?: string;
-          name?: string | null;
-          onboarding_done?: boolean;
-          preferred_lang?: string;
-          preferred_state?: string;
-          role?: string;
-          stripe_customer_id?: string | null;
-          updated_at?: string;
-          welcome_sent_at?: string | null;
-          last_sign_in_at?: string | null;
-        };
-        Update: {
-          avatar_url?: string | null;
-          country?: string;
-          created_at?: string;
-          deleted_at?: string | null;
-          display_name?: string | null;
-          email?: string | null;
-          id?: string;
-          lang?: string;
-          name?: string | null;
-          onboarding_done?: boolean;
-          preferred_lang?: string;
-          preferred_state?: string;
-          role?: string;
-          stripe_customer_id?: string | null;
-          updated_at?: string;
-          welcome_sent_at?: string | null;
-          last_sign_in_at?: string | null;
-        };
-        Relationships: [];
-      };
-      question_attempts: {
-        Row: {
-          answered_at: string;
-          attempt_id: string;
-          category: string | null;
-          chosen: string | null;
-          country: string;
-          id: string;
-          is_correct: boolean;
-          question_id: string;
-          source: string;
-          state: string;
-          user_id: string;
-        };
-        Insert: {
-          answered_at?: string;
-          attempt_id: string;
-          category?: string | null;
-          chosen?: string | null;
-          country?: string;
-          id?: string;
-          is_correct: boolean;
-          question_id: string;
-          source?: string;
-          state: string;
-          user_id: string;
-        };
-        Update: {
-          answered_at?: string;
-          attempt_id?: string;
-          category?: string | null;
-          chosen?: string | null;
-          country?: string;
-          id?: string;
-          is_correct?: boolean;
-          question_id?: string;
-          source?: string;
-          state?: string;
-          user_id?: string;
-        };
-        Relationships: [];
-      };
-      bookings: {
-        Row: {
-          id: string;
-          student_id: string | null;
-          instructor_id: string | null;
-          country: string;
-          state: string;
-          scheduled_at: string;
-          duration_minutes: number;
-          status: string;
-          amount_cents: number | null;
-          currency: string;
-          stripe_payment_intent_id: string | null;
-          stripe_transfer_id: string | null;
-          notes_student: string | null;
-          notes_instructor: string | null;
-          cancelled_by: string | null;
-          cancel_reason: string | null;
-          created_at: string;
-          updated_at: string;
-        };
-        Insert: {
-          id?: string;
-          student_id?: string | null;
-          instructor_id?: string | null;
-          country: string;
-          state: string;
-          scheduled_at: string;
-          duration_minutes?: number;
-          status?: string;
-          amount_cents?: number | null;
-          currency?: string;
-          stripe_payment_intent_id?: string | null;
-          stripe_transfer_id?: string | null;
-          notes_student?: string | null;
-          notes_instructor?: string | null;
-          cancelled_by?: string | null;
-          cancel_reason?: string | null;
-          created_at?: string;
-          updated_at?: string;
-        };
-        Update: {
-          student_id?: string | null;
-          instructor_id?: string | null;
-          country?: string;
-          state?: string;
-          scheduled_at?: string;
-          duration_minutes?: number;
-          status?: string;
-          amount_cents?: number | null;
-          currency?: string;
-          stripe_payment_intent_id?: string | null;
-          stripe_transfer_id?: string | null;
-          notes_student?: string | null;
-          notes_instructor?: string | null;
-          cancelled_by?: string | null;
-          cancel_reason?: string | null;
-          updated_at?: string;
-        };
-        Relationships: [];
-      };
-      instructor_reviews: {
-        Row: {
-          id: string;
-          booking_id: string | null;
-          student_id: string | null;
-          instructor_id: string | null;
-          rating: number;
-          comment: string | null;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          booking_id?: string | null;
-          student_id?: string | null;
-          instructor_id?: string | null;
-          rating: number;
-          comment?: string | null;
-          created_at?: string;
-        };
-        Update: {
-          booking_id?: string | null;
-          student_id?: string | null;
-          instructor_id?: string | null;
-          rating?: number;
-          comment?: string | null;
-        };
-        Relationships: [];
-      };
-      instructors: {
-        Row: {
-          id: string;
-          user_id: string;
-          country: string;
-          state: string;
-          license_number: string | null;
-          license_verified: boolean;
-          background_check_passed: boolean;
-          bio: Json | null;
-          specialties: Json | null;
-          languages_spoken: Json | null;
-          hourly_rate_cents: number | null;
-          currency: string;
-          stripe_account_id: string | null;
-          is_active: boolean;
-          rating_avg: number | null;
-          rating_count: number;
-          created_at: string;
-          updated_at: string;
-        };
-        Insert: {
-          id?: string;
-          user_id: string;
-          country: string;
-          state: string;
-          license_number?: string | null;
-          license_verified?: boolean;
-          background_check_passed?: boolean;
-          bio?: Json | null;
-          specialties?: Json | null;
-          languages_spoken?: Json | null;
-          hourly_rate_cents?: number | null;
-          currency?: string;
-          stripe_account_id?: string | null;
-          is_active?: boolean;
-          rating_avg?: number | null;
-          rating_count?: number;
-          created_at?: string;
-          updated_at?: string;
-        };
-        Update: {
-          country?: string;
-          state?: string;
-          license_number?: string | null;
-          license_verified?: boolean;
-          background_check_passed?: boolean;
-          bio?: Json | null;
-          specialties?: Json | null;
-          languages_spoken?: Json | null;
-          hourly_rate_cents?: number | null;
-          currency?: string;
-          stripe_account_id?: string | null;
-          is_active?: boolean;
-          rating_avg?: number | null;
-          rating_count?: number;
-          updated_at?: string;
-        };
-        Relationships: [];
-      };
-      marketplace_waitlist: {
-        Row: {
-          id: string;
-          email: string;
-          country: string;
-          state: string | null;
-          role: string;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          email: string;
-          country?: string;
-          state?: string | null;
-          role?: string;
-          created_at?: string;
-        };
-        Update: {
-          email?: string;
-          country?: string;
-          state?: string | null;
-          role?: string;
-        };
-        Relationships: [];
-      };
-      saved_questions: {
-        Row: {
-          id: string;
-          user_id: string;
-          question_id: string;
-          country: string;
-          created_at: string;
-        };
-        Insert: {
-          id?: string;
-          user_id: string;
-          question_id: string;
-          country?: string;
-          created_at?: string;
-        };
-        Update: {
-          question_id?: string;
-          country?: string;
-        };
-        Relationships: [];
-      };
-      user_badges: {
-        Row: {
-          id: string;
-          user_id: string;
-          badge_key: string;
-          earned_at: string;
-        };
-        Insert: {
-          id?: string;
-          user_id: string;
-          badge_key: string;
-          earned_at?: string;
-        };
-        Update: {
-          badge_key?: string;
-          earned_at?: string;
-        };
-        Relationships: [];
-      };
       user_category_stats: {
         Row: {
-          id: string;
-          user_id: string;
-          country: string;
-          state: string;
           category: string;
-          total_attempts: number;
           correct_attempts: number;
+          country: string;
+          id: string;
           last_attempt_at: string | null;
-          updated_at: string;
-        };
-        Insert: {
-          id?: string;
-          user_id: string;
-          country?: string;
           state: string;
-          category: string;
-          total_attempts?: number;
-          correct_attempts?: number;
-          last_attempt_at?: string | null;
-          updated_at?: string;
-        };
-        Update: {
-          total_attempts?: number;
-          correct_attempts?: number;
-          last_attempt_at?: string | null;
-          updated_at?: string;
-        };
-        Relationships: [];
-      };
-      user_xp: {
-        Row: {
-          id: string;
-          user_id: string;
-          total_xp: number;
-          level: string;
-          streak_days: number;
-          last_activity_date: string | null;
+          total_attempts: number;
           updated_at: string;
+          user_id: string;
         };
         Insert: {
+          category: string;
+          correct_attempts?: number;
+          country?: string;
           id?: string;
-          user_id: string;
-          total_xp?: number;
-          level?: string;
-          streak_days?: number;
-          last_activity_date?: string | null;
+          last_attempt_at?: string | null;
+          state: string;
+          total_attempts?: number;
           updated_at?: string;
+          user_id: string;
         };
         Update: {
-          total_xp?: number;
-          level?: string;
-          streak_days?: number;
-          last_activity_date?: string | null;
-          updated_at?: string;
-        };
-        Relationships: [];
-      };
-      xp_events: {
-        Row: {
-          id: string;
-          user_id: string;
-          event_type: string;
-          xp_earned: number;
-          metadata: Json | null;
-          created_at: string;
-        };
-        Insert: {
+          category?: string;
+          correct_attempts?: number;
+          country?: string;
           id?: string;
-          user_id: string;
-          event_type: string;
-          xp_earned: number;
-          metadata?: Json | null;
-          created_at?: string;
-        };
-        Update: {
-          event_type?: string;
-          xp_earned?: number;
-          metadata?: Json | null;
+          last_attempt_at?: string | null;
+          state?: string;
+          total_attempts?: number;
+          updated_at?: string;
+          user_id?: string;
         };
         Relationships: [];
       };
@@ -567,6 +350,16 @@ export type Database = {
         }[];
       };
       is_admin: { Args: never; Returns: boolean };
+      upsert_category_stat: {
+        Args: {
+          p_category: string;
+          p_country: string;
+          p_is_correct: boolean;
+          p_state: string;
+          p_user_id: string;
+        };
+        Returns: undefined;
+      };
     };
     Enums: {
       [_ in never]: never;

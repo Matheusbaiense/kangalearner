@@ -1,7 +1,6 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "baseUrl": ".",
     "paths": {
       "@kanga/core/*": ["../../packages/core/src/*"],
       "@/*": ["./src/*"]

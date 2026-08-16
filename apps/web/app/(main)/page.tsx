@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import { LandingClient } from "./LandingClient";
 
 export const metadata: Metadata = {
-  title: "KangaLearner — Pass your WA learner test | Free practice in EN/PT/ES",
+  title: "Pass your Australian learner test | Free practice in EN/PT/ES",
   description:
-    "Practice real Western Australia road-rule questions in English, Portuguese or Spanish. Growing question bank with 30-question mock tests and instant feedback. Free forever.",
+    "Practice 800+ real exam-style road-rule questions in English, Portuguese or Spanish. 30-question mock tests with instant feedback, based on the official WA and NSW handbooks. Free to study.",
   keywords:
-    "WA learner test, Western Australia learner licence, road rules practice, learner driver test, driver knowledge test, prova de learner WA, examen learner WA",
+    "Australian learner test, learner licence practice, road rules practice, learner driver test, driver knowledge test, prova de learner Austrália, examen learner Australia",
   openGraph: {
-    title: "KangaLearner — Pass your WA learner test",
+    title: "KangaLearner | Pass your Australian learner test",
     description:
-      "Practice real WA road-rule questions in English, Português or Español. Free mock tests with instant feedback.",
+      "Practice real road-rule questions in English, Português or Español. Free mock tests with instant feedback, currently WA and NSW.",
     type: "website",
     url: "https://kangalearner.com.au",
     locale: "en_AU",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "KangaLearner — Pass Your WA Learner Test"
+        alt: "KangaLearner, Pass Your Australian Learner Test"
       }
     ]
   }
