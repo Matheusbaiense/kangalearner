@@ -346,7 +346,8 @@ a:focus-visible,
 .auth-card-title {
   font-family: var(--font-display);
   font-weight: 800;
-  font-size: var(--text-xl);
+  /* excecao da escala: heading do auth mantem 1.5rem (--text-xl encolheria 13%) */
+  font-size: 1.5rem;
   letter-spacing: -0.045em;
   color: var(--ink);
   margin-bottom: 5px;
