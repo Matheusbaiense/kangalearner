@@ -138,7 +138,7 @@ export function MockTestScreen() {
     return (
       <Screen
         title={copy.mock}
-        subtitle={`${state} - ${WA_TOTAL_QUESTIONS} questions - pass mark ${WA_PASS_MIN_CORRECT}/${WA_TOTAL_QUESTIONS}`}
+        subtitle={`${state} - ${WA_TOTAL_QUESTIONS} ${copy.questionsLabel.toLowerCase()} - ${copy.passMark.toLowerCase()} ${WA_PASS_MIN_CORRECT}/${WA_TOTAL_QUESTIONS}`}
       >
         <Card>
           <Text style={{ color: c.ink, fontWeight: "900", fontSize: 20 }}>{copy.mockMode}</Text>
@@ -151,13 +151,15 @@ export function MockTestScreen() {
             </PillButton>
           </View>
           <Text selectable style={{ color: c.muted, lineHeight: 23 }}>
-            Practice mode reveals answers as you go. Exam mode keeps feedback until the result.
+            {copy.mockModeHint}
           </Text>
           <PrimaryButton onPress={() => startSession()}>{copy.startMock}</PrimaryButton>
         </Card>
         {history.length ? (
           <Card>
-            <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>Recent results</Text>
+            <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>
+              {copy.recentResults}
+            </Text>
             {history.slice(0, 3).map((item) => (
               <View key={item.id} style={{ flexDirection: "row", justifyContent: "space-between" }}>
                 <Text style={{ color: c.muted }}>
@@ -179,8 +181,8 @@ export function MockTestScreen() {
       <Screen title={copy.result} subtitle={passed ? copy.pass : copy.fail}>
         <Card>
           <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.md }}>
-            <Stat label="Score" value={`${score}/${qids.length}`} />
-            <Stat label="Pass mark" value={`${WA_PASS_MIN_CORRECT}/${WA_TOTAL_QUESTIONS}`} />
+            <Stat label={copy.score} value={`${score}/${qids.length}`} />
+            <Stat label={copy.passMark} value={`${WA_PASS_MIN_CORRECT}/${WA_TOTAL_QUESTIONS}`} />
           </View>
           <ProgressBar value={Math.round((score / qids.length) * 100)} />
           <PrimaryButton onPress={() => startSession()}>{copy.startMock}</PrimaryButton>
