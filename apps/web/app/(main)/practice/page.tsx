@@ -3,10 +3,13 @@ import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
 
 export const metadata = {
-  title: "Practice — KangaLearner"
+  title: "Practice",
+  alternates: { canonical: "https://kangalearner.com.au/practice" }
 };
 
-const VALID_MODES = ["all", "wrong", "unanswered", "saved", "sim"] as const;
+// "sim" is intentionally NOT a practice mode, the mock test lives at
+// /mock-test; the redirect below keeps old ?mode=sim links working.
+const VALID_MODES = ["all", "wrong", "unanswered", "saved"] as const;
 type Mode = (typeof VALID_MODES)[number];
 
 function toMode(raw: string | undefined): Mode {
@@ -19,7 +22,7 @@ export default async function PracticePage({ searchParams }: { searchParams: Pag
   const { mode: rawMode } = await searchParams;
   const initialMode = toMode(rawMode);
 
-  if (initialMode === "sim") {
+  if (rawMode === "sim") {
     redirect("/mock-test");
   }
 

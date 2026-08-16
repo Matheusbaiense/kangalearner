@@ -12,12 +12,60 @@ import type { MockConfig, MockSession } from "@/types/mock";
 
 const EXAM_SECONDS = 45 * 60; // 45 minutes
 
+type Cap = Record<string, string>;
+
+function signSrcFor(sign: string | undefined): string | null {
+  if (!sign) return null;
+  if (sign.startsWith("/")) return sign;
+  const legacySign = sign.match(/^assets\/icons\/signs\/(.+)$/);
+  return legacySign ? `/icons/signs/${legacySign[1]}` : null;
+}
+
 function formatTime(secs: number) {
   const m = Math.floor(secs / 60)
     .toString()
     .padStart(2, "0");
   const s = (secs % 60).toString().padStart(2, "0");
   return `${m}:${s}`;
+}
+
+const TIMER_RING_RADIUS = 15;
+const TIMER_RING_CIRCUMFERENCE = 2 * Math.PI * TIMER_RING_RADIUS;
+const TIMER_WARN_SECONDS = 5 * 60;
+const TIMER_DANGER_SECONDS = 60;
+
+function ExamTimer({ timeLeft, label }: { timeLeft: number; label: string }) {
+  const frac = Math.max(0, Math.min(1, timeLeft / EXAM_SECONDS));
+  const tone =
+    timeLeft < TIMER_DANGER_SECONDS ? " danger" : timeLeft < TIMER_WARN_SECONDS ? " warn" : "";
+  return (
+    <span
+      className={`exam-timer${tone}`}
+      role="timer"
+      aria-label={`${label}: ${formatTime(timeLeft)}`}
+    >
+      <svg
+        className="exam-timer-ring"
+        width="36"
+        height="36"
+        viewBox="0 0 36 36"
+        aria-hidden="true"
+      >
+        <circle className="ring-bg" cx="18" cy="18" r={TIMER_RING_RADIUS} strokeWidth="3" />
+        <circle
+          className="ring-fg"
+          cx="18"
+          cy="18"
+          r={TIMER_RING_RADIUS}
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeDasharray={TIMER_RING_CIRCUMFERENCE}
+          strokeDashoffset={TIMER_RING_CIRCUMFERENCE * (1 - frac)}
+        />
+      </svg>
+      <span className="exam-timer-time">{formatTime(timeLeft)}</span>
+    </span>
+  );
 }
 
 export default function MockTestSessionPage() {
@@ -63,7 +111,8 @@ export default function MockTestSessionPage() {
     const questions = Number.isFinite(parsed.questions)
       ? Math.max(1, Math.min(50, parsed.questions))
       : 30;
-    return { state, mode, questions };
+    const licenceType = parsed.licenceType === "motorcycle" ? "motorcycle" : "car";
+    return { state, mode, questions, licenceType };
   }, [raw]);
 
   const session = useMemo<MockSession | null>(
@@ -74,9 +123,15 @@ export default function MockTestSessionPage() {
   const questionPool = useMemo(() => {
     if (!cfg) return [];
     const state = cfg.state;
-    return state === "AU"
-      ? QUESTIONS.slice()
-      : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
+    const byState =
+      state === "AU"
+        ? QUESTIONS.slice()
+        : QUESTIONS.filter((q) => Array.isArray(q.states) && q.states.includes(state));
+    return byState.filter((q) =>
+      cfg.licenceType === "motorcycle"
+        ? q.licenceType === "motorcycle"
+        : q.licenceType !== "motorcycle"
+    );
   }, [cfg, QUESTIONS]);
 
   const activeQuestion = useMemo(() => {
@@ -145,6 +200,14 @@ export default function MockTestSessionPage() {
     persistSession(completed);
     router.push("/mock-test/results");
   }, [timeExpired, session, router]);
+
+  /* ── Focus mode: hide site chrome while questions are being answered ── */
+  const inQuestionPhase = !!cfg && !!session && !session.completedAtIso && !!activeQuestion;
+  useEffect(() => {
+    if (!inQuestionPhase) return;
+    document.documentElement.classList.add("exam-focus");
+    return () => document.documentElement.classList.remove("exam-focus");
+  }, [inQuestionPhase]);
 
   function persistSession(next: MockSession) {
     try {
@@ -226,8 +289,8 @@ export default function MockTestSessionPage() {
         <div className="mock-setup-card">
           <h1>{s.loading}</h1>
           <p className="mock-meta">
-            {cfg.state} · {cfg.questions} questions ·{" "}
-            {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
+            {cfg.questions} {s.questionsWord} · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </p>
         </div>
       </main>
@@ -256,7 +319,26 @@ export default function MockTestSessionPage() {
 
   return (
     <main className="container section-pad">
+      {/* Exam mini-header: small logo, prominent timer, discreet exit */}
+      <div className="exam-topbar">
+        <img src="/brand/logo-nav.svg" alt="KangaLearner" height={26} />
+        <div className="exam-topbar-right">
+          {cfg.mode === "exam" && <ExamTimer timeLeft={timeLeft} label={s.timeRemaining} />}
+          <Link href="/mock-test" className="btn btn-ghost-light exam-exit">
+            {s.exitLabel}
+          </Link>
+        </div>
+      </div>
+
       <div className="mock-setup-card">
+        {/* Question progress bar */}
+        <div className="pbar-track exam-pbar">
+          <div
+            className="pbar-fill"
+            style={{ width: `${Math.round((answeredCount / total) * 100)}%` }}
+          />
+        </div>
+
         <div
           className="mock-meta"
           style={{
@@ -268,38 +350,17 @@ export default function MockTestSessionPage() {
           }}
         >
           <span>
-            {cfg.state} · {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
+            {total} {s.questionsWord} · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </span>
-          <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-            {cfg.mode === "exam" && (
-              <span
-                aria-live="polite"
-                style={{
-                  fontWeight: 800,
-                  fontSize: ".88rem",
-                  color: timeLeft < 300 ? "var(--red)" : "var(--muted)",
-                  fontVariantNumeric: "tabular-nums"
-                }}
-              >
-                ⏱ {s.timeRemaining}: {formatTime(timeLeft)}
-              </span>
-            )}
-            <span aria-live="polite">
-              {activeIndex + 1} / {total}
-            </span>
-          </div>
-        </div>
-
-        {/* Progress bar */}
-        <div className="pbar-track" style={{ marginTop: 10, marginBottom: 14 }}>
-          <div
-            className="pbar-fill"
-            style={{ width: `${Math.round((answeredCount / total) * 100)}%` }}
-          />
+          <span aria-live="polite">
+            {activeIndex + 1} / {total}
+          </span>
         </div>
 
         {/* Question text */}
         <p
+          id="mock-question-text"
           style={{
             fontWeight: 850,
             fontSize: "1rem",
@@ -323,8 +384,27 @@ export default function MockTestSessionPage() {
           </p>
         )}
 
+        {(() => {
+          const signSrc = signSrcFor(q.sign);
+          const capLabel =
+            q.cap == null ? null : typeof q.cap === "string" ? q.cap : tx(q.cap as Cap, lang);
+          if (!signSrc && !capLabel) return null;
+          return (
+            <div className="sign-box">
+              {signSrc ? (
+                <img src={signSrc} alt={capLabel ?? "Road sign"} loading="lazy" decoding="async" />
+              ) : null}
+              {capLabel ? <div className="img-cap">{capLabel}</div> : null}
+            </div>
+          );
+        })()}
+
         {/* Options */}
-        <div style={{ display: "grid", gap: 10, marginTop: 4 }}>
+        <div
+          role="radiogroup"
+          aria-labelledby="mock-question-text"
+          style={{ display: "grid", gap: 10, marginTop: 4 }}
+        >
           {q.opts.map((o) => {
             const isChosen = chosen === o.l;
             const isCorrect = correctLetter === o.l;
@@ -344,6 +424,8 @@ export default function MockTestSessionPage() {
                 key={o.l}
                 className={className}
                 type="button"
+                role="radio"
+                aria-checked={isChosen}
                 onClick={() => choose(o.l)}
                 disabled={isCurrentAnswered}
               >
@@ -399,9 +481,6 @@ export default function MockTestSessionPage() {
         )}
 
         <div style={{ display: "flex", gap: 10, marginTop: 18, flexWrap: "wrap" }}>
-          <Link href="/mock-test" className="btn btn-ghost-light">
-            {s.exitLabel}
-          </Link>
           <button
             className="btn btn-primary btn-full"
             type="button"

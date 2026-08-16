@@ -6,6 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 import { useLang } from "@/contexts/LangContext";
+import { AuthBrand } from "@/components/auth/AuthBrand";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
 
 function LoginForm() {
@@ -76,9 +77,7 @@ function LoginForm() {
 
   return (
     <main className="auth-page">
-      <Link href="/" className="auth-brand" aria-label="KangaLearner home">
-        <span className="auth-logo-name">KangaLearner</span>
-      </Link>
+      <AuthBrand />
 
       <div className="auth-card">
         <div className="auth-header">

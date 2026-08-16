@@ -591,7 +591,7 @@ export default function AccountPage() {
                     >
                       {AU_TIMEZONES.map((tz) => (
                         <option key={tz.value} value={tz.value}>
-                          {tz.label} — {tz.offset}
+                          {tz.label}, {tz.offset}
                         </option>
                       ))}
                     </select>
