@@ -163,9 +163,9 @@ const FAQS = [
       es: "¿Qué estados y territorios australianos están cubiertos?"
     },
     a: {
-      en: "All of them — WA, NSW, QLD, VIC, SA, TAS, ACT and NT are all available now, each with its own real question bank sourced from the official state test.",
-      pt: "Todos — WA, NSW, QLD, VIC, SA, TAS, ACT e NT já estão disponíveis, cada um com seu próprio banco de perguntas reais extraído do teste oficial do estado.",
-      es: "Todos — WA, NSW, QLD, VIC, SA, TAS, ACT y NT ya están disponibles, cada uno con su propio banco de preguntas reales extraído del examen oficial del estado."
+      en: "All of them: WA, NSW, QLD, VIC, SA, TAS, ACT and NT are all available now, each with its own real question bank sourced from the official state test.",
+      pt: "Todos: WA, NSW, QLD, VIC, SA, TAS, ACT e NT já estão disponíveis, cada um com seu próprio banco de perguntas reais extraído do teste oficial do estado.",
+      es: "Todos: WA, NSW, QLD, VIC, SA, TAS, ACT y NT ya están disponibles, cada uno con su propio banco de preguntas reales extraído del examen oficial del estado."
     }
   }
 ];
