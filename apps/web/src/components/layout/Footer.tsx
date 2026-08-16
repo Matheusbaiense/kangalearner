@@ -110,18 +110,13 @@ export function Footer() {
           {STATE_TEST_INFO.map((st, i) => (
             <span key={st.code}>
               {i > 0 && " · "}
-              <Link href={`/learner-test/${st.slug}`} style={{ color: "inherit" }}>
-                {st.code}
-              </Link>
+              <Link href={`/learner-test/${st.slug}`}>{st.code}</Link>
             </span>
           ))}
         </span>
         <span className="footer-copyright">{s.footerCopyright}</span>
         <span className="footer-copyright">
-          Perth, WA ·{" "}
-          <a href="mailto:hello@kangalearner.com.au" style={{ color: "inherit" }}>
-            hello@kangalearner.com.au
-          </a>
+          Perth, WA · <a href="mailto:hello@kangalearner.com.au">hello@kangalearner.com.au</a>
         </span>
       </div>
     </footer>

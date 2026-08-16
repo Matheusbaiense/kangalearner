@@ -117,10 +117,7 @@ export default async function StateTestPage({ params }: Props) {
       />
       <div className="app-container">
         <header className="page-header">
-          <h1 className="page-title">
-            {info.code} {info.testName}
-            {abbrSuffix} Practice
-          </h1>
+          <h1 className="page-title">{`${info.code} ${info.testName}${abbrSuffix} Practice`}</h1>
           <p className="page-sub">
             {`Free ${info.testAbbr ?? info.testName} practice questions for ${info.stateName}. ` +
               "Study in English, Portuguese or Spanish."}
@@ -182,6 +179,13 @@ export default async function StateTestPage({ params }: Props) {
           <p>
             {`The ${info.code} question pool covers every topic tested in the real exam: ` +
               `${categories.join(", ")}.`}
+            {info.slug === "wa" ? (
+              <>
+                {" "}
+                Read the full <Link href="/learn/about-the-test">WA test format guide</Link> for
+                booking details and what to expect on the day.
+              </>
+            ) : null}
           </p>
         </section>
 

@@ -42,7 +42,7 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     authorityUrl: "transport.wa.gov.au",
     examQuestions: 30,
     examPassMark: "24 of 30",
-    metaTitle: "WA Learner Permit Practice Test, Free CTT Questions",
+    metaTitle: "WA CTT Practice Test, Free Questions",
     descriptionTail: "The official Computerised Theory Test has 30 questions, pass mark 24 of 30.",
     faq: [
       {
@@ -98,7 +98,7 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     authorityUrl: "vicroads.vic.gov.au",
     examQuestions: 32,
     examPassMark: "78%",
-    metaTitle: "VIC Learner Permit Test Practice, Free Questions",
+    metaTitle: "VIC Learner Permit Test Practice, Free",
     descriptionTail:
       "The official VicRoads Learner Permit Knowledge Test has 32 questions, pass mark 78%.",
     faq: [
@@ -156,7 +156,7 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     authorityUrl: "mylicence.sa.gov.au",
     examQuestions: 50,
     examPassMark: "8/8 + 32/42",
-    metaTitle: "SA Learner's Theory Test Practice, Free Questions",
+    metaTitle: "SA Learner Theory Test Practice, Free",
     descriptionTail:
       "The official Learner's Theory Test has 50 questions: 8 give way and 42 multiple choice.",
     faq: [
@@ -186,7 +186,7 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     // Numeros do exame nao confirmados em fonte oficial; ficam fora ate verificacao.
     examQuestions: null,
     examPassMark: null,
-    metaTitle: "ACT Road Rules Knowledge Test Practice, Free Questions",
+    metaTitle: "ACT Road Rules Test Practice, Free",
     descriptionTail: "Prepare for the Road Rules Knowledge Test run by Access Canberra.",
     faq: [
       {
@@ -214,7 +214,7 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     authorityUrl: "nt.gov.au",
     examQuestions: 30,
     examPassMark: "26 of 30",
-    metaTitle: "NT Driver Knowledge Test Practice, Free Questions",
+    metaTitle: "NT DKT Practice Test, Free Questions",
     descriptionTail: "The official MVR theory test has 30 questions, pass mark 26 of 30.",
     faq: [
       {

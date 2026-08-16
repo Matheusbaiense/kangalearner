@@ -72,6 +72,7 @@ export const t = {
     learnBack: "← All topics",
     learnPractice: "Practise this topic →",
     learnAllTopics: "All practice questions →",
+    learnWaCttCta: "Free WA CTT practice →",
 
     // ── Blog ──────────────────────────────────────────────
     blogTitle: "Blog",
@@ -478,6 +479,7 @@ export const t = {
     learnBack: "← Todos os tópicos",
     learnPractice: "Praticar este tópico →",
     learnAllTopics: "Todas as perguntas →",
+    learnWaCttCta: "Prática CTT de WA grátis →",
 
     // ── Blog ──────────────────────────────────────────────
     blogTitle: "Blog",
@@ -886,6 +888,7 @@ export const t = {
     learnBack: "← Todos los temas",
     learnPractice: "Practicar este tema →",
     learnAllTopics: "Todas las preguntas →",
+    learnWaCttCta: "Práctica CTT de WA gratis →",
 
     // ── Blog ──────────────────────────────────────────────
     blogTitle: "Blog",
