@@ -53,6 +53,12 @@ jobs:
       # GitHub Pages retired — Vercel is the canonical platform. Next.js E2E to be
       # added separately via Playwright + Vercel preview URLs when ready.
 
+      - name: Check questions.json is in sync with core dataset
+        run: |
+          pnpm --filter web run gen:questions-json
+          git diff --exit-code apps/web/public/data/questions.json || \
+            (echo "ERROR: apps/web/public/data/questions.json is stale — run 'pnpm --filter web run gen:questions-json' and commit the result" && exit 1)
+
       - name: Build
         run: pnpm run build
 

@@ -567,7 +567,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "roundabouts",
     icon: "trendingUp",
-    practiceCategory: "Give Way Rules",
+    practiceCategory: "Roundabouts",
     title: {
       en: "Roundabouts",
       pt: "Rotatórias",
@@ -645,7 +645,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "lane-changing",
     icon: "arrowRight",
-    practiceCategory: "Road Markings",
+    practiceCategory: "Lane Changing",
     title: {
       en: "Lane Changing",
       pt: "Mudança de faixa",
@@ -957,7 +957,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "weather-conditions",
     icon: "lightbulb",
-    practiceCategory: "Road Safety",
+    practiceCategory: "Weather Conditions",
     title: {
       en: "Weather Conditions",
       pt: "Condições climáticas",
@@ -1035,7 +1035,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "seatbelts",
     icon: "success",
-    practiceCategory: "Road Safety",
+    practiceCategory: "Seatbelts",
     title: {
       en: "Seatbelts",
       pt: "Cintos de segurança",
@@ -1113,6 +1113,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "demerit-points",
     icon: "checklist",
+    practiceCategory: "Demerit Points",
     title: {
       en: "Demerit Points",
       pt: "Sistema de pontos (demerits)",
@@ -1189,7 +1190,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "mobile-phones",
     icon: "mail",
-    practiceCategory: "Safe Driving",
+    practiceCategory: "Mobile Phones",
     title: {
       en: "Mobile Phones While Driving WA",
       pt: "Celular ao Volante em WA",
@@ -1256,7 +1257,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "fatigue-driving",
     icon: "timer",
-    practiceCategory: "Safe Driving",
+    practiceCategory: "Fatigue",
     title: {
       en: "Fatigue and Drowsy Driving WA",
       pt: "Fadiga ao Volante em WA",
@@ -1323,7 +1324,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "school-zones",
     icon: "warning",
-    practiceCategory: "Speed Limits",
+    practiceCategory: "School Zones",
     title: {
       en: "School Zones Speed Limits WA",
       pt: "Zonas Escolares em WA",
@@ -1380,7 +1381,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "shared-zones",
     icon: "mapPinned",
-    practiceCategory: "Road Signs",
+    practiceCategory: "Shared Zones",
     title: {
       en: "Shared Zones and Pedestrian Areas WA",
       pt: "Zonas Compartilhadas e Áreas para Pedestres em WA",
@@ -1437,7 +1438,7 @@ export const LEARN_TOPICS: LearnTopic[] = [
   {
     slug: "towing-rules",
     icon: "car",
-    practiceCategory: "Safe Driving",
+    practiceCategory: "Towing",
     title: {
       en: "Towing Rules WA",
       pt: "Regras de Reboque em WA",

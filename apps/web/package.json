@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.1",
   "scripts": {
+    "gen:questions-json": "node ../../scripts/gen-questions-json.ts",
+    "predev": "pnpm run gen:questions-json",
+    "prebuild": "pnpm run gen:questions-json",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
