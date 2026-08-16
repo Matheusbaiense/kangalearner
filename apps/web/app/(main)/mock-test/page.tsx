@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "and NSW. Same format as the official DoT test. Available in English, Portuguese and Spanish.",
   alternates: { canonical: "https://kangalearner.com.au/mock-test" },
   openGraph: {
-    title: "Free Australian Learner Mock Test | KangaLearner",
+    title: "Free Australian Learner Mock Test",
     description: "30 questions, same format as the real DoT test. Practice or exam mode.",
     url: "https://kangalearner.com.au/mock-test"
   }

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "PDA, and trusted community resources for new drivers. Currently covers WA, other states coming soon.",
   alternates: { canonical: "https://kangalearner.com.au/resources" },
   openGraph: {
-    title: "Learner Licence Resources | KangaLearner",
+    title: "Learner Licence Resources",
     description: "The full licence pathway plus official links, in one place.",
     url: "https://kangalearner.com.au/resources"
   }

@@ -7,6 +7,7 @@ import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
+import { Kanga } from "@/components/brand/Kanga";
 import { useLang } from "@/contexts/LangContext";
 import { AuthNudge } from "@/components/ui/AuthNudge";
 import { createClient } from "@/lib/supabase/client";
@@ -168,9 +169,25 @@ export default function MockTestResultsPage() {
               <span>{scored.pct}%</span>
             </div>
 
-            <h1 style={{ marginTop: 10 }}>
-              {scored.pass ? s.pass : s.fail}, {scored.score}/{scored.total}
-            </h1>
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                gap: 16,
+                flexWrap: "wrap"
+              }}
+            >
+              <h1 style={{ marginTop: 10 }}>
+                {scored.pass ? s.pass : s.fail}, {scored.score}/{scored.total}
+              </h1>
+              <Kanga
+                pose={scored.pass ? "celebrate" : "encourage"}
+                size={112}
+                label={s.kangaAlmost}
+                style={{ flexShrink: 0 }}
+              />
+            </div>
 
             <p
               className="mock-meta"

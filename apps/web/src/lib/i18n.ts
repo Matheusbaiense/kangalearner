@@ -31,6 +31,7 @@ export const t = {
     practice: "Practice",
     retry: "Retry",
     questionsWord: "questions",
+    passMarkWord: "Pass mark",
     topicsWord: "topics",
     roadRulesWord: "road rules",
     mockTest: "Mock Test",
@@ -53,6 +54,12 @@ export const t = {
     achievements: "Achievements",
     help: "Help",
     signOut: "Sign out",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "Almost!",
+    notFoundTitle: "Page not found",
+    notFoundSub: "The page you are looking for does not exist or has moved.",
+    notFoundCta: "Back to home",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Learn Road Rules",
@@ -94,9 +101,13 @@ export const t = {
     heroCtaNote: "Free. No sign-up needed.",
     heroCta2: "Try mock test",
     heroBadge1: "Free forever",
-    heroBadge2: "300+ exam-style questions",
+    heroBadge2: "1000+ exam-style questions",
     heroBadge3: "English · Português · Español",
     heroProof: "WA, NSW and QLD available now. VIC and more coming soon.",
+    heroSourcePill: "Based on the official handbooks · Updated Aug 2026",
+    heroStat1Label: "exam-style questions",
+    heroStat2Label: "states: WA, NSW, QLD",
+    heroStat3Label: "languages",
     // Features
     feat1Title: "Learn",
     feat1Sub: "Study road rules by topic with clear explanations.",
@@ -225,6 +236,10 @@ export const t = {
       "Your practice history is synced to the cloud. Check your Dashboard for full stats.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Let's get you test-ready",
+    dashWelcomeSub:
+      "Three steps to your learner licence: study the topics, practise real questions, then prove it in a mock test.",
+    dashWelcomeCta: "Answer your first question",
     dashHello: "Hello",
     dashSub: "Your progress across all practice sessions.",
     dashQuestionsAnswered: "Questions answered",
@@ -421,6 +436,7 @@ export const t = {
     practice: "Praticar",
     retry: "Tentar de novo",
     questionsWord: "questões",
+    passMarkWord: "Nota de corte",
     topicsWord: "tópicos",
     roadRulesWord: "regras de trânsito",
     mockTest: "Simulado",
@@ -443,6 +459,12 @@ export const t = {
     achievements: "Conquistas",
     help: "Ajuda",
     signOut: "Sair",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "Quase!",
+    notFoundTitle: "Página não encontrada",
+    notFoundSub: "A página que você procura não existe ou mudou de lugar.",
+    notFoundCta: "Voltar ao início",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Aprender as regras de trânsito",
@@ -484,9 +506,13 @@ export const t = {
     heroCtaNote: "Grátis. Sem precisar de cadastro.",
     heroCta2: "Tentar o simulado",
     heroBadge1: "Gratuito para sempre",
-    heroBadge2: "300+ questões estilo prova",
+    heroBadge2: "1000+ questões estilo prova",
     heroBadge3: "English · Português · Español",
     heroProof: "WA, NSW e QLD disponíveis agora. VIC e mais em breve.",
+    heroSourcePill: "Baseado nos handbooks oficiais · Atualizado ago 2026",
+    heroStat1Label: "questões estilo prova",
+    heroStat2Label: "estados: WA, NSW, QLD",
+    heroStat3Label: "idiomas",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estude as regras de trânsito por tema com explicações claras.",
@@ -616,6 +642,10 @@ export const t = {
       "Seu histórico de prática está sincronizado na nuvem. Veja seu Painel para estatísticas completas.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Vamos te deixar pronto para a prova",
+    dashWelcomeSub:
+      "Três passos até a sua licença de learner: estude os tópicos, pratique questões reais e prove no simulado.",
+    dashWelcomeCta: "Responda sua primeira questão",
     dashHello: "Olá",
     dashSub: "Seu progresso em todas as sessões de prática.",
     dashQuestionsAnswered: "Perguntas respondidas",
@@ -814,6 +844,7 @@ export const t = {
     practice: "Practicar",
     retry: "Reintentar",
     questionsWord: "preguntas",
+    passMarkWord: "Puntaje mínimo",
     topicsWord: "temas",
     roadRulesWord: "reglas de tránsito",
     mockTest: "Simulacro",
@@ -835,6 +866,12 @@ export const t = {
     achievements: "Logros",
     help: "Ayuda",
     signOut: "Salir",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "¡Casi!",
+    notFoundTitle: "Página no encontrada",
+    notFoundSub: "La página que buscas no existe o cambió de lugar.",
+    notFoundCta: "Volver al inicio",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Aprender las reglas de tránsito",
@@ -876,9 +913,13 @@ export const t = {
     heroCtaNote: "Gratis. Sin necesidad de registro.",
     heroCta2: "Probar el simulacro",
     heroBadge1: "Gratis para siempre",
-    heroBadge2: "300+ preguntas estilo examen",
+    heroBadge2: "1000+ preguntas estilo examen",
     heroBadge3: "English · Português · Español",
     heroProof: "WA, NSW y QLD disponibles ahora. VIC y más próximamente.",
+    heroSourcePill: "Basado en los manuales oficiales · Actualizado ago 2026",
+    heroStat1Label: "preguntas estilo examen",
+    heroStat2Label: "estados: WA, NSW, QLD",
+    heroStat3Label: "idiomas",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estudia las reglas de tránsito por tema con explicaciones claras.",
@@ -1008,6 +1049,10 @@ export const t = {
       "Tu historial de práctica está sincronizado en la nube. Consulta tu Panel para estadísticas completas.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Vamos a dejarte listo para el examen",
+    dashWelcomeSub:
+      "Tres pasos hasta tu licencia de learner: estudia los temas, practica preguntas reales y demuéstralo en el simulacro.",
+    dashWelcomeCta: "Responde tu primera pregunta",
     dashHello: "Hola",
     dashSub: "Tu progreso en todas las sesiones de práctica.",
     dashQuestionsAnswered: "Preguntas respondidas",

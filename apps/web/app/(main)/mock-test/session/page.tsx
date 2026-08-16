@@ -290,7 +290,7 @@ export default function MockTestSessionPage() {
           <h1>{s.loading}</h1>
           <p className="mock-meta">
             {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
-            {cfg.questions} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {cfg.questions} {s.questionsWord} · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </p>
         </div>
       </main>
@@ -351,7 +351,7 @@ export default function MockTestSessionPage() {
         >
           <span>
             {cfg.state} · {cfg.licenceType === "motorcycle" ? s.motorcycleLicence : s.carLicence} ·{" "}
-            {total} questions · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
+            {total} {s.questionsWord} · {cfg.mode === "exam" ? s.examMode : s.practiceMode}
           </span>
           <span aria-live="polite">
             {activeIndex + 1} / {total}

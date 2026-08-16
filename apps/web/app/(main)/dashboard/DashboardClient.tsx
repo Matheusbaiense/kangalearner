@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Flame, Target } from "lucide-react";
 import { WA_PASS_THRESHOLD } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
+import { Kanga } from "@/components/brand/Kanga";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { pct } from "@/lib/percent";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
@@ -102,6 +103,31 @@ export function DashboardClient({
             ⚙ {s.settings}
           </Link>
         </div>
+
+        {totalAnswered === 0 && (
+          <div
+            className="stat-card"
+            style={{
+              marginBottom: 22,
+              display: "flex",
+              flexWrap: "wrap",
+              alignItems: "center",
+              justifyContent: "space-between",
+              gap: 16,
+              borderColor: "var(--green2)"
+            }}
+          >
+            <div style={{ maxWidth: 560 }}>
+              <div className="stat-card-label" style={{ marginBottom: 6 }}>
+                {s.dashWelcomeTitle}
+              </div>
+              <div className="stat-card-sub">{s.dashWelcomeSub}</div>
+            </div>
+            <Link href="/practice" className="btn btn-primary" style={{ textDecoration: "none" }}>
+              {s.dashWelcomeCta} →
+            </Link>
+          </div>
+        )}
 
         <div className="stat-grid">
           <div className="stat-card">
@@ -263,8 +289,14 @@ export function DashboardClient({
               {s.dashCategoryBreakdown}
             </p>
             {stateCategoryStats.length === 0 ? (
-              <div className="dash-empty">
-                {s.dashNoAttemptsForStatePrefix} {selectedState}. {s.dashNoAttemptsForStateSuffix}
+              <div
+                className="dash-empty"
+                style={{ display: "flex", alignItems: "center", gap: 14 }}
+              >
+                <Kanga pose="search" size={72} style={{ flexShrink: 0 }} />
+                <span>
+                  {s.dashNoAttemptsForStatePrefix} {selectedState}. {s.dashNoAttemptsForStateSuffix}
+                </span>
               </div>
             ) : (
               <div className="cat-list">
