@@ -4,7 +4,7 @@ import type { IconName } from "@/components/icons";
 export interface LearnTopic {
   slug: string;
   icon: IconName;
-  /** Category key that matches @kanga/core CATEGORIES — used for practice filter link */
+  /** Category key that matches @kanga/core CATEGORIES, used for practice filter link */
   practiceCategory?: string;
   isSpecial?: boolean;
   title: Record<UiLang, string>;
@@ -34,9 +34,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
     },
     keyRules: [
       {
-        en: "The test has 30 multiple-choice questions — you must answer at least 24 correctly (80%) to pass.",
-        pt: "A prova tem 30 questões de múltipla escolha — você deve acertar pelo menos 24 (80%) para passar.",
-        es: "El examen tiene 30 preguntas de opción múltiple — debes responder al menos 24 correctamente (80%) para aprobar."
+        en: "The test has 30 multiple-choice questions. You must answer at least 24 correctly (80%) to pass.",
+        pt: "A prova tem 30 questões de múltipla escolha. Você deve acertar pelo menos 24 (80%) para passar.",
+        es: "El examen tiene 30 preguntas de opción múltiple. Debes responder al menos 24 correctamente (80%) para aprobar."
       },
       {
         en: "Questions cover road rules, signs, road markings, alcohol laws, overtaking and safe driving.",
@@ -61,9 +61,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Saltarse la sección Aprender e ir directamente a practicar sin entender las reglas."
       },
       {
-        en: "Assuming the passing score is lower than 80% — the cutoff is firm and applies to all learner tests in WA.",
-        pt: "Achar que a nota mínima é menor que 80% — o critério de aprovação é fixo e se aplica a todas as provas de learner em WA.",
-        es: "Asumir que la puntuación mínima es menor al 80% — el criterio de aprobación es fijo en todos los exámenes learner de WA."
+        en: "Assuming the passing score is lower than 80%: the cutoff is firm and applies to all learner tests in WA.",
+        pt: "Achar que a nota mínima é menor que 80%: o critério de aprovação é fixo e se aplica a todas as provas de learner em WA.",
+        es: "Asumir que la puntuación mínima es menor al 80%: el criterio de aprobación es fijo en todos los exámenes learner de WA."
       }
     ],
     example: {
@@ -89,9 +89,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Department of Transport WA — transport.wa.gov.au/licensing/learner-driver-guide.asp",
-      pt: "Departamento de Transportes de WA — transport.wa.gov.au/licensing/learner-driver-guide.asp",
-      es: "Departamento de Transportes de WA — transport.wa.gov.au/licensing/learner-driver-guide.asp"
+      en: "Department of Transport WA: transport.wa.gov.au/licensing/learner-driver-guide.asp",
+      pt: "Departamento de Transportes de WA: transport.wa.gov.au/licensing/learner-driver-guide.asp",
+      es: "Departamento de Transportes de WA: transport.wa.gov.au/licensing/learner-driver-guide.asp"
     }
   },
 
@@ -167,9 +167,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — sections 1.2 Speed and 3.1 Speed Limits.",
-      pt: "Baseado no Drive Safe Handbook — seções 1.2 Speed e 3.1 Speed Limits.",
-      es: "Basado en el Drive Safe Handbook — secciones 1.2 Speed y 3.1 Speed Limits."
+      en: "Based on the Drive Safe Handbook, sections 1.2 Speed and 3.1 Speed Limits.",
+      pt: "Baseado no Drive Safe Handbook, seções 1.2 Speed e 3.1 Speed Limits.",
+      es: "Basado en el Drive Safe Handbook, secciones 1.2 Speed y 3.1 Speed Limits."
     }
   },
 
@@ -245,9 +245,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — section 3.8 Traffic Signs.",
-      pt: "Baseado no Drive Safe Handbook — seção 3.8 Traffic Signs.",
-      es: "Basado en el Drive Safe Handbook — sección 3.8 Traffic Signs."
+      en: "Based on the Drive Safe Handbook, section 3.8 Traffic Signs.",
+      pt: "Baseado no Drive Safe Handbook, seção 3.8 Traffic Signs.",
+      es: "Basado en el Drive Safe Handbook, sección 3.8 Traffic Signs."
     }
   },
 
@@ -323,9 +323,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — section 3.10 Traffic Control Signals.",
-      pt: "Baseado no Drive Safe Handbook — seção 3.10 Traffic Control Signals.",
-      es: "Basado en el Drive Safe Handbook — sección 3.10 Traffic Control Signals."
+      en: "Based on the Drive Safe Handbook, section 3.10 Traffic Control Signals.",
+      pt: "Baseado no Drive Safe Handbook, seção 3.10 Traffic Control Signals.",
+      es: "Basado en el Drive Safe Handbook, sección 3.10 Traffic Control Signals."
     }
   },
 
@@ -401,9 +401,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — section 3.9 Road Markings.",
-      pt: "Baseado no Drive Safe Handbook — seção 3.9 Road Markings.",
-      es: "Basado en el Drive Safe Handbook — sección 3.9 Road Markings."
+      en: "Based on the Drive Safe Handbook, section 3.9 Road Markings.",
+      pt: "Baseado no Drive Safe Handbook, seção 3.9 Road Markings.",
+      es: "Basado en el Drive Safe Handbook, sección 3.9 Road Markings."
     }
   },
 
@@ -479,9 +479,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — section 3.18 Parking.",
-      pt: "Baseado no Drive Safe Handbook — seção 3.18 Parking.",
-      es: "Basado en el Drive Safe Handbook — sección 3.18 Parking."
+      en: "Based on the Drive Safe Handbook, section 3.18 Parking.",
+      pt: "Baseado no Drive Safe Handbook, seção 3.18 Parking.",
+      es: "Basado en el Drive Safe Handbook, sección 3.18 Parking."
     }
   },
 
@@ -557,9 +557,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — sections on intersections, turning and give way rules.",
-      pt: "Baseado no Drive Safe Handbook — seções sobre intersections, turning e give way rules.",
-      es: "Basado en el Drive Safe Handbook — secciones sobre intersecciones, giros y ceder el paso."
+      en: "Based on the Drive Safe Handbook, sections on intersections, turning and give way rules.",
+      pt: "Baseado no Drive Safe Handbook, seções sobre intersections, turning e give way rules.",
+      es: "Basado en el Drive Safe Handbook, secciones sobre intersecciones, giros y ceder el paso."
     }
   },
 
@@ -869,9 +869,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook — section 1.3 Alcohol and Drugs.",
-      pt: "Baseado no Drive Safe Handbook — seção 1.3 Alcohol and Drugs.",
-      es: "Basado en el Drive Safe Handbook — sección 1.3 Alcohol and Drugs."
+      en: "Based on the Drive Safe Handbook, section 1.3 Alcohol and Drugs.",
+      pt: "Baseado no Drive Safe Handbook, seção 1.3 Alcohol and Drugs.",
+      es: "Basado en el Drive Safe Handbook, sección 1.3 Alcohol and Drugs."
     }
   },
 
@@ -886,9 +886,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       es: "Seguridad vial"
     },
     summary: {
-      en: "Safe driving requires constant awareness — fatigue, distractions and following distance are among the leading causes of crashes. Small habits make a big difference.",
-      pt: "Dirigir com segurança exige atenção constante — fadiga, distrações e distância de seguimento estão entre as principais causas de acidentes.",
-      es: "Conducir de forma segura requiere atención constante — la fatiga, las distracciones y la distancia de seguimiento están entre las principales causas de accidentes."
+      en: "Safe driving requires constant awareness. Fatigue, distractions and following distance are among the leading causes of crashes. Small habits make a big difference.",
+      pt: "Dirigir com segurança exige atenção constante. Fadiga, distrações e distância de seguimento estão entre as principais causas de acidentes.",
+      es: "Conducir de forma segura requiere atención constante. La fatiga, las distracciones y la distancia de seguimiento están entre las principales causas de accidentes."
     },
     keyRules: [
       {
@@ -897,9 +897,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Nunca conduzca con sueño. Si se siente cansado, pare y descanse. La fatiga afecta el tiempo de reacción tanto como el alcohol."
       },
       {
-        en: "Mobile phones — including hands-free — can distract attention. Learner drivers must not use any phone while driving in WA.",
-        pt: "Celulares — inclusive os viva-voz — podem distrair a atenção. Motoristas novatos não podem usar nenhum celular ao dirigir em WA.",
-        es: "Los móviles — incluso manos libres — pueden distraer la atención. Los conductores novatos no pueden usar ningún teléfono mientras conducen en WA."
+        en: "Mobile phones, including hands-free, can distract attention. Learner drivers must not use any phone while driving in WA.",
+        pt: "Celulares, inclusive os viva-voz, podem distrair a atenção. Motoristas novatos não podem usar nenhum celular ao dirigir em WA.",
+        es: "Los móviles, incluso manos libres, pueden distraer la atención. Los conductores novatos no pueden usar ningún teléfono mientras conducen en WA."
       },
       {
         en: "Keep a safe following distance: at least a 3-second gap from the vehicle ahead in dry conditions.",
@@ -908,20 +908,20 @@ export const LEARN_TOPICS: LearnTopic[] = [
       },
       {
         en: "Always check mirrors regularly and stay aware of your surroundings, not just what is directly ahead.",
-        pt: "Verifique os espelhos regularmente e esteja ciente do ambiente ao redor — não apenas o que está à frente.",
-        es: "Revise los espejos regularmente y sea consciente del entorno — no solo lo que tiene delante."
+        pt: "Verifique os espelhos regularmente e esteja ciente do ambiente ao redor, não apenas o que está à frente.",
+        es: "Revise los espejos regularmente y sea consciente del entorno, no solo lo que tiene delante."
       }
     ],
     mistakes: [
       {
-        en: "Thinking short trips do not require the same level of attention — most crashes happen close to home.",
-        pt: "Achar que trajetos curtos não exigem o mesmo nível de atenção — a maioria dos acidentes acontece perto de casa.",
-        es: "Creer que los trayectos cortos no requieren el mismo nivel de atención — la mayoría de los accidentes ocurren cerca de casa."
+        en: "Thinking short trips do not require the same level of attention: most crashes happen close to home.",
+        pt: "Achar que trajetos curtos não exigem o mesmo nível de atenção: a maioria dos acidentes acontece perto de casa.",
+        es: "Creer que los trayectos cortos no requieren el mismo nivel de atención: la mayoría de los accidentes ocurren cerca de casa."
       },
       {
-        en: "Using a phone while stopped at traffic lights — in WA this is illegal for learner drivers.",
-        pt: "Usar o celular parado no sinal — em WA, isso é ilegal para motoristas novatos.",
-        es: "Usar el teléfono parado en un semáforo — en WA esto es ilegal para conductores novatos."
+        en: "Using a phone while stopped at traffic lights is illegal for learner drivers in WA.",
+        pt: "Usar o celular parado no sinal é ilegal para motoristas novatos em WA.",
+        es: "Usar el teléfono parado en un semáforo es ilegal para conductores novatos en WA."
       }
     ],
     example: {
@@ -947,9 +947,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA) — sections on fatigue, distractions and safe following distances.",
-      pt: "Baseado no Drive Safe Handbook (WA) — seções sobre fadiga, distrações e distâncias de seguimento.",
-      es: "Basado en el Drive Safe Handbook (WA) — secciones sobre fatiga, distracciones y distancias de seguimiento."
+      en: "Based on the Drive Safe Handbook (WA), sections on fatigue, distractions and safe following distances.",
+      pt: "Baseado no Drive Safe Handbook (WA), seções sobre fadiga, distrações e distâncias de seguimento.",
+      es: "Basado en el Drive Safe Handbook (WA), secciones sobre fatiga, distracciones y distancias de seguimiento."
     }
   },
 
@@ -985,9 +985,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Aquaplaning: suelte el acelerador con suavidad y evite frenar en seco."
       },
       {
-        en: "Clean windscreen and wipers improve visibility — check before you drive.",
-        pt: "Para-brisa e limpadores limpos melhoram visibilidade — verifique antes de viajar.",
-        es: "Parabrisas y limpiaparabrisas limpios mejoran la visibilidad — revíselos antes."
+        en: "Clean windscreen and wipers improve visibility. Check before you drive.",
+        pt: "Para-brisa e limpadores limpos melhoram visibilidade. Verifique antes de viajar.",
+        es: "Parabrisas y limpiaparabrisas limpios mejoran la visibilidad. Revíselos antes."
       }
     ],
     mistakes: [
@@ -1120,9 +1120,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       es: "Sistema de puntos WA"
     },
     summary: {
-      en: "Recorded offences can add demerit points to your WA licence. Too many can lead to suspension or other actions — always check the official guide.",
-      pt: "Infrações gravadas podem somar pontos (demerits) na sua licença WA. Acumular demais pode levar a suspensão ou outras medidas — consulte sempre o guia oficial.",
-      es: "Las infracciones pueden sumar puntos demerit en su licencia WA. Demasiados pueden llevar a suspensión — consulte la guía oficial."
+      en: "Recorded offences can add demerit points to your WA licence. Too many can lead to suspension or other actions. Always check the official guide.",
+      pt: "Infrações gravadas podem somar pontos (demerits) na sua licença WA. Acumular demais pode levar a suspensão ou outras medidas. Consulte sempre o guia oficial.",
+      es: "Las infracciones pueden sumar puntos demerit en su licencia WA. Demasiados pueden llevar a suspensión. Consulte la guía oficial."
     },
     keyRules: [
       {
@@ -1197,20 +1197,20 @@ export const LEARN_TOPICS: LearnTopic[] = [
       es: "Teléfono Móvil al Volante en WA"
     },
     summary: {
-      en: "WA has some of Australia's strictest rules on mobile phone use while driving. Learner and P1/P2 drivers must not use a mobile phone at all — not even hands-free. Full licence holders may use a phone only via Bluetooth/speaker if it is mounted.",
-      pt: "WA tem algumas das regras mais rígidas da Austrália sobre o uso de celular ao volante. Motoristas com learner ou carteira P1/P2 não podem usar celular de forma alguma — nem com viva-voz. Portadores de carteira plena só podem usar via Bluetooth/alto-falante com suporte fixo.",
-      es: "WA tiene algunas de las reglas más estrictas de Australia sobre el uso de teléfonos móviles al conducir. Los conductores con learner o licencia P1/P2 no pueden usar el móvil de ninguna forma — ni siquiera manos libres. Los titulares de licencia completa solo pueden usarlo vía Bluetooth/altavoz con soporte fijo."
+      en: "WA has some of Australia's strictest rules on mobile phone use while driving. Learner and P1/P2 drivers must not use a mobile phone at all, not even hands-free. Full licence holders may use a phone only via Bluetooth/speaker if it is mounted.",
+      pt: "WA tem algumas das regras mais rígidas da Austrália sobre o uso de celular ao volante. Motoristas com learner ou carteira P1/P2 não podem usar celular de forma alguma, nem com viva-voz. Portadores de carteira plena só podem usar via Bluetooth/alto-falante com suporte fixo.",
+      es: "WA tiene algunas de las reglas más estrictas de Australia sobre el uso de teléfonos móviles al conducir. Los conductores con learner o licencia P1/P2 no pueden usar el móvil de ninguna forma, ni siquiera manos libres. Los titulares de licencia completa solo pueden usarlo vía Bluetooth/altavoz con soporte fijo."
     },
     keyRules: [
       {
-        en: "Learner and P1/P2 drivers: complete mobile phone ban — no calls, no texts, no hands-free, no GPS on phone.",
-        pt: "Motoristas com learner e P1/P2: proibição total — sem chamadas, mensagens, viva-voz ou GPS no celular.",
-        es: "Conductores con learner y P1/P2: prohibición total — sin llamadas, mensajes, manos libres ni GPS en el móvil."
+        en: "Learner and P1/P2 drivers: complete mobile phone ban, no calls, no texts, no hands-free, no GPS on phone.",
+        pt: "Motoristas com learner e P1/P2: proibição total, sem chamadas, mensagens, viva-voz ou GPS no celular.",
+        es: "Conductores con learner y P1/P2: prohibición total, sin llamadas, mensajes, manos libres ni GPS en el móvil."
       },
       {
-        en: "Full licence holders: hands-free only. Phone must be in a mount — not held in the hand, even at a red light.",
-        pt: "Carteira plena: apenas viva-voz. O celular deve estar em suporte — não pode ser segurado na mão, nem no vermelho.",
-        es: "Licencia completa: solo manos libres. El móvil debe estar en un soporte — no puede sostenerse en la mano, ni en semáforo."
+        en: "Full licence holders: hands-free only. Phone must be in a mount, not held in the hand, even at a red light.",
+        pt: "Carteira plena: apenas viva-voz. O celular deve estar em suporte, não pode ser segurado na mão, nem no vermelho.",
+        es: "Licencia completa: solo manos libres. El móvil debe estar en un soporte, no puede sostenerse en la mano, ni en semáforo."
       },
       {
         en: "Penalty: from $1,000 fine + 3 demerit points. Doubled in a school zone or roadwork area.",
@@ -1220,14 +1220,14 @@ export const LEARN_TOPICS: LearnTopic[] = [
     ],
     mistakes: [
       {
-        en: "Thinking hands-free is OK as a learner driver — it is NOT. Any mobile use is banned.",
-        pt: "Pensar que viva-voz é permitido para motoristas learner — NÃO É. Qualquer uso é proibido.",
-        es: "Creer que el manos libres está permitido para conductores learner — NO LO ESTÁ. Cualquier uso está prohibido."
+        en: "Thinking hands-free is OK as a learner driver: it is NOT. Any mobile use is banned.",
+        pt: "Pensar que viva-voz é permitido para motoristas learner: NÃO É. Qualquer uso é proibido.",
+        es: "Creer que el manos libres está permitido para conductores learner: NO LO ESTÁ. Cualquier uso está prohibido."
       },
       {
-        en: "Using the phone at a red light while stopped — the rule applies even when stationary.",
-        pt: "Usar o celular parado no semáforo — a regra vale mesmo parado.",
-        es: "Usar el móvil parado en semáforo — la regla aplica incluso cuando está detenido."
+        en: "Using the phone at a red light while stopped: the rule applies even when stationary.",
+        pt: "Usar o celular parado no semáforo: a regra vale mesmo parado.",
+        es: "Usar el móvil parado en semáforo: la regla aplica incluso cuando está detenido."
       }
     ],
     example: {
@@ -1264,15 +1264,15 @@ export const LEARN_TOPICS: LearnTopic[] = [
       es: "Fatiga al Volante en WA"
     },
     summary: {
-      en: "Fatigue is a leading cause of fatal crashes in WA. It slows your reaction time as much as alcohol. WA law requires drivers to stop and rest — there is no legal limit for hours driven, but failing to manage fatigue is an offence.",
-      pt: "A fadiga é uma das principais causas de acidentes fatais em WA. Ela reduz o tempo de reacção tanto quanto o álcool. A lei de WA exige que os motoristas parem para descansar — não há um limite legal de horas, mas não gerir a fadiga é infracção.",
-      es: "La fatiga es una de las principales causas de accidentes mortales en WA. Reduce el tiempo de reacción tanto como el alcohol. La ley de WA exige a los conductores parar a descansar — no hay límite legal de horas, pero no gestionar la fatiga es una infracción."
+      en: "Fatigue is a leading cause of fatal crashes in WA. It slows your reaction time as much as alcohol. WA law requires drivers to stop and rest. There is no legal limit for hours driven, but failing to manage fatigue is an offence.",
+      pt: "A fadiga é uma das principais causas de acidentes fatais em WA. Ela reduz o tempo de reacção tanto quanto o álcool. A lei de WA exige que os motoristas parem para descansar. Não há um limite legal de horas, mas não gerir a fadiga é infracção.",
+      es: "La fatiga es una de las principales causas de accidentes mortales en WA. Reduce el tiempo de reacción tanto como el alcohol. La ley de WA exige a los conductores parar a descansar. No hay límite legal de horas, pero no gestionar la fatiga es una infracción."
     },
     keyRules: [
       {
-        en: "On long trips, take a 15-minute break every 2 hours — pull over safely, rest, and do not continue if drowsy.",
-        pt: "Em viagens longas, faça uma pausa de 15 minutos a cada 2 horas — estacione com segurança e não continue se sentir sonolência.",
-        es: "En viajes largos, haz una pausa de 15 minutos cada 2 horas — detente en lugar seguro y no continúes si tienes sueño."
+        en: "On long trips, take a 15-minute break every 2 hours: pull over safely, rest, and do not continue if drowsy.",
+        pt: "Em viagens longas, faça uma pausa de 15 minutos a cada 2 horas: estacione com segurança e não continue se sentir sonolência.",
+        es: "En viajes largos, haz una pausa de 15 minutos cada 2 horas: detente en lugar seguro y no continúes si tienes sueño."
       },
       {
         en: "Warning signs of fatigue: heavy eyes, yawning, drifting lanes, can't remember the last few kilometres.",
@@ -1280,21 +1280,21 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Señales de fatiga: ojos pesados, bostezos, salir del carril, no recordar los últimos kilómetros."
       },
       {
-        en: "Driving while fatigued is an offence — police can issue infringement notices if your driving shows fatigue signs.",
-        pt: "Dirigir com fadiga é infracção — a polícia pode multar se a condução apresentar sinais de fadiga.",
-        es: "Conducir con fatiga es una infracción — la policía puede multar si la conducción muestra signos de fatiga."
+        en: "Driving while fatigued is an offence: police can issue infringement notices if your driving shows fatigue signs.",
+        pt: "Dirigir com fadiga é infracção: a polícia pode multar se a condução apresentar sinais de fadiga.",
+        es: "Conducir con fatiga es una infracción: la policía puede multar si la conducción muestra signos de fatiga."
       }
     ],
     mistakes: [
       {
-        en: "Thinking coffee or loud music can replace sleep — they mask fatigue temporarily but do not reduce driving impairment.",
-        pt: "Pensar que café ou música alta substituem o sono — apenas mascaram a fadiga temporariamente.",
-        es: "Creer que el café o la música alta reemplazan el sueño — solo enmascaran la fatiga temporalmente."
+        en: "Thinking coffee or loud music can replace sleep: they mask fatigue temporarily but do not reduce driving impairment.",
+        pt: "Pensar que café ou música alta substituem o sono: apenas mascaram a fadiga temporariamente.",
+        es: "Creer que el café o la música alta reemplazan el sueño: solo enmascaran la fatiga temporalmente."
       },
       {
-        en: "Driving more than 5 hours without a break — fatigue builds up progressively and micro-sleeps can occur.",
-        pt: "Dirigir mais de 5 horas sem pausa — a fadiga se acumula progressivamente e microssonos podem ocorrer.",
-        es: "Conducir más de 5 horas sin pausa — la fatiga se acumula progresivamente y pueden producirse microsueños."
+        en: "Driving more than 5 hours without a break: fatigue builds up progressively and micro-sleeps can occur.",
+        pt: "Dirigir mais de 5 horas sem pausa: a fadiga se acumula progressivamente e microssonos podem ocorrer.",
+        es: "Conducir más de 5 horas sin pausa: la fatiga se acumula progresivamente y pueden producirse microsueños."
       }
     ],
     example: {
@@ -1309,9 +1309,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "¿Con qué frecuencia hay que hacer una pausa en un viaje largo? → Al menos cada 2 horas, durante al menos 15 minutos."
       },
       {
-        en: "Can drinking coffee before driving prevent fatigue? → No — only proper sleep can effectively combat fatigue.",
-        pt: "Beber café antes de dirigir previne a fadiga? → Não — apenas o sono adequado combate eficazmente a fadiga.",
-        es: "¿Tomar café antes de conducir previene la fatiga? → No — solo un sueño adecuado combate eficazmente la fatiga."
+        en: "Can drinking coffee before driving prevent fatigue? → No, only proper sleep can effectively combat fatigue.",
+        pt: "Beber café antes de dirigir previne a fadiga? → Não, apenas o sono adequado combate eficazmente a fadiga.",
+        es: "¿Tomar café antes de conducir previene la fatiga? → No, solo un sueño adecuado combate eficazmente la fatiga."
       }
     ],
     source: {
@@ -1337,9 +1337,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
     },
     keyRules: [
       {
-        en: "Speed limit: 40 km/h in school zones on school days (approx. 7:30–9:00 am and 2:30–4:00 pm). Check local signage — times can vary.",
-        pt: "Limite: 40 km/h em zonas escolares nos dias de aula (aprox. 7:30–9:00 e 14:30–16:00). Verifique as placas locais — os horários podem variar.",
-        es: "Límite: 40 km/h en zonas escolares en días lectivos (aprox. 7:30–9:00 y 14:30–16:00). Consultar señales locales — los horarios pueden variar."
+        en: "Speed limit: 40 km/h in school zones on school days (approx. 7:30 to 9:00 am and 2:30 to 4:00 pm). Check local signage, times can vary.",
+        pt: "Limite: 40 km/h em zonas escolares nos dias de aula (aprox. 7h30 às 9h e 14h30 às 16h). Verifique as placas locais, os horários podem variar.",
+        es: "Límite: 40 km/h en zonas escolares en días lectivos (aprox. 7:30 a 9:00 y 14:30 a 16:00). Consultar señales locales, los horarios pueden variar."
       },
       {
         en: "Flashing yellow lights or electronic signs indicate when the 40 km/h zone is active.",
@@ -1354,9 +1354,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
     ],
     mistakes: [
       {
-        en: "Driving at 50 km/h thinking school is out — the zone applies whenever signs/lights indicate, regardless of visible students.",
-        pt: "Dirigir a 50 km/h achando que a escola terminou — a zona vale sempre que as placas/luzes indicarem, independentemente de alunos visíveis.",
-        es: "Conducir a 50 km/h creyendo que la escuela terminó — la zona aplica siempre que las señales/luces lo indiquen, independientemente de estudiantes visibles."
+        en: "Driving at 50 km/h thinking school is out: the zone applies whenever signs/lights indicate, regardless of visible students.",
+        pt: "Dirigir a 50 km/h achando que a escola terminou: a zona vale sempre que as placas/luzes indicarem, independentemente de alunos visíveis.",
+        es: "Conducir a 50 km/h creyendo que la escuela terminó: la zona aplica siempre que las señales/luces lo indiquen, independientemente de estudiantes visibles."
       }
     ],
     example: {
@@ -1394,14 +1394,14 @@ export const LEARN_TOPICS: LearnTopic[] = [
     },
     keyRules: [
       {
-        en: "Maximum speed: 10 km/h in shared zones — typically in pedestrian malls and laneways.",
-        pt: "Velocidade máxima: 10 km/h em zonas compartilhadas — geralmente em calçadões e vielas.",
-        es: "Velocidad máxima: 10 km/h en zonas compartidas — típicamente en malls peatonales y callejones."
+        en: "Maximum speed: 10 km/h in shared zones, typically in pedestrian malls and laneways.",
+        pt: "Velocidade máxima: 10 km/h em zonas compartilhadas, geralmente em calçadões e vielas.",
+        es: "Velocidad máxima: 10 km/h en zonas compartidas, típicamente en malls peatonales y callejones."
       },
       {
-        en: "Vehicles must give way to all pedestrians — pedestrians have absolute right of way in shared zones.",
-        pt: "Veículos devem dar preferência a todos os pedestres — eles têm prioridade absoluta nas zonas compartilhadas.",
-        es: "Los vehículos deben ceder el paso a todos los peatones — los peatones tienen prioridad absoluta en zonas compartidas."
+        en: "Vehicles must give way to all pedestrians: pedestrians have absolute right of way in shared zones.",
+        pt: "Veículos devem dar preferência a todos os pedestres: eles têm prioridade absoluta nas zonas compartilhadas.",
+        es: "Los vehículos deben ceder el paso a todos los peatones: los peatones tienen prioridad absoluta en zonas compartidas."
       },
       {
         en: "Shared zone signs mark entry and exit points. If no speed sign is visible inside the zone, assume 10 km/h.",
@@ -1411,15 +1411,15 @@ export const LEARN_TOPICS: LearnTopic[] = [
     ],
     mistakes: [
       {
-        en: "Driving at 20 km/h thinking it is close enough — 10 km/h is the strict limit.",
-        pt: "Dirigir a 20 km/h achando que é aceitável — 10 km/h é o limite rigoroso.",
-        es: "Circular a 20 km/h creyendo que es suficiente — 10 km/h es el límite estricto."
+        en: "Driving at 20 km/h thinking it is close enough: 10 km/h is the strict limit.",
+        pt: "Dirigir a 20 km/h achando que é aceitável: 10 km/h é o limite rigoroso.",
+        es: "Circular a 20 km/h creyendo que es suficiente: 10 km/h es el límite estricto."
       }
     ],
     example: {
-      en: "You enter a shared zone laneway. A pedestrian is walking in the middle of the road ahead. You must give way — do not honk or expect them to move out of the way.",
-      pt: "Você entra em uma viela de zona compartilhada. Um pedestre caminha no meio da rua à frente. Você deve dar preferência — não buzine nem espere que ele saia do caminho.",
-      es: "Entras en un callejón de zona compartida. Un peatón camina en el centro de la calle frente a ti. Debes ceder el paso — no toques el claxon ni esperes que se quite."
+      en: "You enter a shared zone laneway. A pedestrian is walking in the middle of the road ahead. You must give way. Do not honk or expect them to move out of the way.",
+      pt: "Você entra em uma viela de zona compartilhada. Um pedestre caminha no meio da rua à frente. Você deve dar preferência. Não buzine nem espere que ele saia do caminho.",
+      es: "Entras en un callejón de zona compartida. Un peatón camina en el centro de la calle frente a ti. Debes ceder el paso. No toques el claxon ni esperes que se quite."
     },
     quickCheck: [
       {
@@ -1429,9 +1429,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Road Traffic Code 2000 (Part 3 — shared zones) + WA Learner Driver Guide",
-      pt: "Road Traffic Code 2000 (Parte 3 — zonas compartilhadas) + Guia do Motorista Aprendiz de WA",
-      es: "Road Traffic Code 2000 (Parte 3 — zonas compartidas) + Guía del Conductor Novato de WA"
+      en: "Road Traffic Code 2000 (Part 3, shared zones) + WA Learner Driver Guide",
+      pt: "Road Traffic Code 2000 (Parte 3, zonas compartilhadas) + Guia do Motorista Aprendiz de WA",
+      es: "Road Traffic Code 2000 (Parte 3, zonas compartidas) + Guía del Conductor Novato de WA"
     }
   },
 
@@ -1456,9 +1456,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Conductores learner: no pueden remolcar ningún remolque ni caravana."
       },
       {
-        en: "Maximum towing speed: 100 km/h (or the signed limit if lower). On some roads, towing vehicles are limited to 90 km/h — check local signs.",
-        pt: "Velocidade máxima ao rebocar: 100 km/h (ou o limite sinalizado se menor). Em algumas estradas, veículos a rebocar estão limitados a 90 km/h — verificar placas locais.",
-        es: "Velocidad máxima al remolcar: 100 km/h (o el límite señalizado si es inferior). En algunas carreteras, los vehículos que remolcan están limitados a 90 km/h — consultar señales locales."
+        en: "Maximum towing speed: 100 km/h (or the signed limit if lower). On some roads, towing vehicles are limited to 90 km/h. Check local signs.",
+        pt: "Velocidade máxima ao rebocar: 100 km/h (ou o limite sinalizado se menor). Em algumas estradas, veículos a rebocar estão limitados a 90 km/h. Verificar placas locais.",
+        es: "Velocidad máxima al remolcar: 100 km/h (o el límite señalizado si es inferior). En algunas carreteras, los vehículos que remolcan están limitados a 90 km/h. Consultar señales locales."
       },
       {
         en: "All trailer lights (brake, indicator, tail) must work. Safety chains are mandatory.",
@@ -1468,15 +1468,15 @@ export const LEARN_TOPICS: LearnTopic[] = [
     ],
     mistakes: [
       {
-        en: "Learner drivers attempting to tow — this is not permitted under any circumstances.",
-        pt: "Motoristas learner tentando rebocar — isso não é permitido em nenhuma circunstância.",
-        es: "Conductores learner intentando remolcar — no está permitido bajo ninguna circunstancia."
+        en: "Learner drivers attempting to tow: this is not permitted under any circumstances.",
+        pt: "Motoristas learner tentando rebocar: isso não é permitido em nenhuma circunstância.",
+        es: "Conductores learner intentando remolcar: no está permitido bajo ninguna circunstancia."
       }
     ],
     example: {
-      en: "David has a learner licence and wants to tow a small boat trailer to the beach. He cannot — learner drivers are not permitted to tow regardless of trailer size or weight.",
-      pt: "David tem carteira learner e quer rebocar um pequeno trailer de barco até a praia. Ele não pode — motoristas learner não têm permissão para rebocar independentemente do tamanho ou peso do trailer.",
-      es: "David tiene licencia learner y quiere remolcar un pequeño remolque de bote hasta la playa. No puede — los conductores learner no tienen permiso para remolcar independientemente del tamaño o peso del remolque."
+      en: "David has a learner licence and wants to tow a small boat trailer to the beach. He cannot: learner drivers are not permitted to tow regardless of trailer size or weight.",
+      pt: "David tem carteira learner e quer rebocar um pequeno trailer de barco até a praia. Ele não pode: motoristas learner não têm permissão para rebocar independentemente do tamanho ou peso do trailer.",
+      es: "David tiene licencia learner y quiere remolcar un pequeño remolque de bote hasta la playa. No puede: los conductores learner no tienen permiso para remolcar independientemente del tamaño o peso del remolque."
     },
     quickCheck: [
       {

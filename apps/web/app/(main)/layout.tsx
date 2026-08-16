@@ -12,7 +12,11 @@ function getInitials(name: string, email: string): string {
   return src.slice(0, 2).toUpperCase();
 }
 
-export default async function MainLayout({ children }: { children: ReactNode }) {
+// Isolated in its own async component (rather than awaited at the top of MainLayout)
+// so the Suspense boundary below can actually stream the rest of the page, including
+// {children}, the page content, while this resolves, instead of blocking the whole
+// response on a Supabase round-trip before any HTML can be sent.
+async function NavUserSlot() {
   let initialNavUser: InitialNavUser | null = null;
 
   try {
@@ -42,17 +46,21 @@ export default async function MainLayout({ children }: { children: ReactNode }) 
       };
     }
   } catch {
-    // Env vars not configured — dev without .env.local
+    // Env vars not configured, dev without .env.local
   }
 
+  return <SiteNav initialNavUser={initialNavUser} />;
+}
+
+export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <>
       <Suspense fallback={<header style={{ height: 60 }} aria-hidden="true" />}>
-        <SiteNav initialNavUser={initialNavUser} />
+        <NavUserSlot />
       </Suspense>
       <Onboarding />
       {children}
-      <Footer isLoggedIn={!!initialNavUser} />
+      <Footer />
     </>
   );
 }

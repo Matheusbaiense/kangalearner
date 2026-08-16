@@ -31,6 +31,7 @@ export const t = {
     practice: "Practice",
     retry: "Retry",
     questionsWord: "questions",
+    passMarkWord: "Pass mark",
     topicsWord: "topics",
     roadRulesWord: "road rules",
     mockTest: "Mock Test",
@@ -45,6 +46,7 @@ export const t = {
     mockGuestBannerCta: "Sign up free",
     progress: "Progress",
     resources: "Resources",
+    blog: "Blog",
     dashboard: "Dashboard",
     signIn: "Sign in",
     account: "Account",
@@ -52,6 +54,12 @@ export const t = {
     achievements: "Achievements",
     help: "Help",
     signOut: "Sign out",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "Almost!",
+    notFoundTitle: "Page not found",
+    notFoundSub: "The page you are looking for does not exist or has moved.",
+    notFoundCta: "Back to home",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Learn Road Rules",
@@ -64,37 +72,61 @@ export const t = {
     learnBack: "← All topics",
     learnPractice: "Practise this topic →",
     learnAllTopics: "All practice questions →",
+    learnWaCttCta: "Free WA CTT practice →",
+
+    // ── Blog ──────────────────────────────────────────────
+    blogTitle: "Blog",
+    blogSub: "Guides for newcomers learning to drive in Australia.",
+    blogBack: "← All posts",
+    blogReadMore: "Read more →",
+    blogPublished: "Published",
+    blogSource: "Official source",
+    blogRelatedTitle: "Keep studying",
+    blogRelatedLearn: "Browse all learn topics →",
+    blogRelatedPractice: "Start free practice →",
+    blogSearchPlaceholder: "Search posts...",
+    blogFilterAll: "All states",
+    blogNoResults: "No posts match your search.",
+    blogHelpfulQuestion: "Was this post helpful?",
+    blogHelpfulYes: "Yes",
+    blogHelpfulNo: "No",
+    blogHelpfulThanks: "Thanks for the feedback!",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "For immigrants in Western Australia",
-    heroTitle: "Pass your WA learner test — in your language.",
+    heroEyebrow: "For immigrants across Australia",
+    heroTitle: "Pass your Australian learner test, in your language.",
     heroDesc:
-      "Practice every road rule topic tested by the DoT WA learner licence exam. " +
-      "English, Portuguese or Spanish. Free mock test included.",
+      "Real exam-style questions in English, Portuguese or Spanish. " +
+      "Study, practise and walk into your DoT test feeling ready.",
     heroCta1: "Start free practice",
+    heroCtaNote: "Free. No sign-up needed.",
     heroCta2: "Try mock test",
     heroBadge1: "Free forever",
-    heroBadge2: "WA road rules only",
+    heroBadge2: "2000+ exam-style questions",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA available now. NSW, VIC, QLD and more coming soon.",
+    heroProof: "All Australian states and territories available now.",
+    heroSourcePill: "Based on the official handbooks · Updated Aug 2026",
+    heroStat1Label: "exam-style questions",
+    heroStat2Label: "states & territories",
+    heroStat3Label: "languages",
     // Features
     feat1Title: "Learn",
     feat1Sub: "Study road rules by topic with clear explanations.",
     feat2Title: "Practice",
     feat2Sub: "Answer questions filtered by category and difficulty.",
     feat3Title: "Mock Test",
-    feat3Sub: "Simulate the official 30-question WA learner test.",
+    feat3Sub: "Simulate the official 30-question learner test.",
     feat4Title: "Progress",
     feat4Sub: "See your accuracy by category and review mistakes.",
     // Trust
     trustTitle: "Why KangaLearner",
     trustMultiTitle: "Multilingual support",
-    trustMultiBody: "Study in English, Portuguese or Spanish — more languages coming soon.",
+    trustMultiBody: "Study in English, Portuguese or Spanish, more languages coming soon.",
     trustSaveTitle: "Progress saved",
     trustSaveBody: "Your progress is saved automatically in the browser.",
     trustOfficialTitle: "Based on official rules",
     trustOfficialBody:
-      "Content structured from WA public sources. Always confirm with the Department of Transport.",
+      "Content structured from official state sources. Always confirm with your state's Department of Transport.",
     // Topics
     topicsTitle: "Study the key topics",
     topicSpeed: "Speed Limits",
@@ -112,8 +144,6 @@ export const t = {
     // States
     stateAvailable: "Available now",
     comingSoon: "Coming soon",
-    statesMoreNote: "More states coming soon —",
-    statesMoreLink: "sign up to be notified",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "What learners say",
     faqTitle: "Frequently asked questions",
@@ -125,13 +155,16 @@ export const t = {
     howStep2Label: "Practice",
     howStep2Desc: "Answer exam-style questions filtered by category",
     howStep3Label: "Mock Test",
-    howStep3Desc: "Simulate the official 30-question WA learner test",
+    howStep3Desc: "Simulate the official 30-question learner test",
     // How it works section (M2.2)
     howItWorksTitle: "How it works",
+    sectionEyebrowHow: "Get started",
+    sectionEyebrowTrust: "Why KangaLearner",
+    sectionEyebrowTopics: "What you'll master",
     howStep1Title: "Study by topic",
-    howStep1DescCard: "19 road rule topics — signs, speed limits, give way, alcohol laws and more.",
+    howStep1DescCard: "19 road rule topics, signs, speed limits, give way, alcohol laws and more.",
     howStep2Title: "Take a mock test",
-    howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT WA learner test.",
+    howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT learner test.",
     howStep3Title: "Track your progress",
     howStep3DescCard: "See which topics need more practice. Sign up free to save your results.",
     testimonialBetaLabel: "Stories from our early community",
@@ -153,6 +186,7 @@ export const t = {
     answer: "Answer",
     noQuestionsTitle: "No questions here!",
     noQuestionsSub: "Try a different mode or reset your progress.",
+    loadMoreQuestions: "Show more questions",
     noSavedTitle: "No saved questions yet",
     noSavedSub: "Tap ★ on any question to save it for later.",
     language: "Language",
@@ -162,6 +196,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Start Mock Test",
+    vehicleType: "Licence Type",
+    carLicence: "Car",
+    motorcycleLicence: "Motorcycle",
     practiceMode: "Practice Mock",
     examMode: "Exam Mode",
     loading: "Loading…",
@@ -177,7 +214,7 @@ export const t = {
     resourcesTitle: "WA licence resources and next steps",
     resourcesSub:
       "A plain-language hub for the learner theory test, driving hours, HPT, PDA and trusted community links. Use it alongside official Transport WA sources.",
-    resourcesWaOnly: "WA resources only — other states coming soon.",
+    resourcesWaOnly: "WA resources for now, other states coming soon.",
     resourcesStudyGuide: "Study guide",
     resourcesPracticeNow: "Practise questions",
 
@@ -191,13 +228,17 @@ export const t = {
     nextStepTitle: "Recommended next step",
     nextStepReviewWrong: "Review your wrong answers",
     nextStepFinishUnanswered: "Answer unanswered questions",
-    nextStepTakeMock: "You're ready — take the mock test!",
+    nextStepTakeMock: "You're ready, take the mock test!",
     nextStepEmpty: "Start practising to get a recommendation.",
     resetConfirm: "Reset all progress? This cannot be undone.",
     progressCloudNote:
       "Your practice history is synced to the cloud. Check your Dashboard for full stats.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Let's get you test-ready",
+    dashWelcomeSub:
+      "Three steps to your learner licence: study the topics, practise real questions, then prove it in a mock test.",
+    dashWelcomeCta: "Answer your first question",
     dashHello: "Hello",
     dashSub: "Your progress across all practice sessions.",
     dashQuestionsAnswered: "Questions answered",
@@ -226,7 +267,7 @@ export const t = {
     dashNoAttemptsForStatePrefix: "No attempts found for",
     dashNoAttemptsForStateSuffix: "Practice questions from this state to see progress here.",
     dashWeeklyActivity: "Weekly activity",
-    dashNoWeeklyActivity: "No activity yet — start practising to see your trend.",
+    dashNoWeeklyActivity: "No activity yet, start practising to see your trend.",
     dashChartNoActivity: "No activity",
     dashContinuePractice: "Continue practice →",
     dashTakeMockTest: "Take mock test",
@@ -234,10 +275,10 @@ export const t = {
     dashMoreQuestionsRecommendations: "Answer more questions to get personalised recommendations.",
     dashPractiseArrow: "Practise →",
     dashProgressByTopic: "Progress by topic",
-    dashNoTopicData: "No data yet — answer some questions in Practice mode.",
+    dashNoTopicData: "No data yet, answer some questions in Practice mode.",
     dashPractise: "Practise",
     dashMockTestHistory: "Mock test history",
-    dashNoMockTestsTryPrefix: "No mock tests yet — try the",
+    dashNoMockTestsTryPrefix: "No mock tests yet, try the",
     dashMockTestMode: "Mock Test mode",
     dashSignedInAs: "Signed in as",
     dashSignOutFromNav: "sign out from nav",
@@ -288,7 +329,7 @@ export const t = {
     accountPasswordMinLength: "New password must be at least 8 characters.",
     accountPasswordMismatch: "Passwords don't match.",
     accountPasswordChanged: "Password changed successfully.",
-    accountDangerSub: "Irreversible actions — proceed with caution.",
+    accountDangerSub: "Irreversible actions, proceed with caution.",
     accountDeleteTitle: "Delete account",
     accountDeleteDesc:
       "This will permanently delete your account and all progress data. This action cannot be undone.",
@@ -304,21 +345,24 @@ export const t = {
     accountUploadFailed: "Upload failed",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Pass your Australian learner test — in English, Portuguese or Spanish.",
+    footerTagline: "Pass your Australian learner test, in English, Portuguese or Spanish.",
     footerProductTitle: "Product",
     footerCompanyTitle: "Company",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Get weekly WA driving tips",
+    footerNewsletterTitle: "Get weekly driving tips",
     footerNewsletterDesc: "In English, Portuguese or Spanish. Unsubscribe anytime.",
     footerNewsletterPlaceholder: "your@email.com",
     footerNewsletterCta: "Subscribe",
     footerNewsletterSuccess: "You're in! Check your inbox.",
     footerNewsletterError: "Something went wrong. Please try again.",
-    resCommunityTitle: "Perth Immigrant Communities",
+    footerStatesLabel: "Learner tests",
+    stateCtaPractice: "Practice {state} questions",
+    stateCtaMock: "Take a {state} mock test",
+    resCommunityTitle: "Immigrant Communities",
     resCommunityDesc:
-      "Connect with other immigrants in Perth who are also getting their WA licence.",
+      "Connect with other immigrants across Australia who are also getting their licence.",
     resStudyTitle: "Free Study Guides",
-    resStudyDesc: "Official DoT resources — free to download.",
+    resStudyDesc: "Official DoT resources, free to download.",
     resJourneyTitle: "Your Road to a Full Licence",
     resChecklistTitle: "Test Day Checklist",
     footerCopyright: "© 2026 KangaLearner. All rights reserved.",
@@ -384,7 +428,23 @@ export const t = {
     mockNoResults: "No results found for this session.",
     mockConfigNotFound: "No mock config found.",
     mockSessionError: "Session error",
-    mockLoadNextQuestion: "We couldn't load the next question."
+    mockLoadNextQuestion: "We couldn't load the next question.",
+
+    // ── Readiness score ───────────────────────────────────
+    "readiness.title": "Am I ready for the test?",
+    "readiness.hint": "Based on question coverage, accuracy by topic and your recent mock tests.",
+    "readiness.level.not_ready": "Not ready yet",
+    "readiness.level.getting_there": "Getting there",
+    "readiness.level.almost": "Almost ready",
+    "readiness.level.ready": "Ready",
+    "readiness.noMocks": "Take a mock test. Readiness needs at least 2 passing mocks.",
+    "readiness.lowMockScores": "Your recent mock scores are below 80%. Try another mock test.",
+    "readiness.needMorePassingMocks":
+      "Pass one more mock test (80% or better) to confirm you're ready.",
+    "readiness.weakCategories": "Some topics are below 70%. Practise your weakest topic.",
+    "readiness.lowCoverage":
+      "You haven't seen most of the question bank yet. Keep practising new questions.",
+    "readiness.viewDashboard": "See full readiness on your dashboard"
   },
 
   pt: {
@@ -394,6 +454,7 @@ export const t = {
     practice: "Praticar",
     retry: "Tentar de novo",
     questionsWord: "questões",
+    passMarkWord: "Nota de corte",
     topicsWord: "tópicos",
     roadRulesWord: "regras de trânsito",
     mockTest: "Simulado",
@@ -408,6 +469,7 @@ export const t = {
     mockGuestBannerCta: "Criar conta grátis",
     progress: "Progresso",
     resources: "Recursos",
+    blog: "Blog",
     dashboard: "Painel",
     signIn: "Entrar",
     account: "Conta",
@@ -415,6 +477,12 @@ export const t = {
     achievements: "Conquistas",
     help: "Ajuda",
     signOut: "Sair",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "Quase!",
+    notFoundTitle: "Página não encontrada",
+    notFoundSub: "A página que você procura não existe ou mudou de lugar.",
+    notFoundCta: "Voltar ao início",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Aprender as regras de trânsito",
@@ -427,37 +495,61 @@ export const t = {
     learnBack: "← Todos os tópicos",
     learnPractice: "Praticar este tópico →",
     learnAllTopics: "Todas as perguntas →",
+    learnWaCttCta: "Prática CTT de WA grátis →",
+
+    // ── Blog ──────────────────────────────────────────────
+    blogTitle: "Blog",
+    blogSub: "Guias para quem chegou agora e está aprendendo a dirigir na Austrália.",
+    blogBack: "← Todos os posts",
+    blogReadMore: "Ler mais →",
+    blogPublished: "Publicado em",
+    blogSource: "Fonte oficial",
+    blogRelatedTitle: "Continue estudando",
+    blogRelatedLearn: "Ver todos os tópicos de aprendizado →",
+    blogRelatedPractice: "Começar a praticar grátis →",
+    blogSearchPlaceholder: "Buscar posts...",
+    blogFilterAll: "Todos os estados",
+    blogNoResults: "Nenhum post encontrado.",
+    blogHelpfulQuestion: "Este post foi útil?",
+    blogHelpfulYes: "Sim",
+    blogHelpfulNo: "Não",
+    blogHelpfulThanks: "Obrigado pelo feedback!",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Para imigrantes na Western Australia",
-    heroTitle: "Passe na prova de learner de WA — no seu idioma.",
+    heroEyebrow: "Para imigrantes em toda a Austrália",
+    heroTitle: "Passe na prova de learner australiana, no seu idioma.",
     heroDesc:
-      "Pratique todos os tópicos cobrados na prova de learner licence do DoT WA. " +
-      "Inglês, Português ou Espanhol. Simulado gratuito incluído.",
+      "Questões no estilo da prova real, em inglês, português ou espanhol. " +
+      "Estude, pratique e chegue no teste do DoT se sentindo pronto.",
     heroCta1: "Começar a praticar",
+    heroCtaNote: "Grátis. Sem precisar de cadastro.",
     heroCta2: "Tentar o simulado",
     heroBadge1: "Gratuito para sempre",
-    heroBadge2: "Regras de WA",
+    heroBadge2: "2000+ questões estilo prova",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponível agora. NSW, VIC, QLD e mais em breve.",
+    heroProof: "Todos os estados e territórios australianos disponíveis agora.",
+    heroSourcePill: "Baseado nos handbooks oficiais · Atualizado ago 2026",
+    heroStat1Label: "questões estilo prova",
+    heroStat2Label: "estados e territórios",
+    heroStat3Label: "idiomas",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estude as regras de trânsito por tema com explicações claras.",
     feat2Title: "Praticar",
     feat2Sub: "Responda perguntas filtradas por categoria e dificuldade.",
     feat3Title: "Simulado",
-    feat3Sub: "Simule a prova oficial de learner de WA com 30 questões.",
+    feat3Sub: "Simule a prova oficial de learner com 30 questões.",
     feat4Title: "Progresso",
     feat4Sub: "Veja sua taxa de acerto por categoria e revise os erros.",
     // Trust
     trustTitle: "Por que KangaLearner",
     trustMultiTitle: "Suporte multilíngue",
-    trustMultiBody: "Estude em inglês, português e espanhol — mais idiomas em breve.",
+    trustMultiBody: "Estude em inglês, português e espanhol, mais idiomas em breve.",
     trustSaveTitle: "Progresso salvo",
     trustSaveBody: "Seu progresso é salvo automaticamente no navegador.",
     trustOfficialTitle: "Baseado em regras oficiais",
     trustOfficialBody:
-      "Conteúdo baseado em fontes públicas de WA. Confirme sempre com o Departamento de Transportes.",
+      "Conteúdo baseado em fontes oficiais estaduais. Confirme sempre com o Departamento de Transportes do seu estado.",
     // Topics
     topicsTitle: "Estude os principais tópicos",
     topicSpeed: "Velocidade",
@@ -475,8 +567,6 @@ export const t = {
     // States
     stateAvailable: "Disponível agora",
     comingSoon: "Em breve",
-    statesMoreNote: "Mais estados em breve —",
-    statesMoreLink: "cadastre-se para ser notificado",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "O que os alunos dizem",
     faqTitle: "Perguntas frequentes",
@@ -488,13 +578,16 @@ export const t = {
     howStep2Label: "Praticar",
     howStep2Desc: "Responda perguntas no formato do exame filtradas por categoria",
     howStep3Label: "Simulado",
-    howStep3Desc: "Simule a prova oficial de 30 questões do learner de WA",
+    howStep3Desc: "Simule a prova oficial de 30 questões do learner",
     howItWorksTitle: "Como funciona",
+    sectionEyebrowHow: "Comece aqui",
+    sectionEyebrowTrust: "Por que o KangaLearner",
+    sectionEyebrowTopics: "O que você vai dominar",
     howStep1Title: "Estude por tópico",
     howStep1DescCard:
-      "19 tópicos das regras de trânsito — placas, velocidade, preferência, álcool e mais.",
+      "19 tópicos das regras de trânsito, placas, velocidade, preferência, álcool e mais.",
     howStep2Title: "Faça um simulado",
-    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT WA.",
+    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT.",
     howStep3Title: "Acompanhe seu progresso",
     howStep3DescCard:
       "Veja quais tópicos precisam mais prática. Crie conta grátis para salvar resultados.",
@@ -517,6 +610,7 @@ export const t = {
     answer: "Resposta",
     noQuestionsTitle: "Nenhuma pergunta aqui!",
     noQuestionsSub: "Tente outro modo ou reinicie seu progresso.",
+    loadMoreQuestions: "Mostrar mais perguntas",
     noSavedTitle: "Nenhuma pergunta salva ainda",
     noSavedSub: "Toque em ★ em qualquer pergunta para salvá-la.",
     language: "Idioma",
@@ -526,6 +620,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulado",
+    vehicleType: "Tipo de Carteira",
+    carLicence: "Carro",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Prática",
     examMode: "Modo Exame",
     loading: "Carregando…",
@@ -538,10 +635,10 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Companion da carteira",
-    resourcesTitle: "Recursos e proximos passos para a carteira em WA",
+    resourcesTitle: "Recursos e próximos passos para a carteira em WA",
     resourcesSub:
       "Um hub em linguagem simples para prova teórica, horas de direção, HPT, PDA e links confiáveis da comunidade. Use junto com as fontes oficiais do Transport WA.",
-    resourcesWaOnly: "Recursos de WA — outros estados em breve.",
+    resourcesWaOnly: "Recursos de WA por enquanto, outros estados em breve.",
     resourcesStudyGuide: "Guia de estudo",
     resourcesPracticeNow: "Praticar perguntas",
 
@@ -555,13 +652,17 @@ export const t = {
     nextStepTitle: "Próximo passo recomendado",
     nextStepReviewWrong: "Revise suas respostas erradas",
     nextStepFinishUnanswered: "Responda as perguntas não respondidas",
-    nextStepTakeMock: "Você está pronto — faça o simulado!",
+    nextStepTakeMock: "Você está pronto, faça o simulado!",
     nextStepEmpty: "Comece a praticar para receber uma recomendação.",
     resetConfirm: "Reiniciar todo o progresso? Esta ação não pode ser desfeita.",
     progressCloudNote:
       "Seu histórico de prática está sincronizado na nuvem. Veja seu Painel para estatísticas completas.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Vamos te deixar pronto para a prova",
+    dashWelcomeSub:
+      "Três passos até a sua licença de learner: estude os tópicos, pratique questões reais e prove no simulado.",
+    dashWelcomeCta: "Responda sua primeira questão",
     dashHello: "Olá",
     dashSub: "Seu progresso em todas as sessões de prática.",
     dashQuestionsAnswered: "Perguntas respondidas",
@@ -590,7 +691,7 @@ export const t = {
     dashNoAttemptsForStatePrefix: "Nenhuma tentativa encontrada para",
     dashNoAttemptsForStateSuffix: "Pratique perguntas deste estado para ver o progresso aqui.",
     dashWeeklyActivity: "Atividade semanal",
-    dashNoWeeklyActivity: "Nenhuma atividade ainda — comece a praticar para ver sua tendência.",
+    dashNoWeeklyActivity: "Nenhuma atividade ainda, comece a praticar para ver sua tendência.",
     dashChartNoActivity: "Sem atividade",
     dashContinuePractice: "Continuar prática →",
     dashTakeMockTest: "Fazer simulado",
@@ -599,10 +700,10 @@ export const t = {
       "Responda mais perguntas para receber recomendações personalizadas.",
     dashPractiseArrow: "Praticar →",
     dashProgressByTopic: "Progresso por tópico",
-    dashNoTopicData: "Sem dados ainda — responda perguntas no modo Prática.",
+    dashNoTopicData: "Sem dados ainda, responda perguntas no modo Prática.",
     dashPractise: "Praticar",
     dashMockTestHistory: "Histórico de simulados",
-    dashNoMockTestsTryPrefix: "Nenhum simulado ainda — experimente o",
+    dashNoMockTestsTryPrefix: "Nenhum simulado ainda, experimente o",
     dashMockTestMode: "modo Simulado",
     dashSignedInAs: "Conectado como",
     dashSignOutFromNav: "sair pelo menu",
@@ -653,7 +754,7 @@ export const t = {
     accountPasswordMinLength: "A nova senha deve ter pelo menos 8 caracteres.",
     accountPasswordMismatch: "As senhas não coincidem.",
     accountPasswordChanged: "Senha alterada com sucesso.",
-    accountDangerSub: "Ações irreversíveis — proceda com cautela.",
+    accountDangerSub: "Ações irreversíveis, proceda com cautela.",
     accountDeleteTitle: "Excluir conta",
     accountDeleteDesc:
       "Isso excluirá permanentemente sua conta e todos os dados de progresso. Esta ação não pode ser desfeita.",
@@ -669,21 +770,24 @@ export const t = {
     accountUploadFailed: "Falha no envio",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Passe na prova de learner australiana — em inglês, português ou espanhol.",
+    footerTagline: "Passe na prova de learner australiana, em inglês, português ou espanhol.",
     footerProductTitle: "Produto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Dicas semanais de direção em WA",
+    footerNewsletterTitle: "Dicas semanais de direção",
     footerNewsletterDesc: "Em inglês, português ou espanhol. Cancele quando quiser.",
     footerNewsletterPlaceholder: "seu@email.com",
     footerNewsletterCta: "Inscrever-se",
     footerNewsletterSuccess: "Inscrito! Verifique sua caixa de entrada.",
     footerNewsletterError: "Algo deu errado. Tente novamente.",
-    resCommunityTitle: "Comunidades de Imigrantes em Perth",
+    footerStatesLabel: "Provas de learner",
+    stateCtaPractice: "Praticar questões de {state}",
+    stateCtaMock: "Fazer um simulado de {state}",
+    resCommunityTitle: "Comunidades de Imigrantes",
     resCommunityDesc:
-      "Conecte-se com outros imigrantes em Perth que também estão tirando carteira em WA.",
+      "Conecte-se com outros imigrantes em toda a Austrália que também estão tirando a carteira.",
     resStudyTitle: "Guias de Estudo Gratuitos",
-    resStudyDesc: "Recursos oficiais do DoT — gratuitos para download.",
+    resStudyDesc: "Recursos oficiais do DoT, gratuitos para download.",
     resJourneyTitle: "Seu Caminho para a Carteira Completa",
     resChecklistTitle: "Checklist do Dia da Prova",
     footerCopyright: "© 2026 KangaLearner. Todos os direitos reservados.",
@@ -750,7 +854,25 @@ export const t = {
     mockNoResults: "Nenhum resultado encontrado para esta sessão.",
     mockConfigNotFound: "Configuração do simulado não encontrada.",
     mockSessionError: "Erro de sessão",
-    mockLoadNextQuestion: "Não foi possível carregar a próxima questão."
+    mockLoadNextQuestion: "Não foi possível carregar a próxima questão.",
+
+    // ── Readiness score ───────────────────────────────────
+    "readiness.title": "Estou pronto para a prova?",
+    "readiness.hint":
+      "Com base na cobertura das questões, na precisão por tópico e nos seus simulados recentes.",
+    "readiness.level.not_ready": "Ainda não",
+    "readiness.level.getting_there": "No caminho",
+    "readiness.level.almost": "Quase lá",
+    "readiness.level.ready": "Pronto",
+    "readiness.noMocks": "Faça um simulado. A prontidão exige pelo menos 2 simulados aprovados.",
+    "readiness.lowMockScores": "Seus simulados recentes estão abaixo de 80%. Tente outro simulado.",
+    "readiness.needMorePassingMocks":
+      "Passe em mais um simulado (80% ou mais) para confirmar que está pronto.",
+    "readiness.weakCategories":
+      "Alguns tópicos estão abaixo de 70%. Pratique seu tópico mais fraco.",
+    "readiness.lowCoverage":
+      "Você ainda não viu a maior parte do banco de questões. Continue praticando questões novas.",
+    "readiness.viewDashboard": "Veja a prontidão completa no seu painel"
   },
 
   es: {
@@ -760,6 +882,7 @@ export const t = {
     practice: "Practicar",
     retry: "Reintentar",
     questionsWord: "preguntas",
+    passMarkWord: "Puntaje mínimo",
     topicsWord: "temas",
     roadRulesWord: "reglas de tránsito",
     mockTest: "Simulacro",
@@ -773,6 +896,7 @@ export const t = {
     mockGuestBannerCta: "Crear cuenta gratis",
     progress: "Progreso",
     resources: "Recursos",
+    blog: "Blog",
     dashboard: "Panel",
     signIn: "Ingresar",
     account: "Cuenta",
@@ -780,6 +904,12 @@ export const t = {
     achievements: "Logros",
     help: "Ayuda",
     signOut: "Salir",
+
+    // ── Mascot + 404 ──────────────────────────────────────
+    kangaAlmost: "¡Casi!",
+    notFoundTitle: "Página no encontrada",
+    notFoundSub: "La página que buscas no existe o cambió de lugar.",
+    notFoundCta: "Volver al inicio",
 
     // ── Learn page ────────────────────────────────────────
     learnTitle: "Aprender las reglas de tránsito",
@@ -792,37 +922,61 @@ export const t = {
     learnBack: "← Todos los temas",
     learnPractice: "Practicar este tema →",
     learnAllTopics: "Todas las preguntas →",
+    learnWaCttCta: "Práctica CTT de WA gratis →",
+
+    // ── Blog ──────────────────────────────────────────────
+    blogTitle: "Blog",
+    blogSub: "Guías para quienes recién llegaron y están aprendiendo a conducir en Australia.",
+    blogBack: "← Todas las publicaciones",
+    blogReadMore: "Leer más →",
+    blogPublished: "Publicado el",
+    blogSource: "Fuente oficial",
+    blogRelatedTitle: "Sigue estudiando",
+    blogRelatedLearn: "Ver todos los temas de aprendizaje →",
+    blogRelatedPractice: "Empezar a practicar gratis →",
+    blogSearchPlaceholder: "Buscar publicaciones...",
+    blogFilterAll: "Todos los estados",
+    blogNoResults: "No se encontraron publicaciones.",
+    blogHelpfulQuestion: "¿Te sirvió este post?",
+    blogHelpfulYes: "Sí",
+    blogHelpfulNo: "No",
+    blogHelpfulThanks: "¡Gracias por tu opinión!",
 
     // ── Landing ───────────────────────────────────────────
-    heroEyebrow: "Para inmigrantes en Western Australia",
-    heroTitle: "Aprueba el examen learner de WA — en tu idioma.",
+    heroEyebrow: "Para inmigrantes en toda Australia",
+    heroTitle: "Aprueba el examen learner australiano, en tu idioma.",
     heroDesc:
-      "Practica todos los temas evaluados en el examen learner licence del DoT WA. " +
-      "Inglés, Portugués o Español. Simulacro gratis incluido.",
+      "Preguntas al estilo del examen real, en inglés, portugués o español. " +
+      "Estudia, practica y llega al examen del DoT sintiéndote listo.",
     heroCta1: "Empezar a practicar",
+    heroCtaNote: "Gratis. Sin necesidad de registro.",
     heroCta2: "Probar el simulacro",
     heroBadge1: "Gratis para siempre",
-    heroBadge2: "Reglas de tránsito WA",
+    heroBadge2: "2000+ preguntas estilo examen",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA disponible ahora. NSW, VIC, QLD y más próximamente.",
+    heroProof: "Todos los estados y territorios australianos disponibles ahora.",
+    heroSourcePill: "Basado en los manuales oficiales · Actualizado ago 2026",
+    heroStat1Label: "preguntas estilo examen",
+    heroStat2Label: "estados y territorios",
+    heroStat3Label: "idiomas",
     // Features
     feat1Title: "Aprender",
     feat1Sub: "Estudia las reglas de tránsito por tema con explicaciones claras.",
     feat2Title: "Practicar",
     feat2Sub: "Responde preguntas filtradas por categoría y dificultad.",
     feat3Title: "Simulacro",
-    feat3Sub: "Simula el examen oficial learner de WA con 30 preguntas.",
+    feat3Sub: "Simula el examen oficial learner con 30 preguntas.",
     feat4Title: "Progreso",
     feat4Sub: "Ve tu tasa de aciertos por categoría y revisa los errores.",
     // Trust
     trustTitle: "¿Por qué KangaLearner?",
     trustMultiTitle: "Soporte multilingüe",
-    trustMultiBody: "Estudia en inglés, portugués o español — más idiomas próximamente.",
+    trustMultiBody: "Estudia en inglés, portugués o español, más idiomas próximamente.",
     trustSaveTitle: "Progreso guardado",
     trustSaveBody: "Tu progreso se guarda automáticamente en el navegador.",
     trustOfficialTitle: "Basado en reglas oficiales",
     trustOfficialBody:
-      "Contenido basado en fuentes públicas de WA. Confirma siempre con el Departamento de Transportes.",
+      "Contenido basado en fuentes oficiales estatales. Confirma siempre con el Departamento de Transportes de tu estado.",
     // Topics
     topicsTitle: "Estudia los temas clave",
     topicSpeed: "Velocidad",
@@ -840,8 +994,6 @@ export const t = {
     // States
     stateAvailable: "Disponible ahora",
     comingSoon: "Próximamente",
-    statesMoreNote: "Más estados próximamente —",
-    statesMoreLink: "regístrate para ser notificado",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "Lo que dicen los estudiantes",
     faqTitle: "Preguntas frecuentes",
@@ -853,13 +1005,16 @@ export const t = {
     howStep2Label: "Practicar",
     howStep2Desc: "Responde preguntas estilo examen filtradas por categoría",
     howStep3Label: "Simulacro",
-    howStep3Desc: "Simula el examen oficial de 30 preguntas del learner de WA",
+    howStep3Desc: "Simula el examen oficial de 30 preguntas del learner",
     howItWorksTitle: "Cómo funciona",
+    sectionEyebrowHow: "Empieza aquí",
+    sectionEyebrowTrust: "Por qué KangaLearner",
+    sectionEyebrowTopics: "Lo que vas a dominar",
     howStep1Title: "Estudia por tema",
     howStep1DescCard:
-      "19 temas de normas de tránsito — señales, velocidades, ceder el paso, alcohol y más.",
+      "19 temas de normas de tránsito, señales, velocidades, ceder el paso, alcohol y más.",
     howStep2Title: "Haz un simulacro",
-    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT WA.",
+    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT.",
     howStep3Title: "Sigue tu progreso",
     howStep3DescCard:
       "Ve qué temas necesitan más práctica. Regístrate gratis para guardar tus resultados.",
@@ -882,6 +1037,7 @@ export const t = {
     answer: "Respuesta",
     noQuestionsTitle: "¡No hay preguntas aquí!",
     noQuestionsSub: "Prueba otro modo o reinicia tu progreso.",
+    loadMoreQuestions: "Mostrar más preguntas",
     noSavedTitle: "No hay preguntas guardadas aún",
     noSavedSub: "Toca ★ en cualquier pregunta para guardarla.",
     language: "Idioma",
@@ -891,6 +1047,9 @@ export const t = {
 
     // ── Mock test ─────────────────────────────────────────
     startMockTest: "Iniciar Simulacro",
+    vehicleType: "Tipo de Licencia",
+    carLicence: "Auto",
+    motorcycleLicence: "Moto",
     practiceMode: "Modo Práctica",
     examMode: "Modo Examen",
     loading: "Cargando…",
@@ -903,10 +1062,10 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Companion de licencia",
-    resourcesTitle: "Recursos y proximos pasos para la licencia en WA",
+    resourcesTitle: "Recursos y próximos pasos para la licencia en WA",
     resourcesSub:
       "Un hub en lenguaje simple para el examen teórico, horas de conducción, HPT, PDA y enlaces confiables de comunidad. Úsalo junto con las fuentes oficiales de Transport WA.",
-    resourcesWaOnly: "Recursos de WA — otros estados próximamente.",
+    resourcesWaOnly: "Recursos de WA por ahora, otros estados próximamente.",
     resourcesStudyGuide: "Guía de estudio",
     resourcesPracticeNow: "Practicar preguntas",
 
@@ -920,13 +1079,17 @@ export const t = {
     nextStepTitle: "Próximo paso recomendado",
     nextStepReviewWrong: "Revisa tus respuestas incorrectas",
     nextStepFinishUnanswered: "Responde las preguntas sin responder",
-    nextStepTakeMock: "Estás listo — ¡haz el simulacro!",
+    nextStepTakeMock: "Estás listo, ¡haz el simulacro!",
     nextStepEmpty: "Empieza a practicar para recibir una recomendación.",
     resetConfirm: "¿Reiniciar todo el progreso? Esta acción no se puede deshacer.",
     progressCloudNote:
       "Tu historial de práctica está sincronizado en la nube. Consulta tu Panel para estadísticas completas.",
 
     // ── Dashboard ─────────────────────────────────────────
+    dashWelcomeTitle: "Vamos a dejarte listo para el examen",
+    dashWelcomeSub:
+      "Tres pasos hasta tu licencia de learner: estudia los temas, practica preguntas reales y demuéstralo en el simulacro.",
+    dashWelcomeCta: "Responde tu primera pregunta",
     dashHello: "Hola",
     dashSub: "Tu progreso en todas las sesiones de práctica.",
     dashQuestionsAnswered: "Preguntas respondidas",
@@ -955,7 +1118,7 @@ export const t = {
     dashNoAttemptsForStatePrefix: "No se encontraron intentos para",
     dashNoAttemptsForStateSuffix: "Practica preguntas de este estado para ver el progreso aquí.",
     dashWeeklyActivity: "Actividad semanal",
-    dashNoWeeklyActivity: "Sin actividad aún — empieza a practicar para ver tu tendencia.",
+    dashNoWeeklyActivity: "Sin actividad aún, empieza a practicar para ver tu tendencia.",
     dashChartNoActivity: "Sin actividad",
     dashContinuePractice: "Continuar práctica →",
     dashTakeMockTest: "Hacer simulacro",
@@ -964,10 +1127,10 @@ export const t = {
       "Responde más preguntas para obtener recomendaciones personalizadas.",
     dashPractiseArrow: "Practicar →",
     dashProgressByTopic: "Progreso por tema",
-    dashNoTopicData: "Sin datos aún — responde preguntas en el modo Práctica.",
+    dashNoTopicData: "Sin datos aún, responde preguntas en el modo Práctica.",
     dashPractise: "Practicar",
     dashMockTestHistory: "Historial de simulacros",
-    dashNoMockTestsTryPrefix: "Sin simulacros aún — prueba el",
+    dashNoMockTestsTryPrefix: "Sin simulacros aún, prueba el",
     dashMockTestMode: "modo Simulacro",
     dashSignedInAs: "Sesión iniciada como",
     dashSignOutFromNav: "cerrar sesión desde el menú",
@@ -1018,7 +1181,7 @@ export const t = {
     accountPasswordMinLength: "La nueva contraseña debe tener al menos 8 caracteres.",
     accountPasswordMismatch: "Las contraseñas no coinciden.",
     accountPasswordChanged: "Contraseña cambiada correctamente.",
-    accountDangerSub: "Acciones irreversibles — procede con precaución.",
+    accountDangerSub: "Acciones irreversibles, procede con precaución.",
     accountDeleteTitle: "Eliminar cuenta",
     accountDeleteDesc:
       "Esto eliminará permanentemente tu cuenta y todos los datos de progreso. Esta acción no se puede deshacer.",
@@ -1034,21 +1197,24 @@ export const t = {
     accountUploadFailed: "Error al subir",
 
     // ── Footer ────────────────────────────────────────────
-    footerTagline: "Aprueba el examen learner australiano — en inglés, portugués o español.",
+    footerTagline: "Aprueba el examen learner australiano, en inglés, portugués o español.",
     footerProductTitle: "Producto",
     footerCompanyTitle: "Empresa",
     footerLegalTitle: "Legal",
-    footerNewsletterTitle: "Consejos semanales sobre el manejo en WA",
+    footerNewsletterTitle: "Consejos semanales sobre el manejo",
     footerNewsletterDesc: "En inglés, portugués o español. Cancela cuando quieras.",
     footerNewsletterPlaceholder: "tu@email.com",
     footerNewsletterCta: "Suscribirme",
     footerNewsletterSuccess: "¡Ya estás! Revisa tu bandeja de entrada.",
     footerNewsletterError: "Algo salió mal. Inténtalo de nuevo.",
-    resCommunityTitle: "Comunidades de Inmigrantes en Perth",
+    footerStatesLabel: "Exámenes de learner",
+    stateCtaPractice: "Practicar preguntas de {state}",
+    stateCtaMock: "Hacer un simulacro de {state}",
+    resCommunityTitle: "Comunidades de Inmigrantes",
     resCommunityDesc:
-      "Conéctate con otros inmigrantes en Perth que también están sacando su licencia en WA.",
+      "Conéctate con otros inmigrantes en toda Australia que también están sacando su licencia.",
     resStudyTitle: "Guías de Estudio Gratuitas",
-    resStudyDesc: "Recursos oficiales del DoT — gratuitos para descargar.",
+    resStudyDesc: "Recursos oficiales del DoT, gratuitos para descargar.",
     resJourneyTitle: "Tu Camino hacia la Licencia Completa",
     resChecklistTitle: "Lista de Verificación para el Día del Examen",
     footerCopyright: "© 2026 KangaLearner. Todos los derechos reservados.",
@@ -1115,7 +1281,26 @@ export const t = {
     mockNoResults: "No se encontraron resultados para esta sesión.",
     mockConfigNotFound: "No se encontró la configuración del simulacro.",
     mockSessionError: "Error de sesión",
-    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta."
+    mockLoadNextQuestion: "No pudimos cargar la siguiente pregunta.",
+
+    // ── Readiness score ───────────────────────────────────
+    "readiness.title": "¿Estoy listo para el examen?",
+    "readiness.hint":
+      "Basado en la cobertura de preguntas, la precisión por tema y tus simulacros recientes.",
+    "readiness.level.not_ready": "Aún no",
+    "readiness.level.getting_there": "En camino",
+    "readiness.level.almost": "Casi listo",
+    "readiness.level.ready": "Listo",
+    "readiness.noMocks": "Haz un simulacro. Necesitas al menos 2 simulacros aprobados.",
+    "readiness.lowMockScores":
+      "Tus simulacros recientes están por debajo del 80%. Intenta otro simulacro.",
+    "readiness.needMorePassingMocks":
+      "Aprueba un simulacro más (80% o mejor) para confirmar que estás listo.",
+    "readiness.weakCategories":
+      "Algunos temas están por debajo del 70%. Practica tu tema más débil.",
+    "readiness.lowCoverage":
+      "Aún no has visto la mayor parte del banco de preguntas. Sigue practicando preguntas nuevas.",
+    "readiness.viewDashboard": "Ve tu preparación completa en tu panel"
   }
 } as const satisfies Record<UiLang, Record<string, string>>;
 

@@ -1,9 +1,11 @@
 import type { EmailOtpType } from "@supabase/supabase-js";
 import * as Linking from "expo-linking";
 import { router } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ActivityIndicator, Text } from "react-native";
+import type { MobileStrings } from "../../src/lib/i18n";
 import { getMobileSupabase } from "../../src/lib/supabase";
+import { usePreferences } from "../../src/features/preferences/PreferencesContext";
 import { Card, PrimaryButton, Screen, useThemeColors } from "../../src/ui/kit";
 
 // Supabase can deliver credentials in the query (?token_hash=...) or, with the
@@ -17,9 +19,9 @@ function extractAuthParams(url: string): Record<string, string> {
   return params;
 }
 
-async function completeSignIn(url: string): Promise<void> {
+async function completeSignIn(url: string, copy: MobileStrings): Promise<void> {
   const supabase = getMobileSupabase();
-  if (!supabase) throw new Error("Sign-in is not available right now.");
+  if (!supabase) throw new Error(copy.signInUnavailable);
 
   const params = extractAuthParams(url);
   if (params.error_description || params.error) {
@@ -44,26 +46,29 @@ async function completeSignIn(url: string): Promise<void> {
     return;
   }
 
-  throw new Error("This sign-in link is invalid or has expired.");
+  throw new Error(copy.linkInvalid);
 }
 
 export default function AuthCallbackScreen() {
   const c = useThemeColors();
+  const { copy } = usePreferences();
   const url = Linking.useURL();
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  // Keeps the effect keyed on the URL only: re-running completeSignIn when the
+  // language changes would replay verifyOtp with an already-consumed token.
+  const copyRef = useRef(copy);
+  copyRef.current = copy;
 
   useEffect(() => {
     if (!url) return;
     let cancelled = false;
-    completeSignIn(url)
+    completeSignIn(url, copyRef.current)
       .then(() => {
         if (!cancelled) router.replace("/");
       })
       .catch((error: unknown) => {
         if (cancelled) return;
-        setErrorMessage(
-          error instanceof Error ? error.message : "This sign-in link is invalid or has expired."
-        );
+        setErrorMessage(error instanceof Error ? error.message : copyRef.current.linkInvalid);
       });
     return () => {
       cancelled = true;
@@ -72,20 +77,20 @@ export default function AuthCallbackScreen() {
 
   if (errorMessage) {
     return (
-      <Screen title="Sign in" subtitle="Something went wrong">
+      <Screen title={copy.signIn} subtitle={copy.somethingWrong}>
         <Card>
           <Text style={{ color: c.ink, lineHeight: 23 }}>{errorMessage}</Text>
-          <PrimaryButton onPress={() => router.replace("/")}>Back to the app</PrimaryButton>
+          <PrimaryButton onPress={() => router.replace("/")}>{copy.backToApp}</PrimaryButton>
         </Card>
       </Screen>
     );
   }
 
   return (
-    <Screen title="Sign in" subtitle="Confirming your account...">
+    <Screen title={copy.signIn} subtitle={copy.confirmingAccount}>
       <Card>
         <ActivityIndicator />
-        <Text style={{ color: c.muted, lineHeight: 23 }}>Just a moment.</Text>
+        <Text style={{ color: c.muted, lineHeight: 23 }}>{copy.justAMoment}</Text>
       </Card>
     </Screen>
   );

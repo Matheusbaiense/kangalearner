@@ -219,7 +219,7 @@ export default function AdminPage() {
               <Crown size={22} strokeWidth={2} className="admin-title-icon" />
               Admin Dashboard
             </h1>
-            <p className="admin-subtitle">KangaLearner — real-time platform analytics</p>
+            <p className="admin-subtitle">KangaLearner · real-time platform analytics</p>
           </div>
           <button
             className="admin-refresh-btn"
@@ -317,7 +317,7 @@ export default function AdminPage() {
                   <div className="admin-chart-card">
                     <div className="admin-chart-header">
                       <TrendingUp size={16} strokeWidth={2} />
-                      <span>Signups — last 30 days</span>
+                      <span>Signups, last 30 days</span>
                     </div>
                     <Sparkline data={stats.users.signupsLast30Days} />
                     <div className="admin-sparkline-labels">

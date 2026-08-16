@@ -4,7 +4,8 @@ import { usePathname } from "next/navigation";
 import { SK } from "@/lib/storageKeys";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang } from "@/lib/i18n";
-import { AU_STATE_OPTIONS } from "@kanga/core";
+import { AU_STATE_OPTIONS, LIVE_STATE_CODES } from "@kanga/core";
+import { persistLicenceType, type LicenceType } from "@/lib/licenceType";
 
 const KEY = "kl-onboarding-v1";
 
@@ -20,7 +21,7 @@ const SUPPRESS_PATHS = [
 const STATES = AU_STATE_OPTIONS.map((s) => ({
   key: s.code,
   label: s.name,
-  soon: s.code !== "WA"
+  soon: !LIVE_STATE_CODES.includes(s.code)
 }));
 
 const LANGS = [
@@ -31,12 +32,21 @@ const LANGS = [
   { key: "es-en", label: "Español + EN" }
 ];
 
+// CTA says what it does (saves the choices), not just "go".
 const GO_LABEL: Record<string, string> = {
-  en: "Let's go!",
-  pt: "Vamos!",
-  es: "¡Vamos!",
-  "pt-en": "Vamos!",
-  "es-en": "¡Vamos!"
+  en: "Save & start",
+  pt: "Salvar e começar",
+  es: "Guardar y empezar",
+  "pt-en": "Salvar e começar",
+  "es-en": "Guardar y empezar"
+};
+
+const VEHICLE_LABEL: Record<string, { car: string; moto: string }> = {
+  en: { car: "Car", moto: "Motorcycle" },
+  pt: { car: "Carro", moto: "Moto" },
+  es: { car: "Auto", moto: "Moto" },
+  "pt-en": { car: "Carro", moto: "Moto" },
+  "es-en": { car: "Auto", moto: "Moto" }
 };
 
 export function Onboarding() {
@@ -45,12 +55,16 @@ export function Onboarding() {
   const [visible, setVisible] = useState(false);
   const [state, setState] = useState("WA");
   const [lang, setLang] = useState<Lang>("en");
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
 
   const isAuthRoute = SUPPRESS_PATHS.some((p) => pathname.startsWith(p));
 
   useEffect(() => {
     if (isAuthRoute) return;
-    if (!localStorage.getItem(KEY)) setVisible(true);
+    // Only for a genuinely fresh visitor: anyone who already picked a language
+    // or state (nav selector, previous session, signup) must never see it again.
+    const hasPrefs = localStorage.getItem(SK.lang) || localStorage.getItem(SK.stateV2);
+    if (!localStorage.getItem(KEY) && !hasPrefs) setVisible(true);
   }, [isAuthRoute]);
 
   function done() {
@@ -58,6 +72,7 @@ export function Onboarding() {
     localStorage.setItem(SK.stateV2, state);
     localStorage.setItem(SK.lang, lang);
     applyLang(lang);
+    persistLicenceType(licenceType);
     setVisible(false);
   }
 
@@ -72,7 +87,7 @@ export function Onboarding() {
     <div className="onboarding-banner" role="dialog" aria-label="Welcome to KangaLearner">
       <div className="ob-banner-inner">
         <div className="ob-banner-text">
-          <strong>Welcome 🦘</strong> Pick state & language:
+          <strong>Welcome 🦘</strong> Pick state, licence type & language:
         </div>
 
         <div className="ob-banner-controls">
@@ -100,6 +115,21 @@ export function Onboarding() {
                 type="button"
               >
                 {l.key.toUpperCase()}
+              </button>
+            ))}
+          </div>
+
+          <div className="ob-option-row">
+            {(["car", "motorcycle"] as const).map((v) => (
+              <button
+                key={v}
+                className={`ob-option${licenceType === v ? " ob-selected" : ""}`}
+                onClick={() => setLicenceType(v)}
+                type="button"
+              >
+                {v === "car"
+                  ? (VEHICLE_LABEL[lang] ?? VEHICLE_LABEL.en).car
+                  : (VEHICLE_LABEL[lang] ?? VEHICLE_LABEL.en).moto}
               </button>
             ))}
           </div>

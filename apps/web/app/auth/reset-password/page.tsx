@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
+import { AuthBrand } from "@/components/auth/AuthBrand";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");
@@ -55,9 +56,7 @@ export default function ResetPasswordPage() {
   if (done) {
     return (
       <main className="auth-page">
-        <Link href="/" className="auth-brand" aria-label="KangaLearner home">
-          <span className="auth-logo-name">KangaLearner</span>
-        </Link>
+        <AuthBrand />
         <div className="auth-card">
           <div className="auth-success" role="status">
             <h2>{s.authPasswordUpdated}</h2>
@@ -74,9 +73,7 @@ export default function ResetPasswordPage() {
 
   return (
     <main className="auth-page">
-      <Link href="/" className="auth-brand" aria-label="KangaLearner home">
-        <span className="auth-logo-name">KangaLearner</span>
-      </Link>
+      <AuthBrand />
 
       <div className="auth-card">
         <div className="auth-header">

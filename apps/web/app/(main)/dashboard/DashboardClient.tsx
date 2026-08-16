@@ -2,10 +2,12 @@
 
 import Link from "next/link";
 import { Flame, Target } from "lucide-react";
-import { WA_PASS_THRESHOLD } from "@kanga/core";
+import { WA_PASS_THRESHOLD, type ReadinessResult } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
+import { Kanga } from "@/components/brand/Kanga";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { pct } from "@/lib/percent";
+import { ReadinessCard } from "@/components/ReadinessCard";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
 import { StateProgressSelector } from "./StateProgressSelector";
 import type { AuStateCode } from "./state-options";
@@ -14,6 +16,7 @@ type CategoryStat = [string, { total: number; correct: number }];
 type WeekBucket = { label: string; total: number; correct: number };
 
 export type DashboardClientProps = {
+  readiness: ReadinessResult;
   displayName: string;
   userEmail: string | undefined;
   totalAnswered: number;
@@ -41,6 +44,7 @@ export type DashboardClientProps = {
 };
 
 export function DashboardClient({
+  readiness,
   displayName,
   userEmail,
   totalAnswered,
@@ -71,37 +75,31 @@ export function DashboardClient({
   return (
     <div className="app-page">
       <div className="app-container app-section">
-        <div
-          className="page-header"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            flexWrap: "wrap",
-            gap: 12
-          }}
-        >
+        <div className="page-header dash-row-spread">
           <div>
             <h1 className="page-title">
               {s.dashHello}, {displayName}
             </h1>
             <p className="page-sub">{s.dashSub}</p>
           </div>
-          <Link
-            href="/account"
-            className="btn-outline"
-            style={{
-              textDecoration: "none",
-              display: "inline-flex",
-              alignItems: "center",
-              gap: 6,
-              whiteSpace: "nowrap",
-              flexShrink: 0
-            }}
-          >
+          <Link href="/account" className="btn-outline dash-settings-btn">
             ⚙ {s.settings}
           </Link>
         </div>
+
+        {totalAnswered === 0 && (
+          <div className="stat-card dash-welcome">
+            <div className="dash-welcome-copy">
+              <div className="stat-card-label">{s.dashWelcomeTitle}</div>
+              <div className="stat-card-sub">{s.dashWelcomeSub}</div>
+            </div>
+            <Link href="/practice" className="btn btn-primary">
+              {s.dashWelcomeCta} →
+            </Link>
+          </div>
+        )}
+
+        {totalAnswered > 0 && <ReadinessCard readiness={readiness} />}
 
         <div className="stat-grid">
           <div className="stat-card">
@@ -137,22 +135,10 @@ export function DashboardClient({
           </div>
         </div>
 
-        <div className="stat-grid" style={{ marginTop: 22 }}>
+        <div className="stat-grid mt-22">
           <div className="stat-card">
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span
-                aria-hidden
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 38,
-                  height: 38,
-                  borderRadius: 999,
-                  background: "rgba(244, 169, 0, .14)",
-                  color: "var(--orange)"
-                }}
-              >
+            <div className="dash-stat-row">
+              <span aria-hidden className="dash-stat-ico dash-stat-ico--orange">
                 <Flame size={21} />
               </span>
               <div>
@@ -165,62 +151,37 @@ export function DashboardClient({
             </div>
           </div>
 
-          <div className="stat-card" style={{ gridColumn: "span 2" }}>
-            <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-              <span
-                aria-hidden
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  width: 38,
-                  height: 38,
-                  borderRadius: 999,
-                  background: "rgba(82, 183, 136, .14)",
-                  color: "var(--green)"
-                }}
-              >
+          <div className="stat-card dash-span-2">
+            <div className="dash-stat-row">
+              <span aria-hidden className="dash-stat-ico dash-stat-ico--green">
                 <Target size={21} />
               </span>
-              <div style={{ flex: 1 }}>
+              <div className="flex-1">
                 <div className="stat-card-label">{s.dashDailyGoal}</div>
                 <div className="stat-card-sub">
                   {answeredToday} {s.dashOf} {dailyGoal} {s.dashQuestionsAnsweredToday}
                 </div>
               </div>
-              <div className="stat-card-value" style={{ fontSize: "1.7rem" }}>
-                {dailyGoalPct}%
-              </div>
+              <div className="stat-card-value stat-card-value--sm">{dailyGoalPct}%</div>
             </div>
-            <div className="pbar-track" style={{ marginTop: 14 }}>
+            <div className="pbar-track">
               <div className="pbar-fill" style={{ width: `${dailyGoalPct}%` }} />
             </div>
           </div>
         </div>
 
-        <div className="dash-section" style={{ marginTop: 22 }}>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              gap: 16,
-              alignItems: "flex-start",
-              flexWrap: "wrap"
-            }}
-          >
+        <div className="dash-section mt-22">
+          <div className="dash-row-spread">
             <div>
               <p className="dash-section-title">{s.dashProgressByState}</p>
-              <div
-                className="dash-empty"
-                style={{ padding: 0, background: "transparent", border: 0 }}
-              >
+              <div className="dash-empty dash-empty--plain">
                 {s.dashFilteredFor} {selectedState} · {selectedStateName}
               </div>
             </div>
             <StateProgressSelector selectedState={selectedState} />
           </div>
 
-          <div className="stat-grid" style={{ marginTop: 18 }}>
+          <div className="stat-grid mt-18">
             <div className="stat-card">
               <div className="stat-card-label">{s.dashQuestionsAnswered}</div>
               <div className="stat-card-value">{stateTotalAnswered}</div>
@@ -258,13 +219,14 @@ export function DashboardClient({
             </div>
           </div>
 
-          <div style={{ marginTop: 18 }}>
-            <p className="dash-section-title" style={{ fontSize: ".88rem" }}>
-              {s.dashCategoryBreakdown}
-            </p>
+          <div className="mt-18">
+            <p className="dash-section-title dash-section-title--sm">{s.dashCategoryBreakdown}</p>
             {stateCategoryStats.length === 0 ? (
-              <div className="dash-empty">
-                {s.dashNoAttemptsForStatePrefix} {selectedState}. {s.dashNoAttemptsForStateSuffix}
+              <div className="dash-empty dash-empty--row">
+                <Kanga pose="search" size={72} style={{ flexShrink: 0 }} />
+                <span>
+                  {s.dashNoAttemptsForStatePrefix} {selectedState}. {s.dashNoAttemptsForStateSuffix}
+                </span>
               </div>
             ) : (
               <div className="cat-list">
@@ -294,9 +256,7 @@ export function DashboardClient({
                           }}
                         />
                       </div>
-                      <span style={{ marginLeft: "auto", fontSize: ".78rem", fontWeight: 800 }}>
-                        {cp}%
-                      </span>
+                      <span className="cat-row-pct">{cp}%</span>
                     </div>
                   );
                 })}
@@ -305,7 +265,7 @@ export function DashboardClient({
           </div>
         </div>
 
-        <div className="dash-section" style={{ marginTop: 22 }}>
+        <div className="dash-section mt-22">
           <p className="dash-section-title">{s.dashWeeklyActivity}</p>
           {!hasAttempts ? (
             <div className="dash-empty">{s.dashNoWeeklyActivity}</div>
@@ -345,15 +305,11 @@ export function DashboardClient({
           )}
         </div>
 
-        <div style={{ display: "flex", gap: 10, marginBottom: 32, flexWrap: "wrap" }}>
+        <div className="dash-actions">
           <Link href="/practice" className="dash-cta">
             {s.dashContinuePractice}
           </Link>
-          <Link
-            href="/practice?mode=sim"
-            className="btn-outline"
-            style={{ textDecoration: "none" }}
-          >
+          <Link href="/mock-test" className="btn-outline">
             {s.dashTakeMockTest}
           </Link>
         </div>
@@ -390,11 +346,7 @@ export function DashboardClient({
                         }}
                       />
                     </div>
-                    <Link
-                      href={`/practice?cat=${encodeURIComponent(cat)}`}
-                      className="btn-outline"
-                      style={{ marginLeft: "auto", textDecoration: "none" }}
-                    >
+                    <Link href={`/practice?cat=${encodeURIComponent(cat)}`} className="btn-outline">
                       {s.dashPractiseArrow}
                     </Link>
                   </div>
@@ -436,11 +388,7 @@ export function DashboardClient({
                         }}
                       />
                     </div>
-                    <Link
-                      href={`/practice?cat=${encodeURIComponent(cat)}`}
-                      className="btn-outline"
-                      style={{ marginLeft: "auto", textDecoration: "none" }}
-                    >
+                    <Link href={`/practice?cat=${encodeURIComponent(cat)}`} className="btn-outline">
                       {s.dashPractise}
                     </Link>
                   </div>
@@ -455,7 +403,7 @@ export function DashboardClient({
           {sessions.length === 0 ? (
             <div className="dash-empty">
               {s.dashNoMockTestsTryPrefix}{" "}
-              <Link href="/practice" style={{ color: "var(--green)", fontWeight: 800 }}>
+              <Link href="/practice" className="dash-link-strong">
                 {s.dashMockTestMode}
               </Link>
               .
@@ -465,9 +413,9 @@ export function DashboardClient({
           )}
         </div>
 
-        <p style={{ fontSize: ".75rem", color: "var(--muted)", marginTop: 32 }}>
+        <p className="dash-footnote">
           {s.dashSignedInAs} {userEmail} ·{" "}
-          <Link href="/account" style={{ color: "var(--muted)", textDecoration: "underline" }}>
+          <Link href="/account" className="dash-footnote-link">
             {s.settings}
           </Link>
         </p>

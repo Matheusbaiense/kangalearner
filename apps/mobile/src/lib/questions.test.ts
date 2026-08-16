@@ -3,11 +3,28 @@ import { WA_PASS_MIN_CORRECT, WA_TOTAL_QUESTIONS } from "@kanga/core";
 import { QUESTIONS } from "@kanga/core/data/questions";
 import {
   buildMockQuestionIds,
+  categoriesForPool,
   correctLetter,
   pct,
   questionsForState,
   scoreAnswers
 } from "./questions";
+
+describe("questionsForState", () => {
+  it("excludes motorcycle-only questions (mobile serves the car pool)", () => {
+    expect(questionsForState("WA").every((q) => q.licenceType !== "motorcycle")).toBe(true);
+  });
+});
+
+describe("categoriesForPool", () => {
+  it("only returns categories with at least one question in the pool", () => {
+    const pool = questionsForState("WA");
+    const present = new Set(pool.map((q) => q.cat));
+    const cats = categoriesForPool(pool);
+    expect(cats.length).toBeGreaterThan(0);
+    expect(cats.every((c) => present.has(c.key))).toBe(true);
+  });
+});
 
 describe("scoreAnswers", () => {
   it("counts only correct answers", () => {

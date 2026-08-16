@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -22,6 +22,8 @@ import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { LIVE_STATE_CODES } from "@kanga/core";
+import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
 
 /* ── Data ── */
 const FEATURES: {
@@ -101,116 +103,13 @@ const TRUST_ITEMS = [
   }
 ] as const;
 
-// Show WA (active) + 3 next states (coming soon). SA/TAS/ACT/NT hidden to reduce noise.
-const AU_STATES = [
-  { code: "WA", available: true },
-  { code: "NSW", available: false },
-  { code: "VIC", available: false },
-  { code: "QLD", available: false }
-];
+const STATE_PAGE_SLUGS = new Map<string, string>(STATE_TEST_INFO.map((st) => [st.code, st.slug]));
 
-const TESTIMONIALS = [
-  {
-    name: "Carlos M.",
-    state: "WA",
-    country: "br",
-    quote: {
-      en: "Passed first try! The questions in Portuguese made everything so much easier to understand.",
-      pt: "Passei na primeira tentativa! As perguntas em português tornaram tudo muito mais fácil de entender.",
-      es: "¡Pasé en el primer intento! Las preguntas en portugués hicieron que todo fuera más fácil de entender."
-    }
-  },
-  {
-    name: "Ana R.",
-    state: "WA",
-    country: "es",
-    quote: {
-      en: "Perfect for someone who doesn't speak fluent English. I studied in Spanish and passed with no problems.",
-      pt: "Perfeito para quem não fala inglês fluente. Estudei em espanhol e passei sem problemas.",
-      es: "Perfecto para alguien que no habla inglés fluido. Pude estudiar en español y aprobar sin problemas."
-    }
-  },
-  {
-    name: "Michael T.",
-    state: "WA",
-    country: "au",
-    quote: {
-      en: "The mock test mode is brilliant — I did it 3 times until I consistently got over 90%. Passed first go!",
-      pt: "O modo simulado é ótimo — fiz 3 vezes até conseguir mais de 90% sempre. Passei na primeira!",
-      es: "El modo simulacro es brillante — lo hice 3 veces hasta conseguir más del 90% siempre. ¡Aprobé!"
-    }
-  },
-  {
-    name: "Linh N.",
-    state: "WA",
-    country: "vn",
-    quote: {
-      en: "I was nervous about studying in a second language, but the clear explanations made everything click. Passed easily!",
-      pt: "Estava nervosa em estudar em um segundo idioma, mas as explicações claras fizeram tudo fazer sentido. Passei com facilidade!",
-      es: "Estaba nerviosa estudiando en un segundo idioma, pero las explicaciones claras lo hicieron todo muy claro. ¡Aprobé fácilmente!"
-    }
-  },
-  {
-    name: "Priya S.",
-    state: "WA",
-    country: "in",
-    quote: {
-      en: "I had failed twice before. After two weeks on KangaLearner the explanations finally made the rules stick. Third time's the charm!",
-      pt: "Havia reprovado duas vezes antes. Após duas semanas no KangaLearner as explicações finalmente fixaram as regras. Terceira é a sorte!",
-      es: "Había reprobado dos veces antes. Después de dos semanas en KangaLearner las explicaciones hicieron que las reglas se quedaran. ¡A la tercera va la vencida!"
-    }
-  },
-  {
-    name: "Marco R.",
-    state: "WA",
-    country: "it",
-    quote: {
-      en: "Great app for new immigrants. You actually learn the road rules instead of just memorising — that's the difference.",
-      pt: "Ótimo app para novos imigrantes. Você realmente aprende as regras de trânsito em vez de só decorar — essa é a diferença.",
-      es: "Excelente app para nuevos inmigrantes. Realmente aprendes las normas de tráfico en lugar de solo memorizarlas — esa es la diferencia."
-    }
-  },
-  {
-    name: "Mei L.",
-    state: "WA",
-    country: "cn",
-    quote: {
-      en: "The practice mode shows exactly where you're weak. I focused on road signs and went from 60% to 93% in one week.",
-      pt: "O modo de prática mostra exatamente onde você é fraco. Foquei nos sinais e fui de 60% para 93% em uma semana.",
-      es: "El modo de práctica muestra exactamente dónde estás débil. Me centré en las señales y fui del 60% al 93% en una semana."
-    }
-  },
-  {
-    name: "João S.",
-    state: "WA",
-    country: "br",
-    quote: {
-      en: "As a Brazilian, studying in Portuguese was essential. This is the only app that takes multilingual learners seriously.",
-      pt: "Como brasileiro, estudar em português foi essencial. Esse é o único app que leva a sério os estudantes multilíngues.",
-      es: "Como brasileño, estudiar en portugués fue esencial. Esta es la única app que toma en serio a los estudiantes multilingües."
-    }
-  },
-  {
-    name: "Sofia V.",
-    state: "WA",
-    country: "mx",
-    quote: {
-      en: "Did 5 mock tests before the real one. Scored 100% on the actual test — the questions are almost identical to the official exam!",
-      pt: "Fiz 5 simulados antes da prova real. Tirei 100% no exame de verdade — as questões são quase idênticas à prova oficial!",
-      es: "¡Hice 5 simulacros antes del examen real. Saqué 100% en el examen de verdad — las preguntas son casi idénticas al oficial!"
-    }
-  },
-  {
-    name: "David C.",
-    state: "WA",
-    country: "au",
-    quote: {
-      en: "Some road rules were really confusing even as an English speaker. This app broke everything down perfectly. First try pass!",
-      pt: "Algumas regras de trânsito eram muito confusas mesmo sendo falante de inglês. Esse app explicou tudo perfeitamente. Passei na primeira!",
-      es: "Algunas normas de tráfico eran muy confusas incluso siendo anglohablante. Esta app lo explicó todo perfectamente. ¡Aprobé al primer intento!"
-    }
-  }
-];
+const AU_STATES = (["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as const).map((code) => ({
+  code,
+  available: (LIVE_STATE_CODES as readonly string[]).includes(code),
+  pageSlug: STATE_PAGE_SLUGS.get(code) ?? null
+}));
 
 const FAQS = [
   {
@@ -232,9 +131,9 @@ const FAQS = [
       es: "¿KangaLearner es gratuito?"
     },
     a: {
-      en: "Yes, completely free. Practice as many questions as you like, take unlimited mock tests, and track your progress — no sign-up required to start.",
-      pt: "Sim, completamente gratuito. Pratique quantas perguntas quiser, faça simulados ilimitados e acompanhe seu progresso — não é necessário se cadastrar para começar.",
-      es: "Sí, completamente gratis. Practica tantas preguntas como quieras, haz simulacros ilimitados y sigue tu progreso — no necesitas registrarte para empezar."
+      en: "Studying is free: practice questions, mock tests and progress tracking, with no card and no sign-up required to start. Optional extras may be offered in the future, but the core study tools stay free.",
+      pt: "Estudar é grátis: perguntas de prática, simulados e acompanhamento de progresso, sem cartão e sem precisar de cadastro para começar. Recursos extras opcionais podem surgir no futuro, mas as ferramentas principais de estudo continuam gratuitas.",
+      es: "Estudiar es gratis: preguntas de práctica, simulacros y seguimiento de progreso, sin tarjeta y sin necesidad de registro para empezar. Podrán ofrecerse extras opcionales en el futuro, pero las herramientas principales de estudio siguen gratis."
     }
   },
   {
@@ -263,14 +162,14 @@ const FAQS = [
   },
   {
     q: {
-      en: "When will other Australian states be available?",
-      pt: "Quando outros estados australianos estarão disponíveis?",
-      es: "¿Cuándo estarán disponibles otros estados australianos?"
+      en: "Which Australian states and territories are covered?",
+      pt: "Quais estados e territórios australianos são cobertos?",
+      es: "¿Qué estados y territorios australianos están cubiertos?"
     },
     a: {
-      en: "We're working on NSW, VIC, and QLD — sign up to be notified when they launch.",
-      pt: "Estamos trabalhando em NSW, VIC e QLD — cadastre-se para ser notificado quando lançarmos.",
-      es: "Estamos trabajando en NSW, VIC y QLD — regístrate para ser notificado cuando se lancen."
+      en: "All of them: WA, NSW, QLD, VIC, SA, TAS, ACT and NT are all available now, each with its own real question bank sourced from the official state test.",
+      pt: "Todos: WA, NSW, QLD, VIC, SA, TAS, ACT e NT já estão disponíveis, cada um com seu próprio banco de perguntas reais extraído do teste oficial do estado.",
+      es: "Todos: WA, NSW, QLD, VIC, SA, TAS, ACT y NT ya están disponibles, cada uno con su propio banco de preguntas reales extraído del examen oficial del estado."
     }
   }
 ];
@@ -295,9 +194,9 @@ function SlideLearn({ lang }: { lang: UiLang }) {
     { Icon: ShieldCheck, label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" } }
   ];
   const hint = {
-    en: "19 topics · growing WA question bank",
-    pt: "19 tópicos · banco de perguntas WA em expansão",
-    es: "19 temas · banco de preguntas WA en expansión"
+    en: "19 topics · growing question bank across states",
+    pt: "19 tópicos · banco de perguntas em expansão por estado",
+    es: "19 temas · banco de preguntas en expansión por estado"
   };
   return (
     <>
@@ -497,15 +396,23 @@ function SlideProgress({ lang }: { lang: UiLang }) {
 
 function HeroSlideshow({ lang }: { lang: UiLang }) {
   const [slideIdx, setSlideIdx] = useState(0);
-  const [visible, setVisible] = useState(true);
+  // Previous slide kept mounted briefly so slides CROSSFADE, the old
+  // hide→swap→show approach left the card visibly empty for 280ms.
+  const [prevIdx, setPrevIdx] = useState<number | null>(null);
 
   const goTo = useCallback((idx: number) => {
-    setVisible(false);
-    setTimeout(() => {
-      setSlideIdx(idx);
-      setVisible(true);
-    }, 280);
+    setSlideIdx((current) => {
+      if (idx === current) return current;
+      setPrevIdx(current);
+      return idx;
+    });
   }, []);
+
+  useEffect(() => {
+    if (prevIdx === null) return;
+    const t = setTimeout(() => setPrevIdx(null), 340);
+    return () => clearTimeout(t);
+  }, [prevIdx, slideIdx]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -516,12 +423,20 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
 
   const slides = [SlideLearn, SlidePractice, SlideMock, SlideProgress];
   const SlideComponent = slides[slideIdx];
+  const PrevComponent = prevIdx !== null ? slides[prevIdx] : null;
 
   return (
     <div className="hero-slideshow" aria-live="polite" aria-atomic="true">
-      <div className="hero-slide-card">
-        <div className={`hero-slide-content${visible ? " slide-visible" : " slide-hidden"}`}>
-          <SlideComponent lang={lang} />
+      <div className="hero-phone-frame">
+        <div className="hero-slide-card">
+          <div key={slideIdx} className="hero-slide-content slide-enter">
+            <SlideComponent lang={lang} />
+          </div>
+          {PrevComponent && (
+            <div key={`ghost-${prevIdx}`} className="hero-slide-ghost" aria-hidden="true">
+              <PrevComponent lang={lang} />
+            </div>
+          )}
         </div>
       </div>
       <div className="slide-dots" role="tablist" aria-label="Product preview slides">
@@ -540,22 +455,91 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
   );
 }
 
+/* ── Hero stats (animated count-up on first view) ── */
+const STAT_ANIM_MS = 900;
+const HERO_STATS = [
+  { target: 2000, suffix: "+", labelKey: "heroStat1Label" as const },
+  { target: 8, suffix: "", labelKey: "heroStat2Label" as const },
+  { target: 3, suffix: "", labelKey: "heroStat3Label" as const }
+];
+
+function HeroStats() {
+  const { s } = useLang();
+  const ref = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(1);
+      return;
+    }
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - t0) / STAT_ANIM_MS, 1);
+          setProgress(1 - Math.pow(1 - p, 3));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div ref={ref} className="hero-stats">
+      {HERO_STATS.map(({ target, suffix, labelKey }) => (
+        <div key={labelKey} className="hero-stat">
+          <span className="hero-stat-num">
+            {Math.round(target * progress)}
+            {suffix}
+          </span>
+          <span className="hero-stat-label">{s[labelKey]}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── Section header (eyebrow + display title, one voice for every section) ── */
+function SectionHead({ eyebrow, title }: { eyebrow: string; title: string }) {
+  return (
+    <div className="section-head">
+      <p className="section-eyebrow">{eyebrow}</p>
+      <h2 className="section-title">{title}</h2>
+    </div>
+  );
+}
+
 /* ── How It Works (M2.2) ── */
 function HowItWorks() {
   const { s } = useLang();
   const steps = [
-    { num: "①", title: s.howStep1Title, desc: s.howStep1DescCard, href: "/learn" },
-    { num: "②", title: s.howStep2Title, desc: s.howStep2DescCard, href: "/mock-test" },
-    { num: "③", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" }
+    { num: "01", title: s.howStep1Title, desc: s.howStep1DescCard, href: "/learn" },
+    { num: "02", title: s.howStep2Title, desc: s.howStep2DescCard, href: "/mock-test" },
+    { num: "03", title: s.howStep3Title, desc: s.howStep3DescCard, href: "/dashboard" }
   ];
   return (
     <section className="how-it-works section-pad">
       <div className="container">
-        <h2 className="section-title">{s.howItWorksTitle}</h2>
+        <SectionHead eyebrow={s.sectionEyebrowHow} title={s.howItWorksTitle} />
         <div className="how-steps">
           {steps.map((step) => (
             <Link key={step.num} href={step.href} className="how-step-card">
-              <span className="how-step-num">{step.num}</span>
+              <span className="how-step-num" aria-hidden="true">
+                {step.num}
+              </span>
               <h3 className="how-step-title">{step.title}</h3>
               <p className="how-step-desc">{step.desc}</p>
             </Link>
@@ -563,58 +547,6 @@ function HowItWorks() {
         </div>
       </div>
     </section>
-  );
-}
-
-/* ── Testimonial Carousel ── */
-function TestimonialCarousel({ lang }: { lang: UiLang }) {
-  const [idx, setIdx] = useState(0);
-
-  useEffect(() => {
-    const t = setInterval(() => setIdx((i) => (i + 1) % TESTIMONIALS.length), 4500);
-    return () => clearInterval(t);
-  }, []);
-
-  const prev = () => setIdx((i) => (i - 1 + TESTIMONIALS.length) % TESTIMONIALS.length);
-  const next = () => setIdx((i) => (i + 1) % TESTIMONIALS.length);
-
-  const visible = [0, 1, 2].map((offset) => TESTIMONIALS[(idx + offset) % TESTIMONIALS.length]);
-
-  return (
-    <div className="testimonial-carousel">
-      <button className="testimonial-nav" onClick={prev} aria-label="Previous testimonial">
-        &#8249;
-      </button>
-      <div className="testimonial-track-wrap">
-        <div key={idx} className="testimonial-track">
-          {visible.map((t) => (
-            <article key={`${idx}-${t.name}`} className="testimonial-card">
-              <p className="testimonial-quote">&ldquo;{tx(t.quote, lang)}&rdquo;</p>
-              <div className="testimonial-author">
-                <FlagImg country={t.country} />
-                <div>
-                  <div className="testimonial-name">{t.name}</div>
-                  <div className="testimonial-state">{t.state}</div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-      <button className="testimonial-nav" onClick={next} aria-label="Next testimonial">
-        &#8250;
-      </button>
-      <div className="testimonial-dots">
-        {TESTIMONIALS.map((_, i) => (
-          <button
-            key={i}
-            className={`testimonial-dot${i === idx ? " active" : ""}`}
-            onClick={() => setIdx(i)}
-            aria-label={`Testimonial ${i + 1}`}
-          />
-        ))}
-      </div>
-    </div>
   );
 }
 
@@ -636,6 +568,15 @@ export function LandingClient() {
               <span className="hero-badge">✓ {s.heroBadge2}</span>
               <span className="hero-badge">✓ {s.heroBadge3}</span>
             </div>
+            <a
+              href="https://www.transport.wa.gov.au/licensing/learner-driver-guide.asp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-source-pill"
+            >
+              <span className="hero-source-dot" aria-hidden="true" />
+              {s.heroSourcePill}
+            </a>
             <div className="hero-actions">
               <Link href="/practice" className="btn btn-primary">
                 <Target size={18} strokeWidth={2} aria-hidden="true" />
@@ -646,6 +587,8 @@ export function LandingClient() {
                 {s.heroCta2}
               </Link>
             </div>
+            <p className="hero-cta-note">{s.heroCtaNote}</p>
+            <HeroStats />
             <div className="hero-proof">
               <span className="hero-proof-dot" />
               {s.heroProof}
@@ -681,10 +624,10 @@ export function LandingClient() {
       {/* ── Trust section ────────────────────────────── */}
       <section className="trust-section">
         <div className="trust-inner">
-          <h2 className="section-title">{s.trustTitle}</h2>
+          <SectionHead eyebrow={s.sectionEyebrowTrust} title={s.trustTitle} />
           <div className="trust-grid">
-            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }) => (
-              <div key={titleKey} className="trust-item">
+            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }, i) => (
+              <div key={titleKey} className={`trust-item${i === 0 ? " trust-item--lead" : ""}`}>
                 <div className="trust-icon-wrap" aria-hidden="true">
                   <Icon size={24} strokeWidth={2} />
                 </div>
@@ -706,7 +649,7 @@ export function LandingClient() {
       {/* ── Topics grid ──────────────────────────────── */}
       <section className="topics-section">
         <div className="topics-inner">
-          <h2 className="section-title">{s.topicsTitle}</h2>
+          <SectionHead eyebrow={s.sectionEyebrowTopics} title={s.topicsTitle} />
           <div className="topics-grid">
             {TOPICS.map((topic) => (
               <Link key={topic.key} href={`/practice?cat=${topic.cat}`} className="topic-card">
@@ -725,33 +668,27 @@ export function LandingClient() {
       <section className="states-section">
         <div className="states-inner">
           <div className="states-grid">
-            {AU_STATES.map((st) => (
-              <div
-                key={st.code}
-                className={`state-card${st.available ? " active" : " coming-soon"}`}
-              >
-                <span className="state-code">{st.code}</span>
-                <span className="state-badge">
-                  {st.available ? s.stateAvailable : s.comingSoon}
-                </span>
-              </div>
-            ))}
+            {AU_STATES.map((st) => {
+              const className = `state-card${st.available ? " active" : " coming-soon"}`;
+              const inner = (
+                <>
+                  <span className="state-code">{st.code}</span>
+                  <span className="state-badge">
+                    {st.available ? s.stateAvailable : s.comingSoon}
+                  </span>
+                </>
+              );
+              return st.pageSlug ? (
+                <Link key={st.code} href={`/learner-test/${st.pageSlug}`} className={className}>
+                  {inner}
+                </Link>
+              ) : (
+                <div key={st.code} className={className}>
+                  {inner}
+                </div>
+              );
+            })}
           </div>
-          <p className="states-more-note">
-            {s.statesMoreNote ?? "More states coming soon —"}{" "}
-            <Link href="/auth/signup" className="states-more-link">
-              {s.statesMoreLink ?? "sign up to be notified"}
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      {/* ── Testimonials ─────────────────────────────── */}
-      <section className="testimonials-section section-pad">
-        <div className="container testimonials-inner">
-          <h2 className="section-title">{s.testimonialsTitle}</h2>
-          <p className="testimonial-context-label">{s.testimonialBetaLabel}</p>
-          <TestimonialCarousel lang={lang} />
         </div>
       </section>
 

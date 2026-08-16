@@ -37,6 +37,18 @@ export const AU_STATE_OPTIONS = [
 
 export type AuStateCode = (typeof AU_STATE_OPTIONS)[number]["code"];
 
+/** States with a real question bank live today. Everything else in AU_STATE_OPTIONS is "coming soon". */
+export const LIVE_STATE_CODES: AuStateCode[] = [
+  "WA",
+  "NSW",
+  "QLD",
+  "VIC",
+  "SA",
+  "TAS",
+  "ACT",
+  "NT"
+];
+
 const _VALID_STATE_CODES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 export function normalizeAuState(value: string | null | undefined): AuStateCode | null {
@@ -46,7 +58,19 @@ export function normalizeAuState(value: string | null | undefined): AuStateCode 
 
 export { fisherYatesSlice } from "./shuffle";
 
-export { CATEGORIES } from "./data/questions";
+export {
+  computeReadiness,
+  LOW_COVERAGE_THRESHOLD,
+  READINESS_LEVEL_THRESHOLDS,
+  READINESS_MIN_PASSING_MOCKS,
+  WEAK_CATEGORY_ACCURACY,
+  type ReadinessInput,
+  type ReadinessLevel,
+  type ReadinessReason,
+  type ReadinessResult
+} from "./readiness";
+
+export { CATEGORIES, QUESTIONS } from "./data/questions";
 export {
   LANGS,
   validateQuestionsDataset,
