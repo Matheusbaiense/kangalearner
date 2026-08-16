@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
+import { computeReadiness, QUESTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
 import { createClient } from "@/lib/supabase/server";
 import { MigrateLocalProgress } from "@/components/MigrateLocalProgress";
 import { DashboardClient } from "./DashboardClient";
@@ -175,7 +175,8 @@ export default async function DashboardPage({
     stateAttemptsCountResult,
     stateAttemptsCorrectCountResult,
     sessionsResult,
-    settingsResult
+    settingsResult,
+    answeredIdsResult
   ] = await Promise.all([
     // Category stats, all states aggregated (replaces 500-row attempts query)
     supabase!
@@ -224,7 +225,17 @@ export default async function DashboardPage({
       .eq("user_id", user.id)
       .order("completed_at", { ascending: false })
       .limit(50),
-    supabase!.from("user_settings").select("daily_goal").eq("user_id", user.id).maybeSingle()
+    supabase!.from("user_settings").select("daily_goal").eq("user_id", user.id).maybeSingle(),
+    // Readiness coverage: distinct question ids answered in the selected state
+    // (deduped in JS). ponytail: exact while a user has < 10k attempts per
+    // state; move to an RPC with count(distinct question_id) if heavy users
+    // ever exceed that.
+    supabase!
+      .from("question_attempts")
+      .select("question_id")
+      .eq("user_id", user.id)
+      .eq("state", selectedState)
+      .limit(10000)
   ]);
 
   const { data: userCatStats, error: catStatsError } = catStatsResult as {
@@ -266,6 +277,10 @@ export default async function DashboardPage({
     data: UserSettingsRow | null;
     error: unknown;
   };
+  const { data: answeredIds, error: answeredIdsError } = answeredIdsResult as {
+    data: { question_id: string }[] | null;
+    error: unknown;
+  };
 
   if (catStatsError)
     console.error("Dashboard category stats lookup failed", errCode(catStatsError));
@@ -287,6 +302,8 @@ export default async function DashboardPage({
   }
   if (sessionsError) console.error("Dashboard sessions lookup failed", errCode(sessionsError));
   if (settingsError) console.error("Dashboard user settings lookup failed", errCode(settingsError));
+  if (answeredIdsError)
+    console.error("Dashboard answered ids lookup failed", errCode(answeredIdsError));
 
   /* ── Aggregate stats ── */
   // Counts come from exact COUNT queries, no raw-row fallback needed
@@ -367,6 +384,27 @@ export default async function DashboardPage({
       ? allSessions.reduce((best, s) => (s.percent > best.percent ? s : best))
       : null;
 
+  /* ── Readiness, state-specific: the user preps for one state's test ── */
+  // ponytail: bank = the selected state's car pool (the default mock config).
+  // The server does not know the licence type (it lives in localStorage);
+  // record it on question_attempts if motorcycle readiness ever matters.
+  const stateBankSize = QUESTIONS.filter(
+    (q) => q.states.includes(selectedState) && q.licenceType !== "motorcycle"
+  ).length;
+  const answeredUnique = new Set((answeredIds ?? []).map((row) => row.question_id)).size;
+  const readiness = computeReadiness({
+    categories: (stateUserCatStats ?? []).map((row) => ({
+      category: row.category,
+      correct: row.correct_attempts,
+      total: row.total_attempts
+    })),
+    recentMocks: allSessions
+      .filter((session) => session.state === selectedState)
+      .map((session) => ({ score: session.score, total: session.total })),
+    questionBankSize: stateBankSize,
+    answeredUnique
+  });
+
   /* ── Score colour ── */
   const scoreColor =
     totalAnswered === 0
@@ -381,6 +419,7 @@ export default async function DashboardPage({
     <>
       <MigrateLocalProgress />
       <DashboardClient
+        readiness={readiness}
         displayName={displayName}
         userEmail={user.email}
         totalAnswered={totalAnswered}

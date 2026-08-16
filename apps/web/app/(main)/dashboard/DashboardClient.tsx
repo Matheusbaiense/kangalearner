@@ -2,11 +2,12 @@
 
 import Link from "next/link";
 import { Flame, Target } from "lucide-react";
-import { WA_PASS_THRESHOLD } from "@kanga/core";
+import { WA_PASS_THRESHOLD, type ReadinessResult } from "@kanga/core";
 import { useLang } from "@/contexts/LangContext";
 import { Kanga } from "@/components/brand/Kanga";
 import { categoryLucideIcon } from "@/lib/categoryLucideIcon";
 import { pct } from "@/lib/percent";
+import { ReadinessCard } from "@/components/ReadinessCard";
 import { MockSessionHistory, type DashboardMockSession } from "./MockSessionHistory";
 import { StateProgressSelector } from "./StateProgressSelector";
 import type { AuStateCode } from "./state-options";
@@ -15,6 +16,7 @@ type CategoryStat = [string, { total: number; correct: number }];
 type WeekBucket = { label: string; total: number; correct: number };
 
 export type DashboardClientProps = {
+  readiness: ReadinessResult;
   displayName: string;
   userEmail: string | undefined;
   totalAnswered: number;
@@ -42,6 +44,7 @@ export type DashboardClientProps = {
 };
 
 export function DashboardClient({
+  readiness,
   displayName,
   userEmail,
   totalAnswered,
@@ -95,6 +98,8 @@ export function DashboardClient({
             </Link>
           </div>
         )}
+
+        {totalAnswered > 0 && <ReadinessCard readiness={readiness} />}
 
         <div className="stat-grid">
           <div className="stat-card">
