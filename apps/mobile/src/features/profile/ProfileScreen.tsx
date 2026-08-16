@@ -46,10 +46,7 @@ export function ProfileScreen() {
 
   async function signIn() {
     if (!supabase) {
-      Alert.alert(
-        "Supabase not configured",
-        "Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY."
-      );
+      Alert.alert(copy.supabaseMissingTitle, copy.supabaseMissingBody);
       return;
     }
     setLoading(true);
@@ -64,10 +61,7 @@ export function ProfileScreen() {
 
   async function signUp() {
     if (!supabase) {
-      Alert.alert(
-        "Supabase not configured",
-        "Add EXPO_PUBLIC_SUPABASE_URL and EXPO_PUBLIC_SUPABASE_ANON_KEY."
-      );
+      Alert.alert(copy.supabaseMissingTitle, copy.supabaseMissingBody);
       return;
     }
     setLoading(true);
@@ -78,7 +72,7 @@ export function ProfileScreen() {
     });
     setLoading(false);
     if (error) Alert.alert(copy.signUp, error.message);
-    else Alert.alert(copy.signUp, "Check your email to confirm the account.");
+    else Alert.alert(copy.signUp, copy.signUpConfirm);
   }
 
   async function signOut() {
@@ -87,7 +81,7 @@ export function ProfileScreen() {
 
   async function syncNow(currentSession = session) {
     if (!currentSession || !supabase) {
-      Alert.alert(copy.syncPending, "Sign in to sync local progress.");
+      Alert.alert(copy.syncPending, copy.signInToSync);
       return;
     }
     const queue = await loadSyncQueue();
@@ -95,7 +89,7 @@ export function ProfileScreen() {
     // queue (migration path for users who saved before sync existed).
     const savedCount = (await loadSavedQuestions()).length;
     if (!queue.length && savedCount === 0) {
-      Alert.alert(copy.synced, "There is no pending local progress.");
+      Alert.alert(copy.synced, copy.nothingToSync);
       return;
     }
     setLoading(true);
@@ -104,10 +98,13 @@ export function ProfileScreen() {
       await refreshStats();
       Alert.alert(
         copy.synced,
-        `${result.attemptsSynced} attempt(s), ${result.mockSessionsSynced} mock session(s). ${result.remaining} pending.`
+        copy.syncSummary
+          .replace("{attempts}", String(result.attemptsSynced))
+          .replace("{mocks}", String(result.mockSessionsSynced))
+          .replace("{remaining}", String(result.remaining))
       );
     } catch (error) {
-      const message = error instanceof Error ? error.message : "Sync failed. Try again later.";
+      const message = error instanceof Error ? error.message : copy.syncFailed;
       Alert.alert(copy.syncPending, message);
     } finally {
       setLoading(false);
@@ -115,8 +112,8 @@ export function ProfileScreen() {
   }
 
   function resetDeviceProgress() {
-    Alert.alert(copy.reset, "This clears local mobile answers, saved questions and mock history.", [
-      { text: "Cancel", style: "cancel" },
+    Alert.alert(copy.reset, copy.resetDeviceBody, [
+      { text: copy.cancel, style: "cancel" },
       {
         text: copy.reset,
         style: "destructive",
@@ -129,20 +126,18 @@ export function ProfileScreen() {
   }
 
   return (
-    <Screen title={copy.profile} subtitle="Account, sync status and mobile preferences.">
+    <Screen title={copy.profile} subtitle={copy.profileSubtitle}>
       <Card>
         <Text style={{ color: c.ink, fontWeight: "900", fontSize: 20 }}>
           {session ? session.user.email : copy.guest}
         </Text>
         <Text selectable style={{ color: c.muted, lineHeight: 23 }}>
-          {session
-            ? "You are signed in. Local progress is preserved and ready for sync."
-            : "Practice works offline. Create an account when you want to sync across devices."}
+          {session ? copy.signedInHint : copy.guestHint}
         </Text>
         <View style={{ flexDirection: "row", flexWrap: "wrap", gap: spacing.md }}>
-          <Stat label="Answers" value={String(stats.answers)} />
-          <Stat label="Mock tests" value={String(stats.mocks)} />
-          <Stat label="Sync queue" value={String(stats.queue)} />
+          <Stat label={copy.answersLabel} value={String(stats.answers)} />
+          <Stat label={copy.mockTestsLabel} value={String(stats.mocks)} />
+          <Stat label={copy.syncQueueLabel} value={String(stats.queue)} />
         </View>
         <PrimaryButton onPress={() => void syncNow()}>
           {stats.queue ? copy.syncPending : copy.synced}
@@ -176,14 +171,18 @@ export function ProfileScreen() {
       )}
 
       <Card>
-        <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>Preferences</Text>
+        <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>
+          {copy.preferencesTitle}
+        </Text>
         <Text selectable style={{ color: c.muted }}>
-          State: {state} - Language: {lang}
+          {copy.state}: {state} - {copy.language}: {lang}
         </Text>
       </Card>
 
       <Card>
-        <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>Future AI tutor</Text>
+        <Text style={{ color: c.ink, fontWeight: "900", fontSize: 18 }}>
+          {copy.futureTutorTitle}
+        </Text>
         <Text selectable style={{ color: c.muted, lineHeight: 22 }}>
           {copy.tutorLater} Plugin: {disabledTutorPlugin.id}
         </Text>

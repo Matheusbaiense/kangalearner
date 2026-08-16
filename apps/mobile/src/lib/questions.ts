@@ -5,11 +5,7 @@ import {
   fisherYatesSlice,
   type AuStateCode
 } from "@kanga/core";
-import {
-  CATEGORIES,
-  QUESTIONS,
-  type Question
-} from "@kanga/core/data/questions";
+import { CATEGORIES, QUESTIONS, type Category, type Question } from "@kanga/core/data/questions";
 import { tx, type UiLang } from "./i18n";
 
 export { AU_STATE_OPTIONS, CATEGORIES, QUESTIONS, WA_PASS_MIN_CORRECT, WA_TOTAL_QUESTIONS };
@@ -40,10 +36,20 @@ export type MockSessionRecord = {
 };
 
 export function questionsForState(state: AuStateCode): Question[] {
+  // ponytail: mobile has no licence toggle yet, so it serves the car pool only;
+  // add a licenceType preference (like the web SiteNav toggle) to unlock motorcycle.
   return QUESTIONS.filter((q) => {
+    if (q.licenceType === "motorcycle") return false;
     const states = q.states as readonly AuStateCode[] | undefined;
     return !states || states.includes(state);
   });
+}
+
+/** Categories that actually have questions in the given pool, in CATEGORIES order.
+ * Keeps state-only or motorcycle-only topics from rendering as empty cards. */
+export function categoriesForPool(pool: readonly Question[]): Category[] {
+  const present = new Set(pool.map((q) => q.cat));
+  return CATEGORIES.filter((c) => present.has(c.key));
 }
 
 export function categoryLabel(category: string, lang: UiLang): string {
