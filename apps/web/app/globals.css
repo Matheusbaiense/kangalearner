@@ -5913,3 +5913,23 @@ a:focus-visible,
     scroll-behavior: auto !important;
   }
 }
+
+/* ══════════════════════════════════════════
+   KANGA MASCOT
+══════════════════════════════════════════ */
+
+/* Idle float for the hero pose. The global reduced-motion rule above
+   already neutralises this animation for users who prefer less motion. */
+.kanga-float {
+  animation: kangaFloat 3s ease-in-out infinite;
+}
+
+@keyframes kangaFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
