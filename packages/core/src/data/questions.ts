@@ -109503,6 +109503,6618 @@ export const QUESTIONS: readonly QuestionType[] = [
     },
     tip: null,
     states: ["ACT"]
+  },
+  {
+    id: "TAS-1",
+    cat: "Road Safety",
+    q: {
+      en: "A car learner driver can NOT",
+      pt: "Um motorista aprendiz (learner) de carro NÃO pode",
+      es: "Un conductor aprendiz (learner) de auto NO puede"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive during night time hours",
+          pt: "Dirigir durante a noite",
+          es: "Conducir durante la noche"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive in wet conditions",
+          pt: "Dirigir em condições de chuva",
+          es: "Conducir en condiciones de lluvia"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Tow another vehicle including a trailer",
+          pt: "Rebocar outro veículo, incluindo um trailer/reboque",
+          es: "Remolcar otro vehículo, incluido un tráiler/remolque"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Drive on a highway",
+          pt: "Dirigir em uma rodovia",
+          es: "Conducir en una autopista/carretera"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In Tasmania, learner drivers are not permitted to tow a trailer or another vehicle, while driving at night, in wet weather, and on highways are all otherwise permitted subject to the normal L-plate and supervision rules.",
+      pt: "Na Tasmânia, motoristas aprendizes (learner) não têm permissão para rebocar um reboque ou outro veículo, enquanto dirigir à noite, sob chuva e em rodovias são permitidos, desde que respeitadas as regras normais de placa L e supervisão.",
+      es: "En Tasmania, los conductores aprendices (learner) no tienen permitido remolcar un remolque u otro vehículo, mientras que conducir de noche, con lluvia y en autopistas está permitido, siempre que se cumplan las reglas normales de la placa L y supervisión."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-2",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "A learner or provisional (P1 and P2) driver's maximum blood alcohol content is",
+      pt: "O teor máximo de álcool no sangue permitido para um motorista aprendiz (learner) ou provisório (P1 e P2) é",
+      es: "El contenido máximo de alcohol en sangre permitido para un conductor aprendiz (learner) o provisional (P1 y P2) es"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: ".05%",
+          pt: ".05%",
+          es: ".05%"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: ".08%",
+          pt: ".08%",
+          es: ".08%"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Zero",
+          pt: "Zero",
+          es: "Cero"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: ".10%",
+          pt: ".10%",
+          es: ".10%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Learner and provisional (P1 and P2) drivers in Tasmania must have a zero blood alcohol content — they are not permitted to drive with any detectable alcohol in their system, unlike fully licensed drivers who have a .05% limit.",
+      pt: "Motoristas aprendizes (learner) e provisórios (P1 e P2) na Tasmânia devem ter teor de álcool no sangue zero — eles não têm permissão para dirigir com qualquer quantidade detectável de álcool no organismo, diferente de motoristas com habilitação plena, que têm limite de .05%.",
+      es: "Los conductores aprendices (learner) y provisionales (P1 y P2) en Tasmania deben tener un contenido de alcohol en sangre de cero — no tienen permitido conducir con ninguna cantidad detectable de alcohol en el organismo, a diferencia de los conductores con licencia plena, que tienen un límite de .05%."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-3",
+    cat: "Parking Rules",
+    q: {
+      en: "A yellow line along the side of the road means",
+      pt: "Uma linha amarela ao longo da lateral da via significa",
+      es: "Una línea amarilla a lo largo del borde de la vía significa"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Parking for taxis only",
+          pt: "Estacionamento exclusivo para táxis",
+          es: "Estacionamiento exclusivo para taxis"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stopping not allowed during peak traffic hours",
+          pt: "Parada proibida durante os horários de pico",
+          es: "Detención prohibida durante las horas pico"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Fire hydrant indicator",
+          pt: "Indicador de hidrante de incêndio",
+          es: "Indicador de hidrante contra incendios"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No stopping or parking",
+          pt: "Proibido parar ou estacionar",
+          es: "Prohibido detenerse o estacionar"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A continuous yellow line painted along the edge of the road indicates a no stopping zone — you must not stop or park there at any time.",
+      pt: "Uma linha amarela contínua pintada na borda da via indica uma zona de proibição de parada — você não pode parar nem estacionar ali em nenhum momento.",
+      es: "Una línea amarilla continua pintada en el borde de la vía indica una zona de prohibición de detención: no debes detenerte ni estacionar allí en ningún momento."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-4",
+    cat: "Emergencies",
+    q: {
+      en: "An emergency vehicle (eg. ambulance or fire engine) is sounding its siren and quickly approaching your vehicle from behind.  You must",
+      pt: "Um veículo de emergência (por exemplo, ambulância ou caminhão de bombeiros) está com a sirene ligada e se aproximando rapidamente do seu veículo por trás. Você deve",
+      es: "Un vehículo de emergencia (por ejemplo, una ambulancia o un camión de bomberos) tiene la sirena encendida y se acerca rápidamente a su vehículo por detrás. Usted debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Immediately turn on your vehicles hazard lights",
+          pt: "Ligar imediatamente as luzes de emergência do seu veículo",
+          es: "Encender inmediatamente las luces de emergencia de su vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Immediately sound your horn to warn other vehicles of the approaching emergency vehicle",
+          pt: "Buzinar imediatamente para avisar outros veículos sobre o veículo de emergência que se aproxima",
+          es: "Tocar la bocina de inmediato para advertir a otros vehículos sobre el vehículo de emergencia que se acerca"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Immediately accelerate",
+          pt: "Acelerar imediatamente",
+          es: "Acelerar inmediatamente"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Give way by either pulling over to the side of the road or moving into another lane to enable the emergency vehicle to pass",
+          pt: "Dar passagem, encostando na lateral da via ou mudando para outra faixa para permitir que o veículo de emergência passe",
+          es: "Ceder el paso, orillándose al costado de la vía o cambiando a otro carril para permitir que el vehículo de emergencia pase"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Drivers must give way to approaching emergency vehicles with sirens or flashing lights by safely pulling over or changing lanes to let them pass quickly.",
+      pt: "Os motoristas devem dar passagem a veículos de emergência com sirene ou luzes piscando, encostando com segurança ou mudando de faixa para que eles passem rapidamente.",
+      es: "Los conductores deben ceder el paso a los vehículos de emergencia con sirena o luces intermitentes, orillándose con seguridad o cambiando de carril para que puedan pasar rápidamente."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-5",
+    cat: "Road Safety",
+    q: {
+      en: "As a driver, you must wear a seatbelt",
+      pt: "Como motorista, você deve usar o cinto de segurança",
+      es: "Como conductor, debe usar el cinturón de seguridad"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When travelling over 60 km/h",
+          pt: "Quando estiver acima de 60 km/h",
+          es: "Cuando circule a más de 60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "When convenient",
+          pt: "Quando for conveniente",
+          es: "Cuando sea conveniente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When the vehicle is parked",
+          pt: "Quando o veículo estiver estacionado",
+          es: "Cuando el vehículo esté estacionado"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "When the vehicle is moving or stationary in traffic, unless reversing",
+          pt: "Quando o veículo estiver em movimento ou parado no trânsito, exceto ao dar ré",
+          es: "Cuando el vehículo esté en movimiento o detenido en el tránsito, excepto al retroceder"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Seatbelts must be worn whenever the vehicle is moving or stationary in traffic, with the only exception being while reversing.",
+      pt: "O cinto de segurança deve ser usado sempre que o veículo estiver em movimento ou parado no trânsito, sendo a única exceção ao dar ré.",
+      es: "El cinturón de seguridad debe usarse siempre que el vehículo esté en movimiento o detenido en el tránsito, con la única excepción de cuando se está retrocediendo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-6",
+    sign: "/icons/signs/tas-car-6.gif",
+    cat: "Speed Limits",
+    q: {
+      en: "As a P1 licence holder, what is the maximum speed you can drive on a road with this sign?",
+      pt: "Como titular de uma carteira P1, qual é a velocidade máxima que você pode dirigir em uma via com esta placa?",
+      es: "Como titular de una licencia P1, ¿cuál es la velocidad máxima a la que puede conducir en una vía con esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In Tasmania, P1 provisional licence holders are restricted to a maximum of 100 km/h, even on roads signposted at 110 km/h.",
+      pt: "Na Tasmânia, os titulares de carteira provisória P1 têm limite máximo de 100 km/h, mesmo em vias sinalizadas com 110 km/h.",
+      es: "En Tasmania, los titulares de licencia provisional P1 tienen un límite máximo de 100 km/h, incluso en vías señalizadas con 110 km/h."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-7",
+    sign: "/icons/signs/tas-car-7.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "At a railway crossing with red lights flashing, you must",
+      pt: "Em uma passagem de nível ferroviária com luzes vermelhas piscando, você deve",
+      es: "En un cruce ferroviario con luces rojas intermitentes, usted debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and cross with care",
+          pt: "Diminuir a velocidade e atravessar com cuidado",
+          es: "Reducir la velocidad y cruzar con cuidado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and wait until the red lights stop flashing and the train passes before driving on",
+          pt: "Parar e esperar até que as luzes vermelhas parem de piscar e o trem passe antes de seguir",
+          es: "Detenerse y esperar hasta que las luces rojas dejen de parpadear y el tren pase antes de seguir"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cross only if there is no train visible",
+          pt: "Atravessar somente se nenhum trem estiver visível",
+          es: "Cruzar solo si no hay ningún tren visible"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Speed up and quickly go through the crossing before the train passes",
+          pt: "Acelerar e atravessar rapidamente antes que o trem passe",
+          es: "Acelerar y cruzar rápidamente antes de que pase el tren"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Flashing red lights at a railway crossing mean a train is approaching or on the crossing — you must stop and only proceed once the lights stop flashing and the train has completely passed, since trains cannot stop quickly and a collision would be catastrophic.",
+      pt: "Luzes vermelhas piscando em uma passagem de nível ferroviária indicam que um trem está se aproximando ou está na passagem — você deve parar e só seguir depois que as luzes pararem de piscar e o trem tiver passado completamente, já que trens não conseguem parar rapidamente e uma colisão seria catastrófica.",
+      es: "Las luces rojas intermitentes en un cruce ferroviario indican que un tren se aproxima o está en el cruce — usted debe detenerse y avanzar solo cuando las luces dejen de parpadear y el tren haya pasado por completo, ya que los trenes no pueden detenerse rápidamente y una colisión sería catastrófica."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-8",
+    sign: "/icons/signs/tas-car-8.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "At an intersection with a Police Officer who has one hand raised and one hand to his side as shown do you",
+      pt: "Em um cruzamento com um policial que está com uma mão levantada e a outra ao lado do corpo, como mostrado, você deve",
+      es: "En una intersección con un policía que tiene una mano levantada y la otra al costado del cuerpo, como se muestra, debes"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn right",
+          pt: "Virar à direita",
+          es: "Girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop at the intersection",
+          pt: "Parar no cruzamento",
+          es: "Detenerte en la intersección"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down and continue through the intersection",
+          pt: "Reduzir a velocidade e continuar pelo cruzamento",
+          es: "Reducir la velocidad y continuar por la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Obey the traffic lights",
+          pt: "Obedecer aos semáforos",
+          es: "Obedecer los semáforos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A police officer's raised hand signal directing traffic means stop; police hand signals override traffic lights and signs at that intersection.",
+      pt: "O sinal de mão levantada de um policial dirigindo o trânsito significa parar; os sinais manuais da polícia têm prioridade sobre os semáforos e placas naquele cruzamento.",
+      es: "La señal de mano levantada de un policía que dirige el tránsito significa detenerse; las señales manuales de la policía tienen prioridad sobre los semáforos y las señales en esa intersección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-9",
+    sign: "/icons/signs/tas-car-9.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "At what age do you have to wear a seat belt or suitable child restraint?",
+      pt: "A partir de que idade é obrigatório usar cinto de segurança ou uma cadeirinha infantil adequada?",
+      es: "¿A partir de qué edad es obligatorio usar cinturón de seguridad o una sujeción infantil adecuada?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "All Ages",
+          pt: "Todas as idades",
+          es: "Todas las edades"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Age 1 year and over",
+          pt: "A partir de 1 ano de idade",
+          es: "A partir de 1 año de edad"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Age 8 years and over",
+          pt: "A partir de 8 anos de idade",
+          es: "A partir de 8 años de edad"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Under the age of 65",
+          pt: "Até os 65 anos",
+          es: "Hasta los 65 años"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In Tasmania every occupant of a vehicle, regardless of age, must wear a seat belt or an age-appropriate child restraint — there is no minimum age exemption.",
+      pt: "Na Tasmânia, todos os ocupantes de um veículo, independentemente da idade, devem usar cinto de segurança ou uma cadeirinha adequada à idade — não há isenção por idade mínima.",
+      es: "En Tasmania, todos los ocupantes de un vehículo, sin importar la edad, deben usar cinturón de seguridad o una sujeción infantil adecuada a su edad — no existe ninguna exención por edad mínima."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-10",
+    cat: "Road Safety",
+    q: {
+      en: "Before you drive a car, you should check that",
+      pt: "Antes de dirigir um carro, você deve verificar se",
+      es: "Antes de conducir un auto, debe verificar que"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It is registered",
+          pt: "Está registrado",
+          es: "Está registrado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "It is roadworthy",
+          pt: "Está em condições de uso (roadworthy)",
+          es: "Está en condiciones de circular (roadworthy)"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It is registered and roadworthy",
+          pt: "Está registrado e em condições de uso",
+          es: "Está registrado y en condiciones de circular"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Whether the previous driver had committed a traffic offence in it",
+          pt: "Se o motorista anterior cometeu alguma infração de trânsito nele",
+          es: "Si el conductor anterior cometió alguna infracción de tránsito con él"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Before driving, you must ensure the vehicle is both currently registered and roadworthy (in safe mechanical condition) — both requirements need to be met, not just one, to legally and safely drive it.",
+      pt: "Antes de dirigir, você deve garantir que o veículo esteja com o registro em dia e em condições mecânicas seguras de uso — ambos os requisitos precisam ser cumpridos, não apenas um, para dirigi-lo de forma legal e segura.",
+      es: "Antes de conducir, debe asegurarse de que el vehículo esté registrado al día y en condiciones mecánicas seguras (roadworthy) — deben cumplirse ambos requisitos, no solo uno, para conducirlo de forma legal y segura."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-11",
+    sign: "/icons/signs/tas-car-11.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "Can Car A cross the double lines to pass a cyclist?",
+      pt: "O Carro A pode cruzar as linhas duplas para passar por um ciclista?",
+      es: "¿Puede el Auto A cruzar las líneas dobles para pasar a un ciclista?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if safe to do so.",
+          pt: "Sim, se for seguro fazer isso.",
+          es: "Sí, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "No, it's illegal to cross a double line at any time.",
+          pt: "Não, é ilegal cruzar uma linha dupla em qualquer situação.",
+          es: "No, es ilegal cruzar una línea doble en cualquier momento."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Drivers are permitted to briefly cross double lines to pass a cyclist, provided it can be done safely, since the road rules make a specific exception for overtaking cyclists at a safe passing distance.",
+      pt: "Os motoristas podem cruzar brevemente as linhas duplas para passar por um ciclista, desde que possam fazer isso com segurança, já que as normas de trânsito preveem uma exceção específica para ultrapassar ciclistas a uma distância segura.",
+      es: "Los conductores pueden cruzar brevemente las líneas dobles para pasar a un ciclista, siempre que puedan hacerlo de forma segura, ya que las normas de tránsito contemplan una excepción específica para adelantar a ciclistas a una distancia segura."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-12",
+    sign: "/icons/signs/tas-car-12.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "Can Car A cross the double lines?",
+      pt: "O Carro A pode cruzar as linhas duplas?",
+      es: "¿Puede el Auto A cruzar las líneas dobles?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes - to overtake another vehicle",
+          pt: "Sim - para ultrapassar outro veículo",
+          es: "Sí - para adelantar a otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes - to turn into a driveway",
+          pt: "Sim - para entrar em uma garagem/entrada",
+          es: "Sí - para entrar en una entrada/garaje"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes - to pass a cyclist if it's safe to do so",
+          pt: "Sim - para passar por um ciclista, se for seguro fazer isso",
+          es: "Sí - para pasar a un ciclista, si es seguro hacerlo"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Yes - to do a U-turn",
+          pt: "Sim - para fazer um retorno (conversão em U)",
+          es: "Sí - para hacer un giro en U"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In Tasmania, double unbroken lines generally prohibit overtaking, but drivers may briefly cross them to pass a cyclist if it can be done safely, since cyclists are treated differently from motor vehicles under the road rules.",
+      pt: "Na Tasmânia, linhas duplas contínuas geralmente proíbem ultrapassagens, mas o motorista pode cruzá-las brevemente para passar por um ciclista, desde que seja seguro fazer isso, já que ciclistas recebem tratamento diferente de veículos motorizados nas normas de trânsito.",
+      es: "En Tasmania, las líneas dobles continuas generalmente prohíben adelantar, pero el conductor puede cruzarlas brevemente para pasar a un ciclista si puede hacerse de forma segura, ya que los ciclistas reciben un trato distinto al de los vehículos motorizados según las normas de tránsito."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-13",
+    cat: "Road Safety",
+    q: {
+      en: "Can medication used for hay fever or travel sickness affect your driving?",
+      pt: "Medicamentos usados para rinite alérgica ou enjoo de viagem podem afetar sua condução?",
+      es: "¿Los medicamentos usados para la fiebre del heno o el mareo por viaje pueden afectar su forma de conducir?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, unless it has been prescribed by a doctor",
+          pt: "Não, a menos que tenham sido prescritos por um médico",
+          es: "No, a menos que hayan sido recetados por un médico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Yes, but only if you've had no sleep the night before.",
+          pt: "Sim, mas apenas se você não tiver dormido na noite anterior",
+          es: "Sí, pero solo si no ha dormido la noche anterior"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Even common over-the-counter medications for hay fever or travel sickness can cause drowsiness and impair driving ability, so they can affect your driving.",
+      pt: "Mesmo medicamentos comuns vendidos sem receita para rinite alérgica ou enjoo de viagem podem causar sonolência e prejudicar a capacidade de dirigir, portanto podem sim afetar sua condução.",
+      es: "Incluso medicamentos comunes de venta libre para la fiebre del heno o el mareo por viaje pueden causar somnolencia y afectar la capacidad de conducir, por lo que sí pueden afectar su forma de conducir."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-14",
+    cat: "Speed Limits",
+    q: {
+      en: "Can you legally drive over the speed limit?",
+      pt: "Você pode legalmente dirigir acima do limite de velocidade?",
+      es: "¿Puede conducir legalmente por encima del límite de velocidad?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, at anytime as long as the driver does not go over the speed limit by 10 km/h",
+          pt: "Sim, a qualquer momento, desde que o motorista não ultrapasse o limite de velocidade em mais de 10 km/h",
+          es: "Sí, en cualquier momento, siempre que el conductor no supere el límite de velocidad en más de 10 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, when the driver is overtaking a slower moving vehicle",
+          pt: "Sim, quando o motorista está ultrapassando um veículo mais lento",
+          es: "Sí, cuando el conductor está adelantando a un vehículo más lento"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Yes, when the driver has a good excuse",
+          pt: "Sim, quando o motorista tem uma boa justificativa",
+          es: "Sí, cuando el conductor tiene una buena excusa"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Speed limits are a legal maximum at all times — there is no allowance for exceeding them, whether overtaking or for any other reason.",
+      pt: "Os limites de velocidade são um máximo legal em todos os momentos — não há tolerância para ultrapassá-los, seja ao ultrapassar outro veículo ou por qualquer outro motivo.",
+      es: "Los límites de velocidad son un máximo legal en todo momento — no existe ninguna tolerancia para superarlos, ya sea al adelantar a otro vehículo o por cualquier otro motivo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-15",
+    cat: "Parking Rules",
+    q: {
+      en: "Can you park on a road over your own private driveway?",
+      pt: "Você pode estacionar na via sobre sua própria entrada de garagem privada?",
+      es: "¿Puede estacionar en la vía sobre la entrada de su propio garaje privado?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, but only for 10 minutes",
+          pt: "Sim, mas apenas por 10 minutos",
+          es: "Sí, pero solo por 10 minutos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No (unless dropping off or picking up passengers or goods)",
+          pt: "Não (a menos que esteja deixando ou pegando passageiros ou mercadorias)",
+          es: "No (a menos que esté dejando o recogiendo pasajeros o mercancías)"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must not park across your own (or anyone else's) private driveway, except briefly to drop off or pick up passengers or goods.",
+      pt: "Você não pode estacionar sobre sua própria entrada de garagem (ou de outra pessoa), exceto brevemente para deixar ou pegar passageiros ou mercadorias.",
+      es: "No debe estacionar sobre la entrada de su propio garaje (ni de otra persona), salvo brevemente para dejar o recoger pasajeros o mercancías."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-16",
+    sign: "/icons/signs/tas-car-16.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Car A wants to turn right at an intersection with green traffic lights.   It should indicate and -",
+      pt: "O Carro A quer virar à direita em um cruzamento com semáforo verde. Ele deve sinalizar e -",
+      es: "El Auto A quiere girar a la derecha en una intersección con el semáforo en verde. Debe señalizar y -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to oncoming traffic and pedestrians",
+          pt: "Dar a preferência ao tráfego que vem em sentido contrário e aos pedestres",
+          es: "Ceder el paso al tráfico que viene en sentido contrario y a los peatones"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Wait for the yellow light, oncoming traffic must stop and give way",
+          pt: "Esperar pelo sinal amarelo, o tráfego em sentido contrário deve parar e dar a preferência",
+          es: "Esperar la luz amarilla, el tráfico en sentido contrario debe detenerse y ceder el paso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn quickly, oncoming traffic must give way",
+          pt: "Virar rapidamente, o tráfego em sentido contrário deve dar a preferência",
+          es: "Girar rápidamente, el tráfico en sentido contrario debe ceder el paso"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Wait for 5 seconds then turn quickly",
+          pt: "Esperar 5 segundos e depois virar rapidamente",
+          es: "Esperar 5 segundos y luego girar rápidamente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green light does not give a right-turning vehicle priority over oncoming traffic or pedestrians; the driver must indicate and give way to any oncoming vehicles and pedestrians before completing the turn.",
+      pt: "Um sinal verde não dá prioridade ao veículo que vira à direita sobre o tráfego em sentido contrário ou pedestres; o motorista deve sinalizar e dar a preferência a quaisquer veículos em sentido contrário e pedestres antes de completar a conversão.",
+      es: "Una luz verde no le da prioridad al vehículo que gira a la derecha sobre el tráfico en sentido contrario ni sobre los peatones; el conductor debe señalizar y ceder el paso a los vehículos en sentido contrario y a los peatones antes de completar el giro."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-17",
+    cat: "Road Signs",
+    q: {
+      en: "Does a Police Officer's directions overrule Stop and Give Way signs?",
+      pt: "As instruções de um policial substituem as placas de pare e dê a preferência?",
+      es: "¿Las indicaciones de un policía prevalecen sobre las señales de pare y ceda el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, only at Give Way Signs",
+          pt: "Sim, somente nas placas de dê a preferência",
+          es: "Sí, solo en las señales de ceda el paso"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Yes, only at Stop Signs",
+          pt: "Sim, somente nas placas de pare",
+          es: "Sí, solo en las señales de pare"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A police officer directing traffic always has authority over traffic signs and signals, including stop and give way signs, so their directions must be followed.",
+      pt: "Um policial que está dirigindo o trânsito sempre tem autoridade sobre placas e sinais de trânsito, incluindo placas de pare e dê a preferência, então suas instruções devem ser seguidas.",
+      es: "Un policía que dirige el tránsito siempre tiene autoridad sobre las señales y semáforos de tránsito, incluidas las señales de pare y ceda el paso, por lo que sus indicaciones deben seguirse."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-18",
+    sign: "/icons/signs/tas-car-18.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Does the car or the pedestrian have to give way?",
+      pt: "O carro ou o pedestre tem que dar passagem?",
+      es: "¿El auto o el peatón tiene que ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The Pedestrian",
+          pt: "O Pedestre",
+          es: "El Peatón"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The Car",
+          pt: "O Carro",
+          es: "El Auto"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Drivers must give way to pedestrians in situations such as pedestrian crossings or when turning at intersections, so the car must give way, not the pedestrian.",
+      pt: "Os motoristas devem dar passagem aos pedestres em situações como faixas de pedestres ou ao virar em interseções, então o carro deve dar passagem, não o pedestre.",
+      es: "Los conductores deben ceder el paso a los peatones en situaciones como cruces peatonales o al girar en intersecciones, por lo que el auto debe ceder el paso, no el peatón."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-19",
+    cat: "Parking Rules",
+    q: {
+      en: "How close to a junction or an intersection without traffic lights can you legally park?",
+      pt: "A que distância de um cruzamento ou interseção sem semáforo você pode estacionar legalmente?",
+      es: "¿A qué distancia de un cruce o intersección sin semáforos se puede estacionar legalmente?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "10 metres",
+          pt: "10 metros",
+          es: "10 metros"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "9 metres",
+          pt: "9 metros",
+          es: "9 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "3 metres",
+          pt: "3 metros",
+          es: "3 metros"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "15 metres",
+          pt: "15 metros",
+          es: "15 metros"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In Tasmania, you must not park within 10 metres of an intersection without traffic lights, to keep sightlines clear for approaching traffic.",
+      pt: "Na Tasmânia, não é permitido estacionar a menos de 10 metros de uma interseção sem semáforo, para manter a visibilidade livre para o trânsito que se aproxima.",
+      es: "En Tasmania, no se puede estacionar a menos de 10 metros de una intersección sin semáforos, para mantener despejada la visibilidad del tráfico que se aproxima."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-20",
+    sign: "/icons/signs/tas-car-20.jpg",
+    cat: "Parking Rules",
+    q: {
+      en: "How close to a pedestrian crossing can you legally park?",
+      pt: "A que distância de uma faixa de pedestres você pode estacionar legalmente?",
+      es: "¿A qué distancia de un cruce peatonal puede estacionar legalmente?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 metres before and 10 metres after the crossing",
+          pt: "20 metros antes e 10 metros depois da faixa",
+          es: "20 metros antes y 10 metros después del cruce"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "3 metres before and 5 metres after the crossing",
+          pt: "3 metros antes e 5 metros depois da faixa",
+          es: "3 metros antes y 5 metros después del cruce"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "5 metres on either side",
+          pt: "5 metros de cada lado",
+          es: "5 metros a cada lado"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "15 metres on either side",
+          pt: "15 metros de cada lado",
+          es: "15 metros a cada lado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Parking is prohibited within 20 metres before and 10 metres after a pedestrian crossing to keep sightlines clear for both drivers and pedestrians.",
+      pt: "É proibido estacionar a menos de 20 metros antes e 10 metros depois de uma faixa de pedestres, para manter a visibilidade livre tanto para motoristas quanto para pedestres.",
+      es: "Está prohibido estacionar a menos de 20 metros antes y 10 metros después de un cruce peatonal, para mantener la visibilidad despejada tanto para conductores como para peatones."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-21",
+    cat: "Parking Rules",
+    q: {
+      en: "How must you park in a two-way street that has no signposted parking restrictions?",
+      pt: "Como você deve estacionar em uma rua de mão dupla que não tem restrições de estacionamento sinalizadas?",
+      es: "¿Cómo debe estacionar en una calle de doble sentido que no tiene restricciones de estacionamiento señalizadas?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must park parallel and as close as practical to the right-hand kerb",
+          pt: "Você deve estacionar paralelo e o mais próximo possível do meio-fio do lado direito",
+          es: "Debe estacionar en paralelo y lo más cerca posible del bordillo del lado derecho"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must park parallel and as close as practical to the left-hand kerb but not within 10 metres of a junction or intersection or on a yellow single line",
+          pt: "Você deve estacionar paralelo e o mais próximo possível do meio-fio do lado esquerdo, mas não a menos de 10 metros de um cruzamento ou interseção nem sobre uma linha amarela contínua",
+          es: "Debe estacionar en paralelo y lo más cerca posible del bordillo del lado izquierdo, pero no a menos de 10 metros de un cruce o intersección ni sobre una línea amarilla continua"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must park parallel and as close as practical to the left-hand kerb, and within 10 metres of an intersection",
+          pt: "Você deve estacionar paralelo e o mais próximo possível do meio-fio do lado esquerdo, e a menos de 10 metros de uma interseção",
+          es: "Debe estacionar en paralelo y lo más cerca posible del bordillo del lado izquierdo, y a menos de 10 metros de una intersección"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "As close to the centre of the road as practical",
+          pt: "O mais próximo possível do centro da via",
+          es: "Lo más cerca posible del centro de la vía"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On a two-way street without signs, you must park parallel to and close to the left-hand kerb, keeping clear of intersections (within 10 metres) and any yellow no-stopping line.",
+      pt: "Em uma rua de mão dupla sem sinalização, você deve estacionar paralelo e próximo ao meio-fio do lado esquerdo, mantendo-se afastado de interseções (a menos de 10 metros) e de qualquer linha amarela de proibido parar.",
+      es: "En una calle de doble sentido sin señalización, debe estacionar en paralelo y cerca del bordillo del lado izquierdo, manteniéndose alejado de las intersecciones (a menos de 10 metros) y de cualquier línea amarilla de prohibido detenerse."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-22",
+    cat: "Road Safety",
+    q: {
+      en: "If a seatbelt has been used in a severe crash",
+      pt: "Se um cinto de segurança foi usado em uma colisão grave",
+      es: "Si un cinturón de seguridad se usó en un choque grave"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It must be replaced",
+          pt: "Ele deve ser substituído",
+          es: "Debe ser reemplazado"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "It needs to be tested by a mechanic",
+          pt: "Ele precisa ser testado por um mecânico",
+          es: "Debe ser revisado por un mecánico"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It will be fine to continue to use the seatbelt",
+          pt: "Ele pode continuar sendo usado normalmente",
+          es: "Puede seguir usándose normalmente"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "As long as it does not look damaged you can still use it",
+          pt: "Desde que não pareça danificado, ainda pode ser usado",
+          es: "Mientras no se vea dañado, aún se puede usar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Seatbelt webbing and mechanisms can be stretched or weakened internally during a severe crash even without visible damage, so a seatbelt used in a severe crash must be replaced.",
+      pt: "O tecido e os mecanismos do cinto de segurança podem ser esticados ou enfraquecidos internamente durante uma colisão grave, mesmo sem dano visível, por isso um cinto usado em uma colisão grave deve ser substituído.",
+      es: "El tejido y los mecanismos del cinturón de seguridad pueden estirarse o debilitarse internamente durante un choque grave, incluso sin daño visible, por lo que un cinturón usado en un choque grave debe reemplazarse."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-23",
+    cat: "Road Safety",
+    q: {
+      en: "If an oncoming car's headlights dazzle you, what should you do?",
+      pt: "Se os faróis de um carro que vem em sentido contrário ofuscarem sua visão, o que você deve fazer?",
+      es: "Si los faros de un auto que viene en sentido contrario lo deslumbran, ¿qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Keep driving and looking at oncoming lights, your eyes will adjust",
+          pt: "Continuar dirigindo olhando para as luzes que se aproximam, seus olhos vão se ajustar",
+          es: "Seguir conduciendo mirando las luces que se acercan, sus ojos se adaptarán"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Put your high beam on",
+          pt: "Ligar o farol alto",
+          es: "Encender las luces altas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep your eyes on the left-hand side of the road, slow down or stop",
+          pt: "Manter o olhar no lado esquerdo da via, reduzir a velocidade ou parar",
+          es: "Mantener la vista en el lado izquierdo de la vía, reducir la velocidad o detenerse"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Turn your lights off",
+          pt: "Desligar os faróis",
+          es: "Apagar las luces"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When dazzled by oncoming headlights, you should look toward the left edge of the road to keep your lane reference while slowing down or stopping if needed, rather than staring into the glare.",
+      pt: "Quando ofuscado por faróis de veículos que vêm em sentido contrário, você deve olhar para a borda esquerda da via para manter a referência da sua faixa, reduzindo a velocidade ou parando se necessário, em vez de fixar o olhar na luz forte.",
+      es: "Cuando lo deslumbran los faros de un vehículo que viene en sentido contrario, debe mirar hacia el borde izquierdo de la vía para mantener la referencia de su carril, reduciendo la velocidad o deteniéndose si es necesario, en lugar de fijar la vista en la luz intensa."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-24",
+    cat: "Emergencies",
+    q: {
+      en: "If one of your tyres has a blowout what should you do?",
+      pt: "Se um dos seus pneus estourar, o que você deve fazer?",
+      es: "Si uno de sus neumáticos revienta, ¿qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Accelerate to regain control",
+          pt: "Acelerar para recuperar o controle",
+          es: "Acelerar para recuperar el control"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Quickly apply the hand brake",
+          pt: "Aplicar o freio de mão rapidamente",
+          es: "Aplicar el freno de mano rápidamente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Break gently and bring the car to a stop",
+          pt: "Frear suavemente e levar o carro a uma parada",
+          es: "Frenar suavemente y llevar el auto a detenerse"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Sound your horn",
+          pt: "Buzinar",
+          es: "Tocar la bocina"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "After a tyre blowout, gentle braking while holding the steering wheel steady lets you slow down and stop safely without losing control of the car.",
+      pt: "Após um estouro de pneu, frear suavemente enquanto mantém o volante firme permite reduzir a velocidade e parar com segurança sem perder o controle do carro.",
+      es: "Después de que revienta un neumático, frenar suavemente mientras se sujeta el volante con firmeza permite reducir la velocidad y detenerse con seguridad sin perder el control del auto."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-25",
+    cat: "Emergencies",
+    q: {
+      en: "If you are involved in a crash and a vehicle is damaged but no one is injured you must",
+      pt: "Se você estiver envolvido em uma colisão em que um veículo seja danificado, mas ninguém se machuque, você deve",
+      es: "Si usted se ve involucrado en un choque en el que un vehículo resulta dañado, pero nadie sale herido, debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop at the crash exchange names, addresses and registration numbers and any other information to identify the vehicle with the driver of the other vehicle as soon as possible, and within 24 hours",
+          pt: "Parar no local da colisão e trocar nomes, endereços, números de registro e qualquer outra informação que identifique o veículo com o motorista do outro veículo o mais rápido possível, e dentro de 24 horas",
+          es: "Detenerse en el lugar del choque e intercambiar nombres, direcciones, números de matrícula y cualquier otra información que identifique el vehículo con el conductor del otro vehículo lo antes posible, y dentro de las 24 horas"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Continue driving as no one had been injured",
+          pt: "Continuar dirigindo, já que ninguém se machucou",
+          es: "Seguir conduciendo, ya que nadie resultó herido"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop only during daylight hours",
+          pt: "Parar apenas durante o dia",
+          es: "Detenerse solo durante las horas del día"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only stop to give your details if you caused the accident",
+          pt: "Parar para fornecer seus dados somente se você causou o acidente",
+          es: "Detenerse a dar sus datos solo si usted causó el accidente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "After a crash involving only vehicle damage, drivers must stop and exchange identifying details with the other driver as soon as possible, and in any case within 24 hours.",
+      pt: "Após uma colisão que envolva apenas danos ao veículo, os motoristas devem parar e trocar informações de identificação com o outro motorista o mais rápido possível, e em qualquer caso dentro de 24 horas.",
+      es: "Después de un choque que solo cause daños al vehículo, los conductores deben detenerse e intercambiar datos de identificación con el otro conductor lo antes posible, y en cualquier caso dentro de las 24 horas."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-26",
+    cat: "Emergencies",
+    q: {
+      en: "If you are involved in a crash and someone is injured, you must",
+      pt: "Se você se envolver em uma colisão e alguém ficar ferido, você deve",
+      es: "Si se ve involucrado en un choque y alguien resulta herido, usted debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive to the nearest Police station",
+          pt: "Dirigir até a delegacia de polícia mais próxima",
+          es: "Conducir hasta la estación de policía más cercana"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Look for a witness to the accident",
+          pt: "Procurar uma testemunha do acidente",
+          es: "Buscar un testigo del accidente"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive on, you are not injured",
+          pt: "Continuar dirigindo, pois você não está ferido",
+          es: "Seguir conduciendo, ya que usted no está herido"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Stop your vehicle immediately and give assistance. If you need to get help, leave a responsible person at the accident scene",
+          pt: "Parar o veículo imediatamente e prestar assistência. Se precisar de ajuda, deixe uma pessoa responsável no local do acidente",
+          es: "Detener el vehículo de inmediato y prestar asistencia. Si necesita ayuda, deje a una persona responsable en el lugar del accidente"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "By law you must stop immediately at the scene of a crash involving injury and give whatever assistance you reasonably can, arranging help while a responsible person stays at the scene.",
+      pt: "Por lei, você deve parar imediatamente no local de uma colisão com feridos e prestar a assistência que puder, providenciando ajuda enquanto uma pessoa responsável permanece no local.",
+      es: "Por ley, debe detenerse de inmediato en el lugar de un choque con heridos y prestar la asistencia que razonablemente pueda, gestionando ayuda mientras una persona responsable permanece en el lugar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-27",
+    cat: "Road Safety",
+    q: {
+      en: "If you are taking prescription drugs and you want to drive, you",
+      pt: "Se você está tomando medicamentos prescritos e quer dirigir, você",
+      es: "Si usted está tomando medicamentos recetados y quiere conducir, usted"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Should check the labelling to see if it is a non-drowsy medication and only drive if  it is a non-drowsy formula",
+          pt: "Deve verificar a bula para saber se é uma fórmula que não causa sonolência, e só dirigir se for uma fórmula sem efeito sonolento",
+          es: "Debe revisar el prospecto para saber si es una fórmula que no causa somnolencia, y solo conducir si es una fórmula sin ese efecto"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Can drive because it is not a recreational drug",
+          pt: "Pode dirigir porque não é uma droga recreativa",
+          es: "Puede conducir porque no es una droga recreativa"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Can drive during daylight hours but not at night",
+          pt: "Pode dirigir durante o dia, mas não à noite",
+          es: "Puede conducir durante el día, pero no de noche"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Can drive but you should drink coffee to keep you alert",
+          pt: "Pode dirigir, mas deve tomar café para se manter alerta",
+          es: "Puede conducir, pero debe tomar café para mantenerse alerta"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Prescription medication can still impair driving ability, so drivers should always check the label or ask a doctor/pharmacist and only drive if the medication is confirmed non-drowsy.",
+      pt: "Medicamentos prescritos ainda podem prejudicar a capacidade de dirigir, então os motoristas devem sempre verificar a bula ou consultar um médico/farmacêutico e só dirigir se o medicamento for confirmado como não sonolento.",
+      es: "Los medicamentos recetados pueden afectar igualmente la capacidad de conducir, por lo que los conductores siempre deben revisar el prospecto o consultar a un médico/farmacéutico y solo conducir si se confirma que el medicamento no causa somnolencia."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-28",
+    cat: "Road Safety",
+    q: {
+      en: "If you are taking several medications and you want to drive you should",
+      pt: "Se você está tomando vários medicamentos e quer dirigir, você deve",
+      es: "Si estás tomando varios medicamentos y quieres conducir, debes"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "ask your passengers to let you know if you are not driving as well as you should.",
+          pt: "pedir aos seus passageiros que avisem se você não estiver dirigindo tão bem quanto deveria.",
+          es: "pedirle a tus acompañantes que te avisen si no estás conduciendo tan bien como deberías."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "ask your doctor if the combination of drugs will make it dangerous to drive.",
+          pt: "perguntar ao seu médico se a combinação dos medicamentos torna perigoso dirigir.",
+          es: "preguntarle a tu médico si la combinación de medicamentos hace que conducir sea peligroso."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "drive carefully around your local streets to see if you are affected.",
+          pt: "dirigir com cuidado pelas ruas do seu bairro para ver se você está sendo afetado.",
+          es: "conducir con cuidado por las calles de tu barrio para ver si estás siendo afectado."
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "drive as normal since all medications are safe and will not affect your driving ability.",
+          pt: "dirigir normalmente, já que todos os medicamentos são seguros e não afetam sua capacidade de dirigir.",
+          es: "conducir con normalidad, ya que todos los medicamentos son seguros y no afectan tu capacidad de conducir."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Combinations of medications can interact and impair driving ability in ways that aren't obvious, so you should check with your doctor or pharmacist before driving.",
+      pt: "A combinação de vários medicamentos pode interagir e prejudicar a capacidade de dirigir de formas que não são óbvias, por isso você deve consultar seu médico ou farmacêutico antes de dirigir.",
+      es: "La combinación de varios medicamentos puede interactuar y afectar la capacidad de conducir de formas que no son evidentes, por lo que debes consultarlo con tu médico o farmacéutico antes de conducir."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-29",
+    cat: "Give Way Rules",
+    q: {
+      en: "If you are turning at an intersection must you give way to pedestrians?",
+      pt: "Se você está virando em uma interseção, deve dar passagem aos pedestres?",
+      es: "Si usted está girando en una intersección, ¿debe ceder el paso a los peatones?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only if the pedestrians are under the age of 16 years",
+          pt: "Somente se os pedestres tiverem menos de 16 anos",
+          es: "Solo si los peatones son menores de 16 años"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No",
+          pt: "Não",
+          es: "No"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only if the pedestrians are over the age of 16 years",
+          pt: "Somente se os pedestres tiverem mais de 16 anos",
+          es: "Solo si los peatones son mayores de 16 años"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Drivers turning at an intersection must always give way to pedestrians crossing the road they are turning into, regardless of the pedestrian's age.",
+      pt: "Motoristas que estão virando em uma interseção devem sempre dar passagem aos pedestres que atravessam a via para a qual estão virando, independentemente da idade do pedestre.",
+      es: "Los conductores que giran en una intersección siempre deben ceder el paso a los peatones que cruzan la vía hacia la que están girando, sin importar la edad del peatón."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-30",
+    cat: "Road Safety",
+    q: {
+      en: "If you feel drowsy when driving what should you do?",
+      pt: "Se você se sentir sonolento ao dirigir, o que deve fazer?",
+      es: "Si se siente somnoliento al conducir, ¿qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Open the window and turn the radio on",
+          pt: "Abrir a janela e ligar o rádio",
+          es: "Abrir la ventana y encender la radio"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drink lots of coffee whilst driving",
+          pt: "Beber muito café enquanto dirige",
+          es: "Beber mucho café mientras conduce"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn the radio up loud",
+          pt: "Aumentar o volume do rádio",
+          es: "Subir el volumen de la radio"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Stop driving and have a break",
+          pt: "Parar de dirigir e fazer uma pausa",
+          es: "Dejar de conducir y hacer una pausa"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The only reliable way to counter drowsiness is to stop driving and take a proper break — tricks like music, coffee, or fresh air only mask fatigue briefly.",
+      pt: "A única forma confiável de combater a sonolência é parar de dirigir e fazer uma pausa de verdade — truques como música, café ou ar fresco só mascaram o cansaço por pouco tempo.",
+      es: "La única forma confiable de combatir la somnolencia es dejar de conducir y tomar un descanso adecuado; trucos como música, café o aire fresco solo enmascaran la fatiga brevemente."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-31",
+    cat: "Road Safety",
+    q: {
+      en: "If you have not slept for 24 hours",
+      pt: "Se você não dormiu por 24 horas",
+      es: "Si no ha dormido en 24 horas"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You have the same crash risk as a driver with a blood alcohol content of twice the legal limit.",
+          pt: "Você tem o mesmo risco de acidente que um motorista com uma concentração de álcool no sangue duas vezes acima do limite legal.",
+          es: "Usted tiene el mismo riesgo de choque que un conductor con una concentración de alcohol en sangre del doble del límite legal."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "It has no real effect on your driving.",
+          pt: "Isso não tem efeito real na sua condução.",
+          es: "No tiene ningún efecto real en su manera de conducir."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You should turn up the music to keep you alert.",
+          pt: "Você deve aumentar o volume da música para se manter alerta.",
+          es: "Debería subir el volumen de la música para mantenerse alerta."
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Your driving ability will be increased.",
+          pt: "Sua capacidade de dirigir será aumentada.",
+          es: "Su capacidad de conducción aumentará."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Research shows that being awake for 24 hours straight impairs reaction time and judgement to a degree comparable with driving at roughly double the legal blood alcohol limit — fatigue is a major crash risk.",
+      pt: "Pesquisas mostram que ficar acordado por 24 horas seguidas prejudica o tempo de reação e o julgamento em um nível comparável a dirigir com aproximadamente o dobro do limite legal de álcool no sangue — a fadiga é um risco significativo de acidente.",
+      es: "Las investigaciones muestran que estar despierto durante 24 horas seguidas afecta el tiempo de reacción y el juicio de manera comparable a conducir con aproximadamente el doble del límite legal de alcohol en sangre — la fatiga es un riesgo importante de accidente."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-32",
+    sign: "/icons/signs/tas-car-32.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In what order do the cars go?",
+      pt: "Em que ordem os carros devem passar?",
+      es: "¿En qué orden deben pasar los autos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car C, Car A, Car B and Car D",
+          pt: "Carro C, Carro A, Carro B e Carro D",
+          es: "Auto C, Auto A, Auto B y Auto D"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car C, Car B, Car A and Car D",
+          pt: "Carro C, Carro B, Carro A e Carro D",
+          es: "Auto C, Auto B, Auto A y Auto D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car B, Car A, Car C and Car D",
+          pt: "Carro B, Carro A, Carro C e Carro D",
+          es: "Auto B, Auto A, Auto C y Auto D"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The correct order through the intersection is determined by give-way rules based on each car's position and direction of travel — Car C proceeds first, followed by Car A, then Car B, then Car D.",
+      pt: "A ordem correta de passagem pelo cruzamento é determinada pelas regras de prioridade, com base na posição e direção de cada carro — o Carro C passa primeiro, seguido pelo Carro A, depois o Carro B e por fim o Carro D.",
+      es: "El orden correcto para cruzar la intersección se determina según las reglas de cesión de paso, en función de la posición y la dirección de cada auto — el Auto C pasa primero, seguido del Auto A, luego el Auto B y finalmente el Auto D."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-33",
+    sign: "/icons/signs/tas-car-33.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In what order should the cars go through the intersection?",
+      pt: "Em que ordem os carros devem atravessar o cruzamento?",
+      es: "¿En qué orden deben cruzar los autos la intersección?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car C, then Car B, then, Car A",
+          pt: "Carro C, depois Carro B, depois Carro A",
+          es: "Auto C, luego Auto B, luego Auto A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B, then Car C, then Car A",
+          pt: "Carro B, depois Carro C, depois Carro A",
+          es: "Auto B, luego Auto C, luego Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car B, then Car A, then Car C",
+          pt: "Carro B, depois Carro A, depois Carro C",
+          es: "Auto B, luego Auto A, luego Auto C"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car A, then Car B, then, Car C",
+          pt: "Carro A, depois Carro B, depois Carro C",
+          es: "Auto A, luego Auto B, luego Auto C"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Based on the give-way rules at this intersection, Car B has priority to go first, followed by Car C, then Car A.",
+      pt: "Com base nas regras de prioridade nesse cruzamento, o Carro B tem prioridade para passar primeiro, seguido pelo Carro C e depois pelo Carro A.",
+      es: "Según las reglas de cesión de paso en esta intersección, el Auto B tiene prioridad para pasar primero, seguido del Auto C y luego el Auto A."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-34",
+    sign: "/icons/signs/tas-car-34.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "In what order should the cars go through the roundabout?  (Car A and car C are travelling straight ahead.   Car B is turning right.)",
+      pt: "Em que ordem os carros devem passar pela rotatória? (o Carro A e o Carro C estão seguindo em frente. o Carro B está virando à direita.)",
+      es: "¿En qué orden deben pasar los autos por la rotonda? (el Auto A y el Auto C van en línea recta. el Auto B está girando a la derecha.)"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car B, then Car C, then Car A",
+          pt: "Carro B, depois Carro C, depois Carro A",
+          es: "Auto B, luego Auto C, luego Auto A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B, then Car A, then Car C",
+          pt: "Carro B, depois Carro A, depois Carro C",
+          es: "Auto B, luego Auto A, luego Auto C"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car A, then Car B, then, Car C",
+          pt: "Carro A, depois Carro B, depois Carro C",
+          es: "Auto A, luego Auto B, luego Auto C"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car C, then Car A, then Car B",
+          pt: "Carro C, depois Carro A, depois Carro B",
+          es: "Auto C, luego Auto A, luego Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At a roundabout, priority depends on each vehicle's position and give-way obligations to traffic already circulating — in this scenario the correct sequence is Car B, then Car A, then Car C.",
+      pt: "Em uma rotatória, a prioridade depende da posição de cada veículo e da obrigação de dar passagem ao trânsito que já está circulando — nesse cenário, a ordem correta é Carro B, depois Carro A, depois Carro C.",
+      es: "En una rotonda, la prioridad depende de la posición de cada vehículo y de la obligación de ceder el paso al tráfico que ya está circulando — en este escenario, el orden correcto es Auto B, luego Auto A, luego Auto C."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-35",
+    sign: "/icons/signs/tas-car-35.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "On a multi-laned road, Car A and Car B want to change to the centre lanes. Which car can change lanes first?",
+      pt: "Em uma via com várias faixas, o Carro A e o Carro B querem mudar para as faixas centrais. Qual carro pode mudar de faixa primeiro?",
+      es: "En una vía de varios carriles, el Auto A y el Auto B quieren cambiarse a los carriles centrales. ¿Qué auto puede cambiar de carril primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A - as it is changing into the right hand lane",
+          pt: "Carro A - pois está mudando para a faixa da direita",
+          es: "Auto A - porque se está cambiando al carril derecho"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B - as Car C has to give way to a car on its right",
+          pt: "Carro B - pois o Carro C precisa dar passagem a um carro à sua direita",
+          es: "Auto B - porque el Auto C debe ceder el paso a un auto a su derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Neither Car A or Car B has priority for that lane",
+          pt: "Nem o Carro A nem o Carro B têm prioridade sobre essa faixa",
+          es: "Ni el Auto A ni el Auto B tienen prioridad sobre ese carril"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When two vehicles from different lanes both want to move into the same lane at the same time, neither has automatic priority — both drivers must give way to each other and only merge when it is safe.",
+      pt: "Quando dois veículos de faixas diferentes querem entrar na mesma faixa ao mesmo tempo, nenhum deles tem prioridade automática — ambos os motoristas devem ceder passagem um ao outro e só mudar de faixa quando for seguro.",
+      es: "Cuando dos vehículos de carriles distintos quieren entrar al mismo carril al mismo tiempo, ninguno tiene prioridad automática — ambos conductores deben cederse el paso mutuamente y cambiar de carril solo cuando sea seguro."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-36",
+    cat: "Road Safety",
+    q: {
+      en: "Seatbelts",
+      pt: "Cintos de segurança",
+      es: "Cinturones de seguridad"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Must be worn by drivers and passengers when travelling forward or stationary in traffic",
+          pt: "Devem ser usados por motoristas e passageiros quando o veículo estiver em movimento para frente ou parado no trânsito",
+          es: "Deben usarse por el conductor y los pasajeros cuando el vehículo se mueva hacia adelante o esté detenido en el tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only need to be worn when travelling over 50km/h",
+          pt: "Só precisam ser usados ao trafegar acima de 50 km/h",
+          es: "Solo es necesario usarlos al circular a más de 50 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not need to be worn by passengers",
+          pt: "Não precisam ser usados pelos passageiros",
+          es: "No es necesario que los pasajeros los usen"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Do not need to be worn by passengers under the age of 12 years",
+          pt: "Não precisam ser usados por passageiros com menos de 12 anos",
+          es: "No es necesario que los pasajeros menores de 12 años los usen"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Tasmanian law requires drivers and all passengers to wear a properly fitted seatbelt whenever the vehicle is moving forward or stopped in traffic, not just above a certain speed.",
+      pt: "A lei da Tasmânia exige que motoristas e todos os passageiros usem cinto de segurança corretamente ajustado sempre que o veículo estiver se movendo para frente ou parado no trânsito, não apenas acima de certa velocidade.",
+      es: "La ley de Tasmania exige que el conductor y todos los pasajeros usen el cinturón de seguridad correctamente ajustado siempre que el vehículo se mueva hacia adelante o esté detenido en el tráfico, no solo por encima de cierta velocidad."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-37",
+    cat: "Speed Limits",
+    q: {
+      en: "Speeding is dangerous because?",
+      pt: "Por que dirigir acima do limite de velocidade é perigoso?",
+      es: "¿Por qué exceder el límite de velocidad es peligroso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The faster you drive, the more time and space you need to stop",
+          pt: "Quanto mais rápido você dirige, mais tempo e espaço você precisa para parar",
+          es: "Cuanto más rápido conduce, más tiempo y espacio necesita para detenerse"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Increasing speed also increases the severity of crashes",
+          pt: "Aumentar a velocidade também aumenta a gravidade das colisões",
+          es: "Aumentar la velocidad también aumenta la gravedad de los choques"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Driving too fast around a corner can affect the cars stability",
+          pt: "Dirigir rápido demais em uma curva pode afetar a estabilidade do carro",
+          es: "Conducir demasiado rápido en una curva puede afectar la estabilidad del auto"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "All of the above",
+          pt: "Todas as alternativas acima",
+          es: "Todas las anteriores"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Speeding increases stopping distance, worsens crash severity, and can destabilize a vehicle in corners, so all of these reasons make it dangerous.",
+      pt: "Dirigir acima do limite aumenta a distância de frenagem, piora a gravidade das colisões e pode desestabilizar o veículo nas curvas — por isso todas essas razões tornam isso perigoso.",
+      es: "Exceder el límite de velocidad aumenta la distancia de frenado, empeora la gravedad de los choques y puede desestabilizar el vehículo en las curvas, por lo que todas estas razones lo hacen peligroso."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-38",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "The blood alcohol content for a fully (non-provisional) licensed driver must be below",
+      pt: "O teor de álcool no sangue para um motorista com carteira definitiva (não provisória) deve ser inferior a",
+      es: "El contenido de alcohol en sangre para un conductor con licencia definitiva (no provisional) debe ser inferior a"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: ".05%",
+          pt: ".05%",
+          es: ".05%"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: ".08%",
+          pt: ".08%",
+          es: ".08%"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Zero",
+          pt: "Zero",
+          es: "Cero"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: ".10%",
+          pt: ".10%",
+          es: ".10%"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Fully licensed drivers in Tasmania must keep their blood-alcohol content below 0.05%.",
+      pt: "Motoristas com carteira definitiva na Tasmânia devem manter o teor de álcool no sangue abaixo de 0,05%.",
+      es: "Los conductores con licencia definitiva en Tasmania deben mantener su contenido de alcohol en sangre por debajo de 0,05%."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-39",
+    sign: "/icons/signs/tas-car-39.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "The traffic lights are green and there is a red right arrow. Cars A and B are going straight ahead, Car C is turning right. Which car(s) go first?",
+      pt: "O semáforo está verde e há uma seta vermelha para a direita. Os Carros A e B estão seguindo em frente, o Carro C está virando à direita. Qual(is) carro(s) passa(m) primeiro?",
+      es: "El semáforo está en verde y hay una flecha roja hacia la derecha. Los Autos A y B van en línea recta, el Auto C está girando a la derecha. ¿Qué auto(s) pasa(n) primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A and Car C",
+          pt: "Carro A e Carro C",
+          es: "Auto A y Auto C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B and Car C",
+          pt: "Carro B e Carro C",
+          es: "Auto B y Auto C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car C",
+          pt: "Carro C",
+          es: "Auto C"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car A and Car B",
+          pt: "Carro A e Carro B",
+          es: "Auto A y Auto B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A red right arrow means turning right is prohibited at this time, so Car C must wait; the green circular light allows Cars A and B, which are going straight ahead, to proceed.",
+      pt: "Uma seta vermelha para a direita significa que virar à direita está proibido naquele momento, então o Carro C deve esperar; o sinal verde circular permite que os Carros A e B, que estão seguindo em frente, prossigam.",
+      es: "Una flecha roja hacia la derecha significa que girar a la derecha está prohibido en ese momento, por lo que el Auto C debe esperar; la luz verde circular permite que los Autos A y B, que van en línea recta, continúen."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-40",
+    sign: "/icons/signs/tas-car-40.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "There are red traffic lights and a green right arrow. Cars A and B are going straight ahead, Car C is turning right. Which car(s) go first?",
+      pt: "Há semáforo vermelho e uma seta verde para a direita. Os carros A e B estão seguindo em frente, o carro C está virando à direita. Qual(is) carro(s) segue(m) primeiro?",
+      es: "Hay un semáforo en rojo y una flecha verde a la derecha. Los autos A y B van en línea recta, el auto C está girando a la derecha. ¿Qué auto(s) pasa(n) primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A and Car C",
+          pt: "Carro A e Carro C",
+          es: "Auto A y Auto C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car A and Car B",
+          pt: "Carro A e Carro B",
+          es: "Auto A y Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car C",
+          pt: "Carro C",
+          es: "Auto C"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The red circular light means Cars A and B (going straight) must stop, while the green right arrow permits only Car C, which is turning right, to go.",
+      pt: "O sinal vermelho circular significa que os Carros A e B (seguindo em frente) devem parar, enquanto a seta verde à direita permite apenas que o Carro C, que está virando à direita, siga.",
+      es: "El semáforo circular en rojo significa que los Autos A y B (que van en línea recta) deben detenerse, mientras que la flecha verde a la derecha permite pasar solo al Auto C, que está girando a la derecha."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-41",
+    cat: "Road Signs",
+    q: {
+      en: "There are two types of road signs - warning and regulatory.  What is the difference between them?",
+      pt: "Existem dois tipos de sinais de trânsito - advertência e regulamentação. Qual é a diferença entre eles?",
+      es: "Hay dos tipos de señales de tránsito: de advertencia y reglamentarias. ¿Cuál es la diferencia entre ellas?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No difference, they don't need to be obeyed",
+          pt: "Não há diferença, eles não precisam ser obedecidos",
+          es: "No hay diferencia, no necesitan ser obedecidas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Regulatory signs alert drivers to road conditions and should be obeyed.  Warning signs should be ignored",
+          pt: "Sinais regulamentares alertam os motoristas sobre as condições da via e devem ser obedecidos. Sinais de advertência devem ser ignorados",
+          es: "Las señales reglamentarias alertan a los conductores sobre las condiciones de la vía y deben obedecerse. Las señales de advertencia deben ignorarse"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Warning signs alert drivers to road conditions and should be obeyed.  Regulatory signs must be obeyed",
+          pt: "Sinais de advertência alertam os motoristas sobre as condições da via e devem ser obedecidos. Sinais regulamentares devem ser obedecidos",
+          es: "Las señales de advertencia alertan a los conductores sobre las condiciones de la vía y deben obedecerse. Las señales reglamentarias deben obedecerse"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "No difference, they are both the same",
+          pt: "Não há diferença, eles são iguais",
+          es: "No hay diferencia, son iguales"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Warning signs (diamond-shaped, yellow) alert drivers to hazards or changing conditions ahead and should be obeyed, while regulatory signs impose legal requirements — such as speed limits, stop and give way signs — that drivers must obey by law.",
+      pt: "Os sinais de advertência (formato de losango, amarelos) alertam os motoristas sobre perigos ou mudanças nas condições da via à frente e devem ser obedecidos, enquanto os sinais regulamentares impõem exigências legais — como limites de velocidade e sinais de pare e dê a preferência — que os motoristas devem obedecer por lei.",
+      es: "Las señales de advertencia (en forma de rombo, amarillas) alertan a los conductores sobre peligros o cambios en las condiciones de la vía más adelante y deben obedecerse, mientras que las señales reglamentarias imponen exigencias legales —como límites de velocidad y señales de pare y ceda el paso— que los conductores deben obedecer por ley."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-42",
+    sign: "/icons/signs/tas-car-42.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "This sign means on a multi-laned road?",
+      pt: "Em uma via de múltiplas faixas, esta placa significa?",
+      es: "En una vía de varios carriles, ¿qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Keep left at all times",
+          pt: "Mantenha-se sempre na faixa da esquerda",
+          es: "Mantenerse siempre en el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drivers must only overtake using the left lane",
+          pt: "Os motoristas só podem ultrapassar usando a faixa da esquerda",
+          es: "Los conductores solo pueden adelantar usando el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drivers must not use the right lane unless they are overtaking, turning right or the traffic is congested",
+          pt: "Os motoristas não devem usar a faixa da direita, a menos que estejam ultrapassando, virando à direita ou o trânsito esteja congestionado",
+          es: "Los conductores no deben usar el carril derecho, salvo que estén adelantando, girando a la derecha o el tráfico esté congestionado"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Drivers must not use the right lane at any time",
+          pt: "Os motoristas não devem usar a faixa da direita em nenhuma hipótese",
+          es: "Los conductores no deben usar el carril derecho bajo ninguna circunstancia"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This 'keep left unless overtaking' style sign means drivers must generally travel in the left lane on a multi-lane road, only using the right lane to overtake, turn right, or when traffic is congested.",
+      pt: "Essa placa do tipo 'mantenha-se à esquerda, exceto para ultrapassar' significa que os motoristas devem, em geral, circular na faixa da esquerda em uma via de múltiplas faixas, usando a faixa da direita apenas para ultrapassar, virar à direita ou quando o trânsito estiver congestionado.",
+      es: "Esta señal de tipo 'mantenerse a la izquierda salvo para adelantar' significa que los conductores deben circular generalmente por el carril izquierdo en una vía de varios carriles, usando el carril derecho solo para adelantar, girar a la derecha o cuando el tráfico esté congestionado."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-43",
+    sign: "/icons/signs/tas-car-43.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "This sign means?",
+      pt: "Esta placa significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Stop only if traffic or pedestrians are coming from the right",
+          pt: "Pare somente se houver tráfego ou pedestres vindo da direita",
+          es: "Deténgase solo si hay tráfico o peatones viniendo de la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down and if it is safe, drive through the intersection",
+          pt: "Diminua a velocidade e, se for seguro, atravesse o cruzamento",
+          es: "Reduzca la velocidad y, si es seguro, cruce la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop, only for pedestrians",
+          pt: "Pare, apenas para pedestres",
+          es: "Deténgase, solo para peatones"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Stop at the solid white line at the intersection and give way to vehicles on your left and right and any pedestrians",
+          pt: "Pare na linha branca contínua no cruzamento e dê a preferência a veículos à sua esquerda e direita e a quaisquer pedestres",
+          es: "Deténgase en la línea blanca continua de la intersección y ceda el paso a los vehículos a su izquierda y derecha y a cualquier peatón"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "This is a Stop sign, which requires the driver to come to a complete stop at the stop line and give way to all crossing traffic and pedestrians before proceeding, regardless of which direction they come from.",
+      pt: "Trata-se de uma placa de Pare, que exige que o motorista faça uma parada completa na linha de parada e dê a preferência a todo o tráfego e pedestres que estejam cruzando antes de prosseguir, independentemente da direção de onde vêm.",
+      es: "Se trata de una señal de Pare, que exige que el conductor haga una parada completa en la línea de parada y ceda el paso a todo el tráfico y peatones que estén cruzando antes de continuar, sin importar de qué dirección vengan."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-44",
+    cat: "Road Safety",
+    q: {
+      en: "What does a car licence allow you to drive?",
+      pt: "O que uma carteira de motorista de carro permite que você dirija?",
+      es: "¿Qué te permite conducir una licencia de auto?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A motor vehicle (other than a motorcycle) with a GVM of 4.5 tonnes or less, seating no more than 12 adults (including the driver)",
+          pt: "Um veículo motorizado (que não seja motocicleta) com PBT (massa bruta do veículo) de até 4,5 toneladas, com capacidade para no máximo 12 adultos (incluindo o motorista)",
+          es: "Un vehículo motorizado (que no sea motocicleta) con MBT (masa bruta del vehículo) de hasta 4,5 toneladas, con capacidad para un máximo de 12 adultos (incluido el conductor)"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Any vehicle registered as a car or motorcycle",
+          pt: "Qualquer veículo registrado como carro ou motocicleta",
+          es: "Cualquier vehículo registrado como auto o motocicleta"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Any motor vehicle or combination of motor vehicles",
+          pt: "Qualquer veículo motorizado ou combinação de veículos motorizados",
+          es: "Cualquier vehículo motorizado o combinación de vehículos motorizados"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "A motor vehicle (other than a motorcycle) with a GVM greater than 4.5 tonnes",
+          pt: "Um veículo motorizado (que não seja motocicleta) com PBT superior a 4,5 toneladas",
+          es: "Un vehículo motorizado (que no sea motocicleta) con MBT superior a 4,5 toneladas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A standard car licence covers motor vehicles other than motorcycles up to 4.5 tonnes gross vehicle mass, carrying no more than 12 adults including the driver — heavier vehicles need a higher licence class.",
+      pt: "Uma carteira de motorista de carro comum cobre veículos motorizados que não sejam motocicletas, com até 4,5 toneladas de massa bruta, transportando no máximo 12 adultos incluindo o motorista — veículos mais pesados exigem uma categoria de carteira superior.",
+      es: "Una licencia de auto estándar cubre vehículos motorizados que no sean motocicletas, con hasta 4,5 toneladas de masa bruta, y con capacidad para un máximo de 12 adultos incluido el conductor; los vehículos más pesados requieren una categoría de licencia superior."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-45",
+    sign: "/icons/signs/tas-car-45.jpg",
+    cat: "Road Signs",
+    q: {
+      en: "What does this sign mean?",
+      pt: "O que este sinal significa?",
+      es: "¿Qué significa esta señal?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cyclists cannot use the road",
+          pt: "Ciclistas não podem usar a via",
+          es: "Los ciclistas no pueden usar la vía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must give bicycle riders a minimum distance of at least 1.5 metres when you pass.",
+          pt: "Você deve manter uma distância mínima de pelo menos 1,5 metro ao ultrapassar ciclistas.",
+          es: "Debe mantener una distancia mínima de al menos 1,5 metros al adelantar a los ciclistas."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must wait 1.5 metres behind a cyclist before passing",
+          pt: "Você deve esperar 1,5 metro atrás de um ciclista antes de ultrapassar",
+          es: "Debe esperar 1,5 metros detrás de un ciclista antes de adelantar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign reminds drivers of the minimum passing distance law for cyclists, requiring at least 1.5 metres of clearance when overtaking a bicycle rider.",
+      pt: "Esse sinal lembra os motoristas da lei de distância mínima de ultrapassagem para ciclistas, exigindo pelo menos 1,5 metro de espaço ao ultrapassar um ciclista.",
+      es: "Esta señal recuerda a los conductores la ley de distancia mínima de adelantamiento para ciclistas, que exige al menos 1,5 metros de espacio al adelantar a un ciclista."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-46",
+    sign: "/icons/signs/tas-car-46.jpg",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "What is the maximum blood-alcohol content (B.A.C) for a learner driver?",
+      pt: "Qual é o teor máximo de álcool no sangue (BAC) permitido para um motorista aprendiz?",
+      es: "¿Cuál es el contenido máximo de alcohol en sangre (BAC) permitido para un conductor aprendiz?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: ".05%",
+          pt: ".05%",
+          es: ".05%"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: ".02%",
+          pt: ".02%",
+          es: ".02%"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: ".08%",
+          pt: ".08%",
+          es: ".08%"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Zero",
+          pt: "Zero",
+          es: "Cero"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers in Tasmania must have a zero blood-alcohol content — no alcohol is permitted at all.",
+      pt: "Motoristas aprendizes na Tasmânia devem ter teor de álcool no sangue zero — não é permitido consumir nenhuma quantidade de álcool.",
+      es: "Los conductores aprendices en Tasmania deben tener un contenido de alcohol en sangre de cero: no se permite ningún consumo de alcohol."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-47",
+    sign: "/icons/signs/tas-car-47.jpg",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed a car learner driver can drive in a 100 km/h speed zone?",
+      pt: "Qual é a velocidade máxima que um motorista aprendiz de carro pode dirigir em uma zona de 100 km/h?",
+      es: "¿Cuál es la velocidad máxima a la que un conductor aprendiz de auto puede conducir en una zona de 100 km/h?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers in Tasmania are restricted to a maximum of 90 km/h, even in zones signposted at 100 km/h.",
+      pt: "Motoristas aprendizes na Tasmânia têm limite máximo de 90 km/h, mesmo em zonas sinalizadas com 100 km/h.",
+      es: "Los conductores aprendices en Tasmania tienen un límite máximo de 90 km/h, incluso en zonas señalizadas con 100 km/h."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-48",
+    sign: "/icons/signs/tas-car-48.gif",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed a car learner licence holder can driver in a 110 km/h speed zone?",
+      pt: "Qual é a velocidade máxima que um titular de licença de aprendiz de carro pode dirigir em uma zona de 110 km/h?",
+      es: "¿Cuál es la velocidad máxima que puede conducir un titular de licencia de aprendiz de auto en una zona de 110 km/h?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "110 km/h",
+          pt: "110 km/h",
+          es: "110 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "100 km/h",
+          pt: "100 km/h",
+          es: "100 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "90 km/h",
+          pt: "90 km/h",
+          es: "90 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Tasmanian learner drivers are capped at 90 km/h even in zones signed higher, such as 110 km/h zones, as an extra safety margin while they gain experience.",
+      pt: "Os motoristas aprendizes na Tasmânia têm um limite de 90 km/h mesmo em zonas sinalizadas com velocidades maiores, como 110 km/h, como margem extra de segurança enquanto ganham experiência.",
+      es: "Los conductores aprendices en Tasmania tienen un límite de 90 km/h incluso en zonas señalizadas con velocidades mayores, como 110 km/h, como margen adicional de seguridad mientras ganan experiencia."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-49",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed limit (unless signposted otherwise) for vehicles in a built-up area (like a town or a city)?",
+      pt: "Qual é o limite máximo de velocidade (a menos que sinalizado de forma diferente) para veículos em uma área urbana (como uma cidade ou vila)?",
+      es: "¿Cuál es el límite máximo de velocidad (a menos que se indique lo contrario) para vehículos en una zona urbana (como una ciudad o pueblo)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "70 km/h",
+          pt: "70 km/h",
+          es: "70 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "80 km/h",
+          pt: "80 km/h",
+          es: "80 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "60 km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The default speed limit in built-up areas across Australia, including Tasmania, is 50 km/h unless a different limit is signposted.",
+      pt: "O limite de velocidade padrão em áreas urbanas em toda a Austrália, incluindo a Tasmânia, é de 50 km/h, a menos que um limite diferente esteja sinalizado.",
+      es: "El límite de velocidad predeterminado en zonas urbanas en toda Australia, incluida Tasmania, es de 50 km/h, a menos que se indique un límite diferente mediante señalización."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-50",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed limit for vehicles turning at an intersection controlled by traffic lights?",
+      pt: "Qual é o limite máximo de velocidade para veículos que estão convertendo em um cruzamento controlado por semáforo?",
+      es: "¿Cuál es el límite máximo de velocidad para vehículos que giran en una intersección controlada por semáforo?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 km/h",
+          pt: "20 km/h",
+          es: "20 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "10 km/h",
+          pt: "10 km/h",
+          es: "10 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "15 km/h",
+          pt: "15 km/h",
+          es: "15 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Vehicles turning at a traffic-light-controlled intersection must not exceed 20 km/h while completing the turn, to allow enough control and time to give way to pedestrians and other traffic.",
+      pt: "Veículos que convertem em um cruzamento controlado por semáforo não devem ultrapassar 20 km/h ao completar a conversão, para permitir controle suficiente e tempo para dar a preferência a pedestres e a outros veículos.",
+      es: "Los vehículos que giran en una intersección controlada por semáforo no deben superar los 20 km/h al completar el giro, para permitir suficiente control y tiempo para ceder el paso a peatones y otros vehículos."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-51",
+    cat: "Speed Limits",
+    q: {
+      en: "What is the maximum speed limit in a school zone during school days?",
+      pt: "Qual é o limite máximo de velocidade em uma zona escolar nos dias letivos?",
+      es: "¿Cuál es el límite máximo de velocidad en una zona escolar en días de clases?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "45 km/h",
+          pt: "45 km/h",
+          es: "45 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "60 km/h",
+          pt: "60 km/h",
+          es: "60 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "40 km/h",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "50 km/h",
+          pt: "50 km/h",
+          es: "50 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "School zones in Tasmania are signed with a reduced 40 km/h speed limit that applies during the specified school days and times to protect children.",
+      pt: "As zonas escolares na Tasmânia têm sinalização com limite reduzido de 40 km/h, que se aplica nos dias e horários letivos indicados para proteger as crianças.",
+      es: "Las zonas escolares en Tasmania están señalizadas con un límite reducido de 40 km/h, que se aplica en los días y horarios de clases indicados para proteger a los niños."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-52",
+    cat: "Road Safety",
+    q: {
+      en: "What is the minimum continuous period that you must hold a novice car learner licence before progressing to a P1 licence?",
+      pt: "Qual é o período mínimo contínuo que você deve manter a carteira de aprendiz de carro novato antes de avançar para uma carteira P1?",
+      es: "¿Cuál es el período mínimo continuo que debe mantener la licencia de aprendiz novato de auto antes de pasar a una licencia P1?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "12 continuous months",
+          pt: "12 meses contínuos",
+          es: "12 meses continuos"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "6 continuous months",
+          pt: "6 meses contínuos",
+          es: "6 meses continuos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "9 continuous months",
+          pt: "9 meses contínuos",
+          es: "9 meses continuos"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "3 continuous months",
+          pt: "3 meses contínuos",
+          es: "3 meses continuos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In Tasmania, a novice driver must hold their learner licence for a minimum continuous period of 12 months before they can progress to a P1 provisional licence.",
+      pt: "Na Tasmânia, um motorista novato deve manter a carteira de aprendiz por um período mínimo contínuo de 12 meses antes de poder avançar para uma carteira provisória P1.",
+      es: "En Tasmania, un conductor novato debe mantener su licencia de aprendiz durante un período mínimo continuo de 12 meses antes de poder pasar a una licencia provisional P1."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-53",
+    cat: "Traffic Lights",
+    q: {
+      en: "What must you do at an intersection, which is blocked by other vehicles?",
+      pt: "O que você deve fazer em um cruzamento que está bloqueado por outros veículos?",
+      es: "¿Qué debe hacer en una intersección que está bloqueada por otros vehículos?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Enter the intersection",
+          pt: "Entrar no cruzamento",
+          es: "Entrar en la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Enter the intersection if you think the traffic will clear before the traffic lights change to red",
+          pt: "Entrar no cruzamento se achar que o trânsito vai desbloquear antes de o semáforo ficar vermelho",
+          es: "Entrar en la intersección si cree que el tráfico se despejará antes de que el semáforo cambie a rojo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not enter the intersection until the traffic has cleared and you can safely drive through to the other side, and the traffic lights are green",
+          pt: "Não entrar no cruzamento até que o trânsito tenha desbloqueado e você possa atravessar com segurança até o outro lado, com o semáforo verde",
+          es: "No entrar en la intersección hasta que el tráfico se haya despejado y pueda cruzar con seguridad hasta el otro lado, con el semáforo en verde"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Do not enter the intersection unless the lights change to red",
+          pt: "Não entrar no cruzamento a menos que o semáforo fique vermelho",
+          es: "No entrar en la intersección a menos que el semáforo cambie a rojo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must not enter an intersection, even on a green light, unless there is enough space on the other side to clear it completely — entering when it is blocked risks gridlocking the intersection.",
+      pt: "Você não deve entrar em um cruzamento, mesmo com o semáforo verde, a menos que haja espaço suficiente do outro lado para atravessá-lo completamente — entrar quando ele está bloqueado gera risco de travar o cruzamento.",
+      es: "No debe entrar en una intersección, incluso con el semáforo en verde, a menos que haya espacio suficiente del otro lado para cruzarla por completo — entrar cuando está bloqueada corre el riesgo de bloquear la intersección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-54",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when driving in wet conditions?",
+      pt: "O que você deve fazer ao dirigir em condições de pista molhada?",
+      es: "¿Qué debe hacer al conducir en condiciones de pista mojada?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive with the handbrake on",
+          pt: "Dirigir com o freio de mão acionado",
+          es: "Conducir con el freno de mano puesto"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive closer to vehicles to avoid back splash from the other vehicle",
+          pt: "Dirigir mais perto dos veículos para evitar respingos do outro veículo",
+          es: "Conducir más cerca de los vehículos para evitar las salpicaduras del otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down as you need to allow much longer for stopping to avoid other vehicles and pedestrians",
+          pt: "Reduzir a velocidade, pois você precisa de muito mais distância para parar e evitar outros veículos e pedestres",
+          es: "Reducir la velocidad, ya que necesita mucha más distancia para detenerse y evitar otros vehículos y peatones"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "As long as you are driving at the speed limit, you are driving safely",
+          pt: "Contanto que esteja dirigindo dentro do limite de velocidade, você está dirigindo com segurança",
+          es: "Mientras conduzca dentro del límite de velocidad, está conduciendo de forma segura"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Wet roads reduce tyre grip and increase stopping distances significantly, so drivers must slow down to allow more time and space to stop safely.",
+      pt: "Pistas molhadas reduzem a aderência dos pneus e aumentam bastante a distância de frenagem, por isso os motoristas devem reduzir a velocidade para ter mais tempo e espaço para parar com segurança.",
+      es: "Las carreteras mojadas reducen el agarre de los neumáticos y aumentan considerablemente la distancia de frenado, por lo que los conductores deben reducir la velocidad para tener más tiempo y espacio para detenerse con seguridad."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-55",
+    cat: "Road Safety",
+    q: {
+      en: "What should you do when you see animals on the road at night?",
+      pt: "O que você deve fazer ao ver animais na estrada à noite?",
+      es: "¿Qué debe hacer al ver animales en la vía de noche?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and be prepared to avoid the animal",
+          pt: "Reduzir a velocidade e estar preparado para evitar o animal",
+          es: "Reducir la velocidad y estar preparado para evitar al animal"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sound your horn",
+          pt: "Buzinar",
+          es: "Tocar la bocina"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Swerve violently",
+          pt: "Fazer uma manobra brusca",
+          es: "Dar un volantazo brusco"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Speed up to pass them quickly",
+          pt: "Acelerar para passar rapidamente",
+          es: "Acelerar para pasar rápidamente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should slow down and be ready to react safely, since sudden swerving to avoid an animal can cause a more dangerous crash than a controlled stop or slow-down.",
+      pt: "Você deve reduzir a velocidade e estar pronto para reagir com segurança, já que uma manobra brusca para evitar um animal pode causar um acidente mais grave do que uma parada ou desaceleração controlada.",
+      es: "Debe reducir la velocidad y estar listo para reaccionar de forma segura, ya que un volantazo brusco para evitar a un animal puede provocar un accidente más grave que una detención o desaceleración controlada."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-56",
+    cat: "Road Safety",
+    q: {
+      en: "When approaching a stopped school bus with amber flashing lights that is letting off children (on a country road), you must",
+      pt: "Ao se aproximar de um ônibus escolar parado com luzes âmbar piscando, que está desembarcando crianças (em uma estrada rural), você deve",
+      es: "Al acercarse a un autobús escolar detenido con luces ámbar intermitentes que está bajando niños (en un camino rural), usted debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down to 10 km/h within 10 metres of the bus and watch for pedestrians",
+          pt: "Reduzir a velocidade para 10 km/h a 10 metros do ônibus e ficar atento a pedestres",
+          es: "Reducir la velocidad a 10 km/h a 10 metros del autobús y estar atento a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive within the posted speed limit and watch for pedestrians",
+          pt: "Dirigir dentro do limite de velocidade sinalizado e ficar atento a pedestres",
+          es: "Conducir dentro del límite de velocidad señalizado y estar atento a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down to 5 km/h within 10 metres of the bus and watch for pedestrians",
+          pt: "Reduzir a velocidade para 5 km/h a 10 metros do ônibus e ficar atento a pedestres",
+          es: "Reducir la velocidad a 5 km/h a 10 metros del autobús y estar atento a los peatones"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Slow down to 40 km/h 50 metres before you overtake the bus and watch for pedestrians",
+          pt: "Reduzir a velocidade para 40 km/h 50 metros antes de ultrapassar o ônibus e ficar atento a pedestres",
+          es: "Reducir la velocidad a 40 km/h 50 metros antes de adelantar al autobús y estar atento a los peatones"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "On a country road, drivers approaching a school bus with flashing amber lights must slow to 40 km/h at least 50 metres before overtaking it, watching carefully for children crossing.",
+      pt: "Em uma estrada rural, os motoristas que se aproximam de um ônibus escolar com luzes âmbar piscando devem reduzir a velocidade para 40 km/h pelo menos 50 metros antes de ultrapassá-lo, ficando atentos a crianças atravessando.",
+      es: "En un camino rural, los conductores que se acercan a un autobús escolar con luces ámbar intermitentes deben reducir la velocidad a 40 km/h al menos 50 metros antes de adelantarlo, prestando atención a los niños que puedan cruzar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-57",
+    cat: "Traffic Lights",
+    q: {
+      en: "When approaching an intersection with a single flashing yellow traffic light.  You must -",
+      pt: "Ao se aproximar de uma interseção com um semáforo amarelo piscando isoladamente, você deve -",
+      es: "Al acercarse a una intersección con un semáforo amarillo intermitente único, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and sound the horn",
+          pt: "Reduzir a velocidade e buzinar",
+          es: "Reducir la velocidad y tocar la bocina"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and give way to all traffic approaching from the left and right",
+          pt: "Parar e dar passagem a todo o tráfego que vem da esquerda e da direita",
+          es: "Detenerse y ceder el paso a todo el tráfico que viene de la izquierda y la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down; be prepared to stop and give way to vehicles on the right then drive on cautiously",
+          pt: "Reduzir a velocidade; estar preparado para parar e dar passagem aos veículos à direita e depois seguir com cautela",
+          es: "Reducir la velocidad; estar preparado para detenerse y ceder el paso a los vehículos a la derecha y luego continuar con precaución"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Accelerate through the intersection",
+          pt: "Acelerar através da interseção",
+          es: "Acelerar a través de la intersección"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A single flashing yellow light acts like a give-way sign: you must slow down, be ready to stop, give way to traffic on your right, then proceed cautiously once it is safe.",
+      pt: "Um semáforo amarelo piscando isoladamente funciona como uma placa de dar passagem: você deve reduzir a velocidade, estar pronto para parar, dar passagem ao tráfego à direita e depois seguir com cautela quando for seguro.",
+      es: "Un semáforo amarillo intermitente único funciona como una señal de ceda el paso: debe reducir la velocidad, estar listo para detenerse, ceder el paso al tráfico a la derecha y luego continuar con precaución cuando sea seguro."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-58",
+    sign: "/icons/signs/tas-car-58.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "When can Car A cross the double broken lines?",
+      pt: "Quando o Carro A pode cruzar as linhas duplas tracejadas?",
+      es: "¿Cuándo puede el Auto A cruzar las líneas dobles discontinuas?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To pass a cyclist if safe to do so.",
+          pt: "Para passar por um ciclista, se for seguro fazer isso.",
+          es: "Para pasar a un ciclista, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "To do a U-turn.",
+          pt: "Para fazer um retorno (conversão em U).",
+          es: "Para hacer un giro en U."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To overtake a car.",
+          pt: "Para ultrapassar um carro.",
+          es: "Para adelantar a un auto."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Double broken (dashed) lines here indicate markings for a specific purpose, such as a bicycle lane divider; crossing is allowed specifically to safely pass a cyclist, not for general overtaking or U-turns.",
+      pt: "Linhas duplas tracejadas indicam, nesse caso, marcações com finalidade específica, como a separação de uma faixa de ciclista; o cruzamento é permitido especificamente para passar com segurança por um ciclista, e não para ultrapassagens gerais ou retornos.",
+      es: "Las líneas dobles discontinuas indican, en este caso, marcas con un propósito específico, como la separación de un carril para bicicletas; cruzarlas está permitido específicamente para pasar de forma segura a un ciclista, no para adelantamientos generales ni giros en U."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-59",
+    sign: "/icons/signs/tas-car-59.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "When can Car A cross the single continuous line?",
+      pt: "Quando o Carro A pode cruzar a linha simples contínua?",
+      es: "¿Cuándo puede el Auto A cruzar la línea continua simple?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "To pass a cyclist if safe to do so.",
+          pt: "Para ultrapassar um ciclista, se for seguro fazê-lo.",
+          es: "Para pasar a un ciclista, si es seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "To do a U-turn.",
+          pt: "Para fazer um retorno.",
+          es: "Para hacer un giro en U."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To overtake a car.",
+          pt: "Para ultrapassar um carro.",
+          es: "Para adelantar a un auto."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Drivers are permitted to briefly cross a single continuous line to pass a cyclist, provided it can be done safely, even though the line otherwise prohibits overtaking or lane changes.",
+      pt: "Os motoristas têm permissão para cruzar brevemente uma linha simples contínua para ultrapassar um ciclista, desde que isso possa ser feito com segurança, mesmo que a linha normalmente proíba ultrapassagens ou mudanças de faixa.",
+      es: "Los conductores tienen permitido cruzar brevemente una línea continua simple para pasar a un ciclista, siempre que pueda hacerse de forma segura, aunque la línea normalmente prohíba adelantar o cambiar de carril."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-60",
+    sign: "/icons/signs/tas-car-60.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When crossing over single broken line to pass a cyclist, you must:",
+      pt: "Ao cruzar uma linha simples tracejada para ultrapassar um ciclista, você deve:",
+      es: "Al cruzar una línea simple discontinua para adelantar a un ciclista, debe:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Indicate right to cross the line, then indicate left when merging back.",
+          pt: "Sinalizar à direita para cruzar a linha e depois sinalizar à esquerda ao voltar para a faixa.",
+          es: "Señalizar a la derecha para cruzar la línea y luego señalizar a la izquierda al volver al carril."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Not indicate at all.",
+          pt: "Não sinalizar de forma alguma.",
+          es: "No señalizar en absoluto."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Flash your lights.",
+          pt: "Piscar os faróis.",
+          es: "Hacer destellos con las luces."
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Ignore the cyclist, they must move out of your way.",
+          pt: "Ignorar o ciclista; ele deve sair do seu caminho.",
+          es: "Ignorar al ciclista; él debe apartarse de su camino."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must indicate right before crossing the broken line to overtake, then indicate left as you merge back into your lane after passing the cyclist.",
+      pt: "Você deve sinalizar à direita antes de cruzar a linha tracejada para ultrapassar e depois sinalizar à esquerda ao retornar para sua faixa após ultrapassar o ciclista.",
+      es: "Debe señalizar a la derecha antes de cruzar la línea discontinua para adelantar y luego señalizar a la izquierda al volver a su carril después de adelantar al ciclista."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-61",
+    cat: "Road Safety",
+    q: {
+      en: "When driving at night, you must dip your headlights",
+      pt: "Ao dirigir à noite, você deve baixar (dimmer) os faróis",
+      es: "Al conducir de noche, debe bajar (poner en corto alcance) las luces"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when another vehicle is approaching you from the opposite direction and is within 50 metres",
+          pt: "Somente quando outro veículo estiver se aproximando em sentido contrário e a menos de 50 metros",
+          es: "Solo cuando otro vehículo se acerque en sentido contrario y esté a menos de 50 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Within 200 metres when approaching another vehicle from either the opposite direction or from behind",
+          pt: "A até 200 metros ao se aproximar de outro veículo, seja em sentido contrário ou por trás",
+          es: "A menos de 200 metros al acercarse a otro vehículo, sea en sentido contrario o por detrás"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Within 3 metres when approaching another vehicle from either the opposite direction or from behind",
+          pt: "A até 3 metros ao se aproximar de outro veículo, seja em sentido contrário ou por trás",
+          es: "A menos de 3 metros al acercarse a otro vehículo, sea en sentido contrario o por detrás"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You never need to dip your headlights",
+          pt: "Você nunca precisa baixar os faróis",
+          es: "Nunca es necesario bajar las luces"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Drivers must dip their high beam headlights to low beam when within 200 metres of an oncoming vehicle, or when following within 200 metres of a vehicle ahead, to avoid dazzling other drivers.",
+      pt: "Os motoristas devem baixar o farol alto para o farol baixo quando estiverem a até 200 metros de um veículo que vem em sentido contrário, ou ao seguir a até 200 metros de um veículo à frente, para evitar ofuscar outros motoristas.",
+      es: "Los conductores deben bajar las luces altas a luces bajas cuando estén a menos de 200 metros de un vehículo que viene en sentido contrario, o al seguir a menos de 200 metros de un vehículo delante, para evitar encandilar a otros conductores."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-62",
+    cat: "Road Safety",
+    q: {
+      en: "When driving, you must carry your licence",
+      pt: "Ao dirigir, você deve portar sua habilitação",
+      es: "Al conducir, usted debe portar su licencia"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only when towing a trailer",
+          pt: "Somente quando estiver rebocando um trailer",
+          es: "Solo cuando esté remolcando un tráiler"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "During daylight hours only",
+          pt: "Somente durante o dia",
+          es: "Solo durante el día"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When you remember it",
+          pt: "Quando você se lembrar dela",
+          es: "Cuando se acuerde de llevarla"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "At all times",
+          pt: "O tempo todo",
+          es: "En todo momento"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Drivers are legally required to carry their driver licence with them at all times while driving, so it can be produced if requested by police.",
+      pt: "Os motoristas são legalmente obrigados a portar sua habilitação de motorista o tempo todo enquanto dirigem, para que possa ser apresentada caso solicitada pela polícia.",
+      es: "Los conductores están legalmente obligados a llevar consigo su licencia de conducir en todo momento mientras conducen, para poder presentarla si la policía lo solicita."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-63",
+    cat: "Road Safety",
+    q: {
+      en: "When following another vehicle in a lane of traffic, what distance is a useful guide to estimate the minimum safe following distance for dry road conditions?",
+      pt: "Ao seguir outro veículo em uma faixa de trânsito, qual distância é um guia útil para estimar a distância mínima segura de seguimento em condições de pista seca?",
+      es: "Al seguir a otro vehículo en un carril de tráfico, ¿qué distancia es una guía útil para estimar la distancia mínima segura de seguimiento en condiciones de pista seca?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Leave a 3-second time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 3 segundos entre você e o outro veículo",
+          es: "Deje un intervalo de 3 segundos entre usted y el otro vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Leave a 2-second time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 2 segundos entre você e o outro veículo",
+          es: "Deje un intervalo de 2 segundos entre usted y el otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Leave a 5-second time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 5 segundos entre você e o outro veículo",
+          es: "Deje un intervalo de 5 segundos entre usted y el otro vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Leave a 7-second time gap between you and the other vehicle",
+          pt: "Deixe um intervalo de 7 segundos entre você e o outro veículo",
+          es: "Deje un intervalo de 7 segundos entre usted y el otro vehículo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A 3-second gap in dry conditions gives you enough time and space to react and brake safely if the vehicle ahead stops suddenly.",
+      pt: "Um intervalo de 3 segundos em condições de pista seca oferece tempo e espaço suficientes para reagir e frear com segurança caso o veículo à frente pare de repente.",
+      es: "Un intervalo de 3 segundos en condiciones de pista seca le da tiempo y espacio suficientes para reaccionar y frenar de forma segura si el vehículo de adelante se detiene repentinamente."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-64",
+    sign: "/icons/signs/tas-car-64.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "When is the driver of a motor vehicle (not a novice learner or P1 licence holder) allowed to use a mobile phone?",
+      pt: "Quando o motorista de um veículo motorizado (que não seja aprendiz novato ou titular de licença P1) pode usar um celular?",
+      es: "¿Cuándo puede el conductor de un vehículo motorizado (que no sea un aprendiz novato ni titular de una licencia P1) usar un teléfono móvil?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "When they are certain they will not lose concentration for more than 5 seconds.",
+          pt: "Quando tiver certeza de que não perderá a concentração por mais de 5 segundos.",
+          es: "Cuando esté seguro de que no perderá la concentración por más de 5 segundos."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "When the traffic is stationary or moving at less than 20kms per hour.",
+          pt: "Quando o trânsito estiver parado ou se movendo a menos de 20 km/h.",
+          es: "Cuando el tráfico esté detenido o circulando a menos de 20 km/h."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When the vehicle is parked with the engine off, or when the mobile phone is in a commercially designed holder and is fixed to the vehicle, or when it can be operated without being touched.",
+          pt: "Quando o veículo estiver estacionado com o motor desligado, ou quando o celular estiver em um suporte comercial fixado ao veículo, ou quando puder ser operado sem ser tocado.",
+          es: "Cuando el vehículo esté estacionado con el motor apagado, o cuando el teléfono móvil esté en un soporte diseñado comercialmente y fijado al vehículo, o cuando pueda operarse sin tocarlo."
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Any time as long as one hand remains on the steering wheel at all times.",
+          pt: "A qualquer momento, desde que uma mão permaneça no volante o tempo todo.",
+          es: "En cualquier momento, siempre que una mano permanezca en el volante en todo momento."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A fully licensed driver may only use a mobile phone while driving if it is properly mounted in a fixed commercial holder and can be used without touching it, or if the vehicle is parked with the engine off.",
+      pt: "Um motorista com habilitação plena só pode usar o celular enquanto dirige se ele estiver fixado corretamente em um suporte comercial e puder ser usado sem ser tocado, ou se o veículo estiver estacionado com o motor desligado.",
+      es: "Un conductor con licencia definitiva solo puede usar el teléfono móvil mientras conduce si está correctamente fijado en un soporte comercial y puede usarse sin tocarlo, o si el vehículo está estacionado con el motor apagado."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-65",
+    sign: "/icons/signs/tas-car-65.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When passing a cyclist in a 50km/h zone, you must maintain a minimum distance of at least:",
+      pt: "Ao ultrapassar um ciclista em uma zona de 50 km/h, você deve manter uma distância mínima de pelo menos:",
+      es: "Al adelantar a un ciclista en una zona de 50 km/h, debe mantener una distancia mínima de al menos:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "2 metres",
+          pt: "2 metros",
+          es: "2 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 metres",
+          pt: "1,5 metro",
+          es: "1,5 metros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "1 metre",
+          pt: "1 metro",
+          es: "1 metro"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Under Tasmanian and Australian road rules, drivers must leave a minimum passing distance of 1 metre when overtaking a cyclist in a speed zone of 60km/h or less (which includes a 50km/h zone).",
+      pt: "Segundo as regras de trânsito da Tasmânia e da Austrália, os motoristas devem manter uma distância mínima de ultrapassagem de 1 metro ao ultrapassar um ciclista em uma zona de velocidade de 60 km/h ou menos (o que inclui uma zona de 50 km/h).",
+      es: "Según las normas de tránsito de Tasmania y Australia, los conductores deben mantener una distancia mínima de adelantamiento de 1 metro al adelantar a un ciclista en una zona de velocidad de 60 km/h o menos (lo que incluye una zona de 50 km/h)."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-66",
+    sign: "/icons/signs/tas-car-66.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When passing a cyclist in a 80km/h speed zone, you must maintain a minimum distance of at least:",
+      pt: "Ao ultrapassar um ciclista em uma zona de velocidade de 80 km/h, você deve manter uma distância mínima de pelo menos:",
+      es: "Al adelantar a un ciclista en una zona de velocidad de 80 km/h, debe mantener una distancia mínima de al menos:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "2 metres",
+          pt: "2 metros",
+          es: "2 metros"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 metres",
+          pt: "1,5 metro",
+          es: "1,5 metros"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "1 metre",
+          pt: "1 metro",
+          es: "1 metro"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Under Tasmanian and Australian road rules, drivers must leave a greater minimum passing distance of 1.5 metres when overtaking a cyclist in a speed zone above 60km/h (such as an 80km/h zone).",
+      pt: "Segundo as regras de trânsito da Tasmânia e da Austrália, os motoristas devem manter uma distância mínima maior de 1,5 metro ao ultrapassar um ciclista em uma zona de velocidade acima de 60 km/h (como uma zona de 80 km/h).",
+      es: "Según las normas de tránsito de Tasmania y Australia, los conductores deben mantener una distancia mínima mayor de 1,5 metros al adelantar a un ciclista en una zona de velocidad superior a 60 km/h (como una zona de 80 km/h)."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-67",
+    sign: "/icons/signs/tas-car-67.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "When pulling out of a road related area you must",
+      pt: "Ao sair de uma área relacionada à via, você deve",
+      es: "Al salir de un área relacionada con la vía, usted debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Give way to vehicles on the left",
+          pt: "Dar passagem aos veículos à esquerda",
+          es: "Ceder el paso a los vehículos que vienen por la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to vehicles on the right",
+          pt: "Dar passagem aos veículos à direita",
+          es: "Ceder el paso a los vehículos que vienen por la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn and proceed with caution as vehicles on the left and right must give way to you",
+          pt: "Buzinar e prosseguir com cautela, pois os veículos à esquerda e à direita devem dar passagem a você",
+          es: "Tocar la bocina y continuar con precaución, ya que los vehículos a la izquierda y a la derecha deben cederle el paso a usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver leaving a road-related area, such as a car park or driveway, must give way to traffic already on the road, including vehicles approaching from the right.",
+      pt: "Um motorista que sai de uma área relacionada à via, como um estacionamento ou entrada de veículos, deve dar passagem ao trânsito que já está na via, inclusive aos veículos que se aproximam pela direita.",
+      es: "Un conductor que sale de un área relacionada con la vía, como un estacionamiento o una entrada de vehículos, debe ceder el paso al tráfico que ya circula por la vía, incluidos los vehículos que se aproximan por la derecha."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-68",
+    sign: "/icons/signs/tas-car-68.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "When traffic lights turn from green to yellow you should",
+      pt: "Quando o semáforo muda de verde para amarelo, você deve",
+      es: "Cuando el semáforo cambia de verde a amarillo, debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speed up and go through the lights before they turn red",
+          pt: "Acelerar e passar pelo sinal antes que fique vermelho",
+          es: "Acelerar y pasar el semáforo antes de que se ponga en rojo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop, even if you must stop on the intersection and then reverse back to the stop line",
+          pt: "Parar, mesmo que precise parar dentro do cruzamento, e depois dar ré até a linha de parada",
+          es: "Detenerse, incluso si debe detenerse dentro de la intersección, y luego retroceder hasta la línea de parada"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop, even if you are in the intersection",
+          pt: "Parar, mesmo que já esteja dentro do cruzamento",
+          es: "Detenerse, incluso si ya está dentro de la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Stop, if you can do so safely before the stop line",
+          pt: "Parar, se puder fazer isso com segurança antes da linha de parada",
+          es: "Detenerse, si puede hacerlo con seguridad antes de la línea de parada"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A yellow light means you should stop if you can do so safely before the stop line; if you are too close to stop safely, you may continue through, but you should not accelerate to beat the light or stop mid-intersection.",
+      pt: "O sinal amarelo significa que você deve parar, se puder fazer isso com segurança antes da linha de parada; se estiver muito perto para parar com segurança, pode continuar, mas não deve acelerar para tentar passar antes do vermelho nem parar no meio do cruzamento.",
+      es: "La luz amarilla significa que debe detenerse si puede hacerlo con seguridad antes de la línea de parada; si está demasiado cerca para detenerse con seguridad, puede continuar, pero no debe acelerar para pasar antes de que cambie a rojo ni detenerse en medio de la intersección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-69",
+    sign: "/icons/signs/tas-car-69.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "When travelling on a road in a 100km/h speed zone where cyclists are riding two abreast, you must pass at a minimum distance of at least:",
+      pt: "Ao trafegar em uma via com limite de velocidade de 100 km/h onde ciclistas estão pedalando lado a lado (dois a dois), você deve ultrapassar mantendo uma distância mínima de pelo menos:",
+      es: "Al circular por una vía con un límite de velocidad de 100 km/h donde los ciclistas van pedaleando en paralelo (de a dos), debes adelantar manteniendo una distancia mínima de al menos:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "3 metres - when safe to do so.",
+          pt: "3 metros - quando for seguro fazer isso.",
+          es: "3 metros - cuando sea seguro hacerlo."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "1.5 metres - when safe to do so.",
+          pt: "1,5 metro - quando for seguro fazer isso.",
+          es: "1,5 metros - cuando sea seguro hacerlo."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It is too risky to overtake at speeds greater than 60km/h when passing cyclists travelling two abreast. ",
+          pt: "É arriscado demais ultrapassar em velocidades acima de 60 km/h ao passar por ciclistas pedalando lado a lado.",
+          es: "Es demasiado arriesgado adelantar a velocidades superiores a 60 km/h al pasar a ciclistas que circulan en paralelo."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In speed zones above 60km/h, including 100km/h zones, drivers must leave a minimum passing distance of 1.5 metres when overtaking cyclists, including those riding two abreast, whenever it is safe to do so.",
+      pt: "Em zonas com limite de velocidade acima de 60 km/h, incluindo zonas de 100 km/h, o motorista deve manter uma distância mínima de 1,5 metro ao ultrapassar ciclistas, mesmo quando estiverem pedalando lado a lado, sempre que for seguro fazer isso.",
+      es: "En zonas con límite de velocidad superior a 60 km/h, incluidas las de 100 km/h, el conductor debe mantener una distancia mínima de 1,5 metros al adelantar a ciclistas, incluso cuando circulan en paralelo, siempre que sea seguro hacerlo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-70",
+    cat: "Road Markings",
+    q: {
+      en: "Where there are no line markings on the road where should you drive?",
+      pt: "Onde não há faixas demarcadas na via, onde você deve dirigir?",
+      es: "Donde no hay marcas viales en la vía, ¿por dónde debes conducir?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "In the centre of the road",
+          pt: "No centro da via",
+          es: "Por el centro de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "On any part of the road",
+          pt: "Em qualquer parte da via",
+          es: "Por cualquier parte de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Within two metres of the left-hand side of the road",
+          pt: "A até dois metros do lado esquerdo da via",
+          es: "A menos de dos metros del lado izquierdo de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "As close as practical to the left side of the road",
+          pt: "O mais próximo possível do lado esquerdo da via",
+          es: "Lo más cerca posible del lado izquierdo de la vía"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "When a road has no line markings, drivers must keep as close as practical to the left-hand side of the road.",
+      pt: "Quando uma via não tem faixas demarcadas, o motorista deve manter-se o mais próximo possível do lado esquerdo da via.",
+      es: "Cuando una vía no tiene marcas viales, el conductor debe mantenerse lo más cerca posible del lado izquierdo de la vía."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-71",
+    sign: "/icons/signs/tas-car-71.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which car gives way?",
+      pt: "Qual carro deve dar a preferência?",
+      es: "¿Qué auto debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B",
+          pt: "Carro B",
+          es: "Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Based on the give-way rules shown in this scenario's diagram, Car A must give way to Car B, reflecting the standard priority rule that applies to their relative positions and movements at this point.",
+      pt: "Com base nas regras de preferência mostradas no diagrama deste cenário, o Carro A deve dar a preferência ao Carro B, refletindo a regra padrão de prioridade que se aplica às posições e movimentos relativos dos dois nesse ponto.",
+      es: "Según las reglas de cesión de paso que muestra el diagrama de este escenario, el Auto A debe ceder el paso al Auto B, lo que refleja la regla estándar de prioridad que se aplica a sus posiciones y movimientos relativos en ese punto."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-72",
+    sign: "/icons/signs/tas-car-72.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which car goes first?",
+      pt: "Qual carro passa primeiro?",
+      es: "¿Qué auto pasa primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B",
+          pt: "Carro B",
+          es: "Auto B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Car A goes first because, under standard give-way rules, Car B is the one required to give way in this situation.",
+      pt: "O Carro A passa primeiro porque, segundo as regras padrão de prioridade, é o Carro B quem deve dar passagem nessa situação.",
+      es: "El Auto A pasa primero porque, según las reglas estándar de prioridad, es el Auto B quien debe ceder el paso en esta situación."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-73",
+    sign: "/icons/signs/tas-car-73.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which car must give way?",
+      pt: "Qual carro deve dar a preferência?",
+      es: "¿Qué auto debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B",
+          pt: "Carro B",
+          es: "Auto B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Based on the give-way rules illustrated in this scenario, Car B is the one required to give way to Car A, reflecting the standard priority rule that applies to their relative positions and movements at this point.",
+      pt: "Com base nas regras de preferência ilustradas nesse cenário, o Carro B é quem deve dar a preferência ao Carro A, refletindo a regra padrão de prioridade que se aplica às posições e movimentos relativos dos dois nesse ponto.",
+      es: "Según las reglas de cesión de paso que ilustra este escenario, el Auto B es el que debe ceder el paso al Auto A, lo que refleja la regla estándar de prioridad que se aplica a sus posiciones y movimientos relativos en ese punto."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-74",
+    sign: "/icons/signs/tas-car-74.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "Which car(s) can cross the lines to overtake (when it's safe?)",
+      pt: "Qual(is) carro(s) pode(m) cruzar as linhas para ultrapassar (quando for seguro)?",
+      es: "¿Qué auto(s) puede(n) cruzar las líneas para adelantar (cuando sea seguro)?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A.",
+          pt: "Carro A.",
+          es: "Auto A."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B.",
+          pt: "Carro B.",
+          es: "Auto B."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Both Cars A and B can cross the lines to overtake.",
+          pt: "Ambos os Carros A e B podem cruzar as linhas para ultrapassar.",
+          es: "Ambos los Autos A y B pueden cruzar las líneas para adelantar."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Only the car facing a broken (dashed) line on its side of the road may legally cross it to overtake when safe; a car facing a solid line may not.",
+      pt: "Somente o carro que está do lado com a linha tracejada (descontínua) pode cruzá-la legalmente para ultrapassar quando for seguro; um carro do lado da linha contínua não pode.",
+      es: "Solo el auto que está del lado con la línea discontinua puede cruzarla legalmente para adelantar cuando sea seguro; un auto del lado de la línea continua no puede hacerlo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-75",
+    cat: "Alcohol & BAC",
+    q: {
+      en: "Which of the following statements is correct?",
+      pt: "Qual das seguintes afirmações está correta?",
+      es: "¿Cuál de las siguientes afirmaciones es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "If you have been drinking alcohol, it is better not to drive",
+          pt: "Se você tem bebido álcool, é melhor não dirigir",
+          es: "Si ha estado bebiendo alcohol, es mejor no conducir"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Taking prescribed drugs may reduce the effects of alcohol on the body",
+          pt: "Tomar medicamentos prescritos pode reduzir os efeitos do álcool no corpo",
+          es: "Tomar medicamentos recetados puede reducir los efectos del alcohol en el cuerpo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drinking coffee helps reduce the effects of alcohol on your body",
+          pt: "Beber café ajuda a reduzir os efeitos do álcool no corpo",
+          es: "Beber café ayuda a reducir los efectos del alcohol en el cuerpo"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Having a shower may reduce the effects of alcohol on your body",
+          pt: "Tomar banho pode reduzir os efeitos do álcool no corpo",
+          es: "Ducharse puede reducir los efectos del alcohol en el cuerpo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "There is no safe way to reverse alcohol's effects quickly — coffee, showers, and other tricks do not speed up sobering, so the only safe option after drinking is to not drive.",
+      pt: "Não existe uma forma segura de reverter rapidamente os efeitos do álcool — café, banho e outros truques não aceleram a eliminação do álcool, então a única opção segura depois de beber é não dirigir.",
+      es: "No existe una forma segura de revertir rápidamente los efectos del alcohol — el café, la ducha y otros trucos no aceleran la eliminación del alcohol, por lo que la única opción segura después de beber es no conducir."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-76",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is correct? On a multi-laned road (with two or more lanes travelling in the same direction) drivers may:",
+      pt: "Qual das seguintes afirmações está correta? Em uma via com múltiplas faixas (com duas ou mais faixas no mesmo sentido), os motoristas podem:",
+      es: "¿Cuál de las siguientes afirmaciones es correcta? En una vía con varios carriles (con dos o más carriles en el mismo sentido), los conductores pueden:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Make a U-turn across lanes travelling in the same direction",
+          pt: "Fazer um retorno cruzando faixas que seguem no mesmo sentido",
+          es: "Hacer un giro en U cruzando carriles que van en el mismo sentido"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Change lanes without indicating",
+          pt: "Mudar de faixa sem sinalizar",
+          es: "Cambiar de carril sin señalizar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Change lanes when it is safe to do so",
+          pt: "Mudar de faixa quando for seguro fazê-lo",
+          es: "Cambiar de carril cuando sea seguro hacerlo"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Change lanes at anytime, as other drivers must show courtesy and give way to you",
+          pt: "Mudar de faixa a qualquer momento, já que os outros motoristas devem ter cortesia e dar passagem a você",
+          es: "Cambiar de carril en cualquier momento, ya que los demás conductores deben tener cortesía y cederle el paso"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Drivers may change lanes on a multi-laned road only when it is safe to do so, after indicating and checking that the move will not affect other traffic.",
+      pt: "Os motoristas só podem mudar de faixa em uma via com múltiplas faixas quando for seguro fazê-lo, após sinalizar e verificar que a manobra não afetará outros veículos.",
+      es: "Los conductores solo pueden cambiar de carril en una vía con varios carriles cuando sea seguro hacerlo, después de señalizar y verificar que la maniobra no afectará a otro tráfico."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-77",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is true?",
+      pt: "Qual das seguintes afirmações é verdadeira?",
+      es: "¿Cuál de las siguientes afirmaciones es verdadera?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Medication taken with alcohol does not increase the effect of the alcohol on your driving ability.",
+          pt: "Medicamentos tomados junto com álcool não aumentam o efeito do álcool sobre sua capacidade de dirigir.",
+          es: "Los medicamentos tomados junto con alcohol no aumentan el efecto del alcohol sobre su capacidad para conducir."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You should ask your doctor or pharmacist about how your medication may affect your driving ability.",
+          pt: "Você deve perguntar ao seu médico ou farmacêutico como seu medicamento pode afetar sua capacidade de dirigir.",
+          es: "Debe preguntarle a su médico o farmacéutico cómo su medicamento puede afectar su capacidad para conducir."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "There are no medications with side-effects which will affect your driving ability.",
+          pt: "Não existem medicamentos com efeitos colaterais que afetem sua capacidade de dirigir.",
+          es: "No existen medicamentos con efectos secundarios que afecten su capacidad para conducir."
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "If a doctor prescribes your medication then it will enhance your driving ability.",
+          pt: "Se um médico prescreve seu medicamento, então ele vai melhorar sua capacidade de dirigir.",
+          es: "Si un médico le receta su medicamento, entonces este mejorará su capacidad para conducir."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The official answer marks this statement as true: medication that has been properly prescribed and dosed by a doctor for your specific condition is taken under medical supervision, meaning the doctor has already assessed it as safe for you to take — unlike medication taken without a prescription or used incorrectly. (Note that asking your doctor or pharmacist, as in another option, is also genuinely good advice — it simply isn't the option this test designates as the correct answer.)",
+      pt: "A resposta oficial considera esta afirmação verdadeira: um medicamento devidamente prescrito e dosado por um médico para sua condição específica é tomado sob supervisão médica, ou seja, o médico já avaliou que é seguro para você tomar — diferente de um medicamento tomado sem prescrição ou usado de forma incorreta. (Vale notar que perguntar ao médico ou farmacêutico, como em outra opção, também é um bom conselho — mas não é a opção que este teste define como a resposta correta.)",
+      es: "La respuesta oficial considera esta afirmación verdadera: un medicamento correctamente recetado y dosificado por un médico para su condición específica se toma bajo supervisión médica, es decir, el médico ya evaluó que es seguro para usted tomarlo, a diferencia de un medicamento tomado sin receta o usado de forma incorrecta. (Cabe notar que preguntarle a su médico o farmacéutico, como en otra opción, también es un buen consejo, solo que no es la opción que este test designa como la respuesta correcta.)"
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-78",
+    cat: "Road Safety",
+    q: {
+      en: "Which of the following statements is true? A novice car learner driver may only drive",
+      pt: "Qual das seguintes afirmações é verdadeira? Um motorista aprendiz novato de carro só pode dirigir",
+      es: "¿Cuál de las siguientes afirmaciones es verdadera? Un conductor principiante novato de auto solo puede conducir"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "With a supervisory driver who holds a current Australian full licence that has not been suspended or disqualified in the previous 2 years",
+          pt: "Com um motorista supervisor que possua uma habilitação australiana definitiva válida, que não tenha sido suspensa ou cassada nos últimos 2 anos",
+          es: "Con un conductor supervisor que posea una licencia australiana definitiva vigente, que no haya sido suspendida ni cancelada en los últimos 2 años"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "During daylight hours",
+          pt: "Durante o horário diurno",
+          es: "Durante las horas de luz diurna"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "With a provisional driver",
+          pt: "Com um motorista provisório",
+          es: "Con un conductor provisional"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "With a supervisory driver who is at least 25 years of age",
+          pt: "Com um motorista supervisor que tenha pelo menos 25 anos de idade",
+          es: "Con un conductor supervisor que tenga al menos 25 años de edad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A novice learner driver must always be supervised by someone who holds a current full Australian driver licence that has not been suspended or disqualified in the past two years.",
+      pt: "Um motorista aprendiz novato deve sempre ser supervisionado por alguém que possua uma habilitação australiana definitiva válida, que não tenha sido suspensa ou cassada nos últimos dois anos.",
+      es: "Un conductor principiante novato siempre debe estar supervisado por alguien que posea una licencia de conducir australiana definitiva vigente, que no haya sido suspendida ni cancelada en los últimos dos años."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-79",
+    cat: "Road Safety",
+    q: {
+      en: "Which one of the following statements for a car learner driver is correct?",
+      pt: "Qual das seguintes afirmações sobre um motorista aprendiz de carro está correta?",
+      es: "¿Cuál de las siguientes afirmaciones sobre un conductor aprendiz de auto es correcta?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must have only one passenger in the car",
+          pt: "Você deve ter apenas um passageiro no carro",
+          es: "Debe llevar solo un pasajero en el auto"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must drive only during daylight hours",
+          pt: "Você deve dirigir somente durante o dia",
+          es: "Debe conducir solo durante el día"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You need to get lots of supervised driving experience in a variety of road conditions",
+          pt: "Você precisa obter bastante experiência de condução supervisionada em uma variedade de condições de estrada",
+          es: "Necesita obtener mucha experiencia de conducción supervisada en una variedad de condiciones de la vía"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers are encouraged to gain broad supervised experience across different road types, traffic and weather conditions to build safe driving skills before progressing to a provisional licence.",
+      pt: "Motoristas aprendizes são incentivados a obter ampla experiência supervisionada em diferentes tipos de vias, tráfego e condições climáticas para desenvolver habilidades seguras antes de avançar para a carteira provisória.",
+      es: "Se anima a los conductores aprendices a obtener una amplia experiencia supervisada en distintos tipos de vías, tráfico y condiciones climáticas para desarrollar habilidades de conducción seguras antes de pasar a la licencia provisional."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-80",
+    cat: "Speed Limits",
+    q: {
+      en: "Which one of the following statements is true?",
+      pt: "Qual das seguintes afirmações é verdadeira?",
+      es: "¿Cuál de las siguientes afirmaciones es verdadera?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Provided you do not exceed the speed the limit you are always driving safely",
+          pt: "Desde que você não exceda o limite de velocidade, você está sempre dirigindo com segurança",
+          es: "Siempre que no supere el límite de velocidad, siempre estará conduciendo de forma segura"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In certain situations and conditions driving at the speed limit may be dangerous",
+          pt: "Em certas situações e condições, dirigir no limite de velocidade pode ser perigoso",
+          es: "En ciertas situaciones y condiciones, conducir al límite de velocidad puede ser peligroso"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed limits can be exceeded by up to 10km/h if the road and weather conditions are good",
+          pt: "Os limites de velocidade podem ser excedidos em até 10 km/h se as condições da via e do clima forem boas",
+          es: "Los límites de velocidad se pueden superar hasta en 10 km/h si las condiciones de la vía y el clima son buenas"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Speed limits can be exceeded if you have a lawful excuse",
+          pt: "Os limites de velocidade podem ser excedidos se você tiver uma desculpa legítima",
+          es: "Los límites de velocidad se pueden superar si tiene una excusa legítima"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The speed limit is a maximum, not always a safe speed — factors like weather, traffic, or road conditions can make driving at the limit unsafe.",
+      pt: "O limite de velocidade é um máximo, não necessariamente uma velocidade segura — fatores como clima, tráfego ou condições da via podem tornar perigoso dirigir no limite.",
+      es: "El límite de velocidad es un máximo, no siempre una velocidad segura: factores como el clima, el tráfico o el estado de la vía pueden hacer que conducir al límite sea peligroso."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-81",
+    cat: "Road Safety",
+    q: {
+      en: "Which statement is true?",
+      pt: "Qual afirmação é verdadeira?",
+      es: "¿Cuál afirmación es verdadera?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Speeding never causes crashes",
+          pt: "Dirigir acima da velocidade nunca causa acidentes",
+          es: "Exceder la velocidad nunca causa accidentes"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Factors like road and weather conditions can affect a cars stopping distance",
+          pt: "Fatores como as condições da via e do tempo podem afetar a distância de frenagem de um carro",
+          es: "Factores como las condiciones de la vía y del clima pueden afectar la distancia de frenado de un auto"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It is legal to travel 10km/h over the speed limit",
+          pt: "É legal trafegar 10 km/h acima do limite de velocidade",
+          es: "Es legal circular 10 km/h por encima del límite de velocidad"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "When it is raining you need to reduce your following distance",
+          pt: "Quando está chovendo, você precisa reduzir a distância de seguimento",
+          es: "Cuando llueve, necesitas reducir la distancia de seguimiento"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Road surface (wet, gravel, uneven) and weather conditions (rain, fog) directly affect tyre grip and visibility, which in turn change how much distance a car needs to stop safely.",
+      pt: "A condição da superfície da via (molhada, com cascalho, irregular) e as condições climáticas (chuva, neblina) afetam diretamente a aderência dos pneus e a visibilidade, o que altera a distância que o carro precisa para parar com segurança.",
+      es: "El estado de la superficie de la vía (mojada, con grava, irregular) y las condiciones climáticas (lluvia, niebla) afectan directamente el agarre de los neumáticos y la visibilidad, lo que cambia la distancia que un auto necesita para detenerse con seguridad."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-82",
+    sign: "/icons/signs/tas-car-82.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle gives way?",
+      pt: "Qual veículo deve dar passagem?",
+      es: "¿Qué vehículo debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Truck B",
+          pt: "Caminhão B",
+          es: "Camión B"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Based on the give-way rules shown in the scenario, Truck B is the vehicle required to give way to Car A.",
+      pt: "Com base nas regras de dar passagem mostradas no cenário, o Caminhão B é o veículo que deve dar passagem ao Carro A.",
+      es: "Según las reglas de ceder el paso que se muestran en el escenario, el Camión B es el vehículo que debe ceder el paso al Auto A."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-83",
+    sign: "/icons/signs/tas-car-83.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Which vehicle goes first?",
+      pt: "Qual veículo passa primeiro?",
+      es: "¿Qué vehículo pasa primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car D ",
+          pt: "Carro D",
+          es: "Auto D"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Cyclist C ",
+          pt: "Ciclista C",
+          es: "Ciclista C"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car B ",
+          pt: "Carro B",
+          es: "Auto B"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car A ",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Cyclists are treated the same as other vehicles under the road rules, so Cyclist C goes first here because the other vehicles are required to give way in this situation.",
+      pt: "Ciclistas são tratados como qualquer outro veículo pelas regras de trânsito, então o Ciclista C passa primeiro aqui porque os outros veículos precisam dar passagem a ele nessa situação.",
+      es: "Los ciclistas son tratados como cualquier otro vehículo según las normas de tránsito, así que el Ciclista C pasa primero aquí porque los demás vehículos deben cederle el paso en esta situación."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-84",
+    sign: "/icons/signs/tas-car-84.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way at a pedestrian crossing?",
+      pt: "Quem deve dar passagem em uma faixa de pedestres?",
+      es: "¿Quién debe ceder el paso en un paso de peatones?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only the driver of Car A, which is travelling on the same side of the road as the pedestrian",
+          pt: "Somente o motorista do Carro A, que está trafegando no mesmo lado da via que o pedestre",
+          es: "Solo el conductor del Auto A, que circula por el mismo lado de la vía que el peatón"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Neither Car A or Car B must give way if the pedestrian is in the middle of the road",
+          pt: "Nem o Carro A nem o Carro B precisam dar passagem se o pedestre estiver no meio da via",
+          es: "Ni el Auto A ni el Auto B deben ceder el paso si el peatón está en medio de la vía"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car A and Car B must stop and give way to any pedestrian on the crossing",
+          pt: "O Carro A e o Carro B devem parar e dar passagem a qualquer pedestre na faixa",
+          es: "El Auto A y el Auto B deben detenerse y ceder el paso a cualquier peatón en el paso de peatones"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "The pedestrian must give way to all traffic",
+          pt: "O pedestre deve dar passagem a todo o trânsito",
+          es: "El peatón debe ceder el paso a todo el tránsito"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Both vehicles approaching a pedestrian crossing must stop and give way to any pedestrian on it, regardless of which side of the road they are on.",
+      pt: "Ambos os veículos que se aproximam de uma faixa de pedestres devem parar e dar passagem a qualquer pedestre nela, independentemente do lado da via em que estejam.",
+      es: "Ambos los vehículos que se acercan a un paso de peatones deben detenerse y ceder el paso a cualquier peatón que esté en él, sin importar de qué lado de la vía se encuentren."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-85",
+    sign: "/icons/signs/tas-car-85.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "Who must give way?",
+      pt: "Quem deve dar a preferência?",
+      es: "¿Quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Car A",
+          pt: "Carro A",
+          es: "Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The pedestrian",
+          pt: "O pedestre",
+          es: "El peatón"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In this scenario Car A must give way to the pedestrian, reflecting the general rule that drivers must give way to pedestrians who are crossing or about to cross at a crossing point or intersection.",
+      pt: "Nesse cenário, o Carro A deve dar a preferência ao pedestre, refletindo a regra geral de que os motoristas devem dar a preferência a pedestres que estejam atravessando ou prestes a atravessar em uma faixa ou cruzamento.",
+      es: "En este escenario, el Auto A debe ceder el paso al peatón, lo que refleja la regla general de que los conductores deben ceder el paso a los peatones que están cruzando o a punto de cruzar en un paso de peatones o intersección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-86",
+    sign: "/icons/signs/tas-car-86.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "Who will be fined if a passenger under the age of 16 is not wearing a seat belt or suitable child restraint?",
+      pt: "Quem será multado se um passageiro com menos de 16 anos não estiver usando cinto de segurança ou dispositivo de retenção infantil adequado?",
+      es: "¿Quién será multado si un pasajero menor de 16 años no lleva puesto el cinturón de seguridad o un sistema de retención infantil adecuado?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The driver of the vehicle.",
+          pt: "O motorista do veículo.",
+          es: "El conductor del vehículo."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The passenger.",
+          pt: "O passageiro.",
+          es: "El pasajero."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The owner of the vehicle.",
+          pt: "O proprietário do veículo.",
+          es: "El propietario del vehículo."
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Everyone in the vehicle.",
+          pt: "Todos no veículo.",
+          es: "Todos los ocupantes del vehículo."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The driver is responsible for ensuring passengers under 16 are correctly restrained, so it is the driver who is fined if a young passenger is unrestrained.",
+      pt: "O motorista é responsável por garantir que os passageiros com menos de 16 anos estejam devidamente presos com o cinto ou dispositivo de retenção, então é o motorista que é multado caso um passageiro jovem não esteja preso.",
+      es: "El conductor es responsable de garantizar que los pasajeros menores de 16 años estén correctamente sujetos, por lo que es el conductor quien recibe la multa si un pasajero joven no lleva el sistema de retención."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-87",
+    cat: "Road Safety",
+    q: {
+      en: "Who, apart from cyclists, can use a bicycle path?",
+      pt: "Além dos ciclistas, quem pode usar uma ciclovia?",
+      es: "Además de los ciclistas, ¿quién puede usar una ciclovía?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Any vehicle",
+          pt: "Qualquer veículo",
+          es: "Cualquier vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "If signs don't say otherwise, a person in a wheelchair or pushing a wheelchair or a person using roller blades or roller-skates",
+          pt: "Se os sinais não indicarem o contrário, uma pessoa em cadeira de rodas ou empurrando uma cadeira de rodas, ou uma pessoa usando patins ou roller",
+          es: "Si las señales no indican lo contrario, una persona en silla de ruedas o empujando una silla de ruedas, o una persona usando patines en línea o patines"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Motorcyclists",
+          pt: "Motociclistas",
+          es: "Motociclistas"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Courier vans",
+          pt: "Vans de entrega",
+          es: "Furgonetas de reparto"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Unless signage states otherwise, a bicycle path may be used by cyclists as well as wheelchair users and people on roller blades or roller-skates — motor vehicles and other traffic are not permitted on it.",
+      pt: "A menos que a sinalização indique o contrário, uma ciclovia pode ser usada por ciclistas, além de pessoas em cadeira de rodas e pessoas usando patins ou roller — veículos motorizados e outro tráfego não podem circular nela.",
+      es: "A menos que la señalización indique lo contrario, una ciclovía puede ser usada por ciclistas, así como por personas en silla de ruedas y personas con patines en línea o patines — los vehículos motorizados y otro tráfico no están permitidos en ella."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-88",
+    sign: "/icons/signs/tas-car-88.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "You are approaching an intersection controlled by traffic lights.  There is a red circular light and a green arrow pointing to the right. Can you turn right?",
+      pt: "Você está se aproximando de uma interseção controlada por semáforo. Há uma luz circular vermelha e uma seta verde apontando para a direita. Você pode virar à direita?",
+      es: "Usted se está acercando a una intersección controlada por semáforo. Hay una luz circular roja y una flecha verde apuntando a la derecha. ¿Puede girar a la derecha?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No, not at anytime",
+          pt: "Não, em nenhum momento",
+          es: "No, en ningún momento"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes",
+          pt: "Sim",
+          es: "Sí"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No, only when both lights are green",
+          pt: "Não, somente quando ambas as luzes estiverem verdes",
+          es: "No, solo cuando ambas luces estén en verde"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No, but you can go straight ahead",
+          pt: "Não, mas você pode seguir em frente",
+          es: "No, pero puede seguir en línea recta"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A green arrow overrides the red circular light for that specific direction — a green right arrow means you may turn right, even though the round light is red.",
+      pt: "Uma seta verde tem prioridade sobre a luz circular vermelha para aquela direção específica — uma seta verde para a direita significa que você pode virar à direita, mesmo que a luz redonda esteja vermelha.",
+      es: "Una flecha verde tiene prioridad sobre la luz circular roja para esa dirección específica — una flecha verde a la derecha significa que puede girar a la derecha, aunque la luz redonda esté en rojo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-89",
+    sign: "/icons/signs/tas-car-89.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are behind a long vehicle (7.5 m or more in length) that is signalling and starting to turn left. The truck is displaying a Do not overtake turning vehicle sign and is in the second lane from the left side of the road. You also want to turn left.  What must you do?",
+      pt: 'Você está atrás de um veículo longo (7,5 m ou mais de comprimento) que está sinalizando e começando a virar à esquerda. O caminhão exibe uma placa "Não ultrapasse veículo virando" e está na segunda faixa a partir da esquerda. Você também quer virar à esquerda. O que você deve fazer?',
+      es: 'Estás detrás de un vehículo largo (7,5 m o más de longitud) que está señalizando y comenzando a girar a la izquierda. El camión exhibe un cartel de "No adelantar vehículo girando" y está en el segundo carril desde la izquierda. Tú también quieres girar a la izquierda. ¿Qué debes hacer?'
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Use the far left lane to pass the truck and turn left",
+          pt: "Usar a faixa mais à esquerda para ultrapassar o caminhão e virar à esquerda",
+          es: "Usar el carril más a la izquierda para adelantar al camión y girar a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sound your horn and quickly pass the truck on the left before the truck turns",
+          pt: "Buzinar e ultrapassar rapidamente o caminhão pela esquerda antes que ele vire",
+          es: "Tocar la bocina y adelantar rápidamente al camión por la izquierda antes de que gire"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Allow the truck to complete its turn before you turn left",
+          pt: "Permitir que o caminhão termine a manobra antes de você virar à esquerda",
+          es: "Permitir que el camión complete el giro antes de que tú gires a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Indicate and quickly pass the truck on the right hand side before the truck turns",
+          pt: "Sinalizar e ultrapassar rapidamente o caminhão pelo lado direito antes que ele vire",
+          es: "Señalizar y adelantar rápidamente al camión por el lado derecho antes de que gire"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A Do Not Overtake Turning Vehicle sign warns that the long vehicle needs extra space to complete its turn safely, so you must hold back and let it finish turning before you proceed.",
+      pt: 'A placa "Não ultrapasse veículo virando" avisa que o veículo longo precisa de espaço extra para completar a manobra com segurança, então você deve esperar e deixar que ele termine de virar antes de seguir.',
+      es: 'El cartel de "No adelantar vehículo girando" advierte que el vehículo largo necesita espacio adicional para completar el giro con seguridad, por lo que debes esperar y dejar que termine de girar antes de continuar.'
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-90",
+    sign: "/icons/signs/tas-car-90.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving a motor vehicle towards a marked multi-laned roundabout. You want to travel straight on through the roundabout to the road opposite.  What lane must you take?",
+      pt: "Você está dirigindo um veículo motorizado em direção a uma rotatória sinalizada com múltiplas faixas. Você quer seguir em frente pela rotatória até a via oposta. Qual faixa você deve usar?",
+      es: "Usted conduce un vehículo motorizado hacia una rotonda señalizada de varios carriles. Quiere seguir recto a través de la rotonda hacia la vía opuesta. ¿Qué carril debe tomar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must enter and leave the roundabout in the left lane",
+          pt: "Você deve entrar e sair da rotatória pela faixa da esquerda",
+          es: "Debe entrar y salir de la rotonda por el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You may enter and leave the roundabout in either lane",
+          pt: "Você pode entrar e sair da rotatória por qualquer uma das faixas",
+          es: "Puede entrar y salir de la rotonda por cualquiera de los carriles"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must enter and leave the roundabout in the right lane",
+          pt: "Você deve entrar e sair da rotatória pela faixa da direita",
+          es: "Debe entrar y salir de la rotonda por el carril derecho"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Move to the left lane before the roundabout then leave by the right lane",
+          pt: "Mudar para a faixa da esquerda antes da rotatória e depois sair pela faixa da direita",
+          es: "Cambiar al carril izquierdo antes de la rotonda y luego salir por el carril derecho"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When travelling straight through a marked multi-lane roundabout, you may use either lane to enter and exit, as long as you stay in that lane throughout.",
+      pt: "Ao seguir em frente por uma rotatória sinalizada com múltiplas faixas, você pode usar qualquer uma das faixas para entrar e sair, desde que permaneça nessa faixa durante todo o percurso.",
+      es: "Al seguir recto a través de una rotonda señalizada de varios carriles, puede usar cualquiera de los carriles para entrar y salir, siempre que permanezca en ese carril durante todo el trayecto."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-91",
+    sign: "/icons/signs/tas-car-91.gif",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving a vehicle along a multi-lane road and the speed limit is 80 km/h or less, which lane should you travel in?",
+      pt: "Você está dirigindo em uma via de múltiplas faixas com limite de velocidade de 80 km/h ou menos. Em qual faixa você deve trafegar?",
+      es: "Usted está conduciendo por una vía de varios carriles con un límite de velocidad de 80 km/h o menos. ¿Por qué carril debe circular?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "In the left-hand lane unless overtaking another vehicle in the left lane",
+          pt: "Na faixa da esquerda, a menos que esteja ultrapassando outro veículo na faixa da esquerda",
+          es: "Por el carril izquierdo, a menos que esté adelantando a otro vehículo en el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In the left-hand lane unless you are turning right",
+          pt: "Na faixa da esquerda, a menos que esteja virando à direita",
+          es: "Por el carril izquierdo, a menos que esté girando a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "In either lane",
+          pt: "Em qualquer uma das faixas",
+          es: "Por cualquiera de los carriles"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "You must travel in the left-hand lane",
+          pt: "Você deve trafegar na faixa da esquerda",
+          es: "Debe circular por el carril izquierdo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "On multi-lane roads with a speed limit of 80km/h or less, the keep-left rule does not apply, so drivers may travel in either lane.",
+      pt: "Em vias de múltiplas faixas com limite de velocidade de 80 km/h ou menos, a regra de manter-se à esquerda não se aplica, então os motoristas podem trafegar em qualquer uma das faixas.",
+      es: "En vías de varios carriles con un límite de velocidad de 80 km/h o menos, la regla de mantenerse a la izquierda no se aplica, por lo que los conductores pueden circular por cualquiera de los carriles."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-92",
+    sign: "/icons/signs/tas-car-92.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving around a corner behind a cyclist. You cannot see the road ahead. What must you do?",
+      pt: "Você está dirigindo em uma curva atrás de um ciclista e não consegue ver a via à frente. O que você deve fazer?",
+      es: "Usted está conduciendo en una curva detrás de un ciclista y no puede ver la vía más adelante. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Pass at a minimum distance of 1.5 metres.",
+          pt: "Ultrapassar mantendo uma distância mínima de 1,5 metro.",
+          es: "Adelantar manteniendo una distancia mínima de 1,5 metros."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pass at a minimum distance of 1 metre.",
+          pt: "Ultrapassar mantendo uma distância mínima de 1 metro.",
+          es: "Adelantar manteniendo una distancia mínima de 1 metro."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Continue driving behind the cyclist until you can see the road ahead is clear and it is safe to overtake.",
+          pt: "Continuar dirigindo atrás do ciclista até conseguir ver que a via à frente está livre e é seguro ultrapassar.",
+          es: "Continuar conduciendo detrás del ciclista hasta poder ver que la vía más adelante está despejada y es seguro adelantar."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "You must not overtake blind on a corner; wait behind the cyclist until you have clear visibility of the road ahead and it's safe to pass.",
+      pt: "Você não deve ultrapassar sem visibilidade em uma curva; espere atrás do ciclista até ter visão clara da via à frente e for seguro ultrapassar.",
+      es: "No debe adelantar sin visibilidad en una curva; espere detrás del ciclista hasta tener una visión clara de la vía más adelante y sea seguro adelantar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-93",
+    sign: "/icons/signs/tas-car-93.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving car A along a multi-lane road and the speed limit is more than 80 km/h, which of the following statements is WRONG?",
+      pt: "Você está dirigindo o carro A em uma via de múltiplas faixas com limite de velocidade acima de 80 km/h. Qual das afirmações a seguir está ERRADA?",
+      es: "Estás conduciendo el auto A en una vía de varios carriles con un límite de velocidad superior a 80 km/h. ¿Cuál de las siguientes afirmaciones es INCORRECTA?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must drive in the left hand lane unless you are turning right",
+          pt: "Você deve dirigir na faixa da esquerda, a menos que esteja virando à direita",
+          es: "Debes conducir por el carril izquierdo, a menos que estés girando a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must travel in the left hand lane unless you are overtaking a vehicle in the left hand lane",
+          pt: "Você deve trafegar na faixa da esquerda, a menos que esteja ultrapassando um veículo que está na faixa da esquerda",
+          es: "Debes circular por el carril izquierdo, a menos que estés adelantando a un vehículo que está en el carril izquierdo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You must travel in the left hand lane unless avoiding an obstruction",
+          pt: "Você deve trafegar na faixa da esquerda, a menos que esteja desviando de uma obstrução",
+          es: "Debes circular por el carril izquierdo, a menos que estés evitando una obstrucción"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You can travel in either lane",
+          pt: "Você pode trafegar em qualquer uma das faixas",
+          es: "Puedes circular por cualquiera de los carriles"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "On a multi-lane road with a speed limit over 80 km/h, the keep-left rule applies: you must drive in the left lane except when overtaking, turning right, or avoiding an obstruction — so the claim that you can travel in either lane is false.",
+      pt: "Em uma via de múltiplas faixas com limite de velocidade acima de 80 km/h, vale a regra de manter-se à esquerda: você deve dirigir na faixa da esquerda, exceto ao ultrapassar, virar à direita ou desviar de uma obstrução — por isso, a afirmação de que se pode trafegar em qualquer faixa é falsa.",
+      es: "En una vía de varios carriles con un límite de velocidad superior a 80 km/h, se aplica la regla de mantenerse a la izquierda: debes conducir por el carril izquierdo, salvo al adelantar, girar a la derecha o evitar una obstrucción, por lo que la afirmación de que puedes circular por cualquier carril es falsa."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-94",
+    sign: "/icons/signs/tas-car-94.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A and you want to merge with another line of traffic travelling in the same direction (there are no marked lanes)",
+      pt: "Você está dirigindo o Carro A e quer se fundir com outra fila de trânsito que segue na mesma direção (não há faixas demarcadas)",
+      es: "Estás conduciendo el Auto A y quieres incorporarte a otra fila de tráfico que circula en la misma dirección (no hay carriles señalizados)"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must give way to Car B as it is on your right",
+          pt: "Você deve dar passagem ao Carro B, pois ele está à sua direita",
+          es: "Debes ceder el paso al Auto B, ya que está a tu derecha"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You have right of way, as you are travelling ahead of Cars B and C",
+          pt: "Você tem prioridade de passagem, pois está à frente dos Carros B e C",
+          es: "Tienes prioridad de paso, ya que vas adelante de los Autos B y C"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "You have to give way to Cars B and C as they are to your right",
+          pt: "Você deve dar passagem aos Carros B e C, pois eles estão à sua direita",
+          es: "Debes ceder el paso a los Autos B y C, ya que están a tu derecha"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You have to give way to Cars B and C as you are travelling ahead of them",
+          pt: "Você deve dar passagem aos Carros B e C, pois você está à frente deles",
+          es: "Debes ceder el paso a los Autos B y C, ya que vas adelante de ellos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When lanes aren't marked and lines of traffic merge, the vehicle that is already ahead has right of way — following vehicles must give way to it.",
+      pt: "Quando as faixas não estão demarcadas e as filas de trânsito se fundem, o veículo que já está à frente tem prioridade de passagem — os veículos atrás devem dar passagem a ele.",
+      es: "Cuando los carriles no están señalizados y las filas de tráfico se combinan, el vehículo que ya va adelante tiene prioridad de paso; los vehículos que van detrás deben cederle el paso."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-95",
+    sign: "/icons/signs/tas-car-95.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A in a 100 km/hr speed zone.  Your lane has come to an end and you want to merge into another lane of traffic.  There are road markings.",
+      pt: "Você está dirigindo o Carro A em uma zona de 100 km/h. Sua faixa está terminando e você quer se fundir em outra faixa de trânsito. Há marcações na via.",
+      es: "Usted conduce el Auto A en una zona de 100 km/h. Su carril está terminando y usted quiere incorporarse a otro carril de tráfico. Hay marcas viales."
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must give way to Car B as you are moving into the lane it is travelling in",
+          pt: "Você deve dar passagem ao Carro B, pois está entrando na faixa em que ele está trafegando",
+          es: "Usted debe ceder el paso al Auto B, ya que se está incorporando al carril en el que este circula"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B has to give way to you as you are travelling ahead of it",
+          pt: "O Carro B deve dar passagem a você, pois você está à frente dele",
+          es: "El Auto B debe cederle el paso a usted, ya que usted va adelante de él"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car B has to give way to you as it is in the right lane",
+          pt: "O Carro B deve dar passagem a você, pois ele está na faixa da direita",
+          es: "El Auto B debe cederle el paso a usted, ya que está en el carril derecho"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When your lane ends and you need to merge, you are the one changing lanes, so you must give way to traffic already established in the lane you are merging into.",
+      pt: "Quando sua faixa termina e você precisa se fundir, é você quem está mudando de faixa, então você deve dar passagem ao trânsito que já está na faixa em que está entrando.",
+      es: "Cuando su carril termina y necesita incorporarse, es usted quien está cambiando de carril, por lo que debe ceder el paso al tráfico que ya circula en el carril al que se está incorporando."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-96",
+    sign: "/icons/signs/tas-car-96.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A in a 60 km/h speed zone.  Your lane ends and you must merge with another lane of traffic travelling in the same direction (there are line markings)",
+      pt: "Você está dirigindo o Carro A em uma zona de 60 km/h. Sua faixa termina e você precisa se fundir com outra faixa de trânsito que segue na mesma direção (há faixas demarcadas)",
+      es: "Estás conduciendo el Auto A en una zona de 60 km/h. Tu carril termina y debes incorporarte a otro carril de tráfico que circula en la misma dirección (hay marcas viales)"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cars B and C have to give way to you as they are in the right lane",
+          pt: "Os Carros B e C devem dar passagem a você, pois estão na faixa da direita",
+          es: "Los Autos B y C deben cederte el paso, ya que están en el carril derecho"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "You have to give way to Cars B and C as you are moving into their lane ",
+          pt: "Você deve dar passagem aos Carros B e C, pois está entrando na faixa deles",
+          es: "Debes ceder el paso a los Autos B y C, ya que te estás incorporando a su carril"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cars B and C have to give way to you as you are travelling ahead of them",
+          pt: "Os Carros B e C devem dar passagem a você, pois você está à frente deles",
+          es: "Los Autos B y C deben cederte el paso, ya que vas adelante de ellos"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "You have to give way to Car B as it is travelling ahead of you.",
+          pt: "Você deve dar passagem ao Carro B, pois ele está à frente de você.",
+          es: "Debes ceder el paso al Auto B, ya que va adelante de ti."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When your marked lane ends and you must merge into an adjoining lane, you are joining that lane of traffic and must give way to the vehicles already travelling in it.",
+      pt: "Quando sua faixa demarcada termina e você precisa se fundir a uma faixa adjacente, você está entrando naquela faixa de trânsito e deve dar passagem aos veículos que já estão nela.",
+      es: "Cuando tu carril señalizado termina y debes incorporarte a un carril adyacente, te estás uniendo a ese carril de tráfico y debes ceder el paso a los vehículos que ya circulan por él."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-97",
+    sign: "/icons/signs/tas-car-97.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A, who do you give way to?",
+      pt: "Você está dirigindo o Carro A. A quem você deve dar passagem?",
+      es: "Usted está conduciendo el Auto A. ¿A quién debe ceder el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must give way to all other vehicles, including the bicycle, and you must make sure Car D is turning left",
+          pt: "Você deve dar passagem a todos os outros veículos, incluindo a bicicleta, e deve certificar-se de que o Carro D está virando à esquerda",
+          es: "Debe ceder el paso a todos los demás vehículos, incluida la bicicleta, y debe asegurarse de que el Auto D esté girando a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "All vehicles must give way to you",
+          pt: "Todos os veículos devem dar passagem a você",
+          es: "Todos los vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only vehicles on the left",
+          pt: "Apenas aos veículos à esquerda",
+          es: "Solo a los vehículos a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only vehicles on the right",
+          pt: "Apenas aos veículos à direita",
+          es: "Solo a los vehículos a la derecha"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At this intersection Car A must give way to all other traffic, including cyclists, and needs to check that Car D — which appears to be turning — is actually turning left before proceeding.",
+      pt: "Nesse cruzamento, o Carro A deve dar passagem a todo o outro tráfego, incluindo ciclistas, e precisa verificar se o Carro D — que parece estar virando — está realmente virando à esquerda antes de prosseguir.",
+      es: "En esta intersección, el Auto A debe ceder el paso a todo el resto del tráfico, incluidos los ciclistas, y debe verificar que el Auto D — que parece estar girando — realmente esté girando a la izquierda antes de avanzar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-98",
+    sign: "/icons/signs/tas-car-98.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A. Can you turn left if the cyclist is using the pedestrian crossing?",
+      pt: "Você está dirigindo o Carro A. Você pode virar à esquerda se o ciclista estiver usando a faixa de pedestres?",
+      es: "Estás conduciendo el Auto A. ¿Puedes girar a la izquierda si el ciclista está usando el paso de peatones?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes - you do not need to give way to the cyclist.",
+          pt: "Sim - você não precisa dar passagem ao ciclista.",
+          es: "Sí - no necesitas ceder el paso al ciclista."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No - you must give way to the cyclist.",
+          pt: "Não - você deve dar passagem ao ciclista.",
+          es: "No - debes ceder el paso al ciclista."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A cyclist riding across a pedestrian crossing has the same right of way as a pedestrian in that situation, so a turning driver must give way to them.",
+      pt: "Um ciclista atravessando uma faixa de pedestres tem a mesma prioridade que um pedestre nessa situação, então o motorista que está virando deve dar passagem a ele.",
+      es: "Un ciclista que cruza por un paso de peatones tiene la misma prioridad que un peatón en esa situación, por lo que el conductor que gira debe cederle el paso."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-99",
+    sign: "/icons/signs/tas-car-99.gif",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  Car B in front of you has stopped at a pedestrian crossing, you must",
+      pt: "Você está dirigindo o Carro A. O Carro B à sua frente parou em uma faixa de pedestres, você deve",
+      es: "Usted está conduciendo el Auto A. El Auto B delante de usted se detuvo en un paso de peatones, debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Overtake Car B.",
+          pt: "Ultrapassar o Carro B.",
+          es: "Adelantar al Auto B."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Overtake with care if satisfied there is no pedestrian or cyclist on the crossing.",
+          pt: "Ultrapassar com cuidado se tiver certeza de que não há pedestre ou ciclista na faixa.",
+          es: "Adelantar con cuidado si está seguro de que no hay peatones ni ciclistas en el paso."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop behind Car B.",
+          pt: "Parar atrás do Carro B.",
+          es: "Detenerse detrás del Auto B."
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Indicate and sound your horn to warn Car B any pedestrians or cyclists that you are overtaking.",
+          pt: "Sinalizar e buzinar para avisar o Carro B e quaisquer pedestres ou ciclistas de que você está ultrapassando.",
+          es: "Señalizar y tocar la bocina para avisar al Auto B y a cualquier peatón o ciclista de que está adelantando."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You must never overtake a vehicle stopped at a pedestrian crossing, since there may be a pedestrian you cannot see — you must stop behind it instead.",
+      pt: "Você nunca deve ultrapassar um veículo parado em uma faixa de pedestres, pois pode haver um pedestre que você não consegue ver — em vez disso, deve parar atrás dele.",
+      es: "Nunca debe adelantar a un vehículo detenido en un paso de peatones, ya que puede haber un peatón que usted no pueda ver; en su lugar, debe detenerse detrás de él."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-100",
+    sign: "/icons/signs/tas-car-100.jpg",
+    cat: "Road Markings",
+    q: {
+      en: "You are driving Car A.  In what direction must you travel?",
+      pt: "Você está dirigindo o Carro A. Em qual direção você deve seguir?",
+      es: "Usted está conduciendo el Auto A. ¿En qué dirección debe circular?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn left or go straight ahead",
+          pt: "Virar à esquerda ou seguir em frente",
+          es: "Girar a la izquierda o seguir recto"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn left only when there is traffic in the other lane",
+          pt: "Virar à esquerda somente quando houver trânsito na outra faixa",
+          es: "Girar a la izquierda solo cuando haya tránsito en el otro carril"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Go straight ahead",
+          pt: "Seguir em frente",
+          es: "Seguir recto"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Turn left",
+          pt: "Virar à esquerda",
+          es: "Girar a la izquierda"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The lane markings shown allow this lane to be used either to turn left or to continue straight ahead.",
+      pt: "As marcações da faixa mostradas permitem que essa faixa seja usada tanto para virar à esquerda quanto para seguir em frente.",
+      es: "Las marcas del carril que se muestran permiten que ese carril se use tanto para girar a la izquierda como para seguir recto."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-101",
+    sign: "/icons/signs/tas-car-101.jpg",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "You are driving Car A. The motorcycle behind you begins to lane filter to the front of the interesection. When the light goes green, you should -",
+      pt: "Você está dirigindo o Carro A. A motocicleta atrás de você começa a fazer filtragem de faixa até a frente da interseção. Quando o sinal fica verde, você deve -",
+      es: "Usted conduce el Auto A. La motocicleta detrás de usted comienza a filtrarse entre carriles hacia el frente de la intersección. Cuando el semáforo se pone verde, usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Overtake the motorcycle.",
+          pt: "Ultrapassar a motocicleta.",
+          es: "Adelantar a la motocicleta."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Flash your headlights to tell the motorcyclist to pull over.",
+          pt: "Piscar os faróis para dizer ao motociclista para encostar.",
+          es: "Hacer destellos con las luces para decirle al motociclista que se detenga."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Proceed through the green light behind the motorcycle.",
+          pt: "Seguir pelo sinal verde atrás da motocicleta.",
+          es: "Continuar por el semáforo en verde detrás de la motocicleta."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Motorcyclists are legally allowed to lane filter to the front of stopped traffic at intersections, so other drivers must simply proceed behind them once the light turns green, without trying to overtake or intimidate them.",
+      pt: "Motociclistas têm permissão legal para fazer filtragem de faixa até a frente do tráfego parado em interseções, então os outros motoristas devem simplesmente seguir atrás deles quando o sinal ficar verde, sem tentar ultrapassar ou intimidar.",
+      es: "Los motociclistas tienen permiso legal para filtrarse entre carriles hasta el frente del tráfico detenido en las intersecciones, por lo que los demás conductores simplemente deben continuar detrás de ellos cuando el semáforo se ponga verde, sin intentar adelantarlos ni intimidarlos."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-102",
+    sign: "/icons/signs/tas-car-102.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "You are driving Car A.  The vehicles in front of you have stopped.  When can you drive through the intersection?",
+      pt: "Você está dirigindo o Carro A. Os veículos à sua frente pararam. Quando você pode atravessar a interseção?",
+      es: "Usted conduce el Auto A. Los vehículos delante de usted se han detenido. ¿Cuándo puede cruzar la intersección?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At any time when there is a green light if it is nearly clear of traffic",
+          pt: "A qualquer momento em que o sinal estiver verde, se estiver quase livre de trânsito",
+          es: "En cualquier momento en que el semáforo esté en verde, si está casi libre de tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "At any time when the light is green even if you may block the intersection",
+          pt: "A qualquer momento em que o sinal estiver verde, mesmo que você possa bloquear a interseção",
+          es: "En cualquier momento en que el semáforo esté en verde, incluso si puede bloquear la intersección"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At any time when the light is green and the intersection is clear of traffic",
+          pt: "A qualquer momento em que o sinal estiver verde e a interseção estiver livre de trânsito",
+          es: "En cualquier momento en que el semáforo esté en verde y la intersección esté libre de tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "When the lights are red",
+          pt: "Quando o sinal estiver vermelho",
+          es: "Cuando el semáforo esté en rojo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "You should only enter an intersection on a green light if it is clear ahead, so you don't get stuck blocking the intersection when the lights change.",
+      pt: "Você só deve entrar em uma interseção com o sinal verde se ela estiver livre à frente, para não ficar preso bloqueando a interseção quando o sinal mudar.",
+      es: "Solo debe entrar en una intersección con el semáforo en verde si está despejada más adelante, para no quedar bloqueando la intersección cuando cambie el semáforo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-103",
+    sign: "/icons/signs/tas-car-103.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  Which cars must you give way to?",
+      pt: "Você está dirigindo o Carro A. A quais carros você deve dar passagem?",
+      es: "Usted está conduciendo el Auto A. ¿A qué autos debe cederles el paso?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cars B and C",
+          pt: "Carros B e C",
+          es: "Autos B y C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Cars B, C and D",
+          pt: "Carros B, C e D",
+          es: "Autos B, C y D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cars D and C",
+          pt: "Carros D e C",
+          es: "Autos D y C"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Cars D and B",
+          pt: "Carros D e B",
+          es: "Autos D y B"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Based on each vehicle's position and direction at this intersection, Car A must give way to both Car D and Car C before proceeding.",
+      pt: "Com base na posição e direção de cada veículo nesse cruzamento, o Carro A deve dar passagem tanto ao Carro D quanto ao Carro C antes de prosseguir.",
+      es: "Según la posición y dirección de cada vehículo en esta intersección, el Auto A debe ceder el paso tanto al Auto D como al Auto C antes de avanzar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-104",
+    sign: "/icons/signs/tas-car-104.gif",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving car A. Who goes first?",
+      pt: "Você está dirigindo o carro A. Quem passa primeiro?",
+      es: "Estás conduciendo el auto A. ¿Quién pasa primero?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You must give way to the car on the left and bicycle on the right",
+          pt: "Você deve dar passagem ao carro à esquerda e à bicicleta à direita",
+          es: "Debes ceder el paso al auto de la izquierda y a la bicicleta de la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "You must give way to the car on the left, the bicycle must give way to you",
+          pt: "Você deve dar passagem ao carro à esquerda; a bicicleta deve dar passagem a você",
+          es: "Debes ceder el paso al auto de la izquierda; la bicicleta debe cederte el paso a ti"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The car must give way to you and the bicycle before turning",
+          pt: "O carro deve dar passagem a você e à bicicleta antes de virar",
+          es: "El auto debe cederte el paso a ti y a la bicicleta antes de girar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Bicycles are treated as vehicles under the road rules, so ordinary give way rules apply to them the same as any other vehicle — here you must give way to both the car on your left and the bicycle on your right.",
+      pt: "As bicicletas são tratadas como veículos pelas regras de trânsito, então as regras normais de prioridade se aplicam a elas como a qualquer outro veículo — aqui você deve dar passagem tanto ao carro à sua esquerda quanto à bicicleta à sua direita.",
+      es: "Las bicicletas se consideran vehículos según las normas de tránsito, por lo que las reglas normales de prioridad se aplican a ellas igual que a cualquier otro vehículo; aquí debes ceder el paso tanto al auto de tu izquierda como a la bicicleta de tu derecha."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-105",
+    sign: "/icons/signs/tas-car-105.gif",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  You are approaching an uncontrolled intersection and want to turn left.  There is a cyclist in front of you.  You must",
+      pt: "Você está dirigindo o Carro A. Você está se aproximando de um cruzamento não sinalizado e quer virar à esquerda. Há um ciclista à sua frente. Você deve",
+      es: "Usted está conduciendo el Auto A. Se está acercando a una intersección no controlada y quiere girar a la izquierda. Hay un ciclista delante de usted. Usted debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Sound your horn to warn the cyclist that you are behind and the cyclist must give way",
+          pt: "Buzinar para avisar o ciclista de que você está atrás e que o ciclista deve dar passagem",
+          es: "Tocar la bocina para avisar al ciclista de que usted está detrás y que el ciclista debe cederle el paso"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Allow the cyclist to go through the intersection safely then turn left at the intersection",
+          pt: "Permitir que o ciclista atravesse o cruzamento com segurança e só então virar à esquerda no cruzamento",
+          es: "Permitir que el ciclista cruce la intersección con seguridad y luego girar a la izquierda en la intersección"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Accelerate and pass the cyclist then turn left in front of the cyclist",
+          pt: "Acelerar e ultrapassar o ciclista, depois virar à esquerda na frente dele",
+          es: "Acelerar y adelantar al ciclista, y luego girar a la izquierda delante de él"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Accelerate, indicate and sound your horn to warn the cyclist then turn left in front of the cyclist",
+          pt: "Acelerar, sinalizar e buzinar para avisar o ciclista, depois virar à esquerda na frente dele",
+          es: "Acelerar, señalizar y tocar la bocina para avisar al ciclista, y luego girar a la izquierda delante de él"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A cyclist travelling straight ahead has priority over a vehicle turning left across their path, so the driver must let the cyclist clear the intersection safely before turning.",
+      pt: "Um ciclista que segue em frente tem prioridade sobre um veículo que está virando à esquerda cruzando seu caminho, então o motorista deve deixar o ciclista atravessar o cruzamento com segurança antes de virar.",
+      es: "Un ciclista que va en línea recta tiene prioridad sobre un vehículo que gira a la izquierda cruzando su camino, por lo que el conductor debe dejar que el ciclista cruce la intersección con seguridad antes de girar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-106",
+    sign: "/icons/signs/tas-car-106.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  You are stopped at a children's crossing displaying an orange flag.  You can drive on when",
+      pt: "Você está dirigindo o Carro A. Você está parado em uma faixa escolar (children's crossing) exibindo a bandeira laranja. Você pode seguir em frente quando",
+      es: "Usted conduce el Auto A. Está detenido en un cruce escolar (children's crossing) que muestra la bandera naranja. Puede seguir cuando"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The pedestrians and cyclist have left the crossing.",
+          pt: "Os pedestres e o ciclista tiverem deixado a faixa.",
+          es: "Los peatones y el ciclista hayan dejado el cruce."
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The pedestrians and cyclist are not in your car's path.",
+          pt: "Os pedestres e o ciclista não estiverem no caminho do seu carro.",
+          es: "Los peatones y el ciclista no estén en el camino de su auto."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The pedestrians and cyclist are about to step onto the crossing.",
+          pt: "Os pedestres e o ciclista estiverem prestes a entrar na faixa.",
+          es: "Los peatones y el ciclista estén a punto de entrar en el cruce."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At a children's crossing with the orange flag displayed, drivers must remain stopped until every pedestrian and cyclist has completely left the crossing, since children using these crossings have full right of way and may move unpredictably.",
+      pt: "Em uma faixa escolar com a bandeira laranja exibida, os motoristas devem permanecer parados até que todos os pedestres e o ciclista tenham deixado completamente a faixa, já que as crianças que usam essas faixas têm prioridade total e podem se mover de forma imprevisível.",
+      es: "En un cruce escolar con la bandera naranja exhibida, los conductores deben permanecer detenidos hasta que todos los peatones y el ciclista hayan dejado por completo el cruce, ya que los niños que usan estos cruces tienen prioridad total y pueden moverse de forma impredecible."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-107",
+    sign: "/icons/signs/tas-car-107.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  You must give way to",
+      pt: "Você está dirigindo o Carro A. Você deve dar passagem a",
+      es: "Usted está conduciendo el Auto A. Debe ceder el paso a"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cars C then B, make sure D is turning left",
+          pt: "Carros C e depois B, certifique-se de que D está virando à esquerda",
+          es: "Autos C y luego B, asegúrese de que D esté girando a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Cars B and D",
+          pt: "Carros B e D",
+          es: "Autos B y D"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cars D, C and B",
+          pt: "Carros D, C e B",
+          es: "Autos D, C y B"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Cars D and C",
+          pt: "Carros D e C",
+          es: "Autos D y C"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "At this intersection, Car A must give way to both Car D and Car C before proceeding, as they have priority under the give-way rules for the intersection shown.",
+      pt: "Nesse cruzamento, o Carro A deve dar passagem tanto ao Carro D quanto ao Carro C antes de prosseguir, pois eles têm prioridade segundo as regras de prioridade daquele cruzamento.",
+      es: "En ese cruce, el Auto A debe ceder el paso tanto al Auto D como al Auto C antes de continuar, ya que ellos tienen prioridad según las reglas de prioridad de esa intersección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-108",
+    sign: "/icons/signs/tas-car-108.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A. You must give way to:",
+      pt: "Você está dirigindo o Carro A. Você deve dar passagem a:",
+      es: "Usted está conduciendo el Auto A. Debe ceder el paso a:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cars B, C and the motorcycle",
+          pt: "Carros B, C e a motocicleta",
+          es: "Autos B, C y la motocicleta"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Car B and C",
+          pt: "Carro B e C",
+          es: "Auto B y C"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car D",
+          pt: "Carro D",
+          es: "Auto D"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "No one. The other vehicles must give way to you",
+          pt: "Ninguém. Os outros veículos devem dar passagem a você",
+          es: "A nadie. Los demás vehículos deben cederle el paso a usted"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "At this intersection, Car A must give way to Cars B and C as well as the motorcycle, since all of them have priority over Car A under the give-way rules shown.",
+      pt: "Nesse cruzamento, o Carro A deve dar passagem aos Carros B e C, além da motocicleta, pois todos eles têm prioridade sobre o Carro A segundo as regras de prioridade apresentadas.",
+      es: "En esa intersección, el Auto A debe ceder el paso a los Autos B y C, además de la motocicleta, ya que todos ellos tienen prioridad sobre el Auto A según las reglas de prioridad indicadas."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-109",
+    sign: "/icons/signs/tas-car-109.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  You want to move from the side of the road into a line of traffic, you must indicate",
+      pt: "Você está dirigindo o Carro A. Você quer sair da lateral da via para entrar em uma fila de trânsito; você deve sinalizar",
+      es: "Estás conduciendo el Auto A. Quieres salir del costado de la vía para incorporarte a una fila de tráfico; debes señalizar"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "For one second and give way to all traffic",
+          pt: "Por um segundo e dar passagem a todo o trânsito",
+          es: "Durante un segundo y ceder el paso a todo el tránsito"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "For 3 seconds and give way to all traffic",
+          pt: "Por 3 segundos e dar passagem a todo o trânsito",
+          es: "Durante 3 segundos y ceder el paso a todo el tránsito"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "For 5 seconds and give way to all traffic",
+          pt: "Por 5 segundos e dar passagem a todo o trânsito",
+          es: "Durante 5 segundos y ceder el paso a todo el tránsito"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only if there is traffic coming",
+          pt: "Somente se houver trânsito se aproximando",
+          es: "Solo si viene tráfico"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When pulling out from the side of the road into a line of traffic, you must indicate for at least 5 seconds before moving and give way to all traffic already on the road.",
+      pt: "Ao sair da lateral da via para entrar em uma fila de trânsito, você deve sinalizar por pelo menos 5 segundos antes de se mover e dar passagem a todo o trânsito que já está na via.",
+      es: "Al salir del costado de la vía para incorporarte a una fila de tráfico, debes señalizar durante al menos 5 segundos antes de moverte y ceder el paso a todo el tránsito que ya circula por la vía."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-110",
+    sign: "/icons/signs/tas-car-110.jpg",
+    cat: "Blind Spot & Overtaking",
+    q: {
+      en: "You are driving Car A.  You want to move to the right hand lane.  You must",
+      pt: "Você está dirigindo o Carro A. Você quer mudar para a faixa da direita. Você deve",
+      es: "Está conduciendo el Auto A. Quiere cambiarse al carril derecho. Debe"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Indicate to the right and give way to traffic in the right hand lane",
+          pt: "Sinalizar para a direita e dar a preferência ao tráfego na faixa da direita",
+          es: "Señalizar hacia la derecha y ceder el paso al tráfico en el carril derecho"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Give way to traffic in the right hand lane without indicating",
+          pt: "Dar a preferência ao tráfego na faixa da direita sem sinalizar",
+          es: "Ceder el paso al tráfico en el carril derecho sin señalizar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Indicate to the left",
+          pt: "Sinalizar para a esquerda",
+          es: "Señalizar hacia la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Indicate to the right without giving way",
+          pt: "Sinalizar para a direita sem dar a preferência",
+          es: "Señalizar hacia la derecha sin ceder el paso"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When changing lanes, you must indicate in the direction you intend to move and give way to any traffic already travelling in that lane before merging into it.",
+      pt: "Ao mudar de faixa, você deve sinalizar na direção para a qual pretende se mover e dar a preferência a qualquer tráfego que já esteja circulando naquela faixa antes de entrar nela.",
+      es: "Al cambiar de carril, debe señalizar en la dirección en la que pretende moverse y ceder el paso a cualquier tráfico que ya circule por ese carril antes de incorporarse a él."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-111",
+    sign: "/icons/signs/tas-car-111.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car A.  You want to turn right.  You must give way to",
+      pt: "Você está dirigindo o Carro A. Você quer virar à direita. Você deve dar passagem a",
+      es: "Usted está conduciendo el Auto A. Usted quiere girar a la derecha. Usted debe ceder el paso a"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cars B and C",
+          pt: "Carros B e C",
+          es: "Autos B y C"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Cars B and C and the pedestrian",
+          pt: "Carros B e C e ao pedestre",
+          es: "Autos B y C y al peatón"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Car C and the pedestrian",
+          pt: "Carro C e ao pedestre",
+          es: "Auto C y al peatón"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car B and the pedestrian",
+          pt: "Carro B e ao pedestre",
+          es: "Auto B y al peatón"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A driver turning right must give way to oncoming traffic and any pedestrians crossing — in this scenario that means Car C and the pedestrian.",
+      pt: "Um motorista que está virando à direita deve dar passagem ao tráfego que vem em sentido contrário e a qualquer pedestre que esteja atravessando — nesse cenário, isso significa o Carro C e o pedestre.",
+      es: "Un conductor que gira a la derecha debe ceder el paso al tráfico que viene en sentido contrario y a cualquier peatón que esté cruzando — en este escenario, eso significa el Auto C y el peatón."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-112",
+    sign: "/icons/signs/tas-car-112.jpg",
+    cat: "Motorcycle Safety",
+    q: {
+      en: "You are driving car B. The motorcycle behind you is attempting to lane filter between you and car A. You should -",
+      pt: "Você está dirigindo o Carro B. A motocicleta atrás de você está tentando fazer filtragem de faixa entre você e o Carro A. Você deve -",
+      es: "Usted está conduciendo el Auto B. La motocicleta detrás de usted está intentando filtrarse entre usted y el Auto A. Usted debe -"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Start reversing to give the motorcycle some space in front of you.",
+          pt: "Começar a dar ré para dar espaço à motocicleta à sua frente.",
+          es: "Comenzar a retroceder para darle espacio a la motocicleta delante de usted."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Attempt to change lanes quickly to the right.",
+          pt: "Tentar mudar de faixa rapidamente para a direita.",
+          es: "Intentar cambiar de carril rápidamente hacia la derecha."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Avoid making any sudden changes in direction while the motorcycle lane filters.",
+          pt: "Evitar fazer qualquer mudança brusca de direção enquanto a motocicleta faz a filtragem de faixa.",
+          es: "Evitar hacer cualquier cambio brusco de dirección mientras la motocicleta se filtra entre los carriles."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "While a motorcycle is lane filtering nearby, drivers must not change direction or lanes suddenly, as this could collide with the motorcyclist who has limited space to manoeuvre.",
+      pt: "Enquanto uma motocicleta está fazendo filtragem de faixa por perto, os motoristas não devem mudar de direção ou de faixa repentinamente, pois isso pode colidir com o motociclista, que tem pouco espaço para manobrar.",
+      es: "Mientras una motocicleta se está filtrando entre carriles cerca, los conductores no deben cambiar de dirección o de carril de forma repentina, ya que esto podría provocar una colisión con el motociclista, que tiene poco espacio para maniobrar."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-113",
+    sign: "/icons/signs/tas-car-113.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving Car B.  You must give way to",
+      pt: "Você está dirigindo o Carro B. Você deve dar passagem a",
+      es: "Estás conduciendo el Auto B. Debes ceder el paso a"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No-one (you pull out first)",
+          pt: "Ninguém (você sai primeiro)",
+          es: "A nadie (tú sales primero)"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The pedestrian",
+          pt: "O pedestre",
+          es: "Al peatón"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The pedestrian and Car A",
+          pt: "O pedestre e o Carro A",
+          es: "Al peatón y al Auto A"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Car A",
+          pt: "O Carro A",
+          es: "Al Auto A"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Car B must give way to both the pedestrian crossing the road and Car A, which has priority in this situation.",
+      pt: "O Carro B deve dar passagem tanto ao pedestre que está atravessando a via quanto ao Carro A, que tem prioridade nessa situação.",
+      es: "El Auto B debe ceder el paso tanto al peatón que cruza la vía como al Auto A, que tiene prioridad en esta situación."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-114",
+    sign: "/icons/signs/tas-car-114.jpg",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are driving in a built-up area (like a city or town).  A bus is stopped at a bus stop in the left lane next to you and has this sign displayed.  There are parked vehicles in front of the bus and it has signalled right. What must you do?",
+      pt: "Você está dirigindo em uma área urbana (como uma cidade ou vila). Um ônibus está parado em um ponto de ônibus na faixa da esquerda ao seu lado e exibe esta placa. Há veículos estacionados à frente do ônibus e ele sinalizou para a direita. O que você deve fazer?",
+      es: "Está conduciendo en una zona urbana (como una ciudad o pueblo). Un autobús está detenido en una parada de autobús en el carril izquierdo, junto a usted, y muestra esta señal. Hay vehículos estacionados delante del autobús y este ha señalizado hacia la derecha. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Allow the bus to move off from the kerb into your lane",
+          pt: "Permitir que o ônibus saia do meio-fio para a sua faixa",
+          es: "Permitir que el autobús salga de la acera hacia su carril"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Continue ahead at the speed limit, providing it is safe",
+          pt: "Continuar em frente na velocidade máxima permitida, desde que seja seguro",
+          es: "Continuar hacia adelante a la velocidad máxima permitida, siempre que sea seguro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow to 60 km/h and give way to pedestrians only",
+          pt: "Reduzir para 60 km/h e dar a preferência apenas a pedestres",
+          es: "Reducir a 60 km/h y ceder el paso solo a peatones"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Slow to 50 km/h and only stop to give way to pedestrians",
+          pt: "Reduzir para 50 km/h e parar apenas para dar a preferência a pedestres",
+          es: "Reducir a 50 km/h y detenerse solo para ceder el paso a peatones"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "This sign identifies a bus give-way point: when a bus indicates it is moving off from a bus stop back into traffic, following drivers must give way and allow the bus to merge into their lane.",
+      pt: "Essa placa identifica um ponto de preferência para ônibus: quando um ônibus sinaliza que está saindo do ponto de parada de volta ao tráfego, os motoristas que seguem atrás devem dar a preferência e permitir que o ônibus entre na faixa deles.",
+      es: "Esta señal identifica un punto de cesión de paso para autobuses: cuando un autobús indica que está saliendo de la parada hacia el tráfico, los conductores que vienen detrás deben ceder el paso y permitir que el autobús se incorpore a su carril."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-115",
+    cat: "Emergencies",
+    q: {
+      en: "You are driving on a divided road and see an emergency vehicle on the other side of the road with lights flashing.  There is no dividing barrier. What must you do?",
+      pt: "Você está dirigindo em uma via dividida e vê um veículo de emergência do outro lado da via com as luzes piscando. Não há barreira divisória. O que você deve fazer?",
+      es: "Usted conduce por una vía dividida y ve un vehículo de emergencia al otro lado de la vía con las luces destellando. No hay barrera divisoria. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down to 10km below the speed limit",
+          pt: "Reduzir a velocidade para 10 km/h abaixo do limite",
+          es: "Reducir la velocidad a 10 km/h por debajo del límite"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop and offer assistance",
+          pt: "Parar e oferecer ajuda",
+          es: "Detenerse y ofrecer ayuda"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down to 40km/h as you pass",
+          pt: "Reduzir a velocidade para 40 km/h ao passar",
+          es: "Reducir la velocidad a 40 km/h al pasar"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "No need to slow down as it is on the other side of the road",
+          pt: "Não é necessário reduzir a velocidade, pois está do outro lado da via",
+          es: "No es necesario reducir la velocidad, ya que está al otro lado de la vía"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Where there is no physical median barrier separating the carriageways, you must slow to 40 km/h when passing a stopped emergency vehicle with flashing lights, even if it's on the opposite side of the road.",
+      pt: "Quando não há uma barreira física separando as pistas, você deve reduzir a velocidade para 40 km/h ao passar por um veículo de emergência parado com as luzes piscando, mesmo que ele esteja do outro lado da via.",
+      es: "Cuando no hay una barrera física que separe las calzadas, debe reducir la velocidad a 40 km/h al pasar junto a un vehículo de emergencia detenido con las luces destellando, aunque esté en el lado opuesto de la vía."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-116",
+    cat: "Road Safety",
+    q: {
+      en: "You are driving towards a large roundabout that has multi-lanes. At the roundabout, you intend to turn off more than halfway around the roundabout.  What signals must you give?",
+      pt: "Você está dirigindo em direção a uma grande rotatória com múltiplas faixas. Na rotatória, você pretende sair mais da metade do caminho ao redor dela. Quais sinais você deve dar?",
+      es: "Usted conduce hacia una gran rotonda con múltiples carriles. En la rotonda, tiene la intención de salir después de más de la mitad del recorrido. ¿Qué señales debe dar?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "On approach to the roundabout, give a right signal and, just before you exit the road, give a left signal",
+          pt: "Ao se aproximar da rotatória, sinalizar à direita e, pouco antes de sair da via, sinalizar à esquerda",
+          es: "Al aproximarse a la rotonda, señalizar a la derecha y, justo antes de salir de la vía, señalizar a la izquierda"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only give a right signal on the approach to the roundabout, as no other signal is required",
+          pt: "Sinalizar apenas à direita ao se aproximar da rotatória, pois nenhum outro sinal é necessário",
+          es: "Señalizar solo a la derecha al aproximarse a la rotonda, ya que no se requiere otra señal"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Providing it is safe, a signal is not required at all",
+          pt: "Desde que seja seguro, nenhum sinal é necessário",
+          es: "Siempre que sea seguro, no se requiere ninguna señal"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "On approach to the roundabout, give a left signal then a right signal when turning off",
+          pt: "Ao se aproximar da rotatória, sinalizar à esquerda e depois à direita ao sair",
+          es: "Al aproximarse a la rotonda, señalizar a la izquierda y luego a la derecha al salir"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "When exiting more than halfway around a multi-lane roundabout, you must signal right on approach to show you are going past the first exits, then signal left just before your exit to show you are leaving the roundabout.",
+      pt: "Ao sair depois de mais da metade do caminho em uma rotatória com múltiplas faixas, você deve sinalizar à direita ao se aproximar para indicar que vai passar das primeiras saídas, e depois sinalizar à esquerda pouco antes de sua saída para indicar que está saindo da rotatória.",
+      es: "Al salir después de más de la mitad del recorrido en una rotonda de varios carriles, debe señalizar a la derecha al aproximarse para indicar que pasará las primeras salidas, y luego señalizar a la izquierda justo antes de su salida para indicar que está saliendo de la rotonda."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-117",
+    sign: "/icons/signs/tas-car-117.gif",
+    cat: "Give Way Rules",
+    q: {
+      en: "You are stopped at a red traffic light. There is a cyclist in the bicycle storage area in front of you. When the light turns green, you should:",
+      pt: "Você está parado em um sinal vermelho. Há um ciclista na área de armazenamento de bicicletas à sua frente. Quando o sinal ficar verde, você deve:",
+      es: "Estás detenido en un semáforo en rojo. Hay un ciclista en la zona de espera para bicicletas frente a ti. Cuando el semáforo se ponga en verde, debes:"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Accelerate through the intersection, ignoring the cyclists.",
+          pt: "Acelerar pelo cruzamento, ignorando os ciclistas.",
+          es: "Acelerar para cruzar la intersección, ignorando a los ciclistas."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Allow the cyclist to proceed before accelerating through the intersection.",
+          pt: "Permitir que o ciclista siga em frente antes de acelerar pelo cruzamento.",
+          es: "Permitir que el ciclista avance antes de acelerar para cruzar la intersección."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A bicycle storage area (bike box) lets cyclists position themselves ahead of stopped traffic so they are visible and can move off first; drivers must let the cyclist go before proceeding through the intersection.",
+      pt: "A área de armazenamento de bicicletas (bike box) permite que os ciclistas se posicionem à frente do tráfego parado para ficarem visíveis e saírem primeiro; o motorista deve deixar o ciclista seguir antes de avançar pelo cruzamento.",
+      es: "La zona de espera para bicicletas (bike box) permite que los ciclistas se ubiquen delante del tráfico detenido para ser más visibles y partir primero; el conductor debe dejar avanzar al ciclista antes de cruzar la intersección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-118",
+    sign: "/icons/signs/tas-car-118.jpg",
+    cat: "Traffic Lights",
+    q: {
+      en: "You can do a U-turn at an intersection with traffic lights",
+      pt: "Você pode fazer um retorno (conversão em U) em um cruzamento com semáforo",
+      es: "Usted puede hacer un giro en U en una intersección con semáforo"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Between 9 p.m. and 6 a.m",
+          pt: "Entre 21h e 6h",
+          es: "Entre las 9 p.m. y las 6 a.m."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when there is U-turn permitted sign",
+          pt: "Somente quando houver um sinal permitindo o retorno",
+          es: "Solo cuando haya una señal que permita el giro en U"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "If there is no oncoming traffic",
+          pt: "Se não houver tráfego vindo em sentido contrário",
+          es: "Si no hay tráfico en sentido contrario"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "If the traffic lights are green",
+          pt: "Se o semáforo estiver verde",
+          es: "Si el semáforo está en verde"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "U-turns are only allowed at a signalised intersection where a 'U-turn permitted' sign is displayed; without that sign, U-turns at traffic-light-controlled intersections are not permitted, regardless of traffic or the light colour.",
+      pt: "Retornos só são permitidos em um cruzamento com semáforo onde há um sinal de 'retorno permitido'; sem esse sinal, retornos não são permitidos em cruzamentos controlados por semáforo, independentemente do tráfego ou da cor do sinal.",
+      es: "Los giros en U solo están permitidos en una intersección con semáforo donde se exhibe una señal de 'giro en U permitido'; sin esa señal, los giros en U no están permitidos en intersecciones controladas por semáforos, sin importar el tráfico o el color del semáforo."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-119",
+    sign: "/icons/signs/tas-car-119.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "You have a car learner licence, so you",
+      pt: "Você tem uma licença de aprendiz de carro, então você",
+      es: "Usted tiene una licencia de aprendiz de auto, por lo que usted"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Must only display one L plate so that it can be clearly seen from the front of the vehicle",
+          pt: "Deve exibir apenas uma placa L, de forma que possa ser claramente vista pela frente do veículo",
+          es: "Debe exhibir solo una placa L, de manera que pueda verse claramente desde la parte delantera del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Must only display one L plate so that it can be clearly seen from the rear of the vehicle",
+          pt: "Deve exibir apenas uma placa L, de forma que possa ser claramente vista pela traseira do veículo",
+          es: "Debe exhibir solo una placa L, de manera que pueda verse claramente desde la parte trasera del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Are not required to display L-plates when accompanied by a supervising driver",
+          pt: "Não é obrigado a exibir placas L quando acompanhado por um motorista supervisor",
+          es: "No está obligado a exhibir placas L cuando va acompañado de un conductor supervisor"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Must display L plates so that they can be clearly seen from the front and the rear of the vehicle",
+          pt: "Deve exibir placas L de forma que possam ser claramente vistas pela frente e pela traseira do veículo",
+          es: "Debe exhibir placas L de manera que puedan verse claramente desde la parte delantera y trasera del vehículo"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Learner drivers must display L plates on both the front and the rear of the vehicle so other road users can clearly identify a learner from either direction.",
+      pt: "Os motoristas aprendizes devem exibir placas L tanto na frente quanto na traseira do veículo, para que outros usuários da via possam identificar claramente um aprendiz vindo de qualquer direção.",
+      es: "Los conductores aprendices deben exhibir placas L tanto en la parte delantera como en la trasera del vehículo, para que otros usuarios de la vía puedan identificar claramente a un aprendiz desde cualquier dirección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-120",
+    sign: "/icons/signs/tas-car-120.jpg",
+    cat: "Road Safety",
+    q: {
+      en: "You have a car provisional licence for less than one year (P1 licence), so you",
+      pt: "Você tem uma licença provisória de carro há menos de um ano (licença P1), então você",
+      es: "Usted tiene una licencia provisional de auto de menos de un año (licencia P1), por lo que usted"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Must display one red P plate so that it can be clearly seen from the front of the vehicle",
+          pt: "Deve exibir uma placa P vermelha, de forma que possa ser claramente vista pela frente do veículo",
+          es: "Debe exhibir una placa P roja, de manera que pueda verse claramente desde la parte delantera del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Must display one red P plate so that it can be clearly seen from the rear of the vehicle",
+          pt: "Deve exibir uma placa P vermelha, de forma que possa ser claramente vista pela traseira do veículo",
+          es: "Debe exhibir una placa P roja, de manera que pueda verse claramente desde la parte trasera del vehículo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Must display red P plates so that they can be clearly seen from the front and the rear of the vehicle",
+          pt: "Deve exibir placas P vermelhas de forma que possam ser claramente vistas pela frente e pela traseira do veículo",
+          es: "Debe exhibir placas P rojas de manera que puedan verse claramente desde la parte delantera y trasera del vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "D",
+        t: {
+          en: "Are not required to display P plates when accompanied by a passenger over 25 years old",
+          pt: "Não é obrigado a exibir placas P quando acompanhado por um passageiro com mais de 25 anos",
+          es: "No está obligado a exhibir placas P cuando va acompañado de un pasajero mayor de 25 años"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "P1 provisional drivers must display red P plates on both the front and rear of the vehicle so other drivers can recognise them as a first-year provisional driver from any direction.",
+      pt: "Os motoristas provisórios P1 devem exibir placas P vermelhas tanto na frente quanto na traseira do veículo, para que outros motoristas possam reconhecê-los como um motorista provisório do primeiro ano vindo de qualquer direção.",
+      es: "Los conductores provisionales P1 deben exhibir placas P rojas tanto en la parte delantera como en la trasera del vehículo, para que otros conductores puedan reconocerlos como conductores provisionales de primer año desde cualquier dirección."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-121",
+    cat: "Road Safety",
+    q: {
+      en: "You have a driver licence and you change your home (residential) address.  You need to",
+      pt: "Você tem carteira de motorista e muda de endereço residencial. Você precisa",
+      es: "Tienes licencia de conducir y cambias tu dirección residencial. Debes"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Do nothing until your driver licence expires",
+          pt: "Não fazer nada até sua carteira de motorista vencer",
+          es: "No hacer nada hasta que venza tu licencia de conducir"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Contact Service Tasmania within one month",
+          pt: "Contatar a Service Tasmania em até um mês",
+          es: "Contactar a Service Tasmania dentro de un mes"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do nothing",
+          pt: "Não fazer nada",
+          es: "No hacer nada"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Contact Service Tasmania within 14 days",
+          pt: "Contatar a Service Tasmania em até 14 dias",
+          es: "Contactar a Service Tasmania dentro de 14 días"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Tasmanian licence holders are required to notify Service Tasmania of a change of residential address within 14 days.",
+      pt: "Os portadores de carteira de motorista na Tasmânia devem notificar a Service Tasmania sobre a mudança de endereço residencial em até 14 dias.",
+      es: "Los titulares de licencia de conducir en Tasmania deben notificar a Service Tasmania el cambio de dirección residencial dentro de los 14 días."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-122",
+    cat: "Road Safety",
+    q: {
+      en: "You hold a novice learner licence, when can you use a mobile phone while sitting in the driver's seat?",
+      pt: "Você tem uma carteira de aprendiz novato. Quando você pode usar o celular sentado no banco do motorista?",
+      es: "Tienes una licencia de aprendiz novato. ¿Cuándo puedes usar el celular sentado en el asiento del conductor?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At any time, if using hands free",
+          pt: "A qualquer momento, se estiver usando viva-voz",
+          es: "En cualquier momento, si usas manos libres"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "At any time, when the phone call is less than 5 minutes long",
+          pt: "A qualquer momento, se a ligação durar menos de 5 minutos",
+          es: "En cualquier momento, si la llamada dura menos de 5 minutos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "When you are stopped at traffic lights or stopped in traffic",
+          pt: "Quando estiver parado em um semáforo ou parado no trânsito",
+          es: "Cuando estés detenido en un semáforo o detenido en el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Only when your vehicle is parked",
+          pt: "Somente quando o veículo estiver estacionado",
+          es: "Solo cuando el vehículo esté estacionado"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Novice learner licence holders in Tasmania are banned from using a mobile phone at all while in the driver's seat — including hands-free — and may only use it once the vehicle is parked.",
+      pt: "Portadores de carteira de aprendiz novato na Tasmânia são proibidos de usar celular enquanto estão no banco do motorista — inclusive em viva-voz — e só podem usá-lo com o veículo estacionado.",
+      es: "Los titulares de licencia de aprendiz novato en Tasmania tienen prohibido usar el celular mientras están en el asiento del conductor, incluso en modo manos libres, y solo pueden usarlo con el vehículo estacionado."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-123",
+    cat: "Road Safety",
+    q: {
+      en: "You look in the mirror and see a cyclist. What should you do when opening the car door?",
+      pt: "Você olha no espelho e vê um ciclista. O que você deve fazer ao abrir a porta do carro?",
+      es: "Usted mira por el espejo y ve a un ciclista. ¿Qué debe hacer al abrir la puerta del auto?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Open the door immediately. The cyclist needs to stop for you.",
+          pt: "Abrir a porta imediatamente. O ciclista precisa parar para você.",
+          es: "Abrir la puerta de inmediato. El ciclista debe detenerse por usted."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Open the door in your own time. the cyclist will see you and move out of the way.",
+          pt: "Abrir a porta no seu próprio tempo. O ciclista vai te ver e desviar.",
+          es: "Abrir la puerta a su propio ritmo. El ciclista lo verá y se apartará."
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Wait till the cyclist has passed, then open the door when it is safe to do so.",
+          pt: "Esperar o ciclista passar e só então abrir a porta quando for seguro fazê-lo.",
+          es: "Esperar a que el ciclista pase y luego abrir la puerta cuando sea seguro hacerlo."
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "To avoid hitting a cyclist with the door, drivers must wait until the cyclist has safely passed before opening the car door.",
+      pt: "Para evitar bater a porta em um ciclista, os motoristas devem esperar o ciclista passar com segurança antes de abrir a porta do carro.",
+      es: "Para evitar golpear a un ciclista al abrir la puerta, los conductores deben esperar a que el ciclista pase con seguridad antes de abrir la puerta del auto."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-124",
+    cat: "Road Safety",
+    q: {
+      en: "You set out on a fairly long drive to see some friends. After a while you start feeling tired. What should you do?",
+      pt: "Você inicia uma viagem razoavelmente longa para ver alguns amigos. Depois de um tempo, você começa a se sentir cansado. O que você deve fazer?",
+      es: "Usted emprende un viaje bastante largo para ver a unos amigos. Después de un tiempo, comienza a sentirse cansado. ¿Qué debe hacer?"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Turn the music up louder to keep you alert.",
+          pt: "Aumentar o volume da música para se manter alerta.",
+          es: "Subir el volumen de la música para mantenerse alerta."
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Take regular, 10 minute breaks throughout the long trip.",
+          pt: "Fazer pausas regulares de 10 minutos ao longo da viagem longa.",
+          es: "Tomar descansos regulares de 10 minutos durante el viaje largo."
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Stop at a shop and get a drink that contains caffeine to help keep you awake.",
+          pt: "Parar em uma loja e comprar uma bebida com cafeína para ajudar a se manter acordado.",
+          es: "Detenerse en una tienda y comprar una bebida con cafeína para ayudar a mantenerse despierto."
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Make sure you get plenty of fresh air circulating inside the car by winding down the window.",
+          pt: "Garantir bastante circulação de ar fresco dentro do carro abrindo a janela.",
+          es: "Asegurarse de tener bastante circulación de aire fresco dentro del auto bajando la ventanilla."
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Regular short breaks are the only effective way to manage fatigue on a long drive; music, caffeine, or fresh air only offer a brief, unreliable boost.",
+      pt: "Pausas curtas e regulares são a única forma eficaz de controlar o cansaço em uma viagem longa; música, cafeína ou ar fresco oferecem apenas um alívio breve e pouco confiável.",
+      es: "Los descansos cortos y regulares son la única forma eficaz de manejar la fatiga en un viaje largo; la música, la cafeína o el aire fresco solo ofrecen un alivio breve y poco confiable."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
+  },
+  {
+    id: "TAS-125",
+    cat: "Road Safety",
+    q: {
+      en: "Your driver licence has a condition that you must wear visual aids (such as glasses) when driving, you",
+      pt: "Sua carteira de motorista tem uma condição de que você deve usar auxílio visual (como óculos) ao dirigir, você",
+      es: "Su licencia de conducir tiene una condición que exige el uso de ayudas visuales (como anteojos) al conducir, usted"
+    },
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Must wear visual aids when driving",
+          pt: "Deve usar auxílio visual ao dirigir",
+          es: "Debe usar ayudas visuales al conducir"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Must wear visual aids when you have them with you",
+          pt: "Deve usar auxílio visual quando estiver com ele",
+          es: "Debe usar ayudas visuales cuando las tenga consigo"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Do not have to wear visual aids if your optometrist says that you do not need them any more",
+          pt: "Não precisa usar auxílio visual se o seu optometrista disser que não precisa mais deles",
+          es: "No necesita usar ayudas visuales si su optometrista dice que ya no las necesita"
+        },
+        ok: false
+      },
+      {
+        l: "D",
+        t: {
+          en: "Don't have to wear visual aids",
+          pt: "Não precisa usar auxílio visual",
+          es: "No necesita usar ayudas visuales"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A licence condition requiring visual aids is a legal requirement — you must wear them whenever you drive, regardless of how you feel your eyesight is.",
+      pt: "Uma condição na carteira que exige auxílio visual é uma exigência legal — você deve usá-lo sempre que dirigir, independentemente de como você sinta sua visão.",
+      es: "Una condición de la licencia que exige ayudas visuales es un requisito legal: debe usarlas siempre que conduzca, sin importar cómo sienta su vista."
+    },
+    tip: null,
+    states: ["TAS"],
+    licenceType: "car"
   }
 ] as const;
 
