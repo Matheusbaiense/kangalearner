@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import type { LucideIcon } from "lucide-react";
 import {
@@ -424,15 +424,17 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
 
   return (
     <div className="hero-slideshow" aria-live="polite" aria-atomic="true">
-      <div className="hero-slide-card">
-        <div key={slideIdx} className="hero-slide-content slide-enter">
-          <SlideComponent lang={lang} />
-        </div>
-        {PrevComponent && (
-          <div key={`ghost-${prevIdx}`} className="hero-slide-ghost" aria-hidden="true">
-            <PrevComponent lang={lang} />
+      <div className="hero-phone-frame">
+        <div className="hero-slide-card">
+          <div key={slideIdx} className="hero-slide-content slide-enter">
+            <SlideComponent lang={lang} />
           </div>
-        )}
+          {PrevComponent && (
+            <div key={`ghost-${prevIdx}`} className="hero-slide-ghost" aria-hidden="true">
+              <PrevComponent lang={lang} />
+            </div>
+          )}
+        </div>
       </div>
       <div className="slide-dots" role="tablist" aria-label="Product preview slides">
         {Array.from({ length: SLIDE_COUNT }, (_, i) => (
@@ -446,6 +448,63 @@ function HeroSlideshow({ lang }: { lang: UiLang }) {
           />
         ))}
       </div>
+    </div>
+  );
+}
+
+/* ── Hero stats (animated count-up on first view) ── */
+const STAT_ANIM_MS = 900;
+const HERO_STATS = [
+  { target: 1000, suffix: "+", labelKey: "heroStat1Label" as const },
+  { target: 3, suffix: "", labelKey: "heroStat2Label" as const },
+  { target: 3, suffix: "", labelKey: "heroStat3Label" as const }
+];
+
+function HeroStats() {
+  const { s } = useLang();
+  const ref = useRef<HTMLDivElement>(null);
+  const [progress, setProgress] = useState(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setProgress(1);
+      return;
+    }
+    let raf = 0;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return;
+        io.disconnect();
+        const t0 = performance.now();
+        const tick = (now: number) => {
+          const p = Math.min((now - t0) / STAT_ANIM_MS, 1);
+          setProgress(1 - Math.pow(1 - p, 3));
+          if (p < 1) raf = requestAnimationFrame(tick);
+        };
+        raf = requestAnimationFrame(tick);
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  return (
+    <div ref={ref} className="hero-stats">
+      {HERO_STATS.map(({ target, suffix, labelKey }) => (
+        <div key={labelKey} className="hero-stat">
+          <span className="hero-stat-num">
+            {Math.round(target * progress)}
+            {suffix}
+          </span>
+          <span className="hero-stat-label">{s[labelKey]}</span>
+        </div>
+      ))}
     </div>
   );
 }
@@ -506,6 +565,15 @@ export function LandingClient() {
               <span className="hero-badge">✓ {s.heroBadge2}</span>
               <span className="hero-badge">✓ {s.heroBadge3}</span>
             </div>
+            <a
+              href="https://www.transport.wa.gov.au/licensing/learner-driver-guide.asp"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-source-pill"
+            >
+              <span className="hero-source-dot" aria-hidden="true" />
+              {s.heroSourcePill}
+            </a>
             <div className="hero-actions">
               <Link href="/practice" className="btn btn-primary">
                 <Target size={18} strokeWidth={2} aria-hidden="true" />
@@ -517,6 +585,7 @@ export function LandingClient() {
               </Link>
             </div>
             <p className="hero-cta-note">{s.heroCtaNote}</p>
+            <HeroStats />
             <div className="hero-proof">
               <span className="hero-proof-dot" />
               {s.heroProof}
