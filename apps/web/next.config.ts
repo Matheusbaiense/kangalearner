@@ -71,15 +71,17 @@ const hasSentryUploadConfig = Boolean(
   process.env.SENTRY_AUTH_TOKEN && process.env.SENTRY_ORG && process.env.SENTRY_PROJECT
 );
 
-export default hasSentryUploadConfig
-  ? withSentryConfig(nextConfig, {
-      authToken: process.env.SENTRY_AUTH_TOKEN,
-      org: process.env.SENTRY_ORG,
-      project: process.env.SENTRY_PROJECT,
-      silent: !process.env.CI,
-      widenClientFileUpload: true,
-      // Proxy browser events through /monitoring so connect-src 'self' covers
-      // them — without this the CSP blocks every client-side Sentry event.
-      tunnelRoute: "/monitoring"
-    })
-  : nextConfig;
+// Applied unconditionally so tunnelRoute (the CSP bypass for browser events)
+// works with a DSN-only setup; source-map upload only activates when the
+// auth-token env vars are present.
+export default withSentryConfig(nextConfig, {
+  authToken: process.env.SENTRY_AUTH_TOKEN,
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  sourcemaps: { disable: !hasSentryUploadConfig },
+  // Proxy browser events through /monitoring so connect-src 'self' covers
+  // them — without this the CSP blocks every client-side Sentry event.
+  tunnelRoute: "/monitoring"
+});

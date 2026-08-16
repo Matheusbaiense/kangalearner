@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
       .insert({ email, subscribed_at: new Date().toISOString(), source: "footer" });
 
     if (error) {
-      // Unique constraint violation — already subscribed, treat as success
+      // Unique constraint violation, already subscribed, treat as success
       if (error.code === "23505") {
         return NextResponse.json({ ok: true });
       }

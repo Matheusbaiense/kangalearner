@@ -2,6 +2,8 @@ export type MockConfig = {
   state: string;
   mode: "practice" | "exam";
   questions: number;
+  /** Defaults to "car" when absent (older saved configs pre-date this field). */
+  licenceType?: "car" | "motorcycle";
 };
 
 export type MockSession = {

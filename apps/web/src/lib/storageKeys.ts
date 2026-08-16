@@ -5,6 +5,7 @@ export const SK = {
   lang: "kl-lang",
   stateLegacy: "kl-state",
   theme: "kanga-theme",
+  licenceType: "kl-licence-type",
   // chave do site estático (usado apenas em migrateLocalAttempts)
   legacyByState: "kl-answered-by-state-v2"
 } as const;
