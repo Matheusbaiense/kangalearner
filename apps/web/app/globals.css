@@ -3418,7 +3418,9 @@ a:focus-visible,
     backdrop-filter: blur(12px);
   }
   .mock-mode-option.active {
-    background: rgba(46, 125, 91, 0.08);
+    background: rgba(46, 125, 91, 0.16);
+    border-color: var(--green2);
+    box-shadow: inset 0 0 0 1px var(--green2);
   }
 }
 
@@ -3444,7 +3446,8 @@ a:focus-visible,
 }
 
 .mock-mode-option.active {
-  border-color: rgba(46, 125, 91, 0.55);
+  border-color: var(--green);
+  box-shadow: inset 0 0 0 1px var(--green);
   background: rgba(46, 125, 91, 0.06);
 }
 
