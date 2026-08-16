@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
 
@@ -26,9 +25,5 @@ export default async function PracticePage({ searchParams }: { searchParams: Pag
     redirect("/mock-test");
   }
 
-  return (
-    <Suspense fallback={<div className="app-page" aria-busy="true" />}>
-      <PracticeClient initialMode={initialMode} />
-    </Suspense>
-  );
+  return <PracticeClient initialMode={initialMode} />;
 }
