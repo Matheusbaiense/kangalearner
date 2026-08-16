@@ -7,7 +7,7 @@ import type { UiLang } from "@/lib/i18n";
 import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
 
 /**
- * Eyesight self-check — stolen from EzLicence's embedded Snellen widget.
+ * Eyesight self-check. Stolen from EzLicence's embedded Snellen widget.
  * A rough, at-home indication only. It is NOT the official DoT eyesight test;
  * the real test is taken at a DVS centre. Self-contained, no account, no API.
  */
@@ -42,9 +42,9 @@ const COPY: Record<
     cantRead: "I can't read this one",
     canRead: "I selected line",
     resultGood:
-      "Good sign — you read the smaller lines clearly. You still need to pass the official DoT eyesight test at a DVS centre.",
+      "Good sign. You read the smaller lines clearly. You still need to pass the official DoT eyesight test at a DVS centre.",
     resultCheck:
-      "You found the small lines hard. Consider an eye test before booking — and always do the official DoT eyesight test at a DVS centre.",
+      "You found the small lines hard. Consider an eye test before booking. And always do the official DoT eyesight test at a DVS centre.",
     disclaimer:
       "This is a rough self-check only, not a medical or official test. The legal eyesight test for your WA licence is done at a Driver and Vehicle Services (DVS) centre.",
     official: "Official WA eyesight standards",
@@ -62,9 +62,9 @@ const COPY: Record<
     cantRead: "Não consigo ler esta",
     canRead: "Selecionei a linha",
     resultGood:
-      "Bom sinal — você leu as linhas menores com clareza. Ainda assim, é preciso passar no teste de visão oficial do DoT num centro DVS.",
+      "Bom sinal. Você leu as linhas menores com clareza. Ainda assim, é preciso passar no teste de visão oficial do DoT num centro DVS.",
     resultCheck:
-      "Você teve dificuldade com as linhas pequenas. Considere um exame de vista antes de agendar — e faça sempre o teste de visão oficial do DoT num centro DVS.",
+      "Você teve dificuldade com as linhas pequenas. Considere um exame de vista antes de agendar. E faça sempre o teste de visão oficial do DoT num centro DVS.",
     disclaimer:
       "Isto é apenas um autoteste aproximado, não um teste médico ou oficial. O teste de visão legal para sua licença de WA é feito num centro Driver and Vehicle Services (DVS).",
     official: "Padrões oficiais de visão de WA",
@@ -82,9 +82,9 @@ const COPY: Record<
     cantRead: "No puedo leer esta",
     canRead: "Seleccioné la línea",
     resultGood:
-      "Buena señal — leíste las líneas más pequeñas con claridad. Aún debes aprobar el test de visión oficial del DoT en un centro DVS.",
+      "Buena señal. Leíste las líneas más pequeñas con claridad. Aún debes aprobar el test de visión oficial del DoT en un centro DVS.",
     resultCheck:
-      "Te costaron las líneas pequeñas. Considera un examen de la vista antes de reservar — y haz siempre el test de visión oficial del DoT en un centro DVS.",
+      "Te costaron las líneas pequeñas. Considera un examen de la vista antes de reservar. Y haz siempre el test de visión oficial del DoT en un centro DVS.",
     disclaimer:
       "Esto es solo un autotest aproximado, no un test médico ni oficial. El test de visión legal para tu licencia de WA se hace en un centro Driver and Vehicle Services (DVS).",
     official: "Estándares oficiales de visión de WA",

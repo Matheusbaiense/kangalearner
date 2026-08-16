@@ -13,12 +13,13 @@ export const XP_PER_MOCK_COMPLETE = 30;
 export const DAILY_GOAL_XP = 50;
 
 /** Level thresholds (cumulative XP). Index = level - 1. */
+// ponytail: level titles stay in English in every locale, like proper nouns/ranks
 const LEVEL_TITLES = [
   "Learner Driver",
   "Road Ready",
   "Confident Driver",
   "Road Rules Pro",
-  "WA Road Master"
+  "Aussie Road Master"
 ] as const;
 
 const LEVEL_STEP_XP = 500;

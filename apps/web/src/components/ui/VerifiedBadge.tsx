@@ -55,7 +55,7 @@ export function VerifiedBadge({
   reportContext?: string;
 }) {
   const c = COPY[lang];
-  const subject = encodeURIComponent(reportContext ? `${c.subject} — ${reportContext}` : c.subject);
+  const subject = encodeURIComponent(reportContext ? `${c.subject} - ${reportContext}` : c.subject);
   const mailto = `mailto:${REPORT_TO}?subject=${subject}`;
 
   return (

@@ -2,19 +2,31 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
+import { computeReadiness } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { useLang } from "@/contexts/LangContext";
 import { useGameProgress } from "@/hooks/useGameProgress";
 import { DailyProgress } from "@/components/gamification/DailyProgress";
-import { computeReadiness, nextBestAction, type AnsweredMap } from "@/lib/readiness";
+import { ReadinessCard } from "@/components/ReadinessCard";
 import { SK } from "@/lib/storageKeys";
+import { readStoredLicenceType, LICENCE_CHANGED_EVENT, type LicenceType } from "@/lib/licenceType";
 import type { UiLang } from "@/lib/i18n";
 
 /**
- * "Today" — a guest command-centre. Surfaces streak/XP, a simple readiness picture,
- * and the single next-best action, all from locally stored answers. No auth, no
- * migration. The logged-in dashboard can layer cross-device data on top later.
+ * "Today". A guest command-centre. Surfaces streak/XP, the readiness picture
+ * (same computeReadiness as the dashboard, fed from local practice history and
+ * the local mock history), and the single next-best action. No auth needed;
+ * the logged-in dashboard layers cross-device data on top.
  */
+
+const STATE_CHANGED_EVENT = "kanga:state-changed";
+
+type AnsweredMap = Record<string, { chosen: string; correct: boolean }>;
+
+interface NextAction {
+  kind: "start" | "weak" | "broaden" | "mock";
+  category?: string;
+}
 
 const COPY: Record<
   UiLang,
@@ -23,10 +35,6 @@ const COPY: Record<
     title: string;
     sub: string;
     nextAction: string;
-    theory: string;
-    coverage: string;
-    weakest: string;
-    none: string;
     act: {
       start: string;
       weak: (c: string) => string;
@@ -40,10 +48,6 @@ const COPY: Record<
     title: "Today",
     sub: "Your progress, how ready you are, and the one thing to do next.",
     nextAction: "Your next best action",
-    theory: "Theory accuracy",
-    coverage: "Topics covered",
-    weakest: "Needs work",
-    none: "—",
     act: {
       start: "Start practising",
       weak: (c) => `Drill ${c}`,
@@ -56,10 +60,6 @@ const COPY: Record<
     title: "Hoje",
     sub: "Seu progresso, o quão pronto você está e a única coisa a fazer agora.",
     nextAction: "Sua próxima melhor ação",
-    theory: "Acerto na teórica",
-    coverage: "Tópicos cobertos",
-    weakest: "Precisa de atenção",
-    none: "—",
     act: {
       start: "Começar a praticar",
       weak: (c) => `Treinar ${c}`,
@@ -72,10 +72,6 @@ const COPY: Record<
     title: "Hoy",
     sub: "Tu progreso, qué tan listo estás y lo único que debes hacer ahora.",
     nextAction: "Tu próxima mejor acción",
-    theory: "Acierto en el teórico",
-    coverage: "Temas cubiertos",
-    weakest: "Necesita trabajo",
-    none: "—",
     act: {
       start: "Empezar a practicar",
       weak: (c) => `Practicar ${c}`,
@@ -85,6 +81,15 @@ const COPY: Record<
   }
 };
 
+function safeParse<T>(raw: string | null): T | null {
+  if (!raw) return null;
+  try {
+    return JSON.parse(raw) as T;
+  } catch {
+    return null;
+  }
+}
+
 export default function TodayPage() {
   const { questions: QS } = useQuestions();
   const { uiLang: lang } = useLang();
@@ -92,24 +97,92 @@ export default function TodayPage() {
   const c = COPY[lang];
 
   const [answered, setAnswered] = useState<AnsweredMap>({});
+  const [selectedState, setSelectedState] = useState("WA");
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
+  const [mockHistory, setMockHistory] = useState<
+    Array<{ score: number; total: number; state: string }>
+  >([]);
+
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(SK.answered);
-      if (raw) setAnswered(JSON.parse(raw));
-    } catch {
-      /* noop */
-    }
+    const load = () => {
+      setAnswered(safeParse<AnsweredMap>(localStorage.getItem(SK.answered)) ?? {});
+      setSelectedState(
+        localStorage.getItem(SK.stateV2) || localStorage.getItem(SK.stateLegacy) || "WA"
+      );
+      setLicenceType(readStoredLicenceType());
+      const history = safeParse<Array<{ score: number; total: number; state: string }>>(
+        localStorage.getItem(SK.mockHistory)
+      );
+      setMockHistory(Array.isArray(history) ? history : []);
+    };
+    load();
+    window.addEventListener(STATE_CHANGED_EVENT, load);
+    window.addEventListener(LICENCE_CHANGED_EVENT, load);
+    return () => {
+      window.removeEventListener(STATE_CHANGED_EVENT, load);
+      window.removeEventListener(LICENCE_CHANGED_EVENT, load);
+    };
   }, []);
 
-  const readiness = useMemo(() => computeReadiness(answered, QS), [answered, QS]);
-  const action = useMemo(() => nextBestAction(readiness), [readiness]);
+  /* Same aggregation shape as the dashboard/mock-results: bank restricted to
+     the selected state + licence type, categories from local answers. */
+  const derived = useMemo(() => {
+    const bank = QS.filter(
+      (q) =>
+        q.states.includes(selectedState) &&
+        (licenceType === "motorcycle"
+          ? q.licenceType === "motorcycle"
+          : q.licenceType !== "motorcycle")
+    );
+    const byId = new Map(bank.map((q) => [q.id, q]));
+    const allCats = new Set(bank.map((q) => q.cat));
+    const catMap = new Map<string, { correct: number; total: number }>();
+    let answeredUnique = 0;
+    for (const [qid, v] of Object.entries(answered)) {
+      const q = byId.get(qid);
+      if (!q) continue;
+      answeredUnique++;
+      const e = catMap.get(q.cat) ?? { correct: 0, total: 0 };
+      catMap.set(q.cat, { correct: e.correct + (v.correct ? 1 : 0), total: e.total + 1 });
+    }
 
-  const actionHref =
-    action.kind === "mock"
-      ? "/practice?mode=sim"
-      : action.category
-        ? `/practice?category=${encodeURIComponent(action.category)}`
-        : "/practice";
+    const readiness = computeReadiness({
+      categories: [...catMap.entries()].map(([category, stat]) => ({
+        category,
+        correct: stat.correct,
+        total: stat.total
+      })),
+      recentMocks: mockHistory
+        .filter((m) => m.state === selectedState)
+        .map((m) => ({ score: m.score, total: m.total })),
+      questionBankSize: bank.length,
+      answeredUnique
+    });
+
+    /* Next best action: nothing yet → start; weak topic (≥3 attempts, <80%)
+       → drill it; untouched topics remain → broaden; else → mock. */
+    const eligible = [...catMap.entries()].filter(([, stat]) => stat.total >= 3);
+    const weakest =
+      eligible.length > 0
+        ? eligible.reduce((lo, entry) =>
+            entry[1].correct / entry[1].total < lo[1].correct / lo[1].total ? entry : lo
+          )
+        : null;
+    const untouched = [...allCats].filter((cat) => !catMap.has(cat));
+
+    let action: NextAction;
+    if (answeredUnique === 0) action = { kind: "start" };
+    else if (weakest && weakest[1].correct / weakest[1].total < 0.8)
+      action = { kind: "weak", category: weakest[0] };
+    else if (untouched.length > 0) action = { kind: "broaden", category: untouched[0] };
+    else action = { kind: "mock" };
+
+    return { readiness, action, answeredUnique };
+  }, [QS, answered, selectedState, licenceType, mockHistory]);
+
+  const { readiness, action, answeredUnique } = derived;
+
+  const actionHref = action.kind === "mock" ? "/mock-test" : "/practice";
   const actionLabel =
     action.kind === "start"
       ? c.act.start
@@ -125,7 +198,7 @@ export default function TodayPage() {
         <div className="page-header">
           <p
             style={{
-              fontSize: ".78rem",
+              fontSize: "var(--text-sm)",
               fontWeight: 800,
               letterSpacing: "0.1em",
               textTransform: "uppercase",
@@ -139,7 +212,7 @@ export default function TodayPage() {
           <p className="page-sub">{c.sub}</p>
         </div>
 
-        {/* Next best action — the hero */}
+        {/* Next best action. The hero */}
         <Link
           href={actionHref}
           style={{
@@ -149,17 +222,24 @@ export default function TodayPage() {
             gap: 12,
             marginTop: 20,
             padding: "18px 20px",
-            borderRadius: 14,
+            borderRadius: "var(--card-radius)",
             textDecoration: "none",
             color: "#fff",
-            background: "var(--green, #2e7d5b)"
+            background: "var(--green)"
           }}
         >
           <span>
-            <span style={{ display: "block", fontSize: ".72rem", opacity: 0.85, fontWeight: 700 }}>
+            <span
+              style={{
+                display: "block",
+                fontSize: "var(--text-xs)",
+                opacity: 0.85,
+                fontWeight: 700
+              }}
+            >
               {c.nextAction}
             </span>
-            <strong style={{ fontSize: "1.15rem" }}>{actionLabel}</strong>
+            <strong style={{ fontSize: "var(--text-lg)" }}>{actionLabel}</strong>
           </span>
           <span aria-hidden style={{ fontSize: "1.4rem" }}>
             →
@@ -171,47 +251,13 @@ export default function TodayPage() {
           <DailyProgress progress={progress} lang={lang} />
         </div>
 
-        {/* Readiness stats */}
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))",
-            gap: 12,
-            marginTop: 16
-          }}
-        >
-          <Stat
-            label={c.theory}
-            value={readiness.answeredCount > 0 ? `${readiness.theoryPct}%` : c.none}
-          />
-          <Stat label={c.coverage} value={`${readiness.coveragePct}%`} />
-          <Stat
-            label={c.weakest}
-            value={readiness.weakest ? readiness.weakest.cat : c.none}
-            small
-          />
-        </div>
+        {/* Readiness. Same card and computation as the dashboard */}
+        {answeredUnique > 0 && (
+          <div style={{ marginTop: 16 }}>
+            <ReadinessCard readiness={readiness} />
+          </div>
+        )}
       </div>
     </main>
-  );
-}
-
-function Stat({ label, value, small }: { label: string; value: string; small?: boolean }) {
-  return (
-    <div
-      style={{
-        border: "1px solid var(--border)",
-        borderRadius: 12,
-        background: "var(--paper)",
-        padding: "14px 16px"
-      }}
-    >
-      <div style={{ fontSize: ".72rem", color: "var(--muted)", fontWeight: 700, marginBottom: 4 }}>
-        {label}
-      </div>
-      <div style={{ fontSize: small ? "1rem" : "1.5rem", fontWeight: 850, lineHeight: 1.2 }}>
-        {value}
-      </div>
-    </div>
   );
 }

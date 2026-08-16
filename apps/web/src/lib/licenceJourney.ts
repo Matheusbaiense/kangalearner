@@ -38,9 +38,9 @@ export const JOURNEY_PHASES: JourneyPhase[] = [
     },
     points: [
       {
-        en: "Pass the theory test (24/30) — KangaLearner prepares you free, in your language.",
-        pt: "Passe na prova teórica (24/30) — o KangaLearner te prepara grátis, na sua língua.",
-        es: "Aprueba el examen teórico (24/30) — KangaLearner te prepara gratis, en tu idioma."
+        en: "Pass the theory test (24/30). KangaLearner prepares you free, in your language.",
+        pt: "Passe na prova teórica (24/30). O KangaLearner te prepara grátis, na sua língua.",
+        es: "Aprueba el examen teórico (24/30). KangaLearner te prepara gratis, en tu idioma."
       },
       {
         en: "Zero BAC, L plates front and back, and a supervising driver at all times.",
@@ -112,9 +112,9 @@ export const JOURNEY_PHASES: JourneyPhase[] = [
     },
     points: [
       {
-        en: "Keep driving safely — most crashes happen in the first years of solo driving.",
-        pt: "Continue dirigindo com segurança — a maioria dos acidentes é nos primeiros anos sozinho.",
-        es: "Sigue conduciendo con seguridad — la mayoría de accidentes son en los primeros años solo."
+        en: "Keep driving safely. Most crashes happen in the first years of solo driving.",
+        pt: "Continue dirigindo com segurança. A maioria dos acidentes é nos primeiros anos sozinho.",
+        es: "Sigue conduciendo con seguridad. La mayoría de accidentes son en los primeros años solo."
       }
     ]
   }
@@ -153,25 +153,25 @@ export const HPT_HUB: PrepHub = {
     {
       heading: { en: "What's assessed", pt: "O que é avaliado", es: "Qué se evalúa" },
       body: {
-        en: "Your ability to notice and react to developing hazards — pedestrians stepping out, cars braking, merging traffic — at the right moment, not too early or too late.",
-        pt: "Sua capacidade de notar e reagir a perigos em formação — pedestres surgindo, carros freando, tráfego entrando — no momento certo, nem cedo nem tarde demais.",
-        es: "Tu capacidad de notar y reaccionar a peligros en desarrollo — peatones que salen, autos que frenan, tráfico que se incorpora — en el momento justo, ni muy pronto ni muy tarde."
+        en: "Your ability to notice and react to developing hazards (pedestrians stepping out, cars braking, merging traffic) at the right moment, not too early or too late.",
+        pt: "Sua capacidade de notar e reagir a perigos em formação (pedestres surgindo, carros freando, tráfego entrando) no momento certo, nem cedo nem tarde demais.",
+        es: "Tu capacidad de notar y reaccionar a peligros en desarrollo (peatones que salen, autos que frenan, tráfico que se incorpora) en el momento justo, ni muy pronto ni muy tarde."
       }
     },
     {
       heading: { en: "How to prepare", pt: "Como se preparar", es: "Cómo prepararse" },
       body: {
-        en: "Practise scanning ahead and to the sides while driving with your supervisor. Talk out loud about what could go wrong next — it trains the same instinct the HPT tests.",
-        pt: "Pratique observar à frente e aos lados ao dirigir com seu supervisor. Fale em voz alta sobre o que pode dar errado a seguir — treina o mesmo instinto que o HPT avalia.",
-        es: "Practica mirar adelante y a los lados al conducir con tu supervisor. Di en voz alta qué podría salir mal — entrena el mismo instinto que evalúa el HPT."
+        en: "Practise scanning ahead and to the sides while driving with your supervisor. Talk out loud about what could go wrong next. It trains the same instinct the HPT tests.",
+        pt: "Pratique observar à frente e aos lados ao dirigir com seu supervisor. Fale em voz alta sobre o que pode dar errado a seguir. Treina o mesmo instinto que o HPT avalia.",
+        es: "Practica mirar adelante y a los lados al conducir con tu supervisor. Di en voz alta qué podría salir mal. Entrena el mismo instinto que evalúa el HPT."
       }
     },
     {
       heading: { en: "On test day", pt: "No dia do teste", es: "El día del test" },
       body: {
-        en: "Respond as soon as a hazard starts to develop, not when it's already dangerous. Don't click randomly — the system can flag that. Stay calm and watch the whole scene.",
-        pt: "Responda assim que um perigo começa a se formar, não quando já está perigoso. Não clique aleatoriamente — o sistema pode sinalizar isso. Mantenha a calma e observe toda a cena.",
-        es: "Responde apenas un peligro empieza a desarrollarse, no cuando ya es peligroso. No hagas clic al azar — el sistema puede marcarlo. Mantén la calma y observa toda la escena."
+        en: "Respond as soon as a hazard starts to develop, not when it's already dangerous. Don't click randomly. The system can flag that. Stay calm and watch the whole scene.",
+        pt: "Responda assim que um perigo começa a se formar, não quando já está perigoso. Não clique aleatoriamente. O sistema pode sinalizar isso. Mantenha a calma e observe toda a cena.",
+        es: "Responde apenas un peligro empieza a desarrollarse, no cuando ya es peligroso. No hagas clic al azar. El sistema puede marcarlo. Mantén la calma y observa toda la escena."
       }
     }
   ]
@@ -218,9 +218,9 @@ export const PDA_HUB: PrepHub = {
         es: "Confianza el día del examen"
       },
       body: {
-        en: "Sleep well, arrive early, and do a warm-up drive in the area first. Feeling nervous is normal — practising the route type (not the exact route) helps you stay calm.",
-        pt: "Durma bem, chegue cedo e faça uma volta de aquecimento na região antes. Sentir-se nervoso é normal — praticar o tipo de percurso (não a rota exata) ajuda a manter a calma.",
-        es: "Duerme bien, llega temprano y haz una vuelta de calentamiento en la zona antes. Estar nervioso es normal — practicar el tipo de recorrido (no la ruta exacta) ayuda a mantener la calma."
+        en: "Sleep well, arrive early, and do a warm-up drive in the area first. Feeling nervous is normal. Practising the route type (not the exact route) helps you stay calm.",
+        pt: "Durma bem, chegue cedo e faça uma volta de aquecimento na região antes. Sentir-se nervoso é normal. Praticar o tipo de percurso (não a rota exata) ajuda a manter a calma.",
+        es: "Duerme bien, llega temprano y haz una vuelta de calentamiento en la zona antes. Estar nervioso es normal. Practicar el tipo de recorrido (no la ruta exacta) ayuda a mantener la calma."
       }
     }
   ]

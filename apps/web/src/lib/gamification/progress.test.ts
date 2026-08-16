@@ -65,7 +65,7 @@ describe("levelFromXp", () => {
 
   it("caps at the highest defined level", () => {
     expect(levelFromXp(999_999).level).toBe(5);
-    expect(levelFromXp(999_999).title).toBe("WA Road Master");
+    expect(levelFromXp(999_999).title).toBe("Aussie Road Master");
   });
 });
 

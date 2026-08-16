@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
+import { AU_STATE_OPTIONS, fisherYatesSlice, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
 import { useLang } from "@/contexts/LangContext";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
@@ -10,21 +10,25 @@ import { tx, type UiLang } from "@/lib/i18n";
 import { useGameProgress } from "@/hooks/useGameProgress";
 import { DailyProgress } from "@/components/gamification/DailyProgress";
 import { XP_PER_CORRECT } from "@/lib/gamification/progress";
+import { SK } from "@/lib/storageKeys";
+import { readStoredLicenceType, LICENCE_CHANGED_EVENT, type LicenceType } from "@/lib/licenceType";
 
 /**
- * Tourist / Newcomer Quick Quiz — stolen from DriverKnowledgeTests' tourist quiz.
+ * Tourist / Newcomer Quick Quiz. Stolen from DriverKnowledgeTests' tourist quiz.
  * 10 questions, no account, multilingual. Pure acquisition + SEO surface; the CTA
  * at the end converts to Practice / account. Self-contained, no API, no migration.
  */
 
 const QUIZ_SIZE = 10;
 
+const STATE_CHANGED_EVENT = "kanga:state-changed";
+
 const COPY: Record<
   UiLang,
   {
     kicker: string;
-    title: string;
-    sub: string;
+    title: (code: string) => string;
+    sub: (name: string) => string;
     start: string;
     question: string;
     of: string;
@@ -32,7 +36,7 @@ const COPY: Record<
     seeResult: string;
     yourScore: string;
     resultGoodTitle: string;
-    resultGoodBody: string;
+    resultGoodBody: (code: string) => string;
     resultSoftTitle: string;
     resultSoftBody: string;
     ctaPractice: string;
@@ -43,18 +47,19 @@ const COPY: Record<
 > = {
   en: {
     kicker: "No sign-up needed",
-    title: "WA road rules — quick quiz for newcomers",
-    sub: "New to driving in Western Australia? Take 10 questions to see where you stand. Free, no account.",
+    title: (code) => `${code} road rules. Quick quiz for newcomers`,
+    sub: (name) =>
+      `New to driving in ${name}? Take 10 questions to see where you stand. Free, no account.`,
     start: "Start the 10-question quiz",
     question: "Question",
     of: "of",
     next: "Next question",
     seeResult: "See my result",
     yourScore: "Your score",
-    resultGoodTitle: "Nice — you know the basics!",
-    resultGoodBody:
-      "You're off to a strong start. Keep going with full practice and a mock test to be ready for the real WA Learner test.",
-    resultSoftTitle: "Good start — a few gaps to close",
+    resultGoodTitle: "Nice. You know the basics!",
+    resultGoodBody: (code) =>
+      `You're off to a strong start. Keep going with full practice and a mock test to be ready for the real ${code} learner test.`,
+    resultSoftTitle: "Good start. A few gaps to close",
     resultSoftBody:
       "Totally normal for newcomers. Practice by topic and review your weak spots to build confidence fast.",
     ctaPractice: "Practise the full set",
@@ -64,18 +69,19 @@ const COPY: Record<
   },
   pt: {
     kicker: "Sem cadastro",
-    title: "Regras de trânsito de WA — quiz rápido para recém-chegados",
-    sub: "Novo na direção em Western Australia? Faça 10 questões para ver como está. Grátis, sem conta.",
+    title: (code) => `Regras de trânsito de ${code}. Quiz rápido para recém-chegados`,
+    sub: (name) =>
+      `Novo na direção em ${name}? Faça 10 questões para ver como está. Grátis, sem conta.`,
     start: "Começar o quiz de 10 questões",
     question: "Questão",
     of: "de",
     next: "Próxima questão",
     seeResult: "Ver meu resultado",
     yourScore: "Sua pontuação",
-    resultGoodTitle: "Boa — você sabe o básico!",
-    resultGoodBody:
-      "Começou forte. Continue com a prática completa e um simulado para ficar pronto para a prova real de learner de WA.",
-    resultSoftTitle: "Bom começo — algumas lacunas a fechar",
+    resultGoodTitle: "Boa. Você sabe o básico!",
+    resultGoodBody: (code) =>
+      `Começou forte. Continue com a prática completa e um simulado para ficar pronto para a prova real de learner de ${code}.`,
+    resultSoftTitle: "Bom começo. Algumas lacunas a fechar",
     resultSoftBody:
       "É totalmente normal para quem está chegando. Pratique por tópico e revise seus pontos fracos para ganhar confiança rápido.",
     ctaPractice: "Praticar o conjunto completo",
@@ -85,18 +91,19 @@ const COPY: Record<
   },
   es: {
     kicker: "Sin registro",
-    title: "Reglas de tránsito de WA — quiz rápido para recién llegados",
-    sub: "¿Nuevo conduciendo en Western Australia? Haz 10 preguntas para ver cómo estás. Gratis, sin cuenta.",
+    title: (code) => `Reglas de tránsito de ${code}. Quiz rápido para recién llegados`,
+    sub: (name) =>
+      `¿Nuevo conduciendo en ${name}? Haz 10 preguntas para ver cómo estás. Gratis, sin cuenta.`,
     start: "Empezar el quiz de 10 preguntas",
     question: "Pregunta",
     of: "de",
     next: "Siguiente pregunta",
     seeResult: "Ver mi resultado",
     yourScore: "Tu puntuación",
-    resultGoodTitle: "¡Bien — conoces lo básico!",
-    resultGoodBody:
-      "Empezaste fuerte. Sigue con la práctica completa y un simulacro para estar listo para el examen real de learner de WA.",
-    resultSoftTitle: "Buen comienzo — algunas lagunas por cerrar",
+    resultGoodTitle: "¡Bien. Conoces lo básico!",
+    resultGoodBody: (code) =>
+      `Empezaste fuerte. Sigue con la práctica completa y un simulacro para estar listo para el examen real de learner de ${code}.`,
+    resultSoftTitle: "Buen comienzo. Algunas lagunas por cerrar",
     resultSoftBody:
       "Es totalmente normal para los recién llegados. Practica por tema y revisa tus puntos débiles para ganar confianza rápido.",
     ctaPractice: "Practicar el conjunto completo",
@@ -119,13 +126,40 @@ export default function QuickQuizPage() {
   const [idx, setIdx] = useState(0);
   const [picked, setPicked] = useState<string | null>(null);
   const [score, setScore] = useState(0);
+  const [selectedState, setSelectedState] = useState("WA");
+  const [licenceType, setLicenceType] = useState<LicenceType>("car");
+
+  useEffect(() => {
+    const load = () => {
+      setSelectedState(
+        localStorage.getItem(SK.stateV2) || localStorage.getItem(SK.stateLegacy) || "WA"
+      );
+      setLicenceType(readStoredLicenceType());
+    };
+    load();
+    window.addEventListener(STATE_CHANGED_EVENT, load);
+    window.addEventListener(LICENCE_CHANGED_EVENT, load);
+    return () => {
+      window.removeEventListener(STATE_CHANGED_EVENT, load);
+      window.removeEventListener(LICENCE_CHANGED_EVENT, load);
+    };
+  }, []);
+
+  const stateName =
+    AU_STATE_OPTIONS.find((opt) => opt.code === selectedState)?.name ?? selectedState;
 
   const quiz = useMemo<Question[]>(() => {
-    const waQs = QS.filter((q) => !q.states || q.states.includes("WA"));
-    return fisherYatesSlice(waQs, QUIZ_SIZE);
+    const pool = QS.filter(
+      (q) =>
+        q.states.includes(selectedState) &&
+        (licenceType === "motorcycle"
+          ? q.licenceType === "motorcycle"
+          : q.licenceType !== "motorcycle")
+    );
+    return fisherYatesSlice(pool, QUIZ_SIZE);
     // seed forces a fresh draw on retry
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [QS, seed]);
+  }, [QS, selectedState, licenceType, seed]);
 
   function start() {
     setPhase("quiz");
@@ -192,8 +226,8 @@ export default function QuickQuizPage() {
           >
             {c.kicker}
           </p>
-          <h1 className="page-title">{c.title}</h1>
-          <p className="page-sub">{c.sub}</p>
+          <h1 className="page-title">{c.title(selectedState)}</h1>
+          <p className="page-sub">{c.sub(stateName)}</p>
         </div>
 
         {phase === "intro" && (
@@ -224,7 +258,13 @@ export default function QuickQuizPage() {
 
         {phase === "result" && (
           <>
-            <ResultView score={score} total={quiz.length} c={c} onRetry={retry} />
+            <ResultView
+              score={score}
+              total={quiz.length}
+              c={c}
+              stateCode={selectedState}
+              onRetry={retry}
+            />
             <div style={{ marginTop: 20 }}>
               <DailyProgress progress={progress} lang={lang} />
             </div>
@@ -332,11 +372,13 @@ function ResultView({
   score,
   total,
   c,
+  stateCode,
   onRetry
 }: {
   score: number;
   total: number;
   c: (typeof COPY)[UiLang];
+  stateCode: string;
   onRetry: () => void;
 }) {
   const pct = total > 0 ? Math.round((score / total) * 100) : 0;
@@ -353,7 +395,7 @@ function ResultView({
       <h2 style={{ fontSize: "1.1rem", fontWeight: 850, margin: "8px 0" }}>
         {good ? c.resultGoodTitle : c.resultSoftTitle}
       </h2>
-      <p className="sim-result-msg">{good ? c.resultGoodBody : c.resultSoftBody}</p>
+      <p className="sim-result-msg">{good ? c.resultGoodBody(stateCode) : c.resultSoftBody}</p>
       <div className="sim-result-actions">
         <Link href="/practice" className="btn-green">
           {c.ctaPractice}

@@ -10,38 +10,38 @@ const LAST_VERIFIED = "2026-06-01";
 const COPY = {
   en: {
     kicker: "Your WA licence journey",
-    title: "From learner to full licence — the whole path",
+    title: "From learner to full licence. The whole path",
     sub: "Western Australia's licence is a sequence of steps. Here's the whole journey, and where KangaLearner helps at each stage.",
     hptCard: "HPT prep",
-    hptDesc: "Spot hazards on video clips — required before your P1.",
+    hptDesc: "Spot hazards on video clips. Required before your P1.",
     pdaCard: "PDA prep",
-    pdaDesc: "Your on-road driving test — the last step before P1.",
+    pdaDesc: "Your on-road driving test. The last step before P1.",
     verify:
-      "A plain-English guide, not legal advice. Hours, ages and rules depend on your situation — confirm with the Department of Transport WA.",
+      "A plain-English guide, not legal advice. Hours, ages and rules depend on your situation. Confirm with the Department of Transport WA.",
     practise: "Start practising the theory test"
   },
   pt: {
     kicker: "Sua jornada de habilitação em WA",
-    title: "De learner à licença completa — o caminho inteiro",
+    title: "De learner à licença completa. O caminho inteiro",
     sub: "A habilitação de Western Australia é uma sequência de passos. Aqui está a jornada completa e onde o KangaLearner ajuda em cada etapa.",
     hptCard: "Preparação HPT",
-    hptDesc: "Identifique perigos em video clips — exigido antes da P1.",
+    hptDesc: "Identifique perigos em video clips. Exigido antes da P1.",
     pdaCard: "Preparação PDA",
-    pdaDesc: "Sua prova de direção na via — o último passo antes da P1.",
+    pdaDesc: "Sua prova de direção na via. O último passo antes da P1.",
     verify:
-      "Guia em linguagem simples, não aconselhamento jurídico. Horas, idades e regras dependem do seu caso — confirme com o Departamento de Transportes de WA.",
+      "Guia em linguagem simples, não aconselhamento jurídico. Horas, idades e regras dependem do seu caso. Confirme com o Departamento de Transportes de WA.",
     practise: "Começar a praticar a prova teórica"
   },
   es: {
     kicker: "Tu recorrido de licencia en WA",
-    title: "De learner a licencia completa — todo el camino",
+    title: "De learner a licencia completa. Todo el camino",
     sub: "La licencia de Western Australia es una secuencia de pasos. Aquí está todo el recorrido y dónde KangaLearner ayuda en cada etapa.",
     hptCard: "Preparación HPT",
-    hptDesc: "Detecta peligros en video clips — requerido antes de la P1.",
+    hptDesc: "Detecta peligros en video clips. Requerido antes de la P1.",
     pdaCard: "Preparación PDA",
-    pdaDesc: "Tu examen de conducción en vía — el último paso antes de la P1.",
+    pdaDesc: "Tu examen de conducción en vía. El último paso antes de la P1.",
     verify:
-      "Guía en lenguaje claro, no asesoría legal. Horas, edades y reglas dependen de tu caso — confirma con el Departamento de Transporte de WA.",
+      "Guía en lenguaje claro, no asesoría legal. Horas, edades y reglas dependen de tu caso. Confirma con el Departamento de Transporte de WA.",
     practise: "Empezar a practicar el examen teórico"
   }
 } as const;

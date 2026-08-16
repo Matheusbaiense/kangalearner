@@ -1,7 +1,7 @@
 import type { UiLang } from "@/lib/i18n";
 
 /**
- * Overseas Licence in WA hub — the biggest content gap among competitors
+ * Overseas Licence in WA hub. The biggest content gap among competitors
  * (DKT covers NSW; EzLicence sells conversions but no WA guide). Newcomer wedge.
  *
  * IMPORTANT: content is conservative and source-linked. The authoritative list of
@@ -12,7 +12,7 @@ import type { UiLang } from "@/lib/i18n";
 export type RecognitionStatus = "recognised" | "not-recognised" | "check";
 
 export interface OverseasCountry {
-  /** ISO-3166 alpha-2, lowercase — used as the route slug */
+  /** ISO-3166 alpha-2, lowercase. Used as the route slug */
   code: string;
   flag: string;
   name: Record<UiLang, string>;
@@ -56,12 +56,12 @@ export const OVERSEAS_GENERAL: Record<
     kicker: "Driving in WA with an overseas licence",
     title: "Already drive? Here's how it works in Western Australia",
     intro:
-      "If you arrived in WA with a licence from another country, what you need to do depends on your visa, how long you'll stay, and whether your country is on WA's recognised list. This guide explains the path — and where KangaLearner helps you pass the theory test.",
+      "If you arrived in WA with a licence from another country, what you need to do depends on your visa, how long you'll stay, and whether your country is on WA's recognised list. This guide explains the path. And where KangaLearner helps you pass the theory test.",
     visitingTitle: "Visiting or on a temporary visa?",
     visiting: [
       "You can generally drive on a current, valid overseas licence while it stays valid.",
       "If your licence is not in English, carry an official English translation or an International Driving Permit (IDP).",
-      "You must follow WA road rules — being on a foreign licence is not a defence if you break them.",
+      "You must follow WA road rules. Being on a foreign licence is not a defence if you break them.",
       "Always confirm your exact situation with the Department of Transport (DoT)."
     ],
     convertTitle: "Becoming a WA resident? You'll need to convert",
@@ -69,28 +69,28 @@ export const OVERSEAS_GENERAL: Record<
       "Permanent residents generally must transfer to a WA licence within 3 months.",
       "Whether you need to sit tests depends on whether your country is recognised by WA.",
       "Prove your identity, pass an eyesight test, and pay the fees.",
-      "You keep driving legally while you complete the transfer — check the DoT steps."
+      "You keep driving legally while you complete the transfer. Check the DoT steps."
     ],
     recognisedTitle: "From a recognised country",
     recognised:
       "If WA recognises your country, an experienced driver can often transfer without sitting the theory or practical test. Check the official recognised-countries list to be sure.",
     notRecognisedTitle: "From a country that isn't recognised",
     notRecognised:
-      "You'll usually need to pass the WA theory test (Computerised Theory Test) and a practical driving assessment (PDA). That's exactly what KangaLearner prepares you for — free, in your language.",
+      "You'll usually need to pass the WA theory test (Computerised Theory Test) and a practical driving assessment (PDA). That's exactly what KangaLearner prepares you for. Free, in your language.",
     chooseCountry: "Find your country",
     verifyNote:
-      "Rules change and depend on your visa. This is a plain-English guide, not legal advice — always confirm with the Department of Transport WA."
+      "Rules change and depend on your visa. This is a plain-English guide, not legal advice. Always confirm with the Department of Transport WA."
   },
   pt: {
     kicker: "Dirigir em WA com licença estrangeira",
     title: "Já dirige? Veja como funciona em Western Australia",
     intro:
-      "Se você chegou em WA com uma habilitação de outro país, o que fazer depende do seu visto, do tempo que vai ficar e de o seu país estar ou não na lista de países reconhecidos por WA. Este guia explica o caminho — e onde o KangaLearner te ajuda a passar na prova teórica.",
+      "Se você chegou em WA com uma habilitação de outro país, o que fazer depende do seu visto, do tempo que vai ficar e de o seu país estar ou não na lista de países reconhecidos por WA. Este guia explica o caminho. E onde o KangaLearner te ajuda a passar na prova teórica.",
     visitingTitle: "De visita ou com visto temporário?",
     visiting: [
       "Em geral você pode dirigir com a habilitação estrangeira válida enquanto ela estiver válida.",
       "Se a habilitação não estiver em inglês, leve uma tradução oficial em inglês ou uma Permissão Internacional para Dirigir (PID).",
-      "Você precisa seguir as regras de trânsito de WA — estar com habilitação estrangeira não é desculpa se infringir.",
+      "Você precisa seguir as regras de trânsito de WA. Estar com habilitação estrangeira não é desculpa se infringir.",
       "Confirme sempre a sua situação exata com o Departamento de Transportes (DoT)."
     ],
     convertTitle: "Vai morar em WA? Vai precisar converter",
@@ -98,28 +98,28 @@ export const OVERSEAS_GENERAL: Record<
       "Residentes permanentes geralmente devem transferir para a licença de WA em até 3 meses.",
       "Se você precisa fazer provas depende de o seu país ser reconhecido por WA.",
       "Comprove sua identidade, passe no teste de visão e pague as taxas.",
-      "Você continua dirigindo legalmente enquanto faz a transferência — veja os passos do DoT."
+      "Você continua dirigindo legalmente enquanto faz a transferência. Veja os passos do DoT."
     ],
     recognisedTitle: "De um país reconhecido",
     recognised:
       "Se WA reconhece o seu país, um motorista experiente costuma transferir sem fazer a prova teórica ou prática. Confira a lista oficial de países reconhecidos para ter certeza.",
     notRecognisedTitle: "De um país não reconhecido",
     notRecognised:
-      "Normalmente você terá que passar na prova teórica de WA (Computerised Theory Test) e na avaliação prática (PDA). É exatamente para isso que o KangaLearner te prepara — grátis e na sua língua.",
+      "Normalmente você terá que passar na prova teórica de WA (Computerised Theory Test) e na avaliação prática (PDA). É exatamente para isso que o KangaLearner te prepara. Grátis e na sua língua.",
     chooseCountry: "Encontre o seu país",
     verifyNote:
-      "As regras mudam e dependem do seu visto. Este é um guia em linguagem simples, não aconselhamento jurídico — confirme sempre com o Departamento de Transportes de WA."
+      "As regras mudam e dependem do seu visto. Este é um guia em linguagem simples, não aconselhamento jurídico. Confirme sempre com o Departamento de Transportes de WA."
   },
   es: {
     kicker: "Conducir en WA con licencia extranjera",
     title: "¿Ya conduces? Así funciona en Western Australia",
     intro:
-      "Si llegaste a WA con una licencia de otro país, lo que debes hacer depende de tu visa, cuánto te quedarás y de si tu país está en la lista de países reconocidos por WA. Esta guía explica el camino — y dónde KangaLearner te ayuda a aprobar el examen teórico.",
+      "Si llegaste a WA con una licencia de otro país, lo que debes hacer depende de tu visa, cuánto te quedarás y de si tu país está en la lista de países reconocidos por WA. Esta guía explica el camino. Y dónde KangaLearner te ayuda a aprobar el examen teórico.",
     visitingTitle: "¿De visita o con visa temporal?",
     visiting: [
       "En general puedes conducir con tu licencia extranjera válida mientras siga vigente.",
       "Si tu licencia no está en inglés, lleva una traducción oficial al inglés o un Permiso Internacional de Conducir (PIC).",
-      "Debes cumplir las reglas de tránsito de WA — tener licencia extranjera no es excusa si las infringes.",
+      "Debes cumplir las reglas de tránsito de WA. Tener licencia extranjera no es excusa si las infringes.",
       "Confirma siempre tu situación exacta con el Departamento de Transporte (DoT)."
     ],
     convertTitle: "¿Vas a residir en WA? Tendrás que convertirla",
@@ -127,17 +127,17 @@ export const OVERSEAS_GENERAL: Record<
       "Los residentes permanentes generalmente deben transferir a una licencia de WA en un plazo de 3 meses.",
       "Si necesitas presentar exámenes depende de si tu país es reconocido por WA.",
       "Prueba tu identidad, aprueba el examen de la vista y paga las tarifas.",
-      "Sigues conduciendo legalmente mientras completas la transferencia — revisa los pasos del DoT."
+      "Sigues conduciendo legalmente mientras completas la transferencia. Revisa los pasos del DoT."
     ],
     recognisedTitle: "Desde un país reconocido",
     recognised:
       "Si WA reconoce tu país, un conductor con experiencia suele transferir sin presentar el examen teórico ni práctico. Revisa la lista oficial de países reconocidos para asegurarte.",
     notRecognisedTitle: "Desde un país no reconocido",
     notRecognised:
-      "Normalmente tendrás que aprobar el examen teórico de WA (Computerised Theory Test) y la evaluación práctica (PDA). Para eso justamente te prepara KangaLearner — gratis y en tu idioma.",
+      "Normalmente tendrás que aprobar el examen teórico de WA (Computerised Theory Test) y la evaluación práctica (PDA). Para eso justamente te prepara KangaLearner. Gratis y en tu idioma.",
     chooseCountry: "Encuentra tu país",
     verifyNote:
-      "Las reglas cambian y dependen de tu visa. Esta es una guía en lenguaje claro, no asesoría legal — confirma siempre con el Departamento de Transporte de WA."
+      "Las reglas cambian y dependen de tu visa. Esta es una guía en lenguaje claro, no asesoría legal. Confirma siempre con el Departamento de Transporte de WA."
   }
 };
 
@@ -173,9 +173,9 @@ export const OVERSEAS_COUNTRIES: OverseasCountry[] = [
     status: "recognised",
     theoryTestLikely: false,
     summary: {
-      en: "Spain is commonly recognised by WA, so an experienced driver can often transfer without the theory or practical test — confirm on the official recognised-countries list.",
-      pt: "A Espanha costuma ser reconhecida por WA, então um motorista experiente normalmente transfere sem prova teórica ou prática — confirme na lista oficial de países reconhecidos.",
-      es: "España suele ser reconocida por WA, así que un conductor con experiencia normalmente transfiere sin examen teórico ni práctico — confírmalo en la lista oficial de países reconocidos."
+      en: "Spain is commonly recognised by WA, so an experienced driver can often transfer without the theory or practical test. Confirm on the official recognised-countries list.",
+      pt: "A Espanha costuma ser reconhecida por WA, então um motorista experiente normalmente transfere sem prova teórica ou prática. Confirme na lista oficial de países reconhecidos.",
+      es: "España suele ser reconocida por WA, así que un conductor con experiencia normalmente transfiere sin examen teórico ni práctico. Confírmalo en la lista oficial de países reconocidos."
     }
   }
 ];

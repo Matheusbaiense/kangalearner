@@ -44,7 +44,7 @@ const COPY: Record<
     back: "← All countries",
     whatYouDo: "What you'll likely need in WA",
     theoryYes:
-      "You'll most likely need to pass the WA theory test (Computerised Theory Test) and a practical driving assessment. KangaLearner gets you ready for the theory — free, in your language.",
+      "You'll most likely need to pass the WA theory test (Computerised Theory Test) and a practical driving assessment. KangaLearner gets you ready for the theory. Free, in your language.",
     theoryNo:
       "As an experienced driver you may be able to transfer without sitting the theory or practical test. Confirm on the official recognised-countries list before you book.",
     practise: "Practise the WA theory test",
@@ -54,7 +54,7 @@ const COPY: Record<
     back: "← Todos os países",
     whatYouDo: "O que você provavelmente vai precisar em WA",
     theoryYes:
-      "Você provavelmente vai precisar passar na prova teórica de WA (Computerised Theory Test) e na avaliação prática. O KangaLearner te prepara para a teórica — grátis e na sua língua.",
+      "Você provavelmente vai precisar passar na prova teórica de WA (Computerised Theory Test) e na avaliação prática. O KangaLearner te prepara para a teórica. Grátis e na sua língua.",
     theoryNo:
       "Como motorista experiente, você pode conseguir transferir sem fazer a prova teórica ou prática. Confirme na lista oficial de países reconhecidos antes de agendar.",
     practise: "Praticar a prova teórica de WA",
@@ -64,7 +64,7 @@ const COPY: Record<
     back: "← Todos los países",
     whatYouDo: "Lo que probablemente necesitarás en WA",
     theoryYes:
-      "Lo más probable es que debas aprobar el examen teórico de WA (Computerised Theory Test) y la evaluación práctica. KangaLearner te prepara para el teórico — gratis y en tu idioma.",
+      "Lo más probable es que debas aprobar el examen teórico de WA (Computerised Theory Test) y la evaluación práctica. KangaLearner te prepara para el teórico. Gratis y en tu idioma.",
     theoryNo:
       "Como conductor con experiencia, podrías transferir sin presentar el examen teórico ni práctico. Confírmalo en la lista oficial de países reconocidos antes de reservar.",
     practise: "Practicar el examen teórico de WA",

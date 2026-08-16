@@ -29,37 +29,37 @@ const COPY: Record<
 > = {
   en: {
     kicker: "Driving confidence",
-    title: "Feeling nervous? That's normal — let's build confidence",
+    title: "Feeling nervous? That's normal. Let's build confidence",
     sub: "Rate how confident you feel about each situation. We'll point you to a calm tip and where to practise. Your answers stay on this device.",
     howFeel: "How confident do you feel?",
     scale: ["Anxious", "Confident"],
     practise: "Build confidence here",
     summaryLow:
-      "Start with the situations you rated lowest — small, focused practice builds real confidence fast.",
+      "Start with the situations you rated lowest. Small, focused practice builds real confidence fast.",
     summaryOk:
       "You're feeling solid across the board. Keep practising the ones you rated lower to stay sharp."
   },
   pt: {
     kicker: "Confiança ao volante",
-    title: "Nervoso? É normal — vamos construir confiança",
+    title: "Nervoso? É normal. Vamos construir confiança",
     sub: "Avalie como você se sente em cada situação. A gente aponta uma dica calma e onde praticar. Suas respostas ficam só neste dispositivo.",
     howFeel: "Quão confiante você se sente?",
     scale: ["Ansioso", "Confiante"],
     practise: "Ganhar confiança aqui",
     summaryLow:
-      "Comece pelas situações que você avaliou mais baixo — prática pequena e focada constrói confiança de verdade rápido.",
+      "Comece pelas situações que você avaliou mais baixo. Prática pequena e focada constrói confiança de verdade rápido.",
     summaryOk:
       "Você está firme no geral. Continue praticando as que avaliou mais baixo para se manter afiado."
   },
   es: {
     kicker: "Confianza al volante",
-    title: "¿Nervioso? Es normal — vamos a construir confianza",
+    title: "¿Nervioso? Es normal. Vamos a construir confianza",
     sub: "Evalúa cómo te sientes en cada situación. Te señalamos un consejo calmado y dónde practicar. Tus respuestas quedan solo en este dispositivo.",
     howFeel: "¿Qué tan seguro te sientes?",
     scale: ["Ansioso", "Seguro"],
     practise: "Gana confianza aquí",
     summaryLow:
-      "Empieza por las situaciones que calificaste más bajo — práctica pequeña y enfocada construye confianza real rápido.",
+      "Empieza por las situaciones que calificaste más bajo. Práctica pequeña y enfocada construye confianza real rápido.",
     summaryOk:
       "Te sientes firme en general. Sigue practicando las que calificaste más bajo para mantenerte afilado."
   }

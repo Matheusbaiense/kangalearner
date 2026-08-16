@@ -8,7 +8,7 @@ import { JOURNEY_LINKS } from "@/lib/licenceJourney";
 import type { UiLang } from "@/lib/i18n";
 
 /**
- * Supervisor Companion (v1) — for parents/partners/friends supervising a learner.
+ * Supervisor Companion (v1). For parents/partners/friends supervising a learner.
  * Almost no competitor serves this persona. v1 is content + a client-side practice
  * checklist (localStorage) so it works guest-first; a future `supervisor_logs` table
  * (migration 026) can persist real sessions. It does NOT replace the official Learn&Log.
@@ -34,14 +34,14 @@ const COPY: Record<
   en: {
     kicker: "Supervisor Companion",
     title: "Helping a learner driver? Here's how to coach without the stress",
-    sub: "WA learners under 25 need at least 50 supervised hours, including 5 at night. Use this companion to make each drive count — it's a coach, not the official Learn&Log.",
+    sub: "WA learners under 25 need at least 50 supervised hours, including 5 at night. Use this companion to make each drive count. It's a coach, not the official Learn&Log.",
     checklistTitle: "Skills to practise together",
     items: [
       "Quiet streets: starting, stopping smoothly, steering control",
       "Mirror and head checks before every move",
       "Give way: intersections, T-junctions, roundabouts",
       "Lane changes and merging with traffic",
-      "Roundabouts — choosing lanes and signalling",
+      "Roundabouts. Choosing lanes and signalling",
       "Parking: reverse, parallel, and angle parking",
       "Night driving (5 hours required under 25)",
       "Rain and low-visibility driving",
@@ -50,7 +50,7 @@ const COPY: Record<
     ],
     tipsTitle: "Coaching tips",
     tips: [
-      "Stay calm — your tone sets theirs. Anxiety is the #1 thing that holds learners back.",
+      "Stay calm. Your tone sets theirs. Anxiety is the #1 thing that holds learners back.",
       "Give one instruction at a time, early enough to act on.",
       "Praise what went well before correcting what didn't.",
       "End each drive on a confident note, on an easy stretch."
@@ -63,14 +63,14 @@ const COPY: Record<
   pt: {
     kicker: "Companheiro do Supervisor",
     title: "Supervisionando um learner? Veja como ensinar sem estresse",
-    sub: "Learners de WA com menos de 25 precisam de ao menos 50 horas supervisionadas, incluindo 5 à noite. Use este companheiro para aproveitar cada volta — é um coach, não o Learn&Log oficial.",
+    sub: "Learners de WA com menos de 25 precisam de ao menos 50 horas supervisionadas, incluindo 5 à noite. Use este companheiro para aproveitar cada volta. É um coach, não o Learn&Log oficial.",
     checklistTitle: "Habilidades para praticar juntos",
     items: [
       "Ruas tranquilas: arrancar, parar suave, controle da direção",
       "Espelhos e ponto cego antes de cada manobra",
       "Dar preferência: cruzamentos, entroncamentos, rotatórias",
       "Mudança de faixa e entrada no tráfego",
-      "Rotatórias — escolher faixas e sinalizar",
+      "Rotatórias. Escolher faixas e sinalizar",
       "Estacionar: baliza, paralelo e em ângulo",
       "Direção noturna (5 horas exigidas para menores de 25)",
       "Direção na chuva e baixa visibilidade",
@@ -79,7 +79,7 @@ const COPY: Record<
     ],
     tipsTitle: "Dicas de ensino",
     tips: [
-      "Mantenha a calma — seu tom define o dele. Ansiedade é o nº1 que trava o aprendiz.",
+      "Mantenha a calma. Seu tom define o dele. Ansiedade é o nº1 que trava o aprendiz.",
       "Dê uma instrução por vez, com antecedência para agir.",
       "Elogie o que foi bem antes de corrigir o que não foi.",
       "Termine cada volta com confiança, num trecho fácil."
@@ -92,14 +92,14 @@ const COPY: Record<
   es: {
     kicker: "Compañero del Supervisor",
     title: "¿Supervisas a un learner? Así puedes enseñar sin estrés",
-    sub: "Los learners de WA menores de 25 necesitan al menos 50 horas supervisadas, incluidas 5 de noche. Usa este compañero para aprovechar cada vuelta — es un coach, no el Learn&Log oficial.",
+    sub: "Los learners de WA menores de 25 necesitan al menos 50 horas supervisadas, incluidas 5 de noche. Usa este compañero para aprovechar cada vuelta. Es un coach, no el Learn&Log oficial.",
     checklistTitle: "Habilidades para practicar juntos",
     items: [
       "Calles tranquilas: arrancar, frenar suave, control del volante",
       "Espejos y punto ciego antes de cada maniobra",
       "Ceder el paso: intersecciones, cruces en T, rotondas",
       "Cambio de carril e incorporación al tráfico",
-      "Rotondas — elegir carriles y señalizar",
+      "Rotondas. Elegir carriles y señalizar",
       "Estacionar: en reversa, paralelo y en ángulo",
       "Conducción nocturna (5 horas requeridas para menores de 25)",
       "Conducción con lluvia y poca visibilidad",
@@ -108,7 +108,7 @@ const COPY: Record<
     ],
     tipsTitle: "Consejos de enseñanza",
     tips: [
-      "Mantén la calma — tu tono marca el suyo. La ansiedad es lo que más frena al aprendiz.",
+      "Mantén la calma. Tu tono marca el suyo. La ansiedad es lo que más frena al aprendiz.",
       "Da una instrucción a la vez, con tiempo para reaccionar.",
       "Elogia lo que salió bien antes de corregir lo que no.",
       "Termina cada vuelta con confianza, en un tramo fácil."

@@ -6,6 +6,8 @@ export const SK = {
   stateLegacy: "kl-state",
   theme: "kanga-theme",
   licenceType: "kl-licence-type",
+  // histórico local de simulados (guest) — alimenta o readiness do /today
+  mockHistory: "kl-mock-history",
   // chave do site estático (usado apenas em migrateLocalAttempts)
   legacyByState: "kl-answered-by-state-v2"
 } as const;
