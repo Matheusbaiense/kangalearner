@@ -103,10 +103,10 @@ export const t = {
     heroBadge1: "Free forever",
     heroBadge2: "1000+ exam-style questions",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA, NSW and QLD available now. VIC and more coming soon.",
+    heroProof: "All Australian states and territories available now.",
     heroSourcePill: "Based on the official handbooks · Updated Aug 2026",
     heroStat1Label: "exam-style questions",
-    heroStat2Label: "states: WA, NSW, QLD",
+    heroStat2Label: "states & territories",
     heroStat3Label: "languages",
     // Features
     feat1Title: "Learn",
@@ -143,8 +143,6 @@ export const t = {
     // States
     stateAvailable: "Available now",
     comingSoon: "Coming soon",
-    statesMoreNote: "More states coming soon:",
-    statesMoreLink: "sign up to be notified",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "What learners say",
     faqTitle: "Frequently asked questions",
@@ -508,10 +506,10 @@ export const t = {
     heroBadge1: "Gratuito para sempre",
     heroBadge2: "1000+ questões estilo prova",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA, NSW e QLD disponíveis agora. VIC e mais em breve.",
+    heroProof: "Todos os estados e territórios australianos disponíveis agora.",
     heroSourcePill: "Baseado nos handbooks oficiais · Atualizado ago 2026",
     heroStat1Label: "questões estilo prova",
-    heroStat2Label: "estados: WA, NSW, QLD",
+    heroStat2Label: "estados e territórios",
     heroStat3Label: "idiomas",
     // Features
     feat1Title: "Aprender",
@@ -548,8 +546,6 @@ export const t = {
     // States
     stateAvailable: "Disponível agora",
     comingSoon: "Em breve",
-    statesMoreNote: "Mais estados em breve:",
-    statesMoreLink: "cadastre-se para ser notificado",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "O que os alunos dizem",
     faqTitle: "Perguntas frequentes",
@@ -915,10 +911,10 @@ export const t = {
     heroBadge1: "Gratis para siempre",
     heroBadge2: "1000+ preguntas estilo examen",
     heroBadge3: "English · Português · Español",
-    heroProof: "WA, NSW y QLD disponibles ahora. VIC y más próximamente.",
+    heroProof: "Todos los estados y territorios australianos disponibles ahora.",
     heroSourcePill: "Basado en los manuales oficiales · Actualizado ago 2026",
     heroStat1Label: "preguntas estilo examen",
-    heroStat2Label: "estados: WA, NSW, QLD",
+    heroStat2Label: "estados y territorios",
     heroStat3Label: "idiomas",
     // Features
     feat1Title: "Aprender",
@@ -955,8 +951,6 @@ export const t = {
     // States
     stateAvailable: "Disponible ahora",
     comingSoon: "Próximamente",
-    statesMoreNote: "Más estados próximamente:",
-    statesMoreLink: "regístrate para ser notificado",
     // Testimonials / FAQ / CTA
     testimonialsTitle: "Lo que dicen los estudiantes",
     faqTitle: "Preguntas frecuentes",
