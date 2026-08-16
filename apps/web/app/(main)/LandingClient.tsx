@@ -23,6 +23,7 @@ import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { LIVE_STATE_CODES } from "@kanga/core";
+import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
 
 /* ── Data ── */
 const FEATURES: {
@@ -102,9 +103,12 @@ const TRUST_ITEMS = [
   }
 ] as const;
 
+const STATE_PAGE_SLUGS = new Map<string, string>(STATE_TEST_INFO.map((st) => [st.code, st.slug]));
+
 const AU_STATES = (["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as const).map((code) => ({
   code,
-  available: (LIVE_STATE_CODES as readonly string[]).includes(code)
+  available: (LIVE_STATE_CODES as readonly string[]).includes(code),
+  pageSlug: STATE_PAGE_SLUGS.get(code) ?? null
 }));
 
 const FAQS = [
@@ -664,17 +668,26 @@ export function LandingClient() {
       <section className="states-section">
         <div className="states-inner">
           <div className="states-grid">
-            {AU_STATES.map((st) => (
-              <div
-                key={st.code}
-                className={`state-card${st.available ? " active" : " coming-soon"}`}
-              >
-                <span className="state-code">{st.code}</span>
-                <span className="state-badge">
-                  {st.available ? s.stateAvailable : s.comingSoon}
-                </span>
-              </div>
-            ))}
+            {AU_STATES.map((st) => {
+              const className = `state-card${st.available ? " active" : " coming-soon"}`;
+              const inner = (
+                <>
+                  <span className="state-code">{st.code}</span>
+                  <span className="state-badge">
+                    {st.available ? s.stateAvailable : s.comingSoon}
+                  </span>
+                </>
+              );
+              return st.pageSlug ? (
+                <Link key={st.code} href={`/learner-test/${st.pageSlug}`} className={className}>
+                  {inner}
+                </Link>
+              ) : (
+                <div key={st.code} className={className}>
+                  {inner}
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>

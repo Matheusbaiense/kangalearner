@@ -72,6 +72,7 @@ export const t = {
     learnBack: "← All topics",
     learnPractice: "Practise this topic →",
     learnAllTopics: "All practice questions →",
+    learnWaCttCta: "Free WA CTT practice →",
 
     // ── Blog ──────────────────────────────────────────────
     blogTitle: "Blog",
@@ -354,6 +355,9 @@ export const t = {
     footerNewsletterCta: "Subscribe",
     footerNewsletterSuccess: "You're in! Check your inbox.",
     footerNewsletterError: "Something went wrong. Please try again.",
+    footerStatesLabel: "Learner tests",
+    stateCtaPractice: "Practice {state} questions",
+    stateCtaMock: "Take a {state} mock test",
     resCommunityTitle: "Immigrant Communities",
     resCommunityDesc:
       "Connect with other immigrants across Australia who are also getting their licence.",
@@ -475,6 +479,7 @@ export const t = {
     learnBack: "← Todos os tópicos",
     learnPractice: "Praticar este tópico →",
     learnAllTopics: "Todas as perguntas →",
+    learnWaCttCta: "Prática CTT de WA grátis →",
 
     // ── Blog ──────────────────────────────────────────────
     blogTitle: "Blog",
@@ -759,6 +764,9 @@ export const t = {
     footerNewsletterCta: "Inscrever-se",
     footerNewsletterSuccess: "Inscrito! Verifique sua caixa de entrada.",
     footerNewsletterError: "Algo deu errado. Tente novamente.",
+    footerStatesLabel: "Provas de learner",
+    stateCtaPractice: "Praticar questões de {state}",
+    stateCtaMock: "Fazer um simulado de {state}",
     resCommunityTitle: "Comunidades de Imigrantes",
     resCommunityDesc:
       "Conecte-se com outros imigrantes em toda a Austrália que também estão tirando a carteira.",
@@ -880,6 +888,7 @@ export const t = {
     learnBack: "← Todos los temas",
     learnPractice: "Practicar este tema →",
     learnAllTopics: "Todas las preguntas →",
+    learnWaCttCta: "Práctica CTT de WA gratis →",
 
     // ── Blog ──────────────────────────────────────────────
     blogTitle: "Blog",
@@ -1164,6 +1173,9 @@ export const t = {
     footerNewsletterCta: "Suscribirme",
     footerNewsletterSuccess: "¡Ya estás! Revisa tu bandeja de entrada.",
     footerNewsletterError: "Algo salió mal. Inténtalo de nuevo.",
+    footerStatesLabel: "Exámenes de learner",
+    stateCtaPractice: "Practicar preguntas de {state}",
+    stateCtaMock: "Hacer un simulacro de {state}",
     resCommunityTitle: "Comunidades de Inmigrantes",
     resCommunityDesc:
       "Conéctate con otros inmigrantes en toda Australia que también están sacando su licencia.",
