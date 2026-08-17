@@ -4,8 +4,8 @@ import { ResourcesPageClient } from "./ResourcesPageClient";
 export const metadata: Metadata = {
   title: "Learner Licence Resources & Official Links",
   description:
-    "Official Transport WA links, booking guides, the licence pathway from learner theory to " +
-    "PDA, and trusted community resources for new drivers. Currently covers WA, other states coming soon.",
+    "Official licensing links, supervised-hours rules and the learner-to-Ps pathway for every " +
+    "Australian state and territory, matched to the state you select.",
   alternates: { canonical: "https://kangalearner.com.au/resources" },
   openGraph: {
     title: "Learner Licence Resources",

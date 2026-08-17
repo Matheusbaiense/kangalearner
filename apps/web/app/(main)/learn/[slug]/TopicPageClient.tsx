@@ -4,8 +4,10 @@ import Link from "next/link";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
+import { applyStateTokens } from "@kanga/core";
 import type { LearnTopic } from "@/lib/learnTopics";
-import { tx } from "@/lib/i18n";
+import { useStateCopy } from "@/lib/stateCopy";
+import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
 import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
 
 interface TopicPageClientProps {
@@ -20,11 +22,13 @@ function extractSourceUrl(source: string): string | undefined {
   return raw.startsWith("http") ? raw : `https://${raw}`;
 }
 
-/** Date the WA learn content was last reviewed against Transport WA. */
+/** Date the learn content was last reviewed against the official sources. */
 const LAST_VERIFIED = "2026-06-01";
 
 export function TopicPageClient({ topic }: TopicPageClientProps) {
   const { uiLang: lang, s } = useLang();
+  const { profile, t } = useStateCopy();
+  const statePageSlug = STATE_TEST_INFO.find((info) => info.code === profile.code)?.slug;
 
   const practiceHref = topic.practiceCategory
     ? `/practice?category=${encodeURIComponent(topic.practiceCategory)}`
@@ -44,17 +48,17 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
           <IconBadge icon={Icons[topic.icon]} tone="brand" className="topic-icon" />
           <h1 style={{ fontSize: "1.4rem", fontWeight: 850, lineHeight: 1.2, margin: 0 }}>
-            {tx(topic.title, lang)}
+            {t(topic.title)}
           </h1>
         </div>
 
-        <p style={{ lineHeight: 1.6, marginBottom: 24 }}>{tx(topic.summary, lang)}</p>
+        <p style={{ lineHeight: 1.6, marginBottom: 24 }}>{t(topic.summary)}</p>
 
         <section style={{ marginBottom: 24 }}>
           <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnKeyRules}</h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.keyRules.map((r, i) => (
-              <li key={i}>{tx(r, lang)}</li>
+              <li key={i}>{t(r)}</li>
             ))}
           </ul>
         </section>
@@ -63,7 +67,7 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnMistakes}</h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.mistakes.map((m, i) => (
-              <li key={i}>{tx(m, lang)}</li>
+              <li key={i}>{t(m)}</li>
             ))}
           </ul>
         </section>
@@ -77,7 +81,7 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           }}
         >
           <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 8 }}>{s.learnExample}</h2>
-          <p style={{ lineHeight: 1.6, margin: 0 }}>{tx(topic.example, lang)}</p>
+          <p style={{ lineHeight: 1.6, margin: 0 }}>{t(topic.example)}</p>
         </section>
 
         <section style={{ marginBottom: 24 }}>
@@ -86,20 +90,20 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           </h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.quickCheck.map((q, i) => (
-              <li key={i}>{tx(q, lang)}</li>
+              <li key={i}>{t(q)}</li>
             ))}
           </ul>
         </section>
 
         <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 12 }}>
-          <strong>{s.learnSource}:</strong> {tx(topic.source, lang)}
+          <strong>{s.learnSource}:</strong> {t(topic.source)}
         </p>
 
         <div style={{ marginBottom: 24 }}>
           <VerifiedBadge
             lang={lang}
             lastVerified={LAST_VERIFIED}
-            sourceUrl={extractSourceUrl(tx(topic.source, lang))}
+            sourceUrl={extractSourceUrl(t(topic.source)) ?? profile.handbookUrl}
             reportContext={topic.slug}
           />
         </div>
@@ -111,9 +115,9 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           <Link href="/practice" className="btn btn-secondary">
             {s.learnAllTopics}
           </Link>
-          {topic.slug === "about-the-test" ? (
-            <Link href="/learner-test/wa" className="btn btn-secondary">
-              {s.learnWaCttCta}
+          {topic.slug === "about-the-test" && statePageSlug ? (
+            <Link href={`/learner-test/${statePageSlug}`} className="btn btn-secondary">
+              {applyStateTokens(s.learnStateTestCta, profile)}
             </Link>
           ) : null}
         </div>

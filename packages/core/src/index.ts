@@ -73,6 +73,14 @@ export function normalizeAuState(value: string | null | undefined): AuStateCode 
 export { fisherYatesSlice } from "./shuffle";
 
 export {
+  STATE_PROFILES,
+  getStateProfile,
+  passPercent,
+  applyStateTokens,
+  type StateProfile
+} from "./data/stateProfiles";
+
+export {
   computeReadiness,
   LOW_COVERAGE_THRESHOLD,
   READINESS_LEVEL_THRESHOLDS,

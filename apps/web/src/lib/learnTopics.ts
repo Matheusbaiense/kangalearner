@@ -1,11 +1,19 @@
+import type { AuStateCode } from "@kanga/core";
 import type { UiLang } from "@/lib/i18n";
 import type { IconName } from "@/components/icons";
 
+/**
+ * Copy may contain {token} placeholders resolved per selected jurisdiction by
+ * applyStateTokens (see @kanga/core): {state}, {authority}, {handbook}, {testName},
+ * {questions}, {minCorrect}, {passPct}, {schoolZone}.
+ */
 export interface LearnTopic {
   slug: string;
   icon: IconName;
   /** Category key that matches @kanga/core CATEGORIES, used for practice filter link */
   practiceCategory?: string;
+  /** When set, the topic only shows for these jurisdictions — its content is state law that differs elsewhere. */
+  states?: AuStateCode[];
   isSpecial?: boolean;
   title: Record<UiLang, string>;
   summary: Record<UiLang, string>;
@@ -23,20 +31,20 @@ export const LEARN_TOPICS: LearnTopic[] = [
     icon: "book",
     isSpecial: true,
     title: {
-      en: "About the WA Learner Test",
-      pt: "Sobre a prova de learner de WA",
-      es: "Sobre el examen learner de WA"
+      en: "About the {state} Learner Test",
+      pt: "Sobre a prova de learner de {state}",
+      es: "Sobre el examen learner de {state}"
     },
     summary: {
-      en: "The WA Learner Licence test is a computer-based test with 30 multiple-choice questions. You need at least 24 correct (80%) to pass. Questions are drawn from road rules, signs, road markings, alcohol laws and safe driving.",
-      pt: "A prova de learner de WA é um teste informatizado com 30 questões de múltipla escolha. Você precisa acertar pelo menos 24 (80%) para passar. As questões abordam regras de trânsito, placas, marcações, leis de álcool e segurança.",
-      es: "El examen learner de WA es un test informatizado con 30 preguntas de opción múltiple. Necesitas al menos 24 respuestas correctas (80%) para aprobar. Las preguntas abarcan reglas de tránsito, señales, marcas viales, leyes de alcohol y conducción segura."
+      en: "The {testName} in {state} is a computer-based test with {questions} multiple-choice questions. You need at least {minCorrect} correct to pass. {sectionNote} Questions are drawn from road rules, signs, road markings, alcohol laws and safe driving.",
+      pt: "O {testName} em {state} é um teste informatizado com {questions} questões de múltipla escolha. Você precisa acertar pelo menos {minCorrect} para passar. {sectionNote} As questões abordam regras de trânsito, placas, marcações, leis de álcool e segurança.",
+      es: "El {testName} en {state} es un test informatizado con {questions} preguntas de opción múltiple. Necesitas al menos {minCorrect} respuestas correctas para aprobar. {sectionNote} Las preguntas abarcan reglas de tránsito, señales, marcas viales, leyes de alcohol y conducción segura."
     },
     keyRules: [
       {
-        en: "The test has 30 multiple-choice questions. You must answer at least 24 correctly (80%) to pass.",
-        pt: "A prova tem 30 questões de múltipla escolha. Você deve acertar pelo menos 24 (80%) para passar.",
-        es: "El examen tiene 30 preguntas de opción múltiple. Debes responder al menos 24 correctamente (80%) para aprobar."
+        en: "The test has {questions} multiple-choice questions. You must answer at least {minCorrect} correctly ({passPct}%) to pass.",
+        pt: "A prova tem {questions} questões de múltipla escolha. Você deve acertar pelo menos {minCorrect} ({passPct}%) para passar.",
+        es: "El examen tiene {questions} preguntas de opción múltiple. Debes responder al menos {minCorrect} correctamente ({passPct}%) para aprobar."
       },
       {
         en: "Questions cover road rules, signs, road markings, alcohol laws, overtaking and safe driving.",
@@ -44,14 +52,14 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Las preguntas abarcan reglas de tránsito, señales, marcas viales, leyes de alcohol, adelantamiento y conducción segura."
       },
       {
-        en: "Study the Drive Safe Handbook and practise all topics on KangaLearner before sitting the test.",
-        pt: "Estude o Drive Safe Handbook e pratique todos os tópicos no KangaLearner antes de fazer a prova.",
-        es: "Estudia el Drive Safe Handbook y practica todos los temas en KangaLearner antes de presentar el examen."
+        en: "Study the {handbook} and practise all topics on KangaLearner before sitting the test.",
+        pt: "Estude o {handbook} e pratique todos os tópicos no KangaLearner antes de fazer a prova.",
+        es: "Estudia el {handbook} y practica todos los temas en KangaLearner antes de presentar el examen."
       },
       {
-        en: "KangaLearner's Learn section, Practice mode and Mock Test mirror the format and content of the real exam.",
-        pt: "A seção Aprender, o modo Praticar e o Simulado do KangaLearner seguem o formato e o conteúdo da prova real.",
-        es: "La sección Aprender, el modo Practicar y el Simulacro de KangaLearner siguen el formato y el contenido del examen real."
+        en: "KangaLearner's Learn section, Practice mode and Mock Test cover the same topics as the real exam, using the {state} question bank.",
+        pt: "A seção Aprender, o modo Praticar e o Simulado do KangaLearner cobrem os mesmos temas da prova real, usando o banco de questões de {state}.",
+        es: "La sección Aprender, el modo Practicar y el Simulacro de KangaLearner cubren los mismos temas del examen real, con el banco de preguntas de {state}."
       }
     ],
     mistakes: [
@@ -61,21 +69,21 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Saltarse la sección Aprender e ir directamente a practicar sin entender las reglas."
       },
       {
-        en: "Assuming the passing score is lower than 80%: the cutoff is firm and applies to all learner tests in WA.",
-        pt: "Achar que a nota mínima é menor que 80%: o critério de aprovação é fixo e se aplica a todas as provas de learner em WA.",
-        es: "Asumir que la puntuación mínima es menor al 80%: el criterio de aprobación es fijo en todos los exámenes learner de WA."
+        en: "Assuming the passing score is lower than it is: in {state} the cutoff is {minCorrect} of {questions} and it is firm.",
+        pt: "Achar que a nota mínima é menor do que é: em {state} o corte é {minCorrect} de {questions} e é fixo.",
+        es: "Asumir que la puntuación mínima es menor de lo que es: en {state} el corte es {minCorrect} de {questions} y es fijo."
       }
     ],
     example: {
-      en: "The Mock Test in KangaLearner gives you 30 random questions, just like the real test. Aim for 80% or higher consistently before booking your appointment with the Department of Transport.",
-      pt: "O Simulado do KangaLearner apresenta 30 questões aleatórias, como na prova real. Tente atingir 80% ou mais de forma consistente antes de agendar seu atendimento no Departamento de Transportes.",
-      es: "El Simulacro de KangaLearner presenta 30 preguntas aleatorias, como en el examen real. Apunta a un 80% o más de forma consistente antes de reservar tu cita en el Departamento de Transportes."
+      en: "The Mock Test in KangaLearner gives you 30 random questions from the {state} question bank. Aim for 90% or higher consistently before booking your test with {authority}.",
+      pt: "O Simulado do KangaLearner apresenta 30 questões aleatórias do banco de {state}. Tente atingir 90% ou mais de forma consistente antes de agendar sua prova no {authority}.",
+      es: "El Simulacro de KangaLearner presenta 30 preguntas aleatorias del banco de {state}. Apunta a un 90% o más de forma consistente antes de reservar tu examen en {authority}."
     },
     quickCheck: [
       {
-        en: "How many questions does the WA learner test have?",
-        pt: "Quantas questões tem a prova de learner de WA?",
-        es: "¿Cuántas preguntas tiene el examen learner de WA?"
+        en: "How many questions does the {state} learner test have?",
+        pt: "Quantas questões tem a prova de learner de {state}?",
+        es: "¿Cuántas preguntas tiene el examen learner de {state}?"
       },
       {
         en: "What is the minimum score needed to pass?",
@@ -89,9 +97,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Department of Transport WA: transport.wa.gov.au/licensing/learner-driver-guide.asp",
-      pt: "Departamento de Transportes de WA: transport.wa.gov.au/licensing/learner-driver-guide.asp",
-      es: "Departamento de Transportes de WA: transport.wa.gov.au/licensing/learner-driver-guide.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -167,9 +175,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, sections 1.2 Speed and 3.1 Speed Limits.",
-      pt: "Baseado no Drive Safe Handbook, seções 1.2 Speed e 3.1 Speed Limits.",
-      es: "Basado en el Drive Safe Handbook, secciones 1.2 Speed y 3.1 Speed Limits."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -245,9 +253,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, section 3.8 Traffic Signs.",
-      pt: "Baseado no Drive Safe Handbook, seção 3.8 Traffic Signs.",
-      es: "Basado en el Drive Safe Handbook, sección 3.8 Traffic Signs."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -323,9 +331,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, section 3.10 Traffic Control Signals.",
-      pt: "Baseado no Drive Safe Handbook, seção 3.10 Traffic Control Signals.",
-      es: "Basado en el Drive Safe Handbook, sección 3.10 Traffic Control Signals."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -401,9 +409,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, section 3.9 Road Markings.",
-      pt: "Baseado no Drive Safe Handbook, seção 3.9 Road Markings.",
-      es: "Basado en el Drive Safe Handbook, sección 3.9 Road Markings."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -479,9 +487,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, section 3.18 Parking.",
-      pt: "Baseado no Drive Safe Handbook, seção 3.18 Parking.",
-      es: "Basado en el Drive Safe Handbook, sección 3.18 Parking."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -557,9 +565,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, sections on intersections, turning and give way rules.",
-      pt: "Baseado no Drive Safe Handbook, seções sobre intersections, turning e give way rules.",
-      es: "Basado en el Drive Safe Handbook, secciones sobre intersecciones, giros y ceder el paso."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -635,9 +643,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA). See transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      es: "Basado en el Drive Safe Handbook (WA). Ver transport.wa.gov.au/licensing/road-rules-handbook.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -713,9 +721,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -741,9 +749,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Nunca adelante donde las señales o líneas continuas lo prohíban."
       },
       {
-        en: "In WA, keep at least 1 m lateral clearance when passing cyclists on roads up to 60 km/h and 1.5 m above that.",
-        pt: "Em WA, mantenha pelo menos 1 m de distância lateral de ciclistas em vias até 60 km/h e 1,5 m acima disso.",
-        es: "En WA, mantenga al menos 1 m al adelantar ciclistas hasta 60 km/h y 1,5 m por encima."
+        en: "Everywhere in Australia, keep at least 1 m lateral clearance when passing cyclists on roads up to 60 km/h and 1.5 m above that.",
+        pt: "Em toda a Austrália, mantenha pelo menos 1 m de distância lateral de ciclistas em vias até 60 km/h e 1,5 m acima disso.",
+        es: "En toda Australia, mantenga al menos 1 m al adelantar ciclistas hasta 60 km/h y 1,5 m por encima."
       },
       {
         en: "Do not overtake on bends or crests with reduced visibility.",
@@ -791,9 +799,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -869,9 +877,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook, section 1.3 Alcohol and Drugs.",
-      pt: "Baseado no Drive Safe Handbook, seção 1.3 Alcohol and Drugs.",
-      es: "Basado en el Drive Safe Handbook, sección 1.3 Alcohol and Drugs."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -897,9 +905,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Nunca conduzca con sueño. Si se siente cansado, pare y descanse. La fatiga afecta el tiempo de reacción tanto como el alcohol."
       },
       {
-        en: "Mobile phones, including hands-free, can distract attention. Learner drivers must not use any phone while driving in WA.",
-        pt: "Celulares, inclusive os viva-voz, podem distrair a atenção. Motoristas novatos não podem usar nenhum celular ao dirigir em WA.",
-        es: "Los móviles, incluso manos libres, pueden distraer la atención. Los conductores novatos no pueden usar ningún teléfono mientras conducen en WA."
+        en: "Holding or touching a phone while driving is an offence everywhere in Australia. What learner and P drivers may do with a mounted phone differs by state — check {authority} for the rule in {state}.",
+        pt: "Segurar ou tocar no celular ao dirigir é infração em toda a Austrália. O que learners e condutores P podem fazer com o celular em suporte varia por estado — consulte o {authority} para a regra em {state}.",
+        es: "Sostener o tocar el móvil al conducir es una infracción en toda Australia. Lo que los learners y conductores P pueden hacer con el móvil en soporte varía por estado — consulte {authority} para la regla en {state}."
       },
       {
         en: "Keep a safe following distance: at least a 3-second gap from the vehicle ahead in dry conditions.",
@@ -919,9 +927,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Creer que los trayectos cortos no requieren el mismo nivel de atención: la mayoría de los accidentes ocurren cerca de casa."
       },
       {
-        en: "Using a phone while stopped at traffic lights is illegal for learner drivers in WA.",
-        pt: "Usar o celular parado no sinal é ilegal para motoristas novatos em WA.",
-        es: "Usar el teléfono parado en un semáforo es ilegal para conductores novatos en WA."
+        en: "Picking the phone up at a red light: holding it is an offence even with the car stopped in traffic.",
+        pt: "Pegar o celular no sinal vermelho: segurá-lo é infração mesmo com o carro parado no trânsito.",
+        es: "Tomar el móvil en el semáforo en rojo: sostenerlo es una infracción incluso con el auto detenido en el tráfico."
       }
     ],
     example: {
@@ -941,15 +949,15 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "¿Cuál es la distancia mínima de seguimiento en condiciones secas?"
       },
       {
-        en: "Can a learner driver use a hands-free phone in WA?",
-        pt: "Um motorista novato pode usar viva-voz em WA?",
-        es: "¿Puede un conductor novato usar manos libres en WA?"
+        en: "What do the phone rules in {state} allow a learner driver to do?",
+        pt: "O que as regras de celular em {state} permitem a um motorista learner?",
+        es: "¿Qué permiten las reglas del móvil en {state} a un conductor learner?"
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA), sections on fatigue, distractions and safe following distances.",
-      pt: "Baseado no Drive Safe Handbook (WA), seções sobre fadiga, distrações e distâncias de seguimento.",
-      es: "Basado en el Drive Safe Handbook (WA), secciones sobre fatiga, distracciones y distancias de seguimiento."
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1025,9 +1033,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1103,9 +1111,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Based on the Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      pt: "Baseado no Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp",
-      es: "Basado en el Drive Safe Handbook (WA). transport.wa.gov.au/licensing/road-rules-handbook.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1117,12 +1125,12 @@ export const LEARN_TOPICS: LearnTopic[] = [
     title: {
       en: "Demerit Points",
       pt: "Sistema de pontos (demerits)",
-      es: "Sistema de puntos WA"
+      es: "Sistema de puntos (demerits)"
     },
     summary: {
-      en: "Recorded offences can add demerit points to your WA licence. Too many can lead to suspension or other actions. Always check the official guide.",
-      pt: "Infrações gravadas podem somar pontos (demerits) na sua licença WA. Acumular demais pode levar a suspensão ou outras medidas. Consulte sempre o guia oficial.",
-      es: "Las infracciones pueden sumar puntos demerit en su licencia WA. Demasiados pueden llevar a suspensión. Consulte la guía oficial."
+      en: "Recorded offences can add demerit points to your licence. Too many can lead to suspension or other actions. Thresholds differ by state, and learner and provisional drivers usually have a much lower limit — check {authority}.",
+      pt: "Infrações registradas podem somar pontos (demerits) na sua licença. Acumular demais pode levar a suspensão ou outras medidas. Os limites variam por estado, e motoristas learner e provisórios costumam ter um limite bem menor — consulte o {authority}.",
+      es: "Las infracciones registradas pueden sumar puntos demerit en su licencia. Demasiados pueden llevar a suspensión. Los umbrales varían por estado, y los conductores learner y provisionales suelen tener un límite mucho menor — consulte {authority}."
     },
     keyRules: [
       {
@@ -1141,9 +1149,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Respetar límites de velocidad y alcohol reduce puntos y siniestros."
       },
       {
-        en: "Use official WA sources only for up-to-date offence and point values.",
-        pt: "Use apenas fontes oficiais WA para valores atualizados de infrações e pontos.",
-        es: "Use solo fuentes oficiales WA para valores actualizados."
+        en: "Use official {state} sources only for up-to-date offence and point values.",
+        pt: "Use apenas fontes oficiais de {state} para valores atualizados de infrações e pontos.",
+        es: "Use solo fuentes oficiales de {state} para valores actualizados."
       }
     ],
     mistakes: [
@@ -1153,15 +1161,15 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Pensar que 'solo una multa leve' no acumula consecuencias."
       },
       {
-        en: "Confusing other states' rules with WA.",
-        pt: "Confundir regras de outros estados com WA.",
-        es: "Confundir reglas de otros estados con WA."
+        en: "Confusing another state's point thresholds with the ones that apply in {state}.",
+        pt: "Confundir os limites de pontos de outro estado com os que valem em {state}.",
+        es: "Confundir los umbrales de puntos de otro estado con los que aplican en {state}."
       }
     ],
     example: {
-      en: "You receive an infringement notice with points. You check the WA Department of Transport site for your current tally and accumulation period.",
-      pt: "Você recebe uma notificação de multa com pontos. Verifica no site do Departamento de Transportes WA quantos pontos já tem e qual o período de acumulação.",
-      es: "Recibe una multa con puntos. Consulta en el sitio de Transport WA su saldo y el período de acumulación."
+      en: "You receive an infringement notice with points. You check the {authority} site for your current tally and accumulation period.",
+      pt: "Você recebe uma notificação de multa com pontos. Verifica no site do {authority} quantos pontos já tem e qual o período de acumulação.",
+      es: "Recibe una multa con puntos. Consulta en el sitio de {authority} su saldo y el período de acumulación."
     },
     quickCheck: [
       {
@@ -1181,9 +1189,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Educational summary; official details: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp",
-      pt: "Resumo educativo; valores oficiais: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp",
-      es: "Resumen educativo; detalles oficiales: transport.wa.gov.au/licensing/improve-your-driving-behaviour.asp"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1191,10 +1199,13 @@ export const LEARN_TOPICS: LearnTopic[] = [
     slug: "mobile-phones",
     icon: "mail",
     practiceCategory: "Mobile Phones",
+    // Conteudo e a lei vigente de WA (mesma regra para todos os condutores). NSW, VIC,
+    // QLD e SA proibem celular para learner/P mesmo em suporte, entao nao pode aparecer la.
+    states: ["WA"],
     title: {
-      en: "Mobile Phones While Driving WA",
-      pt: "Celular ao Volante em WA",
-      es: "Teléfono Móvil al Volante en WA"
+      en: "Mobile Phones While Driving",
+      pt: "Celular ao Volante",
+      es: "Teléfono Móvil al Volante"
     },
     summary: {
       en: "In WA the mobile phone rules are the same for every driver, from learner to full licence holder. Holding or touching a phone while driving is an offence, even when stopped at lights. Using a phone fixed in a mount (GPS or calls) is legal for all drivers, including learners.",
@@ -1264,14 +1275,14 @@ export const LEARN_TOPICS: LearnTopic[] = [
     icon: "timer",
     practiceCategory: "Fatigue",
     title: {
-      en: "Fatigue and Drowsy Driving WA",
-      pt: "Fadiga ao Volante em WA",
-      es: "Fatiga al Volante en WA"
+      en: "Fatigue and Drowsy Driving",
+      pt: "Fadiga ao Volante",
+      es: "Fatiga al Volante"
     },
     summary: {
-      en: "Fatigue is a leading cause of fatal crashes in WA. It slows your reaction time as much as alcohol. WA law requires drivers to stop and rest. There is no legal limit for hours driven, but failing to manage fatigue is an offence.",
-      pt: "A fadiga é uma das principais causas de acidentes fatais em WA. Ela reduz o tempo de reacção tanto quanto o álcool. A lei de WA exige que os motoristas parem para descansar. Não há um limite legal de horas, mas não gerir a fadiga é infracção.",
-      es: "La fatiga es una de las principales causas de accidentes mortales en WA. Reduce el tiempo de reacción tanto como el alcohol. La ley de WA exige a los conductores parar a descansar. No hay límite legal de horas, pero no gestionar la fatiga es una infracción."
+      en: "Fatigue is a leading cause of fatal crashes in Australia. It slows your reaction time as much as alcohol. There is no legal limit on hours driven for a private car licence, but driving impaired by fatigue can still be an offence.",
+      pt: "A fadiga é uma das principais causas de acidentes fatais na Austrália. Ela reduz o tempo de reação tanto quanto o álcool. Não há um limite legal de horas para carteira de carro particular, mas dirigir com a capacidade afetada pela fadiga pode ser infração.",
+      es: "La fatiga es una de las principales causas de accidentes mortales en Australia. Reduce el tiempo de reacción tanto como el alcohol. No hay límite legal de horas para una licencia de coche particular, pero conducir con la capacidad afectada por la fatiga puede ser una infracción."
     },
     keyRules: [
       {
@@ -1320,9 +1331,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "WA Learner Driver Guide (fatigue chapter) + Main Roads WA fatigue resources",
-      pt: "Guia do Motorista Aprendiz de WA (capítulo fadiga) + Main Roads WA",
-      es: "Guía del Conductor Novato de WA (capítulo fatiga) + Main Roads WA"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1331,55 +1342,55 @@ export const LEARN_TOPICS: LearnTopic[] = [
     icon: "warning",
     practiceCategory: "School Zones",
     title: {
-      en: "School Zones Speed Limits WA",
-      pt: "Zonas Escolares em WA",
-      es: "Zonas Escolares en WA"
+      en: "School Zone Speed Limits",
+      pt: "Zonas Escolares",
+      es: "Zonas Escolares"
     },
     summary: {
-      en: "School zones have a 40 km/h speed limit during school arrival and departure times. The limit applies even if no children are visible. Penalties are significantly higher in school zones.",
-      pt: "Zonas escolares têm limite de 40 km/h nos horários de entrada e saída escolar. O limite vale mesmo que não haja crianças visíveis. As multas são significativamente mais altas nessas zonas.",
-      es: "Las zonas escolares tienen un límite de 40 km/h durante los horarios de entrada y salida escolar. El límite aplica incluso si no hay niños visibles. Las multas son significativamente más altas en estas zonas."
+      en: "School zones in {state} have a {schoolZone} km/h speed limit during the signed school times. The limit applies even if no children are visible. Penalties are significantly higher in school zones.",
+      pt: "Zonas escolares em {state} têm limite de {schoolZone} km/h nos horários indicados nas placas. O limite vale mesmo que não haja crianças visíveis. As multas são significativamente mais altas nessas zonas.",
+      es: "Las zonas escolares en {state} tienen un límite de {schoolZone} km/h durante los horarios señalizados. El límite aplica incluso si no hay niños visibles. Las multas son significativamente más altas en estas zonas."
     },
     keyRules: [
       {
-        en: "Speed limit: 40 km/h in school zones on school days (approx. 7:30 to 9:00 am and 2:30 to 4:00 pm). Check local signage, times can vary.",
-        pt: "Limite: 40 km/h em zonas escolares nos dias de aula (aprox. 7h30 às 9h e 14h30 às 16h). Verifique as placas locais, os horários podem variar.",
-        es: "Límite: 40 km/h en zonas escolares en días lectivos (aprox. 7:30 a 9:00 y 14:30 a 16:00). Consultar señales locales, los horarios pueden variar."
+        en: "Speed limit: {schoolZone} km/h in school zones on school days, during the hours shown on the signs. Times vary by school and by state, so always read the local signage.",
+        pt: "Limite: {schoolZone} km/h em zonas escolares nos dias de aula, nos horários indicados nas placas. Os horários variam por escola e por estado, então sempre leia a placa local.",
+        es: "Límite: {schoolZone} km/h en zonas escolares en días lectivos, en los horarios indicados en las señales. Los horarios varían por escuela y por estado, así que lea siempre la señal local."
       },
       {
-        en: "Flashing yellow lights or electronic signs indicate when the 40 km/h zone is active.",
-        pt: "Luzes amarelas piscantes ou placas electrónicas indicam quando a zona de 40 km/h está activa.",
-        es: "Las luces amarillas intermitentes o señales electrónicas indican cuándo la zona de 40 km/h está activa."
+        en: "Flashing yellow lights or electronic signs indicate when the {schoolZone} km/h zone is active.",
+        pt: "Luzes amarelas piscantes ou placas eletrônicas indicam quando a zona de {schoolZone} km/h está ativa.",
+        es: "Las luces amarillas intermitentes o señales electrónicas indican cuándo la zona de {schoolZone} km/h está activa."
       },
       {
-        en: "Speeding fines in school zones carry the normal penalty and demerit points. In WA, double demerits apply during declared holiday periods, not in school zones.",
-        pt: "Multas por excesso de velocidade em zonas escolares têm a penalidade e os pontos normais. Em WA, os pontos em dobro valem nos feriados declarados, não em zonas escolares.",
-        es: "Las multas por exceso de velocidad en zonas escolares llevan la sanción y los puntos normales. En WA, los puntos dobles aplican en los feriados declarados, no en zonas escolares."
+        en: "Speeding in a school zone carries the normal fine and demerit points. When double demerits apply differs by state — in {state}, check {authority} for the declared periods.",
+        pt: "Excesso de velocidade em zona escolar tem multa e pontos normais. Quando os pontos dobram varia por estado — em {state}, consulte o {authority} para os períodos declarados.",
+        es: "El exceso de velocidad en zona escolar lleva multa y puntos normales. Cuándo se duplican los puntos varía por estado — en {state}, consulte {authority} para los períodos declarados."
       }
     ],
     mistakes: [
       {
-        en: "Driving at 50 km/h thinking school is out: the zone applies whenever signs/lights indicate, regardless of visible students.",
-        pt: "Dirigir a 50 km/h achando que a escola terminou: a zona vale sempre que as placas/luzes indicarem, independentemente de alunos visíveis.",
-        es: "Conducir a 50 km/h creyendo que la escuela terminó: la zona aplica siempre que las señales/luces lo indiquen, independientemente de estudiantes visibles."
+        en: "Keeping the normal limit because school looks empty: the zone applies whenever the signs or lights indicate, regardless of visible students.",
+        pt: "Manter o limite normal achando que a escola terminou: a zona vale sempre que as placas ou luzes indicarem, independentemente de alunos visíveis.",
+        es: "Mantener el límite normal creyendo que la escuela terminó: la zona aplica siempre que las señales o luces lo indiquen, independientemente de estudiantes visibles."
       }
     ],
     example: {
-      en: "You drive past a school at 3:00 pm on a Tuesday. Flashing lights are on. You must drive at 40 km/h through the zone even though no children are crossing.",
-      pt: "Você passa por uma escola às 15:00 de terça-feira. As luzes estão piscando. Você deve dirigir a 40 km/h na zona mesmo que nenhuma criança esteja atravessando.",
-      es: "Conduces por una escuela a las 15:00 de un martes. Las luces están intermitentes. Debes circular a 40 km/h en la zona aunque no haya niños cruzando."
+      en: "You drive past a school at 3:00 pm on a Tuesday. Flashing lights are on. You must drive at {schoolZone} km/h through the zone even though no children are crossing.",
+      pt: "Você passa por uma escola às 15:00 de terça-feira. As luzes estão piscando. Você deve dirigir a {schoolZone} km/h na zona mesmo que nenhuma criança esteja atravessando.",
+      es: "Conduces por una escuela a las 15:00 de un martes. Las luces están intermitentes. Debes circular a {schoolZone} km/h en la zona aunque no haya niños cruzando."
     },
     quickCheck: [
       {
-        en: "What is the speed limit in a school zone when lights are flashing? → 40 km/h.",
-        pt: "Qual é o limite de velocidade em zona escolar com luzes piscando? → 40 km/h.",
-        es: "¿Cuál es el límite de velocidad en una zona escolar cuando las luces parpadean? → 40 km/h."
+        en: "What is the speed limit in a {state} school zone when lights are flashing? → {schoolZone} km/h.",
+        pt: "Qual é o limite de velocidade em zona escolar de {state} com luzes piscando? → {schoolZone} km/h.",
+        es: "¿Cuál es el límite de velocidad en una zona escolar de {state} cuando las luces parpadean? → {schoolZone} km/h."
       }
     ],
     source: {
-      en: "WA Learner Driver Guide + Road Traffic Code 2000 (school zones)",
-      pt: "Guia do Motorista Aprendiz de WA + Road Traffic Code 2000 (zonas escolares)",
-      es: "Guía del Conductor Novato de WA + Road Traffic Code 2000 (zonas escolares)"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1388,9 +1399,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
     icon: "mapPinned",
     practiceCategory: "Shared Zones",
     title: {
-      en: "Shared Zones and Pedestrian Areas WA",
-      pt: "Zonas Compartilhadas e Áreas para Pedestres em WA",
-      es: "Zonas Compartidas y Áreas Peatonales en WA"
+      en: "Shared Zones and Pedestrian Areas",
+      pt: "Zonas Compartilhadas e Áreas para Pedestres",
+      es: "Zonas Compartidas y Áreas Peatonales"
     },
     summary: {
       en: "In shared zones, pedestrians and vehicles share the same space. Vehicles must give way to pedestrians at all times. The maximum speed in a shared zone is 10 km/h.",
@@ -1434,9 +1445,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
       }
     ],
     source: {
-      en: "Road Traffic Code 2000 (Part 3, shared zones) + WA Learner Driver Guide",
-      pt: "Road Traffic Code 2000 (Parte 3, zonas compartilhadas) + Guia do Motorista Aprendiz de WA",
-      es: "Road Traffic Code 2000 (Parte 3, zonas compartidas) + Guía del Conductor Novato de WA"
+      en: "Based on the {handbook} — {authority}.",
+      pt: "Baseado no {handbook} — {authority}.",
+      es: "Basado en el {handbook} — {authority}."
     }
   },
 
@@ -1444,6 +1455,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
     slug: "towing-rules",
     icon: "car",
     practiceCategory: "Towing",
+    // Regras de reboque (velocidade, licenca, equipamento) mudam por jurisdicao e este
+    // conteudo e o de WA, entao so aparece em WA ate existirem versoes por estado.
+    states: ["WA"],
     title: {
       en: "Towing Rules WA",
       pt: "Regras de Reboque em WA",

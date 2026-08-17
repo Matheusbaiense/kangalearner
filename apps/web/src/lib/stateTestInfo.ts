@@ -313,11 +313,13 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     authority: "Access Canberra",
     authorityAbbr: "Access Canberra",
     authorityUrl: "accesscanberra.act.gov.au",
-    // Numeros do exame nao confirmados em fonte oficial; ficam fora ate verificacao.
-    examQuestions: null,
-    examPassMark: null,
+    // Confirmado em safeplatestesting.act.gov.au (portal oficial de testes do ACT):
+    // 35 questoes, no maximo 4 erros no total, e zero erros em Alcohol and Drugs,
+    // Intersections, Seat Belts e Vulnerable Road Users.
+    examQuestions: 35,
+    examPassMark: "31 of 35",
     metaTitle: "ACT Road Rules Test Practice, Free",
-    descriptionTail: "Prepare for the Road Rules Knowledge Test run by Access Canberra.",
+    descriptionTail: "The official Road Rules Knowledge Test has 35 questions, pass mark 31 of 35.",
     faq: [
       {
         q: {
@@ -329,6 +331,18 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
           en: "Access Canberra runs the Road Rules Knowledge Test (RRKT). You must complete a pre-learner licence training course before you can sit it.",
           pt: "A Access Canberra aplica o Road Rules Knowledge Test (RRKT). Você precisa concluir um curso de treinamento pré-licença de aprendiz antes de poder fazê-lo.",
           es: "Access Canberra administra el Road Rules Knowledge Test (RRKT). Debes completar un curso de formación previo a la licencia de aprendiz antes de poder rendirlo."
+        }
+      },
+      {
+        q: {
+          en: "What score do I need to pass the ACT test?",
+          pt: "Que nota preciso para passar no teste do ACT?",
+          es: "¿Qué puntaje necesito para aprobar el examen del ACT?"
+        },
+        a: {
+          en: "The test has 35 questions and you may get at most 4 wrong. Four categories allow no mistakes at all: alcohol and drugs, intersections, seat belts and vulnerable road users.",
+          pt: "O teste tem 35 questões e você pode errar no máximo 4. Quatro categorias não admitem erro algum: álcool e drogas, cruzamentos, cintos de segurança e usuários vulneráveis da via.",
+          es: "El examen tiene 35 preguntas y puedes fallar como máximo 4. Cuatro categorías no admiten ningún error: alcohol y drogas, intersecciones, cinturones de seguridad y usuarios vulnerables de la vía."
         }
       },
       {
@@ -356,7 +370,7 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
         }
       }
     ],
-    verifiedAt: "2026-08-16"
+    verifiedAt: "2026-08-17"
   },
   {
     code: "NT",

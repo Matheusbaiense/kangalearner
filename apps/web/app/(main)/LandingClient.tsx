@@ -25,6 +25,7 @@ import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { Kanga } from "@/components/brand/Kanga";
 import { LIVE_STATE_CODES } from "@kanga/core";
+import { useStateCopy } from "@/lib/stateCopy";
 import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
 
 /* ── Data ── */
@@ -116,14 +117,14 @@ const AU_STATES = (["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as cons
 const FAQS = [
   {
     q: {
-      en: "How many questions are in the real WA learner test?",
-      pt: "Quantas questões tem a prova de learner de WA?",
-      es: "¿Cuántas preguntas tiene el examen learner de WA?"
+      en: "How many questions are in the real {state} learner test?",
+      pt: "Quantas questões tem a prova de learner de {state}?",
+      es: "¿Cuántas preguntas tiene el examen learner de {state}?"
     },
     a: {
-      en: "The official WA learner test has 30 multiple-choice questions. You need to answer at least 24 correctly (80%) to pass.",
-      pt: "A prova oficial de learner de WA tem 30 questões de múltipla escolha. Você precisa acertar pelo menos 24 (80%) para passar.",
-      es: "El examen oficial learner de WA tiene 30 preguntas de opción múltiple. Necesitas responder al menos 24 correctamente (80%) para aprobar."
+      en: "The official {testName} in {state} has {questions} multiple-choice questions. You need to answer at least {minCorrect} correctly to pass.",
+      pt: "A prova oficial ({testName}) em {state} tem {questions} questões de múltipla escolha. Você precisa acertar pelo menos {minCorrect} para passar.",
+      es: "El examen oficial ({testName}) en {state} tiene {questions} preguntas de opción múltiple. Necesitas responder al menos {minCorrect} correctamente para aprobar."
     }
   },
   {
@@ -329,6 +330,7 @@ function HowItWorks() {
 /* ── Component ── */
 export function LandingClient({ stateCounts }: { stateCounts?: Record<string, number> }) {
   const { uiLang: lang, s } = useLang();
+  const { t: tState } = useStateCopy();
 
   return (
     <main className="page-root">
@@ -484,8 +486,8 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
           <div className="faq-list">
             {FAQS.map((item, i) => (
               <details key={i} className="faq-item">
-                <summary>{tx(item.q, lang)}</summary>
-                <div className="faq-answer">{tx(item.a, lang)}</div>
+                <summary>{tState(item.q)}</summary>
+                <div className="faq-answer">{tState(item.a)}</div>
               </details>
             ))}
           </div>

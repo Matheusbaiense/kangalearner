@@ -4,9 +4,14 @@ import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { useLang } from "@/contexts/LangContext";
-import { WA_PASS_MIN_CORRECT, stateHasMotorcycleLicence } from "@kanga/core";
+import {
+  applyStateTokens,
+  stateHasMotorcycleLicence,
+  WA_PASS_MIN_CORRECT,
+  WA_TOTAL_QUESTIONS
+} from "@kanga/core";
 import { createClient } from "@/lib/supabase/client";
-import { SK } from "@/lib/storageKeys";
+import { useStateProfile } from "@/lib/stateSelection";
 import {
   readStoredLicenceType,
   persistLicenceType,
@@ -16,22 +21,7 @@ import {
 
 type MockMode = "practice" | "exam";
 
-type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
-
-const STATE_NAMES: Record<StateCode, string> = {
-  WA: "Western Australia",
-  NSW: "New South Wales",
-  VIC: "Victoria",
-  QLD: "Queensland",
-  SA: "South Australia",
-  TAS: "Tasmania",
-  ACT: "Australian Capital Territory",
-  NT: "Northern Territory"
-};
-
-const STATE_CODES = Object.keys(STATE_NAMES) as StateCode[];
-
-const STATE_CHANGED_EVENT = "kanga:state-changed";
+const MOCK_PASS_PCT = Math.round((WA_PASS_MIN_CORRECT / WA_TOTAL_QUESTIONS) * 100);
 
 const PRACTICE_DESC = {
   en: "Explanation shown after each answer. Best for learning.",
@@ -49,29 +39,14 @@ export function MockTestClient() {
   const router = useRouter();
   const { uiLang: lang, s } = useLang();
 
-  // Deterministic SSR value ("WA"); the real persisted state is hydrated in the
-  // effect below. Reading localStorage in the initializer would make the first
-  // client render diverge from the server HTML → React hydration error #418,
-  // which aborts hydration and leaves onClick handlers (handleStart) unattached.
-  const [selectedState, setSelectedState] = useState<StateCode>("WA");
+  // Hydration-safe: starts at the default jurisdiction and syncs with the nav selector.
+  const profile = useStateProfile();
+  const selectedState = profile.code;
 
   const [licenceType, setLicenceType] = useState<LicenceType>("car");
 
   useEffect(() => {
-    let state: StateCode = "WA";
-    try {
-      const raw = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy);
-      if (raw && STATE_CODES.includes(raw as StateCode)) state = raw as StateCode;
-    } catch {
-      // localStorage unavailable
-    }
-    setSelectedState(state);
-    const storedLicenceType = readStoredLicenceType();
-    setLicenceType(
-      storedLicenceType === "motorcycle" && !stateHasMotorcycleLicence(state)
-        ? "car"
-        : storedLicenceType
-    );
+    setLicenceType(readStoredLicenceType());
   }, []);
 
   // Stay in sync if licence type changes elsewhere (nav selector, onboarding) while this page is open.
@@ -81,19 +56,13 @@ export function MockTestClient() {
     return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
   }, []);
 
-  // Stay in sync if state changes elsewhere (nav selector) while this page is open.
+  // Motorcycle has no official online test in some states — fall back to car
+  // whenever the selected state (nav selector included) does not offer it.
   useEffect(() => {
-    const onStateChanged = (event: Event) => {
-      const code = (event as CustomEvent<string>).detail;
-      if (!code || !STATE_CODES.includes(code as StateCode)) return;
-      setSelectedState(code as StateCode);
-      setLicenceType((prev) =>
-        prev === "motorcycle" && !stateHasMotorcycleLicence(code) ? "car" : prev
-      );
-    };
-    window.addEventListener(STATE_CHANGED_EVENT, onStateChanged);
-    return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
-  }, []);
+    if (!stateHasMotorcycleLicence(selectedState)) {
+      setLicenceType((prev) => (prev === "motorcycle" ? "car" : prev));
+    }
+  }, [selectedState]);
 
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 
@@ -168,8 +137,11 @@ export function MockTestClient() {
       <div className="mock-setup-card">
         <h1>{s.mockTest}</h1>
         <p className="mock-meta">
-          {STATE_NAMES[selectedState]} · 30 {s.questionsWord} · {s.passMarkWord}:{" "}
-          {WA_PASS_MIN_CORRECT}/30 (80%)
+          {profile.name} · {WA_TOTAL_QUESTIONS} {s.questionsWord} · {s.passMarkWord}:{" "}
+          {WA_PASS_MIN_CORRECT}/{WA_TOTAL_QUESTIONS} ({MOCK_PASS_PCT}%)
+        </p>
+        <p className="mock-meta" style={{ fontSize: ".8rem", opacity: 0.8 }}>
+          {applyStateTokens(s.mockRealExamNote, profile)}
         </p>
 
         <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>

@@ -1,7 +1,14 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import { applyStateTokens, getStateProfile } from "@kanga/core";
 import { findTopic, LEARN_TOPICS } from "@/lib/learnTopics";
 import { TopicPageClient } from "./TopicPageClient";
+
+/**
+ * Metadata is rendered once at build time, so it uses the app's default jurisdiction.
+ * The page body itself follows whichever state the visitor has selected.
+ */
+const DEFAULT_PROFILE = getStateProfile(null);
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -15,17 +22,17 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     return { title: "Topic not found" };
   }
 
-  const title = topic.title.en;
-  const summary = topic.summary.en;
+  const title = applyStateTokens(topic.title.en, DEFAULT_PROFILE, { sectionNote: "" });
+  const summary = applyStateTokens(topic.summary.en, DEFAULT_PROFILE, { sectionNote: "" });
 
   return {
-    title: `${title}, WA Learner Test`,
+    title: `${title}, Australian Learner Test`,
     description: `${summary.slice(0, 155)}`,
     alternates: {
       canonical: `https://kangalearner.com.au/learn/${slug}`
     },
     openGraph: {
-      title: `${title}, WA Learner Test Guide`,
+      title: `${title}, Australian Learner Test Guide`,
       description: `${summary.slice(0, 155)}`,
       url: `https://kangalearner.com.au/learn/${slug}`
     }
