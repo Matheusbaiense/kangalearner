@@ -13,6 +13,7 @@ import {
   Globe,
   Database,
   Check,
+  Flame,
   BookOpen,
   Target,
   ClipboardList,
@@ -176,76 +177,30 @@ const FAQS = [
   }
 ];
 
-/* ── Hero Slideshow ── */
-const SLIDE_INTERVAL = 4500;
-const SLIDE_COUNT = 4;
-
-function SlideLearn({ lang }: { lang: UiLang }) {
-  const chips = [
-    { Icon: Gauge, label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" } },
-    { Icon: TrafficCone, label: { en: "Road Signs", pt: "Sinais", es: "Señales" } },
-    {
-      Icon: ParkingCircle,
-      label: { en: "Parking Rules", pt: "Estacionamento", es: "Estacionamiento" }
-    },
-    {
-      Icon: AlertTriangle,
-      label: { en: "Alcohol & BAC", pt: "Álcool / BAC", es: "Alcohol / BAC" }
-    },
-    { Icon: ArrowLeftRight, label: { en: "Lanes", pt: "Faixas", es: "Carriles" } },
-    { Icon: ShieldCheck, label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" } }
-  ];
-  const hint = {
-    en: "19 topics · growing question bank across states",
-    pt: "19 tópicos · banco de perguntas em expansão por estado",
-    es: "19 temas · banco de preguntas en expansión por estado"
-  };
-  return (
-    <>
-      <div className="slide-header">
-        <BookOpen size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">
-          {lang === "pt" ? "Aprender Tópicos" : lang === "es" ? "Aprender Temas" : "Learn Topics"}
-        </span>
-      </div>
-      <div className="slide-chip-grid">
-        {chips.map(({ Icon, label }) => (
-          <div key={label.en} className="slide-chip">
-            <span className="slide-chip-icon">
-              <Icon size={16} strokeWidth={2} aria-hidden="true" />
-            </span>
-            <span>{tx(label, lang)}</span>
-          </div>
-        ))}
-      </div>
-      <div className="slide-hint">{tx(hint, lang)}</div>
-    </>
-  );
-}
-
+/* ── Hero phone ── */
 function SlidePractice({ lang }: { lang: UiLang }) {
   const question = {
-    en: "What does a yellow traffic light mean at an intersection?",
-    pt: "O que significa um semáforo amarelo numa interseção?",
-    es: "¿Qué significa un semáforo amarillo en una intersección?"
+    en: "What does this sign mean?",
+    pt: "O que significa esta placa?",
+    es: "¿Qué significa esta señal?"
   };
   const options: { en: string; pt: string; es: string; correct: boolean }[] = [
     {
-      en: "Stop if it is safe to do so",
-      pt: "Pare se for seguro fazê-lo",
-      es: "Detenerse si es seguro",
+      en: "Give way to other traffic",
+      pt: "Dê a preferência ao outro tráfego",
+      es: "Cede el paso al otro tráfico",
       correct: true
     },
     {
-      en: "Speed up to clear the intersection",
-      pt: "Acelere para cruzar",
-      es: "Acelera para cruzar",
+      en: "Stop completely, always",
+      pt: "Pare completamente, sempre",
+      es: "Detente por completo, siempre",
       correct: false
     },
     {
-      en: "Sound your horn before proceeding",
-      pt: "Toque a buzina antes",
-      es: "Toca el claxon antes",
+      en: "You have right of way",
+      pt: "Você tem a preferência",
+      es: "Tienes la prioridad",
       correct: false
     }
   ];
@@ -260,6 +215,17 @@ function SlidePractice({ lang }: { lang: UiLang }) {
       </div>
       <div className="slide-prog-wrap">
         <div className="slide-prog-bar" style={{ width: "57%" }} />
+      </div>
+      <div className="slide-sign-wrap">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/icons/signs/give-way-sign.png"
+          alt=""
+          width={72}
+          height={72}
+          loading="eager"
+          decoding="async"
+        />
       </div>
       <p className="slide-question">{tx(question, lang)}</p>
       <div className="slide-options">
@@ -276,182 +242,25 @@ function SlidePractice({ lang }: { lang: UiLang }) {
   );
 }
 
-function SlideMock({ lang }: { lang: UiLang }) {
-  const labelScore = { en: "24 of 30 correct", pt: "24 de 30 corretas", es: "24 de 30 correctas" };
-  const passLabel = { en: "PASS", pt: "APROVADO", es: "APROBADO" };
-  const categories = [
-    { label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" }, score: "5/5", ok: true },
-    { label: { en: "Road Signs", pt: "Sinais", es: "Señales" }, score: "5/5", ok: true },
-    {
-      label: { en: "Parking", pt: "Estacionamento", es: "Estacionamiento" },
-      score: "5/5",
-      ok: true
-    },
-    {
-      label: { en: "Alcohol & BAC", pt: "Álcool / BAC", es: "Alcohol / BAC" },
-      score: "4/5",
-      ok: true
-    },
-    { label: { en: "Lanes", pt: "Faixas", es: "Carriles" }, score: "4/5", ok: true },
-    { label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" }, score: "3/5", ok: false }
-  ];
-  const circumference = 2 * Math.PI * 34;
-  const offset = circumference * (1 - 0.8);
+function HeroPhone({ lang }: { lang: UiLang }) {
+  const passChip = { en: "Passed, 24/30", pt: "Aprovado, 24/30", es: "Aprobado, 24/30" };
+  const streakChip = { en: "3-day streak", pt: "3 dias seguidos", es: "3 días seguidos" };
   return (
-    <>
-      <div className="slide-header">
-        <ClipboardList size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">
-          {lang === "pt" ? "Simulado" : lang === "es" ? "Simulacro" : "Mock Test"}
-        </span>
-      </div>
-      <div className="slide-score-wrap">
-        <div className="slide-score-ring">
-          <svg viewBox="0 0 80 80" width="96" height="96">
-            <circle
-              cx="40"
-              cy="40"
-              r="34"
-              fill="none"
-              stroke="rgba(255,255,255,0.1)"
-              strokeWidth="7"
-            />
-            <circle
-              cx="40"
-              cy="40"
-              r="34"
-              fill="none"
-              stroke="var(--green2)"
-              strokeWidth="7"
-              strokeDasharray={circumference}
-              strokeDashoffset={offset}
-              strokeLinecap="round"
-              transform="rotate(-90 40 40)"
-            />
-          </svg>
-          <span className="slide-score-num">80%</span>
-        </div>
-        <div className="slide-score-meta">
-          <span className="slide-score-frac">{tx(labelScore, lang)}</span>
-        </div>
-        <span className="slide-pass-badge">{tx(passLabel, lang)}</span>
-      </div>
-      <div className="slide-mock-divider" aria-hidden="true" />
-      <div className="slide-mock-results">
-        {categories.map(({ label, score, ok }) => (
-          <div key={label.en} className="slide-mock-row">
-            <span className="slide-mock-label">{tx(label, lang)}</span>
-            <span className={`slide-mock-score${ok ? "" : " fail"}`}>{score}</span>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
-
-function SlideProgress({ lang }: { lang: UiLang }) {
-  const title = { en: "Your Progress", pt: "Seu Progresso", es: "Tu Progreso" };
-  const bars = [
-    {
-      label: { en: "Speed Limits", pt: "Velocidade", es: "Velocidad" },
-      pct: 92,
-      color: "var(--green2)"
-    },
-    { label: { en: "Road Signs", pt: "Sinais", es: "Señales" }, pct: 78, color: "var(--green2)" },
-    {
-      label: { en: "Alcohol & BAC", pt: "Álcool / BAC", es: "Alcohol / BAC" },
-      pct: 65,
-      color: "var(--orange)"
-    },
-    {
-      label: { en: "Parking Rules", pt: "Estacionamento", es: "Estacionamiento" },
-      pct: 54,
-      color: "var(--red)"
-    },
-    { label: { en: "Lanes", pt: "Faixas", es: "Carriles" }, pct: 71, color: "var(--orange)" },
-    {
-      label: { en: "Road Safety", pt: "Segurança", es: "Seguridad" },
-      pct: 83,
-      color: "var(--green2)"
-    }
-  ];
-  return (
-    <>
-      <div className="slide-header">
-        <TrendingUp size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">{tx(title, lang)}</span>
-      </div>
-      <div className="slide-cat-bars">
-        {bars.map(({ label, pct, color }) => (
-          <div key={label.en} className="slide-cat-row">
-            <span className="slide-cat-label">{tx(label, lang)}</span>
-            <div className="slide-cat-track">
-              <div className="slide-cat-fill" style={{ width: `${pct}%`, background: color }} />
-            </div>
-            <span className="slide-cat-pct">{pct}%</span>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
-
-function HeroSlideshow({ lang }: { lang: UiLang }) {
-  const [slideIdx, setSlideIdx] = useState(0);
-  // Previous slide kept mounted briefly so slides CROSSFADE, the old
-  // hide→swap→show approach left the card visibly empty for 280ms.
-  const [prevIdx, setPrevIdx] = useState<number | null>(null);
-
-  const goTo = useCallback((idx: number) => {
-    setSlideIdx((current) => {
-      if (idx === current) return current;
-      setPrevIdx(current);
-      return idx;
-    });
-  }, []);
-
-  useEffect(() => {
-    if (prevIdx === null) return;
-    const t = setTimeout(() => setPrevIdx(null), 340);
-    return () => clearTimeout(t);
-  }, [prevIdx, slideIdx]);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      goTo((slideIdx + 1) % SLIDE_COUNT);
-    }, SLIDE_INTERVAL);
-    return () => clearInterval(timer);
-  }, [slideIdx, goTo]);
-
-  const slides = [SlideLearn, SlidePractice, SlideMock, SlideProgress];
-  const SlideComponent = slides[slideIdx];
-  const PrevComponent = prevIdx !== null ? slides[prevIdx] : null;
-
-  return (
-    <div className="hero-slideshow" aria-live="polite" aria-atomic="true">
+    <div className="hero-slideshow" aria-hidden="true">
       <div className="hero-phone-frame">
         <div className="hero-slide-card">
-          <div key={slideIdx} className="hero-slide-content slide-enter">
-            <SlideComponent lang={lang} />
+          <div className="hero-slide-content">
+            <SlidePractice lang={lang} />
           </div>
-          {PrevComponent && (
-            <div key={`ghost-${prevIdx}`} className="hero-slide-ghost" aria-hidden="true">
-              <PrevComponent lang={lang} />
-            </div>
-          )}
         </div>
       </div>
-      <div className="slide-dots" role="tablist" aria-label="Product preview slides">
-        {Array.from({ length: SLIDE_COUNT }, (_, i) => (
-          <button
-            key={i}
-            className={`slide-dot${i === slideIdx ? " active" : ""}`}
-            role="tab"
-            aria-selected={i === slideIdx}
-            aria-label={`Slide ${i + 1}`}
-            onClick={() => goTo(i)}
-          />
-        ))}
+      <div className="hero-float-chip hero-float-chip--pass">
+        <Check size={14} strokeWidth={3} aria-hidden="true" />
+        {tx(passChip, lang)}
+      </div>
+      <div className="hero-float-chip hero-float-chip--streak">
+        <Flame size={14} strokeWidth={2.4} aria-hidden="true" />
+        {tx(streakChip, lang)}
       </div>
     </div>
   );
@@ -599,7 +408,7 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
           </div>
 
           {/* Right: animated product slideshow */}
-          <HeroSlideshow lang={lang} />
+          <HeroPhone lang={lang} />
         </div>
       </section>
 

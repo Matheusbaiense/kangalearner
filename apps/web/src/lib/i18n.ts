@@ -109,7 +109,7 @@ export const t = {
     heroTitle: "Pass your Australian learner test, in your language.",
     heroDesc:
       "Real exam-style questions in English, Portuguese or Spanish. " +
-      "Study, practise and walk into your DoT test feeling ready.",
+      "Study, practise and walk into your state's test feeling ready.",
     heroCta1: "Start free practice",
     heroCtaNote: "Free. No sign-up needed.",
     heroCta2: "Try mock test",
@@ -176,7 +176,7 @@ export const t = {
     howStep1Title: "Study by topic",
     howStep1DescCard: "19 road rule topics, signs, speed limits, give way, alcohol laws and more.",
     howStep2Title: "Take a mock test",
-    howStep2DescCard: "30 questions, 45 minutes. Same format as the real DoT learner test.",
+    howStep2DescCard: "30 questions, 45 minutes. Same format as your state's real learner test.",
     howStep3Title: "Track your progress",
     howStep3DescCard: "See which topics need more practice. Sign up free to save your results.",
     testimonialBetaLabel: "Stories from our early community",
@@ -602,7 +602,7 @@ export const t = {
     heroTitle: "Passe na prova de learner australiana, no seu idioma.",
     heroDesc:
       "Questões no estilo da prova real, em inglês, português ou espanhol. " +
-      "Estude, pratique e chegue no teste do DoT se sentindo pronto.",
+      "Estude, pratique e chegue no teste do seu estado se sentindo pronto.",
     heroCta1: "Começar a praticar",
     heroCtaNote: "Grátis. Sem precisar de cadastro.",
     heroCta2: "Tentar o simulado",
@@ -669,7 +669,7 @@ export const t = {
     howStep1DescCard:
       "19 tópicos das regras de trânsito, placas, velocidade, preferência, álcool e mais.",
     howStep2Title: "Faça um simulado",
-    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real de learner do DoT.",
+    howStep2DescCard: "30 questões, 45 minutos. Mesmo formato da prova real do seu estado.",
     howStep3Title: "Acompanhe seu progresso",
     howStep3DescCard:
       "Veja quais tópicos precisam mais prática. Crie conta grátis para salvar resultados.",
@@ -1101,7 +1101,7 @@ export const t = {
     heroTitle: "Aprueba el examen learner australiano, en tu idioma.",
     heroDesc:
       "Preguntas al estilo del examen real, en inglés, portugués o español. " +
-      "Estudia, practica y llega al examen del DoT sintiéndote listo.",
+      "Estudia, practica y llega al examen de tu estado sintiéndote listo.",
     heroCta1: "Empezar a practicar",
     heroCtaNote: "Gratis. Sin necesidad de registro.",
     heroCta2: "Probar el simulacro",
@@ -1168,7 +1168,7 @@ export const t = {
     howStep1DescCard:
       "19 temas de normas de tránsito, señales, velocidades, ceder el paso, alcohol y más.",
     howStep2Title: "Haz un simulacro",
-    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real del DoT.",
+    howStep2DescCard: "30 preguntas, 45 minutos. Mismo formato que el examen real de tu estado.",
     howStep3Title: "Sigue tu progreso",
     howStep3DescCard:
       "Ve qué temas necesitan más práctica. Regístrate gratis para guardar tus resultados.",
