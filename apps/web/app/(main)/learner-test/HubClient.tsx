@@ -49,43 +49,42 @@ export function HubClient({ total, stateCounts }: Props) {
       </div>
 
       <div className="app-container">
-
-      <section className="states-section">
-        <div className="states-inner">
-          <div className="states-grid">
-            {STATE_TEST_INFO.map((info) => (
-              <Link
-                key={info.code}
-                href={`/learner-test/${info.slug}`}
-                className="state-card active"
-                title={`${info.stateName} learner practice test`}
-              >
-                <span className="state-code">{info.code}</span>
-                <span className="state-badge">
-                  {fill(s.ltQuestionsCount, { n: countFor.get(info.code) ?? 0 })}
-                </span>
-              </Link>
-            ))}
+        <section className="states-section">
+          <div className="states-inner">
+            <div className="states-grid">
+              {STATE_TEST_INFO.map((info) => (
+                <Link
+                  key={info.code}
+                  href={`/learner-test/${info.slug}`}
+                  className="state-card active"
+                  title={`${info.stateName} learner practice test`}
+                >
+                  <span className="state-code">{info.code}</span>
+                  <span className="state-badge">
+                    {fill(s.ltQuestionsCount, { n: countFor.get(info.code) ?? 0 })}
+                  </span>
+                </Link>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <section className="panel panel-pad" style={{ marginTop: "1.5rem" }}>
-        <h2 className="panel-title">{s.ltHubOfficialTitle}</h2>
-        <ul>
-          {STATE_TEST_INFO.map((info) => (
-            <li key={info.code} style={{ margin: "0.5rem 0" }}>
-              <Link href={`/learner-test/${info.slug}`}>
-                {`${info.code} ${info.testName}${info.testAbbr ? ` (${info.testAbbr})` : ""}`}
-              </Link>
-              {fill(s.ltHubListTail, {
-                n: countFor.get(info.code) ?? 0,
-                authority: info.authority
-              })}
-            </li>
-          ))}
-        </ul>
-      </section>
+        <section className="panel panel-pad" style={{ marginTop: "1.5rem" }}>
+          <h2 className="panel-title">{s.ltHubOfficialTitle}</h2>
+          <ul>
+            {STATE_TEST_INFO.map((info) => (
+              <li key={info.code} style={{ margin: "0.5rem 0" }}>
+                <Link href={`/learner-test/${info.slug}`}>
+                  {`${info.code} ${info.testName}${info.testAbbr ? ` (${info.testAbbr})` : ""}`}
+                </Link>
+                {fill(s.ltHubListTail, {
+                  n: countFor.get(info.code) ?? 0,
+                  authority: info.authority
+                })}
+              </li>
+            ))}
+          </ul>
+        </section>
 
         <p className="disclaimer">{s.ltHubDisclaimer}</p>
       </div>
