@@ -30,11 +30,13 @@ export const metadata: Metadata = {
   description:
     "Free learner licence test practice in English, Portuguese and Spanish. " +
     "Covers all road rule topics: signs, speed limits, give way, alcohol laws and more. " +
-    "Used by immigrants across Australia preparing for their state learner test, currently WA and NSW.",
+    "Used by immigrants across Australia preparing for their state learner test, in all 8 states and territories.",
   keywords: [
     "learner test practice Australia",
     "WA learner test",
     "NSW learner test",
+    "VIC learner permit test",
+    "QLD road rules test",
     "driving test practice",
     "learner licence Australia",
     "driver knowledge test",
@@ -59,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "KangaLearner | Pass Your Australian Learner Test",
     description:
-      "Practice learner test topics in English, Portuguese or Spanish. Free mock test, same format as the real test. Available now for WA and NSW.",
+      "Practice learner test topics in English, Portuguese or Spanish. Free mock test with real questions from your state. Available now for all 8 states and territories.",
     type: "website",
     url: "https://kangalearner.com.au",
     siteName: "KangaLearner",
@@ -106,7 +108,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               url: "https://kangalearner.com.au",
               description:
                 "Australian learner driving test practice in English, Portuguese and Spanish, " +
-                "currently covering WA and NSW.",
+                "covering all 8 states and territories.",
               applicationCategory: "EducationApplication",
               operatingSystem: "Web",
               offers: {

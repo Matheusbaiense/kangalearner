@@ -69,6 +69,10 @@ export const t = {
     learnExample: "Practical Example",
     learnQuickCheck: "Quick Check",
     learnSource: "Source",
+    learnSectionedNote:
+      "This test is split into sections, each with its own minimum, so you must pass every section.",
+    mockRealExamNote:
+      "The real {testName} in {state} has {questions} questions and needs {minCorrect} correct.",
     learnBack: "← All topics",
     learnPractice: "Practise this topic →",
     learnAllTopics: "All practice questions →",
@@ -472,6 +476,10 @@ export const t = {
     learnExample: "Exemplo prático",
     learnQuickCheck: "Verificação rápida",
     learnSource: "Fonte",
+    learnSectionedNote:
+      "Esta prova é dividida em seções, cada uma com um mínimo próprio, então você precisa passar em todas.",
+    mockRealExamNote:
+      "A prova real ({testName}) em {state} tem {questions} questões e exige {minCorrect} acertos.",
     learnBack: "← Todos os tópicos",
     learnPractice: "Praticar este tópico →",
     learnAllTopics: "Todas as perguntas →",
@@ -877,6 +885,10 @@ export const t = {
     learnExample: "Ejemplo práctico",
     learnQuickCheck: "Comprobación rápida",
     learnSource: "Fuente",
+    learnSectionedNote:
+      "Este examen se divide en secciones, cada una con su propio mínimo, así que debes aprobar todas.",
+    mockRealExamNote:
+      "El examen real ({testName}) en {state} tiene {questions} preguntas y exige {minCorrect} aciertos.",
     learnBack: "← Todos los temas",
     learnPractice: "Practicar este tema →",
     learnAllTopics: "Todas las preguntas →",

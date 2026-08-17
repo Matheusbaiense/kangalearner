@@ -4,12 +4,17 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import { LEARN_TOPICS } from "@/lib/learnTopics";
-import { tx } from "@/lib/i18n";
+import { useStateCopy } from "@/lib/stateCopy";
 
 export function LearnPageClient() {
-  const { uiLang: lang, s } = useLang();
-  const special = LEARN_TOPICS.find((t) => t.isSpecial);
-  const topics = LEARN_TOPICS.filter((t) => !t.isSpecial);
+  const { s } = useLang();
+  const { profile, t } = useStateCopy();
+
+  const visible = LEARN_TOPICS.filter(
+    (topic) => !topic.states || topic.states.includes(profile.code)
+  );
+  const special = visible.find((topic) => topic.isSpecial);
+  const topics = visible.filter((topic) => !topic.isSpecial);
 
   return (
     <main className="container section-pad">
@@ -21,9 +26,9 @@ export function LearnPageClient() {
         <Link href={`/learn/${special.slug}`} className="topic-card topic-card--featured">
           <IconBadge icon={Icons[special.icon]} tone="brand" className="topic-icon" />
           <div>
-            <strong>{tx(special.title, lang)}</strong>
+            <strong>{t(special.title)}</strong>
             <span style={{ display: "block", marginTop: 4, fontSize: ".875rem" }}>
-              {tx(special.summary, lang).slice(0, 120)}…
+              {t(special.summary).slice(0, 120)}…
             </span>
           </div>
         </Link>
@@ -34,9 +39,9 @@ export function LearnPageClient() {
         {topics.map((topic) => (
           <Link key={topic.slug} href={`/learn/${topic.slug}`} className="topic-card">
             <IconBadge icon={Icons[topic.icon]} tone="brand" className="topic-icon" />
-            <strong>{tx(topic.title, lang)}</strong>
+            <strong>{t(topic.title)}</strong>
             <span style={{ fontSize: ".8rem", lineHeight: 1.35 }}>
-              {tx(topic.summary, lang).slice(0, 80)}…
+              {t(topic.summary).slice(0, 80)}…
             </span>
           </Link>
         ))}

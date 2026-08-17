@@ -5,14 +5,15 @@ import { IconBadge } from "@/components/ui/IconBadge";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import type { LearnTopic } from "@/lib/learnTopics";
-import { tx } from "@/lib/i18n";
+import { useStateCopy } from "@/lib/stateCopy";
 
 interface TopicPageClientProps {
   topic: LearnTopic;
 }
 
 export function TopicPageClient({ topic }: TopicPageClientProps) {
-  const { uiLang: lang, s } = useLang();
+  const { s } = useLang();
+  const { t } = useStateCopy();
 
   const practiceHref = topic.practiceCategory
     ? `/practice?category=${encodeURIComponent(topic.practiceCategory)}`
@@ -32,17 +33,17 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
         <div style={{ display: "flex", alignItems: "center", gap: 14, marginBottom: 20 }}>
           <IconBadge icon={Icons[topic.icon]} tone="brand" className="topic-icon" />
           <h1 style={{ fontSize: "1.4rem", fontWeight: 850, lineHeight: 1.2, margin: 0 }}>
-            {tx(topic.title, lang)}
+            {t(topic.title)}
           </h1>
         </div>
 
-        <p style={{ lineHeight: 1.6, marginBottom: 24 }}>{tx(topic.summary, lang)}</p>
+        <p style={{ lineHeight: 1.6, marginBottom: 24 }}>{t(topic.summary)}</p>
 
         <section style={{ marginBottom: 24 }}>
           <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnKeyRules}</h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.keyRules.map((r, i) => (
-              <li key={i}>{tx(r, lang)}</li>
+              <li key={i}>{t(r)}</li>
             ))}
           </ul>
         </section>
@@ -51,7 +52,7 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 10 }}>{s.learnMistakes}</h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.mistakes.map((m, i) => (
-              <li key={i}>{tx(m, lang)}</li>
+              <li key={i}>{t(m)}</li>
             ))}
           </ul>
         </section>
@@ -65,7 +66,7 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           }}
         >
           <h2 style={{ fontSize: "1rem", fontWeight: 800, marginBottom: 8 }}>{s.learnExample}</h2>
-          <p style={{ lineHeight: 1.6, margin: 0 }}>{tx(topic.example, lang)}</p>
+          <p style={{ lineHeight: 1.6, margin: 0 }}>{t(topic.example)}</p>
         </section>
 
         <section style={{ marginBottom: 24 }}>
@@ -74,13 +75,13 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           </h2>
           <ul style={{ paddingLeft: 20, lineHeight: 1.7 }}>
             {topic.quickCheck.map((q, i) => (
-              <li key={i}>{tx(q, lang)}</li>
+              <li key={i}>{t(q)}</li>
             ))}
           </ul>
         </section>
 
         <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 24 }}>
-          <strong>{s.learnSource}:</strong> {tx(topic.source, lang)}
+          <strong>{s.learnSource}:</strong> {t(topic.source)}
         </p>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
