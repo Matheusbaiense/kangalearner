@@ -3,17 +3,16 @@
 import Link from "next/link";
 import { useLang } from "@/contexts/LangContext";
 import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
-import {
-  OVERSEAS_GENERAL,
-  OVERSEAS_COUNTRIES,
-  OVERSEAS_OFFICIAL_LINKS
-} from "@/lib/overseasLicence";
-
-const LAST_VERIFIED = "2026-06-01";
+import { useStateCopy } from "@/lib/stateCopy";
+import { getStateGls, GLS_VERIFIED_AT } from "@/lib/stateJourney";
+import { buildOverseasGeneral, getOverseasLinks, OVERSEAS_COUNTRIES } from "@/lib/overseasLicence";
 
 export default function OverseasLicenceHub() {
   const { uiLang: lang } = useLang();
-  const g = OVERSEAS_GENERAL[lang];
+  const { profile, ts } = useStateCopy();
+  const gls = getStateGls(profile.code);
+  const links = getOverseasLinks(profile.code);
+  const g = buildOverseasGeneral(gls)[lang];
 
   return (
     <main className="app-page">
@@ -29,23 +28,23 @@ export default function OverseasLicenceHub() {
               marginBottom: 8
             }}
           >
-            {g.kicker}
+            {ts(g.kicker)}
           </p>
-          <h1 className="page-title">{g.title}</h1>
-          <p className="page-sub">{g.intro}</p>
+          <h1 className="page-title">{ts(g.title)}</h1>
+          <p className="page-sub">{ts(g.intro)}</p>
         </div>
 
-        <Section title={g.visitingTitle} items={g.visiting} />
-        <Section title={g.convertTitle} items={g.convert} />
+        <Section title={ts(g.visitingTitle)} items={g.visiting.map(ts)} />
+        <Section title={ts(g.convertTitle)} items={g.convert.map(ts)} />
 
         <div style={{ display: "grid", gap: 14, marginTop: 8, marginBottom: 24 }}>
-          <Callout title={g.recognisedTitle} body={g.recognised} tone="green" />
-          <Callout title={g.notRecognisedTitle} body={g.notRecognised} tone="amber" />
+          <Callout title={ts(g.recognisedTitle)} body={ts(g.recognised)} tone="green" />
+          <Callout title={ts(g.notRecognisedTitle)} body={ts(g.notRecognised)} tone="amber" />
         </div>
 
         {/* Country picker */}
         <h2 style={{ fontSize: "1.05rem", fontWeight: 850, marginBottom: 12 }}>
-          {g.chooseCountry}
+          {ts(g.chooseCountry)}
         </h2>
         <div
           style={{
@@ -75,13 +74,15 @@ export default function OverseasLicenceHub() {
         <div style={{ marginBottom: 20 }}>
           <VerifiedBadge
             lang={lang}
-            lastVerified={LAST_VERIFIED}
-            sourceUrl={OVERSEAS_OFFICIAL_LINKS.transfer}
+            lastVerified={GLS_VERIFIED_AT}
+            sourceUrl={links.transfer}
             reportContext="overseas-licence-hub"
           />
         </div>
 
-        <p style={{ fontSize: ".78rem", color: "var(--muted)", lineHeight: 1.5 }}>{g.verifyNote}</p>
+        <p style={{ fontSize: ".78rem", color: "var(--muted)", lineHeight: 1.5 }}>
+          {ts(g.verifyNote)}
+        </p>
 
         <div style={{ marginTop: 24, display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Link href="/practice" className="btn btn-primary">
@@ -92,7 +93,7 @@ export default function OverseasLicenceHub() {
                 : "Practise the theory test"}
           </Link>
           <a
-            href={OVERSEAS_OFFICIAL_LINKS.recognised}
+            href={links.recognised}
             target="_blank"
             rel="noopener noreferrer"
             className="btn btn-secondary"

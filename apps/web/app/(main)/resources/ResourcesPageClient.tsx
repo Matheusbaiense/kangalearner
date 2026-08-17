@@ -373,7 +373,6 @@ const NEWCOMER_LINKS: {
   {
     href: "/journey",
     icon: "🗺️",
-    waOnly: true,
     label: { en: "Licence journey", pt: "Jornada da licença", es: "Recorrido de licencia" },
     desc: {
       en: "Learner → P1 → P2 → full",
@@ -384,12 +383,11 @@ const NEWCOMER_LINKS: {
   {
     href: "/overseas-licence",
     icon: "🌏",
-    waOnly: true,
     label: { en: "Overseas licence", pt: "Licença estrangeira", es: "Licencia extranjera" },
     desc: {
-      en: "Drive in WA with a foreign licence",
-      pt: "Dirigir em WA com licença de fora",
-      es: "Conducir en WA con licencia de fuera"
+      en: "Drive in {stateCode} with a foreign licence",
+      pt: "Dirigir em {stateCode} com licença de fora",
+      es: "Conducir en {stateCode} con licencia de fuera"
     }
   },
   {
@@ -427,7 +425,6 @@ const NEWCOMER_LINKS: {
   {
     href: "/supervisor",
     icon: "🧑‍🏫",
-    waOnly: true,
     label: {
       en: "Supervisor companion",
       pt: "Companheiro do supervisor",
@@ -701,7 +698,7 @@ export function ResourcesPageClient() {
                 <span style={{ display: "flex", flexDirection: "column" }}>
                   <strong>{n.label[lang]}</strong>
                   <span style={{ fontSize: "var(--text-sm)", color: "var(--muted)" }}>
-                    {n.desc[lang]}
+                    {t(n.desc)}
                   </span>
                 </span>
                 <span className="overseas-country-arrow" aria-hidden>
