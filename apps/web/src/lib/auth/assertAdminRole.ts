@@ -2,10 +2,12 @@ import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { requireSupabaseEnv } from "@/lib/supabase/env";
+import { adminRequiresAal2 } from "@/lib/auth/adminMfa";
 
 /**
- * Returns the authenticated user's ID if they have admin or super_admin role.
- * Returns null otherwise. Use in API route handlers before performing admin ops.
+ * Returns the authenticated user's ID if they have admin or super_admin role
+ * and MFA aal2. Returns null otherwise. Use in API route handlers before
+ * performing admin ops.
  */
 export async function assertAdminRole(): Promise<string | null> {
   const cookieStore = await cookies();
@@ -23,5 +25,7 @@ export async function assertAdminRole(): Promise<string | null> {
     .eq("id", user.id)
     .single();
   if (!profile || !["admin", "super_admin"].includes(profile.role)) return null;
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+  if (adminRequiresAal2(profile.role, aal?.currentLevel)) return null;
   return user.id;
 }

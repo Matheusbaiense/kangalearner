@@ -42,6 +42,7 @@ apps/web/
         ├── requestId.ts       → UUID `x-request-id` (reusa header válido ou mint)
         ├── auth/passwordReauth.ts → step-up: `signInWithPassword` com a senha atual
         ├── auth/deleteAccount.ts  → delete só depois do reauth
+        ├── auth/adminMfa.ts       → admin/super_admin precisam de aal2; free/premium não
         └── migrateLocalAttempts.ts
 ```
 
@@ -77,6 +78,12 @@ apps/web/
 - `DELETE /api/account/delete` body `{ password }`; `PATCH /api/account/password` body `{ currentPassword, newPassword }`.
 - Reauth: `signInWithPassword` com o email da sessão. Falha ou senha ausente → 403 `reauth_required`. Rate limit 5/min em ambos.
 - Contas só-OAuth (sem senha): criar senha em `/auth/forgot-password` primeiro. Não logar password.
+
+### Admin MFA
+
+- `requireAdminPage` / `assertAdminRole`: se role admin/super_admin e `aal !== aal2` → redirect `/auth/mfa` (página) ou 403 (API). `free`/`premium` não são gated.
+- `/auth/mfa` **não** está em `AUTH_ROUTES` (senão o middleware mandava o admin autenticado para a home).
+- Ligar TOTP em Authentication → MFA no dashboard Supabase; sem isso o enroll falha.
 
 ## Layout raiz
 

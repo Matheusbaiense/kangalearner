@@ -1,7 +1,6 @@
 # Histórico infra / web
 
-| Data | ID | Tema | Paths principais |
-|------|-----|------|------------------|
+| 2026-08-18 | REM-7 | MFA TOTP aal2 no gate admin (Fase 5.3 código) | `apps/web/src/lib/auth/{adminMfa,assertAdminRole,requireAdminPage}.ts`, `apps/web/app/auth/mfa/page.tsx` |
 | 2026-08-17 | REM-6 | Step-up: password actual no delete e change-password (Fase 5.2) | `apps/web/src/lib/auth/{passwordReauth,deleteAccount}.ts`, `apps/web/app/api/account/{delete,password}/route.ts`, `apps/web/app/(main)/account/page.tsx` |
 | 2026-08-17 | REM-5 | Logger JSON + `x-request-id` nas rotas (Fase 4.6) | `apps/web/src/lib/{log,requestId}.ts`, `apps/web/src/middleware.ts`, `apps/web/app/api/**/route.ts`, `apps/web/app/auth/callback/route.ts` |
 | 2026-08-17 | REM-4 | Blog RSC (lista leve) + envelope no resto das rotas de app | `apps/web/src/lib/blogIndex.ts`, `apps/web/app/(main)/blog/page.tsx`, `apps/web/app/api/{attempts/bulk,saved-questions/bulk,mock-sessions,blog-reactions,newsletter,profile/avatar,admin/stats}/route.ts` |

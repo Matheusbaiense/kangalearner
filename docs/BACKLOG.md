@@ -28,6 +28,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Código: blog RSC** (2026-08-17): `/blog` Server Component passa cards leves; `BlogPageClient` já não importa `blogPosts.ts`.
 - [x] **Código: logger estruturado** (2026-08-17): `x-request-id` no middleware; `log()` JSON nas rotas de API + auth callback. Sem password/token/Authorization/rawBody.
 - [x] **Código: step-up delete/password** (2026-08-17): DELETE `/api/account/delete` e PATCH `/api/account/password` exigem senha atual via `signInWithPassword`. Contas só-OAuth: criar senha em Forgot password primeiro.
+- [x] **Código: MFA admin** (2026-08-18): `/admin` e APIs admin exigem `aal2`; página `/auth/mfa`. **Ligar TOTP no dashboard Auth ainda é dono** — sem isso o enroll falha.
 - [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY` (cron falha até 0.7). Upgrade Pro + PITR (plan phase 0.2).
 
 ## Important Follow-Ups
@@ -48,7 +49,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [ ] **Asset cleanup**: remove unused PNGs only after verifying references. `logo.png` is reported unused and large (869 KB); nav currently uses SVG.
 - [ ] **Large-file split**: break up `apps/web/src/lib/i18n.ts`, `apps/web/src/lib/learnTopics.ts`, and `apps/web/app/(main)/account/page.tsx`.
 - [ ] **Test coverage**: add tests for Stripe webhook behavior, real login E2E, and account deletion.
-- [ ] **Admin security**: require MFA for admin accounts.
+- [~] **Admin security**: código exige TOTP aal2 em `/admin` e APIs admin. Ligar MFA no dashboard Auth ainda é dono.
 - [ ] **Repo hygiene**: remove old `docs/CURSOR-PROMPT-SPRINT*.md` session prompts once their useful content is consolidated into canonical docs.
 
 ## Operational Notes

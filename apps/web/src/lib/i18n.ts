@@ -502,6 +502,14 @@ export const t = {
     authPasswordUpdatedSub: "Your password has been updated successfully.",
     authBackToSignIn: "← Back to sign in",
     authSignInArrow: "Sign in →",
+    authMfaTitle: "Admin verification",
+    authMfaSubEnroll: "Scan this QR code with an authenticator app, then enter the 6-digit code.",
+    authMfaSubVerify: "Enter the 6-digit code from your authenticator app.",
+    authMfaCodeLabel: "Authentication code",
+    authMfaContinue: "Verify",
+    authMfaVerifying: "Verifying…",
+    authMfaFailed: "That code didn't work. Try again.",
+    authMfaSetupFailed: "Could not start authenticator setup. Try again.",
 
     // ── Auth nudge ────────────────────────────────────────
     nudgeTitle: "Sign in to save your progress",
@@ -1011,6 +1019,15 @@ export const t = {
     authPasswordUpdatedSub: "Sua senha foi atualizada com sucesso.",
     authBackToSignIn: "← Voltar para entrar",
     authSignInArrow: "Entrar →",
+    authMfaTitle: "Verificação de admin",
+    authMfaSubEnroll:
+      "Escaneie este QR com um app autenticador e depois informe o código de 6 dígitos.",
+    authMfaSubVerify: "Informe o código de 6 dígitos do seu app autenticador.",
+    authMfaCodeLabel: "Código de autenticação",
+    authMfaContinue: "Verificar",
+    authMfaVerifying: "Verificando…",
+    authMfaFailed: "Esse código não funcionou. Tente de novo.",
+    authMfaSetupFailed: "Não foi possível iniciar o autenticador. Tente de novo.",
 
     // ── Auth nudge ────────────────────────────────────────
     nudgeTitle: "Faça login para salvar seu progresso",
@@ -1522,6 +1539,15 @@ export const t = {
     authPasswordUpdatedSub: "Tu contraseña se ha actualizado correctamente.",
     authBackToSignIn: "← Volver al inicio de sesión",
     authSignInArrow: "Ingresar →",
+    authMfaTitle: "Verificación de admin",
+    authMfaSubEnroll:
+      "Escanea este QR con una app autenticadora y luego introduce el código de 6 dígitos.",
+    authMfaSubVerify: "Introduce el código de 6 dígitos de tu app autenticadora.",
+    authMfaCodeLabel: "Código de autenticación",
+    authMfaContinue: "Verificar",
+    authMfaVerifying: "Verificando…",
+    authMfaFailed: "Ese código no funcionó. Inténtalo de nuevo.",
+    authMfaSetupFailed: "No se pudo iniciar el autenticador. Inténtalo de nuevo.",
 
     // ── Auth nudge ────────────────────────────────────────
     nudgeTitle: "Inicia sesión para guardar tu progreso",
