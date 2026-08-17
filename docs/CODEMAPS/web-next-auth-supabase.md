@@ -26,7 +26,7 @@ apps/web/
 │   ├── privacy/page.tsx       → idem
 │   └── api/                   → REST handlers (attempts, mock-sessions, health, …)
 └── src/
-    ├── middleware.ts          → createServerClient; PROTECTED_ROUTES; AUTH_ROUTES
+    ├── middleware.ts          → createServerClient; PROTECTED_ROUTES; AUTH_ROUTES; `x-request-id`
     ├── app/auth/auth.css      → estilos INFRA-9 (prefixo .auth-route)
     ├── components/
     │   ├── layout/SiteNav.tsx  → navegação global; drawer mobile inclui links, auth, idioma e estado
@@ -38,6 +38,8 @@ apps/web/
         │   ├── admin.ts       → service role (só server)
         │   └── database.types.ts
         ├── stripe.ts
+        ├── log.ts             → JSON logger (`info`/`warn`/`error`); `mask()`; redacts password/token/Authorization/rawBody
+        ├── requestId.ts       → UUID `x-request-id` (reusa header válido ou mint)
         └── migrateLocalAttempts.ts
 ```
 
@@ -63,6 +65,10 @@ apps/web/
 1. Sem `NEXT_PUBLIC_SUPABASE_*` → `NextResponse.next` (não bloqueia build local sem env).
 2. Com env: `getUser()`; se path protegido e sem user → `/auth/login?redirect=<path>`.
 3. Se `/login`, `/signup`, `/auth/login`, `/auth/signup` e com user → `/`.
+4. Toda resposta (páginas + `/api/*` no matcher) leva `x-request-id` (UUID). Header incoming só é reutilizado se for UUID canónico.
+5. Matcher **exclui** `api/webhook` e `api/webhooks` — o handler Stripe mint o próprio id e **não** loga o raw body.
+
+`/api/health` = liveness (plaintext). `/api/ping` = readiness (DB probe + `CRON_SECRET`).
 
 ## Layout raiz
 

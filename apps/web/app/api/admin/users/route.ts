@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
 import { evaluateAdminRolePatch, PROFILE_ROLES } from "@/lib/auth/adminRolePatch";
@@ -55,7 +56,10 @@ export async function GET(req: NextRequest) {
 
   const { data, count, error } = await query;
   if (error) {
-    console.error("[admin/users] GET failed:", error.code, error.message);
+    log("error", "admin.users.get_failed", {
+      ...logContext(req, { userId: uid, action: "list" }),
+      code: error.code
+    });
     return apiError("internal_error", 500);
   }
 
@@ -108,7 +112,10 @@ export async function PATCH(req: NextRequest) {
   const { error } = await supabaseAdmin.from("profiles").update({ role }).eq("id", userId);
 
   if (error) {
-    console.error("[admin/users] PATCH failed:", error.code, error.message);
+    log("error", "admin.users.patch_failed", {
+      ...logContext(req, { userId: uid, action: "patch" }),
+      code: error.code
+    });
     return apiError("internal_error", 500);
   }
   return apiOk();

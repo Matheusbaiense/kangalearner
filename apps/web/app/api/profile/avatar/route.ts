@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { rateLimit } from "@/lib/rateLimit";
@@ -78,7 +79,9 @@ export async function POST(req: NextRequest) {
     .upload(path, buffer, { contentType: file.type, upsert: true });
 
   if (uploadErr) {
-    console.error("[avatar/upload] storage upload failed:", uploadErr.message);
+    log("error", "avatar.upload_failed", {
+      ...logContext(req, { userId: user.id, action: "upload" })
+    });
     return apiError("upload_failed", 500);
   }
 
@@ -93,7 +96,10 @@ export async function POST(req: NextRequest) {
     .eq("id", user.id);
 
   if (dbErr) {
-    console.error("[avatar/upload] db update failed:", dbErr.code);
+    log("error", "avatar.db_update_failed", {
+      ...logContext(req, { userId: user.id, action: "db_update" }),
+      code: dbErr.code
+    });
     return apiError("db_update_failed", 500);
   }
 
@@ -123,7 +129,10 @@ export async function DELETE(req: NextRequest) {
     .maybeSingle();
 
   if (profileErr) {
-    console.error("[avatar/delete] profile fetch failed:", profileErr.code);
+    log("error", "avatar.profile_fetch_failed", {
+      ...logContext(req, { userId: user.id, action: "fetch" }),
+      code: profileErr.code
+    });
     return apiError("profile_fetch_failed", 500);
   }
 
@@ -134,7 +143,9 @@ export async function DELETE(req: NextRequest) {
     const { error: storageError } = await supabase.storage.from("avatars").remove(paths);
 
     if (storageError) {
-      console.error("[avatar/delete] storage remove failed:", storageError.message);
+      log("error", "avatar.storage_remove_failed", {
+        ...logContext(req, { userId: user.id, action: "storage_remove" })
+      });
       return apiError("storage_remove_failed", 500);
     }
   }
@@ -145,7 +156,10 @@ export async function DELETE(req: NextRequest) {
     .eq("id", user.id);
 
   if (dbError) {
-    console.error("[avatar/delete] db update failed:", dbError.code);
+    log("error", "avatar.delete_db_update_failed", {
+      ...logContext(req, { userId: user.id, action: "db_update" }),
+      code: dbError.code
+    });
     return apiError("db_update_failed", 500);
   }
 

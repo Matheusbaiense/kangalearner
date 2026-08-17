@@ -26,7 +26,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Código: sync visível** (2026-08-17): practice banner + retry; admin stats `degraded`; reactions/migrate já não engolem o erro.
 - [x] **Código: envelope API** (2026-08-17): `apiOk`/`apiError` nas rotas de app. Health (plaintext), ping e webhook Stripe ficam de fora.
 - [x] **Código: blog RSC** (2026-08-17): `/blog` Server Component passa cards leves; `BlogPageClient` já não importa `blogPosts.ts`.
-- [x] **Código: dashboard/account fail-loud** (2026-08-17): banner + retry; avatar já não mostra `json.error` cru.
+- [x] **Código: logger estruturado** (2026-08-17): `x-request-id` no middleware; `log()` JSON nas rotas de API + auth callback. Sem password/token/Authorization/rawBody.
 - [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY` (cron falha até 0.7). Upgrade Pro + PITR (plan phase 0.2).
 
 ## Important Follow-Ups

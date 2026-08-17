@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
+import { REQUEST_ID_HEADER, stampRequestId } from "./lib/requestId";
 
 /** Rotas que exigem sessão válida. */
 const PROTECTED_ROUTES = ["/progress", "/dashboard", "/account", "/admin"];
@@ -85,12 +86,22 @@ function getAllowedOrigins(): string[] {
 function addCorsHeaders(response: NextResponse, origin: string): void {
   response.headers.set("Access-Control-Allow-Origin", origin);
   response.headers.set("Access-Control-Allow-Methods", "GET, POST, PATCH, DELETE, OPTIONS");
-  response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type, Authorization, x-request-id");
+  response.headers.set("Access-Control-Expose-Headers", "x-request-id");
   response.headers.set("Vary", "Origin");
+}
+
+function attachRequestId(response: NextResponse, requestId: string): NextResponse {
+  response.headers.set(REQUEST_ID_HEADER, requestId);
+  return response;
 }
 
 export async function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
+  const { requestId, headers: idHeaders } = stampRequestId(
+    request.headers,
+    request.headers.get(REQUEST_ID_HEADER)
+  );
 
   // --- CORS for API routes ---
   if (pathname.startsWith("/api/")) {
@@ -103,7 +114,7 @@ export async function middleware(request: NextRequest) {
       const pre = new NextResponse(null, { status: 204 });
       if (matchedOrigin) addCorsHeaders(pre, matchedOrigin);
       pre.headers.set("Access-Control-Max-Age", "86400");
-      return pre;
+      return attachRequestId(pre, requestId);
     }
 
     // Non-API requests fall through to the normal flow below
@@ -111,21 +122,22 @@ export async function middleware(request: NextRequest) {
     const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
     if (!supabaseUrl || !supabaseAnonKey) {
-      const r = NextResponse.next({ request });
+      const r = NextResponse.next({ request: { headers: idHeaders } });
       if (matchedOrigin) addCorsHeaders(r, matchedOrigin);
-      return r;
+      return attachRequestId(r, requestId);
     }
 
-    let apiResponse = NextResponse.next({ request });
+    let apiResponse = NextResponse.next({ request: { headers: idHeaders } });
     const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
       cookies: {
         getAll: () => request.cookies.getAll(),
         setAll: (cookiesToSet) => {
           cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value));
-          apiResponse = NextResponse.next({ request });
+          apiResponse = NextResponse.next({ request: { headers: idHeaders } });
           cookiesToSet.forEach(({ name, value, options }) =>
             apiResponse.cookies.set(name, value, options)
           );
+          attachRequestId(apiResponse, requestId);
         }
       }
     });
@@ -137,12 +149,12 @@ export async function middleware(request: NextRequest) {
       if (!user) {
         const err = NextResponse.json({ error: "Unauthorized" }, { status: 401 });
         if (matchedOrigin) addCorsHeaders(err, matchedOrigin);
-        return err;
+        return attachRequestId(err, requestId);
       }
     }
 
     if (matchedOrigin) addCorsHeaders(apiResponse, matchedOrigin);
-    return apiResponse;
+    return attachRequestId(apiResponse, requestId);
   }
 
   // --- Standard auth middleware for page routes ---
@@ -154,7 +166,7 @@ export async function middleware(request: NextRequest) {
   // hydration never runs → the whole app becomes non-interactive (clicks do nothing).
   const nonce = generateNonce();
   const csp = buildCsp(nonce);
-  const requestHeaders = new Headers(request.headers);
+  const requestHeaders = new Headers(idHeaders);
   requestHeaders.set("x-nonce", nonce);
   requestHeaders.set("Content-Security-Policy", csp);
 
@@ -164,7 +176,7 @@ export async function middleware(request: NextRequest) {
   if (!supabaseUrl || !supabaseAnonKey) {
     const fallback = NextResponse.next({ request: { headers: requestHeaders } });
     fallback.headers.set("Content-Security-Policy", csp);
-    return fallback;
+    return attachRequestId(fallback, requestId);
   }
 
   let supabaseResponse = NextResponse.next({ request: { headers: requestHeaders } });
@@ -180,6 +192,7 @@ export async function middleware(request: NextRequest) {
         cookiesToSet.forEach(({ name, value, options }) =>
           supabaseResponse.cookies.set(name, value, options)
         );
+        attachRequestId(supabaseResponse, requestId);
       }
     }
   });
@@ -199,17 +212,17 @@ export async function middleware(request: NextRequest) {
     const url = request.nextUrl.clone();
     url.pathname = "/auth/login";
     url.searchParams.set("redirect", pathname + search);
-    return NextResponse.redirect(url);
+    return attachRequestId(NextResponse.redirect(url), requestId);
   }
 
   const isAuthRoute = AUTH_ROUTES.some((route) => pathname.startsWith(route));
   if (isAuthRoute && user) {
-    return NextResponse.redirect(new URL("/", request.url));
+    return attachRequestId(NextResponse.redirect(new URL("/", request.url)), requestId);
   }
 
   // Attach the same nonce-based CSP to the final page response (browser enforcement)
   supabaseResponse.headers.set("Content-Security-Policy", csp);
-  return supabaseResponse;
+  return attachRequestId(supabaseResponse, requestId);
 }
 
 export const config = {

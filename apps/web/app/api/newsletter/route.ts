@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
@@ -47,7 +48,10 @@ export async function POST(req: NextRequest) {
       if (error.code === "42P01") {
         return apiError("service_unavailable", 503);
       }
-      console.error("[newsletter]", error.code);
+      log("error", "newsletter.insert_failed", {
+        ...logContext(req, { action: "insert" }),
+        code: error.code
+      });
       return apiError("subscribe_failed", 500);
     }
 
@@ -60,7 +64,9 @@ export async function POST(req: NextRequest) {
           html: newsletterConfirmHtml()
         });
       } catch (err) {
-        console.error("[newsletter] confirmation email failed:", err);
+        log("error", "newsletter.confirm_email_failed", {
+          ...logContext(req, { action: "send_email" })
+        });
       }
     })();
 

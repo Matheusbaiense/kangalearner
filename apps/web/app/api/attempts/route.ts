@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
@@ -91,7 +92,10 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("attempts: insert failed", error.code);
+    log("error", "attempts.insert_failed", {
+      ...logContext(request, { userId: user.id, action: "insert" }),
+      code: error.code
+    });
     return apiError("db_error", 500);
   }
 
