@@ -1,6 +1,10 @@
+"use client";
+
 import { PrepHubView } from "@/components/journey/PrepHubView";
-import { HPT_HUB } from "@/lib/licenceJourney";
+import { buildHazardHub } from "@/lib/statePrepHubs";
+import { useStateProfile } from "@/lib/stateSelection";
 
 export default function HptPage() {
-  return <PrepHubView hub={HPT_HUB} />;
+  const profile = useStateProfile();
+  return <PrepHubView hub={buildHazardHub(profile)} />;
 }

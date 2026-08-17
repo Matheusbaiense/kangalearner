@@ -185,21 +185,10 @@ const COPY = {
     pt: "A habilitação de {state} é uma sequência de passos. Aqui está a jornada completa e onde o KangaLearner ajuda em cada etapa.",
     es: "La licencia de {state} es una secuencia de pasos. Aquí está todo el recorrido y dónde KangaLearner ayuda en cada etapa."
   },
-  hptCard: { en: "HPT prep", pt: "Preparação HPT", es: "Preparación HPT" },
   hptDesc: {
-    en: "Spot hazards on video clips. Required before your Ps.",
-    pt: "Identifique perigos em video clips. Exigido antes dos Ps.",
-    es: "Detecta peligros en video clips. Requerido antes de tus Ps."
-  },
-  hazardCardOfficial: {
-    en: "About the hazard test",
-    pt: "Sobre o hazard test",
-    es: "Sobre el hazard test"
-  },
-  practicalCard: {
-    en: "The practical test",
-    pt: "A prova prática",
-    es: "El examen práctico"
+    en: "Spot hazards before they become problems. On the way to your Ps.",
+    pt: "Identifique perigos antes que virem problema. No caminho até os Ps.",
+    es: "Detecta peligros antes de que sean un problema. En el camino a tus Ps."
   },
   practicalDesc: {
     en: "Your on-road driving test. The last step before your Ps.",
@@ -224,7 +213,6 @@ export default function JourneyPage() {
   const gls = getStateGls(profile.code);
   const res = getStateResources(profile.code);
   const phases = buildPhases(gls, res);
-  const isWa = profile.code === "WA";
 
   return (
     <main className="app-page">
@@ -264,8 +252,7 @@ export default function JourneyPage() {
           ))}
         </ol>
 
-        {/* Hazard / practical prep cards. WA links the in-app prep hubs; other
-            states link their authority's official pages. */}
+        {/* Hazard / practical prep hubs — now per-state, so always link them. */}
         <div
           style={{
             display: "grid",
@@ -275,57 +262,26 @@ export default function JourneyPage() {
             marginBottom: 24
           }}
         >
-          {isWa ? (
+          {res.hazardTestName && (
             <Link
               href="/hpt"
               className="overseas-country-card"
               style={{ flexDirection: "column", alignItems: "flex-start", gap: 4 }}
             >
-              <strong>{t(COPY.hptCard)}</strong>
+              <strong>{res.hazardTestName}</strong>
               <span style={{ color: "var(--muted)", fontSize: ".85rem" }}>{t(COPY.hptDesc)}</span>
             </Link>
-          ) : (
-            res.hazardTestName &&
-            res.links.hazard && (
-              <a
-                href={res.links.hazard}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="overseas-country-card"
-                style={{ flexDirection: "column", alignItems: "flex-start", gap: 4 }}
-              >
-                <strong>{res.hazardTestName}</strong>
-                <span style={{ color: "var(--muted)", fontSize: ".85rem" }}>
-                  {t(COPY.hazardCardOfficial)} ↗
-                </span>
-              </a>
-            )
           )}
-          {isWa ? (
-            <Link
-              href="/pda"
-              className="overseas-country-card"
-              style={{ flexDirection: "column", alignItems: "flex-start", gap: 4 }}
-            >
-              <strong>{t(COPY.practicalCard)}</strong>
-              <span style={{ color: "var(--muted)", fontSize: ".85rem" }}>
-                {t(COPY.practicalDesc)}
-              </span>
-            </Link>
-          ) : (
-            <a
-              href={res.links.steps}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="overseas-country-card"
-              style={{ flexDirection: "column", alignItems: "flex-start", gap: 4 }}
-            >
-              <strong>{res.practicalTestName}</strong>
-              <span style={{ color: "var(--muted)", fontSize: ".85rem" }}>
-                {t(COPY.practicalDesc)} ↗
-              </span>
-            </a>
-          )}
+          <Link
+            href="/pda"
+            className="overseas-country-card"
+            style={{ flexDirection: "column", alignItems: "flex-start", gap: 4 }}
+          >
+            <strong>{res.practicalTestName}</strong>
+            <span style={{ color: "var(--muted)", fontSize: ".85rem" }}>
+              {t(COPY.practicalDesc)}
+            </span>
+          </Link>
         </div>
 
         <div style={{ marginBottom: 18 }}>

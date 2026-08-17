@@ -1,6 +1,10 @@
+"use client";
+
 import { PrepHubView } from "@/components/journey/PrepHubView";
-import { PDA_HUB } from "@/lib/licenceJourney";
+import { buildPracticalHub } from "@/lib/statePrepHubs";
+import { useStateProfile } from "@/lib/stateSelection";
 
 export default function PdaPage() {
-  return <PrepHubView hub={PDA_HUB} />;
+  const profile = useStateProfile();
+  return <PrepHubView hub={buildPracticalHub(profile)} />;
 }

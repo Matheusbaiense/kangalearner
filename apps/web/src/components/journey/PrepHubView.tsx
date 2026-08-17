@@ -3,20 +3,21 @@
 import Link from "next/link";
 import { useLang } from "@/contexts/LangContext";
 import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
-import type { PrepHub } from "@/lib/licenceJourney";
+import { useStateCopy } from "@/lib/stateCopy";
+import { PREP_VERIFIED_AT, type PrepHub } from "@/lib/statePrepHubs";
 
-const LAST_VERIFIED = "2026-06-01";
-
-/** Shared renderer for the HPT and PDA prep hubs (DrivingTestWA 4-part structure). */
+/** Shared renderer for the hazard-test and practical-test prep hubs (4-part structure). */
 export function PrepHubView({ hub }: { hub: PrepHub }) {
   const { uiLang: lang } = useLang();
+  const { ts } = useStateCopy();
 
-  const officialLabel =
+  const officialLabel = ts(
     lang === "pt"
-      ? "Página oficial do DoT"
+      ? "Página oficial: {authority}"
       : lang === "es"
-        ? "Página oficial del DoT"
-        : "Official DoT page";
+        ? "Página oficial: {authority}"
+        : "Official {authority} page"
+  );
   const practiceLabel =
     lang === "pt"
       ? "Praticar a teórica"
@@ -72,7 +73,7 @@ export function PrepHubView({ hub }: { hub: PrepHub }) {
         <div style={{ margin: "20px 0" }}>
           <VerifiedBadge
             lang={lang}
-            lastVerified={LAST_VERIFIED}
+            lastVerified={PREP_VERIFIED_AT}
             sourceUrl={hub.officialUrl}
             reportContext={hub.kicker.en}
           />
