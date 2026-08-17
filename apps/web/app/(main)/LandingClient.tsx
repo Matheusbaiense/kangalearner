@@ -177,83 +177,49 @@ const FAQS = [
   }
 ];
 
-/* ── Hero phone ── */
-function SlidePractice({ lang }: { lang: UiLang }) {
-  const question = {
-    en: "What does this sign mean?",
-    pt: "O que significa esta placa?",
-    es: "¿Qué significa esta señal?"
-  };
-  const options: { en: string; pt: string; es: string; correct: boolean }[] = [
-    {
-      en: "Give way to other traffic",
-      pt: "Dê a preferência ao outro tráfego",
-      es: "Cede el paso al otro tráfico",
-      correct: true
-    },
-    {
-      en: "Stop completely, always",
-      pt: "Pare completamente, sempre",
-      es: "Detente por completo, siempre",
-      correct: false
-    },
-    {
-      en: "You have right of way",
-      pt: "Você tem a preferência",
-      es: "Tienes la prioridad",
-      correct: false
-    }
-  ];
-  return (
-    <>
-      <div className="slide-header">
-        <Target size={16} strokeWidth={2} className="slide-header-icon" aria-hidden="true" />
-        <span className="slide-header-label">
-          {lang === "pt" ? "Modo Prática" : lang === "es" ? "Modo Práctica" : "Practice Mode"}
-        </span>
-        <span className="slide-progress-pill">17 / 30</span>
-      </div>
-      <div className="slide-prog-wrap">
-        <div className="slide-prog-bar" style={{ width: "57%" }} />
-      </div>
-      <div className="slide-sign-wrap">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/icons/signs/give-way-sign.png"
-          alt=""
-          width={72}
-          height={72}
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-      <p className="slide-question">{tx(question, lang)}</p>
-      <div className="slide-options">
-        {options.map((opt, i) => (
-          <div key={i} className={`slide-option${opt.correct ? " correct" : ""}`}>
-            <span className={`slide-opt-letter${opt.correct ? " correct" : ""}`}>
-              {opt.correct ? "✓" : String.fromCharCode(65 + i)}
-            </span>
-            <span>{tx({ en: opt.en, pt: opt.pt, es: opt.es }, lang)}</span>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
-
-function HeroPhone({ lang }: { lang: UiLang }) {
+/* ── Hero photos: estradas australianas reais (Unsplash, uso livre) ── */
+function HeroPhotos({ lang }: { lang: UiLang }) {
   const passChip = { en: "Passed, 24/30", pt: "Aprovado, 24/30", es: "Aprobado, 24/30" };
   const streakChip = { en: "3-day streak", pt: "3 dias seguidos", es: "3 días seguidos" };
+  const signAlt = {
+    en: "Kangaroo road sign on an Australian highway",
+    pt: "Placa de canguru numa rodovia australiana",
+    es: "Señal de canguro en una carretera australiana"
+  };
   return (
-    <div className="hero-slideshow" aria-hidden="true">
-      <div className="hero-phone-frame">
-        <div className="hero-slide-card">
-          <div className="hero-slide-content">
-            <SlidePractice lang={lang} />
-          </div>
-        </div>
-      </div>
+    <div className="hero-photos">
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="hero-photo hero-photo--main"
+        src="/images/hero/kangaroo-sign.jpg"
+        alt={tx(signAlt, lang)}
+        width={520}
+        height={392}
+        fetchPriority="high"
+        decoding="async"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="hero-photo hero-photo--tl"
+        src="/images/hero/outback-road.jpg"
+        alt=""
+        width={230}
+        height={154}
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      />
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        className="hero-photo hero-photo--br"
+        src="/images/hero/coastal-road.jpg"
+        alt=""
+        width={230}
+        height={154}
+        loading="lazy"
+        decoding="async"
+        aria-hidden="true"
+      />
       <div className="hero-float-chip hero-float-chip--pass">
         <Check size={14} strokeWidth={3} aria-hidden="true" />
         {tx(passChip, lang)}
@@ -408,7 +374,7 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
           </div>
 
           {/* Right: animated product slideshow */}
-          <HeroPhone lang={lang} />
+          <HeroPhotos lang={lang} />
         </div>
       </section>
 
