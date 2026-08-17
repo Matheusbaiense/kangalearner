@@ -6,10 +6,22 @@ import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
 import type { LearnTopic } from "@/lib/learnTopics";
 import { tx } from "@/lib/i18n";
+import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
 
 interface TopicPageClientProps {
   topic: LearnTopic;
 }
+
+/** Pull the first official URL out of the topic source string, if present. */
+function extractSourceUrl(source: string): string | undefined {
+  const match = source.match(/(https?:\/\/)?(www\.)?transport\.wa\.gov\.au[^\s)]*/i);
+  if (!match) return undefined;
+  const raw = match[0];
+  return raw.startsWith("http") ? raw : `https://${raw}`;
+}
+
+/** Date the WA learn content was last reviewed against Transport WA. */
+const LAST_VERIFIED = "2026-06-01";
 
 export function TopicPageClient({ topic }: TopicPageClientProps) {
   const { uiLang: lang, s } = useLang();
@@ -79,9 +91,18 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           </ul>
         </section>
 
-        <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 24 }}>
+        <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 12 }}>
           <strong>{s.learnSource}:</strong> {tx(topic.source, lang)}
         </p>
+
+        <div style={{ marginBottom: 24 }}>
+          <VerifiedBadge
+            lang={lang}
+            lastVerified={LAST_VERIFIED}
+            sourceUrl={extractSourceUrl(tx(topic.source, lang))}
+            reportContext={topic.slug}
+          />
+        </div>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Link href={practiceHref} className="btn btn-primary">
