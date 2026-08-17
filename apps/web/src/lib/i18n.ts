@@ -175,6 +175,8 @@ export const t = {
     howItWorksTitle: "How it works",
     sectionEyebrowHow: "Get started",
     sectionEyebrowTrust: "Why KangaLearner",
+    sectionEyebrowStates: "National coverage",
+    statesMapTitle: "Choose your state",
     sectionEyebrowTopics: "What you'll master",
     howStep1Title: "Study by topic",
     howStep1DescCard: "19 road rule topics, signs, speed limits, give way, alcohol laws and more.",
@@ -670,6 +672,8 @@ export const t = {
     howItWorksTitle: "Como funciona",
     sectionEyebrowHow: "Comece aqui",
     sectionEyebrowTrust: "Por que o KangaLearner",
+    sectionEyebrowStates: "Cobertura nacional",
+    statesMapTitle: "Escolha seu estado",
     sectionEyebrowTopics: "O que você vai dominar",
     howStep1Title: "Estude por tópico",
     howStep1DescCard:
@@ -1172,6 +1176,8 @@ export const t = {
     howItWorksTitle: "Cómo funciona",
     sectionEyebrowHow: "Empieza aquí",
     sectionEyebrowTrust: "Por qué KangaLearner",
+    sectionEyebrowStates: "Cobertura nacional",
+    statesMapTitle: "Elige tu estado",
     sectionEyebrowTopics: "Lo que vas a dominar",
     howStep1Title: "Estudia por tema",
     howStep1DescCard:
