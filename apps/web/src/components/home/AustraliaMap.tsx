@@ -19,7 +19,13 @@ interface AustraliaMapProps {
   onHover?: (code: string | null) => void;
 }
 
-export function AustraliaMap({ counts, slugs, questionsWord, hovered, onHover }: AustraliaMapProps) {
+export function AustraliaMap({
+  counts,
+  slugs,
+  questionsWord,
+  hovered,
+  onHover
+}: AustraliaMapProps) {
   const router = useRouter();
   const max = Math.max(1, ...Object.values(counts));
 
