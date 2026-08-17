@@ -6448,3 +6448,134 @@ html.exam-focus .site-footer {
   line-height: 1.4;
   font-family: inherit;
 }
+
+/* ══════════════════════════════════════════
+   LEARNER TEST PAGES (/learner-test)
+══════════════════════════════════════════ */
+
+/* Header com Kanga a direita e marcas de pneu sutis no fundo */
+.state-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  position: relative;
+}
+.state-hero::before,
+.state-hero::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: var(--ink);
+  pointer-events: none;
+  -webkit-mask: var(--tire-tracks) no-repeat center / contain;
+  mask: var(--tire-tracks) no-repeat center / contain;
+}
+.state-hero::before {
+  width: 300px;
+  height: 210px;
+  right: -40px;
+  top: -60px;
+  transform: rotate(160deg);
+  opacity: 0.05;
+}
+.state-hero::after {
+  width: 240px;
+  height: 170px;
+  left: -60px;
+  bottom: -70px;
+  transform: rotate(-12deg);
+  opacity: 0.035;
+}
+.state-hero-copy {
+  min-width: 0;
+}
+.state-hero-kanga {
+  flex-shrink: 0;
+  color: var(--ink);
+}
+@media (max-width: 768px) {
+  .state-hero-kanga {
+    display: none;
+  }
+}
+
+/* Facts strip: celulas compactas, label pequeno em cima, valor curto embaixo */
+.facts-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 1.5rem 0;
+}
+.fact-cell {
+  background: var(--card-bg);
+  border: var(--card-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow);
+  padding: 12px 14px;
+}
+.fact-label {
+  font-size: var(--text-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+.fact-value {
+  font-size: var(--text-xl);
+  font-weight: 800;
+  color: var(--ink);
+  line-height: 1.2;
+  white-space: nowrap;
+}
+/* valores textuais (nome de teste, orgao, pass mark composto): menor e pode quebrar */
+.fact-value--long {
+  font-size: var(--text-lg);
+  white-space: normal;
+}
+.fact-sub {
+  font-size: var(--text-sm);
+  color: var(--muted2);
+  margin-top: 3px;
+  line-height: 1.35;
+}
+
+/* Placas reais do estado */
+.signs-section {
+  margin-top: 2.5rem;
+}
+.signs-sub {
+  color: var(--muted2);
+  font-size: var(--text-base);
+  margin-bottom: 14px;
+}
+.signs-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.sign-card {
+  /* fundo branco fixo nos 2 temas: gif/jpg das placas assumem fundo claro */
+  background: #fff;
+  border: var(--card-border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--card-shadow);
+  padding: 10px;
+  margin: 0;
+}
+.sign-card img {
+  display: block;
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+}
+
+/* Divisor de estrada tracejada para fundo claro */
+.road-divider {
+  height: 4px;
+  margin: 40px 0 24px;
+  border-radius: 2px;
+  background: repeating-linear-gradient(90deg, var(--muted) 0 34px, transparent 34px 62px);
+  opacity: 0.25;
+}
