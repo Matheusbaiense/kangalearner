@@ -40,6 +40,8 @@ apps/web/
         ├── stripe.ts
         ├── log.ts             → JSON logger (`info`/`warn`/`error`); `mask()`; redacts password/token/Authorization/rawBody
         ├── requestId.ts       → UUID `x-request-id` (reusa header válido ou mint)
+        ├── auth/passwordReauth.ts → step-up: `signInWithPassword` com a senha atual
+        ├── auth/deleteAccount.ts  → delete só depois do reauth
         └── migrateLocalAttempts.ts
 ```
 
@@ -69,6 +71,12 @@ apps/web/
 5. Matcher **exclui** `api/webhook` e `api/webhooks` — o handler Stripe mint o próprio id e **não** loga o raw body.
 
 `/api/health` = liveness (plaintext). `/api/ping` = readiness (DB probe + `CRON_SECRET`).
+
+### Conta (step-up)
+
+- `DELETE /api/account/delete` body `{ password }`; `PATCH /api/account/password` body `{ currentPassword, newPassword }`.
+- Reauth: `signInWithPassword` com o email da sessão. Falha ou senha ausente → 403 `reauth_required`. Rate limit 5/min em ambos.
+- Contas só-OAuth (sem senha): criar senha em `/auth/forgot-password` primeiro. Não logar password.
 
 ## Layout raiz
 

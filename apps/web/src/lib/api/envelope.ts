@@ -57,7 +57,7 @@ function stabilizeCode(raw: string | null, status: number): string {
 }
 
 export function apiErrorAction(code: string, status: number): ApiErrorAction {
-  if (status === 401 || code === "unauthorized") return "reauth";
+  if (status === 401 || code === "unauthorized" || code === "reauth_required") return "reauth";
   if (status === 429 || code === "too_many_requests" || status >= 500) return "retry";
   return "toast";
 }
