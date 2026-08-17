@@ -191,4 +191,3 @@ export const CATEGORIES: readonly CategoryType[] = [
     }
   }
 ] as const;
-

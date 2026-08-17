@@ -273,8 +273,8 @@ export default function AdminPage() {
         {stats?.degraded && (
           <div className="admin-error" role="status">
             <XCircle size={16} /> Some stats queries failed
-            {stats.failed && stats.failed.length > 0 ? `: ${stats.failed.join(", ")}` : ""}.
-            Numbers below may be incomplete.
+            {stats.failed && stats.failed.length > 0 ? `: ${stats.failed.join(", ")}` : ""}. Numbers
+            below may be incomplete.
           </div>
         )}
 

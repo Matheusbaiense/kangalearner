@@ -92,7 +92,11 @@ export function DashboardClient({
         {loadError ? (
           <div className="stat-card" role="alert">
             <div className="stat-card-label">{s.dashLoadFailed}</div>
-            <button type="button" className="btn btn-secondary" onClick={() => window.location.reload()}>
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => window.location.reload()}
+            >
               {s.retry}
             </button>
           </div>

@@ -33,12 +33,7 @@ describe("toBlogPostCard", () => {
 describe("uniqueBlogStates", () => {
   it("preserves first-seen order", () => {
     expect(
-      uniqueBlogStates([
-        { state: "WA" },
-        { state: "NSW" },
-        { state: "WA" },
-        { state: "SA" }
-      ])
+      uniqueBlogStates([{ state: "WA" }, { state: "NSW" }, { state: "WA" }, { state: "SA" }])
     ).toEqual(["WA", "NSW", "SA"]);
   });
 });
