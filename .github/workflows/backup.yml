@@ -87,11 +87,12 @@ jobs:
 
       - name: Upload encrypted backup
         run: |
+          ls -la "$ENCRYPTED_FILE"
           aws s3 cp \
             "$ENCRYPTED_FILE" \
             "s3://${BACKUP_BUCKET}/supabase/$(basename "$ENCRYPTED_FILE")" \
             --endpoint-url "$BACKUP_S3_ENDPOINT" \
-            --only-show-errors
+            --debug 2>&1 | tail -100
 
       - name: Verify uploaded backup is listed
         run: |
