@@ -215,10 +215,9 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Licence companion",
-    resourcesTitle: "WA licence resources and next steps",
-    resourcesSub:
-      "A plain-language hub for the learner theory test, driving hours, HPT, PDA and trusted community links. Use it alongside official Transport WA sources.",
-    resourcesWaOnly: "WA resources for now, other states coming soon.",
+    resourcesTitleByState: "{stateCode} licence resources and next steps",
+    resourcesSubByState:
+      "A plain-language hub for the {testName}, driving hours and the official {state} pathway. Use it alongside {authority} sources.",
     resourcesStudyGuide: "Study guide",
     resourcesPracticeNow: "Practise questions",
 
@@ -643,10 +642,9 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Companion da carteira",
-    resourcesTitle: "Recursos e próximos passos para a carteira em WA",
-    resourcesSub:
-      "Um hub em linguagem simples para prova teórica, horas de direção, HPT, PDA e links confiáveis da comunidade. Use junto com as fontes oficiais do Transport WA.",
-    resourcesWaOnly: "Recursos de WA por enquanto, outros estados em breve.",
+    resourcesTitleByState: "Recursos e próximos passos para a carteira em {stateCode}",
+    resourcesSubByState:
+      "Um hub em linguagem simples para o {testName}, horas de direção e o caminho oficial de {state}. Use junto com as fontes do {authority}.",
     resourcesStudyGuide: "Guia de estudo",
     resourcesPracticeNow: "Praticar perguntas",
 
@@ -1074,10 +1072,9 @@ export const t = {
 
     // ── Resources ─────────────────────────────────────────
     resourcesKicker: "Companion de licencia",
-    resourcesTitle: "Recursos y próximos pasos para la licencia en WA",
-    resourcesSub:
-      "Un hub en lenguaje simple para el examen teórico, horas de conducción, HPT, PDA y enlaces confiables de comunidad. Úsalo junto con las fuentes oficiales de Transport WA.",
-    resourcesWaOnly: "Recursos de WA por ahora, otros estados próximamente.",
+    resourcesTitleByState: "Recursos y próximos pasos para la licencia en {stateCode}",
+    resourcesSubByState:
+      "Un hub en lenguaje simple para el {testName}, horas de conducción y la ruta oficial de {state}. Úsalo junto con las fuentes de {authority}.",
     resourcesStudyGuide: "Guía de estudio",
     resourcesPracticeNow: "Practicar preguntas",
 

@@ -12,19 +12,19 @@ import type { UiLang } from "@/lib/i18n";
 const COPY: Record<UiLang, { verified: string; source: string; report: string; subject: string }> =
   {
     en: {
-      verified: "Last verified with Transport WA",
+      verified: "Last verified with the official source",
       source: "Official source",
       report: "Report outdated info",
       subject: "Outdated info on KangaLearner"
     },
     pt: {
-      verified: "Última verificação com o Transport WA",
+      verified: "Última verificação com a fonte oficial",
       source: "Fonte oficial",
       report: "Reportar info desatualizada",
       subject: "Informação desatualizada no KangaLearner"
     },
     es: {
-      verified: "Última verificación con Transport WA",
+      verified: "Última verificación con la fuente oficial",
       source: "Fuente oficial",
       report: "Reportar info desactualizada",
       subject: "Información desactualizada en KangaLearner"
@@ -49,7 +49,7 @@ export function VerifiedBadge({
   lang: UiLang;
   /** ISO date, e.g. "2026-06-01" */
   lastVerified: string;
-  /** Official DoT/legislation URL backing this content */
+  /** Official authority/legislation URL backing this content */
   sourceUrl?: string;
   /** Slug/title used in the report mailto subject */
   reportContext?: string;
