@@ -20,13 +20,22 @@ describe("evaluateAdminRolePatch", () => {
     expect(result.ok).toBe(false);
   });
 
-  it("lets super_admin demote premium", () => {
+  it("blocks super_admin demoting premium too — Stripe is the only free<->premium path", () => {
     const result = evaluateAdminRolePatch({
       callerRole: "super_admin",
       targetRole: "premium",
       nextRole: "free"
     });
-    expect(result).toEqual({ ok: true });
+    expect(result.ok).toBe(false);
+  });
+
+  it("blocks super_admin assigning premium too", () => {
+    const result = evaluateAdminRolePatch({
+      callerRole: "super_admin",
+      targetRole: "free",
+      nextRole: "premium"
+    });
+    expect(result.ok).toBe(false);
   });
 
   it("blocks an admin promoting another admin", () => {
@@ -36,6 +45,15 @@ describe("evaluateAdminRolePatch", () => {
       nextRole: "admin"
     });
     expect(result.ok).toBe(false);
+  });
+
+  it("lets super_admin assign admin role", () => {
+    const result = evaluateAdminRolePatch({
+      callerRole: "super_admin",
+      targetRole: "free",
+      nextRole: "admin"
+    });
+    expect(result).toEqual({ ok: true });
   });
 
   it("lets admin set free on a free user (no-op path)", () => {

@@ -10,11 +10,11 @@ export function evaluateAdminRolePatch(input: {
   const target = input.targetRole ?? "";
   const isSuper = caller === "super_admin";
 
-  if (input.nextRole === "premium" && !isSuper) {
+  if (input.nextRole === "premium") {
     return { ok: false, error: "Premium role is managed by Stripe billing" };
   }
 
-  if (target === "premium" && input.nextRole !== "premium" && !isSuper) {
+  if (target === "premium") {
     return { ok: false, error: "Premium role is managed by Stripe billing" };
   }
 
