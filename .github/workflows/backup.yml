@@ -63,7 +63,7 @@ jobs:
           mkdir -p backups
           ts="$(date -u +'%Y%m%dT%H%M%SZ')"
           dump="backups/kangalearner-supabase-${ts}.dump"
-          pg_dump \
+          /usr/lib/postgresql/17/bin/pg_dump \
             --dbname "$SUPABASE_DB_URL" \
             --format=custom \
             --no-owner \
