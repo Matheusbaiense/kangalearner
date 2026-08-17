@@ -4366,10 +4366,10 @@ html.exam-focus .site-footer {
   font-weight: 700;
 }
 .au-map-label--compact .au-map-label-code {
-  font-size: 24px;
+  font-size: 18px;
 }
 .au-map-label--compact .au-map-label-count {
-  font-size: 22px;
+  font-size: 17px;
 }
 .au-map-state--hot {
   fill-opacity: 0.4 !important;
