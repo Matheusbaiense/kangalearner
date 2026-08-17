@@ -19,10 +19,12 @@ jobs:
     timeout-minutes: 5
     steps:
       - name: Query Supabase REST (counts as project activity)
+        env:
+          ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
           # The anon key is the PUBLIC client key (it ships in the web
-          # bundle); it grants nothing beyond RLS. Not a secret.
-          ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZ29ndGFlaWZ5eHd6ZW5jaWxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MjIzNjgsImV4cCI6MjA5MzM5ODM2OH0.MD9Sc3xUyhheL1MQLUBqd0lmusvjWsrjuKDranRzvGM"
+          # bundle); it grants nothing beyond RLS. Sourced from a secret
+          # anyway so it isn't a literal in tracked YAML.
           status=$(curl -s -o /tmp/body -w "%{http_code}" \
             --max-time 30 --retry 3 --retry-delay 10 \
             -H "apikey: ${ANON_KEY}" \
