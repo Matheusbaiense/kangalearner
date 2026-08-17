@@ -10,7 +10,7 @@ export default function PrivacyPage() {
   return (
     <main className="legal-page container section-pad">
       <h1>Privacy Policy</h1>
-      <p className="legal-updated">Last updated: May 2026</p>
+      <p className="legal-updated">Last updated: August 2026</p>
 
       <p>
         KangaLearner is committed to protecting your privacy in accordance with the{" "}
@@ -70,13 +70,29 @@ export default function PrivacyPage() {
           <strong>Google AdMob & Ad Manager</strong> (mobile app ads), to serve relevant ads in the
           mobile app. Google uses device identifiers for personalized advertising.
         </li>
+        <li>
+          <strong>Google AdSense</strong> (web ads), to serve relevant ads on kangalearner.com.au.
+          Google and its advertising partners may use cookies for ad personalisation and
+          measurement, see Google&apos;s{" "}
+          <a
+            href="https://policies.google.com/technologies/partner-sites"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            how Google uses information from sites that use its services
+          </a>
+          .
+        </li>
       </ul>
 
       <h2>4. Cookies, Local Storage, and Device Identifiers</h2>
       <p>
         <strong>Web:</strong> We use cookies and browser localStorage for session authentication,
-        language preference, state preference, and anonymous practice progress (before sign-in). We
-        do not use advertising cookies on the web.
+        language preference, state preference, and anonymous practice progress (before sign-in).
+        Where Google AdSense ads are enabled, Google and its partners may also set advertising
+        cookies on kangalearner.com.au to serve and measure ads. Before showing personalised ad
+        cookies to visitors in the EEA, UK, or Switzerland, we will add a consent mechanism for
+        the web, matching the requirement described for the mobile app below.
       </p>
       <p>
         <strong>Mobile App:</strong> The mobile app uses device identifiers (like Apple&apos;s

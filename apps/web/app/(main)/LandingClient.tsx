@@ -332,7 +332,15 @@ function HowItWorks() {
 }
 
 /* ── Component ── */
-export function LandingClient({ stateCounts }: { stateCounts?: Record<string, number> }) {
+export function LandingClient({
+  stateCounts,
+  homeTopAd
+}: {
+  stateCounts?: Record<string, number>;
+  // Rendered server-side by the page.tsx Server Component and passed down,
+  // keeps ads-config.ts and the ad components out of this client bundle.
+  homeTopAd?: React.ReactNode;
+}) {
   const [hoveredState, setHoveredState] = useState<string | null>(null);
   const { uiLang: lang, s } = useLang();
   const { t: tState } = useStateCopy();
@@ -403,6 +411,8 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
           </div>
         </div>
       </section>
+
+      <div className="container">{homeTopAd}</div>
 
       {/* ── Trust section ────────────────────────────── */}
       <section className="trust-section">

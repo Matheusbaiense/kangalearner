@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
+import { AdSlot } from "@/features/ads";
 
 export const metadata = {
   title: "Practice",
@@ -25,5 +26,10 @@ export default async function PracticePage({ searchParams }: { searchParams: Pag
     redirect("/mock-test");
   }
 
-  return <PracticeClient initialMode={initialMode} />;
+  return (
+    <PracticeClient
+      initialMode={initialMode}
+      practiceInlineAd={<AdSlot slotId="practice_inline" />}
+    />
+  );
 }

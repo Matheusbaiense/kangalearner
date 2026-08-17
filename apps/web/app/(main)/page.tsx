@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { LandingClient } from "./LandingClient";
 import { bankCountsFor } from "@/lib/stateBankCounts";
+import { AdSlot } from "@/features/ads";
 
 export const metadata: Metadata = {
   title: "Pass your Australian learner test | Free practice in EN/PT/ES",
@@ -35,5 +36,10 @@ const STATE_QUESTION_COUNTS = Object.fromEntries(
 );
 
 export default function HomePage() {
-  return <LandingClient stateCounts={STATE_QUESTION_COUNTS} />;
+  return (
+    <LandingClient
+      stateCounts={STATE_QUESTION_COUNTS}
+      homeTopAd={<AdSlot slotId="home_top" />}
+    />
+  );
 }

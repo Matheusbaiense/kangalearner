@@ -28,13 +28,26 @@ function buildCsp(nonce: string): string {
   // skip upgrade-insecure-requests so ws://localhost isn't forced to wss. None of
   // this applies to the production bundle, which stays strict + nonce-only.
   const isDev = process.env.NODE_ENV !== "production";
+  // Google AdSense (web ads). Slots render nothing until real ad-unit env vars
+  // are set (see apps/web/src/features/ads), but the CSP has to allow the
+  // origins up front, or turning ads on later silently breaks under CSP.
+  // Path-restricted (not the bare origin): pagead2.googlesyndication.com serves at
+  // least one known JSONP-style endpoint elsewhere on the host, so scoping script-src
+  // to the exact adsbygoogle.js loader path avoids allow-listing more than we load.
+  // CSP path matching ignores the query string, so the `?client=...` suffix still works.
+  const adsScriptSrc = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js";
+  const adsConnectSrc = "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net";
+  const adsFrameSrc = "https://googleads.g.doubleclick.net https://tpc.googlesyndication.com";
+  const adsImgSrc = "https://pagead2.googlesyndication.com https://googleads.g.doubleclick.net";
+
   const scriptSrc = isDev
-    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com`
-    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com`;
+    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com ${adsScriptSrc}`
+    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com ${adsScriptSrc}`;
   const connectSrc = [
     "connect-src 'self'",
     supabaseUrl,
     "https://api.stripe.com",
+    adsConnectSrc,
     supabaseWss,
     isDev ? "ws://localhost:* http://localhost:*" : ""
   ]
@@ -53,13 +66,14 @@ function buildCsp(nonce: string): string {
       "https://lh3.googleusercontent.com",
       "https://avatars.githubusercontent.com",
       "https://flagcdn.com",
-      "https://www.google.com"
+      "https://www.google.com",
+      adsImgSrc
     ]
       .filter(Boolean)
       .join(" "),
     // Sentry Session Replay runs its compression worker from a blob: URL.
     "worker-src 'self' blob:",
-    "frame-src https://js.stripe.com https://hooks.stripe.com",
+    `frame-src https://js.stripe.com https://hooks.stripe.com ${adsFrameSrc}`,
     "frame-ancestors 'none'",
     "object-src 'none'",
     "base-uri 'self'",

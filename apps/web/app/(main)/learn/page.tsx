@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LearnPageClient } from "./LearnPageClient";
+import { AdSlot } from "@/features/ads";
 
 export const metadata: Metadata = {
   title: "Learn Australian Road Rules, Signs, Speed Limits & More",
@@ -16,5 +17,5 @@ export const metadata: Metadata = {
 };
 
 export default function LearnPage() {
-  return <LearnPageClient />;
+  return <LearnPageClient learnInlineAd={<AdSlot slotId="learn_inline" />} />;
 }

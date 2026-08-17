@@ -10,6 +10,7 @@ import { Icons } from "@/components/icons";
 import { Kanga } from "@/components/brand/Kanga";
 import { useLang } from "@/contexts/LangContext";
 import { AuthNudge } from "@/components/ui/AuthNudge";
+import { AdSlot } from "@/features/ads";
 import { ReadinessCard } from "@/components/ReadinessCard";
 import { createClient } from "@/lib/supabase/client";
 import { SK } from "@/lib/storageKeys";
@@ -307,6 +308,8 @@ export default function MockTestResultsPage() {
             {readiness && <ReadinessCard readiness={readiness} compact />}
 
             <AuthNudge />
+
+            <AdSlot slotId="mock_result" />
 
             {/* Wrong answer review */}
             <div className="dash-section" style={{ marginTop: 26 }}>

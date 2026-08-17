@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { CATEGORIES, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
@@ -329,7 +329,13 @@ function ScoreSidebar({
 }
 
 /* ── Main PracticeClient ── */
-export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
+export function PracticeClient({
+  initialMode,
+  practiceInlineAd
+}: {
+  initialMode?: Mode;
+  practiceInlineAd?: React.ReactNode;
+}) {
   const { questions: QS, loading: questionsLoading, error: questionsError } = useQuestions();
   const { uiLang: lang, isBilingual, s } = useLang();
   const { progress, award } = useGameProgress();
@@ -645,6 +651,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               hasMore={visibleCount < filtered.length}
               onLoadMore={() => setVisibleCount((c) => c + PAGE_SIZE)}
               loadMoreLabel={s.loadMoreQuestions}
+              practiceInlineAd={practiceInlineAd}
             />
           </section>
 
@@ -681,7 +688,8 @@ function StudyView({
   unsaveLabel,
   hasMore,
   onLoadMore,
-  loadMoreLabel
+  loadMoreLabel,
+  practiceInlineAd
 }: {
   grouped: Record<string, Question[]>;
   lang: UiLang;
@@ -698,8 +706,11 @@ function StudyView({
   hasMore: boolean;
   onLoadMore: () => void;
   loadMoreLabel: string;
+  practiceInlineAd?: React.ReactNode;
 }) {
   const entries = Object.entries(grouped);
+  // Running count across all groups, ad shows once, after the 5th question overall.
+  let questionIndex = -1;
 
   if (entries.length === 0) {
     return (
@@ -724,21 +735,26 @@ function StudyView({
               <HeadIco className="sec-head-ico" aria-hidden />
               <span>{catData?.label?.[lang] ?? cat}</span>
             </div>
-            {qs.map((q) => (
-              <QuizCard
-                key={q.id}
-                q={q}
-                lang={lang}
-                isBilingual={isBilingual}
-                answered={answered}
-                onPick={onPick}
-                answerLabel={answerLabel}
-                isSaved={saved.has(q.id)}
-                onToggleSave={onToggleSave}
-                saveLabel={saveLabel}
-                unsaveLabel={unsaveLabel}
-              />
-            ))}
+            {qs.map((q) => {
+              questionIndex++;
+              return (
+                <Fragment key={q.id}>
+                  <QuizCard
+                    q={q}
+                    lang={lang}
+                    isBilingual={isBilingual}
+                    answered={answered}
+                    onPick={onPick}
+                    answerLabel={answerLabel}
+                    isSaved={saved.has(q.id)}
+                    onToggleSave={onToggleSave}
+                    saveLabel={saveLabel}
+                    unsaveLabel={unsaveLabel}
+                  />
+                  {questionIndex === 4 ? practiceInlineAd : null}
+                </Fragment>
+              );
+            })}
           </div>
         );
       })}

@@ -70,6 +70,20 @@ export const DIRECT_SPONSOR_CAMPAIGNS: DirectSponsorCampaign[] = [
     startsAt: "2026-06-01T00:00:00.000Z",
     endsAt: "2027-01-01T00:00:00.000Z",
     developmentOnly: true
+  },
+  {
+    id: "dev-car-insurance-preview",
+    advertiser: "Kanga insurance partner preview",
+    label: "Sponsored",
+    headline: "New drivers save on their first car insurance policy.",
+    body: "This preview slot is for a car insurance partner, a natural fit right after a learner passes their test and starts shopping for cover.",
+    cta: "See insurance offer",
+    url: "https://kangalearner.com.au/resources",
+    slots: ["practice_inline"],
+    priority: 10,
+    startsAt: "2026-06-01T00:00:00.000Z",
+    endsAt: "2027-01-01T00:00:00.000Z",
+    developmentOnly: true
   }
 ];
 
