@@ -4647,32 +4647,52 @@ html.exam-focus .site-footer {
   align-self: center;
   width: min(520px, 100%);
 }
+/* glow que ancora o cluster de fotos no fundo navy */
+.hero-photos::before {
+  content: "";
+  position: absolute;
+  inset: -70px -80px;
+  background:
+    radial-gradient(58% 55% at 52% 46%, rgba(82, 183, 136, 0.16), transparent 72%),
+    radial-gradient(40% 42% at 70% 65%, rgba(56, 189, 248, 0.07), transparent 70%);
+  z-index: -1;
+  pointer-events: none;
+}
 .hero-photo {
   display: block;
   border-radius: var(--radius-lg);
-  border: 3px solid rgba(255, 255, 255, 0.9);
-  box-shadow: var(--shadow-xl);
+  border: 1px solid rgba(255, 255, 255, 0.38);
   object-fit: cover;
+  filter: saturate(1.1) contrast(1.04);
+  transition: transform var(--duration-normal) var(--ease-out);
 }
 .hero-photo--main {
   width: 100%;
   height: auto;
+  box-shadow:
+    0 30px 70px rgba(2, 12, 22, 0.55),
+    0 8px 22px rgba(2, 12, 22, 0.35);
+}
+.hero-photos:hover .hero-photo--main {
+  transform: scale(1.015);
 }
 .hero-photo--tl,
 .hero-photo--br {
   position: absolute;
-  width: 44%;
   height: auto;
   animation: chip-float 5s ease-in-out infinite;
+  box-shadow: 0 16px 40px rgba(2, 12, 22, 0.5);
 }
 .hero-photo--tl {
-  top: -34px;
-  left: -40px;
+  width: 40%;
+  top: -38px;
+  left: -44px;
   transform: rotate(-5deg);
 }
 .hero-photo--br {
-  bottom: -38px;
-  right: -34px;
+  width: 31%;
+  bottom: -34px;
+  right: -30px;
   transform: rotate(4deg);
   animation-delay: 2s;
 }
