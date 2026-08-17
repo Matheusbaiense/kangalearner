@@ -108,6 +108,9 @@ const TRUST_ITEMS = [
 ] as const;
 
 const STATE_PAGE_SLUGS = new Map<string, string>(STATE_TEST_INFO.map((st) => [st.code, st.slug]));
+const STATE_TEST_ABBR = new Map<string, string>(
+  STATE_TEST_INFO.map((st) => [st.code, st.testAbbr ?? st.testName])
+);
 
 const AU_STATES = (["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as const).map((code) => ({
   code,
@@ -330,6 +333,7 @@ function HowItWorks() {
 
 /* ── Component ── */
 export function LandingClient({ stateCounts }: { stateCounts?: Record<string, number> }) {
+  const [hoveredState, setHoveredState] = useState<string | null>(null);
   const { uiLang: lang, s } = useLang();
   const { t: tState } = useStateCopy();
 
@@ -449,38 +453,55 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
 
       {/* ── States map ───────────────────────────────── */}
       <section className="states-section">
-        <div className="states-inner states-layout">
-          <AustraliaMap
-            counts={stateCounts ?? {}}
-            slugs={Object.fromEntries(AU_STATES.map((st) => [st.code, st.pageSlug]))}
-            questionsWord={s.questionsWord}
-          />
-          <div className="states-grid">
-            {AU_STATES.map((st) => {
-              const className = `state-card${st.available ? " active" : " coming-soon"}`;
-              const count = stateCounts?.[st.code];
-              const inner = (
-                <>
-                  <span className="state-code">{st.code}</span>
-                  <span className="state-badge">
-                    {st.available && count
-                      ? `${count} ${s.questionsWord}`
-                      : st.available
-                        ? s.stateAvailable
-                        : s.comingSoon}
-                  </span>
-                </>
-              );
-              return st.pageSlug ? (
-                <Link key={st.code} href={`/learner-test/${st.pageSlug}`} className={className}>
-                  {inner}
-                </Link>
-              ) : (
-                <div key={st.code} className={className}>
-                  {inner}
-                </div>
-              );
-            })}
+        <div className="states-inner">
+          <SectionHead eyebrow={s.sectionEyebrowStates} title={s.statesMapTitle} />
+          <div className="states-layout">
+            <AustraliaMap
+              counts={stateCounts ?? {}}
+              slugs={Object.fromEntries(AU_STATES.map((st) => [st.code, st.pageSlug]))}
+              questionsWord={s.questionsWord}
+              hovered={hoveredState}
+              onHover={setHoveredState}
+            />
+            <div className="states-grid">
+              {AU_STATES.map((st) => {
+                const isHot = hoveredState === st.code;
+                const abbr = STATE_TEST_ABBR.get(st.code);
+                const className = `state-card${st.available ? " active" : " coming-soon"}${isHot ? " is-hot" : ""}`;
+                const count = stateCounts?.[st.code];
+                const inner = (
+                  <>
+                    <span className="state-code">{st.code}</span>
+                    <span className="state-badge">
+                      {st.available && count
+                        ? `${count} ${s.questionsWord}`
+                        : st.available
+                          ? s.stateAvailable
+                          : s.comingSoon}
+                    </span>
+                    {abbr && <span className="state-abbr">{abbr}</span>}
+                  </>
+                );
+                const hoverProps = {
+                  onMouseEnter: () => setHoveredState(st.code),
+                  onMouseLeave: () => setHoveredState(null)
+                };
+                return st.pageSlug ? (
+                  <Link
+                    key={st.code}
+                    href={`/learner-test/${st.pageSlug}`}
+                    className={className}
+                    {...hoverProps}
+                  >
+                    {inner}
+                  </Link>
+                ) : (
+                  <div key={st.code} className={className} {...hoverProps}>
+                    {inner}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
       </section>
