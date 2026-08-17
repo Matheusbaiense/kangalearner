@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LandingClient } from "./LandingClient";
+import { bankCountsFor } from "@/lib/stateBankCounts";
 
 export const metadata: Metadata = {
   title: "Pass your Australian learner test | Free practice in EN/PT/ES",
@@ -25,6 +26,14 @@ export const metadata: Metadata = {
   }
 };
 
+// Contagens reais por estado, resolvidas em build (stateBankCounts e server-only).
+const STATE_QUESTION_COUNTS = Object.fromEntries(
+  (["WA", "NSW", "VIC", "QLD", "SA", "TAS", "ACT", "NT"] as const).map((code) => [
+    code,
+    bankCountsFor(code).total
+  ])
+);
+
 export default function HomePage() {
-  return <LandingClient />;
+  return <LandingClient stateCounts={STATE_QUESTION_COUNTS} />;
 }

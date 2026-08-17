@@ -22,6 +22,7 @@ import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { Kanga } from "@/components/brand/Kanga";
 import { LIVE_STATE_CODES } from "@kanga/core";
 import { useStateCopy } from "@/lib/stateCopy";
 import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
@@ -552,7 +553,7 @@ function HowItWorks() {
 }
 
 /* ── Component ── */
-export function LandingClient() {
+export function LandingClient({ stateCounts }: { stateCounts?: Record<string, number> }) {
   const { uiLang: lang, s } = useLang();
   const { t: tState } = useStateCopy();
 
@@ -628,20 +629,22 @@ export function LandingClient() {
         <div className="trust-inner">
           <SectionHead eyebrow={s.sectionEyebrowTrust} title={s.trustTitle} />
           <div className="trust-grid">
-            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }, i) => (
-              <div key={titleKey} className={`trust-item${i === 0 ? " trust-item--lead" : ""}`}>
+            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }) => (
+              <div key={titleKey} className="trust-item">
                 <div className="trust-icon-wrap" aria-hidden="true">
                   <Icon size={24} strokeWidth={2} />
                 </div>
-                <strong>{s[titleKey]}</strong>
-                <p>{s[bodyKey]}</p>
-                {hasFlags && (
-                  <div style={{ display: "flex", gap: 6, marginTop: 8, alignItems: "center" }}>
-                    <FlagImg country="au" />
-                    <FlagImg country="br" />
-                    <FlagImg country="es" />
-                  </div>
-                )}
+                <div className="trust-copy">
+                  <strong>{s[titleKey]}</strong>
+                  <p>{s[bodyKey]}</p>
+                  {hasFlags && (
+                    <div className="trust-flags">
+                      <FlagImg country="au" />
+                      <FlagImg country="br" />
+                      <FlagImg country="es" />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -672,11 +675,16 @@ export function LandingClient() {
           <div className="states-grid">
             {AU_STATES.map((st) => {
               const className = `state-card${st.available ? " active" : " coming-soon"}`;
+              const count = stateCounts?.[st.code];
               const inner = (
                 <>
                   <span className="state-code">{st.code}</span>
                   <span className="state-badge">
-                    {st.available ? s.stateAvailable : s.comingSoon}
+                    {st.available && count
+                      ? `${count} ${s.questionsWord}`
+                      : st.available
+                        ? s.stateAvailable
+                        : s.comingSoon}
                   </span>
                 </>
               );
@@ -712,6 +720,7 @@ export function LandingClient() {
       {/* ── Final CTA ────────────────────────────────── */}
       <section className="cta-section">
         <div className="cta-inner">
+          <Kanga pose="celebrate" size={104} />
           <h2>{s.ctaTitle}</h2>
           <Link href="/practice" className="btn btn-primary">
             {s.ctaBtn}
