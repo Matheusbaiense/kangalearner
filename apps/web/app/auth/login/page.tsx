@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
+import { authErrorToUserMessage } from "@/lib/auth/authErrorMessage";
 import { useLang } from "@/contexts/LangContext";
 import { AuthBrand } from "@/components/auth/AuthBrand";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
@@ -20,7 +21,7 @@ function LoginForm() {
   const oauthErrorMsg = oauthErrorParam
     ? oauthErrorParam === "oauthcancelled"
       ? "Google sign-in was cancelled. Please try again."
-      : `Sign-in failed: ${oauthErrorParam.replace(/_/g, " ")}.`
+      : authErrorToUserMessage("oauth")
     : null;
 
   const [email, setEmail] = useState("");
@@ -47,7 +48,7 @@ function LoginForm() {
     const { error: signError } = await supabase.auth.signInWithPassword({ email, password });
 
     if (signError) {
-      setError(signError.message);
+      setError(authErrorToUserMessage("login", signError));
       setLoading(false);
       return;
     }
@@ -70,7 +71,7 @@ function LoginForm() {
       }
     });
     if (oauthError) {
-      setError(oauthError.message);
+      setError(authErrorToUserMessage("oauth", oauthError));
       setLoading(false);
     }
   }

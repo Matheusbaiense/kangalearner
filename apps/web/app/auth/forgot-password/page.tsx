@@ -6,6 +6,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { AuthBrand } from "@/components/auth/AuthBrand";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
+import { authErrorToUserMessage } from "@/lib/auth/authErrorMessage";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -34,7 +35,7 @@ export default function ForgotPasswordPage() {
     });
 
     if (resetError) {
-      setError(resetError.message);
+      setError(authErrorToUserMessage("reset", resetError));
       setLoading(false);
       return;
     }

@@ -9,6 +9,7 @@ import {
   validateQuestionsDataset
 } from "./index";
 import { QUESTIONS } from "./data/questions";
+import { CATEGORIES as CATEGORIES_FROM_FILE } from "./data/categories";
 
 describe("questions dataset integrity", () => {
   it("has at least 50 questions", () => {
@@ -18,6 +19,11 @@ describe("questions dataset integrity", () => {
   it("passes schema validation", () => {
     const issues = validateQuestionsDataset({ QUESTIONS, CATEGORIES });
     expect(issues).toEqual([]);
+  });
+
+  it("exports CATEGORIES from the small categories module", () => {
+    expect(CATEGORIES).toBe(CATEGORIES_FROM_FILE);
+    expect(CATEGORIES.length).toBeGreaterThanOrEqual(8);
   });
 
   it("keeps WA pass constants aligned", () => {

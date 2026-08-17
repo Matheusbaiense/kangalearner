@@ -1,4 +1,5 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
   // IP guard, defence against unauthenticated flood
   const ip = getClientIp(request);
   if (!(await rateLimit(`attempts-bulk:ip:${ip}`, 20, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let supabase;
@@ -38,33 +39,33 @@ export async function POST(request: NextRequest) {
   try {
     ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
   } catch {
-    return NextResponse.json({ error: "missing_env" }, { status: 500 });
+    return apiError("missing_env", 500);
   }
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
-  if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  if (!user) return apiError("unauthorized", 401);
 
   // Per-user rate limit, bulk migration is a one-time event; 5 per minute is ample
   if (!(await rateLimit(`attempts-bulk:user:${user.id}`, 5, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let rawBody;
   try {
     rawBody = await request.json();
   } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+    return apiError("invalid_json", 400);
   }
 
   const parseResult = bulkAttemptsPayloadSchema.safeParse(rawBody);
   if (!parseResult.success) {
-    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const attempts = parseResult.data.attempts ?? [];
   if (attempts.length === 0) {
-    return NextResponse.json({ ok: true, inserted: 0 });
+    return apiOk({ inserted: 0 });
   }
 
   // P2-04: never trust a client-supplied future timestamp (would let a client
@@ -80,7 +81,7 @@ export async function POST(request: NextRequest) {
 
   const MAX_BULK = 500;
   if (attempts.length > MAX_BULK) {
-    return NextResponse.json({ error: "too_many_attempts", max: MAX_BULK }, { status: 400 });
+    return apiError("too_many_attempts", 400);
   }
 
   const validRows = attempts.filter(
@@ -93,7 +94,7 @@ export async function POST(request: NextRequest) {
   );
 
   if (validRows.length === 0) {
-    return NextResponse.json({ ok: true, inserted: 0 });
+    return apiOk({ inserted: 0 });
   }
 
   const rows = validRows
@@ -111,7 +112,7 @@ export async function POST(request: NextRequest) {
     }));
 
   if (rows.length === 0) {
-    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const { error } = await supabase.from("question_attempts").upsert(rows, {
@@ -121,8 +122,8 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("attempts/bulk: upsert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 500 });
+    return apiError("db_error", 500);
   }
 
-  return NextResponse.json({ ok: true, accepted: rows.length }, { headers: response.headers });
+  return apiOk({ accepted: rows.length }, { headers: response.headers });
 }

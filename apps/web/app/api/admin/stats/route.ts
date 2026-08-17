@@ -1,7 +1,9 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
-import { supabaseAdmin } from "@/lib/supabase/admin";
+import { apiError, apiOk } from "@/lib/api/envelope";
+import { namedQueryFailures } from "@/lib/api/namedQueryFailures";
 import { rateLimit } from "@/lib/rateLimit";
+import { supabaseAdmin } from "@/lib/supabase/admin";
 
 type RoleBreakdownRow = { role: string; cnt: number };
 type CountryBreakdownRow = { country: string; cnt: number };
@@ -18,10 +20,10 @@ const adminRpc = supabaseAdmin as unknown as {
 
 export async function GET(_request: NextRequest) {
   const uid = await assertAdminRole();
-  if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (!uid) return apiError("forbidden", 403);
 
   if (!(await rateLimit(`admin-stats:user:${uid}`, 30, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const now = new Date();
@@ -69,6 +71,28 @@ export async function GET(_request: NextRequest) {
     adminRpc.rpc<SignupDayRow[]>("get_signups_per_day", { since_ts: d30.toISOString() })
   ]);
 
+  const failed = namedQueryFailures([
+    { name: "profiles_total", error: totalUsersRes.error },
+    { name: "profiles_new_24h", error: newUsersRes.error },
+    { name: "attempts_total", error: totalAttemptsRes.error },
+    { name: "attempts_last_7d", error: attemptsLast7Res.error },
+    { name: "mocks_total", error: totalMockRes.error },
+    { name: "mocks_last_7d", error: mockLast7Res.error },
+    { name: "get_role_breakdown", error: roleBreakdownRes.error },
+    { name: "get_country_breakdown", error: countryBreakdownRes.error },
+    { name: "get_top_categories", error: topCategoriesRes.error },
+    { name: "get_active_users_count", error: activeUsersRes.error },
+    { name: "get_pass_rate", error: passRateRes.error },
+    { name: "get_signups_per_day", error: signupsPerDayRes.error }
+  ]);
+
+  if (failed.length > 0) {
+    console.error("[admin/stats] query failures:", failed.join(", "));
+  }
+  if (failed.length === 12) {
+    return apiError("internal_error", 500);
+  }
+
   const signupsByDay: Record<string, number> = {};
   for (let i = 29; i >= 0; i--) {
     const d = new Date(now);
@@ -80,7 +104,9 @@ export async function GET(_request: NextRequest) {
     if (day in signupsByDay) signupsByDay[day] = r.cnt;
   });
 
-  return NextResponse.json({
+  return apiOk({
+    degraded: failed.length > 0,
+    failed,
     users: {
       total: totalUsersRes.count ?? 0,
       newLast24h: newUsersRes.count ?? 0,

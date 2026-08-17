@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useLang } from "@/contexts/LangContext";
+import { readApiOkData } from "@/lib/api/envelope";
 
 interface ReactionState {
   helpful: number;
@@ -11,27 +12,29 @@ interface ReactionState {
 export function ReactionButtons({ slug }: { slug: string }) {
   const { s } = useLang();
   const [state, setState] = useState<ReactionState | null>(null);
+  const [postError, setPostError] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
     fetch(`/api/blog-reactions?slug=${encodeURIComponent(slug)}`)
       .then((r) => r.json())
-      .then((data) => {
-        if (!cancelled && data.ok) {
-          setState({
-            helpful: data.helpful,
-            notHelpful: data.notHelpful,
-            yourReaction: data.yourReaction
-          });
+      .then((data: unknown) => {
+        const payload = readApiOkData<ReactionState>(data);
+        if (!cancelled && payload) {
+          setState(payload);
         }
       })
-      .catch(() => {});
+      .catch((err) => {
+        console.error("[blog-reactions] GET failed:", err);
+      });
     return () => {
       cancelled = true;
     };
   }, [slug]);
 
   async function react(reaction: "helpful" | "not_helpful") {
+    setPostError(false);
+    const previous = state;
     setState((prev) =>
       prev
         ? {
@@ -45,13 +48,18 @@ export function ReactionButtons({ slug }: { slug: string }) {
         : prev
     );
     try {
-      await fetch("/api/blog-reactions", {
+      const res = await fetch("/api/blog-reactions", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ slug, reaction })
       });
-    } catch {
-      // best effort, no rollback needed for a lightweight reaction count
+      if (!res.ok) {
+        throw new Error(`HTTP ${res.status}`);
+      }
+    } catch (err) {
+      console.error("[blog-reactions] POST failed:", err);
+      setState(previous);
+      setPostError(true);
     }
   }
 
@@ -83,6 +91,11 @@ export function ReactionButtons({ slug }: { slug: string }) {
           </button>
         </>
       )}
+      {postError ? (
+        <span role="alert" style={{ fontSize: ".8rem", color: "var(--red, #b91c1c)" }}>
+          {s.syncSaveFailed}
+        </span>
+      ) : null}
     </div>
   );
 }

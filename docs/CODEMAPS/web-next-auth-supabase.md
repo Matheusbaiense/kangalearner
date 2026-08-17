@@ -15,9 +15,10 @@ apps/web/
 │   │   ├── forgot-password/   → redirect server para /forgot-password
 │   │   └── callback/route.ts  → OAuth/magic link; cookies na redirect response
 │   ├── login/, signup/        → fluxos legados (AuthCard)
-│   ├── progress/page.tsx      → placeholder; middleware protege
+│   ├── error.tsx              → boundary de rota (Sentry + Try again)
+│   ├── progress/page.tsx      → redirect 307 para /dashboard (stats na cloud)
 │   ├── dashboard/page.tsx     → painel do utilizador (server)
-│   ├── practice/page.tsx      → prática por categorias (server)
+│   ├── practice/page.tsx      → prática; honra ?mode= e ?cat= / ?category=
 │   ├── mock-test/             → setup + session/results (placeholders)
 │   ├── learn/                 → hub + [slug] (placeholders)
 │   ├── resources/page.tsx     → hub de jornada WA: teoria, horas, HPT, PDA, recursos oficiais, comunidade e visão de ecossistema
@@ -96,8 +97,14 @@ Sentry runtime capture is intentionally inert until DSN env vars are configured.
 
 ## Schema SQL (referência)
 
-Migrações em `supabase/migrations/` — tabelas `public` esperadas alinhadas com `database.types.ts` (12 tabelas no desenho atual do repo).
+Migrações em `supabase/migrations/` (001–034). 031 relock `user_category_stats` SELECT-only + guard no RPC; 032 protege colunas sensíveis de `profiles`; 033 revoga grants client no marketplace scaffold; 034 hygiene (profiles SELECT unificado, saved_questions granular, initplan `auth.uid()`, search_path). Aplicar staging antes de prod. **031–034 ainda não aplicadas.**
+
+`CATEGORIES` vive em `packages/core/src/data/categories.ts` (barrel `@kanga/core`). O client web carrega questões via `public/data/questions.json`, não pelo array `QUESTIONS` do core.
+
+Envelope de API (`src/lib/api/envelope.ts`): `{ ok: true, data? }` / `{ ok: false, error: { code } }` nas rotas de app. Fora: `/api/health` (plaintext), `/api/ping` (cron), `/api/webhook/stripe` (contrato Stripe).
+
+`/blog` é Server Component: passa `BlogPostCard[]` (`src/lib/blogIndex.ts`). O client da listagem não importa `blogPosts.ts` (corpos ficam no server / na página `[slug]`).
 
 ---
 
-_Última revisão: 2026-06-01 (production env audit + resources hub + drawer mobile SiteNav)._
+_Última revisão: 2026-08-17 (blog RSC 3.3 + envelope 4.3 completo nas rotas de app)._

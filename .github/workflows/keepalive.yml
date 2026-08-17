@@ -17,16 +17,19 @@ jobs:
   ping:
     runs-on: ubuntu-latest
     timeout-minutes: 5
+    env:
+      SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
     steps:
       - name: Query Supabase REST (counts as project activity)
         run: |
-          # The anon key is the PUBLIC client key (it ships in the web
-          # bundle); it grants nothing beyond RLS. Not a secret.
-          ANON_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9sZ29ndGFlaWZ5eHd6ZW5jaWxvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzc4MjIzNjgsImV4cCI6MjA5MzM5ODM2OH0.MD9Sc3xUyhheL1MQLUBqd0lmusvjWsrjuKDranRzvGM"
+          if [ -z "${SUPABASE_ANON_KEY}" ]; then
+            echo "::error::GitHub secret SUPABASE_ANON_KEY is missing (Fase 0.7)"
+            exit 1
+          fi
           status=$(curl -s -o /tmp/body -w "%{http_code}" \
             --max-time 30 --retry 3 --retry-delay 10 \
-            -H "apikey: ${ANON_KEY}" \
-            -H "Authorization: Bearer ${ANON_KEY}" \
+            -H "apikey: ${SUPABASE_ANON_KEY}" \
+            -H "Authorization: Bearer ${SUPABASE_ANON_KEY}" \
             "https://olgogtaeifyxwzencilo.supabase.co/rest/v1/profiles?select=id&limit=1")
           echo "PostgREST status: ${status}"
           if [ "${status}" != "200" ]; then

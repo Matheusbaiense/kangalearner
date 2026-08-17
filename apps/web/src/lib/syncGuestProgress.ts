@@ -11,7 +11,10 @@ async function syncAnsweredQuestions() {
     if (keys.length === 0) return;
 
     const state = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy) ?? "WA";
-    const questions = await loadQuestions().catch(() => []);
+    const questions = await loadQuestions().catch((err) => {
+      console.error("Failed to load questions for guest sync", err);
+      return [];
+    });
     const categoriesByQuestionId = new Map(questions.map((q) => [q.id, q.cat]));
 
     const attempts = keys.map((qid) => {

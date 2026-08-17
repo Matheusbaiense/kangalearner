@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
@@ -14,7 +15,7 @@ const newsletterSchema = z.object({
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req);
   if (!(await rateLimit(`newsletter:${ip}`, 3, 60_000))) {
-    return NextResponse.json({ ok: false, error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   try {
@@ -22,7 +23,7 @@ export async function POST(req: NextRequest) {
     const parseResult = newsletterSchema.safeParse(rawBody);
 
     if (!parseResult.success) {
-      return NextResponse.json({ ok: false, error: "Invalid email" }, { status: 400 });
+      return apiError("invalid_payload", 400);
     }
 
     const email = parseResult.data.email.toLowerCase();
@@ -30,7 +31,7 @@ export async function POST(req: NextRequest) {
     // Per-address limit: rotating-IP replays must not re-trigger emails to a
     // victim inbox. Opaque ok response (matches the already-subscribed path).
     if (!(await rateLimit(`newsletter:email:${email}`, 1, 3_600_000))) {
-      return NextResponse.json({ ok: true });
+      return apiOk();
     }
 
     const { error } = await supabaseAdmin
@@ -40,14 +41,14 @@ export async function POST(req: NextRequest) {
     if (error) {
       // Unique constraint violation, already subscribed, treat as success
       if (error.code === "23505") {
-        return NextResponse.json({ ok: true });
+        return apiOk();
       }
       // Table doesn't exist yet
       if (error.code === "42P01") {
-        return NextResponse.json({ ok: false, error: "Service unavailable" }, { status: 503 });
+        return apiError("service_unavailable", 503);
       }
       console.error("[newsletter]", error.code);
-      return NextResponse.json({ ok: false, error: "subscribe_failed" }, { status: 500 });
+      return apiError("subscribe_failed", 500);
     }
 
     void (async () => {
@@ -63,8 +64,8 @@ export async function POST(req: NextRequest) {
       }
     })();
 
-    return NextResponse.json({ ok: true });
+    return apiOk();
   } catch {
-    return NextResponse.json({ ok: false, error: "Unexpected error" }, { status: 500 });
+    return apiError("internal_error", 500);
   }
 }

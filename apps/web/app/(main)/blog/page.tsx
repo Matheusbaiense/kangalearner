@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { PUBLISHED_BLOG_POSTS } from "@/lib/blogPosts";
+import { toBlogPostCard } from "@/lib/blogIndex";
 import { BlogPageClient } from "./BlogPageClient";
 
 export const metadata: Metadata = {
@@ -15,5 +17,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
-  return <BlogPageClient />;
+  const posts = PUBLISHED_BLOG_POSTS.map(toBlogPostCard);
+  return <BlogPageClient posts={posts} />;
 }

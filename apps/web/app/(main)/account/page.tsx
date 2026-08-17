@@ -2,9 +2,11 @@
 import { useEffect, useState, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
+import { readApiOkData } from "@/lib/api/envelope";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang, UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
+import { migrateAndReadTheme, writeTheme } from "@/lib/themeStorage";
 import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const AU_TIMEZONES = [
@@ -53,7 +55,7 @@ function applyTheme(theme: Theme) {
   const isDark = theme === "dark" || (theme === "system" && prefersDark);
   document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
   try {
-    localStorage.setItem(SK.theme, theme);
+    writeTheme(localStorage, theme);
   } catch {
     /* noop */
   }
@@ -79,6 +81,8 @@ export default function AccountPage() {
 
   /* ── Auth & loading ── */
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
+  const [reloadToken, setReloadToken] = useState(0);
   const [activeSection, setActiveSection] = useState<Section>("profile");
 
   /* ── Profile fields ── */
@@ -114,6 +118,7 @@ export default function AccountPage() {
     const supabase = createClient();
     async function loadAccount() {
       try {
+        setLoadError(false);
         const {
           data: { user: authUser },
           error: userError
@@ -141,7 +146,8 @@ export default function AccountPage() {
           .maybeSingle();
 
         if (profileError && profileError.code !== "PGRST116") {
-          console.error("Error loading profile:", profileError);
+          console.error("Error loading profile:", profileError.code);
+          if (!cancelled) setLoadError(true);
         }
 
         if (profile?.avatar_url) nextAvatarUrl = profile.avatar_url;
@@ -158,12 +164,13 @@ export default function AccountPage() {
         setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
         const savedTheme =
           (meta.theme as Theme | undefined) ||
-          (localStorage.getItem(SK.theme) as Theme | null) ||
+          (migrateAndReadTheme(localStorage) as Theme | null) ||
           "system";
         setTheme(savedTheme);
         applyTheme(savedTheme);
       } catch (err) {
         console.error("Account load error:", err);
+        if (!cancelled) setLoadError(true);
       } finally {
         if (!cancelled) {
           setLoading(false);
@@ -175,7 +182,7 @@ export default function AccountPage() {
     return () => {
       cancelled = true;
     };
-  }, [router, lang]);
+  }, [router, lang, reloadToken]);
 
   /* ── Handlers ── */
   async function handleSaveProfile(e: React.FormEvent) {
@@ -279,9 +286,11 @@ export default function AccountPage() {
     form.append("file", file);
     try {
       const res = await fetch("/api/profile/avatar", { method: "POST", body: form });
-      const json = await res.json();
-      if (!res.ok) throw new Error(json.error ?? s.accountUploadFailed);
-      setAvatarUrl(json.url);
+      const json: unknown = await res.json().catch(() => null);
+      if (!res.ok) throw new Error(s.accountUploadFailed);
+      const data = readApiOkData<{ url: string }>(json);
+      if (!data?.url) throw new Error(s.accountUploadFailed);
+      setAvatarUrl(data.url);
       setAvatarMsg({ text: s.accountAvatarUpdated, ok: true });
     } catch (err) {
       setAvatarMsg({ text: (err as Error).message, ok: false });
@@ -297,8 +306,7 @@ export default function AccountPage() {
     try {
       const res = await fetch("/api/profile/avatar", { method: "DELETE" });
       if (!res.ok) {
-        const json = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(json.error ?? s.accountUploadFailed);
+        throw new Error(s.accountUploadFailed);
       }
       setAvatarUrl(null);
       setAvatarMsg({ text: s.accountAvatarRemoved, ok: true });
@@ -355,6 +363,26 @@ export default function AccountPage() {
   }
 
   const initials = getInitials(displayName, email);
+
+  if (loadError) {
+    return (
+      <div className="app-page">
+        <div className="app-container app-section">
+          <p role="alert">{s.accountLoadFailed}</p>
+          <button
+            type="button"
+            className="btn btn-primary"
+            onClick={() => {
+              setLoading(true);
+              setReloadToken((n) => n + 1);
+            }}
+          >
+            {s.retry}
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const NAV_ITEMS: { key: Section; label: string }[] = [
     { key: "profile", label: s.accountNavProfile },

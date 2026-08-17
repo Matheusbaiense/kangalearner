@@ -1,10 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
+import { evaluateAdminRolePatch, PROFILE_ROLES } from "@/lib/auth/adminRolePatch";
 import { rateLimit } from "@/lib/rateLimit";
 import { z } from "zod";
-
-const PROFILE_ROLES = ["free", "premium", "admin", "super_admin"] as const;
 
 const adminUsersQuerySchema = z.object({
   page: z.coerce.number().int().min(0).default(0),
@@ -21,10 +21,10 @@ const patchUserSchema = z.object({
 /** GET /api/admin/users?page=0&limit=50&search=&role= */
 export async function GET(req: NextRequest) {
   const uid = await assertAdminRole();
-  if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (!uid) return apiError("forbidden", 403);
 
   if (!(await rateLimit(`admin:users:get:${uid}`, 30, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const { searchParams } = new URL(req.url);
@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
   });
 
   if (!parsed.success) {
-    return NextResponse.json({ error: "invalid_query" }, { status: 400 });
+    return apiError("invalid_query", 400);
   }
 
   const { page, limit, search, role } = parsed.data;
@@ -56,7 +56,7 @@ export async function GET(req: NextRequest) {
   const { data, count, error } = await query;
   if (error) {
     console.error("[admin/users] GET failed:", error.code, error.message);
-    return NextResponse.json({ error: "internal_error" }, { status: 500 });
+    return apiError("internal_error", 500);
   }
 
   const enriched = (data ?? []).map((profile) => ({
@@ -65,28 +65,28 @@ export async function GET(req: NextRequest) {
     last_sign_in: profile.last_sign_in_at ?? null
   }));
 
-  return NextResponse.json({ users: enriched, total: count ?? 0, page, limit });
+  return apiOk({ users: enriched, total: count ?? 0, page, limit });
 }
 
 /** PATCH /api/admin/users, update a user's role */
 export async function PATCH(req: NextRequest) {
   const uid = await assertAdminRole();
-  if (!uid) return NextResponse.json({ error: "Forbidden" }, { status: 403 });
+  if (!uid) return apiError("forbidden", 403);
 
   if (!(await rateLimit(`admin:users:patch:${uid}`, 10, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let body;
   try {
     body = await req.json();
   } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+    return apiError("invalid_json", 400);
   }
 
   const parseResult = patchUserSchema.safeParse(body);
   if (!parseResult.success) {
-    return NextResponse.json({ error: "Invalid userId or role" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const { userId, role } = parseResult.data;
@@ -96,29 +96,20 @@ export async function PATCH(req: NextRequest) {
     supabaseAdmin.from("profiles").select("role").eq("id", userId).single()
   ]);
 
-  if (role === "premium" && callerProfile?.role !== "super_admin") {
-    return NextResponse.json(
-      { error: "Premium role is managed by Stripe billing" },
-      { status: 403 }
-    );
-  }
-
-  if (["admin", "super_admin"].includes(role) && callerProfile?.role !== "super_admin") {
-    return NextResponse.json({ error: "Only super_admin can assign admin roles" }, { status: 403 });
-  }
-
-  if (
-    ["admin", "super_admin"].includes(targetProfile?.role ?? "") &&
-    callerProfile?.role !== "super_admin"
-  ) {
-    return NextResponse.json({ error: "Only super_admin can modify admin users" }, { status: 403 });
+  const decision = evaluateAdminRolePatch({
+    callerRole: callerProfile?.role,
+    targetRole: targetProfile?.role,
+    nextRole: role
+  });
+  if (!decision.ok) {
+    return apiError(decision.code, 403);
   }
 
   const { error } = await supabaseAdmin.from("profiles").update({ role }).eq("id", userId);
 
   if (error) {
     console.error("[admin/users] PATCH failed:", error.code, error.message);
-    return NextResponse.json({ error: "internal_error" }, { status: 500 });
+    return apiError("internal_error", 500);
   }
-  return NextResponse.json({ ok: true });
+  return apiOk();
 }

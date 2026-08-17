@@ -92,7 +92,8 @@ export {
   type ReadinessResult
 } from "./readiness";
 
-export { CATEGORIES, QUESTIONS } from "./data/questions";
+export { CATEGORIES } from "./data/categories";
+export { QUESTIONS } from "./data/questions";
 export {
   LANGS,
   validateQuestionsDataset,
