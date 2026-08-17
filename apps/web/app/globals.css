@@ -113,7 +113,7 @@
   --glass-radius-lg: var(--radius-lg);
 
   /* Glass nav tokens */
-  --glass-nav-bg: rgba(7, 26, 44, 0.78);
+  --glass-nav-bg: rgba(7, 26, 44, 0.97);
   --glass-nav-border: rgba(255, 255, 255, 0.12);
   --glass-nav-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
@@ -1788,13 +1788,14 @@ a:focus-visible,
 }
 @supports ((-webkit-backdrop-filter: blur(1px)) or (backdrop-filter: blur(1px))) {
   .site-header {
-    background: rgba(7, 26, 44, 0.66);
+    background: rgba(7, 26, 44, 0.82);
     -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
   }
 }
+/* 0.97: cards claros passando por baixo criavam faixas visiveis atraves do vidro */
 .site-header.is-scrolled {
-  background: rgba(7, 26, 44, 0.88);
+  background: rgba(7, 26, 44, 0.97);
   box-shadow:
     var(--glass-nav-highlight),
     0 14px 44px rgba(2, 12, 22, 0.22);
@@ -4172,18 +4173,18 @@ html.exam-focus .site-footer {
    supporting cards split the second, no orphan cell. */
 .trust-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   margin-top: 32px;
 }
 .trust-item {
-  padding: 24px;
+  padding: 20px;
   background: var(--card-bg);
   border-radius: var(--card-radius);
   border: var(--card-border);
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  align-items: flex-start;
+  gap: 14px;
   transition:
     transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1),
@@ -4197,18 +4198,24 @@ html.exam-focus .site-footer {
   border-color: var(--green2);
   background: rgba(47, 158, 103, 0.01);
 }
-/* Lead card: one deliberate emphasis breaks the uniform 3-up rhythm. */
-.trust-item--lead {
-  grid-column: span 2;
-  background: linear-gradient(135deg, rgba(82, 183, 136, 0.09), transparent 62%);
-  border-color: rgba(82, 183, 136, 0.35);
+.trust-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
 }
-.trust-item--lead strong {
-  font-size: var(--text-lg);
+.trust-flags {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 4px;
 }
-@media (max-width: 768px) {
-  .trust-item--lead {
-    grid-column: auto;
+@media (max-width: 1023px) {
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+  .trust-item {
+    padding: 18px 20px;
   }
 }
 .trust-icon {
@@ -4226,11 +4233,6 @@ html.exam-focus .site-footer {
   color: var(--muted);
   line-height: 1.5;
   margin: 0;
-}
-@media (max-width: 768px) {
-  .trust-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* ── Topics section ─────────────────────────────────── */
@@ -4987,11 +4989,14 @@ html.exam-focus .site-footer {
 ══════════════════════════════════════════ */
 
 .trust-icon-wrap {
-  width: 40px;
-  height: 40px;
-  min-width: 40px;
-  min-height: 40px;
-  border-radius: 10px;
+  /* moldura de placa de transito: anel duplo circular */
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  border-radius: 50%;
+  border: 3px solid var(--green2);
+  box-shadow: inset 0 0 0 2px var(--paper);
   background: var(--green3);
   display: flex;
   align-items: center;
