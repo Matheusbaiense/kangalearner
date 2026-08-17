@@ -1,5 +1,6 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 import { z } from "zod";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { isValidQuestionId } from "@/lib/api/attemptValidation";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
@@ -15,7 +16,7 @@ const payloadSchema = z.object({
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   if (!(await rateLimit(`saved-questions-bulk:ip:${ip}`, 20, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let supabase;
@@ -23,37 +24,37 @@ export async function POST(request: NextRequest) {
   try {
     ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
   } catch {
-    return NextResponse.json({ error: "missing_env" }, { status: 500 });
+    return apiError("missing_env", 500);
   }
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
-  if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  if (!user) return apiError("unauthorized", 401);
 
   if (!(await rateLimit(`saved-questions-bulk:user:${user.id}`, 5, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let rawBody;
   try {
     rawBody = await request.json();
   } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+    return apiError("invalid_json", 400);
   }
 
   const parseResult = payloadSchema.safeParse(rawBody);
   if (!parseResult.success) {
-    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const ids = [...new Set(parseResult.data.questionIds ?? [])].filter(isValidQuestionId);
   if (ids.length === 0) {
-    return NextResponse.json({ ok: true, accepted: 0 }, { headers: response.headers });
+    return apiOk({ accepted: 0 }, { headers: response.headers });
   }
 
   const MAX_BULK = 500;
   if (ids.length > MAX_BULK) {
-    return NextResponse.json({ error: "too_many_saved_questions", max: MAX_BULK }, { status: 400 });
+    return apiError("too_many_saved_questions", 400);
   }
 
   const rows = ids.map((questionId) => ({
@@ -69,8 +70,8 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("saved-questions/bulk: upsert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 500 });
+    return apiError("db_error", 500);
   }
 
-  return NextResponse.json({ ok: true, accepted: rows.length }, { headers: response.headers });
+  return apiOk({ accepted: rows.length }, { headers: response.headers });
 }

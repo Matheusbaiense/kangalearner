@@ -353,6 +353,13 @@ export function PracticeClient({
   const [cat, setCat] = useState(initialCat ?? "all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
+  const [syncError, setSyncError] = useState(false);
+  const lastFailedAttempt = useRef<{
+    qid: string;
+    cat: string;
+    isCorrect: boolean;
+    chosen: string;
+  } | null>(null);
   // Rendering every question at once produces thousands of DOM nodes (300+ questions,
   // ~20 nodes each) and makes initial hydration noticeably slow. Cap what's mounted
   // and reveal more on demand instead.
@@ -471,7 +478,27 @@ export function PracticeClient({
           source: "web"
         }),
         keepalive: true
-      }).catch((err) => console.error("[practice] attempt sync failed:", err));
+      })
+        .then((res) => {
+          if (res.status === 401) {
+            setSyncError(false);
+            lastFailedAttempt.current = null;
+            return;
+          }
+          if (!res.ok) {
+            lastFailedAttempt.current = { qid, cat, isCorrect, chosen };
+            setSyncError(true);
+            console.error("[practice] attempt sync failed:", res.status);
+            return;
+          }
+          lastFailedAttempt.current = null;
+          setSyncError(false);
+        })
+        .catch((err) => {
+          lastFailedAttempt.current = { qid, cat, isCorrect, chosen };
+          setSyncError(true);
+          console.error("[practice] attempt sync failed:", err);
+        });
     },
     [selectedState]
   );
@@ -603,6 +630,21 @@ export function PracticeClient({
             {selectedState} {s.roadRulesWord}
           </p>
         </div>
+        {syncError ? (
+          <p role="alert" className="page-sub" style={{ color: "var(--red, #b91c1c)" }}>
+            {s.syncSaveFailed}{" "}
+            <button
+              type="button"
+              className="btn btn-secondary"
+              onClick={() => {
+                const failed = lastFailedAttempt.current;
+                if (failed) syncAttempt(failed.qid, failed.cat, failed.isCorrect, failed.chosen);
+              }}
+            >
+              {s.retry}
+            </button>
+          </p>
+        ) : null}
 
         <div className="app-shell">
           {/* ── LEFT SIDEBAR ── */}

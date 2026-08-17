@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState, useCallback } from "react";
+import { parseApiError, readApiOkData } from "@/lib/api/envelope";
+import { adminRolePatchUserMessage } from "@/lib/auth/adminRolePatch";
 import {
   Users,
   Activity,
@@ -21,6 +23,8 @@ import {
 
 /* ── Types ── */
 interface StatsData {
+  degraded?: boolean;
+  failed?: string[];
   users: {
     total: number;
     newLast24h: number;
@@ -143,6 +147,7 @@ export default function AdminPage() {
   const [usersLoading, setUsersLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [search, setSearch] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
   const [roleFilter, setRoleFilter] = useState("");
   const [page, setPage] = useState(0);
   const [updatingRole, setUpdatingRole] = useState<string | null>(null);
@@ -154,7 +159,10 @@ export default function AdminPage() {
     try {
       const res = await fetch("/api/admin/stats");
       if (!res.ok) throw new Error("Failed to load stats");
-      setStats(await res.json());
+      const json: unknown = await res.json();
+      const data = readApiOkData<StatsData>(json);
+      if (!data) throw new Error("Failed to load stats");
+      setStats(data);
     } catch (e) {
       setError((e as Error).message);
     } finally {
@@ -166,12 +174,14 @@ export default function AdminPage() {
     setUsersLoading(true);
     setError(null);
     const params = new URLSearchParams({ page: String(page), limit: "50" });
-    if (search) params.set("search", search);
+    if (debouncedSearch) params.set("search", debouncedSearch);
     if (roleFilter) params.set("role", roleFilter);
     try {
       const res = await fetch(`/api/admin/users?${params}`);
       if (!res.ok) throw new Error("Failed to load users");
-      const data = await res.json();
+      const json: unknown = await res.json();
+      const data = readApiOkData<{ users: User[]; total: number }>(json);
+      if (!data) throw new Error("Failed to load users");
       setUsers(data.users);
       setUsersTotal(data.total);
     } catch (e) {
@@ -179,7 +189,12 @@ export default function AdminPage() {
     } finally {
       setUsersLoading(false);
     }
-  }, [page, search, roleFilter]);
+  }, [page, debouncedSearch, roleFilter]);
+
+  useEffect(() => {
+    const id = window.setTimeout(() => setDebouncedSearch(search), 300);
+    return () => window.clearTimeout(id);
+  }, [search]);
 
   useEffect(() => {
     loadStats();
@@ -198,8 +213,9 @@ export default function AdminPage() {
         body: JSON.stringify({ userId, role: newRole })
       });
       if (!res.ok) {
-        const body = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(body.error ?? "Failed to update role");
+        const body: unknown = await res.json().catch(() => null);
+        const parsed = parseApiError(body, res.status);
+        throw new Error(adminRolePatchUserMessage(parsed.code));
       }
       await loadUsers();
     } catch (e) {
@@ -252,6 +268,13 @@ export default function AdminPage() {
         {error && (
           <div className="admin-error">
             <XCircle size={16} /> {error}
+          </div>
+        )}
+        {stats?.degraded && (
+          <div className="admin-error" role="status">
+            <XCircle size={16} /> Some stats queries failed
+            {stats.failed && stats.failed.length > 0 ? `: ${stats.failed.join(", ")}` : ""}.
+            Numbers below may be incomplete.
           </div>
         )}
 

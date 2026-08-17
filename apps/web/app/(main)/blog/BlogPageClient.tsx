@@ -4,28 +4,28 @@ import Link from "next/link";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
-import { PUBLISHED_BLOG_POSTS, getBlogStates } from "@/lib/blogPosts";
+import { uniqueBlogStates, type BlogPostCard } from "@/lib/blogIndex";
 import { tx } from "@/lib/i18n";
 import { AU_STATE_OPTIONS, type AuStateCode } from "@kanga/core";
 
-export function BlogPageClient() {
+export function BlogPageClient({ posts }: { posts: BlogPostCard[] }) {
   const { uiLang: lang, s } = useLang();
   const [query, setQuery] = useState("");
   const [stateFilter, setStateFilter] = useState<AuStateCode | "all">("all");
 
-  const blogStates = useMemo(() => getBlogStates(), []);
+  const blogStates = useMemo(() => uniqueBlogStates(posts), [posts]);
   const stateLabel = (code: AuStateCode) =>
     AU_STATE_OPTIONS.find((o) => o.code === code)?.name ?? code;
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
-    return PUBLISHED_BLOG_POSTS.filter((post) => {
+    return posts.filter((post) => {
       if (stateFilter !== "all" && post.state !== stateFilter) return false;
       if (!q) return true;
       const haystack = `${tx(post.title, lang)} ${tx(post.excerpt, lang)}`.toLowerCase();
       return haystack.includes(q);
     });
-  }, [query, stateFilter, lang]);
+  }, [posts, query, stateFilter, lang]);
 
   return (
     <main className="container section-pad">

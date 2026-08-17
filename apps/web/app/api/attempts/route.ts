@@ -1,5 +1,6 @@
 import { randomUUID } from "node:crypto";
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
   // IP guard, defence against unauthenticated flood (loose: accounts for shared NAT)
   const ip = getClientIp(request);
   if (!(await rateLimit(`attempts:ip:${ip}`, 120, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let supabase;
@@ -34,42 +35,42 @@ export async function POST(request: NextRequest) {
   try {
     ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
   } catch {
-    return NextResponse.json({ error: "missing_env" }, { status: 500 });
+    return apiError("missing_env", 500);
   }
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
-  if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  if (!user) return apiError("unauthorized", 401);
 
   // Per-user rate limit, each authenticated user gets their own bucket
   if (!(await rateLimit(`attempts:user:${user.id}`, 60, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let rawPayload;
   try {
     rawPayload = await request.json();
   } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+    return apiError("invalid_json", 400);
   }
 
   const parseResult = attemptSchema.safeParse(rawPayload);
   if (!parseResult.success) {
-    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const payload = parseResult.data;
 
   if (!isValidAttemptState(payload.state)) {
-    return NextResponse.json({ error: "invalid_state" }, { status: 400 });
+    return apiError("invalid_state", 400);
   }
 
   if (!isValidQuestionId(payload.question_id)) {
-    return NextResponse.json({ error: "invalid_question_id" }, { status: 400 });
+    return apiError("invalid_question_id", 400);
   }
 
   if (!isValidAttemptCategory(payload.category)) {
-    return NextResponse.json({ error: "invalid_category" }, { status: 400 });
+    return apiError("invalid_category", 400);
   }
 
   const attemptId =
@@ -91,11 +92,11 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("attempts: insert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 500 });
+    return apiError("db_error", 500);
   }
 
   // user_category_stats is maintained by the AFTER INSERT trigger on
   // question_attempts (migration 028), covers this route, /bulk and mobile.
 
-  return NextResponse.json({ ok: true }, { headers: response.headers });
+  return apiOk(undefined, { headers: response.headers });
 }

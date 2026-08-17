@@ -64,4 +64,13 @@ describe("evaluateAdminRolePatch", () => {
     });
     expect(result).toEqual({ ok: true });
   });
+
+  it("exposes a stable error code for the envelope, not a raw message", () => {
+    const result = evaluateAdminRolePatch({
+      callerRole: "admin",
+      targetRole: "free",
+      nextRole: "premium"
+    });
+    expect(result).toMatchObject({ ok: false, code: "premium_managed_by_billing" });
+  });
 });

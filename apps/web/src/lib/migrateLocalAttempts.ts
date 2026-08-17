@@ -55,13 +55,22 @@ export async function buildAttemptsFromLocalStorage(): Promise<BulkAttemptPayloa
 
 export async function postAttemptsBulk(attempts: BulkAttemptPayload[]): Promise<boolean> {
   if (attempts.length === 0) return true;
-  const res = await fetch("/api/attempts/bulk", {
-    method: "POST",
-    headers: { "content-type": "application/json" },
-    body: JSON.stringify({ attempts }),
-    credentials: "include"
-  });
-  return res.ok;
+  try {
+    const res = await fetch("/api/attempts/bulk", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ attempts }),
+      credentials: "include"
+    });
+    if (!res.ok) {
+      console.error("[migrate] bulk attempts failed:", res.status);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.error("[migrate] bulk attempts failed:", err);
+    return false;
+  }
 }
 
 export async function runLocalAttemptMigration(): Promise<boolean> {

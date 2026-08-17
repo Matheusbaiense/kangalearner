@@ -11,12 +11,12 @@
 
 ### Estado da execução — 2026-08-17 (este worktree)
 
-Código das fases 1.1–1.3 (SQL), 2.1–2.4, 3.1, 3.4 (`lucide-react` optimizePackageImports), 4.1–4.3, 5.1 (demote premium) e 8.2 (`gen:questions-json`) está no tree. Testes: core 16, web 34, mobile 29.
+Código das fases 1.1–1.3 (SQL 031–033), **1.4/1.5 (034, não aplicada)**, 2.1–2.4, 3.1, **3.3 (blog RSC)**, 3.4 (`lucide-react` optimizePackageImports), 3.9 (admin search debounce), 4.1–4.2 (sync visível), 4.3 (envelope nas rotas de app; health/ping/stripe webhook de fora), 4.5 (admin stats degraded + dashboard/account fail-loud), 5.1 (demote premium) e 8.2 (`gen:questions-json`) está no tree. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY` (o secret em si é Fase 0.7).
 
 **Ainda não feito aqui:**
-- Fase 0 (secrets, Pro, staging, HIBP, Sentry DSN) — só o dono no dashboard
-- Aplicar 031–033 em staging/prod
-- Fase 1.4 hygiene policies, 3.2 JSON-by-state, 3.3 blog RSC, 4.4 envelope/log, 5 MFA, 6 E2E, 7 DRY
+- Fase 0 (secrets, Pro, staging, HIBP, Sentry DSN) — o Claude/Chrome faz nos dashboards; conferência em [QA-FASE0-VERIFY.md](QA-FASE0-VERIFY.md). **Não marcar aceite sem evidência.**
+- Aplicar 031–034 em staging, smoke, depois prod
+- Fase 3.2 JSON-by-state, 4.6 logger, 5 MFA, 6 E2E, 7 DRY
 
 ---
 
@@ -57,6 +57,8 @@ FlagImg extraído, `tx()` no web, `assertAdminRole`, delete de conta real, rate 
 # Fase 0 — Operação P0 (sem código de app)
 
 Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são teatro.
+
+**Conferência do trampo Chrome/Claude:** [QA-FASE0-VERIFY.md](QA-FASE0-VERIFY.md). Não marcar os checkboxes abaixo sem evidência nessa tabela.
 
 ## 0.1 Backups realmente a funcionar — DR-01
 

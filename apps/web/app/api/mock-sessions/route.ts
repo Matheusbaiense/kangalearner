@@ -1,5 +1,6 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
@@ -20,35 +21,35 @@ const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
   if (!(await rateLimit(`mock-sessions:ip:${ip}`, 40, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const { supabase, cookieResponse } = createRouteHandlerClient(request);
 
   const { data: userData } = await supabase.auth.getUser();
   const user = userData.user;
-  if (!user) return NextResponse.json({ error: "unauthorized" }, { status: 401 });
+  if (!user) return apiError("unauthorized", 401);
 
   if (!(await rateLimit(`mock-sessions:user:${user.id}`, 20, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   let rawPayload;
   try {
     rawPayload = await request.json();
   } catch {
-    return NextResponse.json({ error: "invalid_json" }, { status: 400 });
+    return apiError("invalid_json", 400);
   }
 
   const parseResult = mockSessionSchema.safeParse(rawPayload);
   if (!parseResult.success) {
-    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const payload = parseResult.data;
 
   if (!AU_STATES.has(payload.state) || payload.score > payload.total) {
-    return NextResponse.json({ error: "invalid_payload" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const sessionMode = payload.mode ?? "exam";
@@ -77,7 +78,7 @@ export async function POST(request: NextRequest) {
 
   if (error) {
     console.error("mock-sessions: insert failed", error.code);
-    return NextResponse.json({ error: "db_error" }, { status: 500 });
+    return apiError("db_error", 500);
   }
-  return NextResponse.json({ ok: true }, { headers: cookieResponse.headers });
+  return apiOk(undefined, { headers: cookieResponse.headers });
 }

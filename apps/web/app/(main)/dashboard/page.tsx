@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { computeReadiness, QUESTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
+import { namedQueryFailures } from "@/lib/api/namedQueryFailures";
 import { createClient } from "@/lib/supabase/server";
 import { MigrateLocalProgress } from "@/components/MigrateLocalProgress";
 import { DashboardClient } from "./DashboardClient";
@@ -305,6 +306,20 @@ export default async function DashboardPage({
   if (answeredIdsError)
     console.error("Dashboard answered ids lookup failed", errCode(answeredIdsError));
 
+  const loadFailures = namedQueryFailures([
+    { name: "cat_stats", error: catStatsError },
+    { name: "state_cat_stats", error: stateCatStatsError },
+    { name: "temporal_attempts", error: temporalAttemptsError },
+    { name: "attempts_count", error: attemptsCountError },
+    { name: "attempts_correct_count", error: attemptsCorrectCountError },
+    { name: "state_attempts_count", error: stateAttemptsCountError },
+    { name: "state_attempts_correct_count", error: stateAttemptsCorrectCountError },
+    { name: "sessions", error: sessionsError },
+    { name: "settings", error: settingsError },
+    { name: "answered_ids", error: answeredIdsError }
+  ]);
+  const loadError = loadFailures.length > 0;
+
   /* ── Aggregate stats ── */
   // Counts come from exact COUNT queries, no raw-row fallback needed
   const totalAnswered = attemptsCount ?? 0;
@@ -444,6 +459,7 @@ export default async function DashboardPage({
         catStats={catStats}
         weakTopics={weakTopics}
         sessions={allSessions}
+        loadError={loadError}
       />
     </>
   );

@@ -1,4 +1,5 @@
-import { NextResponse, type NextRequest } from "next/server";
+import { type NextRequest } from "next/server";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { rateLimit } from "@/lib/rateLimit";
@@ -16,16 +17,16 @@ export async function DELETE(request: NextRequest) {
   try {
     ({ supabase, cookieResponse: response } = createRouteHandlerClient(request));
   } catch {
-    return NextResponse.json({ error: "missing_env" }, { status: 500 });
+    return apiError("missing_env", 500);
   }
 
   const {
     data: { user }
   } = await supabase.auth.getUser();
-  if (!user) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  if (!user) return apiError("unauthorized", 401);
 
   if (!(await rateLimit(`account-delete:${user.id}`, 5, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const { data: existingProfile, error: fetchError } = await supabaseAdmin
@@ -36,11 +37,11 @@ export async function DELETE(request: NextRequest) {
 
   if (fetchError) {
     console.error("[account/delete] profile fetch failed:", fetchError.code);
-    return NextResponse.json({ error: "delete_failed" }, { status: 500 });
+    return apiError("delete_failed", 500);
   }
 
   if (existingProfile?.deleted_at) {
-    return NextResponse.json({ error: "already_deleted" }, { status: 409 });
+    return apiError("already_deleted", 409);
   }
 
   const rollbackSnapshot = {
@@ -61,7 +62,7 @@ export async function DELETE(request: NextRequest) {
 
   if (profileError) {
     console.error("[account/delete] profile soft-delete failed:", profileError.code);
-    return NextResponse.json({ error: "delete_failed" }, { status: 500 });
+    return apiError("delete_failed", 500);
   }
 
   const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(user.id);
@@ -83,7 +84,7 @@ export async function DELETE(request: NextRequest) {
       console.error("[account/delete] rollback failed:", rollbackError.code);
     }
 
-    return NextResponse.json({ error: "auth_delete_failed" }, { status: 500 });
+    return apiError("auth_delete_failed", 500);
   }
 
   // Best-effort cleanup of orphaned avatar objects. The account is already gone
@@ -102,5 +103,5 @@ export async function DELETE(request: NextRequest) {
     }
   }
 
-  return NextResponse.json({ ok: true }, { headers: response.headers });
+  return apiOk(undefined, { headers: response.headers });
 }

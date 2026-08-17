@@ -1,4 +1,5 @@
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { rateLimit } from "@/lib/rateLimit";
@@ -42,37 +43,31 @@ export async function POST(req: NextRequest) {
     error: authErr
   } = await supabase.auth.getUser();
   if (authErr || !user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return apiError("unauthorized", 401);
   }
 
   if (!(await rateLimit(`avatar:post:${user.id}`, 5, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const formData = await req.formData();
   const file = formData.get("file") as File | null;
 
   if (!file) {
-    return NextResponse.json({ error: "No file provided" }, { status: 400 });
+    return apiError("missing_file", 400);
   }
   if (!ALLOWED_TYPES.includes(file.type)) {
-    return NextResponse.json(
-      { error: "Invalid file type. Use JPG, PNG, WebP or GIF." },
-      { status: 400 }
-    );
+    return apiError("invalid_file_type", 400);
   }
   if (file.size > MAX_SIZE_BYTES) {
-    return NextResponse.json({ error: "File too large. Max 2 MB." }, { status: 400 });
+    return apiError("file_too_large", 400);
   }
 
   const buffer = Buffer.from(await file.arrayBuffer());
 
   const signatures = MAGIC_BYTES[file.type];
   if (!signatures || !matchesMagicBytes(buffer, file.type, signatures)) {
-    return NextResponse.json(
-      { error: "File content does not match declared type." },
-      { status: 400 }
-    );
+    return apiError("invalid_file_content", 400);
   }
 
   const ext = file.type.split("/")[1].replace("jpeg", "jpg");
@@ -84,7 +79,7 @@ export async function POST(req: NextRequest) {
 
   if (uploadErr) {
     console.error("[avatar/upload] storage upload failed:", uploadErr.message);
-    return NextResponse.json({ error: "upload_failed" }, { status: 500 });
+    return apiError("upload_failed", 500);
   }
 
   const {
@@ -99,10 +94,10 @@ export async function POST(req: NextRequest) {
 
   if (dbErr) {
     console.error("[avatar/upload] db update failed:", dbErr.code);
-    return NextResponse.json({ error: "db_update_failed" }, { status: 500 });
+    return apiError("db_update_failed", 500);
   }
 
-  return NextResponse.json({ url: avatarUrl });
+  return apiOk({ url: avatarUrl });
 }
 
 /** DELETE /api/profile/avatar, remove user avatar */
@@ -114,11 +109,11 @@ export async function DELETE(req: NextRequest) {
     error: authErr
   } = await supabase.auth.getUser();
   if (authErr || !user) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+    return apiError("unauthorized", 401);
   }
 
   if (!(await rateLimit(`avatar:delete:${user.id}`, 5, 60_000))) {
-    return NextResponse.json({ error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const { data: profile, error: profileErr } = await supabaseAdmin
@@ -129,7 +124,7 @@ export async function DELETE(req: NextRequest) {
 
   if (profileErr) {
     console.error("[avatar/delete] profile fetch failed:", profileErr.code);
-    return NextResponse.json({ error: "profile_fetch_failed" }, { status: 500 });
+    return apiError("profile_fetch_failed", 500);
   }
 
   const { data: files } = await supabase.storage.from("avatars").list(user.id);
@@ -140,7 +135,7 @@ export async function DELETE(req: NextRequest) {
 
     if (storageError) {
       console.error("[avatar/delete] storage remove failed:", storageError.message);
-      return NextResponse.json({ error: "storage_remove_failed" }, { status: 500 });
+      return apiError("storage_remove_failed", 500);
     }
   }
 
@@ -151,8 +146,8 @@ export async function DELETE(req: NextRequest) {
 
   if (dbError) {
     console.error("[avatar/delete] db update failed:", dbError.code);
-    return NextResponse.json({ error: "db_update_failed" }, { status: 500 });
+    return apiError("db_update_failed", 500);
   }
 
-  return NextResponse.json({ ok: true });
+  return apiOk();
 }

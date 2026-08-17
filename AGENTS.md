@@ -26,6 +26,7 @@ Regras:
 2. **[docs/SPRINT-12-INSPECTION-FIXES.md](docs/SPRINT-12-INSPECTION-FIXES.md)** - ultima inspecao geral, migrations 018-020, deferidos
 3. **[docs/MOBILE-APP-ROADMAP.md](docs/MOBILE-APP-ROADMAP.md)** - plano 0-100 Android/iPhone, splits, store readiness, QA mobile
 4. **[docs/PRODUCTION-REMEDIATION-PLAN.md](docs/PRODUCTION-REMEDIATION-PLAN.md)** - plano de correção da mega auditoria (fases 0–10)
+5. **[docs/QA-FASE0-VERIFY.md](docs/QA-FASE0-VERIFY.md)** - ledger para conferir o trampo Fase 0 (Chrome/dashboards); não marcar aceite sem evidência
 
 ## Documentacao alinhada ao codigo
 

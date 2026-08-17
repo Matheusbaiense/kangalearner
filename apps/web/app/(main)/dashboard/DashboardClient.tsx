@@ -41,6 +41,7 @@ export type DashboardClientProps = {
   catStats: CategoryStat[];
   weakTopics: CategoryStat[];
   sessions: DashboardMockSession[];
+  loadError?: boolean;
 };
 
 export function DashboardClient({
@@ -68,7 +69,8 @@ export function DashboardClient({
   hasAttempts,
   catStats,
   weakTopics,
-  sessions
+  sessions,
+  loadError = false
 }: DashboardClientProps) {
   const { s } = useLang();
 
@@ -87,7 +89,16 @@ export function DashboardClient({
           </Link>
         </div>
 
-        {totalAnswered === 0 && (
+        {loadError ? (
+          <div className="stat-card" role="alert">
+            <div className="stat-card-label">{s.dashLoadFailed}</div>
+            <button type="button" className="btn btn-secondary" onClick={() => window.location.reload()}>
+              {s.retry}
+            </button>
+          </div>
+        ) : null}
+
+        {!loadError && totalAnswered === 0 && (
           <div className="stat-card dash-welcome">
             <div className="dash-welcome-copy">
               <div className="stat-card-label">{s.dashWelcomeTitle}</div>
@@ -99,16 +110,18 @@ export function DashboardClient({
           </div>
         )}
 
-        {totalAnswered > 0 && <ReadinessCard readiness={readiness} />}
+        {!loadError && totalAnswered > 0 && <ReadinessCard readiness={readiness} />}
 
         <div className="stat-grid">
           <div className="stat-card">
             <div className="stat-card-label">{s.dashQuestionsAnswered}</div>
-            <div className="stat-card-value">{totalAnswered}</div>
+            <div className="stat-card-value">{loadError ? "—" : totalAnswered}</div>
             <div className="stat-card-sub">
-              {totalAnswered === 0
-                ? s.dashStartPractisingStats
-                : `${totalCorrect} ${s.dashCorrect}`}
+              {loadError
+                ? s.dashLoadFailed
+                : totalAnswered === 0
+                  ? s.dashStartPractisingStats
+                  : `${totalCorrect} ${s.dashCorrect}`}
             </div>
           </div>
 

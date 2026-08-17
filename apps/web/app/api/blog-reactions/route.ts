@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextRequest } from "next/server";
 import { z } from "zod";
+import { apiError, apiOk } from "@/lib/api/envelope";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
@@ -13,7 +14,7 @@ function visitorHash(ip: string, slug: string): string {
 export async function GET(req: NextRequest) {
   const slug = req.nextUrl.searchParams.get("slug") ?? "";
   if (!findBlogPost(slug)) {
-    return NextResponse.json({ ok: false, error: "unknown_slug" }, { status: 404 });
+    return apiError("unknown_slug", 404);
   }
 
   const { data, error } = await supabaseAdmin
@@ -22,7 +23,7 @@ export async function GET(req: NextRequest) {
     .eq("slug", slug);
 
   if (error) {
-    return NextResponse.json({ ok: false, error: "query_failed" }, { status: 500 });
+    return apiError("query_failed", 500);
   }
 
   const helpful = data.filter((r) => r.reaction === "helpful").length;
@@ -37,8 +38,7 @@ export async function GET(req: NextRequest) {
     .eq("visitor_hash", hash)
     .maybeSingle();
 
-  return NextResponse.json({
-    ok: true,
+  return apiOk({
     helpful,
     notHelpful,
     yourReaction: ownRow?.reaction ?? null
@@ -53,18 +53,18 @@ const reactionSchema = z.object({
 export async function POST(req: NextRequest) {
   const ip = getClientIp(req);
   if (!(await rateLimit(`blog-reactions:${ip}`, 20, 60_000))) {
-    return NextResponse.json({ ok: false, error: "too_many_requests" }, { status: 429 });
+    return apiError("too_many_requests", 429);
   }
 
   const rawBody = await req.json().catch(() => ({}));
   const parsed = reactionSchema.safeParse(rawBody);
   if (!parsed.success) {
-    return NextResponse.json({ ok: false, error: "invalid_body" }, { status: 400 });
+    return apiError("invalid_payload", 400);
   }
 
   const { slug, reaction } = parsed.data;
   if (!findBlogPost(slug)) {
-    return NextResponse.json({ ok: false, error: "unknown_slug" }, { status: 404 });
+    return apiError("unknown_slug", 404);
   }
 
   const hash = visitorHash(ip, slug);
@@ -74,8 +74,8 @@ export async function POST(req: NextRequest) {
     .upsert({ slug, reaction, visitor_hash: hash }, { onConflict: "slug,visitor_hash" });
 
   if (error) {
-    return NextResponse.json({ ok: false, error: "write_failed" }, { status: 500 });
+    return apiError("write_failed", 500);
   }
 
-  return NextResponse.json({ ok: true });
+  return apiOk();
 }
