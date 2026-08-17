@@ -4348,6 +4348,11 @@ html.exam-focus .site-footer {
   pointer-events: none;
   text-anchor: middle;
   font-family: var(--font-display), sans-serif;
+  /* halo cartografico: contorno navy apaga divisas/costa atras das letras */
+  paint-order: stroke;
+  stroke: var(--navy-950);
+  stroke-width: 10px;
+  stroke-linejoin: round;
 }
 .au-map-label-code {
   fill: rgba(255, 255, 255, 0.92);
