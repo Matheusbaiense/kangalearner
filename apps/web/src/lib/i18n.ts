@@ -21,6 +21,14 @@ export function tx(obj: Record<string, string> | null | undefined, lang: UiLang)
   return obj[lang] ?? obj.en ?? Object.values(obj)[0] ?? "";
 }
 
+/** Preenche placeholders {chave} de um template de string traduzida. */
+export function fill(template: string, vars: Record<string, string | number>): string {
+  return Object.entries(vars).reduce(
+    (acc, [key, value]) => acc.split(`{${key}}`).join(String(value)),
+    template
+  );
+}
+
 export const VALID_LANGS: Lang[] = ["en", "pt", "es", "pt-en", "es-en"];
 
 export const t = {
@@ -361,6 +369,73 @@ export const t = {
     footerStatesLabel: "Learner tests",
     stateCtaPractice: "Practice {state} questions",
     stateCtaMock: "Take a {state} mock test",
+
+    // ── Learner test pages (/learner-test) ────────────────
+    ltHubTitle: "Learner practice tests by state",
+    ltHubSub:
+      "{total} free practice questions for Australian learner licence tests. " +
+      "Pick your state or territory to practise with real exam-style questions in " +
+      "English, Portuguese or Spanish.",
+    ltHubIntro:
+      "Every state and territory runs its own learner knowledge test, with its own name, " +
+      "question count and pass mark. KangaLearner keeps a separate question pool for each " +
+      "one, so you practise exactly what your state tests.",
+    ltHubFactQuestions: "Free questions",
+    ltHubFactStates: "States and territories",
+    ltHubFactLangs: "Study languages",
+    ltHubOfficialTitle: "Official tests covered",
+    ltHubListTail: ": {n} free questions, run by {authority}.",
+    ltHubDisclaimer:
+      "KangaLearner is an independent study tool and is not affiliated with any state " +
+      "transport authority. Always check your state's official website for current test " +
+      "requirements.",
+    ltQuestionsCount: "{n} questions",
+    ltPracticeBadge: "Practice test",
+    ltStateH1: "{test} Practice",
+    ltStateSub:
+      "Free {test} practice questions for {state}. Study in English, Portuguese or Spanish.",
+    ltStateIntro:
+      "The {test} is the official knowledge test you must pass to get your learner " +
+      "licence in {state}. It is run by {authority}.",
+    ltStateIntroExam: "The real test has {n} questions and the pass mark is {pass}.",
+    ltStateBankBoth:
+      "KangaLearner has {total} free practice questions for {code}: {car} for the car " +
+      "test and {moto} for the motorcycle test.",
+    ltStateBankCarOnly:
+      "KangaLearner has {total} free practice questions for {code}, all focused on the " +
+      "car knowledge test.",
+    ltStateBankLangs:
+      "Every question is available in English, Portuguese and Spanish, with clear explanations.",
+    ltFactTest: "Official test",
+    ltFactAuthority: "Run by",
+    ltFactQuestions: "Real test",
+    ltFactBank: "Free question bank",
+    ltFactBankSplit: "{car} car, {moto} motorcycle",
+    ltFactBankCarOnly: "car questions",
+    ltTopicsTitle: "What is on the test",
+    ltTopicsBody: "The {code} question pool covers every topic tested in the real exam: {topics}.",
+    ltWaGuidePre: "Read the full ",
+    ltWaGuideLink: "WA test format guide",
+    ltWaGuidePost: " for booking details and what to expect on the day.",
+    ltSignsTitle: "Signs that appear on the test",
+    ltSignsSub: "Real {state} road signs used in the practice questions.",
+    ltFaqTitle: "{code} learner test FAQ",
+    ltFaqBilingualQ: "Can I practise for the {test} in Portuguese or Spanish?",
+    ltFaqBilingualA:
+      "Yes. Every KangaLearner question is available in English, Portuguese and Spanish, " +
+      "including bilingual study modes.",
+    ltFaqBankQ: "How many {code} practice questions does KangaLearner have?",
+    ltFaqBankABoth:
+      "{total} free questions: {car} for the car test and {moto} for the motorcycle " +
+      "test. Every question has an explanation.",
+    ltFaqBankACarOnly:
+      "{total} free questions, all focused on the car knowledge test. Every question " +
+      "has an explanation.",
+    ltOtherStatesTitle: "Practice tests in other states",
+    ltAllStatesLink: "All Australian learner practice tests by state",
+    ltDisclaimer:
+      "KangaLearner is an independent study tool and is not affiliated with {authority}. " +
+      "Always check {url} for current test requirements. Test facts last reviewed on {date}.",
     resCommunityTitle: "Immigrant Communities",
     resCommunityDesc:
       "Connect with other immigrants across Australia who are also getting their licence.",
@@ -789,6 +864,75 @@ export const t = {
     footerStatesLabel: "Provas de learner",
     stateCtaPractice: "Praticar questões de {state}",
     stateCtaMock: "Fazer um simulado de {state}",
+
+    // ── Learner test pages (/learner-test) ────────────────
+    ltHubTitle: "Simulados do teste de aprendiz por estado",
+    ltHubSub:
+      "{total} questões gratuitas para os testes de habilitação de aprendiz da Austrália. " +
+      "Escolha seu estado ou território e pratique com questões no estilo do exame real, " +
+      "em inglês, português ou espanhol.",
+    ltHubIntro:
+      "Cada estado e território aplica seu próprio teste teórico de aprendiz, com nome, " +
+      "número de questões e nota de corte próprios. O KangaLearner mantém um banco de " +
+      "questões separado para cada um, então você pratica exatamente o que o seu estado cobra.",
+    ltHubFactQuestions: "Questões grátis",
+    ltHubFactStates: "Estados e territórios",
+    ltHubFactLangs: "Idiomas de estudo",
+    ltHubOfficialTitle: "Testes oficiais cobertos",
+    ltHubListTail: ": {n} questões grátis, aplicado por {authority}.",
+    ltHubDisclaimer:
+      "O KangaLearner é uma ferramenta de estudo independente e não é afiliado a nenhum " +
+      "órgão de trânsito estadual. Confira sempre o site oficial do seu estado para os " +
+      "requisitos atuais do teste.",
+    ltQuestionsCount: "{n} questões",
+    ltPracticeBadge: "Simulado",
+    ltStateH1: "Prática para o {test}",
+    ltStateSub:
+      "Questões gratuitas de prática do {test} para {state}. " +
+      "Estude em inglês, português ou espanhol.",
+    ltStateIntro:
+      "O {test} é o teste teórico oficial que você precisa passar para tirar a licença " +
+      "de aprendiz em {state}. Ele é aplicado por {authority}.",
+    ltStateIntroExam: "O teste real tem {n} questões e a nota de corte é {pass}.",
+    ltStateBankBoth:
+      "O KangaLearner tem {total} questões gratuitas de prática para {code}: {car} para " +
+      "o teste de carro e {moto} para o de moto.",
+    ltStateBankCarOnly:
+      "O KangaLearner tem {total} questões gratuitas de prática para {code}, todas " +
+      "focadas no teste teórico de carro.",
+    ltStateBankLangs:
+      "Cada questão está disponível em inglês, português e espanhol, com explicações claras.",
+    ltFactTest: "Teste oficial",
+    ltFactAuthority: "Aplicado por",
+    ltFactQuestions: "Teste real",
+    ltFactBank: "Banco de questões grátis",
+    ltFactBankSplit: "{car} carro, {moto} moto",
+    ltFactBankCarOnly: "questões de carro",
+    ltTopicsTitle: "O que cai na prova",
+    ltTopicsBody: "O banco de questões de {code} cobre todos os tópicos do exame real: {topics}.",
+    ltWaGuidePre: "Leia o ",
+    ltWaGuideLink: "guia completo do formato do teste de WA",
+    ltWaGuidePost: " para detalhes de agendamento e o que esperar no dia.",
+    ltSignsTitle: "Placas que caem na prova",
+    ltSignsSub: "Placas de trânsito reais de {state} usadas nas questões de prática.",
+    ltFaqTitle: "Perguntas frequentes do teste de {code}",
+    ltFaqBilingualQ: "Posso praticar para o {test} em português ou espanhol?",
+    ltFaqBilingualA:
+      "Sim. Cada questão do KangaLearner está disponível em inglês, português e " +
+      "espanhol, incluindo modos de estudo bilíngues.",
+    ltFaqBankQ: "Quantas questões de prática de {code} o KangaLearner tem?",
+    ltFaqBankABoth:
+      "{total} questões grátis: {car} para o teste de carro e {moto} para o de moto. " +
+      "Cada questão tem explicação.",
+    ltFaqBankACarOnly:
+      "{total} questões grátis, todas focadas no teste teórico de carro. Cada questão " +
+      "tem explicação.",
+    ltOtherStatesTitle: "Simulados em outros estados",
+    ltAllStatesLink: "Todos os simulados de aprendiz da Austrália por estado",
+    ltDisclaimer:
+      "O KangaLearner é uma ferramenta de estudo independente e não é afiliado a " +
+      "{authority}. Confira sempre {url} para os requisitos atuais do teste. Fatos do " +
+      "teste revisados pela última vez em {date}.",
     resCommunityTitle: "Comunidades de Imigrantes",
     resCommunityDesc:
       "Conecte-se com outros imigrantes em toda a Austrália que também estão tirando a carteira.",
@@ -1219,6 +1363,76 @@ export const t = {
     footerStatesLabel: "Exámenes de learner",
     stateCtaPractice: "Practicar preguntas de {state}",
     stateCtaMock: "Hacer un simulacro de {state}",
+
+    // ── Learner test pages (/learner-test) ────────────────
+    ltHubTitle: "Exámenes de práctica para aprendices por estado",
+    ltHubSub:
+      "{total} preguntas gratuitas para los exámenes de licencia de aprendiz de " +
+      "Australia. Elige tu estado o territorio y practica con preguntas al estilo del " +
+      "examen real, en inglés, portugués o español.",
+    ltHubIntro:
+      "Cada estado y territorio aplica su propio examen teórico de aprendiz, con nombre, " +
+      "cantidad de preguntas y puntaje mínimo propios. KangaLearner mantiene un banco de " +
+      "preguntas separado para cada uno, así practicas exactamente lo que evalúa tu estado.",
+    ltHubFactQuestions: "Preguntas gratis",
+    ltHubFactStates: "Estados y territorios",
+    ltHubFactLangs: "Idiomas de estudio",
+    ltHubOfficialTitle: "Exámenes oficiales cubiertos",
+    ltHubListTail: ": {n} preguntas gratis, administrado por {authority}.",
+    ltHubDisclaimer:
+      "KangaLearner es una herramienta de estudio independiente y no está afiliada a " +
+      "ningún organismo de tránsito estatal. Consulta siempre el sitio oficial de tu " +
+      "estado para conocer los requisitos vigentes del examen.",
+    ltQuestionsCount: "{n} preguntas",
+    ltPracticeBadge: "Examen de práctica",
+    ltStateH1: "Práctica para el {test}",
+    ltStateSub:
+      "Preguntas gratuitas de práctica del {test} para {state}. " +
+      "Estudia en inglés, portugués o español.",
+    ltStateIntro:
+      "El {test} es el examen teórico oficial que debes aprobar para obtener tu licencia " +
+      "de aprendiz en {state}. Lo administra {authority}.",
+    ltStateIntroExam: "El examen real tiene {n} preguntas y el puntaje mínimo es {pass}.",
+    ltStateBankBoth:
+      "KangaLearner tiene {total} preguntas gratuitas de práctica para {code}: {car} " +
+      "para el examen de auto y {moto} para el de moto.",
+    ltStateBankCarOnly:
+      "KangaLearner tiene {total} preguntas gratuitas de práctica para {code}, todas " +
+      "enfocadas en el examen teórico de auto.",
+    ltStateBankLangs:
+      "Cada pregunta está disponible en inglés, portugués y español, con explicaciones claras.",
+    ltFactTest: "Examen oficial",
+    ltFactAuthority: "Administrado por",
+    ltFactQuestions: "Examen real",
+    ltFactBank: "Banco de preguntas gratis",
+    ltFactBankSplit: "{car} auto, {moto} moto",
+    ltFactBankCarOnly: "preguntas de auto",
+    ltTopicsTitle: "Qué entra en el examen",
+    ltTopicsBody:
+      "El banco de preguntas de {code} cubre todos los temas del examen real: {topics}.",
+    ltWaGuidePre: "Lee la ",
+    ltWaGuideLink: "guía completa del formato del examen de WA",
+    ltWaGuidePost: " para detalles de reserva y qué esperar el día del examen.",
+    ltSignsTitle: "Señales que aparecen en el examen",
+    ltSignsSub: "Señales de tránsito reales de {state} usadas en las preguntas de práctica.",
+    ltFaqTitle: "Preguntas frecuentes del examen de {code}",
+    ltFaqBilingualQ: "¿Puedo practicar para el {test} en portugués o español?",
+    ltFaqBilingualA:
+      "Sí. Cada pregunta de KangaLearner está disponible en inglés, portugués y español, " +
+      "incluidos los modos de estudio bilingües.",
+    ltFaqBankQ: "¿Cuántas preguntas de práctica de {code} tiene KangaLearner?",
+    ltFaqBankABoth:
+      "{total} preguntas gratis: {car} para el examen de auto y {moto} para el de moto. " +
+      "Cada pregunta tiene explicación.",
+    ltFaqBankACarOnly:
+      "{total} preguntas gratis, todas enfocadas en el examen teórico de auto. Cada " +
+      "pregunta tiene explicación.",
+    ltOtherStatesTitle: "Exámenes de práctica en otros estados",
+    ltAllStatesLink: "Todos los exámenes de práctica de aprendiz de Australia por estado",
+    ltDisclaimer:
+      "KangaLearner es una herramienta de estudio independiente y no está afiliada a " +
+      "{authority}. Consulta siempre {url} para conocer los requisitos vigentes del " +
+      "examen. Datos del examen revisados por última vez el {date}.",
     resCommunityTitle: "Comunidades de Inmigrantes",
     resCommunityDesc:
       "Conéctate con otros inmigrantes en toda Australia que también están sacando su licencia.",

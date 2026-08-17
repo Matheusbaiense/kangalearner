@@ -661,8 +661,10 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
                 <span className="topic-icon" aria-hidden="true">
                   <topic.Icon size={24} strokeWidth={2} />
                 </span>
-                <strong>{s[topic.titleKey]}</strong>
-                <span>{s[topic.descKey]}</span>
+                <span className="topic-copy">
+                  <strong>{s[topic.titleKey]}</strong>
+                  <span>{s[topic.descKey]}</span>
+                </span>
               </Link>
             ))}
           </div>
