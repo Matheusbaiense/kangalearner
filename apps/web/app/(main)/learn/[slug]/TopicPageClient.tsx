@@ -4,16 +4,31 @@ import Link from "next/link";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { Icons } from "@/components/icons";
 import { useLang } from "@/contexts/LangContext";
+import { applyStateTokens } from "@kanga/core";
 import type { LearnTopic } from "@/lib/learnTopics";
 import { useStateCopy } from "@/lib/stateCopy";
+import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
+import { VerifiedBadge } from "@/components/ui/VerifiedBadge";
 
 interface TopicPageClientProps {
   topic: LearnTopic;
 }
 
+/** Pull the first official URL out of the topic source string, if present. */
+function extractSourceUrl(source: string): string | undefined {
+  const match = source.match(/(https?:\/\/)?(www\.)?transport\.wa\.gov\.au[^\s)]*/i);
+  if (!match) return undefined;
+  const raw = match[0];
+  return raw.startsWith("http") ? raw : `https://${raw}`;
+}
+
+/** Date the learn content was last reviewed against the official sources. */
+const LAST_VERIFIED = "2026-06-01";
+
 export function TopicPageClient({ topic }: TopicPageClientProps) {
-  const { s } = useLang();
-  const { t } = useStateCopy();
+  const { uiLang: lang, s } = useLang();
+  const { profile, t } = useStateCopy();
+  const statePageSlug = STATE_TEST_INFO.find((info) => info.code === profile.code)?.slug;
 
   const practiceHref = topic.practiceCategory
     ? `/practice?category=${encodeURIComponent(topic.practiceCategory)}`
@@ -80,9 +95,18 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           </ul>
         </section>
 
-        <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 24 }}>
+        <p style={{ fontSize: ".78rem", color: "var(--muted)", marginBottom: 12 }}>
           <strong>{s.learnSource}:</strong> {t(topic.source)}
         </p>
+
+        <div style={{ marginBottom: 24 }}>
+          <VerifiedBadge
+            lang={lang}
+            lastVerified={LAST_VERIFIED}
+            sourceUrl={extractSourceUrl(t(topic.source)) ?? profile.handbookUrl}
+            reportContext={topic.slug}
+          />
+        </div>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
           <Link href={practiceHref} className="btn btn-primary">
@@ -91,9 +115,9 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           <Link href="/practice" className="btn btn-secondary">
             {s.learnAllTopics}
           </Link>
-          {topic.slug === "about-the-test" ? (
-            <Link href="/learner-test/wa" className="btn btn-secondary">
-              {s.learnWaCttCta}
+          {topic.slug === "about-the-test" && statePageSlug ? (
+            <Link href={`/learner-test/${statePageSlug}`} className="btn btn-secondary">
+              {applyStateTokens(s.learnStateTestCta, profile)}
             </Link>
           ) : null}
         </div>

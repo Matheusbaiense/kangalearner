@@ -13,6 +13,9 @@ import { tx, type UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
 import { pct } from "@/lib/percent";
 import { readStoredLicenceType, LICENCE_CHANGED_EVENT, type LicenceType } from "@/lib/licenceType";
+import { useGameProgress } from "@/hooks/useGameProgress";
+import { DailyProgress } from "@/components/gamification/DailyProgress";
+import { XP_PER_CORRECT } from "@/lib/gamification/progress";
 
 /* ── Local types (full shape of the question data) ── */
 type StateCode = "WA" | "NSW" | "VIC" | "QLD" | "SA" | "TAS" | "ACT" | "NT";
@@ -329,6 +332,7 @@ function ScoreSidebar({
 export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   const { questions: QS, loading: questionsLoading, error: questionsError } = useQuestions();
   const { uiLang: lang, isBilingual, s } = useLang();
+  const { progress, award } = useGameProgress();
   // Deterministic SSR value ("WA"); hydrated from localStorage in the mount effect
   // below. Reading localStorage in the initializer diverges the first client render
   // from the server HTML → React hydration error #418, aborting hydration and
@@ -478,11 +482,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
       if (correct) {
         const rect = (ev.target as HTMLElement).getBoundingClientRect();
         spawnConfetti(rect.left + rect.width / 2, rect.top + rect.height / 2);
+        award(XP_PER_CORRECT);
       }
 
       syncAttempt(qid, q.cat, correct, letter);
     },
-    [QS, selectedState, syncAttempt]
+    [QS, selectedState, syncAttempt, award]
   );
 
   /* ── Toggle save ── */
@@ -566,7 +571,12 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     <div className="app-page">
       <div className="app-container app-section">
         <div className="page-header">
-          <h1 className="page-title">{s.practice}</h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <h1 className="page-title" style={{ margin: 0 }}>
+              {s.practice}
+            </h1>
+            {progress.totalXp > 0 && <DailyProgress progress={progress} lang={lang} compact />}
+          </div>
           <p className="page-sub">
             {licenceQS.length} {s.questionsWord} · {visibleCategories.length} {s.topicsWord} ·{" "}
             {selectedState} {s.roadRulesWord}

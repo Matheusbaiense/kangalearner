@@ -298,6 +298,104 @@ const COMMUNITY_LINKS: Resource[] = [
   }
 ];
 
+/* Guided newcomer surfaces: /today, journey, prep hubs, self-checks. */
+const NEWCOMER_LINKS: { href: string; icon: string; label: Localized; desc: Localized }[] = [
+  {
+    href: "/today",
+    icon: "📅",
+    label: { en: "Today", pt: "Hoje", es: "Hoy" },
+    desc: {
+      en: "Your progress + next action",
+      pt: "Seu progresso + próxima ação",
+      es: "Tu progreso + próxima acción"
+    }
+  },
+  {
+    href: "/journey",
+    icon: "🗺️",
+    label: { en: "Licence journey", pt: "Jornada da licença", es: "Recorrido de licencia" },
+    desc: {
+      en: "Learner → P1 → P2 → full",
+      pt: "Learner → P1 → P2 → completa",
+      es: "Learner → P1 → P2 → completa"
+    }
+  },
+  {
+    href: "/overseas-licence",
+    icon: "🌏",
+    label: { en: "Overseas licence", pt: "Licença estrangeira", es: "Licencia extranjera" },
+    desc: {
+      en: "Drive in WA with a foreign licence",
+      pt: "Dirigir em WA com licença de fora",
+      es: "Conducir en WA con licencia de fuera"
+    }
+  },
+  {
+    href: "/quick-quiz",
+    icon: "⚡",
+    label: { en: "Quick quiz", pt: "Quiz rápido", es: "Quiz rápido" },
+    desc: {
+      en: "10 questions, no account",
+      pt: "10 questões, sem conta",
+      es: "10 preguntas, sin cuenta"
+    }
+  },
+  {
+    href: "/hpt",
+    icon: "👁️",
+    label: { en: "HPT prep", pt: "Preparação HPT", es: "Preparación HPT" },
+    desc: {
+      en: "Hazard Perception Test",
+      pt: "Teste de Percepção de Risco",
+      es: "Test de Percepción de Peligros"
+    }
+  },
+  {
+    href: "/pda",
+    icon: "🚗",
+    label: { en: "PDA prep", pt: "Preparação PDA", es: "Preparación PDA" },
+    desc: {
+      en: "Practical Driving Assessment",
+      pt: "Avaliação Prática de Direção",
+      es: "Evaluación Práctica de Conducción"
+    }
+  },
+  {
+    href: "/supervisor",
+    icon: "🧑‍🏫",
+    label: {
+      en: "Supervisor companion",
+      pt: "Companheiro do supervisor",
+      es: "Compañero del supervisor"
+    },
+    desc: {
+      en: "Coaching a learner",
+      pt: "Ensinando um learner",
+      es: "Enseñando a un learner"
+    }
+  },
+  {
+    href: "/eyesight-test",
+    icon: "🔤",
+    label: { en: "Eyesight check", pt: "Teste de visão", es: "Test de visión" },
+    desc: {
+      en: "Quick Snellen self-check",
+      pt: "Autoteste Snellen rápido",
+      es: "Autotest Snellen rápido"
+    }
+  },
+  {
+    href: "/confidence",
+    icon: "💪",
+    label: { en: "Driving confidence", pt: "Confiança ao volante", es: "Confianza al volante" },
+    desc: {
+      en: "Calm tips for nervous moments",
+      pt: "Dicas calmas para o nervosismo",
+      es: "Consejos calmados para los nervios"
+    }
+  }
+];
+
 const CATEGORY_BADGE: Record<ResourceCategory, { label: Localized; className: string }> = {
   official: {
     label: { en: "Official", pt: "Oficial", es: "Oficial" },
@@ -322,6 +420,16 @@ const CATEGORY_BADGE: Record<ResourceCategory, { label: Localized; className: st
 };
 
 const copy = {
+  newcomerTitle: {
+    en: "Your WA journey",
+    pt: "Sua jornada em WA",
+    es: "Tu recorrido en WA"
+  },
+  newcomerSub: {
+    en: "Step-by-step guides for getting on the road in Western Australia.",
+    pt: "Guias passo a passo para quem está começando a dirigir em Western Australia.",
+    es: "Guías paso a paso para quien empieza a conducir en Western Australia."
+  },
   heroStats: [
     {
       value: "30",
@@ -490,6 +598,38 @@ export function ResourcesPageClient() {
           <ShieldCheck size={18} strokeWidth={2} aria-hidden="true" />
           <span>{text(copy.officialNote, lang)}</span>
         </div>
+
+        {/* Newcomer journey hub: guided surfaces (today, journey, HPT/PDA, overseas) */}
+        <section className="resource-section">
+          <div className="resource-section-head">
+            <h2>{text(copy.newcomerTitle, lang)}</h2>
+            <p>{text(copy.newcomerSub, lang)}</p>
+          </div>
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+              gap: 12
+            }}
+          >
+            {NEWCOMER_LINKS.map((n) => (
+              <Link key={n.href} href={n.href} className="overseas-country-card">
+                <span style={{ fontSize: "var(--text-xl)" }} aria-hidden>
+                  {n.icon}
+                </span>
+                <span style={{ display: "flex", flexDirection: "column" }}>
+                  <strong>{text(n.label, lang)}</strong>
+                  <span style={{ fontSize: "var(--text-sm)", color: "var(--muted)" }}>
+                    {text(n.desc, lang)}
+                  </span>
+                </span>
+                <span className="overseas-country-arrow" aria-hidden>
+                  →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </section>
 
         <section className="resource-section resource-section-panel">
           <div className="resource-section-head">

@@ -905,9 +905,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Nunca conduzca con sueño. Si se siente cansado, pare y descanse. La fatiga afecta el tiempo de reacción tanto como el alcohol."
       },
       {
-        en: "Mobile phones, including hands-free, can distract attention. In every Australian state and territory, learner drivers must not use a phone at all while driving.",
-        pt: "Celulares, inclusive os viva-voz, podem distrair a atenção. Em todos os estados e territórios da Austrália, motoristas learner não podem usar celular de forma alguma ao dirigir.",
-        es: "Los móviles, incluso manos libres, pueden distraer la atención. En todos los estados y territorios de Australia, los conductores learner no pueden usar el teléfono de ninguna forma al conducir."
+        en: "Holding or touching a phone while driving is an offence everywhere in Australia. What learner and P drivers may do with a mounted phone differs by state — check {authority} for the rule in {state}.",
+        pt: "Segurar ou tocar no celular ao dirigir é infração em toda a Austrália. O que learners e condutores P podem fazer com o celular em suporte varia por estado — consulte o {authority} para a regra em {state}.",
+        es: "Sostener o tocar el móvil al conducir es una infracción en toda Australia. Lo que los learners y conductores P pueden hacer con el móvil en soporte varía por estado — consulte {authority} para la regla en {state}."
       },
       {
         en: "Keep a safe following distance: at least a 3-second gap from the vehicle ahead in dry conditions.",
@@ -927,9 +927,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Creer que los trayectos cortos no requieren el mismo nivel de atención: la mayoría de los accidentes ocurren cerca de casa."
       },
       {
-        en: "Using a phone while stopped at traffic lights is still illegal for learner drivers: you are driving until you park.",
-        pt: "Usar o celular parado no sinal continua ilegal para motoristas learner: você segue dirigindo até estacionar.",
-        es: "Usar el teléfono parado en un semáforo sigue siendo ilegal para conductores learner: sigues conduciendo hasta estacionar."
+        en: "Picking the phone up at a red light: holding it is an offence even with the car stopped in traffic.",
+        pt: "Pegar o celular no sinal vermelho: segurá-lo é infração mesmo com o carro parado no trânsito.",
+        es: "Tomar el móvil en el semáforo en rojo: sostenerlo es una infracción incluso con el auto detenido en el tráfico."
       }
     ],
     example: {
@@ -949,9 +949,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "¿Cuál es la distancia mínima de seguimiento en condiciones secas?"
       },
       {
-        en: "Can a learner driver use a hands-free phone?",
-        pt: "Um motorista learner pode usar viva-voz?",
-        es: "¿Puede un conductor learner usar manos libres?"
+        en: "What do the phone rules in {state} allow a learner driver to do?",
+        pt: "O que as regras de celular em {state} permitem a um motorista learner?",
+        es: "¿Qué permiten las reglas del móvil en {state} a un conductor learner?"
       }
     ],
     source: {
@@ -1199,66 +1199,74 @@ export const LEARN_TOPICS: LearnTopic[] = [
     slug: "mobile-phones",
     icon: "mail",
     practiceCategory: "Mobile Phones",
+    // Conteudo e a lei vigente de WA (mesma regra para todos os condutores). NSW, VIC,
+    // QLD e SA proibem celular para learner/P mesmo em suporte, entao nao pode aparecer la.
+    states: ["WA"],
     title: {
       en: "Mobile Phones While Driving",
       pt: "Celular ao Volante",
       es: "Teléfono Móvil al Volante"
     },
     summary: {
-      en: "Australia has strict rules on mobile phone use while driving. Learner and provisional (P) drivers must not use a mobile phone at all, not even hands-free. Full licence holders may use a phone only hands-free via Bluetooth/speaker if it is mounted.",
-      pt: "A Austrália tem regras rígidas sobre o uso de celular ao volante. Motoristas learner e provisórios (P) não podem usar celular de forma alguma, nem com viva-voz. Portadores de carteira plena só podem usar em viva-voz via Bluetooth/alto-falante com suporte fixo.",
-      es: "Australia tiene reglas estrictas sobre el uso del móvil al conducir. Los conductores learner y provisionales (P) no pueden usar el móvil de ninguna forma, ni siquiera manos libres. Los titulares de licencia completa solo pueden usarlo en manos libres vía Bluetooth/altavoz con soporte fijo."
+      en: "In WA the mobile phone rules are the same for every driver, from learner to full licence holder. Holding or touching a phone while driving is an offence, even when stopped at lights. Using a phone fixed in a mount (GPS or calls) is legal for all drivers, including learners.",
+      pt: "Em WA as regras de celular são as mesmas para todos os condutores, do learner ao habilitado pleno. Segurar ou tocar no celular ao dirigir é infração, mesmo parado no semáforo. Usar o celular fixo em suporte (GPS ou chamadas) é legal para todos, inclusive learners.",
+      es: "En WA las reglas del móvil son las mismas para todos los conductores, desde learner hasta licencia completa. Sostener o tocar el móvil al conducir es una infracción, incluso detenido en el semáforo. Usar el móvil fijo en un soporte (GPS o llamadas) es legal para todos, incluidos los learners."
     },
     keyRules: [
       {
-        en: "Learner and P drivers: complete mobile phone ban, no calls, no texts, no hands-free, no GPS on phone.",
-        pt: "Motoristas learner e P: proibição total, sem chamadas, mensagens, viva-voz ou GPS no celular.",
-        es: "Conductores learner y P: prohibición total, sin llamadas, mensajes, manos libres ni GPS en el móvil."
+        en: "Never hold or touch your phone while driving: this rule applies equally to learner, P1/P2 and full licence holders.",
+        pt: "Nunca segure ou toque no celular ao dirigir: essa regra vale igualmente para learner, P1/P2 e habilitados plenos.",
+        es: "Nunca sostengas ni toques el móvil al conducir: esta regla aplica por igual a learner, P1/P2 y licencia completa."
       },
       {
-        en: "Full licence holders: hands-free only. Phone must be in a mount, not held in the hand, even at a red light.",
-        pt: "Carteira plena: apenas viva-voz. O celular deve estar em suporte, não pode ser segurado na mão, nem no vermelho.",
-        es: "Licencia completa: solo manos libres. El móvil debe estar en un soporte, no puede sostenerse en la mano, ni en semáforo."
+        en: "Hands-free use is legal for any driver if the phone is fixed in a mount: GPS and calls via Bluetooth/speaker, without touching it.",
+        pt: "Uso viva-voz é legal para qualquer condutor se o celular estiver fixo em suporte: GPS e chamadas via Bluetooth/alto-falante, sem tocar nele.",
+        es: "El uso con manos libres es legal para cualquier conductor si el móvil está fijo en un soporte: GPS y llamadas vía Bluetooth/altavoz, sin tocarlo."
       },
       {
-        en: "Fines and demerit points are heavy and go up in school zones and roadwork areas. Check {authority} for the current amounts in {state}.",
-        pt: "As multas e os pontos são pesados e aumentam em zonas escolares e de obras. Consulte o {authority} para os valores atuais em {state}.",
-        es: "Las multas y los puntos son elevados y aumentan en zonas escolares y de obras. Consulte {authority} para los importes actuales en {state}."
+        en: "Penalty: a fixed fine plus demerit points. Double demerits apply only during declared holiday periods in WA, not in school zones or roadworks.",
+        pt: "Multa: valor fixo mais pontos de infração. Pontos em dobro valem apenas nos feriados declarados em WA, não em zonas escolares ou de obras.",
+        es: "Multa: importe fijo más puntos de demérito. Los puntos dobles aplican solo en feriados declarados en WA, no en zonas escolares ni de obras."
+      },
+      {
+        en: "Announced change, not yet in force: a GLS reform announced for April 2026 would add phone restrictions for novice drivers. Until it starts, the rules above apply.",
+        pt: "Mudança anunciada, ainda não vigente: uma reforma do GLS anunciada para abril de 2026 adicionaria restrições de celular para novatos. Até entrar em vigor, valem as regras acima.",
+        es: "Cambio anunciado, aún no vigente: una reforma del GLS anunciada para abril de 2026 agregaría restricciones de móvil para novatos. Hasta que entre en vigor, aplican las reglas anteriores."
       }
     ],
     mistakes: [
       {
-        en: "Thinking hands-free is OK as a learner driver: it is NOT. Any mobile use is banned.",
-        pt: "Pensar que viva-voz é permitido para motoristas learner: NÃO É. Qualquer uso é proibido.",
-        es: "Creer que el manos libres está permitido para conductores learner: NO LO ESTÁ. Cualquier uso está prohibido."
+        en: "Thinking learner drivers face a special phone ban: current WA law sets the same rule for everyone, and a mounted phone is legal for learners too.",
+        pt: "Achar que learners têm proibição especial de celular: a lei vigente de WA define a mesma regra para todos, e celular no suporte é legal também para learner.",
+        es: "Creer que los learners tienen una prohibición especial de móvil: la ley vigente de WA fija la misma regla para todos, y el móvil en soporte es legal también para el learner."
       },
       {
-        en: "Using the phone at a red light while stopped: the rule applies even when stationary.",
-        pt: "Usar o celular parado no semáforo: a regra vale mesmo parado.",
-        es: "Usar el móvil parado en semáforo: la regla aplica incluso cuando está detenido."
+        en: "Picking up the phone at a red light: holding or touching it is an offence even when the car is stopped in traffic.",
+        pt: "Pegar o celular no sinal vermelho: segurar ou tocar nele é infração mesmo com o carro parado no trânsito.",
+        es: "Tomar el móvil en el semáforo en rojo: sostenerlo o tocarlo es una infracción incluso con el auto detenido en el tráfico."
       }
     ],
     example: {
-      en: "Maria (learner driver) plugs her phone into the car mount to use GPS. Even though it's mounted and hands-free, this is still illegal for a learner. She must use a dedicated GPS device or ask a passenger to navigate.",
-      pt: "Maria (learner) coloca o celular no suporte do carro para usar GPS. Mesmo no suporte e sem tocar, é ilegal para learner. Ela deve usar um GPS dedicado ou pedir ao passageiro que navegue.",
-      es: "María (conductora learner) coloca el móvil en el soporte para usar el GPS. Aunque esté montado y sin manos, sigue siendo ilegal para un conductor learner. Debe usar un GPS dedicado o pedir a un pasajero que navegue."
+      en: "Maria (learner driver) fixes her phone in the car mount and starts GPS navigation before driving off, with her supervisor beside her. This is legal: the offence is holding or touching the phone while driving, and that applies to every licence type.",
+      pt: "Maria (learner) fixa o celular no suporte do carro e inicia o GPS antes de sair, com a supervisora ao lado. Isso é legal: a infração é segurar ou tocar no celular ao dirigir, e isso vale para qualquer tipo de carteira.",
+      es: "María (conductora learner) fija el móvil en el soporte del auto e inicia el GPS antes de salir, con su supervisora al lado. Esto es legal: la infracción es sostener o tocar el móvil al conducir, y aplica a todo tipo de licencia."
     },
     quickCheck: [
       {
-        en: "Can a learner driver use a Bluetooth headset for calls? → No. Any mobile phone use is banned for learner drivers.",
-        pt: "Um motorista learner pode usar fone de ouvido Bluetooth? → Não. Qualquer uso de celular é proibido.",
-        es: "¿Puede un conductor learner usar un auricular Bluetooth para llamadas? → No. Cualquier uso de móvil está prohibido."
+        en: "Can a learner driver use a mounted phone for GPS? → Yes. Mounted hands-free use is legal for all drivers under current WA law.",
+        pt: "Um learner pode usar o celular no suporte para GPS? → Sim. Uso viva-voz no suporte é legal para todos os condutores na lei vigente de WA.",
+        es: "¿Puede un learner usar el móvil montado para GPS? → Sí. El uso manos libres en soporte es legal para todos los conductores según la ley vigente de WA."
       },
       {
-        en: "A fully-licensed driver has her phone in her hand at a red light. Is this legal? → No. The phone must always be in a mount.",
-        pt: "Uma motorista habilitada segura o celular na mão no semáforo. É legal? → Não. O celular deve estar sempre em suporte.",
-        es: "Una conductora habilitada tiene el móvil en la mano en semáforo. ¿Es legal? → No. El móvil siempre debe estar en soporte."
+        en: "A driver has her phone in her hand at a red light. Is this legal? → No. Holding the phone is an offence for any driver, even when stopped.",
+        pt: "Uma motorista segura o celular na mão no sinal vermelho. É legal? → Não. Segurar o celular é infração para qualquer condutor, mesmo parado.",
+        es: "Una conductora tiene el móvil en la mano en un semáforo en rojo. ¿Es legal? → No. Sostener el móvil es una infracción para cualquier conductor, incluso detenido."
       }
     ],
     source: {
-      en: "Based on the {handbook} — {authority}.",
-      pt: "Baseado no {handbook} — {authority}.",
-      es: "Basado en el {handbook} — {authority}."
+      en: "Road Safety Commission WA (Street-Wise, phone rules): streetwise.rsc.wa.gov.au/rules/phones",
+      pt: "Road Safety Commission WA (Street-Wise, regras de celular): streetwise.rsc.wa.gov.au/rules/phones",
+      es: "Road Safety Commission WA (Street-Wise, reglas del móvil): streetwise.rsc.wa.gov.au/rules/phones"
     }
   },
 
@@ -1355,9 +1363,9 @@ export const LEARN_TOPICS: LearnTopic[] = [
         es: "Las luces amarillas intermitentes o señales electrónicas indican cuándo la zona de {schoolZone} km/h está activa."
       },
       {
-        en: "Doubled demerit points and higher fines apply in school zones. Mobile phone use is an additional offence.",
-        pt: "Pontos de infracção dobrados e multas mais altas em zonas escolares. Uso de celular é infracção adicional.",
-        es: "Puntos de demérito doblados y multas más altas en zonas escolares. El uso del móvil es una infracción adicional."
+        en: "Speeding in a school zone carries the normal fine and demerit points. When double demerits apply differs by state — in {state}, check {authority} for the declared periods.",
+        pt: "Excesso de velocidade em zona escolar tem multa e pontos normais. Quando os pontos dobram varia por estado — em {state}, consulte o {authority} para os períodos declarados.",
+        es: "El exceso de velocidad en zona escolar lleva multa y puntos normales. Cuándo se duplican los puntos varía por estado — en {state}, consulte {authority} para los períodos declarados."
       }
     ],
     mistakes: [
@@ -1447,8 +1455,8 @@ export const LEARN_TOPICS: LearnTopic[] = [
     slug: "towing-rules",
     icon: "car",
     practiceCategory: "Towing",
-    // Learner towing rules differ by jurisdiction (the NT allows it, WA does not),
-    // so this WA-sourced topic only shows for WA until per-state versions exist.
+    // Regras de reboque (velocidade, licenca, equipamento) mudam por jurisdicao e este
+    // conteudo e o de WA, entao so aparece em WA ate existirem versoes por estado.
     states: ["WA"],
     title: {
       en: "Towing Rules WA",
@@ -1456,15 +1464,15 @@ export const LEARN_TOPICS: LearnTopic[] = [
       es: "Normas de Remolque en WA"
     },
     summary: {
-      en: "Towing a trailer or caravan in WA comes with specific speed limits, weight restrictions, and licence conditions. Learner drivers may not tow. P1 drivers have restrictions.",
-      pt: "Rebocar um trailer ou caravana em WA tem limites de velocidade, restrições de peso e condições de carteira específicas. Motoristas learner não podem rebocar. Motoristas P1 têm restrições.",
-      es: "Remolcar un remolque o caravana en WA tiene límites de velocidad, restricciones de peso y condiciones de licencia específicas. Los conductores learner no pueden remolcar. Los conductores P1 tienen restricciones."
+      en: "Towing a trailer or caravan in WA follows the general rules: speed limits, vehicle weight capacity and equipment requirements. A learner may tow while accompanied by their supervisor, and P plate drivers have no WA restriction specific to towing.",
+      pt: "Rebocar um trailer ou caravana em WA segue as regras gerais: limites de velocidade, capacidade de peso do veículo e requisitos de equipamento. Um learner pode rebocar acompanhado do supervisor, e condutores P não têm em WA restrição específica de reboque.",
+      es: "Remolcar un remolque o caravana en WA sigue las reglas generales: límites de velocidad, capacidad de peso del vehículo y requisitos de equipo. Un learner puede remolcar acompañado de su supervisor, y los conductores P no tienen en WA una restricción específica de remolque."
     },
     keyRules: [
       {
-        en: "Learner drivers: cannot tow any trailer or caravan.",
-        pt: "Motoristas learner: não podem rebocar nenhum trailer ou caravana.",
-        es: "Conductores learner: no pueden remolcar ningún remolque ni caravana."
+        en: "Learner drivers may tow when driving with their supervisor. P1/P2 drivers have no towing-specific ban in WA: the general towing rules apply to everyone.",
+        pt: "Learners podem rebocar quando dirigem com o supervisor. Condutores P1/P2 não têm proibição específica de reboque em WA: as regras gerais valem para todos.",
+        es: "Los learners pueden remolcar cuando conducen con su supervisor. Los conductores P1/P2 no tienen prohibición específica de remolque en WA: las reglas generales aplican a todos."
       },
       {
         en: "Maximum towing speed: 100 km/h (or the signed limit if lower). On some roads, towing vehicles are limited to 90 km/h. Check local signs.",
@@ -1475,31 +1483,41 @@ export const LEARN_TOPICS: LearnTopic[] = [
         en: "All trailer lights (brake, indicator, tail) must work. Safety chains are mandatory.",
         pt: "Todas as luzes do trailer (freio, sinalização, traseira) devem funcionar. Correntes de segurança são obrigatórias.",
         es: "Todas las luces del remolque (freno, intermitente, trasera) deben funcionar. Las cadenas de seguridad son obligatorias."
+      },
+      {
+        en: "Stay within your vehicle's rated towing capacity and the trailer's limits: overloading is an offence and makes the vehicle unstable.",
+        pt: "Respeite a capacidade de reboque do veículo e os limites do trailer: excesso de peso é infração e torna o veículo instável.",
+        es: "Respeta la capacidad de remolque del vehículo y los límites del remolque: el exceso de peso es una infracción y vuelve el vehículo inestable."
       }
     ],
     mistakes: [
       {
-        en: "Learner drivers attempting to tow: this is not permitted under any circumstances.",
-        pt: "Motoristas learner tentando rebocar: isso não é permitido em nenhuma circunstância.",
-        es: "Conductores learner intentando remolcar: no está permitido bajo ninguna circunstancia."
+        en: "Assuming learner or P plate drivers are banned from towing in WA: they are not. The real limits are the speed, weight and equipment rules.",
+        pt: "Achar que learners ou condutores P são proibidos de rebocar em WA: não são. Os limites reais são as regras de velocidade, peso e equipamento.",
+        es: "Suponer que los learners o conductores P tienen prohibido remolcar en WA: no es así. Los límites reales son las reglas de velocidad, peso y equipo."
       }
     ],
     example: {
-      en: "David has a learner licence and wants to tow a small boat trailer to the beach. He cannot: learner drivers are not permitted to tow regardless of trailer size or weight.",
-      pt: "David tem carteira learner e quer rebocar um pequeno trailer de barco até a praia. Ele não pode: motoristas learner não têm permissão para rebocar independentemente do tamanho ou peso do trailer.",
-      es: "David tiene licencia learner y quiere remolcar un pequeño remolque de bote hasta la playa. No puede: los conductores learner no tienen permiso para remolcar independientemente del tamaño o peso del remolque."
+      en: "David has a learner licence and wants to tow a small boat trailer to the beach. He can, as long as his supervisor is beside him and the car and trailer meet the general towing rules: within capacity, safety chains attached, all lights working.",
+      pt: "David tem carteira learner e quer rebocar um pequeno trailer de barco até a praia. Ele pode, desde que o supervisor esteja ao lado e o carro e o trailer cumpram as regras gerais: dentro da capacidade, correntes de segurança presas, todas as luzes funcionando.",
+      es: "David tiene licencia learner y quiere remolcar un pequeño remolque de bote hasta la playa. Puede hacerlo, siempre que su supervisor esté a su lado y el auto y el remolque cumplan las reglas generales: dentro de la capacidad, cadenas de seguridad puestas, todas las luces funcionando."
     },
     quickCheck: [
       {
-        en: "Can a learner driver tow a small trailer? → No. Towing is not permitted for learner drivers.",
-        pt: "Um motorista learner pode rebocar um trailer pequeno? → Não. Rebocar não é permitido para motoristas learner.",
-        es: "¿Puede un conductor learner remolcar un remolque pequeño? → No. El remolque no está permitido para conductores learner."
+        en: "Can a learner driver tow a small trailer? → Yes, when accompanied by their supervisor and following the general towing rules.",
+        pt: "Um learner pode rebocar um trailer pequeno? → Sim, quando acompanhado do supervisor e seguindo as regras gerais de reboque.",
+        es: "¿Puede un learner remolcar un remolque pequeño? → Sí, cuando va acompañado de su supervisor y sigue las reglas generales de remolque."
+      },
+      {
+        en: "What is the maximum speed when towing in WA? → 100 km/h, or the lower signed limit where posted.",
+        pt: "Qual é a velocidade máxima ao rebocar em WA? → 100 km/h, ou o limite sinalizado menor onde houver placa.",
+        es: "¿Cuál es la velocidad máxima al remolcar en WA? → 100 km/h, o el límite señalizado menor donde esté indicado."
       }
     ],
     source: {
-      en: "Road Traffic (Vehicles) Act 2012 + WA Learner Driver Guide (towing section)",
-      pt: "Road Traffic (Vehicles) Act 2012 + Guia do Motorista Aprendiz de WA (secção reboque)",
-      es: "Road Traffic (Vehicles) Act 2012 + Guía del Conductor Novato de WA (sección remolque)"
+      en: "RAC WA (P plate drivers guide): rac.com.au/ignite/tips-info/learn-to-drive/p-plate-drivers-wa + Road Traffic (Vehicles) Act 2012",
+      pt: "RAC WA (guia de condutores P): rac.com.au/ignite/tips-info/learn-to-drive/p-plate-drivers-wa + Road Traffic (Vehicles) Act 2012",
+      es: "RAC WA (guía de conductores P): rac.com.au/ignite/tips-info/learn-to-drive/p-plate-drivers-wa + Road Traffic (Vehicles) Act 2012"
     }
   }
 ];
