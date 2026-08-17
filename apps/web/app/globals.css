@@ -4305,6 +4305,73 @@ html.exam-focus .site-footer {
   margin: 0 auto;
   position: relative;
 }
+/* mapa da Australia + lista de estados lado a lado */
+.states-layout {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.states-layout .states-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.states-layout::before {
+  display: none;
+}
+.au-map {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.au-map-state {
+  fill: rgba(82, 183, 136, 0.1);
+  stroke: rgba(82, 183, 136, 0.55);
+  stroke-width: 2;
+  stroke-linejoin: round;
+  transition:
+    fill 0.15s ease,
+    stroke 0.15s ease;
+}
+.au-map-state--link {
+  cursor: pointer;
+}
+.au-map-state--link:hover,
+.au-map-state--link:focus-visible {
+  fill: rgba(82, 183, 136, 0.32);
+  stroke: var(--green2);
+  outline: none;
+}
+.au-map-label {
+  pointer-events: none;
+  text-anchor: middle;
+  font-family: var(--font-display), sans-serif;
+}
+.au-map-label-code {
+  fill: rgba(255, 255, 255, 0.92);
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+.au-map-label-count {
+  fill: var(--green2);
+  font-size: 26px;
+  font-weight: 700;
+}
+@media (max-width: 900px) {
+  .states-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .au-map {
+    max-width: 440px;
+    margin: 0 auto;
+  }
+  .states-layout .states-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 /* estrada tracejada passando atras dos cards (secao e sempre navy) */
 .states-inner::before {
   content: "";
