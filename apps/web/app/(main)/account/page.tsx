@@ -1,8 +1,9 @@
 "use client";
 import { useEffect, useState, useRef } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
-import { readApiOkData } from "@/lib/api/envelope";
+import { readApiOkData, parseApiError } from "@/lib/api/envelope";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang, UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
@@ -104,12 +105,14 @@ export default function AccountPage() {
   const [prefsMsg, setPrefsMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
   /* ── Security ── */
+  const [currentPwd, setCurrentPwd] = useState("");
   const [newPwd, setNewPwd] = useState("");
   const [confirmPwd, setConfirmPwd] = useState("");
   const [savingPwd, setSavingPwd] = useState(false);
   const [pwdMsg, setPwdMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
   /* ── Danger zone ── */
+  const [deletePwd, setDeletePwd] = useState("");
   const [deletingAccount, setDeletingAccount] = useState(false);
   const [deleteMsg, setDeleteMsg] = useState<{ text: string; ok: boolean } | null>(null);
 
@@ -256,6 +259,10 @@ export default function AccountPage() {
   async function handleChangePassword(e: React.FormEvent) {
     e.preventDefault();
     setPwdMsg(null);
+    if (!currentPwd) {
+      setPwdMsg({ text: s.accountReauthRequired, ok: false });
+      return;
+    }
     if (!newPwd || newPwd.length < 8) {
       setPwdMsg({ text: s.accountPasswordMinLength, ok: false });
       return;
@@ -265,16 +272,35 @@ export default function AccountPage() {
       return;
     }
     setSavingPwd(true);
-    const supabase = createClient();
-    const { error } = await supabase.auth.updateUser({ password: newPwd });
-    setSavingPwd(false);
-    if (error) {
-      setPwdMsg({ text: error.message, ok: false });
-    } else {
-      setPwdMsg({ text: s.accountPasswordChanged, ok: true });
-      setNewPwd("");
-      setConfirmPwd("");
+    let res: Response;
+    try {
+      res = await fetch("/api/account/password", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPassword: currentPwd, newPassword: newPwd })
+      });
+    } catch {
+      setSavingPwd(false);
+      setPwdMsg({ text: s.accountNetworkError, ok: false });
+      return;
     }
+    const json: unknown = await res.json().catch(() => null);
+    setSavingPwd(false);
+    if (!res.ok) {
+      const parsed = parseApiError(json, res.status);
+      setPwdMsg({
+        text:
+          parsed.code === "reauth_required"
+            ? s.accountReauthRequired
+            : s.accountPasswordChangeFailed,
+        ok: false
+      });
+      return;
+    }
+    setPwdMsg({ text: s.accountPasswordChanged, ok: true });
+    setCurrentPwd("");
+    setNewPwd("");
+    setConfirmPwd("");
   }
 
   async function handleAvatarUpload(e: React.ChangeEvent<HTMLInputElement>) {
@@ -326,6 +352,10 @@ export default function AccountPage() {
 
   async function handleDeleteAccount() {
     if (deletingAccount) return;
+    if (!deletePwd) {
+      setDeleteMsg({ text: s.accountReauthRequired, ok: false });
+      return;
+    }
     if (!confirm(s.accountDeleteConfirm)) return;
 
     setDeletingAccount(true);
@@ -333,16 +363,25 @@ export default function AccountPage() {
 
     let res: Response;
     try {
-      res = await fetch("/api/account/delete", { method: "DELETE" });
+      res = await fetch("/api/account/delete", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: deletePwd })
+      });
     } catch {
       setDeletingAccount(false);
       setDeleteMsg({ text: s.accountNetworkError, ok: false });
       return;
     }
 
+    const json: unknown = await res.json().catch(() => null);
     if (!res.ok) {
       setDeletingAccount(false);
-      setDeleteMsg({ text: s.accountDeleteFailed, ok: false });
+      const parsed = parseApiError(json, res.status);
+      setDeleteMsg({
+        text: parsed.code === "reauth_required" ? s.accountReauthRequired : s.accountDeleteFailed,
+        ok: false
+      });
       return;
     }
     const supabase = createClient();
@@ -709,6 +748,26 @@ export default function AccountPage() {
                 <p className="settings-section-sub">{s.accountSecuritySub}</p>
 
                 <form onSubmit={handleChangePassword} className="settings-form">
+                  <div className="settings-field">
+                    <label className="settings-label" htmlFor="s-curpwd">
+                      {s.accountCurrentPassword}
+                    </label>
+                    <input
+                      id="s-curpwd"
+                      className="settings-input"
+                      type="password"
+                      value={currentPwd}
+                      onChange={(e) => setCurrentPwd(e.target.value)}
+                      placeholder={s.accountCurrentPasswordPlaceholder}
+                      autoComplete="current-password"
+                    />
+                    <p className="settings-hint">
+                      {s.accountOauthPasswordHint}{" "}
+                      <Link href="/auth/forgot-password" className="form-field-link">
+                        {s.forgotPassword}
+                      </Link>
+                    </p>
+                  </div>
                   <div className="settings-field-row">
                     <div className="settings-field">
                       <label className="settings-label" htmlFor="s-npwd">
@@ -761,6 +820,20 @@ export default function AccountPage() {
                   <div>
                     <p className="settings-danger-title">{s.accountDeleteTitle}</p>
                     <p className="settings-hint">{s.accountDeleteDesc}</p>
+                  </div>
+                  <div className="settings-field" style={{ marginTop: 16 }}>
+                    <label className="settings-label" htmlFor="s-delpwd">
+                      {s.accountDeletePasswordLabel}
+                    </label>
+                    <input
+                      id="s-delpwd"
+                      className="settings-input"
+                      type="password"
+                      value={deletePwd}
+                      onChange={(e) => setDeletePwd(e.target.value)}
+                      placeholder={s.accountCurrentPasswordPlaceholder}
+                      autoComplete="current-password"
+                    />
                   </div>
                   <button
                     className="btn btn-danger"

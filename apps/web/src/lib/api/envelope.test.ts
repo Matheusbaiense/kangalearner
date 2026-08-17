@@ -56,6 +56,10 @@ describe("parseApiError", () => {
       code: "forbidden",
       action: "toast"
     });
+    expect(parseApiError({ ok: false, error: { code: "reauth_required" } }, 403)).toEqual({
+      code: "reauth_required",
+      action: "reauth"
+    });
   });
 });
 
