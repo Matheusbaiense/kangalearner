@@ -1502,6 +1502,96 @@ a:focus-visible,
   box-shadow: var(--shadow-glow-green-hover);
 }
 
+/* ── Readiness score ── */
+.readiness-card {
+  border-left: 4px solid var(--green);
+  margin-bottom: 22px;
+}
+.readiness-title {
+  margin-bottom: 2px;
+}
+.readiness-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+.readiness-ring {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  flex-shrink: 0;
+}
+.readiness-ring-score {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: 900;
+  color: var(--ink);
+}
+.readiness-level {
+  font-size: var(--text-lg);
+  font-weight: 800;
+}
+.readiness-hint {
+  font-size: var(--text-sm);
+  color: var(--muted);
+  margin-top: 2px;
+  max-width: 46ch;
+}
+.readiness-reasons {
+  list-style: none;
+  margin: 14px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.readiness-reason {
+  display: block;
+  padding: 10px 14px;
+  border-radius: var(--radius-sm);
+  background: var(--paper2);
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.14s;
+}
+.readiness-reason:hover {
+  background: var(--paper3);
+}
+.readiness-inline {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 18px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border: var(--card-border);
+  background: var(--card-bg);
+  flex-wrap: wrap;
+}
+.readiness-inline-score {
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: 800;
+}
+.readiness-inline-level {
+  font-size: var(--text-md);
+  font-weight: 700;
+  color: var(--ink);
+}
+.readiness-inline-link {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--green);
+  text-decoration: none;
+}
+
 /* ── Progress page ── */
 .cat-row-pct {
   font-size: var(--text-sm);
@@ -3328,7 +3418,9 @@ a:focus-visible,
     backdrop-filter: blur(12px);
   }
   .mock-mode-option.active {
-    background: rgba(46, 125, 91, 0.08);
+    background: rgba(46, 125, 91, 0.16);
+    border-color: var(--green2);
+    box-shadow: inset 0 0 0 1px var(--green2);
   }
 }
 
@@ -3354,7 +3446,8 @@ a:focus-visible,
 }
 
 .mock-mode-option.active {
-  border-color: rgba(46, 125, 91, 0.55);
+  border-color: var(--green);
+  box-shadow: inset 0 0 0 1px var(--green);
   background: rgba(46, 125, 91, 0.06);
 }
 

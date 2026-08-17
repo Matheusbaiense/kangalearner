@@ -27,6 +27,11 @@ export interface StateProfile {
    * understates what is actually required (you cannot trade one section off another).
    */
   sectioned: boolean;
+  /**
+   * Pass mark for display, spelling out the section minimums where they exist.
+   * Single source for both the Learn copy and the /learner-test SEO pages.
+   */
+  passMarkLabel: string;
   /** Signed school zone speed limit in km/h (SA is the outlier at 25). */
   schoolZoneKmh: number;
 }
@@ -43,6 +48,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 30,
     minCorrect: 24,
     sectioned: false,
+    passMarkLabel: "24 of 30",
     schoolZoneKmh: 40
   },
   NSW: {
@@ -56,6 +62,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 45,
     minCorrect: 41,
     sectioned: true,
+    passMarkLabel: "41 of 45 (12/15 general + 29/30 road safety)",
     schoolZoneKmh: 40
   },
   VIC: {
@@ -68,6 +75,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 32,
     minCorrect: 25,
     sectioned: false,
+    passMarkLabel: "25 of 32 (78%)",
     schoolZoneKmh: 40
   },
   QLD: {
@@ -77,9 +85,11 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     testName: "written road rules test",
     handbook: "Your Keys to Driving in Queensland",
     handbookUrl: "https://www.publications.qld.gov.au/dataset/your-keys-to-driving-in-queensland",
+    // 10 give way (min 9) + 20 road rules (min 18).
     totalQuestions: 30,
     minCorrect: 27,
-    sectioned: false,
+    sectioned: true,
+    passMarkLabel: "27 of 30 (9/10 give way + 18/20 road rules)",
     schoolZoneKmh: 40
   },
   SA: {
@@ -93,6 +103,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 50,
     minCorrect: 40,
     sectioned: true,
+    passMarkLabel: "40 of 50 (8/8 give way + 32/42 general)",
     schoolZoneKmh: 25
   },
   TAS: {
@@ -107,6 +118,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 35,
     minCorrect: 30,
     sectioned: true,
+    passMarkLabel: "30 of 35, with a minimum in each section",
     schoolZoneKmh: 40
   },
   ACT: {
@@ -121,6 +133,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 35,
     minCorrect: 31,
     sectioned: true,
+    passMarkLabel: "31 of 35, and no mistakes in four categories",
     schoolZoneKmh: 40
   },
   NT: {
@@ -134,6 +147,7 @@ const PROFILES: Record<AuStateCode, StateProfile> = {
     totalQuestions: 30,
     minCorrect: 26,
     sectioned: false,
+    passMarkLabel: "26 of 30",
     schoolZoneKmh: 40
   }
 };

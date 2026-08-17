@@ -91,6 +91,11 @@ export function TopicPageClient({ topic }: TopicPageClientProps) {
           <Link href="/practice" className="btn btn-secondary">
             {s.learnAllTopics}
           </Link>
+          {topic.slug === "about-the-test" ? (
+            <Link href="/learner-test/wa" className="btn btn-secondary">
+              {s.learnWaCttCta}
+            </Link>
+          ) : null}
         </div>
       </div>
     </main>

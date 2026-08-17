@@ -66,7 +66,19 @@ export {
   type StateProfile
 } from "./data/stateProfiles";
 
-export { CATEGORIES } from "./data/questions";
+export {
+  computeReadiness,
+  LOW_COVERAGE_THRESHOLD,
+  READINESS_LEVEL_THRESHOLDS,
+  READINESS_MIN_PASSING_MOCKS,
+  WEAK_CATEGORY_ACCURACY,
+  type ReadinessInput,
+  type ReadinessLevel,
+  type ReadinessReason,
+  type ReadinessResult
+} from "./readiness";
+
+export { CATEGORIES, QUESTIONS } from "./data/questions";
 export {
   LANGS,
   validateQuestionsDataset,

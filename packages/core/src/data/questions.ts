@@ -116115,6 +116115,3606 @@ export const QUESTIONS: readonly QuestionType[] = [
     tip: null,
     states: ["TAS"],
     licenceType: "car"
+  },
+  {
+    id: "ROUND-01",
+    cat: "Roundabouts",
+    q: {
+      en: "Who must you give way to when entering a roundabout?",
+      pt: "A quem você deve dar preferência ao entrar em uma rotatória?",
+      es: "¿A quién debe ceder el paso al entrar en una rotonda?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only vehicles entering at the same time as you",
+          pt: "Apenas veículos entrando ao mesmo tempo que você",
+          es: "Solo los vehículos que entran al mismo tiempo que usted"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "All vehicles already in the roundabout",
+          pt: "Todos os veículos que já estão na rotatória",
+          es: "Todos los vehículos que ya están en la rotonda"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "No one: entering traffic has priority",
+          pt: "Ninguém: quem entra tem preferência",
+          es: "Nadie: el que entra tiene prioridad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Before entering, give way to all vehicles already circulating in the roundabout. Enter only when there is a safe gap.",
+      pt: "Antes de entrar, dê preferência a todos os veículos que já circulam na rotatória. Entre apenas quando houver um espaço seguro.",
+      es: "Antes de entrar, ceda el paso a todos los vehículos que ya circulan en la rotonda. Entre solo cuando haya un espacio seguro."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-02",
+    cat: "Roundabouts",
+    q: {
+      en: "When should you choose your lane for a multi-lane roundabout?",
+      pt: "Quando você deve escolher a faixa em uma rotatória de várias faixas?",
+      es: "¿Cuándo debe elegir el carril en una rotonda de varios carriles?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Before entering, based on your exit",
+          pt: "Antes de entrar, de acordo com a sua saída",
+          es: "Antes de entrar, según su salida"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "After entering, when you see a gap",
+          pt: "Depois de entrar, quando ver um espaço",
+          es: "Después de entrar, cuando vea un espacio"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "It does not matter which lane you use",
+          pt: "Não importa qual faixa usar",
+          es: "No importa qué carril use"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Choose the correct lane before entering, based on whether your exit is left, straight ahead or right. Do not change lanes inside the roundabout.",
+      pt: "Escolha a faixa correta antes de entrar, conforme sua saída for à esquerda, em frente ou à direita. Não mude de faixa dentro da rotatória.",
+      es: "Elija el carril correcto antes de entrar, según si su salida está a la izquierda, al frente o a la derecha. No cambie de carril dentro de la rotonda."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-03",
+    cat: "Roundabouts",
+    q: {
+      en: "When should you signal when leaving a roundabout?",
+      pt: "Quando você deve sinalizar ao sair de uma rotatória?",
+      es: "¿Cuándo debe señalizar al salir de una rotonda?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You do not need to signal when exiting",
+          pt: "Não é preciso sinalizar ao sair",
+          es: "No es necesario señalizar al salir"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only if another vehicle is close behind",
+          pt: "Apenas se houver outro veículo logo atrás",
+          es: "Solo si hay otro vehículo muy cerca detrás"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Signal left in good time before your exit",
+          pt: "Sinalize à esquerda com antecedência antes da sua saída",
+          es: "Señalice a la izquierda con tiempo antes de su salida"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Signal left in good time as you approach your exit so other road users know your intention, even if you think nobody is watching.",
+      pt: "Sinalize à esquerda com antecedência ao se aproximar da sua saída, para que os outros saibam sua intenção, mesmo que pareça não haver ninguém observando.",
+      es: "Señalice a la izquierda con tiempo al acercarse a su salida, para que los demás conozcan su intención, aunque parezca que nadie lo observa."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-04",
+    cat: "Roundabouts",
+    q: {
+      en: "Are you allowed to change lanes inside a roundabout?",
+      pt: "É permitido mudar de faixa dentro de uma rotatória?",
+      es: "¿Está permitido cambiar de carril dentro de una rotonda?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, whenever there is a gap",
+          pt: "Sim, sempre que houver espaço",
+          es: "Sí, siempre que haya espacio"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when turning right",
+          pt: "Apenas ao virar à direita",
+          es: "Solo al girar a la derecha"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: stay in your lane; choose it before entering",
+          pt: "Não: permaneça na sua faixa; escolha-a antes de entrar",
+          es: "No: permanezca en su carril; elíjalo antes de entrar"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Changing lanes inside a roundabout is dangerous. Pick the correct lane on approach and keep it until you exit.",
+      pt: "Mudar de faixa dentro da rotatória é perigoso. Escolha a faixa correta na aproximação e mantenha-a até sair.",
+      es: "Cambiar de carril dentro de la rotonda es peligroso. Elija el carril correcto al acercarse y manténgalo hasta salir."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-05",
+    cat: "Roundabouts",
+    q: {
+      en: "You plan to turn right at a roundabout (taking an exit past halfway). How should you approach?",
+      pt: "Você vai virar à direita em uma rotatória (saída depois da metade). Como deve se aproximar?",
+      es: "Va a girar a la derecha en una rotonda (salida pasada la mitad). ¿Cómo debe acercarse?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "In the right lane, signalling right",
+          pt: "Pela faixa da direita, sinalizando à direita",
+          es: "Por el carril derecho, señalizando a la derecha"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "In the left lane, signalling left",
+          pt: "Pela faixa da esquerda, sinalizando à esquerda",
+          es: "Por el carril izquierdo, señalizando a la izquierda"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "In any lane, without signalling",
+          pt: "Por qualquer faixa, sem sinalizar",
+          es: "Por cualquier carril, sin señalizar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "For a right turn, approach in the right lane (unless markings say otherwise) and signal right. Then signal left as you pass the exit before yours.",
+      pt: "Para virar à direita, aproxime-se pela faixa da direita (salvo marcação em contrário) e sinalize à direita. Depois, sinalize à esquerda ao passar pela saída anterior à sua.",
+      es: "Para girar a la derecha, acérquese por el carril derecho (salvo indicación contraria) y señalice a la derecha. Luego señalice a la izquierda al pasar la salida anterior a la suya."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-06",
+    cat: "Roundabouts",
+    q: {
+      en: "A vehicle is already circulating in the roundabout as you arrive. What should you do?",
+      pt: "Um veículo já está circulando na rotatória quando você chega. O que fazer?",
+      es: "Un vehículo ya circula por la rotonda cuando usted llega. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Enter quickly before it reaches you",
+          pt: "Entrar rapidamente antes que ele chegue",
+          es: "Entrar rápido antes de que llegue"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Slow down, give way and enter when there is a safe gap",
+          pt: "Reduzir, dar preferência e entrar quando houver espaço seguro",
+          es: "Reducir, ceder el paso y entrar cuando haya espacio seguro"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sound your horn to claim priority",
+          pt: "Buzinar para garantir a preferência",
+          es: "Tocar el claxon para reclamar prioridad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Traffic already in the roundabout has priority. Slow on approach, judge the gap and enter when it is safe.",
+      pt: "O tráfego que já está na rotatória tem prioridade. Reduza na aproximação, avalie o espaço e entre quando for seguro.",
+      es: "El tráfico que ya está en la rotonda tiene prioridad. Reduzca al acercarse, evalúe el espacio y entre cuando sea seguro."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-07",
+    cat: "Roundabouts",
+    q: {
+      en: "Must you always come to a complete stop before entering a roundabout?",
+      pt: "É obrigatório parar completamente antes de entrar em uma rotatória?",
+      es: "¿Es obligatorio detenerse por completo antes de entrar en una rotonda?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No: slow down, give way, and enter without stopping if it is clear",
+          pt: "Não: reduza, dê preferência e entre sem parar se estiver livre",
+          es: "No: reduzca, ceda el paso y entre sin detenerse si está despejado"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, a full stop is always required",
+          pt: "Sim, a parada total é sempre obrigatória",
+          es: "Sí, siempre se exige la detención total"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only motorcycles may enter without stopping",
+          pt: "Apenas motos podem entrar sem parar",
+          es: "Solo las motos pueden entrar sin detenerse"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A roundabout works like a give way, not a STOP: stopping unnecessarily when it is clear disrupts the flow. Be ready to stop if needed.",
+      pt: "A rotatória funciona como 'dê a preferência', não como STOP: parar sem necessidade quando está livre atrapalha o fluxo. Esteja pronto para parar se for preciso.",
+      es: "La rotonda funciona como un ceda el paso, no como un STOP: detenerse sin necesidad cuando está despejado interrumpe el flujo. Esté listo para detenerse si hace falta."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "ROUND-08",
+    cat: "Roundabouts",
+    q: {
+      en: "Who needs extra care from drivers at roundabouts?",
+      pt: "Quem exige atenção extra dos motoristas nas rotatórias?",
+      es: "¿Quiénes requieren atención extra de los conductores en las rotondas?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only heavy vehicles",
+          pt: "Apenas veículos pesados",
+          es: "Solo los vehículos pesados"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Nobody: roundabouts remove all conflicts",
+          pt: "Ninguém: rotatórias eliminam todos os conflitos",
+          es: "Nadie: las rotondas eliminan todos los conflictos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cyclists and pedestrians near the roundabout",
+          pt: "Ciclistas e pedestres próximos à rotatória",
+          es: "Ciclistas y peatones cerca de la rotonda"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Cyclists may take a different position in the lane and pedestrians cross near entries and exits. Scan for them on approach and when leaving.",
+      pt: "Ciclistas podem ocupar posições diferentes na faixa e pedestres cruzam perto das entradas e saídas. Observe-os na aproximação e ao sair.",
+      es: "Los ciclistas pueden ocupar otra posición en el carril y los peatones cruzan cerca de las entradas y salidas. Obsérvelos al acercarse y al salir."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-01",
+    cat: "Lane Changing",
+    q: {
+      en: "When you change lanes, who must give way?",
+      pt: "Ao mudar de faixa, quem deve dar preferência?",
+      es: "Al cambiar de carril, ¿quién debe ceder el paso?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "You: to vehicles already travelling in the lane you are moving into",
+          pt: "Você: aos veículos que já circulam na faixa para onde vai",
+          es: "Usted: a los vehículos que ya circulan por el carril al que se mueve"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Vehicles in that lane must let you in",
+          pt: "Os veículos daquela faixa devem abrir espaço",
+          es: "Los vehículos de ese carril deben dejarlo entrar"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Whoever is travelling faster",
+          pt: "Quem estiver mais rápido",
+          es: "El que vaya más rápido"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The driver changing lanes must give way to traffic already in the target lane. Signalling shows intention: it does not give you right of way.",
+      pt: "Quem muda de faixa deve dar preferência ao tráfego que já está na faixa de destino. A seta mostra intenção: não dá direito de passagem.",
+      es: "Quien cambia de carril debe ceder el paso al tráfico que ya está en el carril de destino. El intermitente muestra intención: no otorga prioridad."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-02",
+    cat: "Lane Changing",
+    q: {
+      en: "Why is a head check (looking over your shoulder) necessary before changing lanes?",
+      pt: "Por que a verificação de ombro (olhar por cima do ombro) é necessária antes de mudar de faixa?",
+      es: "¿Por qué es necesario mirar por encima del hombro antes de cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It replaces the mirrors",
+          pt: "Ela substitui os espelhos",
+          es: "Reemplaza a los espejos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Mirrors do not cover the blind spots beside your car",
+          pt: "Os espelhos não cobrem os pontos cegos ao lado do carro",
+          es: "Los espejos no cubren los puntos ciegos al lado del auto"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It is only needed at night",
+          pt: "Só é necessária à noite",
+          es: "Solo es necesaria de noche"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A vehicle can sit beside and slightly behind you, invisible in the mirrors. The head check is the only way to see the blind spot before moving.",
+      pt: "Um veículo pode estar ao lado e um pouco atrás de você, invisível nos espelhos. A verificação de ombro é a única forma de ver o ponto cego antes de mover.",
+      es: "Un vehículo puede estar al lado y un poco detrás, invisible en los espejos. Mirar por encima del hombro es la única forma de ver el punto ciego antes de moverse."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-03",
+    cat: "Lane Changing",
+    q: {
+      en: "When should you signal before a lane change?",
+      pt: "Quando você deve sinalizar antes de mudar de faixa?",
+      es: "¿Cuándo debe señalizar antes de cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "At the same moment you start moving",
+          pt: "No mesmo instante em que começa a mover",
+          es: "En el mismo momento en que empieza a moverse"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only in heavy traffic",
+          pt: "Apenas no trânsito pesado",
+          es: "Solo con tráfico intenso"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Early: giving others time to react before you move",
+          pt: "Com antecedência: dando tempo para os outros reagirem antes de você mover",
+          es: "Con anticipación: dando tiempo a los demás para reaccionar antes de moverse"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Signal early, then check again and move only when safe. Signalling and moving at the same time gives other drivers no time to respond.",
+      pt: "Sinalize cedo, verifique de novo e só mova quando for seguro. Sinalizar e mover ao mesmo tempo não dá tempo para os outros reagirem.",
+      es: "Señalice con tiempo, verifique de nuevo y muévase solo cuando sea seguro. Señalizar y moverse a la vez no da tiempo a los demás para responder."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-04",
+    cat: "Lane Changing",
+    q: {
+      en: "You want to change lanes but a continuous line separates the lanes. What should you do?",
+      pt: "Você quer mudar de faixa, mas há uma linha contínua entre as faixas. O que fazer?",
+      es: "Quiere cambiar de carril, pero hay una línea continua entre los carriles. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Cross it carefully if no one is close",
+          pt: "Cruzar com cuidado se não houver ninguém perto",
+          es: "Cruzarla con cuidado si no hay nadie cerca"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Wait until the marking becomes broken and it is safe",
+          pt: "Esperar a marcação virar tracejada e a mudança ser segura",
+          es: "Esperar a que la línea sea discontinua y sea seguro"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Change quickly to spend less time over the line",
+          pt: "Mudar rápido para passar menos tempo sobre a linha",
+          es: "Cambiar rápido para pasar menos tiempo sobre la línea"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A continuous lane line means you must not change lanes across it. Wait for a broken line: then mirrors, head check, signal and move when safe.",
+      pt: "Linha contínua entre faixas significa que você não pode cruzá-la. Espere a linha tracejada: então espelhos, ponto cego, seta e mova quando seguro.",
+      es: "Una línea continua entre carriles significa que no debe cruzarla. Espere la línea discontinua: luego espejos, punto ciego, intermitente y muévase cuando sea seguro."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-05",
+    cat: "Lane Changing",
+    q: {
+      en: "What is the risk of sudden lane changes in congested traffic?",
+      pt: "Qual é o risco de mudanças bruscas de faixa no trânsito congestionado?",
+      es: "¿Cuál es el riesgo de los cambios bruscos de carril en tráfico congestionado?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Higher risk of side-impact collisions",
+          pt: "Maior risco de colisões laterais",
+          es: "Mayor riesgo de choques laterales"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "None: everyone is driving slowly",
+          pt: "Nenhum: todos estão devagar",
+          es: "Ninguno: todos van despacio"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only the risk of a fine",
+          pt: "Apenas o risco de multa",
+          es: "Solo el riesgo de una multa"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In congestion, gaps are small and drivers are close together. A sudden lane change leaves no time or space to avoid a side impact.",
+      pt: "No congestionamento, os espaços são pequenos e os veículos estão próximos. Uma mudança brusca não deixa tempo nem espaço para evitar uma colisão lateral.",
+      es: "En congestión, los espacios son pequeños y los vehículos van muy juntos. Un cambio brusco no deja tiempo ni espacio para evitar un impacto lateral."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-06",
+    cat: "Lane Changing",
+    q: {
+      en: "You have signalled to change lanes, but the gap is not safe. What should you do?",
+      pt: "Você já sinalizou para mudar de faixa, mas o espaço não é seguro. O que fazer?",
+      es: "Ya señalizó para cambiar de carril, pero el espacio no es seguro. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Move anyway: you signalled first",
+          pt: "Mudar mesmo assim: você sinalizou primeiro",
+          es: "Moverse igual: usted señalizó primero"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Force your way in slowly",
+          pt: "Forçar a entrada devagar",
+          es: "Forzar la entrada despacio"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Keep waiting until there is a safe gap",
+          pt: "Continuar esperando até haver um espaço seguro",
+          es: "Seguir esperando hasta que haya un espacio seguro"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Move only when there is a gap that does not force others to brake. The indicator announces your intention; it never creates the gap.",
+      pt: "Só mude quando houver um espaço que não obrigue os outros a frear. A seta anuncia a intenção; ela nunca cria o espaço.",
+      es: "Muévase solo cuando haya un espacio que no obligue a otros a frenar. El intermitente anuncia su intención; nunca crea el espacio."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-07",
+    cat: "Lane Changing",
+    q: {
+      en: "Where are lane changes often prohibited?",
+      pt: "Onde as mudanças de faixa costumam ser proibidas?",
+      es: "¿Dónde suelen estar prohibidos los cambios de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "On all multi-lane roads",
+          pt: "Em todas as vias de várias faixas",
+          es: "En todas las vías de varios carriles"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Near intersections and wherever the lane line is continuous",
+          pt: "Perto de cruzamentos e onde a linha da faixa é contínua",
+          es: "Cerca de intersecciones y donde la línea del carril es continua"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only inside tunnels",
+          pt: "Apenas dentro de túneis",
+          es: "Solo dentro de túneles"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Lane lines often become continuous approaching intersections because changing lanes there is dangerous. Plan your lane early.",
+      pt: "As linhas costumam virar contínuas perto de cruzamentos porque mudar de faixa ali é perigoso. Planeje sua faixa com antecedência.",
+      es: "Las líneas suelen volverse continuas cerca de las intersecciones porque cambiar de carril allí es peligroso. Planifique su carril con anticipación."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LANE-08",
+    cat: "Lane Changing",
+    q: {
+      en: "You check your blind spot and see a vehicle there. When may you change lanes?",
+      pt: "Você verifica o ponto cego e vê um veículo ali. Quando pode mudar de faixa?",
+      es: "Verifica el punto ciego y ve un vehículo allí. ¿Cuándo puede cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "After it has passed and the gap is safe",
+          pt: "Depois que ele passar e o espaço for seguro",
+          es: "Después de que pase y el espacio sea seguro"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Immediately, because you signalled",
+          pt: "Imediatamente, porque você sinalizou",
+          es: "De inmediato, porque señalizó"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up and move in front of it",
+          pt: "Acelerar e entrar na frente dele",
+          es: "Acelerar y meterse delante de él"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Wait for the vehicle to clear your blind spot, re-check, then move. Never assume the other driver will make room for you.",
+      pt: "Espere o veículo sair do seu ponto cego, verifique de novo e então mude. Nunca presuma que o outro motorista abrirá espaço.",
+      es: "Espere a que el vehículo salga de su punto ciego, verifique de nuevo y luego muévase. Nunca suponga que el otro conductor le hará espacio."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-01",
+    cat: "Weather Conditions",
+    q: {
+      en: "How should your following distance change on a wet road?",
+      pt: "Como a distância de seguimento deve mudar em pista molhada?",
+      es: "¿Cómo debe cambiar la distancia de seguimiento en una vía mojada?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Keep the same gap as in dry weather",
+          pt: "Manter a mesma distância do tempo seco",
+          es: "Mantener la misma distancia que en seco"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Reduce it to see the vehicle ahead better",
+          pt: "Reduzir para ver melhor o veículo da frente",
+          es: "Reducirla para ver mejor el vehículo de adelante"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Increase it beyond the dry-weather 3 seconds",
+          pt: "Aumentar para mais que os 3 segundos do tempo seco",
+          es: "Aumentarla a más de los 3 segundos del tiempo seco"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Wet roads reduce grip and increase braking distance. Widen the gap to 4 seconds or more so you have time to stop.",
+      pt: "Pista molhada reduz a aderência e aumenta a distância de frenagem. Aumente a distância para 4 segundos ou mais para ter tempo de parar.",
+      es: "La vía mojada reduce el agarre y aumenta la distancia de frenado. Amplíe la distancia a 4 segundos o más para tener tiempo de detenerse."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-02",
+    cat: "Weather Conditions",
+    q: {
+      en: "Your car starts to aquaplane on a wet road. What should you do?",
+      pt: "Seu carro começa a aquaplanar na pista molhada. O que fazer?",
+      es: "Su auto empieza a hacer aquaplaning en una vía mojada. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Brake hard immediately",
+          pt: "Frear forte imediatamente",
+          es: "Frenar fuerte de inmediato"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Ease off the accelerator smoothly and avoid harsh braking",
+          pt: "Soltar o acelerador suavemente e evitar freadas bruscas",
+          es: "Soltar el acelerador con suavidad y evitar frenadas bruscas"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Turn the steering wheel sharply to regain grip",
+          pt: "Girar o volante bruscamente para recuperar aderência",
+          es: "Girar el volante bruscamente para recuperar agarre"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In aquaplaning the tyres lose contact with the road. Ease off the accelerator, keep the steering steady and let the tyres regain grip: sudden braking or steering makes it worse.",
+      pt: "Na aquaplanagem os pneus perdem contato com a pista. Solte o acelerador, mantenha a direção firme e deixe os pneus recuperarem a aderência: frear ou esterçar bruscamente piora.",
+      es: "En el aquaplaning los neumáticos pierden contacto con la vía. Suelte el acelerador, mantenga el volante firme y deje que recuperen agarre: frenar o girar bruscamente lo empeora."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-03",
+    cat: "Weather Conditions",
+    q: {
+      en: "What should you do when driving in dense fog?",
+      pt: "O que fazer ao dirigir em neblina densa?",
+      es: "¿Qué debe hacer al conducir con niebla densa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down and use appropriate lights",
+          pt: "Reduzir a velocidade e usar as luzes adequadas",
+          es: "Reducir la velocidad y usar las luces adecuadas"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Use high beam for maximum light",
+          pt: "Usar luz alta para iluminar mais",
+          es: "Usar luces altas para iluminar más"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up to get out of the fog sooner",
+          pt: "Acelerar para sair logo da neblina",
+          es: "Acelerar para salir antes de la niebla"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In fog, slow down and use low beam: high beam reflects off the fog and reduces your vision even more.",
+      pt: "Na neblina, reduza e use o farol baixo: a luz alta reflete na neblina e reduz ainda mais a visão.",
+      es: "Con niebla, reduzca y use luces bajas: las altas se reflejan en la niebla y reducen aún más la visión."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-04",
+    cat: "Weather Conditions",
+    q: {
+      en: "Heavy rain starts while you are on the freeway. What should you do?",
+      pt: "Começa a chover forte enquanto você está na rodovia. O que fazer?",
+      es: "Empieza a llover fuerte mientras va por la autopista. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Maintain your speed to keep traffic flowing",
+          pt: "Manter a velocidade para não atrapalhar o fluxo",
+          es: "Mantener la velocidad para no frenar el tráfico"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Turn on hazard lights and continue at the limit",
+          pt: "Ligar o pisca-alerta e seguir no limite",
+          es: "Encender las balizas y seguir al límite"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Slow down, widen the gap and use low beam",
+          pt: "Reduzir, aumentar a distância e ligar o farol baixo",
+          es: "Reducir, ampliar la distancia y encender luces bajas"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Heavy rain reduces visibility and grip. Slow down, increase your following distance, use low beam and avoid sudden steering or braking.",
+      pt: "Chuva forte reduz visibilidade e aderência. Reduza, aumente a distância de seguimento, use farol baixo e evite manobras ou freadas bruscas.",
+      es: "La lluvia fuerte reduce la visibilidad y el agarre. Reduzca, aumente la distancia de seguimiento, use luces bajas y evite maniobras o frenadas bruscas."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-05",
+    cat: "Weather Conditions",
+    q: {
+      en: "Why does a wet road increase your stopping distance?",
+      pt: "Por que a pista molhada aumenta a distância de parada?",
+      es: "¿Por qué la vía mojada aumenta la distancia de detención?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It does not: stopping distance stays the same",
+          pt: "Não aumenta: a distância é a mesma",
+          es: "No la aumenta: la distancia es la misma"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The tyres have less grip on the wet surface",
+          pt: "Os pneus têm menos aderência no piso molhado",
+          es: "Los neumáticos tienen menos agarre en el piso mojado"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Brakes stop working completely in the rain",
+          pt: "Os freios param de funcionar na chuva",
+          es: "Los frenos dejan de funcionar con lluvia"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Water between the tyre and the road reduces grip, so the car takes longer to stop. That is why you slow down and widen the gap in rain.",
+      pt: "A água entre o pneu e a pista reduz a aderência, então o carro demora mais para parar. Por isso você reduz e aumenta a distância na chuva.",
+      es: "El agua entre el neumático y la vía reduce el agarre, así que el auto tarda más en detenerse. Por eso debe reducir y ampliar la distancia con lluvia."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-06",
+    cat: "Weather Conditions",
+    q: {
+      en: "Before driving in bad weather, what should you check?",
+      pt: "Antes de dirigir com mau tempo, o que verificar?",
+      es: "Antes de conducir con mal tiempo, ¿qué debe revisar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "That the windscreen is clean and the wipers work",
+          pt: "Se o para-brisa está limpo e os limpadores funcionam",
+          es: "Que el parabrisas esté limpio y los limpiaparabrisas funcionen"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only the fuel level",
+          pt: "Apenas o nível de combustível",
+          es: "Solo el nivel de combustible"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Nothing: modern cars handle rain automatically",
+          pt: "Nada: carros modernos lidam com a chuva sozinhos",
+          es: "Nada: los autos modernos manejan la lluvia solos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "A clean windscreen and working wipers make a big difference to visibility in rain. Check them before you drive, not during the storm.",
+      pt: "Para-brisa limpo e limpadores funcionando fazem grande diferença na visibilidade sob chuva. Verifique antes de dirigir, não durante o temporal.",
+      es: "Un parabrisas limpio y limpiaparabrisas en buen estado marcan gran diferencia con lluvia. Revíselos antes de conducir, no durante la tormenta."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-07",
+    cat: "Weather Conditions",
+    q: {
+      en: "Visibility becomes extremely poor in heavy rain. What is the safest option?",
+      pt: "A visibilidade fica extremamente ruim em chuva forte. Qual é a opção mais segura?",
+      es: "La visibilidad se vuelve extremadamente mala con lluvia intensa. ¿Cuál es la opción más segura?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Follow the tail-lights of the car ahead closely",
+          pt: "Seguir de perto as lanternas do carro da frente",
+          es: "Seguir de cerca las luces traseras del auto de adelante"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pull over safely and wait for conditions to improve",
+          pt: "Parar em local seguro e esperar as condições melhorarem",
+          es: "Detenerse en un lugar seguro y esperar a que mejoren las condiciones"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Speed up to reach your destination sooner",
+          pt: "Acelerar para chegar logo ao destino",
+          es: "Acelerar para llegar antes al destino"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "If you cannot see far enough to drive safely, stop somewhere safe and wait. Tailgating the car ahead just means you crash where they crash.",
+      pt: "Se você não enxerga o suficiente para dirigir com segurança, pare em local seguro e espere. Colar no carro da frente só significa bater onde ele bater.",
+      es: "Si no ve lo suficiente para conducir con seguridad, deténgase en un lugar seguro y espere. Pegarse al auto de adelante solo significa chocar donde él choque."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "WEA-08",
+    cat: "Weather Conditions",
+    q: {
+      en: "Is the posted speed limit always a safe speed in the rain?",
+      pt: "O limite de velocidade da placa é sempre seguro na chuva?",
+      es: "¿El límite de velocidad señalizado siempre es seguro con lluvia?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes: limits are set for all weather",
+          pt: "Sim: os limites valem para qualquer clima",
+          es: "Sí: los límites sirven para cualquier clima"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if your tyres are new",
+          pt: "Sim, se os pneus forem novos",
+          es: "Sí, si los neumáticos son nuevos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: the limit is a maximum for ideal conditions; slow down in rain",
+          pt: "Não: o limite é o máximo para condições ideais; reduza na chuva",
+          es: "No: el límite es el máximo para condiciones ideales; reduzca con lluvia"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The speed limit is the legal maximum in ideal conditions, not a target. In rain, fog or heavy traffic, a safe speed is often below the limit.",
+      pt: "O limite é o máximo legal em condições ideais, não uma meta. Na chuva, neblina ou trânsito pesado, a velocidade segura costuma ficar abaixo do limite.",
+      es: "El límite es el máximo legal en condiciones ideales, no un objetivo. Con lluvia, niebla o tráfico intenso, la velocidad segura suele estar por debajo del límite."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-01",
+    cat: "Seatbelts",
+    q: {
+      en: "How should a seatbelt be worn correctly?",
+      pt: "Como o cinto de segurança deve ser usado corretamente?",
+      es: "¿Cómo debe usarse correctamente el cinturón de seguridad?"
+    },
+    sign: "/icons/signs/seatbelt.svg",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Under the arm, for comfort",
+          pt: "Por baixo do braço, para maior conforto",
+          es: "Debajo del brazo, para mayor comodidad"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Across the shoulder and the pelvis",
+          pt: "Cruzando o ombro e a pelve",
+          es: "Cruzando el hombro y la pelvis"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Behind the back on short trips",
+          pt: "Atrás das costas em trajetos curtos",
+          es: "Detrás de la espalda en trayectos cortos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The belt only protects when it crosses the strong parts of the body: shoulder and pelvis. Under the arm or behind the back it can cause serious injury in a crash.",
+      pt: "O cinto só protege quando cruza as partes fortes do corpo: ombro e pelve. Sob o braço ou atrás das costas, pode causar lesões graves em uma colisão.",
+      es: "El cinturón solo protege cuando cruza las partes fuertes del cuerpo: hombro y pelvis. Bajo el brazo o detrás de la espalda puede causar lesiones graves en un choque."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-02",
+    cat: "Seatbelts",
+    q: {
+      en: "Do airbags replace the need to wear a seatbelt?",
+      pt: "Os airbags substituem o uso do cinto de segurança?",
+      es: "¿Los airbags reemplazan el uso del cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, in modern cars",
+          pt: "Sim, em carros modernos",
+          es: "Sí, en autos modernos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, for front-seat occupants",
+          pt: "Sim, para quem vai nos bancos da frente",
+          es: "Sí, para los ocupantes de los asientos delanteros"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: airbags and seatbelts work together",
+          pt: "Não: airbags e cintos funcionam em conjunto",
+          es: "No: los airbags y los cinturones funcionan en conjunto"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Airbags are designed to work with a belted occupant. Without the seatbelt, the airbag alone cannot hold you in position during a crash.",
+      pt: "Os airbags são projetados para funcionar com o ocupante usando cinto. Sem o cinto, o airbag sozinho não segura você na posição durante uma colisão.",
+      es: "Los airbags están diseñados para funcionar con el ocupante usando cinturón. Sin el cinturón, el airbag por sí solo no lo mantiene en posición durante un choque."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-03",
+    cat: "Seatbelts",
+    q: {
+      en: "Why are loose items inside the cabin dangerous?",
+      pt: "Por que objetos soltos dentro do carro são perigosos?",
+      es: "¿Por qué son peligrosos los objetos sueltos dentro del auto?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "They can become projectiles in hard braking or a crash",
+          pt: "Podem virar projéteis em uma freada forte ou colisão",
+          es: "Pueden convertirse en proyectiles en una frenada fuerte o un choque"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "They increase fuel consumption noticeably",
+          pt: "Aumentam muito o consumo de combustível",
+          es: "Aumentan mucho el consumo de combustible"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "They are only a cleaning problem",
+          pt: "São apenas um problema de limpeza",
+          es: "Solo son un problema de limpieza"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "In a sudden stop, anything loose keeps moving at the car's speed. Even light objects can injure occupants: store items securely.",
+      pt: "Em uma parada brusca, tudo que está solto continua se movendo na velocidade do carro. Até objetos leves podem ferir os ocupantes: guarde tudo de forma segura.",
+      es: "En una parada brusca, todo lo suelto sigue moviéndose a la velocidad del auto. Incluso objetos livianos pueden herir a los ocupantes: guarde todo de forma segura."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-04",
+    cat: "Seatbelts",
+    q: {
+      en: "Can a child travel sitting on an adult's lap?",
+      pt: "Uma criança pode viajar no colo de um adulto?",
+      es: "¿Puede un niño viajar en el regazo de un adulto?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if the adult is wearing a seatbelt",
+          pt: "Sim, se o adulto estiver de cinto",
+          es: "Sí, si el adulto usa cinturón"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, on short trips",
+          pt: "Sim, em trajetos curtos",
+          es: "Sí, en trayectos cortos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: children need an approved restraint for their age and size",
+          pt: "Não: crianças precisam de retenção aprovada para sua idade e tamanho",
+          es: "No: los niños necesitan un sistema de retención aprobado para su edad y talla"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In a crash, an adult cannot hold a child: the forces are far too great. Children must use an approved child restraint suitable for their age and size.",
+      pt: "Em uma colisão, um adulto não consegue segurar uma criança: as forças são grandes demais. Crianças devem usar cadeirinha aprovada, adequada à idade e ao tamanho.",
+      es: "En un choque, un adulto no puede sujetar a un niño: las fuerzas son demasiado grandes. Los niños deben usar una sillita aprobada, adecuada a su edad y talla."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-05",
+    cat: "Seatbelts",
+    q: {
+      en: "What should the driver check before driving off with passengers?",
+      pt: "O que o motorista deve verificar antes de sair com passageiros?",
+      es: "¿Qué debe verificar el conductor antes de salir con pasajeros?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "That everyone is buckled up and child restraints are secure",
+          pt: "Se todos estão com o cinto afivelado e as cadeirinhas firmes",
+          es: "Que todos tengan el cinturón abrochado y las sillitas estén firmes"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only that front-seat passengers have belts on",
+          pt: "Apenas se os passageiros da frente estão de cinto",
+          es: "Solo que los pasajeros delanteros usen cinturón"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Nothing: each passenger is responsible for themselves",
+          pt: "Nada: cada passageiro é responsável por si",
+          es: "Nada: cada pasajero es responsable de sí mismo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Check every occupant before moving off. The driver is legally responsible for ensuring passengers under 16 are properly restrained.",
+      pt: "Verifique todos os ocupantes antes de sair. O motorista é legalmente responsável por garantir que passageiros menores de 16 anos estejam devidamente presos.",
+      es: "Verifique a todos los ocupantes antes de salir. El conductor es legalmente responsable de que los pasajeros menores de 16 años vayan bien sujetos."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-06",
+    cat: "Seatbelts",
+    q: {
+      en: "Is it acceptable to wear only the lap part of the seatbelt?",
+      pt: "É aceitável usar apenas a parte abdominal do cinto?",
+      es: "¿Es aceptable usar solo la parte abdominal del cinturón?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, if the shoulder part feels uncomfortable",
+          pt: "Sim, se a parte do ombro incomodar",
+          es: "Sí, si la parte del hombro resulta incómoda"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "No: the belt must cross both the shoulder and the pelvis",
+          pt: "Não: o cinto deve cruzar o ombro e a pelve",
+          es: "No: el cinturón debe cruzar el hombro y la pelvis"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, for rear-seat passengers",
+          pt: "Sim, para passageiros do banco traseiro",
+          es: "Sí, para los pasajeros de atrás"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Wearing only the lap section leaves your upper body unrestrained in a crash. Wear the full belt properly adjusted on every trip.",
+      pt: "Usar só a parte abdominal deixa o tronco sem proteção em uma colisão. Use o cinto completo, bem ajustado, em todas as viagens.",
+      es: "Usar solo la banda abdominal deja el torso sin sujeción en un choque. Use el cinturón completo, bien ajustado, en todos los viajes."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-07",
+    cat: "Seatbelts",
+    q: {
+      en: "What determines the correct child restraint for a child?",
+      pt: "O que determina a cadeirinha correta para uma criança?",
+      es: "¿Qué determina la sillita correcta para un niño?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Whether the trip is short or long",
+          pt: "Se a viagem é curta ou longa",
+          es: "Si el viaje es corto o largo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The child's preference",
+          pt: "A preferência da criança",
+          es: "La preferencia del niño"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "The child's age and size",
+          pt: "A idade e o tamanho da criança",
+          es: "La edad y la talla del niño"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Child restraints must suit the child's age and size. An adult seatbelt does not protect a small child properly.",
+      pt: "A cadeirinha deve ser adequada à idade e ao tamanho da criança. O cinto de adulto não protege corretamente uma criança pequena.",
+      es: "La sillita debe ser adecuada a la edad y la talla del niño. El cinturón de adulto no protege correctamente a un niño pequeño."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SEAT-08",
+    cat: "Seatbelts",
+    q: {
+      en: "When must seatbelts be worn?",
+      pt: "Quando o cinto de segurança deve ser usado?",
+      es: "¿Cuándo debe usarse el cinturón de seguridad?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only on freeways and highways",
+          pt: "Apenas em rodovias",
+          es: "Solo en autopistas y carreteras"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "On every trip, no matter how short",
+          pt: "Em toda viagem, por mais curta que seja",
+          es: "En todos los viajes, por cortos que sean"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only when driving over 60 km/h",
+          pt: "Apenas acima de 60 km/h",
+          es: "Solo al conducir a más de 60 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Belts are required on every trip: most crashes happen close to home, at everyday speeds.",
+      pt: "O cinto é obrigatório em toda viagem: a maioria dos acidentes acontece perto de casa, em velocidades comuns.",
+      es: "El cinturón es obligatorio en todos los viajes: la mayoría de los choques ocurren cerca de casa, a velocidades comunes."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-01",
+    cat: "Demerit Points",
+    q: {
+      en: "What can happen if you accumulate too many demerit points in WA?",
+      pt: "O que pode acontecer se você acumular pontos de demérito demais em WA?",
+      es: "¿Qué puede pasar si acumula demasiados puntos de demérito en WA?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Your licence can be suspended",
+          pt: "Sua licença pode ser suspensa",
+          es: "Su licencia puede ser suspendida"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Nothing: points are only a record",
+          pt: "Nada: os pontos são só um registro",
+          es: "Nada: los puntos son solo un registro"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "You only pay a small administrative fee",
+          pt: "Você só paga uma pequena taxa administrativa",
+          es: "Solo paga una pequeña tasa administrativa"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Accumulating too many demerit points can lead to licence suspension or other actions. Points can also affect insurance.",
+      pt: "Acumular pontos demais pode levar à suspensão da licença ou outras medidas. Os pontos também podem afetar o seguro.",
+      es: "Acumular demasiados puntos puede llevar a la suspensión de la licencia u otras medidas. Los puntos también pueden afectar el seguro."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-02",
+    cat: "Demerit Points",
+    q: {
+      en: "Who do demerit points attach to?",
+      pt: "A quem os pontos de demérito são atribuídos?",
+      es: "¿A quién se asignan los puntos de demérito?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The vehicle involved in the offence",
+          pt: "Ao veículo envolvido na infração",
+          es: "Al vehículo involucrado en la infracción"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The licence holder responsible for the offence",
+          pt: "Ao titular da licença responsável pela infração",
+          es: "Al titular de la licencia responsable de la infracción"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Whoever pays the fine",
+          pt: "A quem pagar a multa",
+          es: "A quien pague la multa"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Points attach to the licence holder, not the car. They can affect your insurance and your permission to drive.",
+      pt: "Os pontos são do titular da licença, não do carro. Podem afetar o seguro e a permissão para dirigir.",
+      es: "Los puntos corresponden al titular de la licencia, no al auto. Pueden afectar el seguro y el permiso para conducir."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-03",
+    cat: "Demerit Points",
+    q: {
+      en: "Do novice drivers follow the same demerit point rules as full licence holders?",
+      pt: "Motoristas novatos seguem as mesmas regras de pontos que habilitados plenos?",
+      es: "¿Los conductores novatos siguen las mismas reglas de puntos que los titulares de licencia completa?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes, the rules are identical",
+          pt: "Sim, as regras são idênticas",
+          es: "Sí, las reglas son idénticas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Novices cannot receive points",
+          pt: "Novatos não recebem pontos",
+          es: "Los novatos no reciben puntos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: novice drivers may face different, stricter thresholds",
+          pt: "Não: novatos podem ter limites diferentes e mais rígidos",
+          es: "No: los novatos pueden tener umbrales distintos y más estrictos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Novice and professional drivers may have different thresholds or rules. Check official WA sources for the current limits.",
+      pt: "Novatos e motoristas profissionais podem ter limites ou regras diferentes. Confira as fontes oficiais de WA para os valores atuais.",
+      es: "Los novatos y los conductores profesionales pueden tener umbrales o reglas diferentes. Consulte las fuentes oficiales de WA para los límites vigentes."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-04",
+    cat: "Demerit Points",
+    q: {
+      en: "Where should you check up-to-date demerit point values and suspension rules?",
+      pt: "Onde verificar valores atualizados de pontos e regras de suspensão?",
+      es: "¿Dónde consultar los valores actualizados de puntos y las reglas de suspensión?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Official WA Department of Transport sources",
+          pt: "Fontes oficiais do Departamento de Transportes de WA",
+          es: "Fuentes oficiales del Departamento de Transporte de WA"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Social media groups for drivers",
+          pt: "Grupos de motoristas nas redes sociais",
+          es: "Grupos de conductores en redes sociales"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Another state's transport website",
+          pt: "O site de transporte de outro estado",
+          es: "El sitio de transporte de otro estado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Only official WA sources have current offence and point values. Rules from other states, or old forum posts, may not apply in WA.",
+      pt: "Só as fontes oficiais de WA têm os valores atuais de infrações e pontos. Regras de outros estados, ou posts antigos, podem não valer em WA.",
+      es: "Solo las fuentes oficiales de WA tienen los valores vigentes de infracciones y puntos. Las reglas de otros estados, o publicaciones viejas, pueden no aplicar en WA."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-05",
+    cat: "Demerit Points",
+    q: {
+      en: "Can several 'minor' offences add up to serious consequences?",
+      pt: "Várias infrações 'leves' podem somar consequências sérias?",
+      es: "¿Varias infracciones 'leves' pueden sumar consecuencias graves?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No: minor offences never accumulate",
+          pt: "Não: infrações leves nunca acumulam",
+          es: "No: las infracciones leves nunca se acumulan"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes: points accumulate and can lead to suspension",
+          pt: "Sim: os pontos acumulam e podem levar à suspensão",
+          es: "Sí: los puntos se acumulan y pueden llevar a la suspensión"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only speeding offences count towards the total",
+          pt: "Só infrações de velocidade contam no total",
+          es: "Solo las infracciones de velocidad cuentan para el total"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Demerit points from different offences add up over the accumulation period. Several 'small' fines can still cost you your licence.",
+      pt: "Pontos de infrações diferentes se somam durante o período de acumulação. Várias multas 'pequenas' ainda podem custar sua licença.",
+      es: "Los puntos de distintas infracciones se suman durante el período de acumulación. Varias multas 'pequeñas' aún pueden costarle la licencia."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-06",
+    cat: "Demerit Points",
+    q: {
+      en: "Are demerit point rules identical in every Australian state?",
+      pt: "As regras de pontos são idênticas em todos os estados australianos?",
+      es: "¿Las reglas de puntos son idénticas en todos los estados australianos?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes: they are national and uniform",
+          pt: "Sim: são nacionais e uniformes",
+          es: "Sí: son nacionales y uniformes"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, except for parking fines",
+          pt: "Sim, exceto multas de estacionamento",
+          es: "Sí, excepto las multas de estacionamiento"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: WA has its own rules; do not assume other states' rules apply",
+          pt: "Não: WA tem regras próprias; não assuma que as de outros estados valem",
+          es: "No: WA tiene reglas propias; no asuma que aplican las de otros estados"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A common mistake is confusing other states' rules with WA's. Always check WA-specific sources.",
+      pt: "Um erro comum é confundir regras de outros estados com as de WA. Sempre confira fontes específicas de WA.",
+      es: "Un error común es confundir las reglas de otros estados con las de WA. Consulte siempre fuentes específicas de WA."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-07",
+    cat: "Demerit Points",
+    q: {
+      en: "You receive an infringement notice that carries demerit points. What is the sensible next step?",
+      pt: "Você recebe uma notificação de infração com pontos. Qual é o próximo passo sensato?",
+      es: "Recibe una notificación de infracción con puntos. ¿Cuál es el paso sensato?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Check your current points tally on the official Transport WA site",
+          pt: "Verificar seu saldo de pontos no site oficial do Transporte de WA",
+          es: "Verificar su saldo de puntos en el sitio oficial de Transporte de WA"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Ignore it if it is your first offence",
+          pt: "Ignorar, se for sua primeira infração",
+          es: "Ignorarla si es su primera infracción"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Assume the points expire within a week",
+          pt: "Presumir que os pontos expiram em uma semana",
+          es: "Suponer que los puntos caducan en una semana"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Know where you stand: check your tally and the accumulation period on official WA sources, and adjust your driving before points build up.",
+      pt: "Saiba sua situação: confira o saldo e o período de acumulação nas fontes oficiais de WA e ajuste sua direção antes que os pontos se acumulem.",
+      es: "Conozca su situación: revise su saldo y el período de acumulación en fuentes oficiales de WA y ajuste su conducción antes de que los puntos se acumulen."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "DEM-08",
+    cat: "Demerit Points",
+    q: {
+      en: "What is the best way to avoid demerit points?",
+      pt: "Qual é a melhor forma de evitar pontos de demérito?",
+      es: "¿Cuál es la mejor forma de evitar puntos de demérito?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive only at night when there are fewer patrols",
+          pt: "Dirigir só à noite, quando há menos fiscalização",
+          es: "Conducir solo de noche, cuando hay menos controles"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Follow the road rules: especially speed and alcohol limits",
+          pt: "Seguir as regras de trânsito: especialmente limites de velocidade e álcool",
+          es: "Seguir las reglas de tránsito: especialmente los límites de velocidad y alcohol"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Pay every fine immediately",
+          pt: "Pagar todas as multas imediatamente",
+          es: "Pagar todas las multas de inmediato"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Respecting speed and alcohol limits reduces both your points risk and your crash risk. Paying a fine does not remove the points.",
+      pt: "Respeitar os limites de velocidade e álcool reduz o risco de pontos e de acidentes. Pagar a multa não remove os pontos.",
+      es: "Respetar los límites de velocidad y alcohol reduce el riesgo de puntos y de choques. Pagar la multa no elimina los puntos."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "MOB-03",
+    cat: "Mobile Phones",
+    q: {
+      en: "Does the mobile phone rule still apply while you are stopped at a red light?",
+      pt: "A regra do celular continua valendo parado no sinal vermelho?",
+      es: "¿La regla del móvil sigue aplicando detenido en un semáforo en rojo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No: stopped in traffic does not count as driving",
+          pt: "Não: parado no trânsito não conta como dirigir",
+          es: "No: detenido en el tráfico no cuenta como conducir"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes: it applies even when stationary in traffic",
+          pt: "Sim: vale mesmo parado no trânsito",
+          es: "Sí: aplica incluso detenido en el tráfico"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only during school hours",
+          pt: "Só nos horários escolares",
+          es: "Solo en horario escolar"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Being stopped at lights is still driving. Holding or using the phone at a red light is an offence.",
+      pt: "Estar parado no semáforo ainda é dirigir. Segurar ou usar o celular no vermelho é infração.",
+      es: "Estar detenido en el semáforo sigue siendo conducir. Sostener o usar el móvil en rojo es una infracción."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "MOB-05",
+    cat: "Mobile Phones",
+    q: {
+      en: "How may a full licence holder legally use a phone while driving in WA?",
+      pt: "Como um habilitado pleno pode usar o celular legalmente ao dirigir em WA?",
+      es: "¿Cómo puede un titular de licencia completa usar legalmente el móvil al conducir en WA?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Holding it low, out of sight of police",
+          pt: "Segurando-o baixo, fora da vista da polícia",
+          es: "Sosteniéndolo abajo, fuera de la vista de la policía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Hands-free, with the phone fixed in a mount",
+          pt: "No viva-voz, com o celular fixo em um suporte",
+          es: "Con manos libres y el teléfono fijo en un soporte"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only for calls shorter than two minutes",
+          pt: "Apenas para chamadas de menos de dois minutos",
+          es: "Solo para llamadas de menos de dos minutos"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Full licence holders may use the phone only hands-free (Bluetooth/speaker) and mounted: never held in the hand, not even at a red light.",
+      pt: "Habilitados plenos só podem usar o celular no viva-voz (Bluetooth/alto-falante) e no suporte: nunca na mão, nem no sinal vermelho.",
+      es: "Los titulares de licencia completa solo pueden usar el móvil con manos libres (Bluetooth/altavoz) y montado: nunca en la mano, ni siquiera en un semáforo en rojo."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-01",
+    cat: "Fatigue",
+    q: {
+      en: "What is the only effective remedy for driver fatigue?",
+      pt: "Qual é o único remédio realmente eficaz contra a fadiga ao volante?",
+      es: "¿Cuál es el único remedio realmente eficaz contra la fatiga al volante?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Strong coffee",
+          pt: "Café forte",
+          es: "Café fuerte"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stopping to rest and sleep",
+          pt: "Parar para descansar e dormir",
+          es: "Detenerse a descansar y dormir"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Loud music and open windows",
+          pt: "Música alta e janelas abertas",
+          es: "Música alta y ventanas abiertas"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Only sleep fixes fatigue. Coffee, music and fresh air just mask the symptoms for a short time: the impairment stays.",
+      pt: "Só o sono resolve a fadiga. Café, música e ar fresco apenas mascaram os sintomas por pouco tempo: o comprometimento continua.",
+      es: "Solo el sueño resuelve la fatiga. El café, la música y el aire fresco solo enmascaran los síntomas por poco tiempo: la merma continúa."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-02",
+    cat: "Fatigue",
+    q: {
+      en: "On a long trip, how often should you take a break?",
+      pt: "Em uma viagem longa, com que frequência você deve fazer pausas?",
+      es: "En un viaje largo, ¿con qué frecuencia debe hacer pausas?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Every 5 hours",
+          pt: "A cada 5 horas",
+          es: "Cada 5 horas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only when you feel exhausted",
+          pt: "Só quando estiver exausto",
+          es: "Solo cuando esté exhausto"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "At least every 2 hours, for about 15 minutes",
+          pt: "Pelo menos a cada 2 horas, por cerca de 15 minutos",
+          es: "Al menos cada 2 horas, unos 15 minutos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Take a 15-minute break at least every 2 hours. Fatigue builds up gradually: waiting until you feel exhausted is waiting too long.",
+      pt: "Faça uma pausa de 15 minutos pelo menos a cada 2 horas. A fadiga se acumula aos poucos: esperar até estar exausto é esperar demais.",
+      es: "Haga una pausa de 15 minutos al menos cada 2 horas. La fatiga se acumula poco a poco: esperar a estar exhausto es esperar demasiado."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-03",
+    cat: "Fatigue",
+    q: {
+      en: "Which of these are warning signs of fatigue?",
+      pt: "Quais destes são sinais de alerta de fadiga?",
+      es: "¿Cuáles de estos son señales de alerta de fatiga?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Heavy eyes, yawning and drifting out of your lane",
+          pt: "Olhos pesados, bocejos e sair da faixa sem perceber",
+          es: "Ojos pesados, bostezos y salirse del carril sin darse cuenta"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Feeling hungry",
+          pt: "Sentir fome",
+          es: "Sentir hambre"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Cold hands on the wheel",
+          pt: "Mãos frias no volante",
+          es: "Manos frías en el volante"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Heavy eyes, yawning, drifting lanes and not remembering the last few kilometres all mean you need to stop and rest now.",
+      pt: "Olhos pesados, bocejos, sair da faixa e não lembrar dos últimos quilômetros significam que você precisa parar e descansar agora.",
+      es: "Ojos pesados, bostezos, salirse del carril y no recordar los últimos kilómetros significan que necesita parar y descansar ahora."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-04",
+    cat: "Fatigue",
+    q: {
+      en: "How does fatigue compare with alcohol as a driving risk?",
+      pt: "Como a fadiga se compara ao álcool como risco na direção?",
+      es: "¿Cómo se compara la fatiga con el alcohol como riesgo al conducir?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Fatigue is harmless compared with alcohol",
+          pt: "A fadiga é inofensiva comparada ao álcool",
+          es: "La fatiga es inofensiva comparada con el alcohol"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Fatigue can slow your reaction time as much as alcohol",
+          pt: "A fadiga pode reduzir o tempo de reação tanto quanto o álcool",
+          es: "La fatiga puede reducir el tiempo de reacción tanto como el alcohol"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Fatigue only affects older drivers",
+          pt: "A fadiga só afeta motoristas mais velhos",
+          es: "La fatiga solo afecta a conductores mayores"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Fatigue is a leading cause of fatal crashes in WA. It slows reaction time as much as alcohol, but there is no 'fatigue limit' to warn you.",
+      pt: "A fadiga é uma das principais causas de acidentes fatais em WA. Reduz o tempo de reação tanto quanto o álcool, mas não existe um 'limite de fadiga' para avisar você.",
+      es: "La fatiga es una de las principales causas de choques fatales en WA. Reduce el tiempo de reacción tanto como el alcohol, pero no hay un 'límite de fatiga' que lo avise."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-05",
+    cat: "Fatigue",
+    q: {
+      en: "You start yawning repeatedly on a long drive. What should you do?",
+      pt: "Você começa a bocejar repetidamente em uma viagem longa. O que fazer?",
+      es: "Empieza a bostezar repetidamente en un viaje largo. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Open the window and keep driving",
+          pt: "Abrir a janela e continuar dirigindo",
+          es: "Abrir la ventana y seguir conduciendo"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Drive faster to finish the trip sooner",
+          pt: "Dirigir mais rápido para terminar logo a viagem",
+          es: "Conducir más rápido para terminar antes el viaje"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Pull over safely and rest or nap for about 20 minutes",
+          pt: "Parar em local seguro e descansar ou cochilar uns 20 minutos",
+          es: "Detenerse en un lugar seguro y descansar o dormir unos 20 minutos"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Repeated yawning is a fatigue warning. Leave the road at a safe place, rest, and only continue when you are genuinely alert again.",
+      pt: "Bocejos repetidos são um alerta de fadiga. Saia da via em local seguro, descanse e só continue quando estiver realmente alerta de novo.",
+      es: "Los bostezos repetidos son una alerta de fatiga. Salga de la vía en un lugar seguro, descanse y continúe solo cuando esté realmente alerta."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-06",
+    cat: "Fatigue",
+    q: {
+      en: "Does drinking coffee eliminate driving fatigue?",
+      pt: "Tomar café elimina a fadiga ao dirigir?",
+      es: "¿Tomar café elimina la fatiga al conducir?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "No: it only masks fatigue temporarily",
+          pt: "Não: ele só mascara a fadiga temporariamente",
+          es: "No: solo enmascara la fatiga temporalmente"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes: one strong coffee restores full alertness",
+          pt: "Sim: um café forte devolve a atenção total",
+          es: "Sí: un café fuerte devuelve la atención total"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, if combined with an energy drink",
+          pt: "Sim, se combinado com energético",
+          es: "Sí, si se combina con una bebida energética"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Caffeine can make you feel more awake for a while, but the underlying impairment remains. Only sleep effectively combats fatigue.",
+      pt: "A cafeína pode dar sensação de alerta por um tempo, mas o comprometimento continua. Só o sono combate a fadiga de verdade.",
+      es: "La cafeína puede hacerlo sentir despierto un rato, pero la merma sigue ahí. Solo el sueño combate la fatiga de verdad."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "FAT-07",
+    cat: "Fatigue",
+    q: {
+      en: "What is a micro-sleep?",
+      pt: "O que é um microssono?",
+      es: "¿Qué es un microsueño?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A planned power nap at a rest area",
+          pt: "Um cochilo planejado em área de descanso",
+          es: "Una siesta planificada en un área de descanso"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "A brief, involuntary sleep lasting a few seconds while driving",
+          pt: "Um sono breve e involuntário de alguns segundos enquanto dirige",
+          es: "Un sueño breve e involuntario de unos segundos mientras conduce"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Sleeping less than six hours at night",
+          pt: "Dormir menos de seis horas à noite",
+          es: "Dormir menos de seis horas por la noche"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Micro-sleeps happen without warning when you drive fatigued. Even a few seconds with your eyes closed at speed means travelling a long distance with no control.",
+      pt: "Microssonos acontecem sem aviso quando você dirige cansado. Poucos segundos de olhos fechados em velocidade significam percorrer uma longa distância sem controle algum.",
+      es: "Los microsueños ocurren sin aviso cuando conduce fatigado. Unos pocos segundos con los ojos cerrados a velocidad significan recorrer una larga distancia sin ningún control."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-01",
+    cat: "School Zones",
+    q: {
+      en: "When does the 40 km/h school zone limit apply?",
+      pt: "Quando o limite de 40 km/h da zona escolar se aplica?",
+      es: "¿Cuándo se aplica el límite de 40 km/h de la zona escolar?"
+    },
+    sign: "/icons/signs/speed-limit-40.svg",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "24 hours a day, every day",
+          pt: "24 horas por dia, todos os dias",
+          es: "Las 24 horas, todos los días"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "During the signed times on school days",
+          pt: "Nos horários indicados nas placas, em dias de aula",
+          es: "En los horarios señalizados, en días de clase"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only when children are crossing",
+          pt: "Só quando há crianças atravessando",
+          es: "Solo cuando hay niños cruzando"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "School zones are 40 km/h during the signed school times on school days. Check the local signs: times can vary.",
+      pt: "Zonas escolares são de 40 km/h nos horários escolares indicados, em dias de aula. Confira as placas locais: os horários podem variar.",
+      es: "Las zonas escolares son de 40 km/h en los horarios escolares señalizados, en días de clase. Revise las señales locales: los horarios pueden variar."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-02",
+    cat: "School Zones",
+    q: {
+      en: "A school zone is active but no children are visible. What speed applies?",
+      pt: "A zona escolar está ativa, mas nenhuma criança está visível. Qual velocidade vale?",
+      es: "La zona escolar está activa, pero no se ven niños. ¿Qué velocidad aplica?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "40 km/h: the limit applies regardless of visible children",
+          pt: "40 km/h: o limite vale independentemente de crianças visíveis",
+          es: "40 km/h: el límite aplica aunque no se vean niños"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The normal limit for that road",
+          pt: "O limite normal da via",
+          es: "El límite normal de esa vía"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "45 km/h as a compromise",
+          pt: "45 km/h como meio-termo",
+          es: "45 km/h como término medio"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The 40 km/h limit applies whenever the zone is active, even with no children in sight. A child can appear between parked cars in an instant.",
+      pt: "O limite de 40 km/h vale sempre que a zona está ativa, mesmo sem crianças à vista. Uma criança pode surgir entre carros estacionados num instante.",
+      es: "El límite de 40 km/h aplica siempre que la zona está activa, incluso sin niños a la vista. Un niño puede aparecer entre autos estacionados en un instante."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-03",
+    cat: "School Zones",
+    q: {
+      en: "What indicates that a school zone is currently active?",
+      pt: "O que indica que uma zona escolar está ativa naquele momento?",
+      es: "¿Qué indica que una zona escolar está activa en ese momento?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "A parked school bus",
+          pt: "Um ônibus escolar estacionado",
+          es: "Un autobús escolar estacionado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Any nearby playground",
+          pt: "Qualquer parquinho próximo",
+          es: "Cualquier parque infantil cercano"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Flashing yellow lights, electronic signs or the signed times",
+          pt: "Luzes amarelas piscando, placas eletrônicas ou os horários indicados",
+          es: "Luces amarillas intermitentes, señales electrónicas o los horarios señalizados"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Flashing yellow lights and electronic signs show when the 40 km/h zone is active. Where there are no lights, the signed times apply.",
+      pt: "Luzes amarelas piscando e placas eletrônicas mostram quando a zona de 40 km/h está ativa. Onde não há luzes, valem os horários das placas.",
+      es: "Las luces amarillas intermitentes y las señales electrónicas muestran cuándo la zona de 40 km/h está activa. Donde no hay luces, rigen los horarios señalizados."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-04",
+    cat: "School Zones",
+    q: {
+      en: "What are the typical WA school zone times?",
+      pt: "Quais são os horários típicos das zonas escolares em WA?",
+      es: "¿Cuáles son los horarios típicos de las zonas escolares en WA?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Midday only",
+          pt: "Apenas ao meio-dia",
+          es: "Solo al mediodía"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Approximately 7:30-9:00 am and 2:30-4:00 pm: always check the signs",
+          pt: "Aproximadamente 7h30-9h00 e 14h30-16h00: sempre confira as placas",
+          es: "Aproximadamente 7:30-9:00 y 14:30-16:00: siempre revise las señales"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "All daylight hours",
+          pt: "Todo o período diurno",
+          es: "Todas las horas de luz"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "School zones typically operate around arrival and departure times (approx. 7:30-9:00 am and 2:30-4:00 pm on school days). Local signs are the final word.",
+      pt: "Zonas escolares normalmente operam nos horários de entrada e saída (aprox. 7h30-9h00 e 14h30-16h00 em dias de aula). As placas locais são a palavra final.",
+      es: "Las zonas escolares suelen operar en los horarios de entrada y salida (aprox. 7:30-9:00 y 14:30-16:00 en días de clase). Las señales locales son la palabra final."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-06",
+    cat: "School Zones",
+    q: {
+      en: "You pass a school at 3 pm on a Tuesday and the yellow lights are flashing. What must you do?",
+      pt: "Você passa por uma escola às 15h de uma terça-feira e as luzes amarelas estão piscando. O que deve fazer?",
+      es: "Pasa por una escuela a las 15:00 de un martes y las luces amarillas están intermitentes. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Drive at 50 km/h since classes are ending",
+          pt: "Dirigir a 50 km/h, já que as aulas estão acabando",
+          es: "Conducir a 50 km/h, ya que las clases terminan"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop completely before the zone",
+          pt: "Parar completamente antes da zona",
+          es: "Detenerse por completo antes de la zona"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Drive at 40 km/h through the whole zone",
+          pt: "Dirigir a 40 km/h por toda a zona",
+          es: "Circular a 40 km/h por toda la zona"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "Flashing lights mean the zone is active: 40 km/h through the whole zone, even if no children are crossing.",
+      pt: "Luzes piscando significam zona ativa: 40 km/h por toda a zona, mesmo que nenhuma criança esteja atravessando.",
+      es: "Las luces intermitentes significan zona activa: 40 km/h por toda la zona, aunque ningún niño esté cruzando."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-07",
+    cat: "School Zones",
+    q: {
+      en: "Do school zone limits generally apply on weekends and school holidays?",
+      pt: "Os limites de zona escolar geralmente valem em fins de semana e férias escolares?",
+      es: "¿Los límites de zona escolar suelen aplicar en fines de semana y vacaciones escolares?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes: every day of the year",
+          pt: "Sim: todos os dias do ano",
+          es: "Sí: todos los días del año"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Generally they apply on school days: follow the signs and flashing lights",
+          pt: "Geralmente valem em dias de aula: siga as placas e as luzes",
+          es: "Generalmente aplican en días de clase: siga las señales y las luces"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Only during exam periods",
+          pt: "Apenas em períodos de prova",
+          es: "Solo en épocas de exámenes"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "School zones operate on school days. When in doubt, trust the signage and the flashing lights: they show whether the zone is active.",
+      pt: "Zonas escolares operam em dias de aula. Na dúvida, confie na sinalização e nas luzes piscando: elas mostram se a zona está ativa.",
+      es: "Las zonas escolares operan en días de clase. Ante la duda, confíe en la señalización y en las luces intermitentes: muestran si la zona está activa."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SCH-08",
+    cat: "School Zones",
+    q: {
+      en: "Why do school zones have such a low speed limit?",
+      pt: "Por que as zonas escolares têm um limite de velocidade tão baixo?",
+      es: "¿Por qué las zonas escolares tienen un límite de velocidad tan bajo?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Children near roads are unpredictable: lower speed gives you a real chance to stop",
+          pt: "Crianças perto da via são imprevisíveis: menos velocidade dá chance real de parar",
+          es: "Los niños cerca de la vía son impredecibles: menos velocidad da una posibilidad real de detenerse"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "To reduce traffic noise near classrooms",
+          pt: "Para reduzir o ruído perto das salas de aula",
+          es: "Para reducir el ruido cerca de las aulas"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "To make parents drop children off faster",
+          pt: "Para os pais deixarem as crianças mais rápido",
+          es: "Para que los padres dejen a los niños más rápido"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Children can step out suddenly, without checking traffic. At 40 km/h you have a much better chance of stopping in time than at 50 or 60.",
+      pt: "Crianças podem entrar na via de repente, sem olhar o trânsito. A 40 km/h você tem chance muito maior de parar a tempo do que a 50 ou 60.",
+      es: "Los niños pueden salir a la vía de repente, sin mirar el tráfico. A 40 km/h tiene una posibilidad mucho mayor de detenerse a tiempo que a 50 o 60."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-01",
+    cat: "Shared Zones",
+    q: {
+      en: "What is the maximum speed in a shared zone?",
+      pt: "Qual é a velocidade máxima em uma zona compartilhada?",
+      es: "¿Cuál es la velocidad máxima en una zona compartida?"
+    },
+    sign: "/icons/signs/speed-limit-10.svg",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "20 km/h",
+          pt: "20 km/h",
+          es: "20 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "10 km/h",
+          pt: "10 km/h",
+          es: "10 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "40 km/h",
+          pt: "40 km/h",
+          es: "40 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Shared zones have a strict 10 km/h maximum: walking-pace territory, because pedestrians share the same space.",
+      pt: "Zonas compartilhadas têm máximo rigoroso de 10 km/h: quase passo de pedestre, porque pedestres dividem o mesmo espaço.",
+      es: "Las zonas compartidas tienen un máximo estricto de 10 km/h: casi paso de peatón, porque los peatones comparten el mismo espacio."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-02",
+    cat: "Shared Zones",
+    q: {
+      en: "Who has priority in a shared zone?",
+      pt: "Quem tem prioridade em uma zona compartilhada?",
+      es: "¿Quién tiene prioridad en una zona compartida?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Vehicles: roads are for cars",
+          pt: "Os veículos: vias são para carros",
+          es: "Los vehículos: las vías son para autos"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Whoever entered the zone first",
+          pt: "Quem entrou primeiro na zona",
+          es: "El que entró primero en la zona"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Pedestrians: always",
+          pt: "Os pedestres: sempre",
+          es: "Los peatones: siempre"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "In shared zones, vehicles must give way to pedestrians at all times. Pedestrian priority is absolute there.",
+      pt: "Em zonas compartilhadas, veículos devem dar preferência aos pedestres o tempo todo. A prioridade do pedestre ali é absoluta.",
+      es: "En las zonas compartidas, los vehículos deben ceder el paso a los peatones en todo momento. La prioridad del peatón allí es absoluta."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-03",
+    cat: "Shared Zones",
+    q: {
+      en: "A pedestrian is walking in the middle of a shared zone laneway ahead of you. What should you do?",
+      pt: "Um pedestre caminha no meio de uma viela de zona compartilhada à sua frente. O que fazer?",
+      es: "Un peatón camina en medio de un callejón de zona compartida frente a usted. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Slow down, give way and wait: do not honk",
+          pt: "Reduzir, dar preferência e esperar: sem buzinar",
+          es: "Reducir, ceder el paso y esperar: sin tocar el claxon"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Sound the horn so they move aside",
+          pt: "Buzinar para que ele saia do caminho",
+          es: "Tocar el claxon para que se aparte"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Pass them closely at low speed",
+          pt: "Passar rente a ele em baixa velocidade",
+          es: "Pasar muy cerca a baja velocidad"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Give way and be patient. Pedestrians are entitled to use the whole space: do not honk or expect them to move out of your way.",
+      pt: "Dê preferência e tenha paciência. Pedestres podem usar todo o espaço: não buzine nem espere que saiam do seu caminho.",
+      es: "Ceda el paso y tenga paciencia. Los peatones pueden usar todo el espacio: no toque el claxon ni espere que se aparten."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-04",
+    cat: "Shared Zones",
+    q: {
+      en: "Where are shared zones typically found?",
+      pt: "Onde as zonas compartilhadas costumam ficar?",
+      es: "¿Dónde se encuentran típicamente las zonas compartidas?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "On freeway on-ramps",
+          pt: "Em alças de acesso de rodovias",
+          es: "En rampas de acceso a autopistas"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "In pedestrian malls and laneways",
+          pt: "Em calçadões e vielas",
+          es: "En paseos peatonales y callejones"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Around fuel stations",
+          pt: "Ao redor de postos de combustível",
+          es: "Alrededor de gasolineras"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Shared zones are typically pedestrian malls and laneways where vehicles and people mix in the same space at very low speed.",
+      pt: "Zonas compartilhadas são tipicamente calçadões e vielas onde veículos e pessoas se misturam no mesmo espaço em velocidade bem baixa.",
+      es: "Las zonas compartidas son típicamente paseos peatonales y callejones donde vehículos y personas se mezclan en el mismo espacio a muy baja velocidad."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-05",
+    cat: "Shared Zones",
+    q: {
+      en: "How do you know you are entering or leaving a shared zone?",
+      pt: "Como saber que você está entrando ou saindo de uma zona compartilhada?",
+      es: "¿Cómo sabe que está entrando o saliendo de una zona compartida?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Shared zone signs mark the entry and exit points",
+          pt: "Placas de zona compartilhada marcam a entrada e a saída",
+          es: "Las señales de zona compartida marcan la entrada y la salida"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "The road surface changes to gravel",
+          pt: "O piso da via muda para cascalho",
+          es: "El pavimento cambia a grava"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "There is no way to know",
+          pt: "Não há como saber",
+          es: "No hay forma de saberlo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Shared zone signs mark where the zone starts and ends. Between those signs, pedestrian priority and the 10 km/h limit apply.",
+      pt: "As placas de zona compartilhada marcam onde a zona começa e termina. Entre elas, valem a prioridade do pedestre e o limite de 10 km/h.",
+      es: "Las señales de zona compartida marcan dónde empieza y termina la zona. Entre ellas rigen la prioridad del peatón y el límite de 10 km/h."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-06",
+    cat: "Shared Zones",
+    q: {
+      en: "Inside a shared zone with no speed sign visible, what should you assume?",
+      pt: "Dentro de uma zona compartilhada sem placa de velocidade visível, o que assumir?",
+      es: "Dentro de una zona compartida sin señal de velocidad visible, ¿qué debe asumir?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The default urban 50 km/h",
+          pt: "O padrão urbano de 50 km/h",
+          es: "El límite urbano de 50 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "25 km/h",
+          pt: "25 km/h",
+          es: "25 km/h"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "10 km/h",
+          pt: "10 km/h",
+          es: "10 km/h"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "If no speed sign is visible inside a shared zone, assume 10 km/h. The default urban limit does not apply there.",
+      pt: "Se não houver placa de velocidade visível na zona compartilhada, assuma 10 km/h. O limite urbano padrão não vale ali.",
+      es: "Si no hay señal de velocidad visible en la zona compartida, asuma 10 km/h. El límite urbano por defecto no aplica allí."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-07",
+    cat: "Shared Zones",
+    q: {
+      en: "Why must vehicles travel so slowly in shared zones?",
+      pt: "Por que os veículos devem andar tão devagar nas zonas compartilhadas?",
+      es: "¿Por qué los vehículos deben circular tan despacio en las zonas compartidas?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "The road surface is fragile",
+          pt: "O piso é frágil",
+          es: "El pavimento es frágil"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Pedestrians and vehicles share the same space",
+          pt: "Pedestres e veículos dividem o mesmo espaço",
+          es: "Peatones y vehículos comparten el mismo espacio"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "To reduce fuel consumption",
+          pt: "Para reduzir o consumo de combustível",
+          es: "Para reducir el consumo de combustible"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "There is no footpath separation: people walk where cars drive. At 10 km/h you can stop almost instantly if someone steps in front of you.",
+      pt: "Não há separação de calçada: as pessoas andam onde os carros passam. A 10 km/h você consegue parar quase instantaneamente se alguém surgir à frente.",
+      es: "No hay separación de acera: la gente camina por donde circulan los autos. A 10 km/h puede detenerse casi al instante si alguien aparece delante."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "SHA-08",
+    cat: "Shared Zones",
+    q: {
+      en: "Is driving at 20 km/h acceptable in a shared zone?",
+      pt: "Dirigir a 20 km/h é aceitável em uma zona compartilhada?",
+      es: "¿Es aceptable circular a 20 km/h en una zona compartida?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Yes: it is close enough to the limit",
+          pt: "Sim: é perto o bastante do limite",
+          es: "Sí: está bastante cerca del límite"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, if no pedestrians are visible",
+          pt: "Sim, se não houver pedestres visíveis",
+          es: "Sí, si no se ven peatones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "No: 10 km/h is a strict limit, and 20 is double it",
+          pt: "Não: 10 km/h é um limite rigoroso, e 20 é o dobro",
+          es: "No: 10 km/h es un límite estricto, y 20 es el doble"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "20 km/h is double the shared zone limit. The 10 km/h rule is strict because pedestrians can step out anywhere, at any time.",
+      pt: "20 km/h é o dobro do limite da zona compartilhada. A regra de 10 km/h é rigorosa porque pedestres podem surgir em qualquer ponto, a qualquer momento.",
+      es: "20 km/h es el doble del límite de la zona compartida. La regla de 10 km/h es estricta porque los peatones pueden aparecer en cualquier punto, en cualquier momento."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "TOW-02",
+    cat: "Towing",
+    q: {
+      en: "You are towing and see a sign limiting towing vehicles to 90 km/h. What speed applies to you?",
+      pt: "Você está rebocando e vê uma placa limitando veículos com reboque a 90 km/h. Qual velocidade vale para você?",
+      es: "Está remolcando y ve una señal que limita a los vehículos con remolque a 90 km/h. ¿Qué velocidad aplica para usted?"
+    },
+    sign: "/icons/signs/towing.svg",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "100 km/h: the general towing maximum",
+          pt: "100 km/h: o máximo geral para reboque",
+          es: "100 km/h: el máximo general para remolcar"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "The signed 90 km/h limit",
+          pt: "O limite sinalizado de 90 km/h",
+          es: "El límite señalizado de 90 km/h"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "The car limit for that road, e.g. 110 km/h",
+          pt: "O limite dos carros naquela via, por exemplo 110 km/h",
+          es: "El límite de los autos en esa vía, por ejemplo 110 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The towing maximum is 100 km/h, but a lower signed limit always wins. On some roads, towing vehicles are limited to 90 km/h: watch the signs.",
+      pt: "O máximo ao rebocar é 100 km/h, mas um limite sinalizado menor sempre prevalece. Em algumas estradas, veículos com reboque ficam limitados a 90 km/h: observe as placas.",
+      es: "El máximo al remolcar es 100 km/h, pero un límite señalizado menor siempre gana. En algunas carreteras, los vehículos con remolque están limitados a 90 km/h: mire las señales."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "TOW-03",
+    cat: "Towing",
+    q: {
+      en: "Which safety equipment is mandatory when towing a trailer?",
+      pt: "Qual equipamento de segurança é obrigatório ao rebocar um trailer?",
+      es: "¿Qué equipo de seguridad es obligatorio al remolcar un remolque?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Safety chains connecting the trailer to the vehicle",
+          pt: "Correntes de segurança ligando o trailer ao veículo",
+          es: "Cadenas de seguridad que unan el remolque al vehículo"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "A CB radio",
+          pt: "Um rádio CB",
+          es: "Una radio CB"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "A yellow flashing beacon",
+          pt: "Um giroflex amarelo",
+          es: "Una baliza amarilla intermitente"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Safety chains are mandatory: they keep the trailer attached if the coupling fails. All trailer lights must also work.",
+      pt: "Correntes de segurança são obrigatórias: elas mantêm o trailer preso se o engate falhar. Todas as luzes do trailer também devem funcionar.",
+      es: "Las cadenas de seguridad son obligatorias: mantienen el remolque sujeto si falla el enganche. Todas las luces del remolque también deben funcionar."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "TOW-04",
+    cat: "Towing",
+    q: {
+      en: "Which trailer lights must be working before you tow?",
+      pt: "Quais luzes do trailer devem funcionar antes de rebocar?",
+      es: "¿Qué luces del remolque deben funcionar antes de remolcar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Only the tail lights, at night",
+          pt: "Apenas as lanternas traseiras, à noite",
+          es: "Solo las luces traseras, de noche"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "None, if the trailer is small",
+          pt: "Nenhuma, se o trailer for pequeno",
+          es: "Ninguna, si el remolque es pequeño"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "All of them: brake, indicator and tail lights",
+          pt: "Todas: luz de freio, setas e lanternas",
+          es: "Todas: luces de freno, intermitentes y traseras"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "The trailer hides your car's lights, so its own brake, indicator and tail lights must all work. Check them before every trip.",
+      pt: "O trailer esconde as luzes do seu carro, então as luzes de freio, setas e lanternas dele devem funcionar. Verifique antes de cada viagem.",
+      es: "El remolque tapa las luces de su auto, así que sus luces de freno, intermitentes y traseras deben funcionar. Revíselas antes de cada viaje."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "TOW-05",
+    cat: "Towing",
+    q: {
+      en: "How does towing a trailer affect your vehicle?",
+      pt: "Como rebocar um trailer afeta o seu veículo?",
+      es: "¿Cómo afecta a su vehículo remolcar un remolque?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "It shortens the braking distance",
+          pt: "Ele encurta a distância de frenagem",
+          es: "Acorta la distancia de frenado"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "It increases braking distance and affects stability and control",
+          pt: "Ele aumenta a distância de frenagem e afeta a estabilidade e o controle",
+          es: "Aumenta la distancia de frenado y afecta la estabilidad y el control"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "It has no effect below 80 km/h",
+          pt: "Não tem efeito abaixo de 80 km/h",
+          es: "No tiene efecto por debajo de 80 km/h"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "The extra weight changes everything: longer braking, slower acceleration and less stability, especially in wind or when overtaking. Adjust your driving.",
+      pt: "O peso extra muda tudo: frenagem mais longa, aceleração mais lenta e menos estabilidade, principalmente com vento ou em ultrapassagens. Ajuste sua direção.",
+      es: "El peso extra lo cambia todo: frenado más largo, aceleración más lenta y menos estabilidad, sobre todo con viento o al adelantar. Ajuste su conducción."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "TOW-06",
+    cat: "Towing",
+    q: {
+      en: "How should your following distance change when towing?",
+      pt: "Como a distância de seguimento deve mudar ao rebocar?",
+      es: "¿Cómo debe cambiar la distancia de seguimiento al remolcar?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Increase it to 4 seconds or more",
+          pt: "Aumentar para 4 segundos ou mais",
+          es: "Aumentarla a 4 segundos o más"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Keep the normal 3-second gap",
+          pt: "Manter os 3 segundos normais",
+          es: "Mantener los 3 segundos normales"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reduce it, to keep the trailer stable",
+          pt: "Reduzir, para manter o trailer estável",
+          es: "Reducirla, para mantener el remolque estable"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "With the extra weight you need more room to stop. Increase the gap to four or more seconds when towing: the same as in rain or poor visibility.",
+      pt: "Com o peso extra você precisa de mais espaço para parar. Aumente a distância para quatro segundos ou mais ao rebocar: como na chuva ou com pouca visibilidade.",
+      es: "Con el peso extra necesita más espacio para detenerse. Aumente la distancia a cuatro segundos o más al remolcar: igual que con lluvia o poca visibilidad."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "TOW-08",
+    cat: "Towing",
+    q: {
+      en: "What should you check before setting off with a trailer?",
+      pt: "O que verificar antes de sair com um trailer?",
+      es: "¿Qué debe revisar antes de salir con un remolque?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "That the trailer lights work and the safety chains are attached",
+          pt: "Se as luzes do trailer funcionam e as correntes de segurança estão presas",
+          es: "Que las luces del remolque funcionen y las cadenas de seguridad estén puestas"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only the tyre brand on the trailer",
+          pt: "Apenas a marca dos pneus do trailer",
+          es: "Solo la marca de los neumáticos del remolque"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Nothing, if the trailer is borrowed",
+          pt: "Nada, se o trailer for emprestado",
+          es: "Nada, si el remolque es prestado"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Before towing: coupling secure, safety chains attached, and brake, indicator and tail lights all working. A borrowed trailer needs the same checks.",
+      pt: "Antes de rebocar: engate firme, correntes de segurança presas e luzes de freio, setas e lanternas funcionando. Trailer emprestado exige as mesmas verificações.",
+      es: "Antes de remolcar: enganche firme, cadenas de seguridad puestas y luces de freno, intermitentes y traseras funcionando. Un remolque prestado exige las mismas revisiones."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LIN-04",
+    cat: "Road Markings",
+    q: {
+      en: "Where must you stop at traffic lights with a stop line marked on the road?",
+      pt: "Onde você deve parar em um semáforo com linha de parada pintada na via?",
+      es: "¿Dónde debe detenerse en un semáforo con línea de detención pintada en la vía?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Just past the line, for a better view",
+          pt: "Logo depois da linha, para enxergar melhor",
+          es: "Justo después de la línea, para ver mejor"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Before the stop line",
+          pt: "Antes da linha de parada",
+          es: "Antes de la línea de detención"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Anywhere, as long as you stop",
+          pt: "Em qualquer lugar, desde que pare",
+          es: "En cualquier lugar, siempre que se detenga"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Stop lines show exactly where to stop at signs and traffic lights. Stopping past the line can block the pedestrian crossing and the intersection.",
+      pt: "Linhas de parada mostram exatamente onde parar em sinais e semáforos. Parar depois da linha pode bloquear a faixa de pedestres e o cruzamento.",
+      es: "Las líneas de detención muestran exactamente dónde parar ante señales y semáforos. Detenerse después de la línea puede bloquear el paso de peatones y la intersección."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LIN-05",
+    cat: "Road Markings",
+    q: {
+      en: "May you drive over a painted traffic island or painted area on the road?",
+      pt: "Você pode passar por cima de uma ilha pintada ou área pintada na via?",
+      es: "¿Puede pasar por encima de una isla pintada o un área pintada en la vía?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Generally no: painted islands and painted areas are not for driving",
+          pt: "Geralmente não: ilhas e áreas pintadas não são para circular",
+          es: "Generalmente no: las islas y áreas pintadas no son para circular"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Yes, to overtake slower traffic",
+          pt: "Sim, para ultrapassar veículos lentos",
+          es: "Sí, para adelantar a vehículos lentos"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes, whenever it saves time",
+          pt: "Sim, sempre que economizar tempo",
+          es: "Sí, siempre que ahorre tiempo"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Painted areas and traffic islands separate and protect traffic movements. Treat them like physical islands: drive around them, not over them.",
+      pt: "Áreas pintadas e ilhas de trânsito separam e protegem os fluxos. Trate-as como ilhas físicas: contorne-as, não passe por cima.",
+      es: "Las áreas pintadas y las islas de tráfico separan y protegen los flujos. Trátelas como islas físicas: rodéelas, no pase por encima."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "LIN-06",
+    cat: "Road Markings",
+    q: {
+      en: "A broken white line separates your lane from the next. May you change lanes?",
+      pt: "Uma linha branca tracejada separa a sua faixa da outra. Você pode mudar de faixa?",
+      es: "Una línea blanca discontinua separa su carril del siguiente. ¿Puede cambiar de carril?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Never: any line prohibits lane changes",
+          pt: "Nunca: qualquer linha proíbe a mudança",
+          es: "Nunca: cualquier línea prohíbe el cambio"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Only at intersections",
+          pt: "Apenas em cruzamentos",
+          es: "Solo en las intersecciones"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Yes: when it is safe and legal to do so",
+          pt: "Sim: quando for seguro e legal",
+          es: "Sí: cuando sea seguro y legal"
+        },
+        ok: true
+      }
+    ],
+    exp: {
+      en: "A broken lane line may be crossed when safe and legal: mirrors, head check, signal, then move. A continuous line is the one you must not cross.",
+      pt: "A linha tracejada pode ser cruzada quando for seguro e legal: espelhos, ponto cego, seta e então mude. A linha contínua é a que não pode ser cruzada.",
+      es: "La línea discontinua puede cruzarse cuando sea seguro y legal: espejos, punto ciego, intermitente y luego muévase. La línea continua es la que no debe cruzarse."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "EMRG-05",
+    cat: "Emergencies",
+    q: {
+      en: "A tyre blows out while you are driving. What should you do?",
+      pt: "Um pneu estoura enquanto você dirige. O que fazer?",
+      es: "Un neumático revienta mientras conduce. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Brake hard immediately",
+          pt: "Frear forte imediatamente",
+          es: "Frenar fuerte de inmediato"
+        },
+        ok: false
+      },
+      {
+        l: "B",
+        t: {
+          en: "Grip the steering firmly, ease off the accelerator and slow down gradually off the road",
+          pt: "Segurar firme o volante, soltar o acelerador e reduzir gradualmente até sair da via",
+          es: "Sujetar firme el volante, soltar el acelerador y reducir gradualmente hasta salir de la vía"
+        },
+        ok: true
+      },
+      {
+        l: "C",
+        t: {
+          en: "Swerve quickly onto the shoulder",
+          pt: "Desviar rapidamente para o acostamento",
+          es: "Desviarse rápido a la banquina"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "With a blown tyre, hard braking or sudden steering can cause a complete loss of control. Hold the wheel firmly, slow gently and leave the road safely.",
+      pt: "Com o pneu estourado, frear forte ou esterçar de repente pode causar perda total de controle. Segure firme o volante, reduza com suavidade e saia da via com segurança.",
+      es: "Con un neumático reventado, frenar fuerte o girar de golpe puede causar una pérdida total de control. Sujete firme el volante, reduzca con suavidad y salga de la vía con seguridad."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
+  },
+  {
+    id: "EMRG-06",
+    cat: "Emergencies",
+    q: {
+      en: "Your car breaks down on a freeway. What should you do?",
+      pt: "Seu carro quebra em uma rodovia. O que fazer?",
+      es: "Su auto se avería en una autopista. ¿Qué debe hacer?"
+    },
+    sign: "",
+    cap: null,
+    opts: [
+      {
+        l: "A",
+        t: {
+          en: "Move as far left off the road as you can and turn on your hazard lights",
+          pt: "Sair o máximo possível para a esquerda, fora da via, e ligar o pisca-alerta",
+          es: "Apartarse lo máximo posible a la izquierda, fuera de la vía, y encender las balizas"
+        },
+        ok: true
+      },
+      {
+        l: "B",
+        t: {
+          en: "Stop in your lane and wait inside the car",
+          pt: "Parar na própria faixa e esperar dentro do carro",
+          es: "Detenerse en su carril y esperar dentro del auto"
+        },
+        ok: false
+      },
+      {
+        l: "C",
+        t: {
+          en: "Reverse along the shoulder to the nearest exit",
+          pt: "Dar ré pelo acostamento até a saída mais próxima",
+          es: "Retroceder por la banquina hasta la salida más cercana"
+        },
+        ok: false
+      }
+    ],
+    exp: {
+      en: "Get the vehicle clear of moving traffic, switch on the hazard lights and keep everyone away from passing vehicles while you wait for help.",
+      pt: "Tire o veículo do fluxo, ligue o pisca-alerta e mantenha todos afastados dos veículos que passam enquanto espera por ajuda.",
+      es: "Aparte el vehículo del flujo, encienda las balizas y mantenga a todos alejados de los vehículos que pasan mientras espera ayuda."
+    },
+    tip: null,
+    states: ["WA"],
+    lastVerified: "2026-08-16"
   }
 ] as const;
 
@@ -116216,6 +119816,96 @@ export const CATEGORIES: readonly CategoryType[] = [
       en: "Motorcycle Safety",
       pt: "Segurança de Moto",
       es: "Seguridad de Moto"
+    }
+  },
+  {
+    key: "Roundabouts",
+    icon: "🔄",
+    label: {
+      en: "Roundabouts",
+      pt: "Rotatórias",
+      es: "Rotondas"
+    }
+  },
+  {
+    key: "Lane Changing",
+    icon: "↔️",
+    label: {
+      en: "Lane Changing",
+      pt: "Mudança de Faixa",
+      es: "Cambio de Carril"
+    }
+  },
+  {
+    key: "Weather Conditions",
+    icon: "🌧️",
+    label: {
+      en: "Weather Conditions",
+      pt: "Clima",
+      es: "Clima"
+    }
+  },
+  {
+    key: "Seatbelts",
+    icon: "💺",
+    label: {
+      en: "Seatbelts",
+      pt: "Cintos",
+      es: "Cinturones"
+    }
+  },
+  {
+    key: "Demerit Points",
+    icon: "📋",
+    label: {
+      en: "Demerit Points",
+      pt: "Pontos",
+      es: "Puntos"
+    }
+  },
+  {
+    key: "Mobile Phones",
+    icon: "📵",
+    label: {
+      en: "Mobile Phones",
+      pt: "Celular",
+      es: "Móvil"
+    }
+  },
+  {
+    key: "Fatigue",
+    icon: "😴",
+    label: {
+      en: "Fatigue",
+      pt: "Fadiga",
+      es: "Fatiga"
+    }
+  },
+  {
+    key: "School Zones",
+    icon: "🏫",
+    label: {
+      en: "School Zones",
+      pt: "Zonas Escolares",
+      es: "Zonas Escolares"
+    }
+  },
+  {
+    key: "Shared Zones",
+    icon: "🚶",
+    label: {
+      en: "Shared Zones",
+      pt: "Zonas Compartilhadas",
+      es: "Zonas Compartidas"
+    }
+  },
+  {
+    key: "Towing",
+    icon: "🚛",
+    label: {
+      en: "Towing",
+      pt: "Reboque",
+      es: "Remolque"
     }
   }
 ] as const;

@@ -1,7 +1,7 @@
 import { Link } from "expo-router";
 import { Fragment } from "react";
 import { Text, View } from "react-native";
-import { CATEGORIES, questionsForState, categoryLabel } from "../../lib/questions";
+import { categoriesForPool, questionsForState, categoryLabel } from "../../lib/questions";
 import { Card, PillButton, Screen, useThemeColors } from "../../ui/kit";
 import { spacing } from "../../theme";
 import { iconForCategory } from "../../ui/category-icon";
@@ -14,11 +14,8 @@ export function LearnScreen() {
   const questions = questionsForState(state);
 
   return (
-    <Screen
-      title={copy.learn}
-      subtitle="Short topic cards tuned for mobile reading. Start with weak topics, then jump into practice."
-    >
-      {CATEGORIES.map((category, index) => {
+    <Screen title={copy.learn} subtitle={copy.learnSubtitle}>
+      {categoriesForPool(questions).map((category, index) => {
         const Icon = iconForCategory(category.key);
         const count = questions.filter((q) => q.cat === category.key).length;
         return (
@@ -42,7 +39,7 @@ export function LearnScreen() {
                     {categoryLabel(category.key, uiLang)}
                   </Text>
                   <Text selectable style={{ color: c.muted, lineHeight: 22 }}>
-                    {count} practice questions. Review the rule, then answer examples in context.
+                    {copy.learnTopicCount.replace("{count}", String(count))}
                   </Text>
                 </View>
               </View>
