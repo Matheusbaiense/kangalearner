@@ -5,7 +5,7 @@ import { SK } from "@/lib/storageKeys";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang, UiLang } from "@/lib/i18n";
 import { getUiLang } from "@/lib/i18n";
-import { AU_STATE_OPTIONS, LIVE_STATE_CODES } from "@kanga/core";
+import { AU_STATE_OPTIONS, LIVE_STATE_CODES, stateHasMotorcycleLicence } from "@kanga/core";
 import { PERSONAS, PERSONA_LABEL, persistPersona, type Persona } from "@/lib/persona";
 import { persistLicenceType, type LicenceType } from "@/lib/licenceType";
 
@@ -69,6 +69,11 @@ export function Onboarding() {
   const isAuthRoute = SUPPRESS_PATHS.some((p) => pathname.startsWith(p));
   const uiLang: UiLang = getUiLang(lang);
 
+  function chooseState(code: string) {
+    setState(code);
+    if (licenceType === "motorcycle" && !stateHasMotorcycleLicence(code)) setLicenceType("car");
+  }
+
   useEffect(() => {
     if (isAuthRoute) return;
     // Only for a genuinely fresh visitor: anyone who already picked a language
@@ -122,7 +127,7 @@ export function Onboarding() {
                 key={s.key}
                 className={`ob-option${s.soon ? " ob-soon" : ""}${state === s.key ? " ob-selected" : ""}`}
                 disabled={s.soon}
-                onClick={() => setState(s.key)}
+                onClick={() => chooseState(s.key)}
                 type="button"
                 title={s.label}
               >
@@ -145,18 +150,20 @@ export function Onboarding() {
           </div>
 
           <div className="ob-option-row">
-            {(["car", "motorcycle"] as const).map((v) => (
-              <button
-                key={v}
-                className={`ob-option${licenceType === v ? " ob-selected" : ""}`}
-                onClick={() => setLicenceType(v)}
-                type="button"
-              >
-                {v === "car"
-                  ? (VEHICLE_LABEL[lang] ?? VEHICLE_LABEL.en).car
-                  : (VEHICLE_LABEL[lang] ?? VEHICLE_LABEL.en).moto}
-              </button>
-            ))}
+            {(["car", "motorcycle"] as const)
+              .filter((v) => v === "car" || stateHasMotorcycleLicence(state))
+              .map((v) => (
+                <button
+                  key={v}
+                  className={`ob-option${licenceType === v ? " ob-selected" : ""}`}
+                  onClick={() => setLicenceType(v)}
+                  type="button"
+                >
+                  {v === "car"
+                    ? (VEHICLE_LABEL[lang] ?? VEHICLE_LABEL.en).car
+                    : (VEHICLE_LABEL[lang] ?? VEHICLE_LABEL.en).moto}
+                </button>
+              ))}
           </div>
 
           <button
