@@ -1,4 +1,4 @@
-import { CATEGORIES, filterByState, type AuStateCode } from "@kanga/core";
+import { CATEGORIES, filterByState, type AuStateCode, type LocalizedText } from "@kanga/core";
 import { QUESTIONS } from "@kanga/core/data/questions";
 
 /**
@@ -17,11 +17,11 @@ export function bankCountsFor(code: AuStateCode): StateBankCounts {
   return { total: pool.length, car: pool.length - motorcycle, motorcycle };
 }
 
-/** Nomes (EN) das categorias realmente presentes no pool do estado. */
-export function bankCategoryNamesFor(code: AuStateCode): string[] {
+/** Labels trilingues das categorias realmente presentes no pool do estado. */
+export function bankCategoryLabelsFor(code: AuStateCode): LocalizedText[] {
   const pool = filterByState([...QUESTIONS], code);
   const present = new Set(pool.map((q) => q.cat));
-  return CATEGORIES.filter((c) => present.has(c.key)).map((c) => c.label.en);
+  return CATEGORIES.filter((c) => present.has(c.key)).map((c) => c.label);
 }
 
 /** Total de perguntas unicas cobrindo os estados publicados (sem dupla contagem). */
