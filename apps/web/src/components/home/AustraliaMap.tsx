@@ -5,7 +5,7 @@ import { AU_MAP_STATES, AU_MAP_VIEWBOX } from "@/lib/auMapPaths";
 
 /* VIC e TAS sao estreitos: rotulo numa linha so, fora do caminho das divisas */
 const COMPACT_LABELS: Record<string, { x: number; y: number }> = {
-  VIC: { x: 736, y: 716 },
+  VIC: { x: 785, y: 704 },
   TAS: { x: 798, y: 945 }
 };
 
