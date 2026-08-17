@@ -22,6 +22,7 @@ import { useLang } from "@/contexts/LangContext";
 import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
+import { Kanga } from "@/components/brand/Kanga";
 import { LIVE_STATE_CODES } from "@kanga/core";
 import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
 
@@ -551,7 +552,7 @@ function HowItWorks() {
 }
 
 /* ── Component ── */
-export function LandingClient() {
+export function LandingClient({ stateCounts }: { stateCounts?: Record<string, number> }) {
   const { uiLang: lang, s } = useLang();
 
   return (
@@ -670,11 +671,16 @@ export function LandingClient() {
           <div className="states-grid">
             {AU_STATES.map((st) => {
               const className = `state-card${st.available ? " active" : " coming-soon"}`;
+              const count = stateCounts?.[st.code];
               const inner = (
                 <>
                   <span className="state-code">{st.code}</span>
                   <span className="state-badge">
-                    {st.available ? s.stateAvailable : s.comingSoon}
+                    {st.available && count
+                      ? `${count} ${s.questionsWord}`
+                      : st.available
+                        ? s.stateAvailable
+                        : s.comingSoon}
                   </span>
                 </>
               );
@@ -710,6 +716,7 @@ export function LandingClient() {
       {/* ── Final CTA ────────────────────────────────── */}
       <section className="cta-section">
         <div className="cta-inner">
+          <Kanga pose="celebrate" size={104} />
           <h2>{s.ctaTitle}</h2>
           <Link href="/practice" className="btn btn-primary">
             {s.ctaBtn}
