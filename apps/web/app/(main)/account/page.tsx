@@ -69,6 +69,12 @@ function Msg({ text, ok }: { text: string; ok: boolean }) {
   );
 }
 
+/** Log the real error for debugging, return a safe message for the UI. Never surface raw provider text. */
+function toSafeErrorMessage(error: unknown, fallback: string): string {
+  console.error(fallback, error);
+  return fallback;
+}
+
 /* ══════════════════════════════════════════
    SETTINGS PAGE
 ══════════════════════════════════════════ */
@@ -188,7 +194,9 @@ export default function AccountPage() {
     });
     setSavingProfile(false);
     setProfileMsg(
-      error ? { text: error.message, ok: false } : { text: s.accountProfileSaved, ok: true }
+      error
+        ? { text: toSafeErrorMessage(error, s.accountProfileSaveFailed), ok: false }
+        : { text: s.accountProfileSaved, ok: true }
     );
   }
 
@@ -204,7 +212,12 @@ export default function AccountPage() {
 
     if (userError || !user) {
       setSavingPrefs(false);
-      setPrefsMsg({ text: userError?.message ?? s.accountSignInRequired, ok: false });
+      setPrefsMsg({
+        text: userError
+          ? toSafeErrorMessage(userError, s.accountSignInRequired)
+          : s.accountSignInRequired,
+        ok: false
+      });
       return;
     }
 
@@ -220,7 +233,10 @@ export default function AccountPage() {
 
     if (profileError) {
       setSavingPrefs(false);
-      setPrefsMsg({ text: profileError.message, ok: false });
+      setPrefsMsg({
+        text: toSafeErrorMessage(profileError, s.accountPreferencesSaveFailed),
+        ok: false
+      });
       return;
     }
 
@@ -230,7 +246,10 @@ export default function AccountPage() {
 
     setSavingPrefs(false);
     if (authError) {
-      setPrefsMsg({ text: authError.message, ok: false });
+      setPrefsMsg({
+        text: toSafeErrorMessage(authError, s.accountPreferencesSaveFailed),
+        ok: false
+      });
       return;
     }
 
@@ -262,7 +281,7 @@ export default function AccountPage() {
     const { error } = await supabase.auth.updateUser({ password: newPwd });
     setSavingPwd(false);
     if (error) {
-      setPwdMsg({ text: error.message, ok: false });
+      setPwdMsg({ text: toSafeErrorMessage(error, s.accountPasswordChangeFailed), ok: false });
     } else {
       setPwdMsg({ text: s.accountPasswordChanged, ok: true });
       setNewPwd("");
@@ -284,7 +303,7 @@ export default function AccountPage() {
       setAvatarUrl(json.url);
       setAvatarMsg({ text: s.accountAvatarUpdated, ok: true });
     } catch (err) {
-      setAvatarMsg({ text: (err as Error).message, ok: false });
+      setAvatarMsg({ text: toSafeErrorMessage(err, s.accountUploadFailed), ok: false });
     } finally {
       setUploadingAvatar(false);
       if (fileInputRef.current) fileInputRef.current.value = "";
@@ -303,7 +322,7 @@ export default function AccountPage() {
       setAvatarUrl(null);
       setAvatarMsg({ text: s.accountAvatarRemoved, ok: true });
     } catch (err) {
-      setAvatarMsg({ text: (err as Error).message, ok: false });
+      setAvatarMsg({ text: toSafeErrorMessage(err, s.accountUploadFailed), ok: false });
     } finally {
       setUploadingAvatar(false);
     }
