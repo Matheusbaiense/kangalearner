@@ -5,7 +5,8 @@ import {
   fisherYatesSlice,
   type AuStateCode
 } from "@kanga/core";
-import { CATEGORIES, QUESTIONS, type Category, type Question } from "@kanga/core/data/questions";
+import { CATEGORIES, type Category, type Question } from "@kanga/core";
+import { QUESTIONS } from "@kanga/core/data/questions";
 import { tx, type UiLang } from "./i18n";
 
 export { AU_STATE_OPTIONS, CATEGORIES, QUESTIONS, WA_PASS_MIN_CORRECT, WA_TOTAL_QUESTIONS };

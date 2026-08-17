@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import { fisherYatesSlice } from "@kanga/core";
 import { useQuestions } from "@/hooks/useQuestions";
+import { firstUnansweredIndex } from "@/lib/mock/firstUnansweredIndex";
 import { safeParseJson } from "@/lib/safeParseJson";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { useLang } from "@/contexts/LangContext";
@@ -78,6 +79,7 @@ export default function MockTestSessionPage() {
   const [timeLeft, setTimeLeft] = useState(EXAM_SECONDS);
   const [timeExpired, setTimeExpired] = useState(false);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const seekKeyRef = useRef<string | null>(null);
   const router = useRouter();
   const { uiLang: lang, isBilingual: bilingual, s } = useLang();
 
@@ -170,8 +172,10 @@ export default function MockTestSessionPage() {
 
   useEffect(() => {
     if (!session) return;
-    const firstUnanswered = session.qids.findIndex((id) => !session.answers[id]);
-    setActiveIndex(firstUnanswered === -1 ? 0 : firstUnanswered);
+    const key = session.startedAtIso;
+    if (seekKeyRef.current === key) return;
+    seekKeyRef.current = key;
+    setActiveIndex(firstUnansweredIndex(session.qids, session.answers));
   }, [session]);
 
   /* ── Countdown timer (exam mode only) ── */

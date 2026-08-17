@@ -1,13 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
-
-const KEY = "kl-theme";
+import { migrateAndReadTheme, writeTheme } from "@/lib/themeStorage";
 
 export function ThemeToggle({ className }: { className?: string }) {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(KEY);
+    const stored = migrateAndReadTheme(localStorage);
     const sysDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setDark(stored === "dark" || (!stored && sysDark));
   }, []);
@@ -15,7 +14,7 @@ export function ThemeToggle({ className }: { className?: string }) {
   function toggle() {
     const next = dark ? "light" : "dark";
     setDark(!dark);
-    localStorage.setItem(KEY, next);
+    writeTheme(localStorage, next);
     document.documentElement.dataset.theme = next;
   }
 

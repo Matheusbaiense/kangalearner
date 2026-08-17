@@ -2,8 +2,10 @@
 
 > Canonical tracker for pending work and blockers, per `AGENTS.md`.
 > The root `BACKLOG.md` is a legacy execution map until it is consolidated here.
+>
+> **Plano de correção da mega auditoria 2026-08-17:** [PRODUCTION-REMEDIATION-PLAN.md](PRODUCTION-REMEDIATION-PLAN.md) (fases 0–10, subtarefas, aceite). Este backlog não duplica o plano; só rastrea bloqueios e follow-ups.
 
-Last updated: 2026-06-01
+Last updated: 2026-08-17
 
 ## Production Safety Blockers
 
@@ -15,6 +17,10 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [ ] **Vercel Production Stripe env audit**: `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_WEBHOOK_SECRET` did not appear in the pulled Production env on 2026-06-01. Add them before enabling billing/webhook-dependent flows.
 - [x] **Backup / Disaster Recovery workflow**: `.github/workflows/backup.yml` now exists. It runs manually and nightly, dumps Supabase Postgres with `pg_dump`, encrypts with GPG, uploads to S3-compatible storage, and verifies the object is listed.
 - [ ] **Backup / Disaster Recovery secrets and bucket**: GitHub Actions secrets list was empty on 2026-06-01. Add `SUPABASE_DB_URL`, `BACKUP_ENCRYPTION_KEY`, `BACKUP_BUCKET`, `BACKUP_S3_ENDPOINT`, `BACKUP_AWS_KEY`, and `BACKUP_AWS_SECRET`; create the R2/S3/Backblaze bucket; run the workflow manually once; test restore in staging.
+- [ ] **RLS regression 025**: SQL **escrito** (`031_relock_category_stats.sql`) — **ainda não aplicado** em staging/prod. Dashboard só SELECT; writes via trigger 028.
+- [x] **Código: CATEGORIES split** (2026-08-17): `packages/core/src/data/categories.ts`; barrel exporta categorias do ficheiro pequeno.
+- [x] **Código: practice `?cat=`**, mock seek-once, tema `kl-theme`, `error.tsx`, mensagens de auth genéricas, admin recusa demote premium, `/progress` → `/dashboard`.
+- [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive is a crutch. Upgrade Pro + PITR (plan phase 0.2).
 
 ## Important Follow-Ups
 

@@ -175,11 +175,11 @@ export default function MockTestResultsPage() {
     if (session.postedAtIso) return;
 
     let cancelled = false;
+    const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
     const supabase = createClient();
     void supabase.auth.getUser().then(({ data: { user } }) => {
       if (cancelled || !user) return;
 
-      const ctrl = typeof AbortController !== "undefined" ? new AbortController() : null;
       fetch("/api/mock-sessions", {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -194,7 +194,11 @@ export default function MockTestResultsPage() {
       })
         .then((r) => (r.ok ? r.json().catch(() => null) : null))
         .then((j) => {
-          if (!j?.ok) return;
+          if (cancelled) return;
+          if (!j?.ok) {
+            console.error("[mock-sessions] persist rejected:", j);
+            return;
+          }
           const next: MockSession = { ...session, postedAtIso: new Date().toISOString() };
           try {
             const nextRaw = JSON.stringify(next);
@@ -202,12 +206,16 @@ export default function MockTestResultsPage() {
             setRaw(nextRaw);
           } catch {}
         })
-        .catch(() => {})
-        .finally(() => ctrl?.abort());
+        .catch((err) => {
+          if (cancelled) return;
+          if (err instanceof DOMException && err.name === "AbortError") return;
+          console.error("[mock-sessions] persist failed:", err);
+        });
     });
 
     return () => {
       cancelled = true;
+      ctrl?.abort();
     };
   }, [session, scored]);
 

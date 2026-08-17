@@ -4,7 +4,7 @@ export const SK = {
   stateV2: "kl-state-v2",
   lang: "kl-lang",
   stateLegacy: "kl-state",
-  theme: "kanga-theme",
+  theme: "kl-theme",
   licenceType: "kl-licence-type",
   // histórico local de simulados (guest) — alimenta o readiness do /today
   mockHistory: "kl-mock-history",

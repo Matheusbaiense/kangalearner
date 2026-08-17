@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
+import { authErrorToUserMessage } from "@/lib/auth/authErrorMessage";
 import { AuthBrand } from "@/components/auth/AuthBrand";
 
 export default function ResetPasswordPage() {
@@ -26,7 +27,7 @@ export default function ResetPasswordPage() {
   useEffect(() => {
     if (!supabase) return;
     supabase.auth.getSession().then(({ data, error: sessionError }) => {
-      if (sessionError) setError(sessionError.message);
+      if (sessionError) setError(authErrorToUserMessage("reset", sessionError));
       setReady(Boolean(data.session));
     });
   }, [supabase]);
@@ -44,7 +45,7 @@ export default function ResetPasswordPage() {
     const { error: updateError } = await supabase.auth.updateUser({ password });
 
     if (updateError) {
-      setError(updateError.message);
+      setError(authErrorToUserMessage("reset", updateError));
       setLoading(false);
       return;
     }

@@ -1,29 +1,22 @@
 import { redirect } from "next/navigation";
 import { PracticeClient } from "./PracticeClient";
+import { parsePracticeCat, parsePracticeMode } from "@/lib/practiceCat";
 
 export const metadata = {
   title: "Practice",
   alternates: { canonical: "https://kangalearner.com.au/practice" }
 };
 
-// "sim" is intentionally NOT a practice mode, the mock test lives at
-// /mock-test; the redirect below keeps old ?mode=sim links working.
-const VALID_MODES = ["all", "wrong", "unanswered", "saved"] as const;
-type Mode = (typeof VALID_MODES)[number];
-
-function toMode(raw: string | undefined): Mode {
-  return (VALID_MODES as readonly string[]).includes(raw ?? "") ? (raw as Mode) : "all";
-}
-
-type PageSearchParams = Promise<{ mode?: string }>;
+type PageSearchParams = Promise<{ mode?: string; cat?: string; category?: string }>;
 
 export default async function PracticePage({ searchParams }: { searchParams: PageSearchParams }) {
-  const { mode: rawMode } = await searchParams;
-  const initialMode = toMode(rawMode);
+  const { mode: rawMode, cat: rawCat, category: rawCategory } = await searchParams;
+  const initialMode = parsePracticeMode(rawMode);
+  const initialCat = parsePracticeCat(rawCat, rawCategory);
 
   if (rawMode === "sim") {
     redirect("/mock-test");
   }
 
-  return <PracticeClient initialMode={initialMode} />;
+  return <PracticeClient initialMode={initialMode} initialCat={initialCat} />;
 }

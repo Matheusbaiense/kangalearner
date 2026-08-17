@@ -7,7 +7,7 @@ Apos QUALQUER mudanca, atualizar o documento certo para cada tipo de informacao:
 
 | Tipo de informacao | Documento canonico |
 |---|---|
-| Decisao / plano | [docs/MOBILE-APP-ROADMAP.md](docs/MOBILE-APP-ROADMAP.md) |
+| Decisao / plano | [docs/MOBILE-APP-ROADMAP.md](docs/MOBILE-APP-ROADMAP.md) (mobile) · [docs/PRODUCTION-REMEDIATION-PLAN.md](docs/PRODUCTION-REMEDIATION-PLAN.md) (prontidão produção / mega auditoria 2026-08-17) |
 | Arquitetura / codigo | [docs/CODEMAPS/mobile-expo-app.md](docs/CODEMAPS/mobile-expo-app.md) (mobile) · [docs/CODEMAPS/web-next-auth-supabase.md](docs/CODEMAPS/web-next-auth-supabase.md) (web) |
 | Estado atual | [apps/mobile/STATUS.md](apps/mobile/STATUS.md) |
 | Pendencias / bloqueios | [docs/BACKLOG.md](docs/BACKLOG.md) |
@@ -25,6 +25,7 @@ Regras:
 1. [.wolf/OPENWOLF.md](.wolf/OPENWOLF.md) + [.wolf/cerebrum.md](.wolf/cerebrum.md) + [.wolf/anatomy.md](.wolf/anatomy.md)
 2. **[docs/SPRINT-12-INSPECTION-FIXES.md](docs/SPRINT-12-INSPECTION-FIXES.md)** - ultima inspecao geral, migrations 018-020, deferidos
 3. **[docs/MOBILE-APP-ROADMAP.md](docs/MOBILE-APP-ROADMAP.md)** - plano 0-100 Android/iPhone, splits, store readiness, QA mobile
+4. **[docs/PRODUCTION-REMEDIATION-PLAN.md](docs/PRODUCTION-REMEDIATION-PLAN.md)** - plano de correção da mega auditoria (fases 0–10)
 
 ## Documentacao alinhada ao codigo
 

@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
+import { evaluateAdminRolePatch, PROFILE_ROLES } from "@/lib/auth/adminRolePatch";
 import { rateLimit } from "@/lib/rateLimit";
 import { z } from "zod";
-
-const PROFILE_ROLES = ["free", "premium", "admin", "super_admin"] as const;
 
 const adminUsersQuerySchema = z.object({
   page: z.coerce.number().int().min(0).default(0),
@@ -96,22 +95,13 @@ export async function PATCH(req: NextRequest) {
     supabaseAdmin.from("profiles").select("role").eq("id", userId).single()
   ]);
 
-  if (role === "premium" && callerProfile?.role !== "super_admin") {
-    return NextResponse.json(
-      { error: "Premium role is managed by Stripe billing" },
-      { status: 403 }
-    );
-  }
-
-  if (["admin", "super_admin"].includes(role) && callerProfile?.role !== "super_admin") {
-    return NextResponse.json({ error: "Only super_admin can assign admin roles" }, { status: 403 });
-  }
-
-  if (
-    ["admin", "super_admin"].includes(targetProfile?.role ?? "") &&
-    callerProfile?.role !== "super_admin"
-  ) {
-    return NextResponse.json({ error: "Only super_admin can modify admin users" }, { status: 403 });
+  const decision = evaluateAdminRolePatch({
+    callerRole: callerProfile?.role,
+    targetRole: targetProfile?.role,
+    nextRole: role
+  });
+  if (!decision.ok) {
+    return NextResponse.json({ error: decision.error }, { status: 403 });
   }
 
   const { error } = await supabaseAdmin.from("profiles").update({ role }).eq("id", userId);

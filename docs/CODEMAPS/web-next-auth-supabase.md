@@ -15,9 +15,10 @@ apps/web/
 │   │   ├── forgot-password/   → redirect server para /forgot-password
 │   │   └── callback/route.ts  → OAuth/magic link; cookies na redirect response
 │   ├── login/, signup/        → fluxos legados (AuthCard)
-│   ├── progress/page.tsx      → placeholder; middleware protege
+│   ├── error.tsx              → boundary de rota (Sentry + Try again)
+│   ├── progress/page.tsx      → redirect 307 para /dashboard (stats na cloud)
 │   ├── dashboard/page.tsx     → painel do utilizador (server)
-│   ├── practice/page.tsx      → prática por categorias (server)
+│   ├── practice/page.tsx      → prática; honra ?mode= e ?cat= / ?category=
 │   ├── mock-test/             → setup + session/results (placeholders)
 │   ├── learn/                 → hub + [slug] (placeholders)
 │   ├── resources/page.tsx     → hub de jornada WA: teoria, horas, HPT, PDA, recursos oficiais, comunidade e visão de ecossistema
@@ -96,8 +97,10 @@ Sentry runtime capture is intentionally inert until DSN env vars are configured.
 
 ## Schema SQL (referência)
 
-Migrações em `supabase/migrations/` — tabelas `public` esperadas alinhadas com `database.types.ts` (12 tabelas no desenho atual do repo).
+Migrações em `supabase/migrations/` (001–033). 031 relock `user_category_stats` SELECT-only + guard no RPC; 032 protege colunas sensíveis de `profiles`; 033 revoga grants client no marketplace scaffold. Aplicar staging antes de prod.
+
+`CATEGORIES` vive em `packages/core/src/data/categories.ts` (barrel `@kanga/core`). O client web carrega questões via `public/data/questions.json`, não pelo array `QUESTIONS` do core.
 
 ---
 
-_Última revisão: 2026-06-01 (production env audit + resources hub + drawer mobile SiteNav)._
+_Última revisão: 2026-08-17 (fases 1–4 código: RLS 031–033, practice ?cat=, theme kl-theme, error.tsx)._

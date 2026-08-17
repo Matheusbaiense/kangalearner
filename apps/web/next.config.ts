@@ -29,6 +29,9 @@ if (supabaseHost) {
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    optimizePackageImports: ["lucide-react"]
+  },
   outputFileTracingRoot: require("node:path").join(__dirname, "../../"),
   images: {
     remotePatterns: imageRemotePatterns,

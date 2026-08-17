@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
+import { authErrorToUserMessage } from "@/lib/auth/authErrorMessage";
 import { useLang } from "@/contexts/LangContext";
 import { AuthBrand } from "@/components/auth/AuthBrand";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
@@ -49,7 +50,7 @@ function SignupForm() {
     });
 
     if (signError) {
-      setError(signError.message);
+      setError(authErrorToUserMessage("signup", signError));
       setLoading(false);
       return;
     }
@@ -70,7 +71,7 @@ function SignupForm() {
       }
     });
     if (oauthError) {
-      setError(oauthError.message);
+      setError(authErrorToUserMessage("oauth", oauthError));
       setLoading(false);
     }
   }

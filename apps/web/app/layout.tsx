@@ -92,7 +92,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         <script
           nonce={nonce}
           dangerouslySetInnerHTML={{
-            __html: `try{var t=localStorage.getItem('kl-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}`
+            __html: `try{var k='kl-theme',l='kanga-theme';var t=localStorage.getItem(k);if(!t){t=localStorage.getItem(l);if(t){localStorage.setItem(k,t);localStorage.removeItem(l)}}if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;else if(t==='system'&&matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.dataset.theme='dark'}catch(e){}`
           }}
         />
       </head>

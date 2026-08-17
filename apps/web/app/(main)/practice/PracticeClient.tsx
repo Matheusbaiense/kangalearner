@@ -2,7 +2,9 @@
 
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { CATEGORIES, WA_PASS_THRESHOLD, type Question } from "@kanga/core";
+import { practiceQueryHref } from "@/lib/practiceCat";
 import { useQuestions } from "@/hooks/useQuestions";
 import { sanitizeHtml } from "@/lib/sanitizeHtml";
 import { Icons } from "@/components/icons";
@@ -329,7 +331,14 @@ function ScoreSidebar({
 }
 
 /* ── Main PracticeClient ── */
-export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
+export function PracticeClient({
+  initialMode,
+  initialCat
+}: {
+  initialMode?: Mode;
+  initialCat?: string;
+}) {
+  const router = useRouter();
   const { questions: QS, loading: questionsLoading, error: questionsError } = useQuestions();
   const { uiLang: lang, isBilingual, s } = useLang();
   const { progress, award } = useGameProgress();
@@ -341,7 +350,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
   // Same SSR-safe deferred-hydration pattern as selectedState above.
   const [licenceType, setLicenceType] = useState<LicenceType>("car");
   const [mode, setMode] = useState<Mode>(initialMode ?? "all");
-  const [cat, setCat] = useState("all");
+  const [cat, setCat] = useState(initialCat ?? "all");
   const [answered, setAnswered] = useState<Answered>({});
   const [saved, setSaved] = useState<Set<string>>(new Set());
   // Rendering every question at once produces thousands of DOM nodes (300+ questions,
@@ -395,10 +404,13 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
   }, []);
 
-  /* ── Keep mode in sync with the URL on client-side navigations ── */
+  /* ── Keep mode/cat in sync with the URL on client-side navigations ── */
   useEffect(() => {
     setMode(initialMode ?? "all");
   }, [initialMode]);
+  useEffect(() => {
+    setCat(initialCat ?? "all");
+  }, [initialCat]);
 
   /* ── Question pool for the selected licence type (state-filtered) ── */
   const licenceQS = useMemo(() => {
@@ -418,8 +430,11 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
 
   /* Reset an out-of-range topic filter when switching licence type. */
   useEffect(() => {
-    if (cat !== "all" && !visibleCategories.some((c) => c.key === cat)) setCat("all");
-  }, [visibleCategories, cat]);
+    if (cat !== "all" && !visibleCategories.some((c) => c.key === cat)) {
+      setCat("all");
+      router.replace(practiceQueryHref(mode, "all"), { scroll: false });
+    }
+  }, [visibleCategories, cat, mode, router]);
 
   /* ── Filtered questions for study modes ── */
   const filtered = useMemo(() => {
@@ -512,9 +527,15 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
     } catch {}
   }
 
-  /* ── Change mode ── */
+  /* ── Change mode / topic (keep the URL in sync) ── */
   function changeMode(m: Mode) {
     setMode(m);
+    router.replace(practiceQueryHref(m, cat), { scroll: false });
+  }
+
+  function changeCat(next: string) {
+    setCat(next);
+    router.replace(practiceQueryHref(mode, next), { scroll: false });
   }
 
   /* ──────────────── RENDER ──────────────── */
@@ -605,7 +626,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
               <div className="filter-bar">
                 <button
                   className={`fcat${cat === "all" ? " active" : ""}`}
-                  onClick={() => setCat("all")}
+                  onClick={() => changeCat("all")}
                 >
                   {s.allTopics}
                 </button>
@@ -615,7 +636,7 @@ export function PracticeClient({ initialMode }: { initialMode?: Mode }) {
                     <button
                       key={c.key}
                       className={`fcat${cat === c.key ? " active" : ""}`}
-                      onClick={() => setCat(c.key)}
+                      onClick={() => changeCat(c.key)}
                       type="button"
                     >
                       <CI className="fcat-ico" aria-hidden />

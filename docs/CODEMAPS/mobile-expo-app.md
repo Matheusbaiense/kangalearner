@@ -14,7 +14,7 @@
 
 ## Domain And Storage
 
-- `src/lib/questions.ts` adapts `@kanga/core` questions, categories, AU states, pass threshold, scoring, and random mock selection.
+- `src/lib/questions.ts` adapts `@kanga/core` questions, categories, AU states, pass threshold, scoring, and random mock selection. `CATEGORIES` comes from the `@kanga/core` barrel (`data/categories.ts`); `QUESTIONS` is imported from `@kanga/core/data/questions` for the offline bank.
 - `src/lib/i18n.ts` contains the mobile string subset for English and Portuguese.
 - `src/lib/local-store.ts` stores preferences, attempts, saved questions, mock sessions, and a sync queue using AsyncStorage for the current implementation baseline.
 - `src/lib/sync-logic.ts` holds the pure, dependency-free sync helpers (attempt dedupe key, attempt/mock row builders, pass-threshold check, and offline queue upsert/remove). It imports no RN/AsyncStorage/Supabase code so it is unit-testable under vitest (node).

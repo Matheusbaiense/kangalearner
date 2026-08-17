@@ -5,6 +5,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang, UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
+import { migrateAndReadTheme, writeTheme } from "@/lib/themeStorage";
 import { AU_STATE_OPTIONS } from "@kanga/core";
 
 const AU_TIMEZONES = [
@@ -53,7 +54,7 @@ function applyTheme(theme: Theme) {
   const isDark = theme === "dark" || (theme === "system" && prefersDark);
   document.documentElement.setAttribute("data-theme", isDark ? "dark" : "light");
   try {
-    localStorage.setItem(SK.theme, theme);
+    writeTheme(localStorage, theme);
   } catch {
     /* noop */
   }
@@ -158,7 +159,7 @@ export default function AccountPage() {
         setTimezone((meta.timezone as string | undefined) || "Australia/Perth");
         const savedTheme =
           (meta.theme as Theme | undefined) ||
-          (localStorage.getItem(SK.theme) as Theme | null) ||
+          (migrateAndReadTheme(localStorage) as Theme | null) ||
           "system";
         setTheme(savedTheme);
         applyTheme(savedTheme);

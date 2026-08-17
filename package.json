@@ -10,7 +10,8 @@
     "format": "prettier -w .",
     "format:check": "prettier --check \"apps/web/**/*.{ts,tsx,css}\" \"packages/**/*.{ts,tsx}\" --no-error-on-unmatched-pattern",
     "test": "turbo run test",
-    "test:e2e": "pnpm --filter @kanga/web run test:e2e"
+    "test:e2e": "pnpm --filter @kanga/web run test:e2e",
+    "gen:questions-json": "tsx scripts/gen-questions-json.ts"
   },
   "pnpm": {
     "overrides": {
