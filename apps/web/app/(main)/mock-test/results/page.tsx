@@ -15,6 +15,7 @@ import { createClient } from "@/lib/supabase/client";
 import { SK } from "@/lib/storageKeys";
 import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
+import { awardXp, XP_PER_MOCK_PASS, XP_PER_MOCK_COMPLETE } from "@/lib/gamification/progress";
 
 type LocalAnswerRecord = Record<string, { chosen: string; correct: boolean }>;
 
@@ -91,6 +92,34 @@ export default function MockTestResultsPage() {
     const pass = total > 0 ? score / total >= WA_PASS_THRESHOLD : false;
     return { rows, total, score, pct, pass };
   }, [session, QUESTIONS, questionsLoading]);
+
+  /* Award guest XP + append to the local mock history, once per completed
+     session (guarded by completedAtIso). The history feeds /today's readiness
+     for guests; signed-in users get the server-side version on the dashboard. */
+  useEffect(() => {
+    if (!session?.completedAtIso || !scored) return;
+    try {
+      const KEY = "kl-mock-xp-awarded";
+      if (localStorage.getItem(KEY) === session.completedAtIso) return;
+      awardXp(scored.pass ? XP_PER_MOCK_PASS : XP_PER_MOCK_COMPLETE);
+      const rawHistory = localStorage.getItem(SK.mockHistory);
+      const history =
+        safeParseJson<Array<{ score: number; total: number; state: string; at: string }>>(
+          rawHistory
+        );
+      const next = [
+        {
+          score: scored.score,
+          total: scored.total,
+          state: session.cfg.state,
+          at: session.completedAtIso
+        },
+        ...(Array.isArray(history) ? history : [])
+      ].slice(0, 10);
+      localStorage.setItem(SK.mockHistory, JSON.stringify(next));
+      localStorage.setItem(KEY, session.completedAtIso);
+    } catch {}
+  }, [session, scored]);
 
   /* Readiness recomputed with the mock just taken + local practice history,
      restricted to the pool of this mock (state + licence type), mirroring the
