@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { useLang } from "@/contexts/LangContext";
-import { WA_PASS_MIN_CORRECT } from "@kanga/core";
+import { WA_PASS_MIN_CORRECT, stateHasMotorcycleLicence } from "@kanga/core";
 import { createClient } from "@/lib/supabase/client";
 import { SK } from "@/lib/storageKeys";
 import {
@@ -58,13 +58,20 @@ export function MockTestClient() {
   const [licenceType, setLicenceType] = useState<LicenceType>("car");
 
   useEffect(() => {
+    let state: StateCode = "WA";
     try {
       const raw = localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy);
-      if (raw && STATE_CODES.includes(raw as StateCode)) setSelectedState(raw as StateCode);
+      if (raw && STATE_CODES.includes(raw as StateCode)) state = raw as StateCode;
     } catch {
       // localStorage unavailable
     }
-    setLicenceType(readStoredLicenceType());
+    setSelectedState(state);
+    const storedLicenceType = readStoredLicenceType();
+    setLicenceType(
+      storedLicenceType === "motorcycle" && !stateHasMotorcycleLicence(state)
+        ? "car"
+        : storedLicenceType
+    );
   }, []);
 
   // Stay in sync if licence type changes elsewhere (nav selector, onboarding) while this page is open.
@@ -80,6 +87,9 @@ export function MockTestClient() {
       const code = (event as CustomEvent<string>).detail;
       if (!code || !STATE_CODES.includes(code as StateCode)) return;
       setSelectedState(code as StateCode);
+      setLicenceType((prev) =>
+        prev === "motorcycle" && !stateHasMotorcycleLicence(code) ? "car" : prev
+      );
     };
     window.addEventListener(STATE_CHANGED_EVENT, onStateChanged);
     return () => window.removeEventListener(STATE_CHANGED_EVENT, onStateChanged);
@@ -179,17 +189,19 @@ export function MockTestClient() {
             </div>
           </button>
 
-          <button
-            className={`mock-mode-option ${licenceType === "motorcycle" ? "active" : ""}`}
-            onClick={() => handleLicenceTypeChange("motorcycle")}
-            type="button"
-            style={{ flex: 1 }}
-          >
-            <IconBadge icon={Icons.motorcycle} tone="brand" size="md" />
-            <div>
-              <strong>{s.motorcycleLicence}</strong>
-            </div>
-          </button>
+          {stateHasMotorcycleLicence(selectedState) && (
+            <button
+              className={`mock-mode-option ${licenceType === "motorcycle" ? "active" : ""}`}
+              onClick={() => handleLicenceTypeChange("motorcycle")}
+              type="button"
+              style={{ flex: 1 }}
+            >
+              <IconBadge icon={Icons.motorcycle} tone="brand" size="md" />
+              <div>
+                <strong>{s.motorcycleLicence}</strong>
+              </div>
+            </button>
+          )}
         </div>
 
         <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>
