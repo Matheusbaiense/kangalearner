@@ -2,6 +2,7 @@ import { type NextRequest } from "next/server";
 import { assertAdminRole } from "@/lib/auth/assertAdminRole";
 import { apiError, apiOk } from "@/lib/api/envelope";
 import { namedQueryFailures } from "@/lib/api/namedQueryFailures";
+import { log, logContext } from "@/lib/log";
 import { rateLimit } from "@/lib/rateLimit";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 
@@ -18,7 +19,7 @@ const adminRpc = supabaseAdmin as unknown as {
   ) => Promise<{ data: T | null; error: { message: string } | null }>;
 };
 
-export async function GET(_request: NextRequest) {
+export async function GET(request: NextRequest) {
   const uid = await assertAdminRole();
   if (!uid) return apiError("forbidden", 403);
 
@@ -87,7 +88,10 @@ export async function GET(_request: NextRequest) {
   ]);
 
   if (failed.length > 0) {
-    console.error("[admin/stats] query failures:", failed.join(", "));
+    log("error", "admin.stats.query_failures", {
+      ...logContext(request, { userId: uid, action: "stats" }),
+      failed
+    });
   }
   if (failed.length === 12) {
     return apiError("internal_error", 500);

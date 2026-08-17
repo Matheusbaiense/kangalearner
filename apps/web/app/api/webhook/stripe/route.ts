@@ -3,6 +3,7 @@ import Stripe from "stripe";
 import * as Sentry from "@sentry/nextjs";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { log, mask } from "@/lib/log";
+import { REQUEST_ID_HEADER, requestIdFrom } from "@/lib/requestId";
 
 // Stripe SDK, lazy init para evitar erro em build sem env vars
 let _stripe: Stripe | null = null;
@@ -21,10 +22,13 @@ const INACTIVE_STATUSES = new Set(["canceled", "past_due", "unpaid", "incomplete
 type SubscriptionRole = "premium" | "free";
 
 export async function POST(request: NextRequest) {
+  const requestId = requestIdFrom(request);
   const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
   if (!webhookSecret) {
-    console.error("webhook/stripe: STRIPE_WEBHOOK_SECRET not set");
-    return NextResponse.json({ error: "misconfigured" }, { status: 500 });
+    log("error", "stripe.webhook.misconfigured", { requestId, action: "construct_event" });
+    const res = NextResponse.json({ error: "misconfigured" }, { status: 500 });
+    res.headers.set(REQUEST_ID_HEADER, requestId);
+    return res;
   }
 
   const rawBody = await request.text();
@@ -38,8 +42,7 @@ export async function POST(request: NextRequest) {
   try {
     event = getStripe().webhooks.constructEvent(rawBody, signature, webhookSecret);
   } catch (err) {
-    const msg = err instanceof Error ? err.message : "signature_verification_failed";
-    log("error", "stripe.webhook.signature_error", { msg });
+    log("error", "stripe.webhook.signature_error", { requestId, action: "construct_event" });
     Sentry.captureException(err, { tags: { area: "stripe_webhook", step: "signature" } });
     return NextResponse.json({ error: "invalid_signature" }, { status: 400 });
   }
@@ -62,7 +65,11 @@ export async function POST(request: NextRequest) {
     if (idempotencyError.code === "23505") {
       return NextResponse.json({ received: true });
     }
-    console.error("webhook/stripe: idempotency insert failed:", idempotencyError.code);
+    log("error", "stripe.webhook.idempotency_insert_failed", {
+      requestId,
+      action: "idempotency_insert",
+      code: idempotencyError.code
+    });
     return NextResponse.json({ error: "db_error" }, { status: 500 });
   }
 
@@ -71,7 +78,11 @@ export async function POST(request: NextRequest) {
     typeof subscription.customer === "string" ? subscription.customer : subscription.customer?.id;
 
   if (!customerId) {
-    console.error("webhook/stripe: missing customer id in event", event.id);
+    log("error", "stripe.webhook.missing_customer", {
+      requestId,
+      action: "resolve_customer",
+      eventId: event.id
+    });
     return NextResponse.json({ error: "missing_customer" }, { status: 400 });
   }
 
@@ -96,7 +107,11 @@ export async function POST(request: NextRequest) {
     .maybeSingle();
 
   if (profile?.role === "admin" || profile?.role === "super_admin") {
-    log("warn", "stripe.webhook.skip_privileged_user", { customerId: mask(customerId) });
+    log("warn", "stripe.webhook.skip_privileged_user", {
+      requestId,
+      action: "skip",
+      customerId: mask(customerId)
+    });
     return NextResponse.json({ received: true });
   }
 
@@ -106,7 +121,11 @@ export async function POST(request: NextRequest) {
     .eq("stripe_customer_id", customerId);
 
   if (updateError) {
-    log("error", "stripe.webhook.profile_update_failed", { code: updateError.code });
+    log("error", "stripe.webhook.profile_update_failed", {
+      requestId,
+      action: "profile_update",
+      code: updateError.code
+    });
     Sentry.captureException(
       new Error(`stripe webhook profile update failed: ${updateError.code}`),
       {
@@ -122,7 +141,11 @@ export async function POST(request: NextRequest) {
       .delete()
       .eq("event_id", event.id);
     if (ledgerCleanupError) {
-      console.error("webhook/stripe: ledger cleanup failed:", ledgerCleanupError.code);
+      log("error", "stripe.webhook.ledger_cleanup_failed", {
+        requestId,
+        action: "ledger_cleanup",
+        code: ledgerCleanupError.code
+      });
     }
     return NextResponse.json({ error: "db_error" }, { status: 500 });
   }

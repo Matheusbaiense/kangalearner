@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { type NextRequest } from "next/server";
 import { z } from "zod";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
@@ -23,6 +24,10 @@ export async function GET(req: NextRequest) {
     .eq("slug", slug);
 
   if (error) {
+    log("error", "blog_reactions.query_failed", {
+      ...logContext(req, { action: "list" }),
+      code: error.code
+    });
     return apiError("query_failed", 500);
   }
 
@@ -74,6 +79,10 @@ export async function POST(req: NextRequest) {
     .upsert({ slug, reaction, visitor_hash: hash }, { onConflict: "slug,visitor_hash" });
 
   if (error) {
+    log("error", "blog_reactions.write_failed", {
+      ...logContext(req, { action: "upsert" }),
+      code: error.code
+    });
     return apiError("write_failed", 500);
   }
 

@@ -2,6 +2,7 @@
 
 | Data | ID | Tema | Paths principais |
 |------|-----|------|------------------|
+| 2026-08-17 | REM-5 | Logger JSON + `x-request-id` nas rotas (Fase 4.6) | `apps/web/src/lib/{log,requestId}.ts`, `apps/web/src/middleware.ts`, `apps/web/app/api/**/route.ts`, `apps/web/app/auth/callback/route.ts` |
 | 2026-08-17 | REM-4 | Blog RSC (lista leve) + envelope no resto das rotas de app | `apps/web/src/lib/blogIndex.ts`, `apps/web/app/(main)/blog/page.tsx`, `apps/web/app/api/{attempts/bulk,saved-questions/bulk,mock-sessions,blog-reactions,newsletter,profile/avatar,admin/stats}/route.ts` |
 | 2026-08-17 | REM-2 | Fase 1.4/1.5 SQL 034 + 4.2/4.5/3.9: hygiene RLS, admin stats degraded, search debounce, sync visível, keepalive via secret | `supabase/migrations/034_rls_policy_hygiene.sql`, `apps/web/app/api/admin/stats/route.ts`, `apps/web/app/(main)/admin/page.tsx`, `apps/web/app/(main)/practice/PracticeClient.tsx`, `.github/workflows/keepalive.yml`, `docs/QA-FASE0-VERIFY.md` |
 | 2026-08-17 | REM-1 | Fases 1–4 código: RLS 031–033, mock seek, practice ?cat=, tema kl-theme, CATEGORIES split, error.tsx, auth messages, admin premium demote | `supabase/migrations/031–033_*.sql`, `packages/core/src/data/categories.ts`, `apps/web/app/(main)/practice/*`, `apps/web/app/error.tsx`, `apps/web/src/lib/{practiceCat,themeStorage,auth/*}.ts` |

@@ -1,6 +1,7 @@
 import { type NextRequest } from "next/server";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
@@ -77,7 +78,10 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("mock-sessions: insert failed", error.code);
+    log("error", "mock_sessions.insert_failed", {
+      ...logContext(request, { userId: user.id, action: "insert" }),
+      code: error.code
+    });
     return apiError("db_error", 500);
   }
   return apiOk(undefined, { headers: cookieResponse.headers });

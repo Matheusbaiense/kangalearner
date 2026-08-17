@@ -1,4 +1,5 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { log, logContext } from "@/lib/log";
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -11,7 +12,10 @@ export async function GET(request: Request) {
   const { error } = await supabaseAdmin.from("profiles").select("id").limit(1).maybeSingle();
 
   if (error) {
-    console.error("[ping] DB probe failed:", error.code);
+    log("error", "ping.probe_failed", {
+      ...logContext(request, { action: "probe" }),
+      code: error.code
+    });
     return Response.json({ ok: false, error: "probe_failed" }, { status: 500 });
   }
 

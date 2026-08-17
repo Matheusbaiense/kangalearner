@@ -5,8 +5,14 @@ import { supabaseAdmin } from "@/lib/supabase/admin";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { welcomeEmailHtml, welcomeEmailSubject } from "@/lib/emails/welcome";
+import { log, logContext } from "@/lib/log";
 
-async function sendWelcomeEmail(userId: string, email: string, name?: string): Promise<void> {
+async function sendWelcomeEmail(
+  request: NextRequest,
+  userId: string,
+  email: string,
+  name?: string
+): Promise<void> {
   try {
     await resend.emails.send({
       from: FROM_ADDRESS,
@@ -18,8 +24,10 @@ async function sendWelcomeEmail(userId: string, email: string, name?: string): P
       .from("profiles")
       .update({ welcome_sent_at: new Date().toISOString() })
       .eq("id", userId);
-  } catch (err) {
-    console.error("[auth/callback] welcome email failed:", err);
+  } catch {
+    log("error", "auth.callback.welcome_email_failed", {
+      ...logContext(request, { userId, action: "welcome_email" })
+    });
   }
 }
 
@@ -74,7 +82,9 @@ export async function GET(request: NextRequest) {
   const { data, error } = await supabase.auth.exchangeCodeForSession(code);
 
   if (error || !data.user) {
-    console.error("Auth callback error:", error?.message ?? "unknown");
+    log("error", "auth.callback.exchange_failed", {
+      ...logContext(request, { action: "exchange_code" })
+    });
     return NextResponse.redirect(new URL("/auth/login?error=auth_failed", url.origin));
   }
 
@@ -87,7 +97,10 @@ export async function GET(request: NextRequest) {
     .maybeSingle();
 
   if (profileError) {
-    console.error("Auth callback profile read:", profileError.message);
+    log("error", "auth.callback.profile_read_failed", {
+      ...logContext(request, { userId: user.id, action: "profile_read" }),
+      code: profileError.code
+    });
   }
 
   await supabaseAdmin
@@ -126,16 +139,16 @@ export async function GET(request: NextRequest) {
         .update({ stripe_customer_id: stripeCustomerId })
         .eq("id", user.id)
         .is("stripe_customer_id", null);
-    } catch (stripeError) {
-      console.error(
-        "Stripe customer creation failed:",
-        stripeError instanceof Error ? stripeError.message : String(stripeError)
-      );
+    } catch {
+      log("error", "auth.callback.stripe_customer_failed", {
+        ...logContext(request, { userId: user.id, action: "create_customer" })
+      });
     }
   }
 
   if (profile && !profile.welcome_sent_at && user.email) {
     void sendWelcomeEmail(
+      request,
       user.id,
       user.email,
       (typeof user.user_metadata?.full_name === "string" && user.user_metadata.full_name) ||

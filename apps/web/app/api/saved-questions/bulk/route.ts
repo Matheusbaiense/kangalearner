@@ -1,6 +1,7 @@
 import { type NextRequest } from "next/server";
 import { z } from "zod";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { isValidQuestionId } from "@/lib/api/attemptValidation";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
@@ -69,7 +70,10 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("saved-questions/bulk: upsert failed", error.code);
+    log("error", "saved_questions.bulk_upsert_failed", {
+      ...logContext(request, { userId: user.id, action: "upsert" }),
+      code: error.code
+    });
     return apiError("db_error", 500);
   }
 

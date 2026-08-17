@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
@@ -121,7 +122,10 @@ export async function POST(request: NextRequest) {
   });
 
   if (error) {
-    console.error("attempts/bulk: upsert failed", error.code);
+    log("error", "attempts.bulk_upsert_failed", {
+      ...logContext(request, { userId: user.id, action: "upsert" }),
+      code: error.code
+    });
     return apiError("db_error", 500);
   }
 

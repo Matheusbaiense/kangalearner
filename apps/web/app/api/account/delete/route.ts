@@ -1,5 +1,6 @@
 import { type NextRequest } from "next/server";
 import { apiError, apiOk } from "@/lib/api/envelope";
+import { log, logContext } from "@/lib/log";
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import { rateLimit } from "@/lib/rateLimit";
@@ -36,7 +37,10 @@ export async function DELETE(request: NextRequest) {
     .maybeSingle();
 
   if (fetchError) {
-    console.error("[account/delete] profile fetch failed:", fetchError.code);
+    log("error", "account.delete.profile_fetch_failed", {
+      ...logContext(request, { userId: user.id, action: "fetch" }),
+      code: fetchError.code
+    });
     return apiError("delete_failed", 500);
   }
 
@@ -61,14 +65,19 @@ export async function DELETE(request: NextRequest) {
     .eq("id", user.id);
 
   if (profileError) {
-    console.error("[account/delete] profile soft-delete failed:", profileError.code);
+    log("error", "account.delete.soft_delete_failed", {
+      ...logContext(request, { userId: user.id, action: "soft_delete" }),
+      code: profileError.code
+    });
     return apiError("delete_failed", 500);
   }
 
   const { error: authError } = await supabaseAdmin.auth.admin.deleteUser(user.id);
 
   if (authError) {
-    console.error("[account/delete] auth user deletion failed:", authError.message);
+    log("error", "account.delete.auth_user_failed", {
+      ...logContext(request, { userId: user.id, action: "auth_delete" })
+    });
 
     const { error: rollbackError } = await supabaseAdmin
       .from("profiles")
@@ -81,7 +90,10 @@ export async function DELETE(request: NextRequest) {
       .eq("id", user.id);
 
     if (rollbackError) {
-      console.error("[account/delete] rollback failed:", rollbackError.code);
+      log("error", "account.delete.rollback_failed", {
+        ...logContext(request, { userId: user.id, action: "rollback" }),
+        code: rollbackError.code
+      });
     }
 
     return apiError("auth_delete_failed", 500);
@@ -94,12 +106,16 @@ export async function DELETE(request: NextRequest) {
     .list(user.id);
 
   if (listError) {
-    console.error("[account/delete] avatar list failed:", listError.message);
+    log("error", "account.delete.avatar_list_failed", {
+      ...logContext(request, { userId: user.id, action: "avatar_list" })
+    });
   } else if (avatarFiles && avatarFiles.length > 0) {
     const paths = avatarFiles.map((f) => `${user.id}/${f.name}`);
     const { error: removeError } = await supabaseAdmin.storage.from("avatars").remove(paths);
     if (removeError) {
-      console.error("[account/delete] avatar remove failed:", removeError.message);
+      log("error", "account.delete.avatar_remove_failed", {
+        ...logContext(request, { userId: user.id, action: "avatar_remove" })
+      });
     }
   }
 
