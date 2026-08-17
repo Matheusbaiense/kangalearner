@@ -34,9 +34,11 @@ export function LearnPageClient() {
         {topics.map((topic) => (
           <Link key={topic.slug} href={`/learn/${topic.slug}`} className="topic-card">
             <IconBadge icon={Icons[topic.icon]} tone="brand" className="topic-icon" />
-            <strong>{tx(topic.title, lang)}</strong>
-            <span style={{ fontSize: ".8rem", lineHeight: 1.35 }}>
-              {tx(topic.summary, lang).slice(0, 80)}…
+            <span className="topic-copy">
+              <strong>{tx(topic.title, lang)}</strong>
+              <span style={{ fontSize: ".8rem", lineHeight: 1.35 }}>
+                {tx(topic.summary, lang).slice(0, 80)}…
+              </span>
             </span>
           </Link>
         ))}
