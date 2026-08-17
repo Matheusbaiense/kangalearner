@@ -627,20 +627,22 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
         <div className="trust-inner">
           <SectionHead eyebrow={s.sectionEyebrowTrust} title={s.trustTitle} />
           <div className="trust-grid">
-            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }, i) => (
-              <div key={titleKey} className={`trust-item${i === 0 ? " trust-item--lead" : ""}`}>
+            {TRUST_ITEMS.map(({ Icon, titleKey, bodyKey, hasFlags }) => (
+              <div key={titleKey} className="trust-item">
                 <div className="trust-icon-wrap" aria-hidden="true">
                   <Icon size={24} strokeWidth={2} />
                 </div>
-                <strong>{s[titleKey]}</strong>
-                <p>{s[bodyKey]}</p>
-                {hasFlags && (
-                  <div style={{ display: "flex", gap: 6, marginTop: 8, alignItems: "center" }}>
-                    <FlagImg country="au" />
-                    <FlagImg country="br" />
-                    <FlagImg country="es" />
-                  </div>
-                )}
+                <div className="trust-copy">
+                  <strong>{s[titleKey]}</strong>
+                  <p>{s[bodyKey]}</p>
+                  {hasFlags && (
+                    <div className="trust-flags">
+                      <FlagImg country="au" />
+                      <FlagImg country="br" />
+                      <FlagImg country="es" />
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
