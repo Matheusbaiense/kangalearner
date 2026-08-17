@@ -1,12 +1,22 @@
 # Supabase Auth hardening checklist
 
-## Current status
+## Session cookies (web, 2026-08)
 
-- Supabase Auth foundation exists in the static app.
-- Supabase real project is not connected yet.
-- No env/secrets are committed.
-- No service role key is used in frontend.
+KangaLearner is a Next.js App Router app on Vercel (`kangalearner.com.au`), not GitHub Pages. Session lives in cookies shared by middleware and the browser client.
+
+- **Cookie adapter, not localStorage.** Middleware rotates the refresh token into cookies. A localStorage copy would go stale and fire `SIGNED_OUT`. See `apps/web/src/lib/supabase/client.ts`.
+- **Flags:** `SameSite=Lax`, `path=/`, `Secure` when `NODE_ENV=production`, `httpOnly: false`. Set via `authCookieOptions()` on every `createServerClient` / `createBrowserClient`.
+- **Why not HttpOnly:** the browser adapter reads tokens with `document.cookie`. HttpOnly would hide them and break middleware sync. XSS can steal the session; mitigation is CSP `script-src` nonce (already on). `style-src` nonce remains deferred (Sprint 12 / SEC-08).
+- **Rate-limit IP:** `getClientIp` trusts `x-real-ip` / first `x-forwarded-for` hop because Vercel sets those at the edge. No change while the app stays only on Vercel.
+
+## Current status (stale sections below)
+
+The bullets under “Before enabling real auth” mix GitHub Pages-era notes with live production. Treat **Session cookies** above as current; a full rewrite of this file is Fase 8.1.
+
+- Supabase Auth is live on project `olgogtaeifyxwzencilo`.
+- Service role key is server-only (`src/lib/supabase/admin.ts`).
 - Password hashing is handled by Supabase Auth, not by KangaLearner.
+
 
 ## Before enabling real auth in production
 

@@ -29,6 +29,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Código: logger estruturado** (2026-08-17): `x-request-id` no middleware; `log()` JSON nas rotas de API + auth callback. Sem password/token/Authorization/rawBody.
 - [x] **Código: step-up delete/password** (2026-08-17): DELETE `/api/account/delete` e PATCH `/api/account/password` exigem senha atual via `signInWithPassword`. Contas só-OAuth: criar senha em Forgot password primeiro.
 - [x] **Código: MFA admin** (2026-08-18): `/admin` e APIs admin exigem `aal2`; página `/auth/mfa`. **Ligar TOTP no dashboard Auth ainda é dono** — sem isso o enroll falha.
+- [x] **Código: cookies auth** (2026-08-18): `authCookieOptions` — SameSite=Lax, Secure em produção, httpOnly false (adapter). CSP `style-src` nonce continua deferido.
 - [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY` (cron falha até 0.7). Upgrade Pro + PITR (plan phase 0.2).
 
 ## Important Follow-Ups

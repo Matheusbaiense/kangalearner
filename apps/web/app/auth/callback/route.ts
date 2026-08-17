@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { SUPPORTED_COUNTRY } from "@kanga/core";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { authCookieOptions } from "@/lib/supabase/authCookieOptions";
 import { safeNextPath } from "@/lib/auth/safeNextPath";
 import { resend, FROM_ADDRESS } from "@/lib/resend";
 import { welcomeEmailHtml, welcomeEmailSubject } from "@/lib/emails/welcome";
@@ -67,6 +68,7 @@ export async function GET(request: NextRequest) {
   // exchangeCodeForSession tem de escrever cookies na mesma resposta do redirect.
   const response = NextResponse.redirect(new URL(next, url.origin));
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookieOptions: authCookieOptions(),
     cookies: {
       getAll() {
         return request.cookies.getAll();

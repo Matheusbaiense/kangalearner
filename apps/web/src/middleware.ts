@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { REQUEST_ID_HEADER, stampRequestId } from "./lib/requestId";
+import { authCookieOptions } from "./lib/supabase/authCookieOptions";
 
 /** Rotas que exigem sessão válida. */
 const PROTECTED_ROUTES = ["/progress", "/dashboard", "/account", "/admin"];
@@ -129,6 +130,7 @@ export async function middleware(request: NextRequest) {
 
     let apiResponse = NextResponse.next({ request: { headers: idHeaders } });
     const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+      cookieOptions: authCookieOptions(),
       cookies: {
         getAll: () => request.cookies.getAll(),
         setAll: (cookiesToSet) => {
@@ -182,6 +184,7 @@ export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request: { headers: requestHeaders } });
 
   const supabase = createServerClient(supabaseUrl, supabaseAnonKey, {
+    cookieOptions: authCookieOptions(),
     cookies: {
       getAll() {
         return request.cookies.getAll();

@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-18 | REM-8 | Cookies auth: Secure em prod + SameSite=Lax; docs do adapter e getClientIp (Fase 5.4/5.6) | `apps/web/src/lib/supabase/authCookieOptions.ts`, `client.ts`/`server.ts`/`middleware.ts`, `docs/security/supabase-auth-hardening-checklist.md` |
+
 | 2026-08-18 | REM-7 | MFA TOTP aal2 no gate admin (Fase 5.3 código) | `apps/web/src/lib/auth/{adminMfa,assertAdminRole,requireAdminPage}.ts`, `apps/web/app/auth/mfa/page.tsx` |
 | 2026-08-17 | REM-6 | Step-up: password actual no delete e change-password (Fase 5.2) | `apps/web/src/lib/auth/{passwordReauth,deleteAccount}.ts`, `apps/web/app/api/account/{delete,password}/route.ts`, `apps/web/app/(main)/account/page.tsx` |
 | 2026-08-17 | REM-5 | Logger JSON + `x-request-id` nas rotas (Fase 4.6) | `apps/web/src/lib/{log,requestId}.ts`, `apps/web/src/middleware.ts`, `apps/web/app/api/**/route.ts`, `apps/web/app/auth/callback/route.ts` |

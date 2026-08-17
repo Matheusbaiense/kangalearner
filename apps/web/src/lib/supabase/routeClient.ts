@@ -1,6 +1,7 @@
 import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import type { Database } from "./database.types";
+import { authCookieOptions } from "./authCookieOptions";
 import { requireSupabaseEnv } from "./env";
 
 /** Cookie-backed Supabase client for Route Handlers (session refresh on write). */
@@ -9,6 +10,7 @@ export function createRouteHandlerClient(request: NextRequest) {
   const cookieResponse = NextResponse.next();
 
   const supabase = createServerClient<Database>(url, anonKey, {
+    cookieOptions: authCookieOptions(),
     cookies: {
       getAll() {
         return request.cookies.getAll();

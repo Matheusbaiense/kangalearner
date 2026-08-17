@@ -11,7 +11,7 @@
 
 ### Estado da execução — 2026-08-17 (este worktree)
 
-Código das fases 1.1–1.3 (SQL 031–033), **1.4/1.5 (034, não aplicada)**, 2.1–2.4, 3.1, **3.3 (blog RSC)**, 3.4 (`lucide-react` optimizePackageImports), 3.9 (admin search debounce), 4.1–4.2 (sync visível), 4.3 (envelope nas rotas de app; health/ping/stripe webhook de fora), 4.5 (admin stats degraded + dashboard/account fail-loud), **4.6 (logger JSON + x-request-id)**, 5.1 (demote premium), **5.2 (step-up password)**, **5.3 código MFA admin** (TOTP aal2 no gate; **ligar MFA no dashboard Auth ainda é dono**) e 8.2 (`gen:questions-json`) está no tree. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY` (o secret em si é Fase 0.7).
+Código das fases 1.1–1.3 (SQL 031–033), **1.4/1.5 (034, não aplicada)**, 2.1–2.4, 3.1, **3.3 (blog RSC)**, 3.4 (`lucide-react` optimizePackageImports), 3.9 (admin search debounce), 4.1–4.2 (sync visível), 4.3 (envelope nas rotas de app; health/ping/stripe webhook de fora), 4.5 (admin stats degraded + dashboard/account fail-loud), **4.6 (logger JSON + x-request-id)**, 5.1 (demote premium), **5.2 (step-up password)**, **5.3 código MFA admin** (TOTP aal2 no gate; **ligar MFA no dashboard Auth ainda é dono**), **5.4 cookies Secure+Lax** (httpOnly false de propósito), **5.6 getClientIp documentado** e 8.2 (`gen:questions-json`) está no tree. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY` (o secret em si é Fase 0.7).
 
 **Ainda não feito aqui:**
 - Fase 0 (secrets, Pro, staging, HIBP, Sentry DSN) — o Claude/Chrome faz nos dashboards; conferência em [QA-FASE0-VERIFY.md](QA-FASE0-VERIFY.md). **Não marcar aceite sem evidência.**
