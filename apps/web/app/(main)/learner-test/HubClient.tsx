@@ -17,34 +17,38 @@ export function HubClient({ total, stateCounts }: Props) {
   const countFor = new Map(stateCounts.map((st) => [st.code, st.total]));
 
   return (
-    <div className="app-container">
-      <header className="page-header state-hero">
-        <div className="state-hero-copy">
-          <h1 className="page-title">{s.ltHubTitle}</h1>
-          <p className="page-sub">{fill(s.ltHubSub, { total })}</p>
-        </div>
-        <Kanga pose="search" size={110} className="state-hero-kanga" />
-      </header>
+    <>
+      <div className="lt-hero">
+        <div className="app-container">
+          <header className="page-header state-hero">
+            <div className="state-hero-copy">
+              <h1 className="page-title">{s.ltHubTitle}</h1>
+              <p className="page-sub">{fill(s.ltHubSub, { total })}</p>
+            </div>
+            <Kanga pose="search" size={132} className="state-hero-kanga" />
+          </header>
 
-      <p>{s.ltHubIntro}</p>
+          <p>{s.ltHubIntro}</p>
 
-      <div className="facts-strip">
-        <div className="fact-cell">
-          <div className="fact-label">{s.ltHubFactQuestions}</div>
-          <div className="fact-value">{total}</div>
-        </div>
-        <div className="fact-cell">
-          <div className="fact-label">{s.ltHubFactStates}</div>
-          <div className="fact-value">{stateCounts.length}</div>
-        </div>
-        <div className="fact-cell">
-          <div className="fact-label">{s.ltHubFactLangs}</div>
-          <div className="fact-value">3</div>
-          <div className="fact-sub">EN, PT, ES</div>
+          <div className="facts-strip">
+            <div className="fact-cell">
+              <div className="fact-label">{s.ltHubFactQuestions}</div>
+              <div className="fact-value">{total}</div>
+            </div>
+            <div className="fact-cell">
+              <div className="fact-label">{s.ltHubFactStates}</div>
+              <div className="fact-value">{stateCounts.length}</div>
+            </div>
+            <div className="fact-cell">
+              <div className="fact-label">{s.ltHubFactLangs}</div>
+              <div className="fact-value">3</div>
+              <div className="fact-sub">EN, PT, ES</div>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div className="road-divider" aria-hidden="true" />
+      <div className="app-container">
 
       <section className="states-section">
         <div className="states-inner">
@@ -83,7 +87,8 @@ export function HubClient({ total, stateCounts }: Props) {
         </ul>
       </section>
 
-      <p className="disclaimer">{s.ltHubDisclaimer}</p>
-    </div>
+        <p className="disclaimer">{s.ltHubDisclaimer}</p>
+      </div>
+    </>
   );
 }

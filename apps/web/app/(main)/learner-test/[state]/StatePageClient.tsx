@@ -44,7 +44,7 @@ export function StatePageClient({ info, counts, categories }: Props) {
       authority: info.authority
     }) +
     (info.examQuestions !== null && info.examPassMark !== null
-      ? ` ${fill(s.ltStateIntroExam, { n: info.examQuestions, pass: info.examPassMark })}`
+      ? ` ${fill(s.ltStateIntroExam, { n: info.examQuestions, pass: passMarkDisplay(info.examPassMark) })}`
       : "");
 
   const bankIntro =
@@ -56,19 +56,21 @@ export function StatePageClient({ info, counts, categories }: Props) {
     }) + ` ${s.ltStateBankLangs}`;
 
   return (
-    <div className="app-container">
-      <header className="page-header state-hero">
-        <div className="state-hero-copy">
-          <h1 className="page-title">{fill(s.ltStateH1, { test: testFull })}</h1>
-          <p className="page-sub">
-            {fill(s.ltStateSub, { test: testLabel, state: info.stateName })}
-          </p>
-        </div>
-        <Kanga pose="hero" size={110} className="state-hero-kanga" />
-      </header>
+    <>
+      <div className="lt-hero">
+        <div className="app-container">
+          <header className="page-header state-hero">
+            <div className="state-hero-copy">
+              <h1 className="page-title">{fill(s.ltStateH1, { test: testFull })}</h1>
+              <p className="page-sub">
+                {fill(s.ltStateSub, { test: testLabel, state: info.stateName })}
+              </p>
+            </div>
+            <Kanga pose="hero" size={132} className="state-hero-kanga" />
+          </header>
 
-      <p>{intro}</p>
-      <p>{bankIntro}</p>
+          <p>{intro}</p>
+          <p>{bankIntro}</p>
 
       <div className="facts-strip">
         <div className="fact-cell">
@@ -109,9 +111,12 @@ export function StatePageClient({ info, counts, categories }: Props) {
         </div>
       </div>
 
-      <StateCtaButtons stateCode={info.code} />
+          <StateCtaButtons stateCode={info.code} />
+        </div>
+      </div>
 
-      {signs.length > 0 && (
+      <div className="app-container">
+        {signs.length > 0 && (
         <section className="signs-section">
           <h2 className="section-title">{s.ltSignsTitle}</h2>
           <p className="signs-sub">{fill(s.ltSignsSub, { state: info.stateName })}</p>
@@ -189,13 +194,14 @@ export function StatePageClient({ info, counts, categories }: Props) {
         </div>
       </section>
 
-      <p className="disclaimer">
-        {fill(s.ltDisclaimer, {
-          authority: info.authority,
-          url: info.authorityUrl,
-          date: info.verifiedAt
-        })}
-      </p>
-    </div>
+        <p className="disclaimer">
+          {fill(s.ltDisclaimer, {
+            authority: info.authority,
+            url: info.authorityUrl,
+            date: info.verifiedAt
+          })}
+        </p>
+      </div>
+    </>
   );
 }
