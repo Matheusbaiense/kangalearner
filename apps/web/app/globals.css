@@ -35,6 +35,9 @@
   --duration-normal: 300ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
+  /* Decorativo: duas trilhas de pneu (usadas via mask, cor vem do elemento) */
+  --tire-tracks: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 440 320'%3E%3Cg fill='none' stroke='black' stroke-width='18' stroke-linecap='round' stroke-dasharray='8 13'%3E%3Cpath d='M10 320C120 290 210 230 280 150C330 95 390 40 440 10'/%3E%3Cpath d='M62 320C167 295 252 240 317 165C364 112 417 60 462 32'/%3E%3C/g%3E%3C/svg%3E");
+
   /* Shadows */
   --shadow-soft: var(--shadow-lg);
   --shadow-card: var(--shadow-xl);
@@ -4109,6 +4112,42 @@ html.exam-focus .site-footer {
   text-align: center;
   background: var(--paper);
   border-top: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+/* marcas de pneu no asfalto: mask + cor por token, funciona nos 2 temas */
+.cta-section::before,
+.cta-section::after {
+  content: "";
+  position: absolute;
+  background: var(--ink);
+  opacity: 0.05;
+  pointer-events: none;
+  -webkit-mask: var(--tire-tracks) no-repeat center / contain;
+  mask: var(--tire-tracks) no-repeat center / contain;
+}
+.cta-section::before {
+  width: 440px;
+  height: 320px;
+  right: -90px;
+  bottom: -70px;
+  transform: rotate(-10deg);
+}
+.cta-section::after {
+  width: 360px;
+  height: 260px;
+  left: -110px;
+  top: -50px;
+  transform: rotate(168deg);
+  opacity: 0.035;
+}
+.cta-inner {
+  position: relative;
+  z-index: 1;
+}
+.cta-inner > svg {
+  display: block;
+  margin: 0 auto 10px;
 }
 .cta-inner h2 {
   font-size: 1.8rem;
@@ -4275,12 +4314,31 @@ html.exam-focus .site-footer {
 .states-inner {
   max-width: var(--container);
   margin: 0 auto;
+  position: relative;
+}
+/* estrada tracejada passando atras dos cards (secao e sempre navy) */
+.states-inner::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  right: -28px;
+  top: 50%;
+  height: 4px;
+  transform: translateY(-50%);
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.16) 0 34px,
+    transparent 34px 62px
+  );
+  border-radius: 2px;
+  pointer-events: none;
 }
 .states-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   justify-content: center;
+  position: relative;
 }
 .state-card {
   display: flex;
@@ -4294,6 +4352,8 @@ html.exam-focus .site-footer {
 }
 .state-card.active {
   background: rgba(82, 183, 136, 0.15);
+  /* fundo opaco pra "estacionar" sobre a estrada tracejada de tras */
+  background: color-mix(in srgb, var(--green2) 14%, var(--navy-950));
   border-color: var(--green2);
 }
 .state-card.coming-soon {
