@@ -8,7 +8,7 @@ import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { SK } from "@/lib/storageKeys";
-import { AU_STATE_OPTIONS, LIVE_STATE_CODES } from "@kanga/core";
+import { AU_STATE_OPTIONS, LIVE_STATE_CODES, stateHasMotorcycleLicence } from "@kanga/core";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Icons } from "@/components/icons";
 import {
@@ -128,6 +128,9 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
       /* noop */
     }
     setStateCode(code);
+    if (licenceType === "motorcycle" && !stateHasMotorcycleLicence(code)) {
+      changeLicenceType("car");
+    }
     window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
     router.refresh();
   }
@@ -404,18 +407,20 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
               >
                 <Icons.car size={16} aria-hidden="true" />
               </button>
-              <button
-                className={`licence-toggle-btn${licenceType === "motorcycle" ? " active" : ""}`}
-                type="button"
-                aria-pressed={licenceType === "motorcycle"}
-                onClick={() => {
-                  changeLicenceType("motorcycle");
-                  router.refresh();
-                }}
-                title={s.motorcycleLicence}
-              >
-                <Icons.motorcycle size={16} aria-hidden="true" />
-              </button>
+              {stateHasMotorcycleLicence(stateCode) && (
+                <button
+                  className={`licence-toggle-btn${licenceType === "motorcycle" ? " active" : ""}`}
+                  type="button"
+                  aria-pressed={licenceType === "motorcycle"}
+                  onClick={() => {
+                    changeLicenceType("motorcycle");
+                    router.refresh();
+                  }}
+                  title={s.motorcycleLicence}
+                >
+                  <Icons.motorcycle size={16} aria-hidden="true" />
+                </button>
+              )}
             </div>
 
             {/* Language selector */}
@@ -695,26 +700,28 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
             <div className="mobile-nav-vehicle">
               <span className="mobile-nav-section-label">{s.vehicleType}</span>
               <div className="mobile-lang-options">
-                {(["car", "motorcycle"] as const).map((v) => (
-                  <button
-                    key={v}
-                    className={`mobile-lang-option${licenceType === v ? " active" : ""}`}
-                    type="button"
-                    aria-pressed={licenceType === v}
-                    onClick={() => {
-                      changeLicenceType(v);
-                      router.refresh();
-                      setMobileNavOpen(false);
-                    }}
-                  >
-                    {v === "motorcycle" ? (
-                      <Icons.motorcycle size={20} aria-hidden="true" />
-                    ) : (
-                      <Icons.car size={20} aria-hidden="true" />
-                    )}
-                    <span>{v === "car" ? s.carLicence : s.motorcycleLicence}</span>
-                  </button>
-                ))}
+                {(["car", "motorcycle"] as const)
+                  .filter((v) => v === "car" || stateHasMotorcycleLicence(stateCode))
+                  .map((v) => (
+                    <button
+                      key={v}
+                      className={`mobile-lang-option${licenceType === v ? " active" : ""}`}
+                      type="button"
+                      aria-pressed={licenceType === v}
+                      onClick={() => {
+                        changeLicenceType(v);
+                        router.refresh();
+                        setMobileNavOpen(false);
+                      }}
+                    >
+                      {v === "motorcycle" ? (
+                        <Icons.motorcycle size={20} aria-hidden="true" />
+                      ) : (
+                        <Icons.car size={20} aria-hidden="true" />
+                      )}
+                      <span>{v === "car" ? s.carLicence : s.motorcycleLicence}</span>
+                    </button>
+                  ))}
               </div>
             </div>
 

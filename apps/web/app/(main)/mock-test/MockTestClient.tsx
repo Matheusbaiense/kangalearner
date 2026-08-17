@@ -4,7 +4,12 @@ import { useRouter } from "next/navigation";
 import { Icons } from "@/components/icons";
 import { IconBadge } from "@/components/ui/IconBadge";
 import { useLang } from "@/contexts/LangContext";
-import { applyStateTokens, WA_PASS_MIN_CORRECT, WA_TOTAL_QUESTIONS } from "@kanga/core";
+import {
+  applyStateTokens,
+  stateHasMotorcycleLicence,
+  WA_PASS_MIN_CORRECT,
+  WA_TOTAL_QUESTIONS
+} from "@kanga/core";
 import { createClient } from "@/lib/supabase/client";
 import { useStateProfile } from "@/lib/stateSelection";
 import {
@@ -50,6 +55,14 @@ export function MockTestClient() {
     window.addEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
     return () => window.removeEventListener(LICENCE_CHANGED_EVENT, onLicenceChanged);
   }, []);
+
+  // Motorcycle has no official online test in some states — fall back to car
+  // whenever the selected state (nav selector included) does not offer it.
+  useEffect(() => {
+    if (!stateHasMotorcycleLicence(selectedState)) {
+      setLicenceType((prev) => (prev === "motorcycle" ? "car" : prev));
+    }
+  }, [selectedState]);
 
   const [showGuestPrompt, setShowGuestPrompt] = useState(false);
 
@@ -148,17 +161,19 @@ export function MockTestClient() {
             </div>
           </button>
 
-          <button
-            className={`mock-mode-option ${licenceType === "motorcycle" ? "active" : ""}`}
-            onClick={() => handleLicenceTypeChange("motorcycle")}
-            type="button"
-            style={{ flex: 1 }}
-          >
-            <IconBadge icon={Icons.motorcycle} tone="brand" size="md" />
-            <div>
-              <strong>{s.motorcycleLicence}</strong>
-            </div>
-          </button>
+          {stateHasMotorcycleLicence(selectedState) && (
+            <button
+              className={`mock-mode-option ${licenceType === "motorcycle" ? "active" : ""}`}
+              onClick={() => handleLicenceTypeChange("motorcycle")}
+              type="button"
+              style={{ flex: 1 }}
+            >
+              <IconBadge icon={Icons.motorcycle} tone="brand" size="md" />
+              <div>
+                <strong>{s.motorcycleLicence}</strong>
+              </div>
+            </button>
+          )}
         </div>
 
         <h2 style={{ marginTop: 20, marginBottom: 12, fontSize: "1rem", fontWeight: 700 }}>

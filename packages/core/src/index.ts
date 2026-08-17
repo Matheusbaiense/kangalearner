@@ -49,6 +49,20 @@ export const LIVE_STATE_CODES: AuStateCode[] = [
   "NT"
 ];
 
+/**
+ * States/territories whose official learner-test authority offers a real
+ * motorcycle rider knowledge test. VIC/SA/ACT are deliberately excluded —
+ * confirmed (2026-08) that VIC's is an in-person paper test, SA's requires
+ * a paid authenticated mySAGOV account (no public quiz), and ACT riders sit
+ * the identical general car test. This is not missing content to extract;
+ * there is nothing public to extract.
+ */
+export const MOTORCYCLE_LICENCE_STATES: AuStateCode[] = ["WA", "NSW", "QLD", "TAS", "NT"];
+
+export function stateHasMotorcycleLicence(state: string | null | undefined): boolean {
+  return (MOTORCYCLE_LICENCE_STATES as readonly string[]).includes(state ?? "");
+}
+
 const _VALID_STATE_CODES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 export function normalizeAuState(value: string | null | undefined): AuStateCode | null {
