@@ -10,8 +10,8 @@ const TOTAL = bankTotalFor(STATE_TEST_INFO.map((s) => s.code));
 // request (os scripts de hidratacao precisam do nonce); igual a /learn e /blog.
 
 const DESCRIPTION =
-  `${TOTAL} free practice questions across WA, NSW, VIC, QLD, SA, ACT and NT. ` +
-  "Pick your state and study in English, Portuguese or Spanish.";
+  `${TOTAL} free practice questions across all 8 Australian states and territories. ` +
+  "Pick your state on the map and study in English, Portuguese or Spanish.";
 
 export const metadata: Metadata = {
   title: "Australian Learner Practice Tests by State",

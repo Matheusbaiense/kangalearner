@@ -6351,3 +6351,9 @@ html.exam-focus .site-footer {
   background: repeating-linear-gradient(90deg, var(--muted) 0 34px, transparent 34px 62px);
   opacity: 0.25;
 }
+
+/* ── Mapa no hub /learner-test ── */
+.au-map-section {
+  max-width: 640px;
+  margin: 2rem auto 0.5rem;
+}

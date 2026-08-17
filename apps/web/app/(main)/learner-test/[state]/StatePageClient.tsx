@@ -8,6 +8,7 @@ import { fill, tx } from "@/lib/i18n";
 import { STATE_SIGNS } from "@/lib/stateSigns";
 import { buildStateFaq, STATE_TEST_INFO, type StateTestInfo } from "@/lib/stateTestInfo";
 import { StateCtaButtons } from "./StateCtaButtons";
+import { StateHubLinks } from "./StateHubLinks";
 
 /** Mesma forma de StateBankCounts, sem importar o modulo server-only. */
 interface BankCounts {
@@ -157,6 +158,8 @@ export function StatePageClient({ info, counts, categories }: Props) {
             ) : null}
           </p>
         </section>
+
+        <StateHubLinks stateCode={info.code} stateName={info.stateName} />
 
         <section className="faq-section">
           <div className="faq-inner">
