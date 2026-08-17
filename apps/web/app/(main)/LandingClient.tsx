@@ -24,6 +24,7 @@ import type { UiLang } from "@/lib/i18n";
 import { tx } from "@/lib/i18n";
 import { FlagImg } from "@/components/ui/FlagImg";
 import { Kanga } from "@/components/brand/Kanga";
+import { AustraliaMap } from "@/components/home/AustraliaMap";
 import { LIVE_STATE_CODES } from "@kanga/core";
 import { useStateCopy } from "@/lib/stateCopy";
 import { STATE_TEST_INFO } from "@/lib/stateTestInfo";
@@ -446,9 +447,14 @@ export function LandingClient({ stateCounts }: { stateCounts?: Record<string, nu
         </div>
       </section>
 
-      {/* ── States strip ─────────────────────────────── */}
+      {/* ── States map ───────────────────────────────── */}
       <section className="states-section">
-        <div className="states-inner">
+        <div className="states-inner states-layout">
+          <AustraliaMap
+            counts={stateCounts ?? {}}
+            slugs={Object.fromEntries(AU_STATES.map((st) => [st.code, st.pageSlug]))}
+            questionsWord={s.questionsWord}
+          />
           <div className="states-grid">
             {AU_STATES.map((st) => {
               const className = `state-card${st.available ? " active" : " coming-soon"}`;
