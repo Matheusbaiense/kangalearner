@@ -33,8 +33,9 @@ apps/web/
     │   └── Onboarding.tsx      → onboarding client (localStorage)
     └── lib/
         ├── supabase/
-        │   ├── client.ts      → createBrowserClient<Database>
+        │   ├── client.ts      → createBrowserClient<Database> + cookie adapter
         │   ├── server.ts      → createServerClient<Database> + cookies()
+        │   ├── authCookieOptions.ts → SameSite=Lax, Secure em prod, httpOnly false
         │   ├── admin.ts       → service role (só server)
         │   └── database.types.ts
         ├── stripe.ts
@@ -51,6 +52,13 @@ apps/web/
 ### Sessão no browser
 
 1. `createClient()` em `src/lib/supabase/client.ts` para componentes `"use client"`.
+2. Storage é **cookie**, não localStorage: o middleware roda o refresh no servidor e grava tokens no cookie jar. Se o browser lesse localStorage, o refresh token rodado no cookie invalidaria a cópia e `onAuthStateChange` disparava `SIGNED_OUT`.
+3. Por isso `httpOnly` fica **false** — `document.cookie` tem de ler os mesmos tokens. XSS pode ler a sessão; a mitigação é CSP `script-src` nonce, não HttpOnly.
+4. Flags: `SameSite=Lax`, `path=/`, `Secure` quando `NODE_ENV=production` (`authCookieOptions`). `style-src` nonce continua deferido (Sprint 12).
+
+### Rate-limit IP
+
+`getClientIp` (`src/lib/requestClientIp.ts`) usa `x-real-ip` e o primeiro hop de `x-forwarded-for`. Na Vercel esses headers vêm do edge, não do browser. Sem mudança enquanto o app ficar só na Vercel.
 
 ### Sessão no servidor (RSC / Server Actions)
 

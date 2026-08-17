@@ -1,5 +1,6 @@
 import { createBrowserClient } from "@supabase/ssr";
 import type { Database } from "./database.types";
+import { authCookieOptions } from "./authCookieOptions";
 import { requireSupabaseEnv } from "./env";
 
 // Use cookie storage so the browser client stays in sync with the middleware.
@@ -52,6 +53,7 @@ function cookieAdapter() {
 export function createClient() {
   const { url, anonKey } = requireSupabaseEnv();
   return createBrowserClient<Database>(url, anonKey, {
+    cookieOptions: authCookieOptions(),
     cookies: cookieAdapter()
   });
 }

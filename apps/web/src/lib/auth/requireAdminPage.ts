@@ -2,6 +2,7 @@ import { redirect } from "next/navigation";
 import { cookies } from "next/headers";
 import { createServerClient } from "@supabase/ssr";
 import { supabaseAdmin } from "@/lib/supabase/admin";
+import { authCookieOptions } from "@/lib/supabase/authCookieOptions";
 import { requireSupabaseEnv } from "@/lib/supabase/env";
 import { adminRequiresAal2 } from "@/lib/auth/adminMfa";
 
@@ -10,6 +11,7 @@ export async function requireAdminPage(): Promise<{ userId: string; role: string
   const cookieStore = await cookies();
   const { url, anonKey } = requireSupabaseEnv();
   const supabase = createServerClient(url, anonKey, {
+    cookieOptions: authCookieOptions(),
     cookies: { getAll: () => cookieStore.getAll(), setAll: () => {} }
   });
 
