@@ -31,10 +31,18 @@ jobs:
         run: |
           missing=0
           for name in SUPABASE_DB_URL BACKUP_ENCRYPTION_KEY BACKUP_BUCKET BACKUP_S3_ENDPOINT AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
-            if [ -z "${!name}" ]; then
+            value="${!name}"
+            if [ -z "$value" ]; then
               echo "::error::$name is not configured"
               missing=1
+              continue
             fi
+            # Secrets pasted via a dashboard's copy button can pick up a trailing
+            # newline; an unstripped one breaks AWS SigV4 header construction
+            # (Invalid header value) without any other visible symptom.
+            clean="$(printf '%s' "$value" | tr -d '[:space:]')"
+            echo "::add-mask::$clean"
+            echo "$name=$clean" >> "$GITHUB_ENV"
           done
           if [ "$missing" -ne 0 ]; then
             exit 1
@@ -87,12 +95,11 @@ jobs:
 
       - name: Upload encrypted backup
         run: |
-          ls -la "$ENCRYPTED_FILE"
           aws s3 cp \
             "$ENCRYPTED_FILE" \
             "s3://${BACKUP_BUCKET}/supabase/$(basename "$ENCRYPTED_FILE")" \
             --endpoint-url "$BACKUP_S3_ENDPOINT" \
-            --debug 2>&1 | tail -100
+            --only-show-errors
 
       - name: Verify uploaded backup is listed
         run: |
