@@ -4317,7 +4317,8 @@ html.exam-focus .site-footer {
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
 }
-.states-layout::before {
+/* a estrada tracejada era da fileira de cards; com o mapa ela atravessaria o continente */
+.states-inner:has(.states-layout)::before {
   display: none;
 }
 .au-map {
@@ -4358,6 +4359,40 @@ html.exam-focus .site-footer {
   fill: var(--green2);
   font-size: 26px;
   font-weight: 700;
+}
+.au-map-label--compact .au-map-label-code {
+  font-size: 24px;
+}
+.au-map-label--compact .au-map-label-count {
+  font-size: 22px;
+}
+.au-map-state--hot {
+  fill-opacity: 0.4 !important;
+  stroke: var(--green2);
+}
+.state-card.is-hot {
+  border-color: var(--green2);
+  background: color-mix(in srgb, var(--green2) 22%, var(--navy-950));
+  transform: translateY(-2px);
+}
+.state-abbr {
+  font-size: var(--text-xs);
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+.state-card {
+  transition:
+    border-color 0.15s ease,
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+.states-layout {
+  margin-top: 32px;
+}
+/* secao de estados e sempre navy: titulo claro nos 2 temas */
+.states-section .section-title {
+  color: #fff;
 }
 @media (max-width: 900px) {
   .states-layout {
