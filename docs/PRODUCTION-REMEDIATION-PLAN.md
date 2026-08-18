@@ -11,12 +11,12 @@
 
 ### Estado da execução — 2026-08-18 (este worktree)
 
-Código das fases 1–6 e 8 está em `main` (até PR #212). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
+Código das fases 1–6 e 8 está em `main` (até PR #213). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
 
 **Ainda não feito aqui:**
 - Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível (túnel GET ok; evento sintético ainda inconclusivo).
 - Preview Vercel com env de staging (0.3c). **Não** aplicar 031–034 em prod até backup 0.1 verde.
-- Fase 6.2: spec Playwright existe; corre com `E2E_STAGING_EMAIL`/`PASSWORD` (smoke-a@) contra staging. CI sem credenciais faz skip. Delete de conta **não** corre nos fixtures.
+- Fase 6.2/6.3: specs existem; correm com `E2E_STAGING_*` contra staging. CI sem credenciais faz skip. Delete de conta **não** corre nos fixtures.
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
 
 ---
@@ -648,7 +648,12 @@ Mocks: Supabase client + Stripe `constructEvent`.
 ## 6.3 RLS tests — opcional mas alto valor
 
 **Esforço:** M  
-Dois JWTs no staging: A não SELECT attempts de B; A não PATCH stats (pós-031). Pode ser script `tsx` + fetch REST, não precisa pgTAP no dia 1.
+Dois JWTs no staging: A não SELECT attempts de B; A não PATCH stats (pós-031). Script `pnpm rls:staging` (`tsx` + fetch REST). Skip sem `E2E_STAGING_EMAIL`/`PASSWORD`. Peer: `E2E_STAGING_PEER_*` (smoke-b@). Recusa prod e URL CI placeholder. Vitest cobre interpretadores + fetch mock. **Não** apagar fixtures.
+
+### Aceite (código)
+
+- [x] Helpers + vitest (2026-08-18)
+- [ ] Run live contra staging com smoke-a@ + smoke-b@ (credenciais locais)
 
 ## 6.4 CI extras
 
