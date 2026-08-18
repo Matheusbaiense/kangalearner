@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-19 | REM-17 | Backup YAML: AWS CLI v2 + pg_dump 17 (PR #198); dispatch `main` verde. Preview `NEXT_PUBLIC_SUPABASE_*` → staging. Sentry DSN Production truncado (29 chars) — recriar. MFA TOTP dashboard já Enabled. | `.github/workflows/backup.yml`, Vercel Preview env |
+
 | 2026-08-18 | REM-16 | RLS 6.3: interpret PostgREST + staging smoke script (skip sem credenciais; recusa prod) | `src/lib/e2e/stagingRls.ts`, `stagingRls.cli.ts` |
 
 | 2026-08-18 | REM-15 | Playwright 6.2 staging-only (skip sem credenciais; bloqueia prod host/ref) | `e2e/auth-staging.spec.ts`, `src/lib/e2e/stagingAuth.ts` |
