@@ -1,6 +1,6 @@
 # Histórico infra / web
 
-| 2026-08-18 | REM-10 | Turnstile widget (CAPTCHA ainda OFF no dashboard) + túnel Sentry `/monitoring` | `TurnstileWidget.tsx`, `app/monitoring/route.ts`, `src/middleware.ts` CSP + matcher |
+| 2026-08-18 | REM-10 | Turnstile widget + túnel Sentry `/monitoring`; CAPTCHA **ON** no dashboard (Turnstile, secret persistida) | `TurnstileWidget.tsx`, `app/monitoring/route.ts`, `src/middleware.ts` CSP + matcher |
 
 | 2026-08-18 | REM-9 | 6.1 testes de rotas + 3.2 JSON-by-state + 3.8 sync único + 8.x higiene | `apps/web/src/lib/stripe/stripeWebhook.ts`, `attemptValidation.ts`, `hooks/useQuestions.ts`, `scripts/gen-questions-json.ts` |
 

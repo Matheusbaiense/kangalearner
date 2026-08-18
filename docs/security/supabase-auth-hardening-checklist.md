@@ -31,7 +31,7 @@ The bullets under “Before enabling real auth” mix GitHub Pages-era notes wit
 - Configure password policy.
 - Enable leaked password protection, if available on the plan/project.
 - Configure CAPTCHA for signup/login/reset if supported by the chosen Supabase setup.
-  **2026-08-18:** widget Turnstile no app (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`). Toggle no dashboard **ainda OFF**. Depois do deploy: Attack Protection → provider Cloudflare Turnstile → colar secret → Save (o Save liga o toggle). Não fazer isso antes do widget estar em Production.
+  **2026-08-18:** widget Turnstile no app (`NEXT_PUBLIC_TURNSTILE_SITE_KEY`). Toggle **ON** em prod (provider Cloudflare Turnstile, secret no Attack Protection, após PR #207).
 - Confirm email templates do not expose internal URLs.
 - Confirm anon key is only used as public frontend key.
 - Confirm service role key is never used in frontend.

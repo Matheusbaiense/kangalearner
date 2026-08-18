@@ -90,7 +90,7 @@ apps/web/
 ### Auth CAPTCHA (Turnstile)
 
 - Widget em `/auth/login`, `/auth/signup`, `/auth/forgot-password`. No-op se `NEXT_PUBLIC_TURNSTILE_SITE_KEY` estiver vazio.
-- Token vai em `options.captchaToken` (GoTrue). **Não ligar** o toggle CAPTCHA no Supabase até este código + a site key estarem em Production.
+- Token vai em `options.captchaToken` (GoTrue). Toggle CAPTCHA **ON** em prod (2026-08-18): provider Cloudflare Turnstile, secret no Attack Protection.
 
 ### Conta (step-up)
 
