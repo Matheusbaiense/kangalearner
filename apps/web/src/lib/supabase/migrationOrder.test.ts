@@ -82,4 +82,44 @@ describe("supabase migration order", () => {
 
     expect(violations).toEqual([]);
   });
+
+  it("creates public functions before ALTER/GRANT/REVOKE/EXECUTE FUNCTION", () => {
+    const created = new Set<string>();
+    const violations: string[] = [];
+    const createFn =
+      /\bCREATE\s+(?:OR\s+REPLACE\s+)?FUNCTION\s+((?:[a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]*)/gi;
+    const requireFn =
+      /\b(?:ALTER\s+FUNCTION|(?:GRANT|REVOKE)\s+EXECUTE\s+ON\s+FUNCTION|EXECUTE\s+(?:FUNCTION|PROCEDURE))\s+((?:[a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]*)/gi;
+
+    for (const file of loadMigrationFiles()) {
+      const text = maskDoBlocks(stripComments(file.sql));
+      const events: { index: number; kind: "create" | "require"; name: string }[] = [];
+
+      for (const match of text.matchAll(createFn)) {
+        const name = publicRelation(match[1] ?? "");
+        if (name && match.index !== undefined) {
+          events.push({ index: match.index, kind: "create", name });
+        }
+      }
+      for (const match of text.matchAll(requireFn)) {
+        const name = publicRelation(match[1] ?? "");
+        if (name && match.index !== undefined) {
+          events.push({ index: match.index, kind: "require", name });
+        }
+      }
+
+      events.sort((a, b) => a.index - b.index);
+      for (const event of events) {
+        if (event.kind === "create") {
+          created.add(event.name);
+          continue;
+        }
+        if (!created.has(event.name)) {
+          violations.push(`${file.name}: require ${event.name}() before CREATE FUNCTION`);
+        }
+      }
+    }
+
+    expect(violations).toEqual([]);
+  });
 });

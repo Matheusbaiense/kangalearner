@@ -13,4 +13,19 @@
 revoke execute on function public.handle_new_user() from public, anon, authenticated;
 revoke execute on function public.enforce_profile_defaults_on_insert() from public, anon, authenticated;
 revoke execute on function public.prevent_profile_role_escalation() from public, anon, authenticated;
-revoke execute on function public.rls_auto_enable() from public, anon, authenticated;
+
+-- Prod drift: advisor flagged `rls_auto_enable()` in 2026-08. It is not created
+-- in repo migrations, so a fresh DB has nothing to revoke.
+DO $$
+BEGIN
+  IF EXISTS (
+    SELECT 1
+    FROM pg_proc p
+    JOIN pg_namespace n ON n.oid = p.pronamespace
+    WHERE n.nspname = 'public'
+      AND p.proname = 'rls_auto_enable'
+      AND pg_get_function_identity_arguments(p.oid) = ''
+  ) THEN
+    REVOKE EXECUTE ON FUNCTION public.rls_auto_enable() FROM public, anon, authenticated;
+  END IF;
+END $$;

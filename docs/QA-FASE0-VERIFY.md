@@ -6,7 +6,7 @@
 > Pedido enviado ao Claude: 2026-08-17 (prompt na conversa de remediação).
 > Código do lote: branch `feat/remediation-rls-product-bugs`, commit inicial `2492d7d` (031–033 no repo, **não aplicadas**).
 > Este agente acrescentou `034_rls_policy_hygiene.sql` e o keepalive passou a `${{ secrets.SUPABASE_ANON_KEY }}`. Secret 0.7 **já existe** (Claude, 2026-08-18).
-> Staging: projeto `kangalearner-staging` (ref `zlsaerfsrfyxpbpxorwo`, ap-southeast-2). 001–012 aplicadas; 013 falhou (user_settings só era criada na 018). Após o fix da 013 em main: continuar **013→034 só em staging**. Não aplicar 013 de novo em prod. Não aplicar 031–034 em prod nesta fase.
+> Staging: projeto `kangalearner-staging` (ref `zlsaerfsrfyxpbpxorwo`, ap-southeast-2). 001–026 aplicadas; 027 falhou (`set_updated_at()` inexistente). Após o fix: continuar **027→034 só em staging**. Não reaplicar 013/027 em prod. Não aplicar 031–034 em prod nesta fase.
 
 **Regra:** `[x]` só com evidência. Screenshot, URL de run, `gh secret list` (só nomes), `vercel env ls`. Nunca colar valores de secrets neste ficheiro.
 
@@ -45,7 +45,7 @@ Supabase: projeto prod `olgogtaeifyxwzencilo`. Staging = projeto **novo** (ref d
 | 0.2b | PITR ligado | Screenshot PITR on | [ ] | | |
 | 0.2c | Região = `ap-southeast-2` (Sydney) | Screenshot settings | [ ] | | |
 | 0.3a | Projeto Supabase **staging** criado | Ref ≠ `olgogtaeifyxwzencilo` | [x] | Claude 2026-08-18: `kangalearner-staging`, ref `zlsaerfsrfyxpbpxorwo`, ap-southeast-2, $0/mês | |
-| 0.3b | Migrations 001–033 aplicadas **só em staging** primeiro | Lista de migrations no staging | [~] | 001–012 ok; 013 bloqueada até `CREATE TABLE user_settings` na 013 (este PR). Continuar 013→034 no mesmo projeto. | Não recriar staging. **Nunca** reaplicar 013 em prod. |
+| 0.3b | Migrations 001–033 aplicadas **só em staging** primeiro | Lista de migrations no staging | [~] | 001–026 ok (Claude 2026-08-18). 027 bloqueada em `set_updated_at()` (typo; função real é `update_updated_at`). Continuar 027→034 no mesmo projeto. | Não recriar staging. **Nunca** reaplicar 013/027 em prod. |
 | 0.3c | Preview Vercel com env de staging | `vercel env ls` preview | [ ] | | |
 | 0.4 | Auth: HIBP + min length ≥ 8 + Captcha | Screenshots Auth settings | [~] | Captcha ON + Turnstile + secret (Claude, 2026-08-18). Site URL/allowlist/TTL 1h. HIBP **não** — Pro-only no Free. | Signup é GoTrue no browser |
 | 0.4b | Redirect URLs: `kangalearner.com.au` + previews Vercel | Screenshot allowlist | [x] | Claude 2026-08-18: 3 URLs, sem GitHub Pages / `#auth-callback` | |
