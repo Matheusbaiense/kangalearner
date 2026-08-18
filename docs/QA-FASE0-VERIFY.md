@@ -5,7 +5,7 @@
 > Não duplicar o plano: as subtarefas canónicas estão em [PRODUCTION-REMEDIATION-PLAN.md](PRODUCTION-REMEDIATION-PLAN.md) § Fase 0.
 > Pedido enviado ao Claude: 2026-08-17 (prompt na conversa de remediação).
 > Código do lote: branch `feat/remediation-rls-product-bugs`, commit inicial `2492d7d` (031–033 no repo, **não aplicadas**).
-> Este agente acrescentou `034_rls_policy_hygiene.sql` e o keepalive passou a `${{ secrets.SUPABASE_ANON_KEY }}` — o cron **falha** até o Claude criar o secret (0.7).
+> Este agente acrescentou `034_rls_policy_hygiene.sql` e o keepalive passou a `${{ secrets.SUPABASE_ANON_KEY }}`. Secret 0.7 **já existe** (Claude, 2026-08-18).
 > Staging: se o Claude já aplicou 001–033, aplicar **034 a seguir** só em staging. Não aplicar 034 em prod nesta fase.
 
 **Regra:** `[x]` só com evidência. Screenshot, URL de run, `gh secret list` (só nomes), `vercel env ls`. Nunca colar valores de secrets neste ficheiro.
@@ -47,10 +47,10 @@ Supabase: projeto prod `olgogtaeifyxwzencilo`. Staging = projeto **novo** (ref d
 | 0.3a | Projeto Supabase **staging** criado | Ref ≠ `olgogtaeifyxwzencilo` | [ ] | | |
 | 0.3b | Migrations 001–033 aplicadas **só em staging** primeiro | Lista de migrations no staging | [ ] | | Depois: 034 no staging (código novo deste lote). Prod ainda sem 031–034 até smoke |
 | 0.3c | Preview Vercel com env de staging | `vercel env ls` preview | [ ] | | |
-| 0.4 | Auth: HIBP + min length ≥ 8 + Captcha | Screenshots Auth settings | [ ] | | Signup é GoTrue no browser |
-| 0.4b | Redirect URLs: `kangalearner.com.au` + previews Vercel | Screenshot allowlist | [ ] | | |
-| 0.5 | Sentry DSN em Vercel Production | `SENTRY_DSN` + `NEXT_PUBLIC_SENTRY_DSN` no `vercel env ls` | [ ] | | Sem colar DSN |
-| 0.7 | Secret `SUPABASE_ANON_KEY` + YAML sem JWT literal | `gh secret list` + `rg` no keepalive | [ ] | | YAML já aponta ao secret; cron vermelho = secret em falta |
+| 0.4 | Auth: HIBP + min length ≥ 8 + Captcha | Screenshots Auth settings | [~] | Captcha ON + Turnstile + secret (Claude, 2026-08-18). Site URL/allowlist/TTL 1h. HIBP **não** — Pro-only no Free. | Signup é GoTrue no browser |
+| 0.4b | Redirect URLs: `kangalearner.com.au` + previews Vercel | Screenshot allowlist | [x] | Claude 2026-08-18: 3 URLs, sem GitHub Pages / `#auth-callback` | |
+| 0.5 | Sentry DSN em Vercel Production | `SENTRY_DSN` + `NEXT_PUBLIC_SENTRY_DSN` no `vercel env ls` | [~] | DSN em Production (org kanga-e1). `GET /monitoring` 200. Evento browser/server **ainda não** confirmado. | Sem colar DSN |
+| 0.7 | Secret `SUPABASE_ANON_KEY` + YAML sem JWT literal | `gh secret list` + `rg` no keepalive | [x] | Claude: secret já existia (2026-08-18) | YAML já aponta ao secret |
 | SQL-S | Smoke staging 031–033 (a–f no prompt) | Notas do Claude + repetir 1 check | [ ] | | a PATCH stats falha; c attempts sobem stats |
 | SQL-S2 | 034 no staging: admin lê todos os profiles; user só o próprio não-deleted | SELECT com JWT user vs admin | [ ] | | Depois de SQL-S |
 | SQL-P | 031–033 em **prod** só após backup verde + smoke staging | Migration list prod | [ ] | | Bloqueado até 0.1c + SQL-S. 034 em prod só depois de SQL-S2 |

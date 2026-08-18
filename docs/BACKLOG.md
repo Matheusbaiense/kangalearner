@@ -32,7 +32,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Código: cookies auth** (2026-08-18): `authCookieOptions` — SameSite=Lax, Secure em produção, httpOnly false (adapter). CSP `style-src` nonce continua deferido.
 - [x] **Código: JSON-by-state** (2026-08-18): `questions-{STATE}.json`; `useQuestions` fetch da fatia; IndexedDB v15+estado.
 - [x] **Código: testes de rotas 6.1** (2026-08-18): webhook Stripe (23505, skip admin, ledger cleanup), attempts IDOR, bulk cap/clamp, ping cron, delete rollback. Playwright auth real continua a precisar de staging.
-- [x] **Código: Turnstile widget** (2026-08-18): `TurnstileWidget` em login/signup/forgot-password + CSP `challenges.cloudflare.com`. Toggle CAPTCHA no Supabase **continua OFF** até deploy deste PR + secret colada.
+- [x] **Código: Turnstile widget** (2026-08-18): `TurnstileWidget` em login/signup/forgot-password + CSP `challenges.cloudflare.com`. Toggle CAPTCHA no Supabase **ON** (provider Cloudflare Turnstile, secret colada, 2026-08-18) após PR #207 em prod.
 - [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY`. Upgrade Pro + PITR (plan phase 0.2). HIBP (leaked passwords) is **Pro-only**.
 
 ## Important Follow-Ups

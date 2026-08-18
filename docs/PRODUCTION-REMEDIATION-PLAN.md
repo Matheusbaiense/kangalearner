@@ -11,11 +11,10 @@
 
 ### Estado da execução — 2026-08-18 (este worktree)
 
-Código das fases 1–6 e 8 está em `main` (até PR #206). Este lote: widget Turnstile + túnel Sentry `/monitoring`. SQL 031–034 **não aplicadas**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
+Código das fases 1–6 e 8 está em `main` (até PR #207). Turnstile widget + túnel `/monitoring` em prod; CAPTCHA **ON** (Cloudflare Turnstile, secret persistida). SQL 031–034 **não aplicadas**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
 
 **Ainda não feito aqui:**
-- Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), staging, MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível após o túnel.
-- Toggle CAPTCHA Supabase: **OFF** até este PR estar em prod; depois secret Turnstile + provider Cloudflare num único Save
+- Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), staging, MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível (túnel GET ok; evento sintético ainda inconclusivo).
 - Aplicar 031–034 em staging, smoke, depois prod
 - Fase 6.2 Playwright auth real (precisa staging + users de teste)
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
