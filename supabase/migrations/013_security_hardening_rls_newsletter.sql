@@ -5,7 +5,7 @@
 --   1. Create is_admin() helper (includes super_admin, was missing)
 --   2. INSERT policies missing WITH CHECK — users could insert rows for other users
 --   3. auth.uid() → (SELECT auth.uid()) for RLS performance (cached per query)
---   4. Duplicate user_settings policies removed
+--   4. user_settings created (fresh DBs) + duplicate policies removed
 --   5. newsletter_subscribers table created with RLS
 -- ============================================================
 
@@ -66,7 +66,24 @@ CREATE POLICY "profiles_insert_own" ON profiles
   FOR INSERT TO authenticated
   WITH CHECK ((SELECT auth.uid()) = id);
 
--- ── user_settings: remove duplicate policies ──────────────────────────────────
+-- ── user_settings ─────────────────────────────────────────────────────────────
+-- Prod already had this table when 013 first ran. Fresh provision creates it
+-- here so RLS below does not fail; 018 keeps CREATE TABLE IF NOT EXISTS.
+CREATE TABLE IF NOT EXISTS public.user_settings (
+  user_id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
+  daily_goal int NOT NULL DEFAULT 10 CHECK (daily_goal >= 1 AND daily_goal <= 500),
+  notifications_enabled boolean NOT NULL DEFAULT true,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  updated_at timestamptz NOT NULL DEFAULT now()
+);
+
+DROP TRIGGER IF EXISTS user_settings_updated_at ON public.user_settings;
+CREATE TRIGGER user_settings_updated_at
+  BEFORE UPDATE ON public.user_settings
+  FOR EACH ROW EXECUTE FUNCTION update_updated_at();
+
+ALTER TABLE public.user_settings ENABLE ROW LEVEL SECURITY;
+
 DROP POLICY IF EXISTS "settings_select_own" ON user_settings;
 DROP POLICY IF EXISTS "settings_update_own" ON user_settings;
 DROP POLICY IF EXISTS "settings_upsert_own" ON user_settings;
