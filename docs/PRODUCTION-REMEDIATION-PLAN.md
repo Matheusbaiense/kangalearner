@@ -11,12 +11,12 @@
 
 ### Estado da execução — 2026-08-18 (este worktree)
 
-Código das fases 1–6 e 8 está em `main` (até PR #211). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
+Código das fases 1–6 e 8 está em `main` (até PR #212). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
 
 **Ainda não feito aqui:**
 - Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível (túnel GET ok; evento sintético ainda inconclusivo).
 - Preview Vercel com env de staging (0.3c). **Não** aplicar 031–034 em prod até backup 0.1 verde.
-- Fase 6.2 Playwright auth real (staging tem fixtures `smoke-a@` / `smoke-b@`)
+- Fase 6.2: spec Playwright existe; corre com `E2E_STAGING_EMAIL`/`PASSWORD` (smoke-a@) contra staging. CI sem credenciais faz skip. Delete de conta **não** corre nos fixtures.
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
 
 ---
@@ -131,7 +131,7 @@ Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são tea
 
 ### Aceite
 
-- [ ] URL staging documentada em `.env.example` (nomes, não valores)  
+- [x] URL staging documentada em `.env.example` (nomes, não valores)  
 - [ ] Login/practice/dashboard smoke no staging  
 
 ## 0.4 Auth dashboard — PWD-01, SEC-02, SEC-07, VULN-13
@@ -640,10 +640,10 @@ Mocks: Supabase client + Stripe `constructEvent`.
 **Esforço:** M  
 **Onde:** staging, users de teste, **nunca** prod.
 
-1. Signup (ou magic link de fixture) → cookie → `/dashboard` 200.
+1. Login fixture `smoke-a@` → cookie → `/dashboard`. Skip no CI se `E2E_STAGING_*` ausente. **Nunca** `kangalearner.com.au` nem ref `olgogtaeifyxwzencilo`.
 2. Logout → `/dashboard` redirect login.
-3. Admin API 403 com user free (já há 401 unauthenticated no smoke).
-4. Account delete no staging (user descartável).
+3. Admin API 403 com user free (`smoke-a@`). Não usar `smoke-b@` neste teste.
+4. Account delete: só user descartável extra. **Não** apagar `smoke-a` / `smoke-b`.
 
 ## 6.3 RLS tests — opcional mas alto valor
 
