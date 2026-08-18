@@ -11,11 +11,11 @@
 
 ### Estado da execução — 2026-08-18 (este worktree)
 
-Código das fases 1–6 e 8 está em `main` (até PR #209). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): 001–026 ok; 027 tipava `set_updated_at()` (não existe). SQL 031–034 **não aplicadas**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
+Código das fases 1–6 e 8 está em `main` (até PR #210). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
 
 **Ainda não feito aqui:**
 - Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível (túnel GET ok; evento sintético ainda inconclusivo).
-- Staging: reaplicar a 027 corrigida, depois 028→034, smoke. **Não** reaplicar 013/027 em prod.
+- Staging: smoke SQL-S/SQL-S2 + Preview Vercel com env de staging. **Não** aplicar 031–034 em prod até backup verde + smoke.
 - Fase 6.2 Playwright auth real (precisa staging + users de teste)
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
 
@@ -124,7 +124,7 @@ Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são tea
 ### Subtarefas
 
 1. Criar projeto Supabase **staging** (pode ser free). **Feito:** `kangalearner-staging`, ref `zlsaerfsrfyxpbpxorwo`.
-2. Aplicar migrations 001–030 **lá primeiro**. 013 em base nova precisa de `CREATE TABLE user_settings` (estava só na 018). **Não reaplicar 013 em prod.**
+2. Aplicar migrations 001–034 **lá primeiro**. **Feito** 2026-08-18 (`list_migrations` 34/34). 013/027 foram corrigidas no repo para greenfield; **não reaplicar** essas duas em prod.
 3. Preview da Vercel: env `NEXT_PUBLIC_SUPABASE_*` e `SUPABASE_SERVICE_ROLE_KEY` de staging.
 4. Nunca mais aplicar migration em prod sem passar por staging.
 5. Antes de qualquer DDL em prod: backup 0.1 verde.
