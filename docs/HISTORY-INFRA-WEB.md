@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-18 | REM-14 | Staging smoke RLS 7/7 PASS (a–f + 034); fixtures `smoke-a@`/`smoke-b@`; prod intocada | `kangalearner-staging` / `zlsaerfsrfyxpbpxorwo` |
+
 | 2026-08-18 | REM-13 | Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): 001–034 aplicadas; prod intocada | `supabase/migrations/` |
 
 | 2026-08-18 | REM-12 | 027: drop typo `set_updated_at()`; 029: revoke `rls_auto_enable` só se existir | `027_revoke_analytics_rpc_grants.sql`, `029_revoke_trigger_function_grants.sql` |
