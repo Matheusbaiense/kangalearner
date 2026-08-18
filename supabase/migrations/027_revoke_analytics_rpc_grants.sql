@@ -28,7 +28,7 @@ GRANT EXECUTE ON FUNCTION public.get_signups_per_day(timestamptz)          TO se
 -- ──────────────────────────────────────────────────────────────
 -- Advisor 0011: search_path mutável nas funções de trigger de updated_at.
 -- Fixar search_path evita hijack via objetos em schemas no caminho de busca.
-ALTER FUNCTION public.set_updated_at()    SET search_path = public, pg_temp;
+-- `set_updated_at` never existed in repo migrations (typo); only `update_updated_at` from 001.
 ALTER FUNCTION public.update_updated_at() SET search_path = public, pg_temp;
 
 -- ──────────────────────────────────────────────────────────────

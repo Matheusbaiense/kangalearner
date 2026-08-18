@@ -138,7 +138,7 @@ Sentry runtime capture is intentionally inert until DSN env vars are configured.
 
 ## Schema SQL (referência)
 
-Migrações em `supabase/migrations/` (001–034). 013 cria `user_settings` antes das policies RLS (bases novas); 018 mantém `CREATE TABLE IF NOT EXISTS`. **Nunca reaplicar 013 em prod.** 031 relock `user_category_stats` SELECT-only + guard no RPC; 032 protege colunas sensíveis de `profiles`; 033 revoga grants client no marketplace scaffold; 034 hygiene (profiles SELECT unificado, saved_questions granular, initplan `auth.uid()`, search_path). Aplicar staging antes de prod. **031–034 ainda não aplicadas.**
+Migrações em `supabase/migrations/` (001–034). 013 cria `user_settings` antes das policies RLS (bases novas); 018 mantém `CREATE TABLE IF NOT EXISTS`. 027 só altera `update_updated_at()` (001); `set_updated_at` era typo. 029 revoga `rls_auto_enable` só se a função existir (drift de prod). **Nunca reaplicar 013/027 em prod.** 031 relock `user_category_stats` SELECT-only + guard no RPC; 032 protege colunas sensíveis de `profiles`; 033 revoga grants client no marketplace scaffold; 034 hygiene (profiles SELECT unificado, saved_questions granular, initplan `auth.uid()`, search_path). Aplicar staging antes de prod. **031–034 ainda não aplicadas.**
 
 `CATEGORIES` vive em `packages/core/src/data/categories.ts` (barrel `@kanga/core`). O client web carrega questões via `public/data/questions.json`, não pelo array `QUESTIONS` do core.
 

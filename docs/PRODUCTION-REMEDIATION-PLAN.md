@@ -11,11 +11,11 @@
 
 ### Estado da execução — 2026-08-18 (este worktree)
 
-Código das fases 1–6 e 8 está em `main` (até PR #208). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`) parou na 013; `user_settings` passa a ser criada na 013 para bases novas. SQL 031–034 **não aplicadas**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
+Código das fases 1–6 e 8 está em `main` (até PR #209). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): 001–026 ok; 027 tipava `set_updated_at()` (não existe). SQL 031–034 **não aplicadas**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
 
 **Ainda não feito aqui:**
 - Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível (túnel GET ok; evento sintético ainda inconclusivo).
-- Staging: reaplicar a 013 corrigida, depois 014→034, smoke. **Não** reaplicar 013 em prod (`olgogtaeifyxwzencilo` já a tem).
+- Staging: reaplicar a 027 corrigida, depois 028→034, smoke. **Não** reaplicar 013/027 em prod.
 - Fase 6.2 Playwright auth real (precisa staging + users de teste)
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
 

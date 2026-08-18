@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-18 | REM-12 | 027: drop typo `set_updated_at()`; 029: revoke `rls_auto_enable` só se existir | `027_revoke_analytics_rpc_grants.sql`, `029_revoke_trigger_function_grants.sql` |
+
 | 2026-08-18 | REM-11 | 013 cria `user_settings` antes das policies (greenfield staging); 018 fica IF NOT EXISTS | `013_security_hardening_rls_newsletter.sql`, `018_profiles_schema_drift.sql` |
 
 | 2026-08-18 | REM-10 | Turnstile widget + túnel Sentry `/monitoring`; CAPTCHA **ON** no dashboard (Turnstile, secret persistida) | `TurnstileWidget.tsx`, `app/monitoring/route.ts`, `src/middleware.ts` CSP + matcher |
