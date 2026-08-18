@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-18 | REM-10 | Turnstile widget (CAPTCHA ainda OFF no dashboard) + túnel Sentry `/monitoring` | `TurnstileWidget.tsx`, `app/monitoring/route.ts`, `src/middleware.ts` CSP + matcher |
+
 | 2026-08-18 | REM-9 | 6.1 testes de rotas + 3.2 JSON-by-state + 3.8 sync único + 8.x higiene | `apps/web/src/lib/stripe/stripeWebhook.ts`, `attemptValidation.ts`, `hooks/useQuestions.ts`, `scripts/gen-questions-json.ts` |
 
 | 2026-08-18 | REM-8 | Cookies auth: Secure em prod + SameSite=Lax; docs do adapter e getClientIp (Fase 5.4/5.6) | `apps/web/src/lib/supabase/authCookieOptions.ts`, `client.ts`/`server.ts`/`middleware.ts`, `docs/security/supabase-auth-hardening-checklist.md` |

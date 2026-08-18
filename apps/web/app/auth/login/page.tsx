@@ -8,6 +8,8 @@ import { safeNextPath } from "@/lib/auth/safeNextPath";
 import { authErrorToUserMessage } from "@/lib/auth/authErrorMessage";
 import { useLang } from "@/contexts/LangContext";
 import { AuthBrand } from "@/components/auth/AuthBrand";
+import { TurnstileWidget } from "@/components/auth/TurnstileWidget";
+import { captchaAuthOptions, isTurnstileConfigured } from "@/lib/auth/turnstile";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
 
 function LoginForm() {
@@ -28,6 +30,8 @@ function LoginForm() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
   const effectiveError = error ?? oauthErrorMsg;
   const { s } = useLang();
 
@@ -45,10 +49,16 @@ function LoginForm() {
     setLoading(true);
     setError(null);
 
-    const { error: signError } = await supabase.auth.signInWithPassword({ email, password });
+    const { error: signError } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+      options: captchaAuthOptions(captchaToken)
+    });
 
     if (signError) {
       setError(authErrorToUserMessage("login", signError));
+      setCaptchaToken("");
+      setCaptchaReset((n) => n + 1);
       setLoading(false);
       return;
     }
@@ -166,7 +176,13 @@ function LoginForm() {
             />
           </div>
 
-          <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
+          <TurnstileWidget onToken={setCaptchaToken} resetKey={captchaReset} />
+
+          <button
+            type="submit"
+            className="btn-auth-primary"
+            disabled={loading || !supabase || (isTurnstileConfigured() && !captchaToken)}
+          >
             {loading ? s.authSigningIn : s.signIn}
           </button>
         </form>

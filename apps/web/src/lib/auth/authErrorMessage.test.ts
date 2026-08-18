@@ -17,6 +17,15 @@ describe("authErrorToUserMessage", () => {
     );
   });
 
+  it("maps captcha_failed without leaking GoTrue text", () => {
+    const msg = authErrorToUserMessage("login", {
+      code: "captcha_failed",
+      message: "captcha protection: request disallowed"
+    });
+    expect(msg).toMatch(/verify you are human/i);
+    expect(msg).not.toContain("disallowed");
+  });
+
   it("uses kind-specific fallbacks", () => {
     expect(authErrorToUserMessage("signup")).toMatch(/create an account/i);
     expect(authErrorToUserMessage("oauth")).toMatch(/google/i);

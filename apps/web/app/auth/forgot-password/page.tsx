@@ -5,6 +5,8 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { AuthBrand } from "@/components/auth/AuthBrand";
+import { TurnstileWidget } from "@/components/auth/TurnstileWidget";
+import { captchaAuthOptions, isTurnstileConfigured } from "@/lib/auth/turnstile";
 import { getAppOrigin } from "@/lib/auth/getAppOrigin";
 import { authErrorToUserMessage } from "@/lib/auth/authErrorMessage";
 
@@ -13,6 +15,8 @@ export default function ForgotPasswordPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [sent, setSent] = useState(false);
+  const [captchaToken, setCaptchaToken] = useState("");
+  const [captchaReset, setCaptchaReset] = useState(0);
   const { s } = useLang();
 
   const supabase = useMemo(() => {
@@ -31,11 +35,14 @@ export default function ForgotPasswordPage() {
 
     const origin = getAppOrigin();
     const { error: resetError } = await supabase.auth.resetPasswordForEmail(email.trim(), {
-      redirectTo: `${origin}/auth/reset-password`
+      redirectTo: `${origin}/auth/reset-password`,
+      ...captchaAuthOptions(captchaToken)
     });
 
     if (resetError) {
       setError(authErrorToUserMessage("reset", resetError));
+      setCaptchaToken("");
+      setCaptchaReset((n) => n + 1);
       setLoading(false);
       return;
     }
@@ -100,7 +107,13 @@ export default function ForgotPasswordPage() {
             </div>
           )}
 
-          <button type="submit" className="btn-auth-primary" disabled={loading || !supabase}>
+          <TurnstileWidget onToken={setCaptchaToken} resetKey={captchaReset} />
+
+          <button
+            type="submit"
+            className="btn-auth-primary"
+            disabled={loading || !supabase || (isTurnstileConfigured() && !captchaToken)}
+          >
             {loading ? s.authSending : s.authSendResetLink}
           </button>
         </form>

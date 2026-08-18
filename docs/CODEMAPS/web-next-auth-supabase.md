@@ -82,9 +82,15 @@ apps/web/
 2. Com env: `getUser()`; se path protegido e sem user → `/auth/login?redirect=<path>`.
 3. Se `/login`, `/signup`, `/auth/login`, `/auth/signup` e com user → `/`.
 4. Toda resposta (páginas + `/api/*` no matcher) leva `x-request-id` (UUID). Header incoming só é reutilizado se for UUID canónico.
-5. Matcher **exclui** `api/webhook` e `api/webhooks` — o handler Stripe mint o próprio id e **não** loga o raw body.
+5. Matcher **exclui** `api/webhook`, `api/webhooks` e `monitoring` — Stripe mint o próprio id; o túnel Sentry (`/monitoring`) não passa pelo CSP/auth do middleware.
+6. CSP inclui `https://challenges.cloudflare.com` em `script-src` / `frame-src` / `connect-src` (Turnstile).
 
-`/api/health` = liveness (plaintext). `/api/ping` = readiness (DB probe + `CRON_SECRET`).
+`/api/health` = liveness (plaintext). `/api/ping` = readiness (DB probe + `CRON_SECRET`). Browser Sentry posta envelopes em `POST /monitoring?o=&p=` (`app/monitoring/route.ts`).
+
+### Auth CAPTCHA (Turnstile)
+
+- Widget em `/auth/login`, `/auth/signup`, `/auth/forgot-password`. No-op se `NEXT_PUBLIC_TURNSTILE_SITE_KEY` estiver vazio.
+- Token vai em `options.captchaToken` (GoTrue). **Não ligar** o toggle CAPTCHA no Supabase até este código + a site key estarem em Production.
 
 ### Conta (step-up)
 
@@ -126,8 +132,9 @@ apps/web/
 | `SENTRY_AUTH_TOKEN`             | Optional source-map upload auth token; keep secret                                                               |
 | `SENTRY_ORG`                    | Optional source-map upload org slug                                                                              |
 | `SENTRY_PROJECT`                | Optional source-map upload project slug                                                                          |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Site key pública do widget Cloudflare; secret só no dashboard Supabase Attack Protection                       |
 
-Sentry runtime capture is intentionally inert until DSN env vars are configured. Source-map upload is enabled only when `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` are all present.
+Sentry runtime capture is intentionally inert until DSN env vars are configured. Source-map upload is enabled only when `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` are all present. Browser events go through `/monitoring` so CSP `connect-src 'self'` covers them.
 
 ## Schema SQL (referência)
 
@@ -141,4 +148,4 @@ Envelope de API (`src/lib/api/envelope.ts`): `{ ok: true, data? }` / `{ ok: fals
 
 ---
 
-_Última revisão: 2026-08-17 (blog RSC 3.3 + envelope 4.3 completo nas rotas de app)._
+_Última revisão: 2026-08-18 (Turnstile widget + túnel `/monitoring`)._
