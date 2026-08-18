@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-18 | REM-15 | Playwright 6.2 staging-only (skip sem credenciais; bloqueia prod host/ref) | `e2e/auth-staging.spec.ts`, `src/lib/e2e/stagingAuth.ts` |
+
 | 2026-08-18 | REM-14 | Staging smoke RLS 7/7 PASS (a–f + 034); fixtures `smoke-a@`/`smoke-b@`; prod intocada | `kangalearner-staging` / `zlsaerfsrfyxpbpxorwo` |
 
 | 2026-08-18 | REM-13 | Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): 001–034 aplicadas; prod intocada | `supabase/migrations/` |
