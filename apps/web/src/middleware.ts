@@ -2,6 +2,7 @@ import { createServerClient } from "@supabase/ssr";
 import { NextResponse, type NextRequest } from "next/server";
 import { REQUEST_ID_HEADER, stampRequestId } from "./lib/requestId";
 import { authCookieOptions } from "./lib/supabase/authCookieOptions";
+import { withTurnstileCsp } from "./lib/security/cspSources";
 
 /** Rotas que exigem sessão válida. */
 const PROTECTED_ROUTES = ["/progress", "/dashboard", "/account", "/admin"];
@@ -30,18 +31,23 @@ function buildCsp(nonce: string): string {
   // skip upgrade-insecure-requests so ws://localhost isn't forced to wss. None of
   // this applies to the production bundle, which stays strict + nonce-only.
   const isDev = process.env.NODE_ENV !== "production";
-  const scriptSrc = isDev
-    ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com`
-    : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com`;
-  const connectSrc = [
-    "connect-src 'self'",
-    supabaseUrl,
-    "https://api.stripe.com",
-    supabaseWss,
-    isDev ? "ws://localhost:* http://localhost:*" : ""
-  ]
-    .filter(Boolean)
-    .join(" ");
+  const turnstile = withTurnstileCsp({
+    scriptSrc: isDev
+      ? `script-src 'self' 'nonce-${nonce}' 'unsafe-eval' https://js.stripe.com`
+      : `script-src 'self' 'nonce-${nonce}' https://js.stripe.com`,
+    connectSrc: [
+      "connect-src 'self'",
+      supabaseUrl,
+      "https://api.stripe.com",
+      supabaseWss,
+      isDev ? "ws://localhost:* http://localhost:*" : ""
+    ]
+      .filter(Boolean)
+      .join(" "),
+    frameSrc: "frame-src https://js.stripe.com https://hooks.stripe.com"
+  });
+  const scriptSrc = turnstile.scriptSrc;
+  const connectSrc = turnstile.connectSrc;
 
   return [
     "default-src 'self'",
@@ -61,7 +67,7 @@ function buildCsp(nonce: string): string {
       .join(" "),
     // Sentry Session Replay runs its compression worker from a blob: URL.
     "worker-src 'self' blob:",
-    "frame-src https://js.stripe.com https://hooks.stripe.com",
+    turnstile.frameSrc,
     "frame-ancestors 'none'",
     "object-src 'none'",
     "base-uri 'self'",
@@ -229,5 +235,7 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|assets|api/webhook|api/webhooks).*)"]
+  matcher: [
+    "/((?!_next/static|_next/image|favicon.ico|assets|monitoring|api/webhook|api/webhooks).*)"
+  ]
 };

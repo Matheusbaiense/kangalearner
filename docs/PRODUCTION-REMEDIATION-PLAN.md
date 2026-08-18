@@ -9,14 +9,14 @@
 **Escopo:** web Next.js, mobile Expo, Supabase, Vercel, GitHub Actions  
 **Regra:** não quebrar funcionalidades existentes. Sem rewrite. Cada PR pequeno, testável, revertível.
 
-### Estado da execução — 2026-08-17 (este worktree)
+### Estado da execução — 2026-08-18 (este worktree)
 
-Código das fases 1–5 (SQL 031–034 **não aplicadas**), **3.2 JSON-by-state**, **3.8 sync único**, **6.1 testes de rotas** (helpers), **6.4 audit CI**, **8.1/8.3/8.4/8.7** e quick-wins DRY-02/03/09 + HOOK-03/04 está no tree. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY` (o secret em si é Fase 0.7).
+Código das fases 1–6 e 8 está em `main` (até PR #206). Este lote: widget Turnstile + túnel Sentry `/monitoring`. SQL 031–034 **não aplicadas**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
 
 **Ainda não feito aqui:**
-- Fase 0 (secrets, Pro, staging, HIBP, Sentry DSN) — o Claude/Chrome faz nos dashboards; conferência em [QA-FASE0-VERIFY.md](QA-FASE0-VERIFY.md). **Não marcar aceite sem evidência.**
+- Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), staging, MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível após o túnel.
+- Toggle CAPTCHA Supabase: **OFF** até este PR estar em prod; depois secret Turnstile + provider Cloudflare num único Save
 - Aplicar 031–034 em staging, smoke, depois prod
-- Ligar MFA TOTP no Auth do projeto (5.3 dashboard)
 - Fase 6.2 Playwright auth real (precisa staging + users de teste)
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
 

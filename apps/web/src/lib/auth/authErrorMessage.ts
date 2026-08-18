@@ -19,5 +19,8 @@ export function authErrorToUserMessage(
   if (code === "over_email_send_rate_limit" || code === "over_request_rate_limit") {
     return "Too many attempts. Please wait a minute and try again.";
   }
+  if (code === "captcha_failed") {
+    return "Could not verify you are human. Refresh and try again.";
+  }
   return MESSAGES[kind];
 }

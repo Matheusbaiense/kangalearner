@@ -5,7 +5,7 @@
 >
 > **Plano de correção da mega auditoria 2026-08-17:** [PRODUCTION-REMEDIATION-PLAN.md](PRODUCTION-REMEDIATION-PLAN.md) (fases 0–10, subtarefas, aceite). Este backlog não duplica o plano; só rastrea bloqueios e follow-ups.
 
-Last updated: 2026-08-17
+Last updated: 2026-08-18
 
 **Verificação Fase 0 (trampo do Claude/Chrome):** [QA-FASE0-VERIFY.md](QA-FASE0-VERIFY.md) — ledger vazio até haver evidência. Não marcar aceite no plano sem preencher essa tabela.
 
@@ -32,11 +32,12 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Código: cookies auth** (2026-08-18): `authCookieOptions` — SameSite=Lax, Secure em produção, httpOnly false (adapter). CSP `style-src` nonce continua deferido.
 - [x] **Código: JSON-by-state** (2026-08-18): `questions-{STATE}.json`; `useQuestions` fetch da fatia; IndexedDB v15+estado.
 - [x] **Código: testes de rotas 6.1** (2026-08-18): webhook Stripe (23505, skip admin, ledger cleanup), attempts IDOR, bulk cap/clamp, ping cron, delete rollback. Playwright auth real continua a precisar de staging.
-- [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY` (cron falha até 0.7). Upgrade Pro + PITR (plan phase 0.2).
+- [x] **Código: Turnstile widget** (2026-08-18): `TurnstileWidget` em login/signup/forgot-password + CSP `challenges.cloudflare.com`. Toggle CAPTCHA no Supabase **continua OFF** até deploy deste PR + secret colada.
+- [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY`. Upgrade Pro + PITR (plan phase 0.2). HIBP (leaked passwords) is **Pro-only**.
 
 ## Important Follow-Ups
 
-- [~] **Sentry observability**: code integration is now present for Next.js App Router (`instrumentation-client.ts`, `instrumentation.ts`, server/edge configs, `app/global-error.tsx`, `@sentry/nextjs`). Still pending: create Sentry project and set `SENTRY_DSN`, `NEXT_PUBLIC_SENTRY_DSN`, and optional source-map upload vars in Vercel Production.
+- [~] **Sentry observability**: DSN em Vercel Production (org `kanga-e1`, projeto `kangalearner-web`, 2026-08-18). Túnel `GET/POST /monitoring` + matcher exclui `monitoring`. Confirmar **um evento browser e um server** no dashboard Sentry após o deploy deste PR — sem isso não marcar Fase 0.5 aceite. Source maps ainda opcionais (`SENTRY_AUTH_TOKEN`).
 - [x] **Branch protection**: `main` now requires the GitHub Actions status check `build` before merging (configured via `gh api` on 2026-06-01).
 - [ ] **Staging environment**: create a separate free Supabase project for staging, apply migrations there before production, and take a pre-DDL backup before schema changes.
 - [ ] **Per-state Learn content**: the Learn topics are now jurisdiction-aware through `{token}` placeholders resolved by `packages/core/src/data/stateProfiles.ts`, but two gaps remain. (1) `towing-rules` is scoped to `states: ["WA"]` because learner towing rules differ (the NT allows it, WA does not), so 7 jurisdictions see 19 topics instead of 20 — write per-state versions to restore it. (2) `demerit-points`, `mobile-phones` and `school-zones` were generalised to what is true nationally plus a "check {authority}" pointer; per-state thresholds, fines and school-zone hours would make them concrete again.
