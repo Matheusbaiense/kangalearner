@@ -5,9 +5,11 @@ import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import {
+  clampAnsweredAt,
   isValidAttemptCategory,
   isValidAttemptState,
   isValidQuestionId,
+  MAX_BULK_ATTEMPTS,
   normalizeAttemptSource
 } from "@/lib/api/attemptValidation";
 
@@ -69,21 +71,11 @@ export async function POST(request: NextRequest) {
     return apiOk({ inserted: 0 });
   }
 
-  // P2-04: never trust a client-supplied future timestamp (would let a client
-  // pre-claim "today" toward streaks/goals). We still honour legitimate PAST
-  // timestamps so an offline guest's real answer history survives the migration.
-  const nowIso = new Date().toISOString();
-  function safeAnsweredAt(value: string | undefined): string {
-    if (!value) return nowIso;
-    const ms = Date.parse(value);
-    if (Number.isNaN(ms) || ms > Date.now()) return nowIso;
-    return new Date(ms).toISOString();
-  }
-
-  const MAX_BULK = 500;
-  if (attempts.length > MAX_BULK) {
+  if (attempts.length > MAX_BULK_ATTEMPTS) {
     return apiError("too_many_attempts", 400);
   }
+
+  const now = new Date();
 
   const validRows = attempts.filter(
     (r) =>
@@ -109,7 +101,7 @@ export async function POST(request: NextRequest) {
       is_correct: a.is_correct,
       chosen: a.chosen ?? null,
       source: normalizeAttemptSource(a.source),
-      answered_at: safeAnsweredAt(a.answered_at)
+      answered_at: clampAnsweredAt(a.answered_at, now)
     }));
 
   if (rows.length === 0) {

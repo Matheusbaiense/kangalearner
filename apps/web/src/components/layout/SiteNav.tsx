@@ -1,13 +1,12 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 import { X } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { useLang } from "@/contexts/LangContext";
 import { FlagImg } from "@/components/ui/FlagImg";
-import { SK } from "@/lib/storageKeys";
 import { AU_STATE_OPTIONS, LIVE_STATE_CODES, stateHasMotorcycleLicence } from "@kanga/core";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { Icons } from "@/components/icons";
@@ -17,6 +16,8 @@ import {
   LICENCE_CHANGED_EVENT,
   type LicenceType
 } from "@/lib/licenceType";
+import { persistStoredState, readStoredState } from "@/lib/stateSelection";
+import { prefetchQuestions } from "@/hooks/useQuestions";
 
 const NAV_LINKS = [
   { href: "/", key: "home", exact: true },
@@ -55,14 +56,6 @@ function getInitials(name: string, email: string): string {
   return src.slice(0, 2).toUpperCase();
 }
 
-function readStoredState(): string {
-  try {
-    return localStorage.getItem(SK.stateV2) ?? localStorage.getItem(SK.stateLegacy) ?? "WA";
-  } catch {
-    return "WA";
-  }
-}
-
 interface SiteNavProps {
   /** Pre-fetched user from the server component layout — eliminates client-side auth race condition. */
   initialNavUser?: InitialNavUser | null;
@@ -70,7 +63,6 @@ interface SiteNavProps {
 
 export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   const pathname = usePathname();
-  const searchParams = useSearchParams();
   const router = useRouter();
   const { lang, setLang, s } = useLang();
   const [scrolled, setScrolled] = useState(false);
@@ -109,6 +101,10 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   }, []);
 
   useEffect(() => {
+    prefetchQuestions(stateCode);
+  }, [stateCode]);
+
+  useEffect(() => {
     setLicenceType(readStoredLicenceType());
     const handler = () => setLicenceType(readStoredLicenceType());
     window.addEventListener(LICENCE_CHANGED_EVENT, handler);
@@ -121,17 +117,11 @@ export function SiteNav({ initialNavUser }: SiteNavProps = {}) {
   }
 
   function changeState(code: string) {
-    try {
-      localStorage.setItem(SK.stateV2, code);
-      localStorage.setItem(SK.stateLegacy, code);
-    } catch {
-      /* noop */
-    }
+    persistStoredState(code);
     setStateCode(code);
     if (licenceType === "motorcycle" && !stateHasMotorcycleLicence(code)) {
       changeLicenceType("car");
     }
-    window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: code }));
     router.refresh();
   }
 

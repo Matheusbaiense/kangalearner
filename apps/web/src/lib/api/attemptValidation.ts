@@ -27,3 +27,54 @@ export function normalizeAttemptSource(source: unknown): string {
   if (typeof source === "string" && ATTEMPT_SOURCES.has(source)) return source;
   return "web";
 }
+
+export const MAX_BULK_ATTEMPTS = 500;
+
+/** Reject client-supplied future timestamps so streaks cannot be pre-claimed. */
+export function clampAnsweredAt(value: string | undefined, now = new Date()): string {
+  if (!value) return now.toISOString();
+  const ms = Date.parse(value);
+  if (Number.isNaN(ms) || ms > now.getTime()) return now.toISOString();
+  return new Date(ms).toISOString();
+}
+
+export type AttemptPayload = {
+  attempt_id?: string;
+  question_id: string;
+  state: string;
+  category?: string | null;
+  is_correct: boolean;
+  chosen?: string | null;
+  source?: string;
+  /** Ignored if present — the session user id always wins (IDOR). */
+  user_id?: string;
+};
+
+export function buildAttemptInsertRow(
+  sessionUserId: string,
+  payload: AttemptPayload,
+  attemptId: string,
+  now = new Date()
+): {
+  user_id: string;
+  attempt_id: string;
+  question_id: string;
+  state: string;
+  category: string | null;
+  is_correct: boolean;
+  chosen: string | null;
+  source: string;
+  answered_at: string;
+} {
+  return {
+    user_id: sessionUserId,
+    attempt_id: attemptId,
+    question_id: payload.question_id,
+    state: payload.state,
+    category: payload.category ?? null,
+    is_correct: payload.is_correct,
+    chosen: payload.chosen ?? null,
+    source: normalizeAttemptSource(payload.source),
+    answered_at: now.toISOString()
+  };
+}

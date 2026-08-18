@@ -39,6 +39,7 @@ apps/web/
         │   ├── admin.ts       → service role (só server)
         │   └── database.types.ts
         ├── stripe.ts
+        ├── stripe/stripeWebhook.ts → idempotência 23505, skip admin, ledger cleanup
         ├── log.ts             → JSON logger (`info`/`warn`/`error`); `mask()`; redacts password/token/Authorization/rawBody
         ├── requestId.ts       → UUID `x-request-id` (reusa header válido ou mint)
         ├── auth/passwordReauth.ts → step-up: `signInWithPassword` com a senha atual
@@ -59,6 +60,10 @@ apps/web/
 ### Rate-limit IP
 
 `getClientIp` (`src/lib/requestClientIp.ts`) usa `x-real-ip` e o primeiro hop de `x-forwarded-for`. Na Vercel esses headers vêm do edge, não do browser. Sem mudança enquanto o app ficar só na Vercel.
+
+### Banco de perguntas por estado
+
+`useQuestions` / `loadQuestions(state)` fetchem `/data/questions-{STATE}.json` (gerado por `scripts/gen-questions-json.ts`). IndexedDB `kl-questions-v15-{state}`. SiteNav faz prefetch após hidratar o estado. `questions.json` completo fica como fallback.
 
 ### Sessão no servidor (RSC / Server Actions)
 

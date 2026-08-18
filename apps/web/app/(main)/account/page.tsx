@@ -7,6 +7,7 @@ import { readApiOkData, parseApiError } from "@/lib/api/envelope";
 import { useLang } from "@/contexts/LangContext";
 import type { Lang, UiLang } from "@/lib/i18n";
 import { SK } from "@/lib/storageKeys";
+import { persistStoredState } from "@/lib/stateSelection";
 import { migrateAndReadTheme, writeTheme } from "@/lib/themeStorage";
 import { AU_STATE_OPTIONS } from "@kanga/core";
 
@@ -249,8 +250,7 @@ export default function AccountPage() {
     setLang(normalizedLang as Lang);
     try {
       localStorage.setItem(SK.lang, normalizedLang);
-      localStorage.setItem(SK.stateLegacy, normalizedState);
-      localStorage.setItem(SK.stateV2, normalizedState);
+      persistStoredState(normalizedState);
     } catch {}
     applyTheme(theme);
     setPrefsMsg({ text: s.accountPreferencesSaved, ok: true });

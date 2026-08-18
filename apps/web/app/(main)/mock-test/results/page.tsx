@@ -13,20 +13,12 @@ import { AuthNudge } from "@/components/ui/AuthNudge";
 import { ReadinessCard } from "@/components/ReadinessCard";
 import { createClient } from "@/lib/supabase/client";
 import { SK } from "@/lib/storageKeys";
+import { safeParseJson } from "@/lib/safeParseJson";
 import { tx, type UiLang } from "@/lib/i18n";
 import type { MockConfig, MockSession } from "@/types/mock";
 import { awardXp, XP_PER_MOCK_PASS, XP_PER_MOCK_COMPLETE } from "@/lib/gamification/progress";
 
 type LocalAnswerRecord = Record<string, { chosen: string; correct: boolean }>;
-
-function safeParseJson<T>(raw: string | null): T | null {
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw) as T;
-  } catch {
-    return null;
-  }
-}
 
 const RESULT_MSG = {
   pass: {
@@ -75,7 +67,7 @@ export default function MockTestResultsPage() {
     }
   }, []);
 
-  const session = useMemo(() => safeParseJson<MockSession>(raw), [raw]);
+  const session = useMemo(() => safeParseJson<MockSession | null>(raw, null), [raw]);
 
   const scored = useMemo(() => {
     if (!session || questionsLoading) return null;
@@ -103,10 +95,9 @@ export default function MockTestResultsPage() {
       if (localStorage.getItem(KEY) === session.completedAtIso) return;
       awardXp(scored.pass ? XP_PER_MOCK_PASS : XP_PER_MOCK_COMPLETE);
       const rawHistory = localStorage.getItem(SK.mockHistory);
-      const history =
-        safeParseJson<Array<{ score: number; total: number; state: string; at: string }>>(
-          rawHistory
-        );
+      const history = safeParseJson<
+        Array<{ score: number; total: number; state: string; at: string }>
+      >(rawHistory, []);
       const next = [
         {
           score: scored.score,
@@ -129,7 +120,7 @@ export default function MockTestResultsPage() {
     if (!session || !scored || QUESTIONS.length === 0) return null;
     let local: LocalAnswerRecord = {};
     try {
-      local = safeParseJson<LocalAnswerRecord>(localStorage.getItem(SK.answered)) ?? {};
+      local = safeParseJson<LocalAnswerRecord>(localStorage.getItem(SK.answered), {});
     } catch {
       local = {};
     }

@@ -2,25 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { useLang } from "@/contexts/LangContext";
-import { SK } from "@/lib/storageKeys";
+import { persistStoredState } from "@/lib/stateSelection";
 
-/**
- * CTA que pre-seleciona o estado antes de navegar.
- * Mesmo mecanismo do SiteNav.changeState(): grava as 2 chaves e dispara o
- * evento kanga:state-changed; PracticeClient/MockTestClient ja escutam.
- */
+/** CTA that selects the jurisdiction before navigating to practice/mock. */
 export function StateCtaButtons({ stateCode }: { stateCode: string }) {
   const router = useRouter();
   const { s } = useLang();
 
   function go(path: string) {
-    try {
-      localStorage.setItem(SK.stateV2, stateCode);
-      localStorage.setItem(SK.stateLegacy, stateCode);
-    } catch {
-      /* noop */
-    }
-    window.dispatchEvent(new CustomEvent("kanga:state-changed", { detail: stateCode }));
+    persistStoredState(stateCode);
     router.push(path);
   }
 

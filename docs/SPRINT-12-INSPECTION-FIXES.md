@@ -59,7 +59,7 @@ pnpm --filter @kanga/web run build
 
 ## Verificação manual obrigatória
 
-- [ ] Vercel → Production → `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
+- [x] Vercel → Production → `UPSTASH_REDIS_REST_URL` + `UPSTASH_REDIS_REST_TOKEN`
 - [x] Supabase → aplicar migrations 018–021 (prod 2026-05-23)
 - [ ] Smoke: login OAuth → dashboard; admin users page; practice sim 30 Q
 

@@ -4,8 +4,8 @@ import { apiError, apiOk } from "@/lib/api/envelope";
 import { log, logContext } from "@/lib/log";
 import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
-import { AU_STATE_OPTIONS, SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
-import { normalizeAttemptSource } from "@/lib/api/attemptValidation";
+import { SUPPORTED_COUNTRY, WA_PASS_THRESHOLD } from "@kanga/core";
+import { isValidAttemptState, normalizeAttemptSource } from "@/lib/api/attemptValidation";
 
 import { z } from "zod";
 
@@ -16,8 +16,6 @@ const mockSessionSchema = z.object({
   mode: z.enum(["exam", "practice"]).optional(),
   source: z.string().max(20).optional()
 });
-
-const AU_STATES = new Set<string>(AU_STATE_OPTIONS.map((s) => s.code));
 
 export async function POST(request: NextRequest) {
   const ip = getClientIp(request);
@@ -49,7 +47,7 @@ export async function POST(request: NextRequest) {
 
   const payload = parseResult.data;
 
-  if (!AU_STATES.has(payload.state) || payload.score > payload.total) {
+  if (!isValidAttemptState(payload.state) || payload.score > payload.total) {
     return apiError("invalid_payload", 400);
   }
 
@@ -57,8 +55,6 @@ export async function POST(request: NextRequest) {
   const total = payload.total;
   const score = payload.score;
   const passed = total > 0 && score / total >= WA_PASS_THRESHOLD;
-  // Populate `percent` at insert time so dashboard/history don't have to derive it
-  // (ARQ-2: column existed but was never written, leaving best-session/badges blank).
   const percent = total > 0 ? Math.round((score / total) * 100) : 0;
 
   const { error } = await supabase.from("mock_sessions").insert({
