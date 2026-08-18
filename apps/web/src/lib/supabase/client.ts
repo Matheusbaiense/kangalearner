@@ -57,8 +57,3 @@ export function createClient() {
     cookies: cookieAdapter()
   });
 }
-
-/** @deprecated Prefer {@link createClient} (same implementation). */
-export function createSupabaseBrowserClient() {
-  return createClient();
-}

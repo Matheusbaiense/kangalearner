@@ -6,10 +6,10 @@ import { rateLimit } from "@/lib/rateLimit";
 import { getClientIp } from "@/lib/requestClientIp";
 import { createRouteHandlerClient } from "@/lib/supabase/routeClient";
 import {
+  buildAttemptInsertRow,
   isValidAttemptCategory,
   isValidAttemptState,
-  isValidQuestionId,
-  normalizeAttemptSource
+  isValidQuestionId
 } from "@/lib/api/attemptValidation";
 
 import { z } from "zod";
@@ -79,17 +79,9 @@ export async function POST(request: NextRequest) {
       ? payload.attempt_id.trim()
       : randomUUID();
 
-  const { error } = await supabase.from("question_attempts").insert({
-    user_id: user.id,
-    attempt_id: attemptId,
-    question_id: payload.question_id,
-    state: payload.state,
-    category: payload.category ?? null,
-    is_correct: payload.is_correct,
-    chosen: payload.chosen ?? null,
-    source: normalizeAttemptSource(payload.source),
-    answered_at: new Date().toISOString()
-  });
+  const { error } = await supabase
+    .from("question_attempts")
+    .insert(buildAttemptInsertRow(user.id, payload, attemptId));
 
   if (error) {
     log("error", "attempts.insert_failed", {

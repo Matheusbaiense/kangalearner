@@ -25,8 +25,3 @@ export async function createClient() {
     }
   });
 }
-
-/** @deprecated Prefer {@link createClient} (same implementation). */
-export async function createSupabaseServerClient() {
-  return createClient();
-}

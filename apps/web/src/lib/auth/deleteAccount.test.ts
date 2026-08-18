@@ -1,5 +1,9 @@
 import { describe, expect, it, vi } from "vitest";
-import { deleteAccountWithReauth, type AccountDeleteStore } from "./deleteAccount";
+import {
+  deleteAccountWithReauth,
+  performAccountDelete,
+  type AccountDeleteStore
+} from "./deleteAccount";
 
 function memoryStore(initial?: { deletedAt?: string | null }): AccountDeleteStore & {
   authDeleted: string[];
@@ -75,5 +79,26 @@ describe("deleteAccountWithReauth", () => {
     });
     expect(result).toEqual({ ok: true });
     expect(store.authDeleted).toEqual(["user-1"]);
+  });
+
+  it("rolls back the profile when auth delete fails", async () => {
+    const store = memoryStore();
+    store.deleteAuthUser = async () => ({ error: { message: "gotrue down" } });
+    const rolledBack: string[] = [];
+    store.rollback = async (userId) => {
+      rolledBack.push(userId);
+      return { error: null };
+    };
+    const result = await performAccountDelete("user-1", store);
+    expect(result).toEqual({ ok: false, code: "auth_delete_failed" });
+    expect(rolledBack).toEqual(["user-1"]);
+    expect(store.authDeleted).toEqual([]);
+  });
+
+  it("returns already_deleted without touching auth", async () => {
+    const store = memoryStore({ deletedAt: "2026-01-01T00:00:00.000Z" });
+    const result = await performAccountDelete("user-1", store);
+    expect(result).toEqual({ ok: false, code: "already_deleted" });
+    expect(store.authDeleted).toEqual([]);
   });
 });

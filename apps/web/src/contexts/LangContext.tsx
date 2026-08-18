@@ -1,5 +1,13 @@
 "use client";
-import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useMemo,
+  useState,
+  useEffect,
+  type ReactNode
+} from "react";
 import {
   t,
   type Lang,
@@ -72,22 +80,22 @@ export function LangProvider({ children }: { children: ReactNode }) {
     document.documentElement.lang = LANG_TO_HTML[lang] ?? "en";
   }, [lang]);
 
-  function setLang(l: Lang) {
+  const setLang = useCallback((l: Lang) => {
     setLangState(l);
     try {
       localStorage.setItem(SK.lang, l);
       window.dispatchEvent(new CustomEvent("kl-lang-change", { detail: l }));
     } catch {}
-  }
+  }, []);
 
   const uiLang = getUiLang(lang);
   const isBilingual = isBilingualLang(lang);
-
-  return (
-    <LangContext.Provider value={{ lang, uiLang, isBilingual, setLang, s: t[uiLang] as UIStrings }}>
-      {children}
-    </LangContext.Provider>
+  const value = useMemo(
+    () => ({ lang, uiLang, isBilingual, setLang, s: t[uiLang] as UIStrings }),
+    [lang, uiLang, isBilingual, setLang]
   );
+
+  return <LangContext.Provider value={value}>{children}</LangContext.Provider>;
 }
 
 export function useLang() {

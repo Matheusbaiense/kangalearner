@@ -8,6 +8,7 @@ import { getUiLang } from "@/lib/i18n";
 import { AU_STATE_OPTIONS, LIVE_STATE_CODES, stateHasMotorcycleLicence } from "@kanga/core";
 import { PERSONAS, PERSONA_LABEL, persistPersona, type Persona } from "@/lib/persona";
 import { persistLicenceType, type LicenceType } from "@/lib/licenceType";
+import { persistStoredState } from "@/lib/stateSelection";
 
 const KEY = "kl-onboarding-v1";
 
@@ -19,6 +20,7 @@ const PERSONA_PROMPT: Record<UiLang, string> = {
 
 const SUPPRESS_PATHS = [
   "/auth/",
+  "/auth/login",
   "/login",
   "/signup",
   "/forgot-password",
@@ -84,7 +86,7 @@ export function Onboarding() {
 
   function done() {
     localStorage.setItem(KEY, "1");
-    localStorage.setItem(SK.stateV2, state);
+    persistStoredState(state);
     localStorage.setItem(SK.lang, lang);
     if (persona) persistPersona(persona);
     applyLang(lang);

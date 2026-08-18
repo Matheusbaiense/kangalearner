@@ -30,6 +30,8 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Código: step-up delete/password** (2026-08-17): DELETE `/api/account/delete` e PATCH `/api/account/password` exigem senha atual via `signInWithPassword`. Contas só-OAuth: criar senha em Forgot password primeiro.
 - [x] **Código: MFA admin** (2026-08-18): `/admin` e APIs admin exigem `aal2`; página `/auth/mfa`. **Ligar TOTP no dashboard Auth ainda é dono** — sem isso o enroll falha.
 - [x] **Código: cookies auth** (2026-08-18): `authCookieOptions` — SameSite=Lax, Secure em produção, httpOnly false (adapter). CSP `style-src` nonce continua deferido.
+- [x] **Código: JSON-by-state** (2026-08-18): `questions-{STATE}.json`; `useQuestions` fetch da fatia; IndexedDB v15+estado.
+- [x] **Código: testes de rotas 6.1** (2026-08-18): webhook Stripe (23505, skip admin, ledger cleanup), attempts IDOR, bulk cap/clamp, ping cron, delete rollback. Playwright auth real continua a precisar de staging.
 - [ ] **Supabase free-tier pause risk**: project already paused ~2026-07; keepalive YAML já usa `secrets.SUPABASE_ANON_KEY` (cron falha até 0.7). Upgrade Pro + PITR (plan phase 0.2).
 
 ## Important Follow-Ups
@@ -49,9 +51,9 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [ ] **Frontend performance**: evaluate `next/image` for the SiteNav avatar and split landing carousels into isolated client components so the rest can stay server-rendered.
 - [ ] **Asset cleanup**: remove unused PNGs only after verifying references. `logo.png` is reported unused and large (869 KB); nav currently uses SVG.
 - [ ] **Large-file split**: break up `apps/web/src/lib/i18n.ts`, `apps/web/src/lib/learnTopics.ts`, and `apps/web/app/(main)/account/page.tsx`.
-- [ ] **Test coverage**: add tests for Stripe webhook behavior, real login E2E, and account deletion.
+- [ ] **Test coverage**: Playwright auth real + account delete E2E on staging (6.2). Vitest de rotas críticas (6.1) feito 2026-08-18.
 - [~] **Admin security**: código exige TOTP aal2 em `/admin` e APIs admin. Ligar MFA no dashboard Auth ainda é dono.
-- [ ] **Repo hygiene**: remove old `docs/CURSOR-PROMPT-SPRINT*.md` session prompts once their useful content is consolidated into canonical docs.
+- [x] **Repo hygiene**: `docs/CURSOR-PROMPT-SPRINT*` already gone; AUDIT banner + supabase README 023–034 + i18n “static site” removido.
 
 ## Operational Notes
 

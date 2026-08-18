@@ -1,11 +1,12 @@
 import { supabaseAdmin } from "@/lib/supabase/admin";
 import { log, logContext } from "@/lib/log";
+import { isAuthorizedCron } from "@/lib/auth/cronAuth";
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
   const cronSecret = process.env.CRON_SECRET;
 
-  if (!cronSecret || authHeader !== `Bearer ${cronSecret}`) {
+  if (!isAuthorizedCron(authHeader, cronSecret)) {
     return Response.json({ error: "Unauthorized" }, { status: 401 });
   }
 

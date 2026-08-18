@@ -20,6 +20,20 @@ export function readStoredState(): string {
   }
 }
 
+export function persistStoredState(code: string): string {
+  const next = normalizeAuState(code) ?? DEFAULT_STATE_CODE;
+  try {
+    localStorage.setItem(SK.stateV2, next);
+    localStorage.setItem(SK.stateLegacy, next);
+  } catch {
+    /* private mode */
+  }
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent(STATE_CHANGED_EVENT, { detail: next }));
+  }
+  return next;
+}
+
 /**
  * Selected jurisdiction, kept in sync with the nav selector.
  *
