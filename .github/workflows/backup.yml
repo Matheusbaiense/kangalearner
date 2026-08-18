@@ -31,10 +31,18 @@ jobs:
         run: |
           missing=0
           for name in SUPABASE_DB_URL BACKUP_ENCRYPTION_KEY BACKUP_BUCKET BACKUP_S3_ENDPOINT AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY; do
-            if [ -z "${!name}" ]; then
+            value="${!name}"
+            if [ -z "$value" ]; then
               echo "::error::$name is not configured"
               missing=1
+              continue
             fi
+            # Secrets pasted via a dashboard's copy button can pick up a trailing
+            # newline; an unstripped one breaks AWS SigV4 header construction
+            # (Invalid header value) without any other visible symptom.
+            clean="$(printf '%s' "$value" | tr -d '[:space:]')"
+            echo "::add-mask::$clean"
+            echo "$name=$clean" >> "$GITHUB_ENV"
           done
           if [ "$missing" -ne 0 ]; then
             exit 1
@@ -43,14 +51,27 @@ jobs:
       - name: Install backup tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends postgresql-client gnupg awscli
+          sudo apt-get install -y --no-install-recommends gnupg unzip lsb-release wget ca-certificates
+          # Ubuntu's default apt repos only carry postgresql-client 16; Supabase runs
+          # Postgres 17, and pg_dump refuses to dump a server newer than itself. Add
+          # PGDG (the upstream Postgres apt repo) to get a matching client version.
+          sudo install -d /usr/share/postgresql-common/pgdg
+          sudo wget -qO /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc \
+            https://www.postgresql.org/media/keys/ACCC4CF8.asc
+          echo "deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" \
+            | sudo tee /etc/apt/sources.list.d/pgdg.list
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends postgresql-client-17
+          curl -sS "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+          unzip -q /tmp/awscliv2.zip -d /tmp
+          sudo /tmp/aws/install --update
 
       - name: Dump database
         run: |
           mkdir -p backups
           ts="$(date -u +'%Y%m%dT%H%M%SZ')"
           dump="backups/kangalearner-supabase-${ts}.dump"
-          pg_dump \
+          /usr/lib/postgresql/17/bin/pg_dump \
             --dbname "$SUPABASE_DB_URL" \
             --format=custom \
             --no-owner \
