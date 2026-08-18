@@ -9,13 +9,13 @@
 **Escopo:** web Next.js, mobile Expo, Supabase, Vercel, GitHub Actions  
 **Regra:** não quebrar funcionalidades existentes. Sem rewrite. Cada PR pequeno, testável, revertível.
 
-### Estado da execução — 2026-08-18 (este worktree)
+### Estado da execução — 2026-08-19 (este worktree)
 
-Código das fases 1–6 e 8 está em `main` (até PR #213). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`.
+Código das fases 1–6 e 8 está em `main` (até PR #214). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`. Backup `workflow_dispatch` em `main` verde (PR #198, [run 32182233334](https://github.com/Matheusbaiense/kangalearner/actions/runs/32182233334)). MFA TOTP **Enabled** no dashboard Auth.
 
 **Ainda não feito aqui:**
-- Fase 0 restante: backup real, Pro+PITR+HIBP (HIBP é Pro-only no Free), MFA TOTP dashboard. DSN Sentry já em Production — aceite 0.5 só com evento visível (túnel GET ok; evento sintético ainda inconclusivo).
-- Preview Vercel com env de staging (0.3c). **Não** aplicar 031–034 em prod até backup 0.1 verde.
+- Fase 0 restante: restore drill 0.1e (throwaway DB), Pro+PITR+HIBP (HIBP é Pro-only no Free). Sentry: DSN Production **truncado** — apagar e recriar; aceite 0.5 só com evento visível.
+- Preview Vercel: URL/anon de staging feitas; falta `SUPABASE_SERVICE_ROLE_KEY` de Preview (dono). **Não** aplicar 031–034 em prod até 0.1e.
 - Fase 6.2/6.3: specs existem; correm com `E2E_STAGING_*` contra staging. CI sem credenciais faz skip. Delete de conta **não** corre nos fixtures.
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
 
@@ -88,7 +88,7 @@ Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são tea
 
 ### Aceite
 
-- [ ] Um run verde no Actions  
+- [x] Um run verde no Actions  
 - [ ] Um restore que devolve `profiles` e `question_attempts` no staging  
 - [ ] RPO declarado: 24h (dump)  
 - [ ] RTO declarado: 4h (alvo inicial)  
@@ -125,7 +125,7 @@ Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são tea
 
 1. Criar projeto Supabase **staging** (pode ser free). **Feito:** `kangalearner-staging`, ref `zlsaerfsrfyxpbpxorwo`.
 2. Aplicar migrations 001–034 **lá primeiro**. **Feito** 2026-08-18 (`list_migrations` 34/34). 013/027 foram corrigidas no repo para greenfield; **não reaplicar** essas duas em prod.
-3. Preview da Vercel: env `NEXT_PUBLIC_SUPABASE_*` e `SUPABASE_SERVICE_ROLE_KEY` de staging.
+3. Preview da Vercel: env `NEXT_PUBLIC_SUPABASE_*` de staging **feitas** (Claude 2026-08-19, Preview only). `SUPABASE_SERVICE_ROLE_KEY` de Preview **ainda falta** (dono cola).
 4. Nunca mais aplicar migration em prod sem passar por staging.
 5. Antes de qualquer DDL em prod: backup 0.1 verde.
 
@@ -180,6 +180,8 @@ Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são tea
 
 - [ ] Um evento de browser e um de server visíveis  
 - [ ] Alerta configurado  
+
+**Estado 2026-08-19:** `NEXT_PUBLIC_SENTRY_DSN` em Production está truncado (~29 chars). Apagar `SENTRY_DSN` + `NEXT_PUBLIC_SENTRY_DSN` e recriar com DSN completo (não colar no chat). `GET /monitoring` 200 não conta como aceite.  
 
 ## 0.6 Stripe — só se billing for ligado — SEC-13
 
@@ -590,8 +592,8 @@ Documentar: health = liveness; ping = readiness DB + secret. Sem mudança obriga
 **Esforço:** M  
 **Dono:** dashboard + código
 
-1. Ativar MFA no projeto Auth.
-2. `assertAdminRole` / `requireAdminPage`: se `aal !== "aal2"` e role é admin/super_admin → redirect para enroll MFA.
+1. Ativar MFA no projeto Auth. **Feito** (Claude 2026-08-19): TOTP Enabled em prod; já vinha ligado.
+2. `assertAdminRole` / `requireAdminPage`: se `aal !== "aal2"` e role é admin/super_admin → redirect para enroll MFA. **Código em `main`.**
 3. Não exigir MFA de `free`/`premium` no P0.
 
 ## 5.4 Cookies / XSS — SEC-05, VULN-08, SEC-08
