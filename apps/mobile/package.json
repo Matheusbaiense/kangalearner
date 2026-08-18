@@ -43,7 +43,7 @@
     "@types/react": "^19.0.0",
     "babel-preset-expo": "^56.0.14",
     "expo-doctor": "^1.19.8",
-    "typescript": "^6.0.3",
+    "typescript": "^7.0.2",
     "vitest": "^4.1.10"
   }
 }
