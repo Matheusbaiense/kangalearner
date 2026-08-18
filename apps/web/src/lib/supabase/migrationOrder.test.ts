@@ -3,7 +3,10 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
 
-const migrationsDir = join(dirname(fileURLToPath(import.meta.url)), "../../../../../supabase/migrations");
+const migrationsDir = join(
+  dirname(fileURLToPath(import.meta.url)),
+  "../../../../../supabase/migrations"
+);
 
 function stripComments(sql: string): string {
   return sql.replace(/\/\*[\s\S]*?\*\//g, " ").replace(/--[^\n]*/g, " ");
@@ -32,7 +35,8 @@ function mentionsIn(file: string, sql: string): Mention[] {
   const text = maskDoBlocks(stripComments(sql));
   const found: Mention[] = [];
 
-  const createTable = /\bCREATE\s+TABLE(?:\s+IF\s+NOT\s+EXISTS)?\s+((?:[a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]*)/gi;
+  const createTable =
+    /\bCREATE\s+TABLE(?:\s+IF\s+NOT\s+EXISTS)?\s+((?:[a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]*)/gi;
   const requireRel =
     /\b(?:(?:CREATE|DROP)\s+POLICY\s+(?:IF\s+EXISTS\s+)?(?:"[^"]+"|[a-zA-Z_][a-zA-Z0-9_]*)\s+ON|(?:CREATE|DROP)\s+TRIGGER\s+(?:IF\s+EXISTS\s+)?[a-zA-Z_][a-zA-Z0-9_]*\s+(?:[\s\S]*?)\s+ON|ALTER\s+TABLE(?:\s+IF\s+EXISTS)?)\s+((?:[a-zA-Z_][a-zA-Z0-9_]*\.)?[a-zA-Z_][a-zA-Z0-9_]*)/gi;
 
