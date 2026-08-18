@@ -24,7 +24,7 @@ SET
 FROM auth.users u
 WHERE u.id = p.id;
 
--- ── user_settings (table exists in prod but was never created in repo migrations) ─
+-- ── user_settings (created in 013 for fresh DBs; IF NOT EXISTS is a no-op) ─
 CREATE TABLE IF NOT EXISTS public.user_settings (
   user_id uuid PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
   daily_goal int NOT NULL DEFAULT 10 CHECK (daily_goal >= 1 AND daily_goal <= 500),
