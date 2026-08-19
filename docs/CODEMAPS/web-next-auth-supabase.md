@@ -134,7 +134,7 @@ apps/web/
 | `SENTRY_PROJECT`                | Optional source-map upload project slug                                                                          |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Site key pública do widget Cloudflare; secret só no dashboard Supabase Attack Protection                       |
 
-Sentry runtime capture is intentionally inert until DSN env vars are configured. Source-map upload is enabled only when `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` are all present. Browser events go through `/monitoring` so CSP `connect-src 'self'` covers them.
+Sentry runtime capture is intentionally inert until DSN env vars are configured. Source-map upload is enabled only when `SENTRY_AUTH_TOKEN`, `SENTRY_ORG`, and `SENTRY_PROJECT` are all present. Browser events go through `/monitoring` so CSP `connect-src 'self'` covers them. Temporary `GET /api/sentry-test` throws `Sentry server test` (rate-limited) for Fase 0.5 — remove after dashboard confirmation.
 
 ## Schema SQL (referência)
 
