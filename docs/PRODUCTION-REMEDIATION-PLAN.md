@@ -14,7 +14,7 @@
 Código das fases 1–6 e 8 está em `main` (até PR #214). Turnstile + `/monitoring` em prod; CAPTCHA **ON**. Staging `kangalearner-staging` (`zlsaerfsrfyxpbpxorwo`): **001–034 aplicadas**, smoke RLS **7/7 PASS**. SQL 031–034 **ainda não em prod**. Keepalive YAML já lê `secrets.SUPABASE_ANON_KEY`. Backup `workflow_dispatch` em `main` verde (PR #198, [run 32182233334](https://github.com/Matheusbaiense/kangalearner/actions/runs/32182233334)). MFA TOTP **Enabled** no dashboard Auth.
 
 **Ainda não feito aqui:**
-- Fase 0 restante: restore drill 0.1e (throwaway DB), Pro+PITR+HIBP (HIBP é Pro-only no Free). Sentry: DSN Production **truncado** — apagar e recriar; aceite 0.5 só com evento visível.
+- Fase 0 restante: restore drill 0.1e (throwaway DB), Pro+PITR+HIBP (HIBP é Pro-only no Free). Sentry: DSN Production **recriado** (95 chars, redeploy Ready). Evento client disparado; falta login no dashboard + `GET /api/sentry-test` para o server. Aceite 0.5 só com os dois eventos visíveis.
 - Preview Vercel: URL/anon de staging feitas; falta `SUPABASE_SERVICE_ROLE_KEY` de Preview (dono). **Não** aplicar 031–034 em prod até 0.1e.
 - Fase 6.2/6.3: specs existem; correm com `E2E_STAGING_*` contra staging. CI sem credenciais faz skip. Delete de conta **não** corre nos fixtures.
 - Fase 7 fat pages (ARCH-01 account, ARCH-02 PracticeClient) — depois do launch estável
@@ -181,7 +181,7 @@ Nada disto é “vibe coding”. Sem isto, backup YAML e Sentry no repo são tea
 - [ ] Um evento de browser e um de server visíveis  
 - [ ] Alerta configurado  
 
-**Estado 2026-08-19:** `NEXT_PUBLIC_SENTRY_DSN` em Production está truncado (~29 chars). Apagar `SENTRY_DSN` + `NEXT_PUBLIC_SENTRY_DSN` e recriar com DSN completo (não colar no chat). `GET /monitoring` 200 não conta como aceite.  
+**Estado 2026-08-19:** DSN Production recriado (95 chars). Client `captureException` + `flush() true` no site live. Falta: (1) dono login no Sentry para ver o evento; (2) `GET /api/sentry-test` uma vez (rota temporária, 3/h/IP) para o evento server; depois apagar a rota.  
 
 ## 0.6 Stripe — só se billing for ligado — SEC-13
 

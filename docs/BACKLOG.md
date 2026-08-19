@@ -37,7 +37,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 
 ## Important Follow-Ups
 
-- [~] **Sentry observability**: DSN em Vercel Production está **truncado** (~29 chars; Claude 2026-08-19). Client não envia `/monitoring`. Apagar `SENTRY_DSN` + `NEXT_PUBLIC_SENTRY_DSN` (Production) e recriar com DSN completo; depois 1 evento browser + 1 server. Sem colar DSN. Source maps ainda opcionais.
+- [~] **Sentry observability**: DSN Production recriado (95 chars, Claude 2026-08-19). Redeploy Ready. Evento client disparado (`flush() true`); dashboard ainda precisa de login do dono. Rota temporária `GET /api/sentry-test` para o evento server — remover após aceite 0.5. Sem colar DSN.
 - [x] **Branch protection**: `main` now requires the GitHub Actions status check `build` before merging (configured via `gh api` on 2026-06-01).
 - [~] **Staging environment**: projeto `kangalearner-staging` (ref `zlsaerfsrfyxpbpxorwo`); **001–034 + smoke RLS 7/7** (2026-08-18). Fixtures `smoke-a@` / `smoke-b@` (B admin). Preview: `NEXT_PUBLIC_SUPABASE_*` → staging (Claude 2026-08-19). Falta `SUPABASE_SERVICE_ROLE_KEY` em Preview (dono cola).
 - [ ] **Per-state Learn content**: the Learn topics are now jurisdiction-aware through `{token}` placeholders resolved by `packages/core/src/data/stateProfiles.ts`, but two gaps remain. (1) `towing-rules` is scoped to `states: ["WA"]` because learner towing rules differ (the NT allows it, WA does not), so 7 jurisdictions see 19 topics instead of 20 — write per-state versions to restore it. (2) `demerit-points`, `mobile-phones` and `school-zones` were generalised to what is true nationally plus a "check {authority}" pointer; per-state thresholds, fines and school-zone hours would make them concrete again.
