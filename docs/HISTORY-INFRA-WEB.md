@@ -1,5 +1,7 @@
 # Histórico infra / web
 
+| 2026-08-25 | REM-19 | Backup cron `main` verde 6 noites; `GET /api/sentry-test` prod → 500 | `backup.yml` schedule, `kangalearner.com.au/api/sentry-test` |
+
 | 2026-08-19 | REM-18 | Rota temporária `GET /api/sentry-test` (throw estável, 3/h/IP) para fechar 0.5 server | `apps/web/app/api/sentry-test/route.ts` |
 
 | 2026-08-19 | REM-17 | Backup YAML: AWS CLI v2 + pg_dump 17 (PR #198); dispatch `main` verde. Preview `NEXT_PUBLIC_SUPABASE_*` → staging. Sentry DSN Production truncado (29 chars) — recriar. MFA TOTP dashboard já Enabled. | `.github/workflows/backup.yml`, Vercel Preview env |

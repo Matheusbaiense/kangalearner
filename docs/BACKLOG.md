@@ -5,7 +5,7 @@
 >
 > **Plano de correção da mega auditoria 2026-08-17:** [PRODUCTION-REMEDIATION-PLAN.md](PRODUCTION-REMEDIATION-PLAN.md) (fases 0–10, subtarefas, aceite). Este backlog não duplica o plano; só rastrea bloqueios e follow-ups.
 
-Last updated: 2026-08-19
+Last updated: 2026-08-25
 
 **Verificação Fase 0 (trampo do Claude/Chrome):** [QA-FASE0-VERIFY.md](QA-FASE0-VERIFY.md) — ledger vazio até haver evidência. Não marcar aceite no plano sem preencher essa tabela.
 
@@ -18,7 +18,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 - [x] **Vercel Production email/cron env audit**: confirmed via `vercel env pull --environment=production` on 2026-06-01 that `RESEND_API_KEY` and `CRON_SECRET` exist.
 - [ ] **Vercel Production Stripe env audit**: `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_WEBHOOK_SECRET` did not appear in the pulled Production env on 2026-06-01. Add them before enabling billing/webhook-dependent flows.
 - [x] **Backup / Disaster Recovery workflow**: `.github/workflows/backup.yml` now exists. It runs manually and nightly, dumps Supabase Postgres with `pg_dump`, encrypts with GPG, uploads to S3-compatible storage, and verifies the object is listed.
-- [~] **Backup / Disaster Recovery secrets and bucket**: 6 secrets presentes (`gh secret list` 2026-08-19). Dump `.gpg` no R2. `backup.yml` em `main` verde após PR #198 ([run 32182233334](https://github.com/Matheusbaiense/kangalearner/actions/runs/32182233334)). **Restore drill ainda não** (throwaway DB; nunca em prod nem em `zlsaerfsrfyxpbpxorwo`). Lifecycle R2 = 90 dias, não 7/4/3.
+- [~] **Backup / Disaster Recovery secrets and bucket**: 6 secrets presentes. Dump `.gpg` no R2. `backup.yml` dispatch + **cron diário em `main` verde** 19–24 Ago (último [32765380499](https://github.com/Matheusbaiense/kangalearner/actions/runs/32765380499)). **Restore drill ainda não** (throwaway DB; nunca em prod nem em `zlsaerfsrfyxpbpxorwo`). Lifecycle R2 = 90 dias, não 7/4/3.
 - [ ] **RLS regression 025**: SQL **aplicado + smoke 7/7 em staging** (`kangalearner-staging`, 2026-08-18). **Ainda não em prod.** 0.1c backup verde; bloqueado até restore drill 0.1e. Fixtures `smoke-a@` (user) / `smoke-b@` (admin) no staging.
 - [x] **Código: CATEGORIES split** (2026-08-17): `packages/core/src/data/categories.ts`; barrel exporta categorias do ficheiro pequeno.
 - [x] **Código: practice `?cat=`**, mock seek-once, tema `kl-theme`, `error.tsx`, mensagens de auth genéricas, admin recusa demote premium, `/progress` → `/dashboard`.
@@ -37,7 +37,7 @@ These items are not code changes in the web/mobile app, but they block a safe wi
 
 ## Important Follow-Ups
 
-- [~] **Sentry observability**: DSN Production recriado (95 chars, Claude 2026-08-19). Redeploy Ready. Evento client disparado (`flush() true`); dashboard ainda precisa de login do dono. Rota temporária `GET /api/sentry-test` para o evento server — remover após aceite 0.5. Sem colar DSN.
+- [~] **Sentry observability**: DSN Production recriado (95 chars). Client `flush() true`. `GET /api/sentry-test` em prod → 500 (2026-08-25). Aceite 0.5 só com os dois eventos visíveis no dashboard (login do dono). Remover a rota depois. Sem colar DSN.
 - [x] **Branch protection**: `main` now requires the GitHub Actions status check `build` before merging (configured via `gh api` on 2026-06-01).
 - [~] **Staging environment**: projeto `kangalearner-staging` (ref `zlsaerfsrfyxpbpxorwo`); **001–034 + smoke RLS 7/7** (2026-08-18). Fixtures `smoke-a@` / `smoke-b@` (B admin). Preview: `NEXT_PUBLIC_SUPABASE_*` → staging (Claude 2026-08-19). Falta `SUPABASE_SERVICE_ROLE_KEY` em Preview (dono cola).
 - [ ] **Per-state Learn content**: the Learn topics are now jurisdiction-aware through `{token}` placeholders resolved by `packages/core/src/data/stateProfiles.ts`, but two gaps remain. (1) `towing-rules` is scoped to `states: ["WA"]` because learner towing rules differ (the NT allows it, WA does not), so 7 jurisdictions see 19 topics instead of 20 — write per-state versions to restore it. (2) `demerit-points`, `mobile-phones` and `school-zones` were generalised to what is true nationally plus a "check {authority}" pointer; per-state thresholds, fines and school-zone hours would make them concrete again.
