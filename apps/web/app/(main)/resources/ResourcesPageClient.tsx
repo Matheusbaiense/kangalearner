@@ -403,23 +403,25 @@ const NEWCOMER_LINKS: {
   {
     href: "/hpt",
     icon: "👁️",
-    waOnly: true,
-    label: { en: "HPT prep", pt: "Preparação HPT", es: "Preparación HPT" },
+    label: { en: "Hazard test prep", pt: "Preparação hazard test", es: "Preparación hazard test" },
     desc: {
-      en: "Hazard Perception Test",
-      pt: "Teste de Percepção de Risco",
-      es: "Test de Percepción de Peligros"
+      en: "Spot hazards before your Ps",
+      pt: "Perceba riscos antes dos Ps",
+      es: "Detecta riesgos antes de tus Ps"
     }
   },
   {
     href: "/pda",
     icon: "🚗",
-    waOnly: true,
-    label: { en: "PDA prep", pt: "Preparação PDA", es: "Preparación PDA" },
+    label: {
+      en: "Practical test prep",
+      pt: "Preparação prova prática",
+      es: "Preparación examen práctico"
+    },
     desc: {
-      en: "Practical Driving Assessment",
-      pt: "Avaliação Prática de Direção",
-      es: "Evaluación Práctica de Conducción"
+      en: "Your on-road driving test",
+      pt: "Sua prova de direção na via",
+      es: "Tu examen de conducción en vía"
     }
   },
   {

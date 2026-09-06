@@ -305,6 +305,62 @@ export const STATE_TEST_INFO: StateTestInfo[] = [
     verifiedAt: "2026-08-16"
   },
   {
+    code: "TAS",
+    slug: "tas",
+    stateName: "Tasmania",
+    testName: "Driver Knowledge Test",
+    testAbbr: "DKT",
+    authority: "Department of State Growth (Service Tasmania)",
+    authorityAbbr: "Service TAS",
+    authorityUrl: "transport.tas.gov.au",
+    // Estrutura oficial: Compulsory 7/7 + Traffic Rules 4/5 + Road Rules 15/18
+    // + Road Safety 4/5 (transport.tas.gov.au practice DKTS).
+    examQuestions: 35,
+    examPassMark: "30 of 35",
+    metaTitle: "TAS Driver Knowledge Test Practice, Free",
+    descriptionTail:
+      "The official Driver Knowledge Test has 35 questions in four sections, pass mark 30 of 35.",
+    faq: [
+      {
+        q: {
+          en: "How many questions are in the TAS driver knowledge test?",
+          pt: "Quantas questões tem o teste de conhecimento de TAS?",
+          es: "¿Cuántas preguntas tiene el examen de conocimiento de TAS?"
+        },
+        a: {
+          en: "The official Driver Knowledge Test has 35 questions in four sections: 7 compulsory, 5 traffic rules, 18 road rules and 5 road safety.",
+          pt: "O Driver Knowledge Test oficial tem 35 questões em quatro seções: 7 obrigatórias, 5 de regras de tráfego, 18 de regras de trânsito e 5 de segurança viária.",
+          es: "El Driver Knowledge Test oficial tiene 35 preguntas en cuatro secciones: 7 obligatorias, 5 de reglas de tráfico, 18 de reglas de tránsito y 5 de seguridad vial."
+        }
+      },
+      {
+        q: {
+          en: "What score do I need to pass the TAS test?",
+          pt: "Que nota preciso para passar no teste de TAS?",
+          es: "¿Qué puntaje necesito para aprobar el examen de TAS?"
+        },
+        a: {
+          en: "Each section has its own minimum: all 7 compulsory questions, at least 4 of 5 traffic rules, 15 of 18 road rules and 4 of 5 road safety — about 30 of 35 overall.",
+          pt: "Cada seção tem seu mínimo: todas as 7 obrigatórias, pelo menos 4 das 5 de regras de tráfego, 15 das 18 de regras de trânsito e 4 das 5 de segurança viária — cerca de 30 de 35 no total.",
+          es: "Cada sección tiene su mínimo: las 7 obligatorias, al menos 4 de 5 de reglas de tráfico, 15 de 18 de reglas de tránsito y 4 de 5 de seguridad vial — unas 30 de 35 en total."
+        }
+      },
+      {
+        q: {
+          en: "Where do I sit the real DKT?",
+          pt: "Onde faço o DKT real?",
+          es: "¿Dónde rindo el DKT real?"
+        },
+        a: {
+          en: "At a Service Tasmania shop. The official practice test is free on transport.tas.gov.au, and the Plates Plus site covers the full licensing pathway.",
+          pt: "Em uma loja Service Tasmania. O teste de prática oficial é grátis em transport.tas.gov.au, e o site Plates Plus cobre o caminho completo da habilitação.",
+          es: "En una tienda Service Tasmania. El examen de práctica oficial es gratis en transport.tas.gov.au, y el sitio Plates Plus cubre toda la ruta de la licencia."
+        }
+      }
+    ],
+    verifiedAt: "2026-08-17"
+  },
+  {
     code: "ACT",
     slug: "act",
     stateName: "Australian Capital Territory",

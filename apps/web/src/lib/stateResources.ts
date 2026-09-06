@@ -36,7 +36,7 @@ export interface StateResources {
   code: AuStateCode;
   /** null = no minimum supervised hours (NT). */
   hours: StateHours | null;
-  /** null = no hazard test in the learner stage (QLD sits it later, NT has none). */
+  /** null = no hazard test in the learner stage (only the NT has none). */
   hazardTestName: string | null;
   practicalTestName: string;
   links: StateResourceLinks;
@@ -70,7 +70,7 @@ const RESOURCES: Record<AuStateCode, StateResources> = {
       logbook:
         "https://www.nsw.gov.au/driving-boating-and-transport/driver-and-rider-licences/driver-licences/learner-driver-licence/using-your-learner-driver-log-book",
       hazard:
-        "https://www.nsw.gov.au/driving-boating-and-transport/driver-and-rider-licences/driver-licences/driver-licence-tests"
+        "https://www.nsw.gov.au/driving-boating-and-transport/driver-and-rider-licences/driver-licences/driver-licence-tests/hazard-perception-test"
     }
   },
   VIC: {
@@ -80,19 +80,21 @@ const RESOURCES: Record<AuStateCode, StateResources> = {
     practicalTestName: "Drive Test",
     links: {
       steps: "https://www.vicroads.vic.gov.au/licences/your-ls",
-      practiceTest: "https://www.vicroads.vic.gov.au/ls-and-ps/getting-your-ls/learner-permit-test"
+      practiceTest: "https://www.vicroads.vic.gov.au/ls-and-ps/getting-your-ls/learner-permit-test",
+      hazard: "https://www.vicroads.vic.gov.au/ls-and-ps/getting-your-ps/hazard-perception-test"
     }
   },
   QLD: {
     code: "QLD",
     hours: { total: 100, night: 10, appliesUnder: 25 },
-    // QLD's hazard perception test is sat later, on P1 — not a learner-stage step.
-    hazardTestName: null,
-    practicalTestName: "practical driving test",
+    // Learner-stage since 29 March 2021 (P1-stage only for P1s issued before then).
+    hazardTestName: "Hazard Perception Test",
+    practicalTestName: "Q-SAFE practical driving test",
     links: {
       steps: "https://www.qld.gov.au/transport/licensing/driver-licensing/applying/learner",
       practiceTest: "https://www.service.transport.qld.gov.au/practiceroadrulestest/",
-      logbook: "https://www.qld.gov.au/transport/licensing/getting/learner-logbook"
+      logbook: "https://www.qld.gov.au/transport/licensing/getting/learner-logbook",
+      hazard: "https://www.qld.gov.au/transport/licensing/getting/hazard"
     }
   },
   SA: {
@@ -104,7 +106,8 @@ const RESOURCES: Record<AuStateCode, StateResources> = {
       steps: "https://www.mylicence.sa.gov.au/my-car-licence",
       practiceTest: "https://www.mylicence.sa.gov.au/my-car-licence/practice-theory-test",
       logbook: "https://www.mylicence.sa.gov.au/the-driving-companion",
-      hazard: "https://www.mylicence.sa.gov.au/my-car-licence"
+      hazard:
+        "https://www.sa.gov.au/topics/driving-and-transport/licences/tests/hazard-perception-test"
     }
   },
   TAS: {
@@ -123,7 +126,8 @@ const RESOURCES: Record<AuStateCode, StateResources> = {
     links: {
       steps: "https://www.transport.tas.gov.au/licensing",
       practiceTest: "https://www.transport.tas.gov.au/dkts/practiceDKTSWelcome.jsp?CAR~Y",
-      logbook: "https://www.transport.tas.gov.au/licensing"
+      logbook: "https://www.transport.tas.gov.au/licensing",
+      hazard: "https://www.platesplus.tas.gov.au/hpt"
     }
   },
   ACT: {

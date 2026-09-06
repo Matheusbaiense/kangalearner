@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import type { AuStateCode } from "@kanga/core";
+import { AustraliaMap } from "@/components/home/AustraliaMap";
 import { Kanga } from "@/components/brand/Kanga";
 import { useLang } from "@/contexts/LangContext";
 import { fill } from "@/lib/i18n";
@@ -49,6 +50,14 @@ export function HubClient({ total, stateCounts }: Props) {
       </div>
 
       <div className="app-container">
+        <section className="au-map-section" aria-label="Pick your state on the map">
+          <AustraliaMap
+            counts={Object.fromEntries(stateCounts.map((st) => [st.code, st.total]))}
+            slugs={Object.fromEntries(STATE_TEST_INFO.map((info) => [info.code, info.slug]))}
+            questionsWord={s.questionsWord}
+          />
+        </section>
+
         <section className="states-section">
           <div className="states-inner">
             <div className="states-grid">
